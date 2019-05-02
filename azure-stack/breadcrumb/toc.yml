@@ -1,0 +1,31 @@
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+    - name: Azure Stack
+      tocHref: /azure-stack/
+      topicHref: /azure-stack/operator/index
+      items:
+        - name: ASDK
+          tocHref: /azure-stack/asdk/
+          topicHref: /azure-stack/asdk/index
+        - name: İşleç
+          tocHref: /azure-stack/operator/
+          topicHref: /azure-stack/operator/index
+          items:
+            - name: Nasıl yapılır kılavuzları / Azure yığını yedekleme
+              tocHref: /azure-stack/operator/azure-stack-backup-infrastructure-backup/
+              topicHref: /azure-stack/operator/azure-stack-backup-infrastructure-backup/
+              items:
+                - name: Azure Stack üzerinde dosya ve uygulama yedekleme
+                  tocHref: /azure/backup/backup-mabs-files-applications-azure-stack
+                  topicHref: /azure/backup/backup-mabs-files-applications-azure-stack
+                - name: Azure Stack sanal makinelerini Azure'a çoğaltma
+                  tocHref: /azure/site-recovery/azure-stack-site-recovery
+                  topicHref: /azure/site-recovery/azure-stack-site-recovery
+        - name: İş ortağı
+          tocHref: /azure-stack/partner/
+          topicHref: /azure-stack/partner/index
+        - name: Kullanıcı
+          tocHref: /azure-stack/user/
+          topicHref: /azure-stack/user/index
