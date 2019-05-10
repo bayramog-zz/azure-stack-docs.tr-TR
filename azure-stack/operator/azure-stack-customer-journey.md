@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 55439e1af1a5244c265572bfe6d01b26800312db
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: b68618bf1755310471901e89b8b154e34e3c0794
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985407"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172725"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Azure Stack veri merkezi tümleştirmesi
 
@@ -33,7 +33,7 @@ Azure Stack müşterisi olarak, aşağıdaki aşamaları tahmin etmeleri gereken
 |-----|-----|-----|-----|-----|-----|-----|
 |**Microsoft**|İş ortağıyla iletişim kurma satış öncesi destek sağlamak için.|Yazılım Lisansı ve gerektiğinde sözleşmeleri hazırlayın.|Veri Merkezi Tümleştirme gereksinimlerini ve belgeler için müşteri toplamak için gerekli araçları sağlar.|En son temel derlemeler ve araç zinciri güncelleştirmeleri, aylık bir tempoyla sunar.|Yok|Microsoft destek mühendisleri dağıtım sorunları yardımcı olur.|
 |**İş ortağı**|Çözüm seçenekleri müşteri gereksinimlerine göre önerilir.<br><br>Kavram kanıtı (POC) gerekirse önerin.<br><br>İş ilişki kurun.<br><br>Destek düzeyine karar verin.|Gerekli sözleşmeler müşteri ile hazırlayın.<br><br>Müşteri satınalma siparişi oluşturun.<br><br>Teslim zaman çizelgesi üzerinde karar verin.<br><br>Gerekirse, müşteri ile Microsoft bağlanın.|Müşteri, gerekli tüm dağıtım önkoşulları ve veri merkezi anlayış tümleştirme seçenekleri emin olmak eğitim ile sağlar.<br><br>Bütünlük ve doğruluğundan emin olmak için toplanan verilerin doğrulama müşteriye yardımcı olun.|Son doğrulanmış ana hat derlemesi için geçerlidir.<br><br>Gerekli Microsoft Dağıtım Araç Seti uygulayın.|Müşteri sitesine donanım gönderin.|Dağıtım bir yerinde destek mühendisi tarafından işlenir.<br><br>Raf ve yığın.<br><br>Donanım yaşam döngüsü (HLH) konak dağıtımı.<br><br>Azure Stack dağıtımı.<br><br>Müşteri için elle devre dışı.|
-|**Müşteri**|Hedeflenen kullanım durumları açıklayın ve gereksinimleri belirtin.|Faturalandırma modeli kullanın, gözden geçirmek ve sözleşmeleri onaylamak için belirleyin.|Dağıtım çalışma sayfası tamamlayın ve tüm dağıtım önkoşulları met ve dağıtım için hazır olduğundan emin olun.|Yok|Veri Merkezi, tüm gerekli güç sağlayarak hazırlamak ve soğutma kenarlık bağlantı ve diğer gerekli veri merkezi tümleştirmesi gereksinim yerdir.|Abonelik kimlik bilgilerini sağlayın ve sağlanan veriler hakkında sorular varsa desteklemek için dağıtım sırasında kullanılabilir.|
+|**Müşteri**|Hedeflenen kullanım durumları açıklayın ve gereksinimleri belirtin.|Faturalandırma modeli kullanın, gözden geçirmek ve sözleşmeleri onaylamak için belirleyin.|Tamamlamak [dağıtım çalışma sayfası](azure-stack-deployment-worksheet.md)ve tüm dağıtım önkoşulları met ve dağıtım için hazır olduğundan emin olun.|Yok|Veri Merkezi, tüm gerekli güç sağlayarak hazırlamak ve soğutma kenarlık bağlantı ve diğer gerekli veri merkezi tümleştirmesi gereksinim yerdir.|Abonelik kimlik bilgilerini sağlayın ve sağlanan veriler hakkında sorular varsa desteklemek için dağıtım sırasında kullanılabilir.|
 | | | | | | | |
 
 

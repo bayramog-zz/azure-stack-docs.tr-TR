@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 3d1fb9e7a3d25e9eeab0f1f2a0cc1a48ed6112a2
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: e2bfea5cb7bb068a4cf3ca64dc3852b450a37066
+ms.sourcegitcommit: 61de365c93eb7435891867f9808ec37486882d7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985990"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65097079"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Depolama: Farklılıklar ve dikkat edilmesi gerekenler
 
@@ -38,7 +38,7 @@ Bu makalede, Azure depolama hizmetlerinde bilinen Azure Stack depolama farklar �
 |Bekleyen veri için Azure depolama hizmeti şifrelemesi|256 bit AES şifreleme. Anahtar Kasası'nda müşteri tarafından yönetilen anahtarları kullanarak şifreleme destekler.|BitLocker'ı 128 bit AES şifreleme. Müşteri tarafından yönetilen anahtarları kullanarak şifreleme desteklenmiyor.
 |Depolama hesabı türü|Genel amaçlı V1, V2 ve Blob Depolama hesapları|Yalnızca genel amaçlı V1.
 |Çoğaltma seçenekleri|Yerel olarak yedekli depolama, coğrafi olarak yedekli depolama, okuma erişimli coğrafi olarak yedekli depolama ve bölgesel olarak yedekli depolama|Yerel olarak yedekli depolama.
-|Premium depolama|Tam olarak desteklenir|Garanti ya da performans sınır sağlanabilir.
+|Premium depolama|Yüksek performanslı ve düşük gecikme süreli depolama sağlar. Yalnızca premium depolama hesapları sayfa bloblarını destekler.|Garanti ya da performans sınır sağlanabilir. Değil blok BLOB'ları kullanarak engellemek, bloblar, tablolar ve Kuyruklar premium depolama hesaplarında Ekle.
 |Yönetilen diskler|Premium ve standart desteklenir|1808 veya sonraki bir sürümü kullandığınızda desteklenir.
 |Blob adı|1024 karakter (2.048 bayt)|880 karakterleri (1,760 bayt)
 |Blok blobu en büyük boyutu|4,75 TB (100 MB X 50.000 blok)|1802 güncelleştirme veya yeni bir sürümü için 4,75 TB (100 MB x 50.000 blok). Önceki sürümler için 50.000 x 4 MB (yaklaşık 195 GB).

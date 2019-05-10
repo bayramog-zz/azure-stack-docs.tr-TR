@@ -6,28 +6,27 @@ documentationcenter: ''
 author: sethmanheim
 manager: femila
 editor: ''
-ms.assetid: 9584177f-4af3-4834-864d-930b09ae0995
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: CLI
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/09/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: fcf84ee394c917e896bc50d5d6a97f42191451e9
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 7db00c7ec295f64255dcd378030a68c68f81219d
+ms.sourcegitcommit: c755c7eac0f871960f9290591421cf5990b9e734
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985591"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506117"
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Şablonları komut satırını kullanarak Azure Stack'te dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Azure Resource Manager şablonları Azure Stack geliştirme Seti'ni ortamında dağıtmak için komut satırını kullanın. Azure Resource Manager şablonları, dağıtın ve tek ve eşgüdümlü bir işlemle uygulamanıza yönelik tüm kaynakları sağlayın.
+Azure Stack'te Azure Resource Manager şablonlarını dağıtmak için Azure komut satırı arabirimi (CLI) kullanın. Azure Resource Manager şablonları, dağıtın ve kaynakları tek ve eşgüdümlü bir işlemle uygulamanızda sağlayın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -56,6 +55,4 @@ az storage account list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Şablon dağıtımı hakkında daha fazla bilgi için bkz:
-
-[Şablonları PowerShell ile dağıtma](azure-stack-deploy-template-powershell.md)
+Daha fazla bilgi edinin [şablonlar, PowerShell kullanarak dağıtma](azure-stack-deploy-template-powershell.md).

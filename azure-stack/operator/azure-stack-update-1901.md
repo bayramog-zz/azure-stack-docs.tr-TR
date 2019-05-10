@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: f7e912b3fdc6409a847b6a157161298ed3ee3b0b
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: e89a2fc4adbe4a9d399cec67608c1c63748692e7
+ms.sourcegitcommit: 39ba6d18781aed98b29ac5e08aac2d75c37bf18c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984592"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65387124"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 güncelleştirme
 
@@ -277,6 +277,8 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
    - Bir konuk dizin ile ilişkili bir abonelik içindeki Vm'leri dağıtma, çok kiracılı bir ortam yapılandırdıysanız, bir iç hata iletisi ile başarısız olabilir. Hatayı gidermek için aşağıdaki adımları izleyin. [bu makalede](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) her Konuk dizinlerinizi yeniden yapılandırmak için.
 
 - Bir Ubuntu 18.04 etkinleştirilmiş SSH yetkilendirme ile oluşturulan VM, oturum açmak için SSH anahtarları kullanmak izin vermez. Geçici bir çözüm olarak VM erişimi Linux uzantısı için SSH anahtarları sağladıktan sonra uygulamak için kullanmak veya parola tabanlı kimlik doğrulaması kullanın.
+
+- Bir ölçek kümesi kaldırılamıyor **sanal makine ölçek kümeleri** dikey penceresi. Geçici çözüm olarak, Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
 
 ### <a name="networking"></a>Ağ  
 

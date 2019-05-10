@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: aaa929924399eb7e999bccdaa45e5ae9ce0dfa3a
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 9aa090f301a7444736773744215981214e41747e
+ms.sourcegitcommit: eb7ea8aee806b5c770397fa6ccf24cef2d6308bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985359"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65431533"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack tanılama araçları
 
@@ -104,7 +104,7 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
 * Günlük VirtualMachines ve BareMetal rollerden 8 saat önce önce 2 saat arasındaki zaman aralığı için günlük dosyaları için filtreleme tarihi olan toplama:
 
   ```powershell
-  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
 * Günlükleri toplayabilir ve bunları belirtilen Azure depolama blob kapsayıcısında yer depolar. Bu işlem genel sözdizimi aşağıdaki gibidir:
@@ -170,7 +170,7 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
   |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
   |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker|
   |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing|
-  |ACSMonitoringService  |Domain                         |KeyVaultInternalDataPlane      |SeedRingServices|
+  |ACSMonitoringService  |Etki alanı                         |KeyVaultInternalDataPlane      |SeedRingServices|
   |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB|
   |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL|
   |ACSTableServer        |EventRP                        |MetricsAdminRP                 |SRP   |

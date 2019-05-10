@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 8c77441f458e87a3b8da60541261338abb78057c
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 05/07/2019
+ms.openlocfilehash: 59e86e15289833d63b85314a84d0bb9e60dc5da8
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985432"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172559"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Market öğesi oluşturma ve yayımlama
 
@@ -40,10 +40,10 @@ ms.locfileid: "64985432"
    /Contoso.TodoList/DeploymentTemplates/
    ```
 
-3. [Azure Resource Manager şablonu oluşturma] ((/Azure/Azure-Resource-Manager/Resource-Group-Authoring-Templates) ya da Github'dan bir şablon seçin. Market öğesi, bir kaynak oluşturmak için bu şablonu kullanılmaktadır.
+3. [Bir Azure Resource Manager şablonu oluşturma](/azure/azure-resource-manager/resource-group-authoring-templates) ya da Github'dan bir şablon seçin. Market öğesi, bir kaynak oluşturmak için bu şablonu kullanılmaktadır.
 
-    > [!Note]  
-    > Ürün anahtarları, parola veya müşteri olarak tanımlanabilir bilgileri Azure Resource Manager şablonu gibi herhangi bir gizli anahtar asla sabit kod. Şablon JSON dosyaları galeride yayımlandıktan sonra kimlik doğrulama gerek kalmadan erişilebilir. Tüm gizli Store [anahtarı Vault]((/azure/azure-resource-manager/resource-manager-keyvault-parameter) ve çağrı şablon içinde bunları.
+    > [!NOTE]  
+    > Ürün anahtarları, parola veya müşteri olarak tanımlanabilir bilgileri Azure Resource Manager şablonu gibi herhangi bir gizli anahtar asla sabit kod. Şablon JSON dosyaları galeride yayımlandıktan sonra kimlik doğrulama gerek kalmadan erişilebilir. Tüm gizli Store [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) ve bunları şablonda çağırın.
 
 4. Kaynak başarıyla dağıtılabilir emin olmak için Microsoft Azure Stack API'leri ile şablon test edin.
 5. Şablonunuzu bir sanal makine görüntüsüne dayanıyorsa, yönergeleri [Azure Stack'e sanal makine görüntüsü ekleme](azure-stack-add-vm-image.md).
@@ -54,6 +54,7 @@ ms.locfileid: "64985432"
    > Tüm dört simgesi boyutu (küçük, Orta, büyük geniş) Market öğesi doğru şekilde oluşturmak için gereklidir.
    >
    >
+
 8. İçinde **Manifest.json** dosya, değişiklik **adı** , Market öğesi adı. Ayrıca **yayımcı** ad ya da şirket için.
 9. Altında **yapıtları**, değiştirme **adı** ve **yolu** dahil Azure Resource Manager şablonu için doğru bilgileri için:
 
@@ -84,7 +85,7 @@ ms.locfileid: "64985432"
     ```
 
     > [!NOTE]
-    > Çıkış paketi tam yolu olmalıdır. Örneğin, çıkış yolunu C:\MarketPlaceItem\yourpackage.azpkg ise, ' % s'klasörü C:\MarketPlaceItem mevcut olması gerekir.
+    > Çıkış paketi tam yolu olmalıdır. Örneğin, çıkış yolunu C:\MarketPlaceItem\yourpackage.azpkg, klasörü ise **C:\MarketPlaceItem** mevcut olması gerekir.
     >
     >
 
@@ -108,7 +109,8 @@ ms.locfileid: "64985432"
 4. Portala gidin. Portalında, Market öğesi artık, bir işleç veya bir kullanıcı olarak da görebilirsiniz. Paket görünmesi birkaç dakika sürebilir.
 
 5. Market öğeniz artık Azure Stack Marketini için kaydedildi. Blob Depolama konumunuzdan silmeyi seçebilirsiniz.
-    > [!Caution]  
+
+    > [!CAUTION]  
     > Tüm varsayılan galeri yapıtlar ve özel galeri yapıtlarınızı artık aşağıdaki URL'ler altında kimlik doğrulaması olmadan erişilebilir:  
 `https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
 `https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
@@ -135,18 +137,18 @@ ms.locfileid: "64985432"
 | Yayımcı |X |String |[A-Za-z0-9]+ | |
 | Version |X |String |[SemVer v2](https://semver.org/) | |
 
-### <a name="metadata"></a>Meta Veriler
+### <a name="metadata"></a>Meta veriler
 
 | Ad | Gerekli | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |Öneri 80 karakter |Portal 80 karakterden daha uzunsa, öğe adı düzgün görüntülenmeyebilir. |
-| PublisherDisplayName |X |String |Öneri 30 karakter |Portalda 30 karakterden uzunsa, yayımcı adını düzgün bir şekilde görüntülenmeyebilir. |
+| PublisherDisplayName |X |String |Öneri 30 karakter |Portalda 30 karakterden uzunsa, yayımcı adını düzgün görüntülenmeyebilir. |
 | PublisherLegalName |X |String |En fazla 256 karakter | |
 | Özet |X |String |60-100 karakter | |
 | LongSummary |X |String |140 ile 256 karakter |Henüz geçerli değil Azure Stack'te. |
-| Açıklama |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ila 5.000 karakter | |
+| Açıklama |X |[HTML](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500 ila 5.000 karakter | |
 
-### <a name="images"></a>Görüntüler
+### <a name="images"></a>Resimler
 
 Market, aşağıdaki simgeleri kullanır:
 
@@ -154,13 +156,13 @@ Market, aşağıdaki simgeleri kullanır:
 | --- | --- | --- | --- |
 | Geniş |255 px |115 piksel |Her zaman gerekli |
 | Büyük |115 piksel |115 piksel |Her zaman gerekli |
-| Orta |90 piksel |90 piksel |Her zaman gerekli |
+| Ortam |90 piksel |90 piksel |Her zaman gerekli |
 | Küçük |40 piksel |40 piksel |Her zaman gerekli |
 | Ekran Görüntüsü |533 piksel |32 piksel |İsteğe bağlı |
 
 ### <a name="categories"></a>Categories
 
-Her bir Market öğesi öğesi kullanıcı Arabirimi portalda göründüğü tanımlayan bir kategorisiyle etiketlenmiş. Azure Stack'te mevcut kategorilerden birini seçebilirsiniz (işlem, veri + depolama, vb.) veya yeni bir tane seçin.
+Her bir Market öğesi öğesi kullanıcı Arabirimi portalda göründüğü tanımlayan bir kategorisiyle etiketlenmiş. Azure Stack'te mevcut kategorilerden birini seçebilirsiniz (**işlem**, **veri + depolama**, vs.), veya yeni bir tane seçin.
 
 ### <a name="links"></a>Bağlantılar
 
@@ -168,7 +170,7 @@ Her bir Market öğesi çeşitli ek içeriklere bağlantılar içerebilir. Bağl
 
 | Ad | Gerekli | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |String |En fazla 64 karakter | |
+| DisplayName |X |String |En fazla 64 karakter. | |
 | Uri |X |URI | | |
 
 ### <a name="additional-properties"></a>Ek özellikler
@@ -177,12 +179,12 @@ Her bir Market öğesi çeşitli ek içeriklere bağlantılar içerebilir. Bağl
 
 | Ad | Gerekli | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |String |En çok 25 karakter | |
-| Değer |X |String |En çok 30 karakter | |
+| DisplayName |X |String |En çok 25 karakter. | |
+| Değer |X |String |En çok 30 karakter. | |
 
 ### <a name="html-sanitization"></a>HTML temizleme
 
-HTML sağlayan herhangi bir alan için aşağıdaki öğelere ve özniteliklere izin verilir:
+HTML, aşağıdaki izin veren herhangi bir alan için [öğelere ve özniteliklere izin verilir](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization):
 
 `h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i`
 
@@ -197,3 +199,8 @@ Simgeler ve Azure Stack portalında görüldüğü gibi Market öğesi için met
 ### <a name="marketplace-item-details-blade"></a>Market öğesi ayrıntıları dikey penceresi
 
 ![Market öğesi ayrıntıları dikey penceresi](media/azure-stack-create-and-publish-marketplace-item/image3.png)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Azure Stack Marketini genel bakış](azure-stack-marketplace.md)
+* [Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)

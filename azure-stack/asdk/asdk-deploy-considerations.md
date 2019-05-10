@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 05/06/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 113760a1c2fbbb024aee50904c14509398d9e24b
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 3a5b506cdb7441ef60d4731718cafa8aa267c078
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64983872"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172427"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack dağıtım planlama konuları
 Azure Stack geliştirme Seti'ni (ASDK) dağıtmadan önce Geliştirme Seti ana bilgisayarınız bu makalede açıklanan gereksinimleri karşıladığından emin olun.
@@ -81,7 +81,7 @@ Ortamınız internet'e bağlı değil veya Azure AD kullanmak istemiyorsanız, A
 > AD FS seçeneğini kullanarak dağıtırsanız, Azure Stack, Azure AD'ye geçiş yapmak için yeniden dağıtmanız gerekir.
 
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory hesapları
-Azure Stack, Azure AD hesabı kullanarak dağıtmak için dağıtım PowerShell Betiği çalıştırmadan önce bir Azure AD hesap hazırlamanız gerekir. Bu hesap, Azure AD kiracınız için genel yönetici olur. Bu, sağlamak ve uygulama ve hizmet sorumluları için Azure Active Directory Graph API'si ile etkileşimde bulunan tüm Azure Stack Hizmetleri temsilci seçmek için kullanılır. (Daha sonra değiştirebilirsiniz) varsayılan sağlayıcı aboneliği sahibi olarak da kullanılır. Azure Stack sisteminizin Yönetici portalına bu hesabı kullanarak oturum.
+Azure Stack, Azure AD hesabı kullanarak dağıtmak için dağıtım PowerShell Betiği çalıştırmadan önce bir Azure AD hesap hazırlamanız gerekir. Bu hesap, Azure AD kiracınız için genel yönetici olur. Bu, sağlamak ve uygulama ve hizmet sorumluları için Azure Active Directory Graph API'si ile etkileşimde bulunan tüm Azure Stack Hizmetleri temsilci seçmek için kullanılır. (Daha sonra değiştirebilirsiniz) varsayılan sağlayıcı aboneliği sahibi olarak da kullanılır. Azure Stack sisteminizin Yönetici portalına bu hesabı kullanarak oturum açabilirsiniz.
 
 1. İçin en az bir Azure AD dizin yöneticisi olan bir Azure AD hesabı oluşturun. Zaten bir hesabınız varsa bu hesabı kullanabilirsiniz. Aksi takdirde, ücretsiz, oluşturabilirsiniz [ https://azure.microsoft.com/free/ ](https://azure.microsoft.com/free/) (Çin'de ziyaret <https://go.microsoft.com/fwlink/?LinkID=717821> yerine). Daha sonra planlıyorsanız [Azure Stack Azure ile kaydedin](asdk-register.md), ayrıca bir aboneliği bu hesabı yeni oluşturulmuş olması gerekir.
    
@@ -91,14 +91,14 @@ Azure Stack, Azure AD hesabı kullanarak dağıtmak için dağıtım PowerShell 
    | **Azure Active Directory hesabı** | **Destekleniyor mu?** |
    | --- | --- |
    | Geçerli genel Azure aboneliğine sahip iş veya Okul hesabı |Evet |
-   | Geçerli Genel Azure Aboneliğine sahip Microsoft Hesabı |Evet |
+   | Geçerli genel Azure aboneliğine sahip Microsoft Account |Evet |
    | Geçerli Çin Azure aboneliğine sahip iş veya Okul hesabı |Evet |
    | Geçerli ABD Azure aboneliğine sahip iş veya Okul hesabı |Evet |
 
-Dağıtımdan sonra Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden geri veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.
+Dağıtımdan sonra Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden devreye sokmanız veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.
 
 ## <a name="network"></a>Ağ
-### <a name="switch"></a>Anahtar
+### <a name="switch"></a>Switch
 Mevcut bir bağlantı noktası üzerinde Geliştirme Seti makine için bir anahtar.  
 
 Geliştirme Seti makine, bir anahtar erişimi bağlantı noktasına veya santral bağlantı noktasına bağlanmayı destekler. Anahtar üzerinde özelleştirilmiş herhangi bir özellik gerekmez. Santral bağlantı noktası kullanıyorsanız veya VLAN kimliği yapılandırmanız gerekiyorsa dağıtım parametresi olarak VLAN kimliğini sağlamanız gerekir.

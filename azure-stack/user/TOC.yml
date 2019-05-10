@@ -27,7 +27,8 @@
           href: azure-stack-subscribe-services.md
         - name: Bir şablondan VM oluşturma
           href: azure-stack-create-vm-template.md
-    - name: Hibrit bulut desenleri
+    - name: Hibrit bulut uygulamaları
+      href: azure-stack-hybrid-cloud-patterns.md
       items:
         - name: Azure ve Azure Stack’e uygulama dağıtma
           href: azure-stack-solution-pipeline.md
@@ -170,7 +171,7 @@
               maintainContext: true
             - name: PowerShell'i çalıştırmak için Docker'ı kullanma
               href: azure-stack-powershell-user-docker.md
-            - name: Visual Studio yükleme
+            - name: Visual Studio Yükleme
               href: azure-stack-install-visual-studio.md
             - name: SSH ortak anahtarı kullanma
               href: azure-stack-dev-start-howto-ssh-public-key.md
@@ -183,9 +184,9 @@
                   href: azure-stack-version-profiles-net.md
                 - name: Java
                   href: azure-stack-version-profiles-java.md
-                - name: Azure CLI
+                - name: Azure CLI'si
                   href: azure-stack-version-profiles-azurecli2.md
-                - name: Başlayın
+                - name: Git
                   href: azure-stack-version-profiles-go.md
                 - name: Ruby
                   href: azure-stack-version-profiles-ruby.md
@@ -222,6 +223,8 @@
               href: azure-stack-deploy-template-portal.md
             - name: PowerShell ile dağıtma
               href: azure-stack-deploy-template-powershell.md
+            - name: CLI ile dağıtma
+              href: azure-stack-deploy-template-command-line.md
             - name: Visual Studio ile dağıtma
               href: azure-stack-deploy-template-visual-studio.md
     - name: Bulut hizmeti sağlayıcısı etkinleştir

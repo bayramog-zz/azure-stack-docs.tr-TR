@@ -3,25 +3,24 @@ title: Kiracılar için kullanım ekleyin ve Azure Stack'e faturalama | Microsof
 description: Gerekli adımlar, bir bulut hizmeti sağlayıcısı (CSP) tarafından yönetilen Azure Stack için son kullanıcı ekleyin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/05/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 05/07/2019
+ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 8e177944a5f57c9475287325b705fac34ec513c0
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/07/2019
+ms.openlocfilehash: 5f03b80b871d3df467bc52b735432ce5568a3ad8
+ms.sourcegitcommit: a78c0d143eadcab65a601746b9ea24be28091ad2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64293151"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212306"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Kiracı kullanımı için ekleyin ve Azure Stack'e faturalama
 
@@ -33,34 +32,36 @@ CSP, Azure Stack dağıtımı birden çok son müşterilerin (kiracılar) için 
 
 Aşağıdaki şekilde, bir CSP'ye Azure Stack'i kullanın ve kullanımı için müşteri izleme ayarlamak için yeni bir müşteri etkinleştirmek için izlemeniz gereken adımları gösterilmektedir. Son Müşteri ekleyerek, ayrıca Azure Stack'te kaynakları yönetebilir. Kaynakları yönetmek için iki seçeneğiniz vardır:
 
-1. Son Müşteri korumak ve son müşterinin yerel Azure Stack abonelik için kimlik bilgilerini sağlayın.  
-2. Son Müşteri abonelikleriyle yerel olarak çalışabilir ve CSP'ye sahip izinleri ile bir konuk olarak ekleyin.  
+- Son Müşteri korumak ve son müşterinin yerel Azure Stack abonelik için kimlik bilgilerini sağlayın.  
+- Son Müşteri abonelikleriyle yerel olarak çalışabilir ve CSP'ye sahip izinleri ile bir konuk olarak ekleyin.  
 
-## <a name="steps-to-add-an-end-customer"></a>Son müşteri ekleme adımları
+## <a name="add-an-end-customer"></a>Son müşteri ekleme
+
+Aşağıdaki şekilde resimdeki gibi bir son müşteri eklemek için aşağıdaki adımları gerçekleştirin:
 
 ![Kullanımı izleme ve son müşteri hesabını yönetmek için bulut hizmeti sağlayıcısını ayarlama](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ### <a name="create-a-new-customer-in-partner-center"></a>İş ortağı Merkezi'nde yeni müşteri oluşturma
 
-İş ortağı Merkezi'nde müşteri için yeni bir Azure aboneliği oluşturun. Yönergeler için [yeni bir müşteri eklemek](https://msdn.microsoft.com/partner-center/add-a-new-customer).
+İş ortağı Merkezi'nde müşteri için yeni bir Azure aboneliği oluşturun. Yönergeler için [yeni bir müşteri eklemek](/partner-center/add-a-new-customer).
 
 ### <a name="create-an-azure-subscription-for-the-end-customer"></a>Son müşteri için bir Azure aboneliği oluşturun
 
-Müşterinizin kaydının iş ortağı Merkezi'nde oluşturduktan sonra katalogdaki ürünlerin aboneliklerini satabilirsiniz. Yönergeler için [oluşturun, askıya alma veya müşteri aboneliklerini iptal](https://msdn.microsoft.com/partner-center/create-a-new-subscription).
+Müşterinizin kaydının iş ortağı Merkezi'nde oluşturduktan sonra katalogdaki ürünlerin aboneliklerini satabilirsiniz. Yönergeler için [oluşturun, askıya alma veya müşteri aboneliklerini iptal](/partner-center/create-a-new-subscription).
 
 ### <a name="create-a-guest-user-in-the-end-customer-directory"></a>Son Müşteri dizinde Konuk kullanıcı oluşturma
 
-Son müşteri, kendi hesabı yönetiyorsa, dizinde Konuk kullanıcı oluşturmak ve bunları bilgi gönderin. Son kullanıcı daha sonra konuk ekler ve Konuk izni yükseltmesine **sahibi** Azure Stack CSP hesabı.
+Son müşteri, kendi hesabı yönetiyorsa, dizinde Konuk kullanıcı oluşturmak ve bunları bilgi gönderin. Son kullanıcı ardından Konuk ekler ve Konuk izni yükseltir **sahibi** Azure Stack CSP hesabı.
 
 ### <a name="update-the-registration-with-the-end-customer-subscription"></a>Kayıt son müşteri aboneliği ile güncelleştirme
 
 Kaydınızı yeni müşteri aboneliği ile güncelleştirin. Azure iş ortağı Merkezi'nde müşteri kimliğini kullanarak müşteri kullanımını raporlar. Bu adım, her bir müşterinin kullanım müşterinin tek CSP'ye abonelik altında bildirilir sağlar. Bu, kullanıcı kullanım izleme ve faturalandırma kolaylaştırır.
 
 > [!NOTE]  
-> Bu adımı gerçekleştirmek için aşağıdakiler gereklidir [Azure Stack kayıtlı](azure-stack-registration.md ).
+> Bu adımı gerçekleştirmek için aşağıdakiler gereklidir [Azure Stack kayıtlı](azure-stack-registration.md).
 
 1. Windows PowerShell ile yükseltilmiş istemi açın ve çalıştırın:  
-    `Add-AzureRmAccount -EnvironmentName AzureChinaCloud`
+    `Add-AzureRmAccount`
 2. Azure kimlik bilgilerinizi girin.
 3. PowerShell oturumunda çalıştırın:
 

@@ -3,8 +3,8 @@ title: Azure Stack (bulut işleci) bir özel Market öğesi yayımlama | Microso
 description: Azure Stack operatör Azure Stack'te bir özel Market öğesi yayımlama hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
 ms.service: azure-stack
@@ -12,17 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/09/2019
-ms.date: 02/18/2019
-ms.author: v-jay
+ms.date: 05/07/2019
+ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 6c1750e6a523828400b3d06d4e1c22fb34f8273f
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/07/2019
+ms.openlocfilehash: 70a1e1223accda5dfb273372da486588fb030afc
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64292711"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172747"
 ---
 # <a name="azure-stack-marketplace-overview"></a>Azure Stack Marketini genel bakış
 
@@ -37,7 +36,7 @@ Azure Stack operatör eklenecek öğeleri karar verin (Market'te yayımlama). Uy
 
 Yönetici portalı Seç Market açmak için **+ kaynak Oluştur**.
 
-![Market](media/azure-stack-publish-custom-marketplace-item/image1.png)
+![Market](media/azure-stack-marketplace/marketplace1.png)
 
 ## <a name="marketplace-items"></a>Marketplace öğeleri
 
@@ -49,7 +48,7 @@ Her bir Market öğesi sahiptir:
 * Meta veriler, dizeler, simgeler ve diğer pazarlama Güvenceleri gibi.
 * Portalda öğeyi görüntülemek için biçimlendirme bilgileri.
 
-Market'te her öğe, Azure galeri paketi (.azpkg) biçimini kullanır. Dağıtım veya çalışma zamanı kaynakları (kod, yazılım ya da sanal makine görüntüleri zip dosyaları) için Azure Stack Market öğesi bir parçası olarak değil ayrı ayrı ekleyin.
+Market'te her öğe, Azure galeri paketi (.azpkg) biçimini kullanır. Azure Stack, dağıtım veya çalışma zamanı kaynakları (kod, yazılım veya sanal makine görüntüleri .zip dosyalarını) Market öğesi bir parçası olarak değil ayrı ayrı ekleyin.
 
 Azure veya özel görüntüleri karşıya yüklemek, indirmek, 1803 ve üzeri sürümü ile Azure Stack görüntüleri seyrek dosyalarına dönüştürür. Bu işlem süresini uzatır görüntü eklerken, ancak kazandırır ve bu görüntülerin dağıtımını hızlandırır. Dönüştürme, yalnızca yeni görüntüleri için geçerlidir. Var olan görüntülerden değiştirilmez.
 
@@ -57,5 +56,3 @@ Azure veya özel görüntüleri karşıya yüklemek, indirmek, 1803 ve üzeri s�
 
 * [Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)  
 * [Bir Market öğesi oluşturma ve yayımlama](azure-stack-create-and-publish-marketplace-item.md)
-
-<!-- Update_Description: wording update -->

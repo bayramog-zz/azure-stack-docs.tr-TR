@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 1904 güncelleştirmesi | Microsoft Docs
+title: Azure Stack 1904 sürüm notları | Microsoft Docs
 description: Yenilikler dahil olmak üzere, Azure Stack tümleşik sistemleri 1904 güncelleştirmesi hakkında bilinen sorunlar ve güncelleştirmeyi yüklemek nereye öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/02/2019
-ms.openlocfilehash: fd93ba34b712d5f6c4dc71c226e176f44a7bc6dc
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 05/06/2019
+ms.openlocfilehash: 7047c44ec4828c07eeaefdf29bcfef3762942b21
+ms.sourcegitcommit: 405075e7826ba2fa545dbf5498160219ef8d2db5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64987634"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65453738"
 ---
 # <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
 
@@ -48,6 +48,8 @@ Azure Stack 1904 güncelleştirmenin yapı numarasıdır **1.1904.0.36**.
 ### <a name="improvements"></a>Geliştirmeleri
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
+- 1904 güncelleştirme yükü temel işletim sistemini barındıran Azure Stack içermeyen bileşenleri Azure Stack için bir güncelleştirme içerir. Bu, Kapsamınızın belirli güncelleştirmeler sağlar. Sonuç olarak, beklenen bu alır 1904 güncelleştirmesinin tamamlanması daha az zaman (yaklaşık 16 saat, ancak tam süreleri değişebilir). Çalışma zamanı bu azalma 1903 güncelleştirmeye benzerdir. Ancak, sonraki güncelleştirmeler işletim sistemi farklı çalışma zamanlarını olduğunu belirtmek için güncelleştirmeleri içerebilir. Gelecekteki güncelleştirmelerin güncelleştirmenin tamamlanması dahil yüküne bağlı olarak beklenen süresini üzerinde benzer yönergeler sağlar.
 
 - Önemli geliştirmeler, yazılım tanımlı ağ (SDN) yığına 1904 yapılmıştır. Bu geliştirmeler, genel bakım ve Azure Stack'te SDN yığınını güvenilirliğini artırın.
 
@@ -159,6 +161,9 @@ Güncelleştirmeyi uygulamadan önce aşağıdaki bilgileri gözden geçirdiğin
 - [Bilinen sorunlar](azure-stack-release-notes-known-issues-1904.md)
 - [Güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates-1904.md)
 - [Önce ve güncelleştirmeyi uyguladıktan sonra etkinlikler listesi](azure-stack-release-notes-checklist.md)
+
+> [!NOTE]
+> En son sürümünü kullandığınızdan emin olun [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) iş yükünüz planlama ve boyutlandırma gerçekleştirmek için aracı. En son sürüm hata düzeltmeleri içerir ve yayımlanan yeni özellikler sağlayan her Azure Stack güncelleştirme.
 
 ## <a name="download-the-update"></a>Güncelleştirmeyi indirin
 

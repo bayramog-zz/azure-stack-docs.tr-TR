@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 05/08/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: a0f01a70be83a556dfa0f8839711c2de1e7c688e
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/08/2019
+ms.openlocfilehash: 69eb6e676fb8c134e0184d4df7df95ba0c75e854
+ms.sourcegitcommit: 879165a66ff80f1463b6bb46e2245684224a9b92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301214"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473861"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack'te Azure CLI ile API Sürüm profillerini kullanma
 
@@ -81,69 +81,20 @@ Sanal makine diğer dosyasını barındıran bir genel olarak erişilebilir uç 
 
 ### <a name="install-or-upgrade-cli"></a>Yüklemeniz veya yükseltmeniz CLI
 
-Geliştirme iş istasyonunda oturum açın ve CLI'yı yükleyin. Azure Stack 2.0 veya Azure CLI'ın sonraki bir sürümünü gerektirir. CLI'ın geçerli bir sürüm API profillerini en son sürümünü gerektirir.  İçinde açıklanan adımları kullanarak CLI'yı yükleyebilirsiniz [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) makalesi. Yüklemenin başarılı olup olmadığını doğrulamak için bir terminal veya komut istemi penceresi açın ve aşağıdaki komutu çalıştırın:
+Geliştirme iş istasyonunda oturum açın ve CLI'yı yükleyin. Azure Stack 2.0 veya Azure CLI'ın sonraki bir sürümünü gerektirir. CLI'ın geçerli bir sürüm API profillerini en son sürümünü gerektirir.  İçinde açıklanan adımları kullanarak CLI'yı yükleyebilirsiniz [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) makalesi. 
 
-```shell
-az --version
-```
+1. Yüklemenin başarılı olup olmadığını doğrulamak için bir terminal veya komut istemi penceresi açın ve aşağıdaki komutu çalıştırın:
 
-Azure CLI ve bilgisayarınızda yüklü diğer bağımlı kitaplıkların sürüm görmeniz gerekir.
-
-### <a name="install-python-on-windows"></a>Windows üzerinde Python'ı yükleyin
-
-1. Yükleme [Python 3 sisteminize](https://www.python.org/downloads/).
-
-2. PIP yükseltin. PIP, Python için bir paket yöneticisidir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
-
-    ```powershell  
-    python -m pip install --upgrade pip
+    ```shell
+    az --version
     ```
 
-3. Yükleme **certifi** modülü. [Certifi](https://pypi.org/project/certifi/) TLS konakları kimliğini doğrularken, SSL sertifikaları güvenilirliğini doğrulamak için bir modül ve kök sertifika koleksiyonunu olduğu. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
+    Azure CLI ve bilgisayarınızda yüklü diğer bağımlı kitaplıkların sürüm görmeniz gerekir.
 
-    ```powershell
-    pip install certifi
-    ```
+    ![Azure Stack Python konumu üzerinde Azure CLI](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-### <a name="install-python-on-linux"></a>Linux'ta Python yükleme
+2. CLI'ın Python konumu not edin. ASDK çalıştırıyorsanız, sertifika eklemek için bu konuma gerekir.
 
-1. Ubuntu 16.04 görüntü, Python 2.7 ve Python 3. 5'in varsayılan olarak yüklenen ile birlikte gelir. Python 3 sürümünüz, aşağıdaki komutu çalıştırarak doğrulayabilirsiniz:
-
-    ```bash  
-    python3 --version
-    ```
-
-2. PIP yükseltin. PIP, Python için bir paket yöneticisidir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
-
-    ```bash  
-    sudo -H pip3 install --upgrade pip
-    ```
-
-3. Yükleme **certifi** modülü. [Certifi](https://pypi.org/project/certifi/) kök sertifikaları SSL sertifikaları güvenilirliğini doğrulamak için TLS konakları kimliğini doğrularken koleksiyonudur. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
-
-    ```bash
-    pip3 install certifi
-    ```
-
-### <a name="install-python-on-macos"></a>Macos'ta Python yükleme
-
-1. Yükleme [Python 3 sisteminize](https://www.python.org/downloads/). Python 3.7 sürümleri için Python.org indirmek için iki ikili yükleyici seçenekleri sağlar. Varsayılan değişken, 64-bit-yalnızca ve 10.9 (Mavericks) ve üzeri sistemleri macOS üzerinde çalışır. Terminal açıp aşağıdaki komutu yazarak, python sürümünüzdür denetleyin:
-
-    ```bash  
-    python3 --version
-    ```
-
-2. PIP yükseltin. PIP, Python için bir paket yöneticisidir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
-
-    ```bash  
-    sudo -H pip3 install --upgrade pip
-    ```
-
-3. Yükleme **certifi** modülü. [Certifi](https://pypi.org/project/certifi/) TLS konakları kimliğini doğrularken, SSL sertifikaları güvenilirliğini doğrulamak için bir modül ve kök sertifika koleksiyonunu olduğu. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
-
-    ```bash
-    pip3 install certifi
-    ```
 
 ## <a name="windows-azure-ad"></a>Windows (Azure AD)
 
@@ -153,15 +104,20 @@ Azure AD, kimlik yönetimi hizmeti olarak kullanıyorsanız ve bir Windows makin
 
 ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gerekir. Tümleşik sistemlerle bunu gerekmez.
 
-Azure Stack CA kök sertifikasına güvenmek için mevcut Python sertifikayı ekleyin.
+Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Python sürümü için mevcut Python sertifika ekleyin. Python kendi örneğini çalışıyor olabilir. Azure CLI, Python sürümünü içerir.
 
-1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
+1. Makinenizde sertifika konumu bulun.  Komutunu çalıştırarak konumu bulabilirsiniz `az --version`.
+
+2. İçeren klasöre gidin CLI Python uygulaması demektir. Python'ın bu sürümünü çalıştırmak üzere isteyeceksiniz. Python ' sisteminizdeki yolu ayarladıysanız, Python'ı çalıştıran kendi Python sürümünü çalıştırır. Bunun yerine, CLI tarafından kullanılan sürümü çalıştırın ve bu sürüme sertifikanızı eklemek isteyeceksiniz. Örneğin, CLI, Python, olabilir: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
+
+    Aşağıdaki komutları kullanın:
 
     ```powershell  
-      python -c "import certifi; print(certifi.where())"
+    cd "c:\pathtoyourcliversionofpython"
+    .\python -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu not edin. Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuzu işletim sisteminiz ve yüklemiş olduğunuz Python sürümünü bağlıdır.
+    Sertifika konumunu not edin. Örneğin, `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Belirli yolunuzu işletim sisteminiz ve CLI yüklemenizi bağlıdır.
 
 2. Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir.
 
@@ -212,7 +168,7 @@ Azure Stack CA kök sertifikasına güvenmek için mevcut Python sertifikayı ek
     | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
     | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
     | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvalut soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
+    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
     | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
@@ -228,7 +184,7 @@ Azure Stack CA kök sertifikasına güvenmek için mevcut Python sertifikayı ek
 1. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
-    az cloud update --profile 2018-03-01-hybrid
+    az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
@@ -332,7 +288,7 @@ ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gereki
     | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
     | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
     | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvalut soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
+    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
     | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
@@ -408,7 +364,7 @@ ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gereki
 
 Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir.
 
-1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Pip ve certifi sahip olması gerekir [Modülü yüklü](#install-python-on-linux). Aşağıdaki bash isteminde Python komutunu kullanabilirsiniz:
+1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Pip ve certifi Modülü yüklü olması gerekir. Aşağıdaki bash isteminde Python komutunu kullanabilirsiniz:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
@@ -448,7 +404,7 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
     | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
     | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
     | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvalut soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
+    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
     | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
@@ -519,7 +475,7 @@ ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gereki
 
 Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir.
 
-1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Pip ve certifi sahip olması gerekir [Modülü yüklü](#install-python-on-linux). Aşağıdaki bash isteminde Python komutunu kullanabilirsiniz:
+1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Pip ve certifi Modülü yüklü olması gerekir. Aşağıdaki bash isteminde Python komutunu kullanabilirsiniz:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
@@ -559,7 +515,7 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
     | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
     | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
     | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvalut soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
+    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
     | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  

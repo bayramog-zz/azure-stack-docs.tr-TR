@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 05/06/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
-ms.openlocfilehash: 3a58ada2d8b6d392ba8fb3ec6099ffa4d7114cfa
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 23eb807b8ce1930a0eac30603eae74af87b6ee2c
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985851"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172697"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Azure Stack üzerinde dağıtılan sanal makinelerini koruma
 
@@ -147,7 +147,7 @@ Bazı uygulamalar, ortamınızdaki planlanmamış kesinti veya veri kaybına kar
 
 Azure Stack dağıtımınız için önemli noktalar:
 
-|     | Öneri | Yorumlar |
+|     | Öneri | Açıklamalar |
 |-------------------------------------------------------------------------------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yedekleme/VM'ler veri merkezinizde zaten dağıtılmış bir dış yedekleme hedefine geri yükleme | Önerilen | Mevcut yedekleme altyapısı ve operasyonel becerilerinizi avantajlarından yararlanın. Ek sanal makine örnekleri korumak hazır olması için Yedekleme Altyapısı boyut emin olun. Yedekleme Altyapısı kaynağınızı yakın olmadığından emin olun. ' % S'kaynağına Azure yığını, ikincil bir Azure Stack örneği veya Azure Vm'leri geri yükleyebilirsiniz. |
 | Yedekleme/Vm'leri Azure Stack için adanmış bir dış yedekleme hedefine geri yükleme | Önerilen | Azure Stack için yeni bir yedekleme altyapısı veya sağlama adanmış yedekleme altyapısı satın alabilirsiniz. Yedekleme Altyapısı kaynağınızı yakın olmadığından emin olun. ' % S'kaynağına Azure yığını, ikincil bir Azure Stack örneği veya Azure Vm'leri geri yükleyebilirsiniz. |

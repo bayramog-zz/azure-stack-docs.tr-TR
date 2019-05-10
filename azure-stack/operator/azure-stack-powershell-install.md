@@ -3,25 +3,24 @@ title: Azure Stack için PowerShell'i yükleme | Microsoft Docs
 description: Azure Stack için PowerShell yüklemeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-origin.date: 04/13/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 05/09/2019
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 04/13/2019
-ms.openlocfilehash: d523e981663218f39815e3bfe3911f8c8f4c363f
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/09/2019
+ms.openlocfilehash: a1923c06d31ff32e1c7e5d50e3b70330d16d25c5
+ms.sourcegitcommit: c755c7eac0f871960f9290591421cf5990b9e734
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64293767"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506119"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell'i yükleme
 
@@ -29,7 +28,7 @@ ms.locfileid: "64293767"
 
 Bulut ile çalışmak için Azure Stack uyumlu PowerShell modülleri yüklemeniz gerekir. Uyumluluk adlı bir özellik üzerinden etkin *API profillerini*.
 
-API profillerini Azure ve Azure Stack arasında sürümü farkları yönetmek için bir yol sağlar. Bir API Sürüm profili belirli API sürümleri ile Azure Resource Manager PowerShell modüllerini kümesidir. Her bulut platformu desteklenen API sürümü profillerini kümesi vardır. Örneğin, Azure Stack gibi bir özel profil sürümünü destekler **2018-03-01-karma**. Belirtilen profiliyle Azure Resource Manager PowerShell modülleri, bir profil yükleme sırasında yüklenir. Azure Stack sürüm 1811 veya önceki profilleri kullanılır. Azure Stack için 1901 veya sonraki bir sürümü, geliştiricilerin AzureRM modülleri kullanabileceği **2.4.0** doğru Azure Resource Manager PowerShell modüllerini yüklemek için.
+API profillerini Azure ve Azure Stack arasında sürümü farkları yönetmek için bir yol sağlar. Bir API Sürüm profili belirli API sürümleri ile Azure Resource Manager PowerShell modüllerini kümesidir. Her bulut platformu desteklenen API sürümü profillerini kümesi vardır. Örneğin, Azure Stack gibi bir özel profil sürümünü destekler **2018-03-01-karma**. Belirtilen profiliyle Azure Resource Manager PowerShell modülleri, bir profil yükleme sırasında yüklenir.
 
 Internet uyumlu PowerShell modülleri bağlı, kısmen bağlantılı veya bağlantısız senaryoları Azure Stack yükleyebilirsiniz. Bu makalede ayrıntılı yönergeler bu senaryolar için size kılavuzluk eder.
 
@@ -97,7 +96,19 @@ Kurulum, üç adım vardır:
 
 Geliştirme iş istasyonunuzda bu modülleri yüklemek için aşağıdaki PowerShell betiğini çalıştırın:
 
-- Azure Stack 1901 veya sonraki bir sürümü, yalnızca aşağıdaki iki modülleri yükle:
+- 1904 yapılar veya sonraki sürümler için:
+
+    ```powershell  
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRM.BootStrapper
+    
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Get-AzureRMProfile -Update
+    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.7.2
+    ```
+  
+- Azure Stack 1903 veya daha önceki bir sürümü, yalnızca aşağıdaki iki modülleri yükle:
 
     ```powershell  
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
@@ -123,21 +134,6 @@ Geliştirme iş istasyonunuzda bu modülleri yüklemek için aşağıdaki PowerS
 
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
-
-- 1810 veya önceki sürümlerde, Azure yığını'nı yükleme profili kullanılarak **AzureRM.Bootstrapper**:
-
-    ```powershell  
-    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRM.BootStrapper
-
-    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-
-    Install-Module -Name AzureStack -RequiredVersion 1.5.0
-    ```
-
-> [!Note]  
-> Azure Powershell'den yükseltmek **2017-03-09-profile** için **2018-03-01-karma**, lütfen [Geçiş Kılavuzu](https://github.com/azure/azure-powershell/blob/AzureRM/documentation/migration-guides/Stack/migration-guide.2.3.0.md).
 
 ### <a name="enable-additional-storage-features"></a>Ek depolama alanı özelliklerini etkinleştirme
 
@@ -289,4 +285,4 @@ Internet'e bir proxy sunucusu gerektiren senaryolar önce mevcut proxy sunucusu 
 - [Github'dan Azure Stack araçları indirin](azure-stack-powershell-download.md)
 - [Azure Stack kullanıcının PowerShell ortamını yapılandırma](../user/azure-stack-powershell-configure-user.md)
 - [Azure Stack işlecin PowerShell ortamını yapılandırma](azure-stack-powershell-configure-admin.md)
-- [Azure Stack’de API sürümü profillerini yönetme](../user/azure-stack-version-profiles.md)
+- [Azure stack'teki API sürümü profillerini yönetme](../user/azure-stack-version-profiles.md)

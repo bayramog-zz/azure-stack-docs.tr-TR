@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 67149ffa1d602cb0bbab020f0af3f317cb0aac4d
-ms.sourcegitcommit: 91c5056cb6d9bbd852132bebfbefa05b6b4d6cb3
+ms.openlocfilehash: ec0a4b0dc020d9c2c977c7b75b1785cfc98446f6
+ms.sourcegitcommit: 61de365c93eb7435891867f9808ec37486882d7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64988148"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65097101"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack veri merkezi tümleştirmesi - kimlik
 
@@ -55,10 +55,10 @@ Graf, yalnızca tek bir Active Directory ormanı ile tümleştirmeyi destekler. 
 
 Otomasyon parametreleri için girdi olarak aşağıdaki bilgiler gereklidir:
 
-|Parametre|Açıklama|Örnek|
-|---------|---------|---------|
-|`CustomADGlobalCatalog`|' % S'hedef Active Directory orman FQDN'si<br>ile tümleştirmek istediğiniz|contoso.com|
-|`CustomADAdminCredentials`|LDAP okuma iznine sahip bir kullanıcı|YOURDOMAIN\graphservice|
+|Parametre|Dağıtım çalışma parametresi|Açıklama|Örnek|
+|---------|---------|---------|---------|
+|`CustomADGlobalCatalog`|ADFS orman FQDN'si|' % S'hedef Active Directory orman FQDN'si<br>ile tümleştirmek istediğiniz|contoso.com|
+|`CustomADAdminCredentials`| |LDAP okuma iznine sahip bir kullanıcı|YOURDOMAIN\graphservice|
 
 ### <a name="configure-active-directory-sites"></a>Active Directory sitelerini yapılandırma
 
@@ -127,10 +127,10 @@ Azure Stack'te Graph hizmeti, Active Directory hedefi ile iletişim kurmak için
 
 Aşağıdaki bilgiler gereklidir Otomasyon parametreler için giriş olarak:
 
-|Parametre|Açıklama|Örnek|
-|---------|---------|---------|
-|CustomAdfsName|Talep sağlayıcı adı.<br>AD FS giriş sayfasında bu şekilde görünür.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Federasyon meta veri bağlantısı| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
+|Parametre|Dağıtım çalışma parametresi|Açıklama|Örnek|
+|---------|---------|---------|---------|
+|CustomAdfsName|ADFS sağlayıcı adı|Talep sağlayıcı adı.<br>AD FS giriş sayfasında bu şekilde görünür.|Contoso|
+|CustomAD<br>FSFederationMetadataEndpointUri|ADFS meta veri URI'sini|Federasyon meta veri bağlantısı| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Azure stack'teki Talep sağlayıcı güveni yapılandırmak için tetikleyici Otomasyon

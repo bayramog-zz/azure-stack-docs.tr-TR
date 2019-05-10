@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/20/2019
-ms.openlocfilehash: 719fa829f5dca122fdb219608c5b40aa255297c8
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 05/07/2019
+ms.openlocfilehash: a220bdef3a1243510bf7d9ace5991cd638c93f28
+ms.sourcegitcommit: 39ba6d18781aed98b29ac5e08aac2d75c37bf18c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984105"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65387147"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 güncelleştirme
 
@@ -123,6 +123,9 @@ Azure Stack düzeltmeleri yalnızca Azure Stack tümleşik sistemleri için geç
 - Get-AzureStackStampInformation içindeki donanım envanteri koleksiyonunu geliştirmeleri.
 
 - ERCS altyapısı üzerinde çalışan işlemlerinin güvenilirliğini artırmak için 12 GB ile 8 GB ile her ERCS örneği için bellek artırır. Azure Stack tümleşik sistemleri yüklemede, bu 12 GB Boyutundaki artış genel sonuçlanır.
+
+<!-- 110303935 IcM Reported by HKEX -->
+- 1902 denetleyicileri VSwitch belirli bir düğümdeki tüm sanal makineleri çevrimdışına geçtiğindeki alanında ağ hizmeti, bir sorunu giderir.  Sorun nerede birincil iletişim kurulamıyor ancak rol üzerinden yalnızca Microsoft Destek Hizmetleri ile irtibat tarafından çözümlenemedi, başka bir, sağlıklı örneğine devredildikten değil bir birincil kaybı durumunda takılı kalmasına neden.
 
 > [!IMPORTANT]
 > Azure Stack damganız 12 GB'den fazla kullanılabilir alana sahip olduğundan emin olun düzeltme eki ve güncelleştirme işleminin sonuçlarını en az miktarda Kiracı kapalı kalma süresi emin olmak için **kapasite** dikey penceresi. Bu bellek, yansıtılan artırmak gördüğünüz **kapasite** dikey penceresinde güncelleştirmenin başarıyla yüklenmesini sonra.
@@ -226,6 +229,8 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
    - Bir konuk dizin ile ilişkili bir abonelik içindeki Vm'leri dağıtma, çok kiracılı bir ortam yapılandırdıysanız, bir iç hata iletisi ile başarısız olabilir. Hatayı gidermek için aşağıdaki adımları izleyin. [bu makalede](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) her Konuk dizinlerinizi yeniden yapılandırmak için.
 
 - Bir Ubuntu 18.04 etkinleştirilmiş SSH yetkilendirme ile oluşturulan VM, oturum açmak için SSH anahtarları kullanmak izin vermez. Geçici bir çözüm olarak VM erişimi Linux uzantısı için SSH anahtarları sağladıktan sonra uygulamak için kullanmak veya parola tabanlı kimlik doğrulaması kullanın.
+
+- Bir ölçek kümesi kaldırılamıyor **sanal makine ölçek kümeleri** dikey penceresi. Geçici çözüm olarak, Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
 
 ### <a name="networking"></a>Ağ  
 

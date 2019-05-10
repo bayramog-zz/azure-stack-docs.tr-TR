@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 68ba971ada087bed31a65db037963b601953f1c6
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/07/2019
+ms.openlocfilehash: 476ffeaf7712e5cee22befbc822545382f808de5
+ms.sourcegitcommit: 39ba6d18781aed98b29ac5e08aac2d75c37bf18c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64296605"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65386617"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Azure Stack’te teklifleri yetkilendirme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Azure Stack operatör olarak, genellikle diğer kişilerin sorumlu kullanıcılar imzalama ve abonelik oluşturma yerleştirmek istediğiniz. Örneğin, bir hizmet sağlayıcı barındırıyorsanız, müşterileri oturum ve sizin adınıza yönetmek için Satıcılar isteyebilirsiniz. Veya, bir kuruluşta merkezi BT grubunun bir parçası kullanıyorsanız, kullanıcı kaydı diğer BT personeli için temsilci seçmek isteyebilirsiniz.
+Azure Stack operatörü, diğer kişilerin sorumlu kullanıcılar imzalama ve abonelik oluşturma koymak isteyebilirsiniz. Örneğin, bir hizmet sağlayıcı barındırıyorsanız, müşterileri oturum ve sizin adınıza yönetmek için Satıcılar isteyebilirsiniz. Veya, bir kuruluşta merkezi BT grubunun bir parçası kullanıyorsanız, kullanıcı kaydı diğer BT personeli için temsilci seçmek isteyebilirsiniz.
 
 Temsilci erişmek ve aşağıdaki resimde gösterildiği gibi kendiniz tarafından yapabileceğinden daha fazla kullanıcı yönetmek daha kolay hale getirir:
 
@@ -34,9 +34,7 @@ Temsilci erişmek ve aşağıdaki resimde gösterildiği gibi kendiniz tarafınd
 
 Temsilci seçme, bir teklif (teklif temsilcisi) sağlayıcı temsilcisi yönetir ve son müşterilere abonelikleri katılımı olmadan bu teklif altındaki Sistem Yöneticisi'nden alın.
 
-## <a name="understand-delegation-roles-and-steps"></a>Temsilci rolleri ve adımlarını anlamak
-
-### <a name="delegation-roles"></a>Temsilci rolleri
+## <a name="delegation-roles"></a>Temsilci rolleri
 
 Aşağıdaki roller temsilci bir parçasıdır:
 
@@ -46,7 +44,7 @@ Aşağıdaki roller temsilci bir parçasıdır:
 
 * *Kullanıcılar* teklifleri için kaydolun ve benzeri verileri depolamak, Vm'leri oluşturma, iş yüklerini yönetmek için kullanın.
 
-### <a name="delegation-steps"></a>Temsilci adımları
+## <a name="delegation-steps"></a>Temsilci adımları
 
 Temsilci seçmeyi ayarlama ayarlamak için iki temel adım vardır:
 
@@ -58,7 +56,7 @@ Temsilci seçmeyi ayarlama adımları aşağıdaki şekilde gösterilmiştir:
 
 ![Sağlayıcı temsilcisi oluşturun ve bunları kullanıcılar oturum açmak etkinleştirme](media/azure-stack-delegated-provider/image2.png)
 
-#### <a name="delegated-provider-requirements"></a>Sağlayıcı temsilcisi gereksinimleri
+### <a name="delegated-provider-requirements"></a>Sağlayıcı temsilcisi gereksinimleri
 
 Sağlayıcı temsilcisi çalışmak için bir kullanıcı bir abonelik oluşturarak bir ilişki ana sağlayıcıyla kurar. Bu abonelikte teklif temsilcisi ana Sağlayıcı adına sunmak hakkı sahip sağlayıcı temsilcisi tanımlar.
 

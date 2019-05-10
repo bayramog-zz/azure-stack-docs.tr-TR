@@ -6,22 +6,24 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 05/09/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 05/09/2019
 keywords: ''
-ms.openlocfilehash: e14fa6c172fcf579acf28bc8f3ea20f34148b90c
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 294c811b9ddf86455b91f180663aa4b3814a7b34
+ms.sourcegitcommit: c755c7eac0f871960f9290591421cf5990b9e734
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985279"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506161"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack veri merkezi tümleştirmesi - DNS
+
 Azure Stack uç noktaları erişebilmesi için (**portalı**, **adminportal**, **Yönetim**, **adminmanagement**vb..)  Dış Azure yığını, Azure Stack'te kullanmak istediğiniz DNS bölgeleri barındıran bir DNS sunucuları ile Azure Stack DNS hizmetleri tümleştirmeniz gerekir.
 
 ## <a name="azure-stack-dns-namespace"></a>Azure Stack DNS ad alanı
+
 Azure Stack dağıtırken DNS ile ilgili bazı önemli bilgileri sağlamak için gerekli değildir.
 
 
@@ -51,6 +53,19 @@ Bu örnek DNS ad alanı için bir Azure Stack dağıtımı kullanmak için aşa�
 
 Azure Stack uç noktaları ve örneklerin dışında Azure Stack için DNS adlarını çözümlemek DNS sunucularını Azure Stack için kullanmak istediğiniz üst bölgeyi barındıran bir DNS sunucularıyla dış DNS bölgesini barındıran tümleştirme gerekir.
 
+### <a name="dns-name-labels"></a>DNS ad etiketleri
+
+Azure Stack destekler bir DNS ad etiketi için ad çözümlemesi için genel IP adreslerine izin vermek için genel bir IP adresi. Bu, kullanıcıların uygulamaları ve Hizmetleri Azure Stack'te adıyla barındırılan ulaşmak kullanışlı bir yol olabilir. DNS ad etiketi altyapı uç noktalarına göre biraz farklı bir ad alanı kullanır. Yukarıdaki örnekte ad ad alanı için DNS adı etiketleri aşağıdaki gibidir:
+
+`*.east.cloudapp.cloud.fabrikam.com`
+
+Bu nedenle, bir kiracı değeri belirtiyorsa **Myapp** yönelik bir A kaydı oluşturur DNS ad etiketi alanında genel IP adresi kaynağın **myapp** bölgesinde **east.cloudapp.cloud.fabrikam.com**  Azure Stack dış DNS sunucusunda. Sonuçta elde edilen FQDN şu şekilde görünür:
+
+`myapp.east.cloudapp.cloud.fabrikam.com`
+
+Bu işlev yararlanın ve bu ad alanı istiyorsanız, Azure Stack için de kullanmak istiyorsanız üst bölgeyi barındıran DNS sunucularıyla dış DNS bölgesini barındıran bir DNS sunucuları tümleştirmeniz gerekir. Oluşturun için bir ek temsilci veya koşullu iletme kuralı bu böylece, Azure Stack hizmet uç noktaları için ad alanı değerinden farklı bir ad alanı budur.
+
+DNS ad etiketi nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Stack'te DNS kullanarak](../user/azure-stack-dns.md). 
 
 ## <a name="resolution-and-delegation"></a>Çözümleme ve temsilci seçme
 

@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 05/06/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: aad953cdc210a213e0a3dd2ddc8a983d71ca53cf
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: f0aef7d1699065664f2013076ed2b12b24a06d4d
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984057"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172453"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack geliştirme Seti'ni (ASDK) yükleyin
 Sonra [ASDK ana bilgisayar hazırlama](asdk-prepare-host.md), bu makalede aşağıdaki adımları kullanarak CloudBuilder.vhdx görüntüye ASDK dağıtılabilir.
@@ -34,7 +34,7 @@ Bu makaledeki adımlarda, indirme ve çalıştırma tarafından sağlanan bir gr
 
 
 1. Ana bilgisayar CloudBuilder.vhdx görüntünün başarıyla başlatıldıktan sonra yönetici kimlik bilgilerini kullanarak oturum belirtilen, [Geliştirme Seti ana bilgisayar hazırlanmış](asdk-prepare-host.md) ASDK yükleme. Bu Geliştirme Seti ana bilgisayar yerel yönetici kimlik bilgileriyle aynı olmalıdır.
-2. Yükseltilmiş bir PowerShell konsolu açın ve çalıştırın  **&lt;sürücü harfi > \AzureStack_Installer\asdk-installer.ps1** PowerShell Betiği. Betik CloudBuilder.vhdx görüntüde C:\ farklı bir sürücüde artık olabileceğini unutmayın. **Yükle**'ye tıklayın.
+2. Yükseltilmiş bir PowerShell konsolu açın ve çalıştırın  **&lt;sürücü harfi > \AzureStack_Installer\asdk-installer.ps1** PowerShell Betiği. Betik CloudBuilder.vhdx görüntüde C:\ farklı bir sürücüde artık olabileceğini unutmayın. **Yükle**'ye tıklatın.
 
     ![](media/asdk-install/1.PNG) 
 
@@ -42,7 +42,7 @@ Bu makaledeki adımlarda, indirme ve çalıştırma tarafından sağlanan bir gr
 
     ![](media/asdk-install/2.PNG) 
   
-   Bir Azure aboneliği kimlik sağlayıcısı seçin, bir Azure AD alanının tam adı bir internet bağlantısı gerekir dizin Kiracı biçiminde *domainname*. onmicrosoft.com veya Azure AD'yi özel etki alanı adını ve genel doğrulandı Belirtilen dizin için yönetici kimlik bilgileri.<br><br>Dağıtımdan sonra Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden geri veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.<br><br>AD FS kimlik sağlayıcısı olarak kullanırken, varsayılan damga dizin hizmeti kullanılır. Oturum açmak için varsayılan hesap azurestackadmin@azurestack.local, ve kullanılacak kurulumunun bir parçası sağlanan bir paroladır.
+   Bir Azure aboneliği kimlik sağlayıcısı seçin, bir Azure AD alanının tam adı bir internet bağlantısı gerekir dizin Kiracı biçiminde *domainname*. onmicrosoft.com veya Azure AD'yi özel etki alanı adını ve genel doğrulandı Belirtilen dizin için yönetici kimlik bilgileri.<br><br>Dağıtımdan sonra Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden devreye sokmanız veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.<br><br>AD FS kimlik sağlayıcısı olarak kullanırken, varsayılan damga dizin hizmeti kullanılır. Oturum açmak için varsayılan hesap azurestackadmin@azurestack.local, ve kullanılacak kurulumunun bir parçası sağlanan bir paroladır.
 
    > [!NOTE]
    > Kimlik sağlayıcısı olarak, AD FS kullanarak, bağlantısı kesilmiş bir Azure Stack ortam kullanmak istediğiniz bile en iyi sonuçlar için internet'e bağlıyken ASDK yüklemek en iyisidir. Böylece, Geliştirme Seti yükleme işlemine dahil Windows Server 2016 Değerlendirme sürümü, dağıtım sırasında etkinleştirilebilir.

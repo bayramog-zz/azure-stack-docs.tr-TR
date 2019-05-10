@@ -3,25 +3,24 @@ title: Dağıtım çalışma sayfası için Azure Stack tümleşik sistemleri | 
 description: Azure Stack dağıtmak için dağıtım çalışma aracı yükleyip kullanmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: wamota
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/19/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 04/19/2019
+ms.author: wamota
 ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
-ms.openlocfilehash: eb904e022ec9e9645c45c313a27b5fdc4c82b195
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: d75915f110b6316f4621f66b1f91b010f735d165
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64292865"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172659"
 ---
 # <a name="deployment-worksheet-for-azure-stack-integrated-systems"></a>Azure Stack tümleşik sistemleri için dağıtım çalışma sayfası
 
@@ -48,7 +47,7 @@ Dağıtım çalışma sayfası her sürümü için bir Powershell modülü, dağ
 2. PowerShell penceresinde modülünden yükleme [PowerShell Galerisi](https://www.powershellgallery.com/packages/Azs.Deployment.Worksheet/):
 
    ```PowerShell
-   Install-Module -Name Azs.Deployment.Worksheet -RequiredVersion 1.1902.TBD.1 -Repository PSGallery
+   Install-Module -Name Azs.Deployment.Worksheet -Repository PSGallery
    ```
 
 Güvenilmeyen bir depodan yükleme hakkında bir ileti alırsanız basın **Y** yüklemeye devam etmek için.

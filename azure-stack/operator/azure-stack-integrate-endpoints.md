@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 05/02/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 1f87633568a5a66c016b53f062f11ca733730092
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 262b1790b102483daca1a77d475815b34aa7a1b2
+ms.sourcegitcommit: 61de365c93eb7435891867f9808ec37486882d7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985218"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65097121"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack veri merkezi tümleştirmesi - uç noktalarını yayımlama
 
@@ -38,7 +38,7 @@ Bunlar yayımlama Azure Stack için gerekli değil çünkü VIP'ler listelenmemi
 > [!Note]
 > 1811 güncelleştirmesi itibarıyla 12495 30015 çeşitli nda bağlantı noktaları artık eklenmesi nedeniyle açık olması gerekmez [uzantısı konağı](azure-stack-extension-host-prepare.md).
 
-|Uç nokta (VIP)|DNS ana bilgisayar bir kaydı|Protokol|Bağlantı Noktaları|
+|Uç nokta (VIP)|DNS ana bilgisayar bir kaydı|Protokol|Bağlantı noktaları|
 |---------|---------|---------|---------|
 |AD FS|ADFS.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
 |Portal (Yönetici)|Adminportal.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
@@ -71,11 +71,11 @@ Azure Stack, yalnızca saydam proxy sunucuları destekler. Bir dağıtımda sayd
 > [!Note]  
 > Azure Stack aşağıdaki tabloda listelenen Azure hizmetlerine erişmek için ExpressRoute kullanma desteği olmamasıdır.
 
-|Amaç|Hedef URL|Protokol|Bağlantı Noktaları|Kaynak Ağ|
+|Amaç|Hedef URL|Protokol|Bağlantı noktaları|Kaynak Ağ|
 |---------|---------|---------|---------|---------|
 |Kimlik|login.windows.net<br>login.microsoftonline.com<br>Graph.Windows.NET<br>https:\//secure.aadcdn.microsoftonline-p.com<br>Office.com|HTTP<br>HTTPS|80<br>443|Genel VIP - en az/27<br>Ortak ağ alt yapısı|
 |Market sendikasyonu|https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|Genel VIP - en az/27|
-|Düzeltme Eki & Güncelleştir|https://&#42;.azureedge.net|HTTPS|443|Genel VIP - en az/27|
+|Düzeltme Eki & Güncelleştir|https://&#42;.azureedge.net<br>https:\//aka.ms/azurestackautomaticupdate|HTTPS|443|Genel VIP - en az/27|
 |Kayıt|https:\//management.azure.com|HTTPS|443|Genel VIP - en az/27|
 |Kullanım|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Genel VIP - en az/27|
 |Windows Defender|\*.wdcp.microsoft.com<br>\*. wdcpalt.microsoft.com<br>\*. wd.microsoft.com<br>\*. update.microsoft.com<br>\*. download.microsoft.com<br>https:\//www.microsoft.com/pkiops/crl<br>https:\//www.microsoft.com/pkiops/certs<br>https:\//crl.microsoft.com/pki/crl/products<br>https:\//www.microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Genel VIP - en az/27<br>Ortak ağ alt yapısı|

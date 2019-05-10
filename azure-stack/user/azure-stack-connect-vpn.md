@@ -16,12 +16,12 @@ ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: 981e16fdcf636f6fbe587896f45c31bf4ac59900
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: cfa4ec1209e78d8e7281048b6d6685ac5488734d
+ms.sourcegitcommit: 61de365c93eb7435891867f9808ec37486882d7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985674"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65097056"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Azure Stack VPN kullanarak Azure'a bağlanma
 
@@ -121,7 +121,7 @@ Ağ Yapılandırma örnekleri tablo, bu makaledeki örnekler için kullanılan d
 
 10. Gözden geçirme **özeti** bölümüne ve ardından **Tamam**.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
 
 Artık Azure'da bir sanal makine oluşturma ve sanal ağınızdaki VM alt yerleştirin.
 
@@ -233,9 +233,9 @@ VPN bağlantısını denetlemek için iki VM oluşturun: biri azure'da ve Azure 
 6. Sağlayan bir **abonelik**, **kaynak grubu**, ve **konumu**ve ardından **Tamam**.
 7. Üzerinde **boyutu** bölümünde, bu örnek için seçim bir sanal makine boyutu ve ardından **seçin**.
 8. Üzerinde **ayarları** bölümünde, Varsayılanları kabul edin. Emin olun **Azs-VNet** sanal ağın seçili. Alt ağ değerine ayarlandığını doğrulayın **10.1.0.0/24**. Sonra **Tamam**’ı seçin.
-9. Üzerinde **özeti** bölümünde ayarları gözden geçirin ve ardından * Tamam **.
+9. Üzerinde **özeti** bölümünde ayarları gözden geçirin ve ardından **Tamam**.
 
-## <a name="test-the-connection"></a>Bağlantıyı sınama
+## <a name="test-the-connection"></a>Bağlantıyı test et
 
 Siteden siteye bağlantı kurulduktan sonra her iki yönde akmasını veri alabilirsiniz doğrulamanız gerekir. Bağlantıyı test etmek için en kolay yolu, ping testi yaparak şöyledir:
 
@@ -256,7 +256,7 @@ Siteden siteye bağlantı kurulduktan sonra her iki yönde akmasını veri alabi
 
 5. Sanal makine oluştururken yapılandırdığınız hesabıyla oturum açın.
 6. Yükseltilmiş bir Windows PowerShell istemi açın.
-7. **ipconfig /all** yazın.
+7. Tür **ipconfig/all**.
 8. Çıktıda Bul **IPv4 adresi**ve daha sonra kullanmak için adresini kaydedin. Bu, Azure'dan ping adresidir. Örnek ortamda adres olduğu **10.1.0.4**, ancak ortamınızda farklı olabilir. İçinde içerilmesi gerekir **10.1.0.0/24** daha önce oluşturduğunuz alt ağ.
 9. Sanal makine ping komutuna yanıt veren bir güvenlik duvarı kuralı oluşturmak için aşağıdaki PowerShell komutunu çalıştırın:
 
@@ -274,7 +274,7 @@ Siteden siteye bağlantı kurulduktan sonra her iki yönde akmasını veri alabi
 4. Sanal makine için bölümünü seçin **Connect**.
 5. Sanal makine oluştururken yapılandırdığınız hesabıyla oturum açın.
 6. Yükseltilmiş açın **Windows PowerShell** penceresi.
-7. **ipconfig /all** yazın.
+7. Tür **ipconfig/all**.
 8. İçinde denk gelen bir IPv4 adresi görmeniz gerekir **10.100.0.0/24**. Örnek ortamda adres olduğu **10.100.0.4**, ancak adresinizi farklı olabilir.
 9. Sanal makine ping komutuna yanıt veren bir güvenlik duvarı kuralı oluşturmak için aşağıdaki PowerShell komutunu çalıştırın:
 

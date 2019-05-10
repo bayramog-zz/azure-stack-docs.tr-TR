@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 02/08/2019
+ms.date: 05/06/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 7a78a5101e37ee1deeef3cb5923009bc08f26751
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 2e260145b2e17dd4475d81f576d84e0145fbc199
+ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64983793"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65172397"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>ASDK komut satırından dağıtma
 ASDK değerlendirmek ve Azure Stack özelliklerini ve hizmetler için dağıtabileceğiniz bir test ve geliştirme ortamıdır. Bu alınacağı ayarlandıktan ve çalışmaya, ortam donanım hazırlama ve bazı komut dosyaları (Bu işlem birkaç saat sürebilir) çalıştırmanız gerekir. Bundan sonra yönetici ve kullanıcı portalı için Azure Stack kullanmaya başlamak için oturum açabilir.
@@ -65,7 +65,7 @@ CloudBuilder.vhdx önyükleme ASDK ana bilgisayarı yapılandırmak için:
 > Yeniden başlatmadan önce doğrudan fiziksel veya Geliştirme Seti ana bilgisayar KVM erişimine sahip olun. VM ilk kez başlatıldığında, Windows Server Kurulumu tamamlamak için ister. Geliştirme Seti ana bilgisayara oturum açmak için kullandığınız aynı yönetici kimlik bilgilerini sağlayın. 
 
 ### <a name="prepare-the-development-kit-host-using-powershell"></a>PowerShell kullanarak Geliştirme Seti konak hazırlama 
-Geliştirme Seti sonra ana bilgisayarı başarıyla CloudBuilder.vhdx görüntünün Geliştirme Seti ana bilgisayara oturum açmak için kullanılan (ve Windows Server sonlandırılıyor bir parçası olarak sağlanan aynı yerel yönetici kimlik bilgileriyle oturum önyüklenir Ana bilgisayar VHD'den önyüklendiğinde Kurulumu). 
+Geliştirme Seti ana bilgisayar sonra başarıyla önyüklendikten CloudBuilder.vhdx görüntüye oturum Geliştirme Seti ana bilgisayara oturum açmak için kullanılan (ve Windows Server sonlandırılıyor bir parçası olarak sağlanan aynı yerel yönetici kimlik bilgileriyle Ana bilgisayar VHD'den önyüklendiğinde Kurulumu). 
 
 > [!NOTE]
 > İsteğe bağlı olarak da yapılandırabilirsiniz [Azure Stack telemetri ayarlarını](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *önce* ASDK yükleme.
@@ -93,7 +93,7 @@ Azure AD kullanarak Geliştirme Seti dağıtmak için aşağıdaki PowerShell ko
 
 Birkaç dakika içinde ASDK yükleme için Azure AD kimlik bilgileri istenir. Azure AD kiracınız için genel yönetici kimlik bilgilerini sağlamanız gerekir. 
 
-Dağıtımdan sonra Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden geri veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.
+Dağıtımdan sonra Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden devreye sokmanız veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.
 
 ### <a name="deploy-azure-stack-using-ad-fs"></a>AD FS kullanarak Azure Stack dağıtma 
 Geliştirme Seti dağıtmak için **kimlik sağlayıcısı olarak AD FS kullanarak**, (yeterlidir - UseADFS parametre eklemek için) aşağıdaki PowerShell komutlarını çalıştırın: 
@@ -145,9 +145,9 @@ Ortamınız DHCP etkin olmaması durumunda aşağıdaki ek parametreler (sağlan
 |InfraAzureDirectoryTenantName|Gerekli|Kiracı dizinini ayarlar. AAD hesabının birden çok dizini Yönetme iznine sahip olduğu belirli bir dizini belirtmek için bu parametreyi kullanın. Tam adı biçiminde bir AAD Directory Kiracısı. onmicrosoft.com veya Azure AD'yi özel etki alanı adı doğrulandı.|
 |Zaman sunucusunu|Gerekli|Belirli bir saat sunucusu belirtmek için bu parametreyi kullanın. Bu parametre, geçerli saat sunucusu IP adresi olarak sağlanmalıdır. Sunucu adları desteklenmez.|
 |InfraAzureDirectoryTenantAdminCredential|İsteğe bağlı|Azure Active Directory kullanıcı adını ve parolasını ayarlar. Bu Azure kimlik bilgileri, bir kuruluş kimliği olmalıdır|
-|InfraAzureEnvironment|İsteğe bağlı|Azure ile bu Azure Stack dağıtım kaydetmek istediğiniz ortamı seçin. Genel Azure, Azure - Çin'de, Azure - US Government seçenekleri içerir.|
+|InfraAzureEnvironment|İsteğe bağlı|Azure ile bu Azure Stack dağıtım kaydetmek istediğiniz ortamı seçin. Küresel Azure, Azure - Çin'de, Azure - US Government seçenekleri içerir.|
 |DNSForwarder|İsteğe bağlı|Bir DNS sunucusu, Azure Stack dağıtımının bir parçası oluşturulur. Damga dışında adlarını çözümlemek için çözüm içindeki bilgisayarları izin vermek için mevcut altyapı DNS sunucunuzu sağlar. Damga DNS sunucusu bu sunucusuna Bilinmeyen ad çözümleme isteklerini iletir.|
-|Yeniden çalıştır|İsteğe bağlı|Dağıtım yeniden çalıştırmak için bu bayrağı kullanın. Önceki tüm giriş kullanılır. Çeşitli benzersiz değerler olduğundan ve oluşturulan dağıtım için kullanılan, daha önce sağlanan verileri yeniden girmeden desteklenmiyor.|
+|Yeniden çalıştır|İsteğe bağlı|Dağıtım yeniden çalıştırmak için bu bayrağı kullanın. Önceki tüm giriş kullanılır. Çeşitli benzersiz değerler olduğundan ve oluşturulan dağıtım için kullanılan önceden sağlanan verileri yeniden girildi desteklenmiyor.|
 
 
 ## <a name="perform-post-deployment-configurations"></a>Dağıtım sonrası yapılandırmaları gerçekleştirin

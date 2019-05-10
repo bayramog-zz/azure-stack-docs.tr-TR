@@ -1,77 +1,71 @@
 ---
 title: Azure Stack profilleri tarafından desteklenen kaynak sağlayıcısı API sürümleri | Microsoft Docs
-description: Azure Stack profilleri tarafından desteklenen Azure Resource Manager sürümü hakkında bilgi edinin.
+description: Azure Stack profilleri tarafından desteklenen Azure Resource Manager API sürümleri hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
-ms.author: sethm
+ms.date: 05/08/2019
+ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 0ede2889c77b1d48cf1456652e8fcfa4c7a5d9c3
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 05/08/2019
+ms.openlocfilehash: 0d088dcfaf97173d267a1f4638751650b7befba2
+ms.sourcegitcommit: 879165a66ff80f1463b6bb46e2245684224a9b92
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985725"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473792"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack profilleri tarafından desteklenen kaynak sağlayıcısı API sürümleri
 
-Bu makalede Azure yığını tarafından kullanılan her bir API profili için bir kaynak sağlayıcısı ve sürüm numaraları bulabilirsiniz. Bu makaledeki tablolar, her kaynak sağlayıcısı ve Profiller API sürümleri için desteklenen sürümleri listelenir. Her kaynak sağlayıcısı, bir dizi kaynak türleri ve belirli sürüm numaraları içeriyor.
+Bu makalede Azure yığını tarafından kullanılan her bir API profili için bir kaynak sağlayıcısı ve sürüm numaraları bulabilirsiniz. Bu makaledeki tablolar, her kaynak sağlayıcısı ve Profiller API sürümleri için desteklenen sürümleri listelenir. Her kaynak sağlayıcısı, bir dizi kaynak türleri ve belirli sürüm numaraları içeriyor. 
 
 API profili üç adlandırma kuralları kullanır:
 
- - **en son**
- - **yyyy-mm-dd-hybrid**
- - **yyyy-aa-gg-profili**
+- **en son**
+- **yyyy-mm-dd-hybrid**
+- **yyyy-aa-gg-profili**
 
 Bir API profillerini ve açıklama sürüm yayın temposudur için Azure Stack için bkz: [yönetme API sürümü profillerini Azure Stack'te](azure-stack-version-profiles.md).
 
 > [!Note]  
 > **Son** API profili kaynak sağlayıcısı API'si en son sürümünü içerir ve bu makalede listelenen değil.
 
-## <a name="overview-of-2018---03-01-hybrid"></a>2018 - 03-01-karma genel bakış
+## <a name="overview-of-2019---03-01-hybrid"></a>2019 - 03-01-karma genel bakış
 
-| Kaynak sağlayıcısı | API sürümü |
+| Kaynak sağlayıcı | API sürümü |
 |-----------------------------------------------|-----------------------------------------------------|
-| Microsoft.Compute | 2017-03-30 |
-| Microsoft.Network | 2017-10-01<br>VPN ağ geçidi 2017-03-01 olacaktır |
-| Microsoft.Storage (veri düzlemi) | 2017-04-17 |
-| Microsoft.Storage (Denetim düzlemi) | 2016-01-01 |
-| Microsoft. Web | 2016-08-01<br>azure'daki (şimdi) itibarıyla Son olduğu |
+| Microsoft.Compute | 2017-12-01 |
+| Microsoft.Network | 2017-10-01<br>VPN ağ geçidi 2017-10-01 olacaktır |
+| Microsoft.Storage (veri düzlemi) | 2017-10-01 |
+| Microsoft.Storage (Denetim düzlemi) | 2017-10-01 |
+| Microsoft.Web | 2018-02-01 |
 | Microsoft.KeyVault | 2016-10-01 (değiştirmeden) |
-| Microsoft.Resources (Azure Resource Manager kendi) | 2016-02-01 |
-| Microsoft.Authorization (ilke işlemleri) | 2015-11-01 |
-| Microsoft.Insights | 2015-11-01 |
-| Microsoft.Keyvault | 2016-10-01 |
-| İlke | 2016-10-01 |
-| Kaynaklar | 2016-10-01 |
-| Resources_Links | 2016-10-01 |
-| Resources_Locks | 2016-10-01 |
-| Subscriptions | 2016-10-01 |
+| Microsoft.Resources (Azure Resource Manager kendi) | 2016-06-01 |
+| Microsoft.Authorization (ilke işlemleri) | 2016-09-01 |
+| Microsoft.Insights | 2018-01-01 |
 
-Daha fazla sürümlerinin listesi için her kaynak türü için API Profil sağlayıcıları için bkz. [2018-03-01-karma ayrıntılarını](#details-for-the-2018-03-01-hybrid) profili.
+API Profil sağlayıcıları için her kaynak türünün sürümlerinin listesi için bkz: [2019-03-01-karma ayrıntılarını](#details-for-the-2019-03-01-hybrid) profili.
 
-## <a name="details-for-the-2018-03-01-hybrid"></a>Ayrıntılar için 2018-03-01-karma
+## <a name="details-for-the-2019-03-01-hybrid"></a>2019-03-01-karma için Ayrıntılar
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-Kuruluşunuzdaki kullanıcıların kaynakları üzerinde gerçekleştirebileceğiniz eylemlerden yönetmek için rol tabanlı erişim denetimi kullanın. Bu işlem kümesi, rolleri tanımlamak, rolleri kullanıcılara veya gruplara atamak ve izinleri hakkında bilgi almak sağlar. Daha fazla bilgi için [yetkilendirme](/rest/api/authorization/).
+Rol tabanlı erişim denetimi, kuruluşunuzdaki kullanıcıların kaynakları üzerinde gerçekleştirebileceğiniz eylemlerden yönetmenizi sağlar. Rolleri tanımlama, rolleri kullanıcılara veya gruplara atamak ve izinleri hakkında bilgi edinin. Daha fazla bilgi için [yetkilendirme](/rest/api/authorization/).
 
 | Kaynak Türleri | API sürümleri |
 |---------------------|--------------------|
-| Kilitler | 2017-04-01 |
+| Kilitler | 2016-09-01 |
 | İşlemler | 2015-07-01 |
 | İzinler | 2015-07-01 |
-| İlke Atamaları | 2016-12-01 (2017-06-01-Önizleme) |
+| İlke Atamaları | 2016-12-01 |
 | İlke Tanımları | 2016-12-01 |
-| Sağlayıcı işlemleri | 2015-07-01-Önizleme |
+| Sağlayıcı işlemleri | 2015-07-01 |
 | Rol Atamaları | 2015-07-01 |
 | Rol Tanımları | 2015-07-01 |
 
@@ -92,20 +86,20 @@ Kuruluşunuzdaki kullanıcıların kaynakları üzerinde gerçekleştirebileceğ
 
 | Kaynak Türü | API Sürümü |
 |---------------------------------------------------------------|-------------|
-| Kullanılabilirlik Kümeleri | 30.03.2016 |
-| Konumlar | 30.03.2016 |
-| Konum/işlemleri | 30.03.2016 |
-| Konum/yayımcıları | 30.03.2016 |
-| Konum/kullanımları | 30.03.2016 |
-| Konum/vmSizes | 30.03.2016 |
-| İşlemler | 30.03.2016 |
-| Virtual Machines | 30.03.2016 |
-| Sanal makineler ve uzantıları | 30.03.2016 |
-| Sanal Makine Ölçek Kümeleri | 30.03.2016 |
-| Sanal makine ölçek kümeleri ve uzantıları | 30.03.2016 |
-| Sanal makine ölçek kümeleri/ağ arabirimleri | 30.03.2016 |
-| Sanal makine ölçek kümeleri/sanal makineler | 30.03.2016 |
-| Sanal makine ölçek kümeleri/virtualMachines/networkınterface'lerden bazıları | 30.03.2016 |
+| Kullanılabilirlik Kümeleri | 2017-12-01 |
+| Konumlar | 2017-12-01 |
+| Konum/işlemleri | 2017-12-01 |
+| Konum/yayımcıları | 2017-12-01 |
+| Konum/kullanımları | 2017-12-01 |
+| Konum/vmSizes | 2017-12-01 |
+| İşlemler | 2017-12-01 |
+| Virtual Machines | 2017-12-01 |
+| Sanal makineler ve uzantıları | 2017-12-01 |
+| Sanal Makine Ölçek Kümeleri | 2017-12-01 |
+| Sanal makine ölçek kümeleri ve uzantıları | 2017-12-01 |
+| Sanal makine ölçek kümeleri/ağ arabirimleri | 2017-12-01 |
+| Sanal makine ölçek kümeleri/sanal makineler | 2017-12-01|
+| Sanal makine ölçek kümeleri/virtualMachines/networkınterface'lerden bazıları | 2017-12-01 |
 
 ### <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -125,17 +119,16 @@ Kuruluşunuzdaki kullanıcıların kaynakları üzerinde gerçekleştirebileceğ
 | Kaynak Türleri | API sürümleri |
 |--------------------|--------------------|
 | İşlemler | 2015-04-01 |
-| Etkinlik Türleri | 2015-04-01 |
+| Olay Türleri | 2015-04-01 |
 | Olay kategorisi | 2015-04-01 |
 | Ölçüm Tanımları | 2018-01-01 |
 | Ölçümler | 2018-01-01 |
 | Tanılama ayarları | 2017-05-01-Önizleme |
 | Tanılama ayarları kategorileri | 2017-05-01-Önizleme |
 
-
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
-Anahtarınızı yönetme, anahtarlara, parolalara ve sertifikalara anahtar kasalarınıza içinde yanı sıra kasaları. Daha fazla bilgi için [Azure anahtar kasası REST API Başvurusu](/rest/api/keyvault/).
+Key Vault'unuza yanı sıra anahtarlara, parolalara ve sertifikaları Key Vault'unuza içinde yönetin. Daha fazla bilgi için [Azure anahtar kasası REST API Başvurusu](/rest/api/keyvault/).
 
 | Kaynak Türleri | API sürümleri |
 |-------------------------|--------------|
@@ -150,161 +143,59 @@ Anahtarınızı yönetme, anahtarlara, parolalara ve sertifikalara anahtar kasal
 
 | Kaynak Türleri | API sürümleri |
 |---------------------------|--------------|
-| Bağlantılar | 2015-06-15 |
+| Bağlantılar | 2017-10-01 |
 | DNS Bölgeleri | 2016-04-01 |
-| Yük Dengeleyiciler | 2015-06-15 |
-| Yerel Ağ Geçidi | 2015-06-15 |
-| Konumlar | 2016-04-01 |
-| Konum/operationResults | 2016-04-01 |
-| Konum/işlemleri | 2016-04-01 |
-| Konum/kullanımları | 2016-04-01 |
-| Ağ Arabirimleri | 2015-06-15 |
-| Ağ Güvenlik Grupları | 2015-06-15 |
-| İşlemler | 2015-06-15 |
-| Genel IP Adresi | 2015-06-15 |
-| Yönlendirme Tabloları | 2015-06-15 |
-| Sanal Ağ Geçidi | 2015-06-15 |
-| Sanal Ağlar | 2015-06-15 |
+| Yük Dengeleyiciler | 2017-10-01 |
+| Yerel Ağ Geçidi | 2017-10-01 |
+| Konumlar | 2017-10-01|
+| Konum/operationResults | 2017-10-01 |
+| Konum/işlemleri | 2017-10-01 |
+| Konum/kullanımları |2017-10-01 |
+| Ağ Arabirimleri | 2017-10-01 |
+| Ağ Güvenlik Grupları | 2017-10-01 |
+| İşlemler | 2017-10-01 |
+| Genel IP Adresi | 2017-10-01 |
+| Yönlendirme Tabloları | 2017-10-01 |
+| Sanal Ağ Geçidi | 2017-10-01 |
+| Sanal Ağlar | 2017-10-01 |
 
 ### <a name="microsoftresources"></a>Microsoft.Resources
 
-Azure Resource Manager dağıtma ve Azure çözümlerinizi için altyapıyı yönetmenize olanak sağlar. Kaynak grupları, ilgili kaynakları düzenlemek ve JSON şablonları kullanarak kaynaklarınızı dağıtma. Kaynakları Resource Manager ile yönetme ve dağıtma için bir giriş için bkz [Azure Resource Manager'a genel bakış](/azure/azure-resource-manager/resource-group-overview).
+Azure Resource Manager dağıtma ve Azure çözümlerinizi için altyapıyı yönetmenize olanak sağlar. Kaynak grupları ilgili kaynakların düzenlemenize ve kaynaklarınızı JSON şablonları ile dağıtın. Kaynakları Resource Manager ile yönetme ve dağıtma için bir giriş için bkz [Azure Resource Manager'a genel bakış](/azure/azure-resource-manager/resource-group-overview).
 
 | Kaynak Türleri | API sürümleri |
 |-----------------------------------------|-------------------|
-| Uygulama kayıtları | 2015-01-01 |
-| Kaynak Adını Denetle | 2016-09-01 |
-| Sağlayıcı temsilcisi | 2015-01-01 |
-| Sağlayıcıları/teklif temsilcisi | 2015-01-01 |
-| Teklifler/DelegatedProviders/estimatePrice | 2015-01-01 |
-| Dağıtımlar | 2016-09-01 |
-| Dağıtımları/işlemleri | 2016-09-01 |
-| Uzantı meta verileri | 2015-01-01 |
-| Bağlantılar | 2016-09-01 |
-| Konumlar | 2015-01-01 |
-| Teklifler | 2015-01-01 |
-| İşlemler | 2015-01-01 |
-| Sağlayıcılar | 2017-08-01 |
-| Kaynak Grupları | 2016-09-01 |
-| Kaynaklar | 2016-09-01 |
-| Subscriptions | 2016-09-01 |
-| Abonelikler/konum | 2016-09-01 |
-| Abonelik işlem sonuçları | 2016-09-01 |
-| Abonelikler/sağlayıcıları | 2017-08-01 |
-| Abonelikler/kaynak grupları | 2016-09-01 |
-| Abonelikler/resourceGroups/kaynaklar | 2016-09-01 |
-| Abonelikler/kaynak | 2016-09-01 |
-| Abonelikler/tagNames | 2016-09-01 |
-| Abonelikler/tagNames/tagValues | 2016-09-01 |
-| Kiracılar | 2017-08-01 |
-
-### <a name="microsoftstorage"></a>Microsoft.Storage 
-
-Depolama kaynak Sağlayıcısı'nı (SRP), depolama hesabı ve anahtarları programlı bir şekilde yönetmenizi sağlar. Daha fazla bilgi için [Azure depolama kaynak sağlayıcısı REST API'si başvurusunda](/rest/api/storagerp/).
-
-| Kaynak Türleri | API sürümleri |
-|-------------------------|--------------|
-| Ad Kullanılabilirliğini Denetle | 2016-01-01 |
-| Konumlar | 2016-01-01 |
-| Konum/kotaları | 2016-01-01 |
-| İşlemler | 2016-01-01 |
-| storageAccounts | 2016-01-01 |
-| Kullanımlar | 2016-01-01 |
-
-## <a name="details-for-the-2018-03-01-hybrid"></a>Ayrıntılar için 2018-03-01-karma
-
-### <a name="microsoft-authorization"></a>Microsoft Yetkilendirmesi
-
-| Kaynak Türleri | API sürümleri |
-|---------------------|---------------------------------|
-| Kilitler | 2017-04-01 |
-| İşlemler | 2015-07-01 |
-| İzinler | 2015-07-01 |
-| İlke Atamaları | 2016-12-01 (2017-06-01-Önizleme) |
-| İlke Tanımları | 2016-12-01 |
-| Sağlayıcı işlemleri | 2015-07-01-Önizleme |
-| Rol Atamaları | 2015-07-01 |
-| Rol Tanımları | 2015-07-01 |
-
-### <a name="microsoftcompute"></a>Microsoft.Compute
-
-| Kaynak Türü | API Sürümü |
-|---------------------------------------------------------------|-------------|
-| Kullanılabilirlik Kümeleri | 30.03.2016 |
-| Konumlar | 30.03.2016 |
-| Konum/işlemleri | 30.03.2016 |
-| Konum/yayımcıları | 30.03.2016 |
-| Konum/kullanımları | 30.03.2016 |
-| Konum/vmSizes | 30.03.2016 |
-| İşlemler | 30.03.2016 |
-| Virtual Machines | 30.03.2016 |
-| Sanal makineler ve uzantıları | 30.03.2016 |
-| Sanal Makine Ölçek Kümeleri | 30.03.2016 |
-| Sanal makine ölçek kümeleri ve uzantıları | 30.03.2016 |
-| Sanal makine ölçek kümeleri/ağ arabirimleri | 30.03.2016 |
-| Sanal makine ölçek kümeleri/sanal makineler | 30.03.2016 |
-| Sanal makine ölçek kümeleri/virtualMachines/networkınterface'lerden bazıları | 30.03.2016 |
-
-### <a name="microsoftnetwork"></a>Microsoft.Network
-
-| Kaynak Türleri | API sürümleri |
-|---------------------------|--------------|
-| Bağlantılar | 2015-06-15 |
-| DNS Bölgeleri | 2016-04-01 |
-| Yük Dengeleyiciler | 2015-06-15 |
-| Yerel Ağ Geçidi | 2015-06-15 |
-| Konumlar | 2016-04-01 |
-| Konum/operationResults | 2016-04-01 |
-| Konum/işlemleri | 2016-04-01 |
-| Konum/kullanımları | 2016-04-01 |
-| Ağ Arabirimleri | 2015-06-15 |
-| Ağ Güvenlik Grupları | 2015-06-15 |
-| İşlemler | 2015-06-15 |
-| Genel IP Adresi | 2015-06-15 |
-| Yönlendirme Tabloları | 2015-06-15 |
-| Sanal Ağ Geçidi | 2015-06-15 |
-| Sanal Ağlar | 2015-06-15 |
-
-### <a name="microsoftresources"></a>Microsoft.Resources
-
-| Kaynak Türleri | API sürümleri |
-|-----------------------------------------|--------------|
-| Uygulama kayıtları | 2015-01-01 |
-| Kaynak Adını Denetle | 2016-09-01 |
-| Sağlayıcı temsilcisi | 2015-01-01 |
-| Sağlayıcıları/teklif temsilcisi | 2015-01-01 |
-| Teklifler/DelegatedProviders/estimatePrice | 2015-01-01 |
-| Dağıtımlar | 2016-09-01 |
-| Dağıtımları/işlemleri | 2016-09-01 |
-| Uzantı meta verileri | 2015-01-01 |
-| Bağlantılar | 2016-09-01 |
-| Konumlar | 2015-01-01 |
-| Teklifler | 2015-01-01 |
-| İşlemler | 2015-01-01 |
-| Sağlayıcılar | 2017-08-01 |
-| Kaynak Grupları | 2016-09-01 |
-| Kaynaklar | 2016-09-01 |
-| Subscriptions | 2016-09-01 |
-| Abonelikler/konum | 2016-09-01 |
-| Abonelik işlem sonuçları | 2016-09-01 |
-| Abonelikler/sağlayıcıları | 2017-08-01 |
-| Abonelikler/kaynak grupları | 2016-09-01 |
-| Abonelikler/resourceGroups/kaynaklar | 2016-09-01 |
-| Abonelikler/kaynak | 2016-09-01 |
-| Abonelikler/tagNames | 2016-09-01 |
-| Abonelikler/tagNames/tagValues | 2016-09-01 |
-| Kiracılar | 2017-08-01 |
+| Dağıtımlar | 2018-05-01 |
+| Dağıtımları/işlemleri | 2018-05-01 |
+| Bağlantılar | 2018-05-01 |
+| Konumlar | 2018-05-01 |
+| İşlemler | 2018-05-01 |
+| Sağlayıcılar | 2018-05-01 |
+| ResourceGroups| 2018-05-01 |
+| Kaynaklar | 2018-05-01/ |
+| Subscriptions | 2018-05-01 |
+| Abonelikler/konumları | 2016-06-01 |
+| Abonelikler/operationresults | 2018-05-01 |
+| Abonelikler/sağlayıcıları | 2018-05-01 |
+| Abonelikler/kaynak grupları | 2018-05-01 |
+| Abonelikler/resourceGroups/kaynaklar | 2018-05-01 |
+| Abonelikler/kaynak | 2018-05-01 |
+| Abonelikler/tagNames | 2018-05-01 |
+| Abonelikler/tagNames/tagValues | 2018-05-01 |
+| Kiracılar | 2016-06-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage
 
+Depolama kaynak Sağlayıcısı'nı (SRP) depolama hesabı ve anahtarları programlı bir şekilde yönetmenizi sağlar. Daha fazla bilgi için [Azure depolama kaynak sağlayıcısı REST API'si başvurusunda](/rest/api/storagerp/).
+
 | Kaynak Türleri | API sürümleri |
 |-------------------------|--------------|
-| Ad Kullanılabilirliğini Denetle | 2016-01-01 |
-| Konumlar | 2016-01-01 |
-| Konum/kotaları | 2016-01-01 |
-| İşlemler | 2016-01-01 |
-| storageAccounts | 2016-01-01 |
-| Kullanımlar | 2016-01-01 |
+| CheckNameAvailability | 2017-10-01 |
+| Konumlar | 2017-10-01 |
+| Konum/kotaları | 2017-10-01 |
+| İşlemler | 2017-10-01 |
+| storageAccounts | 2017-10-01 |
+| Kullanımlar | 2017-10-01 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

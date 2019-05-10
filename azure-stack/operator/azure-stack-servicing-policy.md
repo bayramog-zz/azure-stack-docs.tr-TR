@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2019
+ms.date: 05/02/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 9cfb61f5aca9d3e00f5ad6e07151e62fb4a70a60
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: c4c77cc08b1452c34ca7eba123a38b9d20001645
+ms.sourcegitcommit: 20becab55ac2bd4b7a974ed3928238412a22a4a6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984699"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65030532"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack hizmet İlkesi
 
@@ -66,9 +66,9 @@ Düzeltmeleri indirilir ve Azure Stack için yalnızca normal tam güncelleştir
 
 ## <a name="keep-your-system-under-support"></a>Sisteminizi desteği altında tutun
 
-Destek almaya devam etmek için geçerli Azure Stack dağıtımınıza tutmalısınız. Güncelleştirmeleri erteleme ilkedir: Azure Stack dağıtımınıza desteği kalmasına en kısa süre önce yayımlanan bir güncelleştirme sürümünü çalıştırana veya ya da iki önceki güncelleştirme sürümleri çalıştırması gerekir. Düzeltmeleri önemli güncelleştirme sürümleri olarak kabul edilmez. Azure Stack bulutunuza arkasında tarafından ise *ikiden fazla güncelleştirmeleri*, uyumsuz olarak kabul edilir ve en az destek almak için desteklenen en düşük sürüme güncelleştirmeniz gerekir.
+Destek almaya devam etmek için geçerli Azure Stack dağıtımınıza tutmalısınız. Güncelleştirmeleri erteleme İlkesi: Azure Stack dağıtımınıza desteği kalmasına en kısa süre önce yayımlanan bir güncelleştirme sürümünü çalıştırana veya olmalıdır iki önceki güncelleştirme sürümleri birini çalıştırın. Düzeltmeleri önemli güncelleştirme sürümleri olarak kabul edilmez. Azure Stack bulutunuza arkasında tarafından ise *ikiden fazla güncelleştirmeleri*, uyumsuz olarak kabul edilir ve en az destek almak için desteklenen en düşük sürüme güncelleştirmeniz gerekir.
 
-Örneğin, 1805 en son kullanılabilir güncelleştirme sürümüdür ve iki önceki güncelleştirme paketlerini 1804 ve 1803 sürümleri olan 1803 hem 1804 desteği kalır. Ancak, destek kapsamı dışında 1802 olur. İlke olduğunda yayın ayda bir veya iki için geçerlidir. Örneğin, geçerli sürümde 1805 ve 1804 yayın vardı, 1803 1802 ve iki önceki güncelleştirme paketlerini desteği kalır.
+Örneğin, 1904 en son kullanılabilir güncelleştirme sürümüdür ve iki önceki güncelleştirme paketlerini 1903 ve 1902 sürümleri olan 1902 hem 1903 desteği kalır. Ancak, destek kapsamı dışında 1901 olur. İlke olduğunda yayın ayda bir veya iki için geçerlidir. Örneğin, 1807 geçerli sürümdür ve 1806 yayın vardı, önceki iki güncelleştirme paketlerini 1805 ve 1804 desteği kalır.
 
 Microsoft yazılım güncelleştirme paketleri, toplu olmayan ve önceki güncelleştirme paketini veya düzeltmeyi bir önkoşul olarak gerekli. Bir veya daha fazla güncelleştirmelerini erteleme karar verirseniz, genel çalışma zamanının en son sürüme almak istiyorsanız göz önünde bulundurun.
 
