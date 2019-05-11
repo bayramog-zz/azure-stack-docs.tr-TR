@@ -15,12 +15,12 @@ ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 124dc554e18f6d387a3e41d37809d43276094879
-ms.sourcegitcommit: 0d8ccf2a32b08ab9bcbe13d54c7c3dce2379757f
+ms.openlocfilehash: 147e6b7555d67b562b44102bfd022e954a87e0ae
+ms.sourcegitcommit: 2b6a0b3b4dc63c26df3d0535d630d640ff232fb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64490135"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521216"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure stack'teki güncelleştirmelerini uygulayın
 
@@ -68,14 +68,14 @@ Bir tümleşik sistemler sürümü 1807 kullandığınız ya da daha önce günc
 
 Azure Stack için bir Microsoft veya OEM güncelleştirme paketi kullanılabilir olduğunda, Azure yığını tarafından erişilebilen bir konuma paketi indirebilir ve paket içeriğini gözden geçirin. Bir güncelleştirme paketi genellikle aşağıdaki dosyalardan oluşur:
 
-- Bir kendiliğinden `<PackageName>.exe` dosya. Bu dosya, güncelleştirme, örneğin en son toplu güncelleştirmeyi için Windows Server için yükü içerir.
+- Bir kendiliğinden `<PackageName>.zip` dosya. Bu dosya, güncelleştirme, örneğin en son toplu güncelleştirmeyi için Windows Server için yükü içerir.
 
-- Karşılık gelen `<PackageName>.bin` dosyaları. Bu dosyalar ilişkili olduğu yükü için sıkıştırma sağlar *PackageName*.exe dosyası.
+- Karşılık gelen `<PackageName>.bin` dosyaları. Bu dosyalar ilişkili olduğu yükü için sıkıştırma sağlar *PackageName*.zip dosyası.
 
 - A `Metadata.xml` dosya. Bu dosya, güncelleştirme, örneğin Yayımcı adı, önkoşul, boyutu ve Destek yol URL'si hakkında gerekli bilgileri içerir.
 
 > [!IMPORTANT]  
-> Azure Stack 1901 güncelleştirme paketi uyguladıktan sonra Azure Stack güncelleştirme paketlerini paketleme biçimini .exe, .bin(s) ve bir .zip(s) .xml biçiminde ve .xml biçiminde taşınır. Damgalar bağlı azure Stack operatörleri etkilenmiş olmaz. Aşağıda açıklanan sürecin aynısını kullanarak bağlı azure Stack operatörleri yalnızca .xml ve .zip dosyasını/dosyalarını aktarın.
+> Azure Stack 1901 güncelleştirme paketi uyguladıktan sonra Azure Stack güncelleştirme paketlerini paketleme biçimini .zip, .bin(s) ve bir .zip(s) .xml biçiminde ve .xml biçiminde taşınır. Damgalar bağlı azure Stack operatörleri etkilenmiş olmaz. Aşağıda açıklanan sürecin aynısını kullanarak bağlı azure Stack operatörleri yalnızca .xml ve .zip dosyasını/dosyalarını aktarın.
 
 ## <a name="import-and-install-updates"></a>İçeri aktarmak ve güncelleştirmeleri yükleme
 
@@ -102,13 +102,14 @@ Aşağıdaki yordam, içeri aktarma ve Yönetici portalı'nda güncelleştirme p
  
     ![Paket dosyaları karşıya yükleme işlemini gösterir](media/azure-stack-apply-updates/ApplyUpdates5.png)
 
-6. Altında **blobu karşıya yükleme**klasör simgesine tıklayın, güncelleştirme paketi .exe dosyasına göz atın ve ardından **açık** dosya Gezgini penceresinde.
+6. Altında **blobu karşıya yükleme**klasör simgesine tıklayın, güncelleştirme paketi .zip dosyasına gözatın ve ardından **açık** dosya Gezgini penceresinde.
   
 7. Altında **blobu karşıya yükleme**, tıklayın **karşıya**.
   
     ![Her bir paket dosyasını nerede gösterir](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. 6 ve 7. adımları yineleyin *PackageName*.bin ve Metadata.xml dosyaları. Ek Notice.txt dosyası eklediyseniz içeri aktarılmaz.
+8. 6 ve 7. adımları yineleyin *PackageName*.bin ve Metadata.xml dosyaları. Ek Notice.txt dosyası eklediyseniz içeri aktarılmaz. Dosyalar 1901 başlayan .zip olacaktır Not .bin ve .zip - karşılık olarak devam .xml zamanki içeri aktarmak.
+
 9. İşiniz bittiğinde, (zil simgesi, portalın sağ üst köşedeki) bildirimleri gözden geçirebilirsiniz. Bildirimler, karşıya yükleme tamamlandığını belirtmelidir.
 10. Güncelleştirme kutucuğu panoya dönün. Kutucuk güncelleştirmesi kullanıma sunuldu belirtmeniz gerekir. Yeni eklenen güncelleştirme paketini gözden geçirmek için kutucuğa tıklayın.
 11. Güncelleştirmeyi yüklemek için olarak işaretlenmiş paketi seçin **hazır** ya da paketini sağ tıklatın ve seçin ve **Şimdi Güncelleştir**, veya **Şimdi Güncelleştir** üst eylemi .

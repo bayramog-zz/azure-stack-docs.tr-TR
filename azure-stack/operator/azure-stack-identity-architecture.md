@@ -3,26 +3,25 @@ title: Azure Stack için kimlik mimarisi | Microsoft Docs
 description: Azure Stack ile kullanabileceğiniz kimlik mimarisi hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: PatAltimore
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-origin.date: 02/11/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.topic: conceptual
+ms.date: 05/09/2019
+ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 9ae8a55d04c34ec65d964927fd25c3bc01adeae4
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/09/2019
+ms.openlocfilehash: e09451c1bf49a2de075388f555cb7b80e70db63f
+ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64297705"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65532307"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack için kimlik mimarisi
 
@@ -42,7 +41,7 @@ Seçtiğiniz kimlik sağlayıcısı, çok kiracılı desteği dahil olmak üzere
 |Azure CLI, Visual Studio ve PowerShell gibi araçlar desteği  |Evet |Evet|
 |Azure Portalı aracılığıyla hizmet sorumlusu oluşturma     |Evet |Hayır|
 |Sertifikalar ile hizmet sorumlusu oluşturma      |Evet |Evet|
-|Gizli anahtarları (anahtarlar) ile hizmet sorumlusu oluşturma    |Evet |Hayır|
+|Gizli anahtarları (anahtarlar) ile hizmet sorumlusu oluşturma    |Evet |Evet|
 |Graf hizmeti uygulamaları kullanabilir           |Evet |Hayır|
 |Uygulamaları, kimlik sağlayıcısı oturum açmak için kullanabilir |Evet |Evet. Şirket içi ile federasyona eklemek için uygulamalar oluşturabilmek için AD FS örneği. |
 
@@ -101,4 +100,3 @@ Bu topoloji, aşağıdaki özelliklere sahiptir:
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Kimliğe genel bakış](azure-stack-identity-overview.md)   
 - [Veri Merkezi tümleştirmesi - kimlik](azure-stack-integrate-identity.md)
-<!-- Update_Description: link update -->

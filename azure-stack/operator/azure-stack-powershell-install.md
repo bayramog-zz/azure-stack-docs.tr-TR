@@ -15,12 +15,12 @@ ms.date: 05/09/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: a1923c06d31ff32e1c7e5d50e3b70330d16d25c5
-ms.sourcegitcommit: c755c7eac0f871960f9290591421cf5990b9e734
+ms.openlocfilehash: 1c555f39bdf37314bae05666d39daca50cde2c4e
+ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506119"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65532253"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell'i yükleme
 
@@ -96,7 +96,7 @@ Kurulum, üç adım vardır:
 
 Geliştirme iş istasyonunuzda bu modülleri yüklemek için aşağıdaki PowerShell betiğini çalıştırın:
 
-- 1904 yapılar veya sonraki sürümler için:
+- Azure Stack 1904 veya sonraki sürümler için:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -180,7 +180,18 @@ Yükleme dört adım vardır:
 
 ### <a name="install-azure-stack-powershell"></a>Azure Stack PowerShell’i yükleme
 
-- Azure Stack 1901 veya üzeri.
+- Azure Stack 1904 veya üzeri.
+
+    ```powershell
+    Import-Module -Name PowerShellGet -ErrorAction Stop
+    Import-Module -Name PackageManagement -ErrorAction Stop
+
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
+    ```
+
+- Azure Stack 1903 veya önceki bir sürümü.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop

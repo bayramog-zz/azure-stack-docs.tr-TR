@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.author: efemmano
-ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: b0dba609acd7b12cdb95c1ec3e40ad906674244d
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.date: 05/10/2019
+ms.author: sethm
+ms.lastreviewed: 05/10/2019
+ms.openlocfilehash: 792589eabf13b9aca493e230f7e3e93cfab21736
+ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984765"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65532363"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Azure Stack'te teklifleri abonelikleri oluşturma
 
@@ -92,7 +92,7 @@ Bir kullanıcı olarak, bulup directory kiracınız için (kuruluş), genel tekl
 
 Eklenti planı bir teklif varsa aboneliğinizi istediğiniz zaman bu planı ekleyebilirsiniz.  
 
-1. Kullanıcı Portalı'nda seçin **tüm hizmetleri**. Sonraki altında **genel** kategorisi, select **abonelikleri**ve ardından değişiklik istediğiniz aboneliği seçin. Kullanılabilir Eklenti planları varsa **+ Ekle-planı** etkin olduğu ve bir kutucuk için **eklenti planları**. 
+1. Kullanıcı Portalı'nda seçin **tüm hizmetleri**. Sonraki altında **genel** kategorisi, select **abonelikleri**ve ardından değişiklik istediğiniz aboneliği seçin. Kullanılabilir Eklenti planları varsa **+ Ekle-planı** etkin olduğu ve bir kutucuk için **eklenti planları**.
 
    Varsa **+ Ekle-planı** etkin değil, eğer bu abonelikle ilişkili teklif için eklenti planı yok.
 

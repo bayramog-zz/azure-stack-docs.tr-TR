@@ -16,12 +16,12 @@ ms.date: 04/12/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: b2e3944be7a7d5322683d21cca7e558020a82d7e
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: fa1cdc4937e75a8d87a6faa16048a800b62e79be
+ms.sourcegitcommit: 2b6a0b3b4dc63c26df3d0535d630d640ff232fb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64306186"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521301"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilir olan Azure Market öğeleri
 
@@ -55,7 +55,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 |  | Öğe adı | Açıklama | Yayımcı |
 | --- | --- | --- | --- |
 | ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Kolay dağıtılan, ekonomik, uygulama odaklı ve kullanıcı merkezli kurumsal sınıf çözümler. Bu görüntüler, en son yamalarla düzenli olarak güncelleştirilir. **Önemli bilgiler: 18 Ocak 2018'den silinir ve en yeni sürümlerle değiştirilir önce yüklenen görüntüler.** | Microsoft |
-| ![SharePoint Server 2013 deneme sürümü](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 deneme sürümü](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Microsoft SharePoint Server 2013 deneme sürümünü Windows Server 2012 Datacenter ve Visual Studio 2017 community Edition. | Microsoft |
+| ![SharePoint Server 2013 deneme sürümü](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 deneme sürümü](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Microsoft SharePoint Server 2013 deneme sürümünü Windows Server 2012 Datacenter ve Visual Studio 2019 community Edition. | Microsoft |
 | ![SharePoint Server 2016 denemesini](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 denemesini](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Microsoft SharePoint Server 2016 denemesini Windows Server 2016 Datacenter'ın üzerinde. | Microsoft |
 | ![Windows Server 2012 R2'de SQL Server 2014 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2'de SQL Server 2014 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp2-ws2012r2)
 ) | SQL Server 2014 Service Pack 2. **Gerekli yükleme:** SQL Iaas uzantısı. | Microsoft |
@@ -85,7 +85,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | --- | --- | --- | --- |
 | ![Clear Linux OS](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Clear Linux OS](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | Linux dağıtım Intel mimarisi için en iyi duruma getirilmiş bir başvuru. | Linux projesi Temizle |
 | ![CoreOS tarafından Linux kapsayıcısı](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS tarafından Linux kapsayıcısı](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Kapsayıcı Linux kapsayıcıları çalıştırmak, kümeleri yönetmek ve sunucularınızı sorunsuz bir şekilde güncelleştirmek için kolay bir yol sağlayan bir modern ve minimal Linux dağıtımı olan - ambar ölçeğinde işlemleri etkinleştiren tüm bileşenleri işlem. | CoreOS |
-| ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu, dünyanın en popüler Linux bulut ortamları için sunucusudur. | Canonical |
+| ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu, dünyanın en popüler Linux bulut ortamları için sunucusudur. | Kurallı |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux en popüler Linux dağıtımları biridir. | credativ |
 | ![CentOS tabanlı 6,8](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS tabanlı 6,8](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased68HPC) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic)  |
 | ![CentOS tabanlı 6.10](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS tabanlı 6.10](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic)  |
@@ -228,7 +228,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | ![X2Engine satış CRM](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine satış CRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.x2enginesalescrm) | Compact pazarlama, satış ve müşteri hizmet uygulaması. | Bitnami |
 | ![Xoops](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.xoops) | CMS ve Web portalı Program'de, dinamik Web siteleri oluşturur. | Bitnami |
 | ![Zurmo](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zurmo) | Açık kaynak CRM sistemine: Mobil, sosyal ve Gamified. | Bitnami |
-| ![Denetim noktası vSEC güvenlik yönetimi](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Denetim noktası vSEC güvenlik yönetimi](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Denetim noktası vSEC, Azure müşteri varlıkları kötü amaçlı yazılım ve Gelişmiş tehditlerden korumak için Gelişmiş, çok katmanlı tehdit önleme sunar. **Her iki denetim noktası vSEC Market öğelerini indirme.** | Denetim Noktası |
+| ![Denetim noktası vSEC güvenlik yönetimi](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Denetim noktası vSEC güvenlik yönetimi](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Denetim noktası vSEC, Azure müşteri varlıkları kötü amaçlı yazılım ve Gelişmiş tehditlerden korumak için Gelişmiş, çok katmanlı tehdit önleme sunar. **Her iki denetim noktası vSEC Market öğelerini indirme.** | Check Point |
 | ![Chef Automate](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef ile otomatikleştirme](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) | Oluşturmanızı, dağıtmanızı ve Chef Automate, sürekli Otomasyon platformu ile yönetin. **Her iki Chef Market öğelerini indirme**. | Chef yazılımı, dahil edilen |
 | ![Commvault](media/azure-stack-marketplace-azure-items/commvault.png) | [CommVault](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault) | Yedekleme ve kurtarma, uygulama ve Azure Stack ve Azure Stack ortamlarında tek bir çözüm için olağanüstü durum kurtarma için VM geçişi için kapsamlı bir çözüm. | Commvault |
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Denetim, izleyin ve sanal makineleri kolayca ve güvenle ile şifreleme. **Tüm CloudLink SecureVM öğeleri indirin.** | Dell EMC |

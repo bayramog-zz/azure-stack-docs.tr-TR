@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/10/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 4438fdb5b97a4e08632b9c4f55fc03c91ef3aa97
-ms.sourcegitcommit: 405075e7826ba2fa545dbf5498160219ef8d2db5
+ms.lastreviewed: 05/10/2019
+ms.openlocfilehash: f2e20377a976c5dba7a63d9f8cf8b3e2d100e060
+ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65453710"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65532256"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -29,6 +29,13 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 
 > [!IMPORTANT]  
 > Bu bölümde, güncelleştirmeyi uygulamadan önce gözden geçirin.
+
+## <a name="update-process"></a>Güncelleştirme işlemi
+
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: Azure Stack güncelleştirmesi yüklenmeye çalışılırken olmadığında güncelleştirme durumu ve durumuna değiştirin **PreparationFailed**. Bu, düzgün bir şekilde işlemek için bir iç altyapı paylaşımına depolama kapsayıcısından dosya aktarımı erişememe güncelleştirme kaynağı sağlayıcısı tarafından (URP) kaynaklanır.
+- Düzeltme: 1901 (1.1901.0.95) sürümünden itibaren kullanarak bu sorunu geçici olarak tıklayarak çalışabilirsiniz **Şimdi Güncelleştir** yeniden (değil **sürdürme**). URP ardından önceki girişim dosyalarından temizler ve indirmeyi yeniden başlatır.
+- Örneği: Ortak
 
 ## <a name="portal"></a>Portal
 
@@ -139,15 +146,14 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 - Düzeltme: VM erişimi Linux uzantısı için SSH anahtarları sağladıktan sonra uygulamak için veya parola tabanlı kimlik doğrulaması kullanın.
 - Örneği: Ortak
 
-## <a name="infrastructure-backup"></a>Altyapı yedekleme
-
-<!--Bug 3615401 - scheduler config lost; new issue in YYMM;  hectorl-->
-Otomatik yedeklemeler etkinleştirdikten sonra Zamanlayıcı hizmeti beklenmedik bir şekilde devre dışı durumuna geçtiğinde. Yedekleme denetleyici hizmeti, otomatik yedeklemeler devre dışı bırakılır ve bir Yönetici portalını uyarısı algılar. Bu uyarı, otomatik yedeklemeler devre dışı bırakıldığında beklenmektedir.
+### <a name="compute-host-agent-alert"></a>Konak Aracısı uyarı işlem
 
 - Uygulanabilir: Bu sürümde 1904 yeni bir sorundur.
-- Neden: Zamanlayıcı yapılandırmasının kaybı ile sonuçlanır hizmetinde bir hata nedeniyle bu sorunudur. Bu hata, depolama konumu, kullanıcı adı, parola ve şifreleme anahtarı değiştirmez.
-- Düzeltme: Bu sorunu gidermek için altyapı yedekleme kaynak sağlayıcısındaki yedekleme denetleyicisi ayarlar dikey penceresi açın ve seçin **etkinleştirmek otomatik yedeklemeler**. İstenen sıklığı ve Bekletme dönemi ayarladığınızdan emin olun.
-- Örneği: Düşük
+- Neden: "İşlem konak Aracısı uyarı görünür bir düğümü yeniden başlatıldıktan sonra ölçek birimi". Yeniden başlatma işlem konak Aracısı hizmeti için varsayılan başlangıç ayarını değiştirir.
+- Düzeltme:
+  - Bu uyarı yoksayılabilir. Aracı yanıt vermiyor, işleci ve kullanıcı işlemleri veya kullanıcı uygulamaları üzerinde hiçbir etkisi yok. El ile kapalıysa uyarı 24 saat sonra yeniden görünür.
+  - Microsoft destek hizmeti için başlatma ayarı değiştirerek bu sorunu düzeltebilir. Bu, bir destek çağrısının açılmasını gerektirir. Düğümü yeniden başlatıldıysa, yeni bir uyarı görüntülenir.
+- Örneği: Ortak
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->

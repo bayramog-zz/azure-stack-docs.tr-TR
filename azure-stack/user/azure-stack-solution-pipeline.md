@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 44a510b8110bacbb51b987a0393f1bc04c594fcd
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 3b98714a6cbc3601f98d5f9dfcb26edb5182cfa4
+ms.sourcegitcommit: 2b6a0b3b4dc63c26df3d0535d630d640ff232fb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985777"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521234"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack’e uygulama dağıtma
 
@@ -94,7 +94,7 @@ Bu öğreticide, Azure ve Azure Stack bazı temel bilgi sahibi olduğunuzu varsa
 ### <a name="developer-tool-requirements"></a>Geliştirici aracı gereksinimleri
 
 * Oluşturma bir [Azure DevOps Hizmetleri çalışma](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces). Kayıt işlemini adlı bir proje oluşturur **MyFirstProject**.
-* [Visual Studio 2017'yi](https://docs.microsoft.com/visualstudio/install/install-visual-studio) ve [oturum açma Azure DevOps hizmetlerine](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* [Visual Studio 2019 yükleme](https://docs.microsoft.com/visualstudio/install/install-visual-studio) ve [oturum açma Azure DevOps hizmetlerine](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Projenize bağlayın ve [yerel ortamda kopyalayın](https://www.visualstudio.com/docs/git/gitquickstart).
 
   > [!Note]
@@ -183,7 +183,7 @@ Abonelik, kaynak grubu veya kaynak düzeyinde kapsamı ayarlayabilirsiniz. Daha 
 
 4. Seçin **rol ataması Ekle**.
 
-    ![Ekle](media/azure-stack-solution-hybrid-pipeline/000_13.png)
+    ![Oluştur/İçeri Aktar](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
 5. İçinde **izinleri eklemek**, rolü seçin, uygulamayı atamak istediğiniz. Bu örnekte, **sahibi** rol.
 
@@ -195,7 +195,7 @@ Abonelik, kaynak grubu veya kaynak düzeyinde kapsamı ayarlayabilirsiniz. Daha 
 
 7. Seçin **Kaydet** rol atama tamamlanması. Bu kapsam için bir role atanmış kullanıcı listesinde uygulamanızı görürsünüz.
 
-### <a name="role-based-access-control"></a>Rol Tabanlı Access Control
+### <a name="role-based-access-control"></a>Rol Tabanlı Erişim Denetimi
 
 Azure rol tabanlı erişim denetimi (RBAC), Azure için ayrıntılı erişim yönetimi sağlar. RBAC kullanarak, kullanıcıların işlerini yapmak için gereken erişim düzeyini denetleyebilirsiniz. Rol tabanlı erişim denetimi hakkında daha fazla bilgi için bkz. [Azure abonelik kaynaklarına erişimi yönetme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
@@ -287,7 +287,7 @@ Aşağıdaki eşlemeyi kullanarak bir hizmet bağlantı oluşturabilirsiniz:
 | Ortam | AzureStack | Ortamınızın adını. |
 | Ortam URL'si | `https://management.local.azurestack.external` | Yönetim uç noktanıza. |
 | Kapsam düzeyi | Abonelik | Bağlantının kapsamı. |
-| Abonelik Kimliği | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack kullanıcı abonelik kimliği |
+| Abonelik kimliği | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack kullanıcı abonelik kimliği |
 | Abonelik adı | name@contoso.com | Azure Stack kullanıcı abonelik adı. |
 | Hizmet sorumlusu istemci kimliği | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Asıl Kimliğinden [bu](azure-stack-solution-pipeline.md#create-a-service-principal) bu makaledeki bir bölüm. |
 | Hizmet sorumlusu anahtarı | THESCRETGOESHERE = | Aynı makalede (veya betiği kullandıysanız parolayı) anahtarı. |
@@ -312,7 +312,7 @@ Aşağıdaki eşlemeyi kullanarak bir hizmet bağlantı oluşturabilirsiniz:
 | Ortam | AzureStack | Ortamınızın adını. |
 | Ortam URL'si | `https://management.local.azurestack.external` | Yönetim uç noktanıza. |
 | Kapsam düzeyi | Abonelik | Bağlantının kapsamı. |
-| Abonelik Kimliği | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack kullanıcı abonelik kimliği |
+| Abonelik kimliği | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack kullanıcı abonelik kimliği |
 | Abonelik adı | name@contoso.com | Azure Stack kullanıcı abonelik adı. |
 | Hizmet sorumlusu istemci kimliği | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | AD FS için oluşturduğunuz gelen hizmet sorumlusu istemci kimliği. |
 | Sertifika | `<certificate>` |  Sertifikayı PFX'ten PEM'ye dönüştürün. Sertifika PEM dosyasının içeriğini bu alana yapıştırın. <br> PFX PEM'ye dönüştürme:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
@@ -392,7 +392,7 @@ Yayın işlem hattı oluşturmak, son adım, uygulamanızdaki yapı işlemi olur
 
 4. Üzerinde **yapıt ekleme**, gelen **kaynak (derleme tanımı)** aşağı açılır menüsünde, Azure bulut yapı uygulamayı seçin.
 
-    ![Yapıt ekleme](media/azure-stack-solution-hybrid-pipeline/103.png)
+    ![Yapıt ekle](media/azure-stack-solution-hybrid-pipeline/103.png)
 
 5. Üzerinde **işlem hattı** sekmesinde **1. Aşama**, **1 görev** bağlantı **ortam görevlerini görüntüle**.
 
@@ -428,7 +428,7 @@ Yayın işlem hattı oluşturmak, son adım, uygulamanızdaki yapı işlemi olur
 
 13. Üzerinde **bir şablon seçin**, başka bir ortama ekleyin. Çekme **Azure uygulama hizmeti dağıtımının** seçip **Uygula**.
 
-    ![Şablonu seçin](media/azure-stack-solution-hybrid-pipeline/112.png)
+    ![Şablon seçin](media/azure-stack-solution-hybrid-pipeline/112.png)
 
 14. "Azure Stack" olarak girin **ortam adı**.
 

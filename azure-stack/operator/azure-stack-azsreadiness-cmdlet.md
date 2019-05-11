@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 05/09/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 03efa5e8e0dbb3ec29748383914d3d0361bc124b
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 05/09/2019
+ms.openlocfilehash: 1f8d7573d9d3da54ddb5fa7aae85ba15d1db4c3c
+ms.sourcegitcommit: 2b6a0b3b4dc63c26df3d0535d630d640ff232fb0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64986152"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521261"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Başlangıç AzsReadinessChecker cmdlet başvurusu
 
@@ -209,7 +209,7 @@ $PaaSCertificates = @{
     'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
     'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
 }
-Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates - RegionName east -FQDN azurestack.contoso.com
+Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com
 ```
 
 Bu örnekte, bir karma tablosu yolları ve her bir PaaS sertifikanın parolaları ile oluşturulur. Sertifikaları atlanabilir. `Start-AzsReadinessChecker` Her PFX yolun mevcut olduğunu ve bölge kullanarak bunları doğrular denetler **Doğu** ve dış FQDN **azurestack.contoso.com**.
@@ -241,7 +241,7 @@ Bu örnekte, hizmet yönetici hesabının kimlik bilgilerini güvenlik için ger
 
 ### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Örnek: Veri dağıtımı (dağıtım desteği) ile Azure kimlik doğrulama
 
-```PowerSHell
+```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
@@ -278,7 +278,7 @@ Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx
 
 Bu örnekte, güvenlik için PFX parolası gereklidir. Ssl.pfx dosyası yerel makine sertifika deposuna içe, aynı parola ile yeniden dışarı ve Ssl_new.pfx kaydedilir. Bu yordamı bir özel anahtarı olmayan sertifika doğrulama bayrağı kullanıldığında **yerel makine** öznitelik kümesi, sertifika zinciri kopmuş, ilgisiz sertifikaların PFX'e mevcut olduğunu veya sertifika zinciri yanlış sırada.
 
-### <a name="example-view-validation-report-deployment-support"></a>Örnek: görünüm doğrulama raporu (dağıtım desteği)
+### <a name="example-view-validation-report-deployment-and-support"></a>Örnek: doğrulama raporunu görüntüle (dağıtım ve destek)
 
 ```powershell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
@@ -302,7 +302,7 @@ Azure Stack dağıtım bölge adını belirtir.
 
 |  |  |
 |----------------------------|--------------|
-|Şunu yazın:                       |String        |
+|Tür:                       |String        |
 |Konum:                   |adlı         |
 |Varsayılan değer:              |None          |
 |Ardışık giriş yapılabilir:      |False         |
@@ -314,7 +314,7 @@ Azure Stack dağıtımı belirten dış FQDN, ayrıca diğer adlı olarak **Exte
 
 |  |  |
 |----------------------------|--------------|
-|Şunu yazın:                       |String        |
+|Tür:                       |String        |
 |Konum:                   |adlı         |
 |Varsayılan değer:              |ExternalFQDN, ExternalDomainName |
 |Ardışık giriş yapılabilir:      |False         |
@@ -326,7 +326,7 @@ Azure Stack dağıtım kimlik sistemi geçerli değerleri, AAD veya ADFS, Azure 
 
 |  |  |
 |----------------------------|--------------|
-|Şunu yazın:                       |String        |
+|Tür:                       |String        |
 |Konum:                   |adlı         |
 |Varsayılan değer:              |None          |
 |Geçerli değerler:               |'AAD', 'ADFS'  |
@@ -339,7 +339,7 @@ PFX sertifika dosyaları ile ilişkili parolayı belirtir.
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |SecureString |
+|Tür:                       |SecureString |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -351,7 +351,7 @@ Yollar ve parolaları PaaS sertifikaları içeren karma tablo belirtir.
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |Hashtable |
+|Tür:                       |Hashtable |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -363,7 +363,7 @@ Azure Stack dağıtım verileri JSON yapılandırma dosyasını belirtir. Bu dos
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -375,7 +375,7 @@ Bu araç, sertifika doğrulama tarafından belirtildiği şekilde düzeltmek iç
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -387,7 +387,7 @@ Sonuç PFX dosyasından içeri/dışarı aktarma yordamı için hedef yolu belir
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -399,7 +399,7 @@ Bir sıralanmış sözlük konu için sertifika isteği oluşturma belirtir.
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |OrderedDictionary   |
+|Tür:                       |OrderedDictionary   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -414,7 +414,7 @@ Sertifika isteği SAN türünü belirtir. Geçerli değerler **MultipleCSR**, **
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Geçerli değerler:               |'MultipleCSR', 'SingleCSR' |
@@ -427,7 +427,7 @@ Sertifika isteği dosyaları hedef yolunu belirtir. Dizin zaten mevcut olmalıd�
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -439,7 +439,7 @@ Azure Stack dağıtımı için kullanılacak Azure Active Directory Hizmet Yöne
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |PSCredential   |
+|Tür:                       |PSCredential   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -451,7 +451,7 @@ Azure Stack dağıtımı için kullanılacak Azure Active Directory adını beli
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -463,7 +463,7 @@ Azure Stack dağıtım ve kayıt için kullanılacak Azure hesapları, dizinler 
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Geçerli değerler:               |'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment' |
@@ -476,7 +476,7 @@ Azure Stack kayıt için kullanılacak kayıt hesabı belirtir.
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -488,7 +488,7 @@ Azure Stack kayıt için kullanılacak kayıt abonelik Kimliğini belirtir.
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |Guid     |
+|Tür:                       |Guid     |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |None     |
 |Ardışık giriş yapılabilir:      |False    |
@@ -500,7 +500,7 @@ Hazırlık raporunu yolunu belirtir, varsayılan olarak geçerli dizin ve varsay
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |Tümü      |
 |Ardışık giriş yapılabilir:      |False    |
@@ -522,7 +522,7 @@ ACSBlob, ACSQueue, ACSTable, ADFS, Yönetim Portalı, ARM yönetici, ARM genel, 
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |.\Certificates |
 |Ardışık giriş yapılabilir:      |False    |
@@ -534,7 +534,7 @@ PaaS Hizmetleri/konak adları için sertifika istekleri eklenmesi gerekip gerekm
 
 |  |  |
 |----------------------------|------------------|
-|Şunu yazın:                       |SwitchParameter   |
+|Tür:                       |SwitchParameter   |
 |Konum:                   |adlı             |
 |Varsayılan değer:              |False             |
 |Ardışık giriş yapılabilir:      |False             |
@@ -546,7 +546,7 @@ Ayrıntılı rapor yalnızca Özet, gösterecek şekilde olmadığını atlar be
 
 |  |  |
 |----------------------------|---------|
-|Şunu yazın:                       |String   |
+|Tür:                       |String   |
 |Konum:                   |adlı    |
 |Varsayılan değer:              |Tümü      |
 |Geçerli değerler:               |'Sertifika', 'AzureRegistration', 'AzureIdentity', 'İşler', 'All' |
@@ -559,7 +559,7 @@ Ayrıntılı rapor yalnızca Özet, gösterecek şekilde olmadığını atlar be
 
 |  |  |
 |----------------------------|------------------|
-|Şunu yazın:                       |SwitchParameter   |
+|Tür:                       |SwitchParameter   |
 |Konum:                   |adlı             |
 |Varsayılan değer:              |False             |
 |Ardışık giriş yapılabilir:      |False             |
@@ -571,7 +571,7 @@ Ayrıntılı rapor yalnızca Özet, gösterecek şekilde olmadığını atlar be
 
 |  |  |
 |----------------------------|------------------|
-|Şunu yazın:                       |SwitchParameter   |
+|Tür:                       |SwitchParameter   |
 |Diğer adlar:                    |cf                |
 |Konum:                   |adlı             |
 |Varsayılan değer:              |False             |
@@ -584,7 +584,7 @@ Ayrıntılı rapor yalnızca Özet, gösterecek şekilde olmadığını atlar be
 
 |  |  |
 |----------------------------|------------------|
-|Şunu yazın:                       |String            |
+|Tür:                       |String            |
 |Konum:                   |adlı             |
 |Varsayılan değer:              |$ENV: TEMP\AzsReadinessChecker  |
 |Ardışık giriş yapılabilir:      |False             |
@@ -596,7 +596,7 @@ Cmdlet'i çalıştırmadan önce onay ister.
 
 |  |  |
 |----------------------------|------------------|
-|Şunu yazın:                       |SwitchParameter   |
+|Tür:                       |SwitchParameter   |
 |Diğer adlar:                    |cf                |
 |Konum:                   |adlı             |
 |Varsayılan değer:              |False             |
@@ -609,7 +609,7 @@ Cmdlet çalıştırılıyorsa ne olacağını gösterir. Cmdlet çalıştırılm
 
 |  |  |
 |----------------------------|------------------|
-|Şunu yazın:                       |SwitchParameter   |
+|Tür:                       |SwitchParameter   |
 |Diğer adlar:                    |Wi                |
 |Konum:                   |adlı             |
 |Varsayılan değer:              |False             |
