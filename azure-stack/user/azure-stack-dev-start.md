@@ -9,53 +9,53 @@ ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 9b3d58e67d7c6ca7016b3ecb51c09171aae7c06a
-ms.sourcegitcommit: 0d8ccf2a32b08ab9bcbe13d54c7c3dce2379757f
+ms.openlocfilehash: 06c462ab46ce6bbae8d5c3bd6fcb757e14417edf
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64490027"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617629"
 ---
-# <a name="set-up-a-development-environment-on-azure-stack"></a>Azure Stack'te bir geliştirme ortamı ayarlama 
+# <a name="set-up-a-development-environment-in-azure-stack"></a>Azure Stack geliştirme ortamında ayarlama 
 
-Windows 10, Linux veya macOS iş istasyonu kullanarak Azure Stack için uygulamalar geliştirebilirsiniz. Bu makalede atacağız: 
+Windows 10, Linux veya macOS iş istasyonu kullanarak Azure Stack için uygulamalar geliştirebilirsiniz. Bu makalede, şu konuları: 
 
-- Uygulamanızı Azure Stack üzerinde çalıştığı çeşitli bağlamı. 
-- Windows 10, Linux veya macOS iş istasyonu ile başlamanız için izleyebileceğiniz adımlar ayarlayın. 
-- Azure Stack'te kaynak oluşturma adımları ve bir uygulama dağıttınız. 
+- Uygulamanızı Azure Stack'te çalıştığı çeşitli bağlamı. 
+- Windows 10, Linux veya macOS iş istasyonu ile almak için izlemeniz gereken adımları ayarlayın. 
+- Azure Stack'te kaynakları oluşturmak için adımları ve uygulamayı dağıtırsınız. 
 
 ## <a name="azure-stack-context-and-your-code"></a>Azure Stack bağlam ve kodunuz 
 
-Betikleri ve Azure stack'teki her şeyi gerçekleştirebilirsiniz uygulamalar yazabilirsiniz. Bununla birlikte, üç farklı modlarını etmeye çalıştığınız sınırlamak yararlı olabilir. 
+Betikleri ve Azure Stack'te birçok görevi gerçekleştirmek için uygulamalar yazabilirsiniz. Ancak, aşağıdaki üç modun kapsamına sınırlamak yararlıdır: 
 
-1. İlk modunda Azure Stack'te Azure Resource Manager şablonları kullanarak kaynakları sağlayacak uygulamalar oluşturabilirsiniz. Örneğin, bir sanal ağ ve uygulamanızı barındıracak Vm'leri oluşturacak bir Azure Resource Manager şablonu oluşturma yapacak bir betik oluşturabilirsiniz. 
+1. İlk modunda, Azure Resource Manager şablonları kullanarak Azure Stack'te kaynakları sağlamak uygulamalar oluşturabilirsiniz. Örneğin, bir sanal ağ ve uygulamanızı barındıracak Vm'leri sırayla oluşturan bir Azure Resource Manager şablonu oluşturan bir betik yazabilirsiniz. 
 
-2. İkinci modunda doğrudan REST API ve kodunuzda oluşturulan bir REST istemcisi kullanarak uç noktaları ile çalışırsınız. Bu modda, bir sanal ağ ve sanal makineleri için API'lerini istek göndererek oluşturan bir komut dosyası oluşturursunuz. 
+2. İkinci modunda, REST API ve kodunuzda oluşturulan bir REST istemcisi kullanarak doğrudan uç noktaları ile çalışır. Bu modda, bir sanal ağ ve sanal makineleri için API'lerini istek göndererek oluşturan bir betik yazmalısınız. 
 
-3. Üçüncü modunda Azure Stack'te barındırılan bir uygulama oluşturmak için kodunuzu kullanabilirsiniz. Azure Stack'te uygulamanızı barındırmak için altyapı oluşturduktan sonra uygulamanızı altyapısını dağıtın. Genellikle, ortamınızı hazırlayın ve ardından söz konusu ortama uygulamanızı dağıtın. 
+3. Üçüncü modunda Azure Stack'te barındırılan bir uygulama oluşturmak için kodunuzu kullanabilirsiniz. Uygulamanızı barındırmak için Azure Stack'te altyapı oluşturduktan sonra uygulamanızı altyapısını dağıtın. Normalde, ortamınızı hazırlayın ve uygulamanızı dağıtın. 
 
-###  <a name="infrastructure-as-a-service-and-platform-as-a-service"></a>Hizmet olarak altyapı ve hizmet olarak Platform 
+###  <a name="infrastructure-as-a-service-and-platform-as-a-service"></a>Bir hizmet olarak platform ve hizmet olarak altyapı 
 
-Bir bulut olarak Azure Stack her ikisini de destekler: 
+Azure Stack bulut platformu ürün olarak, her ikisini de destekler: 
 
-- Hizmet olarak Altyapı (IaaS) 
-- Hizmet Olarak Platform (PaaS) 
+- Hizmet olarak altyapı (IaaS) 
+- Hizmet olarak platform (PaaS) 
 
-Hem Iaas ve PaaS geliştirme makinenizi kurmak nasıl istediğinizi bildirin. 
+Hem Iaas ve PaaS geliştirme makinenizi kurmak konusunda bilgilendirin. 
 
-Iaas parçalarından biri ağ dişli, ağ ve sunuculardan veri merkezi sanallaştırma ' dir. Web sunucusunu barındıran bir VM için bir uygulamayı dağıttığınızda, bir Iaas programlamada çalışıyoruz. Bu paradigma, Azure Stack sanal dişli yönetir ve uygulamanızı bir sanal sunucuda olduğu. Azure Stack kaynak sağlayıcıları, ağ bileşenleriniz ve sanal sunucuları destekler. 
+Iaas bölümlerinin ağ dişli, ağ ve sunucu gelen veri merkezi sanallaştırma ' dir. Web sunucusunu barındıran bir VM için bir uygulamayı dağıttığınızda, bir Iaas modeli çalışıyoruz. Bu modelde, Azure Stack sanal dişli yönetir ve uygulamanızı bir sanal sunucuda olduğu. Azure Stack kaynak sağlayıcıları, ağ bileşenleriniz ve sanal sunucuları destekler. 
 
-Uygulamanızı, sonra da uygulamanızın çalışacağı bir uç noktasına dağıtın, PaaS altyapısı katman soyutlar. PaaS programlamada olabileceğiniz uygulamanızı barındırmak için kapsayıcılar kullanın ve ardından kapsayıcıya alınmış uygulamanızı kapsayıcı çalışan bir hizmet dağıtmak veya doğrudan uygulamanız çalışırken bir hizmet için uygulamanızı göndermek olabilir. Azure Stack, Azure App service ve Kubernetes çalıştırmak için kullanılabilir. 
+Ardından uygulamayı çalıştıran bir uç noktaya uygulamanızı dağıtma, PaaS altyapısı katman soyutlar. PaaS modeli, uygulamanızı barındırmak ve ardından kapsayıcılı uygulama kapsayıcı çalışan bir hizmet dağıtmak için kapsayıcıları kullanabilirsiniz. Veya doğrudan uygulamanın çalışan hizmet için uygulamanızı göndermek olabilir. Azure Stack, Azure App Service ve Kubernetes çalıştırmak için kullanabilirsiniz. 
 
 ### <a name="azure-stack-resource-manager"></a>Azure Stack Kaynak Yöneticisi 
 
-Bu üç moddan hem de PaaS veya Iaas Azure Stack sürümü, Azure Resource Manager tarafından etkinleştirilir. Yönetim çerçevesi, dağıtma, yönetme ve Azure Stack kaynakları izleme sağlar. Yönetici, bu öğeler ile tek bir işlemde bir grup olarak çalışmanıza olanak sağlar. Hakkında daha fazla bilgi için bkz. Azure Stack Kaynak Yöneticisi ile çalışma hakkında [yönetme API sürümü profillerini Azure Stack'te](azure-stack-version-profiles.md). 
+Üç modları, hem de PaaS veya Iaas, Azure Stack sürümü Azure Resource Manager tarafından etkinleştirilir daha önce bahsedilen. Bu yönetim çerçevesi, dağıtma, yönetme ve Azure Stack kaynakları izleme sağlar. Bu kaynaklarla tek bir işlemde bir grup olarak çalışmanıza olanak tanır. Azure Stack Kaynak Yöneticisi ile çalışma hakkında daha fazla bilgi için bkz. [yönetme API sürümü profillerini Azure Stack'te](azure-stack-version-profiles.md). 
 
-### <a name="azure-stack-development-kits"></a>Azure Stack geliştirme setleri 
+### <a name="azure-stack-sdks"></a>Azure Stack SDK'ları 
 
-Azure Stack, Azure Resource Manager'ın bir Azure Stack sürümünü kullanır.  Azure Stack kaynak kodunuzu tercih ettiğiniz kullanarak Yöneticisi ile çalışmanıza yardımcı olmak için birkaç yazılım geliştirme setleri sağladık. Bunlar: 
+Azure Stack, Azure Resource Manager'ın bir Azure Stack sürümünü kullanır. Tercih ettiğiniz kodunuzu kullanarak Azure Stack Kaynak Yöneticisi ile çalışmanıza yardımcı olmak için bir dizi SDK sağladık: 
 
-- [.NET /C#](azure-stack-version-profiles-net.md)
+- [.NET/C#](azure-stack-version-profiles-net.md)
 - [Java](azure-stack-version-profiles-java.md)
 - [Go](azure-stack-version-profiles-go.md)
 - [Ruby](azure-stack-version-profiles-ruby.md)
@@ -63,41 +63,41 @@ Azure Stack, Azure Resource Manager'ın bir Azure Stack sürümünü kullanır. 
 
 ## <a name="before-you-start"></a>Başlamadan önce 
 
-Şunlar gerekir: 
+Ortamı ayarı başlamadan önce ihtiyacınız vardır: 
 
 - Azure Stack kullanıcı portalına erişim. 
 - Kiracınızın adını. 
-- Azure Active directory (Azure AD) veya Active Directory Federasyon Hizmetleri'nde (AD FS), kimlik yöneticisi kullanıp kullanmadığınızı edinmek için. 
+- Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS), Identity manager kullandığınız olup olmadığını belirlemek için. 
 
 Azure Stack hakkında sorularınız varsa, bulut operatörünüze başvurun. 
 
 ## <a name="windows-10"></a>Windows 10 
 
-Bir Windows 10 makinesi PowerShell 5.0, Visual Studio, iş ve bir ASDK ile çalışıyorsanız ortamınızı VPN bağlantısıyla bağlanmak için izin verir. 
+Bir Windows 10 makinesi kullanıyorsanız, PowerShell 5.0 ve Visual Studio ile çalışabilirsiniz. Ve bir Azure Stack geliştirme Seti'ni (ASDK) ile çalışıyorsanız, VPN bağlantısıyla ortamınıza bağlanabilirsiniz. 
 
 ### <a name="set-up-your-tools"></a>Araçlarınızı ayarlayın 
 
-1. PowerShell ile ayarlama yapın. Bağlantısındaki talimat için [Azure Stack Powershell yükleme](../operator/azure-stack-powershell-install.md). 
+1. PowerShell ile ayarlama yapın. Yönergeler için [Azure Stack Powershell yükleme](../operator/azure-stack-powershell-install.md). 
 
-2. Azure Stack Araçları'nı indirin. Yönergeler için adımları [github'dan indirin, Azure Stack Araçları](../operator/azure-stack-powershell-download.md). 
+2. Azure Stack Araçları'nı indirin. Yönergeler için [github'dan indirin, Azure Stack Araçları](../operator/azure-stack-powershell-download.md). 
 
 3. Bir ASDK kullanıyorsanız, yükleme ve yapılandırma bir [Azure Stack için VPN bağlantısı](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
-4. Yükleyin ve Azure CLI'yı yapılandırın. Yönergeler için adımları [Azure Stack'te Azure CLI ile kullanımı API Sürüm profillerini](azure-stack-version-profiles-azurecli2.md). 
+4. Yükleyin ve Azure CLI'yı yapılandırın. Yönergeler için [Azure Stack'te Azure CLI ile kullanımı API sürümü profillerini](azure-stack-version-profiles-azurecli2.md). 
 
-5. Yükleyin ve Azure Depolama Gezgini yapılandırın. Azure Depolama Gezgini ile Azure Stack depolama çalışmanızı sağlayan bir tek başına uygulamadır.  Yönergeler için adımları [Connect Depolama Gezgini'ni Azure Stack aboneliğine veya bir depolama hesabına](azure-stack-storage-connect-se.md). 
+5. Yükleyin ve Azure Depolama Gezgini yapılandırın. Depolama Gezgini ile Azure Stack depolama çalışmanızı sağlayan bir tek başına uygulamadır. Yönergeler için [bir depolama hesabına veya Azure Stack aboneliğine bağlanma Depolama Gezgini](azure-stack-storage-connect-se.md). 
 
 ### <a name="install-your-integrated-development-environment"></a>Tümleşik geliştirme ortamınıza yükleyin 
 
 1. Tümleşik geliştirme ortamınız (IDE), kod tabanı ve tercihine bağlı olarak yükleyin. 
 
      - Visual Studio Code (Python, Go, NodeJS). Makinenizde Visual Studio Code'u indirin [code.visualstudio.com](https://code.visualstudio.com/Download). 
-     - Visual Studio (.Net /C#). Visual Studio Community edition'ı indirin [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
+     - Visual Studio (.NET /C#). Visual Studio Community edition'ı indirin [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
      - Eclipse (Java). Eclipse'ten indirme [eclipse.org](https://www.eclipse.org/downloads/). 
 
-2. Kodunuz için Yazılım Geliştirme Seti (SDK) yükleyin. 
+2. Kodunuz için SDK'yı yükleyin: 
 
-     - [.NET /C#](azure-stack-version-profiles-net.md) 
+     - [.NET/C#](azure-stack-version-profiles-net.md) 
      - [Java](azure-stack-version-profiles-java.md) 
      - [Go](azure-stack-version-profiles-go.md) 
      - [Ruby](azure-stack-version-profiles-python.md) 
@@ -105,62 +105,62 @@ Bir Windows 10 makinesi PowerShell 5.0, Visual Studio, iş ve bir ASDK ile çal�
 
 ## <a name="linux"></a>Linux 
 
-Linux makinesi, Azure CLI ve Visual Studio Code veya kendi tercih ettiğiniz tümleşik geliştirme ortamı ile çalışmanıza olanak sağlar. 
+Linux makinesi kullanıyorsanız, Azure CLI, Visual Studio Code veya kendi tercih ettiğiniz tümleşik geliştirme ortamı ile çalışabilirsiniz. 
 
 > [!Note]   
 > ASDK ile Linux makinesi kullanıyorsanız, uzak makinenizi ASDK aynı ağda olması gerekir. Bir sanal özel ağ bağlantısı kullanarak bağlanmak mümkün olmayacaktır. 
 
 ### <a name="set-up-your-tools"></a>Araçlarınızı ayarlayın 
 
-1. Yükleyin ve Azure CLI'yı yapılandırın. Yönergeler için adımları [Azure Stack'te Azure CLI ile kullanımı API Sürüm profillerini](azure-stack-version-profiles-azurecli2.md). 
+1. Yükleyin ve Azure CLI'yı yapılandırın. Yönergeler için [Azure Stack'te Azure CLI ile kullanımı API sürümü profillerini](azure-stack-version-profiles-azurecli2.md). 
 
-2. Yükleyin ve Azure Depolama Gezgini yapılandırın. Azure Depolama Gezgini ile Azure Stack depolama çalışmanızı sağlayan bir tek başına uygulamadır.  Yönergeler için adımları [Connect Depolama Gezgini'ni Azure Stack aboneliğine veya bir depolama hesabına](azure-stack-storage-connect-se.md). 
+2. Yükleyin ve Azure Depolama Gezgini yapılandırın. Depolama Gezgini ile Azure Stack depolama çalışmanızı sağlayan bir tek başına uygulamadır. Yönergeler için [bir depolama hesabına veya Azure Stack aboneliğine bağlanma Depolama Gezgini](azure-stack-storage-connect-se.md). 
 
 ### <a name="install-your-integrated-development-environment"></a>Tümleşik geliştirme ortamınıza yükleyin 
 
 1. Tümleşik geliştirme ortamınız (IDE), kod tabanı ve tercihine bağlı olarak yükleyin. 
 
      - Visual Studio Code (Python, Go, NodeJS). Makinenizde Visual Studio Code'u indirin [code.visualstudio.com](https://code.visualstudio.com/Download). 
-     - Visual Studio (.Net /C#). Visual Studio Community edition'ı indirin [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
+     - Visual Studio (.NET /C#). Visual Studio Community edition'ı indirin [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
      - Eclipse (Java). Eclipse'ten indirme [eclipse.org](https://www.eclipse.org/downloads/). 
 
-2. Kodunuz için Yazılım Geliştirme Seti (SDK) yükleyin. 
+2. Kodunuz için SDK'yı yükleyin: 
 
-     - [.NET /C#](azure-stack-version-profiles-net.md) 
+     - [.NET/C#](azure-stack-version-profiles-net.md) 
      - [Java](azure-stack-version-profiles-java.md) 
      - [Go](azure-stack-version-profiles-go.md) 
      - [Ruby](azure-stack-version-profiles-python.md) 
      - [Python](azure-stack-version-profiles-python.md) 
 
-## <a name="macos"></a>macOs 
+## <a name="macos"></a>macOS 
 
-Bir macOS makinenizde Azure CLI ve Visual Studio Code veya kendi tercih ettiğiniz tümleşik geliştirme ortamı ile çalışmanıza olanak sağlar. 
+MacOS makinenizde Visual Studio Code ve Azure CLI ile çalışmanıza olanak tanıyacak ya da kendi tercih edilen tümleşik geliştirme ortamı. 
 
 > [!Note]   
 > Bir macOS makinenizde ASDK ile kullanıyorsanız, uzak makinenizi ASDK aynı ağda olması gerekir. Bir sanal özel ağ bağlantısı kullanarak bağlanmak mümkün olmayacaktır. 
 
 ### <a name="set-up-your-tools"></a>Araçlarınızı ayarlayın 
 
-1. Yükleyin ve Azure CLI'yı yapılandırın. Yönergeler için adımları [Azure Stack'te Azure CLI ile kullanımı API Sürüm profillerini](azure-stack-version-profiles-azurecli2.md). 
+1. Yükleyin ve Azure CLI'yı yapılandırın. Yönergeler için [Azure Stack'te Azure CLI ile kullanımı API sürümü profillerini](azure-stack-version-profiles-azurecli2.md). 
 
-2. Yükleyin ve Azure Depolama Gezgini yapılandırın. Azure Depolama Gezgini ile Azure Stack depolama çalışmanızı sağlayan bir tek başına uygulamadır. Yönergeler için adımları [Connect Depolama Gezgini'ni Azure Stack aboneliğine veya bir depolama hesabına](azure-stack-storage-connect-se.md). 
+2. Yükleyin ve Azure Depolama Gezgini yapılandırın. Depolama Gezgini ile Azure Stack depolama çalışmanızı sağlayan bir tek başına uygulamadır. Yönergeler için [bir depolama hesabına veya Azure Stack aboneliğine bağlanma Depolama Gezgini](azure-stack-storage-connect-se.md). 
 
 ### <a name="install-your-integrated-development-environment"></a>Tümleşik geliştirme ortamınıza yükleyin 
 
 1. Tümleşik geliştirme ortamınız (IDE), kod tabanı ve tercihine bağlı olarak yükleyin. 
 
      - Visual Studio Code (Python, Go, NodeJS). Makinenizde Visual Studio Code'u indirin [code.visualstudio.com](https://code.visualstudio.com/Download). 
-     - Visual Studio (.Net /C#). Visual Studio Community edition'ı indirin [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
+     - Visual Studio (.NET /C#). Visual Studio Community edition'ı indirin [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
      - Eclipse (Java). Eclipse'ten indirme [eclipse.org](https://www.eclipse.org/downloads/). 
 
-2. Kodunuz için Yazılım Geliştirme Seti (SDK) yükleyin. 
+2. Kodunuz için SDK'yı yükleyin: 
 
-     - [.NET /C#](azure-stack-version-profiles-net.md) 
+     - [.NET/C#](azure-stack-version-profiles-net.md) 
      - [Java](azure-stack-version-profiles-java.md) 
-     - [Go](azure-stack-version-profiles-go.md) 
+     - [Go](azure-stack-version-profiles-go.md)
      - [Ruby](azure-stack-version-profiles-python.md) 
      - [Python](azure-stack-version-profiles-python.md) 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Uygulama kaynakları Azure Stack'te dağıtın. Adımları bulabilirsiniz [ortak dağıtımları için Azure Stack](azure-stack-dev-start-deploy-app.md).
+Kaynakları Azure Stack'te uygulama dağıtmak için bkz: [ortak dağıtımları için Azure Stack](azure-stack-dev-start-deploy-app.md).

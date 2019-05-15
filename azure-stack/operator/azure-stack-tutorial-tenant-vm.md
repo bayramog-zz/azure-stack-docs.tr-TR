@@ -3,7 +3,7 @@ title: Sanal makineler, Azure Stack kullanıcılarına kullandırmak | Microsoft
 description: Azure Stack üzerinde sanal makineleri kullanılabilir hale getirmeyi öğrenin
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: 3fa165c5c921c9539e5ceea82ff3b8dd00f787a8
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 949161cd90099d5b9486d7a10524fd915692c897
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984558"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618389"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Öğretici: sanal makineler, Azure Stack kullanıcılar için kullanılabilir yap
 
@@ -53,7 +53,7 @@ Teklifler sağlayıcıları satın alan veya abone olmak için kullanıcılara s
 
 1. İçinde **yeni teklif**, girin bir **görünen ad** ve **kaynak adı**ve ardından yeni veya mevcut bir seçin **kaynak grubu**. Görünen ad teklifin kolay adıdır. Yalnızca bulut işleci yöneticileri teklif bir Azure Resource Manager kaynağı olarak çalışmak için kullandığınız adı kaynak adını görebilirsiniz.
 
-   ![Görünen ad](media/azure-stack-tutorial-tenant-vm/image02.png)
+   ![Display name](media/azure-stack-tutorial-tenant-vm/image02.png)
 
 1. Seçin **temel planlar**hem de **planı** bölümünden **Ekle** yeni bir plan teklife eklenecek.
 

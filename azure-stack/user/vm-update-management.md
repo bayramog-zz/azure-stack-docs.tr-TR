@@ -3,7 +3,7 @@ title: VM güncelleştirme ve Azure Stack ile Yönetimi | Microsoft Docs
 description: Windows ve Linux Azure Stack'te dağıtılan Vm'leri yönetmek için Vm'leri, güncelleştirme yönetimi, değişiklik izleme ve stok çözümleri Azure automation'da Azure İzleyicisi'ni kullanmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: cb8258c0f837d0e70ba87a26246f055b0efe5c00
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 6726e8ff261565691e2e9e3c01827e8e056db139
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301698"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618827"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM güncelleştirme ve yönetim
 Aşağıdaki Azure Otomasyonu çözüm özellikleri, Windows ve Linux Vm'leri, Azure Stack kullanarak dağıtılmış yönetmek için kullanabilirsiniz:

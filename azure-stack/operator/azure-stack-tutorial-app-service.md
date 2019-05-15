@@ -3,7 +3,7 @@ title: Web ve API apps, Azure Stack kullanıcıları için kullanılabilir hale 
 description: App Service kaynak Sağlayıcısı'nı yükleme ve oluşturma Öğreticisi, Azure Stack kullanıcılarınıza web ve API uygulamaları oluşturma olanağı sunmak sunar.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: anwestg
 ms.custom: mvc
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: aa897867c4f9735369cc0dec1c4d8527273e2f7f
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 9954e351ecd584925d264d0c8c5e8fb8e2507192
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64293162"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618642"
 ---
 # <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>Öğretici: web ve API apps, Azure Stack kullanıcılar için kullanılabilir yap
 
@@ -66,7 +66,7 @@ Bu örnekte, bir DNN platformu içerik yönetim sistemi oluşturacağız. İlk o
 1. Azure Stack portalında oturum açın (https://portal.local.azurestack.external) Kiracı olarak.
 2. Seçin **bir abonelik edinmeniz** >, girin **TestAppServiceSubscription** altında **görünen ad** > **bir teklif seçin**  >  **TestAppServiceOffer** > **oluşturma**.
 
-### <a name="create-a-sql-database"></a>SQL veritabanı oluşturma
+### <a name="create-a-sql-database"></a>SQL veritabanı oluşturun
 
 1. Seçin **+**  >  **veri + depolama** > **SQL veritabanı**.
 2. Varsayılan değerleri, aşağıdaki alanlar hariç tut:

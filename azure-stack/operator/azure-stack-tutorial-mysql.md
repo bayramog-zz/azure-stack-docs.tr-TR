@@ -3,7 +3,7 @@ title: Yüksek oranda kullanılabilir olan MySQL veritabanları Azure Stack'te t
 description: Azure Stack ile bir MySQL Server Kaynak sağlayıcısı ana bilgisayarı ve yüksek oranda kullanılabilir olan MySQL veritabanları oluşturmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: f620b8f2d1abe4d656e8f7cf8c34a5798d517e2a
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 1b1ebd27f87030b34b132eb31c4b4ae83f13a3b0
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64300521"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618217"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Öğretici: Yüksek oranda kullanılabilir olan MySQL veritabanları sunar.
 
@@ -110,11 +110,11 @@ Varsayılan olarak, hiçbir genel erişim konak VM'si için MySQL yapılandırı
 
 1. Yönetici portalındaki MySQL küme dağıtılırken oluşturulan bir kaynak grubuna gidin ve ağ güvenlik grubunu seçin (**varsayılan alt ağ sg**):
 
-   ![açık](media/azure-stack-tutorial-mysqlrp/6.png)
+   ![aç](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. Seçin **gelen güvenlik kuralları** ve ardından **Ekle**.<br><br>Girin **3306** içinde **hedef bağlantı noktası aralığı** ve isteğe bağlı olarak bir açıklama sağlayın **adı** ve **açıklama** alanları. Gelen güvenlik kuralı iletişim kutusunu kapatmak için Ekle'ye tıklayın.
 
-   ![açık](media/azure-stack-tutorial-mysqlrp/7.png)
+   ![aç](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>MySQL kümesi dış erişimi yapılandırma
 Dış erişim MySQL kümenin bir Azure Stack MySQL Server konağı olarak eklenmeden önce etkinleştirilmesi gerekir.

@@ -3,7 +3,7 @@ title: 'Uygulama Hizmetleri dağıtın: Azure yığını | Microsoft Docs'
 description: App Service Azure Stack'te dağıtma hakkında ayrıntılı kılavuz
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 2a5fc0a9fdfd68d2dd693695b7ffec2cfe8a7e77
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 6db643e1123a27fe1716aeeb5ec97d6497764632
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64982259"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618950"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Azure Stack'e bir App Service kaynak sağlayıcısı ekleme
 
@@ -122,7 +122,7 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
 
 10. Her üç sertifika dosyası kutularının **Gözat** ve uygun sertifika dosyasına gidin. Her sertifika için parola belirtmeniz gerekir. Bu sertifikalar, oluşturduğunuz olanlardır [Oluştur gerekli sertifikalar adımında](azure-stack-app-service-before-you-get-started.md#get-certificates). Seçin **sonraki** tüm bilgileri girdikten sonra.
 
-    | Box | Sertifika dosyası adı örneği |
+    | Kutu | Sertifika dosyası adı örneği |
     | --- | --- |
     | **App Service varsayılan SSL sertifika dosyası** | \_.appservice.local.AzureStack.external.pfx |
     | **App Service API SSL sertifika dosyası** | api.appservice.local.AzureStack.external.pfx |
@@ -199,13 +199,13 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
 
     Mevcut bir sanal ağa dağıtma ve da dosya sunucunuza bağlanmak için bir iç IP adresi kullanarak, bir giden güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlar.  Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
 
-    - Kaynak: Herhangi biri
+    - Kaynak: Herhangi
     - Kaynak bağlantı noktası aralığı: *
     - Hedef: IP Adresleri
     - Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
     - Hedef bağlantı noktası aralığı: 445
     - Protokol: TCP
-    - Eylem: İzin Ver
+    - Eylem: İzin ver
     - Önceliği: 700
     - Ad: Outbound_Allow_SMB445
 

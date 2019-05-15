@@ -3,7 +3,7 @@ title: Azure Stack ile dış izleme çözümünü tümleştirmek | Microsoft Doc
 description: Azure Stack, veri merkezinizdeki dış bir izleme çözümü ile tümleştirmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
 ms.date: 02/06/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 98fdd9c1d69b8c4199987123517f2edefba0d6e2
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 2871b5183833830368307c5d2b5152e3909fd3ea
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985247"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618841"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Dış izleme çözümü, Azure Stack ile tümleştirin
 

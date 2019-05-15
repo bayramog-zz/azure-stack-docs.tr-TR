@@ -3,25 +3,24 @@ title: PowerShell ile Azure Stack için yedeklemeyi etkinleştirme | Microsoft D
 description: Windows PowerShell ile hizmet altyapı yedeklemeyi etkinleştirin; böylelikle bir hata varsa, Azure Stack geri yüklenebilir.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 02/08/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 04/25/2019
+ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: cf1a040a14bab3c25ab81773578838ec00ae5ded
-ms.sourcegitcommit: 0d8ccf2a32b08ab9bcbe13d54c7c3dce2379757f
+ms.openlocfilehash: 419302aab1a04141e30d13aa4d63d0c1cd7fb476
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64490076"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617873"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>PowerShell ile Azure Stack için yedeklemeyi etkinleştirme
 
@@ -74,7 +73,7 @@ Aynı PowerShell oturumunda, değişkenleri ortamınız için ekleyerek, aşağ�
 
     New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
 
-    #make sure to export the PFX format of the certificate with the public and private keys and then delete the certifcate from the local certificate store of the machine where you created the certificate
+    #make sure to export the PFX format of the certificate with the public and private keys and then delete the certificate from the local certificate store of the machine where you created the certificate
     
     Export-Certificate `
         -Cert $cert `

@@ -3,7 +3,7 @@ title: Azure Stack üzerinde App Service'te dağıtmadan önce | Microsoft Docs
 description: Azure Stack üzerinde App Service'te dağıtmadan önce tamamlanması gereken adımları
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 2728a37811e67de52dda2d259f692593fbcc270c
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 9b9e624abb23ef5c1bd0ae80e2338fdc0b1469ab
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64290852"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618276"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Azure Stack üzerinde App Service ile çalışmaya başlamadan önce
 
@@ -112,7 +112,7 @@ Varsayılan etki alanı sertifikası ön uç rolüne yerleştirilir. Azure App S
 
 Sertifika .pfx biçiminde olmalıdır ve üç konulu bir joker sertifika olmalıdır. Bu gereksinim, hem varsayılan etki alanı hem de kaynak denetimi işlemleri için SCM uç noktasının kapsayan bir sertifika sağlar.
 
-| Biçimlendir | Örnek |
+| Biçim | Örnek |
 | --- | --- |
 | `*.appservice.<region>.<DomainName>.<extension>` | `*.appservice.redmond.azurestack.external` |
 | `*.scm.appservice.<region>.<DomainName>.<extension>` | `*.scm.appservice.redmond.azurestack.external` |
@@ -122,7 +122,7 @@ Sertifika .pfx biçiminde olmalıdır ve üç konulu bir joker sertifika olmalı
 
 API sertifikasını Yönetim rolüne yerleştirilir. Kaynak sağlayıcısı güvenli API çağrıları yardımcı olmak için kullanır. Yayımlama sertifikası API DNS girişi ile eşleşen bir konu içermelidir.
 
-| Biçimlendir | Örnek |
+| Biçim | Örnek |
 | --- | --- |
 | api.appservice. \<bölge\>.\< DomainName\>.\< Uzantı\> | api.appservice.redmond.azurestack.external |
 
@@ -130,7 +130,7 @@ API sertifikasını Yönetim rolüne yerleştirilir. Kaynak sağlayıcısı güv
 
 Bunlar içeriği karşıya yüklediğinizde yayımcı rolünün sertifikası için uygulama sahipleri FTPS trafiğinin güvenliğini sağlar. Yayımlama sertifikası FTPS DNS girişi ile eşleşen bir konu içermelidir.
 
-| Biçimlendir | Örnek |
+| Biçim | Örnek |
 | --- | --- |
 | FTP.appservice. \<bölge\>.\< DomainName\>.\< Uzantı\> | ftp.appservice.redmond.azurestack.external |
 
@@ -143,7 +143,7 @@ Identity application sertifikası sağlar:
 
 Sertifika kimliği şu biçimde eşleşen bir konu içermelidir.
 
-| Biçimlendir | Örnek |
+| Biçim | Örnek |
 | --- | --- |
 | SSO.appservice. \<bölge\>.\< DomainName\>.\< Uzantı\> | sso.appservice.redmond.azurestack.external |
 

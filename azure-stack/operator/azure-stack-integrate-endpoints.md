@@ -2,20 +2,20 @@
 title: Azure Stack veri merkezi tümleştirmesi - uç noktalarını yayımlama | Microsoft Docs
 description: Veri merkezinizde Azure Stack uç noktalarını yayımlama hakkında bilgi edinin
 services: azure-stack
-author: jeffgilb
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
 ms.date: 05/02/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 262b1790b102483daca1a77d475815b34aa7a1b2
-ms.sourcegitcommit: 61de365c93eb7435891867f9808ec37486882d7f
+ms.openlocfilehash: 885568035070bc4f74b94cddff200302fccfbb72
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65097121"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618110"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack veri merkezi tümleştirmesi - uç noktalarını yayımlama
 
@@ -38,7 +38,7 @@ Bunlar yayımlama Azure Stack için gerekli değil çünkü VIP'ler listelenmemi
 > [!Note]
 > 1811 güncelleştirmesi itibarıyla 12495 30015 çeşitli nda bağlantı noktaları artık eklenmesi nedeniyle açık olması gerekmez [uzantısı konağı](azure-stack-extension-host-prepare.md).
 
-|Uç nokta (VIP)|DNS ana bilgisayar bir kaydı|Protokol|Bağlantı noktaları|
+|Uç nokta (VIP)|DNS ana bilgisayar bir kaydı|Protocol|Bağlantı noktaları|
 |---------|---------|---------|---------|
 |AD FS|ADFS.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
 |Portal (Yönetici)|Adminportal.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
@@ -71,7 +71,7 @@ Azure Stack, yalnızca saydam proxy sunucuları destekler. Bir dağıtımda sayd
 > [!Note]  
 > Azure Stack aşağıdaki tabloda listelenen Azure hizmetlerine erişmek için ExpressRoute kullanma desteği olmamasıdır.
 
-|Amaç|Hedef URL|Protokol|Bağlantı noktaları|Kaynak Ağ|
+|Amaç|Hedef URL|Protocol|Bağlantı noktaları|Kaynak Ağ|
 |---------|---------|---------|---------|---------|
 |Kimlik|login.windows.net<br>login.microsoftonline.com<br>Graph.Windows.NET<br>https:\//secure.aadcdn.microsoftonline-p.com<br>Office.com|HTTP<br>HTTPS|80<br>443|Genel VIP - en az/27<br>Ortak ağ alt yapısı|
 |Market sendikasyonu|https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|Genel VIP - en az/27|

@@ -3,7 +3,7 @@ title: Azure Stack dağıtım ağ trafiğini | Microsoft Docs
 description: Bu makalede, Azure Stack dağıtım ağ işlemleri hakkında beklenmesi gerekenler açıklanmaktadır.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 8cc4ba5aa7861143c0ee2c48ba3c93206930eada
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 20ec9e6ea8831e6667a282074ba28b16da3180f9
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984505"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618989"
 ---
 # <a name="about-deployment-network-traffic"></a>Dağıtım ağ trafiğini hakkında
 Azure Stack sırasında ağa trafiğin nasıl akacağını anlama dağıtım başarılı bir dağıtım sağlamak için önemlidir. Bu makalede beklenmesi gerekenler bir anlayış sağlamak için dağıtım işlemi sırasında beklenen ağ trafiğinin gösterilmektedir.

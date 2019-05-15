@@ -3,7 +3,7 @@ title: Azure bağlantısı kesilmiş dağıtım kararları için Azure Stack tü
 description: Dağıtım kararları Azure Stack Azure bağlı çok düğümlü dağıtımlar için planlama saptayın.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 239e2f1ad0ee75a7342c3092521e3604d4bc97ae
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: df0989886d34581950eca04ebe63104d477d003f
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985530"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618010"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure bağlantısı kesilmiş dağıtım planlama kararları için Azure Stack tümleşik sistemleri
 Karar verdim sonra [Azure Stack, hibrit bulut ortamına nasıl tümleştirilecek](azure-stack-connection-models.md), Azure Stack dağıtım kararlarınızı son haline getir.

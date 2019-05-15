@@ -3,7 +3,7 @@ title: Yüksek oranda kullanılabilir bir yapılandırmada Azure Stack App Servi
 description: Azure Stack kullanarak yüksek kullanılabilirliğe sahip yapılandırmaya App Service'te dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: a5311427e15fb690d70aca1da570d2c717e6176c
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: 78476afd09d6c85fbe5790568dd46366beaf1991
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64477216"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618366"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>App Service'ı yüksek oranda kullanılabilir bir yapılandırmada dağıtın
 
@@ -171,13 +171,13 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
     ![Beklenen hata iletişim kutusu](media/app-service-deploy-ha/08.png)
 
     Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-    - Kaynak: Herhangi biri
+    - Kaynak: Herhangi
     - Kaynak bağlantı noktası aralığı: *
     - Hedef: IP Adresleri
     - Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
     - Hedef bağlantı noktası aralığı: 445
     - Protokol: TCP
-    - Eylem: İzin Ver
+    - Eylem: İzin ver
     - Önceliği: 700
     - Ad: Outbound_Allow_SMB445
 

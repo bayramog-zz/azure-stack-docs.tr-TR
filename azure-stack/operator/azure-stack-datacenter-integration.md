@@ -3,7 +3,7 @@ title: Genel veri merkezi tümleştirme konuları için Azure Stack tümleşik s
 description: Artık planlamak ve çok düğümlü Azure Stack ile veri merkezi tümleştirmesi için hazırlanmak için neler yapabileceğinizi öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: 9aa8ec8bbbda1548088ad9dfeb389d292a0e1fbb
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 53289e46a2f29a03535958b76743db107f6ecf64
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985376"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617787"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack tümleşik sistemleri için veri merkezi tümleştirme konuları
 Bir Azure Stack tümleşik sisteminde ilgileniyorsanız, dağıtım ve sistem Merkezinizde nasıl uyduğunu önemli planlama konuları anlamanız gerekir. Bu makalede, Azure Stack çok düğümlü sisteminiz için önemli altyapısı kararları vermenize yardımcı olmak için bu konuları üst düzey bir genel bakış sağlar. Bu noktalar anlaşılması, veri merkezinizi Azure Stack dağıtırken OEM donanım satıcınız ile çalışırken yardımcı olur.  

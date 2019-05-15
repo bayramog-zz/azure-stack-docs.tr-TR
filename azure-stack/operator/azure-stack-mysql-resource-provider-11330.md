@@ -3,7 +3,7 @@ title: Azure Stack MySQL kaynak sağlayıcısı 1.1.30.0 sürüm notları | Micr
 description: Bilinen sorunlar da dahil olmak üzere en son Azure Stack MySQL kaynak sağlayıcısı güncelleştirmede nedir ve indirmek üzere nerede hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 020fc2f56fe73ab87212ee61496722e8c179e17a
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: b5e649768f075f4e448520c648a77aa64351842a
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64294053"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618082"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL kaynak sağlayıcısı 1.1.33.0 sürüm notları
 

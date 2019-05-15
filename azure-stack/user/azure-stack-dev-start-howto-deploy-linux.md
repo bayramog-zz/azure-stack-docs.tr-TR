@@ -9,205 +9,171 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 7662b696ce25cdb70f34824984f4d1ce14d88c69
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: 61d9f21f35edf1a0e8ebf61c81580c4d53218970
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64482044"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617657"
 ---
 # <a name="deploy-a-linux-vm-to-host-a-web-app-in-azure-stack"></a>Azure Stack'te bir web uygulaması barındırmak üzere bir Linux VM dağıtma
 
-Oluşturun ve temel bir web çerçevesi ile oluşturulan web uygulamanızı barındırmak için Market'te Ubunutu görüntüsü kullanarak Linux VM dağıtın. Bu VM, web apps kullanarak barındırabilirsiniz:
+Oluşturun ve bir web çerçevesi ile oluşturduğunuz bir web uygulamasını barındırmak için Azure Marketi'nde Ubuntu görüntüsünü kullanarak temel bir Linux sanal makinesi (VM) dağıtın. 
 
-- **Python**. Flask, Bottle ve Django Python web çerçeveleri ortak içerir.
-- **Git**. Ortak çerçeveleri dahil Revel, Martini Gocraft/web ve Gorilla gidin. 
-- **Ruby**. Ruby on Rails çerçevesi Ruby web uygulamalarınızı sunmak için ayarlayabilirsiniz. 
-- **Java**. Java web uygulamaları için bir Apache Tomcat sunucusunu gönderilen geliştirmek için kullanılabilir. Tomcat Linux'ta yükleme ve Java WAR dosyalarınızın doğrudan sunucuya dağıtabilirsiniz. 
+Bu VM, web apps kullanarak barındırabilirsiniz:
 
-Çalışan tüm web uygulaması, framework ve Linux işletim sistemi kullanan arka uç teknolojisi ile başlamak için bu makaledeki yönergeleri kullanın. Azure Stack ardından uygulamanız için bakım görevlerinin işlenmesi için teknolojinizi içinde altyapınızı ve Yönetim Araçları'nı yönetmek için de kullanabilirsiniz.
+- **Python**: Flask, Bottle ve Django Python web çerçeveleri ortak içerir.
+- **Git**: Ortak çerçeveleri dahil Revel, Martini Gocraft/web ve Gorilla gidin. 
+- **Ruby**: Ruby on Rails çerçevesi Ruby web uygulamalarınızı sunmak için ayarlayın. 
+- **Java**: Bir Apache Tomcat sunucusuna göndermesine web uygulamaları geliştirmek için Java kullanın. Tomcat Linux'ta yükleme ve Java WAR dosyalarınızın doğrudan sunucuya dağıtabilirsiniz. 
+
+Çalışan tüm web uygulaması, framework ve Linux işletim sistemi kullanan arka uç teknolojisi ile başlamak için bu makaledeki yönergeleri kullanın. Azure Stack ardından altyapınızı yönetin ve uygulamanız için bakım görevlerini işlemek için teknolojinizi içinde yönetim araçları kullanmak için de kullanabilirsiniz.
 
 ## <a name="deploy-a-linux-vm-for-a-web-app"></a>Bir Linux VM için bir web uygulaması dağıtma
 
-Bir gizli anahtar oluşturun, temel bir Linux VM görüntüsü kullanma, sanal makinenin belirli öznitelikleri belirtin ve ardından VM oluşturun. Sanal Makineyi oluştururken uygulamanızı barındırmak bir VM için VM ile çalışmak için gereken bağlantı noktalarını açar. Ayrıca, DNS adı oluşturulur. Son olarak, VM'ye bağlanın ve apt-get kullanarak makine güncelleştirin. Bu nasıl yapılır makalesi ile işiniz bittiğinde, Azure Stack web uygulamanızı barındırmak hazır bir VM gerekir.
+Bu işlem bir gizli anahtar oluşturun, temel bir Linux VM görüntüsü kullanma, sanal makinenin belirli öznitelikleri belirtin ve ardından VM oluşturun. VM oluşturduktan sonra VM ile çalışmaya ve uygulamanızı barındırmak sanal makine için gerekli olan bağlantı noktalarını açın. Ardından, DNS adı oluşturun. Son olarak, VM'ye bağlanın ve makinenin apt-get yardımcı programını kullanarak güncelleştirin. İşlemi tamamladıktan sonra Azure Stack Örneğinizde web uygulamanızı barındırmak hazır olan bir VM gerekir.
 
-Yönergelerine sağa atlayabilir veya yerinde ihtiyacınız olan her şeye sahip olduğunuzdan emin olmak isteyebilirsiniz.
+Başlamadan önce yerinde ihtiyacınız olan her şeye sahip olduğunuzdan emin olun.
 
-## <a name="prerequisites-and-considerations"></a>Önkoşullar ve önemli noktalar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure Stack aboneliğine ihtiyacınız olacaktır.
-- Aboneliğinize erişmesi **Ubuntu Server 16.04 LTS** görüntü. Görüntüyü daha sonraki bir sürümünü kullanabilirsiniz, ancak bu yönergeleri göz önünde 16.04 LTS ile yazılır. Bu görüntü yoksa, görüntü, Azure Stack marketini almak için bulut operatörünüze konuşun.
+- Ubuntu Server 16.04 LTS görüntüsüne erişimi olan bir Azure Stack aboneliğine. Görüntüyü daha sonraki bir sürümünü kullanabilirsiniz, ancak bu yönergeleri göz önünde 16.04 LTS ile yazılır. Bu görüntü yoksa, bulut operatörünüze, görüntüyü Azure Stack marketini almak için iletişime geçin.
 
-<!-- Azure Stack specific considerations
+## <a name="deploy-the-vm-by-using-the-portal"></a>Portalı kullanarak VM dağıtma
 
-### Authentication
-
-Azure Stack works with two identity management services, Azure Active Directory (Azure AD) and Active Directory Federated Services (AD FS).  This section addresses how this procedure will work with either version.
-
-### Connectivity
-
-Azure Stack can be run in connected to completely disconnected scenarios. This section addresses considerations about the use case in relation to connectivity.
-
-### Azure Stack Development Kit and Integrated Systems
-
-While the two version of the product are the same product both version behave differently. Call out considerations about either version. 
-
-### Azure Stack version
-
-Place any version specific calls outs. The procedure will contain steps for the latest version. This section will contain call outs for previous version that are still supported. -->
-
-## <a name="deploy-vm-using-the-portal"></a>Portalı kullanarak VM dağıtma
-
-Putty gibi bir uygulama kullanarak sunucunuz için bir SSH ortak anahtarı oluşturun. Azure Stack portal'ınızın erişim Ubuntu sunucusu ekleyin. Ağ ve DNS girişini ayarlayın. Güncelleştirmek için sunucunuza bağlanın.
+VM'yi dağıtmak için sonraki birkaç bölümlerde'ndaki yönergeleri izleyin.
 
 ### <a name="create-your-vm"></a>VM oluşturma
 
-1. Sunucunuz için bir SSH ortak anahtarı oluşturun. Daha fazla bilgi için [SSH ortak anahtarı kullanmayı](azure-stack-dev-start-howto-ssh-public-key.md).
-2. Azure Stack portal'ınızın açın.
-3. Seçin **kaynak Oluştur** > **işlem** > **Ubuntu Server 16.04 LTS**.
+1. Sunucunuz için bir Secure Shell (SSH) ortak anahtar oluşturun. Daha fazla bilgi için [SSH ortak anahtarı kullanmayı](azure-stack-dev-start-howto-ssh-public-key.md).
+1. Azure Stack portalında **kaynak Oluştur** > **işlem** > **Ubuntu Server 16.04 LTS**.
 
     ![Azure Stack VM için bir web uygulaması dağıtma](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
 
-4. İçinde **sanal makine oluşturma** dikey penceresinde için **1. Temel ayarları yapılandırma**:
-    1. Tür **sanal makinenizin adı**.
-    1. Seçin **VM disk türü**, ya da **Premium SSD** veya **standart HDD**.
-    1. Tür, **Username**.
-    1. Seçin **kimlik doğrulama türü** olarak **SSH ortak anahtarından**.
-    1. Oluşturduğunuz SSH ortak anahtarını alın. Bir metin düzenleyicisi ve anahtarı kopyalayın ve geçmiş içine açın **SSH ortak anahtarı** kutusu. Metinden dahil `---- BEGIN SSH2 PUBLIC KEY ----` için `---- END SSH2 PUBLIC KEY ----`. Metnin tüm bloğu anahtar kutuya yapıştırın:
-       ```text  
-            ---- BEGIN SSH2 PUBLIC KEY ----
-            Comment: "rsa-key-20190207"
-            <Your key block>
-            ---- END SSH2 PUBLIC KEY ----```
-    1. Select your Azure Stack subscription.
-    1. Create a new **Resource group** or use an existing depending on how you want to organize the resources for your app.
-    1. Select your location. The ASDK is usually in a **local** region. The location will depend on your Azure Stack.
-1. For **2. Size** type:
-    - Select the size of data and RAM for your VM that is available in your Azure Stack.
-    - You can either browse the list or filter for the size of your VM by **Compute type**, **CPUs**, and storage space.
-    - Prices presented are estimates in your local currency that include only Azure infrastructure costs and any discounts for the subscription and location. The prices don't include any applicable software costs. Recommended sizes are determined by the publisher of the selected image based on hardware and software requirements.
-    - Using a standard disk rather than a premium disk could impact operating system performance.
+4. İçinde **sanal makine oluşturma** bölmesinde için **1. Temel ayarları yapılandırma**:
 
-1. in **3. Configure optional** features type:
-    1. For **High availability,** you can select an availability set. To provide redundancy to your application, you can group two or more virtual machines in an availability set. This configuration ensures that during a planned or unplanned maintenance event, at least one virtual machine will be available and meet the 99.95% Azure SLA. The availability set of a virtual machine can't be changed after it is created.
-    1. For **Storage** select **Premium disks (SSD)** or **Standard disks (HDD)**. Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive applications and production workloads. Standard disks (HDD) are backed by magnetic drives and are preferable for applications where data is accessed infrequently. Zone- redundant disks are backed by Zone redundant storage (ZRS) that replicates your data across multiple zones and are available even if a single zone is down. 
-    1. You can select **Use managed disks**. Enable this feature to have Azure automatically manage the availability of disks to provide data redundancy and fault tolerance, without creating and managing storage accounts on your own. Managed disks may not be available in all regions. For more information, see [Introduction to Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
-    1. Select **virtual network** to configure your network. Virtual networks are logically isolated from each other in Azure. You can configure their IP address ranges, subnets, route tables, gateways, and security settings, much like a traditional network in your data center. Virtual machines in the same virtual network can access each other by default. 
-    1. Select **subnet** to configure your subnet. A subnet is a range of IP addresses in your virtual network, which can be used to isolate virtual machines from each other or from the Internet. 
-    1. Select **Public IP address** to configure access to your VM or services running on your VM. Use a public IP address if you want to communicate with the virtual machine from outside the virtual network. 
-    1. Select **Network Security Group**, **Basic, or **Advanced**. Set rules that allow or deny network traffic to the VM 
-    1. Select **public inbound ports** to set access for common or custom protocols to your VM. The service specifies the destination protocol and port range for this rule. You can choose a predefined service, like RDP or SSH, or provide a custom port range.  
-        For the  web server, you are going to want to HTTP (80), HTTPS (443), and SSH (22) open. If you plan on managing the machine with an RDP connection, open port 3389.
-    1. Select **Extensions** if you would like to add Extension to your VM. Extensions add new features, like configuration management or antivirus protection, to your virtual machine using extensions. 
-    1. Disable or enable **Monitoring**. Capture serial console output and screenshots of the virtual machine running on a host to help diagnose startup issues. 
-    1. Select **diagnostics storage account** to specify the storage account holding your metrics. Metrics are written to a storage account so you can analyze them with your own tools. . 
-    1. Select **OK**.
-1. Review **4. Summary**:
-    - The portal validates your settings.
-    - You can download the Azure Resource Manager template for your VM if you would like to reuse your settings with an Azure Resource Manager workflow.
-    - Press **OK** when the validation has passed. The deployment of the VM takes several minutes.
+    a. Girin **sanal makinenizin adı**.
 
-### Specify the open ports and DNS name
+    b. Seçin **VM disk türü**, ya da **Premium SSD** (için Premium diskler [SSD]) veya **standart HDD** (için standart diskleri [HDD]).
 
-You will want to make your web app accessible to users on your network by opening the ports used to connect to the machine and adding a friendly DNS name such as `mywebapp.local.cloudapp.azurestack.external` that users can use in their web browsers.
+    c. Girin, **Username**.
 
-#### Open inbound ports
+    d. Seçin **kimlik doğrulama türü** olarak **SSH ortak anahtarından**.
 
-You can modify the destination protocol and port range for predefined service, like RDP or SSH or provide a custom port range. For example, you may want to work with the port range of your web framework. GO, for instance, communicates on port 3000.
+    e. Oluşturduğunuz SSH ortak anahtarını alın. Bir metin düzenleyicisinde açın, anahtarı kopyalayın ve ardından yapıştırın **SSH ortak anahtarı** kutusu. Metinden dahil `---- BEGIN SSH2 PUBLIC KEY ----` için `---- END SSH2 PUBLIC KEY ----`. Metnin tüm bloğu anahtar kutuya yapıştırın:
 
-1. Open the Azure Stack portal for your tenant.
-1. Find your VM. You may have pinned the VM to your dashboard, or you can search for the VM in the **Search resources** box.
-1. Select **Networking** in your VM blade.
-1. Select **Add inbound port** rule to open a port.
-1. For Source, leave the default to **Any**.
-1. For Source port range, leave the wildcard (*).
-1. For Destination port range, add the port you would like to open, such as `3000`.
-1. For **Protocol** leave **Any**.
-1. For **Action** set to **Allow**.
-1. For **Priority** leave for the default.
-1. Type a **Name** and **Description** to help you remember why the port is open.
-1. Select **Add**.
+    ```text  
+    ---- BEGIN SSH2 PUBLIC KEY ----
+    Comment: "rsa-key-20190207"
+    <Your key block>
+    ---- END SSH2 PUBLIC KEY ----
+    ```
 
-#### Add a DNS name for your server
+    f. Azure Stack Örneğiniz için bir abonelik seçin.
 
-In addition, you can create a DNS name for your server, and then users can connect to your web site using a URL.
+    g. Yeni bir kaynak grubu oluşturun veya nasıl uygulamanız için kaynakları düzenlemek istediğinize bağlı olarak bir var olanı kullanın.
 
-1. Open the Azure Stack portal for your tenant.
-1. Find your VM. You may have pinned the VM to your dashboard, or you can search for the VM in the **Search resources** box.
-1. Select **Overview**.
-1. Select **Configure** under VM.
-1. Select **Dynamic** for **Assignment**.
-1. Type the DNS name label such as `mywebapp` so that your full URL will be: `mywebapp.local.cloudapp.azurestack.external` (for an ASDK app).
+    h. Konumunuzu seçin. Azure Stack geliştirme Seti'ni (ASDK) genellikle bir *yerel* bölge. Konumun, Azure Stack Örneğinizde bağlıdır.
+1. İçin **2. Boyutu**, türü:
+    - Azure Stack Örneğinizde kullanılabilir VM'niz için veri ve RAM boyutu seçin.
+    - Liste veya filtre tarafından sanal makinenizin boyutunu ya da göz atabilirsiniz **işlem türü**, **CPU'lar**, ve **depolama alanı**.
+    
+    > [!NOTE]
+    > - Sunulan Fiyatlar, yerel para biriminizde. Bunlar, yalnızca Azure altyapı maliyetleri ve aboneliğe ve konuma yönelik indirimleri içerir. Bunlar, ilgili yazılım maliyetlerini içermez. 
+    > - Önerilen boyut Seçili görüntü yayımcısı tarafından belirlenir ve donanım ve yazılım gereksinimlerine dayalıdır.
+    > - Premium diskler (SSD) yerine standart diskler (HDD) kullanan işletim sistemi performansını etkileyebilir.
 
-### Connect via SSH to update your VM
+1. İçinde **3. İsteğe bağlı yapılandırma** özellikleri, türü:
 
-1. On the same network as your Azure Stack, open your SSH client. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
-1. Type:
+    a. İçin **yüksek kullanılabilirlik** bir kullanılabilirlik kümesi seçin. Uygulamanıza yedeklilik sağlamak için bir kullanılabilirlik kümesinde iki veya daha fazla sanal makine gruplandırın. Bu yapılandırma planlı veya Plansız bakım olayı sırasında en az bir sanal makine kullanılabilir ve % 99,95 oranında karşılaması gerektiğini sağlar. Azure hizmet düzeyi sözleşmesi (SLA). Bir sanal makinenin kullanılabilirlik kümesi oluşturulduktan sonra değiştirilemez.
+
+    b. İçin **depolama**seçin **Premium diskler (SSD)** veya **standart diskler (HDD)**. Premium diskler (SSD) katı hal sürücüleriyle desteklenir ve tutarlı, düşük gecikme süreli performans sunar. Bunlar, fiyat ve performans arasında en iyi dengeyi sağlar ve g/Ç açısından yoğun uygulamalar ve üretim iş yükleri için idealdir. Standart diskler manyetik sürücüler tarafından desteklenir ve verilere sık erişilmeyen uygulamalar için tercih edilebilir. Bölgesel olarak yedekli diskler, verilerinizi birden çok alanda çoğaltan, bölgesel olarak yedekli depolama ile (ZRS) desteklenir ve tek bir bölge çalışmıyor olsa bile, bunlar kullanılabilir. 
+
+    c. Seçin **yönetilen diskleri kullan**. Bu özelliği etkinleştirmek, Azure disklerin kullanılabilirliğini otomatik olarak yönetir. Veri yedekliliği ve hataya dayanıklılık, kendi depolama hesaplarını oluşturmak ve yönetmek zorunda kalmadan yararlanır. Yönetilen diskler tüm bölgelerde kullanılamayabilir. Daha fazla bilgi için [giriş Azure yönetilen diskler](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+
+    d. Ağınızı yapılandırmak için seçin **sanal ağ**. Sanal ağlar Azure'da birbirinden mantıksal olarak yalıtılır. Kendi IP adres aralıkları, alt ağlar, rota tablolarını, ağ geçitleri ve, veri merkezinizdeki geleneksel bir ağa benzer güvenlik ayarlarını yapılandırabilirsiniz. Aynı sanal ağdaki sanal makineler, varsayılan olarak birbirine erişebilir. 
+
+    e. Alt ağınızı yapılandırmak için seçin **alt**. Bir IP adresi aralığı sanal ağınızdaki bir alt ağdır. Bir alt ağ, sanal makineleri birbirinden veya internet'ten ayırmak için kullanabilirsiniz. 
+
+    f. Sanal makinenize veya sanal makinenizde çalışan hizmetlere erişimi yapılandırmak için seçin **genel IP adresi**. Sanal ağ dışındaki sanal makineden ile iletişim kurmak için bir genel IP adresi kullanın. 
+
+    g. Seçin **ağ güvenlik grubu**, **temel**, veya **Gelişmiş**. İzin veren veya VM ağ trafiği reddeden kuralları ayarlayın. 
+
+    h. Sanal Makinenize erişim için ortak ve özel protokolleri ayarlamak için seçin **ortak gelen bağlantı noktası**. Hizmet, bu kural için hedef protokolü ve bağlantı noktası aralığını belirtir. Uzak Masaüstü Protokolü (RDP) veya SSH gibi önceden tanımlanmış bir hizmeti seçebilir veya özel bağlantı noktası aralığı belirtebilirsiniz. 
+        Web sunucusu için SSH (22) açık HTTP (80) ve HTTPS (443) kullanın. Makine ile RDP bağlantısı kullanarak yönetmeyi planlıyorsanız, 3389 numaralı bağlantı noktasını açın.
+
+    i. Sanal makinenizde uzantıları eklemek için seçin **uzantıları**. Uzantıları yapılandırma yönetimi ve virüsten koruma gibi yeni özellikler, sanal makinenize ekleyin. 
+
+    j. Etkinleştirmek veya devre dışı **izleme**. Başlatma sorunlarının tanılanmasına yardımcı olmak için izleme seri konsol çıkışını ve ekran görüntüleri bir konakta çalışan bir sanal makinenin yakalamak için kullanabilirsiniz. 
+
+    k. Ölçümlerinizin içeren depolama hesabını belirtmek için seçin **tanılama depolama hesabı**. Böylece, bunları kendi araçlarınızla çözümleyebilirsiniz ölçümler bir depolama hesabına yazılır. 
+
+    m. **Tamam**’ı seçin.
+
+1. Gözden geçirme **4. Özet**:
+    - Portal ayarlarınızı doğrular.
+    - Ayarlarınızı ile bir Azure Resource Manager iş akışı yeniden kullanmak için sanal Makineniz için Azure Resource Manager şablonu indirebilirsiniz.
+    - Doğrulama geçtiğinde seçin **Tamam**. VM dağıtımı birkaç dakika sürer.
+
+### <a name="specify-the-open-ports-and-dns-name"></a>Açık bağlantı noktaları ve DNS adını belirtin
+
+Web uygulamanızı ağınızdaki kullanıcılar için erişilebilir hale getirmek için makineye bağlanmak ve kolay bir DNS adı gibi eklemek için kullanılan bağlantı noktaları açma *mywebapp.local.cloudapp.azurestack.external*, kullanıcıların web tarayıcılarında kullanabilirsiniz .
+
+#### <a name="open-inbound-ports"></a>Gelen bağlantı noktalarını açma
+
+RDP veya SSH gibi önceden tanımlanmış bir hizmeti için hedef protokolü ve bağlantı noktası aralığını değiştirme veya özel bağlantı noktası aralığı belirtebilirsiniz. Örneğin, web Çerçevenizi bağlantı noktası aralığı ile çalışmak isteyebilirsiniz. Git, örneğin, bağlantı noktası 3000 ile iletişim kurar.
+
+1. Kiracınız için Azure Stack portalını açın.
+
+1. Sanal makinenizin arayın. VM, panoya sabitlenmiş veya içinde arama yapabilirsiniz **kaynak Ara** kutusu.
+
+1. Seçin **ağ** , VM bölmesinde.
+
+1. Seçin **gelen bağlantı noktası Ekle** bir bağlantı noktasını açmak için kural.
+
+1. İçin **kaynak**, varsayılan seçimi bırakın **herhangi**.
+
+1. İçin **kaynak bağlantı noktası aralığı**, joker karakter (*) bırakın.
+
+1. İçin **hedef bağlantı noktası aralığı**, örneğin, açmak istediğiniz bağlantı noktasını girin **3000**.
+
+1. İçin **Protokolü**, varsayılan seçimi bırakın **herhangi**.
+
+1. **Eylem** alanında **İzin ver**'i seçin.
+
+1. İçin **öncelik**, varsayılan seçimi bırakın.
+
+1. Girin bir **adı** ve **açıklama** neden bağlantı noktasının açık olduğundan anımsamanıza yardımcı olacak.
+
+1. **Add (Ekle)** seçeneğini belirleyin.
+
+#### <a name="add-a-dns-name-for-your-server"></a>Sunucunuz için bir DNS adı ekleme
+
+Ayrıca, böylece kullanıcılar bir URL kullanarak Web sitenize bağlanabilir, sunucunuz için bir DNS adı oluşturabilirsiniz.
+
+1. Kiracınız için Azure Stack portalını açın.
+
+1. Sanal makinenizin arayın. VM, panoya sabitlenmiş veya içinde arama yapabilirsiniz **kaynak Ara** kutusu.
+
+1. **Genel Bakış**’ı seçin.
+
+1. Altında **VM**seçin **yapılandırma**.
+
+1. İçin **atama**seçin **dinamik**.
+
+1. DNS ad etiketi girin **mywebapp şeklindedir**, tam URL'nizi haline gelebilmesi *mywebapp.local.cloudapp.azurestack.external* (ASDK uygulama için).
+
+### <a name="connect-via-ssh-to-update-your-vm"></a>Sanal makinenizin güncelleştirmek için SSH ile bağlanma
+
+1. Azure Stack örnek olarak aynı ağ üzerinde SSH istemcisi açın. Daha fazla bilgi için [bir SSH ortak anahtarı kullanmak](azure-stack-dev-start-howto-ssh-public-key.md).
+
+1. Aşağıdaki komutları girin:
+
     ```bash  
         sudo apt-get update
         sudo apt-get -y upgrade
     ```
 
-<!--
-
-## Deploy VM using the PowerShell
-
-Include a sentence or two to explain only what is needed to complete the procedure.
-
-1. Step one of the procedures.
-
-    | Parameter | Example | Description |
-    | --- | --- | --- |
-    | item      | "dog"   | Describe what it is and where to find the information. |
-
-2. Step two of the procedure
-
-    ```PowerShell  
-    verb-command -item "dog"
-    ```
-
-3. Step three of the procedures.
-
-    ```PowerShell  
-    verb-command -item "dog"
-    ```
-
-4. Step four of the procedures.
-
-    ```PowerShell  
-    verb-command -item "dog"
-    ```
-
-## Deploy VM using the CLI
-
-Include a sentence or two to explain only what is needed to complete the procedure.
-
-1. Step one of the procedures.
-
-    | Parameter | Example | Description |
-    | --- | --- | --- |
-    | item      | "dog"   | Describe what it is and where to find the information. |
-
-2. Step two of the procedure
-
-    ```CLI  
-    verb-command -item "dog"
-    ```
-
-3. Step three of the procedures.
-
-    ```CLI  
-    verb-command -item "dog"
-    ```
-
-4. Step four of the procedures.
-
-    ```CLI  
-    verb-command -item "dog"
-    ```
-
--->
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanma hakkında daha fazla bilgi edinin [Azure Stack için geliştirme](azure-stack-dev-start.md)
+Bilgi edinmek için nasıl [Azure Stack geliştirme ortamında ayarlama](azure-stack-dev-start.md).

@@ -6,14 +6,14 @@ metadata:
   title: 'Azure Stack Geliştirme Seti Belgeleri - öğreticiler, API Başvurusu'
   description: Dağıtma ve Azure Stack geliştirme Seti'ni kullanma hakkında bilgi edinin.
   services: azure-stack
-  author: jeffgilb
+  author: mattbriggs
   manager: femila
   ms.service: azure-stack
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/13/2018
-  ms.author: jeffgilb
+  ms.author: mabrigg
 abstract:
   description: 'Azure Stack geliştirme Seti''ni (ASDK) indirin ve ücretsiz olarak kullanmaya Azure Stack, tek düğümlü dağıtımıdır. ASDK Azure Stack''i değerlendirin ve bir üretim dışı ortamda Azure ile tutarlı araç ve API''leri kullanarak modern uygulamalar geliştirin, bir ortam sağlamak üzere tasarlanmıştır. <br/><br/>Tümleşik sistemler altyapıyı yöneten ve hizmetleri sunan Azure Stack operatörü kullanıyorsanız bkz bizim <a href="/azure-stack/operator">operatör belgeleri</a>.<br/><br/>Hizmetleri kullanan veya Azure Stack için uygulamalar oluşturur bir Azure Stack kullanıcısı değilseniz, bkz. bizim <a href="/azure-stack/user">kullanıcı belgeleri</a>.'
 sections:

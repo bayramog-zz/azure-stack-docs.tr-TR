@@ -3,7 +3,7 @@ title: Çevrimdışı bir ortamda Azure Stack'te App Service'e dağıtma | Micro
 description: AD FS tarafından güvenliği bağlantısı kesilmiş bir Azure Stack ortamında App Service'e dağıtım yapmak hakkında ayrıntılı yönergeler.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: d65489d0c401158b83ac20f4314fe6bdae886107
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 1dfe1cba366d9b30c53a43724741c9a9e0f65819
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64983839"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618537"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>AD FS tarafından güvenliği bağlantısı kesilmiş bir Azure Stack ortamına bir App Service kaynak sağlayıcısı ekleme
 
@@ -101,7 +101,7 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
        1. Seçin **kaynak grubu** sanal ağınıza; içeren
        2. Doğru seçin **sanal ağ** ; dağıtmak istediğiniz adı
        3. Doğru seçin **alt** gerekli rol alt ağlar; değerleri
-       4. **İleri**’ye tıklayın
+       4. **İleri**'ye tıklayın.
 
       ![Uygulama hizmeti yükleyicisi][5]
 
@@ -125,7 +125,7 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
 
 11. Her üç sertifika dosya kutularında, **Gözat** ve ardından uygun sertifika dosyasına gidin. Her sertifika için parola belirtmeniz gerekir. Bu sertifikalar, oluşturduğunuz olanlardır [Oluştur gerekli sertifikalar adımında](azure-stack-app-service-before-you-get-started.md#get-certificates). Tıklayın **sonraki** tüm bilgileri girdikten sonra.
 
-    | Box | Sertifika dosyası adı örneği |
+    | Kutu | Sertifika dosyası adı örneği |
     | --- | --- |
     | **App Service varsayılan SSL sertifika dosyası** | \_.appservice.local.AzureStack.external.pfx |
     | **App Service API SSL sertifika dosyası** | api.appservice.local.AzureStack.external.pfx |
@@ -211,13 +211,13 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
 
 > [!NOTE]
 > Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir.  Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-> * Kaynak: Herhangi biri
+> * Kaynak: Herhangi
 > * Kaynak bağlantı noktası aralığı: *
 > * Hedef: IP Adresleri
 > * Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
 > * Hedef bağlantı noktası aralığı: 445
 > * Protokol: TCP
-> * Eylem: İzin Ver
+> * Eylem: İzin ver
 > * Önceliği: 700
 > * Ad: Outbound_Allow_SMB445
 >

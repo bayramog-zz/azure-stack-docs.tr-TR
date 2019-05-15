@@ -3,7 +3,7 @@ title: Azure Stack geliştirme Seti'ni (ASDK) giriş | Microsoft Docs
 description: ASDK yenilikler açıklanır ve Microsoft Azure Stack değerlendirme ortak kullanım durumları.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 02/08/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: edde001bece869e1398ee13fbcc7b3fa32616cfa
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 08f5d51eb4ded47d1e52ec53d4c75903d13c8815
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64290027"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617656"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Azure Stack geliştirme Seti'ni nedir?
 [Microsoft Azure Stack tümleşik sistemleri](../operator/azure-stack-overview.md) aralık boyutu 4-16 düğümlerden ve tüm dünyada bir donanım iş ortağı ve Microsoft tarafından desteklenir. Azure Stack tümleşik sistemleri, üretim iş yükleriniz için yeni senaryoları etkinleştirmek için kullanın. Tümleşik sistemler altyapıyı yöneten ve hizmetleri sunan Azure Stack operatörü kullanıyorsanız bkz bizim [operatör belgeleri](/azure-stack/operator).

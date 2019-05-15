@@ -3,7 +3,7 @@ title: Azure Stack yedekleme | Microsoft Docs
 description: İsteğe bağlı yedekleme yerinde yedekleme ile Azure Stack üzerinde gerçekleştirin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: 9565DDFB-2CDB-40CD-8964-697DA2FFF70A
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 685183f61c1574d8c533efad8a7e0c46b1e2d23c
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: dc2805b868475a181a0eb1902d0e238e14193cd8
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64290346"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618792"
 ---
 # <a name="back-up-azure-stack"></a>Azure yığını yedekleme
 

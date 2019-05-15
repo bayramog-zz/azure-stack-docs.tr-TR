@@ -3,7 +3,7 @@ title: Ağ tümleştirme konuları için Azure Stack tümleşik sistemleri | Mic
 description: Çok düğümlü Azure Stack ile veri merkezi ağ tümleştirmesi planlamak için neler yapabileceğinizi öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 6286b8531a85abe6378b7ada419af7eb9f86b40e
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: a839faa7ec5a93a506ad967f3449ee1788f1a21a
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985011"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618503"
 ---
 # <a name="network-connectivity"></a>Ağ bağlantısı
 Bu makalede, Azure Stack mevcut ağ ortamınıza en iyi şekilde tümleştirmek nasıl karar vermenize yardımcı olmak için Azure Stack ağ altyapı bilgileri sağlar. 
@@ -40,7 +40,7 @@ Mantıksal ağlar temeldeki fiziksel ağ altyapısının bir soyutlamasını tem
 
 Aşağıdaki tabloda, mantıksal ağlar ve planlamanız gereken ilişkili IPv4 alt ağ aralıklarını gösterilmektedir:
 
-| Mantıksal Ağ | Açıklama | Boyut | 
+| Mantıksal Ağ | Açıklama | Boyutlandır | 
 | -------- | ------------- | ------------ | 
 | Genel VIP | Azure Stack 31 adresleri bu ağ üzerinden toplam kullanır. Rest, Kiracı sanal makineler tarafından kullanılır ve sekiz genel IP adresleri Azure Stack'i Hizmetleri küçük bir kümesi için kullanılır. App Service ve SQL kaynak Sağlayıcısı'nı kullanmayı planlıyorsanız, 7 daha fazla adresleri kullanılır. Kalan 15 IP'ler, gelecekte Azure Hizmetleri için ayrılmıştır. | / 26 (62 konakları) - /22 (1022 ana)<br><br>Önerilen /24 (254 ana bilgisayardan) = | 
 | Geçiş altyapısı | Noktadan noktaya yönlendirme amacıyla, adanmış IP adresleri yönetim arabirimleri ve anahtara atanmış geri döngü adresi geçin. | /26 | 

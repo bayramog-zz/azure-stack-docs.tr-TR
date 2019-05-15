@@ -2,22 +2,21 @@
 title: ASDK kullanarak bir Azure Stack yedekleme doğrulama | Microsoft Docs
 description: ASDK kullanarak bir Azure Stack tümleşik sistemleri yedeklemeyi doğrulama yapma.
 services: azure-stack
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-origin.date: 02/15/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 02/15/2019
+ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 02/15/2019
-ms.openlocfilehash: b2f85366ed9d5f3b526549b220fe6b55f5e6c13f
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 6d300c54044f2eb22eac8efe6f9434660d0b6fb8
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64295395"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617325"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Azure Stack yedekleme doğrulamak için ASDK kullanın
 Azure Stack dağıtma ve kullanıcı kaynaklarını tekliflerini, planları, kotalar ve abonelikler gibi sağlama sonra yapmanız gerekenler [Azure Stack altyapısını yedekleme etkinleştir](../operator/azure-stack-backup-enable-backup-console.md). Zamanlama ve normal altyapı yedeklemeleri geri dönülemez bir donanım veya Hizmeti hatası olması durumunda altyapı Yönetimi veri kaybı olmadığından sağlayacaktır.

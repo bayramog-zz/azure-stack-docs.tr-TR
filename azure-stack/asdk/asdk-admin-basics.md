@@ -3,7 +3,7 @@ title: Azure Stack Geliştirme Seti temel bilgileri | Microsoft Docs
 description: Azure Stack geliştirme Seti'ni (ASDK) için temel yönetim görevlerini gerçekleştirmek nasıl açıklar.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/19/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 4dc4f1696266234d5aaaa14f27fbf4a0ba458108
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: ab88d8bb2821fc73e0e97e7a3473d7416c38e6f7
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64290016"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617368"
 ---
 # <a name="asdk-administration-basics"></a>ASDK yönetim temel bilgileri 
 Azure Stack geliştirme Seti'ni (ASDK) yönetim için yeni bilmeniz gereken birkaç şey vardır. Bu kılavuz değerlendirme ortamında Azure Stack operatörü olarak sizin rolünüze genel bir bakış sağlar ve test kullanıcılarınızın emin olmak nasıl hızlı şekilde üretken hale gelebilir.

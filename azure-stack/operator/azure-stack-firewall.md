@@ -3,8 +3,8 @@ title: Azure Stack güvenlik duvarı Azure Stack için planlama tümleşik siste
 description: Azure Stack Azure bağlı çok düğümlü dağıtımlar için Azure Stack güvenlik duvarı konuları açıklanmaktadır.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,17 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 02/12/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 02/12/2019
+ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 023201d221ee5d7ec884c6a760407e8da8340d3f
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: a98f89866fd7679a0d6ce7c6ecb40d7e8e8b51e7
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64297595"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618676"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack güvenlik duvarı tümleştirmesi
 Güvenli Azure yığını için bir güvenlik duvarı cihaz kullanmanız önerilir. Güvenlik duvarları, içerik denetleme dağıtılmış--hizmet reddi (DDOS) saldırıları ve izinsiz giriş algılama gibi şeyler karşı korumanıza yardımcı olur. Ancak, bunlar da bloblar, tablolar ve Kuyruklar gibi Azure depolama hizmetleri için bir aktarım hızı performans sorunu haline gelebilir.

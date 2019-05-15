@@ -3,7 +3,7 @@ title: Azure Stack için planlama işlem kapasitesi | Microsoft Docs
 description: Azure Stack dağıtımlar için planlama işlem kapasitesi hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: prchint
 ms.lastreviewed: 04/03/2019
 ms.custom: ''
-ms.openlocfilehash: f20dd8499abf4d8c7fd2097d47e655790c19d33d
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 907a10caa2a23b58d0c63ee1abb7f4e4a074d1a1
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64983994"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65618920"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Azure Stack işlem kapasitesi planlama
 [Azure Stack üzerinde desteklenen VM boyutları](../user/azure-stack-vm-sizes.md) Azure'da desteklediği bir alt kümesidir. Azure kaynak sınırları boyunca operasyonda ekstra tüketimi kaynakların (yerel ve hizmet düzeyi sunucusu) önlemek için birçok vektörleri uygular. Diğer kiracıların kaynakları overconsume, Kiracı kullanımı için bazı limitler izlenmesi olmadan Kiracı deneyimleri düşer. Sanal makineden ağ çıkışı için Azure sınırlamaları eşleşen bant genişliği sınırlaması Azure Stack'te yerinde vardır. Depolama kaynakları için depolama IOPS limitlerine depolama erişimi için kiracılar tarafından temel operasyonda ekstra tüketimi kaynak önlemek için Azure Stack üzerinde uygulanmıştır.  

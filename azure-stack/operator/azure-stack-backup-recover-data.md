@@ -3,8 +3,8 @@ title: Azure Stack altyapısını Yedekleme hizmetini kullanarak, geri dönülem
 description: Azure Stack, başarısız olmasına kullanabilirsiniz geri dönülemez bir hataya sebep olduğunda Azure Stack dağıtımınıza kurulmadan olduğunda altyapı verilerinizi geri yükleme.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 editor: ''
 ms.assetid: 2ECE8580-0BDE-4D4A-9120-1F6771F2E815
 ms.service: azure-stack
@@ -12,17 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 02/12/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 02/12/2019
+ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 3fd91ef17415e2c6ebb735fdedb098f8aa319d8c
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: f459804d33871ec97bf50e55ed01685001dcbfc7
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64292425"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617923"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Geri dönülemez veri kaybından kurtarma
 
@@ -38,7 +37,7 @@ Bu senaryo, bir arıza olması durumunda, tüm yükleme ekipmanları ve özel bu
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
 | Olağanüstü durum ya da ürün hatası nedeniyle geri dönülemez veri kaybından kurtarma | Tüm altyapı ve kullanıcı ve uygulama verileri | Kullanıcı uygulama ve veri altyapısı verilerinden ayrı olarak korunur |
 
-## <a name="workflows"></a>İş akışları
+## <a name="workflows"></a>İş Akışları
 
 Azure başlangıç korumanın yolculuğu, altyapı ve uygulama/Kiracı verilerini ayrı olarak yedekleme ile başlar. Bu belge altyapısını koruma nasıl etkinleştireceğinizi de açıklar. 
 
@@ -48,7 +47,7 @@ Tüm veriler kaybolur burada kötü örneği senaryoları Azure Stack kurtarma, 
 
 ![Azure Stack'i yeniden dağıtma](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
-## <a name="restore"></a>Geri Yükleme
+## <a name="restore"></a>Geri yükle
 
 Azure Stack bilgisayarını yeniden dağıtma işlemi, geri dönülemez veri kaybı, ancak donanım hala kullanılabilir, gereklidir. Dağıtım sırasında yedeklemelere erişmek için gerekli kimlik bilgilerini ve depolama konumunu belirtebilirsiniz. Bu modda, geri yüklenmesi gereken hizmetleri belirtmek için gerek yoktur. Altyapı yedekleme denetleyicisi denetim düzlemi durum dağıtım iş akışının bir parçası olarak ekler.
 
@@ -76,5 +75,3 @@ Dağıtım sırasında bir hizmet (PaaS) kaynak olarak altyapı (Iaas) veya plat
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İçin en iyi uygulamalar hakkında bilgi edinin [altyapısını Yedekleme hizmetini kullanarak](azure-stack-backup-best-practices.md).
-
-<!-- Update_Description: update metedata properties -->

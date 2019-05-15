@@ -3,7 +3,7 @@ title: Azure Stack geliştirme Seti'ni (ASDK) yeniden | Microsoft Docs
 description: Bu makalede, ASDK yeniden öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.custom: ''
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 2ebb7c702eeb2c7f04f61f6bbc79aa0edaf8a860
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 0658943a36673df4658b6f1951ed7992996aba41
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64292469"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617483"
 ---
 # <a name="redeploy-the-asdk"></a>ASDK yeniden dağıtma
 Bu makalede, Azure Stack geliştirme Seti'ni (ASDK) bir üretim dışı ortamda yeniden öğrenin. ASDK yükseltme desteklenmediğinden, tamamen yeni bir sürüme taşımak için yeniden dağıtmanız gerekir. Ayrıca, yalnızca sıfırdan başlamak istiyorsanız dilediğiniz zaman ASDK yeniden dağıtabilirsiniz.
@@ -61,7 +61,7 @@ Kayıt kaynak kaldırmak için **Remove-AzsRegistration** Azure Stack kaydını 
 3. Komut dosyası çalıştığında, Azure aboneliğinizin ve yerel ASDK yükleme için oturum istenir.
 4. Betik tamamlandığında aşağıdaki örneklere benzer bir ileti görmeniz gerekir:
 
-    `De-Activating Azure Stack (this may take up to 10 minutes to complete).` `Your environment is now unable to syndicate items and is no longer reporting usage data.`
+    `De-Activating Azure Stack (this may take up to 10 minutes to complete).``Your environment is now unable to syndicate items and is no longer reporting usage data.`
     `Remove registration resource from Azure...`
     `"Deleting the resource..." on target "/subscriptions/<subscription information>"`
     `********** End Log: Remove-AzsRegistration *********`

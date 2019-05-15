@@ -3,7 +3,7 @@ title: İndirin ve ayıklayın Azure Stack geliştirme Seti'ni (ASDK) | Microsof
 description: İndirmeyi ve ayıklamayı Azure Stack geliştirme Seti'ni (ASDK) açıklar.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2018
-ms.openlocfilehash: 01849e54ffcabe671bb777c48bdd94e91fd40f98
-ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
+ms.openlocfilehash: 90698c6d08d672147a9a7cc93aad4f5f2cfd2619
+ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65172471"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65617436"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>İndirin ve Azure Stack geliştirme Seti'ni (ASDK) ayıklayın
 Geliştirme Seti ana bilgisayarınız ASDK yüklemeye yönelik temel gereksinimleri karşıladığından emin olduktan sonra indirmeyi ve ayıklamayı ASDK dağıtım paketi Cloudbuilder.vhdx almak için sonraki adım olacaktır.
