@@ -14,38 +14,38 @@ ms.date: 03/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: f6e9e8836cb2bbc16dbad7484f0b90ce1af5606a
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: f7631b049197c0721ffa801c225e1ecdf853524f
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64986102"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712480"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Depolama Gezgini'ni Azure Stack aboneliğine veya bir depolama hesabına bağlama
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Bu makalede, Azure Stack aboneliklerini ve Depolama Gezgini'ni kullanarak depolama hesapları nasıl bağlayacağınızı öğreneceksiniz. Azure Depolama Gezgini Windows, macOS ve Linux'ta Azure Stack depolama verilerle kolayca çalışmanızı sağlayan bir tek başına uygulamadır.
+Depolama hesaplarını kullanarak ve bu makalede, Azure Stack aboneliklerinize bağlanma hakkında bilgi edinin [Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer). Depolama Gezgini Windows, macOS ve Linux'ta Azure Stack depolama verilerle kolayca çalışmanızı sağlayan bir tek başına uygulamadır.
 
 > [!NOTE]  
 > Ve Azure Stack depolama alanından verileri taşımak birkaç araç vardır. Daha fazla bilgi için [veri aktarımı için Azure Stack depolama Araçları](azure-stack-storage-transfer.md).
 
-Depolama Gezgini'ni henüz yüklemediyseniz [Depolama Gezgini'ni indirin](https://www.storageexplorer.com/) ve yükleyin.
+Henüz yüklü değilse [Depolama Gezgini'ni indirin](https://www.storageexplorer.com/) ve yükleyin.
 
-Azure Stack aboneliğine veya bir depolama hesabına bağlandıktan sonra kullanabileceğiniz [Azure Depolama Gezgini makaleleri](/azure/vs-azure-tools-storage-manage-with-storage-explorer) Azure Stack verilerinizle çalışmaya. 
+Bir Azure Stack aboneliğine veya depolama hesabına bağlandıktan sonra kullanabileceğiniz [Azure Depolama Gezgini makaleleri](/azure/vs-azure-tools-storage-manage-with-storage-explorer) Azure Stack verilerinizle çalışmaya. 
 
 ## <a name="prepare-for-connecting-to-azure-stack"></a>Azure Stack'e bağlamak için hazırlama
 
-Azure Stack veya bir VPN bağlantısı için Depolama Gezgini'ni Azure Stack aboneliğine erişmek doğrudan erişmeniz gerekir. Azure Stack ile VPN bağlantısı kurma hakkında bilgi edinmek için bkz. [VPN ile Azure Stack’e Bağlanma](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
+Azure Stack veya bir VPN bağlantısı için Depolama Gezgini'ni Azure Stack aboneliğine erişmek için doğrudan erişmeniz gerekir. Azure Stack ile VPN bağlantısı kurma hakkında bilgi edinmek için bkz. [VPN ile Azure Stack’e Bağlanma](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
 
 Azure Stack geliştirme Seti'ni (ASDK için), Azure Stack yetkili kök sertifikasını dışarı aktarmanız gerekmez.
 
 > [!Note]  
-> VPN aracılığıyla, ASDK bağlanıyorsanız ASDK için VPN Kurulum işlemi sırasında oluşturulan kök sertifikayı (CA.cer) kullanmayın.  Bu DER kodlu bir sertifika olduğundan ve depolama Gezgini'nin Azure Stack aboneliklerinizi izin vermez. Depolama Gezgini ile kullanmak üzere bir Base-64 kodlamalı sertifika vermek için aşağıdaki adımları izleyin.
+> VPN aracılığıyla, ASDK bağlıyorsanız ASDK için VPN Kurulum işlemi sırasında oluşturulan kök sertifikayı (CA.cer) kullanmayın.  Bu DER kodlu bir sertifika ve depolama Gezgini'nin Azure Stack aboneliklerinizi izin vermez. Depolama Gezgini ile kullanmak üzere bir Base-64 kodlamalı sertifika vermek için aşağıdaki adımları izleyin.
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Dışarı aktarma ve ardından Azure Stack sertifikayı alın.
 
-Dışarı aktarın ve sonra Azure Stack sertifika için ASDK alın. Tümleşik sistem için sertifika herkese açık şekilde imzalanmış. Bu nedenle, sistem tümleşik Azure Stack için Depolama Gezgini bağlantı kurma sırasında bu adım gerekli değildir.
+Dışarı aktarın ve sonra Azure Stack sertifika için ASDK alın. Tümleşik sistemler için sertifika ortak olarak imzalanmış ve bu adım gerekli değildir.
 
 1. Açık `mmc.exe` bir Azure Stack ana makinesi veya Azure Stack VPN bağlantısı olan yerel makine üzerinde. 
 
@@ -53,7 +53,7 @@ Dışarı aktarın ve sonra Azure Stack sertifika için ASDK alın. Tümleşik s
 
 3. Seçin **bilgisayar hesabı**ve ardından **sonraki**. Seçin **yerel bilgisayar**ve ardından **son**.
 
-4.  Altında **konsol kökü\sertifikalı (yerel bilgisayar) \Trusted kök sertifika Yetkilileri\Sertifikalar**. Bulma **AzureStackSelfSignedRootCert**.
+4.  Altında **konsol kökü\sertifikalı (yerel bilgisayar) \Trusted Root Certification Authorities\Certificates** Bul **AzureStackSelfSignedRootCert**.
 
     ![mmc.exe dosyası ile Azure Stack kök sertifikasını yükleme](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
@@ -61,7 +61,7 @@ Dışarı aktarın ve sonra Azure Stack sertifika için ASDK alın. Tümleşik s
 
     Dışarı aktarılan sertifika sonraki adımda kullanılır.
 
-6. Depolama Gezgini'ni başlatın ve görürseniz **Azure Storage'a Bağlan** iletişim kutusunda, iptal edin.
+6. Depolama Gezgini'ni başlatın. Görürseniz **Azure Storage'a Bağlan** iletişim kutusunda, iptal edin.
 
 7. Üzerinde **Düzenle** menüsünde **SSL sertifikaları**ve ardından **sertifikaları içeri aktar**. Dosya seçici iletişim kutusunu kullanarak, önceki adımda dışarı aktardığınız sertifikayı açın.
 
@@ -69,7 +69,7 @@ Dışarı aktarın ve sonra Azure Stack sertifika için ASDK alın. Tümleşik s
 
     ![Depolama Gezgini'ne sertifikayı içe aktarın](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-8. Depolama Gezgini'ni yeniden başlatıldıktan sonra seçin **Düzenle** menü ve olmadığını görmek için onay **hedef Azure Stack API'leri** seçilir. Aksi takdirde seçin **hedef Azure Stack**ve etkili olması için Depolama Gezgini'ni yeniden başlatın. Bu yapılandırma, Azure Stack ortamınıza uyum için gereklidir.
+8. Depolama Gezgini'ni yeniden başlatıldıktan sonra seçin **Düzenle** menü ve olmadığını görmek için onay **hedef Azure Stack API'leri** seçilir. Aksi takdirde seçin **hedef Azure Stack**ve değişikliğin etkili olması için Depolama Gezgini'ni yeniden başlatın. Bu yapılandırma, Azure Stack ortamınıza uyum için gereklidir.
 
     ![Hedef Azure Stack’in seçili olduğundan emin olun](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
@@ -77,14 +77,14 @@ Dışarı aktarın ve sonra Azure Stack sertifika için ASDK alın. Tümleşik s
 
 Depolama Gezgini, bir Azure Active Directory (Azure AD) hesaba ait bir Azure Stack aboneliğine bağlanmak için aşağıdaki adımları kullanın.
 
-1. Storage explorer'ın sol bölmesinde seçin **hesaplarını yönetme**. 
+1. Storage Explorer'ın sol bölmesinde seçin **hesaplarını yönetme**.  
     Oturumunuz, tüm Microsoft aboneliği görüntülenir.
 
 2. Azure Stack aboneliğine bağlamak için seçin **Hesap Ekle**.
 
     ![Azure Stack hesabı ekleme](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. Azure depolama iletişim kutusu, Bağlan altında **Azure ortamı**seçin **Azure**, **Azure Çin**, **Azure Almanya**,  **Azure ABD kamu**, veya **yeni ortam Ekle**, kullanılan Azure Stack hesabı bağlıdır. Seçin **oturum** en az bir etkin Azure Stack aboneliğiyle ilişkili Azure Stack hesabıyla oturum açmak için.
+3. Azure depolama iletişim kutusu, Bağlan altında **Azure ortamı**seçin **Azure**, **Azure Çin 21Vianet**, **Azure Almanya**, **Azure ABD kamu**, veya **yeni ortam Ekle**. Bu Azure Stack hesabı kullanılan bağlıdır. Seçin **oturum** en az bir etkin Azure Stack aboneliğiyle ilişkili Azure Stack hesabıyla oturum açmak için.
 
     ![Azure depolamaya bağlanma](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 
@@ -105,7 +105,7 @@ Depolama Gezgini, bir AD FS hesabına ait olan bir Azure Stack aboneliğine bağ
 1. Seçin **hesaplarını yönetme**. Gezgini için imzalı Microsoft abonelikleri listeler.
 2. Seçin **Hesap Ekle** Azure Stack aboneliğine bağlanma.
 
-    ![Hesap ekleme](media/azure-stack-storage-connect-se/add-an-account.png)
+    ![Depolama Gezgini - Hesap Ekle](media/azure-stack-storage-connect-se/add-an-account.png)
 
 3. **İleri**’yi seçin. Azure depolama iletişim kutusu, Bağlan altında **Azure ortamı**seçin **kullanım özel ortam**, ardından **sonraki**.
 
@@ -120,13 +120,13 @@ Depolama Gezgini, bir AD FS hesabına ait olan bir Azure Stack aboneliğine bağ
 
     Çalışıyorsanız üzerinde Azure Stack tümleşik sistemi ve olmayan yönetim uç noktanıza bilmeniz, operatörünüze başvurun.
 
-    ![Hesap ekleme](./media/azure-stack-storage-connect-se/custom-environments.png)
+    ![Hesap - özel ortam Ekle](./media/azure-stack-storage-connect-se/custom-environments.png)
 
-5. Seçin **oturum**, en az bir etkin Azure Stack aboneliğiyle ilişkili Azure Stack hesabına bağlanmak için.
+5. Seçin **oturum** en az bir etkin Azure Stack aboneliğiyle ilişkili Azure Stack hesabına bağlanmak için.
 
 
 
-6. Birlikte çalışmak istediğiniz Azure Stack aboneliklerini seçin. **Uygula**’yı seçin.
+6. Çalışmak ve ardından istediğiniz Azure Stack aboneliklerini seçin **Uygula**.
 
     ![Hesap yönetimi](./media/azure-stack-storage-connect-se/account-management.png)
 
@@ -138,17 +138,17 @@ Depolama Gezgini, bir AD FS hesabına ait olan bir Azure Stack aboneliğine bağ
 
 Depolama hesabı adı ve anahtar çiftini kullanarak bir Azure Stack depolama hesabınıza da bağlanabilirsiniz.
 
-1. Storage explorer'ın sol bölmesinde hesapları Yönet'i seçin. Oturumunuz, tüm Microsoft hesapları görüntülenir.
+1. Storage Explorer'ın sol bölmesinde hesapları Yönet'i seçin. Oturum açmış tüm Microsoft hesapları görüntülenir.
 
-    ![Hesap ekleme](./media/azure-stack-storage-connect-se/azure-stack-sub-add-an-account.png)
+    ![Depolama Gezgini - Hesap Ekle](./media/azure-stack-storage-connect-se/azure-stack-sub-add-an-account.png)
 
 2. Azure Stack aboneliğine bağlamak için seçin **Hesap Ekle**.
 
-    ![Hesap ekleme](./media/azure-stack-storage-connect-se/azure-stack-use-a-storage-and-key.png)
+    ![-Hesap Ekle Azure Depolama'ya Bağlan](./media/azure-stack-storage-connect-se/azure-stack-use-a-storage-and-key.png)
 
 3. Bağlan iletişim kutusunda Azure depolama, seçin **bir depolama hesabı adı ve anahtarı kullan**.
 
-4. Hesap adınızı giriş **hesap adı**, hesap anahtarını yapıştırın **hesap anahtarı** metin kutusunda **diğer (aşağıda girin)** içinde **depolama uç noktaları etki alanı** ve Azure Stack uç noktası girin.
+4. Hesap adınızı giriş **hesap adı** ve hesap anahtarını yapıştırın **hesap anahtarı** metin kutusu. Ardından, **diğer (aşağıda girin)** içinde **depolama uç noktaları etki alanı** ve Azure Stack uç noktası girin.
 
     Bir Azure Stack uç nokta iki bölümleri içerir: bir bölge ve Azure Stack etki alanı adı. Azure Stack geliştirme Seti'ni varsayılan uç noktadır **local.azurestack.external**. Uç noktanız hakkında emin değilseniz, bulut yöneticinize başvurun.
 

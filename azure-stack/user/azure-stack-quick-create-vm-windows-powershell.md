@@ -16,12 +16,12 @@ ms.author: mabrigg
 ms.custom: mvc
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 04b2f2a5e4e9caa8e8eacc47b44c60a6884a6837
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: d6293aec1d9a4a7ce58442b21302c09162cc3a61
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64986041"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712448"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te PowerShell kullanarak bir Windows Server sanal makinesi oluşturma
 
@@ -42,11 +42,14 @@ Azure Stack PowerShell kullanarak bir Windows Server 2016 sanal makine (VM) olu�
 
 * Azure Stack, Azure kaynaklarını oluşturmak ve yönetmek için PowerShell belirli bir sürümünü gerektirir. Azure Stack için yapılandırılmış PowerShell yoksa, adımları [yükleme](../operator/azure-stack-powershell-install.md) PowerShell.
 
-* Azure Stack ayarlanan PowerShell ile Azure Stack ortamınıza bağlanmak gerekir. Yönergeler için bkz [bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma](azure-stack-powershell-configure-user.md).
+* Azure Stack ayarlanan PowerShell ile Azure Stack ortamınıza bağlamanız gerekecektir. Yönergeler için bkz [bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma](azure-stack-powershell-configure-user.md).
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
 
-Bir kaynak grubu ile hangi Azure Stack kaynakların dağıtıldığı ve yönetildiği mantıksal bir kapsayıcıdır. Uygulamanızı Geliştirme Seti veya Azure Stack tümleşik sistemi, bir kaynak grubu oluşturmak için aşağıdaki kod bloğu çalıştırın. Bu belgedeki tüm değişkenler için değerler atanır, şu değerleri kullanın veya yeni değerler atayın.
+Bir kaynak grubu ile hangi Azure Stack kaynakların dağıtıldığı ve yönetildiği mantıksal bir kapsayıcıdır. Uygulamanızı Geliştirme Seti veya Azure Stack tümleşik sistemi, bir kaynak grubu oluşturmak için aşağıdaki kod bloğu çalıştırın. 
+
+> [!NOTE]
+> Kod örnekleri tüm değişkenler için değerler atanır. Ancak, isterseniz yeni değerler atayabilirsiniz.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -109,7 +112,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Ağ güvenliği grubu ve ağ güvenliği grup kuralı oluşturma
 
-Ağ güvenlik grubu, gelen ve giden kuralları kullanarak sanal makinenin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin verecek şekilde 3389 numaralı bağlantı noktası için bir gelen kuralı ve gelen web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturma olanak tanır.
+Ağ güvenlik grubu, gelen ve giden kuralları kullanarak sanal makinenin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin verecek şekilde 3389 numaralı bağlantı noktası için bir gelen kuralı ve gelen web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturalım.
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -159,7 +162,7 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
 
 Sanal makine yapılandırması oluşturun. Bu yapılandırma, sanal makineyi dağıtırken kullanılan ayarları içerir. Örneğin: kimlik bilgileri, boyutu ve sanal makine görüntüsü.
 
@@ -214,7 +217,7 @@ Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
 
-Sanal makineyle bir Uzak Masaüstü oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin publicIPAddress değeriyle değiştirin. İstendiğinde kullanıcı adı ve sanal makine oluştururken kullandığınız parolayı girin.
+Sanal makineyle bir Uzak Masaüstü oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin *publicIPAddress* değeriyle değiştirin. İstendiğinde kullanıcı adı ve sanal makineyi oluştururken kullandığınız parolayı girin.
 
 ```powershell
 mstsc /v <publicIpAddress>
@@ -222,7 +225,7 @@ mstsc /v <publicIpAddress>
 
 ## <a name="install-iis-via-powershell"></a>PowerShell kullanarak IIS yükleme
 
-Azure VM’de oturum açtıktan sonra tek bir PowerShell satırı kullanarak IIS yükleyebilir ve web trafiğine izin vermek üzere yerel güvenlik duvarı kuralını etkinleştirebilirsiniz. Bir PowerShell istemi açın ve şu komutu çalıştırın:
+Azure VM'ye açtıktan sonra IIS'i çalıştırmanız ve web trafiğine izin veren yerel güvenlik duvarı kuralı etkinleştirmek için tek satırlık bir PowerShell kullanabilirsiniz. Bir PowerShell istemi açın ve şu komutu çalıştırın:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -230,11 +233,11 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>IIS karşılama sayfasını görüntüleme
 
-IIS yüklü olan ve 80 numaralı bağlantı noktası sanal makinenizde, varsayılan IIS Karşılama sayfasını görüntülemek için seçtiğiniz bir web tarayıcısını kullanabilirsiniz. Kullanım *Publicıpaddress* varsayılan sayfayı ziyaret etmek için önceki bölümde belgelenmiştir.
+IIS yüklü olan ve 80 numaralı bağlantı noktası sanal makinenizde, herhangi bir tarayıcıda, varsayılan IIS Karşılama sayfasını görüntülemek için kullanabilirsiniz. Kullanım *Publicıpaddress* varsayılan sayfayı ziyaret etmek için önceki bölümde belgelenmiştir.
 
 ![Varsayılan IIS sitesi](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
-## <a name="delete-the-virtual-machine"></a>Sanal makineyi silme
+## <a name="delete-the-virtual-machine"></a>Şu sanal makineyi silin:
 
 Artık gerekli değilse sanal makine ve ilgili kaynaklarını içeren kaynak grubunu kaldırmak için aşağıdaki komutu kullanın:
 

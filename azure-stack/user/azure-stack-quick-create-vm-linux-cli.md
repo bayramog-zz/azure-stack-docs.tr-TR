@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te Azure CLI kullanarak bir Linux sanal makinesi oluşturma | Microsoft Docs
-description: Azure stack'teki CLI ile Linux sanal makinesi oluşturun.
+title: Azure Stack'te Azure CLI kullanarak bir Linux sanal makinesi oluşturun | Microsoft Docs
+description: Azure Stack'te CLI kullanarak bir Linux sanal makinesi oluşturun.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,14 +15,14 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: aa744414b554d5da72a63e8af6371bc94b2d6b39
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: d31ee453dda8bb83ff24c07902d7a1250490bb08
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64477384"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712392"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te Azure CLI kullanarak bir Linux server sanal makinesi oluşturma
+# <a name="quickstart-create-a-linux-server-virtual-machine-using-azure-cli-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te Azure CLI kullanarak bir Linux sunucusu sanal makinesi oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -38,26 +38,26 @@ Azure CLI kullanarak bir Ubuntu Server 16.04 LTS sanal makine oluşturabilirsini
 
    Azure Stack marketini varsayılan olarak bir Linux görüntüsü içermiyor. Azure Stack operatörü sağlamak için alma **Ubuntu Server 16.04 LTS** ihtiyacınız görüntü. İşleç açıklanan bu adımları kullanabilirsiniz [indirme Market öğesi Azure'dan Azure Stack'e](../operator/azure-stack-download-azure-marketplace-item.md) makalesi.
 
-* Azure Stack kaynakları oluşturup yönetmek için Azure CLI'yı belirli bir sürümünü gerektirir. Azure Stack için yapılandırılmış Azure CLI yoksa, oturum [Geliştirme Seti](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), ya da Eğer bir Windows tabanlı dış istemci [VPN üzerinden bağlı](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) için adımları [ Azure CLI'yi yükleme ve yapılandırma](azure-stack-version-profiles-azurecli2.md).
+* Azure Stack kaynakları oluşturup yönetmek için Azure CLI'yı belirli bir sürümünü gerektirir. Azure Stack için yapılandırılmış Azure CLI yoksa, oturum [Geliştirme Seti](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) (veya size bir Windows tabanlı dış istemci [VPN üzerinden bağlı](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)) için adımları [ Azure CLI'yi yükleme ve yapılandırma](azure-stack-version-profiles-azurecli2.md).
 
 * Bir ortak SSH anahtarının Windows kullanıcı profilinizin .ssh dizininde kaydedilen adı id_rsa.pub ile. SSH anahtarları oluşturma hakkında ayrıntılı bilgi için bkz: [SSH ortak anahtarı kullanmayı](azure-stack-dev-start-howto-ssh-public-key.md).
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
 
 Bir kaynak grubu, dağıtma ve Azure Stack kaynaklarını yönetme mantıksal bir kapsayıcıdır. Geliştirme Seti ya da Azure Stack tümleşik sistemi çalıştırın, [az grubu oluşturma](/cli/azure/group#az-group-create) bir kaynak grubu oluşturmak için komutu.
 
 > [!NOTE]
->  Kod örnekleri tüm değişkenler için değerler atanır. Ancak, isterseniz yeni değerler atayabilirsiniz.
+> Kod örnekleri tüm değişkenler için değerler atanır. Ancak, isterseniz yeni değerler atayabilirsiniz.
 
-Aşağıdaki örnek, yerel konuma myResourceGroup adlı bir kaynak grubu oluşturur.
+Aşağıdaki örnek, yerel konuma myResourceGroup adlı bir kaynak grubu oluşturur: 
 
 ```cli
 az group create --name myResourceGroup --location local
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
 
-Kullanarak bir sanal makine oluşturma [az vm oluşturma](/cli/azure/vm#az-vm-create) komutu. Aşağıdaki örnek, myVM adlı bir VM oluşturur. Bu örnekte yönetici kullanıcı adı için Demouser ve Demouser@123 kullanıcı parolası. Bu değerleri ortamınız için uygun bir şey değiştirin.
+Kullanarak bir sanal makine oluşturma [az vm oluşturma](/cli/azure/vm#az-vm-create) komutu. Aşağıdaki örnek, myVM adlı bir VM oluşturur. Bu örnek, bir yönetici kullanıcı adı için Demouser kullanır ve Demouser@123 yönetici parolası. Bu değerleri ortamınız için uygun bir şey değiştirin.
 
 ```cli
 az vm create \
@@ -69,11 +69,11 @@ az vm create \
   --location local
 ```
 
-Genel IP adresini döndürülür **Publicıpaddress** parametresi. Bu adres sanal makineye erişmek için buna ihtiyacınız olduğundan yazma.
+Genel IP adresini döndürülür **Publicıpaddress** parametresi. Sanal makine için buna ihtiyacınız olduğundan, bu adres yazın.
 
 ## <a name="open-port-80-for-web-traffic"></a>Web trafiği için 80 numaralı bağlantı noktasını açın
 
-IIS web sunucusu çalıştırmak için bu sanal makine olacağından Internet trafiği için 80 numaralı bağlantı noktasını açmanız gerekir. İstediğiniz bağlantı noktasını açmak için [az vm open-port](/cli/azure/vm) komutunu kullanın.
+IIS web sunucusu çalıştırmak için bu sanal makine olacağından internet trafiği için 80 numaralı bağlantı noktasını açmanız gerekir. Kullanım [az vm open-port](/cli/azure/vm) istediğiniz bağlantı noktasını açmak için komut: 
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -103,7 +103,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX karşılama sayfasını görüntüleme
 
-NGINX ve 80 numaralı bağlantı noktası, sanal makinede, sanal makinenin genel IP adresini kullanarak web sunucusuna erişebilirsiniz. Bir web tarayıcısı açın ve gidin ```http://<public IP address>```.
+NGINX ve 80 numaralı bağlantı noktası, sanal makinede, sanal makinenin genel IP adresini kullanarak web sunucusuna erişebilirsiniz. Bir tarayıcı açın ve gidin ```http://<public IP address>```.
 
 ![NGINX web-server-Hoş Geldiniz sayfası](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 

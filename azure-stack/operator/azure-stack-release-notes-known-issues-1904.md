@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: f2e20377a976c5dba7a63d9f8cf8b3e2d100e060
-ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
+ms.lastreviewed: 05/15/2019
+ms.openlocfilehash: 86817d0d22854bf2bb0d2372f2a25e15a3de7c48
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65532256"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712303"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -69,10 +69,18 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 
 ### <a name="marketplace-management"></a>Market Yönetimi
 
-- Uygulanabilir: Bu sorun 1904 için geçerlidir.
+- Uygulanabilir: Bu sürümde 1904 yeni bir sorundur.
 - Neden: Yönetici portalında oturum açtığınızda Market yönetim ekran görünür değil.
 - Düzeltme: Tarayıcıyı yenileyin.
 - Örneği: Aralıklı
+
+### <a name="marketplace-management"></a>Market Yönetimi
+
+- Uygulanabilir: Bu sorun 1904 için geçerlidir.
+- Neden: "Azure Ekle" dikey penceresinde Yönetici portalında Market Yönetim sekmesinde sonuçlara filtre, hatalı filtrelenmiş sonuçlar görebilirsiniz. 
+- Düzeltme: Adı sütuna göre sıralama sonuçları ve sonuçları düzeltilecektir. 
+- Örneği: Aralıklı
+
 
 ### <a name="upload-blob"></a>Blobu karşıya yükle
 
@@ -83,34 +91,34 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 
 ## <a name="networking"></a>Ağ
 
-### <a name="load-balancer"></a>Yük Dengeleyici
+### <a name="load-balancer"></a>Yük dengeleyici
 
-#### <a name="add-backend-pool"></a>Arka uç havuzu Ekle
+#### <a name="add-backend-pool"></a>Arka uç havuzu ekle
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı portalında eklemeye çalışırsa bir **arka uç havuzu** için bir **yük dengeleyici**, işlem hata iletisiyle başarısız **yük dengeleyici güncelleştirilemedi...** .
-- Düzeltme: PowerShell, CLI veya Resource Manager şablonu ile bir yük dengeleyici kaynağını arka uç havuzunu ilişkilendirmek için kullanın.
+- Düzeltme: Arka uç havuzuna bir yük dengeleyici kaynağı ile ilişkilendirmek için PowerShell, CLI veya Azure Resource Manager şablonu kullanın.
 - Örneği: Ortak
 
 #### <a name="create-inbound-nat"></a>Gelen NAT'ı oluşturma
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Oluşturmayı denerseniz, Kullanıcı Portalı'nda bir **gelen NAT kuralı** için bir **yük dengeleyici**, işlem hata iletisiyle başarısız **yük dengeleyici güncelleştirilemedi...** .
-- Düzeltme: PowerShell, CLI veya Resource Manager şablonu ile bir yük dengeleyici kaynağını arka uç havuzunu ilişkilendirmek için kullanın.
+- Düzeltme: Arka uç havuzuna bir yük dengeleyici kaynağı ile ilişkilendirmek için PowerShell, CLI veya Azure Resource Manager şablonu kullanın.
 - Örneği: Ortak
 
-#### <a name="create-load-balancer"></a>Yük Dengeleyici oluşturma
+#### <a name="create-load-balancer"></a>Yük dengeleyici oluştur
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı Portalı'nda **yük dengeleyici oluşturma** penceresi oluşturma seçeneğiniz gösterir bir **standart** yük dengeleyici SKU. Bu seçenek, Azure Stack'te desteklenmiyor.
+- Neden: Kullanıcı Portalı'nda **Load Balancer oluşturma** penceresi oluşturma seçeneğiniz gösterir bir **standart** yük dengeleyici SKU. Bu seçenek, Azure Stack'te desteklenmiyor.
 - Düzeltme: Temel yük dengeleyici seçeneklerini kullanın.
 - Örneği: Ortak
 
-#### <a name="public-ip-address"></a>Genel IP Adresi
+#### <a name="public-ip-address"></a>Genel IP adresi
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı Portalı'nda **genel IP adresi oluşturma** penceresi oluşturma seçeneğiniz gösterir bir **standart** SKU. **Standart** SKU Azure Stack'te desteklenmez.
-- Düzeltme: Temel SKU genel IP adresini kullanın.
+- Düzeltme: Kullanım **temel** SKU, bunun yerine için genel IP adresleri.
 - Örneği: Ortak
 
 ## <a name="compute"></a>İşlem
@@ -149,15 +157,19 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 ### <a name="compute-host-agent-alert"></a>Konak Aracısı uyarı işlem
 
 - Uygulanabilir: Bu sürümde 1904 yeni bir sorundur.
-- Neden: "İşlem konak Aracısı uyarı görünür bir düğümü yeniden başlatıldıktan sonra ölçek birimi". Yeniden başlatma işlem konak Aracısı hizmeti için varsayılan başlangıç ayarını değiştirir.
+- Neden: A **işlem konak Aracısı** uyarı ölçek birimi bir düğümü yeniden başlatıldıktan sonra görünür. Yeniden başlatma işlem konak Aracısı hizmeti için varsayılan başlangıç ayarını değiştirir.
 - Düzeltme:
   - Bu uyarı yoksayılabilir. Aracı yanıt vermiyor, işleci ve kullanıcı işlemleri veya kullanıcı uygulamaları üzerinde hiçbir etkisi yok. El ile kapalıysa uyarı 24 saat sonra yeniden görünür.
   - Microsoft destek hizmeti için başlatma ayarı değiştirerek bu sorunu düzeltebilir. Bu, bir destek çağrısının açılmasını gerektirir. Düğümü yeniden başlatıldıysa, yeni bir uyarı görüntülenir.
 - Örneği: Ortak
 
+## <a name="app-service"></a>App Service
+
+- Kiracılar, abonelikte, ilk Azure işlevinizi oluşturmadan önce depolama kaynak sağlayıcısını kaydetmeniz gerekir.
+- Bazı Kiracı portalı kullanıcı deneyimleri 1903 portal framework ile uyumsuzluk nedeniyle bozuk; Test üretim ve site uzantıları temelde, kullanıcı Deneyimini dağıtım yuvaları için. Bu sorunu geçici olarak çözmek için kullanın [Azure App Service PowerShell modülünü](/azure/app-service/deploy-staging-slots#automate-with-powershell) veya [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest). Portal deneyimi, Azure Stack 1.6 (güncelleştirme 6) üzerinde Azure App Service'nın gelecek sürümde kurulacaktır.
+
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
-<!-- ## App Service -->
 <!-- ## Usage -->
 <!-- ### Identity -->
 <!-- ### Marketplace -->

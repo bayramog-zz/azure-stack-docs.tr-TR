@@ -16,12 +16,12 @@ ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
-ms.openlocfilehash: b2f2427f7dcf9265f379995f1e854c382e24a9c7
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 37e5ef80462f7e31d18972de007303b12b5a3108
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64297881"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712260"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Stack'te Azure Resource Manager şablonlarını kullanma
 
@@ -35,7 +35,7 @@ Aşağıdaki Hızlı Başlangıç şablonları mevcuttur [GitHub](https://aka.ms
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>SharePoint Server (yüksek kullanılabilirlik dağıtımı) dağıtın
 
-Kullanmak için PowerShell DSC uzantısı [bir SharePoint Server 2013'ü grubu oluşturma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) , aşağıdaki kaynakları içermektedir:
+PowerShell'i [Desired State Configuration](https://docs.microsoft.com/powershell/dsc/overview/overview) (DSC) uzantısı [bir SharePoint Server 2013'ü grubu oluşturma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) , aşağıdaki kaynakları içermektedir:
 
 * Bir sanal ağ
 * Üç depolama hesapları
@@ -77,7 +77,7 @@ PowerShell DSC uzantısı, var olan bir sanal makine yerel Configuration Manager
 
 ## <a name="cancel-a-running-template-deployment"></a>Çalışan bir şablon dağıtımı iptal et
 
-Çalışan bir şablon dağıtımı iptal etmek için kullanın [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell cmdlet'i.
+Çalışan bir şablon dağıtımı iptal etmek için kullanın [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet'i](https://docs.microsoft.com/powershell/developer/cmdlet/cmdlet-overview).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te PowerShell kullanarak bir Linux sanal makinesi oluşturma | Microsoft Docs
-description: Azure stack'teki PowerShell ile Linux sanal makinesi oluşturun.
+title: Azure Stack'te PowerShell kullanarak bir Linux sanal makinesi oluşturun | Microsoft Docs
+description: Azure Stack'te PowerShell kullanarak bir Linux sanal makinesi oluşturun.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,14 +15,14 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 95b81f6af8caa3e0f4dd7639614bed1b78915539
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: 55f1395d66262b268b9107f196528270c1546bba
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64477399"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712292"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te PowerShell kullanarak bir Linux server sanal makinesi oluşturma
+# <a name="quickstart-create-a-linux-server-virtual-machine-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te PowerShell kullanarak bir Linux sunucusu sanal makinesi oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -40,13 +40,16 @@ Azure Stack PowerShell kullanarak bir Ubuntu Server 16.04 LTS sanal makine oluş
 
 * Azure Stack, Azure kaynaklarını oluşturmak ve yönetmek için PowerShell belirli bir sürümünü gerektirir. Azure Stack için yapılandırılmış PowerShell yoksa, adımları [yükleme](../operator/azure-stack-powershell-install.md) PowerShell.
 
-* Azure Stack ayarlanan PowerShell ile Azure Stack ortamınıza bağlanmak gerekir. Yönergeler için bkz [bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma](azure-stack-powershell-configure-user.md).
+* Azure Stack ayarlanan PowerShell ile Azure Stack ortamınıza bağlamanız gerekecektir. Yönergeler için bkz [bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma](azure-stack-powershell-configure-user.md).
 
 * Bir ortak SSH anahtarının Windows kullanıcı profilinizin .ssh dizininde kaydedilen adı id_rsa.pub ile. SSH anahtarları oluşturma hakkında ayrıntılı bilgi için bkz: [SSH ortak anahtarı kullanmayı](azure-stack-dev-start-howto-ssh-public-key.md).
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
 
-Bir kaynak grubu, dağıtma ve Azure Stack kaynaklarını yönetme mantıksal bir kapsayıcıdır. Uygulamanızı Geliştirme Seti veya Azure Stack tümleşik sistemi, bir kaynak grubu oluşturmak için aşağıdaki kod bloğu çalıştırın. Bu belgedeki tüm değişkenler için değerler atanır, şu değerleri kullanın veya yeni değerler atayın.
+Bir kaynak grubu, dağıtma ve Azure Stack kaynaklarını yönetme mantıksal bir kapsayıcıdır. Uygulamanızı Geliştirme Seti veya Azure Stack tümleşik sistemi, bir kaynak grubu oluşturmak için aşağıdaki kod bloğu çalıştırın. 
+
+> [!NOTE]
+> Kod örnekleri tüm değişkenler için değerler atanır. Ancak, isterseniz yeni değerler atayabilirsiniz.
 
 ```powershell  
 # Create variables to store the location and resource group names.
@@ -149,7 +152,7 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
 
 Sanal makine yapılandırması oluşturun. Bu yapılandırma, sanal makineyi dağıtırken kullanılan ayarları içerir. Örneğin: kullanıcı kimlik bilgilerini, boyutu ve sanal makine görüntüsü.
 
@@ -206,7 +209,7 @@ New-AzureRmVM `
 ## <a name="quick-create-virtual-machine---full-script"></a>Hızlı Oluştur sanal makinesi - tam betik
 
 > [!NOTE]
-> Birleştirilmiş kod yukarıdaki fazla veya az olduğu, ancak kimlik doğrulaması için bir parola yerine SSH anahtarı.
+> Bu arada ancak bir parola ile birleştirilmiş temelde Yukarıdaki kod, kimlik doğrulaması için SSH anahtarı yerine.
 
 ```powershell
 ## Create a resource group
@@ -374,7 +377,7 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Sanal makineye bağlanma
 
-Sanal makine dağıtıldıktan sonra sanal makine için bir SSH bağlantısı yapılandırın. Sanal makinenin genel IP adresini döndürmek için [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) komutunu kullanın.
+Sanal makine dağıtıldıktan sonra sanal makine için bir SSH bağlantısı yapılandırın. Kullanım [Get-Azurermpublicıpaddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) sanal makinenin genel IP adresini almak için komutu.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress

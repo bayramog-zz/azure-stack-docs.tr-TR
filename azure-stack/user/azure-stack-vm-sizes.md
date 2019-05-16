@@ -3,24 +3,23 @@ title: Azure Stack'te desteklenen sanal makine boyutları | Microsoft Docs
 description: Azure stack'teki desteklenen sanal makine boyutları için başvuru.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/02/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 04/02/2019
+ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: d2507fd649e10cd442af86195a731caaf467e8d9
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: ab8c6c32a21afffd590a6f98359e051c7208b6ec
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64300433"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712266"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack'te desteklenen sanal makine boyutları
 
@@ -39,16 +38,16 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 > [!NOTE]
 > *Temel A* sanal makine boyutları için devre dışı [sanal makine ölçek kümeleri oluşturma](../operator/azure-stack-compute-add-scalesets.md) (VMSS) portal üzerinden. Bu boyut ile bir VMSS oluşturmak için PowerShell ya da bir şablon kullanın.
 
-|Boyutu - boyut\ad |Sanal işlemci     |Bellek | En fazla geçici disk boyutu | En yüksek işletim sistemi disk aktarım hızı: (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski aktarım hızı (IOPS) | En fazla NIC |    
+|Boyutu - boyut\ad |vCPU     |Bellek | En fazla geçici disk boyutu | En yüksek işletim sistemi disk aktarım hızı: (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski aktarım hızı (IOPS) | En fazla NIC |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1 x 300  |1   |
 |**A1\Basic_A1**  |1    |1,75 GB  | 40 GB   |300  | 300  |2 / 2 x 300  |1   |
 |**A2\Basic_A2**  |2    |3,5 GB   | 60 GB   |300  | 300  |4 / 4 x 300  |1   |
-|**A3\Basic_A3**  |4    |7 GB     | 120 GB  |300  | 300  |8 / 8 x 300  |1   |
+|**A3\Basic_A3**  |4    |7 GB     | 110 GB  |300  | 300  |8 / 8 x 300  |1   |
 |**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |16 / 16 X 300 |1   |
 
 ### <a name="standard-a"></a>Standart A 
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |    
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |    
 |----------------|--|------|----|----|----|-------|---------|
 |**Standard_A0** |1 |0,768 |20  |500 |500 |1x500  |1 |
 |**Standard_A1** |1 |1,75  |70  |500 |500 |2x500  |1 |
@@ -62,7 +61,7 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 ### <a name="av2-series"></a>Av2 Serisi
 *Azure Stack 1804 veya sonraki bir sürümü gerektirir*
 
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |-----------------|----|----|-----|-----|------|--------------|---------|
 |**Standard_A1_v2**  |1   |2   |10   |500 |1000  |2/2x500   |2 |
 |**Standard_A2_v2**  |2   |4   |20   |500 |2000  |4/4x500   |2 |
@@ -73,7 +72,7 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 |**Standard_A8m_v2** |8   |64  |80   |500 |8000  |16/16x500 |8 |
 
 ### <a name="d-series"></a>D Serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |----------------|----|----|-----|----|------|------------|---------|
 |**İşler için standart_d1** |1   |3,5 |50   |500 |3000  |4/4x500   |1 |
 |**Standard_D2** |2   |7   |100  |500 |6000  |8/8x500   |2 |
@@ -82,7 +81,7 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 
 
 ### <a name="ds-series"></a>DS serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |-----------------|----|----|-----|-----|------|-------------|---------|
 |**Standard_DS1** |1   |3,5 |7    |1000 |4000  |4 / 4 x 2300   |1 |
 |**Standard_DS2** |2   |7   |14   |1000 |8000  |8 / 8 x 2300   |2 |
@@ -90,16 +89,16 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 |**Standard_DS4** |8   |28  |56   |1000 |32000 |32 / 32 x 2300 |8 |
 
 ### <a name="dv2-series"></a>Dv2 Serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |-------------------|----|----|-----|----|------|------------|---------|
-|**Standard_D1_v2** |1   |3,5 |50   |500 |3000  |4/4x500   |1 |
+|**Standard_D1_v2** |1   |3,5 |50   |500 |3000  |4/4x500   |2 |
 |**Standard_D2_v2** |2   |7   |100  |500 |6000  |8/8x500   |2 |
 |**Standard_D3_v2** |4   |14  |200  |500 |12000 |16/16x500 |4 |
 |**Standard_D4_v2** |8   |28  |400  |500 |24000 |32/32x500 |8 |
 |**Standard_D5_v2** |16  |56  |800  |500 |48000 |64 / 64 x 500 |8 |
 
 ### <a name="dsv2-series"></a>DSv2 serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |--------------------|----|----|----|-----|------|-------------|---------|
 |**Standard_DS1_v2** |1   |3,5 |7   |1000 |4000  |4 / 4 x 2300   |1 |
 |**Standard_DS2_v2** |2   |7   |14  |1000 |8000  |8 / 8 x 2300   |2 |
@@ -112,7 +111,7 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 ### <a name="f-series"></a>F Serisi
 *Azure Stack 1804 veya sonraki bir sürümü gerektirir*
 
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |-----------------|----|----|-----|----|------|------------|---------|
 |**İşler için standart_f1**  |1   |2   |16   |500 |3000  |4/4x500   |2 |
 |**İşler için standart_f2**  |2   |4   |32   |500 |6000  |8/8x500   |2 |
@@ -124,7 +123,7 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 ### <a name="fs-series"></a>Fs serisi
 *Azure Stack 1804 veya sonraki bir sürümü gerektirir*  
 
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |------------------|----|----|----|-----|------|-------------|---------|
 |**Standard_F1s**  |1   |2   |4   |1000 |4000  |4 / 4 x 2300   |2 |
 |**Standard_F2s**  |2   |4   |8   |1000 |8000  |8 / 8 x 2300   |2 |
@@ -136,7 +135,7 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 ### <a name="fsv2-series"></a>Fsv2-serisi
 *Azure Stack 1804 veya sonraki bir sürümü gerektirir* 
 
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4 x 2300    |2 |
 |**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8 x 2300    |4 |
@@ -151,7 +150,7 @@ Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geli
 Belleği en iyi duruma getirilmiş VM boyutları, ilişkisel veritabanı sunucuları, Orta veya büyük boyutlu önbellekler ve bellek içi analiz için tasarlanmış yüksek bellek CPU oranı sağlayın.
 
 ### <a name="mo-d"></a>D serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |------------------|---|----|----|--------|------|------------|---------|
 |**İşler için standart_d11**  |2  |14  |100 |500     |6000  |8/8x500   |2 |
 |**İşler için standart_d12**  |4  |28  |200 |500     |12000 |16/16x500 |4 |
@@ -159,7 +158,7 @@ Belleği en iyi duruma getirilmiş VM boyutları, ilişkisel veritabanı sunucul
 |**İşler için standart_d14**  |16 |112 |800 |500     |48000 |64 / 64 x 500 |8 |
 
 ### <a name="mo-ds"></a>DS serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |-------------------|---|----|----|--------|------|-------------|---------|
 |**Standard_DS11**  |2  |14  |28  |1000    |8000  |8 / 8 x 2300   |2 |
 |**Standard_DS12**  |4  |28  |56  |1000    |12000 |16 / 16 x 2300 |4 |
@@ -167,7 +166,7 @@ Belleği en iyi duruma getirilmiş VM boyutları, ilişkisel veritabanı sunucul
 |**Standard_DS14**  |16 |112 |224 |1000    |64000 |64 / 64 x 2300 |8 |
 
 ### <a name="mo-dv2"></a>Dv2 serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |--------------------|----|----|-----|----|-------|-------------|---------|
 |**Standard_D11_v2** |2   |14  |100  |500 |6000   |8/8x500    |2 |
 |**İşler için standart_d12_v2** |4   |28  |200  |500 |12000  |16/16x500  |4 |
@@ -176,7 +175,7 @@ Belleği en iyi duruma getirilmiş VM boyutları, ilişkisel veritabanı sunucul
 
 
 ### <a name="mo-dsv2"></a>DSv2 serisi
-|Boyut     |Sanal işlemci     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
+|Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_DS11_v2** |2   |14  |28   |1000 |8000   |4 / 4 x 2300    |2 |
 |**Standard_DS12_v2** |4   |28  |56   |1000 |16000  |8 / 8 x 2300    |4 |
@@ -187,5 +186,3 @@ Belleği en iyi duruma getirilmiş VM boyutları, ilişkisel veritabanı sunucul
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure Stack'te sanal makineler için dikkat edilmesi gerekenler](azure-stack-vm-considerations.md)
-
-<!-- Update_Description: wording update -->

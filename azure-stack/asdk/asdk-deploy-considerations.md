@@ -12,22 +12,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2018
+ms.date: 05/13/2019
 ms.author: mabrigg
 ms.reviewer: misainat
-ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 85484e7428c4b384c2081d4f55af5e79259cc9d8
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.lastreviewed: 05/13/2019
+ms.openlocfilehash: 9cb349ec19edd493ca994b406b9311fe27bed242
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617517"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712237"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack dağıtım planlama konuları
+
 Azure Stack geliştirme Seti'ni (ASDK) dağıtmadan önce Geliştirme Seti ana bilgisayarınız bu makalede açıklanan gereksinimleri karşıladığından emin olun.
 
-
 ## <a name="hardware"></a>Donanım
+
 | Bileşen | Minimum | Önerilen |
 | --- | --- | --- |
 | Disk sürücüler: İşletim Sistemi |1 işletim sistemi diski ile en az 200 GB (SSD veya HDD) sistem bölümü için kullanılabilir |Sistem bölümü için en az 200 GB'lık kullanılabilir alana sahip 1 işletim sistemi diski (SSD veya HDD) |
@@ -39,6 +40,8 @@ Azure Stack geliştirme Seti'ni (ASDK) dağıtmadan önce Geliştirme Seti ana b
 | Donanım logosu sertifikası |[Windows Server 2012 R2 için sertifikalıdır](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Windows Server 2016 için sertifikalı](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Daha fazla kapasite birçok eklemeyi planlıyorsanız bu önerilir ihtiyacınız [Market öğesi](../operator/azure-stack-create-and-publish-marketplace-item.md) azure'dan.
+
+### <a name="hardware-notes"></a>Donanım notları
 
 **Veri disk sürücüsü yapılandırması:** Tüm veri sürücüleri aynı türü (tümü SAS, tüm SATA veya tüm NVMe) ve kapasitede olmalıdır. SAS disk sürücüleri kullanılıyorsa disk sürücülerinin (MPIO kullanılmaz, çok yollu destek sağlanır) tek bir yolla bağlanması gerekir.
 
@@ -63,6 +66,22 @@ Azure Stack geliştirme Seti'ni (ASDK) dağıtmadan önce Geliştirme Seti ana b
 **Örnek HBA'lar**: LSI 9207-8i, LSI-9300-8i veya LSI-9265-8i modunda
 
 Örnek OEM yapılandırmaları kullanılabilir.
+
+### <a name="storage-resiliency-for-the-asdk"></a>ASDK için depolama esnekliği
+
+Bir tek düğümlü sistem ASDK üretim yedeklilik Azure Stack tümleşik sistemi doğrulamak için tasarlanmamıştır. Ancak, temel alınan ASDK aracılığıyla optimum HDD ve SSD sürücülerin depolama fazlalık düzeyini artırabilirsiniz. Bir RAID1 için benzer bir iki yönlü yansıtma yapılandırması yerine bir RADI0 için benzer bir basit dayanıklılık yapılandırması dağıtabilirsiniz. Yeterli kapasite, türü ve sayısı için temel alınan depolama alanları doğrudan yapılandırması kullanın.
+
+Depolama dayanıklılık için iki yönlü yansıtma yapılandırmasını kullanmak için:
+
+- HDD kapasitesi sisteminde iki terabayttan daha büyük.
+- İçinde ASDK SSD yoksa, bir iki yönlü yansıtma yapılandırması için en az sekiz HDD'ler gerekir.
+- SSD'ler, HDD'ler ile birlikte, ASDK varsa, en az beş HDD'ler gerekir. Ancak, altı HHDs önerilir. Altı HDD için de karşılık gelen en az üç SSD sistemde sahip bir önbellek sürücüsü (SSD) hizmet vermemesini iki kapasite sürücüsü (HDD) sahip olduğunuz için tavsiye.
+
+Örnekte iki yönlü yansıtma yapılandırması:
+
+- Sekiz HDD
+- Üç SSD / altı HDD
+- Dört SSD / sekiz HDD
 
 ## <a name="operating-system"></a>İşletim sistemi
 |  | **Gereksinimler** |
@@ -126,4 +145,7 @@ Azure Stack, doğrudan veya saydam bir ara sunucu üzerinden Internet erişimi g
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[ASDK dağıtım paketini indirme](asdk-download.md)
+
+- [ASDK dağıtım paketini indirme](asdk-download.md)
+- Depolama alanları doğrudan ile ilgili daha fazla bilgi için bkz. [depolama alanları doğrudan genel bakış](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
+

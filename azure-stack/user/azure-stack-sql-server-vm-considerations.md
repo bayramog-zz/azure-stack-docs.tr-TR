@@ -1,5 +1,5 @@
 ---
-title: SQL Server en iyi yöntemleri kullanın ve Azure Stack sanal makineler'de performansı artırmak için | Microsoft Docs
+title: Azure stack'teki performansını iyileştirmek için en iyi uygulamalar SQL Server. | Microsoft Docs
 description: Bu makalede, performansı artırmak ve Azure Stack Vm'lerde SQL Server en iyi duruma getirmek için SQL server en iyi uygulamalar sağlanır.
 services: azure-stack
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 77e7e994e382e5e359ba133ccc9e5a9b35a74153
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 628e7bcb994c92bd00425b4ba11a45ebd1ff8f54
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985578"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712358"
 ---
 # <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>Azure stack'teki performansını iyileştirmek için SQL server en iyi uygulamalar
 
-Bu makalede, SQL Server en iyi duruma getirmek ve performansını Microsoft Azure Stack sanal makineler'de SQL server en iyi uygulamalar sağlanır. Azure Stack sanal makineler'de SQL Server çalıştıran, aynı veritabanı performans ayarlama seçenekleri bir şirket içi sunucu ortamında SQL Server için geçerli kullanın. Azure Stack bulut ilişkisel bir veritabanında performansını birçok faktöre bağlıdır. Bir sanal makine boyutu ailesi ve veri disklerinin yapılandırması faktörler aşağıda verilmiştir.
+Bu makalede, SQL Server en iyi duruma getirmek ve performansını Microsoft Azure Stack sanal makineler'de SQL server en iyi uygulamalar sağlanır. Azure Stack sanal makineler'de SQL Server çalıştıran, aynı veritabanı performans ayarlama seçenekleri bir şirket içi sunucu ortamında SQL Server için geçerli kullanın. Azure Stack bulut ilişkisel bir veritabanında performansını ailesi bir sanal makinenin boyutunu ve veri disklerinin yapılandırması gibi birçok faktöre bağlıdır.
 
 SQL Server görüntülerini oluştururken [Azure Stack portalında sanal makinelerinizi sağlamayı göz önünde bulundurun](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Azure Stack Yönetici portalında Market yönetimden SQL Iaas uzantısı'nı indirin ve kendi seçtiğiniz SQL sanal makinenin sanal sabit diskleri (VHD'ler) indirin. Bunlar, SQL2014SP2 SQL2016SP1 ve SQL2017 içerir.
 
@@ -51,7 +51,7 @@ Azure Stack sanal makinelerde SQL Server'ın en iyi performans için aşağıdak
 |Özelliğe özgü|(Kullanılan SQL Server sürümü tarafından destekleniyorsa) doğrudan blob depolama alanına yedekleyin.|
 |||
 
-Daha fazla bilgi için *nasıl* ve *neden* bu iyileştirmeler yapmak için lütfen ayrıntıları ve aşağıdaki bölümlerde verilen yönergeleri gözden geçirin.
+Daha fazla bilgi için *nasıl* ve *neden* bu iyileştirmeler yapmak için Ayrıntılar ve aşağıdaki bölümlerde verilen yönergeleri gözden geçirin.
 
 ## <a name="virtual-machine-size-guidance"></a>Sanal makine boyutu Kılavuzu
 
@@ -72,7 +72,7 @@ Veri diski aktarım hızı, sanal makine ailesi serisi benzersiz olarak göre be
 > [!NOTE]  
 > Üretim iş yükleri için olası maksimum IOPS işletim sistemi diski ve veri diskleri sağlamak için DS serisi veya DSv2 serisi sanal makine seçin.
 
-Bu özellik Azure Stack'te kullanılamadığından coğrafi çoğaltma seçeneği bir depolama hesabı Azure Stack'te oluştururken etkisi olmaz.
+Bu özellik Azure Stack'te kullanılamadığı için bir depolama hesabı Azure Stack'te oluştururken, coğrafi çoğaltma seçeneği etkisi yoktur.
 
 ## <a name="disks-guidance"></a>Diskleri Kılavuzu
 
@@ -92,7 +92,7 @@ Aşağıdaki bölümlerde, bu farklı diskler kullanarak önerileri açıklanmak
 
 ### <a name="temporary-disk"></a>Geçici disk
 
-Geçici depolama sürücü olarak etiketlenmiş **D** sürücü, kalıcı değildir. Tüm veriler, kullanıcı veritabanı dosyaları ya da kullanıcı işlem günlük dosyaları gibi açık kaybetmek istemiyor depolamayın **D** sürücü.
+Geçici depolama sürücü olarak etiketlenmiş **D** sürücü, kalıcı değildir. Üzerinde kaybetmek istemiyor herhangi bir veri depolama **D** sürücü. Bu kullanıcı veritabanı dosyaları ve kullanıcı işlem günlüğü dosyaları içerir.
 
 Her veri diski maksimum veri diski başına en fazla 2,300 IOPS sağladığından, TempDB üzerinde veri diski depolamanızı öneririz.
 
@@ -121,8 +121,8 @@ Her veri diski maksimum veri diski başına en fazla 2,300 IOPS sağladığında
        ```
 
 - Depolama havuzunuz yük beklentilerinizi ilişkili disk sayısını belirler. Farklı sanal makine boyutlarına bağlı veri diskleri farklı sayıda izin vermek demektir unutmayın. Daha fazla bilgi için [Azure Stack'te desteklenen sanal makine boyutları](azure-stack-vm-sizes.md).
-- Veri diskleri için en fazla olası IOPS alabilmek için tarafından desteklenen veri diskleri en fazla sayıda eklemek için kullanılması önerilir, [sanal makine boyutu](azure-stack-vm-sizes.md) ve disk bölümleme türüyle kullanın.
-- **NTFS ayırma birimi boyutu:** Veri diski biçimlendirme sırasında TempDB yanı sıra veri ve günlük dosyaları için 64 KB ayırma birimi boyutu kullanmanız önerilir.
+- Veri diskleri için en fazla olası IOPS almak için tarafından desteklenen veri diskleri en fazla sayıda eklemek için kullanılması önerilir, [sanal makine boyutu](azure-stack-vm-sizes.md) ve disk bölümleme türüyle kullanılacak.
+- **NTFS ayırma birimi boyutu:** Veri diski biçimlendirme sırasında TempDB yanı sıra veri ve günlük dosyaları için 64 KB ayırma birimi boyutu kullanmanızı öneririz.
 - **Disk Yönetimi uygulamalar:** Bir veri diskinin kaldırılması, değişiklik sırasında SQL Server hizmetini durdurun. Ayrıca, herhangi bir performans iyileştirmeleri sağlamaz olarak disk üzerindeki önbellek ayarlarını değiştirmeyin.
 
 > [!WARNING]  
@@ -131,9 +131,9 @@ Her veri diski maksimum veri diski başına en fazla 2,300 IOPS sağladığında
 ## <a name="io-guidance"></a>G/ç Kılavuzu
 
 - İlk dosya ayırma için gereken süreyi azaltmak üzere anında dosya başlatma etkinleştirmeyi düşünün. Anında dosya başlatma yararlanmak için SQL Server (MSSQLSERVER) hizmet hesabıyla vermek **SE_MANAGE_VOLUME_NAME** ve eklemeniz **Birim bakım görevleri gerçekleştirme** güvenlik ilke. Azure için bir SQL Server platform görüntüsü kullanıyorsanız, varsayılan hizmet hesabı (**NT Service\MSSQLSERVER**) için eklenmez **Birim bakım görevleri gerçekleştirme** güvenlik ilkesi. Diğer bir deyişle, bir SQL Server Azure platform görüntüsüne anında dosya başlatma etkin değil. SQL Server hizmet hesabına ekledikten sonra **Birim bakım görevleri gerçekleştirme** güvenlik ilkesi, SQL Server hizmetini yeniden başlatın. Bu özelliği kullanmak için güvenlik konuları olabilir. Daha fazla bilgi için [veritabanı dosya başlatma](https://msdn.microsoft.com/library/ms175935.aspx).
-- **Otomatik büyüme** beklenmeyen büyüme için bir yedek olduğu. Veri ve günlük büyümesini otomatik büyüme ile günlük olarak yönetmez. Kullanarak dosya ve otomatik büyüme kullandıysanız, önceden büyütün **boyutu** geçin.
+- **Otomatik büyüme** beklenmeyen büyüme için bir yedek olduğu. Veri ve günlük büyümesini otomatik büyüme ile günlük olarak yönetmezsiniz. Kullanarak dosya ve otomatik büyüme kullandıysanız, önceden büyütün **boyutu** geçin.
 - Emin **otomatik olarak küçültme** performansı olumsuz etkileyebilir gereksiz ek yükten kaçınmak için devre dışı bırakıldı.
-- Varsayılan yedekleme ve veritabanı dosyası konumlarını ayarlayın. Bu makalede önerileri kullanın ve sunucu Özellikler penceresinde değişiklikleri yapın. Yönergeler için [görüntülemek veya veri ve günlük dosyaları (SQL Server Management Studio) için varsayılan konumları değiştirme](https://msdn.microsoft.com/library/dd206993.aspx). Aşağıdaki ekran görüntüsünde, bu değişiklikleri yapmak nereye göstermektedir:
+- Varsayılan yedekleme ve veritabanı dosyası konumlarını ayarlayın. Bu makalede önerileri kullanın ve sunucu Özellikler penceresinde değişiklikleri yapın. Yönergeler için [görüntülemek veya veri ve günlük dosyaları (SQL Server Management Studio) için varsayılan konumları değiştirme](https://msdn.microsoft.com/library/dd206993.aspx). Aşağıdaki ekran görüntüsünde, bu değişiklikleri yapmak nereye gösterir:
 
     > ![Görüntüleme veya varsayılan konumları değiştirme](./media/sql-server-vm-considerations/image1.png)
 
@@ -145,13 +145,12 @@ Her veri diski maksimum veri diski başına en fazla 2,300 IOPS sağladığında
 
 Bazı dağıtımlar, daha gelişmiş yapılandırma teknikleri kullanarak ek performans avantajlarını elde edebilirsiniz. Aşağıdaki listede, daha iyi performans elde etmenize yardımcı olabilecek bazı SQL Server özelliklerini vurgular:
 
-- **Azure yedekleme** **depolama.** Azure Stack sanal makinelerde çalışan SQL Server için yedeklemeleri gerçekleştirirken, SQL Server Yedekleme URL kullanabilirsiniz. Bu özellik, SQL Server 2012 SP1 CU2'ile başlayan kullanılabilir ve bağlı veri diskleri yedekleme için önerilen.
+- **Azure yedekleme** **depolama.** Azure Stack sanal makinelerde çalışan SQL Server için yedekleme yaparken, SQL Server Yedekleme URL kullanabilirsiniz. Bu özellik, SQL Server 2012 SP1 CU2'ile başlayan kullanılabilir ve bağlı veri diskleri yedekleme için önerilen.
 
-    Ne zaman Yedekleme veya geri yükleme kullanarak Azure depolama izleyin sağlanan öneriler [URL en iyi yöntemler ve sorun giderme için SQL Server Yedekleme](https://msdn.microsoft.com/library/jj919149.aspx) ve [geri gelen yedeklemeler depolanan Microsoft azure'da](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). Ayrıca bu yedeklemeler kullanarak otomatikleştirebilirsiniz [Azure sanal Makineler'de SQL Server için otomatik yedekleme](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
+    Yedekleme mi, Azure depolama kullanarak geri yükleme, sağlanan önerilere uyun [URL en iyi yöntemler ve sorun giderme için SQL Server Yedekleme](https://msdn.microsoft.com/library/jj919149.aspx) ve [geri gelen yedeklemeler depolanan Microsoft azure'da](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). Ayrıca bu yedeklemeler kullanarak otomatikleştirebilirsiniz [Azure sanal Makineler'de SQL Server için otomatik yedekleme](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
 
 -   **Azure Stack depolama alanına yedekleyin.** Azure Stack depolama benzer bir şekilde yedekleme gibi Azure depolama ile yedekleyebilirsiniz. SQL Server Management Studio (SSMS) içinde yedekleme oluşturduğunuzda, yapılandırma bilgilerini el ile girmeniz gerekir. SSMS, depolama kapsayıcısını veya paylaşılan erişim imzası oluşturmak için kullanamazsınız. SSMS, yalnızca Azure Abonelikleri, Azure Stack aboneliklerini bağlanır. Bunun yerine, Azure Stack portalında veya PowerShell ile depolama hesabı, kapsayıcı ve paylaşılan erişim imzası oluşturma gerekir.
 
-    SQL Server Yedekleme iletişim bilgilerini yerleştirdiğinizde:
 
     ![SQL Server Yedekleme](./media/sql-server-vm-considerations/image3.png)
 

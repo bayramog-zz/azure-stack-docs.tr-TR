@@ -14,16 +14,16 @@ ms.date: 05/08/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: 0d088dcfaf97173d267a1f4638751650b7befba2
-ms.sourcegitcommit: 879165a66ff80f1463b6bb46e2245684224a9b92
+ms.openlocfilehash: 36fd25897e2d45d454f8e1f956f5e72991d45059
+ms.sourcegitcommit: 1655b2ef4d01d69ceeb52bc16f922bdc19cb968d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473792"
+ms.lasthandoff: 05/15/2019
+ms.locfileid: "65706274"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Azure Stack profilleri tarafından desteklenen kaynak sağlayıcısı API sürümleri
 
-Bu makalede Azure yığını tarafından kullanılan her bir API profili için bir kaynak sağlayıcısı ve sürüm numaraları bulabilirsiniz. Bu makaledeki tablolar, her kaynak sağlayıcısı ve Profiller API sürümleri için desteklenen sürümleri listelenir. Her kaynak sağlayıcısı, bir dizi kaynak türleri ve belirli sürüm numaraları içeriyor. 
+Bu makalede Azure yığını tarafından kullanılan her bir API profili için bir kaynak sağlayıcısı ve sürüm numaraları bulabilirsiniz. Bu makaledeki tablolar, her kaynak sağlayıcısı ve Profiller API sürümleri için desteklenen sürümleri listelenir. Her kaynak sağlayıcısı, bir dizi kaynak türleri ve belirli sürüm numaraları içeriyor.
 
 API profili üç adlandırma kuralları kullanır:
 
@@ -33,10 +33,10 @@ API profili üç adlandırma kuralları kullanır:
 
 Bir API profillerini ve açıklama sürüm yayın temposudur için Azure Stack için bkz: [yönetme API sürümü profillerini Azure Stack'te](azure-stack-version-profiles.md).
 
-> [!Note]  
+> [!Note]
 > **Son** API profili kaynak sağlayıcısı API'si en son sürümünü içerir ve bu makalede listelenen değil.
 
-## <a name="overview-of-2019---03-01-hybrid"></a>2019 - 03-01-karma genel bakış
+## <a name="overview-of-the-2019-03-01-hybrid-profile"></a>2019-03-01-karma profiline genel bakış
 
 | Kaynak sağlayıcı | API sürümü |
 |-----------------------------------------------|-----------------------------------------------------|
@@ -50,9 +50,9 @@ Bir API profillerini ve açıklama sürüm yayın temposudur için Azure Stack i
 | Microsoft.Authorization (ilke işlemleri) | 2016-09-01 |
 | Microsoft.Insights | 2018-01-01 |
 
-API Profil sağlayıcıları için her kaynak türünün sürümlerinin listesi için bkz: [2019-03-01-karma ayrıntılarını](#details-for-the-2019-03-01-hybrid) profili.
+API Profil sağlayıcıları için her kaynak türünün sürümlerinin listesi için bkz: [2019-03-01-karma profil ayrıntılarını](#details-for-the-2019-03-01-hybrid-profile).
 
-## <a name="details-for-the-2019-03-01-hybrid"></a>2019-03-01-karma için Ayrıntılar
+## <a name="details-for-the-2019-03-01-hybrid-profile"></a>2019-03-01-karma profili ayrıntıları
 
 ### <a name="microsoftauthorization"></a>Microsoft.Authorization
 

@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
-ms.lastreviewed: 04/15/2019
-ms.openlocfilehash: 3098381f13835cc2062df36a967412bf98a4547f
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 05/14/2019
+ms.openlocfilehash: 4b758cce6741440f5b6a4c00de045e9a4fc8f530
+ms.sourcegitcommit: 1655b2ef4d01d69ceeb52bc16f922bdc19cb968d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984715"
+ms.lasthandoff: 05/15/2019
+ms.locfileid: "65706338"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack gizli Döndür
 
@@ -34,7 +34,7 @@ Tüm sertifikalar, parolalar, güvenli dizeleri ve Azure Stack operatörü müda
 
 - **Dış gizli anahtarları**
 
-Hizmet sertifikalarını dönük altyapı hizmetleri Azure Stack operatör tarafından sağlanan. Dış gizli anahtarları için aşağıdaki hizmetleri sertifikaları dahil et:
+Azure Stack operatör tarafından sağlanan dönük hizmetleri altyapısı hizmet sertifikaları. Dış gizli anahtarları için aşağıdaki hizmetleri sertifikaları dahil et:
 
 - Yönetici portalı
 - Genel kullanıma açık portala

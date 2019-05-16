@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: e43ee8afd479d4bead1c513aee0229d8483fab33
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 55db30efd648c76938d71bc2067c7c68e6693f88
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298816"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712339"
 ---
 # <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>Kapsayıcıları Azure Stack ile kullanmak için Kubernetes dağıtma
 
@@ -33,7 +33,7 @@ Dağıtma ve kaynakları Kubernetes için tek ve eşgüdümlü bir işlemle ayar
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes ve kapsayıcılar
 
-Kubernetes ACS-Engine Azure Stack'te tarafından oluşturulan Azure Resource Manager şablonlarını kullanarak yükleyebilirsiniz. [Kubernetes](https://kubernetes.io) dağıtımı otomatik hale getirmek için bir açık kaynak sistemi ölçeklendirme ve uygulamaların kapsayıcıları yönetme. A [kapsayıcı](https://www.docker.com/what-container) bir görüntüsüdür. Kapsayıcı görüntüsünü bir sanal makine bir VM, ancak benzer, kapsayıcıya yalnızca bir uygulama, kod, kod, belirli kitaplıkları ve ayarları yürütmek için çalışma zamanı gibi çalışması için gereken kaynakları içerir.
+Kubernetes AKS Azure Stack altyapısı tarafından oluşturulan Azure Resource Manager şablonlarını kullanarak yükleyebilirsiniz. [Kubernetes](https://kubernetes.io) dağıtımı otomatik hale getirmek için bir açık kaynak sistemi ölçeklendirme ve uygulamaların kapsayıcıları yönetme. A [kapsayıcı](https://www.docker.com/what-container) bir görüntüsüdür. Kapsayıcı görüntüsünü bir sanal makine bir VM, ancak benzer, kapsayıcıya yalnızca bir uygulama, kod, kod, belirli kitaplıkları ve ayarları yürütmek için çalışma zamanı gibi çalışması için gereken kaynakları içerir.
 
 Kubernetes için kullanabilirsiniz:
 

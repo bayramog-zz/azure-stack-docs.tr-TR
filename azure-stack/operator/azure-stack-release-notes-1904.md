@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: sethm
 ms.reviewer: ''
 ms.lastreviewed: 05/06/2019
-ms.openlocfilehash: 7047c44ec4828c07eeaefdf29bcfef3762942b21
-ms.sourcegitcommit: 405075e7826ba2fa545dbf5498160219ef8d2db5
+ms.openlocfilehash: 78a42d458f77385114c476bd810cea89380423fa
+ms.sourcegitcommit: 1655b2ef4d01d69ceeb52bc16f922bdc19cb968d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65453738"
+ms.lasthandoff: 05/15/2019
+ms.locfileid: "65706295"
 ---
 # <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
 
@@ -149,6 +149,8 @@ Azure Stack 1904 güncelleştirmenin yapı numarasıdır **1.1904.0.36**.
 - Okuma okuma izinleri, bir aboneliğe katkıda bulunan rolü atandı, ancak açıkça verilmemiş bir kullanıcı, bir hata oluşturulduğu bir sorun düzeltildi **... İstemci 'somelogonaccount@domain.com' nesne kimliği {GUID} eylemi gerçekleştirme yetkisi yok...**  bir kaynağa bir değişikliği kaydetmek çalışırken.
 
 - İçinde Market yönetim ekran çevrimdışı Dağıtım Aracı'nı, görüntüleri karşıya yüklemek için kullanılan ve bunları herhangi biri URI(s) simgesi eksik, boş bir sorun düzeltildi.
+
+- Market yönetiminde silinmiş indirilemedi ürünleri engelleyen bir sorun düzeltildi.
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 

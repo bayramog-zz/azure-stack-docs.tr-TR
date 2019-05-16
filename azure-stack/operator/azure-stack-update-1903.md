@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/15/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/20/2019
-ms.openlocfilehash: fad8c68683b965c6716e600d2ea171c7e508d203
-ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
+ms.openlocfilehash: 5e0b19e753380c519704f9b2064ff56245004896
+ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65532343"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65712317"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 güncelleştirme
 
@@ -216,7 +216,8 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
 ### <a name="app-service"></a>App Service
 
 <!-- 2352906 - IS ASDK -->
-- İlk Azure işlevinizi aboneliği oluşturmadan önce depolama kaynak sağlayıcısını kaydetmeniz gerekir.
+- Kiracılar, abonelikte, ilk Azure işlevinizi oluşturmadan önce depolama kaynak sağlayıcısını kaydetmeniz gerekir.
+- Bazı Kiracı portalı kullanıcı deneyimleri 1903 portal framework ile uyumsuzluk nedeniyle bozuk; Test üretim ve site uzantıları temelde, kullanıcı Deneyimini dağıtım yuvaları için. Bu sorunu geçici olarak çözmek için kullanın [Azure App Service PowerShell modülünü](/azure/app-service/deploy-staging-slots#automate-with-powershell) veya [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest). Portal deneyimi, Azure Stack 1.6 (güncelleştirme 6) üzerinde Azure App Service'nın gelecek sürümde kurulacaktır.
 
 <!-- ### Usage -->
 
