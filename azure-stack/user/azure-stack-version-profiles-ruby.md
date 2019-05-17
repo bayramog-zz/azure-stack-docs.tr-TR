@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: fa3058f42986063946b943652a1e261b9a34e5d7
-ms.sourcegitcommit: 24d5c16132d4c40a760ad6f631739af86188a09f
+ms.lastreviewed: 05/16/2019
+ms.openlocfilehash: 1bf4842746aa6a7bcdeedb41f58c267919cf1542
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64910155"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782541"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Azure stack'teki Ruby ile API Sürüm profillerini kullanma
 
@@ -89,7 +89,7 @@ Azure Ruby SDK'sı, Azure Stack ile kullanmak için aşağıdaki değerleri giri
 | --- | --- | --- |
 | Kiracı Kimliği | AZURE_TENANT_ID | Azure Stack değerini [Kiracı kimliği](../operator/azure-stack-identity-overview.md). |
 | İstemci Kimliği | AZURE_CLIENT_ID | Hizmet sorumlusu uygulama kimliği bu belgenin önceki bölümde üzerinde hizmet sorumlusu oluşturulurken kaydedilen.  |
-| Abonelik Kimliği | AZURE_SUBSCRIPTION_ID | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te. |
+| Abonelik kimliği | AZURE_SUBSCRIPTION_ID | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te. |
 | İstemci Gizli Anahtarı | AZURE_CLIENT_SECRET | Hizmet sorumlusu oluştururken hizmet sorumlusu uygulama gizli anahtarı kaydedildi. |
 | Resource Manager uç noktası | ARM_ENDPOINT | Bkz: [Azure Stack Kaynak Yöneticisi uç noktası](#the-azure-stack-resource-manager-endpoint).  |
 
@@ -235,7 +235,7 @@ GitHub üzerinde Ruby ve Azure Stack API profilleriyle çözümleri oluşturmak 
    - Kiracı Kimliği
    - İstemci Kimliği
    - İstemci Gizli Anahtarı
-   - Abonelik Kimliği
+   - Abonelik kimliği
    - Resource Manager uç noktası
 
    Oluşturduğunuz hizmet Sorumlusundan alınan bilgileri kullanarak aşağıdaki ortam değişkenlerini ayarlayın.

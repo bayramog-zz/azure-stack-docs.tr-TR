@@ -9,18 +9,16 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: bebf3b349a994379d5f54bd387533b8d4a63ccdd
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: 879e4e552fbeaa6178f06f85959d543680b2bd3e
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64481934"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782692"
 ---
 # <a name="how-to-deploy-a-nodejs-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için bir Node.js web uygulaması dağıtma
 
 Azure stack'teki Node.js Web uygulamanızı barındırmak için bir VM oluşturabilirsiniz. Bu makalede, sunucu, düğüm web uygulamanızı barındırmak için sunucu yapılandırma ve ardından uygulamanızı dağıtmak ayarında izleyeceğiniz adımlar bakar.
-
-Node.js Chrome'un V8 JavaScript altyapısında derlenen bir JavaScript çalışma zamanıdır. JavaScript çalışma zamanı olay temelli bir zaman uyumsuz, düğüm Ölçeklenebilir Ağ uygulamaları oluşturmak için tasarlanmıştır. Programlama dili düğüm öğrenin ve düğüm için ek kaynakları bulmak için bkz: [Nodejs.org](https://nodejs.org).
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -28,11 +26,11 @@ Node.js Chrome'un V8 JavaScript altyapısında derlenen bir JavaScript çalışm
 
 2. VM ağ dikey penceresinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
 
-    | Bağlantı noktası | Protokol | Açıklama |
+    | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), dağıtılmış, işbirliğine dayalı, Hiper medyayı bilgi sistemlerine yönelik bir uygulama protokolüdür. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal Makinenizin bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), Köprü Metni Aktarım Protokolü (HTTP) bir uzantısıdır. Bir bilgisayar ağ üzerinden güvenli iletişim için kullanılır. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal makinenizin bağlanır. |
-    | 22 | SSH | Güvenli Kabuk (SSH) ağ hizmetleri güvenli bir şekilde güvenli olmayan bir ağ üzerinden işletim bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), web sayfaları sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür.  |
+    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
     | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü bir grafik kullanıcı arabirimi kullanılacak Uzak Masaüstü bağlantısı için makinenizi sağlar.   |
     | 1337 | Özel | Bağlantı noktası 1337 Node.js tarafından kullanılır. Bir üretim sunucusu için 80 ve 443, trafiği yönlendirmek isteyebilirsiniz. |
 
@@ -90,3 +88,4 @@ Node.js Chrome'un V8 JavaScript altyapısında derlenen bir JavaScript çalışm
 
 - Kullanma hakkında daha fazla bilgi edinin [Azure Stack için geliştirme](azure-stack-dev-start.md)
 - Hakkında bilgi edinin [Iaas olarak Azure Stack için ortak dağıtımları](azure-stack-dev-start-deploy-app.md).
+- Programlama dili düğüm öğrenin ve düğüm için ek kaynakları bulmak için bkz: [Nodejs.org](https://nodejs.org).

@@ -9,18 +9,18 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 7744d1adcdcb1dde53c6ef887498a9a3978f4513
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: 24774e122be0c4088c4d5841f71318d266bad78f
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64481945"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782677"
 ---
 # <a name="how-to-deploy-a-ruby-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için Ruby web uygulaması dağıtma
 
 Azure stack'teki Ruby Web uygulamanızı barındırmak için bir VM oluşturabilirsiniz. Bu makalede, sunucu, Ruby web uygulamanızı barındırmak için sunucu yapılandırma ve ardından uygulamanızı dağıtmak ayarında izleyeceğiniz adımlar bakar.
 
-Ruby dikkatli Bakiye bir dildir. Kesin programlama ile işlevsel programlama olanağı sunan yeni bir dil oluşturmak için sık kullandığınız diller (Perl, Smalltalk, Eiffel, Ada ve Lisp) bölümleri Yukihiro "Matz" Matsumoto oluşturana karışık. Ruby programlama dilini öğrenin ve Python için ek kaynakları bulmak için bkz: [Ruby lang.org](https://www.ruby-lang.org).
+
 
 Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
 
@@ -30,11 +30,11 @@ Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
 
 2. VM ağ dikey penceresinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
 
-    | Bağlantı noktası | Protokol | Açıklama |
+    | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), dağıtılmış, işbirliğine dayalı, Hiper medyayı bilgi sistemlerine yönelik bir uygulama protokolüdür. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal Makinenizin bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), Köprü Metni Aktarım Protokolü (HTTP) bir uzantısıdır. Bir bilgisayar ağ üzerinden güvenli iletişim için kullanılır. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal makinenizin bağlanır. |
-    | 22 | SSH | Güvenli Kabuk (SSH) ağ hizmetleri güvenli bir şekilde güvenli olmayan bir ağ üzerinden işletim bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), web sayfaları sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür.  |
+    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
     | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü bir grafik kullanıcı arabirimi kullanılacak Uzak Masaüstü bağlantısı için makinenizi sağlar.   |
     | 3000 | Özel | Bağlantı noktası 3000 geliştirme rails üzerinde Ruby web çerçevesi tarafından kullanılır. Bir üretim sunucusu için 80 ve 443, trafiği yönlendirmek isteyebilirsiniz. |
 
@@ -103,3 +103,4 @@ Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
 
 - Kullanma hakkında daha fazla bilgi edinin [Azure Stack için geliştirme](azure-stack-dev-start.md)
 - Hakkında bilgi edinin [Iaas olarak Azure Stack için ortak dağıtımları](azure-stack-dev-start-deploy-app.md).
+- Ruby programlama dilini öğrenin ve Python için ek kaynakları bulmak için bkz: [Ruby lang.org](https://www.ruby-lang.org).

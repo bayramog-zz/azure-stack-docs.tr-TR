@@ -5,18 +5,18 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.date: 01/25/2019
+ms.date: 05/16/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a887564356b387000ff450c090eab45700fc5fee
-ms.sourcegitcommit: 1f216d15fed9bd4065015cb2f9908797388e34aa
+ms.openlocfilehash: 841e30367ded29e10c28573056f4a70361e28a9e
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64564082"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782567"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ağ iletişimi için dikkat edilmesi gerekenler
 
@@ -59,7 +59,7 @@ Bu makalede, Azure Stack ağ iletişimi ve özelliklerini benzersiz konularına 
 | Yük dengeleyici | SKU | Temel ve standart Load balancer'ları desteklenir | Temel yük dengeleyici desteklenir.  SKU özelliği desteklenmiyor. |
 |  | Bölgeler | Kullanılabilirlik alanları desteklenir. | Henüz desteklenmiyor |
 |  | Hizmet uç noktaları için gelen NAT kuralları desteği | Azure belirten hizmet uç noktaları için gelen NAT kurallarını destekler. | Bunlar belirtilemez bu nedenle azure Stack hizmet uç noktaları, henüz desteklemiyor. |
-|  | Protokol | GRE veya ESP belirterek azure destekler. | Azure Stack'te sınıf protokolü desteklenmiyor. |
+|  | Protocol | GRE veya ESP belirterek azure destekler. | Azure Stack'te sınıf protokolü desteklenmiyor. |
 | Genel IP Adresi | Genel IP adresi sürümü | Azure, hem IPv6 hem de IPv4 destekler. | Yalnızca IPv4 desteklenir. |
 | Ağ Arabirimi | Etkili rota tablosunu alın | Desteklenen | Henüz desteklenmiyor. |
 |  | Geçerli ACL'ler Al | Desteklenen | Henüz desteklenmiyor. |

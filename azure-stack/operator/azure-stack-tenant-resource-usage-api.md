@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 745b22310dcd2231c5bb823bd58daffa6c323d59
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 2378bef2457b29271f048ec213ccf4b79454dd95
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984932"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782198"
 ---
 # <a name="tenant-resource-usage-api"></a>Kiracı kaynak kullanım API'si
 
@@ -29,10 +29,10 @@ Bir kiracı, Kiracı API'si, kiracının kendi kaynak kullanım verilerini gör�
 Windows PowerShell cmdlet'ini kullanabilirsiniz **Get-UsageAggregates** Azure'da gibi kullanım verilerini almak için.
 
 ## <a name="api-call"></a>API çağrısı
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 İstek tüketim ayrıntılarını ve istenen zaman çerçevesi için istenen abonelikleri alır. Hiçbir istek gövdesi yok.
 
-| **Yöntem** | **İstek URI'si** |
+| **Yöntemi** | **İstek URI'si** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/usageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&api-version= 2015-06-01-preview & continuationToken {belirteci-value} = |
 
@@ -78,7 +78,7 @@ Windows PowerShell cmdlet'ini kullanabilirsiniz **Get-UsageAggregates** Azure'da
 | **Bağımsız değişken** | **Açıklama** |
 | --- | --- |
 | *id* |Kullanım toplamanın benzersiz kimliği |
-| *Adı* |Kullanım toplamanın adı |
+| *name* |Kullanım toplamanın adı |
 | *type* |Kaynak tanımı |
 | *Subscriptionıd* |Azure kullanıcı abonelik tanımlayıcısı |
 | *usageStartTime* |Başlangıç ait olduğu için bu kullanım toplama kullanım demeti zamanı UTC |

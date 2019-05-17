@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/28/2018
-ms.openlocfilehash: 175c684d8f92355c5669c0e37ff5a4dfb993ea61
-ms.sourcegitcommit: 24d5c16132d4c40a760ad6f631739af86188a09f
+ms.lastreviewed: 05/16/2019
+ms.openlocfilehash: 90c4665b1519e078015f9a6096417c2d97425da9
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64910077"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782728"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Java'da Azure Stack ile API Sürüm profillerini kullanma
 
@@ -95,7 +95,7 @@ Azure Java SDK'sı, Azure Stack ile kullanmak için aşağıdaki değerleri giri
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Kiracı Kimliği                 | AZURE_TENANT_ID            | Azure Stack değerini [Kiracı kimliği](../operator/azure-stack-identity-overview.md).                                                          |
 | İstemci Kimliği                 | AZURE_CLIENT_ID             | Hizmet sorumlusu uygulama kimliği önceki bölümde hizmet sorumlusu oluşturulurken kaydedilen.                                                                                              |
-| Abonelik Kimliği           | AZURE_SUBSCRIPTION_ID      | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te.                |
+| Abonelik kimliği           | AZURE_SUBSCRIPTION_ID      | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te.                |
 | İstemci Gizli Anahtarı             | AZURE_CLIENT_SECRET        | Hizmet sorumlusu oluşturulurken kaydedilen hizmet sorumlusu uygulama gizli anahtarı.                                                                                                                                   |
 | Resource Manager uç noktası | ARM_ENDPOINT              | Bkz: [Azure Stack Kaynak Yöneticisi uç noktası](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Location                  | RESOURCE_LOCATION    | **Yerel** Azure Stack için.                                                                                                                                                                                                |

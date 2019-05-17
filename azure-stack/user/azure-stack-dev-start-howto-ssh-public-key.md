@@ -9,12 +9,12 @@ ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 0f4133052022963e1ed0457dd479a00bcc5bb749
-ms.sourcegitcommit: 0d8ccf2a32b08ab9bcbe13d54c7c3dce2379757f
+ms.openlocfilehash: ca8d81e9d0baf08adde257340b2a8ac3bffd6c36
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64490057"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783183"
 ---
 # <a name="how-to-use-an-ssh-public-key"></a>SSH ortak anahtarı kullanma
 
@@ -22,7 +22,7 @@ Web uygulamanızı barındıran Azure Stack'te geliştirme makineniz ve sunucusu
 
 ## <a name="create-an-ssh-public-key-on-windows"></a>Windows üzerinde SSH ortak anahtarı oluşturma
 
-Bu bölümde PuTTY'ın anahtar Oluşturucu bir ortak SSH anahtarının ve Azure Stack Linux makineleri güvenli bir bağlantı oluşturulurken kullanılacak özel anahtar çifti oluşturmak için kullanın. PuTTY SSH için Telnet Windows ve Unix platformlarında, ücretsiz bir uygulama ile birlikte olan bir `xterm` terminal öykünücü.
+Bu bölümde PuTTY'ın anahtar Oluşturucu bir ortak SSH anahtarının ve Azure Stack Linux makineleri güvenli bir bağlantı oluşturulurken kullanılacak özel anahtar çifti oluşturmak için kullanın. PuTTY SSH ve Telnet aracılığıyla bir sunucuya bağlanmasına izin verebilirsiniz ücretsiz bir terminal öykünücü ' dir.
 
 1. [Putty'yi indirin ve makinenize için yükleyin.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
@@ -59,12 +59,6 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 
 Ortak anahtarı kullanılırken kopyalayın ve bir uygulama anahtarı istediğinde, metin kutusunun tüm içerikler değeri olarak yapıştırın.
 
-<!-- 
-## Create an SSH public key on Linux
-
-ToDo: I need to write this section.
-
--->
 ## <a name="connect-with-ssh-using-putty"></a>PuTTY kullanarak SSH ile bağlanma
 
 PuTTY yüklediyseniz, anahtarı Oluşturucu hem bir SSH istemcisi vardır. PuTTY SSH istemcisini açın, SSH anahtarı ve bağlantı değerleri yapılandırın ve Azure Stack ile aynı ağa kullanıyorsanız, sanal Makinenize bağlanın.

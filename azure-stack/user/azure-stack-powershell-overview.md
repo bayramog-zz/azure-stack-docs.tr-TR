@@ -15,12 +15,12 @@ ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: b28a90ceca59e5cd072018b217d81d101c1b0853
-ms.sourcegitcommit: 0d8ccf2a32b08ab9bcbe13d54c7c3dce2379757f
+ms.openlocfilehash: 0cef39147fdbc62fe0652b1e387aa23f5ecb8487
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64490036"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782879"
 ---
 # <a name="get-started-with-powershell-on-azure-stack"></a>Azure Stack de PowerShell ile çalışmaya başlama
 
@@ -31,7 +31,7 @@ Bu makalede orient kendiniz Azure Stack üzerinde kullanılan farklı bu PowerSh
 | API | PowerShell başvurusu | REST başvurusu |
 | --- | --- | --- |
 | 1. Küresel Azure Resource Manager | [Azure PowerShell modülleri](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API tarayıcısı](https://docs.microsoft.com/rest/api/) |
-| 2. Azure Stack Kaynak Yöneticisi | [Azure Stack’de API sürümü profillerini yönetme](azure-stack-version-profiles.md) | [Azure Stack’de API sürümü profillerini yönetme](azure-stack-version-profiles.md) |
+| 2. Azure Stack Kaynak Yöneticisi | [Azure stack'teki API sürümü profillerini yönetme](azure-stack-version-profiles.md) | [Azure stack'teki API sürümü profillerini yönetme](azure-stack-version-profiles.md) |
 | 3. Azure Stack yönetici uç noktaları | [Azure Stack yönetici Modülü](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [Azure Stack API Browser - REST](https://docs.microsoft.com/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
 | 4.  Azure Stack ayrıcalıklı uç noktası | [Azure Stack'te ayrıcalıklı uç noktayı (PEP) kullanma](../operator/azure-stack-privileged-endpoint.md) | |
 
@@ -47,11 +47,11 @@ Aşağıdaki blok diyagramını PowerShell modüllerinin her kümesi arasındaki
 
 ### <a name="global-azure"></a>Küresel Azure
 
-Azure PowerShell kullanarak Azure kaynaklarınızı yönetmek için Azure Resource Manager modeli geçerli sürümünü kullanan cmdlet'ler kümesi sağlar. Azure PowerShell'in .NET Standard’ı kullanması Windows, macOS ve Linux’ta kullanılabilmesini sağlar. Azure PowerShell, Azure Cloud Shell üzerinde de kullanılabilir. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Azure PowerShell, Azure kaynaklarınızla çalışmak için Azure Resource Manager'ın geçerli sürümü kullanan cmdlet'ler kümesi içerir. Azure PowerShell, .NET Standard kullanır. Bu, Windows, macOS ve Linux sürümleri kullanabileceğiniz anlamına gelir. Azure PowerShell, Azure Cloud Shell üzerinde de kullanılabilir. Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ### <a name="azure-stack-resource-manager"></a>Azure Stack Kaynak Yöneticisi
 
-Azure Stack PowerShell önceki sürümleri, Azure Resource Manager kaynak sağlayıcıları ile uyumlu Azure Stack'te kullanan cmdlet'ler kümesi sağlar. Her kaynak sağlayıcısı Azure Stack'te genel Azure'da bulunan sağlayıcı daha eski bir sürümünü kullanır. Azure yığını tarafından desteklenen her bir sağlayıcı sürümünü koordine yardımcı olmak için API profillerini kullanabilirsiniz. Azure Stack PowerShell PowerShell 5.1 kullanır ve yalnızca Windows üzerinde kullanılabilir. Daha fazla bilgi için [yönetme API sürümü profillerini Azure Stack'te](azure-stack-version-profiles.md).
+Azure Stack PowerShell'i Azure Resource Manager'ın önceki sürümlerini kullanan cmdlet'ler kümesi sağlar. Bu cmdlet'ler, Azure Stack kaynak sağlayıcıları ile uyumludur. Her kaynak sağlayıcısı Azure Stack'te genel Azure'da bulunan sağlayıcı daha eski bir sürümünü kullanır. Azure yığını tarafından desteklenen her bir sağlayıcı sürümünü koordine yardımcı olmak için API profillerini kullanabilirsiniz. Azure Stack PowerShell PowerShell 5.1 kullanır ve yalnızca Windows üzerinde kullanılabilir. Daha fazla bilgi için [yönetme API sürümü profillerini Azure Stack'te](azure-stack-version-profiles.md).
 
 ### <a name="azure-stack-administrator"></a>Azure Stack yönetici
 

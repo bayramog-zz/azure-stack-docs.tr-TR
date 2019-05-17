@@ -7,17 +7,17 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 37ff24258b12c9b042c7b0dc5a113a62d1d1ec60
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: 2c0997599b8da1f77f61e0953eb56f834f718efb
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64477357"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782826"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portal ile Linux server sanal makinesi oluşturma
 
@@ -49,7 +49,7 @@ Azure Stack portalını kullanarak bir Ubuntu Server 16.04 LTS sanal makine olu�
 
 Bu makaledeki tüm adımları tamamlamak için bir SSH anahtar çifti gerekir. Mevcut bir SSH anahtar çiftiniz varsa, bu adımı atlayabilirsiniz.
 
-1. PuTTY yükleme klasörüne gidin (varsayılan konum ```C:\Program Files\PuTTY```) çalıştırıp ```puttygen.exe```.
+1. PuTTY yükleme klasörüne gidin (varsayılan konum `C:\Program Files\PuTTY`) çalıştırıp `puttygen.exe`.
 2. PuTTY anahtar Oluşturucu penceresinde olun **oluşturulacak anahtar türü** ayarlanır **RSA**ve **oluşturulan anahtarı bit sayısı** ayarlanır **2048**. Hazır olduğunuzda, tıklayın **Oluştur**.
 
    ![PuTTY anahtar Oluşturucu yapılandırması](media/azure-stack-quick-linux-portal/Putty01.PNG)
@@ -94,7 +94,7 @@ Azure Stack portalında oturum açın. Azure Stack portal'ın adresi, Azure Stac
      Yapılandırmalarınızı hazır olduğunuzda seçin **Tamam** devam etmek için.
 
 7. Üzerinde **özeti** sayfasında **Tamam** sanal makine dağıtımını başlatın.  
-   ![Dağıtma](media/azure-stack-quick-linux-portal/deploy.png)
+   ![Dağıt](media/azure-stack-quick-linux-portal/deploy.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>Sanal makineye bağlanma
 
@@ -106,7 +106,7 @@ Azure Stack portalında oturum açın. Azure Stack portal'ın adresi, Azure Stac
    ![Sanal makineye bağlanma](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Yukarı kaydırın **kategori** penceresi ve ardından **oturumu**.
-5. İçinde **ana bilgisayar adı (veya IP adresi)** kutusuna, Azure Stack portalında gösterilen bağlantı dizesini yapıştırın. Bu örnekte, dizedir ```asadmin@192.168.102.34```.
+5. İçinde **ana bilgisayar adı (veya IP adresi)** kutusuna, Azure Stack portalında gösterilen bağlantı dizesini yapıştırın. Bu örnekte, dizedir `asadmin@192.168.102.34`.
 
    ![PuTTY yapılandırması bağlantı dizesi](media/azure-stack-quick-linux-portal/Putty04.PNG)
 
@@ -137,7 +137,7 @@ Ağ güvenlik grubu (NSG), gelen ve giden trafiğin güvenliğini sağlar. Azure
 1. Sanal makinede **genel bakış** sayfasında, adına **kaynak grubu**.
 2. Seçin **ağ güvenlik grubu** sanal makine için. NSG, **Tür** sütunu kullanılarak tanımlanabilir.
 3. Sol taraftaki menüsünden altında **ayarları**, tıklayın **gelen güvenlik kuralları**.
-4. **Ekle**'ye tıklayın.
+4. **Ekle**'yi tıklatın.
 5. **Ad** alanına **http** yazın. **Bağlantı noktası aralığı** değerinin 80, **Eylem** ayarının **İzin Ver** olarak belirlendiğinden emin olun.
 6. **Tamam**’a tıklayın.
 
@@ -145,7 +145,7 @@ Ağ güvenlik grubu (NSG), gelen ve giden trafiğin güvenliğini sağlar. Azure
 
 NGINX ve 80 numaralı bağlantı noktası, sanal makinede, sanal makinenin genel IP adresini kullanarak web sunucusuna erişebilirsiniz. (Genel IP adresini sanal makinenin genel bakış sayfasında gösterilen.)
 
-Bir web tarayıcısı açın ve gidin ```http://<public IP address>```.
+Bir web tarayıcısı açın ve gidin `http://<public IP address>`.
 
 ![NGINX web-server-Hoş Geldiniz sayfası](media/azure-stack-quick-linux-portal/linux-05.PNG)
 

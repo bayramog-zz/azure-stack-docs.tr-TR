@@ -10,17 +10,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 05/16/2019
 <!-- dev: viananth -->
-ms.openlocfilehash: ab3b93d313a185a55f86232bf7bc3a7d4b46ef3d
-ms.sourcegitcommit: 24d5c16132d4c40a760ad6f631739af86188a09f
+ms.openlocfilehash: ee5906e825af59e3b67792e8370cc5d26901ff2b
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64910093"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782581"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure stack'teki Python ile API Sürüm profillerini kullanma
 
@@ -55,7 +55,7 @@ Azure Python SDK'sı, Azure Stack ile kullanmak için aşağıdaki değerleri gi
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
 | Kiracı Kimliği | AZURE_TENANT_ID | Azure Stack değerini [Kiracı kimliği](../operator/azure-stack-identity-overview.md). |
 | İstemci Kimliği | AZURE_CLIENT_ID | Hizmet sorumlusu uygulama kimliği bu makalenin önceki bölümde hizmet sorumlusu oluşturulurken kaydedilen. |
-| Abonelik Kimliği | AZURE_SUBSCRIPTION_ID | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te. |
+| Abonelik kimliği | AZURE_SUBSCRIPTION_ID | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te. |
 | İstemci Gizli Anahtarı | AZURE_CLIENT_SECRET | Hizmet sorumlusu oluşturulurken kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
 | Resource Manager uç noktası | ARM_ENDPOINT | Bkz: [Azure Stack Resource Manager uç noktasını](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Kaynak Konumu | AZURE_RESOURCE_LOCATION | Azure Stack ortamınıza kaynak konumu.
@@ -124,8 +124,8 @@ Python SDK'sını kullanarak Azure Stack için kullanılabilir kod örnekleri ba
 Aşağıdaki kod örneği, genel yönetim görevleri için sanal makineler, Azure Stack'te gerçekleştirmek için kullanabilirsiniz. Kod örneği gösterilir:
 
 - Sanal makineler oluşturun:
-  - Linux sanal makinesi oluşturma
-  - Windows sanal makinesi oluşturma
+  - Linux sanal makinesi oluşturun
+  - Windows sanal makinesi oluşturun
 - Bir sanal makineyi güncelleştir:
   - Bir sürücüyü genişletin
   - Bir sanal makine etiketi

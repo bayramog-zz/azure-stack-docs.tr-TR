@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 1c096428bca07f557d62d0984ca1da1f428e9c28
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/16/2019
+ms.openlocfilehash: d2b7ec8beedcc0ffbcf881dd09d513d3e0b61426
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64290445"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782215"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Azure Stack altyapısını yedekleme hizmetiyle için yedekleme ve veri kurtarma
 
@@ -32,7 +32,7 @@ Bulut üretime koymak hazır olduğunuzda yedeklemeyi etkinleştirebilirsiniz. T
 Yedekleme hizmetinizi etkinleştirmeden önce olduğundan emin olun [gereksinimleri yerinde](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> Yedekleme hizmet olarak altyapı, kullanıcı verileri ve uygulamaları içermez. Başvurmak [Azure Stack üzerinde dağıtılan sanal makinelerini koruma](../user/azure-stack-manage-vm-protect.md) Iaas VM tabanlı uygulamaları nasıl Koruyabileceğiniz hakkında daha fazla bilgi için. Azure Stack'te uygulamaları korumak nasıl kapsamlı anlamak için başvurmak [iş sürekliliği ve olağanüstü durum kurtarma teknik incelemesi için Azure Stack konuları](https://aka.ms/azurestackbcdrconsiderationswp).
+> Yedekleme hizmet olarak altyapı, kullanıcı verileri ve uygulamaları içermez. Daha fazla bilgi için [Azure Stack üzerinde dağıtılan sanal makinelerini koruma](../user/azure-stack-manage-vm-protect.md) Iaas VM tabanlı uygulamaları nasıl Koruyabileceğiniz hakkında daha fazla bilgi için. Azure Stack'te uygulamaları korumak nasıl kapsamlı anlamak için başvurmak [iş sürekliliği ve olağanüstü durum kurtarma teknik incelemesi için Azure Stack konuları](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="the-infrastructure-backup-service"></a>Altyapı yedekleme hizmeti
 

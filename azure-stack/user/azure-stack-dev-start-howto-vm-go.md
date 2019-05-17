@@ -9,18 +9,16 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: c0cef076522e77a6d0fdafbd8848d5e9bb8a90a8
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: f24970c334073928b2a74a1b0b349cafb8f093b1
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64481923"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782987"
 ---
 # <a name="how-to-deploy-a-go-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için bir GO web uygulaması dağıtma
 
 Azure stack'teki Git Web uygulamanızı barındırmak için bir VM oluşturabilirsiniz. Bu makalede, sunucu, GO web uygulamanızı barındırmak için sunucu yapılandırma ve ardından uygulamanızı dağıtmak ayarında izleyeceğiniz adımlar bakar.
-
-Git, ifadesel, kısa, temiz ve verimli. Kendi eşzamanlılık mekanizması, esnek ve modüler bir program oluşturma etkinleştirse bile, tür sistemi, en iyi birden fazla çekirdekli ve ağdaki makineler programları yazmak kolaylaştırır. GO için ek kaynaklar bulma ve Go programlama dili öğrenmek için bkz: [Golang.org](https://golang.org).
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -28,11 +26,11 @@ Git, ifadesel, kısa, temiz ve verimli. Kendi eşzamanlılık mekanizması, esne
 
 2. VM ağ dikey penceresinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
 
-    | Bağlantı noktası | Protokol | Açıklama |
+    | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), dağıtılmış, işbirliğine dayalı, Hiper medyayı bilgi sistemlerine yönelik bir uygulama protokolüdür. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal Makinenizin bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), Köprü Metni Aktarım Protokolü (HTTP) bir uzantısıdır. Bir bilgisayar ağ üzerinden güvenli iletişim için kullanılır. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal makinenizin bağlanır. |
-    | 22 | SSH | Güvenli Kabuk (SSH) ağ hizmetleri güvenli bir şekilde güvenli olmayan bir ağ üzerinden işletim bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), web sayfaları sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür.  |
+    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
     | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü bir grafik kullanıcı arabirimi kullanılacak Uzak Masaüstü bağlantısı için makinenizi sağlar.   |
     | 3000 | Özel | Bağlantı noktası 3000 geliştirme GO web çerçevesi tarafından kullanılır. Bir üretim sunucusu için 80 ve 443, trafiği yönlendirmek isteyebilirsiniz. |
 
@@ -96,3 +94,4 @@ Git, ifadesel, kısa, temiz ve verimli. Kendi eşzamanlılık mekanizması, esne
 
 - Kullanma hakkında daha fazla bilgi edinin [Azure Stack için geliştirme](azure-stack-dev-start.md)
 - Hakkında bilgi edinin [Iaas olarak Azure Stack için ortak dağıtımları](azure-stack-dev-start-deploy-app.md).
+- GO için ek kaynaklar bulma ve Go programlama dili öğrenmek için bkz: [Golang.org](https://golang.org).

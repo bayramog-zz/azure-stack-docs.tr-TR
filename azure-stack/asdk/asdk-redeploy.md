@@ -17,12 +17,12 @@ ms.date: 02/12/2019
 ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 0658943a36673df4658b6f1951ed7992996aba41
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: cc5c756075b2dbeb789727a6c6647cf3e97cac28
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617483"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782115"
 ---
 # <a name="redeploy-the-asdk"></a>ASDK yeniden dağıtma
 Bu makalede, Azure Stack geliştirme Seti'ni (ASDK) bir üretim dışı ortamda yeniden öğrenin. ASDK yükseltme desteklenmediğinden, tamamen yeni bir sürüme taşımak için yeniden dağıtmanız gerekir. Ayrıca, yalnızca sıfırdan başlamak istiyorsanız dilediğiniz zaman ASDK yeniden dağıtabilirsiniz.
@@ -39,7 +39,7 @@ Kayıt kaynak kaldırmak için **Remove-AzsRegistration** Azure Stack kaydını 
 
 2. ASDK yüklemenizi kaydını silin ve silmek için aşağıdaki PowerShell komutlarını çalıştırın **azurestack** Azure aboneliğinizde bir kaynak grubu:
 
-   ```Powershell    
+   ```powershell    
    #Import the registration module that was downloaded with the GitHub tools
    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 

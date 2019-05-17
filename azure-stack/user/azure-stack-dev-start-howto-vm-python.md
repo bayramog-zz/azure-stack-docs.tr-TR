@@ -9,18 +9,16 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: b1a588dd084962c095a534f6569333b34e694bc6
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: b4042596924030711a23ea8814aa8f58fd62063f
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64481846"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782720"
 ---
 # <a name="how-to-deploy-a-python-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için bir Python web uygulaması dağıtma
 
 Azure stack'teki Python Web uygulamanızı barındırmak için bir VM oluşturabilirsiniz. Bu makalede, sunucu, Python web uygulamanızı barındırmak için sunucu yapılandırma ve ardından uygulamanızı dağıtmak ayarında izleyeceğiniz adımlar bakar.
-
-Python bir yorumlanan, üst düzey, genel amaçlı programlama dilidir. Tülin van Rossum tarafından oluşturulan ve 1991 ilk yayımlanan özellikle önemli boşluk kullanarak Python kodunun okunabilirliğini vurgular bir tasarım felsefesi sahiptir. Bu, küçük ve büyük ölçekleri üzerinde NET programlamaya olanak veren yapıları sağlar. Python programlama dili öğrenin ve Python için ek kaynakları bulmak için bkz: [Python.org](https://www.python.org).
 
 Bu makalede Python kullanacak Flask Ngnix sunucuda sanal bir ortamda çalışan 3.x.
 
@@ -30,11 +28,11 @@ Bu makalede Python kullanacak Flask Ngnix sunucuda sanal bir ortamda çalışan 
 
 2. VM ağ dikey penceresinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
 
-    | Bağlantı noktası | Protokol | Açıklama |
+    | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), dağıtılmış, işbirliğine dayalı, Hiper medyayı bilgi sistemlerine yönelik bir uygulama protokolüdür. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal Makinenizin bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), Köprü Metni Aktarım Protokolü (HTTP) bir uzantısıdır. Bir bilgisayar ağ üzerinden güvenli iletişim için kullanılır. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal makinenizin bağlanır. |
-    | 22 | SSH | Güvenli Kabuk (SSH) ağ hizmetleri güvenli bir şekilde güvenli olmayan bir ağ üzerinden işletim bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), web sayfaları sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür.  |
+    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
     | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü bir grafik kullanıcı arabirimi kullanılacak Uzak Masaüstü bağlantısı için makinenizi sağlar.   |
     | 5000, 8000 | Özel | Bağlantı noktaları 5000 8000 geliştirme Flask web çerçevesi tarafından kullanılır. Bir üretim sunucusu için 80 ve 443, trafiği yönlendirmek isteyebilirsiniz. |
 
@@ -54,7 +52,7 @@ Bu makalede Python kullanacak Flask Ngnix sunucuda sanal bir ortamda çalışan 
     ```
 
 
-3. Ngınx yükleyin. [Ngınx](https://www.nginx.com/resources/wiki/) de ters bir proxy olarak kullanılabilir, Yük Dengeleyiciyi, posta proxy ve önbellek HTTP web sunucusunun adıdır. Hala sanal Makinenize SSH oturumunuzda bağlı, aşağıdaki komutları yazın:
+3. Ngınx yükleyin. [Ngınx](https://www.nginx.com/resources/wiki/) basit web sunucusudur. Hala sanal Makinenize SSH oturumunuzda bağlı, aşağıdaki komutları yazın:
 
     ```bash  
        sudo apt-get -y install nginx git
@@ -117,3 +115,4 @@ Bu makalede Python kullanacak Flask Ngnix sunucuda sanal bir ortamda çalışan 
 
 - Kullanma hakkında daha fazla bilgi edinin [Azure Stack için geliştirme](azure-stack-dev-start.md)
 - Hakkında bilgi edinin [Iaas olarak Azure Stack için ortak dağıtımları](azure-stack-dev-start-deploy-app.md).
+- Python programlama dili öğrenin ve Python için ek kaynakları bulmak için bkz: [Python.org](https://www.python.org).

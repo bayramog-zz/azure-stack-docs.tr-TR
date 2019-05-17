@@ -6,17 +6,17 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 01/14/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
-ms.reviewer: unknown
 ms.custom: mvc
+ms.reviewer: kivenkat
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 47a2e2090a4bc6f4d72f5288f31a6e1cb53bdac7
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: a25af39c5fd055989b09e4cf065d0e78bf88fc25
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985980"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782823"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portal ile bir Windows server sanal makinesi oluşturma
 
@@ -35,14 +35,14 @@ Azure Stack portalında oturum açın. Azure Stack portal'ın adresi, Azure Stac
 * Azure Stack geliştirme Seti'ni (ASDK) için Git: https://portal.local.azurestack.external.
 * Bir Azure Stack tümleşik sistemi için Azure Stack operatörü sağlanan URL'sine gidin.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
 
 1. Tıklayın **+ kaynak Oluştur** > **işlem** > **Windows Server 2016 Datacenter --,-kullandıkça**  >   **Oluşturma**. Görmüyorsanız **Windows Server 2016 Datacenter --,-kullandıkça** girişi, Azure Stack operatörü başvurun. Bunlar ve Market içinde anlatıldığı gibi eklemenizi isteyin [Windows Server 2016 VM görüntüsü eklemek için Azure Stack marketini](../operator/azure-stack-create-and-publish-marketplace-item.md) makalesi.
 
     ![Portalında bir Windows sanal makinesi oluşturma adımları](media/azure-stack-quick-windows-portal/image01.png)
 2. Altında **Temelleri**, tür a **adı**, **kullanıcı adı**, ve **parola**. Seçin bir **abonelik**. Oluşturma bir **kaynak grubu**, veya varolan bir adet seçin bir **konumu**ve ardından **Tamam**.
 
-    ![Temel ayarları yapılandırma](media/azure-stack-quick-windows-portal/image02.png)
+    ![Temel ayarları yapılandırın](media/azure-stack-quick-windows-portal/image02.png)
 3. Altında **boyutu** seçin **standart D1**ve ardından **seçin**.  
     ![Sanal makine boyutunu seçin](media/azure-stack-quick-windows-portal/image03.png)
 

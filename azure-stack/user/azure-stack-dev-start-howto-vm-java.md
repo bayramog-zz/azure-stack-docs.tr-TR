@@ -1,6 +1,6 @@
 ---
 title: Azure Stack'te bir sanal makineye bir Java WAR dağıtma | Microsoft Docs
-description: Bir Java WAR Azure Stack'te bir sanal makine dağıtın.
+description: Java War dosyası, bir sanal makineye Azure Stack'te dağıtın.
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
@@ -9,22 +9,18 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: e788be6315078fccee020fefe6ad79a20485c382
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: dbf6083ff81d045d92d488eda5cfab757093bb7e
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64482110"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782908"
 ---
 # <a name="how-to-deploy-a-java-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için bir Java web uygulaması dağıtma
 
 Azure stack'teki Python Web uygulamanızı barındırmak için bir VM oluşturabilirsiniz. Bu makalede, sunucu, Python web uygulamanızı barındırmak için sunucu yapılandırma ve ardından uygulamanızı dağıtmak ayarında izleyeceğiniz adımlar bakar.
 
-Java eş zamanlı, sınıf tabanlı, nesne yönelimli ve mümkün olduğunca az sayıda uygulama bağımlılıkları için tasarlanmış olan bir genel amaçlı bir bilgisayar programlama dilidir. Uygulama geliştiricileri "her yerde çalıştırın yazma bir kez", izin vermek için hedeflenen derlenmiş kod, yeniden derleme gerek kalmadan Java desteği tüm platformlarda çalıştırılabilir Java anlamına gelir. Java programlama dilinde öğrenin ve Java için ek kaynakları bulmak için bkz: [Java.com](https://www.java.com).
-
-Bu makalede, yükleme ve Azure stack'teki Linux VM'de bir Apache Tomcat sunucusunu yapılandırma ve sonra bir Java Web uygulaması (WAR) kaynak dosyası Server'a yükleme yol gösterir. Bir WAR dosyası JAR dosyalarını, JavaServer sayfaları, Java Servlet'ler, Java sınıfları, XML dosyaları, etiket kitaplıkları, statik web sayfaları (HTML ve ilişkili dosyaları) ve birlikte bir web uygulaması oluşturan diğer kaynakları koleksiyonu dağıtmak için kullanılır.
-
-Apache Tomcat genellikle Tomcat sunucusu olarak adlandırılan, Apache Software Foundation tarafından geliştirilen bir açık kaynak Java Servlet kapsayıcısı var. Tomcat, Java Servlet, JavaServer sayfaları, Java EL ve WebSocket'dahil olmak üzere çeşitli Java EE belirtimleri uygular ve Java kodu çalıştırmak bir "saf Java" HTTP web sunucusu ortamı sağlar.
+Bu makalede, yükleme ve Azure stack'teki Linux VM'de bir Apache Tomcat sunucusunu yapılandırma ve sonra bir Java Web uygulaması (WAR) kaynak dosyası Server'a yükleme yol gösterir. Bir WAR dosyası, bir koleksiyon sınıfları, metin, resimler, XML ve HTML gibi Java kaynak ve bir web uygulaması teslim etmek için kullanılan diğer kaynakları içeren sıkıştırılmış bir dosya JAR dosyalarını dağıtmak için kullanılır.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -32,11 +28,11 @@ Apache Tomcat genellikle Tomcat sunucusu olarak adlandırılan, Apache Software 
 
 2. VM ağ dikey penceresinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
 
-    | Bağlantı noktası | Protokol | Açıklama |
+    | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), dağıtılmış, işbirliğine dayalı, Hiper medyayı bilgi sistemlerine yönelik bir uygulama protokolüdür. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal Makinenizin bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), Köprü Metni Aktarım Protokolü (HTTP) bir uzantısıdır. Bir bilgisayar ağ üzerinden güvenli iletişim için kullanılır. İstemciler, web uygulamanıza ya da genel IP veya DNS adı ile sanal makinenizin bağlanır. |
-    | 22 | SSH | Güvenli Kabuk (SSH) ağ hizmetleri güvenli bir şekilde güvenli olmayan bir ağ üzerinden işletim bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), web sayfaları sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür.  |
+    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
     | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü bir grafik kullanıcı arabirimi kullanılacak Uzak Masaüstü bağlantısı için makinenizi sağlar.   |
     | 8080 | Özel | Apache Tomcat hizmeti için varsayılan bağlantı noktası 8080'dir. Bir üretim sunucusu için 80 ve 443, trafiği yönlendirmek isteyebilirsiniz. |
 
@@ -65,7 +61,7 @@ Apache Tomcat genellikle Tomcat sunucusu olarak adlandırılan, Apache Software 
             sudo groupadd tomcat
         ```
      
-    - İkinci olarak, yeni Tomcat kullanıcı oluşturma ve bu kullanıcının giriş dizininin ile tomcat grubunun bir üyesi olun `/opt/tomcat`, Tomcat yükleyecek olduğunda ve bir kabuk ile `/bin/false` (hiç kimse hesaba oturum için):
+    - İkinci olarak, Tomcat kullanıcı oluşturun. Giriş dizini ile tomcat grubuna bu kullanıcı ekleme `/opt/tomcat`. Bu dizine Tomcat dağıtacaksınız:
         ```bash  
             sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
         ```
@@ -79,7 +75,7 @@ Apache Tomcat genellikle Tomcat sunucusu olarak adlandırılan, Apache Software 
             curl -O <URL for the tar for the latest version of Tomcat 8>
         ```
 
-    - Üçüncü olarak, Tomcat için yükleme `/opt/tomcat` dizin. Dizin oluşturma, ardından aşağıdaki komutları kullanarak arşivini ayıklayın:
+    - Üçüncü olarak, Tomcat için yükleme `/opt/tomcat` dizin. Bir klasör oluşturun.  Arşiv açın:
 
         ```bash  
             sudo mkdir /opt/tomcat
@@ -97,7 +93,7 @@ Apache Tomcat genellikle Tomcat sunucusu olarak adlandırılan, Apache Software 
 
 5. Oluşturma bir `systemd` hizmet dosyası. Böylece, Tomcat hizmet olarak çalıştırabilirsiniz.
 
-    - Tomcat, Java'nın yüklendiği bilmesi gerekir. Bu yol, yaygın olarak adlandırılır **JAVA_HOME**. Konumun çalıştırarak bulabilirsiniz:
+    - Tomcat, Java yüklediğiniz bilmesi gerekir. Bu yol, yaygın olarak adlandırılır **JAVA_HOME**. Konumun çalıştırarak bulabilirsiniz:
 
         ```bash  
             sudo update-java-alternatives -l
@@ -289,3 +285,4 @@ Azure'da Java uygulamaları geliştirme hakkında yönergeler için bkz. [azure'
 
 - Learn more about how to [Develop for Azure Stack](azure-stack-dev-start.md)
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).

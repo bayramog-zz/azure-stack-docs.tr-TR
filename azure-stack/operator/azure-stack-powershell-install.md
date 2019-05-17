@@ -15,12 +15,12 @@ ms.date: 05/09/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: d95e1b593ac5ab87bdd6b0a98703de5a4f6dab1a
-ms.sourcegitcommit: 1655b2ef4d01d69ceeb52bc16f922bdc19cb968d
+ms.openlocfilehash: 38a7398b157ad74f7f8849a3fa84b0cee82b80ad
+ms.sourcegitcommit: 95576d0cd780f3a200b2e98b6e9f031f5172f8c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65706345"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65814939"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell'i yükleme
 
@@ -252,10 +252,10 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 3. Artık bu konum varsayılan depo Kaydet ve bu depodan AzureRM ve AzureStack modüllerini yükleyin:
 
    ```powershell
-   #requires -Version 5
-   #requires -RunAsAdministrator
-   #requires -Module PowerShellGet
-   #requires -Module PackageManagement
+   # requires -Version 5
+   # requires -RunAsAdministrator
+   # requires -Module PowerShellGet
+   # requires -Module PackageManagement
 
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
    $RepoName = "MyNuGetSource"

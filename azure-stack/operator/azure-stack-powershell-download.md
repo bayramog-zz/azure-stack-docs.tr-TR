@@ -3,25 +3,24 @@ title: Azure Stack araçları Github'dan indirin. | Microsoft Docs
 description: Azure Stack ile çalışmak için gereken araçları indirme hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-origin.date: 01/14/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 05/16/2019
+ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e7c24431a508e45fea0a61025b62f9bc3443d97b
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 722fea2777071fa78c89372a21fe52022a56f264
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64293844"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782262"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Github'dan Azure Stack araçları indirin
 
@@ -53,7 +52,7 @@ cd AzureStack-Tools-master
 
 **AzureStack Araçları** deposu, aşağıdaki işlevleri desteklemek için Azure Stack PowerShell modüllerini içerir:  
 
-| İşlev | Açıklama | Kimler bu modül kullanabilir miyim? |
+| İşlevi | Açıklama | Kimler bu modül kullanabilir miyim? |
 | --- | --- | --- |
 | [Bulut özellikleri](../user/azure-stack-validate-templates.md) | Bulut'u bulut özelliklerini almak için bu modülü kullanın. Örneğin, bu modül kullanılarak API sürümü ve Azure Resource Manager kaynakları gibi bulut özellikleri elde edebilirsiniz. Ayrıca VM uzantıları Azure Stack ve Azure bulut için bu modülü kullanarak alabilirsiniz. | Bulut operatörleri ve kullanıcıları |
 | [Azure Stack için Resource Manager İlkesi](../user/azure-stack-policy-module.md) | Azure Stack olarak aynı sürüm oluşturma ve hizmet kullanılabilirliği olan bir Azure aboneliği veya bir Azure kaynak grubu yapılandırmak için bu modülü kullanın. | Bulut operatörleri ve kullanıcıları |
@@ -64,5 +63,7 @@ cd AzureStack-Tools-master
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stack kullanıcının PowerShell ortamını yapılandırma](../user/azure-stack-powershell-configure-user.md)   
-* [Azure Stack Geliştirme Seti için bir VPN üzerinden bağlanan](../asdk/asdk-connect.md)  
+
+- [Azure Stack de PowerShell ile çalışmaya başlama](../user/azure-stack-powershell-overview.md)
+- [Azure Stack kullanıcının PowerShell ortamını yapılandırma](../user/azure-stack-powershell-configure-user.md)   
+- [Azure Stack Geliştirme Seti için bir VPN üzerinden bağlanan](../asdk/asdk-connect.md)  

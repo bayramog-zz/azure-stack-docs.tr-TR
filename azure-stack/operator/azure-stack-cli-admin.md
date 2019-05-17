@@ -3,24 +3,23 @@ title: Azure Stack kullanıcıları için Azure CLI'yi etkinleştirme | Microsof
 description: Platformlar arası komut satırı arabirimi (CLI) yönetmek ve Azure Stack'te kaynakları dağıtmak için kullanmayı öğrenin
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: CLI
 ms.topic: article
-origin.date: 01/15/2019
-ms.date: 04/29/2019
-ms.author: v-jay
-ms.lastreviewed: 01/15/2019
-ms.openlocfilehash: efec1cc58b263c9580ab4a8ab3d7973a8f230d93
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.date: 05/16/2019
+ms.author: mabrigg
+ms.lastreviewed: 05/16/2019
+ms.openlocfilehash: ace99053d9aac4c525e9481e5430ac1f5648f194
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64290357"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782325"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Azure Stack kullanıcıları için Azure CLI'yi etkinleştirme
 
@@ -61,7 +60,7 @@ certutil -encode root.cer root.pem
 
 Azure Stack operatörlerinin sanal makine diğer dosyasını barındıran bir genel olarak erişilebilir uç ayarlamanız gerekir. Sanal makine diğer dosyasının bir görüntü için ortak bir ad sağlar bir JSON dosyasıdır. Azure CLI parametresi olarak bir VM dağıtırken adı kullanacaksınız.  
 
-Bir diğer ad dosyasına bir giriş eklemeden önce emin olun, [görüntüleri Azure Market'te indirme](azure-stack-download-azure-marketplace-item.md) veya [kendi özel görüntünüzü yayımlanan](azure-stack-add-vm-image.md). Özel bir görüntü yayımlarsanız, yayımlama sırasında belirtilen yayımcı, teklif, SKU ve sürüm bilgileri not edin. Marketten bir görüntü varsa kullanarak bilgileri görüntüleyebilir ```Get-AzureVMImage``` cmdlet'i.  
+Bir diğer ad dosyasına bir giriş eklemeden önce emin olun, [görüntüleri Azure Market'te indirme](azure-stack-download-azure-marketplace-item.md) veya [kendi özel görüntünüzü yayımlanan](azure-stack-add-vm-image.md). Özel bir görüntü yayımlarsanız, yayımlama sırasında belirtilen yayımcı, teklif, SKU ve sürüm bilgileri not edin. Marketten bir görüntü varsa kullanarak bilgileri görüntüleyebilir `Get-AzureVMImage` cmdlet'i.  
 
 A [örnek diğer ad dosyası](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) birçok ortak görüntü ile diğer adları kullanılabilir. Bu bir başlangıç noktası olarak kullanabilirsiniz. Bu dosyada burada CLI istemcilerinize erişebileceği bir boşluk barındırın. Bir dosyayı blob depolama hesabında barındırmak ve URL'yi Kullanıcılarınızla paylaşın yoludur:
 
