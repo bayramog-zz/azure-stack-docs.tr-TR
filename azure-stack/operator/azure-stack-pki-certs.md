@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: e51dd3a467bcba9eaf36fc729e37780cf7b626dd
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 3ca7624627ff02cc3ef230a510038f2db5ff5247
+ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985074"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65782303"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack ortak anahtar altyapısı sertifika gereksinimleri
 
@@ -74,7 +74,7 @@ Dağıtımınız, [Bölge] ve [externalfqdn] değerleri bölge ve Azure Stack si
 | Yönetici portalı | adminportal. &lt;bölge >. &lt;fqdn > | Portallar | &lt;region>.&lt;fqdn> |
 | Azure Resource Manager'a genel | yönetimi. &lt;bölge >. &lt;fqdn > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
 | Azure Resource Manager Yöneticisi | adminmanagement. &lt;bölge >. &lt;fqdn > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
-| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Blob Depolama | BLOB. &lt;bölge >. &lt;fqdn > |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Blob Depolama Alanı | BLOB. &lt;bölge >. &lt;fqdn > |
 | ACSTable | *.table.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Tablo Depolama | Tablo. &lt;bölge >. &lt;fqdn > |
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Kuyruk Depolama | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Key Vault | vault.&lt;region>.&lt;fqdn> |
@@ -118,4 +118,3 @@ Bilgi edinmek için nasıl [Azure Stack dağıtımı için PKI sertifikalarını
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Kimlik Tümleştirme](azure-stack-integrate-identity.md)
-
