@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/17/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6e4402be7108f242e1d285ebe91dfece744f0805
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/17/2019
+ms.openlocfilehash: 62626240c59c9f78c0b0d21553e8c6ffeb0367a0
+ms.sourcegitcommit: 8cb2b567e9914d4d07e754d95c0864aa55868579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301973"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65855400"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Kubernetes Azure Active Directory'yi kullanarak Azure Stack'e dağıtma
 
@@ -61,25 +61,21 @@ Azure hizmet sorumlusu oluşturun. Hizmet sorumlusu, uygulamanın Azure Stack ka
 
 1. Azure AD uygulaması oluşturun.
 
-    a. Seçin **Azure Active Directory** > **+ uygulama kayıtları** > **yeni uygulama kaydı**.
-
-    b. Girin bir **adı** uygulama.
-
-    c. Seçin **Web uygulaması / API**.
-
-    d. Girin `http://localhost` için **oturum açma URL'si**.
-
-    c. **Oluştur**’a tıklayın.
+    a. Üzerinden Azure hesabınızla oturum açın [Azure portalında](https://portal.azure.com).  
+    b. Seçin **Azure Active Directory** > **uygulama kayıtları** > **yeni kayıt**.  
+    c. Uygulama için bir ad ve URL sağlayın.  
+    d. Seçin **desteklenen hesap türleri**.  
+    e.  Ekleme `http://localhost` uygulama için URI. Seçin **Web** oluşturmak istediğiniz uygulama türü. Değerleri ayarladıktan sonra seçin **kaydetme**.
 
 1. **Uygulama Kimliği**’ni not alın. Kümeyi oluştururken kimliği gerekir. Kimliği olarak başvurulan **hizmet sorumlusu istemci kimliği**.
 
-1. Seçin **ayarları** > **anahtarları**.
+1. Hizmet İlkesi dikey penceresinde, seçin **yeni gizli**. **Ayarları** > **anahtarları**. Hizmet İlkesi için bir kimlik doğrulama anahtarını oluşturmak için ihtiyacınız.
 
     a. Girin **açıklama**.
 
     b. Seçin **her zaman geçerli olsun** için **Expires**.
 
-    c. **Kaydet**’i seçin. Anahtar dize not edin. Anahtar dize, kümeyi oluştururken gerekir. Anahtar olarak başvurulan **hizmet sorumlusu istemci parolası**.
+    c. **Add (Ekle)** seçeneğini belirleyin. Anahtar dize not edin. Anahtar dize, kümeyi oluştururken gerekir. Anahtar olarak başvurulan **hizmet sorumlusu istemci parolası**.
 
 ## <a name="give-the-service-principal-access"></a>Hizmet sorumlusu erişimi verin
 
@@ -107,7 +103,7 @@ Asıl kaynakları oluşturabilmesi aboneliğinizde hizmet sorumlusu erişimi ver
 
     ![Çözüm Şablonu Dağıt](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-### <a name="1-basics"></a>1. Temel Bilgiler
+### <a name="1-basics"></a>1. Temel
 
 1. Seçin **Temelleri** Kubernetes kümesi oluşturun.
 

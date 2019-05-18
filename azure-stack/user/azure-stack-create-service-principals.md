@@ -14,12 +14,12 @@ ms.date: 04/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 3fc50d068eb07d7da2d55d855b2ea8ea758ca6b1
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 3860f8dcc99f3505fe2f838e75f5e8f09b78aefe
+ms.sourcegitcommit: 8cb2b567e9914d4d07e754d95c0864aa55868579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64300620"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65855372"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Hizmet sorumluları oluşturma tarafından Azure Stack kaynaklara uygulamaları erişimi verin
 
@@ -59,7 +59,7 @@ Azure Stack, Azure AD kimlik deposu olarak kullanıyorsa, bir hizmet sorumlusu A
 > [!NOTE]
 > Sahip olduğunuzu denetleyin [Azure AD izinleri gerekli](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) bir hizmet sorumlusu oluşturma işlemi başlamadan önce.
 
-### <a name="create-service-principal"></a>Hizmet sorumlusu oluşturma
+### <a name="create-service-principal"></a>Hizmet sorumlusu oluştur
 
 Uygulamanız için hizmet sorumlusu oluşturmak için:
 
@@ -68,6 +68,8 @@ Uygulamanız için hizmet sorumlusu oluşturmak için:
 3. Bir ad sağlayın.
 4. Seçin **desteklenen hesap türleri**.
 5.  Uygulama için bir URI ekleyin. Seçin **Web** oluşturmak istediğiniz uygulama türü. Değerleri ayarladıktan sonra seçin **kaydetme**.
+
+Uygulamanız için bir hizmet sorumlusu oluşturdunuz.
 
 ### <a name="get-credentials"></a>Kimlik bilgilerini al
 

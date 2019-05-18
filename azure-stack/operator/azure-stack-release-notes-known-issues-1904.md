@@ -16,12 +16,12 @@ ms.date: 05/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/15/2019
-ms.openlocfilehash: 86817d0d22854bf2bb0d2372f2a25e15a3de7c48
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: 48136220e2d784a61b3275ca9f79b82e0e8bfb69
+ms.sourcegitcommit: 8cb2b567e9914d4d07e754d95c0864aa55868579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712303"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65855361"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -77,10 +77,16 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 ### <a name="marketplace-management"></a>Market Yönetimi
 
 - Uygulanabilir: Bu sorun 1904 için geçerlidir.
-- Neden: "Azure Ekle" dikey penceresinde Yönetici portalında Market Yönetim sekmesinde sonuçlara filtre, hatalı filtrelenmiş sonuçlar görebilirsiniz. 
+- Neden: Sonuçlarda filtre uyguladığınızda **Ekle azure'dan** dikey penceresinde Yönetici portalı'nda Marketi yönetim sekmesinden, hatalı filtrelenmiş sonuçlar görebilirsiniz. 
 - Düzeltme: Adı sütuna göre sıralama sonuçları ve sonuçları düzeltilecektir. 
 - Örneği: Aralıklı
 
+### <a name="marketplace-management"></a>Market Yönetimi
+
+- Uygulanabilir: Bu sorun 1904 için geçerlidir.
+- Neden: Market Yönetimi Yönetici portalı'nda sonuçlara filtre açılan yayımcı altında yinelenen yayımcı adlarını görürsünüz. 
+- Düzeltme: Bu yayımcı altında kullanılabilir olan tüm Market ürünleri doğru listesine sahip tüm çoğaltmaları seçin. 
+- Örneği: Aralıklı
 
 ### <a name="upload-blob"></a>Blobu karşıya yükle
 
