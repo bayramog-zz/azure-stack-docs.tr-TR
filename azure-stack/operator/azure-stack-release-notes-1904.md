@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: sethm
 ms.reviewer: ''
 ms.lastreviewed: 05/06/2019
-ms.openlocfilehash: 78a42d458f77385114c476bd810cea89380423fa
-ms.sourcegitcommit: 1655b2ef4d01d69ceeb52bc16f922bdc19cb968d
+ms.openlocfilehash: 99906760e51c87a7403eabfb94a64b74b999aab5
+ms.sourcegitcommit: d2012e765c3fa5bccb4756d190349e890f9f48bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65706295"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65941179"
 ---
 # <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
 
@@ -113,6 +113,8 @@ Azure Stack 1904 güncelleştirmenin yapı numarasıdır **1.1904.0.36**.
   - "Sabit" Kritik Uyarı okur, "en son güncelleştirme başarısız oldu. portalda görüntülenir. Microsoft, hizmet isteğini olabildiğince çabuk açma önerir. Güncelleştirme işleminin bir parçası olarak, Test AzureStack gerçekleştirilen tabanlı ve çıktı size en uygun olan uyarıyı oluşturur. Bu durumda, Test AzureStack de başarısız oldu."
 
 - Güncelleştirilmiş Azure Linux Aracısı sürümü 2.2.38.0. Bu destek, müşterilerin Azure ve Azure Stack arasında tutarlı Linux görüntüleri tutmak olanak tanır.
+
+- Bu güncelleştirmede yapılan değişiklikler işleci Portalı'nda günlüğe kaydeder. Başarılı güncelleştirme günlükleri almak için istekleri artık kullanılamaz. Tanılama için eyleme dönüştürülebilir olduğundan başarısız güncelleştirme günlükleri için yükleme yine kullanılabilir durumdadır.
 
 ### <a name="fixes"></a>Düzeltmeleri
 

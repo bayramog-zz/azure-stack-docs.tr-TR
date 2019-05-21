@@ -16,12 +16,12 @@ ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
-ms.openlocfilehash: 37e5ef80462f7e31d18972de007303b12b5a3108
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: fb39928b50e6cce35d5c35c33a95fc2c6b82c160
+ms.sourcegitcommit: d2012e765c3fa5bccb4756d190349e890f9f48bd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712260"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65941124"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Stack'te Azure Resource Manager şablonlarını kullanma
 
@@ -32,6 +32,7 @@ Azure Resource Manager şablonları, dağıtmak ve tek ve eşgüdümlü bir işl
 Bu şablonlar, Microsoft Azure Stack portal, PowerShell, komut satırı ve Visual Studio ile dağıtılabilir.
 
 Aşağıdaki Hızlı Başlangıç şablonları mevcuttur [GitHub](https://aka.ms/azurestackgithub):
+
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>SharePoint Server (yüksek kullanılabilirlik dağıtımı) dağıtın
 
@@ -82,4 +83,6 @@ PowerShell DSC uzantısı, var olan bir sanal makine yerel Configuration Manager
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Şablonları portal ile dağıtma](azure-stack-deploy-template-portal.md)
-* [Azure Resource Manager'a genel bakış](/azure/azure-resource-manager/resource-group-overview)
+* [Şablonları PowerShell ile dağıtma](azure-stack-deploy-template-powershell.md)
+* [Şablonları Visual Studio ile dağıtma](azure-stack-deploy-template-visual-studio.md)
+* [Azure Resource Manager’a genel bakış](/azure/azure-resource-manager/resource-group-overview)

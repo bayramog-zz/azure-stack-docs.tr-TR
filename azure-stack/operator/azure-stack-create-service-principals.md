@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 05/17/2019
 ms.author: sethm
-ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 8d6548ada50a25350f622d7bc7460005f4abc401
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/17/2019
+ms.openlocfilehash: 1bb07c1725d5c8ed81ec4b8ccc546a4d41dc64e0
+ms.sourcegitcommit: 8cb2b567e9914d4d07e754d95c0864aa55868579
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64295131"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65855295"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Uygulamalara Azure Stack erişimi sağlama
 
@@ -47,13 +47,15 @@ Hizmet sorumlusu oluşturduktan sonra AD FS ve Azure Active Directory genel adı
 
 Azure Active Directory (Azure AD) ile Azure Stack, kimlik yönetimi hizmeti olarak dağıttıysanız, Azure için gibi hizmet sorumluları oluşturabilirsiniz. Bu bölümde Portalı aracılığıyla adımların nasıl gerçekleştirileceğini gösterir. Sahip olduğunuz denetimi [Azure AD permissions]((/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) başlamadan önce gerekli.
 
-### <a name="create-service-principal"></a>Hizmet sorumlusu oluşturma
+### <a name="create-service-principal"></a>Hizmet sorumlusu oluştur
 
 Bu bölümde, Azure AD'de uygulamanızı temsil eden bir uygulama (hizmet sorumlusu) oluşturma.
 
 1. Üzerinden Azure hesabınızla oturum açın [Azure portalında](https://portal.azure.com).
-2. Seçin **Azure Active Directory** > **uygulama kayıtları** > **yeni uygulama kaydı**
-3. Uygulama için bir ad ve URL sağlayın. Şunlardan birini seçin **Web uygulaması / API** veya **yerel** oluşturmak istediğiniz uygulama türü. Değerleri ayarladıktan sonra seçin **Oluştur**.
+2. Seçin **Azure Active Directory** > **uygulama kayıtları** > **yeni kayıt**.
+3. Uygulama için bir ad ve URL sağlayın. 
+4. Seçin **desteklenen hesap türleri**.
+5.  Uygulama için bir URI ekleyin. Seçin **Web** oluşturmak istediğiniz uygulama türü. Değerleri ayarladıktan sonra seçin **kaydetme**.
 
 Uygulamanız için bir hizmet sorumlusu oluşturdunuz.
 
@@ -61,18 +63,17 @@ Uygulamanız için bir hizmet sorumlusu oluşturdunuz.
 
 Programlamayla oturum açılırken, kimlik, uygulamanız için ve bir Web uygulaması için kullandığınız / API, bir kimlik doğrulama anahtarı. Bu değerleri almak için aşağıdaki adımları kullanın:
 
-1. Gelen **uygulama kayıtları** Active Directory'de, uygulamanızı seçin.
+1. Seçin **Azure Active Directory** > **uygulama kayıtları**. Uygulamanızı seçin.
 
 2. **Uygulama kimliği**'ni kopyalayın ve bunu uygulama kodunuzda depolayın. Örnek uygulamalar bölümü uygulamalarında istemci kimliği olarak bu değere bakın.
 
-     ![İstemci kimliği](./media/azure-stack-create-service-principal/image12.png)
-3. Bir Web uygulaması için bir kimlik doğrulama anahtarını oluşturmak için / API, select **ayarları** > **anahtarları**. 
+3. Bir Web uygulaması için bir kimlik doğrulama anahtarını oluşturmak için / API, select **sertifikaları ve parolaları**. **Yeni istemci gizli dizisi**’ni seçin.
 
-4. Anahtar için bir açıklama ve süre sağlayın. İşiniz bittiğinde **Kaydet**’i seçin.
+4. Anahtar için bir açıklama ve süre sağlayın. İşiniz bittiğinde, seçin **Ekle**.
 
 Anahtar kaydedildikten sonra, anahtarın değeri görüntülenir. Daha sonra anahtarı alınamıyor çünkü bu değeri not defteri veya başka bir geçici konuma, kopyalayın. Uygulama Kimliği da uygulamayı imzalamak için anahtar değerini sağlayın. Anahtar değeri, uygulamanızın onu alabildiği bir yerde Store.
 
-![kaydedilen anahtar](./media/azure-stack-create-service-principal/image15.png)
+![kaydedilen anahtar](./media/azure-stack-create-service-principal/create-service-principal-in-azure-stack-secret.png)
 
 İşlem tamamlandıktan sonra uygulamanızı bir rol atayabilirsiniz.
 
