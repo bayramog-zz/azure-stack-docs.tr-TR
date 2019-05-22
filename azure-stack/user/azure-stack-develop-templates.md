@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 05/21/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: e2bac108b47aeb1c4a1b6d777072fe4d6ff64f2d
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 9967da0434be577e3db8586f28e3078658623e9b
+ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298640"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991329"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager şablonu konuları
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Uygulamanızı geliştirirken, Azure ve Azure Stack arasında şablon taşınabilirliği sağlamak önemlidir. Bu makalede Azure Resource Manager geliştirme dikkat edilmesi gereken noktalar sunulmaktadır [şablonları](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), uygulama ve test dağıtımınızı azure'da bir Azure Stack ortamınıza erişmeden prototipi olabilir.
+Uygulamanızı geliştirirken, Azure ve Azure Stack arasında şablon taşınabilirliği sağlamak önemlidir. Bu makalede geliştirirken dikkat edilmesi gereken noktalar sunulmaktadır [Azure Resource Manager şablonları](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), uygulama ve test dağıtımınızı azure'da bir Azure Stack ortamınıza erişmeden prototipi olabilir.
 
 ## <a name="resource-provider-availability"></a>Kaynak sağlayıcısı kullanılabilirliği
 
@@ -35,7 +35,7 @@ Dağıtmayı planladığınız şablon zaten mevcut veya Azure Stack'te Önizlem
 
 ## <a name="public-namespaces"></a>Ortak ad alanları
 
-Azure Stack, veri merkezinizde barındırıldığı için Azure genel bulutunda farklı hizmet uç nokta ad alanları vardır. Azure Stack dağıtmayı denediğinizde sonuç olarak, sabit kodlanmış ortak uç noktalar Azure Resource Manager şablonlarında başarısız. Hizmet uç noktaları kullanarak dinamik olarak oluşturabileceğiniz `reference` ve `concatenate` değerleri, dağıtım sırasında kaynak Sağlayıcısı'ndan almak için işlevleri. Örneğin, sabit kodlama yerine *blob.core.windows.net* almak, şablonunuzda [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) dinamik olarak ayarlamak için *osDisk.URI* uç noktası:
+Azure Stack, veri merkezinizde barındırıldığı için Azure genel bulutunda farklı hizmet uç nokta ad alanları vardır. Azure Stack dağıtmayı denediğinizde sonuç olarak, sabit kodlanmış ortak uç noktalar Azure Resource Manager şablonlarında başarısız. Hizmet uç noktaları kullanarak dinamik olarak oluşturabileceğiniz `reference` ve `concatenate` değerleri, dağıtım sırasında kaynak Sağlayıcısı'ndan almak için işlevleri. Örneğin, sabit kodlama yerine `blob.core.windows.net` almak, şablonunuzda [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) dinamik olarak ayarlamak için *osDisk.URI* uç noktası:
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -49,11 +49,11 @@ Azure hizmet sürümleri, Azure ve Azure Stack arasında farklılık gösterebil
 
 | Kaynak Sağlayıcısı | apiVersion |
 | --- | --- |
-| İşlem |`'2015-06-15'` |
-| Ağ |`'2015-06-15'`, `'2015-05-01-preview'` |
-| Depolama |`'2016-01-01'`, `'2015-06-15'`, `'2015-05-01-preview'` |
-| KeyVault | `'2015-06-01'` |
-| App Service |`'2015-08-01'` |
+| İşlem |**2015-06-15** |
+| Ağ |**2015-06-15**, **2015-05-01-Önizleme** |
+| Depolama |**2016-01-01**, **2015-06-15**, **2015-05-01-Önizleme** |
+| KeyVault | **2015-06-01** |
+| App Service |**2015-08-01** |
 
 ## <a name="template-functions"></a>Şablon işlevleri
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2019
+ms.date: 05/21/2019
 ms.author: sethm
-ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 87c93f77011082d3e43b1c7d238999441f1b90c1
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0167fd89e7bc9b17ff5b950a4ed5f12c368f1f8f
+ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298541"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991258"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Anahtar kasası Azure Stack'te giriş
 
@@ -50,7 +50,7 @@ Azure Stack aboneliğine herkesle oluşturabilir ve anahtar kasalarını kullana
 
 İşleç Tekdüzen Kaynak Tanımlayıcıları (URI'lar) uygulamalarından çağırmaları için geliştiricilere ardından sağlayabilirsiniz. İşleçler, güvenlik yöneticileri anahtar kullanımı günlüğü bilgilerini de sağlayabilirsiniz.
 
-Geliştiriciler ayrıca anahtarları doğrudan API'lerini kullanarak yönetebilir. Daha fazla bilgi için Key Vault Geliştirici Kılavuzu na bakın.
+Geliştiriciler ayrıca anahtarları doğrudan API'lerini kullanarak yönetebilir. Daha fazla bilgi için [Key Vault Geliştirici Kılavuzu](/azure/key-vault/key-vault-developers-guide).
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -78,4 +78,3 @@ Aşağıdaki senaryolarda, anahtar kasası geliştiricilere ve güvenlik yöneti
 
 * [Anahtar Kasası'nda Azure Stack portal ile yönetme](azure-stack-key-vault-manage-portal.md)  
 * [Anahtar Kasası'nda Azure Stack PowerShell kullanarak yönetme](azure-stack-key-vault-manage-powershell.md)
-

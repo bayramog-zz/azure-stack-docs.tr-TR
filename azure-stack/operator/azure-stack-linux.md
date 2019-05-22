@@ -1,6 +1,6 @@
 ---
 title: Azure Stack'e Linux görüntüleri ekleme
-description: Bilgi nasıl Linux görüntüleri Azure Stack'e ekleme.
+description: Linux görüntüleri için Azure Stack eklemeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 05/21/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 2f7f0c55f02fd99a419619d878be8300d7326303
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 40a60c5207494ae70ccdfd051c8a223493b704c5
+ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64296792"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991102"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Azure Stack'e Linux görüntüleri ekleme
 
@@ -30,16 +30,17 @@ Azure Stack Market'e Linux tabanlı bir görüntü ekleyerek Azure Stack üzerin
 
 ## <a name="marketplace-management"></a>Market Yönetimi
 
-Azure Market'teki Linux görüntüleri indirmek için yordamları kullanın. [indirme Market öğesi Azure'dan Azure Stack'e](azure-stack-download-azure-marketplace-item.md) makalesi. Azure Stack kullanıcıları sunmak istediğiniz Linux görüntülerini seçin. 
+Azure Market'teki Linux görüntüleri indirmek için yordamları kullanın. [indirme Market öğesi Azure'dan Azure Stack'e](azure-stack-download-azure-marketplace-item.md) makalesi. Azure Stack kullanıcıları sunmak istediğiniz Linux görüntülerini seçin.
 
-Bu görüntüler için sık sık güncelleştirme olduğunu unutmayın, bu nedenle Market genellikle güncel tutmak için yönetim denetleyin.
+Bu görüntüler için sık sık güncelleştirme vardır, bu nedenle Market genellikle güncel tutmak için yönetim denetleyin.
 
 ## <a name="prepare-your-own-image"></a>Kendi görüntünüzü hazırlama
 
-Mümkün olduğunda Market Yönetimi sayfasından Azure Stack için hazırlanmış ve test edilmiş olan görüntüleri indirin.
+Mümkün olduğunda, Market yönetim sağlanan görüntülerin indirin. Bu görüntüleri hazırlanan ve Azure Stack için test.
 
 ### <a name="azure-linux-agent"></a>Azure Linux Aracısı
-Azure Linux Aracısı (genellikle adlı `WALinuxAgent` veya `walinuxagent`) gereklidir ve aracıyı'nin tüm sürümleri Azure Stack'te çalışır. 2.2.20 2.2.35 arasındaki sürümleri, Azure Stack üzerinde desteklenmez. En son Aracı sürümleri 2.2.35 yukarıda kullanmak için lütfen 1901 düzeltme/1902 düzeltmeyi veya Azure Stack 1903 sürümüne (veya üzeri) güncelleştirin. Unutmayın [cloud-init](https://cloud-init.io/) Azure Stack üzerinde şu anda desteklenmiyor.
+
+Azure Linux Aracısı (genellikle adlı `WALinuxAgent` veya `walinuxagent`) gerekli ve tüm sürümler Azure Stack'te aracı iş. 2.2.20 2.2.35 arasındaki sürümleri, Azure Stack üzerinde desteklenmez. En son Aracı sürümleri 2.2.35 üstünde kullanılacak 1901 düzeltme/1902 düzeltmeyi veya Azure Stack 1903 sürümüne (veya üzeri) güncelleştirin. Unutmayın [cloud-init](https://cloud-init.io/) Azure Stack üzerinde şu anda desteklenmiyor.
 
 | Azure Stack derleme | Azure Linux Aracısı oluşturma |
 | ------------- | ------------- |
@@ -66,7 +67,5 @@ Görüntü Marketi'nde ekledikten sonra bir Market öğesi oluşturulur ve kulla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
-
-- [Azure Market öğelerini Azure Stack'e indirme](azure-stack-download-azure-marketplace-item.md)
-- [Azure Stack Marketini genel bakış](azure-stack-marketplace.md)
+* [Azure Market öğelerini Azure Stack'e indirme](azure-stack-download-azure-marketplace-item.md)
+* [Azure Stack Marketini genel bakış](azure-stack-marketplace.md)

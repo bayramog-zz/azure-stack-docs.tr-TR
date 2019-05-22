@@ -3,25 +3,24 @@ title: Azure Stack için VPN gateway hakkında | Microsoft Docs
 description: Azure Stack ile kullandığınız VPN ağ geçitlerini yapılandırmak ve bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: 0e30522f-20d6-4da7-87d3-28ca3567a890
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-origin.date: 02/15/2019
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 83d5215049976b67d22e29c2e4b75ec63a505b36
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.topic: conceptual
+ms.date: 05/21/2019
+ms.author: sethm
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 03aea7833e59d3262fc54e71d3d5409b5b95c488
+ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301423"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991306"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack için VPN gateway hakkında
 
@@ -41,8 +40,9 @@ Oluşturma ve Azure Stack için VPN ağ geçitleri'ı yapılandırmadan önce g�
 >Azure'da ağ geçidine bağlı olan tüm bağlantılar üzerinden bant genişliği performansını seçtiğiniz SKU VPN ağ geçidi ayrılmalıdır. Azure Stack'te ancak VPN ağ geçidi SKU'su bant genişliği değeri gateway'e bağlı her bir bağlantı kaynak uygulanır.
 >
 > Örneğin:
+>
 > * Azure'da temel VPN ağ geçidi SKU'sunu toplam üretilen iş yaklaşık 100 MB/sn barındırabilir. Bu VPN ağ geçidi iki bağlantı oluşturun ve bir bağlantı 50 MB/sn bant genişliği kullanıyorsa, ardından 50 MB/sn bir bağlantı için kullanılabilen olur.
-> * Azure stack'teki *her* temel VPN ağ geçidi SKU'sunu bağlantı 100 MB/sn aktarım hızının ayrılan.
+> * Azure stack'teki **her bağlantı** temel VPN ağ geçidi için SKU 100 MB/sn aktarım hızının ayrılır.
 
 ## <a name="configuring-a-vpn-gateway"></a>VPN gateway yapılandırma
 
@@ -52,7 +52,7 @@ Bir VPN ağ geçidi bağlantısı belirli ayarlarla yapılandırılmış birden 
 
 Her kaynak için seçtiğiniz ayarlar başarılı bir bağlantı oluşturmak için önemlidir.
 
-Tek tek kaynakları ve VPN gateway ayarları hakkında daha fazla bilgi için bkz. [hakkında VPN gateway ayarları Azure Stack için](azure-stack-vpn-gateway-settings.md). Bu makalede anlamanıza yardımcı olur:
+Tek tek kaynakları ve VPN gateway ayarları hakkında daha fazla bilgi için bkz. [hakkında VPN gateway ayarları Azure Stack için](azure-stack-vpn-gateway-settings.md). Bu makalede, anlamanıza yardımcı olur:
 
 * Ağ geçidi türleri, VPN türleri ve bağlantı türleri.
 * Ağ geçidi alt ağları, yerel ağ geçitleri ve kullanmayı isteyebileceğiniz diğer çeşitli ayarlar.
@@ -108,11 +108,11 @@ SKU seçtiğinizde aşağıdakileri göz önünde bulundurun:
 
 Aşağıdaki tabloda, ağ geçidi SKU'suna göre ağ geçidi türleri ve tahmini toplam verimlilik gösterilmektedir:
 
-|   | VPN Gateway işlemesi *(1)* | VPN Gateway maks. IPSec tünelleri *(2)* |
+|| VPN Gateway işlemesi *(1)* | VPN Gateway maks. IPSec tünelleri *(2)* |
 |-------|-------|-------|
-|**Temel SKU** ***(3)***    | 100 Mbps  | 20    |
-|**Standart SKU**       | 100 Mbps  | 20    |
-|**Yüksek performanslı SKU** | 200 Mbps    | 10    |
+|**Temel SKU** ***(3)*** | 100 Mbps | 20 |
+|**Standart SKU** | 100 Mbps | 20 |
+|**Yüksek performanslı SKU** | 200 Mbps | 10 |
 
 **Tablo Notlar:**
 
@@ -125,4 +125,4 @@ Aşağıdaki tabloda, ağ geçidi SKU'suna göre ağ geçidi türleri ve tahmini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack için VPN gateway yapılandırma ayarları](azure-stack-vpn-gateway-settings.md)
+* [Azure Stack için VPN gateway yapılandırma ayarları](azure-stack-vpn-gateway-settings.md)

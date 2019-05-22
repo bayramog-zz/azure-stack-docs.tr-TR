@@ -13,16 +13,16 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 05/21/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: f4fda8bbbb1bf88934f641644f89c319317ec58f
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 87035fd3860318f63fa30e528ad7fa12c7dc3a39
+ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298651"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990981"
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Şablonları Visual Studio kullanarak Azure Stack'te dağıtma
 
@@ -48,4 +48,4 @@ Visual Studio, Azure Stack için Azure Resource Manager şablonlarını dağıtm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Şablonları komut satırı ile dağıtma](azure-stack-deploy-template-command-line.md)
-* [Azure Stack için şablon geliştirme](azure-stack-develop-templates.md)
+* [Şablonları Azure Stack için geliştirme](azure-stack-develop-templates.md)

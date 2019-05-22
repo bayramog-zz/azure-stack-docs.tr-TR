@@ -16,12 +16,12 @@ ms.date: 05/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/15/2019
-ms.openlocfilehash: 48136220e2d784a61b3275ca9f79b82e0e8bfb69
-ms.sourcegitcommit: 8cb2b567e9914d4d07e754d95c0864aa55868579
+ms.openlocfilehash: 52279a7498e253771e16e66e0c5025b9afd4494d
+ms.sourcegitcommit: 442bd62d1dfbc1597592d7285aba1453298261ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65855361"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969849"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -38,13 +38,6 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Örneği: Ortak
 
 ## <a name="portal"></a>Portal
-
-### <a name="add-on-plans"></a>Eklenti planları
-
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı aboneliği plan kaldırdığınızda bile, bir kullanıcı abonelikte eklenti planı eklendiği planları silinemiyor. Eklenti planı başvuru abonelikler de silinir kadar plan kalır.
-- Düzeltme: Risk azaltma.
-- Örneği: Ortak
 
 ### <a name="administrative-subscriptions"></a>Yönetim abonelikler
 

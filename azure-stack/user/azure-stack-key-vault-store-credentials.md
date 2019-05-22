@@ -3,24 +3,23 @@ title: Azure Stack depolama hizmet sorumlusu kimlik bilgileri anahtar Kasası'nd
 description: Key Vault hizmet sorumlusu kimlik bilgileri Azure Stack üzerinde nasıl depoladı öğrenin
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/16/2019
-ms.date: 02/18/2019
-ms.author: v-jay
+ms.date: 05/21/2019
+ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: d4bc560a1c607d4a12cfb3d08ffeacf9b5d2196a
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 1a9fc71f6e57621dba4488821ea2ca8b1e119e48
+ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64299861"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991318"
 ---
 # <a name="store-service-principal-credentials-in-key-vault"></a>Anahtar Kasası'nda hizmet sorumlusu kimlik bilgileri Store
 
@@ -43,7 +42,7 @@ Bir anahtar kasası oluşturmak için aşağıdaki adımları izleyin:
 
 2. Panoda **+ kaynak Oluştur**, ardından **güvenlik + kimlik**, ardından **anahtar kasası.**
 
-   ![Anahtar kasası oluşturma](media/azure-stack-key-vault-store-credentials/create-key-vault.png)
+   ![Anahtar kasası oluştur](media/azure-stack-key-vault-store-credentials/create-key-vault.png)
 
 3. İçinde **Key Vault Oluştur** bölmesinde atamak bir **adı** kasanız için. Kasa adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir. Bir sayıyla başlamamalıdır.
 
