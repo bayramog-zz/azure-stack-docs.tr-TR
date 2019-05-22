@@ -4,7 +4,7 @@
   items:
     - name: Azure Stack
       tocHref: /azure-stack/
-      topicHref: /azure-stack/operator/index
+      topicHref: /azure-stack/
       items:
         - name: ASDK
           tocHref: /azure-stack/asdk/
@@ -23,7 +23,7 @@
                 - name: Azure Stack sanal makinelerini Azure'a çoğaltma
                   tocHref: /azure/site-recovery/azure-stack-site-recovery
                   topicHref: /azure/site-recovery/azure-stack-site-recovery
-        - name: İş ortağı
+        - name: İş Ortağı
           tocHref: /azure-stack/partner/
           topicHref: /azure-stack/partner/index
         - name: Kullanıcı
