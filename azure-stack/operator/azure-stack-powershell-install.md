@@ -15,12 +15,12 @@ ms.date: 05/09/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 38a7398b157ad74f7f8849a3fa84b0cee82b80ad
-ms.sourcegitcommit: 95576d0cd780f3a200b2e98b6e9f031f5172f8c0
+ms.openlocfilehash: 9d05a218b9a93b19cdc694c49bde281dab1f91e9
+ms.sourcegitcommit: 914daff43ae0f0fc6673a06dfe2d42d9b4fbab48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65814939"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66042953"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell'i yükleme
 
@@ -101,9 +101,8 @@ Geliştirme iş istasyonunuzda bu modülleri yüklemek için aşağıdaki PowerS
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
     Install-Module -Name AzureRM.BootStrapper
-    
+
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Get-AzureRmProfile -Update
     Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 1.7.2
     ```
@@ -119,11 +118,11 @@ Geliştirme iş istasyonunuzda bu modülleri yüklemek için aşağıdaki PowerS
 
     > [!Note]  
     > - Azure Stack modülü sürüm 1.7.1 bir önemli değişiklik yayınıdır. Azure yığını geçirme 1.6.0 Lütfen başvurmak için [Geçiş Kılavuzu](https://aka.ms/azspshmigration171).
-    > - AzureRm modülü sürümü 2.4.0, Remove-AzureRmStorageAccount cmdlet'ini için bir değişiklik ile birlikte gelir. Bu cmdlet bekliyor - Force parametresini onaysız depolama hesabını kaldırmak için belirtilmelidir.
-    > - Yüklemeniz gerekmez **AzureRM.Bootstrapper** Azure stack 1901 veya sonraki bir sürümü için modüllerini yüklemek için.
+    > - AzureRM modülü sürümü 2.4.0, Remove-AzureRmStorageAccount cmdlet'ini için bir değişiklik ile birlikte gelir. Bu cmdlet bekliyor - Force parametresini onaysız depolama hesabını kaldırmak için belirtilmelidir.
+    > - Yüklemeniz gerekmez **AzureRM.BootStrapper** Azure Stack 1901 veya sonraki bir sürümü için modüllerini yüklemek için.
     > - Azure Stack üzerinde 1901 veya sonraki bir sürümü yukarıdaki AzureRM modülleri kullanmaya ek olarak 2018-03-01-karma profili yüklemeyin.
 
-- Azure Stack sürüm 1811, yükleme profili kullanılarak **AzureRM.Bootstrapper**, cmdlet'ler belirtilen sürümleri ek olarak:
+- Azure Stack sürüm 1811, yükleme profili kullanılarak **AzureRM.BootStrapper**, cmdlet'ler belirtilen sürümleri ek olarak:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -143,7 +142,7 @@ Geliştirme iş istasyonunuzda bu modülleri yüklemek için aşağıdaki PowerS
 # Install the Azure.Storage module version 4.5.0
 Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
 
-# Install the AzureRm.Storage module version 5.0.4
+# Install the AzureRM.Storage module version 5.0.4
 Install-Module -Name AzureRM.Storage -RequiredVersion 5.0.4 -Force -AllowClobber
 
 # Remove incompatible storage module installed by AzureRM.Storage
@@ -240,7 +239,7 @@ Yükleme dört adım vardır:
 ```powershell
 $Path = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azure.Storage -Path $Path -Force -RequiredVersion 4.5.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRm.Storage -Path $Path -Force -RequiredVersion 5.0.4
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM.Storage -Path $Path -Force -RequiredVersion 5.0.4
 ```
 
 ### <a name="add-your-packages-to-your-workstation"></a>Paketlerinizi istasyonunuza Ekle

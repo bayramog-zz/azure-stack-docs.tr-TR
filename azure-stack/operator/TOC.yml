@@ -6,7 +6,7 @@
       href: azure-stack-overview.md
     - name: Azure ekosistemi ile karşılaştırma
       href: compare-azure-azure-stack.md
-    - name: Sürüm notları
+    - name: Sürüm Notları
       items:
         - name: Son güncelleştirmeler
           href: azure-stack-servicing-policy.md
@@ -16,7 +16,7 @@
           href: azure-stack-release-notes-security-updates-1904.md
         - name: 1904 güncelleştirme
           items:
-            - name: Sürüm notları
+            - name: Sürüm Notları
               href: azure-stack-release-notes-1904.md
             - name: Bilinen sorunlar
               href: azure-stack-release-notes-known-issues-1904.md
@@ -26,7 +26,7 @@
           href: azure-stack-update-1902.md
         - name: 1901 güncelleştirme
           href: azure-stack-update-1901.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı girişler
   expanded: true
   items:
     - name: Yönetim portalını kullanın
@@ -384,14 +384,18 @@
           href: azure-stack-backup-best-practices.md
         - name: Yedekleme başvurusu
           href: azure-stack-backup-reference.md
-    - name: Sorun giderme
+    - name: Yardım alın
       items:
-        - name: Bilinen sorunlar
-          href: azure-stack-troubleshooting.md
-        - name: Azure Stack’te tanılama
-          href: azure-stack-diagnostics.md
-        - name: Azure Stack için doğrulama
-          href: azure-stack-diagnostic-test.md
+        - name: Yardım + destek
+          href: azure-stack-help-and-support.md
+        - name: Sorun gider
+          items:
+            - name: Bilinen sorunlar
+              href: azure-stack-troubleshooting.md
+            - name: Azure Stack’te tanılama
+              href: azure-stack-diagnostics.md
+            - name: Azure Stack için doğrulama
+              href: azure-stack-diagnostic-test.md
 - name: Başvuru
   items:
     - name: Azure Stack PowerShell

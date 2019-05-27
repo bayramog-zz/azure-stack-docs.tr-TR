@@ -12,32 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mabrigg
 ms.reviewer: prchint
 ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: c7486cb56dee87b8a894d165fce4c3a0dfaae6d9
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 653113e11a91fda0d3447e5627f6755e116ffbb1
+ms.sourcegitcommit: 715a2688a11fae2555dac8371631430f7ecb1c0f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618121"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66186516"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
-Bu belge, Azure Stack için genel sorun giderme bilgileri sağlar. 
-
-> [!NOTE]
-> Azure Stack teknik geliştirme Seti'ni (ASDK) bir değerlendirme ortamı olarak sunulur çünkü Microsoft Müşteri Destek Hizmetleri resmi desteği yoktur. Bir sorun yaşıyorsanız, kontrol ettiğinizden emin olun [Azure Stack MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) ilişkin daha fazla Yardım ve bilgileri.  
-
-Bu bölümde açıklanan sorunları gidermek için öneriler, çeşitli kaynaklardan elde edilen ve olabilir veya belirli sorununuzu çözebilir değil. Kod örnekleri olarak sağlanır ve beklenen sonuçları garanti edilemez. Bu bölüm, ürün geliştirmeleri uygulandığı şekilde sık düzenlemeleri ve güncelleştirmeleri tabi değildir.
+Bu belge, Azure Stack için genel sorun giderme bilgileri sağlar. Öneriler ve kod örnekleri olarak sağlanan-olduğu ve her zaman, sorunu çözemeyebilir. 
 
 ## <a name="deployment"></a>Dağıtım
 ### <a name="general-deployment-failure"></a>Genel Dağıtım hatası
 Yükleme sırasında bir hatayla karşılaşırsanız, başarısız olan adımda dağıtımdan kullanarak başlatabilirsiniz dağıtım betiği yeniden çalıştırma seçeneği.  
 
 ### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>ASDK dağıtım sonunda, PowerShell oturumunu hala açıksa ve herhangi bir çıktı göstermez.
-Seçili olduğunda bu davranış büyük olasılıkla yalnızca bir PowerShell komut penceresi varsayılan davranışını sonucudur. Geliştirme Seti dağıtım başarılı oldu ancak komut penceresi seçerken duraklatıldı. "Komut penceresinde başlık çubuğu seçin" sözcüğünü bakarak Kurulum Tamamlandı doğrulayabilirsiniz.  Bunu seçimini kaldırmak için ESC tuşuna basın ve sonra tamamlama ileti gösterilecek.
+Seçili olduğunda bu davranış büyük olasılıkla yalnızca bir PowerShell komut penceresi varsayılan davranışını sonucudur. Geliştirme Seti dağıtım başarılı oldu ancak komut penceresi seçerken duraklatıldı. "Komut penceresinde başlık çubuğu seçin" sözcüğünü bakarak Kurulum Tamamlandı doğrulayabilirsiniz. Bunu seçimini kaldırmak için ESC tuşuna basın ve sonra tamamlama ileti gösterilecek.
 
 ### <a name="deployment-fails-due-to-lack-of-external-access"></a>Dış erişimi alınamadığından nedeniyle dağıtım başarısız
 Dış erişim gerekli olduğu aşamalarda dağıtım başarısız olduğunda, aşağıdaki örnekte olduğu gibi bir özel durum döndürülür:
@@ -49,7 +44,7 @@ An error occurred while trying to test identity provider endpoints: System.Net.W
 ```
 Bu hata ortaya çıkarsa emin olmak için gözden geçirerek en düşük ağ gereksinimlerin karşılandığından denetleyin [dağıtım ağ trafiği belgeleri](deployment-networking.md). Bir ağ Denetleyicisi aracı ayrıca iş ortağı Araç Seti parçası olarak iş ortakları için kullanılabilir.
 
-Dağıtım hatalarını yukarıdaki durumla Internet üzerindeki kaynaklara bağlanma konusunda sorunlar genellikle kaynaklanır
+Dağıtım hataları yukarıdaki özel durum genellikle, Internet üzerindeki kaynaklara bağlanma sorunlardan kaynaklanır.
 
 Bu sorunu olduğunu doğrulamak için aşağıdaki adımları gerçekleştirebilirsiniz:
 

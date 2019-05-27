@@ -16,12 +16,12 @@ ms.date: 05/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/15/2019
-ms.openlocfilehash: 52279a7498e253771e16e66e0c5025b9afd4494d
-ms.sourcegitcommit: 442bd62d1dfbc1597592d7285aba1453298261ce
-ms.translationtype: MT
+ms.openlocfilehash: 207b784db9e916ff2cc04ebd884c05fa9a7b4aeb
+ms.sourcegitcommit: 914daff43ae0f0fc6673a06dfe2d42d9b4fbab48
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969849"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66043141"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -156,7 +156,17 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 ### <a name="compute-host-agent-alert"></a>Konak Aracısı uyarı işlem
 
 - Uygulanabilir: Bu sürümde 1904 yeni bir sorundur.
-- Neden: A **işlem konak Aracısı** uyarı ölçek birimi bir düğümü yeniden başlatıldıktan sonra görünür. Yeniden başlatma işlem konak Aracısı hizmeti için varsayılan başlangıç ayarını değiştirir.
+- Neden: A **işlem konak Aracısı** uyarı ölçek birimi bir düğümü yeniden başlatıldıktan sonra görünür. Yeniden başlatma işlem konak Aracısı hizmeti için varsayılan başlangıç ayarını değiştirir. Bu uyarı aşağıdaki gibi görünür: AD  
+İşlem çağrıları konak aracısı yanıt vermiyor.
+ÖNEM DERECESİ  
+Uyarı durumu  
+Etkin oluşturma zamanı  
+5/16/2019 SAAT 10:08:23: 00 GÜNCELLEŞTİRİLDİ  
+22/5/2019, 12:27:27 PM BİLEŞENİ  
+M ###-NODE02 AÇIKLAMASI  
+Düğümde çalışan işlem konak Aracısı ile iletişim kurulamadı: M ###-NODE02 DÜZELTME  
+Lütfen işlem konak Aracısı özellik bayrağını devre dışı bırakın ve daha ileri tanılama için günlükleri toplayın.
+
 - Düzeltme:
   - Bu uyarı yoksayılabilir. Aracı yanıt vermiyor, işleci ve kullanıcı işlemleri veya kullanıcı uygulamaları üzerinde hiçbir etkisi yok. El ile kapalıysa uyarı 24 saat sonra yeniden görünür.
   - Microsoft destek hizmeti için başlatma ayarı değiştirerek bu sorunu düzeltebilir. Bu, bir destek çağrısının açılmasını gerektirir. Düğümü yeniden başlatıldıysa, yeni bir uyarı görüntülenir.

@@ -10,12 +10,12 @@ ms.date: 05/10/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: 47c619b1f490f4e4d3498a7c83501f24e96c77b4
-ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
+ms.openlocfilehash: 6fb879dc49197b52133750d65aadf96b601bda69
+ms.sourcegitcommit: 914daff43ae0f0fc6673a06dfe2d42d9b4fbab48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65532303"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66043226"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack veri merkezi tümleştirmesi - kimlik
 
@@ -116,7 +116,7 @@ Graf hizmeti Azure Stack'te yazılabilir genel katalog sunucusu (GC) ve Active D
 
 Azure Stack'te Graph hizmeti, Active Directory hedefi ile iletişim kurmak için aşağıdaki protokoller ve bağlantı noktaları kullanır:
 
-|Tür|Bağlantı noktası|Protokol|
+|Tür|Port|Protocol|
 |---------|---------|---------|
 |LDAP|389|TCP VE UDP|
 |LDAP SSL|636|TCP|
@@ -348,10 +348,8 @@ Cmdlet'lerinden herhangi birini başarısız olursa kullanarak ek günlük topla
 2. Ardından, aşağıdaki cmdlet'i çalıştırın:
 
    ```powershell  
-   Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
+   Get-AzureStackLog -OutputPath \\myworkstation\AzureStackLogs -FilterByRole ECE
    ```
 
-
-## <a name="next-steps"></a>Sonraki adımlar
 
 [Dış izleme çözümlerini tümleştirme](azure-stack-integrate-monitor.md)

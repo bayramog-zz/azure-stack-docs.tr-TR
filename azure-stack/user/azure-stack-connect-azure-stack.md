@@ -1,6 +1,6 @@
 ---
 title: Azure Stack'e bağlanma | Microsoft Docs
-description: Azure Stack bağlanma hakkında bilgi edinin
+description: Azure Stack bağlanmayı öğreneceksiniz.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: ee1314c26e0c30e64c3cb43af44d56a66911c1ff
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.openlocfilehash: 8b7a9e58fd4d4d8c3a05fea60c79ff47a519bf8c
+ms.sourcegitcommit: be5382f715a9c1c18c660b630d8fcd823f13aae3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783064"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66197380"
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack'e Bağlanma
 
@@ -36,12 +36,12 @@ Uzak Masaüstü Bağlantısı ile tek bir eş zamanlı kullanıcı kaynakların�
 
 2. Geliştirme Seti bilgisayardan açık Sunucu Yöneticisi'ni tıklatın **yerel sunucu**, Internet Explorer Artırılmış Güvenlik açmak ve Sunucu Yöneticisi'ni kapatın.
 
-3. Portalını açmak için gidin (https://portal.local.azurestack.external/) kullanıcı kimlik bilgilerini kullanarak oturum açın.
+3. Portalını açmak için şu adrese gidin (https://portal.local.azurestack.external/) kullanıcı kimlik bilgilerini kullanarak oturum açın.
 
 
 ## <a name="connect-to-azure-stack-with-vpn"></a>VPN ile Azure stack'e bağlanma
 
-Bölünmüş tünel bir Azure Stack geliştirme Seti'ni sanal özel ağ (VPN) bağlantısı kurabilirsiniz. VPN bağlantısı üzerinden, Kullanıcı Portalı Yöneticisi portala erişebilir ve Azure Stack kaynaklarınızı yönetmek için Visual Studio ve PowerShell gibi araçlarla yerel olarak yüklü. VPN bağlantısı hem de Azure Active Directory (aad) içinde desteklenir ve Active Directory Federasyon Services(AD FS) tabanlı dağıtımlar. VPN bağlantıları, birden çok istemci aynı zamanda Azure Stack'e bağlanma etkinleştirin. 
+Bir Azure Stack geliştirme Seti'ni VPN bağlantısı bölünmüş tünel oluşturabilir. VPN bağlantısı üzerinden Yönetim Portalı, kullanıcı portalı ve Azure Stack kaynaklarınızı yönetmek için Visual Studio ve PowerShell gibi yerel olarak yüklenen araçlar erişebilirsiniz. VPN bağlantısı desteklenen Azure Active Directory (AAD) ve Active Directory Federasyon Hizmetleri (AD FS)-tabanlı dağıtımlar. Azure Stack'e bağlanma aynı anda birden çok istemci VPN bağlantıları sağlar. 
 
 > [!NOTE] 
 > Bu VPN bağlantısının bağlantı Azure Stack altyapısının VM'ler için sağlamaz. 
@@ -84,7 +84,7 @@ Add-AzsVpnConnection `
 
 ```
 
-Kurulum başarılı olursa görmelisiniz **azurestack** VPN bağlantıları listesine.
+Kurulum başarılı olursa göreceğiniz `azurestack` VPN bağlantıları listesine.
 
 ![Ağ bağlantıları](media/azure-stack-connect-azure-stack/image3.png)  
 
@@ -99,13 +99,13 @@ Azure Stack aşağıdaki iki yöntemden birini kullanarak bağlanın:
     -Password $Password
   ```
 
-  İstendiğinde, Azure Stack ana güven ve sertifika yükleme **AzureStackCertificateAuthority** üzerine yerel bilgisayar sertifika deposu. (PowerShell oturum penceresi istemi görünebilir). 
+  İstendiğinde, Azure Stack ana güven ve sertifika yükleme **AzureStackCertificateAuthority** üzerine yerel bilgisayar sertifika deposu. İstemi PowerShell oturum penceresi görüntülenir. 
 
-* Yerel bilgisayarınızın açın **ağ ayarlarını** > **VPN** > tıklatın **azurestack** > **bağlanma**. Oturum açma isteminde (AzureStack\AzureStackAdmin) kullanıcı adı ve parola girin.
+* Yerel bilgisayarınızda Git **ağ ayarlarını** > **VPN** > seçin `azurestack`  >  **bağlanma**. Oturum açma isteminde (AzureStack\AzureStackAdmin) kullanıcı adı ve parola girin.
 
 ### <a name="test-the-vpn-connectivity"></a>VPN bağlantısını test etme
 
-Portal bağlantısını test etmek için bir Internet tarayıcısı açın ve Kullanıcı Portalı'na gidin (https://portal.local.azurestack.external/), oturum açın ve kaynakları oluşturun.  
+Portal bağlantısını test etmek için bir tarayıcı açın ve Kullanıcı Portalı'na gidin (https://portal.local.azurestack.external/), oturum açın ve ardından kaynakları oluşturun.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Stack için hizmet sorumlusu oluşturma | Microsoft Docs
-description: Azure Kaynak Yöneticisi'nde rol tabanlı erişim denetimi ile kaynaklara erişimi yönetmek için kullanılabilir bir hizmet sorumlusu oluşturmayı açıklar.
+description: Kaynaklara erişimi yönetmek için rol tabanlı erişim denetimi, Azure Resource Manager ile kullanmak için bir hizmet sorumlusu oluşturmayı öğrenin.
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -14,14 +14,14 @@ ms.date: 04/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 3860f8dcc99f3505fe2f838e75f5e8f09b78aefe
-ms.sourcegitcommit: 8cb2b567e9914d4d07e754d95c0864aa55868579
+ms.openlocfilehash: 1f2502a7b0b89bc8c1786e1fdf0392b245308ed0
+ms.sourcegitcommit: be5382f715a9c1c18c660b630d8fcd823f13aae3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65855372"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66197306"
 ---
-# <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Hizmet sorumluları oluşturma tarafından Azure Stack kaynaklara uygulamaları erişimi verin
+# <a name="create-service-principals-to-give-applications-access-to-azure-stack-resources"></a>Azure Stack kaynaklarına uygulamalar erişim vermek için hizmet sorumlusu oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -30,7 +30,7 @@ Azure Stack kaynaklara bir hizmet sorumlusu Azure Resource Manager kullanan olu�
 En iyi uygulama, uygulamalarınız için hizmet sorumluları kullanmanız gerekir. Hizmet sorumluları, aşağıdaki nedenlerden dolayı kendi kimlik bilgilerini kullanarak bir uygulama çalıştırmaya tercih edilir:
 
 * Hizmet sorumlusu kendi hesap izinleri farklı olan izinler atayabilirsiniz. Genellikle, tam olarak hangi uygulamanın yapması için bir hizmet sorumlusunun izinlerini kısıtlanır.
-* Rol veya sorumlulukları değiştirirseniz uygulamanın kimlik bilgilerini değiştirmek izniniz yok.
+* Rol veya sorumlulukları değiştirirseniz uygulamanın kimlik bilgilerini değiştirmeniz gerekmez.
 * Kimlik doğrulaması katılımsız bir komut dosyası çalıştırılırken otomatik hale getirmek için bir sertifika kullanabilirsiniz.
 
 ## <a name="example-scenario"></a>Örnek senaryo
@@ -50,7 +50,7 @@ Azure Stack için Active Directory yapılandırdığınız şekilde, bir hizmet 
 * Bir hizmet sorumlusu için oluşturma [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad).
 * Bir hizmet sorumlusu için oluşturma [Active Directory Federasyon Hizmetleri (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
-Hizmet sorumlusuna bir rol aynı Azure için atama adımlarını AD ve AD FS. Hizmet sorumlusu oluşturduktan sonra [temsilci izinleri](azure-stack-create-service-principals.md) role atayarak.
+Bir hizmet sorumlusu, rol atama adımlarını Azure için aynı olan AD ve AD FS. Hizmet sorumlusu oluşturduktan sonra bir rol atayarak izinleri verebilirsiniz.
 
 ## <a name="create-service-principal-for-azure-ad"></a>Azure AD hizmet sorumlusu oluşturma
 

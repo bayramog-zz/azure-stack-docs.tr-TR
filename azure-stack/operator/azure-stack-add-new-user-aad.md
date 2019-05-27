@@ -3,7 +3,7 @@ title: Yeni bir Azure Stack Kiracı hesabı Azure Active Directory'ye ekleme | M
 description: Microsoft Azure Stack geliştirme Seti'ni dağıttıktan sonra Kiracı portalında keşfedebilirsiniz için en az bir Kiracı Kullanıcı hesabı oluşturmanız gerekir.
 services: azure-stack
 documentationcenter: ''
-author: patricka
+author: PatAltimore
 manager: femila
 editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 05/20/2019
 ms.author: patricka
-ms.reviewer: unknown
+ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 52fb4074a476cb907f02628933b83d82b6ee4984
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 83a927cd0198798b4b1beaf8b84ed0b7ad2a11a0
+ms.sourcegitcommit: 914daff43ae0f0fc6673a06dfe2d42d9b4fbab48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985751"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66043109"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Azure Active Directory'de yeni bir Azure Stack Kiracı hesabı Ekle
 
@@ -61,10 +61,17 @@ Azure portalını kullanmak üzere bir Azure aboneliğine sahip olmalıdır.
 Azure aboneliğiniz yoksa, bir Kiracı Kullanıcı hesabı eklemek için Azure portal'ı kullanamazsınız. Bu durumda, bunun yerine Azure Active Directory için Windows PowerShell modülü kullanabilirsiniz.
 
 > [!NOTE]
-> Azure Stack geliştirme Seti'ni dağıtmak için Microsoft Account (Live ID) kullanıyorsanız, Kiracı hesabı oluşturmak için AAD PowerShell kullanamazsınız. 
+> Azure Stack geliştirme Seti'ni dağıtmak için Microsoft Account kullanıyorsanız, Kiracı hesabı oluşturmak için Azure AD PowerShell kullanamazsınız. 
 
-1. Yükleme [Microsoft Çevrimiçi Hizmetler oturum açma Yardımcısı BT uzmanları RTW için](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
-2. Yükleme [Azure Active Directory için Windows PowerShell Modülü (64-bit sürüm)](https://go.microsoft.com/fwlink/p/?linkid=236297) ve açın.
+1. Yükleme **64-bit** sürümünü [BT uzmanları RTW için Microsoft Online Services oturum açma Yardımcısı](https://go.microsoft.com/fwlink/p/?LinkId=286152).
+
+2. Microsoft Azure Active Directory için Windows PowerShell modülü ile aşağıdaki adımları yükleyin:
+
+    - (Windows PowerShell'i yönetici olarak çalıştır) yükseltilmiş bir Windows PowerShell komut istemi açın.
+    - Çalıştırma **Install-Module MSOnline** komutu.
+    - NuGet sağlayıcısı yüklemeniz istenirse, seçin **Y** ve **Enter**.
+    - PSGallery modülü yüklemek isteyip istemediğiniz sorulduğunda seçin **Y** ve **Enter**.
+
 3. Aşağıdaki cmdlet'leri çalıştırın:
 
     ```powershell

@@ -16,16 +16,16 @@ ms.date: 05/08/2019
 ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
-ms.openlocfilehash: 308edbc351b52d94842a1a96602371f6edb8ff5d
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: dd16d08e2e262b9aa31a1d59cb8ed59868608fbb
+ms.sourcegitcommit: 9f5157ce6b938d190ef9df5a2df4342266ca5545
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617533"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66174334"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK yükleme sonrası yapılandırma görevleri
 
-Sonra [Azure Stack geliştirme Seti'ni (ASDK) yükleme](asdk-install.md), AzureStack\AzureStackAdmin ASDK ana bilgisayarda oturum açtıktan sonra birkaç önerilen yükleme sonrası yapılandırma değişiklikleri yapmak. 
+Sonra [Azure Stack geliştirme Seti'ni (ASDK) yükleme](asdk-install.md), AzureStack\AzureStackAdmin ASDK ana bilgisayarda oturum açtıktan sonra birkaç önerilen yükleme sonrası yapılandırma değişiklikleri yapmak.
 
 ## <a name="install-azure-stack-powershell"></a>Azure Stack PowerShell’i yükleme
 
@@ -37,7 +37,7 @@ Azure Stack için PowerShell komutları PowerShell Galerisi'nde yüklenir. PSGal
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 
-Azure Stack uyumlu AzureRM modülleri belirtmek için API sürümü profillerini kullanabilirsiniz.  API sürümü profillerini Azure ve Azure Stack arasında sürümü farkları yönetmek için bir yol sağlar. Bir API Sürüm profili, AzureRM PowerShell modülleri belirli API sürümleri ile kümesidir. **AzureRM.Bootstrapper** PowerShell Galerisi'nde kullanılabilir modül ile API Sürüm profillerini çalışması için gerekli olan PowerShell cmdlet'leri sağlar.
+Azure Stack uyumlu AzureRM modülleri belirtmek için API sürümü profillerini kullanabilirsiniz.  API sürümü profillerini Azure ve Azure Stack arasında sürümü farkları yönetmek için bir yol sağlar. Bir API Sürüm profili, AzureRM PowerShell modülleri belirli API sürümleri ile kümesidir. **AzureRM.BootStrapper** PowerShell Galerisi'nde kullanılabilir modül ile API Sürüm profillerini çalışması için gerekli olan PowerShell cmdlet'leri sağlar.
 
 En son Azure Stack PowerShell modülü ile veya ASDK konak bilgisayara Internet bağlantısı olmadan yükleyebilirsiniz:
 
@@ -46,23 +46,22 @@ En son Azure Stack PowerShell modülü ile veya ASDK konak bilgisayara Internet 
 
 - **İnternet bağlantısı ile** ASDK ana bilgisayar. Bu modüller, Geliştirme Seti yüklemesine yüklemek için aşağıdaki PowerShell betiğini çalıştırın:
 
-- 1904 yapılar veya sonraki sürümler için:
+  - 1904 yapılar veya sonraki sürümler için:
 
     ```powershell  
       # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
       Install-Module -Name AzureRM.BootStrapper
-      
+
       # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-      Get-AzureRMProfile -Update
       Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
       Install-Module -Name AzureStack -RequiredVersion 1.7.2
     ```
 
-- Azure Stack 1903 veya daha önceki bir sürümü, yalnızca aşağıdaki iki modülleri yükle:
+  - Azure Stack 1903 veya daha önceki bir sürümü, yalnızca aşağıdaki iki modülleri yükle:
 
     ```powershell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureRM -RequiredVersion 2.4.0
     Install-Module -Name AzureStack -RequiredVersion 1.7.1
     ```
 
@@ -72,8 +71,8 @@ En son Azure Stack PowerShell modülü ile veya ASDK konak bilgisayara Internet 
   - Azure Stack 1811:
 
     ``` PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
-    Install-Module -Name AzureRm.BootStrapper
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet.
+    Install-Module -Name AzureRM.BootStrapper
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
@@ -119,12 +118,12 @@ En son Azure Stack PowerShell modülü ile veya ASDK konak bilgisayara Internet 
 
   # Enforce usage of TLSv1.2 to download the Azure Stack tools archive from GitHub
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-  invoke-webrequest `
-    https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+  Invoke-WebRequest `
+    -Uri https://github.com/Azure/AzureStack-Tools/archive/master.zip `
     -OutFile master.zip
 
   # Expand the downloaded files.
-  expand-archive master.zip -DestinationPath . -Force
+  Expand-Archive -Path master.zip -DestinationPath . -Force
 
   # Change to the tools directory.
   cd AzureStack-Tools-master
@@ -145,7 +144,7 @@ Sınamaların tamamlanması birkaç dakika sürebilir. Yükleme başarılı oldu
 
 Bir hata oluştuğunda, Yardım almak için sorun giderme adımlarını izleyin.
 
-## <a name="reset-the-password-expiration-policy"></a>Parola süresi dolma ilkesini Sıfırla 
+## <a name="reset-the-password-expiration-policy"></a>Parola süresi dolma ilkesini Sıfırla
 
 ASDK dağıttıktan sonra değerlendirme süresi sona ermeden önce Geliştirme Seti konak için parola süresi sona ermiyor emin olmak için aşağıdaki adımları izleyin.
 

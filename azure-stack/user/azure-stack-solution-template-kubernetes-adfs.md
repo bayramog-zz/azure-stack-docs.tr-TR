@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: ca0dd74a08ce1abe454cb497a2569aae0b958d7c
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 367053882e9e44ba983d5df552929c65222fcafc
+ms.sourcegitcommit: be5382f715a9c1c18c660b630d8fcd823f13aae3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301654"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66197361"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Kubernetes kullanarak Active Directory Federasyon Hizmetleri Azure Stack'e dağıtma
 
@@ -83,7 +83,7 @@ AD FS kimlik çözümünüz olarak kullanırken hizmet sorumlunuzu ayarlamak iç
        | Keyvault adı | Kasa adı.<br> Regex deseni: `^[a-zA-Z0-9-]{3,24}$` |
        | Kaynak grubu Konumu | Kaynak grubu konumu. Bu, Azure Stack yüklemeniz için seçtiğiniz bölgedir. |
 
-   - Yükseltilmiş bir İstemi ile PowerShell'i açın ve [Azure Stack'e bağlanma](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Değerlerinizi güncelleştirilmiş parametrelerle birlikte aşağıdaki betiği çalıştırın:
+   - Yükseltilmiş bir İstemi ile PowerShell'i açın ve [Azure Stack'e bağlanma](azure-stack-powershell-configure-user.md#connect-to-azure-stack-with-ad-fs). Değerlerinizi güncelleştirilmiş parametrelerle birlikte aşağıdaki betiği çalıştırın:
 
    ```powershell  
        $armEndpoint="<Azure Resource Manager Endpoint>"
@@ -124,7 +124,7 @@ AD FS kimlik çözümünüz olarak kullanırken hizmet sorumlunuzu ayarlamak iç
        | Azure Resource Manager uç noktası | Azure Stack geliştirme Seti'ni (ASDK) uç noktası şöyledir: `https://management.local.azurestack.external/`<br>Tümleşik sistemlerde uç noktadır: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
        | Abonelik Kimliğiniz | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te. |
 
-   - Yükseltilmiş bir İstemi ile PowerShell'i açın ve [Azure Stack'e bağlanma](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Değerlerinizi güncelleştirilmiş parametrelerle birlikte aşağıdaki betiği çalıştırın:
+   - Yükseltilmiş bir İstemi ile PowerShell'i açın ve [Azure Stack'e bağlanma](azure-stack-powershell-configure-user.md#connect-to-azure-stack-with-ad-fs). Değerlerinizi güncelleştirilmiş parametrelerle birlikte aşağıdaki betiği çalıştırın:
 
     ```powershell
         
@@ -163,7 +163,7 @@ AD FS kimlik çözümünüz olarak kullanırken hizmet sorumlunuzu ayarlamak iç
 
     ![Çözüm Şablonu Dağıt](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-### <a name="1-basics"></a>1. Temel Bilgiler
+### <a name="1-basics"></a>1. Temel
 
 1. Seçin **Temelleri** Kubernetes kümesi oluşturun.
 
