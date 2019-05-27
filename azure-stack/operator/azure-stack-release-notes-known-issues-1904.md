@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/22/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/15/2019
-ms.openlocfilehash: 207b784db9e916ff2cc04ebd884c05fa9a7b4aeb
-ms.sourcegitcommit: 914daff43ae0f0fc6673a06dfe2d42d9b4fbab48
-ms.translationtype: HT
+ms.lastreviewed: 05/22/2019
+ms.openlocfilehash: bd7262e5c298715f846e1d8372d76b6f44f22972
+ms.sourcegitcommit: 715a2688a11fae2555dac8371631430f7ecb1c0f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66043141"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66186538"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -70,15 +70,15 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 ### <a name="marketplace-management"></a>Market Yönetimi
 
 - Uygulanabilir: Bu sorun 1904 için geçerlidir.
-- Neden: Sonuçlarda filtre uyguladığınızda **Ekle azure'dan** dikey penceresinde Yönetici portalı'nda Marketi yönetim sekmesinden, hatalı filtrelenmiş sonuçlar görebilirsiniz. 
-- Düzeltme: Adı sütuna göre sıralama sonuçları ve sonuçları düzeltilecektir. 
+- Neden: Sonuçlarda filtre uyguladığınızda **Ekle azure'dan** dikey penceresinde Yönetici portalı'nda Marketi yönetim sekmesinden, hatalı filtrelenmiş sonuçlar görebilirsiniz.
+- Düzeltme: Adı sütuna göre sıralama sonuçları ve sonuçları düzeltilecektir.
 - Örneği: Aralıklı
 
 ### <a name="marketplace-management"></a>Market Yönetimi
 
 - Uygulanabilir: Bu sorun 1904 için geçerlidir.
 - Neden: Market Yönetimi Yönetici portalı'nda sonuçlara filtre açılan yayımcı altında yinelenen yayımcı adlarını görürsünüz. 
-- Düzeltme: Bu yayımcı altında kullanılabilir olan tüm Market ürünleri doğru listesine sahip tüm çoğaltmaları seçin. 
+- Düzeltme: Bu yayımcı altında kullanılabilir olan tüm Market ürünleri doğru listesine sahip tüm çoğaltmaları seçin.
 - Örneği: Aralıklı
 
 ### <a name="upload-blob"></a>Blobu karşıya yükle
@@ -156,21 +156,37 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 ### <a name="compute-host-agent-alert"></a>Konak Aracısı uyarı işlem
 
 - Uygulanabilir: Bu sürümde 1904 yeni bir sorundur.
-- Neden: A **işlem konak Aracısı** uyarı ölçek birimi bir düğümü yeniden başlatıldıktan sonra görünür. Yeniden başlatma işlem konak Aracısı hizmeti için varsayılan başlangıç ayarını değiştirir. Bu uyarı aşağıdaki gibi görünür: AD  
-İşlem çağrıları konak aracısı yanıt vermiyor.
-ÖNEM DERECESİ  
-Uyarı durumu  
-Etkin oluşturma zamanı  
-5/16/2019 SAAT 10:08:23: 00 GÜNCELLEŞTİRİLDİ  
-22/5/2019, 12:27:27 PM BİLEŞENİ  
-M ###-NODE02 AÇIKLAMASI  
-Düğümde çalışan işlem konak Aracısı ile iletişim kurulamadı: M ###-NODE02 DÜZELTME  
-Lütfen işlem konak Aracısı özellik bayrağını devre dışı bırakın ve daha ileri tanılama için günlükleri toplayın.
+- Neden: A **işlem konak Aracısı** uyarı ölçek birimi bir düğümü yeniden başlatıldıktan sonra görünür. Yeniden başlatma işlem konak Aracısı hizmeti için varsayılan başlangıç ayarını değiştirir. Bu uyarı, aşağıdaki örneğe benzer:
+
+   ```shell
+   NAME  
+   Compute Host Agent is not responding to calls.
+   SEVERITY  
+   Warning
+   STATE  
+   Active
+   CREATED TIME  
+   5/16/2019, 10:08:23 AM
+   UPDATED TIME  
+   5/22/2019, 12:27:27 PM
+   COMPONENT  
+   M#####-NODE02
+   DESCRIPTION  
+   Could not communicate with the Compute Host Agent running on node: M#####-NODE02
+   REMEDIATION  
+   Please disable Compute Host Agent feature flag and collect logs for further diagnosis.
+   ```
 
 - Düzeltme:
   - Bu uyarı yoksayılabilir. Aracı yanıt vermiyor, işleci ve kullanıcı işlemleri veya kullanıcı uygulamaları üzerinde hiçbir etkisi yok. El ile kapalıysa uyarı 24 saat sonra yeniden görünür.
   - Microsoft destek hizmeti için başlatma ayarı değiştirerek bu sorunu düzeltebilir. Bu, bir destek çağrısının açılmasını gerektirir. Düğümü yeniden başlatıldıysa, yeni bir uyarı görüntülenir.
 - Örneği: Ortak
+
+## <a name="storage"></a>Depolama
+
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) Azure Stack'te desteklenmiyor ve sonuçları bir disk oluştururken **$null** kimliği Bu sanal makinede, başlatma ve durdurma gibi işlemleri gerçekleştirmesini engeller. Disk kullanıcı Arabiriminde görünmez ya da API aracılığıyla görünmüyor. Bu noktada VM onarılamıyor ve silinmesi gerekir.
+- Düzeltme: Disklerinizi doğru şekilde dönüştürmek için izleyin [dönüştürmek için yönetilen diskler Kılavuzu](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 ## <a name="app-service"></a>App Service
 

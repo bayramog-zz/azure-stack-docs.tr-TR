@@ -293,6 +293,8 @@
       items:
         - name: 'App Service, kapasite planlaması'
           href: azure-stack-app-service-capacity-planning.md
+        - name: App Service'nın faturalandırma ile ilgili SSS
+          href: app-service-billing-faq.md
         - name: Başlamadan önce
           href: azure-stack-app-service-before-you-get-started.md
         - name: App Service Dağıtma
