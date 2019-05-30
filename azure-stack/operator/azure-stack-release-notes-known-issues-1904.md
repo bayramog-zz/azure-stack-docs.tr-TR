@@ -16,12 +16,12 @@ ms.date: 05/28/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/28/2019
-ms.openlocfilehash: 9ebbdb19335db4f0c31d68c726f7b8c211d0f2e2
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
-ms.translationtype: HT
+ms.openlocfilehash: 615add67cb27f24831eb3fdfec0510f4ac2dc34e
+ms.sourcegitcommit: d04a93e913ff069e17f6d56811681804a6422b58
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268342"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66373021"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -43,7 +43,7 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: 1804 sürümü ile sunulan iki yönetici aboneliğin kullanılmamalıdır. Abonelik türleridir **ölçüm** aboneliği ve **tüketim** abonelik.
-- Düzeltme: Bu abonelikler 1905 ile başlayan ve sonunda silinen askıya alınır. Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, kullanıcı Aboneliklerdeki 1905 önce yeniden oluşturun.
+- Düzeltme: Bu abonelikler 1906 ile başlayan ve sonunda silinen askıya alınır. Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, kullanıcı Aboneliklerdeki 1906 önce yeniden oluşturun.
 - Örneği: Ortak
 
 ### <a name="subscription-resources"></a>Abonelik kaynakları
@@ -60,10 +60,10 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Düzeltme: Kullanım [izinleri doğrulamak için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Örneği: Ortak
 
-
 ### <a name="docker-extension"></a>Docker uzantısı
+
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: "Docker" için arama yaparsanız yönetici ve kullanıcı portalı yanlış öğesi döndürülür. Azure Stack'te kullanılamıyor. Bunu oluşturmayı denerseniz, bir hata göstergesi içeren bir dikey pencere görüntülenir.
+- Neden: Yönetici ve kullanıcı portalı için arama yaparsanız, **Docker**, öğenin yanlış döndürülür. Azure Stack'te kullanılamıyor. Bunu oluşturmayı denerseniz, bir hata görüntülenir.
 - Düzeltme: Risk azaltma.
 - Örneği: Ortak
 
@@ -205,7 +205,7 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 ## <a name="app-service"></a>App Service
 
 - Kiracılar, abonelikte, ilk Azure işlevinizi oluşturmadan önce depolama kaynak sağlayıcısını kaydetmeniz gerekir.
-- Bazı Kiracı portalı kullanıcı deneyimleri 1903 portal framework ile uyumsuzluk nedeniyle bozuk; Test üretim ve site uzantıları temelde, kullanıcı Deneyimini dağıtım yuvaları için. Bu sorunu geçici olarak çözmek için kullanın [Azure App Service PowerShell modülünü](/azure/app-service/deploy-staging-slots#automate-with-powershell) veya [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest). Portal deneyimi, Azure App Service'in Azure Stack 1.6 (6. Güncelleştirme) üzerindeki gelecek sürümünde geri yüklenecektir.
+- Bazı Kiracı portalı kullanıcı deneyimleri 1903 portal framework ile uyumsuzluk nedeniyle bozuk; Test üretim ve site uzantıları temelde, kullanıcı Deneyimini dağıtım yuvaları için. Bu sorunu geçici olarak çözmek için kullanın [Azure App Service PowerShell modülünü](/azure/app-service/deploy-staging-slots#automate-with-powershell) veya [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest). Portal deneyimi dağıtımınızın yükselterek geri yüklenecek [1.6 (güncelleştirme 6) için Azure Stack'te Azure App Service](azure-stack-app-service-release-notes-update-six.md).
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
