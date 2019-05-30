@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/28/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/22/2019
-ms.openlocfilehash: bd7262e5c298715f846e1d8372d76b6f44f22972
-ms.sourcegitcommit: 715a2688a11fae2555dac8371631430f7ecb1c0f
-ms.translationtype: MT
+ms.lastreviewed: 05/28/2019
+ms.openlocfilehash: 9ebbdb19335db4f0c31d68c726f7b8c211d0f2e2
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66186538"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268342"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -60,6 +60,13 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Düzeltme: Kullanım [izinleri doğrulamak için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Örneği: Ortak
 
+
+### <a name="docker-extension"></a>Docker uzantısı
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: "Docker" için arama yaparsanız yönetici ve kullanıcı portalı yanlış öğesi döndürülür. Azure Stack'te kullanılamıyor. Bunu oluşturmayı denerseniz, bir hata göstergesi içeren bir dikey pencere görüntülenir.
+- Düzeltme: Risk azaltma.
+- Örneği: Ortak
+
 ### <a name="marketplace-management"></a>Market Yönetimi
 
 - Uygulanabilir: Bu sürümde 1904 yeni bir sorundur.
@@ -80,6 +87,13 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Neden: Market Yönetimi Yönetici portalı'nda sonuçlara filtre açılan yayımcı altında yinelenen yayımcı adlarını görürsünüz. 
 - Düzeltme: Bu yayımcı altında kullanılabilir olan tüm Market ürünleri doğru listesine sahip tüm çoğaltmaları seçin.
 - Örneği: Aralıklı
+
+### <a name="docker-extension"></a>Docker uzantısı
+
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: Yönetici ve kullanıcı portalı için arama yaparsanız, **Docker**, öğenin yanlış döndürülür. Azure Stack'te kullanılamıyor. Bunu oluşturmayı denerseniz, bir hata görüntülenir.
+- Düzeltme: Risk azaltma.
+- Örneği: Ortak
 
 ### <a name="upload-blob"></a>Blobu karşıya yükle
 
@@ -179,7 +193,7 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 
 - Düzeltme:
   - Bu uyarı yoksayılabilir. Aracı yanıt vermiyor, işleci ve kullanıcı işlemleri veya kullanıcı uygulamaları üzerinde hiçbir etkisi yok. El ile kapalıysa uyarı 24 saat sonra yeniden görünür.
-  - Microsoft destek hizmeti için başlatma ayarı değiştirerek bu sorunu düzeltebilir. Bu, bir destek çağrısının açılmasını gerektirir. Düğümü yeniden başlatıldıysa, yeni bir uyarı görüntülenir.
+  - En son sorun çözüldüğünde [1904 için Azure Stack düzeltme](https://support.microsoft.com/help/4505688).
 - Örneği: Ortak
 
 ## <a name="storage"></a>Depolama
@@ -191,7 +205,7 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 ## <a name="app-service"></a>App Service
 
 - Kiracılar, abonelikte, ilk Azure işlevinizi oluşturmadan önce depolama kaynak sağlayıcısını kaydetmeniz gerekir.
-- Bazı Kiracı portalı kullanıcı deneyimleri 1903 portal framework ile uyumsuzluk nedeniyle bozuk; Test üretim ve site uzantıları temelde, kullanıcı Deneyimini dağıtım yuvaları için. Bu sorunu geçici olarak çözmek için kullanın [Azure App Service PowerShell modülünü](/azure/app-service/deploy-staging-slots#automate-with-powershell) veya [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest). Portal deneyimi, Azure Stack 1.6 (güncelleştirme 6) üzerinde Azure App Service'nın gelecek sürümde kurulacaktır.
+- Bazı Kiracı portalı kullanıcı deneyimleri 1903 portal framework ile uyumsuzluk nedeniyle bozuk; Test üretim ve site uzantıları temelde, kullanıcı Deneyimini dağıtım yuvaları için. Bu sorunu geçici olarak çözmek için kullanın [Azure App Service PowerShell modülünü](/azure/app-service/deploy-staging-slots#automate-with-powershell) veya [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest). Portal deneyimi, Azure App Service'in Azure Stack 1.6 (6. Güncelleştirme) üzerindeki gelecek sürümünde geri yüklenecektir.
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->

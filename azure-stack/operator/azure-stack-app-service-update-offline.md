@@ -3,7 +3,7 @@ title: Azure uygulama hizmeti çevrimdışı güncelleştirmesi | Microsoft Docs
 description: Azure Stack'te Azure App Service çevrimdışı güncelleştirmeye yönelik ayrıntılı kılavuz
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,22 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: b266614ee4fb426740d9e083efe10e1de0dddee9
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 2bbab1870c06e32889187f676022dab410aaf08c
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618711"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269065"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Azure Stack'te Azure App Service'in çevrimdışı güncelleştirme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 > [!IMPORTANT]
-> 1901 güncelleştirmesini, daha sonra Azure Stack tümleşik sistemi veya Azure App Service 1.5 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın. 
+> 1904 güncelleştirmesini, daha sonra Azure Stack tümleşik sistemi veya Azure App Service 1.6 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
 
 Bu makaledeki yönergeleri takip ederek, Yükseltme yapabileceğiniz [App Service kaynak sağlayıcısı](azure-stack-app-service-overview.md) olan bir Azure Stack ortamında dağıtılır:
 
@@ -35,13 +35,13 @@ Bu makaledeki yönergeleri takip ederek, Yükseltme yapabileceğiniz [App Servic
 * Active Directory Federasyon Hizmetleri (AD FS) tarafından güvenli.
 
 > [!IMPORTANT]
-> Yükseltmeyi çalıştırmadan önce zaten tamamladığınızdan emin olun [Azure Stack kaynak sağlayıcısı üzerinde Azure App Service dağıtım](azure-stack-app-service-deploy-offline.md) ve, okuduğunuz [sürüm notları](azure-stack-app-service-release-notes-update-five.md), hangi eşlik 1.5 sürümünü, yeni işlevler, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için.
+> Yükseltmeyi çalıştırmadan önce zaten tamamladığınızdan emin olun [Azure Stack kaynak sağlayıcısı üzerinde Azure App Service dağıtım](azure-stack-app-service-deploy-offline.md) ve, okuduğunuz [sürüm notları](azure-stack-app-service-release-notes-update-six.md), hangi eşlik 1.6 sürüm, yeni işlevler, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service kaynak sağlayıcısı yükleyiciyi çalıştırın
 
 App Service kaynak sağlayıcısı bir Azure Stack ortamında yükseltmek için bu görevleri tamamlamanız gerekir:
 
-1. İndirme [uygulama hizmeti yükleyicisi](https://aka.ms/appsvcupdate4installer)
+1. İndirme [uygulama hizmeti yükleyicisi](https://aka.ms/appsvcupdate6installer)
 2. Çevrimdışı bir yükseltme paketi oluşturun.
 3. App Service yükleyiciyi (appservice.exe) çalıştırın ve yükseltme tamamlayın.
 
@@ -98,7 +98,7 @@ App Service bağlantısı kesilmiş bir ortamda yükseltmek için önce Internet
 
    1. Tıklayın **Connect** düğmesinin yanındaki **Azure Stack aboneliklerini** kutusu.
       * Azure Active Directory (Azure AD) kullanıyorsanız, Azure AD yönetici hesabı ve Azure Stack dağıttığınızda sağladığınız parolayı girin. Tıklayın **oturum**.
-      * Active Directory Federasyon Hizmetleri (AD FS) kullanıyorsanız, yönetici hesabı sağlayın. Örneğin, _cloudadmin@azurestack.local_. Parolanızı girin ve tıklayın **oturum**.
+      * Active Directory Federasyon Hizmetleri (AD FS) kullanıyorsanız, yönetici hesabı sağlayın. Örneğin, _cloudadmin@azurestack.local_ . Parolanızı girin ve tıklayın **oturum**.
    2. İçinde **Azure Stack aboneliklerini** kutusunda **varsayılan sağlayıcı aboneliği**.
    3. İçinde **Azure Stack konumları** kutusunda, için dağıtmakta bölgeyi karşılık gelen konum seçin. Örneğin, **yerel** , Azure Stack Geliştirme Seti için dağıtma.
    4. Mevcut bir App Service dağıtımı algılanırsa, kaynak grubu ve depolama hesabı doldurulur ve devre dışı.

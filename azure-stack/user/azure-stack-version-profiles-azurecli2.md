@@ -3,7 +3,7 @@ title: CLI ile Azure stack'e bağlanma | Microsoft Docs
 description: Platformlar arası komut satırı arabirimi (CLI) yönetmek ve Azure Stack'te kaynakları dağıtmak için kullanmayı öğrenin
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: 69eb6e676fb8c134e0184d4df7df95ba0c75e854
-ms.sourcegitcommit: 879165a66ff80f1463b6bb46e2245684224a9b92
+ms.openlocfilehash: 996dacc1c95a172ffa09247c56a12a5afd00e086
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473861"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269524"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack'te Azure CLI ile API Sürüm profillerini kullanma
 
@@ -43,12 +43,21 @@ Tümleşik bir sistem kullanıyorsanız, CA kök sertifikasını dışarı aktar
 
 PEM biçiminde ASDK kök sertifikasını dışarı aktarmak için:
 
-1. [Azure Stack üzerinde bir Windows VM oluşturma](azure-stack-quick-windows-portal.md).
+1. Azure Stack kök sertifika adını alın:
+    - Azure Stack Kiracı veya Yönetici portalında oturum açın.
+    - "Güvenli" üzerinde adres çubuğuna tıklayın.
+    - Açılır pencerede tıklayın "Geçerli".
+    - Sertifika penceresinde "Sertifika yolu" sekmesine tıklayın. 
+    - Azure Stack Root Cert ','ın adı not edin.
 
-2. Makinede oturum açın, yükseltilmiş bir PowerShell istemi açın ve ardından aşağıdaki betiği çalıştırın:
+    ![Azure Stack kök sertifikasını](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
+
+2. [Azure Stack üzerinde bir Windows VM oluşturma](azure-stack-quick-windows-portal.md).
+
+3. Makinede oturum açın, yükseltilmiş bir PowerShell istemi açın ve ardından aşağıdaki betiği çalıştırın:
 
     ```powershell  
-      $label = "AzureStackSelfSignedRootCert"
+      $label = "<the name of your azure stack root cert from Step 1>"
       Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
       $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
       if (-not $root)
@@ -64,7 +73,7 @@ PEM biçiminde ASDK kök sertifikasını dışarı aktarmak için:
     certutil -encode root.cer root.pem
     ```
 
-3. Sertifikayı yerel makinenize kopyalayın.
+4. Sertifikayı yerel makinenize kopyalayın.
 
 
 ### <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Sanal makine diğer uç nokta ayarlamayı
@@ -104,9 +113,9 @@ Azure AD, kimlik yönetimi hizmeti olarak kullanıyorsanız ve bir Windows makin
 
 ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gerekir. Tümleşik sistemlerle bunu gerekmez.
 
-Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Python sürümü için mevcut Python sertifika ekleyin. Python kendi örneğini çalışıyor olabilir. Azure CLI, Python sürümünü içerir.
+Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Python sürümü için mevcut Python sertifika deposuna ekleyin. Python kendi örneğini çalışıyor olabilir. Azure CLI, Python sürümünü içerir.
 
-1. Makinenizde sertifika konumu bulun.  Komutunu çalıştırarak konumu bulabilirsiniz `az --version`.
+1. Makinenizde sertifika depo konumunu bulun.  Komutunu çalıştırarak konumu bulabilirsiniz `az --version`.
 
 2. İçeren klasöre gidin CLI Python uygulaması demektir. Python'ın bu sürümünü çalıştırmak üzere isteyeceksiniz. Python ' sisteminizdeki yolu ayarladıysanız, Python'ı çalıştıran kendi Python sürümünü çalıştırır. Bunun yerine, CLI tarafından kullanılan sürümü çalıştırın ve bu sürüme sertifikanızı eklemek isteyeceksiniz. Örneğin, CLI, Python, olabilir: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
 
@@ -188,7 +197,7 @@ Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Pytho
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2018-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
  
 1. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -304,11 +313,11 @@ ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gereki
 1. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
-    az cloud update --profile 2018-03-01-hybrid
+    az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2018-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
 
 1. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -317,7 +326,7 @@ ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gereki
      Kullanıcı adı ve parola doğrudan içinde ya da belirtebilirsiniz `az login` komutunu ya da bir tarayıcı kullanarak kimlik doğrulaması. Çok faktörlü kimlik doğrulaması etkin hesabınız varsa, ikincisi yapmanız gerekir:
 
      ```azurecli
-     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2018-03-01-hybrid"
+     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2019-03-01-hybrid"
      ```
 
      > [!NOTE]
@@ -420,11 +429,11 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
 4. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
-      az cloud update --profile 2018-03-01-hybrid
+      az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2018-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
 
 5. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -531,11 +540,11 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
 4. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
-      az cloud update --profile 2018-03-01-hybrid
+      az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2018-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
 
 5. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
 

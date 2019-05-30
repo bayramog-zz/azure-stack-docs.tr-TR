@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 6db643e1123a27fe1716aeeb5ec97d6497764632
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: e89e8a9d2f773c289bc279a1b4aa9f47e65e8741
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618950"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269347"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Azure Stack'e bir App Service kaynak sağlayıcısı ekleme
 
@@ -29,16 +29,16 @@ ms.locfileid: "65618950"
 
 Azure Stack'te App Service'e dağıtım yapmak, bu makaledeki yönergeleri kullanın.
 
-> [!IMPORTANT]  
-> Azure Stack tümleşik sisteminize 1901 güncelleştirmesini veya Azure App Service 1.5 dağıtmadan önce en son Azure Stack geliştirme Seti'ni (ASDK) dağıtın.
+> [!IMPORTANT]
+> 1904 güncelleştirme, Azure Stack tümleşik sistemi için geçerli veya Azure App Service 1.6 dağıtmadan önce en son Azure Stack geliştirme Seti'ni (ASDK) dağıtın.
 
 Kullanıcılarınız, web ve API uygulamaları oluşturma olanağı verebilirsiniz. Kullanıcıların bu uygulamaları oluşturmak için gerekir:
 
- - Ekleme [App Service kaynak sağlayıcısı](azure-stack-app-service-overview.md) bu makalede açıklanan adımları kullanarak Azure Stack dağıtımınıza.
- - App Service kaynak Sağlayıcısı'nı yükledikten sonra teklifler ve planlar içerebilir. Kullanıcıların hizmete almak ve uygulamalar oluşturmaya başlamak için abone olabilirsiniz.
+- Ekleme [App Service kaynak sağlayıcısı](azure-stack-app-service-overview.md) bu makalede açıklanan adımları kullanarak Azure Stack dağıtımınıza.
+- App Service kaynak Sağlayıcısı'nı yükledikten sonra teklifler ve planlar içerebilir. Kullanıcıların hizmete almak ve uygulamalar oluşturmaya başlamak için abone olabilirsiniz.
 
-> [!IMPORTANT]  
-> ' Deki yönergeleri izlediğinizden emin olun, kaynak sağlayıcı yükleyicisini çalıştırmadan önce [başlamadan önce](azure-stack-app-service-before-you-get-started.md) ve okuma [sürüm notları](azure-stack-app-service-release-notes-update-five.md), yeni hakkında bilgi edinmek için 1.5 sürümünü eşlik işlevi, düzeltmeler ve dağıtımınızı etkileyebilecek tüm bilinen sorunlar.
+> [!IMPORTANT]
+> ' Deki yönergeleri izlediğinizden emin olun, kaynak sağlayıcı yükleyicisini çalıştırmadan önce [başlamadan önce](azure-stack-app-service-before-you-get-started.md) ve okuma [sürüm notları](azure-stack-app-service-release-notes-update-six.md), yeni hakkında bilgi edinmek için 1.6 yayın eşlik işlevi, düzeltmeler ve dağıtımınızı etkileyebilecek tüm bilinen sorunlar.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service kaynak sağlayıcısı yükleyiciyi çalıştırın
 
@@ -79,7 +79,7 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
 
    b. İçinde **Azure Stack aboneliklerini**seçin **varsayılan sağlayıcı aboneliği**.
 
-     > [!IMPORTANT]  
+     > [!IMPORTANT]
      > App Service **gerekir** dağıtılacağını **varsayılan sağlayıcı aboneliği**.
 
    c. İçinde **Azure Stack konumları**, için dağıtmakta bölgesine karşılık gelen konum seçin. Örneğin, **yerel** , Azure Stack Geliştirme Seti için dağıtma.
@@ -99,7 +99,7 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
 
    ![Uygulama hizmeti yükleyicisi][4]
 
-8. Dosya paylaşımınızın bilgilerini girin ve ardından **sonraki**. Dosya Paylaşımı adresi, tam etki alanı adı (FQDN) veya dosya sunucunuzun IP adresini kullanmanız gerekir. Örneğin, \\\appservicefileserver.local.cloudapp.azurestack.external\websites, veya \\\10.0.0.1\websites.  Etki alanına katılmış olan bir dosya sunucusu kullanıyorsanız, etki alanı, örneğin, myfileserverdomain\FileShareOwner dahil olmak üzere tam kullanıcı adı sağlamalısınız.
+8. Dosya paylaşımınızın bilgilerini girin ve ardından **sonraki**. Dosya Paylaşımı adresi, tam etki alanı adı (FQDN) veya dosya sunucunuzun IP adresini kullanmanız gerekir. Örneğin, \\\appservicefileserver.local.cloudapp.azurestack.external\websites, veya \\\10.0.0.1\websites.  Etki alanına katılmış olan bir dosya sunucusu kullanıyorsanız etki alanı, örneğin, myfileserverdomain\FileShareOwner dahil olmak üzere tam kullanıcı adı sağlamalısınız.
 
    >[!NOTE]
    >Yükleyici, devam etmeden önce dosya paylaşımına bağlantısını test etmek çalışır. Ancak, bir sanal ağınız dağıtıyorsanız, bu bağlantı testi başarısız olabilir. Size bir uyarı ve bir komut istemi devam etmek için verilir. Dosya Paylaşımı bilgilerin doğru olduğundan, dağıtımın devam edin.
@@ -186,8 +186,20 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
 
 ## <a name="post-deployment-steps"></a>Dağıtım sonrası adımlar
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Bir SQL her zaman şirket örneği App Service RP'ye sağladıysanız gerekir [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleme](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve hizmette kaybını önlemek için veritabanlarını eşitleme Olay veritabanı yük devretme.
+
+Mevcut bir sanal ağa dağıtma ve da dosya sunucunuza bağlanmak için bir iç IP adresi kullanarak, bir giden güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlar.  WorkersNsg, ağ güvenlik grubu, Yönetim Portalı'nda gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
+
+- Kaynak: Herhangi
+- Kaynak bağlantı noktası aralığı: *
+- Hedef: IP Adresleri
+- Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
+- Hedef bağlantı noktası aralığı: 445
+- Protokol: TCP
+- Eylem: İzin ver
+- Önceliği: 700
+- Ad: Outbound_Allow_SMB445
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Yükleme Azure Stack üzerinde App Service'te doğrula
 
@@ -196,18 +208,6 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
 2. Durumu altında genel bakış, görmek için iade **durumu** görüntüler **tüm roller hazır**.
 
     ![App Service Yönetimi](media/azure-stack-app-service-deploy/image12.png)
-
-    Mevcut bir sanal ağa dağıtma ve da dosya sunucunuza bağlanmak için bir iç IP adresi kullanarak, bir giden güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlar.  Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-
-    - Kaynak: Herhangi
-    - Kaynak bağlantı noktası aralığı: *
-    - Hedef: IP Adresleri
-    - Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
-    - Hedef bağlantı noktası aralığı: 445
-    - Protokol: TCP
-    - Eylem: İzin ver
-    - Önceliği: 700
-    - Ad: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Azure Stack üzerinde test sürüşü App Service
 
@@ -241,7 +241,7 @@ Web uygulaması oluşturmak için aşağıdaki adımları izleyin:
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>WordPress, DNN ve Django Web sitesi (isteğe bağlı) dağıtma
 
-1. Azure Stack Kiracı portalında **+**, Azure Marketi'nde gidin, Django Web sitesi dağıtma ve daha sonra dağıtımın tamamlanmasını bekleyin. Django web platformu, dosya sistemi tabanlı bir veritabanı kullanır. Bu, SQL veya MySQL gibi herhangi bir ek kaynak sağlayıcıları olmasını gerektirmez.
+1. Azure Stack Kiracı portalında **+** , Azure Marketi'nde gidin, Django Web sitesi dağıtma ve daha sonra dağıtımın tamamlanmasını bekleyin. Django web platformu, dosya sistemi tabanlı bir veritabanı kullanır. Bu, SQL veya MySQL gibi herhangi bir ek kaynak sağlayıcıları olmasını gerektirmez.
 
 2. Ayrıca bir MySQL kaynak sağlayıcısı dağıtılan marketten bir WordPress Web sitesi dağıtabilirsiniz. Veritabanı parametrelerini sorulduğunda, kullanıcı adı olarak girin *User1\@Sunucu1*, tercih ettiğiniz sunucu adı ve kullanıcı adı.
 
@@ -251,8 +251,8 @@ Web uygulaması oluşturmak için aşağıdaki adımları izleyin:
 
 Diğer de deneyebilirsiniz [platform olarak hizmet (PaaS) Hizmetleri](azure-stack-offer-services-overview.md).
 
- - [SQL Server Kaynak sağlayıcısı](azure-stack-sql-resource-provider-deploy.md)
- - [MySQL kaynak sağlayıcısı](azure-stack-mysql-resource-provider-deploy.md)
+- [SQL Server Kaynak sağlayıcısı](azure-stack-sql-resource-provider-deploy.md)
+- [MySQL kaynak sağlayıcısı](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
 [Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531

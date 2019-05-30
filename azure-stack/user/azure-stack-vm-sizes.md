@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te desteklenen sanal makine boyutları | Microsoft Docs
-description: Azure stack'teki desteklenen sanal makine boyutları için başvuru.
+title: Azure Stack'te desteklenen VM boyutları | Microsoft Docs
+description: Azure stack'teki desteklenen VM boyutları için başvuru.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,29 +14,29 @@ ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: ab8c6c32a21afffd590a6f98359e051c7208b6ec
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: a7ec54d88a259b883f72c2396ab572118ba96a23
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712266"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269435"
 ---
-# <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack'te desteklenen sanal makine boyutları
+# <a name="vm-sizes-supported-in-azure-stack"></a>Azure Stack'te desteklenen VM boyutları
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Bu makalede, Azure Stack'te kullanılabilir sanal makine boyutlarını listeler.
+Bu makalede, Azure Stack'te kullanılabilir sanal makine (VM) boyutları listeler.
 
-Disk IOPS (giriş/çıkış işlem / saniye) Azure Stack üzerinde sanal makine (VM) boyutu diskin türünü yerine bir işlevdir. Bu SSD veya HDD, disk türünü seçmenize bakılmaksızın Standard_Fs serisi VM için tek bir ek veri diski IOPS sınırı 2300 IOPS anlamına gelir. IOPS sınır uygulanmaz gürültücü Komşuları için üst sınır (maksimum olası) olur. Belirli bir VM boyutuna erişmenizi sağlayacak IOPS bir güvencesi değil.
+Disk IOPS (giriş/çıkış işlem / saniye) Azure Stack'te bir VM boyutu diskin türünü yerine işlevidir. Bu SSD veya HDD, disk türünü seçmenize bakılmaksızın Standard_Fs serisi VM için tek bir ek veri diski IOPS sınırı 2300 IOPS anlamına gelir. IOPS sınır uygulanmaz gürültücü Komşuları için üst sınır (maksimum olası) olur. Belirli bir VM boyutuna elde edecekleriniz IOPS bir güvencesi öyle.
 
-## <a name="virtual-machine-general-purpose"></a>Genel amaçlı sanal makine
+## <a name="vm-general-purpose"></a>VM genel amaçlı
 
-Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Test ve geliştirme, küçük ve orta büyüklükte veri tabanları ve düşük, orta düzey trafiğe sahip web sunucuları için kullanılırlar. Her veri diski hariç temel A serisi, premium VM boyutları için 2300 IOPS ' dir. Temel A veri disk boyutu 500 IOPS ' dir.
+Dengeli CPU / bellek oranı genel amaçlı bir VM boyutları sunar. Bunlar test ve geliştirme, küçük ve orta büyüklükte veri tabanları ve düşük, orta düzey trafiğe sahip web sunucuları için kullanılır. Her veri diski hariç temel A serisi, premium VM boyutları için 2300 IOPS ' dir. Temel A veri disk boyutu 500 IOPS ' dir.
 
 ### <a name="basic-a"></a>Temel A
 
 > [!NOTE]
-> *Temel A* sanal makine boyutları için devre dışı [sanal makine ölçek kümeleri oluşturma](../operator/azure-stack-compute-add-scalesets.md) (VMSS) portal üzerinden. Bu boyut ile bir VMSS oluşturmak için PowerShell ya da bir şablon kullanın.
+> *Temel A* VM boyutları için devre dışı [sanal makine ölçek kümeleri oluşturma](../operator/azure-stack-compute-add-scalesets.md) (VMSS) portal üzerinden. Bu boyut ile bir VMSS oluşturmak için PowerShell ya da bir şablon kullanın.
 
 |Boyutu - boyut\ad |vCPU     |Bellek | En fazla geçici disk boyutu | En yüksek işletim sistemi disk aktarım hızı: (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski aktarım hızı (IOPS) | En fazla NIC |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
@@ -152,7 +152,7 @@ Belleği en iyi duruma getirilmiş VM boyutları, ilişkisel veritabanı sunucul
 ### <a name="mo-d"></a>D serisi
 |Boyutlandır     |vCPU     |Bellek (GiB) | Geçici depolama alanı (GiB)  | En yüksek işletim sistemi disk aktarım hızı (IOPS) | Maksimum geçici depolama aktarım hızı (IOPS) | Maksimum veri diski / aktarım hızı (IOPS) | En fazla NIC |
 |------------------|---|----|----|--------|------|------------|---------|
-|**İşler için standart_d11**  |2  |14  |100 |500     |6000  |8/8x500   |2 |
+|**Standard_F1s**  |2  |14  |100 |500     |6000  |8/8x500   |2 |
 |**İşler için standart_d12**  |4  |28  |200 |500     |12000 |16/16x500 |4 |
 |**Standard_D13**  |8  |56  |400 |500     |24000 |32/32x500 |8 |
 |**İşler için standart_d14**  |16 |112 |800 |500     |48000 |64 / 64 x 500 |8 |
@@ -185,4 +185,4 @@ Belleği en iyi duruma getirilmiş VM boyutları, ilişkisel veritabanı sunucul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack'te sanal makineler için dikkat edilmesi gerekenler](azure-stack-vm-considerations.md)
+[Azure Stack VM özellikleri](azure-stack-vm-considerations.md)

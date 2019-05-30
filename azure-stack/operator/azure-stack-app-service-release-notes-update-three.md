@@ -3,8 +3,8 @@ title: Azure Stack üzerinde App Service'te güncelleştirme 3 sürüm notları 
 description: Güncelleştirmede nedir hakkında Azure Stack'te App Service için üç, bilinen sorunlar ve güncelleştirmeyi yüklemek nereye öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: bryanla
+manager: stefsch
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,17 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 03/25/2019
-ms.date: 04/29/2019
-ms.author: v-jay
-ms.reviewer: sethm
+ms.date: 03/25/2019
+ms.author: anwestg
+ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 5ea711d3d4ffff72279e745290c1c8d9d854298e
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 4397fbbc570972fb7a041f583d81115e28fe70ce
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64291072"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269095"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>Güncelleştirme 3 sürüm notları Azure Stack üzerinde App Service'e
 
@@ -170,7 +169,7 @@ Azure App Service Azure Stack 1.3 Güncelleştirmesi tamamlandıktan sonra Azure
         GO
     ```
 
-Doğrulama
+Doğrula
 
 1. SQL Server'ın etkin bir kapsama sahip olup olmadığını denetleyin
 
@@ -188,13 +187,13 @@ Doğrulama
 - Çalışanları App Service, var olan bir sanal ağda dağıtılır ve dosya sunucusu yalnızca özel ağda kullanılabilir dosya sunucusuna erişemiyor.  Bu da Azure Stack dağıtım belgeleri üzerinde Azure App Service'te çağırılır.
 
 Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
- * Kaynak: Herhangi biri
+ * Kaynak: Herhangi
  * Kaynak bağlantı noktası aralığı: *
  * Hedef: IP Adresleri
  * Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
  * Hedef bağlantı noktası aralığı: 445
  * Protokol: TCP
- * Eylem: İzin Ver
+ * Eylem: İzin ver
  * Önceliği: 700
  * Ad: Outbound_Allow_SMB445
 

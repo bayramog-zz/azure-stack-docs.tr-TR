@@ -14,12 +14,12 @@ ms.author: mabrigg
 ms.date: 04/02/2019
 ms.reviewer: waltero
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 0e02489bc9750183754b27887fa701d1dd1a8567
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: 33eed0b574ad28c5fc0d1fb44f1c9b5a1ad37bb7
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712419"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269382"
 ---
 # <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Azure Stack için Kubernetes dağıtımı sorunlarını giderme
 
@@ -45,7 +45,7 @@ Küme dağıtımı için genel süreç Aşağıdaki diyagramda gösterilmektedir
 1. Market öğesi giriş parametrelerini toplamak.
 
     Kubernetes kümesini ayarlamak için ihtiyacınız olan değerlere girin dahil olmak üzere:
-    -  **Kullanıcı adı**: Kubernetes kümesi ve DVM parçası olan bir Linux sanal makineleri için kullanıcı adı.
+    -  **Kullanıcı adı**: Linux Kubernetes kümesi ve DVM parçası olan sanal makinelerin (VM'ler) için kullanıcı adı.
     -  **SSH ortak anahtarı**: Kubernetes kümesi ve DVM parçası olarak oluşturulan tüm Linux makinelerinin yetkilendirme için kullanılan anahtar.
     -  **Hizmet sorumlusu**: Kubernetes Azure bulut sağlayıcısı tarafından kullanılan kimliği. İstemci kimliği, hizmet sorumlusu oluştururken sağladığınız uygulama kimliği olarak tanımlanır. 
     -  **İstemci gizli anahtarı**: Anahtar, hizmet sorumlusu oluşturduğunuzda oluşturulan.
@@ -112,7 +112,7 @@ Kubernetes kümesini dağıtırken, herhangi bir sorun için kontrol etmek için
     | Özellik | Açıklama |
     | ----     | ----        |
     | Resource | Kaynak adı. |
-    | Tür | Kaynak sağlayıcıya ve kaynak türü. |
+    | Type | Kaynak sağlayıcıya ve kaynak türü. |
     | Durum | Öğenin durumu. |
     | Zaman Damgası | Saat UTC zaman damgası. |
     | İşlem ayrıntıları | İşlem ayrıntıları işlemi, kaynak uç noktası ve kaynağın adını söz konusuydu kaynak sağlayıcısı gibi. |
@@ -121,7 +121,7 @@ Kubernetes kümesini dağıtırken, herhangi bir sorun için kontrol etmek için
 
 ## <a name="review-deployment-logs"></a>Dağıtım günlüklerini gözden geçirin
 
-Azure Stack portal sorun giderme veya dağıtım hatalarını gidermek için yeterli bilgi sağlamazsa, sonraki adım kümesi günlüklerine dig sağlamaktır. El ile dağıtım günlüklerini almak için genellikle bir kümenin ana sanal makinelerin bağlanmanız gerekir. Basit bir alternatif yaklaşım indirin ve aşağıdaki olacaktır [Bash betiği](https://aka.ms/AzsK8sLogCollectorScript) Azure Stack ekibi tarafından sağlanan. Bu betik DVM ve kümenin sanal makinelere bağlar, ilgili sistem ve küme günlükleri toplar ve bunları geri istasyonunuza indirir.
+Azure Stack portal sorun giderme veya dağıtım hatalarını gidermek için yeterli bilgi sağlamazsa, sonraki adım kümesi günlüklerine dig sağlamaktır. El ile dağıtım günlüklerini almak için genellikle kümenin ana Vm'lerden biri olarak bağlanmanız gerekir. Basit bir alternatif yaklaşım indirin ve aşağıdaki olacaktır [Bash betiği](https://aka.ms/AzsK8sLogCollectorScript) Azure Stack ekibi tarafından sağlanan. Bu betik DVM ve kümenin Vm'leri bağlar, ilgili sistem ve küme günlükleri toplar ve bunları geri istasyonunuza indirir.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -146,10 +146,10 @@ Toplamak ve küme günlükleri indirmek için aşağıdaki adımları izleyin:
 
     | Parametre           | Açıklama                                                                                                      | Örnek                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host      | Genel IP veya DVM tam etki alanı adını (FQDN). Sanal makine adı ile başlayan `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -d, --vmd-host      | Genel IP veya DVM tam etki alanı adını (FQDN). VM adı ile başlayan `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Komut kullanımını yazdırın. | |
     | -i,--dosya kimliği | RSA özel anahtar dosyası, Kubernetes kümesini oluştururken Market öğesine geçirildi. Kubernetes düğümleri uzaktan içinde gerekli. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
-    | m-,--ana konak   | Genel IP veya Kubernetes ana düğümünün tam etki alanı adını (FQDN). Sanal makine adı ile başlayan `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | m-,--ana konak   | Genel IP veya Kubernetes ana düğümünün tam etki alanı adını (FQDN). VM adı ile başlayan `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | u-,--kullanıcı          | Kullanıcı adı, Kubernetes kümesini oluştururken Market öğesine geçirildi. Kubernetes düğümleri uzaktan içinde gerekli. | azureuser (varsayılan değer) |
 
 
@@ -159,7 +159,7 @@ Toplamak ve küme günlükleri indirmek için aşağıdaki adımları izleyin:
     ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-4. Birkaç dakika sonra komut dosyasını toplanan günlükler adlı bir dizine çıkarır `KubernetesLogs_{{time-stamp}}`. Burada, kümeye ait her bir sanal makine için bir dizin bulabilirsiniz.
+4. Birkaç dakika sonra komut dosyasını toplanan günlükler adlı bir dizine çıkarır `KubernetesLogs_{{time-stamp}}`. Burada, kümeye ait her bir VM için bir dizin bulabilirsiniz.
 
     Günlük Toplayıcı betiği ayrıca günlük dosyalarındaki hataları aramak ve bilinen bir sorun bulduğunda, sorun giderme adımlarını içerir. Bilinen sorunlar bulma olasılığını artırmak için komut dosyasının en son sürümü çalıştırdığınızdan emin olun.
 

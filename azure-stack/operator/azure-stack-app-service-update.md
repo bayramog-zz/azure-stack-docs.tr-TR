@@ -3,7 +3,7 @@ title: Azure Stack'te Azure uygulama hizmeti güncelleştirmesi | Microsoft Docs
 description: Azure Stack'te Azure App Service güncelleştirmeye yönelik ayrıntılı kılavuz
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: BryanLa
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,28 +11,28 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/18/2019
-ms.openlocfilehash: bc379bfa93983c2e1579ebf657ce86558abc7d20
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.lastreviewed: 05/28/2019
+ms.openlocfilehash: 95611e776d2517bffaa7a3693362f5d227943bd0
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618213"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269090"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Azure Stack'te Azure uygulama hizmeti güncelleştirmesi
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-> [!IMPORTANT]  
-> Azure Stack tümleşik sisteminize 1901 güncelleştirmesini veya Azure App Service 1.5 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
+> [!IMPORTANT]
+> Azure Stack tümleşik sisteminize 1904 güncelleştirmesini veya Azure App Service 1.6 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
 
 Bu makaledeki yönergeleri takip ederek, Yükseltme yapabileceğiniz [App Service kaynak sağlayıcısı](azure-stack-app-service-overview.md) Internet'e bağlı bir Azure Stack ortamında dağıtılır.
 
-> [!IMPORTANT]  
-> Yükseltmeyi çalıştırmadan önce zaten tamamladığınızdan emin olun [Azure Stack kaynak sağlayıcısı üzerinde Azure App Service dağıtım](azure-stack-app-service-deploy.md) ve okuduğunuz [sürüm notları](azure-stack-app-service-release-notes-update-five.md) , eşlik 1.5 sürümünü yeni işlevler, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinin.
+> [!IMPORTANT]
+> Yükseltmeyi çalıştırmadan önce zaten tamamladığınızdan emin olun [Azure Stack kaynak sağlayıcısı üzerinde Azure App Service dağıtım](azure-stack-app-service-deploy.md) ve okuduğunuz [sürüm notları](azure-stack-app-service-release-notes-update-six.md) , eşlik Sürüm 1.6 yeni işlevler, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinin.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service kaynak sağlayıcısı yükleyiciyi çalıştırın
 
@@ -52,7 +52,7 @@ Bu işlem sırasında yükseltme yapar:
 
 Azure Stack üzerinde App Service'te dağıtımınızın yükseltmek için aşağıdaki adımları izleyin:
 
-1. İndirme [uygulama hizmeti yükleyicisi](https://aka.ms/appsvcupdate5installer)
+1. İndirme [uygulama hizmeti yükleyicisi](https://aka.ms/appsvcupdate6installer)
 
 2. Appservice.exe bir yönetici olarak çalıştır
 

@@ -3,7 +3,7 @@ title: Hazırlanmış veri analizi çözümü, Azure ve Azure Stack ile oluştur
 description: Azure ve Azure Stack ile hazırlanmış veri analizi çözümü oluşturmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 2c2b06db3bb6144620b5fce1a7e3e76fdd06589a
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 9359c1393229709fc77ee08216a80a26de9135dc
+ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64303282"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252008"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile hazırlanmış veri analizi çözümü oluşturma 
 
@@ -186,7 +186,7 @@ Verileri temizleme Azure yığını, Azure'a taşımak için yeni bir Azure Stac
    | Ayar | Önerilen değer | Açıklama |
    | ------- | ------- | ------- |
    | Ad | İşlev uygulamanızda benzersiz olmalıdır | Blob ile tetiklenen bu işlevin adı. |
-   | Yol | \<depolama konumu yolu > | İzlenmekte olan Blob depolamanın konumu. Blob dosya adı bağlamaya name parametresi olarak geçirilir. |
+   | `Path` | \<depolama konumu yolu > | İzlenmekte olan Blob depolamanın konumu. Blob dosya adı bağlamaya name parametresi olarak geçirilir. |
    | Depolama hesabı bağlantısı | İşlevi uygulama bağlantısı | İşlev uygulamanız tarafından zaten kullanılan depolama hesabı bağlantısı kullanın veya yeni bir tane oluşturun. |
 
    **Örnek:**
@@ -246,7 +246,7 @@ Arşiv depolama olarak başka bir depolama hesabı ve blob kapsayıcısı oluşt
     | Ayar | Önerilen değer | Açıklama |
     | ------- | ------- | ------- |
     | Ad | İşlev uygulamanızda benzersiz olmalıdır | Kuyruk tarafından tetiklenen bu işlevin adı. |
-    | Yol | \<depolama konumu yolu > | İzlenmekte olan depolama konumu. Kuyruğun dosya adı bağlamaya name parametresi olarak geçirilir. |
+    | `Path` | \<depolama konumu yolu > | İzlenmekte olan depolama konumu. Kuyruğun dosya adı bağlamaya name parametresi olarak geçirilir. |
     | Depolama hesabı bağlantısı | İşlevi uygulama bağlantısı | İşlev uygulamanız tarafından zaten kullanılan depolama hesabı bağlantısı kullanın veya yeni bir tane oluşturun. |
 
 3.  Seçin **Oluştur** işlevi oluşturmak için.

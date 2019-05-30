@@ -3,7 +3,7 @@ title: Azure Stack'te Yönetim Portalı'nı kullanarak | Microsoft Docs
 description: Azure Stack operatörü, yönetim portalının nasıl kullanılacağını öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: efemmano
 ms.lastreviewed: 02/25/2019
-ms.openlocfilehash: 71932642d8c44d2043fe185eab3ebda25be7bb3f
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: b6863a86a5307375ea13f67c349da9f87b797fe5
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618623"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268463"
 ---
 # <a name="quickstart-use-the-azure-stack-administration-portal"></a>Hızlı Başlangıç: Azure Stack yönetim portalını kullanın
 

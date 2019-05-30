@@ -3,7 +3,7 @@ title: Yüksek oranda kullanılabilir SQL veritabanları Azure Stack'te teklif |
 description: Azure Stack ile bir SQL Server Kaynak sağlayıcısı ana bilgisayarı ve yüksek oranda kullanılabilir SQL AlwaysOn veritabanı oluşturmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: cf957fd69cf581d1ca63d1331f8ea407b24394ad
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: e21819fc6475161e63fcdb99a723847c5d7fbbad
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617744"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268407"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Öğretici: Yüksek oranda kullanılabilir SQL veritabanı teklifi
 

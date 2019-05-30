@@ -3,7 +3,7 @@ title: Web ve API apps, Azure Stack kullanıcıları için kullanılabilir hale 
 description: App Service kaynak Sağlayıcısı'nı yükleme ve oluşturma Öğreticisi, Azure Stack kullanıcılarınıza web ve API uygulamaları oluşturma olanağı sunmak sunar.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: anwestg
 ms.custom: mvc
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 9954e351ecd584925d264d0c8c5e8fb8e2507192
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: fbf6993447f22a354c61102b9e670c8f1188f48d
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618642"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268105"
 ---
 # <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>Öğretici: web ve API apps, Azure Stack kullanıcılar için kullanılabilir yap
 

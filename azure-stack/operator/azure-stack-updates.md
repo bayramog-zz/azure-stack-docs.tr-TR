@@ -15,22 +15,22 @@ ms.date: 04/04/2019
 ms.author: mabrigg
 ms.lastreviewed: 04/04/2019
 ms.reviewer: justini
-ms.openlocfilehash: c0727ef3f55cba86bbb8c9953007256906852ccb
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 64ccb5ec0b24202aa847d5114ba35ae20af44cc8
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984620"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268023"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack genel bakış güncelleştirmelerini yönetme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri*
 
-Azure Stack tümleşik sistemleri genellikle için Microsoft güncelleştirme paketlerini her ayın dördüncü Salı geçici olarak bırakın. Özgün ekipman üreticisi (OEM) güncelleştirme bildirimlerini kuruluşunuz ulaştığından emin olmak için belirli bildirim süreci hakkında isteyin. Bu belge kitaplığındaki altında de göz atabilirsiniz **genel bakış** > **sürüm notları** etkin desteği olan sürümler hakkında daha fazla bilgi için. 
+Microsoft Azure Stack tümleşik sistemleri genellikle her ay sürüm için güncelleştirme paketleri. Özgün ekipman üreticisi (OEM) güncelleştirme bildirimlerini kuruluşunuz ulaştığından emin olmak için belirli bildirim süreci hakkında isteyin. Bu belge kitaplığındaki altında de göz atabilirsiniz **genel bakış** > **sürüm notları** etkin desteği olan sürümler hakkında daha fazla bilgi için. 
 
-Her bir sürümü Microsoft yazılım güncelleştirmeleri bir tek güncelleştirme paketi olarak gelir. Azure Stack operatör olarak içeri aktarabilirsiniz, yükleme ve yükleme ilerleme durumunu bu İzleyici, yönetici portalından paketleri güncelleştirin. 
+Her bir sürümü Microsoft yazılım güncelleştirmeleri bir tek güncelleştirme paketi olarak gelir. Azure Stack operatörü içeri aktarma, yükleme ve Azure Stack yönetim portalından güncelleştirme paketlerini yükleme ilerlemesini izleyin.
 
-Ayrıca, OEM satıcısı güncelleştirmeler, sürücü ve bellenim güncelleştirmeleri gibi serbest bırakır. Bu güncelleştirmeleri satıcısı tarafından ayrı paketler halinde dağıtılır, ancak bunlar içeri aktarıldı, yüklü ve güncelleştirme paketlerini Microsoft gelen aynı şekilde yönetilir.
+Ayrıca, OEM satıcısı güncelleştirmeler, sürücü ve bellenim güncelleştirmeleri gibi serbest bırakır. Bu güncelleştirmeleri satıcısı tarafından ayrı paketler halinde dağıtılır, ancak bazı alınan, yüklü ve güncelleştirme paketlerini Microsoft gelen aynı şekilde yönetilir.
 
 Sisteminizi desteği altında tutmak için Azure Stack belirli sürüm düzeyi için güncelleştirilmiş tutmanız gerekir. Gözden geçirmenizi emin [Azure Stack hizmet İlkesi](azure-stack-servicing-policy.md).
 
@@ -46,6 +46,8 @@ Güncelleştirmeleri yüklemek gibi çeşitli alt sistemlerde (örneğin, fiziks
 ## <a name="plan-for-updates"></a>Güncelleştirmelerini planlama
 
 Herhangi bir bakım işlemi kullanıcılara bildirmek ve, normal bakım pencereleri çalışma saatleri sırasında mümkünse zamanlamanızı öneririz. Bakım işlemleri hem Kiracı iş yüklerini ve portal işlemlerini etkileyebilir.
+
+Bakım penceresi için planlama yaparken, güncelleştirme paketini ilgili sürüm notuna içinde bahsedilen gibi Microsoft'un yayınladığı belirli türünü gözden geçirmek önemlidir. Bazen düzeltme yanı sıra, her bir güncelleştirme paketini karşılık gelen bir tür olacaktır **tam** veya **Express**. Tam güncelleştirme paketleri ölçek birimi fiziksel ana bilgisayar işletim sistemlerinde güncelleştirir ve daha büyük bir bakım penceresi gerektirir. Hızlı güncelleştirme paketleri, diğer yandan kapsamındaki ve temel alınan fiziksel ana bilgisayar işletim sistemleri güncelleştirmez.
 
 - Bu güncelleştirme yüklemesi başlamadan önce çalıştırması [Test AzureStack](azure-stack-diagnostic-test.md) bulunan tüm çalışma sorunlarını çözün ve Azure Stack durumunu doğrulamak için aşağıdaki parametreleri, tüm uyarılar ve hatalar dahil olmak üzere. Ayrıca etkin Uyarıları gözden geçirin ve eylemi gerektiren tüm çözümleyin.  
 

@@ -3,7 +3,7 @@ title: Gelişmiş Azure Stack değerlendirme görevleri | Microsoft Docs
 description: Bu makalede, Gelişmiş Azure Stack değerlendirme görevleri açıklar.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: a0b42a600036cca90741cd64517a86e8ae3a7344
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: fe78fa4b99ef7acad924165b98e20ca6156777bb
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65615831"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66267107"
 ---
 # <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>Gelişmiş Azure Stack geliştirme Seti'ni değerlendirme görevleri
 Temel Azure Stack geliştirme Seti'ni (ASDK) hizmeti özellikler ve yetenekler konusunda öğrendikten sonra daha gelişmiş senaryolarını test etmeye göre daha fazla Azure Stack Anlayışınızı güçlendirmenizi. Bu daha gelişmiş değerlendirme görevleri Azure Stack operatörü belgelerinde belgelenmiştir.

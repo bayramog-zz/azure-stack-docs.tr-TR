@@ -3,7 +3,7 @@ title: Azure ve Azure uygulamanıza dağıtın yığın | Microsoft Docs
 description: Azure ve Azure Stack için hibrit CI/CD işlem hattı ile uygulamaları dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 3b98714a6cbc3601f98d5f9dfcb26edb5182cfa4
-ms.sourcegitcommit: 2b6a0b3b4dc63c26df3d0535d630d640ff232fb0
+ms.openlocfilehash: dfec5ff97b4c7aa3c3de6b4817689412cb41ea6a
+ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521234"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252091"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack’e uygulama dağıtma
 
@@ -179,7 +179,7 @@ Abonelik, kaynak grubu veya kaynak düzeyinde kapsamı ayarlayabilirsiniz. Daha 
 
     ![Visual Studio Enterprise](media/azure-stack-solution-hybrid-pipeline/000_11.png)
 
-3. Visual Studio Enterprise'ı seçin **erişim denetimi (IAM)**.
+3. Visual Studio Enterprise'ı seçin **erişim denetimi (IAM)** .
 
 4. Seçin **rol ataması Ekle**.
 

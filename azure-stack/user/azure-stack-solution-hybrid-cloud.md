@@ -3,7 +3,7 @@ title: Azure ve Azure Stack ile hibrit bulut dağıtın | Microsoft Docs
 description: Azure'da ve Azure Stack'te hibrit bir bulutla dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 4a77221ac9fcb365966435ed828ab743dd8e1034
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 7a599d3fdc68c6c41565111498108a202d8b3472
+ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985820"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252066"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile karma bulut çözümü dağıtma
 
@@ -106,10 +106,10 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimleri karşılayabilecek
    - **Tanılama depolama hesabı**. Bir gereksinim duyarsanız, yeni bir hesap oluşturun.
    - Seçin **Tamam** yapılandırmanızı kaydetmek için.
 
-     ![İsteğe bağlı özellikleri yapılandırma](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![İsteğe bağlı özellikleri yapılandır](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. Altında **SQL Server ayarları**, aşağıdaki ayarları yapılandırın:
-   - İçin **SQL Bağlantısı**seçin için **genel (Internet)**.
+   - İçin **SQL Bağlantısı**seçin için **genel (Internet)** .
    - İçin **bağlantı noktası**, varsayılan değeri değiştirmeyin **1433**.
    - İçin **SQL kimlik doğrulaması**seçin **etkinleştirme**.
 
@@ -301,9 +301,9 @@ Bir App Service ortamında web uygulamanızı oluştururken bir örnek ile başl
 
 ### <a name="enable-automatic-scale-out"></a>Otomatik ölçek genişletme etkinleştir
 
-1. Azure'da ölçeği genişletme ve ardından istediğiniz site için App Service planı bulmak **ölçeği genişletme (App Service planı)**.
+1. Azure'da ölçeği genişletme ve ardından istediğiniz site için App Service planı bulmak **ölçeği genişletme (App Service planı)** .
 
-    ![Ölçeği genişletme](media/azure-stack-solution-hybrid-cloud/image16.png)
+    ![Ölçeği genişlet](media/azure-stack-solution-hybrid-cloud/image16.png)
 
 2. Seçin **etkinleştirmek otomatik ölçeklendirme**.
 
@@ -447,8 +447,8 @@ Bu görünüm uyarı genişletme ve ölçeği uyarıda oluşturmak için kullana
 
 ### <a name="create-the-scale-out-alert"></a>Ölçeği genişletme uyarı oluşturma
 
-1. Altında **yapılandırma**seçin **uyarılar (Klasik)**.
-2. Seçin **ölçüm uyarısı Ekle (Klasik)**.
+1. Altında **yapılandırma**seçin **uyarılar (Klasik)** .
+2. Seçin **ölçüm uyarısı Ekle (Klasik)** .
 3. İçinde **Kuralı Ekle**, aşağıdakileri yapılandırın:
 
    - İçin **adı**, girin **Azure Bulutuna veri bloğu**.
@@ -462,14 +462,14 @@ Bu görünüm uyarı genişletme ve ölçeği uyarıda oluşturmak için kullana
 7. İçin **süresi**seçin **son 5 dakika üzerinden**.
 8. Altında **şu şekilde bildir**:
    - Onay için **e-posta sahipleri, Katkıda Bulunanlar ve okuyucular**.
-   - E-posta adresinizi girin **ek yönetici email(s)**.
+   - E-posta adresinizi girin **ek yönetici email(s)** .
 
 9. Menü çubuğunda, seçin **Kaydet**.
 
 ### <a name="create-the-scale-in-alert"></a>Ölçek uyarısı oluşturma
 
-1. Altında **yapılandırma**seçin **uyarılar (Klasik)**.
-2. Seçin **ölçüm uyarısı Ekle (Klasik)**.
+1. Altında **yapılandırma**seçin **uyarılar (Klasik)** .
+2. Seçin **ölçüm uyarısı Ekle (Klasik)** .
 3. İçinde **Kuralı Ekle**, aşağıdakileri yapılandırın:
 
    - İçin **adı**, girin **Azure Stack uygulamasına geri ölçek**.
@@ -483,7 +483,7 @@ Bu görünüm uyarı genişletme ve ölçeği uyarıda oluşturmak için kullana
 7. İçin **süresi**seçin **son 5 dakika üzerinden**.
 8. Altında **şu şekilde bildir**:
    - Onay için **e-posta sahipleri, Katkıda Bulunanlar ve okuyucular**.
-   - E-posta adresinizi girin **ek yönetici email(s)**.
+   - E-posta adresinizi girin **ek yönetici email(s)** .
 
 9. Menü çubuğunda, seçin **Kaydet**.
 

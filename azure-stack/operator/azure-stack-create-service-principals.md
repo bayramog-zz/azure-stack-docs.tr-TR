@@ -3,7 +3,7 @@ title: Azure Stack için hizmet sorumlusu yönetme | Microsoft Docs
 description: Azure Kaynak Yöneticisi'nde rol tabanlı erişim denetimi ile kaynaklara erişimi yönetmek için kullanılabilir olan yeni bir hizmet sorumlusu yönetme işlemi açıklanır.
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: PatAltimore
 manager: femila
 ms.service: azure-resource-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/17/2019
-ms.author: sethm
+ms.author: patricka
 ms.lastreviewed: 05/17/2019
-ms.openlocfilehash: 1bb07c1725d5c8ed81ec4b8ccc546a4d41dc64e0
-ms.sourcegitcommit: 8cb2b567e9914d4d07e754d95c0864aa55868579
+ms.openlocfilehash: 57c5547c37fee58b37f8386983d43556ed0fd515
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65855295"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268790"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Uygulamalara Azure Stack erişimi sağlama
 
@@ -87,7 +87,7 @@ AD FS ile hizmet sorumlusu oluşturmak için iki yöntemden birini kullanabilirs
 
 AD FS yönetimi ile ilgili görevler sorumluları hizmeti.
 
-| Tür | Eylem |
+| Type | Eylem |
 | --- | --- |
 | AD FS sertifikası | [Oluşturma](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
 | AD FS sertifikası | [Güncelleştirme](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
@@ -372,7 +372,7 @@ Abonelik, kaynak grubu veya kaynak düzeyinde kapsamı ayarlayabilirsiniz. Daha 
 
      ![Abonelik atama için seçin](./media/azure-stack-create-service-principal/image16.png)
 
-3. Seçin **erişim denetimi (IAM)**.
+3. Seçin **erişim denetimi (IAM)** .
 
      ![erişim seçin](./media/azure-stack-create-service-principal/image17.png)
 

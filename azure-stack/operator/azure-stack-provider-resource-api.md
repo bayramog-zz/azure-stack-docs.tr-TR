@@ -3,7 +3,7 @@ title: Sağlayıcı kaynak kullanım API'si | Microsoft Docs
 description: Başvuru için kaynak kullanım API'si, Azure Stack kullanım bilgilerini alır.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: b6e026732e75b3271053a00946c2b72accc85b0d
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 8b9a8f403fbc4ca80bb7ce179547d5b7f8954525
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985120"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268288"
 ---
 # <a name="provider-resource-usage-api"></a>Sağlayıcı kaynak kullanım API’si
 
@@ -29,12 +29,12 @@ Terim *sağlayıcısı* Hizmet Yöneticisi ve herhangi bir sağlayıcı temsilci
 ![Sağlayıcı hiyerarşinin kavramsal model](media/azure-stack-provider-resource-api/image1.png)
 
 ## <a name="api-call-reference"></a>API çağrısı başvurusu
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 İstek tüketim ayrıntılarını ve istenen zaman çerçevesi için istenen abonelikleri alır. Hiçbir istek gövdesi yok.
 
 Bu kullanım API'si bir API sağlayıcısı olduğundan, çağıran bir sağlayıcının abonelik sahibi, katkıda bulunan veya okuyucu rol atanması gerekir.
 
-| **Yöntem** | **İstek URI'si** |
+| **Yöntemi** | **İstek URI'si** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId {sub1.1} = & API-version = 2015-06-01-preview & continuationToken {belirteci-value} = |
 
@@ -85,7 +85,7 @@ meterID1",
 | **Bağımsız değişken** | **Açıklama** |
 | --- | --- |
 | *id* |Kullanım toplama benzersiz kimliği. |
-| *Adı* |Kullanım toplama adı. |
+| *name* |Kullanım toplama adı. |
 | *type* |Kaynak tanımı. |
 | *Subscriptionıd* |Azure Stack kullanıcı abonelik tanımlayıcısı. |
 | *usageStartTime* |UTC başlangıç zamanı, bu kullanım toplama ait olduğu kullanım demeti.|
@@ -114,13 +114,13 @@ Microsoft.Commerce.Admin hizmet çağırarak silinen abonelikler için kullanım
 
 **Tüm Kiracı kullanımı için döndürülecek etkin kullanıcıları için silinir:**
 
-| **Yöntem** | **İstek URI'si** |
+| **Yöntemi** | **İstek URI'si** |
 | --- | --- |
 | GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version= 2015-06-01-Önizleme |
 
 **Silinmiş veya etkin Kiracı kullanım döndürmek için:**
 
-| **Yöntem** | **İstek URI'si** |
+| **Yöntemi** | **İstek URI'si** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={ Abonelik-kimliği} & API-version = 2015-06-01-Önizleme |
 

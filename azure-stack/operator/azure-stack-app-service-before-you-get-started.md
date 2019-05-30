@@ -3,7 +3,7 @@ title: Azure Stack üzerinde App Service'te dağıtmadan önce | Microsoft Docs
 description: Azure Stack üzerinde App Service'te dağıtmadan önce tamamlanması gereken adımları
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: BryanLa
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 9b9e624abb23ef5c1bd0ae80e2338fdc0b1469ab
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: bb9d49c7feebc03f0f2f5bbaca084e9141f601e9
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618276"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269211"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Azure Stack üzerinde App Service ile çalışmaya başlamadan önce
 
@@ -30,7 +30,7 @@ ms.locfileid: "65618276"
 Azure Stack'te Azure App Service'ı dağıtmadan önce bu makalede bölümündeki önkoşul adımlarını tamamlamanız gerekir.
 
 > [!IMPORTANT]
-> Azure Stack tümleşik sisteminize 1901 güncelleştirmesini veya Azure App Service 1.5 dağıtmadan önce en son Azure Stack geliştirme Seti'ni (ASDK) dağıtın.
+> 1904 güncelleştirme, Azure Stack tümleşik sistemi için geçerli veya Azure App Service 1.6 dağıtmadan önce en son Azure Stack geliştirme Seti'ni (ASDK) dağıtın.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Yükleyici ve yardımcı betikleri indirin
 
@@ -196,6 +196,9 @@ A [başvuru mimarisi, Hızlı Başlangıç şablonu](https://github.com/Azure/Az
 >[!IMPORTANT]
 > App Service'ta da mevcut bir sanal ağ dağıtmayı seçerseniz, dosya sunucusu App Service'ten ayrı bir alt ağa dağıtılması gerekir.
 
+>[!NOTE]
+> Yukarıda belirtilen hızlı başlangıç şablonlarından birini kullanarak bir dosya sunucusu dağıtmak seçtiyseniz, sunucuları, şablon dağıtımının bir parçası yapılandırılan dosya olarak bu bölümü atlayabilirsiniz.
+
 #### <a name="provision-groups-and-accounts-in-active-directory"></a>Gruplar ve Active Directory hesaplarını sağlama
 
 1. Aşağıdaki Active Directory genel güvenlik gruplarını oluşturun:
@@ -296,6 +299,9 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 ## <a name="prepare-the-sql-server-instance"></a>SQL Server örneği hazırlamak
 
+>[!NOTE]
+> Yüksek oranda kullanılabilir bir dosya sunucusu ve SQL Server için Hızlı Başlangıç şablonu dağıtmak seçtiyseniz, şablon dağıtır ve SQL Server HA yapılandırmasında yapılandırır. Bu bölümü atlayabilirsiniz.
+
 Azure Stack barındırma ve ölçüm veritabanları üzerinde Azure App Service için App Service veritabanlarını tutmak için bir SQL Server örneği hazırlamanız gerekir.
 
 Azure Stack geliştirme Seti'ni dağıtımları için SQL Server Express 2014 SP2 kullanabilirsiniz veya üzeri.
@@ -306,7 +312,7 @@ Azure Stack'te Azure App Service için SQL Server örneğinin tüm App Service r
 
 > [!NOTE]
 > SQL Iaas sanal makine görüntüleri birçok Market yönetimi özelliği yoluyla kullanılabilir. Bir Market öğesi kullanarak VM dağıtmadan önce her zaman SQL Iaas uzantısı en son sürümünü indirin emin olun. SQL görüntülerinin Azure'da kullanıma sunulan SQL VM'ler ile aynıdır. SQL Iaas uzantısı bu görüntülerden oluşturulan ve portal geliştirmeleri karşılık gelen VM'ler için otomatik düzeltme eki uygulama ve yedekleme özellikleri gibi özellikler sağlar.
-> 
+>
 > Herhangi bir SQL sunucu rolleri için varsayılan bir örnek veya adlandırılmış bir örnek kullanabilirsiniz. Adlandırılmış bir örnek kullanırsanız, el ile SQL Server Browser hizmetini başlatma ve bağlantı noktası 1434'ü açın emin olun.
 
 App Service yükleyicisi, SQL Server veritabanı kapsama etkin olduğundan emin olun kontrol eder. App Service veritabanlarını barındıracak SQL Server veritabanı kapsama etkinleştirmek için aşağıdaki SQL komutlarını çalıştırın:

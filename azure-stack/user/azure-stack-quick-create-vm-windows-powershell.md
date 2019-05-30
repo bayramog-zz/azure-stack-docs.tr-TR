@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te PowerShell kullanarak bir Windows Server sanal makinesi oluşturun | Microsoft Docs
-description: Azure stack'teki PowerShell ile bir Windows Server sanal makinesi oluşturun.
+title: Azure Stack'te PowerShell kullanarak bir Windows Server VM oluşturma | Microsoft Docs
+description: Azure Stack'te PowerShell ile Windows Server VM oluşturun.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,14 +16,14 @@ ms.author: mabrigg
 ms.custom: mvc
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d6293aec1d9a4a7ce58442b21302c09162cc3a61
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: 1b0f367540012b86da322329f0536b3c484c39b4
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712448"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269554"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te PowerShell kullanarak bir Windows Server sanal makinesi oluşturma
+# <a name="quickstart-create-a-windows-server-vm-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te PowerShell kullanarak bir Windows Server VM oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -85,7 +85,7 @@ Set-AzureRmCurrentStorageAccount `
 
 ## <a name="create-networking-resources"></a>Ağ kaynakları oluşturma
 
-Bir sanal ağ, alt ağ ve genel IP adresi oluşturun. Bu kaynaklar, sanal makineye ağ bağlantısı sağlamak için kullanılır.
+Bir sanal ağ, alt ağ ve genel IP adresi oluşturun. Bu kaynaklar VM ağ bağlantısı sağlamak için kullanılır.
 
 ```powershell
 # Create a subnet configuration
@@ -112,7 +112,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Ağ güvenliği grubu ve ağ güvenliği grup kuralı oluşturma
 
-Ağ güvenlik grubu, gelen ve giden kuralları kullanarak sanal makinenin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin verecek şekilde 3389 numaralı bağlantı noktası için bir gelen kuralı ve gelen web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturalım.
+Ağ güvenlik grubu, gelen ve giden kuralları kullanarak sanal Makinenin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin verecek şekilde 3389 numaralı bağlantı noktası için bir gelen kuralı ve gelen web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturalım.
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -147,9 +147,9 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgRuleRDP,$nsgRuleWeb
 ```
 
-### <a name="create-a-network-card-for-the-virtual-machine"></a>Sanal makine için bir ağ kartı oluşturma
+### <a name="create-a-network-card-for-the-vm"></a>VM için bir ağ kartı oluşturun
 
-Ağ kartı, sanal makineyi bir alt ağa, ağ güvenliği grubuna ve genel IP adresine bağlar.
+Ağ kartı VM alt ağ, ağ güvenlik grubu ve genel IP adresine bağlanır.
 
 ```powershell
 # Create a virtual network card and associate it with public IP address and NSG
@@ -162,17 +162,17 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
+## <a name="create-a-vm"></a>VM oluşturma
 
-Sanal makine yapılandırması oluşturun. Bu yapılandırma, sanal makineyi dağıtırken kullanılan ayarları içerir. Örneğin: kimlik bilgileri, boyutu ve sanal makine görüntüsü.
+Bir VM yapılandırması oluşturun. Bu yapılandırma, sanal Makineyi dağıtırken kullanılan ayarları içerir. Örneğin: kimlik bilgileri, boyutu ve VM görüntüsü.
 
 ```powershell
-# Define a credential object to store the username and password for the virtual machine
+# Define a credential object to store the username and password for the VM
 $UserName='demouser'
 $Password='Password@123'| ConvertTo-SecureString -Force -AsPlainText
 $Credential=New-Object PSCredential($UserName,$Password)
 
-# Create the virtual machine configuration object
+# Create the VM configuration object
 $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_A1"
 $VirtualMachine = New-AzureRmVMConfig `
@@ -192,7 +192,7 @@ $VirtualMachine = Set-AzureRmVMSourceImage `
   -Skus "2016-Datacenter" `
   -Version "latest"
 
-# Sets the operating system disk properties on a virtual machine.
+# Sets the operating system disk properties on a VM.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
@@ -201,23 +201,23 @@ $VirtualMachine = Set-AzureRmVMOSDisk `
   Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 
-# Create the virtual machine.
+# Create the VM.
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -VM $VirtualMachine
 ```
 
-## <a name="connect-to-the-virtual-machine"></a>Sanal makineye bağlanma
+## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-Önceki adımda oluşturduğunuz sanal makine için uzak, kendi genel IP adresi gereklidir. Sanal makinenin genel IP adresini almak için aşağıdaki komutu çalıştırın:
+İçinde önceki adımda oluşturduğunuz sanal makine için uzak, kendi genel IP adresi gereklidir. Sanal makinenin genel IP adresini almak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
 
-Sanal makineyle bir Uzak Masaüstü oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin *publicIPAddress* değeriyle değiştirin. İstendiğinde kullanıcı adı ve sanal makineyi oluştururken kullandığınız parolayı girin.
+VM ile Uzak Masaüstü oturumu oluşturmak için aşağıdaki komutu kullanın. IP adresini, sanal makinenizin *publicIPAddress* değeriyle değiştirin. İstendiğinde kullanıcı adını ve VM oluştururken kullandığınız parolayı girin.
 
 ```powershell
 mstsc /v <publicIpAddress>
@@ -237,9 +237,9 @@ IIS yüklü olan ve 80 numaralı bağlantı noktası sanal makinenizde, herhangi
 
 ![Varsayılan IIS sitesi](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
-## <a name="delete-the-virtual-machine"></a>Şu sanal makineyi silin:
+## <a name="delete-the-vm"></a>VM’yi silin
 
-Artık gerekli değilse sanal makine ve ilgili kaynaklarını içeren kaynak grubunu kaldırmak için aşağıdaki komutu kullanın:
+Artık gerekli değilse, VM'yi ve ilgili kaynaklarını içeren kaynak grubunu kaldırmak için aşağıdaki komutu kullanın:
 
 ```powershell
 Remove-AzureRmResourceGroup `
@@ -248,4 +248,4 @@ Remove-AzureRmResourceGroup `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta basit bir Windows sanal makine dağıttınız. Azure Stack sanal makineleri hakkında daha fazla bilgi için devam [sanal Makineler'de Azure Stack için Değerlendirmeler](azure-stack-vm-considerations.md).
+Bu hızlı başlangıçta basit bir Windows VM'ye dağıttınız. Azure Stack sanal makineleri hakkında daha fazla bilgi için devam [Azure Stack VM özellikleri](azure-stack-vm-considerations.md).

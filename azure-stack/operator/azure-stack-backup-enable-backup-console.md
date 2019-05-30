@@ -3,7 +3,7 @@ title: Yönetim Portalı'ndan Azure Stack için yedeklemeyi etkinleştirme | Mic
 description: Yönetim Portalı aracılığıyla hizmet altyapı yedeklemeyi etkinleştirin; böylelikle bir hata varsa, Azure Stack geri yüklenebilir.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: 56C948E7-4523-43B9-A236-1EF906A0304F
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: adda9ec9052c11e412c7bd251482e1e3a5c09223
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: eefd393fa12814260711590f028c9a787811d8af
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618167"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269039"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Yönetim Portalı'ndan Azure Stack için yedeklemeyi etkinleştirme
 Azure Stack altyapısını yedekleme oluşturabilmesi altyapı Backup Hizmeti Yönetim Portalı aracılığıyla etkinleştirin. Donanım iş ortağı bulut kurtarma durumunda kullanarak ortamınızda geri yüklemek için bu yedeklemeler kullanabilirsiniz [geri dönülemez bir arıza](./azure-stack-backup-recover-data.md). Bulut kurtarma amacı, Kurtarma tamamlandıktan sonra operatörler ve kullanıcılar portalına geri dönüp oturum açabildiğinizden emin sağlamaktır. Kullanıcılar, rol tabanlı erişim izinleri ve rolleri, özgün planları, teklifleri ve önceden tanımlı bilgi işlem, depolama, ağ kotalarının ve Key Vault gizli dizileri de dahil olmak üzere geri aboneliklerini sahip olacaktır.

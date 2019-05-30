@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te PowerShell kullanarak bir Linux sanal makinesi oluşturun | Microsoft Docs
-description: Azure Stack'te PowerShell kullanarak bir Linux sanal makinesi oluşturun.
+title: Azure Stack'te PowerShell kullanarak bir Linux VM oluşturma | Microsoft Docs
+description: Azure Stack'te PowerShell kullanarak bir Linux VM oluşturun.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,20 +15,20 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 55f1395d66262b268b9107f196528270c1546bba
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: 4e60b2f2df2aae9cf27bdec41c6492ad3ff04fb3
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712292"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269601"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te PowerShell kullanarak bir Linux sunucusu sanal makinesi oluşturma
+# <a name="quickstart-create-a-linux-server-vm-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Bir Linux sunucusu VM'si oluşturma Azure Stack PowerShell'i kullanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Azure Stack PowerShell kullanarak bir Ubuntu Server 16.04 LTS sanal makine oluşturabilirsiniz. Bir sanal makine oluşturup, bu makaledeki adımları izleyin.  Bu makalede ayrıca adımları sunar:
+Azure Stack PowerShell kullanarak Ubuntu Server 16.04 LTS sanal makine'de (VM) oluşturabilirsiniz. Bir VM oluşturup bu makaledeki adımları izleyin.  Bu makalede ayrıca adımları sunar:
 
-* Sanal Makine Uzak istemcisi ile bağlanın.
+* Bir uzak istemci ile VM'ye bağlanın.
 * NGINX web sunucusu ve varsayılan giriş sayfasını görüntüleyin.
 * Kullanılmayan kaynakları temizleyin.
 
@@ -85,7 +85,7 @@ Set-AzureRmCurrentStorageAccount `
 
 ## <a name="create-networking-resources"></a>Ağ kaynakları oluşturma
 
-Bir sanal ağ, alt ağ ve genel IP adresi oluşturun. Bu kaynaklar, sanal makineye ağ bağlantısı sağlamak için kullanılır.
+Bir sanal ağ, alt ağ ve genel IP adresi oluşturun. Bu kaynaklar VM ağ bağlantısı sağlamak için kullanılır.
 
 ```powershell
 # Create a subnet configuration
@@ -113,7 +113,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Ağ güvenliği grubu ve ağ güvenliği grup kuralı oluşturma
 
-Ağ güvenlik grubu, gelen ve giden kuralları kullanarak sanal makinenin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin verecek şekilde 3389 numaralı bağlantı noktası için bir gelen kuralı ve gelen web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturun.
+Ağ güvenlik grubu, gelen ve giden kuralları kullanarak sanal Makinenin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin verecek şekilde 3389 numaralı bağlantı noktası için bir gelen kuralı ve gelen web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturun.
 
 ```powershell
 # Create variables to store the network security group and rules names.
@@ -137,9 +137,9 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Lo
 -Name $nsgName -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-### <a name="create-a-network-card-for-the-virtual-machine"></a>Sanal makine için bir ağ kartı oluşturma
+### <a name="create-a-network-card-for-the-vm"></a>VM için bir ağ kartı oluşturun
 
-Ağ kartı, sanal makineyi bir alt ağa, ağ güvenliği grubuna ve genel IP adresine bağlar.
+Ağ kartı VM alt ağ, ağ güvenlik grubu ve genel IP adresine bağlanır.
 
 ```powershell
 # Create a virtual network card and associate it with public IP address and NSG
@@ -152,9 +152,9 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
+## <a name="create-a-vm"></a>VM oluşturma
 
-Sanal makine yapılandırması oluşturun. Bu yapılandırma, sanal makineyi dağıtırken kullanılan ayarları içerir. Örneğin: kullanıcı kimlik bilgilerini, boyutu ve sanal makine görüntüsü.
+Bir VM yapılandırması oluşturun. Bu yapılandırma, sanal Makineyi dağıtırken kullanılan ayarları içerir. Örneğin: kullanıcı kimlik bilgilerini, boyutu ve VM görüntüsü.
 
 ```powershell
 # Define a credential object.
@@ -162,7 +162,7 @@ $UserName='demouser'
 $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ($UserName, $securePassword)
 
-# Create the virtual machine configuration object
+# Create the VM configuration object
 $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_D1"
 $VirtualMachine = New-AzureRmVMConfig `
@@ -182,7 +182,7 @@ $VirtualMachine = Set-AzureRmVMSourceImage `
   -Skus "16.04-LTS" `
   -Version "latest"
 
-# Sets the operating system disk properties on a virtual machine.
+# Sets the operating system disk properties on a VM.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
@@ -194,19 +194,19 @@ $VirtualMachine = Set-AzureRmVMOSDisk `
 # Configure SSH Keys
 $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 
-# Adds the SSH Key to the virtual machine
+# Adds the SSH Key to the VM
 Add-AzureRmVMSshPublicKey -VM $VirtualMachine `
  -KeyData $sshPublicKey `
  -Path "/home/azureuser/.ssh/authorized_keys"
 
-# Create the virtual machine.
+# Create the VM.
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
  -Location $location `
   -VM $VirtualMachine
 ```
 
-## <a name="quick-create-virtual-machine---full-script"></a>Hızlı Oluştur sanal makinesi - tam betik
+## <a name="quick-create-vm---full-script"></a>Hızlı Oluştur VM - tam betik
 
 > [!NOTE]
 > Bu arada ancak bir parola ile birleştirilmiş temelde Yukarıdaki kod, kimlik doğrulaması için SSH anahtarı yerine.
@@ -233,7 +233,7 @@ $nsgName = "myNetworkSecurityGroup"
 $nsgRuleSSHName = "myNetworkSecurityGroupRuleSSH"
 $nsgRuleWebName = "myNetworkSecurityGroupRuleWeb"
 
-# Create variable for virtual machine password
+# Create variable for VM password
 $VMPassword = 'Password123!'
 
 # End of Variables - no need to edit anything past that point to deploy a single VM
@@ -258,7 +258,7 @@ Set-AzureRmCurrentStorageAccount `
   -StorageAccountName $storageAccountName `
   -ResourceGroupName $resourceGroupName
 
-# Create a storage container to store the virtual machine image
+# Create a storage container to store the VM image
 $containerName = 'osdisks'
 $container = New-AzureStorageContainer `
   -Name $containerName `
@@ -267,7 +267,7 @@ $container = New-AzureStorageContainer `
 
 ## Create networking resources
 
-# Create a virtual network, subnet, and a public IP address. These resources are used to provide network connectivity to the virtual machine.
+# Create a virtual network, subnet, and a public IP address. These resources are used to provide network connectivity to the VM.
 
 # Create a subnet configuration
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -294,7 +294,7 @@ $pip = New-AzureRmPublicIpAddress `
 ### Create a network security group and a network security group rule
 
 <#
-The network security group secures the virtual machine by using inbound and outbound rules. Create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
+The network security group secures the VM by using inbound and outbound rules. Create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
 #>
 
 # Create an inbound network security group rule for port 22
@@ -311,9 +311,9 @@ $nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name $nsgRuleWebName -Protoc
 $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Location $location `
 -Name $nsgName -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 
-### Create a network card for the virtual machine
+### Create a network card for the VM
 
-# The network card connects the virtual machine to a subnet, network security group, and public IP address.
+# The network card connects the VM to a subnet, network security group, and public IP address.
 
 # Create a virtual network card and associate it with public IP address and NSG
 $nic = New-AzureRmNetworkInterface `
@@ -324,9 +324,9 @@ $nic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id `
   -NetworkSecurityGroupId $nsg.Id
 
-## Create a virtual machine
+## Create a VM
 <#
-Create a virtual machine configuration. This configuration includes the settings used when deploying the virtual machine. For example: user credentials, size, and the virtual machine image.
+Create a VM configuration. This configuration includes the settings used when deploying the VM. For example: user credentials, size, and the VM image.
 #>
 
 # Define a credential object.
@@ -334,7 +334,7 @@ $UserName='demouser'
 $securePassword = ConvertTo-SecureString $VMPassword -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ($UserName, $securePassword)
 
-# Create the virtual machine configuration object
+# Create the VM configuration object
 $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_D1"
 $VirtualMachine = New-AzureRmVMConfig `
@@ -360,7 +360,7 @@ $osDiskUri = '{0}vhds/{1}-{2}.vhd' -f `
   $vmName.ToLower(), `
   $osDiskName
 
-# Sets the operating system disk properties on a virtual machine.
+# Sets the operating system disk properties on a VM.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -Name $osDiskName `
@@ -368,22 +368,22 @@ $VirtualMachine = Set-AzureRmVMOSDisk `
   -CreateOption FromImage | `
   Add-AzureRmVMNetworkInterface -Id $nic.Id
 
-# Create the virtual machine.
+# Create the VM.
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
  -Location $location `
   -VM $VirtualMachine
 ```
 
-## <a name="connect-to-the-virtual-machine"></a>Sanal makineye bağlanma
+## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-Sanal makine dağıtıldıktan sonra sanal makine için bir SSH bağlantısı yapılandırın. Kullanım [Get-Azurermpublicıpaddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) sanal makinenin genel IP adresini almak için komutu.
+VM dağıtıldıktan sonra VM için bir SSH bağlantısı yapılandırın. Kullanım [Get-Azurermpublicıpaddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) VM'nin genel IP adresini almak için komutu.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-SSH yüklü olan bir istemci sisteminden sanal makineye bağlanmak için aşağıdaki komutu kullanın. Windows üzerinde çalışıyorsanız, kullanabileceğiniz [Putty](https://www.putty.org/) bağlantı oluşturmak için.
+SSH yüklü olan bir istemci sisteminden sanal Makineye bağlanmak için aşağıdaki komutu kullanın. Windows üzerinde çalışıyorsanız, kullanabileceğiniz [Putty](https://www.putty.org/) bağlantı oluşturmak için.
 
 ```
 ssh <Public IP Address>
@@ -407,7 +407,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX karşılama sayfasını görüntüleme
 
-NGINX ve 80 numaralı bağlantı noktası, sanal makinede, sanal makinenin genel IP adresini kullanarak web sunucusuna erişebilirsiniz. Bir web tarayıcısı açın ve gidin ```http://<public IP address>```.
+NGINX ve 80 numaralı bağlantı noktası sanal makinenizde ile sanal makinenin genel IP adresini kullanarak web sunucusuna erişebilirsiniz. Bir web tarayıcısı açın ve gidin ```http://<public IP address>```.
 
 ![NGINX web-server-Hoş Geldiniz sayfası](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
@@ -421,4 +421,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, temel bir Linux sunucusu sanal makine dağıtıldı. Azure Stack sanal makineleri hakkında daha fazla bilgi için Git [sanal Makineler'de Azure Stack için Değerlendirmeler](azure-stack-vm-considerations.md).
+Bu hızlı başlangıçta basit bir Linux sunucusu VM dağıtılır. Azure Stack sanal makineleri hakkında daha fazla bilgi için Git [Azure Stack VM özellikleri](azure-stack-vm-considerations.md).

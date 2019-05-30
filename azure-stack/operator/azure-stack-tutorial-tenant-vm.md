@@ -3,7 +3,7 @@ title: Sanal makineler, Azure Stack kullanıcılarına kullandırmak | Microsoft
 description: Azure Stack üzerinde sanal makineleri kullanılabilir hale getirmeyi öğrenin
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: 949161cd90099d5b9486d7a10524fd915692c897
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: b39eaf4365f74e59c6dd60db67fdadf1162cb91d
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618389"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66268129"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Öğretici: sanal makineler, Azure Stack kullanıcılar için kullanılabilir yap
 

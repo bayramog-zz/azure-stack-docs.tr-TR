@@ -3,7 +3,7 @@ title: Azure Stack - PowerShell dağıtma | Microsoft Docs
 description: Bu makalede, PowerShell kullanarak komut satırından ASDK yükleyin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.custom: ''
 ms.date: 05/06/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 05a3d0a88f4852395942d58ac798d2eb06a1d766
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 4a32631441760db715443b8979e2769b55258fcf
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617564"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66267164"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>ASDK komut satırından dağıtma
 ASDK değerlendirmek ve Azure Stack özelliklerini ve hizmetler için dağıtabileceğiniz bir test ve geliştirme ortamıdır. Bu alınacağı ayarlandıktan ve çalışmaya, ortam donanım hazırlama ve bazı komut dosyaları (Bu işlem birkaç saat sürebilir) çalıştırmanız gerekir. Bundan sonra yönetici ve kullanıcı portalı için Azure Stack kullanmaya başlamak için oturum açabilir.
@@ -106,7 +106,7 @@ Geliştirme Seti dağıtmak için **kimlik sağlayıcısı olarak AD FS kullanar
 
 AD FS dağıtımında, varsayılan damga dizin hizmeti, kimlik sağlayıcısı olarak kullanılır. Oturum açmak için varsayılan hesap azurestackadmin@azurestack.local, ve PowerShell Kurulum komutları bir parçası olarak sağlanan için parola ayarlanır.
 
-Dağıtım işlemi, hangi sırada sistem otomatik olarak bir kez yeniden başlatılır, birkaç saat sürebilir. Dağıtım başarılı olduktan sonra PowerShell konsolunu görüntüler: **TAMAMLAYIN: Eylem 'Dağıtımı'**. Dağıtım başarısız olursa, betiği kullanarak yeniden deneyebilirsiniz yeniden çalıştırma parametresi. Veya [ASDK yeniden](asdk-redeploy.md) sıfırdan.
+Dağıtım işlemi, hangi sırada sistem otomatik olarak bir kez yeniden başlatılır, birkaç saat sürebilir. Dağıtım başarılı olduktan sonra PowerShell konsolunu görüntüler: **TAMAMLAYIN: Eylem 'Dağıtımı'** . Dağıtım başarısız olursa, betiği kullanarak yeniden deneyebilirsiniz yeniden çalıştırma parametresi. Veya [ASDK yeniden](asdk-redeploy.md) sıfırdan.
 
 > [!IMPORTANT]
 > ASDK konak yeniden başlatıldıktan sonra dağıtımın ilerleme durumunu izlemek istiyorsanız, AzureStack\AzureStackAdmin oturum açmalısınız. Ana bilgisayar yeniden (ve azurestack.local etki alanına katılmış sonra) yerel bir yönetici olarak oturum açarsanız, dağıtımın ilerleme durumunu göremezsiniz. Dağıtım yeniden değil, bunun yerine AzureStack\AzureStackAdmin yerel yönetici olarak aynı parola ile Kurulum çalıştığını doğrulamak için oturum açın.

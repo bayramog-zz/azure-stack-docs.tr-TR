@@ -3,7 +3,7 @@ title: Azure ve Azure Stack ile coğrafi olarak dağıtılmış bir uygulama ç�
 description: Azure ve Azure Stack ile coğrafi olarak dağıtılmış bir uygulama çözümü oluşturmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 81dfc9c7571bc191582425962d1e7b37c2ed05cd
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: eee89c90113187b51418801a46720f49e07fa533
+ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64304932"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252110"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile coğrafi olarak dağıtılmış bir uygulama çözümü oluşturma
 
@@ -248,10 +248,10 @@ Azure DevOps ve Azure DevOps sunucusu yüksek oranda yapılandırılabilir ve y�
 ![Alternatif metin](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
-> - Mevcut bir özel DNS adını Azure Web Apps ile eşleme
+> - Mevcut bir özel DNS adını Azure Web Apps'e eşleme
 > - Kullanım bir ** CNAME Kaydedici bir **kayıt** özel DNS adını App Service'e eşlemek için.
 
-### <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Mevcut bir özel DNS adını Azure Web Apps ile eşleme
+### <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Mevcut bir özel DNS adını Azure Web Apps'e eşleme
 
 > [!Note]  
 >  Tüm özel DNS adlarını bir kök etki alanı dışında (example,northwind.com) için bir CNAME kullanın.
@@ -333,7 +333,7 @@ CNAME ekledikten sonra DNS kayıtları sayfası aşağıdaki örnekteki gibi gö
 
 4. Kadar düzeltin ve etki alanı kayıt şirketi sekmesinde bu görevi tamamlamak **konak adı Ekle** düğmesi etkinleştirilir.
 
-5. Emin olun ** konak adı kayıt türü ayarlandığında **CNAME (www.example.com veya herhangi bir alt etki alanı)**.
+5. Emin olun ** konak adı kayıt türü ayarlandığında **CNAME (www.example.com veya herhangi bir alt etki alanı)** .
 
 6. **Konak adı ekle**'yi seçin.
 
@@ -343,7 +343,7 @@ CNAME ekledikten sonra DNS kayıtları sayfası aşağıdaki örnekteki gibi gö
 
 9. **Ekle** etkinleştirilir.
 
-10. Emin olun ** konak adı kayıt türü ayarlandığında **kaydı (example.com)**.
+10. Emin olun ** konak adı kayıt türü ayarlandığında **kaydı (example.com)** .
 
 11. **Konak adı Ekle**.
 
@@ -399,7 +399,7 @@ Bir sertifikayı App Service’te kullanabilmek için sertifikanın aşağıdaki
 
 Web uygulaması için özel bir SSL sertifikası bağlamak için [App Service planı](https://azure.microsoft.com/pricing/details/app-service/) olmalıdır **temel**, **standart**, veya **Premium** katmanı.
 
-#### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+#### <a name="sign-in-to-azure"></a>Oturum açın: Azure
 
 1.  Açık [Azure portalında](https://portal.azure.com/) ve web uygulamasına gidin.
 
@@ -409,7 +409,7 @@ Web uygulaması için özel bir SSL sertifikası bağlamak için [App Service pl
 
 #### <a name="check-the-pricing-tier"></a>Fiyatlandırma katmanını denetleme
 
-1.  Web uygulaması sayfasının sol gezinti bölmesinde kaydırarak **ayarları** seçin ve bölüm **ölçeği Artır (App Service planı)**.
+1.  Web uygulaması sayfasının sol gezinti bölmesinde kaydırarak **ayarları** seçin ve bölüm **ölçeği Artır (App Service planı)** .
 
     ![Ölçeği artır menüsü](media/azure-stack-solution-geo-distributed/image34.png)
 
@@ -492,7 +492,7 @@ IIS veya **Certreq.exe** kullanılan sertifika isteği oluşturmak için sertifi
 
 5. **Karşıya Yükle**’yi seçin.
 
-![Sertifikayı karşıya yükleme](media/azure-stack-solution-geo-distributed/image38.png)
+![Karşıya sertifika yükleme](media/azure-stack-solution-geo-distributed/image38.png)
 
 App Service sertifikanızı karşıya yüklemeyi tamamladığında, görünür **SSL ayarları** sayfası.
 
@@ -507,7 +507,7 @@ App Service sertifikanızı karşıya yüklemeyi tamamladığında, görünür *
 
 1.  İçinde **SSL bağlaması Ekle** sayfasında, güvenliğini sağlamak için etki alanı adı seçmek için açılır listeleri ve kullanılacak sertifikayı kullanın.
 
-2.  İçinde **SSL türü**, kullanıp kullanmayacağınızı seçin [ **sunucu adı belirtme (SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication)veya IP tabanlı SSL.
+2.  İçinde **SSL türü**, kullanıp kullanmayacağınızı seçin [ **sunucu adı belirtme (SNI)** ](https://en.wikipedia.org/wiki/Server_Name_Indication)veya IP tabanlı SSL.
 
 -   **SNI tabanlı SSL**-birden fazla SNI tabanlı SSL bağlaması eklenebilir. Bu seçenek, aynı IP adresi üzerinde birden fazla SSL sertifikası ile birden fazla etki alanının güvenliğini sağlamaya olanak tanır. Çoğu modern tarayıcı (Internet Explorer, Chrome, Firefox ve Opera dahil) SNI’yi destekler (daha kapsamlı tarayıcı desteği bilgilerini [Sunucu Adı Belirtimi](https://wikipedia.org/wiki/Server_Name_Indication) bölümünde bulabilirsiniz).
 
@@ -540,13 +540,13 @@ Web uygulaması için bir A kaydı eşlendiğinde, etki alanı kayıt defteri ay
 > [!Note]  
 > Sertifika doğrulama hataları oluşursa, neden otomatik olarak imzalanan bir sertifika olabilir veya Ara Sertifika PFX dosyasına dışarı aktarılırken bırakıldı devre dışı.
 
-#### <a name="enforce-https"></a>HTTPS zorlama
+#### <a name="enforce-https"></a>HTTPS'yi Zorunlu Kılma
 
 Varsayılan olarak, herkes HTTP kullanarak web uygulamasına erişebilir. tüm HTTP isteklerini HTTPS bağlantı noktasına yönlendirilebilir.
 
 Web uygulaması sayfasında seçin **SL ayarları**. Ardından **Yalnızca HTTPS** menüsünde **Açık**’ı seçin.
 
-![HTTPS zorlama](media/azure-stack-solution-geo-distributed/image43.png)
+![HTTPS'yi Zorunlu Kılma](media/azure-stack-solution-geo-distributed/image43.png)
 
 İşlem tamamlandığında, herhangi bir uygulamaya işaret eden HTTP URL'leri gidin. Örneğin:
 

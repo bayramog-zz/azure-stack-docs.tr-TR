@@ -3,7 +3,7 @@ title: Çevrimdışı bir ortamda Azure Stack'te App Service'e dağıtma | Micro
 description: AD FS tarafından güvenliği bağlantısı kesilmiş bir Azure Stack ortamında App Service'e dağıtım yapmak hakkında ayrıntılı yönergeler.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: BryanLa
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,31 +12,31 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 1dfe1cba366d9b30c53a43724741c9a9e0f65819
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: c97598145b0d03f3b25876296cb070b0301a3742
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618537"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269231"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>AD FS tarafından güvenliği bağlantısı kesilmiş bir Azure Stack ortamına bir App Service kaynak sağlayıcısı ekleme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 > [!IMPORTANT]
-> Azure Stack tümleşik sisteminize 1901 güncelleştirmesini veya Azure App Service 1.5 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
+> Azure Stack tümleşik sisteminize 1904 güncelleştirmesini veya Azure App Service 1.6 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
 
 Bu makalede bulunan yönergeleri izleyerek yükleyebilirsiniz [App Service kaynak sağlayıcısı](azure-stack-app-service-overview.md) bir Azure Stack ortamı için:
 
 - Internet'e bağlı değil
 - Active Directory Federasyon Hizmetleri (AD FS) tarafından güvenli.
 
-> [!IMPORTANT]  
-> ' Deki yönergeleri izlediğinizden emin olun, kaynak sağlayıcı yükleyicisini çalıştırmadan önce [başlamadan önce](azure-stack-app-service-before-you-get-started.md) ve okuma [sürüm notları](azure-stack-app-service-release-notes-update-five.md) 1.5 eşlik eden sürüm yeni hakkında bilgi edinin işlevi, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar.
+> [!IMPORTANT]
+> ' Deki yönergeleri izlediğinizden emin olun, kaynak sağlayıcı yükleyicisini çalıştırmadan önce [başlamadan önce](azure-stack-app-service-before-you-get-started.md) ve okuma [sürüm notları](azure-stack-app-service-release-notes-update-six.md) 6 eşlik eden sürüm yeni hakkında bilgi edinin işlevi, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar.
 
 App Service kaynak sağlayıcısı çevrimdışı Azure Stack dağıtımınıza eklemek için bu üst düzey görevleri tamamlamanız gerekir:
 
@@ -85,11 +85,11 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
    1. Tıklayın **Connect** düğmesinin yanındaki **Azure Stack aboneliklerini** kutusu.
       - Yönetici hesabı sağlayın. Örneğin, cloudadmin@azurestack.local. Parolanızı girin ve tıklayın **oturum**.
    2. İçinde **Azure Stack aboneliklerini** kutusunda **varsayılan sağlayıcı aboneliği**.
-    
+
       > [!NOTE]
       > App Service yalnızca dağıtılabilir içine **varsayılan sağlayıcı aboneliği**.
       >
-    
+
    3. İçinde **Azure Stack konumları** kutusunda, için dağıtmakta bölgeyi karşılık gelen konum seçin. Örneğin, **yerel** , Azure Stack Geliştirme Seti için dağıtma.
    4. **İleri**’ye tıklayın.
 
@@ -144,14 +144,14 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
     > ```sql
     >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
     >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
+    >    sp_configure 'contained database authentication', 1;
+    >    GO
+    >    RECONFIGURE;
     >    GO
     >    ***********************************************************
     > ```
     > Başvurmak [Azure Stack 1.3 üzerinde Azure App Service için sürüm notları](azure-stack-app-service-release-notes-update-three.md) daha fazla ayrıntı için.
-   
+
     ![Uygulama hizmeti yükleyicisi][12]
 
 13. Rol örneği ve SKU seçenekleri gözden geçirin. Varsayılan örnekleri ve en az bir SKU ASDK dağıtımdaki her bir rol için en düşük sayısı ile doldurulur. Dağıtımınızı planlamanıza yardımcı olacak vCPU ve bellek gereksinimlerinin bir özeti sağlanır. Seçimlerinizi yaptıktan sonra tıklayın **sonraki**.
@@ -174,7 +174,7 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
     > [!NOTE]
     > **Windows Server 2016 Core Azure Stack'te Azure App Service ile kullanmak için desteklenen bir platform görüntüsü değil.  Üretim dağıtımları için değerlendirme görüntüleri kullanmayın.  Azure Stack'te Azure App Service, Microsoft.NET 3.5.1 SP1 dağıtım için kullanılan görüntüye etkinleştirilmesini gerektirir.   Market'te genel olarak Windows Server 2016 görüntüleri etkin bu özelliğe sahip değildir, bu nedenle oluşturmak ve bir Windows Server 2016 görüntüsü önceden etkinleştirildiğinde kullanmanız gerekir.**
 
-14. İçinde **Platform görüntüsü seçin** kutusunda, bu işlem kaynak sağlayıcısı App Service bulut için kullanılabilir dağıtım Windows Server 2016 sanal makine görüntünüzü seçin. **İleri**’ye tıklayın.
+14. İçinde **Platform görüntüsü seçin** kutusunda, App Service bulut işlem kaynağı sağlayıcısında görüntülerinden dağıtımı Windows Server 2016 sanal makine görüntünüzü seçin. **İleri**’yi seçin.
 
 15. Sonraki sayfada:
      1. Çalışan rolü sanal makine yönetici kullanıcı adı ve parola girin.
@@ -198,8 +198,20 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
 
 ## <a name="post-deployment-steps"></a>Dağıtım sonrası adımlar
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Bir SQL her zaman şirket örneği App Service RP'ye sağladıysanız gerekir [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleme](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve hizmette kaybını önlemek için veritabanlarını eşitleme Olay veritabanı yük devretme.
+
+Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir.  WorkersNsg, ağ güvenlik grubu, Yönetim Portalı'nda gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
+
+- Kaynak: Herhangi
+- Kaynak bağlantı noktası aralığı: *
+- Hedef: IP Adresleri
+- Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
+- Hedef bağlantı noktası aralığı: 445
+- Protokol: TCP
+- Eylem: İzin ver
+- Önceliği: 700
+- Ad: Outbound_Allow_SMB445
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Yükleme Azure Stack üzerinde App Service'te doğrula
 
@@ -208,19 +220,6 @@ App Service bağlantısı kesilmiş bir ortamda dağıtmak için önce Internet'
 2. Durumu altında genel bakış, görmek için iade **durumu** görüntüler **tüm roller hazır**.
 
     ![App Service Yönetimi](media/azure-stack-app-service-deploy/image12.png)
-
-> [!NOTE]
-> Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir.  Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-> * Kaynak: Herhangi
-> * Kaynak bağlantı noktası aralığı: *
-> * Hedef: IP Adresleri
-> * Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
-> * Hedef bağlantı noktası aralığı: 445
-> * Protokol: TCP
-> * Eylem: İzin ver
-> * Önceliği: 700
-> * Ad: Outbound_Allow_SMB445
->
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Azure Stack üzerinde test sürüşü App Service
 
@@ -251,7 +250,7 @@ Dağıtma ve App Service kaynak sağlayıcısı kaydetme sonra kullanıcılar, w
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>WordPress, DNN ve Django Web sitesi (isteğe bağlı) dağıtma
 
-1. Azure Stack Kiracı portalında **+**, Azure Marketi'nde gidin, Django Web sitesi dağıtma ve başarıyla tamamlanmasını bekleyin. Django web platformu, dosya sistemi tabanlı bir veritabanı kullanır. Bu, SQL veya MySQL gibi herhangi bir ek kaynak sağlayıcıları olmasını gerektirmez.
+1. Azure Stack Kiracı portalında **+** , Azure Marketi'nde gidin, Django Web sitesi dağıtma ve başarıyla tamamlanmasını bekleyin. Django web platformu, dosya sistemi tabanlı bir veritabanı kullanır. Bu, SQL veya MySQL gibi herhangi bir ek kaynak sağlayıcıları olmasını gerektirmez.
 
 2. Ayrıca bir MySQL kaynak sağlayıcısı dağıtılan marketten bir WordPress Web sitesi dağıtabilirsiniz. Veritabanı parametrelerini sorulduğunda, kullanıcı adı olarak girin *User1\@Sunucu1*, tercih ettiğiniz sunucu adı ve kullanıcı adı.
 

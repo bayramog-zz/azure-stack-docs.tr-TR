@@ -3,7 +3,7 @@ title: Azure stack'teki .NET SDK'sı ile API Sürüm profillerini kullanma | Mic
 description: . NET'te Azure Stack ile API Sürüm profillerini kullanma hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,21 +13,21 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 1b81836c6262a73611ebfb2cc771ab74fd9f03fc
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.openlocfilehash: da93d2683805c6e9769a3d27a9e9ab3a4b998db5
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782743"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269365"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>. NET'te Azure Stack ile API Sürüm profillerini kullanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-.NET SDK'sı için Azure Stack Kaynak Yöneticisi'ni oluşturmanıza ve altyapınızı yönetmenize yardımcı olacak araçlar sağlar. İşlem, ağ, depolama, uygulama hizmetleri, SDK kaynak sağlayıcılarını içerir ve [KeyVault](/azure/key-vault/key-vault-whatis). .NET SDK'sı 14 NuGet paketlerini içerir. Bu paketler projesi çözümünüze profil bilgilerini içeren her zaman yüklenmesi gerekir. Ancak, özellikle hangi kaynak sağlayıcısı yükleyebilir, uygulamanız için bellek iyileştirmek için 2018-03-01-karma veya 2017-03-09-profile için kullanır. Her paket, kaynak sağlayıcısı, ilgili API sürümü ve ait olduğu API profili oluşur. .NET SDK'sı API profillerinde genel Azure kaynakları ve Azure Stack'te kaynakları arasında geçiş yardımcı olarak karma bulut geliştirmeyi etkinleştirin.
+.NET SDK'sı için Azure Stack Kaynak Yöneticisi'ni oluşturmanıza ve altyapınızı yönetmenize yardımcı olacak araçlar sağlar. İşlem, ağ, depolama, uygulama hizmetleri, SDK kaynak sağlayıcılarını içerir ve [KeyVault](/azure/key-vault/key-vault-whatis). .NET SDK'sı 14 NuGet paketlerini içerir. Bu paketler projesi çözümünüze profil bilgilerini içeren her zaman yüklenmesi gerekir. Ancak, özellikle hangi kaynak sağlayıcısı indirebilirsiniz 2019-03-01-karma veya 2018-03-01-karma uygulamanız için bellek iyileştirmek için kullanır. Her paket, kaynak sağlayıcısı, ilgili API sürümü ve ait olduğu API profili oluşur. .NET SDK'sı API profillerinde genel Azure kaynakları ve Azure Stack'te kaynakları arasında geçiş yardımcı olarak karma bulut geliştirmeyi etkinleştirin.
 
 ## <a name="net-and-api-version-profiles"></a>.NET ve API sürümü profillerini
 
@@ -35,11 +35,11 @@ Bir API profili, kaynak sağlayıcıları ve API sürümlerini birleşimidir. Bi
 
 -   Tüm hizmetler en son sürümlerini kullanın, yapmak **son** paketlerin profili. Bu profili parçasıdır **Microsoft.Azure.Management** NuGet paketi.
 
--   Azure Stack ile uyumlu hizmetleri kullanmak için **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01. *ResourceProvider*. 0.9.0-preview.nupkg** veya **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09. *ResourceProvider*. 0.9.0-preview.nupkg** paketleri.
-
-    -   Her bir profil için her kaynak sağlayıcısı için iki paket vardır.
-
-    -   Emin **ResourceProvider** bölümü yukarıdaki NuGet paketinin doğru sağlayıcıya değiştirilir.
+-   Azure Stack ile uyumlu hizmetlerini kullanmak için aşağıdaki paketlerden birini kullanın:
+    - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg** 
+    - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+    
+    Emin **ResourceProvider** bölümü yukarıdaki NuGet paketinin doğru sağlayıcıya değiştirilir.
 
 -   Bir hizmetin en son API-version'ı kullanmak için **son** belirli NuGet paketinin profili. Örneğin kullanmak istiyorsanız, **son API** işlem hizmetinin sürümü tek başına kullanım **son** profilini **işlem** paket. **Son** profilidir parçası **Microsoft.Azure.Management** NuGet paketi.
 
@@ -55,9 +55,9 @@ Tüm seçeneklerin aynı uygulamada birleştirebilirsiniz.
 
 3.  Yüklenmesi gereken paketleri kullanmak istediğiniz profili sürümüne bağlıdır. Paket adları profil sürümleri şunlardır:
 
-    1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01. *ResourceProvider*. 0.9.0-preview.nupkg**
+    1.  **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
-    2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09. *ResourceProvider*. 0.9.0-preview.nupkg**
+    2.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
 4.  Visual Studio Code için doğru NuGet paketlerini yüklemek için indirmek için aşağıdaki bağlantıya bakın [NuGet Paket Yöneticisi yönergeleri][].
 
@@ -127,9 +127,9 @@ Aşağıdaki konuları göz önünde bulundurun:
 
 ## <a name="existing-api-profiles"></a>Mevcut API profilleri
 
-1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.*ResourceProvider*.0.9.0-preview.nupkg**: Azure Stack için yerleşik son profili. En Azure Stack ile uyumlu 1808 damgada olduğu sürece veya diğer hizmetler için bu profili kullanın.
+1.  **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Azure Stack için yerleşik son profili. En Azure Stack ile uyumlu 1808 damgada olduğu sürece veya diğer hizmetler için bu profili kullanın.
 
-2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09.*ResourceProvider*.0.9.0-preview.nupkg**: 1808 yapı düşük bir damga kullanıyorsanız, bu profili kullanın.
+2.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
 3.  **En son**: Tüm hizmetler en son sürümlerine oluşan profili. Tüm hizmetler en son sürümlerini kullanın. Bu profili parçasıdır **Microsoft.Azure.Management** NuGet paketi.
 
@@ -186,6 +186,7 @@ public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(s
     return settings;
 }
 ```
+
 Bu, uygulamanızı Azure Stack başarıyla dağıtmak için API profili NuGet paketlerini kullanmanıza olanak sağlayacaktır.
 
 ## <a name="samples-using-api-profiles"></a>API profillerini kullanma örnekleri
@@ -193,7 +194,7 @@ Bu, uygulamanızı Azure Stack başarıyla dağıtmak için API profili NuGet pa
 Aşağıdaki örnekler, .NET ve Azure Stack API profilleriyle çözümleri oluşturmak için referans olarak kullanılabilir.
 - [Kaynak gruplarını yönetme](https://github.com/Azure-Samples/hybrid-resources-dotnet-manage-resource-group)
 - [Depolama hesaplarını yönetme](https://github.com/Azure-Samples/hybird-storage-dotnet-manage-storage-accounts)
-- [Bir sanal makineyi yönetin](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm)
+- [Bir sanal makineyi yönetmeyi](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm) (Bu örnek, Azure Stack tarafından desteklenen 2019-03-01-karma profili kullanır)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

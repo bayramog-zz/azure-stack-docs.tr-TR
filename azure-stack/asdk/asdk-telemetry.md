@@ -3,7 +3,7 @@ title: Azure Stack telemetrisini | Microsoft Docs
 description: PowerShell kullanarak Azure Stack telemetrisini ayarlarının nasıl yapılandırılacağı açıklanır.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 78ca05eb15570022e6eb25a7023d91c5ff8b817f
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 24948fb53ed4c5bdbbe0490f581daff7c66c33bc
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617336"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66267429"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack telemetri
 
@@ -81,9 +81,9 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 Toplu ve dört düzeyleri (0-3) halinde kategorilere ayrılmış telemetri düzeyleri şunlardır:
 
-**0 (güvenlik)**. Yalnızca güvenlik verileri. İşletim sistemi tutmaya yardımcı olmak için gereken bilgileri güvenli, bağlı kullanıcı deneyimi ve Telemetri bileşen ayarları ve Windows Defender hakkında bilgileri de dahil olmak üzere. Azure Stack özel telemetri yok, bu düzeyde yayınlanır.
+**0 (güvenlik)** . Yalnızca güvenlik verileri. İşletim sistemi tutmaya yardımcı olmak için gereken bilgileri güvenli, bağlı kullanıcı deneyimi ve Telemetri bileşen ayarları ve Windows Defender hakkında bilgileri de dahil olmak üzere. Azure Stack özel telemetri yok, bu düzeyde yayınlanır.
 
-**1 (Temel)**. Güvenlik verilerinin ve temel sistem durumu ve kalitesi veri. Temel cihaz bilgileri dahil olmak üzere: kalite ilgili veriler, uygulama uyumluluğu, uygulama kullanımı verilerini ve güvenlik düzeyi verileri. Telemetri düzeyinizi temel etkinleştirir Azure Stack telemetri ayarlanıyor. Bu düzeyde toplanan verileri içerir:
+**1 (Temel)** . Güvenlik verilerinin ve temel sistem durumu ve kalitesi veri. Temel cihaz bilgileri dahil olmak üzere: kalite ilgili veriler, uygulama uyumluluğu, uygulama kullanımı verilerini ve güvenlik düzeyi verileri. Telemetri düzeyinizi temel etkinleştirir Azure Stack telemetri ayarlanıyor. Bu düzeyde toplanan verileri içerir:
 
 - **Temel cihaz bilgilerini** yardımcı olarak ekosistemine yerel ve sanallaştırılmış Windows Server 2016 örneklerin yapılandırmaları ve türleri hakkında bir anlayış sağlamak da dahil olmak üzere:
   - OEM gibi makine özniteliklerini modeli
@@ -94,9 +94,9 @@ Toplu ve dört düzeyleri (0-3) halinde kategorilere ayrılmış telemetri düze
 - **Kalite ilgili bilgiler** Microsoft, Azure Stack performansıyla ilgili temel bilgilere geliştirmenize yardımcı olur. Belirli bir donanım yapılandırmasını kritik uyarı sayısı buna bir örnektir.
 - **Uyumluluk verileri**, yardımcı olan kaynak sağlayıcıları sistemi ve sanal makine üzerinde yüklü olan ve olası uyumluluk sorunları tanımlar olduğu hakkında bir anlayış sağlayın.
 
-**2 (Gelişmiş)**. Dahil olmak üzere ek Öngörüler: işletim sistemi ve diğer Azure Stack hizmetlerinin nasıl kullanıldığı, gerçekleştirdikleri nasıl, Gelişmiş güvenilirlik verileri ve hem temel hem de güvenlik düzeyleri verileri.
+**2 (Gelişmiş)** . Dahil olmak üzere ek Öngörüler: işletim sistemi ve diğer Azure Stack hizmetlerinin nasıl kullanıldığı, gerçekleştirdikleri nasıl, Gelişmiş güvenilirlik verileri ve hem temel hem de güvenlik düzeyleri verileri.
 
-**3 (tam)**. Tüm belirlemek ve sorunları gidermeye yardımcı olmak gereken verileri, artı verilerden **güvenlik**, **temel**, ve **geliştirilmiş** düzeyleri.
+**3 (tam)** . Tüm belirlemek ve sorunları gidermeye yardımcı olmak gereken verileri, artı verilerden **güvenlik**, **temel**, ve **geliştirilmiş** düzeyleri.
 
 > [!NOTE]
 > Varsayılan telemetri Düzey 2 (Gelişmiş) değerdir.

@@ -3,7 +3,7 @@ title: Kullanım API'si ilgili sık sorulan sorular | Microsoft Docs
 description: Azure Stack ölçümlerini, Azure kullanım API'si, kullanım süresi ve hata kodları bildirilen saati karşılaştırma listesi.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 847aa1723413b098219ea68ed541ed33b0c3103d
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 52613c394d7a1caeef42a85f1dd4d5b645f5e8e4
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984065"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66267952"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Sık sorulan sorular, Azure Stack kullanım API'si
 

@@ -3,7 +3,7 @@ title: Azure stack'teki Python API sürümü profillerini kullanarak | Microsoft
 description: Azure stack'teki Python ile API Sürüm profillerini kullanma hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
@@ -11,16 +11,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 <!-- dev: viananth -->
-ms.openlocfilehash: ee5906e825af59e3b67792e8370cc5d26901ff2b
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.openlocfilehash: 98014cfa015f839e1801ffae95d08f3cbd00c986
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782581"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269493"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure stack'teki Python ile API Sürüm profillerini kullanma
 
@@ -32,8 +32,10 @@ Python SDK'sı, Azure yığını ve genel Azure gibi farklı bulut platformları
 
 - **en son**  
     Bu profil, tüm hizmet sağlayıcıları Azure platformundaki için en son API sürümlerini hedefler.
-- **2018-03-01-karma**     
+- **2019-03-01-karma**  
     Bu profil, Azure Stack platformda tüm kaynak sağlayıcıları için en son API sürümlerini hedefler.
+- **2018-03-01-karma**  
+    Bu profil, Azure Stack platformda tüm kaynak sağlayıcıları için en uyumlu API sürümlerini hedefler.
 - **2017-03-09-profile**  
     Bu profil, Azure Stack tarafından desteklenen kaynak sağlayıcıları en uyumlu API sürümlerini hedefler.
 
@@ -117,7 +119,7 @@ Python SDK'sını kullanarak Azure Stack için kullanılabilir kod örnekleri ba
 
 - [Kaynakları ve kaynak gruplarını yönetme](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/).
 - [Depolama hesabı yönetme](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/).
-- [Sanal makineleri yönetme](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/).
+- [Sanal makineleri yönetme](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/). (2019-03-01-en son Azure yığını tarafından desteklenen API sürümlerini hedefleyen, karma kullanan örnek)
 
 ## <a name="python-manage-virtual-machine-sample"></a>Sanal makine örnek Python'ı yönetme
 

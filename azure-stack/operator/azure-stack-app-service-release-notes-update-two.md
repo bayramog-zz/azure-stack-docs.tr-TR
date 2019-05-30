@@ -3,7 +3,7 @@ title: Azure Stack üzerinde App Service'te güncelleştirme 2 sürüm notları 
 description: Güncelleştirmede nedir hakkında iki Azure Stack üzerinde App Service'te, bilinen sorunlar ve güncelleştirmeyi yüklemek nereye öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
+author: bryanla
 manager: stefsch
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
-ms.reviewer: sethm
+ms.reviewer: anwestg
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 790f01583d589cdea226133d3ded9693cdf68af0
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: b56c90d9bac8039d428b7ee06a384956924e94f5
+ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64290489"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66269043"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>Güncelleştirme 2 sürüm notları Azure Stack üzerinde App Service'e
 
@@ -86,13 +86,13 @@ Azure Stack güncelleştirme 2 üzerinde'Azure App Service, aşağıdaki gelişt
 - Çalışanları App Service, var olan bir sanal ağda dağıtılır ve dosya sunucusu yalnızca özel ağda kullanılabilir dosya sunucusuna erişemiyor.
 
 Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-* Kaynak: Herhangi biri
+* Kaynak: Herhangi
 * Kaynak bağlantı noktası aralığı: *
 * Hedef: IP Adresleri
 * Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
 * Hedef bağlantı noktası aralığı: 445
 * Protokol: TCP
-* Eylem: İzin Ver
+* Eylem: İzin ver
 * Önceliği: 700
 * Ad: Outbound_Allow_SMB445
 
