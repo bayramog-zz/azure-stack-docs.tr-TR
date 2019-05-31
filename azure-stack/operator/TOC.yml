@@ -6,7 +6,7 @@
       href: azure-stack-overview.md
     - name: Azure ekosistemi ile karşılaştırma
       href: compare-azure-azure-stack.md
-    - name: Sürüm Notları
+    - name: Sürüm notları
       items:
         - name: Son güncelleştirmeler
           href: azure-stack-servicing-policy.md
@@ -16,7 +16,7 @@
           href: azure-stack-release-notes-security-updates-1904.md
         - name: 1904 güncelleştirme
           items:
-            - name: Sürüm Notları
+            - name: Sürüm notları
               href: azure-stack-release-notes-1904.md
             - name: Bilinen sorunlar
               href: azure-stack-release-notes-known-issues-1904.md
@@ -47,13 +47,6 @@
   items:
     - name: Kapasite Planlaması
       href: capacity-planning.md
-      items:
-        - name: İşlem kapasitesini planlama
-          href: capacity-planning-compute.md
-        - name: Depolama kapasitesi planlama
-          href: capacity-planning-storage.md
-        - name: Azure Stack kapasite Planlayıcısı
-          href: capacity-planning-spreadsheet.md
     - name: Veri merkezi tümleştirmesi
       href: azure-stack-customer-journey.md
       items:
@@ -297,7 +290,7 @@
           href: app-service-billing-faq.md
         - name: Başlamadan önce
           href: azure-stack-app-service-before-you-get-started.md
-        - name: App Service Dağıtma
+        - name: App Service dağıtma
           href: azure-stack-app-service-deploy.md
         - name: Yüksek kullanılabilirlik için App Service dağıtma
           href: app-service-deploy-ha.md
@@ -392,7 +385,7 @@
       items:
         - name: Yardım + destek
           href: azure-stack-help-and-support.md
-        - name: Sorun gider
+        - name: Sorun giderme
           items:
             - name: Bilinen sorunlar
               href: azure-stack-troubleshooting.md

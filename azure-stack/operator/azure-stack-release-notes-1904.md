@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1904 sürüm notları | Microsoft Docs
-description: Yenilikler dahil olmak üzere, Azure Stack tümleşik sistemleri 1904 güncelleştirmesi hakkında bilinen sorunlar ve güncelleştirmeyi yüklemek nereye öğrenin.
+description: Bilinen sorunlar ve arşivlenmiş Azure Stack sürüm notları ve güncelleştirme karşıdan yükleme konumu yenilikler dahil olmak üzere, Azure Stack tümleşik sistemleri 1904 güncelleştirmesi hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/22/2019
-ms.openlocfilehash: 3bb69c9817eaa12f2a6fab0f20bc79f510a3c251
-ms.sourcegitcommit: 9f5157ce6b938d190ef9df5a2df4342266ca5545
+ms.lastreviewed: 05/30/2019
+ms.openlocfilehash: 770d3bc462750816e55f1c224496d9dde01f5a36
+ms.sourcegitcommit: 4e0b450c91c6515794b663a39f9a4b8b49999918
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66174359"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66411623"
 ---
 # <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
 
@@ -34,6 +34,10 @@ Bu makalede 1904 güncelleştirme paketinin içeriğini açıklar. Yenilikler g�
 
 > [!IMPORTANT]  
 > Yalnızca Azure Stack tümleşik sistemleri için bu güncelleştirme paketidir. Bu güncelleştirme paketi için Azure Stack geliştirme Seti'ni geçerli değildir.
+
+## <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
+
+Gördüğünüz [Azure Stack eski sürümlerinin sürüm notları TechNet Galerisi'ndeki](http://aka.ms/azsarchivedrelnotes). Bu sürüm notları yalnızca başvuru amacıyla sağlanmıştır ve bu sürümleri için destek anlamına gelmediğini arşivlenir. Daha fazla yardım için Microsoft Müşteri Destek Hizmetleri'ne başvurun.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
 

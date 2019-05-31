@@ -1,6 +1,6 @@
 ---
-title: Azure Stack için PowerShell'i çalıştırmak için Docker'ı kullanma | Microsoft Docs
-description: PowerShell'i Azure Stack üzerinde çalıştırmak için Docker'ı kullanma
+title: Azure Stack'te PowerShell'i çalıştırmak için Docker'ı kullanma | Microsoft Docs
+description: Azure Stack'te PowerShell'i çalıştırmak için Docker'ı kullanma
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,53 +15,54 @@ ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 0eacd2c5a058bca68e86f2d34df8d3cc91987c1c
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 42ed9766b43ce3c0c1c455d8ea286a5b453df325
+ms.sourcegitcommit: 2ee75ded704e8cfb900d9ac302d269c54a5dd9a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985554"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66394370"
 ---
-# <a name="use-docker-to-run-powershell"></a>PowerShell'i çalıştırmak için Docker'ı kullanma
+# <a name="use-docker-to-run-powershell-in-azure-stack"></a>Azure Stack'te PowerShell'i çalıştırmak için Docker'ı kullanma
 
-Docker üzerinde çalıştırılacağı farklı arabirimler çalışmak için belirli bir PowerShell sürümüne gereken Windows tabanlı kapsayıcılar oluşturmak için kullanabilirsiniz. Windows tabanlı kapsayıcılar, Docker kullanmanız gerekir.
+Bu makalede, çeşitli arabirimleri ile çalışmak için gerekli PowerShell sürümünü çalıştırılacağı Windows tabanlı kapsayıcılar oluşturmak için Docker kullanın. Windows tabanlı kapsayıcılar, Docker kullanmanız gerekir.
 
 ## <a name="docker-prerequisites"></a>Docker önkoşulları
 
 1. Yükleme [Docker](https://docs.docker.com/install/).
-2. Powershell veya Bash ve türü gibi bir komut satırı açın:
+
+1. Powershell veya Bash gibi bir komut satırı programı girin:
 
     ```bash
         Docker -version
     ```
 
-3. Windows 10 gerektiren Windows kapsayıcıları kullanarak Docker çalıştırmanız gerekir. Windows kapsayıcıları için Docker çalıştırırken geçin.
+1. Windows 10 gerektiren Windows kapsayıcıları kullanarak Docker çalıştırmanız gerekir. Windows kapsayıcıları için Docker'ı çalıştırdığınızda, geçiş yapın.
 
-4. Azure Stack ile aynı etki alanına katılmış bir makinedeki Docker çalıştırmanız gerekir. Yüklemenize gerek ASDK kullanıyorsanız [VPN uzak makinenizdeki](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+1. Azure Stack ile aynı etki alanına katılmış bir makinedeki Docker'ı çalıştırın. Azure Stack geliştirme Seti'ni (ASDK) kullanıyorsanız, yüklemeniz gerekir [VPN uzak makinenizdeki](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
 
-## <a name="service-principals-for-using-powershell"></a>Hizmet sorumluları için PowerShell'i kullanma
+## <a name="set-up-a-service-principal-for-using-powershell"></a>Bir hizmet sorumlusu için PowerShell kullanarak ayarlama
 
-Azure stack'teki erişim kaynağa PowerShell kullanmak için Azure AD kiracınızdaki bir hizmet sorumlusu gerekir. Bir temsilci izinleri ile kullanıcı rol tabanlı erişim denetimi.
+Azure Stack'te kaynaklara erişmek üzere PowerShell kullanmak için Azure Active Directory (Azure AD) kiracınız bir hizmet sorumlusu gerekir. Bir temsilci izinleri ile kullanıcı rol tabanlı erişim denetimi (RBAC).
 
-1. Makalede bulunan yönergeleri takip ederek sorumlunuzu kümesi [vermek uygulamalar erişim için Azure Stack kaynakları hizmet sorumluları oluşturma tarafından](azure-stack-create-service-principals.md).
-2. Uygulama Kimliğini not edin gizli ve Kiracı kimliğiniz
+1. Hizmet sorumlunuzu ayarlamak için yönergeleri izleyin. [vermek uygulamalar erişim için Azure Stack kaynakları hizmet sorumluları oluşturma tarafından](azure-stack-create-service-principals.md).
 
-## <a name="docker---azure-stack-api-profiles-module"></a>Docker - Azure Stack API profillerini Modülü
+2. Uygulama kimliği, gizli dizi ve daha sonra kullanmak için Kiracı Kimliğinizi unutmayın.
 
-Dockerfile, Microsoft görüntü microsoft/Windows PowerShell 5.1 yüklü olan windowsservercore, açılır. Dosya sonra NuGet, Azure Stack PowerShell modüllerini yükler ve araçları, Azure Stack Araçları'ndan indirir.
+## <a name="docker---azure-stack-api-profiles-module"></a>Docker - Azure Stack API modülü profiller.
 
-1. Bu depo bir ZIP olarak indir veya depoyu kopyalayın:  
-[https://github.com/mattbriggs/azure-stack-powershell](https://github.com/mattbriggs/azure-stack-powershell)
+Dockerfile, Microsoft Görüntü açılır *microsoft/windowsservercore*, Windows PowerShell yüklü 5.1 sahiptir. Dosya sonra NuGet ve Azure Stack PowerShell modüllerini yükler ve araçları, Azure Stack Araçları'ndan indirir.
+
+1. [Azure stack powershell deposuna indirme](https://github.com/mattbriggs/azure-stack-powershell) bir ZIP dosyası veya kopyası depo olarak.
 
 2. Depo klasörü terminalinizden açın.
 
-3. Bir komut satırı arabirimi, depo içinde açıp şunu yazın:
+3. Deponuzda bir komut satırı arabirimi açın ve ardından aşağıdaki komutu girin:
 
     ```bash  
     docker build --tag azure-stack-powershell .
     ```
 
-4. Görüntü oluşturulduğunda, etkileşimli bir kapsayıcı başlatabilirsiniz. Şunu yazın:
+4. Görüntü oluşturulduğunda etkileşimli bir kapsayıcı girerek başlayın:
 
     ```bash  
         docker run -it azure-stack-powershell powershell
@@ -76,9 +77,9 @@ Dockerfile, Microsoft görüntü microsoft/Windows PowerShell 5.1 yüklü olan w
     PS C:\>
     ```
 
-6. Hizmet sorumlusunu kullanarak, Azure Stack'e bağlanma. Artık, bir PowerShell istemi Docker'da kullanıyor. 
+6. Hizmet sorumlusu kullanarak Azure Stack Örneğinize bağlanın. Artık, bir PowerShell istemi Docker'da kullanıyor. 
 
-    ```Powershell
+    ```powershell
     $passwd = ConvertTo-SecureString <Secret> -AsPlainText -Force
     $pscredential = New-Object System.Management.Automation.PSCredential('<ApplicationID>', $passwd)
     Connect-AzureRmAccount -ServicePrincipal -Credential $pscredential -TenantId <TenantID>
@@ -86,7 +87,7 @@ Dockerfile, Microsoft görüntü microsoft/Windows PowerShell 5.1 yüklü olan w
 
    PowerShell, hesabı nesnesini döndürür:
 
-    ```PowerShell  
+    ```powershell  
     Account    SubscriptionName    TenantId    Environment
     -------    ----------------    --------    -----------
     <AccountID>    <SubName>       <TenantID>  AzureCloud
@@ -94,13 +95,13 @@ Dockerfile, Microsoft görüntü microsoft/Windows PowerShell 5.1 yüklü olan w
 
 7. Azure Stack'te bir kaynak grubu oluşturarak bağlantınızı sınayın.
 
-    ```PowerShell  
+    ```powershell  
     New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 -  Genel bir bakış edinin [Azure Stack'te Azure Stack PowerShell](azure-stack-powershell-overview.md).
-- Hakkında bilgi edinin [PowerShell için API profillerini](azure-stack-version-profiles.md) Azure Stack üzerinde.
-- [Azure Stack PowerShell'i yükleme](../operator/azure-stack-powershell-install.md).
+- Hakkında bilgi edinin [PowerShell için API profillerini](azure-stack-version-profiles.md) Azure Stack'te.
+- Yükleme [Azure Stack PowerShell'e](../operator/azure-stack-powershell-install.md).
 - Oluşturma hakkında bilgi [Azure Resource Manager şablonları](azure-stack-develop-templates.md) bulut tutarlılık için.
