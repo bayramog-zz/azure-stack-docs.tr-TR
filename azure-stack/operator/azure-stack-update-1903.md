@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/20/2019
-ms.openlocfilehash: 13fb23a2f40d6a616d83921a4bd760ed0be0d240
-ms.sourcegitcommit: 4e0b450c91c6515794b663a39f9a4b8b49999918
+ms.openlocfilehash: ea733bab465a8ca40be69ba26b8c6786b223993a
+ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66411620"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453470"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 güncelleştirme
 
@@ -191,6 +191,8 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
    ```
 
 - Bir ölçek kümesi kaldırılamıyor **sanal makine ölçek kümeleri** dikey penceresi. Geçici çözüm olarak, Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
+
+- 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve VMSS örneği oluşturan başarısız bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack ortamı güncelleştirme işlemi sırasında hata oluştu. Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Ancak, VMSS örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
 
 ### <a name="networking"></a>Ağ
 

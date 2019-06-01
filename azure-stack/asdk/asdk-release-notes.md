@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 05/01/2019
-ms.openlocfilehash: 935f144ebbb40da66ac43fc8e9d5dfc7c3e3d0b6
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 05/30/2019
+ms.openlocfilehash: 8de4447cd30204d0d4e1611afd057a75dc7688da
+ms.sourcegitcommit: 2cd17b8e7352891d8b3eb827d732adf834b7693e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64983593"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428688"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
@@ -37,6 +37,15 @@ Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-no
 - Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1904.md#whats-in-this-update) Azure yığını sürüm notları.
 
 ### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
+
+- Kayıt betiği için çalıştırırken bir hizmet sorumlusu zaman aşımı nedeniyle [ASDK kaydetme](asdk-register.md) başarıyla düzenlemelisiniz **RegisterWithAzure.psm1** PowerShell Betiği. Şunları yapın:
+
+  1. Dosyayı ASDK ana bilgisayarda açın **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** yükseltilmiş izinlerle bir düzenleyicide.
+  2. 1249 satırına ekleme bir `-TimeoutInSeconds 1800` sonunda parametresi. Bu kayıt komut dosyası çalıştırılırken bir hizmet sorumlusu zaman aşımı nedeniyle gereklidir. Satır 1249 artık şu şekilde görünmelidir:
+
+     ```powershell
+      $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
+      ```
 
 - Tanımlanan VPN bağlantısı sorunu düzeltildi [burada 1902 serbest bırakmak](#known-issues).
 

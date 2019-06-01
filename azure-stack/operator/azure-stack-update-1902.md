@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: dc323e345c1b7add243e5d800cf5749cd302c4d9
-ms.sourcegitcommit: 4e0b450c91c6515794b663a39f9a4b8b49999918
+ms.openlocfilehash: 29f8a3a6a620f197ba79d75bc41738e03f8f2342
+ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66411668"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453402"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 güncelleştirme
 
@@ -237,6 +237,8 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
 - Bir Ubuntu 18.04 etkinleştirilmiş SSH yetkilendirme ile oluşturulan VM, oturum açmak için SSH anahtarları kullanmak izin vermez. Geçici bir çözüm olarak VM erişimi Linux uzantısı için SSH anahtarları sağladıktan sonra uygulamak için kullanmak veya parola tabanlı kimlik doğrulaması kullanın.
 
 - Bir ölçek kümesi kaldırılamıyor **sanal makine ölçek kümeleri** dikey penceresi. Geçici çözüm olarak, Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
+
+- 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve VMSS örneği oluşturan başarısız bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack ortamı güncelleştirme işlemi sırasında hata oluştu. Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Ancak, VMSS örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
 
 ### <a name="networking"></a>Ağ  
 

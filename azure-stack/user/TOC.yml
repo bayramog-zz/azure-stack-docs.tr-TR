@@ -171,7 +171,9 @@
               maintainContext: true
             - name: PowerShell'i çalıştırmak için Docker'ı kullanma
               href: azure-stack-powershell-user-docker.md
-            - name: Visual Studio Yükleme
+            - name: Azure hesabı uzantısını kullanarak bağlan
+              href: azure-stack-dev-start-vscode-azure.md
+            - name: Visual Studio yükleme
               href: azure-stack-install-visual-studio.md
             - name: SSH ortak anahtarı kullanma
               href: azure-stack-dev-start-howto-ssh-public-key.md
@@ -184,9 +186,9 @@
                   href: azure-stack-version-profiles-net.md
                 - name: Java
                   href: azure-stack-version-profiles-java.md
-                - name: Azure CLI'si
+                - name: Azure CLI
                   href: azure-stack-version-profiles-azurecli2.md
-                - name: Git
+                - name: Başlayın
                   href: azure-stack-version-profiles-go.md
                 - name: Ruby
                   href: azure-stack-version-profiles-ruby.md

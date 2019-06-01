@@ -17,12 +17,12 @@ ms.author: justinha
 ms.reviewer: unknown
 ms.custom: ''
 ms.lastreviewed: 03/29/2019
-ms.openlocfilehash: eefe72aaf3e82c80d26a2963e0d8b4b921d9acf6
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 8badb1fbcabc6f1a3ffbef0b8489dea0f06e649c
+ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267537"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453421"
 ---
 # <a name="differences-between-global-azure-azure-stack-and-azure-stack-hci"></a>Küresel Azure, Azure Stack ve Azure Stack HCI arasındaki farklar
 
@@ -32,7 +32,7 @@ Bu makalede, Azure, Azure Stack ve Azure Stack HCI genel özelliklerini açıkla
 
 ![Azure ekosistemi genel bakış](./media/compare-azure-azure-stack/azure-family.png)
 
-## <a name="global-azure"></a>Küresel Azure
+## <a name="global-azure"></a>Genel Azure
 
 Microsoft Azure, kuruluşunuzun iş zorluklarını aşmasına yardımcı olacak şekilde tasarlanmış, sayısı her geçen gün artan bulut hizmetlerinden oluşur. Bu, oluşturun, yönetin ve sevdiğiniz araçları ve çerçeveleri kullanarak büyük ölçekli, küresel ağda uygulamalar dağıtma özgürlüğü olur.
 
@@ -76,9 +76,9 @@ Kaynak sağlayıcıları yukarıda açıklanan ek olarak kullanılabilir ve test
 
 Azure Stack hakkında daha fazla bilgi [Azure Stack nedir](azure-stack-overview.md).
 
-## <a name="azure-stack-hci"></a>Azure Stack HCI 
+## <a name="azure-stack-hci"></a>Azure Stack HCI
 
-Azure Stack HCI çözümleri kolayca Azure'a bir hiper yakınsanmış altyapısı (HCI) çözümü ile bağlanma ve sanal makineleri şirket içi olanak sağlar. Yasal veya teknik gereksinimleri karşılamak için şirket içinde tutarlı Azure hizmetlerini kullanarak bulut uygulamaları oluşturun ve çalıştırın. Çalışan sanallaştırılmış şirket içi uygulamaları yanı sıra, Azure Stack HCI değiştirin ve eskime sunucu altyapınızı birleştirin ve bulut Hizmetleri için Windows Admin Center ' ı kullanarak Azure'a bağlanmak sağlar.
+[Azure Stack HCI](azure-stack-hci-overview.md) çözümlerle sanal makineleri şirket içi çalıştırmanızı ve Azure'a bir hiper yakınsanmış altyapısı (HCI) çözümüyle kolayca bağlayın. Yasal veya teknik gereksinimleri karşılamak için şirket içinde tutarlı Azure hizmetlerini kullanarak bulut uygulamaları oluşturun ve çalıştırın. Çalışan sanallaştırılmış şirket içi uygulamaları yanı sıra, Azure Stack HCI değiştirin ve eskime sunucu altyapınızı birleştirin ve bulut Hizmetleri için Windows Admin Center ' ı kullanarak Azure'a bağlanmak sağlar.
 
 Azure Stack HCI Hyper-V ve depolama alanları doğrudan Windows Server 2019 yazılım tanımlı veri merkezi (SDDC) tarafından desteklenen doğrulanmış HCI çözümleri sağlar. Windows Admin Center yönetimi için kullanılır ve Azure hizmetlerine erişime izin gibi tümleşik:
 

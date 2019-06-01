@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/28/2019
-ms.openlocfilehash: 615add67cb27f24831eb3fdfec0510f4ac2dc34e
-ms.sourcegitcommit: d04a93e913ff069e17f6d56811681804a6422b58
+ms.lastreviewed: 05/31/2019
+ms.openlocfilehash: 0bc2b209303cceda30d5997d080c4c6061f20da3
+ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66373021"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453479"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -35,7 +35,7 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Azure Stack güncelleştirmesi yüklenmeye çalışılırken olmadığında güncelleştirme durumu ve durumuna değiştirin **PreparationFailed**. Bu, düzgün bir şekilde işlemek için bir iç altyapı paylaşımına depolama kapsayıcısından dosya aktarımı erişememe güncelleştirme kaynağı sağlayıcısı tarafından (URP) kaynaklanır.
 - Düzeltme: 1901 (1.1901.0.95) sürümünden itibaren kullanarak bu sorunu geçici olarak tıklayarak çalışabilirsiniz **Şimdi Güncelleştir** yeniden (değil **sürdürme**). URP ardından önceki girişim dosyalarından temizler ve indirmeyi yeniden başlatır.
-- Örneği: Ortak
+- Örneği: Common
 
 ## <a name="portal"></a>Portal
 
@@ -44,28 +44,28 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: 1804 sürümü ile sunulan iki yönetici aboneliğin kullanılmamalıdır. Abonelik türleridir **ölçüm** aboneliği ve **tüketim** abonelik.
 - Düzeltme: Bu abonelikler 1906 ile başlayan ve sonunda silinen askıya alınır. Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, kullanıcı Aboneliklerdeki 1906 önce yeniden oluşturun.
-- Örneği: Ortak
+- Örneği: Common
 
 ### <a name="subscription-resources"></a>Abonelik kaynakları
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı abonelikleri sonuçlarında yalnız bırakılmış kaynakları siliniyor.
 - Düzeltme: Kullanıcı kaynaklar veya kaynak grubunun tamamını silin ve sonra kullanıcı abonelikleri silin.
-- Örneği: Ortak
+- Örneği: Common
 
 ### <a name="subscription-permissions"></a>Abonelik izinleri
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Azure Stack portalı kullanarak aboneliğinize izinleri görüntüleyemezsiniz.
 - Düzeltme: Kullanım [izinleri doğrulamak için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment).
-- Örneği: Ortak
+- Örneği: Common
 
 ### <a name="docker-extension"></a>Docker uzantısı
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Yönetici ve kullanıcı portalı için arama yaparsanız, **Docker**, öğenin yanlış döndürülür. Azure Stack'te kullanılamıyor. Bunu oluşturmayı denerseniz, bir hata görüntülenir.
 - Düzeltme: Risk azaltma.
-- Örneği: Ortak
+- Örneği: Common
 
 ### <a name="marketplace-management"></a>Market Yönetimi
 
@@ -93,46 +93,46 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Yönetici ve kullanıcı portalı için arama yaparsanız, **Docker**, öğenin yanlış döndürülür. Azure Stack'te kullanılamıyor. Bunu oluşturmayı denerseniz, bir hata görüntülenir.
 - Düzeltme: Risk azaltma.
-- Örneği: Ortak
+- Örneği: Common
 
 ### <a name="upload-blob"></a>Blobu karşıya yükle
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı Portalı'nda görev OAuth(preview) seçeneğini kullanarak bir blob karşıya yüklemek çalıştığınızda bir hata iletisiyle başarısız olur.
 - Düzeltme: Blob SAS seçeneğini kullanarak yükleyin.
-- Örneği: Ortak
+- Örneği: Common
 
 ## <a name="networking"></a>Ağ
 
 ### <a name="load-balancer"></a>Yük dengeleyici
 
-#### <a name="add-backend-pool"></a>Arka uç havuzu ekle
+#### <a name="add-backend-pool"></a>Arka uç havuzu Ekle
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı portalında eklemeye çalışırsa bir **arka uç havuzu** için bir **yük dengeleyici**, işlem hata iletisiyle başarısız **yük dengeleyici güncelleştirilemedi...** .
 - Düzeltme: Arka uç havuzuna bir yük dengeleyici kaynağı ile ilişkilendirmek için PowerShell, CLI veya Azure Resource Manager şablonu kullanın.
-- Örneği: Ortak
+- Örneği: Common
 
 #### <a name="create-inbound-nat"></a>Gelen NAT'ı oluşturma
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Oluşturmayı denerseniz, Kullanıcı Portalı'nda bir **gelen NAT kuralı** için bir **yük dengeleyici**, işlem hata iletisiyle başarısız **yük dengeleyici güncelleştirilemedi...** .
 - Düzeltme: Arka uç havuzuna bir yük dengeleyici kaynağı ile ilişkilendirmek için PowerShell, CLI veya Azure Resource Manager şablonu kullanın.
-- Örneği: Ortak
+- Örneği: Common
 
-#### <a name="create-load-balancer"></a>Yük dengeleyici oluştur
+#### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı Portalı'nda **Load Balancer oluşturma** penceresi oluşturma seçeneğiniz gösterir bir **standart** yük dengeleyici SKU. Bu seçenek, Azure Stack'te desteklenmiyor.
 - Düzeltme: Temel yük dengeleyici seçeneklerini kullanın.
-- Örneği: Ortak
+- Örneği: Common
 
 #### <a name="public-ip-address"></a>Genel IP adresi
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı Portalı'nda **genel IP adresi oluşturma** penceresi oluşturma seçeneğiniz gösterir bir **standart** SKU. **Standart** SKU Azure Stack'te desteklenmez.
 - Düzeltme: Kullanım **temel** SKU, bunun yerine için genel IP adresleri.
-- Örneği: Ortak
+- Örneği: Common
 
 ## <a name="compute"></a>İşlem
 
@@ -142,30 +142,36 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Neden: Yeni bir Windows sanal makine (VM) oluştururken, aşağıdaki hata görüntülenebilir: **Sanal makine 'vm-adı' başlatılamadı. Hata: VM 'vm-adı' için seri çıkış ayarları güncelleştirilemedi**.
 Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanılama depolama hesabınızı silerseniz, bir hata meydana gelir.
 - Düzeltme: Daha önce kullandığınız aynı ada sahip bir depolama hesabını yeniden oluşturun.
-- Örneği: Ortak
+- Örneği: Common
 
-### <a name="virtual-machine-scale-set"></a>Sanal Makine Ölçek Kümesi
+### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
 #### <a name="centos"></a>CentOS
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi (VMSS) oluşturma deneyimi sağlar. 7.2 centOS Azure Stack üzerinde kullanılabilir değil.
 - Düzeltme: Dağıtımınız için başka bir işletim sistemi veya Market'ten dağıtımdan işleciyle indirildi başka bir CentOS görüntüsü belirten bir Azure Resource Manager şablonu kullanın.
-- Örneği: Ortak
+- Örneği: Common
 
 #### <a name="remove-scale-set"></a>Ölçek kümesi Kaldır
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Bir ölçek kümesi kaldırılamıyor **sanal makine ölçek kümeleri** dikey penceresi.
 - Düzeltme: Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
-- Örneği: Ortak
+- Örneği: Common
+
+#### <a name="vmvmss-create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki ve güncelleştirme 4 düğümlü Azure Stack ortamlarında sırasında hataları VM/VMSS oluşturma
+
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve VMSS örneği oluşturan başarısız bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack ortamı güncelleştirme işlemi sırasında hata oluştu.
+- Düzeltme: Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Ancak, VMSS örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
 
 ### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Etkinleştirilmiş SSH yetkilendirme ile oluşturulan bir Ubuntu 18.04 VM oturum açmak için SSH anahtarları kullanmak izin vermez.
 - Düzeltme: VM erişimi Linux uzantısı için SSH anahtarları sağladıktan sonra uygulamak için veya parola tabanlı kimlik doğrulaması kullanın.
-- Örneği: Ortak
+- Örneği: Common
 
 ### <a name="compute-host-agent-alert"></a>Konak Aracısı uyarı işlem
 
@@ -194,7 +200,13 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 - Düzeltme:
   - Bu uyarı yoksayılabilir. Aracı yanıt vermiyor, işleci ve kullanıcı işlemleri veya kullanıcı uygulamaları üzerinde hiçbir etkisi yok. El ile kapalıysa uyarı 24 saat sonra yeniden görünür.
   - En son sorun çözüldüğünde [1904 için Azure Stack düzeltme](https://support.microsoft.com/help/4505688).
-- Örneği: Ortak
+- Örneği: Common
+
+### <a name="vmss-instance-view"></a>VMSS örnek görünümü
+
+- Uygulanabilir: Bu sorun 1904 ve 1905 sürümleri için geçerlidir.
+- Neden: Bir ölçek kümesi örnek görünümü dikey penceresinde bulunan Azure Stack portalında **Pano** > **sanal makine ölçek kümeleri**  >   **AnyScaleSet - örnekler** > **AnyScaleSetInstance** yüklenemiyor.
+- Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar lütfen CLI cmdlet'ini kullanın `az vmss get-instance-view` bir VMSS örneği görünüm elde edin.
 
 ## <a name="storage"></a>Depolama
 

@@ -2,22 +2,21 @@
 title: Sanal makine ölçek kümeleri Azure Stack kullanılabilmesini | Microsoft Docs
 description: Bir bulut operatörü sanal makine ölçek kümeleri için Azure Stack Marketini nasıl ekleyebileceğinizi öğrenin
 services: azure-stack
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-origin.date: 02/21/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 05/31/2019
+ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 7237437ca19ee6f5580661683ea82569d9d84b64
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 2cca789487803124e1a7b24efa199d7f68760fb6
+ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64296176"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453415"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Sanal makine ölçek kümeleri Azure Stack'te kullanılabilir yapın
 
@@ -25,7 +24,7 @@ ms.locfileid: "64296176"
   
 Sanal makine ölçek kümeleri Azure Stack işlem kaynaklarıdır. Bir özdeş sanal makine kümesini dağıtıp yönetmek için kullanabilirsiniz. Tüm sanal makineler aynı şekilde yapılandırılmış olduğundan ölçek kümeleri için sanal makinelerin önceden sağlanmasına gerek yoktur. Büyük işlem, büyük veri ve kapsayıcılı iş yüklerini hedefleyen büyük ölçekli hizmetler oluşturmayı kolaylaştırır.
 
-Bu makalede ölçek kümeleri Azure Stack Market'te kullanılabilir hale getirmek için işleminde size rehberlik eder. Bu yordamı tamamladıktan sonra kullanıcılarınızın abonelikleri için sanal makine ölçek kümeleri ekleyebilirsiniz.
+Bu makalede ölçek kümeleri Azure Stack Market'te kullanılabilir hale getirme işleminde size rehberlik eder. Bu yordamı tamamladıktan sonra kullanıcılarınızın abonelikleri için sanal makine ölçek kümeleri ekleyebilirsiniz.
 
 Azure Stack üzerinde sanal makine ölçek kümeleri, sanal makine ölçek kümeleri Azure üzerinde benzerdir. Daha fazla bilgi için aşağıdaki videolarda bakın:
 
@@ -37,7 +36,7 @@ Azure Stack üzerinde sanal makine ölçek kümelerini otomatik ölçeklendirme 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * **Market:** Azure Stack öğeleri Market'te kullanılabilirliğini etkinleştirmek için genel Azure ile kaydedin. Bölümündeki yönergeleri [kaydetme Azure Stack Azure ile](azure-stack-registration.md).
-* **İşletim sistemi yansıması:** Bir sanal makine ölçek kümesi (VMSS) oluşturulabilmesi için önce VMSS kullanmak için VM görüntüleri indirin [Azure Stack Marketini](azure-stack-download-azure-marketplace-item.md). Görüntüleri zaten bir kullanıcı yeni bir VMSS oluşturabilmeniz için önce mevcut olması gerekir.
+* **İşletim sistemi yansıması:** Bir sanal makine ölçek kümesi oluşturulmadan önce VMSS kullanmak için VM görüntüleri indirin [Azure Stack marketini](azure-stack-download-azure-marketplace-item.md). Görüntüleri zaten bir kullanıcı yeni bir VMSS oluşturabilmeniz için önce mevcut olması gerekir.
 
 ## <a name="use-the-azure-stack-portal"></a>Azure Stack portalını kullanın
 
@@ -56,26 +55,26 @@ Azure Stack üzerinde sanal makine ölçek kümelerini otomatik ölçeklendirme 
 4. Yeni sanal makine ölçek kümesi, Git görmek için **tüm kaynakları**, sanal makine ölçek kümesi adı için arama yapın ve ardından aramaya adını seçin.
    ![Ölçek kümesini görüntüleme](media/azure-stack-compute-add-scalesets/search.png)
 
-## <a name="add-the-virtual-machine-scale-set-prior-to-version-1808"></a>Sanal makine ölçek kümesi (önceki sürüm 1808) Ekle
+## <a name="add-the-virtual-machine-scale-set-prior-to-version-1808"></a>Sanal makine ölçek kümesi (önceki sürüm 1808) ekleme
 
 >[!IMPORTANT]  
 > Bu bölümdeki bilgiler, Azure Stack bir sürümünü 1808 önce kullandığınızda uygulanır. 1808 veya sonraki bir sürümü kullanıyorsanız bkz [Azure Stack portalını](#use-the-azure-stack-portal).
 
-1. Azure Stack Marketini açın ve Azure'a bağlanın. Seçin **Market Yönetim**, ardından **+ Ekle azure'dan**.
+1. Azure Stack marketini açın ve Azure'a bağlanın. Seçin **Market Yönetim**, ardından **+ Ekle azure'dan**.
 
     ![Market Yönetimi](media/azure-stack-compute-add-scalesets/image01.png)
 
 2. Ekleyin ve sanal makine ölçek kümesi Market öğesi indirin.
 
-    ![Sanal Makine Ölçek Kümesi](media/azure-stack-compute-add-scalesets/image02.png)
+    ![Sanal makine ölçek kümesi](media/azure-stack-compute-add-scalesets/image02.png)
 
-## <a name="update-images-in-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesi'ndeki görüntüleri güncelleştirme
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesi görüntüleri güncelleştirme
 
 Bir sanal makine ölçek kümesi oluşturduktan sonra kullanıcılar görüntüleri ölçek kümesindeki ölçek oluşturulması gerek kalmadan kümesini güncelleştirebilirsiniz. İşlem bir görüntüsünü güncelleştirmek için aşağıdaki senaryoları bağlıdır:
 
 1. Sanal makine ölçek kümesi dağıtım şablonu belirtir **son** için **sürüm**:  
 
-   Zaman `version` ayarlanır **son** içinde `imageReference` bölümünde şablonu bir ölçek kümesi, Ölçek kümesi örnekleri için ölçek kümesi kullanılması ile ilgili işlemler görüntünün kullanılabilir en yeni sürümünü ölçeğini. Ölçek büyütme işlemi tamamlandıktan sonra eski sanal makine ölçek kümesi örneklerine silebilirsiniz. Değerleri `publisher`, `offer`, ve `sku` değişmeden kalır.
+   Zaman `version` ayarlanır **son** içinde `imageReference` bölümünde şablonu bir ölçek kümesi, Ölçek kümesinde ölçek büyütme işlemleri, Ölçek kümesi örnekleri için görüntüyü kullanılabilir en yeni sürümünü kullanın. Ölçek büyütme işlemi tamamlandıktan sonra eski sanal makine ölçek kümesi örneklerine silebilirsiniz. Değerleri `publisher`, `offer`, ve `sku` değişmeden kalır.
 
    Aşağıdaki JSON örneği belirtir `latest`:  
 
@@ -94,7 +93,7 @@ Bir sanal makine ölçek kümesi oluşturduktan sonra kullanıcılar görüntül
 
    * Market'te görüntü sürümü ölçek kümesindeki bir görüntü ile aynı olduğunda, Ölçek kümesindeki kullanılıyor seçerek görüntüyü silin ve ardından yeni görüntüyü indirin. Özgün resmin kaldırılmasını ve yeni görüntüyü indirilmesini arasındaki süre boyunca, ölçeği olamaz.
 
-     Bu işlem gereklidir yeniden yayınlamak için 1803 sürümü ile sunulan seyrek dosya biçimi olun görüntüleri kullanın.
+   Bu işlem gereklidir yeniden yayınlamak için 1803 sürümü ile sunulan seyrek dosya biçimi olun görüntüleri kullanın.
 
 2. Sanal makine ölçek kümesi dağıtım şablonu **son belirtmiyor** için **sürüm** ve bunun yerine bir sürüm numarası belirtir:  
 
@@ -104,17 +103,17 @@ Daha fazla bilgi için [işletim sistemi diskleri ve görüntüleri](../user/azu
 
 ## <a name="scale-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesini ölçeklendirme
 
-Boyutu ölçeklendirilebilir bir *sanal makine ölçek kümesi* büyütmek veya küçültmek yapma.  
+Bir sanal makine ölçek büyütme veya küçültme yapmak kümesi boyutunu ölçeklendirebilirsiniz.
 
 1. Portalda ölçek kümenizi seçin ve ardından **ölçeklendirme**.
 
-2. Bu sanal makine ölçek kümesi için ölçeklendirme yeni düzeyini ayarlamak için kaydırma çubuğunu kullanın ve ardından **Kaydet**.
+2. Bu sanal makine ölçek kümesi için ölçeklendirme yeni düzeyini ayarlamak için slayt çubuğunu kullanın ve ardından **Kaydet**.
 
      ![Ölçek kümesi](media/azure-stack-compute-add-scalesets/scale.png)
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesi Kaldır
 
-Bir sanal makine ölçek kümesi galeri öğesini kaldırmak için aşağıdaki PowerShell komutunu çalıştırın:
+Bir sanal makineyi kaldırmak için ölçek kümesi galeri öğesi, aşağıdaki PowerShell komutunu çalıştırın:
 
 ```powershell  
 Remove-AzsGalleryItem

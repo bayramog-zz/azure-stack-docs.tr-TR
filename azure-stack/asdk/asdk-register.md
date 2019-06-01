@@ -11,23 +11,25 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/30/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 10fd52a85dd46002e40061c197641a716afa3230
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 6a636a1ed7b2426649afbe163b15780bfc4e9f0e
+ms.sourcegitcommit: 2cd17b8e7352891d8b3eb827d732adf834b7693e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267684"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428693"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack kaydı
+
 Azure Market öğelerini indirme ve ticaret verileri Microsoft'a raporlamaya ayarlamak için Azure ile Azure Stack geliştirme Seti'ni (ASDK) yüklemenizi kaydedebilirsiniz. Kayıt, Pazar dağıtımı da dahil olmak üzere tam Azure Stack işlevleri desteklemek için gereklidir. Kayıt, Market dağıtım ve kullanım raporlama gibi önemli Azure Stack işlevselliğini test etmek etkinleştirmek için gereklidir. Azure Stack kaydettikten sonra kullanım için Azure ticaret bildirilir. Kayıt için kullanılan abonelik altında görebilirsiniz. Ancak ASDK kullanıcılar bunlar rapor tüm kullanımlar için ücretlendirilmezsiniz.
 
-ASDK kaydedilmezse görebileceğiniz bir **etkinleştirme gerekli** , Azure Stack geliştirme Seti'ni kaydedilecek öneren uyarı bildirimi. Bu davranış beklenmektedir.
+ASDK kaydedilmezse görebileceğiniz bir **etkinleştirme gerekli** , Azure Stack geliştirme Seti'ni kaydedilecek öneren uyarı bildirimi. Bu beklenen bir davranıştır.
 
 ## <a name="prerequisites"></a>Önkoşullar
+
 Azure Stack PowerShell yüklü ve açıklandığı gibi Azure Stack araçları indirilen olun, Azure ile ASDK kaydetmek için bu yönergeleri kullanmadan önce [dağıtım sonrası yapılandırma](asdk-post-deploy.md) makalesi.
 
 Ayrıca, PowerShell dil modunu ayarlamanız gerekir **FullLanguageMode** ASDK Azure ile kaydetmek için kullanılan bilgisayarda. Geçerli dil modunu tam, yükseltilmiş bir PowerShell penceresi açın ve aşağıdaki PowerShell komutlarını çalıştırmak için ayarlandığını doğrulamak için:
@@ -41,6 +43,7 @@ $ExecutionContext.SessionState.LanguageMode
 Azure AD hesabını kayıt ihtiyaçları için kullanılan Azure aboneliğine erişiminiz olması ve bu abonelikle dizinde kimlik uygulama ve hizmet sorumluları oluşturma izniniz yok. Azure Stack Azure ile kaydedin en az ayrıcalıklı yönetim tarafından kullanılması önerilir [kayıt için kullanılacak bir hizmet hesabı oluşturmanızı](../operator/azure-stack-registration-role.md) genel yönetici kimlik bilgilerini kullanmak yerine.
 
 ## <a name="register-azure-stack-with-azure"></a>Azure Stack Azure ile kaydedin
+
 Azure ile ASDK kaydetmek için aşağıdaki adımları izleyin.
 
 > [!NOTE]
@@ -48,7 +51,15 @@ Azure ile ASDK kaydetmek için aşağıdaki adımları izleyin.
 
 1. Yönetici olarak bir PowerShell konsolu açın.  
 
-2. Azure ile ASDK yüklemenizi kaydetmek için aşağıdaki PowerShell komutlarını çalıştırın. Hem Azure faturalandırma abonelik Kimliğinizi hem de yerel ASDK yükleme için oturum açmanız. Azure faturalandırma bir abonelik kimliği yok henüz yapabilecekleriniz [buradan ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?b=17.06). Azure aboneliğinize ücret ödemeden Azure Stack kaydetme artmasına neden olur.<br><br>Programını çalıştırdığınızda, kayıt için benzersiz bir ad ayarlayın **kümesi AzsRegistration** cmdlet'i. **RegistrationName** parametresinin varsayılan değeri **AzureStackRegistration**. Azure Stack birden fazla örneğinde aynı adı kullanın, ancak komut başarısız olur.
+2. Dosyayı ASDK ana bilgisayarda açın **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** yükseltilmiş izinlerle bir düzenleyicide.
+
+3. 1249 satırına ekleme bir `-TimeoutInSeconds 1800` sonunda parametresi. Bu, kayıt komut dosyası çalıştırılırken bir hizmet sorumlusu zaman aşımını önlemek için gereklidir. Satır 1249 artık şu şekilde görünmelidir:
+
+   ```powershell
+   $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
+   ```
+
+4. Azure ile ASDK yüklemenizi kaydetmek için aşağıdaki PowerShell komutlarını çalıştırın. Hem Azure faturalandırma abonelik Kimliğinizi hem de yerel ASDK yükleme için oturum açmanız. Bir Azure abonelik kimliği henüz faturalandırma yoksa, şunları yapabilirsiniz [buradan ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?b=17.06). Azure aboneliğinize ücret ödemeden Azure Stack kaydetme artmasına neden olur.<br><br>Programını çalıştırdığınızda, kayıt için benzersiz bir ad ayarlayın **kümesi AzsRegistration** cmdlet'i. **RegistrationName** parametresinin varsayılan değeri **AzureStackRegistration**. Azure Stack birden fazla örneğinde aynı adı kullanın, ancak komut başarısız olur.
 
     ```powershell  
     # Add the Azure cloud subscription environment name. 
@@ -75,18 +86,20 @@ Azure ile ASDK kaydetmek için aşağıdaki adımları izleyin.
     -RegistrationName $RegistrationName `
     -UsageReportingEnabled:$true
     ```
-3. Betik tamamlandığında, bu iletiyi görmeniz gerekir: **Ortamınızı şimdi kaydedilir ve sağlanan parametreleri kullanarak etkinleştirildi.**
+
+5. Betik tamamlandığında, bu iletiyi görmeniz gerekir: **Ortamınızı şimdi kaydedilir ve sağlanan parametreleri kullanarak etkinleştirildi.**
 
     ![Ortamınızı artık kayıtlı](media/asdk-register/1.PNG)
 
-
 ## <a name="register-in-disconnected-environments"></a>Bağlantısı kesilmiş ortamlarda kaydetme
+
 Azure Stack bağlantısı kesilmiş bir ortamda (internet bağlantısı olmayan) kaydediyorsanız Azure Stack ortamından bir kayıt belirtecinizi almak ve sonra bu belirteci kaydedin ve bir etkinleştirme oluşturmak için Azure bağlanıp bir bilgisayarda gerekir Kaynak ASDK ortamınız için.
- 
+
  > [!IMPORTANT]
  > Azure Stack kaydetmek için bu yönergeleri kullanmadan önce Azure Stack için PowerShell yüklü ve Azure Stack araçları açıklandığı indirilen emin [dağıtım sonrası yapılandırma](asdk-post-deploy.md) ASDK ana bilgisayarda makale bilgisayar ve bilgisayarın internet erişimi için Azure ve kayıt bağlanmak için kullanılan.
 
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Azure Stack ortamından bir kayıt belirtecinizi almak
+
 ASDK konak bilgisayarda, yönetici olarak PowerShell'i başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarmak için aşağıdaki PowerShell komutlarını kullanın **RegisterWithAzure.psm1** modülü ve ardından **Get-AzsRegistrationToken** kayıt belirtecinizi almak için cmdlet:  
 
    ```powershell  
@@ -108,6 +121,7 @@ ASDK konak bilgisayarda, yönetici olarak PowerShell'i başlatın ve gidin **kay
 Bu kayıt belirtecinizi kullanmak için İnternet'e bağlı bir bilgisayara kaydedin. Dosyadan $FilePathForRegistrationToken parametresi tarafından oluşturulan dosya veya metni kopyalayın.
 
 ### <a name="connect-to-azure-and-register"></a>Azure ve kayıt bağlanma
+
 Internet'e bağlı bilgisayara kullanmak aşağıdaki PowerShell komutlarını içeri aktarmak için **RegisterWithAzure.psm1** modülü ve ardından **Register-AzsEnvironment** cmdlet'i ile kullanarak Azure kaydetmek için Yeni oluşturduğunuz kaydı belirtecini ve benzersiz kayıt adı:  
 
   ```powershell  
@@ -158,7 +172,7 @@ Alternatif olarak, **Get-Content** kayıt belirtecinizi içeren bir dosyaya işa
 Kayıt tamamlandığında, benzer bir ileti görürsünüz **bilgisayarınızı Azure Stack ortamına artık Azure ile kayıtlı.**
 
 > [!IMPORTANT]
-> PowerShell penceresini kapatmayın. 
+> PowerShell penceresini kapatmayın.
 
 Gelecek başvurular için kaynak adı kayıt ve kayıt belirtecinizi kaydedin.
 
@@ -175,6 +189,7 @@ Etkinleştirme anahtarı almak için aşağıdaki PowerShell komutlarını çal�
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName `
   -KeyOutputFilePath $KeyOutputFilePath
   ```
+
 ### <a name="create-an-activation-resource-in-azure-stack"></a>Azure Stack'te bir etkinleştirme kaynağını oluşturma
 
 Azure Stack ortamına dosyasıyla döndürür veya metinden etkinleştirme anahtarı oluşturuldu **Get-AzsActivationKey**. Bu etkinleştirme anahtarı kullanarak Azure Stack'te bir etkinleştirme kaynağını oluşturmak için aşağıdaki PowerShell komutlarını çalıştırın:   

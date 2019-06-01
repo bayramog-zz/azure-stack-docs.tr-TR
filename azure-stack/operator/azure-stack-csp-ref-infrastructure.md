@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: ca474c9addeec3b3b6fcaad8db55bc40a148bb8f
-ms.sourcegitcommit: c755c7eac0f871960f9290591421cf5990b9e734
+ms.openlocfilehash: d6f77483730c9609ad9750da9b11f62de2874ff2
+ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506098"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66453446"
 ---
 # <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Bulut hizmeti sağlayıcıları için raporlama altyapınızın kullanımı
 
@@ -34,16 +34,16 @@ Azure Stack ve Azure hizmetleri nasıl fiyatlandırılır arasındaki bazı fark
 
 Ticaret ve iş ortağı Merkezi, kullanıcıların fiyatları Azure hizmetlerinde olduğu gibi aynı şekilde kullanılan Azure Stack ölçümleri hakkında bilgi edinebilirsiniz:
 
-1. İş ortağı Merkezi'nde Git **Panosu menüsünden** > **fiyatlandırma ve teklifler**.
+1. İş ortağı Merkezi'nde Git **Panosu menüsünden**, ardından **satmak**, ardından **fiyatlandırma ve teklifler**.
 2. Altında **kullanım tabanlı Hizmetleri**seçin **geçerli**.
 3. Açık **genel CSP fiyat Listesi'nde Azure'da** elektronik tablo.
-4. Filtre **bölge Azure Stack =**.
+4. Filtre **bölge Azure Stack =** .
 
 ## <a name="usage-and-billing-error-codes"></a>Kullanım ve faturalandırma hata kodları
 
 Bir kaydı için Kiracı ekleme sırasında aşağıdaki hata iletilerinden karşılaşılabilir.
 
-| Hata                           | Ayrıntılar                                                                                                                                                                                                                                                                                                                           | Açıklamalar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Hata                           | Ayrıntılar                                                                                                                                                                                                                                                                                                                           | Yorumlar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **RegistrationNotFound**            | Sağlanan kayıt bulunamadı. Aşağıdaki bilgileri doğru bir şekilde sağlanan emin olun:<br>1. Abonelik tanımlayıcısı (sağlanan değer: _abonelik tanımlayıcısı_),<br>2. Kaynak grubu (sağlanan değer: _kaynak grubu_),<br>3. Kayıt adı (sağlanan değer: _kayıt adı_).                             | Bu hata genellikle ilk kayıt için işaret eden bilgiler doğru değil oluşur. Kaynak grubu ve kaydınızı adını doğrulamak gerekiyorsa, tüm kaynaklar listeleyerek Azure portalında bulabilirsiniz. Birden fazla kayıt kaynağı bulursanız, bakmak **CloudDeploymentID** özellikleri ve kayıt seçme, **CloudDeploymentID** bulut ile eşleşir. Bulunacak **CloudDeploymentID**, Azure Stack üzerinde bu PowerShell komutunu kullanabilirsiniz:<br>`$azureStackStampInfo = Invoke-Command -Session $session -ScriptBlock { Get-AzureStackStampInformation }` |
 | **BadCustomerSubscriptionId**       | Sağlanan _müşteri abonelik tanımlayıcısı_ ve _kayıt adı_ abonelik tanımlayıcısı tarafından aynı Microsoft bulut hizmeti sağlayıcısına ait değil. Müşteri abonelik tanımlayıcısı doğru olduğundan emin olun. Sorun devam ederse desteğe başvurun. | Müşteri aboneliğinde bir CSP aboneliği olmakla birlikte, CSP iş ortağı için ilk kayıt için kullanılan abonelik için toplanan olandan farklı toplar, bu hata oluşur. Bu onay, kullanılan Azure Stack için sorumlu olmayan bir CSP iş ortağı faturalama neden olan bir durumu önlemek için yapılır.                                                                                                                                                                                                                                                                          |
@@ -58,7 +58,7 @@ Bir kaydı için Kiracı ekleme sırasında aşağıdaki hata iletilerinden kar�
 
 Aşağıdaki terimler ve kavramlar kullanımı için kullanılan ve Azure stack'teki faturalandırma şunlardır:
 
-| Dönem | Tanım |
+| Sözleşme Dönemi | Tanım |
 | --- | --- |
 | Doğrudan bir CSP iş ortağı | Doğrudan bir bulut hizmeti sağlayıcısı (CSP) iş ortağı fatura doğrudan Azure ve Azure Stack kullanım ve fatura müşterilerin Microsoft'tan doğrudan alır. |
 | Dolaylı CSP | Dolaylı satıcıları dolaylı sağlayıcısı (dağıtıcı olarak da bilinir) ile çalışır. Satıcılar, son müşteriler kazanmak; Dolaylı sağlayıcısı olan Microsoft faturalama ilişkiyi tutar, müşteri faturalandırma yönetir ve ürün desteği gibi ek hizmetler sağlar. |
