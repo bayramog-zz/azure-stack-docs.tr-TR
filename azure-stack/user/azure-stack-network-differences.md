@@ -5,18 +5,18 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.date: 05/16/2019
+ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 841e30367ded29e10c28573056f4a70361e28a9e
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.lastreviewed: 06/04/2019
+ms.openlocfilehash: de39645d1414fc852b98036e7071befcf5262cb1
+ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782567"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66469177"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ağ iletişimi için dikkat edilmesi gerekenler
 
@@ -68,6 +68,7 @@ Bu makalede, Azure Stack ağ iletişimi ve özelliklerini benzersiz konularına 
 |  | Uygulama Güvenlik Grupları | Desteklenen | Henüz desteklenmiyor. |
 |  | İç DNS ad etiketi | Desteklenen | Henüz desteklenmiyor. |
 |  | Özel IP adresi sürümü | IPv6 ve IPv4 desteklenir. | Yalnızca IPv4 desteklenir. |
+|  | Statik MAC adresi | Desteklenmiyor | Desteklenmiyor. Her Azure Stack sistemi aynı MAC adresi havuzunu kullanır. |
 | Ağ İzleyicisi | Ağ İzleyicisi Kiracı ağ izleme kapasiteleri | Desteklenen | Henüz desteklenmiyor. |
 | CDN | Content Delivery Network profilleri | Desteklenen | Henüz desteklenmiyor. |
 | Uygulama ağ geçidi | 7. Katman Yük Dengeleme | Desteklenen | Henüz desteklenmiyor. |

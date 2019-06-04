@@ -11,28 +11,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 3f177ea0c261771b67e6434215df67211452b767
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: ffb58392075521b81d9b0cd71928ac0db680991f
+ms.sourcegitcommit: 80775f5c5235147ae730dfc7e896675a9a79cdbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64292018"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66459078"
 ---
-# <a name="windows-server-in-azure-stack-marketplace-faq"></a>Windows Server'da Azure Stack Marketini SSS
+# <a name="windows-server-in-azure-stack-marketplace-faq"></a>Windows Server'da Azure Stack marketini SSS
 
-Bu makalede, Windows Server görüntülerinin hakkında sık sorulan bazı sorular yanıtlanmaktadır [Azure Stack Marketini](azure-stack-marketplace.md).
+Bu makalede, Windows Server görüntülerinin hakkında sık sorulan bazı sorular yanıtlanmaktadır [Azure Stack marketini](azure-stack-marketplace.md).
 
-## <a name="marketplace-items"></a>Marketplace öğeleri
+## <a name="marketplace-items"></a>Market öğesi
 
 ### <a name="how-do-i-update-to-a-newer-windows-image"></a>Daha yeni bir Windows görüntüsüne nasıl güncelleştirebilirim?
 
 İlk olarak, herhangi bir Azure Resource Manager şablonları için belirli sürümler başvuruyorsa, belirleyin. Bu durumda, bu şablonların güncelleştirin veya eski görüntü sürümleri tutun. Kullanmak en iyisidir **sürümü: en son**.
 
-Ardından, tüm sanal makine ölçek kümeleri belirli bir sürümüne başvuruyorsa, mi bunlar daha sonra ölçeklendirilir ve eski sürümlerini karar hakkında almalısınız. Bu koşulların hiçbiri uygularsanız, yeni olanlara indirmeden önce eski Market görüntüleri silin. Özgün nasıl yüklenmiş ise, bunu yapmak için Market Yönetimi'ni kullanın. Ardından yeni sürümü indirin.
+Ardından, tüm sanal makine ölçek kümeleri belirli bir sürümüne başvuruyorsa, mi bunlar daha sonra ölçeklendirilir ve eski sürümlerini karar hakkında almalısınız. Bu koşulların hiçbiri uygularsanız, yeni olanlara indirmeden önce eski Market görüntüleri silin. Market yönetim özgün nasıl yüklenmiş ise, bunları silmek için kullanın. Ardından yeni sürümü indirin.
 
 ### <a name="what-are-the-licensing-options-for-windows-server-marketplace-images-on-azure-stack"></a>Windows Server Market görüntüleri için Azure Stack'te lisanslama seçenekleri nelerdir?
 
@@ -40,14 +40,14 @@ Microsoft Azure Stack marketten Windows Server görüntülerini iki sürümünü
 
 - **Kullandıkça Öde**: Bu görüntüler, tam fiyat Windows ölçümleri çalıştırın.
    Kimin kullanmanız gerekir: Kullanan Kurumsal Anlaşma (EA) müşterileri *tüketim faturalandırma modeli*; SPLA lisans kullanmak istiyor musunuz CSP'ler.
-- **Kendi lisansınızı getirin (BYOL)**: Bu görüntüler, temel ölçümleri çalıştırın.
+- **Kendi lisansınızı getirin (BYOL)** : Bu görüntüler, temel ölçümleri çalıştırın.
    Kimin kullanmanız gerekir: EA müşterileri bir Windows Server lisansına sahip; SPLA lisansı kullanan CSP'ler.
 
 Azure karma kullanım Avantajı'nı (AHUB), Azure Stack üzerinde desteklenmiyor. "Kapasite" modeli aracılığıyla lisans müşteriler KLG görüntüsü kullanmanız gerekir. Azure Stack geliştirme Seti'ni (ASDK) ile test ediyorsanız, bu seçeneklerden birini kullanabilirsiniz.
 
 ### <a name="what-if-i-downloaded-the-wrong-version-to-offer-my-tenantsusers"></a>Kiracılar/kullanıcılarımın sunmak için yanlış sürüm karşıdan ne olur?
 
-Yanlış sürüm Market yönetiminden silin. Tam olarak tamamlanmasını bekleyin (tamamlama, Market yönetim dikey bildirimleri bakın). Ardından doğru sürümünü indirin.
+Yanlış sürüm Market yönetiminden silin. Tam olarak tamamlanmasını bekleyin (tamamlama, bildirimleri bakın değil **Market Yönetim** dikey penceresinde). Ardından doğru sürümünü indirin.
 
 ### <a name="what-if-my-user-incorrectly-checked-the-i-have-a-license-box-in-previous-windows-builds-and-they-dont-have-a-license"></a>My kullanıcı yanlış önceki Windows "Bir lisansım" kutuya kullanıma ne oluşturur ve bir lisansına sahip olmayan?
 
@@ -70,7 +70,7 @@ Ekleyebileceğiniz **licenseType: Windows_Server** bir Azure Resource Manager ş
 Bir Windows Server sanal makinesini Azure Stack'te etkinleştirmek için aşağıdaki koşulların doğru olması gerekir:
 
 - OEM Azure Stack'te her bir konak sisteminde uygun BIOS işaret ayarladı.
-- Windows Server 2012 R2 ve Windows Server 2016 kullanmalıdır [otomatik sanal makine etkinleştirmesi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)). Anahtar Yönetim Hizmeti (KMS) ve diğer Etkinleştirme Hizmetleri, Azure Stack üzerinde desteklenmez.
+- Windows Server 2012 R2 ve Windows Server 2016 kullanmalıdır [otomatik sanal makine etkinleştirmesi](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)). Anahtar Yönetim Hizmeti (KMS) ve diğer Etkinleştirme Hizmetleri, Azure Stack üzerinde desteklenmez.
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>Sanal Makinem etkinleştirildiğini nasıl doğrulayabilirim?
 
@@ -90,7 +90,7 @@ Yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırın:
 slmgr /ipk <AVMA key>
 ```
 
-Bkz: [otomatik sanal makine etkinleştirmesi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) makale görüntünüzü kullanmak anahtarlar için.
+Bkz: [otomatik sanal makine etkinleştirmesi](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) makale görüntünüzü kullanmak anahtarlar için.
 
 ### <a name="i-create-my-own-windows-server-images-how-can-i-make-sure-they-use-avma"></a>Kendi Windows Server görüntülerini oluşturabilirim, AVMA kullandıkları nasıl emin?
 
@@ -106,7 +106,7 @@ BIOS işaretçileri doğru yüklendiğini doğrulamak için donanım satıcısı
 
 ### <a name="what-about-earlier-versions-of-windows-server"></a>Windows Server'ın önceki sürümleri hakkında neler diyeceksiniz?
 
-[Otomatik sanal makine etkinleştirmesi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) Windows Server'ın önceki sürümlerinde desteklenmez. Sanal makineleri el ile etkinleştirmeniz gerekir.
+[Otomatik sanal makine etkinleştirmesi](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) Windows Server'ın önceki sürümlerinde desteklenmez. Sanal makineleri el ile etkinleştirmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

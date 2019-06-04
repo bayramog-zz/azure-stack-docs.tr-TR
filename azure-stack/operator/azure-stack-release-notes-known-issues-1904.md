@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 0bc2b209303cceda30d5997d080c4c6061f20da3
-ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
+ms.openlocfilehash: 9b92e6e2e059f4b57742248672751111b504136c
+ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66453479"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66469141"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -149,7 +149,7 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 #### <a name="centos"></a>CentOS
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi (VMSS) oluşturma deneyimi sağlar. 7.2 centOS Azure Stack üzerinde kullanılabilir değil.
+- Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. 7.2 centOS Azure Stack üzerinde kullanılabilir değil.
 - Düzeltme: Dağıtımınız için başka bir işletim sistemi veya Market'ten dağıtımdan işleciyle indirildi başka bir CentOS görüntüsü belirten bir Azure Resource Manager şablonu kullanın.
 - Örneği: Common
 
@@ -160,11 +160,11 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 - Düzeltme: Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
 - Örneği: Common
 
-#### <a name="vmvmss-create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki ve güncelleştirme 4 düğümlü Azure Stack ortamlarında sırasında hataları VM/VMSS oluşturma
+#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki ve güncelleştirme 4 düğümlü Azure Stack ortamlarında sırasında hatalar oluşturun
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve VMSS örneği oluşturan başarısız bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack ortamı güncelleştirme işlemi sırasında hata oluştu.
-- Düzeltme: Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Ancak, VMSS örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
+- Neden: 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve oluşturma bir sanal makine ölçek kümesi örneği başarısız oluyor bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hata oluştu ortam.
+- Düzeltme: Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Bununla birlikte, Ölçek kümesi örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
 
 ### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
 
@@ -202,11 +202,11 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
   - En son sorun çözüldüğünde [1904 için Azure Stack düzeltme](https://support.microsoft.com/help/4505688).
 - Örneği: Common
 
-### <a name="vmss-instance-view"></a>VMSS örnek görünümü
+### <a name="virtual-machine-scale-set-instance-view"></a>Sanal makine ölçek kümesi örnek görünümü
 
 - Uygulanabilir: Bu sorun 1904 ve 1905 sürümleri için geçerlidir.
 - Neden: Bir ölçek kümesi örnek görünümü dikey penceresinde bulunan Azure Stack portalında **Pano** > **sanal makine ölçek kümeleri**  >   **AnyScaleSet - örnekler** > **AnyScaleSetInstance** yüklenemiyor.
-- Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar lütfen CLI cmdlet'ini kullanın `az vmss get-instance-view` bir VMSS örneği görünüm elde edin.
+- Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar lütfen CLI cmdlet'ini kullanın `az vmss get-instance-view` bir sanal makine ölçek kümesi örnek görünümünü elde etmek için.
 
 ## <a name="storage"></a>Depolama
 

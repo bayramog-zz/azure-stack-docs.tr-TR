@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 06/04/2019
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: a839faa7ec5a93a506ad967f3449ee1788f1a21a
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.lastreviewed: 06/04/2019
+ms.openlocfilehash: e9c373ebaa6452c57acad866c66c8b3d5ab0c5ed
+ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618503"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66469160"
 ---
 # <a name="network-connectivity"></a>Ağ bağlantısı
 Bu makalede, Azure Stack mevcut ağ ortamınıza en iyi şekilde tümleştirmek nasıl karar vermenize yardımcı olmak için Azure Stack ağ altyapı bilgileri sağlar. 
@@ -40,7 +40,7 @@ Mantıksal ağlar temeldeki fiziksel ağ altyapısının bir soyutlamasını tem
 
 Aşağıdaki tabloda, mantıksal ağlar ve planlamanız gereken ilişkili IPv4 alt ağ aralıklarını gösterilmektedir:
 
-| Mantıksal Ağ | Açıklama | Boyutlandır | 
+| Mantıksal ağ | Açıklama | Boyut | 
 | -------- | ------------- | ------------ | 
 | Genel VIP | Azure Stack 31 adresleri bu ağ üzerinden toplam kullanır. Rest, Kiracı sanal makineler tarafından kullanılır ve sekiz genel IP adresleri Azure Stack'i Hizmetleri küçük bir kümesi için kullanılır. App Service ve SQL kaynak Sağlayıcısı'nı kullanmayı planlıyorsanız, 7 daha fazla adresleri kullanılır. Kalan 15 IP'ler, gelecekte Azure Hizmetleri için ayrılmıştır. | / 26 (62 konakları) - /22 (1022 ana)<br><br>Önerilen /24 (254 ana bilgisayardan) = | 
 | Geçiş altyapısı | Noktadan noktaya yönlendirme amacıyla, adanmış IP adresleri yönetim arabirimleri ve anahtara atanmış geri döngü adresi geçin. | /26 | 
@@ -78,12 +78,28 @@ Bu/26 ağdır yönlendirilebilir noktadan noktaya IP 30 (2 ana bilgisayar IP) al
 Bu /29 (6 konak IP'ler) ağ ayrılmış yönetim bağlantı noktalarına anahtarların bağlanma. Dağıtım, yönetim ve sorun giderme için bant dışı erişim sağlar. Yukarıda belirtilen anahtar altyapı ağ üzerinden hesaplanır.
 
 ## <a name="publish-azure-stack-services"></a>Azure Stack hizmetleri yayımlama
-Azure Stack Hizmetleri kullanıcıların dış Azure yığını kullanılabilmesi gerekir. Azure Stack altyapısını rolleri için çeşitli uç ayarlar. Bu uç noktaları VIP'ler genel IP adresi havuzundan atanır. Dağıtım sırasında belirtilen dış DNS bölgesi içindeki her bir uç nokta için bir DNS girişi oluşturulur. Örneğin, kullanıcı portalı, portal'ın DNS konak girişi atanır.  *&lt;bölge >.&lt; FQDN >*.
+Azure Stack Hizmetleri kullanıcıların dış Azure yığını kullanılabilmesi gerekir. Azure Stack altyapısını rolleri için çeşitli uç ayarlar. Bu uç noktaları VIP'ler genel IP adresi havuzundan atanır. Dağıtım sırasında belirtilen dış DNS bölgesi içindeki her bir uç nokta için bir DNS girişi oluşturulur. Örneğin, kullanıcı portalı, portal'ın DNS konak girişi atanır.  *&lt;bölge >.&lt; FQDN >* .
 
 ### <a name="ports-and-urls"></a>Bağlantı noktaları ve URL'ler
 Azure Stack hizmetlerinin yapma (portalları gibi Azure Resource Manager, DNS, vb.) dış ağlara kullanılabilir, bu uç noktalarına gelen trafiği belirli URL'ler, bağlantı noktaları ve protokoller için izin vermeniz gerekir.
  
 Bir dağıtımda saydam proxy yukarı bağlantılar burada geleneksel proxy sunucusu için belirli bağlantı noktaları ve URL'ler için izin vermelidir [gelen](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) ve [giden](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) iletişim. Bu bağlantı noktaları ve URL'ler için kimlik, Market, düzeltme eki ve güncelleştirme, kayıt ve kullanım verilerini içerir.
+
+### <a name="mac-address-pool"></a>MAC adresi havuzu
+
+Azure Stack, otomatik olarak oluşturmak ve sanal makineler için MAC adresi atamak için bir statik MAC adres havuzu kullanır.
+Bu MAC adres havuzu, dağıtım sırasında otomatik olarak oluşturulur ve şu aralıkta kullanır:
+
+- StartMacAddress: 00-1D-D8-B7-00-00
+- EndMacAddress: 00-1D-D8-F4-FF-FF
+
+> [!Note]  
+> Bu MAC adres havuzu, her Azure Stack sistem aynıdır ve yapılandırılabilir değildir.
+
+Sanal ağlar ile mevcut Kurumsal ağlara nasıl bağlanacağını bağlı olarak, yinelenen MAC adresleri sanal makinelerin bekleyebilir.
+
+Cmdlet'ini kullanarak MAC adresi havuzu kullanımı hakkında daha fazla bilgi bulunabilir [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) Azure Stack yönetici PowerShell modülünde.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Kenarlık bağlantısı](azure-stack-border-connectivity.md)

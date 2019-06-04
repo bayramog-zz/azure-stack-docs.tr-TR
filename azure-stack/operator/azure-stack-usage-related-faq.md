@@ -11,22 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 52613c394d7a1caeef42a85f1dd4d5b645f5e8e4
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 6a5ef529d2eabf8039be1da6c53da907c0b7aaaf
+ms.sourcegitcommit: 80775f5c5235147ae730dfc7e896675a9a79cdbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267952"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66459031"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Sık sorulan sorular, Azure Stack kullanım API'si
 
 Bu makalede, Azure Stack kullanım API'si hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
 ## <a name="what-meter-ids-can-i-see"></a>Hangi ölçüm kimlikleri görebilirim?
+
 Aşağıdaki kaynak sağlayıcıları için kullanımı bildirilir:
 
 ### <a name="network"></a>Ağ
@@ -76,7 +77,7 @@ Aşağıdaki kaynak sağlayıcıları için kullanımı bildirilir:
 **Ölçüm kimliği**: 1B8C1DEC-EE42-414B-AA36-6229CF199370  
 **Ölçüm adı**: TableDataTransOut  
 **Birim**: GB çıkış  
-**Notları**: Tablo hizmeti veri çıkışı GB  
+**Notları**: Tablo hizmeti veri çıkışı GB.
   
 **Ölçüm kimliği**: 43DAF82B-4618-444A-B994-40C23F7CD438  
 **Ölçüm adı**: BlobTransactions  
@@ -108,7 +109,7 @@ Aşağıdaki kaynak sağlayıcıları için kullanımı bildirilir:
 **Birim**: GB çıkış  
 **Notları**: Kuyruk hizmeti veri çıkışı GB  
 
-### <a name="compute"></a>İşlem 
+### <a name="compute"></a>İşlem
   
 **Ölçüm kimliği**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
 **Ölçüm adı**: Temel VM boyutu saatleri  
@@ -123,7 +124,7 @@ Aşağıdaki kaynak sağlayıcıları için kullanımı bildirilir:
 **Ölçüm kimliği**: 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
 **Ölçüm adı**: VM boyutu saatleri  
 **Birim**: VM saatleri  
-**Notları**: Hem temel hem de Windows VM yakalar. Çekirdekler için ayarlanmaz.  
+**Notları**: Yakalamalar hem temel hem de Windows VM'yi. Çekirdekler için ayarlanmaz.  
   
 ### <a name="managed-disks"></a>Yönetilen Diskler
 
@@ -385,23 +386,25 @@ Aşağıdaki kaynak sağlayıcıları için kullanımı bildirilir:
 **Birim**: GB  
 **Notları**: İstek yanıtı bayt sayısı, toplam gelen istek yanıtı bayt sayısı + istek bayt + toplam gelen FTP yanıt bayt + toplam gelen web toplam giden istek dağıtın.  
   
-
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsdocsmicrosoftcomazurebillingbilling-usage-rate-card-overviewazure-resource-usage-api-preview-currently-in-public-preview"></a>Bunu nasıl API'leri karşılaştırmak için Azure Stack kullanım [Azure kullanım API'si](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (şu anda genel önizlemede)?
+
 * Kiracı kullanım API'si, bir özel durum ile bir Azure API tutarlıdır: *showDetails* bayrağı şu anda desteklenmeyen Azure Stack'te.
 * Sağlayıcı kullanım API'si, yalnızca Azure Stack için geçerlidir.
-* Şu anda [RateCard API'si](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview) diğer bir deyişle azure'da kullanılabilir Azure Stack'te kullanılabilir değil.
+* Şu anda [RateCard API'si](/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview) diğer bir deyişle azure'da kullanılabilir Azure Stack'te kullanılabilir değil.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Kullanım ve bildirilen saat arasındaki fark nedir?
+
 Kullanım verileri raporlar, iki ana saat değerleri vardır:
 
 * **Bildirilen süresi**. Ne zaman kullanım olayı kullanım sistemiyle girilen saati
 * **Kullanım süresi**. Azure Stack kaynak tüketildiğinde içinde zaman
 
-Belirli kullanım olayı için kullanım süresi ve bildirilen süresi için değerlerin bir tutarsızlık görebilirsiniz. Gecikme, her türlü ortamda birden fazla saat uzunluğunda olabilir.
+Kullanım süresi değerleri tutarsızlık görebilirsiniz ve belirli kullanım olayı için zaman bildirdi. Gecikme, her türlü ortamda birkaç saat uzunluğunda olabilir.
 
 Şu anda yalnızca sorgulayabilirsiniz *bildirilen zaman*.
 
 ## <a name="what-do-these-usage-api-error-codes-mean"></a>Bu kullanım API'si hata kodları ne anlama gelir?
+
 | **HTTP durum kodu** | **Hata kodu** | **Açıklama** |
 | --- | --- | --- |
 | 400/Hatalı istek |*NoApiVersion* |*Api sürümü* sorgu parametresi eksik. |
@@ -416,9 +419,8 @@ Belirli kullanım olayı için kullanım süresi ve bildirilen süresi için de�
 
 Kullanım verilerini çalışan ve durdurulmuş sanal makineler oluşturun. Azure ile tutarlı olmasını sağlamak, ayırmayı kaldırma Kullanım verilerinin Emisyonu durdurmak için gereklidir. Portal kullanılamıyor, ancak işlem kaynak sağlayıcısı hala çalışıyor durumunda, kullanım yayılan.
 
-## <a name="next-steps"></a>Sonraki Adımlar
-[Müşteri faturalandırma ve Azure stack'teki geri ödeme](azure-stack-billing-and-chargeback.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-[Sağlayıcı kaynak kullanım API'si](azure-stack-provider-resource-api.md)
-
-[Kiracı Kaynak Kullanım API’si](azure-stack-tenant-resource-usage-api.md)
+* [Müşteri faturalandırma ve Azure stack'teki geri ödeme](azure-stack-billing-and-chargeback.md)
+* [Sağlayıcı kaynak kullanım API'si](azure-stack-provider-resource-api.md)
+* [Kiracı Kaynak Kullanım API’si](azure-stack-tenant-resource-usage-api.md)

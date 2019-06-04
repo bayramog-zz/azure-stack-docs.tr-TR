@@ -28,7 +28,7 @@
           href: azure-stack-update-1902.md
         - name: 1901 güncelleştirme
           href: azure-stack-update-1901.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı girişler
   expanded: true
   items:
     - name: Yönetim portalını kullanın
@@ -48,7 +48,15 @@
 - name: Kavramlar
   items:
     - name: Kapasite Planlaması
-      href: capacity-planning.md
+      items:
+        - name: Genel Bakış
+          href: azure-stack-capacity-planning-overview.md
+        - name: İşlem
+          href: azure-stack-capacity-planning-compute.md
+        - name: Depolama
+          href: azure-stack-capacity-planning-storage.md
+        - name: Azure Stack kapasite Planlayıcısı
+          href: azure-stack-capacity-planner.md
     - name: Veri merkezi tümleştirmesi
       href: azure-stack-customer-journey.md
       items:
@@ -374,9 +382,9 @@
         - name: Azure yığını yedekleme
           href: azure-stack-backup-back-up-azure-stack.md
         - name: Azure Stack üzerinde dosya ve uygulama yedekleme
-          href: /azure/backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+          href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
         - name: Azure Stack sanal makinelerini Azure'a çoğaltma
-          href: /azure/site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+          href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
         - name: Geri dönülemez veri kaybından kurtarma
           href: azure-stack-backup-recover-data.md
         - name: Yedekleme en iyi uygulamalar

@@ -17,12 +17,12 @@ ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: b39eaf4365f74e59c6dd60db67fdadf1162cb91d
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 3719019ebdbc6edad17c523a937d77d4f11bb02a
+ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268129"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66469226"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Öğretici: sanal makineler, Azure Stack kullanıcılar için kullanılabilir yap
 
@@ -41,7 +41,7 @@ Azure Stack'te hizmetler abonelikler, teklifleri ve planları kullanan kullanıc
 
 ![Abonelikler, teklifler ve planlar](media/azure-stack-key-features/image4.png)
 
-Daha fazla bilgi için bkz. [anahtar özellikler ve kavramlar Azure Stack'te](azure-stack-overview.md).
+Daha fazla bilgi için bkz. [Plan, teklif, kota ve abonelik genel bakış](azure-stack-plan-offer-quota-overview.md).
 
 ## <a name="create-an-offer"></a>Teklif oluşturma
 
@@ -65,7 +65,7 @@ Teklifler sağlayıcıları satın alan veya abone olmak için kullanıcılara s
 
 1. Seçin **Hizmetleri**. Hizmetler listesinden seçim **Microsoft.Compute**, **Microsoft.Network**, ve **Microsoft.Storage**. Seçin **seçin** hizmetlerin plana eklenecek.
 
-   ![Plan hizmetleri](media/azure-stack-tutorial-tenant-vm/image05.png)
+   ![Plan Hizmetleri](media/azure-stack-tutorial-tenant-vm/image05.png)
 
 1. Seçin **kotalar**ve ardından bir kota için oluşturmak istediğiniz ilk hizmeti seçin. Bir Iaas kota için işlem, ağ ve depolama hizmetleri için kotalar yapılandırmak için kılavuz olarak aşağıdaki örneği kullanın.
 
@@ -113,7 +113,7 @@ Teklif oluşturduğunuza göre bunu test edebilirsiniz. Bir kullanıcı olarak o
    - Tümleşik bir sistem için URL, işlecin bölge ve dış etki alanı adına göre değişir ve biçimde olacaktır https://portal.&lt; *Bölge*&gt;.&lt; *FQDN*&gt;.
    - Azure Stack geliştirme Seti'ni kullanıyorsanız, portalı adresidir https://portal.local.azurestack.external.
 
-   ![Abonelik edinin](media/azure-stack-tutorial-tenant-vm/image10.png)
+   ![Bir aboneliği edinin](media/azure-stack-tutorial-tenant-vm/image10.png)
 
    b. İçinde **bir abonelik edinmeniz**, aboneliğinizde için bir ad girin **görünen ad** alan. Seçin **teklif**, bir teklif seçin **bir teklif seçin** listesi. **Oluştur**’u seçin.
 

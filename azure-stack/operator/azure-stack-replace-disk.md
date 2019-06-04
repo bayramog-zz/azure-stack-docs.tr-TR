@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 06/04/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 797e49f82938888776b2685ab44add281b730943
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.lastreviewed: 06/04/2019
+ms.openlocfilehash: bfe18e0aa59f81f614ae00057b2c1f287b1257da
+ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782406"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66469311"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Azure stack'teki fiziksel disk değiştirme
 
@@ -50,10 +50,37 @@ Gerçek disk değiştirme OEM donanım satıcınızın FRU yönergelerini izleyi
 Tümleşik bir sistemde desteklenmeyen bir disk kullanımını önlemek için sistemi satıcınız tarafından desteklenmeyen diskleri engeller. Desteklenmeyen bir disk kullanmayı denerseniz, bir diski bir desteklenmeyen model veya üretici yazılımı nedeniyle karantinaya alındı, yeni bir uyarı bildirir.
 
 Disk değiştirdikten sonra Azure Stack, otomatik olarak yeni disk bulur ve sanal disk onarım işlemini başlatır.
+
+## <a name="check-the-status-of-virtual-disk-repair-using-azure-stack-powershell"></a>Azure Stack PowerShell kullanarak sanal disk onarma durumunu denetleyin
+
+Disk değiştirdikten sonra Azure Stack PowerShell kullanarak sanal diski sistem durumu ve onarım iş ilerleme durumunu izleyebilirsiniz.
+
+1. Azure Stack PowerShell'in yüklü olup olmadığını denetleyin. Daha fazla bilgi için [Azure Stack için PowerShell yükleme](azure-stack-powershell-install.md).
+2. PowerShell ile Azure Stack operatör bağlanın. Daha fazla bilgi için [Azure Stack operatör olarak PowerShell ile bağlanma](azure-stack-powershell-configure-admin.md).
+3. Sanal disk sistem durumunu doğrulayın ve durumu onarmak için aşağıdaki cmdlet'leri çalıştırın:
+    ```powershell  
+    $scaleunit=Get-AzsScaleUnit
+    $StorageSubSystem=Get-AzsStorageSubSystem -ScaleUnit $scaleunit.Name
+    Get-AzsVolume -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Select-Object VolumeLabel, OperationalStatus, RepairStatus
+    ```
+
+    ![Azure Stack birimleri sistem durumu](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
+
+4. Azure Stack sistem durumunu doğrulayın. Yönergeler için [Azure Stack doğrulama sistem durumu](azure-stack-diagnostic-test.md).
+5. İsteğe bağlı olarak, değiştirilen fiziksel disk durumunu doğrulamak için aşağıdaki komutu çalıştırabilirsiniz.
+
+```powershell  
+$scaleunit=Get-AzsScaleUnit
+$StorageSubSystem=Get-AzsStorageSubSystem -ScaleUnit $scaleunit.Name
+
+Get-AzsDrive -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Format-Table Storagenode, Healthstatus, PhysicalLocation, Model, MediaType,  CapacityGB, CanPool, CannotPoolReason
+```
+
+![Azure Stack fiziksel diskler değiştirildi](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
+
+## <a name="check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktayı kullanarak sanal disk onarma durumunu denetleyin
  
-## <a name="check-the-status-of-virtual-disk-repair"></a>Sanal disk onarma durumunu denetleyin
- 
- Disk değiştirdikten sonra sanal disk sistem durumunu izleyebilir ve ayrıcalıklı uç nokta kullanarak işin ilerleme durumunu onarın. Ayrıcalıklı uç noktasına ağ bağlantısı olan herhangi bir bilgisayardan aşağıdaki adımları izleyin.
+Disk değiştirdikten sonra sanal disk sistem durumunu izleyebilir ve ayrıcalıklı uç nokta kullanarak işin ilerleme durumunu onarın. Ayrıcalıklı uç noktasına ağ bağlantısı olan herhangi bir bilgisayardan aşağıdaki adımları izleyin.
 
 1. Bir Windows PowerShell oturumu açın ve ayrıcalıklı uç noktasına bağlanın.
     ```powershell
@@ -74,7 +101,10 @@ Disk değiştirdikten sonra Azure Stack, otomatik olarak yeni disk bulur ve sana
     ```
       ![PowerShell Get-StorageJob komutunun çıktısı](media/azure-stack-replace-disk/GetStorageJobOutput.png)
 
-## <a name="troubleshoot-virtual-disk-repair"></a>Sanal disk onarım sorunlarını giderme
+4. Azure Stack sistem durumunu doğrulayın. Yönergeler için [Azure Stack doğrulama sistem durumu](azure-stack-diagnostic-test.md).
+
+
+## <a name="troubleshoot-virtual-disk-repair-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktayı kullanarak sanal disk onarım sorunlarını giderme
 
 Sanal disk onarma, işi takılan, olarak gösterilir ve işi yeniden başlatmak için aşağıdaki komutu çalıştırın:
   ```powershell

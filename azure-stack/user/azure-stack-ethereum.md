@@ -5,19 +5,19 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/04/2019
+ms.date: 06/03/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.lastreviewed: 02/04/2019
-ms.openlocfilehash: fe465abed3d8fd506df23534cd4139b39978111c
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 06/03/2019
+ms.openlocfilehash: 8f173ad486ed7fc1a4dae3c9a1c57f77ca623f0d
+ms.sourcegitcommit: 80775f5c5235147ae730dfc7e896675a9a79cdbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64986273"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66459086"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Azure Stack'te bir Ethereum blok zinciri ağ dağıtma
 
@@ -97,7 +97,7 @@ Consortium lider şablonu ağ ilk üyenin ayak izini yapılandırır.
     ---------------|-------------|----------------|-------------
     Abonelik | Aboneliği Konsorsiyum ağı dağıtmak için | | Tüketim abonelik
     Kaynak Grubu | Hangi Konsorsiyum ağı dağıtmak kaynak grubu. | | EthereumResources
-    Location | Kaynak grubu için bir Azure bölgesi. | | yerel
+    Location | Kaynak grubu için bir Azure bölgesi. | | Yerel
 
 8. **Oluştur**’u seçin.
 
@@ -145,7 +145,7 @@ Lider'ın dağıtımı doğrulamak için lider'ın yönetici sitesi göz atın. 
     ---------------|-------------|----------------|-------------
     Abonelik | Aboneliği Konsorsiyum ağı dağıtmak için | | Tüketim abonelik
     Kaynak Grubu | Hangi Konsorsiyum ağı dağıtmak kaynak grubu. | | MemberResources
-    Location | Kaynak grubu için bir Azure bölgesi. | | yerel
+    Location | Kaynak grubu için bir Azure bölgesi. | | Yerel
 
 8. **Oluştur**’u seçin.
 
@@ -183,7 +183,7 @@ Bu şablon, uzak bir üyesine öncü bir bağlantı oluşturur.
     CONNECTIONSHAREDKEY | Önceden oluşturulmuş bir gizli dizi arasında bağlantı kurma Konsorsiyum ağı üyeleri.  | |
     REMOTEMEMBERNVAPUBLICIP | Üyenin NVA IP adresi. Bu değeri üyenin dağıtım çıkışı üzerinde bulunabilir. | |
     MEMBERNVAPRIVATEIP | Lider'ın özel NVA IP adresi. Bu değer, öncü'nın dağıtım çıkışı üzerinde bulunabilir. | |
-    KONUM | Azure Stack ortamınıza konumu. | | yerel
+    KONUM | Azure Stack ortamınıza konumu. | | Yerel
     BASEURL | Şablon için temel URL. | Dağıtım şablonlarını özelleştirmek istediğiniz sürece varsayılan değeri kullanın. | 
 
 7. **Tamam**’ı seçin.
@@ -195,7 +195,7 @@ Bu şablon, uzak bir üyesine öncü bir bağlantı oluşturur.
     ---------------|-------------|----------------|-------------
     Abonelik | Öncü kişinin abonelik. | | Tüketim abonelik
     Kaynak Grubu | Öncü ait kaynak grubu. | | EthereumResources
-    Location | Kaynak grubu için bir Azure bölgesi. | | yerel
+    Location | Kaynak grubu için bir Azure bölgesi. | | Yerel
 
 8. **Oluştur**’u seçin.
 
