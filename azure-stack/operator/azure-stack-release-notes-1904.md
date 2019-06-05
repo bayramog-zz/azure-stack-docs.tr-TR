@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: ''
 ms.lastreviewed: 05/30/2019
-ms.openlocfilehash: 770d3bc462750816e55f1c224496d9dde01f5a36
-ms.sourcegitcommit: 4e0b450c91c6515794b663a39f9a4b8b49999918
+ms.openlocfilehash: 8d9603184e824bff5efc2536b3c4a89fdd87d685
+ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66411623"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66506348"
 ---
 # <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
 
@@ -212,4 +212,4 @@ Müşteriler altyapı ağdan internet erişimi olan sistemlerle **güncelleştir
 - Azure Stack güncelleştirmeleriyle uygulama hakkında daha fazla bilgi için bkz. [güncelleştirmelerini Azure Stack'te](azure-stack-apply-updates.md).
 - Azure Stack tümleşik sistemleri ve desteklenen bir duruma sisteminizi tutmak için yapmanız gerekenlere bakım ilkeyi gözden geçirmek için bkz: [Azure Stack hizmet İlkesi](azure-stack-servicing-policy.md).  
 - Ayrıcalıklı uç noktasına (CESARETLENDİRİCİ) izlemek ve güncelleştirmelerini sürdürmek üzere kullanmak için bkz [izleme ayrıcalıklı uç noktayı kullanarak Azure stack'teki güncelleştirmeleri](azure-stack-monitor-update.md).  
-- Sağlamak üzere anketi doldurmaya [sürüm notları geribildirim](https://forms.microsoft.com).
+

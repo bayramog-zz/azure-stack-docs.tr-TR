@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 83ece8d508e9fe6fa37d6711d5fb1c43fc2fd7b5
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 3f577ebd5a57b271a449b5db262ea70779ebdb3d
+ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64302820"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66506361"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Öğretici: oluşturma ve test aboneliği
 
@@ -45,7 +45,7 @@ Bir kullanıcı olarak bir teklife abone olmak için Azure Stack Kullanıcı Por
 
 1. Kullanıcı seçin ve portal oturum açma **bir abonelik edinmeniz**.
 
-   ![Abonelik edinin](media/azure-stack-subscribe-services/get-subscription.png)
+   ![Bir aboneliği edinin](media/azure-stack-subscribe-services/get-subscription.png)
 
 2. **Görünen Ad** alanına aboneliğiniz için bir ad yazın. Ardından **teklif** kullanılabilir teklif birini seçmeniz **bir teklif seçin** bölümü. Ardından **Oluştur**’u seçin.
 

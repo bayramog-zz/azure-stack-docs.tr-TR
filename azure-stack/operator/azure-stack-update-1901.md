@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: 71984d89bf98b93af28c51aef6599f5df176f8da
-ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
+ms.openlocfilehash: afa011ca40ea0ca7cbd899f8d3f15fb0512a6811
+ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66469105"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66506326"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 güncelleştirme
 
@@ -46,6 +46,10 @@ Azure Stack 1901 güncelleştirmenin yapı numarasıdır **1.1901.0.95** veya **
 > Üzerinde 1811 olan bağlı müşteriler Yönetici portalı'nda kullanılabilir yeni 1901 (1.1901.0.99) paketi otomatik olarak görür ve hazır olduğunuzda yüklemeniz. Bağlantısı kesilmiş müşteriler indirebilir ve aynı işlemi kullanarak yeni 1901 paketini içeri aktarma [burada açıklanan](azure-stack-apply-updates.md).
 >
 > Sonraki tam veya düzeltme paketi yüklerken 1901 her iki sürümü ile müşteriler etkilenmeyecektir.
+
+### <a name="update-type"></a>Güncelleştirme türü
+
+Azure Stack 1901 güncelleştirme derleme türü **tam**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi.
 
 ## <a name="hotfixes"></a>Düzeltmeler
 

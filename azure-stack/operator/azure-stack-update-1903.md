@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/20/2019
-ms.openlocfilehash: e2560fd1e6418c9669f94f23ea1f6867e9c907a3
-ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
+ms.openlocfilehash: 972b47e5c8787d41d918544f220e082b9ac2d69d
+ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66469083"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66506283"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 güncelleştirme
 
@@ -39,6 +39,10 @@ Gördüğünüz [Azure Stack eski sürümlerinin sürüm notları TechNet Galeri
 ## <a name="build-reference"></a>Yapı Başvurusu
 
 Azure Stack 1903 güncelleştirmenin yapı numarasıdır **1.1903.0.35**.
+
+### <a name="update-type"></a>Güncelleştirme türü
+
+Azure Stack 1903 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi. 1903 güncelleştirmeyi tamamlamak gereken beklenen süre yaklaşık 16 saat, ancak tam süreleri değişebilir. Bu çalışma zamanı yaklaşık 1903 güncelleştirmeye özgüdür ve diğer Azure Stack güncelleştirmeler karşılaştırılmalıdır değil.
 
 > [!IMPORTANT]
 > 1903 yükü ASDK yayın içermez.
@@ -60,8 +64,6 @@ Azure Stack düzeltmeleri yalnızca Azure Stack tümleşik sistemleri için geç
 - **1903**: [KB 4500638 - Azure Stack düzeltme 1.1903.2.39](https://support.microsoft.com/help/4500638)
 
 ## <a name="improvements"></a>Geliştirmeleri
-
-- 1903 güncelleştirme yükü temel işletim sistemini barındıran Azure Stack içermeyen bileşenleri Azure Stack için bir güncelleştirme içerir. Bu, Kapsamınızın belirli güncelleştirmeler sağlar. Sonuç olarak, beklenen bu alır 1903 güncelleştirmesinin tamamlanması daha az zaman (yaklaşık 16 saat, ancak tam süreleri değişebilir). Çalışma zamanı bu azalma 1903 güncelleştirmesi için özeldir ve sonraki güncelleştirmeler işletim sistemi farklı çalışma zamanlarını olduğunu belirtmek için güncelleştirmeleri içerebilir. Gelecekteki güncelleştirmelerin güncelleştirmenin tamamlanması dahil yüküne bağlı olarak beklenen süresini üzerinde benzer yönergeler sağlar.
 
 - Ağlarla ilgili değişiklikler önleyen bir hata düzeltildi **boşta kalma zaman aşımı (dakika)** değerini bir **genel IP adresi** etki alanından. Yaptığınız değişiklikleri bağımsız olarak, 4 dakika için varsayılan değer, böylece daha önce bu değer değişiklikler, yoksayıldı. Bu ayar, etkin tutma iletileri göndermek için istemcileri kullanmadan bir TCP bağlantı tutmak için kaç dakika açın denetler. Bu hata yalnızca örnek etkilenen Not düzeyi genel IP'ler, bir yük dengeleyiciye atanan değil genel IP'ler.
 

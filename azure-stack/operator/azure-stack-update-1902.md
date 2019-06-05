@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 67e0981d5fbd1d6872c9115b8becd2d5ec8b5d8e
-ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
+ms.openlocfilehash: 4a69ece2b97fca13a87819dce6e02e8971121944
+ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66469112"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66506299"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 güncelleştirme
 
@@ -39,6 +39,10 @@ Gördüğünüz [Azure Stack eski sürümlerinin sürüm notları TechNet Galeri
 ## <a name="build-reference"></a>Yapı Başvurusu
 
 Azure Stack 1902 güncelleştirmenin yapı numarasıdır **1.1902.0.69**.
+
+### <a name="update-type"></a>Güncelleştirme türü
+
+Azure Stack 1902 güncelleştirme derleme türü **tam**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi.
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
