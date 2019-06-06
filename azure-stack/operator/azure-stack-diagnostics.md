@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 05/29/2019
 ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: bc5710e0994480d7aa8b0496509ad2755bc9c9ac
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 98ad556bf1b0b5f0297cb7964cd9911a50145496
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268621"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691767"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack tanılama araçları
 
@@ -85,21 +85,21 @@ if($s)
 
 * Tüm roller için tüm günlükleri toplayın:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred
+  ```
 
 * Günlükleri VirtualMachines ve BareMetal rollerdeki verileri toplar:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
+  ```
 
 * Günlük VirtualMachines ve BareMetal rollerden son 8 saat boyunca günlük dosyaları için filtreleme tarihi olan toplama:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
 
 * Günlük VirtualMachines ve BareMetal rollerden 8 saat önce önce 2 saat arasındaki zaman aralığı için günlük dosyaları için filtreleme tarihi olan toplama:
 
@@ -110,14 +110,17 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
 * Günlükleri toplayabilir ve bunları belirtilen Azure depolama blob kapsayıcısında yer depolar. Bu işlem genel sözdizimi aşağıdaki gibidir:
 
   ```powershell
-  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -OutputSasUri "<Blob service SAS Uri>"
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
   ```
 
   Örneğin:
 
   ```powershell
-  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>"
+  Get-AzureStackLog -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS token>"
   ```
+
+  > [!NOTE]
+  > Bu yordamın Microsoft Support bir servis talebi açın ve günlükleri karşıya yüklemek için sorulan yararlı olur. ERCS sanal makineden erişilebilir bir SMB paylaşımına sahip değildir ve ERCS sanal makinenizin internet erişimi yok bile Azure Stack aktarım günlükleri için blob depolama hesabı oluşturma ve bu günlükleri almak ve bunları Microsoft'a yüklemek için istemcinizi'i kullanın.  
 
   Depolama hesabı için SAS belirteci oluşturmak için aşağıdaki izinler gereklidir:
 
@@ -136,9 +139,6 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
   8. Gerekli izinleri seçin **okuma**, **yazma**, ve **listesi**.
   9. **Oluştur**’u seçin.
   10. Paylaşılan erişim imzası alırsınız. URL bölümü kopyalayın ve bunu sağlamak `-OutputSasUri` parametresi.
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
-```
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>ASDK hem tümleşik sistemler için parametre konuları
 
@@ -170,7 +170,7 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
   |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
   |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker|
   |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing|
-  |ACSMonitoringService  |Etki alanı                         |KeyVaultInternalDataPlane      |SeedRingServices|
+  |ACSMonitoringService  |Etki Alanı                         |KeyVaultInternalDataPlane      |SeedRingServices|
   |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB|
   |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL|
   |ACSTableServer        |EventRP                        |MetricsAdminRP                 |SRP   |

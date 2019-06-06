@@ -15,22 +15,22 @@ ms.date: 04/15/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 9359c1393229709fc77ee08216a80a26de9135dc
-ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
+ms.openlocfilehash: a10f034e05e97942a6c20d019d0d1930f49f8c81
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252008"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691446"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile hazırlanmış veri analizi çözümü oluşturma 
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Çoklu tesis kuruluşların taleplerini karşılamak üzere hem şirket içi hem de genel bulut ortamları kullanmayı öğrenin. Azure Stack toplama, işleme, depolama ve özellikle güvenlik, gizlilik, şirket ilkesi ve Mevzuat gereklilikleri konumlar arasında farklılık gösterebilir, yerel ve uzak veri dağıtmak için hızlı, güvenli ve esnek bir çözüm sunar. ve kullanıcılar.
+Çoklu tesis kuruluşların taleplerini karşılamak üzere hem şirket içi hem de genel bulut ortamları kullanmayı öğrenin. Azure Stack, toplama, işleme, depolama ve yerel ve uzak veri dağıtmak için hızlı, güvenli ve esnek bir çözüm sunar. Bu, güvenlik, gizlilik, şirket ilkesi ve Mevzuat gereklilikleri konumları ve kullanıcılar arasında farklılık gösterebilir zaman önemlidir.
 
 Bu düzende, müşterilerinizin noktasında koleksiyonu gerekir ve böylece hızlı kararlar hale getirilebilir veri topluyoruz. Genellikle bu veri toplama, Internet erişimi oluşur. Bağlantı kurulduğunda verilere ek Öngörüler elde etmek için bir kaynak kullanımı yoğun çözümlemesi gerekebilir. Genel bulut çok geç veya kullanılabilir olduğunda yine de verileri analiz edebilirsiniz.
 
-Bu öğreticide, bir örnek ortamı için derleme:
+Bu öğreticide, bir örnek ortama oluşturacaksınız:
 
 > [!div class="checklist"]
 > - Ham veri depolama blob'u oluşturun.
@@ -42,17 +42,17 @@ Bu öğreticide, bir örnek ortamı için derleme:
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik bulut bilgi işlem, şirket içi ortamınıza ve hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sunar.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir ve hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sağlar.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için gözden geçirmeleri karma uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
+> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bazı hazırlık, bu çözümü oluşturmak için gereklidir:
 
--   Yüklü ve çalışır durumda bir Azure Stack (daha fazla bilgi burada bulunabilir: [Azure Stack genel bakış](azure-stack-storage-overview.md)
+-   Yüklü ve çalışır durumda Azure Stack. Daha fazla bilgi için [Azure Stack genel bakış](azure-stack-storage-overview.md) makalesi.
 
--   Azure aboneliği. (Oluşturma bir [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
+-   Azure aboneliği. Yapabilecekleriniz [ücretsiz bir hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 -   [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/)'ni indirip yükleme.
 
@@ -104,7 +104,7 @@ Depolama hesabı ve blob kapsayıcısı, makine ve çalışan etkinlik, tesis ve
 
 4.  Seçin **depolama hesabı oluşturmak için Oluştur**.
 
-    ![Alternatif metin](media/azure-stack-solution-staged-data-analytics/image1.png)
+    ![Azure Stack'te depolama hesabı oluşturma](media/azure-stack-solution-staged-data-analytics/image1.png)
 
 5.  Oluşturulduktan sonra depolama hesabı adını seçin.
 
@@ -112,7 +112,7 @@ Depolama hesabı ve blob kapsayıcısı, makine ve çalışan etkinlik, tesis ve
 
 7.  Dikey pencerenin en üstünde seçin **+ kapsayıcı.** seçip **kapsayıcı**.
 
-    ![Alternatif metin](media/azure-stack-solution-staged-data-analytics/image2.png)
+    ![Azure Stack'te kapsayıcı seçin](media/azure-stack-solution-staged-data-analytics/image2.png)
 
 8.  Ad: **Seçiminiz**
 
@@ -130,7 +130,7 @@ Verileri temizleme Azure yığını, Azure'a taşımak için yeni bir Azure Stac
 2. **Tüm Hizmetler**’i seçin.
 3. Seçin **işlev uygulamaları** içinde **Web + mobil** grubu.
 
-4.  Görüntünün altındaki tabloda belirtilen ayarları kullanarak bir işlev uygulaması oluşturun.
+4.  Aşağıdaki tabloda belirtilen ayarları kullanarak bir işlev uygulaması oluşturun:
 
     | Ayar | Önerilen değer | Açıklama |
     | ---- | ---- | ---- |
@@ -153,25 +153,25 @@ Verileri temizleme Azure yığını, Azure'a taşımak için yeni bir Azure Stac
 
 6.  Portalın sağ üst köşesindeki Bildirim simgesini seçin ve **Dağıtım başarılı** iletisini bekleyin.
 
-    ![Yeni işlev uygulaması ayarlarını tanımlama](media/azure-stack-solution-staged-data-analytics/image7.png)
+    ![Dağıtım başarılı - yeni işlevi](media/azure-stack-solution-staged-data-analytics/image7.png)
 
 7.  Seçin **kaynağa Git** yeni işlev uygulaması görüntülemek için.
 
-![İşlev uygulaması başarıyla oluşturuldu.](media/azure-stack-solution-staged-data-analytics/image8.png)
+![Görünüm yeni işlev uygulaması](media/azure-stack-solution-staged-data-analytics/image8.png)
 
 ### <a name="add-a-function-to-the-azure-stack-function-app"></a>Azure Stack işlev uygulamasına bir işlev Ekle
 
 1.  Üzerine tıklayarak yeni bir işlev oluşturma **işlevleri**, ardından **+ yeni işlev** düğmesi.
 
-    ![Alternatif metin](media/azure-stack-solution-staged-data-analytics/image3.png)
+    ![Yeni bir işlev oluşturma](media/azure-stack-solution-staged-data-analytics/image3.png)
 
 2.  Seçin **Zamanlayıcı tetikleyicisi**.
 
-    ![Alternatif metin](media/azure-stack-solution-staged-data-analytics/image4.png)
+    ![Zamanlayıcı tetikleyicisi için yeni işlev](media/azure-stack-solution-staged-data-analytics/image4.png)
 
-3.  Seçin **C\#**  dil ve işlev adı: `upload-to-azure`  Zamanlamayı ayarlayın `0 0 * * * *`, hangi CRON içinde bir kez bir saat gösterimidir.
+3.  Seçin **C\#**  dil ve işlev adı: `upload-to-azure`.  Zamanlamayı ayarlayın `0 0 * * * *`, hangi CRON içinde bir kez bir saat gösterimidir.
 
-    ![Alternatif metin](media/azure-stack-solution-staged-data-analytics/image5.png)
+    ![Yeni işlev ayarları](media/azure-stack-solution-staged-data-analytics/image5.png)
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Blob depolama ile tetiklenen bir işlev oluşturma
 
@@ -197,7 +197,7 @@ Verileri temizleme Azure yığını, Azure'a taşımak için yeni bir Azure Stac
 
 ### <a name="test-the-function"></a>İşlevi test etme
 
-1.  Azure portalında işlevine göz atın. Genişletin **günlükleri** sayfanın alt kısmındaki ve günlük akışını değil duraklatıldı emin olun.
+1.  Azure portalında işlevine göz atın. Genişletin **günlükleri** sayfanın alt kısmındaki ve günlük akışının duraklatılmış olmadığından emin olun.
 
 2.  Depolama Gezgini'ni açın ve bu bölümün başında oluşturduğunuz depolama hesabına bağlanın.
 
@@ -219,7 +219,7 @@ Azure Stack, blob ve kuyruk içeren bir depolama hesabı oluşturun.
 
 ### <a name="storage-blob--data-archiving"></a>Depolama Blob verileri arşivleme
 
-Bu depolama hesabında iki kapsayıcı kümelerinizi barındıracak. Bu, bir blob arşiv verileri tutmak için kullanılan ve ana ofis dağıtım için atanmış veri işleme için kullanılan bir sıra kapsayıcılardır.
+Bu depolama hesabında iki kapsayıcı kümelerinizi barındıracak. Bu kapsayıcıların bir blob arşiv verileri tutmak için kullanılan ve ana ofis dağıtım için atanmış veri işleme için kullanılan bir sıra oluşur.
 
 Arşiv depolama olarak başka bir depolama hesabı ve blob kapsayıcısı oluşturmak için yukarıda özetlenen ayarları ve adımları kullanın.
 
@@ -233,9 +233,9 @@ Arşiv depolama olarak başka bir depolama hesabı ve blob kapsayıcısı oluşt
 
 4.  Seçin **Tamam.**
 
-    ![Alternatif metin](media/azure-stack-solution-staged-data-analytics/image14.png)
+    ![Depolama kuyruğu](media/azure-stack-solution-staged-data-analytics/image14.png)
 
-    ![Alternatif metin](media/azure-stack-solution-staged-data-analytics/image15.png)
+    ![İçin yeni bir depolama kuyruğu adını ekleyin](media/azure-stack-solution-staged-data-analytics/image15.png)
 
 ## <a name="create-a-queue-triggered-function"></a>Kuyruk ile tetiklenen bir işlev oluşturma
 
@@ -253,7 +253,7 @@ Arşiv depolama olarak başka bir depolama hesabı ve blob kapsayıcısı oluşt
 
 ## <a name="test-the-queue-triggered-function"></a>Test kuyruk ile tetiklenen işlev
 
-1. Azure Stack portalında işlevine göz atın. Genişletin **günlükleri** sayfanın alt kısmındaki ve günlük akışını değil duraklatıldı emin olun.
+1. Azure Stack portalında işlevine göz atın. Genişletin **günlükleri** sayfanın alt kısmındaki ve günlük akışının duraklatılmış olmadığından emin olun.
 
 2. Depolama Gezgini'ni açın ve bu bölümün başında oluşturduğunuz depolama hesabına bağlanın.
 

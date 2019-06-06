@@ -1,10 +1,10 @@
 ---
-title: Şablonları PowerShell kullanarak Azure Stack'te dağıtma | Microsoft Docs
-description: Bir şablonu PowerShell kullanarak Azure Stack'e dağıtma.
+title: Azure Stack'te PowerShell kullanarak şablon dağıtmak | Microsoft Docs
+description: Azure Stack'te PowerShell kullanarak bir şablonu dağıtın.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: 12fe32d7-0a1a-4c02-835d-7b97f151ed0f
 ms.service: azure-stack
@@ -12,19 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/08/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 04/08/2019
+ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9c1df99557293030dc0b1c0693b0bbc517a3f0ff
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: be325c41023c859ee70b8ee932673db75f41ec4b
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298607"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691429"
 ---
-# <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Bir şablonu PowerShell kullanarak Azure Stack'e dağıtma
+# <a name="deploy-a-template-using-powershell-in-azure-stack"></a>Azure Stack'te PowerShell kullanarak bir şablonu dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -70,4 +69,4 @@ Bu örnekte **AzureRM** depolanan Github'da PowerShell cmdlet'leri ve bir şablo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şablonları Visual Studio ile dağıtma](azure-stack-deploy-template-visual-studio.md)
+- [Visual Studio ile şablon dağıtma](azure-stack-deploy-template-visual-studio.md)

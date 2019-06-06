@@ -1,6 +1,6 @@
 ---
-title: Bu öğreticide, Azure Stack şablon kullanarak VM oluşturma | Microsoft Docs
-description: Önceden tanımlanmış bir şablon ve GitHub özel bir şablon kullanarak VM oluşturmak için ASDK kullanmayı açıklar.
+title: Topluluk şablon kullanarak VM oluşturma | Microsoft Docs
+description: Azure Stack geliştirme Seti'ni (ASDK) tanımlanmış bir şablon ve GitHub özel bir şablon kullanarak VM oluşturmak için kullanmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,18 +13,18 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: a663a5c45c542ac4bfa19266c73066f8e41ba5d8
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: d82cdb1cccd52cc5e4c11571d85914be3f79a74e
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64303348"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691565"
 ---
-# <a name="tutorial-create-a-vm-using-a-community-template"></a>Öğretici: topluluk şablonu kullanarak bir VM oluşturma
+# <a name="tutorial-create-a-vm-using-a-community-template"></a>Öğretici: Topluluk şablon kullanarak VM oluşturma
 
 Bir Azure Stack operatörü veya kullanıcı olarak kullanarak bir sanal makine (VM) oluşturabilirsiniz [özel GitHub hızlı başlangıç şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates) Azure Stack marketini şablondan el ile dağıtma yerine.
 
@@ -37,23 +37,23 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="azure-stack-quickstart-templates"></a>Azure Stack hızlı başlangıç şablonları
 
-Azure Stack hızlı başlangıç şablonları GitHub depolanan [genel Azure Stack hızlı başlangıç şablonları depo](https://github.com/Azure/AzureStack-QuickStart-Templates). Bu depo, Microsoft Azure Stack geliştirme Seti'ni (ASDK) ile test edilmiştir Azure Resource Manager dağıtım şablonlarını içerir. Azure Stack'i değerlendirin ve ASDK ortamınızda kolaylaştırmak için bunları kullanabilirsiniz.
+Azure Stack hızlı başlangıç şablonları GitHub depolanan [genel Azure Stack hızlı başlangıç şablonları depo](https://github.com/Azure/AzureStack-QuickStart-Templates). Bu deponun (depo), Microsoft Azure Stack geliştirme Seti'ni (ASDK) ile test edilmiştir Azure Resource Manager dağıtım şablonlarını içerir. Azure Stack'i değerlendirin ve ASDK ortamınızda kolaylaştırmak için bunları kullanabilirsiniz.
 
 Zaman içinde çok sayıda GitHub kullanıcı 400'den fazla dağıtım şablonları koleksiyonu içinde elde edilen depoya katkıda buluna. Azure Stack için çeşitli ortamların nasıl dağıtabilirsiniz daha iyi anlamak için harika bir başlangıç noktası depodur.
 
 >[!IMPORTANT]
 > Bu şablonların bazılarını, topluluk üyeleri tarafından ve Microsoft tarafından oluşturulur. Her şablon, Microsoft değil, sahibi tarafından bir lisans sözleşmesi altında lisanslanır. Microsoft, bu şablonları için sorumlu değildir ve güvenlik, uyumluluk veya performansı incelemez. Topluluk Şablonları herhangi bir Microsoft destek programı veya hizmeti altında desteklenmez ve kullanıma sunulan ", hiçbir garanti olmaksızın olduğu gibi".
 
-Azure Resource Manager şablonlarını Github'da katkıda bulunmak isterseniz, katkılarınız için olun [AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) depo. Bu depo ve kendisine katkıda bulunma hakkında daha fazla bilgi için bkz: [Benioku dosyası](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md).
+Azure Resource Manager şablonlarını Github'da katkıda bulunmak isterseniz, katkılarınız için olun [AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) depo. Bu deponun ve kendisine katkıda bulunma hakkında daha fazla bilgi için bkz: [Benioku dosyası](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md).
 
 ## <a name="create-a-vm-using-a-custom-github-template"></a>Bir özel GitHub şablon kullanarak VM oluşturma
 
-Bu örnek öğreticide [101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) Azure Stack Hızlı Başlangıç şablonu, bir Ubuntu 16.04 sanal makinesini Azure Stack'te çalışan bir Kubernetes kümesini yönetmek için Minikube dağıtmak için kullanılır.
+Bu örnek öğreticide [101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) Azure Stack Hızlı Başlangıç şablonu, Azure Stack Minikube bir Kubernetes kümesini yönetmek için çalışan bir Ubuntu 16.04 VM dağıtmak için kullanılır.
 
-Minikube Kubernetes yerel olarak çalıştırılmasına olanak sağlayan bir araçtır. Minikube Kubernetes deneyin veya onunla geliştirme olanak tanıyarak, bir VM içinde tek düğümlü bir Kubernetes kümesi günlük çalıştırır. Bu, bir Linux VM'de çalışan basit, tek düğümlü Kubernetes kümesi destekler. Minikube çalıştıran tam olarak işlevsel bir Kubernetes kümesi almak için kullanılabilecek en hızlı ve en kolay yoludur. Bu, geliştiricilerin geliştirip test Kubernetes tabanlı uygulama dağıtımlarını yerel kendi makinelerinde olanak tanır. Bu mimari, Minikube VM hem ana hem de aracı düğümü bileşenlerinin yerel olarak çalıştırır:
+Minikube Kubernetes yerel olarak çalıştırılmasına olanak sağlayan bir araçtır. Minikube Kubernetes deneyin veya onunla geliştirme olanak tanıyarak, bir VM içinde tek düğümlü bir Kubernetes kümesi günlük çalıştırır. Bu, bir Linux VM'de çalışan basit, tek düğümlü Kubernetes kümesi destekler. Minikube çalıştıran tam olarak işlevsel bir Kubernetes kümesi almak için kullanılabilecek en hızlı ve en kolay yoludur. Bu, geliştiricilerin geliştirip test Kubernetes tabanlı uygulama dağıtımlarını yerel kendi makinelerinde olanak tanır. Bu mimari, yerel olarak hem ana ve aracı düğümü bileşenlerinin Minikube VM çalıştırır:
 
-* Zamanlayıcı, API sunucusu gibi ana düğüm bileşenleri ve [etcd sunucu](https://coreos.com/etcd/) adlı tek bir Linux işlem içinde çalıştırmak **LocalKube**.
-* Tam olarak normal bir aracı düğüm üzerinde çalışır gibi aracı düğümü bileşenlerinin docker kapsayıcıları içinde çalışır. Bir uygulama dağıtım açısından fark yoktur arasında bir Minikube veya normal bir Kubernetes kümesinde uygulama dağıtıldığında.
+* Ana düğüm bileşenleri Zamanlayıcı, API sunucusu gibi ve [etcd sunucu](https://coreos.com/etcd/) adlı tek bir Linux işlem içinde çalıştırmak **LocalKube**.
+* Tam olarak bir normal aracı düğüm üzerinde çalışır gibi aracı düğümü bileşenlerinin docker kapsayıcıları içinde çalışır. Bir uygulama dağıtım açısından bir Minikube veya normal bir Kubernetes kümesinde uygulama dağıtma arasındaki fark yoktur.
 
 Bu şablon, aşağıdaki bileşenleri yükler:
 
@@ -83,15 +83,15 @@ Bu şablon, aşağıdaki bileşenleri yükler:
 
     ![Bir şablon seçin](media/azure-stack-create-vm-template/4.PNG)
 
-5. JSON şablonu değişiklikler yapmak istiyorsanız bunu yapabilirsiniz. Aksi takdirde veya tamamlandığında seçin **Kaydet** kapatmak için **şablonu Düzen** iletişim.
+5. JSON şablonu değişiklikler yapmak istiyorsanız, bunu yapabilirsiniz. Aksi takdirde veya tamamlandığında seçin **Kaydet** kapatmak için **şablonu Düzen** iletişim.
 
     ![Şablonu kaydetme](media/azure-stack-create-vm-template/5.PNG)
 
-6. Seçin **parametreleri**doldurun veya kullanılabilir alanları gerektiği gibi değiştirin ve ardından **Tamam**. Abonelik kullanmak, oluşturmak veya mevcut bir kaynak grubu adı seçin ve ardından seçin **Oluştur** şablon dağıtımını başlatmak için.
+6. Seçin **parametreleri**doldurun veya kullanılabilir alanları gerektiği gibi değiştirin ve ardından **Tamam**.
 
     ![Parametreler](media/azure-stack-create-vm-template/6.PNG)
 
-7. Abonelik kullanmak, oluşturmak veya mevcut bir kaynak grubu adı seçin ve ardından seçin **Oluştur** şablon dağıtımını başlatmak için.
+7. Aboneliğini kullanma oluşturun veya var olan bir kaynak grubu adı seçin'i seçin. Ardından, **Oluştur** şablon dağıtımı başlatmak için.
 
     ![Abonelik seçin](media/azure-stack-create-vm-template/7.PNG)
 
@@ -112,7 +112,7 @@ Linux sanal makinesi başarıyla oluşturuldu, size Minikube başlatmak ve uygul
 
 2. Yükseltilmiş bir komut isteminden çalıştırın **mstsc.exe** Uzak Masaüstü Bağlantısı'nı açın ve önceki adımda bulunan Linux VM ortak IP adresine bağlanın. XRDP için oturum açmanız istendiğinde, sanal makine oluştururken belirttiğiniz kimlik bilgilerini kullanın.
 
-    ![Uzak](media/azure-stack-create-vm-template/10.PNG)
+    ![Remote](media/azure-stack-create-vm-template/10.PNG)
 
 3. Terminal öykünücü açın ve Minikube başlatmak için aşağıdaki komutları girin:
 
@@ -124,11 +124,11 @@ Linux sanal makinesi başarıyla oluşturuldu, size Minikube başlatmak ve uygul
 
     ![Çalıştırılan komutlar](media/azure-stack-create-vm-template/11.PNG)
 
-4. Web tarayıcısı açın ve Kubernetes Panosu adresini ziyaret edin. Tebrikler, artık tam olarak çalışan sahipsiniz Minikube kullanarak Kubernetes yüklemesini!
+4. Bir tarayıcı açın ve Kubernetes Panosu adresine gidin. Tebrikler, artık tam olarak çalışan sahipsiniz Minikube kullanarak Kubernetes yüklemesini!
 
     ![Pano](media/azure-stack-create-vm-template/12.PNG)
 
-5. Örnek bir uygulama dağıtmak için resmi Kubernetes belgeleri sayfasını ziyaret edin ve önceden önceki adımlardan birinde oluşturduğunuz olarak "Minikube küme oluşturma" bölümüne atlayın. Adresindeki "Node.js uygulamanızı oluşturma" bölümüne atla https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/.
+5. Örnek bir uygulama dağıtmak için resmi Kubernetes belgeleri sayfasını ziyaret edin ve bir önceden oluşturduğunuz olarak "Minikube küme oluşturma" bölümüne atlayın. Adresindeki "Node.js uygulamanızı oluşturma" bölümüne atla https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

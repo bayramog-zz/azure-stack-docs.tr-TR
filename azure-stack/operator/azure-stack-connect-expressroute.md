@@ -14,12 +14,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: a039830e01b85ec5e8d9c66a0c815a38d9c694f8
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 8f8d7ee82890788f60266f671bcc4041795c075e
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985743"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691643"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Azure Stack, Azure ExpressRoute kullanarak Azure'a bağlanma
 
@@ -33,7 +33,7 @@ Bu makale bir öğretici olarak kullanın ve aynı test ortamını ayarlamak iç
 
 Azure ExpressRoute, bağlantı sağlayıcı tarafından sağlanan özel bir bağlantı üzerinden, şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute VPN bağlantısını genel internet üzerinden değil.
 
-Azure ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute overview]((/azure/expressroute/expressroute-introduction).
+Azure ExpressRoute hakkında daha fazla bilgi için bkz. [Expressroute'a genel bakış](/azure/expressroute/expressroute-introduction).
 
 ### <a name="assumptions"></a>Varsayımlar
 
@@ -47,7 +47,7 @@ Bu makalede, olduğunu varsayar:
 
 Azure Stack ve Azure ExpressRoute kullanarak bağlanmak için aşağıdaki gereksinimleri karşılaması gerekir:
 
-* Bir sağlanan [ExpressRoute circuit]((/azure/expressroute/expressroute-circuit-peerings) aracılığıyla [bağlantı provider]((/azure/expressroute/expressroute-locations).
+* Sağlanan bir [ExpressRoute bağlantı hattı](/azure/expressroute/expressroute-circuit-peerings) aracılığıyla bir [bağlantı sağlayıcısı](/azure/expressroute/expressroute-locations).
 * Azure'da bir ExpressRoute bağlantı hattı ve sanal ağlar oluşturmak için bir Azure aboneliği.
 * Yönlendirici gerekir:
   * LAN arabirimini ve Azure Stack çok kullanıcılı ağ geçidi arasında siteden siteye VPN bağlantılarını destekler.
@@ -167,7 +167,7 @@ VPN bağlantısının diğer ucundaki uzak ağ geçidini yerel ağ geçidi kayna
 1. Altında **Azure Marketi**seçin **ağ**.
 1. Kaynak listesinden **Bağlantı**’yı seçin.
 1. Altında **Temelleri**, seçin **siteden siteye (IPSec)** olarak **bağlantı türü**.
-1. Seçin **abonelik**, **kaynak grubu**, ve **konumu**. **Tamam** düğmesine tıklayın.
+1. Seçin **abonelik**, **kaynak grubu**, ve **konumu**. **Tamam**'ı tıklatın.
 1. Altında **ayarları**seçin **sanal ağ geçidi**ve ardından **GW1**.
 1. Seçin **yerel ağ geçidi**ve ardından **ER yönlendirici GW**.
 1. İçinde **bağlantı adı** alanına **ConnectToAzure**.
@@ -324,22 +324,22 @@ Azure'da sanal ağlar oluşturma hakkında daha fazla bilgi için bkz. [sanal a�
 
 ### <a name="configure-an-expressroute-circuit"></a>Bir ExpressRoute bağlantı hattını yapılandırın
 
-1. [ExpressRoute önkoşulları & checklist]((/azure/expressroute/expressroute-prerequisites). ExpressRoute önkoşulları gözden geçirin
+1. ExpressRoute önkoşulları gözden geçirin [ExpressRoute önkoşulları ve denetim listesi](/azure/expressroute/expressroute-prerequisites).
 
-1. Adımları [oluşturun ve Azure aboneliğinizi kullanarak ExpressRoute devresi oluşturma bir ExpressRoute circuit]((/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) değiştirebilirsiniz.
+1. Bağlantısındaki [oluşturun ve bir ExpressRoute bağlantı hattını değiştirme](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) Azure aboneliğinizi kullanarak ExpressRoute devresi oluşturma.
 
    >[!NOTE]
    >Bunlar ExpressRoute devreniz kendi sonunda ayarlayabilirsiniz bu nedenle, bağlantı hattı için hizmet anahtarı hizmetinize verin.
 
-1. Adımları [oluşturma ve değiştirme için bir ExpressRoute bağlantı hattında özel eşlemesini yapılandırmak üzere bir ExpressRoute circuit]((/azure/expressroute/expressroute-howto-routing-portal-resource-manager) eşlemesi.
+1. Bağlantısındaki [oluşturun ve bir ExpressRoute bağlantı hattı için eşleme değiştirme](/azure/expressroute/expressroute-howto-routing-portal-resource-manager) bir ExpressRoute bağlantı hattında özel eşdüzey hizmet sağlama yapılandırmak için.
 
 ### <a name="create-the-virtual-network-gateway"></a>Sanal ağ geçidini oluşturma
 
-[PowerShell]((/azure/expressroute/expressroute-howto-add-gateway-resource-manager) merkez sanal ağı ExpressRoute için sanal ağ geçidi oluşturma kullanarak ExpressRoute için sanal ağ geçidi yapılandırma. adımları izleyin
+Bağlantısındaki [PowerShell kullanarak ExpressRoute için sanal ağ geçidi yapılandırma](/azure/expressroute/expressroute-howto-add-gateway-resource-manager) merkez sanal ağı ExpressRoute için sanal ağ geçidi oluşturma.
 
 ### <a name="create-the-connection"></a>Bağlantı oluşturma
 
-ExpressRoute bağlantı hattı merkez sanal ağa bağlamak için [ExpressRoute circuit]((/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager) sanal bir ağa bağlayın. adımları izleyin.
+ExpressRoute bağlantı hattı merkez sanal ağa bağlamak için adımları izleyin. [bir sanal ağı ExpressRoute devresine bağlama](/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager).
 
 ### <a name="peer-the-vnets"></a>Sanal ağları eşleme
 

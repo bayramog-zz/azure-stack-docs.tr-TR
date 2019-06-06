@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 05/17/2019
 ms.author: patricka
 ms.lastreviewed: 05/17/2019
-ms.openlocfilehash: 57c5547c37fee58b37f8386983d43556ed0fd515
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: b08d2b59653b099b0cd0a314347ea2667fa42ca8
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268790"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691306"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Uygulamalara Azure Stack erişimi sağlama
 
@@ -45,9 +45,9 @@ Hizmet sorumlusu oluşturduktan sonra AD FS ve Azure Active Directory genel adı
 
 ## <a name="manage-service-principal-for-azure-ad"></a>Azure AD hizmet sorumlusunu Yönet
 
-Azure Active Directory (Azure AD) ile Azure Stack, kimlik yönetimi hizmeti olarak dağıttıysanız, Azure için gibi hizmet sorumluları oluşturabilirsiniz. Bu bölümde Portalı aracılığıyla adımların nasıl gerçekleştirileceğini gösterir. Sahip olduğunuz denetimi [Azure AD permissions]((/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) başlamadan önce gerekli.
+Azure Active Directory (Azure AD) ile Azure Stack, kimlik yönetimi hizmeti olarak dağıttıysanız, Azure için gibi hizmet sorumluları oluşturabilirsiniz. Bu bölümde Portalı aracılığıyla adımların nasıl gerçekleştirileceğini gösterir. Sahip olduğunuz denetimi [Azure AD izinleri gerekli](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) başlamadan önce.
 
-### <a name="create-service-principal"></a>Hizmet sorumlusu oluştur
+### <a name="create-service-principal"></a>Hizmet sorumlusu oluşturma
 
 Bu bölümde, Azure AD'de uygulamanızı temsil eden bir uygulama (hizmet sorumlusu) oluşturma.
 
@@ -59,7 +59,7 @@ Bu bölümde, Azure AD'de uygulamanızı temsil eden bir uygulama (hizmet soruml
 
 Uygulamanız için bir hizmet sorumlusu oluşturdunuz.
 
-### <a name="get-credentials"></a>Kimlik bilgilerini al
+### <a name="get-credentials"></a>Kimlik bilgilerini alma
 
 Programlamayla oturum açılırken, kimlik, uygulamanız için ve bir Web uygulaması için kullandığınız / API, bir kimlik doğrulama anahtarı. Bu değerleri almak için aşağıdaki adımları kullanın:
 
@@ -362,7 +362,7 @@ Aşağıdaki bilgiler gereklidir Otomasyon parametreler için giriş olarak:
 
 ## <a name="assign-a-role"></a>Rol atama
 
-Aboneliğinizdeki kaynaklara erişmek için uygulamaya bir rol atamanız gerekir. Uygulama için doğru izinlere rolünü karar verin. Kullanılabilir roller hakkında bilgi edinmek için bkz [RBAC: Yerleşik Roles]((/azure/role-based-access-control/built-in-roles).
+Aboneliğinizdeki kaynaklara erişmek için uygulamaya bir rol atamanız gerekir. Uygulama için doğru izinlere rolünü karar verin. Kullanılabilir roller hakkında bilgi edinmek için [RBAC: Yerleşik roller](/azure/role-based-access-control/built-in-roles).
 
 Abonelik, kaynak grubu veya kaynak düzeyinde kapsamı ayarlayabilirsiniz. Daha düşük düzeyde kapsam için izinler devralınmıştır. Örneğin, bir kaynak grubu için okuyucu rolüne uygulamaya ekleme kaynak grubunu ve içerdiği tüm kaynakları okuyun anlamına gelir.
 

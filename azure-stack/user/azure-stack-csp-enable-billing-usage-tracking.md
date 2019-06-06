@@ -1,6 +1,6 @@
 ---
-title: Azure Stack aboneliğinizi yönetmek bir bulut hizmeti sağlayıcısı etkinleştirme | Microsoft Docs
-description: Azure Stack'te bir abonelik erişmek hizmet sağlayıcısı'nı etkinleştirin.
+title: Azure Stack abonelik yönetmek bulut hizmet sağlayıcınız izin | Microsoft Docs
+description: İzin, bulut hizmet sağlayıcısı (Azure Stack aboneliğinizi yönetmek CSP) hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 05/20/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
-ms.openlocfilehash: 209a0da31d4bd5b519771f68f4bddcbb833284fa
-ms.sourcegitcommit: d2012e765c3fa5bccb4756d190349e890f9f48bd
+ms.openlocfilehash: 0dc162dd1d4021323f1bf80ad4f89fc721e575a9
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65941220"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691982"
 ---
-# <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>Azure Stack aboneliğinizi yönetmek bir bulut hizmeti sağlayıcısı etkinleştir
+# <a name="let-your-cloud-service-provider-manage-your-azure-stack-subscription"></a>Bulut hizmet sağlayıcınız Azure Stack abonelik yönetmek istiyorum
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri*
 
@@ -38,16 +38,18 @@ Bir bulut hizmeti sağlayıcısı (CSP) ile Azure Stack kullanırsanız, azure'd
 
 CSP olarak ekleme **kullanıcı** aboneliğinize.
 
-1. CSP ile Konuk kullanıcı ekleme **kullanıcı** Kiracı dizininize rol. Kullanıcı ekleme adımları için bkz: [Azure Active Directory'ye yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory)
-2. CSP, yerel Azure Stack aboneliğine sizin için oluşturur. Azure Stack kullanmaya başlamak hazır olursunuz.
+1. CSP ile Konuk kullanıcı ekleme **kullanıcı** Kiracı dizininize rol. Bir kullanıcı ekleme konusunda daha fazla yardım için bkz: [Azure Active Directory'ye yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory).
+
+2. CSP, yerel Azure Stack aboneliğine sizin için oluşturur. Azure Stack kullanmaya başlamak hazırsınız demektir.
 3. CSP, bunlar Ayrıca, kaynakları yönetebilir doğrulamak için aboneliğinizde bir kaynak oluşturmanız gerekir. Örneğin, yapabilirler [Azure Stack portal ile bir Windows sanal makinesi oluşturma](azure-stack-quick-windows-portal.md).
 
-## <a name="enable-the-cloud-service-provider-to-manage-your-subscription-using-rbac-rights"></a>RBAC haklarını kullanarak aboneliğinizi yönetmek bulut hizmeti sağlayıcısı etkinleştir
+## <a name="let-the-cloud-service-provider-manage-your-subscription-using-rbac-rights"></a>Bulut hizmeti sağlayıcısı RBAC haklarını kullanarak aboneliğinizi yönetmek istiyorum
 
 CSP olarak ekleme **sahibi** aboneliğinize.
 
-1. CSP, Kiracı dizinine Konuk kullanıcı olarak ekleyin. Kullanıcı ekleme adımları için bkz: [Azure Active Directory'ye yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory).
-2. Ekleme **sahibi** CSP Konuk kullanıcıya rol. CSP kullanıcıyı aboneliğinize eklemek adımları için bkz. [Use Role-Based erişim denetimi, Azure abonelik kaynaklarınıza erişimi yönetmek için](/azure/role-based-access-control/role-assignments-portal). CSP, yerel Azure Stack aboneliğine sizin için oluşturur. Azure Stack kullanmaya başlamak hazır olursunuz.
+1. CSP, Kiracı dizinine Konuk kullanıcı olarak ekleyin. Bir kullanıcı ekleme konusunda daha fazla yardım için bkz: [Azure Active Directory'ye yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory).
+
+2. Ekleme **sahibi** CSP Konuk kullanıcıya rol. Aboneliğinize bir CSP kullanıcı ekleme konusunda daha fazla yardım için bkz: [Use Role-Based erişim denetimi, Azure abonelik kaynaklarınıza erişimi yönetmek için](/azure/role-based-access-control/role-assignments-portal). CSP, yerel Azure Stack aboneliğine sizin için oluşturur. Azure Stack kullanmaya başlamak hazırsınız demektir.
 3. CSP kaynaklarınızı yönetebildiğini doğrulamak için aboneliğinizde bir kaynak oluşturmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

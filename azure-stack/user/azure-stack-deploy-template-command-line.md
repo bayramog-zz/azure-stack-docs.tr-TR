@@ -1,5 +1,5 @@
 ---
-title: Şablonları Azure Stack'te komut satırı ile dağıtma | Microsoft Docs
+title: Azure Stack komut satırında bir şablonla dağıtma | Microsoft Docs
 description: Şablonları Azure Stack'e dağıtma için platformlar arası komut satırı arabirimi (CLI) kullanmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.date: 05/09/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: d225e113a19dc62ce66df49d89273d00e2e35683
-ms.sourcegitcommit: 2b6a0b3b4dc63c26df3d0535d630d640ff232fb0
+ms.openlocfilehash: 92c9189f8144804f36e551ab89d8b4fc4c1f8598
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521111"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691374"
 ---
-# <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Şablonları komut satırını kullanarak Azure Stack'te dağıtma
+# <a name="deploy-a-template-with-the-command-line-in-azure-stack"></a>Şablon Azure Stack'te komut satırı ile dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -35,7 +35,7 @@ Azure Stack'te Azure Resource Manager şablonlarını dağıtmak için Azure kom
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Bu dosyaları karşıdan yüklendiği klasöre gidin ve şablonu dağıtmak için aşağıdaki komutu çalıştırın:
+Bu dosyalar indirilir ve şablonu dağıtmak için aşağıdaki komutu çalıştırın klasörüne gidin:
 
 ```azurecli
 az group create "cliRG" "local" -f azuredeploy.json -d "testDeploy" -e azuredeploy.parameters.json

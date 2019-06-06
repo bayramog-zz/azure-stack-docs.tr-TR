@@ -15,12 +15,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: bryanr
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: a35b16d2c862547ffed340f3e06dc769e373eb85
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 0932c1eb5f064d40841d9b056d869927e1144527
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64296682"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691660"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack'te çok kiracılılık
 
@@ -110,7 +110,7 @@ Register-AzSWithMyDirectoryTenant `
 
 Mary, Fabrikam kullanıcılar oturum açabilir ve Mary ekleme Mary'nin dizinine adımları tamamladığınıza göre yönlendirebilir.  Fabrikam kullanıcıların (diğer bir deyişle, Fabrikam.onmicrosoft.com adresli sonekini taşıyan kullanıcılar) ziyaret ederek oturum https://portal.local.azurestack.external.  
 
-Mary herhangi doğrudan [Fabrikam dizininde (diğer bir deyişle, Fabrikam.onmicrosoft.com adresli soneki olmadan Fabrikam dizinindeki kullanıcı) yabancı principals]((/azure/role-based-access-control/rbac-and-directory-admin-roles) kullanarakoturumaçmanız https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Bu URL'yi kullanmıyorsanız, varsayılan dizini (Fabrikam) gönderildiniz ve bunların yönetici tarafından onaylanan taşınmadığından diyen bir hata alırsınız.
+Mary herhangi doğrudan [yabancı sorumlu](/azure/role-based-access-control/rbac-and-directory-admin-roles) Fabrikam dizininde (diğer bir deyişle, Fabrikam.onmicrosoft.com adresli soneki olmadan Fabrikam dizinindeki kullanıcı) kullanarak oturum açmanız https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Bu URL'yi kullanmıyorsanız, varsayılan dizini (Fabrikam) gönderildiniz ve bunların yönetici tarafından onaylanan taşınmadığından diyen bir hata alırsınız.
 
 ## <a name="disable-multi-tenancy"></a>Çok kiracılılık devre dışı bırak
 

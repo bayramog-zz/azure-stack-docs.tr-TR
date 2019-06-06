@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: fcf2e977bbfebeab579d330c6228cc73f05d2307
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 4ae72e7f75147fc3891731da48ee210fc546bd97
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269148"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692056"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack’te App Service’e genel bakış
 
@@ -42,8 +42,8 @@ App Service’in temel özelliklerinden bazıları şunlardır:
 
 App Service, her biri belirli bir iş yükü barındırması amaçlanan birkaç uygulama türlerini sunar:
 
-- [Web uygulamaları] ((/ azure/app-service/genel bakış) Web siteleri ve web uygulamalarını barındırmak için.
-- [API uygulamaları] ((/ azure/app-service/genel bakış) REST API'leri barındırmak için.
+- [Web uygulamaları](/azure/app-service/overview) Web siteleri ve web uygulamalarını barındırmak için.
+- [API Apps](/azure/app-service/overview) REST API'leri barındırmak için.
 - Olay temelli, sunucusuz iş yüklerini barındırmak için azure işlevleri.
 
 Word *uygulama* bir iş yükünü çalıştırmaya ayrılmış barındırma kaynaklarını ifade eder. Alma *web uygulaması* örnek olarak, büyük olasılıkla işlem kaynakları ve uygulamayı bir tarayıcıya birlikte teslim işlevselliği kod gibi bir web uygulaması düşünmek için alışkın. App Service'te bir web uygulaması, uygulama kodunuzun barındırılması için Azure Stack sağlayan işlem kaynağıdır.
@@ -55,7 +55,7 @@ Uygulamanız farklı türlerde birden fazla App Service uygulamalarında oluşab
 
    [![Veri izleme ile app Service'e genel bakış](media/azure-stack-app-service-overview/image01.png "izleme verileri ile App Service'e genel bakış")](media/azure-stack-app-service-overview/image01.png#lightbox)
 
-## <a name="what-is-an-app-service-plan"></a>App Service planı nedir?
+## <a name="what-is-an-app-service-plan"></a>Bir App Service planı nedir?
 
 App Service kaynak sağlayıcısı, Azure App Service kullanan aynı kodu kullanır ve bu nedenle bazı genel kavramlar paylaşır. App Service fiyatlandırma kapsayıcı uygulamaları için çağrılır *App Service planı*. Bu, uygulamalarınızın tutmak için kullanılan adanmış sanal makineler kümesini temsil eder. Belirli bir aboneliği içinde birden fazla App Service planları olabilir.
 

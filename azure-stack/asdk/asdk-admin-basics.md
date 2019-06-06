@@ -16,12 +16,12 @@ ms.date: 02/19/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: cff86ea851b2be030faf0c42a91fed60ac17634d
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: a375cc83410214f56eb38f676bf45cf529641972
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267019"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691104"
 ---
 # <a name="asdk-administration-basics"></a>ASDK yönetim temel bilgileri 
 Azure Stack geliştirme Seti'ni (ASDK) yönetim için yeni bilmeniz gereken birkaç şey vardır. Bu kılavuz değerlendirme ortamında Azure Stack operatörü olarak sizin rolünüze genel bir bakış sağlar ve test kullanıcılarınızın emin olmak nasıl hızlı şekilde üretken hale gelebilir.
@@ -38,7 +38,7 @@ Azure Stack yönetirken bilmeniz gereken birkaç hesabında dikkate alınacak no
 |Yerel yönetici (. \Administrator)|ASDK konak yönetici|ASDK konak yönetici|
 |AzureStack\AzureStackAdmin|ASDK konak yönetici<br><br>Azure Stack yönetim portalında oturum açmak için kullanılabilir<br><br>Service Fabric halkaları yönetmek ve görüntülemek için erişim|ASDK konak yönetici<br><br>Azure Stack yönetim portalına erişim yok<br><br>Service Fabric halkaları yönetmek ve görüntülemek için erişim<br><br>Artık sahibi varsayılan sağlayıcı aboneliği (DPS)|
 |AzureStack\CloudAdmin|Erişebilir ve ayrıcalıklı uç nokta içinde izin verilen komutları çalıştırın|Erişebilir ve ayrıcalıklı uç nokta içinde izin verilen komutları çalıştırın<br><br>ASDK ana bilgisayara oturum açamıyorum<br><br>Varsayılan sağlayıcı aboneliği (yu DPS) sahibi|
-|Azure AD genel Yöneticisi|Yükleme sırasında kullanılan<br><br>Varsayılan sağlayıcı aboneliği (yu DPS) sahibi|Uygulanamaz|
+|Azure AD genel Yöneticisi|Yükleme sırasında kullanılan<br><br>Varsayılan sağlayıcı aboneliği (yu DPS) sahibi|Geçerli değil|
 |
 
 ## <a name="what-tools-do-i-use-to-manage"></a>Yönetmek için hangi araçları kullanabilir?
@@ -60,7 +60,9 @@ Hizmetleri sağlamaya ek olarak, bir Azure Stack operatörü, tüm normal görev
 - Başarısız Geliştirme Seti ana bilgisayar donanımı değiştirme 
 
 ## <a name="where-to-get-support"></a>Nereden destek
-Geliştirme Seti için destek ile ilgili sorularınızı yalnızca destek seçeneğinizi olan [Microsoft Azure Stack Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). Yönetici portalının sağ üst köşedeki Yardım ve Destek (soru işareti) simgesine tıklayın ve ardından **yeni destek isteği**, doğrudan bu forum sitesini açar. Bu Forum düzenli olarak izlenir. 
+Azure Stack geliştirme Seti'ni (ASDK için), içinde destek ile ilgili sorular sorabilirsiniz [Azure Stack MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+
+Tıklayabilirsiniz **yardımcı** (soru işareti) Yönetici portalı'nı ve ardından sağ üst köşesindeki **Yardım + Destek** Yardım + destek açmak için **genel bakış**, sahip olduğu bir foruma bağlayın. MSDN Forumları düzenli olarak izlenir.  
 
 > [!IMPORTANT]
 > ASDK değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) aracılığıyla sunulan resmi desteği yoktur.

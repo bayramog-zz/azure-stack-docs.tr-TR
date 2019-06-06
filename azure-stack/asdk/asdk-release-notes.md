@@ -11,22 +11,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 05/30/2019
-ms.openlocfilehash: 8de4447cd30204d0d4e1611afd057a75dc7688da
-ms.sourcegitcommit: 2cd17b8e7352891d8b3eb827d732adf834b7693e
+ms.lastreviewed: 06/04/2019
+ms.openlocfilehash: 2ca85da5d9fde42fb06eef149e7304ab08bc32ee
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428688"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691207"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
 Bu makalede, değişiklikler, düzeltmeleri ve bilinen sorunlar Azure Stack geliştirme Seti'ni (ASDK) hakkında bilgi sağlar. Hangi sürümü çalıştırdığınızdan emin değilseniz yapabilecekleriniz [denetlemek için portal'ı kullanmanızı](../operator/azure-stack-updates.md#determine-the-current-version).
 
 Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS akışı](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+
+## <a name="build-11905040"></a>Derleme 1.1905.0.40
+
+<!-- ### Changes -->
+
+### <a name="new-features"></a>Yeni Özellikler
+
+- Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1905.md#whats-in-this-update) Azure yığını sürüm notları.
+
+### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
+
+- Kayıt betiği için çalıştırırken bir hizmet sorumlusu zaman aşımı nedeniyle [ASDK kaydetme](asdk-register.md) başarıyla düzenlemelisiniz **RegisterWithAzure.psm1** PowerShell Betiği. Şunları yapın:
+
+  1. Dosyayı ASDK ana bilgisayarda açın **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** yükseltilmiş izinlerle bir düzenleyicide.
+  2. 1249 satırına ekleme bir `-TimeoutInSeconds 1800` sonunda parametresi. Bu kayıt komut dosyası çalıştırılırken bir hizmet sorumlusu zaman aşımı nedeniyle gereklidir. Satır 1249 artık şu şekilde görünmelidir:
+
+     ```powershell
+      $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
+      ```
+
+- Bu sürümde giderilen diğer Azure Stack sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1905.md#fixes) Azure yığını sürüm notları.
+- Bilinen sorunların bir listesi için bkz. [bu makalede](../operator/azure-stack-release-notes-known-issues-1905.md).
+- Unutmayın [kullanılabilir Azure Stack düzeltmelerin](../operator/azure-stack-release-notes-1905.md#hotfixes) Azure Stack ASDK için geçerli değildir.
 
 ## <a name="build-11904036"></a>Derleme 1.1904.0.36
 
@@ -118,23 +141,3 @@ Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-no
   netsh interface ipv4 set sub "hostnic" mtu=1660
   netsh interface ipv4 set sub "management" mtu=1660
   ```
-
-## <a name="build-11901095"></a>Derleme 1.1901.0.95
-
-Bkz: [önemli yapı bilgilerini Azure Stack sürüm notlarında](../operator/azure-stack-update-1901.md#build-reference).
-
-### <a name="changes"></a>Değişiklikler
-
-Bu derleme Azure Stack için aşağıdaki geliştirmeleri içerir:
-
-- BGP ve NAT bileşenleri artık fiziksel ana bilgisayarda dağıtılır. Bu ASDK dağıtmak için iki ortak ya da Kurumsal IP adreslerine sahip gereğini ortadan kaldırır ve ayrıca dağıtım basitleştirir.
-- Azure Stack tümleşik sistemleri artık yedeklemeleri [doğrulanmış](asdk-validate-backup.md) kullanarak **asdk installer.ps1** PowerShell Betiği.
-
-### <a name="new-features"></a>Yeni Özellikler
-
-- Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-update-1901.md#new-features) Azure yığını sürüm notları.
-
-### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
-
-- Bu sürümde giderilen sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-update-1901.md#fixed-issues) Azure yığını sürüm notları. Bilinen sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-update-1901.md#known-issues-post-installation).
-- Unutmayın [kullanılabilir Azure Stack düzeltmelerin](../operator/azure-stack-update-1901.md#azure-stack-hotfixes) Azure Stack ASDK için geçerli değildir.

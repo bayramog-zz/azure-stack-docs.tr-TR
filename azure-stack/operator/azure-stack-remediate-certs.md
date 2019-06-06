@@ -3,26 +3,25 @@ title: Azure Stack için sertifika sorunları düzeltmek | Microsoft Docs
 description: Gözden geçirin ve sertifika sorunlarını düzeltmek için Azure Stack hazırlık Denetleyicisi'ni kullanın.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-origin.date: 02/21/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.topic: conceptual
+ms.date: 06/04/2019
+ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
-ms.openlocfilehash: 009eb56621f7cd395c3d2eefb29b9fa624af888b
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 24fdd5aa917d2454e56fc1843da25cda5db9c7db
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64293679"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691545"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Azure Stack PKI sertifikaları için ortak bir sorunu düzeltmenizi
 
@@ -48,9 +47,9 @@ Bu makaledeki bilgiler, anlamanıza ve Azure Stack PKI sertifikaları için yayg
 
 **Hata** -imza algoritması olan SHA1.
 
-**Düzeltme** -Azure Stack sertifika isteği oluşturma sertifika imzalama isteği (CSR) SHA256 ' imza algoritması ile yeniden imzalama adımları kullanın. Ardından CSR sertifika yetkilisi sertifikası vermeniz için yeniden gönderin.
+**Düzeltme** -SHA256 ' imza algoritması ile Azure Stack sertifika imzalama isteği oluşturma sertifika imzalama isteği (CSR) yeniden oluşturmak içindeki adımları kullanın. Ardından CSR sertifika yetkilisi sertifikası vermeniz için yeniden gönderin.
 
-## <a name="private-key"></a>Özel anahtar
+## <a name="private-key"></a>özel anahtar
 
 **Hata** -özel anahtar eksik veya yerel makine özniteliği içermiyor.  
 
@@ -60,11 +59,11 @@ Bu makaledeki bilgiler, anlamanıza ve Azure Stack PKI sertifikaları için yayg
 
 **Hata** -sertifika zinciri tam değil.  
 
-**Düzeltme** -sertifikalar, eksiksiz bir sertifika zinciri içermelidir. İçindeki adımları kullanarak sertifikayı yeniden dışarı [dağıtımı için hazırlama Azure Stack PKI sertifikaları](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) ve seçeneğini **mümkünse sertifika yolundaki tüm sertifikaları dahil et.**
+**Düzeltme** -sertifikalar, eksiksiz bir sertifika zinciri içermelidir. İçindeki adımları kullanarak sertifikayı yeniden dışarı [dağıtımı için hazırlama Azure Stack PKI sertifikaları](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) ve seçeneğini **mümkünse sertifika yolundaki tüm sertifikaları dahil et**.
 
 ## <a name="dns-names"></a>DNS adları
 
-**Hata** -Azure Stack hizmet uç noktası adı ya da geçerli bir joker karakter eşleşmesi sertifikadaki DNSNameList içermiyor. Joker karakter eşleşme yalnızca DNS adının en solundaki ad alanı için geçerli değildir. Örneğin, _*. region.domain.com_ yalnızca geçerlidir *portal.region.domain.com*değil _*. table.region.domain.com_.
+**Hata** - **DNSNameList** sertifikayı Azure Stack hizmet uç noktası adı ya da geçerli bir joker karakter eşleşmesi içermiyor. Joker karakter eşleşme yalnızca DNS adının en solundaki ad alanı için geçerli değildir. Örneğin, `*.region.domain.com` yalnızca geçerlidir `portal.region.domain.com`değil `*.table.region.domain.com`.
 
 **Düzeltme** -Azure Stack uç noktaları desteklemek için Azure Stack sertifika imzalama isteği oluşturma doğru DNS adlarına sahip CSR yeniden oluşturmak adımları kullanın. Bir sertifika yetkilisi için CSR'yi yeniden gönderin ve ardından adımları [dağıtımı için hazırlama Azure Stack PKI sertifikaları](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) CSR'yi oluşturulan makineden sertifikasını dışarı aktarmak için.  
 
@@ -72,7 +71,7 @@ Bu makaledeki bilgiler, anlamanıza ve Azure Stack PKI sertifikaları için yayg
 
 **Hata** - dijital imza veya anahtar şifreleme anahtar kullanımı eksik veya sunucu kimlik doğrulaması veya istemci kimlik doğrulaması Gelişmiş anahtar kullanımı eksik.  
 
-**Düzeltme** -kullanmak adımda [Azure Stack sertifika imzalama isteği oluşturma](azure-stack-get-pki-certs.md) doğru anahtar kullanımı öznitelikleri olan CSR yeniden oluşturmak. Sertifika yetkilisi için CSR'yi yeniden gönderin ve bir sertifika şablonu anahtar kullanımı istek üzerine değil onaylayın.
+**Düzeltme** -kullanmak adımda [Azure Stack sertifika imzalama isteği oluşturma](azure-stack-get-pki-certs.md) doğru anahtar kullanımını öznitelikleri olan CSR yeniden oluşturmak. Sertifika yetkilisi için CSR'yi yeniden gönderin ve bir sertifika şablonu anahtar kullanımı istek üzerine değil onaylayın.
 
 ## <a name="key-size"></a>Anahtar boyutu
 
@@ -84,22 +83,22 @@ Bu makaledeki bilgiler, anlamanıza ve Azure Stack PKI sertifikaları için yayg
 
 **Hata** -sertifika zinciri sırası yanlış.  
 
-**Düzeltme** -adımları kullanarak sertifikayı yeniden dışarı [dağıtımı için hazırlama Azure Stack PKI sertifikaları](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) ve seçeneğini **mümkünse sertifika yolundaki tüm sertifikaları dahil et.** Yalnızca yaprak sertifikayı dışarı aktarma için seçildiğinden emin olun.
+**Düzeltme** -adımları kullanarak sertifikayı yeniden dışarı [dağıtımı için hazırlama Azure Stack PKI sertifikaları](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) ve seçeneğini **mümkünse sertifika yolundaki tüm sertifikaları dahil et** . Yalnızca yaprak sertifikayı dışarı aktarma için seçildiğinden emin olun.
 
 ## <a name="other-certificates"></a>Diğer sertifikaları
 
 **Hata** -yaprak sertifika veya sertifika zinciri parçası olmayan bir sertifika PFX paketi içerir.  
 
-**Düzeltme** -adımları kullanarak sertifikayı yeniden dışarı [dağıtımı için hazırlama Azure Stack PKI sertifikaları](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)ve seçeneğini **mümkünse sertifika yolundaki tüm sertifikaları dahil et.** Yalnızca yaprak sertifikayı dışarı aktarma için seçildiğinden emin olun.
+**Düzeltme** -adımları kullanarak sertifikayı yeniden dışarı [dağıtımı için hazırlama Azure Stack PKI sertifikaları](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)ve seçeneğini **mümkünse sertifika yolundaki tüm sertifikaları dahil et** . Yalnızca yaprak sertifikayı dışarı aktarma için seçildiğinden emin olun.
 
 ## <a name="fix-common-packaging-issues"></a>Paketleme yaygın sorunları çözme
 
-**AzsReadinessChecker** adlı bir yardımcı cmdlet'ini içeren `Repair-AzsPfxCertificate`, hangi içeri aktarabilir ve sonra dışarı aktarma bir PFX dosyası dahil olmak üzere, ortak paketleme sorunları düzeltmek için:
+**AzsReadinessChecker** araç içeriyor olarak adlandırılan bir yardımcı cmdlet `Repair-AzsPfxCertificate`, hangi içeri aktarabilir ve sonra dışarı aktarma bir PFX dosyası dahil olmak üzere, ortak paketleme sorunları düzeltmek için:
 
-- *PFX şifreleme* TripleDES SHA1 değil.
-- *Özel anahtar* yerel makine özniteliği eksik.
-- *Sertifika zinciri* eksik veya yanlış. PFX paketi yoksa yerel makine sertifika zinciri içermelidir.
-- *Diğer sertifikaları*
+- **PFX şifreleme** TripleDES SHA1 değil.
+- **Özel anahtar** yerel makine özniteliği eksik.
+- **Sertifika zinciri** eksik veya yanlış. PFX paketi yoksa yerel makine sertifika zinciri içermelidir.
+- **Diğer sertifikaları**
 
 `Repair-AzsPfxCertificate` Yeni bir CSR ve bir sertifika yeniden gönderin gerekiyorsa yardımcı olamaz.
 
@@ -108,18 +107,18 @@ Bu makaledeki bilgiler, anlamanıza ve Azure Stack PKI sertifikaları için yayg
 Aşağıdaki Önkoşullar, aracın çalıştığı bilgisayarda yerinde olmalıdır:
 
 - Windows 10 veya Windows Server 2016, internet bağlantısı.
-- PowerShell 5.1 veya üzeri. Sürümünüzü denetlemek için aşağıdaki PowerShell cmdlet'ini çalıştırın ve daha sonra gözden *ana* ve *küçük* sürümleri:
+- PowerShell 5.1 veya üzeri. Sürümünüzü denetlemek için aşağıdaki PowerShell cmdlet'ini çalıştırın ve daha sonra gözden *ana** ve **küçük** sürümleri:
 
    ```powershell
    $PSVersionTable.PSVersion
    ```
 
 - Yapılandırma [Azure Stack için PowerShell](azure-stack-powershell-install.md).
-- En son sürümünü indirin [Microsoft Azure Stack hazırlık denetleyicisi](https://aka.ms/AzsReadinessChecker) aracı.
+- En son sürümünü indirin [Azure Stack hazırlık denetleyicisi](https://aka.ms/AzsReadinessChecker) aracı.
 
 ### <a name="import-and-export-an-existing-pfx-file"></a>Mevcut bir PFX dosyasını içeri ve dışarı
 
-1. Önkoşulları karşılayan bir bilgisayarda, yönetici bir PowerShell istemi açın ve ardından AzsReadinessChecker yüklemek için aşağıdaki komutu çalıştırın:
+1. Önkoşulları karşılayan bir bilgisayarda, yükseltilmiş bir PowerShell istemi açın ve ardından Azure Stack hazırlık denetleyicisini yüklemek için aşağıdaki komutu çalıştırın:
 
    ```powershell
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
@@ -142,7 +141,7 @@ Aşağıdaki Önkoşullar, aracın çalıştığı bilgisayarda yerinde olmalıd
 
 4. Araç tamamladıktan sonra başarı için çıktıyı gözden geçirin:
 
-   ```powershell
+   ```shell
    Repair-AzsPfxCertificate v1.1809.1005.1 started.
    Starting Azure Stack Certificate Import/Export
    Importing PFX .\certificates\ssl.pfx into Local Machine Store
@@ -155,4 +154,4 @@ Aşağıdaki Önkoşullar, aracın çalıştığı bilgisayarda yerinde olmalıd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack güvenliği hakkında daha fazla bilgi için buraya gidin](azure-stack-rotate-secrets.md).
+- [Azure Stack güvenliği hakkında daha fazla bilgi edinin](azure-stack-rotate-secrets.md)

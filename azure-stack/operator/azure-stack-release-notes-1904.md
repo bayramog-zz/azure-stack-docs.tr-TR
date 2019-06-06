@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: ''
 ms.lastreviewed: 05/30/2019
-ms.openlocfilehash: 8d9603184e824bff5efc2536b3c4a89fdd87d685
-ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
+ms.openlocfilehash: 31f2df0b5c7598c678daff8abe34a40b4e08d590
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66506348"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691605"
 ---
 # <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
 
@@ -43,6 +43,10 @@ Gördüğünüz [Azure Stack eski sürümlerinin sürüm notları TechNet Galeri
 
 Azure Stack 1904 güncelleştirmenin yapı numarasıdır **1.1904.0.36**.
 
+### <a name="update-type"></a>Güncelleştirme türü
+
+Azure Stack 1904 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi. 1904 güncelleştirmeyi tamamlamak gereken beklenen süre yaklaşık 16 saat, ancak tam süreleri değişebilir. Bu çalışma zamanı yaklaşık 1904 güncelleştirmeye özgüdür ve diğer Azure Stack güncelleştirmeler karşılaştırılmalıdır değil.
+
 ## <a name="whats-in-this-update"></a>Bu güncelleştirmede nedir
 
 <!-- The current theme (if any) of this release. -->
@@ -52,8 +56,6 @@ Azure Stack 1904 güncelleştirmenin yapı numarasıdır **1.1904.0.36**.
 ### <a name="improvements"></a>Geliştirmeleri
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
-
-- 1904 güncelleştirme yükü temel işletim sistemini barındıran Azure Stack içermeyen bileşenleri Azure Stack için bir güncelleştirme içerir. Bu, Kapsamınızın belirli güncelleştirmeler sağlar. Sonuç olarak, beklenen bu alır 1904 güncelleştirmesinin tamamlanması daha az zaman (yaklaşık 16 saat, ancak tam süreleri değişebilir). Çalışma zamanı bu azalma 1903 güncelleştirmeye benzerdir. Ancak, sonraki güncelleştirmeler işletim sistemi farklı çalışma zamanlarını olduğunu belirtmek için güncelleştirmeleri içerebilir. Gelecekteki güncelleştirmelerin güncelleştirmenin tamamlanması dahil yüküne bağlı olarak beklenen süresini üzerinde benzer yönergeler sağlar.
 
 - Önemli geliştirmeler, yazılım tanımlı ağ (SDN) yığına 1904 yapılmıştır. Bu geliştirmeler, genel bakım ve Azure Stack'te SDN yığınını güvenilirliğini artırın.
 

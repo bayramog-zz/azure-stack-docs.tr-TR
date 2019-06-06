@@ -7,16 +7,16 @@ manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 2cca789487803124e1a7b24efa199d7f68760fb6
-ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
+ms.openlocfilehash: 98aae8378e4bd516181cae95b153e6ee445ce4bf
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66453415"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691997"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Sanal makine ölçek kümeleri Azure Stack'te kullanılabilir yapın
 
@@ -29,14 +29,14 @@ Bu makalede ölçek kümeleri Azure Stack Market'te kullanılabilir hale getirme
 Azure Stack üzerinde sanal makine ölçek kümeleri, sanal makine ölçek kümeleri Azure üzerinde benzerdir. Daha fazla bilgi için aşağıdaki videolarda bakın:
 
 * [Mark Russinovich, Azure ölçek kümeleri hakkında konuşuyor](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
-* [Guy Bowerman ile Sanal Makine Ölçek Kümeleri](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
+* [Guy Bowerman ile sanal makine ölçek kümeleri](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 Azure Stack üzerinde sanal makine ölçek kümelerini otomatik ölçeklendirme desteklemez. Daha fazla örnek Resource Manager şablonları, CLI veya PowerShell kullanarak bir ölçek kümesine ekleyebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * **Market:** Azure Stack öğeleri Market'te kullanılabilirliğini etkinleştirmek için genel Azure ile kaydedin. Bölümündeki yönergeleri [kaydetme Azure Stack Azure ile](azure-stack-registration.md).
-* **İşletim sistemi yansıması:** Bir sanal makine ölçek kümesi oluşturulmadan önce VMSS kullanmak için VM görüntüleri indirin [Azure Stack marketini](azure-stack-download-azure-marketplace-item.md). Görüntüleri zaten bir kullanıcı yeni bir VMSS oluşturabilmeniz için önce mevcut olması gerekir.
+* **İşletim sistemi yansıması:** Bir sanal makine ölçek kümesi oluşturulabilmesi için önce ölçek kümesini kullanmak için VM görüntüleri indirin [Azure Stack marketini](azure-stack-download-azure-marketplace-item.md). Görüntüleri zaten bir kullanıcı yeni bir ölçek kümesi oluşturmadan önce mevcut olması gerekir.
 
 ## <a name="use-the-azure-stack-portal"></a>Azure Stack portalını kullanın
 
@@ -49,7 +49,7 @@ Azure Stack üzerinde sanal makine ölçek kümelerini otomatik ölçeklendirme 
 2. Oluştur'u seçin ***sanal makine ölçek kümeleri***.
    ![Sanal makine ölçek kümesi oluşturma](media/azure-stack-compute-add-scalesets/create-scale-set.png)
 
-3. Boş alanları doldurun, için ve pencerelerden seçin **işletim sistemi disk görüntüsü**, **abonelik**, ve **örnek boyutu**. Seçin **Evet** için **yönetilen diskleri kullan**. Sonra, **Oluştur**’a tıklayın.
+3. Boş alanları doldurun, için ve pencerelerden seçin **işletim sistemi disk görüntüsü**, **abonelik**, ve **örnek boyutu**. Seçin **Evet** için **yönetilen diskleri kullan**. Ardından, **Oluştur**'u tıklatın.
     ![Oluşturma ve yapılandırma](media/azure-stack-compute-add-scalesets/create.png)
 
 4. Yeni sanal makine ölçek kümesi, Git görmek için **tüm kaynakları**, sanal makine ölçek kümesi adı için arama yapın ve ardından aramaya adını seçin.

@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 5b35e69a5308589223d9b5987dd3de2e8bb49cc7
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 5b90bc5014d0f8ebfaed8532f62b7c4f3aee8667
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985512"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691870"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure Stack için Azure Market öğelerini indirme
 
@@ -92,7 +92,7 @@ Bu senaryo iki bölümü vardır:
 
 - Market Dağıtım Aracı'nı ilk yordam sırasında yüklenir. 
 
-- Yükleyebileceğiniz [AzCopy]((/azure/storage/common/storage-use-azcopy) indirme en iyi performans, ancak bu zorunlu değildir.
+- Yükleyebileceğiniz [AzCopy](/azure/storage/common/storage-use-azcopy) en iyi indirme için performans, ancak bu zorunlu değildir.
 
 ### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>Market öğelerini indirme için Market Dağıtım Aracı'nı kullanın
 
@@ -198,7 +198,7 @@ Bu senaryo iki bölümü vardır:
    
    4. Depolama alanına yüklemek ve ardından diski ve paket dosyaları karşıya yükleme blob bölmesinde, Gözat **karşıya**: [![Karşıya yükleme](media/azure-stack-download-azure-marketplace-item/uploadsm.png "karşıya yükleme")](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
-   5. Karşıya dosya kapsayıcı bölmesinde görünür. Bir dosya seçin ve ardından URL'den kopyalayın **Blob özellikleri** bölmesi. Azure Stack'e Market öğesi içeri aktardığınızda bu URL'yi bir sonraki adımda kullanacaksınız.  Aşağıdaki görüntüde kapsayıcısıdır *blob test depolama* ve dosya *Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*.  Dosyanın URL'si *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
+   5. Karşıya dosya kapsayıcı bölmesinde görünür. Bir dosya seçin ve ardından URL'den kopyalayın **Blob özellikleri** bölmesi. Azure Stack'e Market öğesi içeri aktardığınızda bu URL'yi bir sonraki adımda kullanacaksınız.  Aşağıdaki görüntüde kapsayıcısıdır *blob test depolama* ve dosya *Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*.  Dosyanın URL'si *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg* .  
       [![BLOB özellikleri](media/azure-stack-download-azure-marketplace-item/blob-storagesm.png "Blob özellikleri")](media/azure-stack-download-azure-marketplace-item/blob-storage.png#lightbox)  
 
 3. VHD görüntüsünü kullanarak Azure Stack'e içeri **Ekle AzsPlatformimage** cmdlet'i. Bu cmdlet'i kullandığınızda değiştirin *yayımcı*, *teklif*ve görüntünün aldığınız değerlerle diğer parametre değerleri. 

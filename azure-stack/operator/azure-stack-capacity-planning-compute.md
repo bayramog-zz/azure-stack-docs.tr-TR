@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: e549413798ffc3c06c95bfbcf50ab4929ffeaf63
-ms.sourcegitcommit: 80775f5c5235147ae730dfc7e896675a9a79cdbe
+ms.openlocfilehash: 6005196fe98f83c11b9d87ff713e290bad9ef384
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66461030"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692037"
 ---
 # <a name="azure-stack-compute"></a>Azure Stack işlem
 
@@ -50,12 +50,14 @@ Bir pasta grafiğinin yönetim portalındaki Azure Stack'te boş ve kullanılan 
 
 ![Fiziksel bellek kapasitesi](media/azure-stack-capacity-planning/physical-memory-capacity.png)
 
-Kullanılan bellek, çeşitli bileşenlerden oluşur. Aşağıdaki bileşenler pasta grafiğinin kullanım bölümündeki bellek tüketir.  
+Kullanılan bellek, çeşitli bileşenlerden oluşur. Aşağıdaki bileşenler pasta grafiğinin kullanım bölümündeki bellek kullan:  
 
-- Konak işletim sistemi kullanımı veya yedek – işletim sistemi (OS) tarafından kullanılan bellek budur konak, sanal bellek disk belleği tabloları, konak işletim sistemi ve alanları doğrudan önbellek çalışan işlemler. 
-- Altyapı Hizmetleri – Azure yığınını oluşturan sanal makineleri altyapı şunlardır. Azure Stack 1902 yayın sürümü itibarıyla, bu 242 GB alan 31 Vm'leri kapsar + (4 GB x düğüm sayısı). Bunlar geliştirilen gibi bu iç hizmet yapısı yeni altyapı hizmetleri için gelecekteki giriş sağlar.
-- Dayanıklılık ayırma – Azure Stack Kiracı kullanılabilirlik için düzeltme eki ve güncelleştirme sırasında bir tek ana bilgisayar hatası betiklerinizi VM'lerin başarılı dinamik geçiş için izin vermek için izin vermek için belleğin bir kısmını ayırır. 
-- Kiracı sanal makineler bu Azure Stack kullanıcıları tarafından oluşturulan sanal makineler Kiracı ücretlerdir. Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. VM'ler, yani **oluşturma** veya **başarısız** durumu veya konuğa alanından kapatma Vm'leri bellek kullanacaktır. Ancak, seçeneği serbest Durdur kullanılarak serbest bırakılmış olan Vm'leri Azure yığından bellek tüketir değil. 
+ -  Konak işletim sistemi kullanımı veya yedek – işletim sistemi (OS) tarafından kullanılan bellek budur konak, sanal bellek disk belleği tabloları, konak işletim sistemi ve alanları doğrudan önbellek çalışan işlemler. Bu değer ana bilgisayarda çalışan farklı Hyper-V işlemler tarafından kullanılan bellek bağımlı olduğundan, değişim gösterebilir.
+ - Altyapı Hizmetleri – Azure yığınını oluşturan sanal makineleri altyapı şunlardır. Azure Stack 1904 yayın sürümü itibarıyla, bu 242 GB alan ~ 31 Vm'leri kapsar + (4 GB x düğüm sayısı) bellek. Altyapı hizmetleri bileşeni'nın bellek kullanımı altyapı hizmetlerimizi daha ölçeklenebilir ve dayanıklı hale getirme üzerinde çalışırken farklı olabilir.
+ - Dayanıklılık ayırma – Azure Stack Kiracı kullanılabilirlik için düzeltme eki ve güncelleştirme sırasında bir tek ana bilgisayar hatası betiklerinizi VM'lerin başarılı dinamik geçiş için izin vermek için izin vermek için belleğin bir kısmını ayırır.
+ - Kiracı sanal makineler bu Azure Stack kullanıcıları tarafından oluşturulan sanal makineler Kiracı ücretlerdir. Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. Başka bir deyişle, "Oluşturma" veya "Başarısız" durumundaki sanal makineleri veya konuğa alanından kapatma Vm'leri bellek tüketir. Ancak, portal/powershell/CLI seçeneğinden serbest Durdur kullanarak serbest Vm'leri Azure yığından bellek tüketir değil.
+ - Eklenti RPs – SQL, MySQL, App Service vb. gibi eklenti RPs için dağıtılan VM'ler
+
 
 Portal bellek tüketimini anlamak için en iyi yolu kullanmaktır [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) çeşitli iş yükleri etkisini görmek için. Aşağıdaki hesaplaması planner tarafından kullanılan hizmet örneğiyle aynı olur.
 
@@ -78,6 +80,23 @@ Bu hesaplama, Kiracı sanal makine yerleştirme için kullanılabilir toplam ve 
 
 
 Değer V, Ölçek birimindeki en büyük VM dinamik olarak en büyük Kiracı VM bellek boyutunu temel alır. Örneğin, en büyük VM değeri, 7 GB veya 112 GB veya tüm diğer desteklenen sanal makine bellek boyutu Azure Stack çözümde olabilir. Azure Stack yapısı'nda büyük VM değiştirme VM'nin bellek artış yanı sıra dayanıklılık ayrılmış bir artış neden olur. 
+
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
+
+S: Kiracıma yeni bir sanal makine dağıtılırsa, ne kadar yönetim portalında özelliği grafik için kalan kapasite gösterilecek sürer?
+Y: Kapasite dikey 15 dakikada bir, bu nedenle yeniler, lütfen dikkate alın.
+
+S: My Azure Stack üzerinde dağıtılan sanal makinelerin sayısını değişmemiştir, ancak benim kapasite geciktirmeye. Neden?
+Y: VM yerleştirme için kullanılabilir bellek, konak işletim sistemi ayırma biri olan, birden çok bağlantılıdır. Bu değer bir sabit değer olan ana bilgisayar üzerinde çalışan farklı Hyper-V işlemler tarafından kullanılan bellek bağlıdır.
+
+S: Durum Kiracı VM bellek tüketmesine olması gerekiyor mu?
+Y: Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. Bu, "Oluşturma", "Başarısız" veya Vm'leri gelen konuğa kapatıldığından Vm'leri portal/powershell/CLI üzerinden durduruldu serbest bırakıldı olarak bellek tüketir, anlamına gelir.
+
+
+S: Azure Stack 4 ana bilgisayar var. Kiracıma 56 GB RAM (D5_v2) her tüketen 3 VM var. Vm'lerden birinin 112 GB RAM (D14_v2) boyutlandırılır ve 168 GB kullanımı kapasite dikey penceresinde bir depo içinde Panoda raporlama kullanılabilir bellek ile sonuçlandı. Diğer iki D5_v2 Vm'lere D14_v2, sonraki yeniden boyutlandırma, yalnızca 56 GB RAM artış sonuçlandı. Neden bu, bu nedenle?
+
+Y: Kullanılabilir bellek, Azure Stack tarafından tutulan dayanıklılık rezerve bir işlevdir. Dayanıklılık ayırma, Azure Stack damgası üzerinde en büyük VM boyutunun bir işlevdir. İlk başta en büyük VM damga üzerinde 56 GB bellek yoktu. VM yeniden boyutlandırılmış zaman damgası üzerinde en büyük VM yalnızca VM'nin Kiracı tarafından kullanılan bellek artar ancak dayanıklılık ayırma de artırdık 112 GB bellek hale geldi. Bu artış 56 GB (112 GB Kiracı VM bellek artışı 56 GB) + 112 GB dayanıklılık ayrılan bellek artışı içindeki sonuçlandı. Sonraki Vm'leri yeniden boyutlandırdığınızda büyük VM boyutu VM 112 GB kalır ve bu nedenle hiçbir sonuç dayanıklılık ayırma artış vardı. Yalnızca Kiracı VM bellek artışı (56 GB) bellek tüketimi artış oluştu. 
+
 
 > [!NOTE]
 > Yalnızca genel VIP boyutu yapılandırılabilir olduğu gibi ağ iletişimi için kapasite planlama gereksinimleri düşüktür. Azure Stack için daha fazla genel IP adresleri ekleme hakkında daha fazla bilgi için bkz: [genel IP adresleri ekleme](azure-stack-add-ips.md).

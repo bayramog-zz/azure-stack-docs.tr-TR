@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 4a69ece2b97fca13a87819dce6e02e8971121944
-ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
+ms.openlocfilehash: 53b33c7eb0dc71a65113ef8807de1c5b3c3c4c80
+ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66506299"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66691393"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 güncelleştirme
 
@@ -63,7 +63,7 @@ Azure Stack düzeltmeleri yalnızca Azure Stack tümleşik sistemleri için geç
 ## <a name="prerequisites"></a>Önkoşullar
 
 > [!IMPORTANT]
-> 1902 doğrudan yükleyebilirsiniz [1.1901.0.95 veya 1.1901.0.99](azure-stack-update-1901.md#build-reference) 1901 düzeltme yüklemeden serbest bırakın. Ancak, eski yüklediyseniz **1901.2.103** düzeltmeyi yüklemelisiniz yeni [1901.3.105 düzeltme](https://support.microsoft.com/help/4495662) önce 1902 için devam ediliyor.
+> 1902 doğrudan yükleyebilirsiniz **1.1901.0.95** veya **1.1901.0.99** 1901 düzeltme yüklemeden serbest bırakın. Ancak, eski yüklediyseniz **1901.2.103** düzeltmeyi yüklemelisiniz yeni [1901.3.105 düzeltme](https://support.microsoft.com/help/4495662) önce 1902 için devam ediliyor.
 
 - Bu güncelleştirme yüklemesi başlamadan önce çalıştırması [Test AzureStack](azure-stack-diagnostic-test.md) bulunan tüm çalışma sorunlarını çözün ve Azure Stack durumunu doğrulamak için aşağıdaki parametreleri, tüm uyarılar ve hatalar dahil olmak üzere. Ayrıca etkin Uyarıları gözden geçirin ve eylemi gerektiren tüm çözümleyin:
 
