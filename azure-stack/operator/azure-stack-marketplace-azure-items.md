@@ -16,12 +16,12 @@ ms.date: 04/12/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 43554f5659f3068657feda2997f90736a7be8495
-ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
+ms.openlocfilehash: 714ffd213ce88ca58cf4b04c649857239f6deacf
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252124"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66749042"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilir olan Azure Market öğeleri
 
@@ -31,7 +31,7 @@ ms.locfileid: "66252124"
 
 Kullandığınız sanal makine (VM) uzantıları için güncelleştirmeler olduğunda bunları indirmeniz gerekir. Ürün sevk uzantıları, normal düzeltme eki ve güncelleştirme işlemini güncelleştirmez; Bu nedenle güncelleştirmeleri sık bakın. Diğer uzantılar yalnızca Market Yönetimi kullanılabilir.
 
-|  | Öğe adı | Açıklama | Yayımcı | İşletim Sistemi Türü |
+|  | Öğe adı | Açıklama | Yayımcı | İşletim sistemi türü |
 | --- | --- | --- | --- | --- |
 |![SQL Iaas uzantısı](media/azure-stack-marketplace-azure-items/cse.png) | [SQL Iaas uzantısı](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| **Windows Market öğesi üzerinde herhangi bir SQL Server'ı dağıtmak için bu uzantıyı yükle - Bu uzantısı gereklidir.** | Microsoft | Windows |
 |![Özel Betik Uzantısı](media/azure-stack-marketplace-azure-items/cse.png) | [Özel Betik uzantısı](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| **Bu güncelleştirme için özel betik uzantısı Windows yerleşik sürümünü indirin.** | Microsoft | Windows |
@@ -84,7 +84,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | --- | --- | --- | --- |
 | ![Clear Linux OS](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Clear Linux OS](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | Linux dağıtım Intel mimarisi için en iyi duruma getirilmiş bir başvuru. | Linux projesi Temizle |
 | ![CoreOS tarafından Linux kapsayıcısı](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS tarafından Linux kapsayıcısı](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Kapsayıcı Linux kapsayıcıları çalıştırmak, kümeleri yönetmek ve sunucularınızı sorunsuz bir şekilde güncelleştirmek için kolay bir yol sağlayan bir modern ve minimal Linux dağıtımı olan - ambar ölçeğinde işlemleri etkinleştiren tüm bileşenleri işlem. | CoreOS |
-| ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu, dünyanın en popüler Linux bulut ortamları için sunucusudur. | Kurallı |
+| ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu, dünyanın en popüler Linux bulut ortamları için sunucusudur. | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux en popüler Linux dağıtımları biridir. | credativ |
 | ![CentOS tabanlı 6,8](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS tabanlı 6,8](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased68HPC) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic)  |
 | ![CentOS tabanlı 6.10](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS tabanlı 6.10](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic)  |
@@ -116,7 +116,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | ![Cassandra kümesi](media/azure-stack-marketplace-azure-items/cassandra.png) | [Cassandra kümesi](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.cassandra-cluster) | Hiçbir tek hata noktası ile yüksek kullanılabilirlik sağlayan çok sayıda ticari sunucular arasında büyük miktarda veriyi işlemek için tasarlanmış bir açık kaynaklı dağıtılmış veritabanı yönetim sistemi Apache Cassandra var. **Bu çözüm şablonu ayrıca Debian 8 ve özel betik için Linux 2.0 uzantısı gerektirir.** | Bitnami |
 | ![CiviCRM](media/azure-stack-marketplace-azure-items/civicrm.png) | [CiviCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.civicrm) | Basit web tabanlı ilişki yönetim sistemi. | Bitnami |
 | ![Kolay bir CMS](media/azure-stack-marketplace-azure-items/cmsmadesimple.png) | [Kolay bir CMS](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.cmsmadesimple) | Oluşturmak ve bir Web sitesini yönetmek için hızlı ve kolay yolu. | Bitnami |
-| ![Codiad](media/azure-stack-marketplace-azure-items/codiad.png) | [Codiad](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.codiad) | En küçük ayak izine sahip açık kaynaklı bulut IDE. | Bitnami |
+| ![Codiad](media/azure-stack-marketplace-azure-items/codiad.png) | [Codiad](https://azuremarketplace.microsoft.com/marketplace/apps?search=codiad) | En küçük ayak izine sahip açık kaynaklı bulut IDE. | Bitnami |
 | ![Concrete5](media/azure-stack-marketplace-azure-items/concrete5.png) | [Concrete5](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.concrete5) | Web uygulamaları, Web siteleri, depolar ve forumlar kolayca dağıtın. | Bitnami |
 | ![Coppermine](media/azure-stack-marketplace-azure-items/coppermine.png) | [Coppermine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.coppermine) | Çok amaçlı, tam özellikli bir web Galerisi. | Bitnami |
 | ![CouchDB](media/azure-stack-marketplace-azure-items/couchdb.png) | [CouchDB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.couchdb) | Kullanımı kolay açık kaynaklı veritabanı sistemidir. | Bitnami |
@@ -224,7 +224,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | ![WebMail Pro PHP](media/azure-stack-marketplace-azure-items/webmailprophp.png) | [WebMail Pro PHP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.webmailpro) | Kurumsal özellikler ile Web postası sistemi. | Bitnami |
 | ![WildFly](media/azure-stack-marketplace-azure-items/wildfly.png) | [WildFly](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.wildfly) | Apache, WildFly, MySQL ve Java uygulama sunucusu. | Bitnami |
 | ![WordPress](media/azure-stack-marketplace-azure-items/wordpress.png) | [WordPress](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.wordpress) | En popüler ve başlamaya hazır CMS. | Bitnami |
-| ![X2Engine satış CRM](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine satış CRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.x2enginesalescrm) | Compact pazarlama, satış ve müşteri hizmet uygulaması. | Bitnami |
+| ![X2Engine satış CRM](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine satış CRM](https://azuremarketplace.microsoft.com/marketplace/apps?search=x2engine%20sales%20crm) | Compact pazarlama, satış ve müşteri hizmet uygulaması. | Bitnami |
 | ![Xoops](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.xoops) | CMS ve Web portalı Program'de, dinamik Web siteleri oluşturur. | Bitnami |
 | ![Zurmo](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zurmo) | Açık kaynak CRM sistemine: Mobil, sosyal ve Gamified. | Bitnami |
 | ![Denetim noktası vSEC güvenlik yönetimi](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Denetim noktası vSEC güvenlik yönetimi](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Denetim noktası vSEC, Azure müşteri varlıkları kötü amaçlı yazılım ve Gelişmiş tehditlerden korumak için Gelişmiş, çok katmanlı tehdit önleme sunar. **Her iki denetim noktası vSEC Market öğelerini indirme.** | Check Point |

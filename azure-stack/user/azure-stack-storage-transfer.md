@@ -14,12 +14,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 087b7b8a5b307c5be56774024c99369286ae321d
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: bdbf30a0913aeb4839d31e68c84a4b1b7965bf85
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64986172"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66748990"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack depolama için veri aktarım araçları kullanın
 
@@ -67,7 +67,7 @@ AzCopy yardımcı programını iki sürümü vardır: Windows ve Linux üzerinde
  - **Linux üzerinde AzCopy**
 
     - Yükleme ve AzCopy Azure Stack'te Azure aynı şekilde kullanın. Daha fazla bilgi için [Linux üzerinde AzCopy](/azure/storage/common/storage-use-azcopy-linux).
-    - (1802 için 1809 güncelleştirmeler) önceki sürümleri için bkz: [AzCopy 7.1 ve önceki sürümleri için yükleme adımlarını](/azure/storage/common/storage-use-azcopy-linux#installation-steps-for-azcopy-71-and-earlier-versions).
+    - (1802 için 1809 güncelleştirmeler) önceki sürümleri için bkz: [AzCopy 7.1 ve önceki sürümleri için yükleme adımlarını](/azure/storage/common/storage-use-azcopy-v10#use-the-previous-version-of-azcopy).
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Veri aktarımı için AzCopy komut örnekleri
 

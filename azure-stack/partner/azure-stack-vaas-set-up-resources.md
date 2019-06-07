@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ed3dfda57bc544bd61efcc52ef7588a553ac634
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 9ad15342a8c0116f928b416f26e64b08563a5c14
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64297628"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66748942"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Öğretici: Hizmet olarak doğrulama için kaynaklarını ayarlama
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Active Directory (AD) ayarlama ayarlayarak VaaS kullanmaya hazır olun.
-> * Depolama hesabı oluşturma.
+> * Bir depolama hesabı oluşturun.
 
 ## <a name="configure-an-azure-ad-tenant"></a>Azure AD kiracısı yapılandırın
 
@@ -48,7 +48,7 @@ Kuruluşunuz VaaS hizmetlerine erişmek için kullanacağı bir kiracı oluştur
 
     Aşağıdaki rollerden biri atayarak Eylemler VaaS içinde çalıştırmak için kiracınızdaki kullanıcılar izin verirsiniz:
 
-    | Rol Adı | Açıklama |
+    | Rol adı | Açıklama |
     |---------------------|------------------------------------------|
     | Sahip | Tüm kaynaklar için tam erişimi vardır. |
     | Okuyucu | Tüm kaynaklarını görüntüleyebilir ancak değil oluşturabilir ve bunları yönetebilirsiniz. |
@@ -74,7 +74,7 @@ Bu işlem, kiracınız ile yetkilendirir **Azure Stack doğrulama hizmeti** Azur
     |--------------------------------|---------------------------------------------------------------------------------------------|
     | Kuruluş Adı | Resmi kuruluş adı. |
     | Azure AD Kiracısı dizin adı | Kayıtlı Azure AD Kiracısı dizin adı. |
-    | Azure AD Kiracı dizin kimliği | Azure AD Kiracısı Directory dizini ile ilişkili GUID. Azure AD Kiracı dizin Kimliğinizi bulma konusunda daha fazla bilgi için bkz: [Kiracı kimliği alma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). |
+    | Azure AD Kiracı dizin kimliği | Azure AD Kiracısı Directory dizini ile ilişkili GUID. Azure AD Kiracı dizin Kimliğinizi bulma konusunda daha fazla bilgi için bkz: [Kiracı kimliği alma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
 
 2. Kiracınızı VaaS portalı kullanabilirsiniz denetlemek için Azure Stack doğrulama Ekibi'nden gelen onay için bekleyin.
 

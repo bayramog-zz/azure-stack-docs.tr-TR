@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/20/2019
-ms.openlocfilehash: 972b47e5c8787d41d918544f220e082b9ac2d69d
-ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
+ms.openlocfilehash: 7f335a6ad59d6f27c8e402863849d21c87f1cee2
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66506283"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66748890"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 güncelleştirme
 
@@ -167,7 +167,7 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
    Bir VM'de önyükleme tanılamalarını etkinleştirir, ancak önyükleme tanılama depolama hesabınızı silerseniz bu hata oluşur. Bu sorunu çözmek için önceden kullanılmış şekilde aynı ada sahip depolama hesabını yeniden oluşturun.
 
 <!-- 2967447 - IS, ASDK, to be fixed in 1902 -->
-- Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. Bu görüntüyü Azure Stack üzerinde kullanılabilir olmadığından, dağıtımınız için başka bir işletim sistemi veya markette dağıtımdan önce indirdiğiniz başka bir CentOS görüntüsü belirten bir Azure Resource Manager şablonu kullanma işleci.
+- Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. Azure Stack Market'te o yansıma kullanılamadığından dağıtımınız için başka bir işletim sistemi veya dağıtımdan Market'ten indirdiğiniz başka bir CentOS görüntüsü belirten bir Azure Resource Manager şablonu kullanma Operatör tarafından.
 
 <!-- TBD - IS ASDK -->
 - Güncelleştirme 1903 uyguladıktan sonra yönetilen disklere sahip VM'ler dağıtırken aşağıdaki sorunlarla karşılaşabilirsiniz:

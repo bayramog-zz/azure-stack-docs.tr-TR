@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 7a599d3fdc68c6c41565111498108a202d8b3472
-ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
+ms.openlocfilehash: f1dd98c8c75c28ee176ca318fb9d274110e9b5fe
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252066"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66749041"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile karma bulut çözümü dağıtma
 
@@ -106,7 +106,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimleri karşılayabilecek
    - **Tanılama depolama hesabı**. Bir gereksinim duyarsanız, yeni bir hesap oluşturun.
    - Seçin **Tamam** yapılandırmanızı kaydetmek için.
 
-     ![İsteğe bağlı özellikleri yapılandır](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![İsteğe bağlı özellikleri yapılandırma](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. Altında **SQL Server ayarları**, aşağıdaki ayarları yapılandırın:
    - İçin **SQL Bağlantısı**seçin için **genel (Internet)** .
@@ -251,11 +251,11 @@ Azure Stack için SSL eklemek için:
 
 Rapor telemetri doğru Application Insights örneği uygulama koduna yapılandırın ve web uygulamaları ile doğru bağlantı dizelerini yapılandırma. Application Insights hakkında daha fazla bilgi için bkz: [Application Insights nedir?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
 
-### <a name="add-application-insights"></a>Application Insights Ekleme
+### <a name="add-application-insights"></a>Application Insights ekleme
 
 1. Microsoft Visual Studio ile web uygulamanızı açın.
 
-2. [Application Insights ekleme](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core#add-application-insights-telemetry) projenize Application Insights web trafiğini artış veya Azalış uyarılar oluşturmak için kullandığı telemetri iletmek için.
+2. [Application Insights ekleme](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-client-side-telemetry-for-web-applications) projenize Application Insights web trafiğini artış veya Azalış uyarılar oluşturmak için kullandığı telemetri iletmek için.
 
 ### <a name="configure-dynamic-connection-strings"></a>Dinamik bağlantı dizelerini yapılandırma
 
@@ -303,7 +303,7 @@ Bir App Service ortamında web uygulamanızı oluştururken bir örnek ile başl
 
 1. Azure'da ölçeği genişletme ve ardından istediğiniz site için App Service planı bulmak **ölçeği genişletme (App Service planı)** .
 
-    ![Ölçeği genişlet](media/azure-stack-solution-hybrid-cloud/image16.png)
+    ![Ölçeği genişletme](media/azure-stack-solution-hybrid-cloud/image16.png)
 
 2. Seçin **etkinleştirmek otomatik ölçeklendirme**.
 
@@ -375,7 +375,7 @@ Trafiğini azaltır, Azure web uygulamasına otomatik olarak maliyetlerini azalt
 
 Azure Traffic Manager profili oluşturacak ve sonra uç noktaları, Bulutlar arası ölçeklendirmeyi etkinleştirmek için yapılandırın.
 
-### <a name="create-traffic-manager-profile"></a>Traffic Manager profili oluştur
+### <a name="create-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 1. Seçin **kaynak oluştur**
 2. Seçin **ağ**
@@ -389,7 +389,7 @@ Azure Traffic Manager profili oluşturacak ve sonra uç noktaları, Bulutlar ara
 
 4. **Oluştur**’u seçin.
 
-    ![Traffic Manager profili oluştur](media/azure-stack-solution-hybrid-cloud/image19.png)
+    ![Traffic Manager profili oluşturma](media/azure-stack-solution-hybrid-cloud/image19.png)
 
    Traffic Manager profilinizin genel dağıtımı tamamlandığında, kaynaklar altında oluşturduğunuz kaynak grubunda listesinde gösterilir.
 

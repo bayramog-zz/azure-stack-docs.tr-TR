@@ -16,23 +16,23 @@ ms.date: 03/20/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 6726e8ff261565691e2e9e3c01827e8e056db139
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: fc5466880c7340f5e9a79b7ece79663d12c9a598
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618827"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66749022"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM güncelleştirme ve yönetim
 Aşağıdaki Azure Otomasyonu çözüm özellikleri, Windows ve Linux Vm'leri, Azure Stack kullanarak dağıtılmış yönetmek için kullanabilirsiniz:
 
-- **[Güncelleştirme yönetimi](https://docs.microsoft.com/azure/automation/automation-update-management)**. Güncelleştirme yönetimi çözümü ile hızlı bir şekilde tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu değerlendirebilir ve bu Windows ve Linux Vm'leri için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
+- **[Güncelleştirme yönetimi](https://docs.microsoft.com/azure/automation/automation-update-management)** . Güncelleştirme yönetimi çözümü ile hızlı bir şekilde tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu değerlendirebilir ve bu Windows ve Linux Vm'leri için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
-- **[Değişiklik izleme](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Yüklü yazılım, Windows Hizmetleri, Windows kayıt defteri ve dosya ve izlenen sunucularda Linux Daemon'ları için değişiklikler, işleme için bulutta Azure İzleyici'hizmetine gönderilir. Mantıksal alınan verilere uygulanır ve bulut hizmeti olan verileri kaydeder. Değişiklik izleme Panoda bilgileri kullanarak, sunucu altyapınızda yapılan değişiklikleri kolayca görebilirsiniz.
+- **[Değişiklik izleme](https://docs.microsoft.com/azure/automation/automation-change-tracking)** . Yüklü yazılım, Windows Hizmetleri, Windows kayıt defteri ve dosya ve izlenen sunucularda Linux Daemon'ları için değişiklikler, işleme için bulutta Azure İzleyici'hizmetine gönderilir. Mantıksal alınan verilere uygulanır ve bulut hizmeti olan verileri kaydeder. Değişiklik izleme Panoda bilgileri kullanarak, sunucu altyapınızda yapılan değişiklikleri kolayca görebilirsiniz.
 
-- **[Stok](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. Bir Azure Stack sanal makine için izleme envanteri ayarlamak ve stok toplama yapılandırmak için bir tarayıcı tabanlı kullanıcı arabirimi sağlar.
+- **[Stok](https://docs.microsoft.com/azure/automation/automation-vm-inventory)** . Bir Azure Stack sanal makine için izleme envanteri ayarlamak ve stok toplama yapılandırmak için bir tarayıcı tabanlı kullanıcı arabirimi sağlar.
 
-- **[VM'ler için Azure İzleyici](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)**. Azure İzleyici Vm'leri için Azure'da ve Azure Stack'te sanal makinelerinizi (VM) izler ve uygun ölçekte sanal makine ölçek kümeleri. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder. 
+- **[VM'ler için Azure İzleyici](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)** . Azure İzleyici Vm'leri için Azure'da ve Azure Stack'te sanal makinelerinizi (VM) izler ve uygun ölçekte sanal makine ölçek kümeleri. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder. 
 
 > [!IMPORTANT]
 > Bu çözümler Azure Vm'leri yönetmek için kullanılan olanlarla aynıdır. Hem Azure hem de Azure Stack Vm'leri aynı şekilde, aynı arabiriminden aynı araçları kullanılarak yönetilir. Azure Stack Vm'leri de aynı Azure Vm'leri olarak Azure Stack ile güncelleştirme yönetimi, değişiklik izleme, stok ve Azure sanal makineleri izleme çözümleri kullanırken ücretlendirilir.
@@ -74,7 +74,7 @@ VM'ler için Azure İzleyici, bir çözüm olarak, başka bir bulut sağlayıcı
 
 3. Bağımlılık Haritası: Çeşitli kaynak gruplarında ve Aboneliklerde VM'den birbirine bağlı bileşenlerle görüntüler.
 
-Log Analytics çalışma alanı oluşturulduktan sonra çalışma alanı koleksiyonu Linux ve Windows Vm'leri için performans sayaçları etkinleştirme yanı sıra yüklemek ve çalışma alanınızdaki ServiceMap ve InfrastructureInsights çözümü etkinleştirmek gerekir. İşlem açıklanan [VM'ler için Azure İzleyici'ı Dağıtma](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#deploy-azure-monitor-for-vms) Kılavuzu.
+Log Analytics çalışma alanı oluşturulduktan sonra çalışma alanı koleksiyonu Linux ve Windows Vm'leri için performans sayaçları etkinleştirme yanı sıra yüklemek ve çalışma alanınızdaki ServiceMap ve InfrastructureInsights çözümü etkinleştirmek gerekir. İşlem açıklanan [VM'ler için Azure İzleyici'ı Dağıtma](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) Kılavuzu.
 
 ### <a name="in-the-azure-stack-administration-portal"></a>Azure Stack Yönetim Portalı'nda
 Azure portalında Azure Otomasyonu çözümleri etkinleştirdikten sonra sonraki bir bulutun Yöneticisi olarak Azure Stack yönetim portalında oturum açın ve indirmek için ihtiyaç duyduğunuz **Azure İzleyici, güncelleştirme ve yapılandırma yönetimi** ve **Azure İzleyici, güncelleştirme ve Linux için yapılandırma yönetimi** uzantısı Azure Stack Market öğesi. 

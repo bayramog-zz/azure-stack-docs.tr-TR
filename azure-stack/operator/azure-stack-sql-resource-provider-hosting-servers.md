@@ -15,12 +15,12 @@ ms.date: 03/26/2019
 ms.author: mabrigg
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: a56e1e8c3c5109c638432652adf9260f59f6a467
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 04ae974148d47bde1e3131aeca45e8bddc9e6109
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618443"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66749004"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL kaynak sağlayıcısı için barındırma sunucuları ekleme
 
@@ -64,7 +64,7 @@ SQL sysadmin daha düşük ayrıcalıklara sahip bir yönetici kullanıcı oluş
 
 * Veritabanı: Create, Alter, kapsama (için her zaman açık yalnızca), bırakın, yedekleme
 * Kullanılabilirlik Grubu: ALTER, birleştirme, ekleme/kaldırma veritabanı
-* Oturum aç: Oluşturma, seçin, Alter, Drop, iptal et
+* Oturum açma: Oluşturma, seçin, Alter, Drop, iptal et
 * Seçme işlemlerinin: \[ana\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn) (AlwaysOn) birincilindeki, sys.databases, \[ana\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[ana\].\[ sys\].\[ availability_groups\] (AlwaysOn) sys.master_files
 
 ### <a name="additional-security-information"></a>Ek güvenlik bilgileri
@@ -73,7 +73,7 @@ Aşağıdaki bilgiler, ek güvenlik rehberliği sağlar:
 
 * Tüm Azure Stack depolama, Azure Stack üzerinde herhangi bir SQL örneğine şifrelenmiş bir blob depolama alanı kullanacaktır BitLocker'ı kullanarak şifrelenir.
 * SQL kaynak sağlayıcısı, TLS 1.2 tam olarak destekler. SQL RP yönetilen herhangi bir SQL Server için TLS 1.2 yapılandırıldığından emin olun _yalnızca_ ve RP için varsayılan olur. SQL Server desteği TLS 1.2, tüm desteklenen sürümleri bkz [Microsoft SQL Server için TLS 1.2 desteği](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Ayarlanacak kullanım SQL Server Configuration Manager **ForceEncryption** SQL sunucusuna tüm iletişimi sağlamak üzere seçeneği her zaman şifrelenir. Bkz: [şifrelenmiş bağlantılar zorlamak için sunucuyu yapılandırmak için](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
+* Ayarlanacak kullanım SQL Server Configuration Manager **ForceEncryption** SQL sunucusuna tüm iletişimi sağlamak üzere seçeneği her zaman şifrelenir. Bkz: [şifrelenmiş bağlantılar zorlamak için sunucuyu yapılandırmak için](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
 * Tüm istemci uygulamaları da şifreli bir bağlantı iletişim kuran emin olun.
 * RP, SQL Server örneği tarafından kullanılan sertifikaları güvenecek şekilde yapılandırılmıştır.
 

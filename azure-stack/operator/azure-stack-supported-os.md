@@ -16,12 +16,12 @@ ms.date: 02/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 69a0a9f84e0c4a5d0cb51eb8d48b3c9ca88b9cfc
-ms.sourcegitcommit: 41927cb812e6a705d8e414c5f605654da1fc6952
+ms.openlocfilehash: aca2517a49936296f73c34392ab4c5439909872f
+ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64477337"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66748960"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack üzerinde desteklenen konuk işletim sistemleri
 
@@ -34,6 +34,7 @@ Azure Stack aşağıdaki tabloda listelenen Windows konuk işletim sistemlerini 
 | İşletim sistemi | Açıklama | Market'te kullanılabilir |
 | --- | --- | --- |
 | Windows Server 1709 sürümü | 64 bit | Kapsayıcılar ile çekirdek |
+| Windows Server 2019 | 64 bit |  Veri Merkezi, veri merkezi çekirdek kapsayıcılar ile veri merkezi |
 | Windows Server 2016 | 64 bit |  Veri Merkezi, veri merkezi çekirdek kapsayıcılar ile veri merkezi |
 | Windows Server 2012 R2 | 64 bit |  Veri merkezi |
 | Windows Server 2012 | 64 bit |  Veri merkezi |
@@ -60,12 +61,13 @@ Linux dağıtımları kullanılabilir olarak Market'te listelenen gerekli Window
 | Dağıtım | Açıklama | Yayımcı | Market |
 | --- | --- | --- | --- |
 | CentOS tabanlı 6.9 | 64 bit | Rogue Wave | Evet |
-| CentOS tabanlı 7.4 | 64 bit | Rogue Wave | Evet |
+| CentOS tabanlı 7.5 | 64 bit | Rogue Wave | Evet |
+| CentOS tabanlı 7.3 | 64 bit | Rogue Wave | Evet |
 | ClearLinux | 64 bit | ClearLinux.org | Evet |
 | Container Linux |  64 bit | CoreOS | Dengeli |
 | Debian 8 "Jessie" | 64 bit | credativ |  Evet |
 | Debian 9 "Uzat" | 64 bit | credativ | Evet |
-| Red Hat Enterprise Linux 7.1 (ve üzeri) | 64 bit | Red Hat |Kendi görüntünüzü getirin |
+| Red Hat Enterprise Linux 7.1 (ve üzeri) | 64 bit | Red Hat | Kendi görüntünüzü getirin |
 | SLES 11SP4 | 64 bit | SUSE | Evet |
 | SLES 12SP3 | 64 bit | SUSE | Evet |
 | Ubuntu 14.04-LTS | 64 bit | Canonical | Evet |
