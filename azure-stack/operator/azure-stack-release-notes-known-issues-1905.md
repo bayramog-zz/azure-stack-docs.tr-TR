@@ -16,12 +16,12 @@ ms.date: 06/05/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: b79c40b26735184d7a0b0501a5ef6f4a1354a375
-ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
+ms.openlocfilehash: c8f132d67b701cf0aa2961158205bad470220c7b
+ms.sourcegitcommit: fbd6a7fed4f064113647540329a768347a6cf261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66748911"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66810250"
 ---
 # <a name="azure-stack-1905-known-issues"></a>Azure Stack 1905 bilinen sorunlar
 
@@ -32,6 +32,14 @@ Bu makalede, Azure Stack 1905 sürümündeki bilinen sorunlar listelenmektedir. 
 
 ## <a name="update-process"></a>Güncelleştirme işlemi
 
+### <a name="host-node-update-prerequisite-failure"></a>Ana bilgisayar düğümünü güncelleştirmeyi önkoşul hatası
+-   Uygulanabilir: Bu sorun 1905 güncelleştirmesi için geçerlidir.
+-   Neden: Yüklemeye çalışırken 1905 Azure Stack güncelleştirme, güncelleştirme durumunun ana düğüm güncelleştirme önkoşul nedeniyle başarısız olabilir. Bunun nedeni genellikle yeterli boş disk alanı olan bir konak düğümü tarafından. 
+-   Düzeltme: Ana bilgisayar düğümü disk alanı temizleme Yardım almak için Azure Stack desteği'ne başvurun.
+-   Örneği: Seyrek
+
+
+### <a name="preparation-failed"></a>Hazırlama başarısız
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: 1905 Azure yığını güncelleştirmesi yüklenmeye çalışılırken olmadığında güncelleştirme durumu ve durumuna değiştirin **PreparationFailed**. Bu, düzgün bir şekilde işlemek için bir iç altyapı paylaşımına depolama kapsayıcısından dosya aktarımı erişememe güncelleştirme kaynağı sağlayıcısı tarafından (URP) kaynaklanır. 1905 güncelleştirme paketi, bu sorun büyük olasılıkla yapabilir, önceki güncelleştirme paketlerini büyüktür.
 - Düzeltme: 1901 (1.1901.0.95) sürümünden itibaren kullanarak bu sorunu geçici olarak tıklayarak çalışabilirsiniz **Şimdi Güncelleştir** yeniden (değil **sürdürme**). URP ardından önceki girişim dosyalarından temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, aşağıdaki güncelleştirme paketini el ile karşıya öneririz [alma ve yükleme güncelleştirmelerini bölümüne](azure-stack-apply-updates.md#import-and-install-updates).

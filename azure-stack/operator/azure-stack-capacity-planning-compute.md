@@ -16,23 +16,25 @@ ms.date: 05/31/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 6005196fe98f83c11b9d87ff713e290bad9ef384
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 6afaca6e9bad806f432cf56b79dca5881bb76455
+ms.sourcegitcommit: fbd6a7fed4f064113647540329a768347a6cf261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692037"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66810224"
 ---
 # <a name="azure-stack-compute"></a>Azure Stack işlem
 
-[VM boyutları](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) Azure Stack üzerinde desteklenen Azure üzerinde desteklenen bir alt kümesidir. Azure kaynak sınırları boyunca operasyonda ekstra tüketimi kaynakların (yerel ve hizmet düzeyi sunucusu) önlemek için birçok vektörleri uygular. Diğer kiracıların kaynakları overconsume, Kiracı kullanımı için bazı limitler izlenmesi olmadan Kiracı deneyimleri düşer. Sanal makineden ağ çıkışı için Azure sınırlamaları eşleşen bant genişliği sınırlaması Azure Stack'te yerinde vardır. Depolama kaynakları için depolama IOPS limitlerine depolama erişimi için kiracılar tarafından temel operasyonda ekstra tüketimi kaynak önlemek için Azure Stack üzerinde uygulanmıştır.
+[VM boyutları](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) Azure Stack üzerinde desteklenen Azure üzerinde desteklenen bir alt kümesidir. Azure kaynak sınırları boyunca operasyonda ekstra tüketimi kaynakların (yerel ve hizmet düzeyi sunucusu) önlemek için birçok vektörleri uygular. Diğer kiracıların kaynakları overconsume, Kiracı kullanımı için bazı limitler izlenmesi olmadan Kiracı deneyimleri düşer. Sanal makineden ağ çıkışı için Azure sınırlamaları eşleşen bant genişliği sınırlaması Azure Stack'te yerinde vardır. Azure Stack'te depolama kaynakları için depolama IOPS limitleri temel kiracılar depolama erişimi için kaynakların tüketimini üzerinden kaçının.
 
 >[!IMPORTANT]
 >[Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) IOPS performansı garanti etmez düşünün veya.
 
 ## <a name="vm-placement"></a>VM yerleştirme
 
-Azure Stack'te Kiracı VM yerleştirme kullanılabilir konakları arasında yerleşim altyapısı tarafından otomatik olarak gerçekleştirilir. VM türü için ana bilgisayarda yeterli bellek olduğunu ve Vm'leri bir parçası olan Vm'leri yerleştirirken yalnızca iki önemli olan bir [kullanılabilirlik kümesi](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) veya [sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).  
+Azure Stack yerleşim altyapısı Kiracı VM'ler kullanılabilir konaklar arasında yerleştirir.
+
+Azure Stack, Vm'leri yerleştirirken iki önemli kullanır. Bir sanal makine türü için ana bilgisayarda yeterli bellek olduğundan. İki olan Vm'leri bir parçası bir [kullanılabilirlik kümesi](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) veya [sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
 
 Azure Stack'te bir çoklu VM üretim sisteminin yüksek kullanılabilirlik elde etmek için bunları birden çok hata etki alanlarına yayılır. bir kullanılabilirlik kümesindeki Vm'leri yerleştirilir. Hata etki alanı bir kullanılabilirlik kümesinde tek bir düğüm ölçek birimi olarak tanımlanır. Azure Stack, Azure ile tutarlı olacak şekilde en fazla üç hata etki alanı ile bir kullanılabilirlik sahip destekler. Vm'leri bir kullanılabilirlik kümesine yerleştirilir bunları mümkün olduğunca eşit olarak birden çok hata etki alanları üzerinde diğer bir deyişle, Azure Stack ana yayarak birbirinden fiziksel olarak izole edilmiş olur. Bir donanım hatası varsa, başarısız hata etki alanı Vm'lerden diğer hata etki alanları yeniden, ancak, mümkün olduğunda, aynı kullanılabilirlik kümesindeki diğer vm'lerden ayrı hata etki alanlarında tutulur. Konak tekrar çevrimiçi olduğunda, yüksek kullanılabilirliği sürdürmek için Vm'leri yeniden Dengelenecek.  
 
@@ -56,7 +58,7 @@ Kullanılan bellek, çeşitli bileşenlerden oluşur. Aşağıdaki bileşenler p
  - Altyapı Hizmetleri – Azure yığınını oluşturan sanal makineleri altyapı şunlardır. Azure Stack 1904 yayın sürümü itibarıyla, bu 242 GB alan ~ 31 Vm'leri kapsar + (4 GB x düğüm sayısı) bellek. Altyapı hizmetleri bileşeni'nın bellek kullanımı altyapı hizmetlerimizi daha ölçeklenebilir ve dayanıklı hale getirme üzerinde çalışırken farklı olabilir.
  - Dayanıklılık ayırma – Azure Stack Kiracı kullanılabilirlik için düzeltme eki ve güncelleştirme sırasında bir tek ana bilgisayar hatası betiklerinizi VM'lerin başarılı dinamik geçiş için izin vermek için izin vermek için belleğin bir kısmını ayırır.
  - Kiracı sanal makineler bu Azure Stack kullanıcıları tarafından oluşturulan sanal makineler Kiracı ücretlerdir. Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. Başka bir deyişle, "Oluşturma" veya "Başarısız" durumundaki sanal makineleri veya konuğa alanından kapatma Vm'leri bellek tüketir. Ancak, portal/powershell/CLI seçeneğinden serbest Durdur kullanarak serbest Vm'leri Azure yığından bellek tüketir değil.
- - Eklenti RPs – SQL, MySQL, App Service vb. gibi eklenti RPs için dağıtılan VM'ler
+ - Eklenti RPs – SQL, MySQL, App Service vb. gibi eklenti RPs için dağıtılan VM'ler.
 
 
 Portal bellek tüketimini anlamak için en iyi yolu kullanmaktır [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) çeşitli iş yükleri etkisini görmek için. Aşağıdaki hesaplaması planner tarafından kullanılan hizmet örneğiyle aynı olur.
