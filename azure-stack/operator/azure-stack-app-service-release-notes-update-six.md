@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/10/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: d280ffacf9cb74c519857ebafc907debc915ec21
-ms.sourcegitcommit: 85367001c332ed53fba0d2294eae3c06e8578070
+ms.openlocfilehash: d3464681463cfb66a368210beed79d5ef4c28739
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307844"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828325"
 ---
 # <a name="app-service-on-azure-stack-update-6-release-notes"></a>Güncelleştirme 6 sürüm notları Azure Stack üzerinde App Service'e
 
@@ -47,7 +47,7 @@ Azure Stack'te Azure App Service'in 1.6 için yükseltmeye başlamadan önce:
 - App Service ve ana veritabanlarını yedekleme:
   - AppService_Hosting;
   - AppService_Metering;
-  - Ana Şablon
+  - Master
 
 - Kiracı uygulama içerik dosya paylaşımını yedekleme
 
@@ -89,19 +89,29 @@ Azure Stack güncelleştirme 6 Azure uygulama hizmeti, aşağıdaki geliştirmel
 - Çalışanları App Service, var olan bir sanal ağda dağıtılır ve dosya sunucusu yalnızca Azure Stack dağıtım belgeleri üzerinde Azure App Service'te adlandırıldığı gibi özel ağda kullanılabilir dosya sunucusuna erişemiyor.
 
 Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
- * Kaynak: Herhangi
+ * Kaynak: Tüm
  * Kaynak bağlantı noktası aralığı: *
  * Hedef: IP Adresleri
  * Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
  * Hedef bağlantı noktası aralığı: 445
  * Protokol: TCP
- * Eylem: İzin ver
+ * Eylem: İzin Ver
  * Önceliği: 700
  * Ad: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure Stack üzerinde Azure App Service'te çalışan bulut yöneticileri için bilinen sorunlar
 
 Belgeye başvurun [Azure Stack 1904 sürüm notları](azure-stack-release-notes-1904.md)
+
+### <a name="known-issues-for-tenants-deploying-applications-on-azure-app-service-on-azure-stack"></a>Azure Stack'te Azure App Service'te uygulamaları dağıtma kiracılar için bilinen sorunlar
+
+- Dağıtım Merkezi devre dışı
+
+Kiracılar, genel bulutta geç 2018'de sunulan bir özelliktir dağıtım merkezi kullanımı henüz yapamaz.  Kiracılar, portal, CLI ve PowerShell aracılığıyla standart dağıtım yöntemleri (FTP, Web dağıtımı, Git, vb.) kullanmaya devam edebilirsiniz.
+
+- Dağıtım seçenekleri (Klasik) UX ve dağıtım kimlik bilgilerini portalı seçenekleri kullanılamıyor
+
+Azure Stack dağıtımda, kiracılar dağıtım kimlik bilgileri kullanıcı deneyimleri ve dağıtım seçenekleri ulaşmak için erişim portalı kullanarak bu URL formatı - https://portal.&lt; *Bölge*&gt;.&lt; *FQDN*&gt;/? websitesExtension_oldvsts = true - olduğu için ASDK olacaktır [ https://portal.local.azurestack.external/?websitesExtension_oldvsts=true ](https://portal.local.azurestack.external/?websitesExtension_oldvsts=true) ve ardından, uygulamalarına normalde gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

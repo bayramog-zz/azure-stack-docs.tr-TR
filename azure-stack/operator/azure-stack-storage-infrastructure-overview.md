@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: e93c33659a2c2dac93ab23d3cba60994fb171131
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: c7ae7f0c8fa510b0f2b55e458266065544e1bd5e
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984743"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828221"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Azure Stack için depolama altyapısını yönetme
 
@@ -101,14 +101,14 @@ Ayrılmış birim ve düşürülmüş/eksik bir birim gösteren çıktının bir
 
 | VolumeLabel | HealthStatus | OperationalStatus |
 |-------------|--------------|------------------------|
-| ObjStore_1 | Bilinmeyen | Ayrılmış |
+| ObjStore_1 | Bilinmiyor | Ayrılmış |
 | ObjStore_2 | Uyarı | {Düşürülmüş, eksik} |
 
 Aşağıdaki bölümler, sistem durumu ve işletimsel durumlarını listeler.
 
 ### <a name="volume-health-state-healthy"></a>Birim durumu: Sorunsuz
 
-| İşlemsel durum | Açıklama |
+| İşlemsel durumu | Açıklama |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tamam | Birim, iyi durumda. |
 | Yetersiz | Verileri eşit olarak sürücülerde yazılan değil.<br> <br>**Eylem:** Lütfen depolama havuzunda sürücü kullanımını iyileştirmek için desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. Başarısız bağlantı geri yüklendikten sonra yedekten geri yüklemeniz gerekebilir. |
@@ -118,7 +118,7 @@ Aşağıdaki bölümler, sistem durumu ve işletimsel durumlarını listeler.
 
 Birimi bir uyarı sistem durumunda olduğunda, bir veya daha fazla kopyasını kullanılamıyor, ancak Azure Stack, verilerinizin en az bir kopyasını hala okuyabilirsiniz anlamına gelir.
 
-| İşlemsel durum | Açıklama |
+| İşlemsel durumu | Açıklama |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Hizmette | Azure Stack birim gibi ekleme veya bir sürücüyü kaldırma sonrasında onarıyor. Onarım işlemi tamamlandığında, birim için Tamam durumu döndürmelidir.<br> <br>**Eylem:** Birim onarma tamamlamak Azure Stack için bekleyin ve daha sonra durumu denetleyin. |
 | Eksik | Bir veya daha fazla sürücü başarısız oldu veya eksik olduğundan birimin esnekliği azaltılır. Bununla birlikte, eksik sürücüleri verilerinizi güncel kopyalarını içerir.<br> <br>**Eylem:** Eksik sürücüleri yeniden, başarısız olan herhangi bir sürücü değiştirin ve çevrimdışı sunucuları çevrimiçi. |
@@ -130,16 +130,16 @@ Birimi bir uyarı sistem durumunda olduğunda, bir veya daha fazla kopyasını k
 
 Bir birim bir kötü sistem durumu durumda olduğunda, birimdeki verilerin tümünün veya şu anda erişilemiyor.
 
-| İşlemsel durum | Açıklama |
+| İşlemsel durumu | Açıklama |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Artıklık | Çok fazla sürücüleri başarısız olduğundan veri birimi kaybetti.<br> <br>**Eylem:** Lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. |
 
 
-### <a name="volume-health-state-unknown"></a>Birim durumu: Bilinmeyen
+### <a name="volume-health-state-unknown"></a>Birim durumu: Bilinmiyor
 
 Birim içinde bilinmeyen durumu sanal disk ayrılmış duruma da olabilir.
 
-| İşlemsel durum | Açıklama |
+| İşlemsel durumu | Açıklama |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ayrılmış | Depolama aygıtı hata oluştu. erişilemez olmasına neden olabilir. Bazı veriler kaybolabilir.<br> <br>**Eylem:** <br>1. Fiziksel denetleyin ve ağ bağlantısını tüm depolama cihazı.<br>2. Tüm cihazları doğru bir şekilde bağlantınız varsa, lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. Başarısız bağlantı geri yüklendikten sonra yedekten geri yüklemeniz gerekebilir. |
 
@@ -152,8 +152,6 @@ $scaleunit_name = (Get-AzsScaleUnit)[0].name
 
 $subsystem_name = (Get-AzsStorageSubSystem -ScaleUnit $scaleunit_name)[0].name
 
-, SerialNumber
-
 Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Select-Object StorageNode, PhysicalLocation, HealthStatus, OperationalStatus, Description, Action, Usage, CanPool, CannotPoolReason, SerialNumber, Model, MediaType, CapacityGB
 ```
 
@@ -161,7 +159,7 @@ Aşağıdaki bölümlerde, bir sürücü kullanılabilir sistem durumları açı
 
 ### <a name="drive-health-state-healthy"></a>Sürücü durumu: Sorunsuz
 
-| İşlemsel durum | Açıklama |
+| İşlemsel durumu | Açıklama |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Tamam | Birim, iyi durumda. |
 | Hizmette | Sürücü bazı iç kayıt tutma işlemlerini gerçekleştiriyor. İşlem tamamlandığında, sürücü Tamam durumu döndürmelidir. |
@@ -170,7 +168,7 @@ Aşağıdaki bölümlerde, bir sürücü kullanılabilir sistem durumları açı
 
 Uyarı durumu can sürücüde okuyun ve başarıyla veri yazma ancak bir sorun vardır.
 
-| İşlemsel durum | Açıklama |
+| İşlemsel durumu | Açıklama |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | İletişim kaybedildi | Sürücüye bağlantısı kesildi.<br> <br>**Eylem:** Tüm sunucuları tekrar çevrimiçi duruma getirin. Bu sorunu çözmüyorsa, sürücünün yeniden bağlanın. Bu gerçekleştiği tutar, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
 | Öngörülen hata | Sürücünün hata yakında tahmin edildiğinde.<br> <br>**Eylem:** Mümkün olan en kısa sürede tam dayanıklılık sağlamak için sürücüyü değiştirin. |
@@ -190,7 +188,7 @@ Uyarı durumu can sürücüde okuyun ve başarıyla veri yazma ancak bir sorun v
 
 Kötü durumda bir sürücü şu anda yazılan veya olamaz erişilebilir.
 
-| İşlemsel durum | Açıklama |
+| İşlemsel durumu | Açıklama |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Böl | Sürücü havuzdan ayrılmış haline gelir.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. Bu disk kullanmanız gerekiyorsa, disk sistemden kaldırmak, hiç yararlı veri diskte olduğundan emin olun, disk silme ve ardından diski yeniden takın. |
 | Kullanılamaz | Fiziksel disk çözüm satıcınız tarafından desteklenmediği için karantinaya alındı. Çözüm için onaylanmış ve doğru bir disk üretici yazılımı olan diskleri desteklenir.<br> <br>**Eylem:** Onaylanan üretici ve model numarası çözümü içeren bir disk sürücüsüne değiştirin. |
@@ -206,13 +204,13 @@ Kötü durumda bir sürücü şu anda yazılan veya olamaz erişilebilir.
 
 Bazı sürücüler yalnızca Azure Stack depolama havuzunda olmasını hazır değil. Neden bir sürücü bir sürücünün CannotPoolReason özelliğine bakılarak havuz için uygun değil kullanıma bulabilirsiniz. Aşağıdaki tabloda her biri nedeniyle biraz daha ayrıntılı bilgi sağlar.
 
-| Neden | Açıklama |
+| Reason | Açıklama |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Donanım uyumlu değil | Sistem sağlığı hizmeti kullanılarak belirtilen onaylanan depolama modelleri listesinde sürücü değil.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
 | Üretici yazılımı uyumlu değil | Fiziksel sürücü bellenimini, sistem sağlığı hizmeti kullanarak onaylı üretici yazılımı sürümlerini listesinde değil.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
 | Küme tarafından kullanımda | Sürücü, şu anda bir yük devretme kümesi tarafından kullanılır.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
 | Çıkarılabilir medya | Sürücünün bir çıkarılabilir sürücü olarak sınıflandırılır. <br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
-| Sağlıklı durumda değil | Sürücü, iyi durumda olmayan ve değiştirilmesi gerekebilir.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
+| İyi | Sürücü, iyi durumda olmayan ve değiştirilmesi gerekebilir.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
 | Yeterli kapasite | Sürücüdeki boş alanı alma bölümler vardır.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. Bu disk kullanmanız gerekiyorsa, disk sistemden kaldırmak, hiç yararlı veri diskte olduğundan emin olun, disk silme ve ardından diski yeniden takın. |
 | Doğrulama devam ediyor | Sistem sağlığı hizmeti kullanmak için sürücü veya sürücü bellenimini onaylanırsa görmek için denetliyor.<br> <br>**Eylem:** İşlemi tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin. |
 | Doğrulama başarısız oldu | Sistem sağlığı hizmeti kullanmak için sürücü veya sürücü bellenimini onaylanırsa görmeye denetlenemedi.<br> <br>**Eylem:** Lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. |

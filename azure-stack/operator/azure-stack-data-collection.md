@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
-ms.author: PatAltimore
+ms.date: 06/10/2019
+ms.author: patricka
 ms.reviewer: chengwei
-ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: e0b62c9f9519e1b77211327c4f9b48d4b53cf99a
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.lastreviewed: 06/10/2019
+ms.openlocfilehash: 9da7ced492a86cb97a1b90a2224383d834073423
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985866"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828356"
 ---
 # <a name="azure-stack-log-and-customer-data-handling"></a>Azure Stack günlük ve müşteri verilerini işleme 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*  
 
-Ölçüde Microsoft işlemci veya subprocessor kişisel verilerin Azure Stack bağlantılı olarak, Microsoft'un sunduğu tüm müşteriler için etkili 25 Mayıs 2018'den itibaren taahhüt içinde (a) "kişisel verilerin işlenmesini; GDPR"Hazırlama"Veri koruma koşulları"bölümünün [çevrimiçi hizmet koşulları](https://nam06.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.microsoftvolumelicensing.com%2FDocumentSearch.aspx%3FMode%3D3%26DocumentTypeId%3D31&data=02%7C01%7Ccomartin%40microsoft.com%7Ce2ce478261764c79c3f308d68df01136%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636852459551078818&sdata=cpWsfZTBHpqEFr50DWQOryq342U8shgeFgMXVPQz5ug%3D&reserved=0) ve (b), Avrupa Birliği genel veri koruma yönetmeliği'koşullarını ek 4 [çevrimiçi hizmet koşulları](https://nam06.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.microsoftvolumelicensing.com%2FDocumentSearch.aspx%3FMode%3D3%26DocumentTypeId%3D31&data=02%7C01%7Ccomartin%40microsoft.com%7Ce2ce478261764c79c3f308d68df01136%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636852459551088813&sdata=bv1CBiaCnYmjiv6S0dFCbWEd4fNCkPBjBwgylNa%2FNt0%3D&reserved=0). 
+Ölçüde Microsoft işlemci veya subprocessor kişisel verilerin Azure Stack bağlantılı olarak, Microsoft'un sunduğu tüm müşteriler için etkili 25 Mayıs 2018'den itibaren taahhüt içinde (a) "kişisel verilerin işlenmesini; GDPR"Hazırlama"Veri koruma koşulları"bölümünün [çevrimiçi hizmet koşulları](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) ve (b), Avrupa Birliği genel veri koruma yönetmeliği'koşullarını ek 4 [çevrimiçi hizmet koşulları](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). 
 
 Azure Stack müşteri veri merkezlerinde bulunan gibi Microsoft yalnızca Microsoft ile paylaşılan verilerinin veri denetleyicisi, [tanılama](azure-stack-diagnostics.md), [Telemetri](azure-stack-telemetry.md), ve [Faturalama](azure-stack-usage-reporting.md).  
 
 ## <a name="data-access-controls"></a>Veri erişim denetimleri 
-Belirli bir destek talebi araştırmak için atanan Microsoft çalışanlarının, şifrelenmiş verilere salt okunur erişim verilir. Microsoft çalışanları ayrıca gerekirse verileri silmek için kullanılan araçlara erişebilir. Tüm müşteri verilerine erişim denetlenir ve günlüğe kaydedilir.  
+Belirli bir destek talebi araştırmak için atanan Microsoft çalışanlarının, şifrelenmiş verilere salt okunur erişim verilir. Microsoft çalışanları ayrıca gerekirse verileri silmek için kullanılan araçları erişebilir. Tüm müşteri verilerine erişim denetlenir ve günlüğe kaydedilir.  
 
 Veri erişimi denetimlerini:
 1.  Veriler yalnızca en fazla 90 gün sonra çalışması için korunur.
@@ -43,7 +43,7 @@ Veri erişimi denetimlerini:
 Daha önce bahsedildiği gibi Microsoft Müşteri istek başına isteğe bağlı veri silme destekler. Müşteriler, bizim destek mühendisi dilediğiniz zaman verileri kalıcı olarak silinmeden önce müşteri'nin, seçme, belirli bir çalışması için tüm günlükleri silmek isteyebilirsiniz.  
 
 ### <a name="does-microsoft-notify-customers-when-the-data-is-deleted"></a>Microsoft, veri silindiğinde müşterilere bildirmek mu?
-Otomatik veri silme eylemi için (çalışması kapattıktan sonra 90 gün) biz değil proaktif bir şekilde müşterilere ulaşın ve silme hakkında bildirim yollayın. 
+Otomatik veri silme eylemi için (çalışması kapattıktan sonra 90 gün) biz değil proaktif bir şekilde müşterilere başvurun ve silme hakkında bildirim yollayın. 
 
 İsteğe bağlı veri silme eylemi için Microsoft destek mühendisine nerede bunlar isteğe bağlı verileri silme işlemini başlatabilir ve bittiğinde onaylama telefonda müşteriyle sağlayabilirler aracına erişebilir.
 

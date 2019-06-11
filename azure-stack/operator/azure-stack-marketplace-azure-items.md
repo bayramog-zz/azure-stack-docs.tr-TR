@@ -16,12 +16,12 @@ ms.date: 04/12/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 714ffd213ce88ca58cf4b04c649857239f6deacf
-ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
+ms.openlocfilehash: 2ea78ea572959dfa19eb10057ec2c67e815d300a
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66749042"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828460"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilir olan Azure Market öğeleri
 
@@ -238,7 +238,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | ![Hortonworks Data Platform (HDP) Sandbox](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) korumalı alan](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Tarafından HDP %2,5 100 açık kaynak platformu Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari için desteklenen. | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky hibrit bulut güvenliği](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Sorunsuz bir şekilde düzenlenmiş ve Uyarlamalı siber güvenlik ekosistemi Kaspersky hibrit bulut güvenliği sağlar. | Kaspersky Lab |
 | ![KEMP LoadMaster yük dengeleyici ADC içerik anahtarı](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster yük dengeleyici ADC içerik anahtarı](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 4-7. Katman uygulama teslim denetleyicisini (ADC) yük dengeleyici, içerik anahtarı ve Traffic Manager. | KEMP Technologies Inc. |
-| ![Kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-solution-template-kubernetes-cluster-add.md) | Bu çözüm, tek başına küme ACS-Engine kullanılarak oluşturulan şablonlarını ile çalışan bir Kubernetes kümesi dağıtır.<br>**Bu çözüm şablonu ayrıca Ubuntu Server 16.04 LTS ve özel betik için Linux 2.0 gerektirir.**| Microsoft |
+| ![Kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-solution-template-kubernetes-cluster-add.md) | Bu çözüm, tek başına küme AKS altyapısı kullanılarak oluşturulan şablonlarını ile çalışan bir Kubernetes kümesi dağıtır.<br>**Bu çözüm şablonu ayrıca Ubuntu Server 16.04 LTS ve özel betik için Linux 2.0 gerektirir.**| Microsoft |
 | ![Service Fabric Kümesi](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric kümesi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceFabricCluster?tab=Overview) | Bu çözüm, Service Fabric sanal makine ölçek kümesi üzerinde bir tek başına küme olarak çalışmayı dağıtır. <br>**Bu çözüm şablonu, ayrıca Windows Server 2016 Datacenter'ı indirmek gerektirir**| Microsoft |
 | ![NRI mPLAT paketi - çoklu bulut Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT paketi - çoklu bulut Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Bir tek bölmesinde, izlemek için cam yapılandırma, sağlama, otomatikleştirin ve herhangi bir iş yükü veya Bulut yönetir. | NRI |
 | ![NooBaa karma AWS S3 uyumlu - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa karma AWS S3 uyumlu - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Genel yayılan ve şirket içi kapasite kaynaklara S3 ile uyumlu depolama hizmeti. | NooBaa |

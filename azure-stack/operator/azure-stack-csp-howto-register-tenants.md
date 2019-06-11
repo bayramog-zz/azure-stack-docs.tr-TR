@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/07/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 5f03b80b871d3df467bc52b735432ce5568a3ad8
-ms.sourcegitcommit: a78c0d143eadcab65a601746b9ea24be28091ad2
+ms.lastreviewed: 06/07/2019
+ms.openlocfilehash: edc6fc17e426e5e391eb61d510097101ddcfce58
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65212306"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828328"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Kiracı kullanımı için ekleyin ve Azure Stack'e faturalama
 
@@ -51,7 +51,7 @@ Müşterinizin kaydının iş ortağı Merkezi'nde oluşturduktan sonra katalogd
 
 ### <a name="create-a-guest-user-in-the-end-customer-directory"></a>Son Müşteri dizinde Konuk kullanıcı oluşturma
 
-Son müşteri, kendi hesabı yönetiyorsa, dizinde Konuk kullanıcı oluşturmak ve bunları bilgi gönderin. Son kullanıcı ardından Konuk ekler ve Konuk izni yükseltir **sahibi** Azure Stack CSP hesabı.
+Varsayılan olarak, CSP olarak son müşterinin Azure Stack aboneliğine erişiminiz olmaz. Müşterinizin kaynaklarını yönetmek isterse, ancak bunlar daha sonra hesabınızı sahip/katkıda bulunan Azure Stack aboneliğine ekleyebilirsiniz. Bunu yapabilmek için bunların hesabınızı AAD kiracısının Konuk kullanıcı olarak eklemeniz gerekecektir. Müşterinin Azure aboneliğine erişim kaybetmeyin emin olmak için müşterinizin Azure Stack aboneliğine yönetmek için Azure CSP hesabınızdan farklı bir hesap kullanmanız önerilir.
 
 ### <a name="update-the-registration-with-the-end-customer-subscription"></a>Kayıt son müşteri aboneliği ile güncelleştirme
 
@@ -77,7 +77,7 @@ Parametreler için aşağıdaki bölümde açıklanmıştır **New-AzureRmResour
 | --- | --- |
 |registrationSubscriptionID | Azure Stack ilk kayıt için kullanılan Azure aboneliği.|
 | customerSubscriptionID | Kaydedilecek müşteriye ait Azure aboneliği (Azure Stack değil). Olmalıdır; CSP teklife oluşturulan uygulamada, bu iş ortağı merkezi üzerinden anlamına gelir. Bir müşteri birden fazla Azure Active Directory kiracınız varsa, bu abonelik Azure Stack açarken kullanılacak kiracıdaki oluşturulması gerekir. Müşteri abonelik kimliği, küçük harf kullanmanız gerekir. |
-| resourceGroup | Kaydınızı depolandığı Azure kaynak grubunda. |
+| Kaynak grubu | Kaydınızı depolandığı Azure kaynak grubunda. |
 | registrationName | Azure Stack kayıt adı. Bu, Azure'da depolanan bir nesnedir. |
 | Özellikler | Kaynağın özelliklerini belirtir. Kaynak türü için belirli özelliklerin değerlerini belirtmek için bu parametreyi kullanın.
 

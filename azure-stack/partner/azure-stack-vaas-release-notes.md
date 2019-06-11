@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 06/10/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: eefd39c751bdbd9ed9c8f3b9112fee1ddbffb9a0
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 06/10/2019
+ms.openlocfilehash: 9360e8e5f4db14fbebba2642ed11ca2e3830bdf1
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64297936"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828405"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Hizmet olarak doğrulama için sürüm notları
 
@@ -28,6 +28,13 @@ ms.locfileid: "64297936"
 Bu makalede, bir hizmet olarak Azure Stack doğrulama için sürüm notları bulunur.
 
 ## <a name="version-405"></a>Sürüm 4.0.5
+
+2019 7 Haziran
+
+- Bulut benzetimi paket doğrulama iş akışı altyapısında doğrulama süresini hızlandırmak için güncelleştirilmiştir:  
+    Çalışma zamanı: 6 saat azaltıldı  
+    Sürüm: 5.1.13.0 -> 5.1.22.0  
+
 
 2019 Ocak 17
 

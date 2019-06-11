@@ -4,7 +4,7 @@ description: Azure Stack'te Azure App Service ölçülür ve diğer IP adresleri
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
-manager: femila
+manager: stefsch
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 06/10/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 7b11f00c98c6433ad035b6190789276ea5aa6fa7
-ms.sourcegitcommit: be5382f715a9c1c18c660b630d8fcd823f13aae3
+ms.lastreviewed: 06/10/2019
+ms.openlocfilehash: fa3bc647d11bca915c58aa1bd948881628405776
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66213023"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828367"
 ---
 # <a name="azure-app-service-on-azure-stack-billing-overview-and-faq"></a>Azure App Service, Azure Stack fatura genel bakış ve sık sorulan sorular
 
@@ -72,6 +72,22 @@ Azure App Service kaynak sağlayıcısı tarafından gerekli SQL ve dosya sunucu
 ### <a name="the-usage-faq-lists-the-tenant-meters-but-not-the-prices-for-those-meters-where-can-i-find-them"></a>Kullanım SSS Kiracı ölçümleri ancak değil bunları nereden bulabilirim, bu ölçümleri fiyatı listeler
 
 Bulut operatörleri, kendi fiyatlandırma modeli son müşterilerine uygulamak ücretsizdir. Kullanım hizmeti kullanım ölçümünü sağlar ve bulut operatörü belirlerler fiyatlandırma modelini temel alan, müşterilerine kaydedilecek ölçüm miktarı ardından kullanması gerekir. Etkinleştirir işleçleri fiyatlandırma diğer Azure Stack operatörlerinin ayırt etmek için bu özelliğine sahip.
+
+### <a name="as-a-csp-how-can-i-offer-free-and-shared-skus-for-customers-to-trial-the-service"></a>CSP olarak nasıl miyim ücretsiz ve paylaşılan SKU'lar için deneme müşterilere bir hizmetin sunduğu
+
+Bir bulut işleci olarak paylaşılan çalışanlar barındırılan olarak Azure'da yaptığımız gibi ücretsiz ve paylaşılan SKU'lar teklifi için maliyetlere neden olur.  Size maliyeti en aza indirmek için en az için paylaşılan çalışan katmanı ölçeğini seçebilirsiniz.  Örneğin, ücretsiz ve paylaşılan App Service planı SKU'lar sunmak ve tüketim tabanlı işlevleri sunmak için en az 1 A1 örnek kullanılabilir olması gerekir.  Çok kiracılı paylaşılan çalışanlar, bu nedenle birden çok müşteri uygulamalarını barındırmak, her ayrı ayrı yalıtılmış App Service korumalı alanı tarafından korunan.  Bu şekilde paylaşılan çalışan katmanı ölçeğini genişleterek 1vCPU aylık maliyet, outlay sınırlayabilirsiniz.
+
+Ayrıca, ardından yalnızca ücretsiz ve paylaşılan SKU'lar sunar ve müşteri oluşturabilirsiniz ücretsiz ve paylaşılan app service planları sayısını sınırlayan bir plan kullanmak için bir kota oluşturmayı seçebilirsiniz.
+
+## <a name="sample-scripts-to-assist-with-billing"></a>Faturalandırmayla yardımcı olacak örnek betikler
+
+Azure Stack kullanım hizmeti sorgulama ile kiracıları kendi faturalandırma hazırlamak için bulut operatörlerinin yardımcı olmak için yardımcı olmak için Azure App Service ekip oluşturulan örnek PowerShell betikleri.  Örnek betikler bulunabilir [Azure Stack araçları depo](https://github.com/Azure/AzureStack-tools) GitHub ve App Service içinde betikleridir [AppService klasör kullanımı altında](https://github.com/Azure/AzureStack-Tools/tree/master/Usage/AppService).
+
+Örnek betikler şunlardır:
+
+- [Get-AppServiceBillingRecords](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceBillingRecords.ps1) -Bu örnek, Azure Stack kullanım API'si kayıtlardan faturalama Azure Stack'te Azure App Service getirir
+- [Get-AppServiceSubscriptionUsage](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceSubscriptionUsage.ps1) -Bu örnek, Azure Stack abonelik başına kullanım tutarları üzerinde Azure App Service hesaplar.  Bu betik, kullanım API'si ve ölçüm bulut operatör tarafından sağlanan fiyatlar verilerini temel kullanım tutarları hesaplar.
+- [Askıya alma UserSubscriptions](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Suspend-UserSubscriptions.ps1) - Bu örnek askıya alır veya kullanım sınırı bulut operatör tarafından belirtilen temel abonelik etkinleştirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

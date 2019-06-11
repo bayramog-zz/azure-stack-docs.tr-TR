@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/10/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: d06c57ad73076f8b55099648aef8151574041261
-ms.sourcegitcommit: 31e93196aae5af5c46037b9169d119bb6d20c990
+ms.lastreviewed: 06/10/2019
+ms.openlocfilehash: 018c5e2a6e099fb0a0ed7bc164ef26728a9d8ed3
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66717921"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828227"
 ---
 # <a name="azure-stack-1905-update"></a>Azure Stack 1905 güncelleştirme
 
@@ -67,7 +67,7 @@ Bu güncelleştirmeyle, Windows Server 2019 artık başarıyla 2016 konağında 
 
   Lütfen Uzantılar'ın bu sürümlerinin gelecekteki bir sürümde TLS 1.2 uygulandığında uzantının yeni dağıtımlar başarısız olmayın böylece hemen indirin. Her zaman **autoupdateminorversion = true** böylece Uzantıları (örneğin, 1.8 için 1.9) için alt sürüm güncelleştirmeleri otomatik olarak gerçekleştirilir.
 
-- Yeni bir **Yardım ve Desteği'ne genel bakış** Azure Stack'te portal, destek seçenekleri işaretleyin, Uzman Yardımı alın ve Azure Stack hakkında daha fazla bilgi, işleçler kolaylaştırır. Tümleşik sistemlerde, destek istekleri damganız Microsoft Müşteri Destek Hizmetleri (CSS) ile sorun çözümü yardımcı olmak için ilgili bilgilerle önceden doldurulmuş. Yüksek oranda müşterilerin genel Azure portalını kullanarak yerine biletleri göndermek için bu deneyim kullanmanızı öneririz. Daha fazla bilgi için [Azure Stack Yardım ve Destek](azure-stack-help-and-support-overview.md).
+- Yeni bir **Yardım ve Desteği'ne genel bakış** Azure Stack'te portal, destek seçenekleri işaretleyin, Uzman Yardımı alın ve Azure Stack hakkında daha fazla bilgi, işleçler kolaylaştırır. Tümleşik sistemlerde, bir destek isteği oluşturma, Azure Stack hizmeti SCP'si. Yüksek oranda müşterilerin genel Azure portalını kullanarak yerine biletleri göndermek için bu deneyim kullanmanızı öneririz. Daha fazla bilgi için [Azure Stack Yardım ve Destek](azure-stack-help-and-support-overview.md).
 - Birden çok Azure Active dizin eklenen olduğunda (aracılığıyla [bu işlem](azure-stack-enable-multitenancy.md)), belirli güncelleştirmeler olduğunda veya AAD hizmet sorumlusu yetkilendirme değişiklikleri neden olacak şekilde hakları betik artırarak algoritmanın yeniden çalıştırılması ihmal mümkündür eksik. Bu çeşitli sorunları engellenen erişim belirli özellikleri özgün verilecek izleme sabit olan daha fazla ayrı hatalarına neden olabilir. Bunu önlemek için bu izinleri denetler ve belirli yapılandırma sorunlarını bulunduğunda bir uyarı oluşturan yeni bir özellik 1905 tanıtır. Bu doğrulama saatte bir çalışır ve bu sorunu düzeltmek için gerekli düzeltme eylemleri görüntüler. Tüm kiracılar iyi durumda olduğunda, uyarıyı kapatır.
 
 - Geliştirilmiş Güvenilirlik altyapı hizmeti yük devretme sırasında yedekleme işlemleri. 

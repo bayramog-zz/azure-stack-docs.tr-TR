@@ -14,12 +14,12 @@ ms.date: 05/08/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: 996dacc1c95a172ffa09247c56a12a5afd00e086
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 7dba3d791a2ce19429506699ae538c747ed37dbd
+ms.sourcegitcommit: 7ceddf8b67f920d5a5eef4a84e157079a53b3374
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269524"
+ms.lasthandoff: 06/10/2019
+ms.locfileid: "66821790"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack'te Azure CLI ile API Sürüm profillerini kullanma
 
@@ -402,8 +402,8 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
 1. Azure Stack ortamınıza çalıştırarak kayıt `az cloud register` komutu. Bazı senaryolarda, doğrudan giden internet bağlantısı, bir proxy veya SSL durdurma zorlar güvenlik duvarı yönlendirilir. Bu gibi durumlarda, `az cloud register` komut "uç noktalar buluttan alınamıyor." şeklinde bir hata ile başarısız olabilir Bu hatayı çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
 
    ```shell
-   set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
-   set ADAL_PYTHON_SSL_NO_VERIFY=1
+   export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
+   export ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
 2. Ortamınıza kaydedin. Çalıştırırken aşağıdaki parametreleri kullanın `az cloud register`.
@@ -513,8 +513,8 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
 1. Azure Stack ortamınıza çalıştırarak kayıt `az cloud register` komutu. Bazı senaryolarda, doğrudan giden internet bağlantısı, bir proxy veya SSL durdurma zorlar güvenlik duvarı yönlendirilir. Bu gibi durumlarda, `az cloud register` komut "uç noktalar buluttan alınamıyor." şeklinde bir hata ile başarısız olabilir Bu hatayı çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
 
    ```shell
-   set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
-   set ADAL_PYTHON_SSL_NO_VERIFY=1
+   export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
+   export ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
 2. Ortamınıza kaydedin. Çalıştırırken aşağıdaki parametreleri kullanın `az cloud register`.

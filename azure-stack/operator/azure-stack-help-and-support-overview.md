@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 2d6943cc88712c0706054103383c436419cecd85
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.lastreviewed: 06/10/2019
+ms.openlocfilehash: 4649866a020a9ddc3d359dcb69e8d4165a00a88d
+ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693904"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66828382"
 ---
 # <a name="microsoft-azure-stack-help-and-support"></a>Microsoft Azure Stack Yardım ve Destek
 
@@ -43,7 +43,7 @@ ms.locfileid: "66693904"
 
 Tümleşik bir sistem için Eşgüdümlü yükseltme ve özgün ekipman üreticisi (OEM) donanım iş ortaklarımız ile Microsoft arasındaki çözümleme işlemi yoktur.
 
-Bulut Hizmetleri sorun varsa, Microsoft Müşteri Destek Hizmetleri (CSS) aracılığıyla destek sunulur. Tıklayabilirsiniz **yardımcı** (soru işareti) Yönetici portalı'nı ve ardından sağ üst köşesindeki **Yardım + Destek** açmak için **Yardım + Destek genel bakış** ve yenisini Gönder destek isteği. Destek isteğini damganız Microsoft Müşteri Destek Hizmetleri (CSS) ile sorun çözümü yardımcı olmak için ilgili bilgilerle önceden doldurulur. Yüksek oranda müşterilerin genel Azure portalını kullanarak yerine biletleri göndermek için bu deneyim kullanmanızı öneririz. 
+Bulut Hizmetleri sorun varsa, Microsoft Müşteri Destek Hizmetleri (CSS) aracılığıyla destek sunulur. Tıklayabilirsiniz **yardımcı** (soru işareti) Yönetici portalı'nı ve ardından sağ üst köşesindeki **Yardım + Destek** açmak için **Yardım + Destek genel bakış** ve yenisini Gönder destek isteği. Bir destek isteği oluşturma, Azure Stack hizmeti SCP'si. Yüksek oranda müşterilerin genel Azure portalını kullanarak yerine biletleri göndermek için bu deneyim kullanmanızı öneririz. 
 
 Dağıtım ile ilgili bir sorun varsa, düzeltme eki ve güncelleştirme, donanım (alan değiştirebilen birim dahil) ve donanım markalı yazılımları, donanım yaşam döngüsü konak üzerinde çalışan yazılımı gibi ilk OEM donanım satıcınıza başvurun. Diğer her şey için Microsoft CSS ile iletişime geçin.
 
