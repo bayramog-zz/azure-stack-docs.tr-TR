@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2019
+ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 087c3b95f96600f6ff0cf14ab0fb8618046b86d7
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 06/11/2019
+ms.openlocfilehash: a2bb84cef5c24cd84653092a34dea7f0e20b624e
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64302534"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66836888"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Azure Stack'te teklif oluşturma
 
@@ -34,11 +34,11 @@ ms.locfileid: "64302534"
 
 2. Teklif adını tanımlamak ve varolan ekleyin veya yeni bir temel plan ve eklenti planları oluşturma sağlayan bir sekmeli kullanıcı arabirimi görüntülenir. En önemlisi de oluşturmak karar vermeden önce oluşturduğunuz teklif ayrıntılarını gözden geçirebilirsiniz.
 
-   İçinde **Temelleri** sekmesindeki **yeni teklif**, girin bir **görünen ad** ve **kaynak adı**ve ardından altındaki **kaynak Grup**seçin **Yeni Oluştur** veya **var olanı kullan**. Görünen ad, teklifin kolay addır. Yalnızca Kullanıcı Portalı'nda bir teklife abone olduğunda kullanıcıların gördüğü teklif ilgili bilgilerin Bu kolay addır. Kullanıcılar teklife ne geldiğini anlamak yardımcı olan sezgisel bir ad kullanın. Yalnızca yönetici kaynak adını görebilirsiniz. Bu ad, yöneticilerin teklifle Azure Resource Manager kaynağı olarak çalışmak için kullandıkları addır. Bu sekmede, bu teklif genel hale getirmek ya da özel, onu varsayılan koruma seçebilirsiniz. Yapabilecekleriniz [teklif genel veya özel durumunu değiştirme](#change-the-state-of-an-offer) daha sonra da.
+   İçinde **Temelleri** sekmesinde bir **görünen ad** ve **kaynak adı**ve ardından altındaki **kaynak grubu**seçin **oluştur Yeni** veya **var olanı kullan**. Görünen ad, teklifin kolay addır. Yalnızca Kullanıcı Portalı'nda bir teklife abone olduğunda kullanıcıların gördüğü teklif ilgili bilgilerin Bu kolay addır. Kullanıcılar teklife ne geldiğini anlamak yardımcı olan sezgisel bir ad kullanın. Yalnızca yönetici kaynak adını görebilirsiniz. Bu ad, yöneticilerin teklifle Azure Resource Manager kaynağı olarak çalışmak için kullandıkları addır. Bu sekmede, bu teklif genel hale getirmek ya da özel, onu varsayılan koruma seçebilirsiniz. Yapabilecekleriniz [teklif genel veya özel durumunu değiştirme](#change-the-state-of-an-offer) daha sonra da.
 
    ![Yeni Teklif](media/azure-stack-create-offer/new-offer.png)
   
-3. Seçin **temel planlar** sekmesi. Teklife dahil etmek istediğiniz plana seçin.
+3. Seçin **temel planlar** sekmesinde veya tıklayın **sonraki: Temel planlar >** düğmesi. Teklife dahil etmek istediğiniz plana seçin.
 
    ![Plan seçin](media/azure-stack-create-offer/select-plan.png)
 
@@ -67,7 +67,7 @@ Teklif Durumu değiştirmek için iki yolu vardır:
 
    ![Durum seçin](media/azure-stack-create-offer/change-state.png)
 
-2. İçinde **tüm kaynakları**, teklif adını seçin. Ardından **teklif ayarları**. Kullanmak istediğiniz durumu seçin (örneğin, **genel**), ardından **Kaydet**.
+2. Seçin **teklif ayarları**. Kullanmak istediğiniz durumu seçin (örneğin, **genel**), ardından **Kaydet**.
 
    ![Erişilebilirlik durumunu seçin](media/azure-stack-create-offer/offer-settings.png)
 

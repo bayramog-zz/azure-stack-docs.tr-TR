@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: dc4cb3e7931b456de6e807d9f7b691f9bfb71a33
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 2d2aab654f2283cf019e609e9de14790ed44a76a
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269503"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837030"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>App Service'ı yüksek oranda kullanılabilir bir yapılandırmada dağıtın
 
@@ -171,13 +171,13 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
     ![Beklenen hata iletişim kutusu](media/app-service-deploy-ha/08.png)
 
     Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-    - Kaynak: Herhangi
+    - Kaynak: Tüm
     - Kaynak bağlantı noktası aralığı: *
     - Hedef: IP Adresleri
     - Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
     - Hedef bağlantı noktası aralığı: 445
     - Protokol: TCP
-    - Eylem: İzin ver
+    - Eylem: İzin Ver
     - Önceliği: 700
     - Ad: Outbound_Allow_SMB445
 
@@ -207,9 +207,9 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
     |Rol|Varsayılan|Yüksek oranda kullanılabilir bir öneri|
     |-----|-----|-----|
     |Denetleyici rolü|2|2|
-    |Yönetim Rolü|1|3|
+    |Yönetim rolü|1|3|
     |Yayımcı rolü|1|3|
-    |FrontEnd Rolü|1|3|
+    |FrontEnd rolü|1|3|
     |Paylaşılan çalışan rolü|1|10|
     |     |     |     |
 
@@ -234,8 +234,9 @@ App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izle
 
     ![Kurulum Tamamlandı](media/app-service-deploy-ha/16.png)
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
+
+[Appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleme](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) bir SQL her zaman şirket örneği ile App Service kaynak sağlayıcısı sağlamışsanız. Veritabanı yük devretme durumunda hizmet kaybını önlemek için veritabanlarını eşitleyin.
 
 [App Service ölçeğinizi](azure-stack-app-service-add-worker-roles.md). Ortamınızda beklenen talebi karşılamak için ek App Service altyapısını rol çalışanları eklemeniz gerekebilir. Varsayılan olarak, Azure Stack üzerinde App Service ücretsiz ve paylaşılan çalışan katmanları destekler. Diğer çalışan katmanları eklemek için daha fazla çalışan rolü eklemeniz gerekir.
 

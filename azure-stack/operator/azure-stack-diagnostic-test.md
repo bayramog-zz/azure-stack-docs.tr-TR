@@ -14,12 +14,12 @@ ms.date: 04/20/2019
 ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 3ec925406ad3553c0beb073d39d84ae20f5bc472
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: f95dcf44c2d9d30bc6ba40facbecff97ff26bf49
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268636"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66836701"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack sistem durumu doğrulama
 
@@ -48,13 +48,9 @@ Daha önce belirtildiği gibi doğrulama aracını CESARETLENDİRİCİ çalışt
 
    Başvurmak [parametresi konuları](azure-stack-diagnostic-test.md#parameter-considerations) ve [büyük örneklerde](azure-stack-diagnostic-test.md#use-case-examples) bölümlerde daha fazla bilgi için.
 
-3. Aşağıdakilerden sınamaktadır rapor **başarısız**çalıştırın:
+3. Aşağıdakilerden sınamaktadır rapor **başarısız**çalıştırın `Get-AzureStackLog`. Tümleşik bir sistem hakkında yönergeler için bkz. [tümleştirilmiş sistemlerle, Get-AzureStackLog Azure Stack'te çalıştırılacak](/azure-stack-diagnostics#to-run-get-azurestacklog-on-azure-stack-integrated-systems), veya ASDK üzerinde [Get AzureStackLog çalıştıran bir Azure Stack geliştirme Seti'ni (ASDK) sisteminde](/azure-stack-diagnostics#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
 
-   ```powershell
-   Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath "<path>" -OutputShareCredential $cred
-   ```
-
-   Cmdlet Test-AzureStack tarafından oluşturulan günlükleri toplar. Tanılama günlükleri hakkında daha fazla bilgi için bkz. [Azure Stack'te tanılama araçları](azure-stack-diagnostics.md). Günlükleri toplayın veya gerekir CSS başvurun testleri rapor **UYAR**.
+   Cmdlet Test-AzureStack tarafından oluşturulan günlükleri toplar. Günlükleri toplayın veya gerekir CSS başvurun testleri rapor **UYAR**.
 
 4. CSS tarafından doğrulama aracını çalıştırmak için istendiyse, sorun giderme devam etmek için toplanan günlüklerde CSS temsilcisi ister.
 

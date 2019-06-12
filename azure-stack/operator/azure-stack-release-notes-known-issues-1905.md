@@ -16,12 +16,12 @@ ms.date: 06/05/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: f5ea9823f41624038416d91cef9efcb9e16dad63
-ms.sourcegitcommit: 7ceddf8b67f920d5a5eef4a84e157079a53b3374
+ms.openlocfilehash: 38c7ec337ba8cdb73925b1c07f77331c05b25d8a
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2019
-ms.locfileid: "66821763"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66836670"
 ---
 # <a name="azure-stack-1905-known-issues"></a>Azure Stack 1905 bilinen sorunlar
 
@@ -33,13 +33,14 @@ Bu makalede, Azure Stack 1905 sürümündeki bilinen sorunlar listelenmektedir. 
 ## <a name="update-process"></a>Güncelleştirme işlemi
 
 ### <a name="host-node-update-prerequisite-failure"></a>Ana bilgisayar düğümünü güncelleştirmeyi önkoşul hatası
--   Uygulanabilir: Bu sorun 1905 güncelleştirmesi için geçerlidir.
--   Neden: Yüklemeye çalışırken 1905 Azure Stack güncelleştirme, güncelleştirme durumunun ana düğüm güncelleştirme önkoşul nedeniyle başarısız olabilir. Bunun nedeni genellikle yeterli boş disk alanı olan bir konak düğümü tarafından. 
--   Düzeltme: Ana bilgisayar düğümü disk alanı temizleme Yardım almak için Azure Stack desteği'ne başvurun.
--   Örneği: Seyrek
 
+- Uygulanabilir: Bu sorun 1905 güncelleştirmesi için geçerlidir.
+- Neden: 1905 Azure Stack güncelleştirmeyi yüklemeye çalışırken, güncelleştirme durumu nedeniyle başarısız olabilir **ana düğüm güncelleştirme önkoşul**. Bunun nedeni genellikle yeterli boş disk alanı olan bir konak düğümü tarafından.
+- Düzeltme: Ana bilgisayar düğümü disk alanı temizleme Yardım almak için Azure Stack desteği'ne başvurun.
+- Örneği: Seyrek
 
 ### <a name="preparation-failed"></a>Hazırlama başarısız
+
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: 1905 Azure yığını güncelleştirmesi yüklenmeye çalışılırken olmadığında güncelleştirme durumu ve durumuna değiştirin **PreparationFailed**. Bu, düzgün bir şekilde işlemek için bir iç altyapı paylaşımına depolama kapsayıcısından dosya aktarımı erişememe güncelleştirme kaynağı sağlayıcısı tarafından (URP) kaynaklanır. 1905 güncelleştirme paketi, bu sorun büyük olasılıkla yapabilir, önceki güncelleştirme paketlerini büyüktür.
 - Düzeltme: 1901 (1.1901.0.95) sürümünden itibaren kullanarak bu sorunu geçici olarak tıklayarak çalışabilirsiniz **Şimdi Güncelleştir** yeniden (değil **sürdürme**). URP ardından önceki girişim dosyalarından temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, aşağıdaki güncelleştirme paketini el ile karşıya öneririz [alma ve yükleme güncelleştirmelerini bölümüne](azure-stack-apply-updates.md#import-and-install-updates).

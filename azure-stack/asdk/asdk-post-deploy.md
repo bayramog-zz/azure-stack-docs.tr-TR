@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
-ms.openlocfilehash: 6d930c99890f8cf0be7b2a47199772c58a10b34d
-ms.sourcegitcommit: 4e0b450c91c6515794b663a39f9a4b8b49999918
+ms.openlocfilehash: aac9bb8edce4b15d3d058cdb3b6cc6e23aa58493
+ms.sourcegitcommit: 23816ec68f67f3ac51f78de925b7631590743a29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66411470"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66835002"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK yükleme sonrası yapılandırma görevleri
 
@@ -146,28 +146,6 @@ Sınamaların tamamlanması birkaç dakika sürebilir. Yükleme başarılı oldu
 ![Test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
 Bir hata oluştuğunda, Yardım almak için sorun giderme adımlarını izleyin.
-
-## <a name="reset-the-password-expiration-policy"></a>Parola süresi dolma ilkesini Sıfırla
-
-ASDK dağıttıktan sonra değerlendirme süresi sona ermeden önce Geliştirme Seti konak için parola süresi sona ermiyor emin olmak için aşağıdaki adımları izleyin.
-
-### <a name="to-change-the-password-expiration-policy-from-powershell"></a>Powershell'den parola süresi dolma ilkesini değiştirmek için
-
-Yükseltilmiş bir Powershell konsolundan komutu çalıştırın:
-
-```powershell
-Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local
-```
-
-### <a name="to-change-the-password-expiration-policy-manually"></a>Parola süresi dolma ilkesini el ile olarak değiştirmek için
-
-1. Geliştirme Seti konakta açın **Grup İlkesi Yönetimi** (GPMC. MMC) gidin **Grup İlkesi Yönetimi** - **orman: azurestack.local** - **etki alanları**  -  **azurestack.local**.
-2. Sağ **varsayılan etki alanı ilkesi** tıklatıp **Düzenle**.
-3. Grup İlkesi Yönetimi Düzenleyicisi'nde gidin **Bilgisayar Yapılandırması** - **ilkeleri** - **Windows ayarları**  -  **Güvenlik ayarları** - **hesap ilkeleri** - **parola ilkesi**.
-4. Sağ bölmede **en fazla parola geçerlilik süresi**.
-5. İçinde **en fazla parola geçerlilik süresi özellikleri** iletişim kutusunda, değişiklik **parola içinde sona erecek** değerini **180**ve ardından **Tamam**.
-
-![Grup İlkesi Yönetim Konsolu](media/asdk-post-deploy/gpmc.png)
 
 ## <a name="enable-multi-tenancy"></a>Çok kiracılı modeli etkinleştirme
 

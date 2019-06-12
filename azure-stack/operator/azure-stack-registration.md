@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mabrigg
-ms.reviewer: brbartle
+ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: b70cd30653b8b324ae4d11a4a3e8aafe47d9a179
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 94eb107450271722af773bc96bec7dfeb12ff52e
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617995"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66836707"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure Stack Azure ile kaydedin
 
@@ -38,7 +38,7 @@ Kaydetmeden önce aşağıdaki yerinde gerekir:
 
  - Kimlik bilgilerinizi doğrulayın
  - PowerShell dil modunu ayarlayın
- - Azure Stack için PowerShell'i yükleme
+ - Azure Stack için PowerShell yükleme
  - Azure Stack araçları indirin
  - Kayıt senaryonuz belirleme
 
@@ -76,7 +76,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 Çıktıyı döndürür olun **FullLanguageMode**. Diğer bir dil modu döndürülür, kayıt başka bir makinede çalıştırılması gerekiyor veya dil modu ayarlamak için gereken **FullLanguageMode** devam etmeden önce.
 
-### <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell'i yükleme
+### <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell yükleme
 
 Azure ile kaydetmek için Azure Stack için en son PowerShell kullanın.
 
@@ -255,7 +255,17 @@ Azure Stack bağlantısı kesilmiş bir ortamda (internet bağlantısı olmayan)
 
 ### <a name="connect-to-azure-and-register"></a>Azure ve kayıt bağlanma
 
-Internet'e bağlı bilgisayarda RegisterWithAzure.psm1 modülünü içeri aktarın ve oturum açmak için doğru Azure Powershell bağlamı için aynı adımları gerçekleştirin. Ardından kayıt AzsEnvironment çağırın. Azure ile kaydetmek için kayıt belirtecini belirtin. Azure Stack aynı Azure abonelik Kimliğini kullanarak birden fazla örneğini kaydediyorsanız, benzersiz kayıt adı belirtin. Aşağıdaki cmdlet'i çalıştırın:
+Internet'e bağlı bilgisayarda RegisterWithAzure.psm1 modülünü içeri aktarın ve oturum açmak için doğru Azure Powershell bağlamı için aynı adımları gerçekleştirin. Ardından kayıt AzsEnvironment çağırın. Azure ile kaydetmek için kayıt belirtecini belirtin. Azure Stack aynı Azure abonelik Kimliğini kullanarak birden fazla örneğini kaydediyorsanız, benzersiz kayıt adı belirtin.
+
+Kayıt belirtecinizi ve benzersiz bir belirteç adı gerekir.
+
+1. PowerShell ISE yönetici olarak başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarma **RegisterWithAzure.psm1** Modülü:  
+
+   ```powershell  
+   Import-Module .\RegisterWithAzure.psm1
+   ```
+
+2. Ardından, aşağıdaki PowerShell cmdlet'lerini çalıştırın:  
 
   ```powershell  
   $RegistrationToken = "<Your Registration Token>"
@@ -263,7 +273,17 @@ Internet'e bağlı bilgisayarda RegisterWithAzure.psm1 modülünü içeri aktar�
   Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
   ```
 
-İsteğe bağlı olarak, kayıt belirtecinizi içeren bir dosyaya işaret edecek şekilde Get-Content cmdlet'i kullanabilirsiniz:
+İsteğe bağlı olarak, kayıt belirtecinizi içeren bir dosyaya işaret edecek şekilde Get-Content cmdlet'ini kullanabilirsiniz.
+
+Kayıt belirtecinizi ve benzersiz bir belirteç adı gerekir.
+
+1. PowerShell ISE yönetici olarak başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarma **RegisterWithAzure.psm1** Modülü:  
+
+  ```powershell  
+  Import-Module .\RegisterWithAzure.psm1
+  ```
+
+2. PowerShell cmdlet'lerini aşağıdaki ardından çalıştırın:  
 
   ```powershell  
   $RegistrationToken = Get-Content -Path '<Path>\<Registration Token File>'
@@ -487,9 +507,9 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 ## <a name="registration-failures"></a>Kayıt hataları
 
 Azure Stack kayıt çalışırken hatalardan birini görebilirsiniz:
-1. $HostName için zorunlu donanım bilgileri alınamadı. Lütfen fiziksel konak ve bağlantı denetleyin ardından kayıt yeniden çalıştırmayı deneyin.
+1. $HostName için zorunlu donanım bilgileri alınamadı. Fiziksel konak ve bağlantı denetleyin ardından kayıt yeniden deneyin.
 
-2. Donanım bilgilerini al - Lütfen fiziksel konak ve bağlantı ardından kayıt yeniden çalıştırmayı deneyin $hostName için bağlanamıyor.
+2. Donanım bilgilerini al - Lütfen fiziksel konak ve bağlantı ardından kayıt yeniden denemek için $hostName bağlanamıyor.
 
 > Neden: etkinleştirme girişiminde konaklarından UUID, BIOS ve CPU gibi donanım ayrıntıları edinmeye ve fiziksel konağa bağlanamama nedeniyle mümkün değildi tipik olmasıdır.
 

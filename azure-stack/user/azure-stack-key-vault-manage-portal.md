@@ -3,8 +3,8 @@ title: Anahtar Kasası'nda Azure Stack portalını kullanarak yönetme | Microso
 description: Anahtar Kasası'nda Azure Stack portalını kullanarak yönetmeyi öğrenin
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
 ms.service: azure-stack
@@ -12,18 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 01/04/2019
-ms.date: 02/18/2019
-ms.author: v-jay
+ms.date: 06/11/2019
+ms.author: sethm
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: bc73e80acddaac8676b4cb47c0b9ced2467cdc44
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 57a23dc63c72657c19a92fa8f69e029be7f12f60
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301016"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66836870"
 ---
-# <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>Anahtar Kasası'nda Azure Stack portalını kullanarak yönetme
+# <a name="manage-key-vault-in-azure-stack-using-the-portal"></a>Anahtar Kasası'nda Azure Stack portalı kullanarak yönetme
 
 Anahtar Kasası'nda Azure Stack Azure Stack portalını kullanarak yönetebilirsiniz. Bu makalede oluşturma ve Azure Stack'te bir anahtar kasasını yönetebilirsiniz.
 
@@ -55,7 +54,7 @@ Azure Key Vault hizmetini içeren bir teklife abone olması gerekir.
 
 ## <a name="manage-keys-and-secrets"></a>Anahtarları ve gizli anahtarları yönetme
 
-Bir kasayı oluşturduktan sonra anahtarları ve gizli dizileri kasa içinde oluşturmak ve yönetmek için aşağıdaki yordamı kullanın.
+Bir anahtar kasası oluşturduktan sonra anahtarları ve gizli dizileri kasa içinde oluşturmak ve yönetmek için aşağıdaki yordamı kullanın.
 
 ### <a name="create-a-key"></a>Bir anahtar oluşturma
 
@@ -85,7 +84,7 @@ Anahtar başarıyla oluşturulduktan sonra altında seçebilirsiniz **anahtarlar
 
 3. Altında **gizli dizileri**seçin **Ekle**.
 
-4. Altında **gizli dizi oluşturma**, listesinden **karşıya yükleme seçenekleri**, istediğiniz bir gizli dizi oluşturmak bir seçenek belirleyin. Gizli dizi oluşturabilirsiniz **el ile** gizli ya da karşıya yükleme için bir değer girerseniz bir **sertifika** yerel makinenizden.
+4. Altında **gizli dizi oluşturma**, listesinden **karşıya yükleme seçenekleri**, istediğiniz bir gizli dizi oluşturmak bir seçenek belirleyin. Gizli dizi oluşturabilirsiniz **el ile** , gizli dizi için bir değer girin veya karşıya bir **sertifika** yerel makinenizden.
 
 5. Girin bir **adı** için gizli anahtarı. Gizli dizi adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir.
 

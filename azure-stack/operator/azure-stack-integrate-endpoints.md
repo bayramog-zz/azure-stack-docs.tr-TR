@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 885568035070bc4f74b94cddff200302fccfbb72
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 7ee47a5dc7344628561521f067a8310a0c8d3347
+ms.sourcegitcommit: 23816ec68f67f3ac51f78de925b7631590743a29
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618110"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66835082"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack veri merkezi tümleştirmesi - uç noktalarını yayımlama
 
@@ -35,30 +35,33 @@ Bunlar yayımlama Azure Stack için gerekli değil çünkü VIP'ler listelenmemi
 > [!Note]  
 > Azure Stack operatörü tarafından hiçbir denetimiyle kullanıcıların kendileri tarafından tanımlanan kullanıcı VIP'ler dinamik.
 
-> [!Note]
+> [!Note]  
+> IKEv2 VPN. Standart tabanlı bir IPsec VPN çözümü olan IKEv2 VPN, UDP bağlantı noktası 500 ve 4500 ile 50 numaralı IP protokolünü kullanır. Güvenlik duvarları her zaman bu bağlantı noktalarını açmaz ve bu nedenle IKEv2 VPN’nin proxy ile güvenlik duvarlarını geçememe olasılığı vardır.
+
+> [!Note]  
 > 1811 güncelleştirmesi itibarıyla 12495 30015 çeşitli nda bağlantı noktaları artık eklenmesi nedeniyle açık olması gerekmez [uzantısı konağı](azure-stack-extension-host-prepare.md).
 
-|Uç nokta (VIP)|DNS ana bilgisayar bir kaydı|Protocol|Bağlantı noktaları|
+|Uç nokta (VIP)|DNS ana bilgisayar bir kaydı|Protocol|Bağlantı Noktaları|
 |---------|---------|---------|---------|
 |AD FS|ADFS.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
 |Portal (Yönetici)|Adminportal.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
 |Adminhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
 |Azure Resource Manager (Yönetici)|Adminmanagement.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
 |Portal (kullanıcı)|Portalı.  *&lt;bölge >.&lt; FQDN >*|HTTPS|443|
-|Azure Resource Manager (kullanıcı)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Graf|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Sertifika iptal listesi|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
+|Azure Resource Manager (kullanıcı)|Management. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Graf|Graph. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Sertifika iptal listesi|Crl. *&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.  *&lt;bölge >.&lt; FQDN >*|TCP VE UDP|53|
 |Barındırma | *.hosting.\<region>.\<fqdn> | HTTPS | 443 |
-|Key Vault (kullanıcı)|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Key Vault (Yönetici)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Depolama Kuyruğu|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|Key Vault (kullanıcı)|&#42;.vault. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Key Vault (Yönetici)|&#42;.adminvault. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Depolama Kuyruğu|&#42;.queue. *&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Depolama tablosu|&#42;.Table.  *&lt;bölge >.&lt; FQDN >*|HTTP<br>HTTPS|80<br>443|
 |Depolama Blobu|&#42;.BLOB.  *&lt;bölge >.&lt; FQDN >*|HTTP<br>HTTPS|80<br>443|
 |SQL Kaynak Sağlayıcısı|sqladapter.dbadapter.  *&lt;bölge >.&lt; FQDN >*|HTTPS|44300-44304|
-|MySQL Kaynak Sağlayıcısı|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
-|App Service|&#42;.appservice.*&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
-|  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
+|MySQL Kaynak Sağlayıcısı|mysqladapter.dbadapter. *&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|App Service|&#42;.appservice. *&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
+|  |&#42;.scm.appservice. *&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
 |  |api.appservice.  *&lt;bölge >.&lt; FQDN >*|TCP|443 (HTTPS)<br>44300 (Azure Resource Manager)|
 |  |FTP.appservice.  *&lt;bölge >.&lt; FQDN >*|TCP, UDP|21, 1021, 10001-10100 (FTP)<br>990 (FTPS)|
 |VPN Ağ Geçitleri|     |     |[VPN gateway SSS bkz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-traverse-proxies-and-firewalls-using-point-to-site-capability).|
@@ -71,7 +74,7 @@ Azure Stack, yalnızca saydam proxy sunucuları destekler. Bir dağıtımda sayd
 > [!Note]  
 > Azure Stack aşağıdaki tabloda listelenen Azure hizmetlerine erişmek için ExpressRoute kullanma desteği olmamasıdır.
 
-|Amaç|Hedef URL|Protocol|Bağlantı noktaları|Kaynak Ağ|
+|Amaç|Hedef URL|Protocol|Bağlantı Noktaları|Kaynak ağ|
 |---------|---------|---------|---------|---------|
 |Kimlik|login.windows.net<br>login.microsoftonline.com<br>Graph.Windows.NET<br>https:\//secure.aadcdn.microsoftonline-p.com<br>Office.com|HTTP<br>HTTPS|80<br>443|Genel VIP - en az/27<br>Ortak ağ alt yapısı|
 |Market sendikasyonu|https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|Genel VIP - en az/27|
@@ -89,8 +92,9 @@ Azure Stack, yalnızca saydam proxy sunucuları destekler. Bir dağıtımda sayd
 |AD FS|AD FS meta veri uç noktası için AD FS tümleştirme sağlanan|TCP|443|Genel VIP - en az/27|
 |     |     |     |     |     |
 
-> [!Note]  
-> Giden URL'leri, coğrafi konuma göre en iyi olası bağlantı sağlamak için Azure traffic manager'ı kullanarak Yük Dengelemesi yapılıyor. Yük dengeli URL'leri, Microsoft update ve arka uç, uç müşterileri etkilemeden değiştirme. Yük dengeli Küme URL'leri için Microsoft IP adreslerinin listesi paylaşmaz. URL yerine IP göre filtreleme destekleyen bir cihaz kullanmanız gerekir.
+Giden URL'leri, coğrafi konuma göre en iyi olası bağlantı sağlamak için Azure traffic manager'ı kullanarak Yük Dengelemesi yapılıyor. Yük dengeli URL'leri, Microsoft update ve arka uç, uç müşterileri etkilemeden değiştirme. Yük dengeli Küme URL'leri için Microsoft IP adreslerinin listesi paylaşmaz. URL yerine IP göre filtreleme destekleyen bir cihaz kullanmanız gerekir.
+
+Giden DNS, gerekli olduğu her zaman ne değişir dış DNS ve ne tür bir kimlik tümleştirme seçildi sorgulama kaynağıdır. Bu bağlı bir senaryoysa, dağıtım sırasında BMC ağ üzerinde yer alan DVM, giden erişimi olması gerekir ancak dağıtımdan sonra DNS hizmeti, genel VIP sorguları gönderecek olan bir iç bileşen taşır. O zaman BMC ağ üzerinden giden DNS erişim kaldırılabilir ancak DNS sunucusunun genel VIP erişimi kalması gerekir; aksi takdirde kimlik doğrulaması başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

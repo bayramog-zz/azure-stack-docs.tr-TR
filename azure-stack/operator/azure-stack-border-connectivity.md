@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 06/11/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 291329d4e681aaeba416e0873e9f6ddf599526de
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: bd83c8fc29697107a17eeedabfd0280ff684457f
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618696"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66836725"
 ---
 # <a name="border-connectivity"></a>Kenarlık bağlantısı 
 Tümleştirme ağ planlaması, başarılı Azure Stack tümleşik sistemleri dağıtımı, operasyon ve yönetimi için önemli bir önkoşuldur. Kenarlık bağlantı planlama, sınır ağ geçidi Protokolü (BGP) dinamik yönlendirme kullanılıp kullanılmayacağı seçerek başlar. Bu bir 16 bit BGP Otonom sistem numarası (genel veya özel) atama gerektirir veya statik yönlendirme kullanarak, burada statik bir varsayılan yol kenarlığı cihazlara atanır.
@@ -45,7 +45,7 @@ Statik yönlendirme, sınır cihazlar için ek yapılandırma gerektirir. Daha f
 
 Azure Stack kullanarak statik yönlendirme ağ ortamınıza tümleştirmek için tüm dört fiziksel bağlantı kenarlık ve TOR cihaz arasında bağlanması gerekir ve nasıl statik yönlendirmenin çalıştığını nedeniyle yüksek kullanılabilirlik garanti edilemez.
 
-Sınır cihazı hedefleyen trafiği için TOR cihazlara P2P işaret eden statik yollar ile yapılandırılmalıdır *dış* ağ veya ortak VIP ve *altyapı* ağ. Statik yollara gerektirecek *BMC* ve *dış* dağıtımı için ağ. İşleçleri bulunan yönetim kaynaklarına erişmek için kenarlık statik yollar bırakmayı tercih edebilir *BMC* ağ. Statik yollar ekleme *anahtar altyapı* ve *geçiş Yönetim* ağları isteğe bağlı.
+Sınır cihazı hedefleyen trafiği için TOR cihazlara P2Ps işaret eden statik yollar ile yapılandırılmalıdır *dış* ağ veya ortak VIP ve *altyapı* ağ. Statik yollara gerektirecek *BMC* ve *dış* dağıtımı için ağ. İşleçleri bulunan yönetim kaynaklarına erişmek için kenarlık statik yollar bırakmayı tercih edebilir *BMC* ağ. Statik yollar ekleme *anahtar altyapı* ve *geçiş Yönetim* ağları isteğe bağlı.
 
 TOR cihazların tüm trafiği kenarlık cihazlara gönderme statik varsayılan bir yol ile yapılandırılmış olarak sunulur. Varsayılan kuralın tek istisnası trafiği üzerinde TOR kenarlık bağlantı için geçerli erişim denetim listesi kullanarak engellenen özel alanı içindir.
 

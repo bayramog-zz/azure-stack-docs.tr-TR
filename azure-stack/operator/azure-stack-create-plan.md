@@ -3,8 +3,8 @@ title: Azure Stack'te plan oluşturma | Microsoft Docs
 description: Bulut Yöneticisi olarak, abonelerin sanal makine sağlamasına olanak tanıyan bir plan oluşturun.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
@@ -12,23 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 03/07/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 06/11/2019
+ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 85c6fd58108653ba4876d8aa7802d5674ae1336c
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.lastreviewed: 06/11/2019
+ms.openlocfilehash: b120346d489f676919cb05863f81db9bfb102634
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64300873"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837023"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Azure Stack'te plan oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-[Planları](azure-stack-overview.md) bir veya daha fazla hizmet ve kotalarını gruplandırmaları. Bir sağlayıcı, kullanıcılarınıza sunabileceğiniz planlar oluşturabilirsiniz. Buna karşılık, kullanıcılarınızın planları, hizmetleri ve kotalar içerirler kullanılacak Teklifleriniz için abone olun. Bu örnekte işlem, ağ ve depolama kaynağı sağlayıcılarını içeren bir plan oluşturma işlemini gösterir. Bu plan aboneleri sanal makineler sağlama olanağı sağlar.
+[Azure Stack planları](azure-stack-overview.md) bir veya daha fazla hizmet ve kotalarını gruplandırmaları. Bir sağlayıcı, kullanıcılarınıza sunabileceğiniz planlar oluşturabilirsiniz. Buna karşılık, kullanıcılarınızın planları, hizmetleri ve kotalar içerirler kullanılacak Teklifleriniz için abone olun. Bu örnekte işlem, ağ ve depolama kaynağı sağlayıcılarını içeren bir plan oluşturma işlemini gösterir. Bu plan aboneleri sanal makineler sağlama olanağı sağlar.
 
 ## <a name="create-a-plan-1902-and-later"></a>(1902 ve üzeri) bir plan oluşturun
 
@@ -48,11 +47,11 @@ ms.locfileid: "64300873"
 
    ![Kaynak grubunu belirtin](media/azure-stack-create-plan/resource-group.png)
 
-5. Seçin **Hizmetleri** sekmesine tıklayın ve ardından onay kutusunu **Microsoft.Compute**, **Microsoft.Network**, ve **Microsoft.Storage** .
+5. Seçin **Hizmetleri** sekmesinde veya tıklayın **sonraki: Hizmetleri >** düğmesini ve ardından onay kutusunu **Microsoft.Compute**, **Microsoft.Network**, ve **Microsoft.Storage**.
   
    ![Hizmetleri seçin](media/azure-stack-create-plan/services.png)
 
-6. Seçin **kotalar** sekmesi. Yanındaki **Microsoft.Storage**açılan kutusundan varsayılan kota seçin veya seçin **Yeni Oluştur** özelleştirilmiş bir kota oluşturmak için.
+6. Seçin **kotalar** sekmesinde veya tıklayın **sonraki: Kotalar >** düğmesi. Yanındaki **Microsoft.Storage**açılan kutusundan varsayılan kota seçin veya seçin **Yeni Oluştur** özelleştirilmiş bir kota oluşturmak için.
   
    ![Kotalar](media/azure-stack-create-plan/quotas.png)
 
@@ -70,13 +69,13 @@ ms.locfileid: "64300873"
 
 10. Hazır olduğunuzda seçin **Oluştur** planı oluşturun.
 
-11. Yeni plan görmek için seçin **planları**adını seçin ve ardından planlama arayın. Kaynakları listesini uzunsa kullanın **arama** adıyla planınızı bulunacak.
+11. Tıklayın yeni plan, sol taraftaki görmek için **tüm hizmetleri**seçin **planları**, sonra plan için arama yapın ve adını seçin. Kaynakları listesini uzunsa kullanın **arama** adıyla planınızı bulunacak.
 
 ## <a name="create-a-plan-1901-and-earlier"></a>(1901 ve öncesi) bir plan oluşturun
 
 1. Oturum [Azure Stack Yönetici portalı](https://adminportal.local.azurestack.external).
 
-2. Bir plan ve kullanıcıların abone olabileceği teklifi oluşturmak için seçin **+ kaynak Oluştur**, ardından **sunar + planlar**, ardından **planı**.
+2. Bir plan ve kullanıcıların abone olabileceği teklifi oluşturmak için seçin **+ yeni**, ardından **sunar + planlar**, ardından **planı**.
   
    ![Bir plan seçin](media/azure-stack-create-plan/select-plan1901.png)
 
@@ -92,7 +91,7 @@ ms.locfileid: "64300873"
   
    ![Hizmetleri seçin](media/azure-stack-create-plan/services1901.png)
 
-6. Seçin **kotalar**, **Microsoft.Storage (yerel)**, seçin veya varsayılan kota seçin **yeni kota oluştur** özelleştirilmiş bir kota oluşturmak için.
+6. Seçin **kotalar**, **Microsoft.Storage (yerel)** , seçin veya varsayılan kota seçin **yeni kota oluştur** özelleştirilmiş bir kota oluşturmak için.
   
    ![Kotalar](media/azure-stack-create-plan/quotas1901.png)
 
@@ -104,7 +103,7 @@ ms.locfileid: "64300873"
   
    ![Kota atayın](media/azure-stack-create-plan/assign-quota1901.png)
 
-8. 6 ve 7 oluşturmak ve atamak için kotalar için adımları yineleyin **Microsoft.Network (yerel)** ve **Microsoft.Compute (yerel)**. Tüm üç hizmeti atanan kota olduğunda, sonraki örnekte olduğu gibi göz atacağız.
+8. 6 ve 7 oluşturmak ve atamak için kotalar için adımları yineleyin **Microsoft.Network (yerel)** ve **Microsoft.Compute (yerel)** . Tüm üç hizmeti atanan kota olduğunda, sonraki örnekte olduğu gibi göz atacağız.
 
    ![Tam kota atamaları](media/azure-stack-create-plan/all-quotas-assigned1901.png)
 
@@ -119,5 +118,3 @@ ms.locfileid: "64300873"
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Teklif oluşturma](azure-stack-create-offer.md)
-
-<!-- Update_Description: wording update -->

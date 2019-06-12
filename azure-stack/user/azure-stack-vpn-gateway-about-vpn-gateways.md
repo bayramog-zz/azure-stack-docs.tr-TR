@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 03aea7833e59d3262fc54e71d3d5409b5b95c488
-ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
+ms.openlocfilehash: a8fe96d645d9277003e17144089a91e0722d0088
+ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991306"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66836832"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack için VPN gateway hakkında
 
@@ -79,7 +79,7 @@ A *siteden siteye* (S2S) VPN ağ geçidi bağlantısı, IPSec/IKE (Ikev2) VPN t�
 
 ![Siteden siteye VPN bağlantısı yapılandırma örneği](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a>Çoklu site
+### <a name="multi-site"></a>Çok siteli
 
 A *çok siteli* siteden siteye bağlantı çeşitlemesi bağlantısıdır. Sanal ağ geçidinizden genellikle birden fazla şirket içi siteye bağlanan birden fazla VPN bağlantısı oluşturursunuz. Birden fazla bağlantıyla çalışırken (Klasik sanal ağlar ile çalışırken dinamik ağ geçidi bilinir) bir rota tabanlı VPN türü kullanmalısınız. Her sanal ağın yalnızca bir VPN ağ geçidi olabileceğinden, ağ geçidi boyunca tüm bağlantılar mevcut bant genişliğini paylaşır.
 
@@ -102,7 +102,6 @@ SKU seçtiğinizde aşağıdakileri göz önünde bulundurun:
 * Azure Stack, ilke tabanlı ağ geçitleri desteklemez.
 * Sınır Ağ Geçidi Protokolü (BGP) temel SKU'da desteklenmiyor.
 * Azure Stack'te ExpressRoute-VPN ağ geçidi arada var olabilen yapılandırmaları desteklenmez.
-* Etkin-etkin S2S VPN gateway bağlantıları, yüksek performanslı SKU üzerinde yalnızca yapılandırılabilir.
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a>SKU'ya göre tahmini toplam verimlilik
 
