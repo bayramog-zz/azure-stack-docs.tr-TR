@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 06/11/2019
 ms.author: sethm
-ms.reviewer: unknown
-ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: aca2517a49936296f73c34392ab4c5439909872f
-ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
+ms.reviewer: kivenkat
+ms.lastreviewed: 06/06/2018
+ms.openlocfilehash: 53acfa3a2d85e73b5d8136c7a1f42ee00d8ed1be
+ms.sourcegitcommit: 07c51a03f07a6a3ee2721aa942d31a7a4c6a339b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66748960"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67028271"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack üzerinde desteklenen konuk işletim sistemleri
 
@@ -34,8 +34,8 @@ Azure Stack aşağıdaki tabloda listelenen Windows konuk işletim sistemlerini 
 | İşletim sistemi | Açıklama | Market'te kullanılabilir |
 | --- | --- | --- |
 | Windows Server 1709 sürümü | 64 bit | Kapsayıcılar ile çekirdek |
-| Windows Server 2019 | 64 bit |  Veri Merkezi, veri merkezi çekirdek kapsayıcılar ile veri merkezi |
-| Windows Server 2016 | 64 bit |  Veri Merkezi, veri merkezi çekirdek kapsayıcılar ile veri merkezi |
+| Windows Server 2019 | 64 bit |  Veri Merkezi, veri merkezi çekirdek, kapsayıcılar ile veri merkezi |
+| Windows Server 2016 | 64 bit |  Veri Merkezi, veri merkezi çekirdek, kapsayıcılar ile veri merkezi |
 | Windows Server 2012 R2 | 64 bit |  Veri merkezi |
 | Windows Server 2012 | 64 bit |  Veri merkezi |
 | Windows Server 2008 R2 SP1 | 64 bit |  Veri merkezi |
@@ -43,9 +43,9 @@ Azure Stack aşağıdaki tabloda listelenen Windows konuk işletim sistemlerini 
 | Windows 10 *(bkz. Not 1)* | 64-bit, Pro ve Enterprise | Kendi görüntünüzü getirin |
 
 > [!NOTE]
-> Azure Stack üzerinde Windows 10 istemci işletim sistemlerini dağıtmak için olmalıdır [Windows kullanıcı başına lisans](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) veya tam bir çok Kiracılı barındırma sağlayıcı satın alma ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).
+> Azure Stack üzerinde Windows 10 istemci işletim sistemlerini dağıtmak için olmalıdır [Windows kullanıcı başına lisans](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) veya tam bir çok Kiracılı barındırma sağlayıcı satın alma ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).
 
-Market görüntüleri,-,-kullandıkça veya KLG (EA/SPLA) lisans için kullanılabilir. Her ikisi de tek bir Azure Stack örneğinde kullanımı desteklenmez. Dağıtım sırasında Azure Stack Konuk Aracısı'nın uygun bir sürüm görüntüye yerleştirir.
+Market görüntüleri,-,-kullandıkça veya KLG (EA/SPLA) lisans için kullanılabilir. Her ikisi de tek bir Azure Stack örneğinde kullanımı desteklenmiyor. Dağıtım sırasında Azure Stack Konuk Aracısı'nın uygun bir sürüm görüntüye yerleştirir.
 
 Datacenter Edition indirme Market; Müşteriler, diğer sürümleri dahil olmak üzere, kendi sunucu görüntülerini getirebilirsiniz. Windows istemci görüntülerini Market'te kullanıma sunulmamıştır.
 
@@ -54,7 +54,7 @@ Datacenter Edition indirme Market; Müşteriler, diğer sürümleri dahil olmak 
 Linux dağıtımları kullanılabilir olarak Market'te listelenen gerekli Windows Azure Linux Aracısı (WALA) içerir. Azure Stack için kendi görüntünüzü getirin, yönergeleri izleyin. [ekleme Linux görüntüleri için Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]
-> Özel görüntüler en son genel WALA sürüm (1903 azure stack derlemede ve yukarıda veya 1901/1902 düzeltme ile) ile oluşturulur veya 2.2.20 sürümüyle. 2.2.20 önce ve 2.2.20 2.2.35 (dışlamalı) arasındaki sürümleri, Azure Stack üzerinde düzgün çalışmayabilir. 
+> Özel görüntüler, en son genel WALA sürüm (1903 Azure Stack yapı ve yukarıda veya 1901/1902 düzeltme ile) veya sürüm 2.2.20 ile oluşturulmalıdır. 2.2.20 önce ve 2.2.20 2.2.35 (dışlamalı) arasındaki sürümleri, Azure Stack üzerinde düzgün çalışmayabilir.
 >
 > [cloud-init](https://cloud-init.io/) Azure Stack üzerinde şu anda desteklenmiyor.
 
@@ -78,7 +78,7 @@ Red Hat Enterprise Linux desteği için bilgi [Red Hat ve Azure Stack: Sık soru
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Stack Marketini hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Azure Stack marketini hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)  
 - [Bir Market öğesi oluşturma ve yayımlama](azure-stack-create-and-publish-marketplace-item.md)

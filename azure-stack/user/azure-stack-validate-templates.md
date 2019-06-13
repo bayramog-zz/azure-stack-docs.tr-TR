@@ -3,8 +3,8 @@ title: Azure Stack için şablonları denetlemek için bir şablon doğrulama ar
 description: Azure Stack dağıtım şablonları denetleme
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
 ms.service: azure-stack
@@ -12,23 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/08/2018
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 06/11/2019
+ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: def5b2f49998cfc9a9bf3a857b56b5537b14b9f1
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 3cba34e2748d00ebb886e7122ce1dd7151325c85
+ms.sourcegitcommit: 07c51a03f07a6a3ee2721aa942d31a7a4c6a339b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301071"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67028274"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Şablonlarınızı Azure Stack için şablon doğrulama aracı ile denetleyin.
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Şablon doğrulama aracını denetlemek için kullanabileceğiniz olup olmadığını, Azure Resource Manager [şablonları](azure-stack-arm-templates.md) Azure Stack'e dağıtmak için hazır olursunuz. Şablon doğrulama aracı, Azure Stack Araçları'nın bir parçası kullanılabilir. İçinde açıklanan adımları kullanarak Azure Stack araçları indirin [araçları Github'dan indirin](../operator/azure-stack-powershell-download.md) makalesi.
+Şablon doğrulama aracını denetlemek için kullanabileceğiniz olup olmadığını, Azure Resource Manager [şablonları](azure-stack-arm-templates.md) Azure Stack'e dağıtmaya hazırsınız. Şablon doğrulama aracı, Azure Stack Araçları'nın bir parçası kullanılabilir. İçinde açıklanan adımları kullanarak Azure Stack araçları indirin [Github'dan araçları indirme](../operator/azure-stack-powershell-download.md).
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -51,7 +50,7 @@ Bir şablon doğrulamak için ilk bulut özellikleri dosyası oluşturun ve sonr
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Kullanım `Get-CloudCapabilities` cmdlet'ini hizmet sürümlerini almak ve bir bulut özellikleri JSON dosyası oluşturun. Belirtmezseniz **- OutputPath**, AzureCloudCapabilities.Json geçerli dizinde oluşturulan dosya. Gerçek Azure konumunuz kullanın:
+3. Kullanım `Get-CloudCapabilities` cmdlet'ini hizmet sürümlerini almak ve bir bulut özellikleri JSON dosyası oluşturun. Belirtmezseniz `-OutputPath`, AzureCloudCapabilities.Json geçerli dizinde oluşturulan dosya. Gerçek Azure konumunuz kullanın:
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -82,17 +81,17 @@ Bir şablon doğrulamak için ilk bulut özellikleri dosyası oluşturun ve sonr
 
 ### <a name="parameters"></a>Parametreler
 
-Şablon Doğrulayıcı aşağıdaki parametreleri destekler.
+Şablon Doğrulayıcı cmdlet aşağıdaki parametreleri destekler.
 
 | Parametre | Açıklama | Gerekli |
 | ----- | -----| ----- |
-| TemplatePath | Yinelemeli olarak yolunu bulun Azure Resource Manager şablonlarını belirtir. | Evet |
-| TemplatePattern | Eşleştirilecek şablon dosyalarının adını belirtir. | Hayır |
-| CapabilitiesPath | Bulut özellikleri JSON dosyasının yolunu belirtir. | Evet |
-| IncludeComputeCapabilities | VM boyutları ve VM uzantıları gibi Iaas kaynaklarının değerlendirme içerir. | Hayır |
-| IncludeStorageCapabilities | SKU türü gibi depolama kaynaklarını değerlendirmesini içerir. | Hayır |
-| Rapor | Oluşturulan HTML raporu adını belirtir. | Hayır |
-| Ayrıntılı | Konsola, hataları ve uyarıları günlüğe kaydeder. | Hayır|
+| `TemplatePath` | Yinelemeli olarak yolunu bulun Azure Resource Manager şablonlarını belirtir. | Evet |
+| `TemplatePattern` | Eşleştirilecek şablon dosyalarının adını belirtir. | Hayır |
+| `CapabilitiesPath` | Bulut özellikleri JSON dosyasının yolunu belirtir. | Evet |
+| `IncludeComputeCapabilities` | VM boyutları ve VM uzantıları gibi Iaas kaynaklarının değerlendirme içerir. | Hayır |
+| `IncludeStorageCapabilities` | SKU türü gibi depolama kaynaklarını değerlendirmesini içerir. | Hayır |
+| `Report` | Oluşturulan HTML raporu adını belirtir. | Hayır |
+| `Verbose` | Konsola, hataları ve uyarıları günlüğe kaydeder. | Hayır|
 
 ### <a name="examples"></a>Örnekler
 
@@ -109,6 +108,4 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Şablonları Azure Stack'e dağıtma](azure-stack-arm-templates.md)
-- [Azure Stack için şablon geliştirme](azure-stack-develop-templates.md)
-
-<!-- Update_Description: wording update -->
+- [Şablonları Azure Stack için geliştirme](azure-stack-develop-templates.md)

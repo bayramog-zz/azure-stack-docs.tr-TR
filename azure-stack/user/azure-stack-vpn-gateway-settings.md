@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 06/11/2019
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 35f7c5b15e9dce3b27fd01ab262154e139200f92
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 83fa2e96a7cd956c050efa33ab6e9564b1834e93
+ms.sourcegitcommit: 07c51a03f07a6a3ee2721aa942d31a7a4c6a339b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64300279"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67028302"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Azure Stack için VPN gateway yapılandırma ayarları
 
@@ -34,9 +34,9 @@ Bir VPN ağ geçidi bağlantısı, her biri yapılandırılabilir ayarlar içere
 
 ### <a name="gateway-types"></a>Ağ geçidi türleri
 
-Her Azure Stack sanal ağ türü olması gereken tek bir sanal ağ geçidi, destekliyor **Vpn**.  Bu destek ek türlerini destekler Azure'dan farklıdır.  
+Her Azure Stack sanal ağ türü olması gereken tek bir sanal ağ geçidi, destekliyor **Vpn**.  Bu destek ek türlerini destekler Azure'dan farklıdır.
 
-Bir sanal ağ geçidi oluşturduğunuzda ağ geçidi türünü yapılandırmanız için doğru olduğundan emin olmanız gerekir. Bir VPN ağ geçidi gerektirir `-GatewayType Vpn`bayrak; örneğin:
+Bir sanal ağ geçidi oluşturduğunuzda ağ geçidi türünü yapılandırmanız için doğru olduğundan emin olmanız gerekir. Bir VPN ağ geçidi gerektirir `-GatewayType Vpn` bayrak; örneğin:
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
@@ -50,17 +50,17 @@ Bir sanal ağ geçidi oluşturduğunuzda, kullanmak istediğiniz SKU ağ geçidi
 
 Azure Stack, VPN ağ geçidi SKU'ları aşağıdaki tabloda gösterilen sunar.
 
-|   | VPN gateway performansı |VPN ağ geçidi en fazla IPSec tüneli |
+| | VPN gateway performansı |VPN ağ geçidi en fazla IPSec tüneli |
 |-------|-------|-------|
 |**Temel SKU**  | 100 Mbps  | 20    |
-|**Standart SKU**           | 100 Mbps  | 20    |
-|**Yüksek performanslı SKU** | 200 Mbps    | 10    |
+|**Standart SKU**   | 100 Mbps  | 20 |
+|**Yüksek performanslı SKU** | 200 Mbps | 10 |
 
 ### <a name="resizing-gateway-skus"></a>Ağ geçidi SKU'ları yeniden boyutlandırma
 
 Azure Stack, bir yeniden boyutlandırma SKU'lar arasında desteklenen eski SKU'ları desteklemez.
 
-Benzer şekilde, Azure Stack (VpnGw1, VpnGw2 ve VpnGw3) Azure tarafından desteklenen daha yeni bir SKU için desteklenen bir eski SKU (temel, standart ve yüksek performanslı) gelen bir yeniden boyutlandırma desteklemiyor
+Benzer şekilde, Azure Stack, desteklenen bir eski SKU'den bir yeniden boyutlandırma desteklemez (**temel**, **standart**, ve **HighPerformance**) için Azure tarafından desteklenen daha yeni bir SKU (**VpnGw1**, **VpnGw2**, ve **VpnGw3**).
 
 ### <a name="configure-the-gateway-sku"></a>Ağ geçidi SKU'sunu yapılandırın
 
@@ -70,7 +70,7 @@ Resource Manager sanal ağ geçidi oluşturmak için Azure Stack portalını kul
 
 #### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell örneği belirtir **- GatewaySku** olarak `VpnGw1`:
+Aşağıdaki PowerShell örneği belirtir `-GatewaySku` olarak **VpnGw1**:
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
@@ -80,9 +80,9 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 
 ### <a name="connection-types"></a>Bağlantı türleri
 
-Resource Manager dağıtım modelinde, her yapılandırma bir özel sanal ağ geçidi bağlantı türü gerektirir. Kullanılabilir Resource Manager PowerShell değerleri **- ConnectionType** şunlardır:
+Resource Manager dağıtım modelinde, her yapılandırma bir özel sanal ağ geçidi bağlantı türü gerektirir. `-ConnectionType` için kullanılabilir Resource Manager PowerShell değerleri şunlardır:
 
-* IPsec
+* **IPSec**
 
    Aşağıdaki PowerShell örneği, IPSec bağlantı türü gerektiren bir S2S bağlantısı oluşturulur:
 
@@ -106,9 +106,9 @@ VPN ağ geçidi yapılandırması için sanal ağ geçidi oluşturduğunuzda, bi
   >[!NOTE]
   >**PolicyBased** azure'da ve Azure stack'teki desteklenir.
 
-* **RouteBased**: RouteBased VPN IP iletme veya yönlendirme tablosuna paketleri kendi ilgili arabirimlerine yapılandırılan yollar kullanın. Bundan sonra tünel arabirimleri, paketleri tünellerin içinde veya dışında şifreler veya şifrelerini çözer. İlke veya trafik Seçici için **RouteBased** VPN'ler herhangi bir ağdan herhangi olarak yapılandırılır (veya joker karakterler kullanın.) Varsayılan olarak, bunlarda değişiklik yapılamaz. Değeri bir **RouteBased** VPN türü **RouteBased**.
+* **RouteBased**: RouteBased VPN IP iletme veya yönlendirme tablosuna paketleri kendi ilgili arabirimlerine yapılandırılan yollar kullanın. Bundan sonra tünel arabirimleri, paketleri tünellerin içinde veya dışında şifreler veya şifrelerini çözer. İlke veya trafik Seçici için **RouteBased** VPN'ler, herhangi bir ağdan herhangi olarak yapılandırılır (veya joker karakterler kullanın). Varsayılan olarak, bunlarda değişiklik yapılamaz. Değeri bir **RouteBased** VPN türü **RouteBased**.
 
-Aşağıdaki PowerShell örneği belirtir **- VpnType** olarak **RouteBased**. Bir ağ geçidi oluşturduğunuzda, emin olmanız gerekir **- VpnType** yapılandırmanız için doğru olduğundan.
+Aşağıdaki PowerShell örneği belirtir `-VpnType` olarak **RouteBased**. Bir ağ geçidi oluşturduğunuzda, emin olmanız gerekir `-VpnType` yapılandırmanız için doğru olduğundan.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
@@ -123,7 +123,7 @@ Aşağıdaki tabloda, VPN ağ geçitleri için gereksinimler listelenmektedir.
 | |PolicyBased temel VPN Gateway | Temel RouteBased VPN ağ geçidi | Standart RouteBased VPN ağ geçidi | RouteBased ve yüksek performanslı VPN Gateway|
 |--|--|--|--|--|
 | **Siteden siteye bağlantı (S2S bağlantısı)** | Desteklenmiyor | RouteBased VPN yapılandırması | RouteBased VPN yapılandırması | RouteBased VPN yapılandırması |
-| **Kimlik doğrulama yöntemi**  | Desteklenmiyor | S2S bağlantısı için önceden paylaşılan anahtar  | S2S bağlantısı için önceden paylaşılan anahtar  | S2S bağlantısı için önceden paylaşılan anahtar  |   
+| **Kimlik doğrulama yöntemi**  | Desteklenmiyor | S2S bağlantısı için önceden paylaşılan anahtar  | S2S bağlantısı için önceden paylaşılan anahtar  | S2S bağlantısı için önceden paylaşılan anahtar  |
 | **S2S bağlantılarının maksimum sayısı**  | Desteklenmiyor | 20 | 20| 10|
 |**Etkin yönlendirme desteği (BGP)** | Desteklenmiyor | Desteklenmiyor | Desteklenen | Desteklenen |
 
@@ -132,7 +132,7 @@ Aşağıdaki tabloda, VPN ağ geçitleri için gereksinimler listelenmektedir.
 Bir VPN ağ geçidi oluşturmadan önce bir ağ geçidi alt ağı oluşturmanız gerekir. Ağ geçidi alt ağı sanal ağ geçidi Vm'lerini ve hizmetlerini kullanan IP adresleri bulunur. Sanal ağ geçidinizi oluştururken, ağ geçidi Vm'leri ağ geçidi alt ağına dağıtılır ve gerekli VPN ağ geçidi ayarlarla yapılandırılır. Başka bir şey (örneğin, ek VM'ler) ağ geçidi alt ağına dağıtmayın.
 
 >[!IMPORTANT]
->Ağ geçidi alt ağı düzgün çalışması için **GatewaySubnet** şeklinde adlandırılmalıdır. Azure Stack, sanal ağ geçidi Vm'leri ve Hizmetleri dağıtmak için alt ağı belirlerken bu adı kullanır.
+>Ağ geçidi alt ağı düzgün çalışması için **GatewaySubnet** şeklinde adlandırılmalıdır. Azure Stack, alt ağı sanal ağ geçidi Vm'leri ve Hizmetleri dağıtmak tanımlamak için bu adı kullanır.
 
 Ağ geçidi alt ağı oluştururken, alt ağın içerdiği IP adresi sayısını belirtirsiniz. Ağ geçidi alt ağı IP adresleri, ağ geçidi Vm'leri ve ağ geçidi hizmetlerine ayrılır. Bazı yapılandırmalar için diğerlerinden daha fazla IP adresi gerekir. Oluşturun ve oluşturmak istediğiniz ağ geçidi alt ağı bu gereksinimleri karşıladığını doğrulamak için istediğiniz yapılandırmayı yönergelerine bakın.
 
@@ -187,10 +187,10 @@ Birden çok teklife destekleyen hem Başlatıcı hem de bir Yanıtlayıcı olara
 |Şifreleme ve karma algoritmaları (kimlik doğrulaması) | GCMAES256|
 |SA Yaşam Süresi (Zaman)  | 27.000 saniye  |
 |SA yaşam süresi (KB) | 33,553,408     |
-|Kusursuz İletme Gizliliği (PFS) |Hiçbiri<sup>bkz. Not 1</sup> |
+|Kusursuz İletme Gizliliği (PFS) |Hiçbiri (bkz. Not 1) |
 |Kullanılmayan Eş Algılama | Desteklenen|  
 
-* *Not 1:*  Sürüm 1807 önce Azure Stack değeri PFS2048, Perfect Forward Secrecy (PFS için) kullanır.
+* *Not 1:*  Sürüm 1807 önce Azure Stack değeri PFS2048, Perfect Forward Secrecy (PFS için) kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
