@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/13/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 6afaca6e9bad806f432cf56b79dca5881bb76455
-ms.sourcegitcommit: fbd6a7fed4f064113647540329a768347a6cf261
+ms.lastreviewed: 06/13/2019
+ms.openlocfilehash: 9c263b97deb12a199f2941be7ea4ae05a048837b
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66810224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131626"
 ---
 # <a name="azure-stack-compute"></a>Azure Stack işlem
 
@@ -85,19 +85,21 @@ Değer V, Ölçek birimindeki en büyük VM dinamik olarak en büyük Kiracı VM
 
 ## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
-S: Kiracıma yeni bir sanal makine dağıtılırsa, ne kadar yönetim portalında özelliği grafik için kalan kapasite gösterilecek sürer?
-Y: Kapasite dikey 15 dakikada bir, bu nedenle yeniler, lütfen dikkate alın.
+**Q**: Kiracıma yeni bir sanal makine dağıtılırsa, ne kadar yönetim portalında özelliği grafik için kalan kapasite gösterilecek sürer?
 
-S: My Azure Stack üzerinde dağıtılan sanal makinelerin sayısını değişmemiştir, ancak benim kapasite geciktirmeye. Neden?
-Y: VM yerleştirme için kullanılabilir bellek, konak işletim sistemi ayırma biri olan, birden çok bağlantılıdır. Bu değer bir sabit değer olan ana bilgisayar üzerinde çalışan farklı Hyper-V işlemler tarafından kullanılan bellek bağlıdır.
+**A**: Kapasite dikey 15 dakikada bir, bu nedenle yeniler, lütfen dikkate alın.
 
-S: Durum Kiracı VM bellek tüketmesine olması gerekiyor mu?
-Y: Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. Bu, "Oluşturma", "Başarısız" veya Vm'leri gelen konuğa kapatıldığından Vm'leri portal/powershell/CLI üzerinden durduruldu serbest bırakıldı olarak bellek tüketir, anlamına gelir.
+**Q**: My Azure Stack üzerinde dağıtılan sanal makinelerin sayısını değişmemiştir, ancak benim kapasite geciktirmeye. Neden?
 
+**A**: VM yerleştirme için kullanılabilir bellek, konak işletim sistemi ayırma biri olan, birden çok bağlantılıdır. Bu değer bir sabit değer olan ana bilgisayar üzerinde çalışan farklı Hyper-V işlemler tarafından kullanılan bellek bağlıdır.
 
-S: Azure Stack 4 ana bilgisayar var. Kiracıma 56 GB RAM (D5_v2) her tüketen 3 VM var. Vm'lerden birinin 112 GB RAM (D14_v2) boyutlandırılır ve 168 GB kullanımı kapasite dikey penceresinde bir depo içinde Panoda raporlama kullanılabilir bellek ile sonuçlandı. Diğer iki D5_v2 Vm'lere D14_v2, sonraki yeniden boyutlandırma, yalnızca 56 GB RAM artış sonuçlandı. Neden bu, bu nedenle?
+**Q**: Durum Kiracı VM bellek tüketmesine olması gerekiyor mu?
 
-Y: Kullanılabilir bellek, Azure Stack tarafından tutulan dayanıklılık rezerve bir işlevdir. Dayanıklılık ayırma, Azure Stack damgası üzerinde en büyük VM boyutunun bir işlevdir. İlk başta en büyük VM damga üzerinde 56 GB bellek yoktu. VM yeniden boyutlandırılmış zaman damgası üzerinde en büyük VM yalnızca VM'nin Kiracı tarafından kullanılan bellek artar ancak dayanıklılık ayırma de artırdık 112 GB bellek hale geldi. Bu artış 56 GB (112 GB Kiracı VM bellek artışı 56 GB) + 112 GB dayanıklılık ayrılan bellek artışı içindeki sonuçlandı. Sonraki Vm'leri yeniden boyutlandırdığınızda büyük VM boyutu VM 112 GB kalır ve bu nedenle hiçbir sonuç dayanıklılık ayırma artış vardı. Yalnızca Kiracı VM bellek artışı (56 GB) bellek tüketimi artış oluştu. 
+v: Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. Bu, "Oluşturma", "Başarısız" veya Vm'leri gelen g içinde kapatıldığından Vm'leri anlamına gelir
+
+**Q**: Azure Stack 4 ana bilgisayar var. Kiracıma 56 GB RAM (D5_v2) her tüketen 3 VM var. Vm'lerden birinin 112 GB RAM (D14_v2) boyutlandırılır ve 168 GB kullanımı kapasite dikey penceresinde bir depo içinde Panoda raporlama kullanılabilir bellek ile sonuçlandı. Diğer iki D5_v2 Vm'lere D14_v2, sonraki yeniden boyutlandırma, yalnızca 56 GB RAM artış sonuçlandı. Neden bu, bu nedenle?
+
+**A**: Kullanılabilir bellek, Azure Stack tarafından tutulan dayanıklılık rezerve bir işlevdir. Dayanıklılık ayırma, Azure Stack damgası üzerinde en büyük VM boyutunun bir işlevdir. İlk başta en büyük VM damga üzerinde 56 GB bellek yoktu. VM yeniden boyutlandırılmış zaman damgası üzerinde en büyük VM yalnızca VM'nin Kiracı tarafından kullanılan bellek artar ancak dayanıklılık ayırma de artırdık 112 GB bellek hale geldi. Bu artış 56 GB (112 GB Kiracı VM bellek artışı 56 GB) + 112 GB dayanıklılık ayrılan bellek artışı içindeki sonuçlandı. Sonraki Vm'leri yeniden boyutlandırdığınızda büyük VM boyutu VM 112 GB kalır ve bu nedenle hiçbir sonuç dayanıklılık ayırma artış vardı. Yalnızca Kiracı VM bellek artışı (56 GB) bellek tüketimi artış oluştu. 
 
 
 > [!NOTE]

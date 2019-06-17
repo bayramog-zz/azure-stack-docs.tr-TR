@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: quying
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 480af6cc4cdfb8e2da7b7d324d3f1c657f292424
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 092d35b70373f95c74c510d8452fd43c0e7cd5c2
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617981"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131174"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack'te MySQL veritabanlarını kullanma
 
@@ -35,7 +35,7 @@ Kaynak sağlayıcısı dağıttıktan sonra şunları yapabilirsiniz:
 
 Kaynak sağlayıcısı, aşağıdaki bileşenlere sahiptir:
 
-* **MySQL kaynak sağlayıcısı bağdaştırıcısını sanal makine (VM)**, sağlayıcı hizmetlerini çalıştıran bir Windows Server VM olduğu.
+* **MySQL kaynak sağlayıcısı bağdaştırıcısını sanal makine (VM)** , sağlayıcı hizmetlerini çalıştıran bir Windows Server VM olduğu.
 * **Kaynak sağlayıcısı**isteklerini işler ve veritabanı kaynaklara erişir.
 * **MySQL Server'ı barındıran sunucular**, barındırma sunucuları adı verilen veritabanları için kapasite sağlayın. MySQL örneği kendiniz oluşturmanız veya dış MySQL örneklerini erişim sağlar. [Azure Stack hızlı başlama Galerisi](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) için kullanabileceğiniz bir örnek şablonu vardır:
 

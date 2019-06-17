@@ -16,52 +16,54 @@ ms.date: 05/31/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 30ce69f96747ab8dbdafd9e20e8cea07026074d5
-ms.sourcegitcommit: 80775f5c5235147ae730dfc7e896675a9a79cdbe
+ms.openlocfilehash: 2845a90f97c1b859269f73333448bf42ff699da9
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66461019"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131082"
 ---
 # <a name="azure-stack-storage"></a>Azure Stack depolama
 
-Aşağıdaki bölümler solutions depolama gereksinimlerini planlama stratejilerinde destek olmak için Azure Stack depolama kapasitesini planlama bilgileri sağlar.
+Aşağıdaki bölümler, çözümün depolama gereksinimlerini planlama stratejilerinde destek olmak için Azure Stack depolama kapasitesini planlama bilgileri sağlar.
 
 ## <a name="uses-and-organization-of-storage-capacity"></a>Kullanır ve kuruluş depolama kapasitesi
-Azure Stack'in hiper yakınsanmış yapılandırması fiziksel depolama cihazlarının paylaşımına olanak sağlar. Kullanılabilir depolama alanı, üç ana bölümleri, altyapı, Kiracı sanal makinelerinin geçici depolama blobları, tablolar ve Kuyruklar Azure tutarlı depolama (ACS) Hizmetleri, yedekleme depolama arasında ve ' dir.
+Fiziksel depolama cihazları paylaşmak için Azure Stack hiper yakınsanmış yapılandırmasını sağlar. Üç ana bölüm paylaşılabilir kullanılabilir depolama alanı vardır: altyapı ve Kiracı sanal makinelerinin geçici depolama blobları, tablolar ve Kuyruklar Azure tutarlı depolama (ACS) Hizmetleri, yedekleme depolama.
 
-## <a name="spaces-direct-cache-and-capacity-tiers"></a>Önbellek ve kapasite katmanları alanları doğrudan
-Depolama kapasitesi gereksinimlerini işletim sistemi, yerel günlüğe kaydetme, dökümleri ve diğer altyapı geçici depolama için kullanılan yoktur. Depolama alanları doğrudan Yapılandırması Yönetim altına duruma depolama aygıtlarını (cihazlar ve kapasite) ayırmak bu yerel depolama kapasitesidir. Depolama aygıtlarını kalanını tek bir ölçek birimindeki sunucularının sayısından bağımsız olarak depolama kapasitesi havuzu yerleştirilir. Bu cihazları iki türleri şunlardır: Önbellek ve kapasite.  Önbellek, yalnızca o - önbellek cihazlardır. Alanları doğrudan geri yazma için bu cihazları kullanma ve önbelleğe alma okuyun. Bu önbellek cihazları kapasiteleri kullanılabilir ancak, biçimlendirilmiş, "visible" biçimlendirilmiş sanal-disklerin kapasitesi iletilmez. Kapasite cihazları bu amaçla kullanılır ve "Giriş" depolama alanları tarafından yönetilen veri sağlamalısınız.
+## <a name="storage-spaces-direct-cache-and-capacity-tiers"></a>Depolama alanları doğrudan önbellek ve kapasite katmanları
+Depolama kapasitesi gereksinimlerini işletim sistemi, yerel günlüğe kaydetme, dökümleri ve diğer altyapı geçici depolama için kullanılan yoktur. Depolama alanları doğrudan Yapılandırması Yönetim altına duruma depolama aygıtlarını (cihazlar ve kapasite) ayırmak bu yerel depolama kapasitesidir. Depolama aygıtlarını kalanını tek bir ölçek birimindeki sunucularının sayısından bağımsız olarak depolama kapasitesi havuzu yerleştirilir.
 
-Tüm depolama kapasitesi ayrılan ve doğrudan Azure Stack altyapısı tarafından yönetilir. İşleci hakkında yapılandırma, yükleme seçimleri yapmanıza veya kapasite genişletmesi geldiğinde seçtiklerinizle uğraşmanız gerekmez. Bu tasarım kararlarını çözüm gereksinimleri ile hizalamak için yapılan ve ilk ya da yükleme/dağıtım sırasında veya kapasite genişletmesi sırasında otomatik. Dayanıklılık, yeniden oluşturulması için ayrılmış kapasite ve diğer ayrıntıları ayrıntılarını tasarımının bir parçası düşünür. 
+Bu cihazları iki türü şunlardır: önbellek ve kapasite. Depolama alanları doğrudan geri yazma ve okuma önbelleği için önbellek cihazları kullanır. Bu önbellek cihazları kapasiteleri kullanılabilir ancak, biçimlendirilmiş, "visible" biçimlendirilmiş sanal disklerin kapasitesi taahhüt değildir. Aksine, depolama alanları doğrudan kapasite cihazları bu amaç için "home" yönetilen verilerin konumundan sağlama kullanın.
 
-İşleçleri bir tüm flash veya karma depolama yapılandırma arasında seçim yapabilirsiniz:
+Azure Stack altyapısının doğrudan ayırır ve tüm depolama kapasitesi yönetir. İşleci, yapılandırma, ayırma, kapasite genişletmesi hakkında seçimler gerekmez. Azure Stack ile çözüm gereksinimleri, ilk yükleme ve dağıtım ya da kapasite genişletmesi sırasında hizalamak için aşağıdaki tasarım kararlarını otomatikleştirir. Azure Stack tasarımının bir parçası göz önünde bulundurarak dayanıklılık, yeniden oluşturulması için ayrılmış kapasite ve diğer ayrıntıları alır. 
 
-![Azure depolama kapasitesi planlama](media/azure-stack-capacity-planning/storage.png)
+İşleçleri arasında ya da seçim yapabileceğiniz bir *tüm flash* veya *karma* depolama yapılandırması:
 
-Tümü flash yapılandırmasında yapılandırma ya da iki katmanlı veya tek katmanlı bir yapılandırma olabilir.  Tek katmanlı yapılandırma ise tüm kapasite cihazları (örneğin NVMe veya SATA SSD veya SAS SSD) aynı tür olacaktır ve önbellek cihazları kullanılmaz. İki katmanlı tüm içinde önbellek cihazları ve ardından her iki SATA NVMe flash yapılandırma, tipik configuration olduğu veya SAS SSD kapasite cihazları olarak.
+![Azure depolama kapasitesini planlama diyagramı](media/azure-stack-capacity-planning/storage.png)
 
-Karma, iki katmanlı yapılandırma, bir seçimdir HDD arasında NVMe, SATA veya SAS SSD ve kapasite önbelleğidir. 
+Tümü flash yapılandırmada, iki katmanlı veya bir tek katmanlı yapılandırma yapılandırma olabilir. Tek katmanlı yapılandırma ise aynı türde (örneğin, NVMe veya SATA SSD veya SAS SSD) tüm kapasite cihazları olduğunu ve önbellek cihazları kullanılmaz. İki katmanlı tüm, flash, tipik configuration yapılandırmadır NVMe önbellek cihazları ve ardından her iki SATA veya SAS SSD kapasite cihazları olarak.
+
+Karma, iki katmanlı yapılandırma önbelleği NVMe, SATA veya SAS SSD arasından bir seçim değil ve HDD kapasitesidir. 
 
 Kısa bir özeti depolama alanları doğrudan ve Azure Stack depolama yapılandırması aşağıdaki gibidir:
-- Bir depolama alanları havuzundan (tüm depolama cihazları içinde tek bir havuz yapılandırılır) ölçek birimi başına
-- En iyi performans ve dayanıklılık için üç kopyalama yansıtma olarak oluşturulmuş sanal diskler
-- Sanal disklerin bir ReFS dosya sistemi olarak biçimlendirilir.
+- Bir depolama alanları doğrudan havuz başına ölçek birimi (tüm depolama cihazları içinde tek bir havuz yapılandırılır).
+- Sanal diskler, en iyi performans ve dayanıklılık için üç kopyalama yansıtma olarak oluşturulur.
+- Her sanal disk bir ReFS dosya sistemi olarak biçimlendirilir.
 - Sanal disk kapasitesi hesaplanır ve veri kapasitesi havuzu ayrılmamış bir kapasite cihazın miktarını bırakmak için farklı bir şekilde ayrılmış. Bu sunucu başına tek bir kapasite sürücü eşdeğerdir.
-- Her ReFS dosya sistemi BitLocker için bekleyen veri şifrelemesi etkin olacaktır. 
+- Her ReFS dosya sistemi BitLocker için bekleyen veri şifrelemesi etkin sahiptir. 
 
-Sanal-otomatik olarak oluşturulan diskler ve kapasitelerini aşağıdaki gibidir:
+Otomatik olarak oluşturulan sanal diskler ve kapasitelerini, aşağıdaki gibidir:
 
 |Ad|Kapasite hesaplama|Açıklama|
 |-----|-----|-----|
-|Yerel/önyükleme aygıtı|En az 340 GB<sup>1</sup>|İşletim sistemi görüntüleri ve "yerel" altyapı Vm'leri için ayrı ayrı sunucu depolama|
-|Altyapı|3,5 TB|Tüm Azure Stack altyapısını kullanımı|
-|VmTemp|Aşağıya bakın<sup>2</sup>|Kiracı sanal makinelerinizin bağlı olarak geçici bir diskle ve bu verileri bu sanal diskler depolanır|
-|ACS|Aşağıya bakın <sup>3</sup>|Bloblar, tablolar ve Kuyruklar bakım için azure tutarlı depolama kapasitesi|
+|Yerel/önyükleme aygıtı|En az 340 GB<sup>1</sup>|Tek bir sunucu işletim sistemi görüntüleri ve "yerel" altyapı Vm'leri için depolama alanı.|
+|Altyapı|3,5 TB|Tüm Azure Stack altyapısını kullanımı.|
+|VmTemp|Aşağıya bakın<sup>2</sup>|Kiracı sanal makinelerinizin bağlı olarak geçici bir diskle ve bu verileri bu sanal diskler depolanır.|
+|ACS|Aşağıya bakın <sup>3</sup>|Bloblar, tablolar ve Kuyruklar bakım için azure tutarlı depolama kapasitesi.|
 
 <sup>1</sup> Azure Stack çözüm iş ortağı gerekli en düşük depolama kapasitesi.
 
-<sup>2</sup> Kiracı sanal makine geçici diskler için kullanılan sanal disk boyutu, sunucunun fiziksel bellek oranı hesaplanır. Tablolarda Azure Iaas VM boyutları için belirtildiği gibi geçici disk sanal makineye atanan fiziksel belleğin oranıdır. Azure stack'teki "geçici disk" depolama için yapılan ayırma çoğu kullanım örnekleri yakalamak için farklı bir yolla yapılır, ancak tüm geçici disk depolama gereksinimlerini karşılamak mümkün olmayabilir. Seçilen çözümün depolama kapasitesi için yalnızca temp disk kapasitesi çoğunu değil kullanırken geçici depolama kullanılabilir hale getirme arasında bir denge oranıdır. Bir geçici depolama diskini, Ölçek birimindeki sunucu başına oluşturulur. Geçici depolama kapasitesini %10 genel olarak kullanılabilir depolama kapasitesi depolama havuzundaki ölçek birimi ötesinde büyüyüp değil. Hesaplama aşağıdaki örnekte olduğu gibi bir şeydir:
+<sup>2</sup> Kiracı sanal makine geçici diskler için kullanılan sanal disk boyutu, sunucunun fiziksel bellek oranı hesaplanır. Geçici diskin bir sanal makineye atanan fiziksel bellek oranıdır. Azure stack'teki depolama "disk temp" Bitti ayırma, çoğu kullanım örnekleri yakalar, ancak tüm geçici disk depolama gereksinimlerini karşılamak mümkün olmayabilir. Geçici depolama kullanılabilir hale getirir ve çözümü yalnızca temp disk kapasitesi için depolama kapasitesi çoğunu tüketen değil arasında bir denge oranıdır. Bir geçici depolama diskini, Ölçek birimindeki sunucu başına oluşturulur. Geçici depolama kapasitesini ölçek birimi depolama havuzundaki genel olarak kullanılabilir depolama kapasitesinin yüzde 10 ötesinde büyütün değil. Hesaplama aşağıdaki örnekte olduğu gibi bir şeydir:
 
 ```
   DesiredTempStoragePerServer = PhysicalMemory * 0.65 * 8
@@ -73,8 +75,8 @@ Sanal-otomatik olarak oluşturulan diskler ve kapasitelerini aşağıdaki gibidi
       TempVirtualDiskSize = (TotalAvailableCapacity * 0.1) / NumberOfServers
 ```
 
-<sup>3</sup> sanal-ACS tarafından kullanılmak üzere oluşturulan kalan kapasite basit bir bölme disklerdir. Belirtildiği gibi tüm diskler sanal üç yönlü yansıtma ve her sunucu için kapasite tutarında bir kapasite sürücünün ayrılmamış. Çeşitli sanal-yukarıda numaralandırılan diskleri ilk ayrılır ve kalan kapasite ACS-için sanal diskleri sonra kullanılır.
+<sup>3</sup> ACS tarafından kullanılmak üzere oluşturulan sanal diskler kalan kapasite basit bir bölümü olan. Belirtildiği gibi tüm sanal disklerin üç yönlü yansıtma ve her sunucu için kapasite tutarında bir kapasite sürücünün ayrılmamış. Daha önce listelenmiş çeşitli sanal diskler ilk ayrılır ve kalan kapasite sonra ACS sanal diskler için kullanılır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Hakkında bilgi edinin [Azure Stack kapasite Planlayıcısı](azure-stack-capacity-planner.md)
+Hakkında bilgi edinin [Azure Stack kapasite Planlayıcısı](azure-stack-capacity-planner.md).

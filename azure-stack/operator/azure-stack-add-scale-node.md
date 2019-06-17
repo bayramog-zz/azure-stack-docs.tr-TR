@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 7a2ba164c5d35bc1f5b52d3ff68c18b7b3e47dcd
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 56dbc301c87e819b241d9dd6e801544df4afa152
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131210"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Azure Stack'te ek ölçek birimi düğümleri Ekle
 
@@ -119,8 +119,8 @@ PowerShell kullanarak aşağıdaki gibi ölçek birimi ve ölçek birimi düğü
 |----------------------|---------|
 |Çalışıyor               |Düğüm, etkin bir şekilde ölçek birimi katılıyor.|
 |Durduruldu               |Düğümü, kullanılamıyor.|
-|Ekleniyor                |Düğüm etkin bir şekilde Ölçek birimine ekleniyor.|
-|Onarılıyor             |Düğüm etkin bir şekilde onarılıyor.|
+|Ekleme                |Düğüm etkin bir şekilde Ölçek birimine ekleniyor.|
+|Onarma             |Düğüm etkin bir şekilde onarılıyor.|
 |Bakım           |Düğüm duraklatılmadan ve hiçbir etkin kullanıcı iş yükü çalışıyor. |
 |Düzeltmesi gerektiriyor  |Onarılması düğümü gerektiren bir hata algılandı.|
 

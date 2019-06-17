@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6a636a1ed7b2426649afbe163b15780bfc4e9f0e
-ms.sourcegitcommit: 2cd17b8e7352891d8b3eb827d732adf834b7693e
+ms.lastreviewed: 06/14/2019
+ms.openlocfilehash: c512e7a9ac4cb5a7d864a315dc55d01a39a029ea
+ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428693"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67145215"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack kaydı
 
 Azure Market öğelerini indirme ve ticaret verileri Microsoft'a raporlamaya ayarlamak için Azure ile Azure Stack geliştirme Seti'ni (ASDK) yüklemenizi kaydedebilirsiniz. Kayıt, Pazar dağıtımı da dahil olmak üzere tam Azure Stack işlevleri desteklemek için gereklidir. Kayıt, Market dağıtım ve kullanım raporlama gibi önemli Azure Stack işlevselliğini test etmek etkinleştirmek için gereklidir. Azure Stack kaydettikten sonra kullanım için Azure ticaret bildirilir. Kayıt için kullanılan abonelik altında görebilirsiniz. Ancak ASDK kullanıcılar bunlar rapor tüm kullanımlar için ücretlendirilmezsiniz.
 
-ASDK kaydedilmezse görebileceğiniz bir **etkinleştirme gerekli** , Azure Stack geliştirme Seti'ni kaydedilecek öneren uyarı bildirimi. Bu beklenen bir davranıştır.
+ASDK kaydedilmezse görebileceğiniz bir **etkinleştirme gerekli** , Azure Stack geliştirme Seti'ni kaydedilecek öneren uyarı bildirimi. Bu davranış beklenmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -51,15 +51,7 @@ Azure ile ASDK kaydetmek için aşağıdaki adımları izleyin.
 
 1. Yönetici olarak bir PowerShell konsolu açın.  
 
-2. Dosyayı ASDK ana bilgisayarda açın **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** yükseltilmiş izinlerle bir düzenleyicide.
-
-3. 1249 satırına ekleme bir `-TimeoutInSeconds 1800` sonunda parametresi. Bu, kayıt komut dosyası çalıştırılırken bir hizmet sorumlusu zaman aşımını önlemek için gereklidir. Satır 1249 artık şu şekilde görünmelidir:
-
-   ```powershell
-   $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
-   ```
-
-4. Azure ile ASDK yüklemenizi kaydetmek için aşağıdaki PowerShell komutlarını çalıştırın. Hem Azure faturalandırma abonelik Kimliğinizi hem de yerel ASDK yükleme için oturum açmanız. Bir Azure abonelik kimliği henüz faturalandırma yoksa, şunları yapabilirsiniz [buradan ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?b=17.06). Azure aboneliğinize ücret ödemeden Azure Stack kaydetme artmasına neden olur.<br><br>Programını çalıştırdığınızda, kayıt için benzersiz bir ad ayarlayın **kümesi AzsRegistration** cmdlet'i. **RegistrationName** parametresinin varsayılan değeri **AzureStackRegistration**. Azure Stack birden fazla örneğinde aynı adı kullanın, ancak komut başarısız olur.
+2. Azure ile ASDK yüklemenizi kaydetmek için aşağıdaki PowerShell komutlarını çalıştırın. Hem Azure faturalandırma abonelik Kimliğinizi hem de yerel ASDK yükleme için oturum açmanız. Bir Azure abonelik kimliği henüz faturalandırma yoksa, şunları yapabilirsiniz [buradan ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?b=17.06). Azure aboneliğinize ücret ödemeden Azure Stack kaydetme artmasına neden olur.<br><br>Programını çalıştırdığınızda, kayıt için benzersiz bir ad ayarlayın **kümesi AzsRegistration** cmdlet'i. **RegistrationName** parametresinin varsayılan değeri **AzureStackRegistration**. Azure Stack birden fazla örneğinde aynı adı kullanın, ancak komut başarısız olur.
 
     ```powershell  
     # Add the Azure cloud subscription environment name. 
@@ -87,7 +79,7 @@ Azure ile ASDK kaydetmek için aşağıdaki adımları izleyin.
     -UsageReportingEnabled:$true
     ```
 
-5. Betik tamamlandığında, bu iletiyi görmeniz gerekir: **Ortamınızı şimdi kaydedilir ve sağlanan parametreleri kullanarak etkinleştirildi.**
+3. Betik tamamlandığında, bu iletiyi görmeniz gerekir: **Ortamınızı şimdi kaydedilir ve sağlanan parametreleri kullanarak etkinleştirildi.**
 
     ![Ortamınızı artık kayıtlı](media/asdk-register/1.PNG)
 

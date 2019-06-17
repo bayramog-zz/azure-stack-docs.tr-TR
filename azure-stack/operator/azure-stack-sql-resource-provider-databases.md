@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 2b177f14fc787c05c0a7c1f654e8bcfaf8638b93
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 1036f5b418af330e0acfd940137f7ae2effecc25
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618192"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131216"
 ---
 # <a name="create-sql-databases"></a>SQL veritabanı oluşturma
 
@@ -39,7 +39,7 @@ Oluşturun ve Kullanıcı Portalı'nda, Self Servis veritabanlarını yönetme. 
 
 4. Altında **Create Database**seçin **SKU**. Altında **bir SKU seçin**, veritabanınız için SKU'ları seçin.
 
-   ![Veritabanı Oluştur](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+   ![Veritabanı oluşturma](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
    >Azure Stack için barındırma sunucuları eklendikçe, bir SKU atanmış oldukları. Bir SKU sunucuları bulundurma havuzdaki veritabanları oluşturulur.
@@ -69,7 +69,7 @@ Aşağıdaki ekran görüntüsü yakalamayı SQL Always On veritabanı durumunu 
 
 ![AlwaysOn veritabanı durumu](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
 
-Always On veritabanları ve kullanılabilir tüm SQL örneklerinde Synchronızed olarak göster ve kullanılabilirlik gruplarının gerekir. Önceki ekran görüntüsünde newdb1 veritabanı örnektir ve durumunun **newdb1 (eşzamanlı)**.
+Always On veritabanları ve kullanılabilir tüm SQL örneklerinde Synchronızed olarak göster ve kullanılabilirlik gruplarının gerekir. Önceki ekran görüntüsünde newdb1 veritabanı örnektir ve durumunun **newdb1 (eşzamanlı)** .
 
 ### <a name="delete-an-alwayson-database"></a>AlwaysOn veritabanını silme
 

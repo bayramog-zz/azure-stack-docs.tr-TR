@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 3c962f0ef9fccdf814ccfaf0a432b1c303a63368
-ms.sourcegitcommit: 23816ec68f67f3ac51f78de925b7631590743a29
+ms.openlocfilehash: 448af01e935165ea974c22c23bd73c7a02ac3935
+ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66835101"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67145263"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilir olan Azure Market öğeleri
 
@@ -90,7 +90,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | ![CentOS tabanlı 6.10](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS tabanlı 6.10](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic)  |
 | ![CentOS tabanlı 7.3](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS tabanlı 7.3](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73HPC) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic) |
 | ![CentOS tabanlı 7.5](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS tabanlı 7.5](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic) |
-| ![7.5-LVM centOS tabanlı](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.5-LVM centOS tabanlı](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic) |
+| ![7\.5-LVM centOS tabanlı](media/azure-stack-marketplace-azure-items/roguewave.png) | [7.5-LVM centOS tabanlı](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | Linux'ın bu dağıtım üzerinde CentOS tabanlı ve Rogue Wave yazılımı tarafından sağlanır. | Rogue Wave yazılım (eski adıyla OpenLogic) |
 | ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 11 SP4. | SUSE |
 | ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP4 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 12 SP4. | SUSE |
 | ![SLES (BYOS) 15](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 15. | SUSE |
@@ -249,4 +249,5 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 | ![Quest Hızlı Kurtarma](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Hızlı Kurtarma çekirdek](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Gelişmiş veri koruması Hızlı Kurtarma, yedekleme, çoğaltma ve Kurtarma bir kullanımı kolay yazılım çözümde birleştirir. | Quest yazılım |
 | ![SUSE yönetici 3.1 Proxy'si (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE yönetici 3.1 Proxy'si (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Sınıfının en iyi açık kaynak altyapı yönetimi. | SUSE |
 | ![CipherTrust bulut Anahtar Yöneticisi](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust bulut Anahtar Yöneticisi](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Microsoft Azure ve diğer bulut sağlayıcısı Getir bilgisayarınızı kendi anahtarını (BYOK) API'lerinden yararlanan, CipherTrust bulut Anahtar Yöneticisi'ni anahtar yönetim karmaşıklığı azaltır ve şifreleme anahtarlarıyla multicloud yaşam döngüsü denetimin vererek, operasyonel maliyetleri Merkezi Yönetim ve görünürlük. | Thales eSecurity |
+| ![Veeam yedekleme ve çoğaltma](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam yedekleme ve çoğaltma](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam® yedekleme & Replication™ yardımcı olan tüm iş yükleri için kapsamlı veri koruma elde işletmelerin — sanal, fiziksel ve bulut tabanlı. Tek bir konsol ile hızlı, esnek ve güvenilir yedekleme, kurtarma ve tüm uygulama ve veri çoğaltma elde edebilirsiniz. | Veeam Software |
 | ![ZeroDown yazılım BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [Hizmet olarak yazılım ZeroDown iş sürekliliği](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown® yazılım teknolojisi, işletmelerin şirket verilerine kendi iş sürekliliği aracılığıyla sürekli erişim (BCaaS) hizmet olarak sağlar™ mimarisi, koruma uygulamaları ve işlem, ağ kesintilerinin, gerçekleşirse misiniz normalde Kurumsal cripple. | ZeroDown yazılım |

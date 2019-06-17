@@ -1,5 +1,5 @@
 ---
-title: Azure ile Bulutlar arası ölçeklendirme çözümleri oluşturun | Microsoft Docs
+title: Azure ve Azure Stack ile Bulutlar arası ölçeklendirme uygulama çözümleri oluşturun | Microsoft Docs
 description: Azure ile Bulutlar arası ölçeklendirme çözümleri oluşturmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.date: 01/14/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: adbe1eba6c5d852466288ddf41c803072d4cd098
-ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
+ms.openlocfilehash: eb5815a55e5e2c60ce61f9c4af96ee58a1aa684b
+ms.sourcegitcommit: ad2f2cb4dc8d5cf0c2c37517d5125921cff44cdd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252076"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67138943"
 ---
-# <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Öğretici: Azure ile Bulutlar arası ölçeklendirme çözümleri oluşturun
+# <a name="tutorial-create-cross-cloud-scaling-app-solutions-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile Bulutlar arası ölçeklendirme uygulama çözümleri oluşturun
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Bir Azure yığını geçiş yapmak için el ile tetiklenen bir işlem barındırılan web uygulaması, trafik Yöneticisi, esnek ve ölçeklenebilir bulut yardımcı programı, yük altında sağlayarak aracılığıyla otomatik olarak ölçeklendirme ile web uygulaması için bir Azure barındırılan sağlamak için bir Bulutlar arası çözümü oluşturmayı öğrenin.
+Bir Azure Stack barındırılan web uygulamasından barındırılan bir Azure'a geçiş için el ile tetiklenen bir işlem sağlamak Bulutlar arası çözüm oluşturmayı öğrenin traffic manager aracılığıyla otomatik olarak ölçeklendirme ile web uygulaması. Bu işlem, esnek ve ölçeklenebilir bulut yardımcı programı, yük altında sağlar.
 
-Bu düzende, kiracınızın genel bulutta uygulamanızı çalıştırmak hazır olmayabilir. Ancak, bu uygulama için talep artışlarını işlemek için kendi şirket içi ortamda gereken kapasiteyi korumak iş için ekonomik uygun olmayabilir. Kiracınızın alabilir, şirket içi çözüm ile genel bulut esnekliğinin kullanın.
+Bu düzende, kiracınızın genel bulutta uygulamanızı çalıştırmak hazır olmayabilir. Ancak, bu uygulama için talep artışlarını işlemek için kendi şirket içi ortamda gereken kapasiteyi korumak iş için ekonomik uygun olmayabilir. Kiracınızın yapabilirsiniz genel bulut, şirket içi çözüm ile esneklik kullanın.
 
 Bu öğreticide, bir örnek ortama oluşturacaksınız:
 
@@ -41,17 +41,18 @@ Bu öğreticide, bir örnek ortama oluşturacaksınız:
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik bulut bilgi işlem, şirket içi ortamınıza ve hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sunar.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için gözden geçirmeleri karma uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
+> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 -   Azure aboneliği. Gerekirse, oluşturun bir [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) başlamadan önce.
 
 - Azure Stack tümleşik sistemi veya Azure Stack geliştirme Seti'ni dağıtımı.
-    - Azure Stack, yüklemek için yönergeler bulun [Azure Stack geliştirme Seti'ni yüklemek](../asdk/asdk-install.md).
-    - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) Bu yüklemenin tamamlanması birkaç saat gerektirebilir.
+    - Azure Stack yükleme ile ilgili yönergeler için bkz: [Azure Stack geliştirme Seti'ni yüklemek](../asdk/asdk-install.md).
+    - Bir ASDK dağıtım sonrası Otomasyon betiği için şu adrese gidin: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 
+    - Bu yüklemenin tamamlanması birkaç saat gerektirebilir.
 
 -   Dağıtma [App Service](../operator/azure-stack-app-service-deploy.md) PaaS Hizmetleri Azure stack'e.
 
@@ -59,25 +60,25 @@ Bu öğreticide, bir örnek ortama oluşturacaksınız:
 
 -   [Kiracı aboneliği oluşturmak](../operator/azure-stack-subscribe-plan-provision-vm.md) Azure Stack ortamında.
 
--   Kiracı abonelik içinde bir Web uygulaması oluşturun. Daha sonra kullanmak için yeni Web App URL'si not edin.
+-   Kiracı abonelik içinde bir web uygulaması oluşturun. Daha sonra kullanmak için yeni web app URL'si not edin.
 
--   Kiracı abonelik içinde Azure işlem hatları sanal makine dağıtın.
+-   Kiracı abonelik içinde Azure işlem hatları sanal makine (VM) dağıtın.
 
 -   Windows Server 2016 VM ile .NET 3.5 gereklidir. Bu VM, özel yapı aracısı olarak Azure Stack'te Kiracı aboneliği içinde oluşturulur.
 
--   [Windows Server 2016 SQL 2017 VM görüntüsüyle](../operator/azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) Azure Stack Marketi'nde kullanımınıza sunuluyor. Bu görüntü değilse kullanılabilir, ortama eklendiğinden emin olmak için bir Azure Stack operatörü ile çalışır.
+-   [Windows Server 2016 SQL 2017 VM görüntüsüyle](../operator/azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) Azure Stack Marketi'nde kullanımınıza sunuluyor. Bu görüntü mevcut değilse kullanılabilir, ortama eklendiğinden emin olmak için bir Azure Stack operatörü ile çalışır.
 
 ## <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
 
-### <a name="scalability-considerations"></a>Ölçeklenebilirlik konusunda dikkat edilmesi gerekenler
+### <a name="scalability"></a>Ölçeklenebilirlik
 
-Önemli bir bileşeni, Bulutlar arası ölçeklendirme arasında ortak anında, isteğe bağlı ölçeklendirme teslim olanağı ve şirket içi bulut altyapısı, tutarlı ve güvenilir bir hizmet talebi tarafından belirtilen şekilde kanıtlama.
+Bulutlar arası ölçeklendirmenin anahtar bileşen arasında ortak hemen ve isteğe bağlı ölçeklendirme teslim olanağı ve şirket içi bulut altyapısı, tutarlı ve güvenilir bir hizmet sağlar.
 
-### <a name="availability-considerations"></a>Kullanılabilirlik konusunda dikkat edilmesi gerekenler
+### <a name="availability"></a>Kullanılabilirlik
 
 Yerel olarak dağıtılan uygulamaları, şirket içi donanım yapılandırması ve yazılım dağıtımı aracılığıyla yüksek kullanılabilirlik için yapılandırıldığından emin olun.
 
-### <a name="manageability-considerations"></a>Yönetilebilirlik konusunda dikkat edilmesi gerekenler
+### <a name="manageability"></a>Yönetilebilirlik
 
 Bulutlar arası çözüm sorunsuz yönetimi ve ortamlar arasında tanıdık arabirimi sağlar. PowerShell, platformlar arası yönetimi için önerilir.
 
@@ -89,16 +90,16 @@ Etki alanı için DNS bölge dosyasını güncelleştirin. Azure AD'ye özel etk
 
 1.  Özel bir etki alanı, ortak bir kayıt şirketi ile kaydedin.
 
-2.  Etki alanına ilişkin etki alanı adı kayıt şirketinde oturum açın. Onaylanmış yönetici DNS güncelleştirmeleri yapmanız gerekebilir. 
+2.  Etki alanına ilişkin etki alanı adı kayıt şirketinde oturum açın. Onaylanmış yönetici DNS güncelleştirmeleri yapmanız gerekebilir.
 
-3.  Azure AD tarafından sağlanan DNS girişini ekleyerek etki alanının DNS bölge dosyasını güncelleştirin. (DNS girişini posta yönlendirme veya web barındırma davranışları etkilemez.) 
+3.  Azure AD tarafından sağlanan DNS girişini ekleyerek etki alanının DNS bölge dosyasını güncelleştirin. (DNS girişini posta yönlendirme veya web barındırma davranışları etkilemez.)
 
 ### <a name="create-a-default-multi-node-web-app-in-azure-stack"></a>Azure Stack'te varsayılan çok düğümlü web uygulaması oluşturma
 
-Azure ve Azure Stack Web uygulamasına dağıtmak için karma sürekli tümleştirme ve sürekli dağıtım (CI/CD) ayarlama ve her iki bulut için otomatik anında iletme değiştirir.
+Azure ve Azure Stack ve otomatik anında iletme değişiklikleri web uygulamaları dağıtmak için her iki bulut için karma sürekli tümleştirme ve sürekli dağıtım (CI/CD) ayarlayın.
 
 > [!Note]  
-> Azure Stack çalıştırma (Windows Server ve SQL) ve App Service dağıtımı için genel olarak uygun görüntülerle gereklidir. App Service belgelerini inceleyin "[Azure Stack'te App Service ile çalışmaya başlamadan önce](../operator/azure-stack-app-service-before-you-get-started.md)" bölümünde Azure Stack operatörü için.
+> Azure Stack çalıştırma (Windows Server ve SQL) ve App Service dağıtımı için genel olarak uygun görüntülerle gereklidir. Daha fazla bilgi için App Service belgeleri gözden [Azure Stack'te App Service ile çalışmaya başlamadan önce](../operator/azure-stack-app-service-before-you-get-started.md).
 
 ### <a name="add-code-to-azure-repos"></a>Azure depoları için kod ekleyin
 
@@ -106,19 +107,19 @@ Azure Repos
 
 1. Azure depolara Azure depoları üzerinde proje oluşturma haklarına sahip bir hesapla oturum açın.
 
-    Karma CI/CD, hem uygulama kodunda hem de altyapı kodunu uygulayabilirsiniz. Kullanım [Azure Resource Manager şablonları](https://azure.microsoft.com/resources/templates/) hem özel hem de barındırılan buluta yönelik geliştirme için.
+    Karma CI/CD, hem uygulama kodu ve altyapı kodunu uygulayabilirsiniz. Kullanım [Azure Resource Manager şablonları](https://azure.microsoft.com/resources/templates/) hem özel hem de barındırılan buluta yönelik geliştirme için.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image1.JPG)
+    ![Azure depoları bir projeye bağlanın](media/azure-stack-solution-cloud-burst/image1.JPG)
 
 2. **Depoyu kopyalama** oluşturarak ve varsayılan bir web uygulamasını açma.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image2.png)
+    ![Azure web uygulamasında deposunu kopyalayın](media/azure-stack-solution-cloud-burst/image2.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Uygulama hizmetleri için kendi içinde bir web uygulaması dağıtımı her iki bulut oluşturma
 
-1.  Düzen **WebApplication.csproj** dosya. Seçin **Runtimeidentifier** ve ekleme **win10 x64**. (Bkz [Self-contained dağıtım](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) belgelerine.) 
+1.  Düzen **WebApplication.csproj** dosya. Seçin `Runtimeidentifier` ve ekleme `win10-x64`. (Bkz [Self-contained dağıtım](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) belgelerine.) 
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image3.png)
+    ![Web uygulama projesi dosyası Düzenle](media/azure-stack-solution-cloud-burst/image3.png)
 
 2.  Takım Gezgini'ni kullanarak Azure depoları kodu iade edin.
 
@@ -126,17 +127,17 @@ Azure Repos
 
 ## <a name="create-the-build-definition"></a>Derleme tanımını oluşturun
 
-1. Yapı tanımları oluşturma yeteneği doğrulamak için Azure işlem hatları oturum açın.
+1. Azure işlem hatları için yapı tanımları oluşturma olanağı onaylamak için oturum açın.
 
-2. Ekleme **- r win10-x64** kod. Bu, .NET Core ile kendi içinde bir dağıtımı tetiklemek gereklidir.
+2. Ekleme **- r win10-x64** kod. Bu ayrıca, .NET Core ile kendi içinde bir dağıtımı tetiklemek gereklidir.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image4.png)
+    ![Web uygulaması için kod ekleyin](media/azure-stack-solution-cloud-burst/image4.png)
 
-3. Yapı çalıştırın. [Müstakil dağıtım derleme](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) işlem, Azure ve Azure Stack üzerinde çalışabilen yapıtları yayımlar.
+3. Yapı çalıştırın. [Müstakil dağıtım derleme](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) işlem, Azure ve Azure Stack'te çalışan yapılar yayımlar.
 
 ## <a name="use-an-azure-hosted-agent"></a>Azure kullanım barındırılan aracı
 
-Azure işlem hatları bir barındırılan aracı kullanın, web uygulamaları oluşturmak ve dağıtmak için kullanışlı bir seçenektir. Bakımı ve yükseltmeler, sürekli ve kesintisiz geliştirme, test ve dağıtımını etkinleştirme Microsoft Azure tarafından otomatik olarak gerçekleştirilir.
+Azure işlem hatlarında barındırılan derleme Aracısı'nı kullanarak web uygulamaları oluşturmak ve dağıtmak için kullanışlı bir seçenektir. Bakımı ve yükseltmeler, sürekli ve kesintisiz geliştirme döngüsü etkinleştirme Microsoft Azure tarafından otomatik olarak gerçekleştirilir.
 
 ### <a name="manage-and-configure-the-cd-process"></a>CD işlem yapılandırma ve yönetme
 
@@ -144,94 +145,95 @@ Azure işlem hatları ve Azure DevOps sunucusu yüksek oranda yapılandırılabi
 
 ## <a name="create-release-definition"></a>Yayın tanımı oluşturma
 
-![Alternatif metin](media/azure-stack-solution-cloud-burst/image5.png)
+1.  Seçin **yanı sıra** altında yeni bir yayın eklemek için Ekle düğmesine **yayınlar** sekmesinde **derleme ve yayın** VSO bölümü.
 
-1.  Seçin **yanı sıra** altında yeni bir yayın eklemek için Ekle düğmesine **sürümler sekmesinde** VSO derleme ve yayın sayfasında.
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image6.png)
+    ![Yayın tanımı oluşturma](media/azure-stack-solution-cloud-burst/image5.png)
 
 2. Azure uygulama hizmeti dağıtımının şablonu uygulayın.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image7.png)
+   ![Azure uygulama hizmeti dağıtımının Şablonu Uygula](meDia/azure-stack-solution-cloud-burst/image6.png)
 
-3. Altında yapıt ekleme, Azure bulut derleme uygulaması için yapıt ekleyin.
+3. Altında **yapıt ekleme**, Azure bulut derleme uygulaması için yapıt ekleyin.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image8.png)
+   ![Azure bulut yapı için yapıt ekleme](media/azure-stack-solution-cloud-burst/image7.png)
 
 4. İşlem hattı sekmesi altında seçin **aşama, görev** ortamının bağlamak ve Azure bulut ortamına değerlerini ayarlayın.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image9.png)
+   ![Azure bulut ortamına değerlerini ayarlayın](media/azure-stack-solution-cloud-burst/image8.png)
 
-5. Ayarlama **ortam adı** Azure seçip **abonelik** Azure bulut uç noktası için.
+5. Ayarlama **ortam adı** seçip **Azure aboneliği** Azure bulut uç noktası için.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image10.png)
+      ![Azure bulut uç noktası için Azure aboneliğini seçin](media/azure-stack-solution-cloud-burst/image9.png)
 
-6. Ortam adı altında gerekli ayarlamak **Azure uygulama hizmeti adı**.
+6. Altında **uygulama hizmeti adı**, gerekli Azure uygulama hizmeti adını ayarlayın.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image11.png)
+      ![Set Azure uygulama hizmeti adı](media/azure-stack-solution-cloud-burst/image10.png)
 
-7. Girin **Hosted VS2017** barındırılan Azure bulut ortamı için aracı kuyruğu altında.
+7. Altında "Hosted VS2017" girin **aracı kuyruğu** barındırılan Azure bulut ortamı için.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image12.png)
+      ![Azure bulutta barındırılan ortam için aracı kuyruğu ayarlayın](media/azure-stack-solution-cloud-burst/image11.png)
 
 8. Azure App Service'e dağıtma geçerli menüde **paket veya klasör** ortam için. Seçin **Tamam** için **klasör konumu**.
+  
+      ![Paket veya Azure App Service ortamı için klasör seçin](media/azure-stack-solution-cloud-burst/image12.png)
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image13.png)
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image14.png)
+      ![Paket veya Azure App Service ortamı için klasör seçin](media/azure-stack-solution-cloud-burst/image13.png)
 
 9. Tüm değişiklikleri kaydetmek ve geri dönüp **yayın ardışık düzeni**.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image15.png)
+    ![Yayın işlem hattında Değişiklikleri Kaydet](media/azure-stack-solution-cloud-burst/image14.png)
 
 10. Azure Stack uygulaması için derleme seçerek yeni bir yapıt ekleyin.
+    
+    ![Azure Stack'te uygulama için yeni yapıt ekleme](media/azure-stack-solution-cloud-burst/image15.png)
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image16.png)
 
 11. Azure uygulama hizmeti dağıtımının uygulayarak bir daha fazla ortam ekleyin.
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image17.png)
+    
+    ![Azure uygulama hizmeti dağıtımının için ortam Ekle](media/azure-stack-solution-cloud-burst/image16.png)
 
 12. Azure Stack yeni ortam adı.
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image18.png)
+    
+    ![Azure uygulama hizmeti dağıtımının ortamında adı](media/azure-stack-solution-cloud-burst/image17.png)
 
 13. Azure Stack ortamı altında bulmak **görev** sekmesi.
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image19.png)
+    
+    ![Azure Stack ortamı](media/azure-stack-solution-cloud-burst/image18.png)
 
 14. Azure Stack uç noktası için bir abonelik seçin.
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image20.png)
+    
+    ![Azure Stack uç noktası için bir abonelik seçin](media/azure-stack-solution-cloud-burst/image19.png)
 
 15. Azure Stack web uygulaması adı, uygulama hizmeti adı ayarlayın.
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image21.png)
+    ![Azure Stack web uygulaması adı ayarlayın](media/azure-stack-solution-cloud-burst/image20.png)
 
 16. Azure Stack Aracısı'nı seçin.
+    
+    ![Azure Stack Aracısı'nı seçin](media/azure-stack-solution-cloud-burst/image21.png)
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image22.png)
+17. Azure App Service'e dağıtma bölümü altında geçerli seçin **paket veya klasör** ortam için. Seçin **Tamam** klasör konumuna.
 
-17. Azure uygulama hizmeti Dağıt altında bölümü geçerli seçin **paket veya klasör** ortam için. Seçin **Tamam** klasör konumuna.
+    ![Azure uygulama hizmeti dağıtımının klasörü seçin](media/azure-stack-solution-cloud-burst/image22.png)
 
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image23.png)
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image24.png)
+    ![Azure uygulama hizmeti dağıtımının klasörü seçin](media/azure-stack-solution-cloud-burst/image23.png)
 
 18. Değişken sekmesi altında adlı bir değişken ekleyin `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, değer olarak ayarlanmış **true**ve Azure Stack için kapsam.
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image25.png)
+    
+    ![Azure uygulama dağıtımı değişken Ekle](media/azure-stack-solution-cloud-burst/image24.png)
 
 19. Seçin **sürekli** yapıtları hem de etkin dağıtım tetikleyicisi simgesi **devam eder** dağıtım tetikleyicisi.
-
-    ![Alternatif metin](media/azure-stack-solution-cloud-burst/image26.png)
+    
+    ![Sürekli dağıtım tetikleyicisi seçin](media/azure-stack-solution-cloud-burst/image25.png)
 
 20. Seçin **dağıtım öncesi** Azure Stack ortamında koşullar simgesi ve tetikleyici kümesine **sürümünden sonra.**
+    
+    ![Dağıtım öncesi koşulları seçin](media/azure-stack-solution-cloud-burst/image26.png)
 
 21. Tüm değişiklikleri kaydedin.
 
 > [!Note]  
-> Görevler için bazı ayarları otomatik olarak tanımlanmış olabilir [ortam değişkenlerini](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) bir şablondan bir yayın tanımı oluşturma sırasında. Bu ayarlar görev ayarlarını değiştirilemez; Bunun yerine, üst ortam öğesi bu ayarları düzenleyebilmeniz için seçilmelidir
+> Görevler için bazı ayarları otomatik olarak tanımlanmış olabilir [ortam değişkenlerini](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) bir şablondan bir yayın tanımı oluşturma sırasında. Bu ayarlar görev ayarlarını değiştirilemez; Bunun yerine, bu ayarları düzenleyebilmeniz için üst ortam öğesi seçilmelidir.
 
 ## <a name="publish-to-azure-stack-via-visual-studio"></a>Visual Studio aracılığıyla Azure stack'e yayımlama
 
@@ -262,9 +264,9 @@ Mevcut uç nokta bilgileri, Azure Stack bağlantı Azure işlem hatlarına kulla
 ## <a name="develop-the-application-build"></a>Uygulama derleme geliştirin
 
 > [!Note]  
-> Azure Stack çalıştırma (Windows Server ve SQL) ve App Service dağıtımı için genel olarak uygun görüntülerle gereklidir. App Service belgelerini inceleyin "[Azure Stack'te App Service ile çalışmaya başlamadan önce](../operator/azure-stack-app-service-before-you-get-started.md)" bölümünde Azure Stack operatörü için.
+> Azure Stack çalıştırma (Windows Server ve SQL) ve App Service dağıtımı için genel olarak uygun görüntülerle gereklidir. Daha fazla bilgi için App Service belgeleri gözden [Azure Stack'te App Service ile çalışmaya başlamadan önce](../operator/azure-stack-app-service-before-you-get-started.md).
 
-Kullanım [Azure Resource Manager şablonları gibi web](https://azure.microsoft.com/resources/templates/) uygulama kodu her iki bulutlara dağıtmak için Azure depoları.
+Kullanım [Azure Resource Manager şablonları](https://azure.microsoft.com/resources/templates/) ister web uygulaması kodunu hem bulutlara dağıtmak için Azure depoları.
 
 ### <a name="add-code-to-an-azure-repos-project"></a>Kodu bir Azure depoları projeye Ekle
 
@@ -274,7 +276,7 @@ Kullanım [Azure Resource Manager şablonları gibi web](https://azure.microsoft
 
 #### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Uygulama hizmetleri için kendi içinde bir web uygulaması dağıtımı her iki bulut oluşturma
 
-1.  Düzen **WebApplication.csproj** dosyası: Seçin **Runtimeidentifier** ve win10 x64 ekleyin. Daha fazla bilgi için [müstakil dağıtım](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) belgeleri.
+1.  Düzen **WebApplication.csproj** dosyası: Seçin `Runtimeidentifier` ve ardından eklemek `win10-x64`. Daha fazla bilgi için [müstakil dağıtım](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) belgeleri.
 
 2.  Azure depolara kodunu denetlemek için Takım Gezgini'ni kullanın.
 
@@ -286,13 +288,13 @@ Kullanım [Azure Resource Manager şablonları gibi web](https://azure.microsoft
 
 2.  Gidin **Web uygulaması derleme** proje sayfası.
 
-3.  İçinde **bağımsız değişkenleri**, ekleme **- r win10-x64** kod. Bu, .NET Core ile kendi içinde bir dağıtım tetiklemek için gereklidir.
+3.  İçinde **bağımsız değişkenleri**, ekleme **- r win10-x64** kod. Bu ayrıca, .NET Core ile kendi içinde bir dağıtım tetiklemek için gereklidir.
 
 4.  Yapı çalıştırın. [Müstakil dağıtım derleme](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) işlem, Azure ve Azure Stack üzerinde çalışabilen yapıtları yayımlar.
 
 #### <a name="use-an-azure-hosted-build-agent"></a>Azure kullanım barındırılan derleme aracısı
 
-Azure işlem hatlarında barındırılan derleme Aracısı'nı kullanarak, oluşturmak ve web uygulamalarını dağıtmak için kullanışlı bir seçenektir. Aracı Bakımı ve yükseltmeler, sürekli ve kesintisiz geliştirme döngüsü sağlayan Microsoft Azure tarafından otomatik olarak gerçekleştirilir.
+Azure işlem hatlarında barındırılan derleme Aracısı'nı kullanarak web uygulamaları oluşturmak ve dağıtmak için kullanışlı bir seçenektir. Bakımı ve yükseltmeler, sürekli ve kesintisiz geliştirme döngüsü etkinleştirme Microsoft Azure tarafından otomatik olarak gerçekleştirilir.
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>Sürekli dağıtım (CD) işlem yapılandırma
 
@@ -308,7 +310,7 @@ Bir yayın tanımı oluşturma, uygulamanın son adımı yapı işlemi bağlıd�
 
 3.  Üzerinde **bir şablon seçin**, seçin **Azure uygulama hizmeti dağıtımının**ve ardından **Uygula**.
 
-4.  Üzerinde **yapıt ekleme**, gelen **kaynak (derleme tanımı)** Azure bulut yapı uygulamayı seçin.
+4.  Üzerinde **yapıt ekleme**, gelen **kaynak (derleme tanımı)** , Azure bulut yapı uygulamayı seçin.
 
 5.  Üzerinde **işlem hattı** sekmesinde **1. Aşama**, **1 görev** bağlantı **ortam görevlerini görüntüle**.
 
@@ -353,7 +355,7 @@ Bir yayın tanımı oluşturma, uygulamanın son adımı yapı işlemi bağlıd�
 
 ## <a name="create-a-release"></a>Bir yayın oluşturun
 
-1.  Üzerinde **işlem hattı** sekmesini **yayın** listesindeki **yayın oluştur**.
+1.  Üzerinde **işlem hattı** sekmesini **yayın** listesinde ve seçin **yayın oluştur**.
 
 2.  Yayını için bir açıklama girin, doğru yapıtlar seçili olduğunu görmek için kontrol edin ve ardından **Oluştur**. Birkaç dakika sonra yeni yayın oluşturuldu ve yayın adı bir bağlantı gösterilir belirten bir başlık görüntülenir. Sürüm özeti sayfasında görmek için bağlantıyı seçin.
 
@@ -365,7 +367,7 @@ Bir yayın tanımı oluşturma, uygulamanın son adımı yapı işlemi bağlıd�
 
 1.  Üzerinde **sürüm 2** Özet sayfasında, **günlükleri**. Bir dağıtım sırasında bu sayfa, Aracıdan dinamik günlüğü gösterir. Sol bölmede, her ortam için dağıtım her işlemin durumunu gösterir.
 
-2.  Bir kişi simgesi seçin **eylem** sütun dağıtım onaylayan (veya reddedildi) bakın ve sağladıkları ileti bir dağıtım öncesi veya dağıtım sonrası onayı.
+2.  Kişi simgesini **eylem** sütun dağıtım onaylayan (veya reddedildi) bakın ve sağladıkları ileti bir dağıtım öncesi veya dağıtım sonrası onayı.
 
 3.  Dağıtım tamamlandıktan sonra tüm günlük dosyasına sağ bölmede görüntülenir. Seçin **adım** gibi tek bir adım için günlük dosyasını görmek için sol bölmedeki **başlatma işi**. Tek tek günlükleri görme olanağı, izlemek ve genel dağıtım bölümlerinde hata ayıklamak kolaylaştırır. **Kaydet** bir adım için günlük dosyasına veya **tüm günlükleri zip olarak indir**.
 
@@ -373,11 +375,11 @@ Bir yayın tanımı oluşturma, uygulamanın son adımı yapı işlemi bağlıd�
 
 5.  Bir ortam bağlantıyı seçin (**Azure** veya **Azure Stack**) belirli bir ortama dağıtımları bekleyen ve varolan hakkında bilgi için. Bu görünümler, aynı derlemenin iki ortamlara dağıtılan doğrulamak için hızlı bir yol olarak kullanın.
 
-6.  Açık **üretim uygulamasını dağıtmışsınızdır** tarayıcıda. Örneğin, Azure App Services Web sitesi için URL'yi açın [https://[uygulamanızın-adı\]. azurewebsites.net](https:// [your-app-name].azurewebsites.net).
+6.  Açık **üretim uygulamasını dağıtmışsınızdır** bir tarayıcıda. Örneğin, Azure App Services Web sitesi için URL'yi açmaya `https://[your-app-name\].azurewebsites.net`.
 
 **Azure ve Azure Stack tümleştirmesini Bulutlar arası ölçeklenebilir bir çözüm sağlar.**
 
-Esnek ve sağlam bir çok bulut hizmeti geri veri güvenliği sağlar yukarı ve yedeklilik, kullanılabilirlik, tutarlı ve hızlı, ölçeklenebilir depolama ve dağıtım ve coğrafi uyumlu yönlendirme. Bu el ile tetiklenen işlem önemli verilerin anlık kullanılabilirliği sağlamaya Web barındırılan uygulamalar arasında geçiş yaparken, güvenilir ve verimli yük sağlar. 
+Esnek ve sağlam bir çok bulut hizmeti geri veri güvenliği sağlar yukarı ve yedeklilik, kullanılabilirlik, tutarlı ve hızlı, ölçeklenebilir depolama ve dağıtım ve coğrafi uyumlu yönlendirme. El ile tetiklenen bu işlem, güvenilir ve verimli yük barındırılan web uygulamaları ve önemli verilerin anlık kullanılabilirliği arasında geçiş sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure bulut desenleri hakkında daha fazla bilgi için bkz: [bulut tasarımı desenleri](https://docs.microsoft.com/azure/architecture/patterns).

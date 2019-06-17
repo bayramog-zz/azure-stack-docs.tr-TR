@@ -3,21 +3,20 @@ title: Azure Stack için uzantısı konağı için hazırlama | Microsoft Docs
 description: Gelecekteki bir Azure Stack güncelleştirme paketi otomatik olarak etkinleştirilir, uzantısı konağı hazırlamak öğrenin.
 services: azure-stack
 keywords: ''
-author: WenJason
-ms.author: v-jay
-origin.date: 03/07/2019
-ms.date: 04/29/2019
+author: mattbriggs
+ms.author: mabrigg
+ms.date: 06/13/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
-manager: digimobile
+manager: femila
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 23f91454027b3073498ef3c1b4a388cca0c88bab
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: ab508956ddcc57baa04c74710ea485c07cc20416
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64291699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131152"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack için uzantısı konağı için hazırlama
 
@@ -32,7 +31,7 @@ Yeni ad alanları ve ilişkili sertifikaları tabloda gösterilmiştir:
 | Dağıtım klasörü | Gerekli bir sertifika konusu ve konu alternatif adları (SAN) | Kapsam (bölge başına) | Alt etki alanı ad alanı |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
 | Yönetici uzantısı konağı | *.adminhosting. \<bölge >. \<fqdn > (joker SSL sertifikaları) | Yönetici uzantısı konağı | adminhosting. \<bölge >. \<fqdn > |
-| Genel uzantı konak | * .hosting. \<bölge >. \<fqdn > (joker SSL sertifikaları) | Genel uzantı konak | barındırma. \<bölge >. \<fqdn > |
+| Genel uzantı konak | \* .hosting. \<bölge >. \<fqdn > (joker SSL sertifikaları) | Genel uzantı konak | barındırma. \<bölge >. \<fqdn > |
 
 Ayrıntılı sertifika gereksinimleri bulunabilir [Azure Stack ortak anahtar altyapısı sertifika gereksinimleri](azure-stack-pki-certs.md) makalesi.
 
@@ -185,7 +184,7 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 > [!Note]  
 > Uzantısı konağı etkinleştirmeden önce bu değişikliği yapın. Bu, Azure Stack portalı sürekli olarak erişebilmesini sağlar.
 
-| Uç nokta (VIP) | Protokol | Bağlantı Noktaları |
+| Uç nokta (VIP) | Protocol | Bağlantı Noktaları |
 |----------------|----------|-------|
 | Yönetici barındırma | HTTPS | 443 |
 | Barındırma | HTTPS | 443 |
@@ -200,7 +199,7 @@ Aşağıdaki mevcut uç nokta bağlantı noktası, mevcut güvenlik duvarı kura
 > [!Note]  
 > Doğrulama başarılı olduktan sonra bu bağlantı noktalarını kapatmanız önerilir.
 
-| Uç nokta (VIP) | Protokol | Bağlantı Noktaları |
+| Uç nokta (VIP) | Protocol | Bağlantı Noktaları |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Portal (Yönetici) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
 | Portal (kullanıcı) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |

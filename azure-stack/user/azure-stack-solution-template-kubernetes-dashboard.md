@@ -15,20 +15,20 @@ ms.date: 04/19/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 04/19/2019
-ms.openlocfilehash: 689929a6efc2d318fb8c24545636053946457785
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 003149d15a8509e37f01e379e0929c2ef758bcef
+ms.sourcegitcommit: ad2f2cb4dc8d5cf0c2c37517d5125921cff44cdd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64299806"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67138822"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Azure Stack'te Kubernetes panosuna erişme 
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti* 
 > [!Note]   
-> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack bağlantısı kesilmiş senaryo preview tarafından şu anda desteklenmiyor. 
+> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack bağlantısı kesilmiş senaryo, preview tarafından şu anda desteklenmemektedir. 
 
-Kubernetes, temel yönetim işlemlerini için kullanabileceğiniz bir web Pano içerir. Bu pano, temel sistem durumu ve uygulamalarınız için ölçümleri görüntüleme, oluşturma ve Hizmetleri dağıtın ve mevcut uygulamaları düzenlemek olanak tanır. Bu makalede Azure Stack'te Kubernetes panosunu ayarlama gösterilmektedir.
+Kubernetes temel yönetim işlemleri için kullanılan bir web Pano içerir. Bu pano, temel sistem durumu ve uygulamalarınız için ölçümleri görüntüleme, oluşturma ve Hizmetleri dağıtın ve mevcut uygulamaları düzenleme olanak tanır. Bu makalede Azure Stack'te Kubernetes panosunu ayarlama gösterilmektedir.
 
 ## <a name="prerequisites-for-kubernetes-dashboard"></a>Kubernetes panosunu için Önkoşullar
 
@@ -38,11 +38,11 @@ Kubernetes, temel yönetim işlemlerini için kullanabileceğiniz bir web Pano i
 
 * SSH istemcisi
 
-    Güvenlik için bir SSH istemcisi gerekir, ana düğüm kümedeki bağlanın. Windows kullanıyorsanız, kullanabileceğiniz [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm). Kubernetes kümenizi dağıtılırken kullanılan özel anahtarı gerekir.
+    Güvenli bir şekilde, kümedeki ana düğüme bağlanmak için bir SSH istemcisi gerekir. Windows kullanıyorsanız, kullanabileceğiniz [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm). Kubernetes kümenizi dağıtılırken kullanılan özel anahtarı gerekir.
 
 * FTP (PSCP)
 
-    SSH ve SSH Dosya Aktarım Protokolü sertifikaları ana düğümü aracılığıyla Azure Stack yönetim makinenize aktarmak için destekleyen bir FTP istemcisi de gerekebilir. Kullanabileceğiniz [FileZilla](https://filezilla-project.org/download.php?type=client). Kubernetes kümenizi dağıtılırken kullanılan özel anahtarı gerekir.
+    Bir FTP istemcisi oluşturmanız da gerekebilir (gibi [FileZilla](https://filezilla-project.org/download.php?type=client)) SSH ve SSH FTP sertifikaları ana düğümü aracılığıyla Azure Stack yönetim makinenize aktarmak için destekler. Kubernetes kümenizi dağıtılırken kullanılan özel anahtarı gerekir.
 
 ## <a name="overview-of-steps-to-enable-dashboard"></a>Pano etkinleştirmek için adımlara genel bakış
 
@@ -56,12 +56,12 @@ Kümenizde ana düğüm Panosu URL'sini alabilirsiniz.
 
 1. Genel IP adresi ve kullanıcı adı için Küme Yöneticisi, Azure Stack panodan alın. Bu bilgileri almak için:
 
-    - Oturum [Azure Stack portalı](https://portal.local.azurestack.external/)
+    - Oturum [Azure Stack portalı](https://portal.local.azurestack.external/).
     - Seçin **tüm hizmetleri** > **tüm kaynakları**. Ana küme kaynak grubunuzda bulun. Ana adlı `k8s-master-<sequence-of-numbers>`. 
 
-2. Ana düğüm portalda açın. Kopyalama **genel IP** adresi. Tıklayın **Connect** kullanıcı adınızı almak için **VM yerel hesabı kullanarak oturum açma** kutusu. Bu, kümeyi oluştururken ayarladığınız aynı kullanıcı adıdır. Connect dikey pencerede listelenen özel IP adresi yerine genel IP adresini kullanın.
+2. Ana düğüm portalda açın. Kopyalama **genel IP** adresi. Tıklayın **Connect** kullanıcı adınızı almak için **VM yerel hesabı kullanarak oturum açma** kutusu. Bu ad, kümeyi oluştururken ayarladığınız aynı kullanıcı adıdır. Connect dikey pencerede listelenen özel IP adresi yerine genel IP adresini kullanın.
 
-3.  Ana düğümüne bağlanmak için bir SSH istemcisi açın. Windows üzerinde çalışıyorsanız, kullanabileceğiniz [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) bağlantı oluşturmak için. Ana düğüm için kullanıcı adı, genel IP adresini kullanacağınızı ve kümeyi oluştururken kullanılan özel anahtarı ekleyin.
+3.  Ana düğümüne bağlanmak için bir SSH istemcisi açın. Windows üzerinde çalışıyorsanız, kullanabileceğiniz [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) bağlantı oluşturmak için. Ana düğüm için kullanıcı adı, genel IP adresini kullanın ve kümeyi oluştururken kullanılan özel anahtarı ekleyin.
 
 4.  Terminal bağlandığında yazın `kubectl` Kubernetes'in komut satırı istemcisini açın.
 
@@ -95,7 +95,7 @@ Kümenizde ana düğüm Panosu URL'sini alabilirsiniz.
 
 ## <a name="import-the-certificate"></a>Sertifika içeri aktarma
 
-1. Filezilla açın ve ana düğümüne bağlanın. İhtiyacınız olacak:
+1. Filezilla açın ve ana düğümüne bağlanın. Gereksinim duyduğunuz:
 
     - ana düğüm genel IP
     - Kullanıcı adı
@@ -114,9 +114,9 @@ Kümenizde ana düğüm Panosu URL'sini alabilirsiniz.
 
 ## <a name="open-the-kubernetes-dashboard"></a>Kubernetes panosunu açma 
 
-1. Web tarayıcınız açılır pencere engelleyicisini devre dışı bırakın.
+1. Tarayıcınızın açılır pencere engelleyicisini devre dışı bırakın.
 
-2. URL'yi tarayıcınıza belirtildiği komutu çalıştırdığınızda noktası `kubectl cluster-info`. Örneğin: https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard: / proxy 
+2. URL'ye git belirtildiği komutu çalıştırdığınızda `kubectl cluster-info`. Örneğin, `https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy` 
 3. İstemci sertifikası seçin.
 4. Belirteci girin. 
 5. Ana düğüm üzerinde bash komut satırını yeniden ve izin vermek `kubernetes-dashboard`. Şu komutu çalıştırın:
@@ -127,7 +127,7 @@ Kümenizde ana düğüm Panosu URL'sini alabilirsiniz.
 
     Komut dosyası sağlar `kubernetes-dashboard` bulut yönetici ayrıcalıkları. Daha fazla bilgi için [kümeleri için RBAC özellikli](https://docs.microsoft.com/azure/aks/kubernetes-dashboard).
 
-Panoyu kullanabilirsiniz. Kubernetes panosunu hakkında daha fazla bilgi için bkz. [Kubernetes Web kullanıcı Arabirimi Panosu](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
+Pano, kullanıma hazır. Kubernetes panosunu hakkında daha fazla bilgi için bkz. [Kubernetes Web kullanıcı Arabirimi Panosu](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
 
 ![Azure Stack Kubernetes Panosu](media/azure-stack-solution-template-kubernetes-dashboard/azure-stack-kub-dashboard.png)
 

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: b35368804423a4647b84000d95adf41ee5fe09b2
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: f14face1998b73ed0739db1d9ed0504eaad2799c
+ms.sourcegitcommit: ca46bef5d5f824d22bdbc00605eb881410b1ffd0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712456"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67042054"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Azure Stack'te bir Service Fabric kümesine dağıtma
 
@@ -130,11 +130,11 @@ Daha fazla bilgi için [yönetme anahtar kasası PowerShell ile Azure Stack'te](
 
 1. Her sayfa için gibi *Temelleri*, dağıtım formu doldurun. Değerini emin değilseniz varsayılan ayarları kullanın. Seçin **Tamam** sonraki sayfaya ilerlemek için:
 
-   ![Temel](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
+   ![Temel Bilgiler](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 
 1. Üzerinde *ağ ayarlarını* sayfasında, uygulamalarınız için açmak için belirli bağlantı noktaları belirleyebilirsiniz:
 
-   ![Ağ Ayarları](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
+   ![Ağ ayarları](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
 
 1. Üzerinde *güvenlik* sayfasında, aldığınız değerleri eklemek [Azure anahtar kasası oluşturma](#add-a-secret-to-key-vault) ve gizli dizi karşıya yükleniyor.
 
@@ -190,7 +190,7 @@ Service Fabric PowerShell veya Service Fabric Explorer'ı kullanarak Service Fab
 
 1. Site için kimlik doğrulaması için kullanılacak bir sertifika seçmeniz gerekir. Seçin **daha fazla seçenek**uygun sertifikayı seçin ve ardından **Tamam** Service Fabric Explorer'a bağlanmak için. 
 
-   ![Kimlik Doğrula](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
+   ![Kimlik doğrulaması](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
 
 

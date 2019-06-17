@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: e783d9ea577c76505f59e73230b2a00c90f867cf
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 1d5d6399887d5567806e8a9131444b5eada2f719
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618775"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131179"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure bağlı dağıtım planlama kararları için Azure Stack tümleşik sistemleri
 Karar verdim sonra [Azure Stack, hibrit bulut ortamına nasıl tümleştirilecek](azure-stack-connection-models.md), Azure Stack dağıtım kararlarınızı son haline getir.
@@ -59,7 +59,7 @@ Bir CSP aboneliği kullanmak için kullanacaksanız, doğru yaklaşım tam CSP s
 
 |Senaryo|Etki alanı ve abonelik seçenekleri|
 |-----|-----|
-|Siz bir **doğrudan bir CSP iş ortağı** veya **dolaylı CSP sağlayıcısı**, ve Azure Stack'te çalışır.|CSL (ortak hizmet katmanı) aboneliği kullanın.<br>     veya<br>İş ortağı Merkezi'nde açıklayıcı bir ad ile Azure AD kiracısı oluşturun. Örneğin &lt;kuruluşunuz > CSPAdmin kendisiyle ilişkili bir Azure CSP aboneliği ile.|
+|Siz bir **doğrudan bir CSP iş ortağı** veya **dolaylı CSP sağlayıcısı**, ve Azure Stack'te çalışır.|CSL (ortak hizmet katmanı) aboneliği kullanın.<br>     or<br>İş ortağı Merkezi'nde açıklayıcı bir ad ile Azure AD kiracısı oluşturun. Örneğin &lt;kuruluşunuz > CSPAdmin kendisiyle ilişkili bir Azure CSP aboneliği ile.|
 |Siz bir **dolaylı CSP satıcısı**, ve Azure Stack'te çalışır.|Dolaylı CSP iş ortağı Merkezi'ni kullanarak kendisiyle ilişkili bir Azure CSP aboneliği ile kuruluşunuz için Azure AD kiracısı oluşturmak için sağlayıcınıza başvurun.|
 
 ### <a name="capacity-based-billing"></a>Kapasite tabanlı faturalandırma

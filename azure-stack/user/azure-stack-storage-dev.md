@@ -4,18 +4,18 @@ description: Azure Stack depolama Geliştirme Araçları'nı kullanmaya başlama
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 02/27/2019
+ms.date: 06/13/2019
 ms.topic: conceptual
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: beb43a013f66d6de5cc781fbbbdfae9e9e67c2da
-ms.sourcegitcommit: 87d93cdcdb6efb06e894f56c2f09cad594e1a8b3
+ms.openlocfilehash: 10bf2bcc13ceab3b28e44759bbacae57d63b9b97
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65712412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131655"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack depolama geliştirme araçları ile çalışmaya başlama
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Stack depolama geliştirme araçları ile çalışmaya başla
 
 ### <a name="1811-update-or-newer-versions"></a>1811 güncelleştirmesi veya daha yeni sürümleri
 
-| İstemci kitaplığı | Azure Stack desteklenen sürüm | Bağla | Uç nokta belirtimi |
+| İstemci kitaplığı | Azure Stack desteklenen sürüm | Bağlantı | Uç nokta belirtimi |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET | 9.2.0 | Nuget paketi:<br><https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0><br> <br>GitHub sürüm:<br><https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0> | app.config dosyası |
 | Java | 7.0.0 | Maven paketi:<br><https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/7.0.0><br> <br>GitHub sürüm:<br><https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0> | Bağlantı dizesi kurulumu |
@@ -63,7 +63,7 @@ Oluşturucusu yüklemek için: (örnek olarak blob alın).
 
 ### <a name="previous-versions-1802-to-1809-update"></a>Önceki sürümler (1802 için 1809 güncelleştirme)
 
-| İstemci kitaplığı | Azure Stack desteklenen sürüm | Bağla | Uç nokta belirtimi |
+| İstemci kitaplığı | Azure Stack desteklenen sürüm | Bağlantı | Uç nokta belirtimi |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET | 8.7.0 | Nuget paketi:<br><https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0><br> <br>GitHub sürüm:<br><https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0> | app.config dosyası |
 | Java | 6.1.0 | Maven paketi:<br><https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0><br> <br>GitHub sürüm:<br><https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0> | Bağlantı dizesi kurulumu |
@@ -173,7 +173,7 @@ AccountKey=mykey;
 EndpointSuffix=local.azurestack.external
 ```
 
-## <a name="blob-storage"></a>Blob depolama alanı
+## <a name="blob-storage"></a>Blob depolama
 
 Aşağıdaki Azure Blob Depolama öğreticilerde, Azure Stack için geçerlidir. Önceki açıklanan Azure Stack için belirli bir uç nokta son eki gereksinimi Not [örnekler](#examples) bölümü.
 
@@ -197,7 +197,7 @@ Aşağıdaki Azure kuyruk depolama öğreticilerde, Azure Stack için geçerlidi
 * [Python'da Kuyruk Depolama'yı kullanma](/azure/storage/queues/storage-python-how-to-use-queue-storage)
 * [Ruby'de Kuyruk Depolama'yı kullanma](/azure/storage/queues/storage-ruby-how-to-use-queue-storage)
 
-## <a name="table-storage"></a>Tablo depolama alanı
+## <a name="table-storage"></a>Table Storage
 
 Aşağıdaki Azure tablo depolama öğreticilerde, Azure Stack için geçerlidir. Önceki açıklanan Azure Stack için belirli bir uç nokta son eki gereksinimi Not [örnekler](#examples) bölümü.
 

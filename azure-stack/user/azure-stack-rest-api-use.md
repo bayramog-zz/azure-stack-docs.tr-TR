@@ -1,5 +1,5 @@
 ---
-title: Azure Stack API kullanma | Microsoft Docs
+title: API isteği yapmak için Azure Stack | Microsoft Docs
 description: Azure Stack için API isteği yapmak için Azure kimlik doğrulaması almak öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -14,26 +14,26 @@ ms.date: 05/16/2019
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 22aeab6c6f33462ebea50bafa795630a648e2dd5
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 83578f7644f7a4bfc47f854fe9974809c22bba02
+ms.sourcegitcommit: ad2f2cb4dc8d5cf0c2c37517d5125921cff44cdd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269415"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67138908"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# <a name="use-the-azure-stack-api"></a>Azure Stack API kullanın
+# <a name="make-api-requests-to-azure-stack"></a>API isteği yapmak için Azure Stack
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Uygulama programlama arabirimi (API), Azure Stack bulutunuza bir VM ekleme gibi işlemleri otomatikleştirmek için kullanabilirsiniz.
+Uygulama programlama arabirimi (API), bir sanal makine (VM) Azure Stack bulutunuza ekleme gibi işlemleri otomatikleştirmek için kullanabilirsiniz.
 
 API, Microsoft Azure oturum açma uç noktası için kimlik doğrulaması yapmak istemcinizi gerektirir. Uç nokta, Azure Stack API'ye gönderilen her istek üstbilgisindeki kullanmak için bir belirteç döndürür. Microsoft Azure, Oauth 2.0 kullanır.
 
-Bu makalede kullanan örnekler **cURL** Azure Stack istekleri oluşturmak için yardımcı program. CURL, uygulama, veri aktarmak için bir kitaplığı ile bir komut satırı aracıdır. Bu örnekler, Azure Stack API'sine erişmek için bir belirteç alma işleminde size kılavuzluk. Çoğu programlama dilinden böyle belirteç yenileme belirteci sağlam yönetim ve tutamacı görevleri olan Oauth 2.0 kitaplıkları sağlar.
+Bu makalede kullanan örnekler **cURL** Azure Stack istekleri oluşturmak için yardımcı program. cURL, veri aktarmak için bir kitaplığı ile bir komut satırı aracıdır. Bu örnekler, Azure Stack API'sine erişmek için bir belirteç alma işleminde size kılavuzluk. Çoğu programlama dilinden belirtecini yenileme gibi güçlü belirteç yönetimi ve tutamacı görevleri olan Oauth 2.0 kitaplıkları sağlar.
 
-Azure Stack REST API'si gibi genel bir REST istemcisi ile kullanarak tüm işlemi gözden **cURL**, arka plandaki istek ve yanıt yükünde almayı bekleyebilirsiniz gösterir anlamanıza yardımcı olacak.
+Azure Stack REST API'si gibi genel bir REST istemcisi ile kullanarak tüm işlemi gözden **cURL**, temel alınan istekler ve yanıt yükünde bekleyebileceğiniz anlamanıza yardımcı olacak.
 
 Bu makalede, etkileşimli oturum açma gibi belirteçleri almak veya ayrılmış uygulama kimlikleri oluşturma için kullanılabilir tüm seçenekleri keşfedin değil. Bu konular hakkında bilgi edinmek için [Azure REST API Başvurusu](https://docs.microsoft.com/rest/api/).
 
@@ -66,19 +66,19 @@ grant_type=password
 
 Her bir değer için:
 
-- **grant_type değeri**  
-   Kimlik doğrulama düzeni türünü kullanarak yapar. Bu örnekte, değerdir `password`
+- **grant_type**:  
+   Kimlik doğrulama düzeni kullanacaksınız türü. Bu örnekte, değerdir `password`.
 
-- **Kaynak**  
-   Kaynak belirteci erişir. Azure Stack yönetim meta veri uç noktasını sorgulayarak kaynak bulabilirsiniz. Bakmak **izleyiciler** bölümü
+- **Kaynak**:  
+   Kaynak belirteci erişir. Azure Stack yönetim meta veri uç noktasını sorgulayarak kaynak bulabilirsiniz. Bakmak **izleyiciler** bölümü.
 
-- **Azure Stack yönetim uç noktası**  
+- **Azure Stack yönetim uç noktası**:  
    ```
    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
    ```
 
   > [!NOTE]  
-  > Kiracı API'si erişmeye bir yöneticiyseniz, daha sonra Kiracı uç noktası, örneğin kullanılacak emin olmanız gerekir: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
+  > Kiracı API'si erişmeye bir yöneticisiyseniz, Kiracı uç noktası kullandığınızdan emin olun. Örneğin, `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   Örneğin, Azure Stack geliştirme Seti'ni bir uç nokta olarak:
 
@@ -168,7 +168,7 @@ Yanıt:
 
 ## <a name="api-queries"></a>API sorguları
 
-Erişim belirtecinizi aldıktan sonra üst bilgi olarak bir her API isteklerinizin eklemeniz gerekir. Bunu yapmak için bir başlık oluşturmanız gerekir **yetkilendirme** değerle: `Bearer <access token>`. Örneğin:
+Erişim belirtecinizi aldıktan sonra her API isteklerinizin üst bilgi olarak ekleyin. Üst bilgi olarak eklemek için bir başlık oluşturma **yetkilendirme** değerle: `Bearer <access token>`. Örneğin:
 
 İstek:
 
@@ -190,7 +190,7 @@ subscriptionPolicies : @{locationPlacementId=AzureStack}
 
 ### <a name="url-structure-and-query-syntax"></a>URL yapısı ve sorgu söz dizimi
 
-Genel istek URI oluşur: {URI scheme} :// {URI ana bilgisayarı} / {kaynak-path}? {Sorgu dizesi}
+Genel istek URI oluşur: `{URI-scheme} :// {URI-host} / {resource-path} ? {query-string}`
 
 - **URI şeması**:  
 URI isteği göndermek için kullanılan protokolü belirtir. Örneğin, `http` veya `https`.

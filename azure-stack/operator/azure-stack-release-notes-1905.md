@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: f46fde5b0c978b315d73d86a5cee3fa1f977295e
-ms.sourcegitcommit: e90db57ffe509162aff5c879f061a1f8371179e8
+ms.lastreviewed: 06/14/2019
+ms.openlocfilehash: 7669ee310e4262a72d90c478500d7e06919b43bc
+ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034251"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67145196"
 ---
 # <a name="azure-stack-1905-update"></a>Azure Stack 1905 güncelleştirme
 
@@ -41,7 +41,7 @@ Azure Stack 1905 güncelleştirmenin yapı numarasıdır **1.1905.0.40**.
 
 ### <a name="update-type"></a>Güncelleştirme türü
 
-Azure Stack 1905 güncelleştirme derleme türü **tam**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi.
+Azure Stack 1905 güncelleştirme derleme türü **tam**. Sonuç olarak, express güncelleştirmeleri 1903 ve 1904 gibi daha uzun bir çalışma zamanı 1905 güncelleştirme vardır. Tam çalışma zamanları tam güncelleştirme için genellikle Azure Stack örneğinizin Kiracı İş yükleri tarafından sisteminizin ağ bağlantısı (internet'e bağlı değilse), sisteminizde kullanılan kapasite içerdiğinden emin düğüm sayısına bağlıdır ve sistem donanımınız yapılandırma. 1905 güncelleştirme iç test işlemlerimizi, aşağıdaki beklenen çalışma zamanları oluşturdu: 4 düğüm - 35 saati, 8 düğüm - saat 45, 12 düğümleri - 55 saati, 16 düğüme - 70 saat. Bu beklenen değerleri daha uzun uzun 1905 çalışma zamanları nadir değildir ve güncelleştirme başarısız sürece eylem Azure Stack operatörleri tarafından gerektirmez. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md).
 
 ## <a name="whats-in-this-update"></a>Bu güncelleştirmede nedir
 
@@ -71,7 +71,7 @@ Bu güncelleştirmeyle, Windows Server 2019 artık başarıyla 2016 konağında 
 
 - Birden çok Azure Active dizin eklenen olduğunda (aracılığıyla [bu işlem](azure-stack-enable-multitenancy.md)), belirli güncelleştirmeler olduğunda veya AAD hizmet sorumlusu yetkilendirme değişiklikleri neden olacak şekilde hakları betik artırarak algoritmanın yeniden çalıştırılması ihmal mümkündür eksik. Bu çeşitli sorunları engellenen erişim belirli özellikleri özgün verilecek izleme sabit olan daha fazla ayrı hatalarına neden olabilir. Bunu önlemek için bu izinleri denetler ve belirli yapılandırma sorunlarını bulunduğunda bir uyarı oluşturan yeni bir özellik 1905 tanıtır. Bu doğrulama saatte bir çalışır ve bu sorunu düzeltmek için gerekli düzeltme eylemleri görüntüler. Tüm kiracılar iyi durumda olduğunda, uyarıyı kapatır.
 
-- Geliştirilmiş Güvenilirlik altyapı hizmeti yük devretme sırasında yedekleme işlemleri. 
+- Geliştirilmiş Güvenilirlik altyapı hizmeti yük devretme sırasında yedekleme işlemleri.
 
 - Yeni bir sürümü [Azure Stack Nagios eklentisi](azure-stack-integrate-monitor.md#integrate-with-nagios) olan kullanılabilir kullanan [Azure Active Directory kimlik doğrulama kitaplıkları](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) kimlik doğrulaması için. Eklenti ayrıca artık Azure Stack, Azure Active Directory (AAD) ve Active Directory Federasyon Hizmetleri (ADFS) dağıtımlarını destekler. Daha fazla bilgi için [Nagios eklentisi exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
 
@@ -79,6 +79,22 @@ Bu güncelleştirmeyle, Windows Server 2019 artık başarıyla 2016 konağında 
 
 - [Node.js SDK'sı](https://www.npmjs.com/search?q=2019-03-01-hybrid) artık API profillerini destekler. Paketleri destekleyen **2019-03-01-karma** profili yayımlanır.
 
+- 1905 Azure Stack güncelleştirme platform güvenilirliği ve desteklenebilirliği geliştirmek için iki yeni altyapı rollerini ekler:
+
+  - **Altyapı halkası**: Gelecekte, altyapı halka şu anda atanmış kendi altyapısı Vm'leri gerektiren var olan altyapı rolleri – örneğin xrp - kapsayıcılı sürümlerini barındıracak. Bu platform güvenilirliği artırmak ve altyapı Azure Stack gerektiren VM'lerin sayısını azaltın. Bu, daha sonra genel kaynak tüketimini Azure yığını'nın altyapısı rollerinin gelecekte de azaltır.
+  - **Destek halkası**: Gelecekte destek halka müşteriler için gelişmiş destek senaryoları işlemek için kullanılır.  
+
+  Ayrıca, bu rolün gelişmiş kullanılabilirlik için etki alanı denetleyicisi VM'SİNİN fazladan bir örneğini ekledik.
+
+  Bu değişiklikler aşağıdaki yollarla Azure Stack altyapısının kaynak kullanımını artıracaktır:
+  
+    | Azure Stack SKU | İşlem tüketimi artırın | Bellek tüketimi artırın |
+    | -- | -- | -- |
+    |4 düğüm|22 vCPU|28 GB|
+    |8 düğüm|38 vCPU|44 GB|
+    |12 düğümleri|54 vCPU|60 GB|
+    |16 düğüme|70 vCPU|76 GB|
+  
 - Artık Visual Studio Code üzerinde çalışan Azure Stack uzantı yoktur. Kullanarak **Azure hesabı** uzantısı, geliştiriciler hedef Azure Stack oturum açma ve diğer hizmetlerin sayısı yanı sıra, abonelikleri görüntüleme. Azure hesabı uzantısını hem AAD ortamları hem de ADFS ortamlarında çalışır ve yalnızca küçük bir değişiklik kullanıcı ayarlarında Visual Studio Code'un Azure Stack meta veri değerleri girmenizi gerektirir. Daha fazla bilgi için [belgelerine bakın](../user/azure-stack-dev-start-vscode-azure.md).
 
 ### <a name="changes"></a>Değişiklikler

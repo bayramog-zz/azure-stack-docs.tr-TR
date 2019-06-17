@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: ''
 ms.lastreviewed: 05/30/2019
-ms.openlocfilehash: 31f2df0b5c7598c678daff8abe34a40b4e08d590
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 61ad09591bce8c01f6f4a5c2dfa43a74d8a44bc2
+ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691605"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67145224"
 ---
 # <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
 
@@ -75,8 +75,6 @@ Azure Stack 1904 güncelleştirme derleme türü **Express**. Derleme türleri g
 
 <!-- this applies to bug 3725384 and bug #4225643 -->
 - Syslog ileti hacmi gereksiz olayları da filtreleme ve yönlendirilmiş iletiler için istediğiniz önem düzeyi seçmek için bir yapılandırma parametresi sağlayarak geliştirildi. Önem düzeyi yapılandırma hakkında daha fazla bilgi için bkz. [Azure Stack'i veri merkezi tümleştirmesi - syslog iletmeyi](azure-stack-integrate-security.md).
-
-- Azure Stack altyapısının ek 12 GB kullanır + (4 GB * Azure Stack numarası konakları) 1904 güncelleştirmek ve sonraki sürümler. Bu bir 4 düğümlü damgası olacağına dair bir ek kapasite tüketimini 28 GB anlamına gelir (12 GB + 4 GB * 4) Azure Stack Yönetici portalı'nın kapasitesi ekranında yansıtılır. Ek bellek tüketimini Azure Stack damganız kapasite aşımı koyar bile 1904 sürümüne güncelleştirmenizi başarılı olması gerekir. Güncelleştirme tamamlandıktan sonra Azure Stack damganız göre bellek kullanımı, bazı VM'ler ayırmayı iptal etmek için düzeltme adımları ile bu durumunu yansıtan bir uyarı görürsünüz.
 
 <!--this applied to Bug 1473487 -->
 - Yeni bir özellik için eklenen **Get-AzureStackLog** ek bir parametre ekleme tarafından cmdlet'i `-OutputSASUri`. Artık ortamınızı Azure Stack günlükleri toplayıp bunları belirtilen Azure depolama blob kapsayıcısında yer depolar. Daha fazla bilgi için [Azure Stack'te tanılama](azure-stack-diagnostics.md#examples).

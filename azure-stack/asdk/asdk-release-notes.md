@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: 2ca85da5d9fde42fb06eef149e7304ab08bc32ee
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.lastreviewed: 06/14/2019
+ms.openlocfilehash: 0de27634ac6167637dcdc487474f16d3ef2b2c95
+ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691207"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67145169"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
@@ -38,15 +38,7 @@ Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-no
 
 ### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
 
-- Kayıt betiği için çalıştırırken bir hizmet sorumlusu zaman aşımı nedeniyle [ASDK kaydetme](asdk-register.md) başarıyla düzenlemelisiniz **RegisterWithAzure.psm1** PowerShell Betiği. Şunları yapın:
-
-  1. Dosyayı ASDK ana bilgisayarda açın **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** yükseltilmiş izinlerle bir düzenleyicide.
-  2. 1249 satırına ekleme bir `-TimeoutInSeconds 1800` sonunda parametresi. Bu kayıt komut dosyası çalıştırılırken bir hizmet sorumlusu zaman aşımı nedeniyle gereklidir. Satır 1249 artık şu şekilde görünmelidir:
-
-     ```powershell
-      $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
-      ```
-
+- Hangi tablonuz düzenlemek bir sorun düzeltildi **RegisterWithAzure.psm1** için PowerShell Betiği [ASDK kaydetme](asdk-register.md) başarıyla.
 - Bu sürümde giderilen diğer Azure Stack sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1905.md#fixes) Azure yığını sürüm notları.
 - Bilinen sorunların bir listesi için bkz. [bu makalede](../operator/azure-stack-release-notes-known-issues-1905.md).
 - Unutmayın [kullanılabilir Azure Stack düzeltmelerin](../operator/azure-stack-release-notes-1905.md#hotfixes) Azure Stack ASDK için geçerli değildir.

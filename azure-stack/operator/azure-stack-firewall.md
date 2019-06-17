@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a98f89866fd7679a0d6ce7c6ecb40d7e8e8b51e7
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: abca6560e8644b201483001258542121fefb6b08
+ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618676"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67131532"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack güvenlik duvarı tümleştirmesi
 Güvenli Azure yığını için bir güvenlik duvarı cihaz kullanmanız önerilir. Güvenlik duvarları, içerik denetleme dağıtılmış--hizmet reddi (DDOS) saldırıları ve izinsiz giriş algılama gibi şeyler karşı korumanıza yardımcı olur. Ancak, bunlar da bloblar, tablolar ve Kuyruklar gibi Azure depolama hizmetleri için bir aktarım hızı performans sorunu haline gelebilir.
@@ -32,7 +32,7 @@ Azure Resource Manager (Yönetici), Yönetici portalı ve anahtar Kasası'nı (Y
 
 Büyük kuruluşlar için var olan kurumsal ağ ve dış ağa olabilir. Bu senaryoda, Azure Stack ve şirket ağından çalışılacak uç noktaları yayımlamanız gerekir.
 
-### <a name="network-address-translation"></a>Ağ Adresi Çevirisi
+### <a name="network-address-translation"></a>Ağ adresi çevirisi
 Ağ adresi çevirisi (NAT) dağıtım sanal makine (dış kaynaklara erişmeyi DVM) ve dağıtım sırasında internet yanı sıra Acil Durum Kurtarma Konsolu (ERCS) Vm'leri ya da ayrıcalıklı uç noktasına (CESARETLENDİRİCİ) sırasında izin vermek için önerilen yöntemdir kayıt ve sorun giderme.
 
 NAT dış ağdaki veya genel VIP genel IP adresleri için bir alternatif de olabilir. Ancak, Kiracı Kullanıcı deneyimini sınırlar ve karmaşıklık artar çünkü bunu yapmanız önerilmez. Bire bir NAT IP havuzu kullanıcı başına bir genel IP gerektiren bir seçenek olacaktır. Bir kullanıcı için tüm bağlantı VIP kullanıcı başına bir NAT kuralı gerektiren bir NAT için birçok başka bir seçenektir.
