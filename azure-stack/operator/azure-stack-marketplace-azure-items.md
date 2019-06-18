@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: sethm
-ms.reviewer: unknown
-ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 448af01e935165ea974c22c23bd73c7a02ac3935
-ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
+ms.reviewer: ihcherie
+ms.lastreviewed: 06/14/2019
+ms.openlocfilehash: dd6421e915f170ee576d6486362e8b93ac01465f
+ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67145263"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152586"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilir olan Azure Market öğeleri
 
@@ -54,7 +54,7 @@ Microsoft Azure Stack, çözüm şablonları ve şu Azure Marketi sanal makinele
 
 |  | Öğe adı | Açıklama | Yayımcı |
 | --- | --- | --- | --- |
-| ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Kolay dağıtılan, ekonomik, uygulama odaklı ve kullanıcı merkezli kurumsal sınıf çözümler. Bu görüntüler, en son yamalarla düzenli olarak güncelleştirilir. **Önemli bilgiler: 18 Ocak 2018'den silinir ve en yeni sürümlerle değiştirilir önce yüklenen görüntüler.** | Microsoft |
+| ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/MicrosoftWindowsServer.WindowsServer) | Kolay dağıtılan, ekonomik, uygulama odaklı ve kullanıcı merkezli kurumsal sınıf çözümler. Bu görüntüler, en son yamalarla düzenli olarak güncelleştirilir. **Önemli bilgiler: 18 Ocak 2018'den silinir ve en yeni sürümlerle değiştirilir önce yüklenen görüntüler.** | Microsoft |
 | ![SharePoint Server 2013 deneme sürümü](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 deneme sürümü](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Microsoft SharePoint Server 2013 deneme sürümünü Windows Server 2012 Datacenter ve Visual Studio 2019 community Edition. | Microsoft |
 | ![SharePoint Server 2016 denemesini](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 denemesini](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Microsoft SharePoint Server 2016 denemesini Windows Server 2016 Datacenter'ın üzerinde. | Microsoft |
 | ![Windows Server 2012 R2'de SQL Server 2014 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2'de SQL Server 2014 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp2-ws2012r2) | SQL Server 2014 Service Pack 2. **Gerekli yükleme:** SQL Iaas uzantısı. | Microsoft |

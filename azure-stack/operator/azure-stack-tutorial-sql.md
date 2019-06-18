@@ -16,12 +16,12 @@ ms.date: 02/25/2019
 ms.author: justinha
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: e21819fc6475161e63fcdb99a723847c5d7fbbad
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: c78a1e1be525d67576665e7e8099489ae4eb05d8
+ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268407"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152450"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Öğretici: Yüksek oranda kullanılabilir SQL veritabanı teklifi
 
@@ -43,7 +43,7 @@ Bu öğreticide adımları uygulamaya başlamadan önce emin olun [SQL Server Ka
 > [!IMPORTANT]
 > Aşağıdakilerin tümü, kullanılacak Azure Stack Hızlı Başlangıç şablonu için gereklidir.
 
-- [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) Market görüntüsü.
+- [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/MicrosoftWindowsServer.WindowsServer) Market görüntüsü.
 - SQL Server 2016 SP1 veya SP2 (Enterprise, Standard veya Geliştirici) Windows Server 2016 server görüntü üzerinde. Bu öğreticide [Windows Server 2016 üzerinde SQL Server 2016 SP2 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) Market görüntüsü.
 - [SQL Server Iaas uzantısı](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) 1.2.30 sürümü veya üzeri. SQL Iaas uzantısı Market SQL Server öğeleri tüm Windows sürümleri için gerekli olan gerekli bileşenleri yükler. Bu SQL sanal makinelerde yapılandırılacak SQL özgü ayarları sağlar. Yerel Market'te uzantı yüklü değilse SQL sağlama başarısız olur.
 - [Windows için özel betik uzantısı](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) 1.9.1 sürümü veya üzeri. Özel betik uzantısı, dağıtım sonrası VM özelleştirme görevlerini otomatik başlatmak için kullanılan bir araçtır.

@@ -5,7 +5,6 @@ services: azure-stack
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
@@ -14,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: sethm
-ms.reviewer: ''
+ms.reviewer: efemmano
 ms.lastreviewed: 04/25/2019
-ms.openlocfilehash: 5a15d55a053fbacd3a947bd61d7186d93be77dbf
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 2e0e4ef7abd1885d843832ed7cc9e845003d0ed7
+ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64987722"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152542"
 ---
 # <a name="delete-quotas-plans-offers-and-subscriptions"></a>Kotalar, planlar, teklifler ve abonelikler Sil
 
@@ -33,7 +32,7 @@ Bu genel ilke için bir özel durum aboneliklerinin: kaynakları; içeren abonel
 
 Kota silmek istiyorsanız, bu nedenle, tüm planlar ve o kota kullanın teklifler geri çalışmalıdır: teklifler sayesinde, başlatma, aboneliğiniz yok, her bir teklifin silin ve kota ve benzeri planlarını silmek olun.
 
-## <a name="delete-a-subscription"></a>Aboneliği sil
+## <a name="delete-a-subscription"></a>Aboneliği silme
 
 Bir aboneliği silmek için işaretleyin **tüm hizmetleri**, ardından **kullanıcı aboneliklerini**sistemde tüm Aboneliklerin listesini görüntülemek için. Bir teklif üzerinde çalışıyorsanız ve o da seçebilirsiniz **abonelikleri** buradan.
 

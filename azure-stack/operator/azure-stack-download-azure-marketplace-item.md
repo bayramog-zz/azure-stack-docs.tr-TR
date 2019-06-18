@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 5b90bc5014d0f8ebfaed8532f62b7c4f3aee8667
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: ef9406c8332eb983e20decb64ead723234aa8faa
+ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691870"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152574"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure Stack için Azure Market öğelerini indirme
 
@@ -48,7 +48,7 @@ Azure Stack dağıtımınıza internet bağlantınız ve olması gerekir [Azure 
   
 1. Azure Stack Yönetici portalında oturum açın.
 
-2.  Market öğesi indirmeden önce kullanılabilir depolama alanını inceleyin. Daha sonra yüklemek için öğeler seçtiğinizde, indirme boyutu, kullanılabilir depolama kapasitesi karşılaştırabilirsiniz. Kapasitesi sınırlı ise, seçeneklerini göz önünde bulundurun [kullanılabilir alanı yönetme](azure-stack-manage-storage-shares.md#manage-available-space). 
+2. Market öğesi indirmeden önce kullanılabilir depolama alanını inceleyin. Daha sonra yüklemek için öğeler seçtiğinizde, indirme boyutu, kullanılabilir depolama kapasitesi karşılaştırabilirsiniz. Kapasitesi sınırlı ise, seçeneklerini göz önünde bulundurun [kullanılabilir alanı yönetme](azure-stack-manage-storage-shares.md#manage-available-space). 
 
     Kullanılabilir alan gözden geçirmek için **bölge Yönetimi** keşfedin ve ardından gitmek istediğiniz bölgeyi seçin **kaynak sağlayıcıları** > **depolama**:
 

@@ -5,18 +5,18 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.date: 06/04/2019
+ms.date: 06/17/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: de39645d1414fc852b98036e7071befcf5262cb1
-ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
+ms.openlocfilehash: 742869344c89609ca9eb07c4a84186ee8302a02a
+ms.sourcegitcommit: 7fa9b64aeae2b22be7acfb5c4987d233303107c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66469177"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67166472"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ağ iletişimi için dikkat edilmesi gerekenler
 
@@ -35,6 +35,7 @@ Bu makalede, Azure Stack ağ iletişimi ve özelliklerini benzersiz konularına 
 |  | Abonelik başına DNS bölgeleri | 100 (varsayılan)<br>İstek üzerine artırılabilir. | 100 |
 |  | Her bölge için DNS kayıt kümeleri | 5000 (varsayılan)<br>İstek üzerine artırılabilir. | 5000 |
 |  | Bölge temsilcisi seçme için ad sunucuları | Azure, oluşturulan her kullanıcı (Kiracı) bölge için dört ad sunucusunun sağlar. | Azure Stack, oluşturulan her kullanıcı (Kiracı) bölge için iki ad sunucuları sağlar. |
+| Azure Güvenlik Duvarı | Ağ güvenlik hizmeti | Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, bulut tabanlı bir güvenlik hizmetidir. | Henüz desteklenmiyor. |
 | Sanal Ağ | Sanal ağ eşleme | Aynı bölgedeki iki sanal ağı Azure omurga ağı aracılığıyla birbirine bağlayın. | Henüz desteklenmiyor |
 |  | IPv6 adresleri | Bir IPv6 adresi bir parçası olarak atayabilirsiniz [ağ arabirimi yapılandırması](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions). | Yalnızca IPv4 desteklenir. |
 |  | DDoS koruma planı | Desteklenen | Henüz desteklenmiyor. |
@@ -71,7 +72,7 @@ Bu makalede, Azure Stack ağ iletişimi ve özelliklerini benzersiz konularına 
 |  | Statik MAC adresi | Desteklenmiyor | Desteklenmiyor. Her Azure Stack sistemi aynı MAC adresi havuzunu kullanır. |
 | Ağ İzleyicisi | Ağ İzleyicisi Kiracı ağ izleme kapasiteleri | Desteklenen | Henüz desteklenmiyor. |
 | CDN | Content Delivery Network profilleri | Desteklenen | Henüz desteklenmiyor. |
-| Uygulama ağ geçidi | 7. Katman Yük Dengeleme | Desteklenen | Henüz desteklenmiyor. |
+| Uygulama ağ geçidi | 7\. Katman Yük Dengeleme | Desteklenen | Henüz desteklenmiyor. |
 | Traffic Manager | En iyi uygulama performansı ve güvenilirliği için gelen trafiği yönlendirin. | Desteklenen | Henüz desteklenmiyor. |
 | Express Route | Hızlı ve özel bağlantı kurmak, şirket içi altyapı veya ortak yerleşim tesisinizden Microsoft bulut hizmetlerine ayarlayın. | Desteklenen | Bir Express Route bağlantı hattı için Azure Stack bağlamak için destek. |
 

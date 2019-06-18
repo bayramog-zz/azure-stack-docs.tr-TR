@@ -12,7 +12,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/16/2018
+  ms.date: 06/17/2019
   ms.author: mabrigg
 abstract:
   description: 'Microsoft Azure Stack, veri merkezinden Azure hizmetleri sağlama olanağı sunan bir karma bulut platformudur. Azure Stack tümleşik sistemleri altyapısını yönetme ve Hizmetleri hızlı başlangıç kılavuzlarımız ve öğreticilerimizden yararlanarak teklif öğrenin.<br/><br/>Hizmetleri kullanan veya Azure Stack için uygulamalar oluşturur bir Azure Stack kullanıcısı değilseniz, bkz. bizim <a href="/azure-stack/user">kullanıcı belgeleri</a>.<br/><br/>Azure Stack geliştirme Seti''ni (ASDK içinde), bir tek düğümlü dağıtım Azure Stack, indirin ve ücretsiz olarak kullanmak istiyorsanız bir Azure Stack operatörü olup olmadığını görmek bizim <a href="/azure-stack/asdk">ASDK belgeleri</a>.'
@@ -20,14 +20,14 @@ sections:
   - title: Hızlı Başlangıç
     items:
       - type: paragraph
-        text: Donanımınızı ayarlama ve Azure Stack geliştirme Seti'ni dağıtın.
+        text: Günlük yönetimi için Yönetim Portalı'nı kullanmayı öğrenin.
       - type: list
         style: icon48
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            text: Azure Stack Geliştirme Seti’ni dağıtın
-            href: ../asdk/asdk-download.md
+            text: Azure Stack yönetim portalını kullanın
+            href: azure-stack-manage-portals.md
   - title: Adım Adım Öğreticiler
     items:
       - type: paragraph

@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: f1dd98c8c75c28ee176ca318fb9d274110e9b5fe
-ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
+ms.openlocfilehash: db2ceabfdd49ed113a467923a3772423ab1ca65a
+ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66749041"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152547"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile karma bulut çözümü dağıtma
 
@@ -175,7 +175,7 @@ Azure hibrit ağ tarafında sanal ağ geçidi, Azure App Service ile tümleştir
 
 ### <a name="integrate-the-azure-app-service-application-with-the-hybrid-network"></a>Azure App Service uygulamasını karma ağ ile tümleştirme
 
-1. Azure sanal ağı uygulamaya bağlanmak için yönergeleri izleyin. [VNet tümleştirmesi etkinleştiriliyor](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#enabling-vnet-integration).
+1. Azure sanal ağı uygulamaya bağlanmak için yönergeleri izleyin. [ağ geçidi gerekli VNet tümleştirmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration).
 
 2. Gidin **ayarları** web uygulamasını barındıran bir App Service planınız için. İçinde **ayarları**seçin **ağ**.
 

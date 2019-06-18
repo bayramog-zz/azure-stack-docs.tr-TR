@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: ihcherie
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 70a1e1223accda5dfb273372da486588fb030afc
-ms.sourcegitcommit: ccd86bd0862c45de1f6a4993f783ea2e186c187a
+ms.openlocfilehash: d00f7f90f05eddaeb52555a1759187b8282aaf1a
+ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65172747"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152494"
 ---
 # <a name="azure-stack-marketplace-overview"></a>Azure Stack Marketini genel bakış
 
@@ -38,7 +38,7 @@ Yönetici portalı Seç Market açmak için **+ kaynak Oluştur**.
 
 ![Market](media/azure-stack-marketplace/marketplace1.png)
 
-## <a name="marketplace-items"></a>Marketplace öğeleri
+## <a name="marketplace-items"></a>Market öğesi
 
 Bir Azure Stack Marketini öğe, bir hizmet, uygulama veya kullanıcılarınızın indirip kullanabilirsiniz kaynak değil. Planlar ve teklifler gibi yönetim öğelerini de dahil olmak üzere tüm kullanıcılarınız, tüm Azure Stack Marketini öğeleri görülebilir. Bu öğelerin görünüm, ancak bunlar kullanıcılara işlevsel aboneliği gerektirmez.
 

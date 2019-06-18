@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: sethm
-ms.reviewer: ''
+ms.reviewer: hectorl
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 7669ee310e4262a72d90c478500d7e06919b43bc
-ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
+ms.openlocfilehash: 4c7e48804b4336c658376b1c3f611dbe75cf8c1f
+ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67145196"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152467"
 ---
 # <a name="azure-stack-1905-update"></a>Azure Stack 1905 güncelleştirme
 
@@ -135,7 +135,7 @@ Güncelleştirmeyi uygulamadan önce aşağıdaki bilgileri gözden geçirdiğin
 
 ## <a name="download-the-update"></a>Güncelleştirmeyi indirin
 
-Azure Stack 1905 güncelleştirme paketinden indirebileceğiniz [Azure Stack indirme sayfasına](https://aka.ms/azurestackupdatedownload).
+Azure Stack 1905 güncelleştirme paketinden indirebileceğiniz [Azure Stack indirme sayfasına](https://aka.ms/azurestackupdatedownload). Yükleyici aracını kullanırken son sürümü ve indirmeleri dizininizden önbelleğe alınmış bir kopya kullanmaya dikkat edin.
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
