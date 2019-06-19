@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: a8fe96d645d9277003e17144089a91e0722d0088
-ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
+ms.openlocfilehash: 0df791c6eb9a898c5263b2c628899b512d49601c
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66836832"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198655"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack için VPN gateway hakkında
 
@@ -102,6 +102,14 @@ SKU seçtiğinizde aşağıdakileri göz önünde bulundurun:
 * Azure Stack, ilke tabanlı ağ geçitleri desteklemez.
 * Sınır Ağ Geçidi Protokolü (BGP) temel SKU'da desteklenmiyor.
 * Azure Stack'te ExpressRoute-VPN ağ geçidi arada var olabilen yapılandırmaları desteklenmez.
+
+## <a name="gateway-availability"></a>Ağ geçidi kullanılabilirlik
+
+Yüksek kullanılabilirlik senaryolarını yalnızca yapılandırılabilir üzerinde **yüksek performanslı ağ geçidi** bağlantı SKU. Aktif/Aktif hem Aktif/Pasif yapılandırmaları aracılığıyla kullanılabilirlik sağlayan Azure, Azure Stack yalnızca Aktif/Pasif yapılandırmayı destekler. 
+
+### <a name="failover"></a>Yük devretme
+
+3 çok kiracılı ağ geçidi altyapı Vm'leri Azure Stack'te vardır. Etkin modda bu VM'lerin ikisidir ve üçüncü yedekli moddur. Bunları VPN bağlantıları oluşturma etkin Vm'leri etkinleştirin ve yedekli sanal makine, yalnızca yük devretme durumunda VPN bağlantılarını kabul eder. Etkin bir ağ geçidi VM kullanılamaz duruma gelirse, VPN bağlantısı üzerinden yedekli VM'ye kısa bir süre bağlantı kaybı sonra (birkaç saniye) başarısız olur.
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a>SKU'ya göre tahmini toplam verimlilik
 

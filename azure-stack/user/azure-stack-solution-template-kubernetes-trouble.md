@@ -11,15 +11,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 04/02/2019
+ms.date: 06/18/2019
 ms.reviewer: waltero
-ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 33eed0b574ad28c5fc0d1fb44f1c9b5a1ad37bb7
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.lastreviewed: 06/18/2019
+ms.openlocfilehash: dbc3f495a8f3a2912e2b8a4a0de1058a2eaa4df0
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269382"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198784"
 ---
 # <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Azure Stack için Kubernetes dağıtımı sorunlarını giderme
 
@@ -112,9 +112,9 @@ Kubernetes kümesini dağıtırken, herhangi bir sorun için kontrol etmek için
     | Özellik | Açıklama |
     | ----     | ----        |
     | Resource | Kaynak adı. |
-    | Type | Kaynak sağlayıcıya ve kaynak türü. |
+    | Tür | Kaynak sağlayıcıya ve kaynak türü. |
     | Durum | Öğenin durumu. |
-    | Zaman Damgası | Saat UTC zaman damgası. |
+    | Zaman damgası | Saat UTC zaman damgası. |
     | İşlem ayrıntıları | İşlem ayrıntıları işlemi, kaynak uç noktası ve kaynağın adını söz konusuydu kaynak sağlayıcısı gibi. |
 
     Her öğenin bir durum simgesi yeşil veya kırmızı vardır.
@@ -148,7 +148,7 @@ Toplamak ve küme günlükleri indirmek için aşağıdaki adımları izleyin:
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
     | -d, --vmd-host      | Genel IP veya DVM tam etki alanı adını (FQDN). VM adı ile başlayan `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Komut kullanımını yazdırın. | |
-    | -i,--dosya kimliği | RSA özel anahtar dosyası, Kubernetes kümesini oluştururken Market öğesine geçirildi. Kubernetes düğümleri uzaktan içinde gerekli. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
+    | -i,--dosya kimliği | RSA özel anahtar dosyasının yolu, Kubernetes kümesini oluştururken Market öğesine geçirildi. Kubernetes düğümleri uzaktan içinde gerekli. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
     | m-,--ana konak   | Genel IP veya Kubernetes ana düğümünün tam etki alanı adını (FQDN). VM adı ile başlayan `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | u-,--kullanıcı          | Kullanıcı adı, Kubernetes kümesini oluştururken Market öğesine geçirildi. Kubernetes düğümleri uzaktan içinde gerekli. | azureuser (varsayılan değer) |
 

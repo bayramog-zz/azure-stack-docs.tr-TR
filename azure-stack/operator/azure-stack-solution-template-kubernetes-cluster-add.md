@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 06/18/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 983f3821bc618101937d08e6304c768d04e12cfb
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.lastreviewed: 06/18/2019
+ms.openlocfilehash: 746d939d433dd5333e2d8ec84f7f52149577ec5b
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131382"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198513"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes için Azure Stack Marketini Ekle
 
@@ -63,129 +63,7 @@ Bir plan, teklif ve Kubernetes Market öğesi için bir abonelik oluşturun. Ayr
 
 ## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>AD FS'de bir hizmet sorumlusu ve kimlik bilgileri oluşturma
 
-Kimlik Yönetimi hizmetiniz için Active Directory Federasyon Hizmetleri'nde (AD FS) kullanıyorsanız, bir hizmet sorumlusu kullanıcıların bir Kubernetes kümesini dağıtırken oluşturmak gerekir.
-
-1. Oluşturun ve hizmet sorumlusu oluşturmak için kullanılan otomatik olarak imzalanan bir sertifika verin. 
-
-    - Şu bilgilere ihtiyacınız vardır:
-
-       | Değer | Açıklama |
-       | ---   | ---         |
-       | Parola | Sertifika için yeni bir parola girin. |
-       | Yerel sertifika yolu | Sertifika yolu ve dosya adını girin. Örneğin, `c:\certfilename.pfx` |
-       | Sertifika adı | Sertifika adını girin. |
-       | Sertifika depolama konumu |  Örneğin, `Cert:\LocalMachine\My` |
-
-    - PowerShell ile yükseltilmiş istemi açın. Değerlerinizi güncelleştirilmiş parametrelerle birlikte aşağıdaki betiği çalıştırın:
-
-        ```powershell  
-        # Creates a new self signed certificate 
-        $passwordString = "<password>"
-        $certlocation = "<local certificate path>.pfx"
-        $certificateName = "CN=<certificate name>"
-        $certStoreLocation="<certificate store location>"
-        
-        $params = @{
-        CertStoreLocation = $certStoreLocation
-        DnsName = $certificateName
-        FriendlyName = $certificateName
-        KeyLength = 2048
-        KeyUsageProperty = 'All'
-        KeyExportPolicy = 'Exportable'
-        Provider = 'Microsoft Enhanced Cryptographic Provider v1.0'
-        HashAlgorithm = 'SHA256'
-        }
-        
-        $cert = New-SelfSignedCertificate @params -ErrorAction Stop
-        Write-Verbose "Generated new certificate '$($cert.Subject)' ($($cert.Thumbprint))." -Verbose
-        
-        #Exports certificate with password in a .pfx format
-        $pwd = ConvertTo-SecureString -String $passwordString -Force -AsPlainText
-        Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
-        ```
-
-2.  PowerShell oturumunuzda, görüntülenen yeni sertifika kimliği Not `1C2ED76081405F14747DC3B5F76BB1D83227D824`. Kimliğinde hizmet sorumlusu oluştururken kullanılacak.
-
-    ```powershell  
-    VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
-    ```
-
-3. Hizmet sorumlusu sertifikasını kullanarak oluşturun.
-
-    - Şu bilgilere ihtiyacınız vardır:
-
-       | Değer | Açıklama                     |
-       | ---   | ---                             |
-       | ERCS IP | ASDK normalde ayrıcalıklı uç noktadır `AzS-ERCS01`. |
-       | Uygulama adı | Uygulama hizmet sorumlusu için basit bir ad girin. |
-       | Sertifika depolama konumu | Bilgisayarınızdaki sertifika depoladığınız yolu. Bu depolama konumu belirtilir ve sertifika kimliği ilk adımda oluşturulur. Örneğin, `Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
-
-       İstendiğinde, ayrıcalık uç noktaya bağlanmak için aşağıdaki kimlik bilgilerini kullanın. 
-        - Kullanıcı adı: CloudAdmin hesabı, belirttiğiniz biçimde `<Azure Stack domain>\cloudadmin`. (ASDK için kullanıcı azurestack\cloudadmin adıdır.)
-        - Parola: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında sağlanan parolanın aynısını girin.
-
-    - Değerlerinizi güncelleştirilmiş parametrelerle birlikte aşağıdaki betiği çalıştırın:
-
-        ```powershell  
-        #Create service principal using the certificate
-        $privilegedendpoint="<ERCS IP>"
-        $applicationName="<application name>"
-        $certStoreLocation="<certificate location>"
-        
-        # Get certificate information
-        $cert = Get-Item $certStoreLocation
-        
-        # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-        $creds = Get-Credential
-
-        # Creating a PSSession to the ERCS PrivilegedEndpoint
-        $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
-
-        # Get Service principal Information
-        $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
-
-        # Get Stamp information
-        $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
-
-        # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. This is read from the AzureStackStampInformation output of the ERCS VM.
-        $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
-
-        # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. This is read from the AzureStackStampInformation output of the ERCS VM.
-        $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
-
-        # TenantID for the stamp. This is read from the AzureStackStampInformation output of the ERCS VM.
-        $TenantID = $AzureStackInfo.AADTenantID
-
-        # Register an AzureRM environment that targets your Azure Stack instance
-        Add-AzureRMEnvironment `
-        -Name "AzureStackUser" `
-        -ArmEndpoint $ArmEndpoint
-
-        # Set the GraphEndpointResourceId value
-        Set-AzureRmEnvironment `
-        -Name "AzureStackUser" `
-        -GraphAudience $GraphAudience `
-        -EnableAdfsAuthentication:$true
-        Add-AzureRmAccount -EnvironmentName "azurestackuser" `
-        -ServicePrincipal `
-        -CertificateThumbprint $ServicePrincipal.Thumbprint `
-        -ApplicationId $ServicePrincipal.ClientId `
-        -TenantId $TenantID
-
-        # Output the SPN details
-        $ServicePrincipal
-        ```
-
-    - Aşağıdaki kod parçacığında gibi hizmet sorumlusu ayrıntıları bakın
-
-        ```Text  
-        ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
-        ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
-        Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
-        ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
-        PSComputerName        : azs-ercs01
-        RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
-        ```
+Kimlik Yönetimi hizmetiniz için Active Directory Federasyon Hizmetleri'nde (AD FS) kullanıyorsanız, bir hizmet sorumlusu kullanıcıların bir Kubernetes kümesini dağıtırken oluşturmak gerekir. Hizmet sorumlusu istemci gizli anahtarı kullanarak oluşturun. Yönergeler için [istemci gizli anahtarı kullanarak bir hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret).
 
 ## <a name="add-an-ubuntu-server-image"></a>Ubuntu server resim ekleme
 

@@ -11,25 +11,25 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 06/18/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 05/17/2019
-ms.openlocfilehash: a4fe557175aaa4e2faa6c120645c409c0b3449f5
-ms.sourcegitcommit: ad2f2cb4dc8d5cf0c2c37517d5125921cff44cdd
+ms.lastreviewed: 06/18/2019
+ms.openlocfilehash: aea15b4bcc90858d16915806ae72fbd5308afc85
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67138929"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198853"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Kubernetes Azure Active Directory'yi kullanarak Azure Stack'e dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 > [!Note]  
-> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack bağlantısı kesilmiş senaryo, preview tarafından şu anda desteklenmemektedir.
+> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack bağlantısı kesilmiş senaryo preview tarafından şu anda desteklenmiyor.
 
-Kimlik Yönetimi hizmeti olarak dağıtma ve Azure Active Directory (Azure AD) kullanırken, Kubernetes için kaynakları ayarlamak için bu makaledeki adımları izleyin. 
+Dağıtma ve Azure Active Directory (Azure AD), tek bir kimlik yönetim hizmeti işlemi Eşgüdümlü olarak kullanırken, Kubernetes için kaynakları ayarlamak için bu makaledeki adımları izleyebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,19 +39,19 @@ Başlamak için doğru izinlere sahip ve Azure Stack hazır olduğundan emin olu
 
     İzinlerinizi denetlerken ile ilgili yönergeler için bkz: [denetleyin Azure Active Directory izinlerini](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
-1. Linux sanal makinesi (VM) oturum açmak için SSH ortak ve özel anahtar çifti Azure Stack'te oluşturur). Kümeyi oluştururken, ortak anahtar gerekir.
+1. Azure Stack Linux VM'de oturum açmak için SSH ortak ve özel anahtar çifti oluşturun. Kümeyi oluştururken ortak anahtar gerekir.
 
-    Bir anahtarı oluşturma ile ilgili yönergeler için bkz: [SSH anahtarı oluşturma](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
+    Bir anahtarı oluşturma ile ilgili yönergeler için bkz: [SSH anahtarı oluşturma](azure-stack-dev-start-howto-ssh-public-key.md).
 
 1. Azure Stack Kiracı Portalı'nda geçerli bir aboneliğe sahip ve yeterli genel IP sahip yeni bir uygulama eklemek kullanılabilir adresleri denetleyin.
 
     Küme için bir Azure Stack dağıtılamıyor **yönetici** abonelik. Kullanmanız gereken bir **kullanıcı** abonelik. 
 
-1. Kubernetes kümesi, Market'te yoksa, Azure Stack yöneticinizle konuşun.
+1. Kubernetes kümesi, Market'te yoksa, Azure Stack yöneticinizle görüşün.
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu, uygulamanın Azure Stack kaynaklarına erişmenizi sağlar. 
+Azure hizmet sorumlusu oluşturun. Hizmet sorumlusu, uygulamanın Azure Stack kaynaklarına erişmenizi sağlar.
 
 1. Oturum açmak için genel [Azure portalında](https://portal.azure.com).
 
@@ -63,13 +63,13 @@ Hizmet sorumlusu, uygulamanın Azure Stack kaynaklarına erişmenizi sağlar.
 
     a. Üzerinden Azure hesabınızla oturum açın [Azure portalında](https://portal.azure.com).  
     b. Seçin **Azure Active Directory** > **uygulama kayıtları** > **yeni kayıt**.  
-    c. Uygulama için bir ad ve URL belirtin.  
+    c. Uygulama için bir ad ve URL sağlayın.  
     d. Seçin **desteklenen hesap türleri**.  
     e.  Ekleme `http://localhost` uygulama için URI. Seçin **Web** oluşturmak istediğiniz uygulama türü. Değerleri ayarladıktan sonra seçin **kaydetme**.
 
-1. **Uygulama Kimliği**’ni not alın. Kümeyi oluştururken, kimliği gerekir. Kimliği olarak başvurulan **hizmet sorumlusu istemci kimliği**.
+1. **Uygulama Kimliği**’ni not alın. Kümeyi oluştururken kimliği gerekir. Kimliği olarak başvurulan **hizmet sorumlusu istemci kimliği**.
 
-1. Hizmet İlkesi dikey penceresinde, seçin **yeni gizli** > **ayarları** > **anahtarları** ve ardından bir kimlik doğrulama anahtarı oluşturun Hizmet İlkesi.
+1. Hizmet İlkesi dikey penceresinde, seçin **yeni gizli**. **Ayarları** > **anahtarları**. Hizmet İlkesi için bir kimlik doğrulama anahtarını oluşturmak için ihtiyacınız.
 
     a. Girin **açıklama**.
 
@@ -91,7 +91,7 @@ Asıl kaynakları oluşturabilmesi aboneliğinizde hizmet sorumlusu erişimi ver
 
 1. Seçin **katkıda bulunan** rol.
 
-1. Hizmetiniz için asıl oluşturulan uygulama adını seçin. Arama kutusuna adını yazmanız gerekebilir.
+1. Hizmetiniz için asıl oluşturulan uygulama adı seçin. Arama kutusuna adını yazmanız gerekebilir.
 
 1. **Kaydet**’e tıklayın.
 
@@ -99,52 +99,52 @@ Asıl kaynakları oluşturabilmesi aboneliğinizde hizmet sorumlusu erişimi ver
 
 1. Açık [Azure Stack portalı](https://portal.local.azurestack.external).
 
-1. Seçin **+ kaynak Oluştur** > **işlem** > **Kubernetes kümesi**. Sonra **Oluştur**’a tıklayın.
+1. Seçin **+ kaynak Oluştur** > **işlem** > **Kubernetes kümesi**. **Oluştur**’a tıklayın.
 
-    ![Azure Stack'te Kubernetes kümesi oluşturma](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
+    ![Çözüm Şablonu Dağıt](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
 ### <a name="1-basics"></a>1. Temel Bilgiler
 
 1. Seçin **Temelleri** Kubernetes kümesi oluşturun.
 
-    ![Temel ayarları - Kubernetes kümesi yapılandırma](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+    ![Çözüm Şablonu Dağıt](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
 1. Seçin, **abonelik** kimliği
 
 1. Yeni bir kaynak grubu adını girin veya mevcut bir kaynak grubunu seçin. Kaynak adı alfasayısal ve küçük harf olması gerekir.
 
-1. Seçin **konumu** kaynak grubu. Azure Stack yüklemeniz için seçtiğiniz bölgeye konumdur.
+1. Seçin **konumu** kaynak grubu. Bu, Azure Stack yüklemeniz için seçtiğiniz bölgedir.
 
 ### <a name="2-kubernetes-cluster-settings"></a>2. Kubernetes küme ayarları
 
 1. Seçin **Kubernetes küme ayarlarını** Kubernetes kümesi oluşturun.
 
-    ![Kubernetes küme ayarları](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-aad.png)
+    ![Çözüm Şablonu Dağıt](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-aad.png)
 
-1. Girin **Linux VM yönetici kullanıcı adı**. Bu ad, Kubernetes kümesinin parçası olan Linux sanal makineleri ve DVM kullanıcı adıdır.
+1. Girin **Linux VM yönetici kullanıcı adı**. Kubernetes kümesinin parçası olan bir Linux sanal makineleri ve DVM için kullanıcı adı.
 
 1. Girin **SSH ortak anahtarı** DVM ve Kubernetes kümesinin bir parçası olarak oluşturulan tüm Linux makinelerinin yetkilendirme için kullanılır.
 
-1. Girin **ana profili DNS ön eki**. Bu ad bir bölge-benzersiz gibi olmalıdır `k8s-12345`. Kaynak grubu adı en iyi uygulama olarak eşleşecek şekilde deneyin.
+1. Girin **Yöneticisi profili, DNS ön eki** bölgeye benzersiz. Bu gibi bölgesi benzersiz bir adı olmalıdır `k8s-12345`. Deneme için seçtiğiniz aynı kaynak grubu adı en iyi yöntem.
 
     > [!Note]  
     > Her küme için yeni ve benzersiz ana profili DNS ön ekini kullanın.
 
-1. Seçin **Kubernetes ana havuzu profili sayısı**. Sayıyı ana havuzdaki düğüm sayısını içerir. 7 1'den olabilir. Bu değer, tek bir sayı olmalıdır.
+1. Seçin **Kubernetes ana sunucu havuzu profili sayısı**. Sayıyı ana havuzdaki düğüm sayısını içerir. 7 1'den olabilir. Bu değer, tek bir sayı olmalıdır.
 
-1. Seçin **Kubernetes ana Vm'lerden oluşan bir VMSize**.
+1. Seçin **Kubernetes ana Vm'lerden oluşan bir VMSize**. Bu, VM boyutu Kubernetes ana Vm'leri belirler. 
 
 1. Seçin **Kubernetes düğüm havuzu profili sayısı**. Sayıyı kümedeki aracı sayısını içerir. 
 
-1. Seçin **depolama profili**. Seçebileceğiniz **Blob Disk** veya **yönetilen Disk**. Bu profili, VM boyutu Kubernetes düğümünü sanal makinelere belirtir. 
+1. Seçin **Kubernetes düğümünün Vm'leri VMSize**. Bu VM'ler, VM boyutu Kubernetes düğüm belirtir. 
 
-1. Seçin **Azure AD'ye** için **Azure Stack kimlik sistemi** Azure Stack yüklemenizin. 
+1. Seçin **Azure AD'ye** için **Azure Stack kimlik sistemi** Azure Stack yüklemenizin.
 
-1. Girin **hizmet sorumlusu ClientID**. Bu tanımlayıcı, Kubernetes Azure bulut sağlayıcısı tarafından kullanılır. Hizmet sorumlusu oluştururken istemci kimliği, uygulama kimliği olarak adlandırılır.
+1. Girin **hizmet sorumlusu ClientID** bu Kubernetes Azure bulut sağlayıcısı tarafından kullanılır. Azure Stack yöneticinize hizmet sorumlusu oluştururken uygulama kimliği olarak tanımlanan istemci kimliği.
 
-1. Girin **hizmet sorumlusu istemci parolası** , hizmet sorumlusu oluştururken oluşturulur.
+1. Girin **hizmet sorumlusu istemci parolasını**. Bu, hizmetiniz oluştururken ayarladığınız istemci gizli dizinidir.
 
-1. Girin **Kubernetes Azure bulut sağlayıcısı sürümü**. Bu Kubernetes Azure sağlayıcısı sürüm numarasıdır. Azure Stack, her Azure Stack sürümü için özel bir Kubernetes yapı serbest bırakır.
+1. Girin **Kubernetes sürümü**. Kubernetes Azure sağlayıcısı sürümüdür. Azure Stack, her Azure Stack sürümü için özel bir Kubernetes yapı serbest bırakır.
 
 ### <a name="3-summary"></a>3. Özet
 

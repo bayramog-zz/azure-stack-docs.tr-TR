@@ -16,18 +16,18 @@ ms.date: 05/16/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 44ebb631ca916ed1c5b933517d40a756c987fee0
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: fdab3fd9296388f19687e2d7ce1d4af3584640ef
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269476"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198555"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Java'da Azure Stack ile API Sürüm profillerini kullanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Java SDK'sı için Azure Stack Kaynak Yöneticisi'ni oluşturmanıza ve altyapınızı yönetmenize yardımcı olacak araçlar sağlar. İşlem, ağ, depolama, uygulama hizmetleri, SDK kaynak sağlayıcılarını içerir ve [KeyVault](/azure/key-vault/key-vault-whatis). Java SDK API profillerini .java dosyasının doğru modülleri yükler Pom.xml dosyasında bağımlılıklar dahil ederek içerir. Ancak, bağımlılık birden çok profilleri gibi ekleyebilirsiniz **2018-03-01-karma**, veya **son**, Azure profil olarak. Kaynak türünüzü oluşturduğunuzda, kullanmak istediğiniz bu profillerden API sürümünü seçebilir ve böylelikle kullanarak bu bağımlılıklar doğru modülü yükler. Bu Azure Stack için en güncel API sürümlerine karşı geliştirirken en son sürümlerini Azure'da kullanmanıza olanak sağlar. Java SDK'sını kullanarak bir gerçek hibrit bulut geliştirici deneyimi sağlar. Java SDK API profillerini, hibrit bulut geliştirme genel Azure kaynakları ve Azure Stack'te kaynakları arasında geçiş yardımcı olarak etkinleştirin.
+Java SDK'sı için Azure Stack Kaynak Yöneticisi'ni oluşturmanıza ve altyapınızı yönetmenize yardımcı olacak araçlar sağlar. İşlem, ağ, depolama, uygulama hizmetleri, SDK kaynak sağlayıcılarını içerir ve [KeyVault](/azure/key-vault/key-vault-whatis). Java SDK API profillerini .java dosyasının doğru modülleri yükler Pom.xml dosyasında bağımlılıklar dahil ederek içerir. Ancak, bağımlılık birden çok profilleri gibi ekleyebilirsiniz **2019-03-01-karma**, veya **son**, Azure profil olarak. Kaynak türünüzü oluşturduğunuzda, kullanmak istediğiniz bu profillerden API sürümünü seçebilir ve böylelikle kullanarak bu bağımlılıklar doğru modülü yükler. Bu Azure Stack için en güncel API sürümlerine karşı geliştirirken en son sürümlerini Azure'da kullanmanıza olanak sağlar. Java SDK'sını kullanarak bir gerçek hibrit bulut geliştirici deneyimi sağlar. Java SDK API profillerini, hibrit bulut geliştirme genel Azure kaynakları ve Azure Stack'te kaynakları arasında geçiş yardımcı olarak etkinleştirin.
 
 ## <a name="java-and-api-version-profiles"></a>Java ve API sürümü profillerini
 
@@ -37,17 +37,15 @@ Bir API profili, kaynak sağlayıcıları ve API sürümlerini birleşimidir. Bi
 
   - En son profili kullanmak için bir bağımlılıktır **com.microsoft.azure**.
 
-  - Azure Stack ile uyumlu hizmetleri kullanmak için **com.microsoft.azure.profile\_2018\_03\_01\_karma** profili.
+  - Sağlanan en son desteklenen hizmetler Azure Stack'te kullanmak için **com.microsoft.azure.profile\_2019\_03\_01\_karma** profili.
 
     - .NET ile olduğu gibi doğru sınıf açılır listeden seçerseniz Pom.xml dosyasında modüller otomatik olarak yükleyen bir bağımlılık olarak belirtilmesi budur.
-
-    - Her modülün en üstüne aşağıdaki gibi görünür:      `Import com.microsoft.azure.management.resources.v2018_03_01.ResourceGroup`
 
   - Bağımlılıklar aşağıdaki gibi görünür:
 
      ```xml
      <dependency>
-     <groupId>com.microsoft.azure.profile_2018_03_01_hybrid</groupId>
+     <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
      <artifactId>azure</artifactId>
      <version>1.0.0-beta</version>
      </dependency>
@@ -69,7 +67,7 @@ Java SDK'sını yüklemek için aşağıdaki adımları kullanın:
 
    ```xml  
    <dependency>
-   <groupId>com.microsoft.azure.profile_2018_03_01_hybrid</groupId>
+   <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
    <artifactId>azure</artifactId>
    <version>1.0.0-beta</version>
    </dependency>
@@ -77,7 +75,7 @@ Java SDK'sını yüklemek için aşağıdaki adımları kullanın:
 
 4. Yüklenmesi gereken paketleri kümesini kullanmak istediğiniz profili sürümüne bağlıdır. Paket adları profil sürümleri şunlardır:
 
-   - **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**
+   - **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**
    - **com.microsoft.azure**
      - **en son**
 
@@ -95,7 +93,7 @@ Azure Java SDK'sı, Azure Stack ile kullanmak için aşağıdaki değerleri giri
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Kiracı Kimliği                 | AZURE_TENANT_ID            | Azure Stack değerini [Kiracı kimliği](../operator/azure-stack-identity-overview.md).                                                          |
 | İstemci Kimliği                 | AZURE_CLIENT_ID             | Hizmet sorumlusu uygulama kimliği önceki bölümde hizmet sorumlusu oluşturulurken kaydedilen.                                                                                              |
-| Abonelik kimliği           | AZURE_SUBSCRIPTION_ID      | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te.                |
+| Abonelik Kimliği           | AZURE_SUBSCRIPTION_ID      | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te.                |
 | İstemci Gizli Anahtarı             | AZURE_CLIENT_SECRET        | Hizmet sorumlusu oluşturulurken kaydedilen hizmet sorumlusu uygulama gizli anahtarı.                                                                                                                                   |
 | Resource Manager uç noktası | ARM_ENDPOINT              | Bkz: [Azure Stack Kaynak Yöneticisi uç noktası](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Location                  | RESOURCE_LOCATION    | **Yerel** Azure Stack için.                                                                                                                                                                                                |
@@ -165,7 +163,9 @@ Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?ap
 
 ## <a name="existing-api-profiles"></a>Mevcut API profilleri
 
-- **com.microsoft.Azure.Profile\_2018\_03\_01\_karma**: Azure Stack için yerleşik son profili. En Azure Stack ile uyumlu 1808 damgada olduğu sürece veya diğer hizmetler için bu profili kullanın.
+- **com.microsoft.Azure.Profile\_2019\_03\_01\_karma**: Azure Stack için yerleşik son profili. En Azure Stack ile uyumlu 1904 damgada olduğu sürece veya diğer hizmetler için bu profili kullanın.
+
+- **com.microsoft.Azure.Profile\_2018\_03\_01\_karma**: Azure Stack için yerleşik profili. Veya sonraki sürümü 1808 damga sürümleriyle Azure Stack ile uyumlu olması için hizmetler için bu profili kullanın.
 
 - **com.microsoft.azure**: Tüm hizmetler en son sürümlerine oluşan profili. Tüm hizmetler en son sürümlerini kullanın.
 
@@ -190,6 +190,9 @@ Bu, uygulamanızı Azure Stack başarıyla dağıtmak için API profili bağıml
 Azure Stack bulut doğru uç noktaları ile kaydetmek için aşağıdaki kodu kullanın:
 
 ```java
+// Get Azure Stack cloud endpoints
+final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
+
 AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>() {
                 {
                     put("managementEndpointUrl", settings.get("audience"));
@@ -204,29 +207,50 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
             });
 ```
 
-`getActiveDirectorySettings` Çağrı aşağıdaki kodda, meta veri uç noktalardan gelen uç noktaları alır. Bu, yapılan çağrı ortam değişkenlerinden durumları:
+`getActiveDirectorySettings` Çağrı Yukarıdaki kod, meta veri uç noktalardan gelen uç noktaları alır. Bu, yapılan çağrı ortam değişkenlerinden durumları:
 
 ```java
-public static HashMap<String, String>
-getActiveDirectorySettings(String armEndpoint) {
+public static HashMap<String, String> getActiveDirectorySettings(String armEndpoint) {
 
-HashMap<String, String> adSettings = new HashMap<String, String>();
+    HashMap<String, String> adSettings = new HashMap<String, String>();
+    try {
 
-try {
+        // create HTTP Client
+        HttpClient httpClient = HttpClientBuilder.create().build();
 
-// create HTTP Client
-HttpClient httpClient = HttpClientBuilder.create().build();
+        // Create new getRequest with below mentioned URL
+        HttpGet getRequest = new HttpGet(String.format("%s/metadata/endpoints?api-version=1.0",
+                             armEndpoint));
 
-// Create new getRequest with below mentioned URL
-HttpGet getRequest = new
-HttpGet(String.format("%s/metadata/endpoints?api-version=1.0",
-armEndpoint));
+        // Add additional header to getRequest which accepts application/xml data
+        getRequest.addHeader("accept", "application/xml");
 
-// Add additional header to getRequest which accepts application/xml data
-getRequest.addHeader("accept", "application/xml");
+        // Execute request and catch response
+        HttpResponse response = httpClient.execute(getRequest);
+        
+        // Check for HTTP response code: 200 = success
+        if (response.getStatusLine().getStatusCode() != 200) {
+            throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
+        }
+        
+        String responseStr = EntityUtils.toString(response.getEntity());
+        JSONObject responseJson = new JSONObject(responseStr);
+        adSettings.put("galleryEndpoint", responseJson.getString("galleryEndpoint"));
+        JSONObject authentication = (JSONObject) responseJson.get("authentication");
+        String audience = authentication.get("audiences").toString().split("\"")[1];
+        adSettings.put("login_endpoint", authentication.getString("loginEndpoint"));
+        adSettings.put("audience", audience);
+        adSettings.put("graphEndpoint", responseJson.getString("graphEndpoint"));
 
-// Execute request and catch response
-HttpResponse response = httpClient.execute(getRequest);
+    } catch (ClientProtocolException cpe) {
+        cpe.printStackTrace();
+        throw new RuntimeException(cpe);
+    } catch (IOException ioe) {
+        ioe.printStackTrace();
+        throw new RuntimeException(ioe);
+    }
+    return adSettings;
+}
 ```
 
 ## <a name="samples-using-api-profiles"></a>API profillerini kullanma örnekleri
@@ -237,7 +261,7 @@ HttpResponse response = httpClient.execute(getRequest);
 
 - [Depolama hesaplarını yönetme](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-- [Bir sanal makineyi yönetin](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm)
+- [Bir sanal makineyi yönetmeyi](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (2019-03-01-karma profiliyle güncelleştirilmiş).
 
 ### <a name="sample-unit-test-project"></a>Örnek birim testi projesi
 
@@ -267,33 +291,18 @@ HttpResponse response = httpClient.execute(getRequest);
 
    Windows içinde kullanmak **ayarlamak** yerine **dışarı**.
 
-5. Kullanma `getactivedirectorysettings` kod arm meta veri uç noktası almak ve uç nokta bilgileri ayarlamak için HTTP İstemcisi'ni kullanın.
+5. Kullanım `getActiveDirectorySettings` Azure Resource Manager meta veri uç noktalarını almak için işlevi.
 
-   ```java
-   public static HashMap<String, String> getActiveDirectorySettings(String armEndpoint) {
-   HashMap<String, String> adSettings = new HashMap<String,> String>();
+    ```java
+    // Get Azure Stack cloud endpoints
+    final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
+    ```
 
-   try {
-
-   // create HTTP Client
-   HttpClient httpClient = HttpClientBuilder.create().build();
-
-   // Create new getRequest with below mentioned URL
-   HttpGet getRequest = new
-   HttpGet(String.format("%s/metadata/endpoints?api-version=1.0", armEndpoint));
-
-   // Add additional header to getRequest which accepts application/xml data
-   getRequest.addHeader("accept", "application/xml");
-
-   // Execute request and catch response
-   HttpResponse response = httpClient.execute(getRequest);
-   ```
-
-6. Pom.xml dosyasında kullanmak için aşağıdaki bağımlılığı ekleyin **2018-03-01-karma** Azure Stack için profili. Bu bağımlılık, bu profil ile ilişkili aşağıdaki işlem, ağ, depolama, KeyVault ve uygulama hizmetleri kaynak sağlayıcı için modülleri yükler:
+6. Pom.xml dosyasında kullanmak için aşağıdaki bağımlılığı ekleyin **2019-03-01-karma** Azure Stack için profili. Bu bağımlılık, bu profil ile ilişkili aşağıdaki işlem, ağ, depolama, KeyVault ve uygulama hizmetleri kaynak sağlayıcı için modülleri yükler:
 
    ```xml
    <dependency>
-   <groupId>com.microsoft.azure.profile_2018_03_01_hybrid</groupId>
+   <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
    <artifactId>azure</artifactId>
    <vers1s.0.0-beta</version>
    </dependency>

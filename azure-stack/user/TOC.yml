@@ -50,8 +50,6 @@
       href: azure-stack-use-portal.md
     - name: PowerShell ile bağlanma
       href: azure-stack-powershell-configure-user.md
-    - name: Azure Stack API kullanın
-      href: azure-stack-rest-api-use.md
     - name: Güvenlik ve uyumluluk
       items:
         - name: Rol tabanlı erişim denetimi kullanma
@@ -152,43 +150,43 @@
                   href: azure-stack-solution-template-kubernetes-trouble.md
             - name: Bilişsel hizmetler dağıtma
               href: azure-stack-solution-template-cognitive-services.md
-    - name: Uygulama oluşturma
+    - name: Azure Stack Kaynak Yöneticisi'ni kullanın
       items:
-        - name: Azure Stack için geliştirme
-          href: azure-stack-developer.md
-        - name: Geliştirme ortamı ayarlama
-          href: azure-stack-dev-start.md
+        - name: İstemcinizi yapılandırma
           items:
-            - name: Azure Stack PowerShell'e genel bakış
-              href: azure-stack-powershell-overview.md
-            - name: Azure Stack PowerShell’i yükleme
-              href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
-              maintainContext: true
-            - name: PowerShell ile bağlanma
-              href: azure-stack-powershell-configure-user.md
-            - name: Azure Stack araçlarını indirin
-              href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
-              maintainContext: true
-            - name: PowerShell'i çalıştırmak için Docker'ı kullanma
-              href: azure-stack-powershell-user-docker.md
-            - name: Azure hesabı uzantısını kullanarak bağlan
-              href: azure-stack-dev-start-vscode-azure.md
-            - name: Visual Studio yükleme
-              href: azure-stack-install-visual-studio.md
-            - name: SSH ortak anahtarı kullanma
-              href: azure-stack-dev-start-howto-ssh-public-key.md
-            - name: Bir Linux VM için bir web uygulaması dağıtma
-              href: azure-stack-dev-start-howto-deploy-linux.md
-            - name: API Sürüm profillerini kullanma
-              href: azure-stack-version-profiles.md
+            - name: Azure SDK istemcileri
+              href: azure-stack-dev-start.md
+            - name: Azure Stack PowerShell istemcisi
               items:
+                - name: Azure Stack PowerShell'e genel bakış
+                  href: azure-stack-powershell-overview.md
+                - name: Azure Stack PowerShell’i yükleme
+                  href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  maintainContext: true
+                - name: PowerShell ile bağlanma
+                  href: azure-stack-powershell-configure-user.md
+                - name: Azure Stack araçlarını indirin
+                  href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+                  maintainContext: true
+                - name: PowerShell'i çalıştırmak için Docker'ı kullanma
+                  href: azure-stack-powershell-user-docker.md
+            - name: Visual Studio Code istemcisi
+              href: azure-stack-dev-start-vscode-azure.md
+            - name: Visual Studio istemcisi
+              href: azure-stack-install-visual-studio.md
+            - name: Secure Shell istemcisi
+              href: azure-stack-dev-start-howto-ssh-public-key.md
+            - name: API Sürüm profillerini kullanma
+              items:
+                - name: Genel Bakış
+                  href: azure-stack-version-profiles.md
                 - name: .NET
                   href: azure-stack-version-profiles-net.md
                 - name: Java
                   href: azure-stack-version-profiles-java.md
                 - name: Azure CLI
                   href: azure-stack-version-profiles-azurecli2.md
-                - name: Başlayın
+                - name: Git
                   href: azure-stack-version-profiles-go.md
                 - name: Ruby
                   href: azure-stack-version-profiles-ruby.md
@@ -196,21 +194,24 @@
                   href: azure-stack-version-profiles-python.md
                 - name: Kaynak sağlayıcısı profilleri tarafından desteklenen API'ler
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: Azure Stack için ortak dağıtımları
-          href: azure-stack-dev-start-deploy-app.md
+        - name: Bir VM ve web uygulaması dağıtma
           items:
-            - name: '.Net Core dağıtma (C#) bir VM'
+            - name: 'Dağıtım bir C# web uygulamasına bir Windows VM'
               href: azure-stack-dev-start-howto-vm-dotnet.md
-            - name: Java için VM dağıtma
-              href: azure-stack-dev-start-howto-vm-java.md
-            - name: Git için bir VM dağıtma
-              href: azure-stack-dev-start-howto-vm-go.md
-            - name: Ruby için VM dağıtma
-              href: azure-stack-dev-start-howto-vm-ruby.md
-            - name: Python için bir VM dağıtma
-              href: azure-stack-dev-start-howto-vm-python.md
-            - name: NodeJS için VM dağıtma
-              href: azure-stack-dev-start-howto-vm-nodejs.md
+            - name: Bir Linux VM için bir web uygulaması dağıtma
+              items:
+                - name: Bir Linux VM için bir web uygulaması dağıtma
+                  href: azure-stack-dev-start-howto-deploy-linux.md
+                - name: Bir Java web uygulaması dağıtma
+                  href: azure-stack-dev-start-howto-vm-java.md
+                - name: Go web uygulaması dağıtma
+                  href: azure-stack-dev-start-howto-vm-go.md
+                - name: Ruby web uygulaması dağıtma
+                  href: azure-stack-dev-start-howto-vm-ruby.md
+                - name: Python web uygulaması dağıtma
+                  href: azure-stack-dev-start-howto-vm-python.md
+                - name: NodeJS web uygulaması dağıtma
+                  href: azure-stack-dev-start-howto-vm-nodejs.md
         - name: Azure Stack ilke modülü kullanma
           href: azure-stack-policy-module.md
         - name: Şablon kullanma
@@ -219,6 +220,8 @@
               href: azure-stack-arm-templates.md
             - name: Şablonu konuları
               href: azure-stack-develop-templates.md
+            - name: Şablon azure'da geliştirme
+              href: azure-stack-developer.md
             - name: Şablonları denetleme
               href: azure-stack-validate-templates.md
             - name: Portal ile dağıtma
@@ -229,6 +232,8 @@
               href: azure-stack-deploy-template-command-line.md
             - name: Visual Studio ile dağıtma
               href: azure-stack-deploy-template-visual-studio.md
+        - name: Kaynaklara erişmek için REST kullanma
+          href: azure-stack-rest-api-use.md
     - name: Bulut hizmeti sağlayıcısı etkinleştir
       href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Başvuru

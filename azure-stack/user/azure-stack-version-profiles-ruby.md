@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 625ddb8341b58c98e47b37701547de5d6acea45b
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 3c897300dc2130b2c75449829304d4bd58b21898
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269319"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198677"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Azure stack'teki Ruby ile API Sürüm profillerini kullanma
 
@@ -89,9 +89,9 @@ Azure Ruby SDK'sı, Azure Stack ile kullanmak için aşağıdaki değerleri giri
 | --- | --- | --- |
 | Kiracı Kimliği | AZURE_TENANT_ID | Azure Stack değerini [Kiracı kimliği](../operator/azure-stack-identity-overview.md). |
 | İstemci Kimliği | AZURE_CLIENT_ID | Hizmet sorumlusu uygulama kimliği bu belgenin önceki bölümde üzerinde hizmet sorumlusu oluşturulurken kaydedilen.  |
-| Abonelik kimliği | AZURE_SUBSCRIPTION_ID | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te. |
+| Abonelik Kimliği | AZURE_SUBSCRIPTION_ID | [Abonelik kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) nasıl, teklifler eriştiği Azure Stack'te. |
 | İstemci Gizli Anahtarı | AZURE_CLIENT_SECRET | Hizmet sorumlusu oluştururken hizmet sorumlusu uygulama gizli anahtarı kaydedildi. |
-| Resource Manager uç noktası | ARM_ENDPOINT | Bkz: [Azure Stack Kaynak Yöneticisi uç noktası](#the-azure-stack-resource-manager-endpoint).  |
+| Resource Manager uç noktası | ARM_ENDPOINT | Bkz: [Azure Stack Resource Manager uç noktasını](#the-azure-stack-resource-manager-endpoint).  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack Kaynak Yöneticisi uç noktası
 
@@ -130,10 +130,10 @@ Bir Windows komut isteminde ortam değişkenlerini ayarlamak için aşağıdaki 
 
 Azure_sdk toplaması gem aşağıdaki üç profil içerir:
 
-1. **V2019_03_01_Hybrid** Azure Stack için yerleşik profili. En son sürümleri Azure Stack'te sunulan hizmetinden yararlanarak için bu profili kullanın.
-2. **V2017_03_09**  
-  Azure Stack için yerleşik profili. Azure Stack ile en uyumlu olacak şekilde hizmetler için bu profili kullanın.
-3. **en son**  
+1. **V2019_03_01_Hybrid** Azure Stack için yerleşik profili. Bu profili tüm son Hizmetleri Azure Stack damga sürüm 1904 kullanılabilir veya sonraki sürümlerini kullanan için kullanın.
+1. **V2017_03_09**  
+  Azure Stack için yerleşik profili. En 1808 Azure Stack damga sürümüyle uyumlu veya önceki hizmetler için bu profili kullanın.
+1. **en son**  
   Profil hizmetlerinin en son sürümleri içerir. Tüm hizmetler en son sürümlerini kullanın.
 
 Azure Stack ve API profilleri hakkında daha fazla bilgi için bkz. [API özeti profilleri](azure-stack-version-profiles.md#summary-of-api-profiles).
@@ -235,16 +235,16 @@ GitHub üzerinde Ruby ve Azure Stack API profilleriyle çözümleri oluşturmak 
    - Kiracı Kimliği
    - İstemci Kimliği
    - İstemci Gizli Anahtarı
-   - Abonelik kimliği
+   - Abonelik Kimliği
    - Resource Manager uç noktası
 
    Oluşturduğunuz hizmet Sorumlusundan alınan bilgileri kullanarak aşağıdaki ortam değişkenlerini ayarlayın.
 
-   - dışarı aktarma AZURE_TENANT_ID {Kiracı kimliğinizi} =
-   - dışarı aktarma AZURE_CLIENT_ID {istemci kimliğiniz} =
+   - dışarı aktarma AZURE_TENANT_ID {Kiracı Kimliğinizi} =
+   - dışarı aktarma AZURE_CLIENT_ID {istemci Kimliğiniz} =
    - dışarı aktarma AZURE_CLIENT_SECRET {istemci gizli anahtarı} =
-   - dışarı aktarma AZURE_SUBSCRIPTION_ID {abonelik kimliğinizi} =
-   - dışarı aktarma ARM_ENDPOINT {AzureStack Resource manager URL'nizi} =
+   - dışarı aktarma AZURE_SUBSCRIPTION_ID {abonelik Kimliğinizi} =
+   - dışarı aktarma ARM_ENDPOINT {, Azure Stack Kaynak Yöneticisi URL'si} =
 
    > [!NOTE]  
    > Windows üzerinde dışarı aktarma yerine kullanın.

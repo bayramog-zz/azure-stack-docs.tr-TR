@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: 742869344c89609ca9eb07c4a84186ee8302a02a
-ms.sourcegitcommit: 7fa9b64aeae2b22be7acfb5c4987d233303107c5
+ms.openlocfilehash: a59b716df7e8bf7c9a76abbfcdbe6b300c985c9f
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67166472"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198827"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ağ iletişimi için dikkat edilmesi gerekenler
 
@@ -55,7 +55,7 @@ Bu makalede, Azure Stack ağ iletişimi ve özelliklerini benzersiz konularına 
 |  | BGP ayarları | Azure, BGP eşlemesi adres ve eş ağırlığı yapılandırılmasını destekler. | BGP eşleme adresi ve eş ağırlığı Azure Stack'te otomatik olarak yapılandırılır. Kullanıcının kendi değerlerle bu ayarları yapılandırmak hiçbir yolu yoktur. |
 |  | Varsayılan ağ geçidi sitesi | Azure, zorlamalı tünel için varsayılan site yapılandırmasını destekler. | Henüz desteklenmiyor. |
 |  | Ağ geçidini yeniden boyutlandırma | Azure, dağıtımdan sonra ağ geçidini yeniden boyutlandırma destekler. | Desteklenen yeniden boyutlandırma değil. |
-|  | Aktif/Aktif yapılandırma | Desteklenen | Henüz desteklenmiyor. |
+|  | Kullanılabilirlik yapılandırması | Etkin/etkin | Aktif/Pasif |
 |  | UsePolicyBasedTrafficSelectors | Azure, ilke tabanlı trafik seçicileri ile rota tabanlı ağ geçidi bağlantıları kullanmayı destekler. | Henüz desteklenmiyor. |
 | Yük dengeleyici | SKU | Temel ve standart Load balancer'ları desteklenir | Temel yük dengeleyici desteklenir.  SKU özelliği desteklenmiyor. |
 |  | Bölgeler | Kullanılabilirlik alanları desteklenir. | Henüz desteklenmiyor |

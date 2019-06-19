@@ -15,12 +15,12 @@ ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: c512e7a9ac4cb5a7d864a315dc55d01a39a029ea
-ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
+ms.openlocfilehash: cf25678ad84ac79dd29ddd1684b1ca2f958180ff
+ms.sourcegitcommit: 5a720b17bd6a5aab44929c0247db8d512e0669ef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67145215"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67197206"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack kaydı
 
@@ -32,13 +32,13 @@ ASDK kaydedilmezse görebileceğiniz bir **etkinleştirme gerekli** , Azure Stac
 
 Azure Stack PowerShell yüklü ve açıklandığı gibi Azure Stack araçları indirilen olun, Azure ile ASDK kaydetmek için bu yönergeleri kullanmadan önce [dağıtım sonrası yapılandırma](asdk-post-deploy.md) makalesi.
 
-Ayrıca, PowerShell dil modunu ayarlamanız gerekir **FullLanguageMode** ASDK Azure ile kaydetmek için kullanılan bilgisayarda. Geçerli dil modunu tam, yükseltilmiş bir PowerShell penceresi açın ve aşağıdaki PowerShell komutlarını çalıştırmak için ayarlandığını doğrulamak için:
+Ayrıca, PowerShell dil modunu ayarlamanız gerekir **FullLanguage** ASDK Azure ile kaydetmek için kullanılan bilgisayarda. Geçerli dil modunu tam, yükseltilmiş bir PowerShell penceresi açın ve aşağıdaki PowerShell komutlarını çalıştırmak için ayarlandığını doğrulamak için:
 
 ```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-Çıktıyı döndürür olun **FullLanguageMode**. Diğer bir dil modu döndürülen kayıt başka bir bilgisayarda çalıştırılması gerekir ya da dil modunu ayarlanması gerekir **FullLanguageMode** devam etmeden önce.
+Çıktıyı döndürür olun **FullLanguage**. Diğer bir dil modu döndürülen kayıt başka bir bilgisayarda çalıştırılması gerekir ya da dil modunu ayarlanması gerekir **FullLanguage** devam etmeden önce.
 
 Azure AD hesabını kayıt ihtiyaçları için kullanılan Azure aboneliğine erişiminiz olması ve bu abonelikle dizinde kimlik uygulama ve hizmet sorumluları oluşturma izniniz yok. Azure Stack Azure ile kaydedin en az ayrıcalıklı yönetim tarafından kullanılması önerilir [kayıt için kullanılacak bir hizmet hesabı oluşturmanızı](../operator/azure-stack-registration-role.md) genel yönetici kimlik bilgilerini kullanmak yerine.
 

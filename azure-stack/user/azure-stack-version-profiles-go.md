@@ -14,12 +14,12 @@ ms.date: 05/26/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/26/2019
-ms.openlocfilehash: 4a7e36fda318c1987a39427c5ef1f5e5e307d1b6
-ms.sourcegitcommit: d04a93e913ff069e17f6d56811681804a6422b58
+ms.openlocfilehash: 9b5273da44db26f9a98eab4147350c35214b128c
+ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66373010"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67198693"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Azure stack'teki Git ile API Sürüm profillerini kullanma
 
@@ -32,7 +32,7 @@ Bir profili farklı sürümlerini farklı hizmetlerden farklı kaynak türlerini
 - Kararlılık, uygulamanızın belirli API sürümleri için kilitleme tarafından.
 - Azure Stack ve bölgesel Azure veri merkezleri ile uyumluluğu, uygulamanız için.
 
-Go SDK sürümü profil yolu altında kullanılabilir profilleri **YYYY-AA-GG** biçimi. Şu anda, en son Azure Stack API profili sürümü **2019-03-01**. Belirli bir hizmete bir profilden içeri aktarmak için karşılık gelen alt modülü profilinden içeri aktarın. Örneğin, içeri aktarmak için **işlem** hizmetinde **2019-03-01** profil, aşağıdaki kodu kullanın:
+Go SDK sürümü profil yolu altında kullanılabilir profilleri **YYYY-AA-GG** biçimi. Şu anda, en son Azure Stack API profili sürümü **2019-03-01** damga sürümleri 1904 veya üzeri. Belirli bir hizmete bir profilden içeri aktarmak için karşılık gelen alt modülü profilinden içeri aktarın. Örneğin, içeri aktarmak için **işlem** hizmetinde **2019-03-01** profil, aşağıdaki kodu kullanın:
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compute"
