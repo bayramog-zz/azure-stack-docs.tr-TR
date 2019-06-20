@@ -16,12 +16,12 @@ ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 4c7e48804b4336c658376b1c3f611dbe75cf8c1f
-ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
+ms.openlocfilehash: e44dd6880de77ff063cbe6593a448020a154d1e8
+ms.sourcegitcommit: 507d2fdb0c1322a0bd07741f92c05a6322a80a44
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152467"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67237424"
 ---
 # <a name="azure-stack-1905-update"></a>Azure Stack 1905 güncelleştirme
 
@@ -65,7 +65,7 @@ Bu güncelleştirmeyle, Windows Server 2019 artık başarıyla 2016 konağında 
   - microsoft.dsc-arm-2.77.0.0
   - microsoft.vmaccessforlinux-1.5.2
 
-  Lütfen Uzantılar'ın bu sürümlerinin gelecekteki bir sürümde TLS 1.2 uygulandığında uzantının yeni dağıtımlar başarısız olmayın böylece hemen indirin. Her zaman **autoupdateminorversion = true** böylece Uzantıları (örneğin, 1.8 için 1.9) için alt sürüm güncelleştirmeleri otomatik olarak gerçekleştirilir.
+  Lütfen Uzantılar'ın bu sürümlerinin gelecekteki bir sürümde TLS 1.2 uygulandığında uzantının yeni dağıtımlar başarısız olmayın böylece hemen indirin. Her zaman **autoUpgradeMinorVersion = true** böylece Uzantıları (örneğin, 1.8 için 1.9) için alt sürüm güncelleştirmeleri otomatik olarak gerçekleştirilir.
 
 - Yeni bir **Yardım ve Desteği'ne genel bakış** Azure Stack'te portal, destek seçenekleri işaretleyin, Uzman Yardımı alın ve Azure Stack hakkında daha fazla bilgi, işleçler kolaylaştırır. Tümleşik sistemlerde, bir destek isteği oluşturma, Azure Stack hizmeti SCP'si. Yüksek oranda müşterilerin genel Azure portalını kullanarak yerine biletleri göndermek için bu deneyim kullanmanızı öneririz. Daha fazla bilgi için [Azure Stack Yardım ve Destek](azure-stack-help-and-support-overview.md).
 
