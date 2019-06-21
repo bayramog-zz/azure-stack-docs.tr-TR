@@ -16,12 +16,12 @@ ms.date: 06/05/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 38c7ec337ba8cdb73925b1c07f77331c05b25d8a
-ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
+ms.openlocfilehash: 48a97beac6b43e95b52d8b23f20369318e53ebee
+ms.sourcegitcommit: 759a01b566597a71b18fca25902cacc983a5a63b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66836670"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67297984"
 ---
 # <a name="azure-stack-1905-known-issues"></a>Azure Stack 1905 bilinen sorunlar
 
@@ -137,7 +137,7 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 #### <a name="centos"></a>CentOS
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. 7.2 centOS kullanılabilir değil Azure Stack Marketini üzerinde dağıtım hatalarını dışarı görüntü bulunamadı aramalar neden olur.
+- Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. 7\.2 centOS kullanılabilir değil Azure Stack Marketini üzerinde dağıtım hatalarını dışarı görüntü bulunamadı aramalar neden olur.
 - Düzeltme: Dağıtımınız için başka bir işletim sistemi veya Market'ten dağıtımdan işleciyle indirildi başka bir CentOS görüntüsü belirten bir Azure Resource Manager şablonu kullanın.
 - Örneği: Common
 
@@ -155,10 +155,10 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 - Düzeltme: Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Bununla birlikte, Ölçek kümesi örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
 
 #### <a name="vmss-instance-view-blade-doesnt-load"></a>VMSS örnek görünümü dikey yüklenmiyor
- 
+
 - Uygulanabilir: Bu sorun, yayın 1904 ve 1905 için geçerlidir.
-- Neden: Azure Stack portalında yer alan bir ölçek kümesi örnek görünümü dikey Pano -> sanal makine Ölçek -> Ayarlar -> AnyScaleSet - örnekleri -> bulut Ağlayan ile yüklemek için AnyScaleSetInstance başarısız olur.
-- Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar CLI komutunu az vmss get-instance-view bir VMSS örnek görünümünü elde etmek için lütfen kullanın
+- Neden: Azure Stack portalında yer alan bir ölçek kümesi örnek görünümü dikey Pano -> sanal makine Ölçek -> Ayarlar -> AnyScaleSet - örnekleri ->'nı yüklemek için AnyScaleSetInstance başarısız ve crying bir bulut görüntüsünü görüntüler.
+- Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar lütfen CLI komutunu `az vmss get-instance-view` bir ölçek kümesi örnek görünümünü elde etmek için.
 
 ### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
 
