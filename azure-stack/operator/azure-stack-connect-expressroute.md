@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 06/22/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 8f8d7ee82890788f60266f671bcc4041795c075e
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 04c793ceebf167220b74dfc40a7e4fc775723e93
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691643"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316270"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Azure Stack, Azure ExpressRoute kullanarak Azure'a bağlanma
 
@@ -50,33 +50,29 @@ Azure Stack ve Azure ExpressRoute kullanarak bağlanmak için aşağıdaki gerek
 * Sağlanan bir [ExpressRoute bağlantı hattı](/azure/expressroute/expressroute-circuit-peerings) aracılığıyla bir [bağlantı sağlayıcısı](/azure/expressroute/expressroute-locations).
 * Azure'da bir ExpressRoute bağlantı hattı ve sanal ağlar oluşturmak için bir Azure aboneliği.
 * Yönlendirici gerekir:
-  * LAN arabirimini ve Azure Stack çok kullanıcılı ağ geçidi arasında siteden siteye VPN bağlantılarını destekler.
+  * LAN arabirimini ve Azure Stack çok kiracılı ağ geçidi arasında siteden siteye VPN bağlantılarını destekler.
   * Azure Stack Dağıtımınızda birden fazla Kiracı varsa birden çok VRFs (sanal Yönlendirme ve iletme) oluşturmayı destekler.
 * Sahip bir yönlendirici:
   * Bir WAN bağlantı, ExpressRoute işlem hattına bağlı.
-  * Azure Stack çok kullanıcılı ağ geçidi için LAN bağlantı noktasına bağlı.
+  * LAN bağlantı noktası Azure Stack çok kiracılı ağ geçidine bağlı.
 
 ### <a name="expressroute-network-architecture"></a>ExpressRoute ağ mimarisi
 
-ExpressRoute kurulumunu tamamladıktan sonra aşağıdaki diyagramda Azure Stack ve Azure ortamları, bu makaledeki örnekler kullanarak gösterilmektedir:
-
-*Şekil 1. ExpressRoute network*
+ExpressRoute kurulumunu tamamladıktan sonra aşağıdaki şekilde Azure Stack ve Azure ortamları, bu makaledeki örnekler kullanarak gösterilmektedir:
 
 ![ExpressRoute ağ](media/azure-stack-connect-expressroute/Conceptual.png)
 
-Aşağıdaki diyagramda, nasıl birden çok kiracının Azure Stack altyapısından ExpressRoute yönlendirici üzerinden Azure'a Microsoft edge bağlama gösterilmektedir:
-
-*Şekil 2. Çok kiracılı bağlantıları*
+Nasıl birden çok kiracının Azure Stack altyapısından ExpressRoute yönlendirici üzerinden Azure'a Microsoft edge bağlama aşağıdaki şekilde gösterilmiştir:
 
 ![Çok kiracılı bağlantılar ile ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
 
-Bu makaledeki örnek, Azure Stack ExpressRoute özel eşlemesini kullanarak Azure'a bağlanmak için Şekil 2 ' gösterilen aynı çok kiracılı mimari kullanır. Bağlantı yapılır bir sanal ağ geçidine siteden siteye VPN bağlantısını bir ExpressRoute yönlendiricisine otomatik olarak Azure Stack'te kullanarak.
+Bu makaledeki örnek, Azure Stack ExpressRoute özel eşlemesini kullanarak Azure'a bağlanmak için bu Diyagramda gösterilen aynı çok kiracılı mimari kullanır. Bağlantı yapılır bir sanal ağ geçidine siteden siteye VPN bağlantısını bir ExpressRoute yönlendiricisine otomatik olarak Azure Stack'te kullanarak.
 
 Bu makaledeki adımlarda azure'da karşılık gelen sanal ağlar için Azure Stack'te iki farklı kiracılardan gelen iki Vnet arasında bir uçtan uca bağlantısı oluşturma işlemini göstermektedir. İki kiracılar'ı ayarlama isteğe bağlıdır; Ayrıca, tek bir kiracı için aşağıdaki adımları kullanabilirsiniz.
 
 ## <a name="configure-azure-stack"></a>Azure yığını yapılandırma
 
-İlk Kiracı için Azure Stack ortamı ayarlamak için adımları aşağıdaki diyagramda bir kılavuz olarak kullanın. Birden fazla Kiracı tutunun, bu adımları yineleyin:
+Azure Stack ortamı ayarlamak için ilk Kiracı için kılavuz olarak aşağıdaki adımları kullanın. Birden fazla Kiracı tutunun, bu adımları yineleyin:
 
 >[!NOTE]
 >Bu adımlar Azure Stack portalını kullanarak kaynak oluşturma işlemini gösterir, ancak PowerShell de kullanabilirsiniz.
@@ -96,7 +92,7 @@ Gerekli ağ kaynaklarına Azure Stack için bir kiracı oluşturmak için aşağ
 
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>Sanal ağ ve VM alt ağı oluşturma
 
-1. Kullanıcı Portalı bir kullanıcı (Kiracı) hesabıyla oturum açın.
+1. Azure Stack kullanıcı portalında oturum açın.
 
 2. Portalında **+ kaynak Oluştur**.
 
@@ -144,14 +140,14 @@ Gerekli ağ kaynaklarına Azure Stack için bir kiracı oluşturmak için aşağ
 
 #### <a name="create-the-local-network-gateway"></a>Yerel ağ geçidini oluşturma
 
-VPN bağlantısının diğer ucundaki uzak ağ geçidini yerel ağ geçidi kaynağı tanımlar. Bu örnekte, bağlantı uzak uç LAN alt ExpressRoute yönlendirici arabirimidir. Kiracı 1, 2, gösterildiği uzak adres 10.60.3.255 içindir.
+VPN bağlantısının diğer ucundaki uzak ağ geçidini yerel ağ geçidi kaynağı tanımlar. Bu örnekte, bağlantı uzak uç LAN alt ExpressRoute yönlendirici arabirimidir. Önceki diyagramda Kiracı 1 için Uzak 10.60.3.255 adresidir.
 
 1. Azure Stack Kullanıcı Portalı kullanıcı hesabınızla oturum açın ve seçin **+ kaynak Oluştur**.
 1. Altında **Azure Marketi**seçin **ağ**.
 1. Kaynak listesinden **yerel ağ geçidi**’ni seçin.
 1. İçinde **adı** alanına **ER yönlendirici GW**.
-1. İçin **IP adresi** alan, Şekil 2 bakın. 10.60.3.255 ExpressRoute yönlendirici LAN alt arabiriminin Kiracı 1 için IP adresidir. Kendi ortamınızda yönlendiricinizin karşılık gelen arabiriminin IP adresini girin.
-1. İçinde **adres alanı** Azure'da bağlanmak istediğiniz sanal ağ adres alanını girin. Alt ağlar için Kiracı 1'de *Şekil 2* aşağıdaki gibidir:
+1. İçin **IP adresi** alanında, önceki şekle bakın. 10.60.3.255 ExpressRoute yönlendirici LAN alt arabiriminin Kiracı 1 için IP adresidir. Kendi ortamınızda yönlendiricinizin karşılık gelen arabiriminin IP adresini girin.
+1. İçinde **adres alanı** Azure'da bağlanmak istediğiniz sanal ağ adres alanını girin. Kiracı 1 için alt ağları aşağıdaki gibidir:
 
    * Azure Vnet'te hub 192.168.2.0/24 olur.
    * Azure Vnet'te uç 10.100.0.0/16 olur.
@@ -295,8 +291,6 @@ Windows Server sanal makine (AzS-BGPNAT01) yönlendirme ve Uzaktan Erişim Hizme
 
 Azure Stack'ı yapılandırmayı tamamladıktan sonra Azure kaynaklarını dağıtabilirsiniz. Aşağıdaki şekilde, Azure'da bir kiracı sanal ağına örneği gösterilmektedir. Ağınızda Azure için herhangi bir ad ve adres düzeni'ni kullanabilirsiniz. Ancak, Azure'da ve Azure Stack sanal ağ adres aralığı benzersiz olmalıdır ve çakışmaması gerekir:
 
-*Şekil 3. Azure sanal ağlar*
-
 ![Azure sanal ağlar](media/azure-stack-connect-expressroute/AzureArchitecture.png)
 
 Azure Stack'te dağıtılan kaynakların, Azure'da dağıttığınız kaynakları benzerdir. Aşağıdaki bileşenler dağıttığınız:
@@ -356,9 +350,7 @@ Herhangi bir ek Kiracı ilgili kendi ExpressRoute bağlantı hatları Azure'da b
 
 ## <a name="configure-the-router"></a>Yönlendirici yapılandırma
 
-ExpressRoute yönlendiriciniz yapılandırmak için aşağıdaki ExpressRoute yönlendirici yapılandırma diyagramda bir kılavuz olarak kullanabilirsiniz. Bu diyagram, karşılık gelen ExpressRoute bağlantı hatları ile iki Kiracı (1 Kiracı ve Kiracı 2) gösterir. Her kiracının kendi VRF (sanal Yönlendirme ve iletme) ExpressRoute yönlendirici LAN ve WAN yan bağlanır. Bu yapılandırma, iki Kiracı arasında uçtan uca yalıtımı sağlar. Yapılandırma örneği takip yönlendirici arabirimlerde kullanılan IP adreslerini not alın.
-
-*Şekil 4. ExpressRoute için yönlendirici yapılandırma*
+ExpressRoute yönlendiriciniz yapılandırmak için aşağıdaki ExpressRoute yönlendirici yapılandırma diyagramda bir kılavuz olarak kullanabilirsiniz. Bu şekil, karşılık gelen ExpressRoute bağlantı hatları ile iki Kiracı (1 Kiracı ve Kiracı 2) gösterir. Her kiracının kendi VRF (sanal Yönlendirme ve iletme) ExpressRoute yönlendirici LAN ve WAN yan bağlanır. Bu yapılandırma, iki Kiracı arasında uçtan uca yalıtımı sağlar. Yapılandırma örneği takip yönlendirici arabirimlerde kullanılan IP adreslerini not alın.
 
 ![ExpressRoute için yönlendirici yapılandırma](media/azure-stack-connect-expressroute/EndToEnd.png)
 
@@ -624,7 +616,7 @@ New-NetFirewallRule `
 
 Ne kadar trafik, bağlantı geçtiğini bilmek istiyorsanız, Azure Stack Kullanıcı Portalı bu bilgileri bulabilirsiniz. Bu ayrıca VPN ve ExpressRoute bağlantıları ping testi verinizi yayınlanmıştı olup olmadığını bulmak için iyi bir yoldur.
 
-1. Kiracı hesabınızı kullanarak Azure Stack kullanıcı portalında oturum açın ve seçin **tüm kaynakları**.
+1. Azure Stack kullanıcı seçin ve portal oturum açma **tüm kaynakları**.
 1. VPN ağ geçidiniz için kaynak grubunu bulun ve seçin **bağlantı** nesne türü.
 1. Seçin **ConnectToAzure** listeden bağlantıyı.
 1. Altında **bağlantıları** > **genel bakış**, istatistiklerini görebilirsiniz **verilerinde** ve **verileri**. Bazı sıfır olmayan değerler görmeniz gerekir.

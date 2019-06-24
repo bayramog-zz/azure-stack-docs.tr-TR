@@ -15,18 +15,18 @@ ms.date: 06/18/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: e3105e8c7129f4eef6a5b6fd601f955a8f44f337
-ms.sourcegitcommit: 759a01b566597a71b18fca25902cacc983a5a63b
+ms.openlocfilehash: ecd0d3c79edc2359cf82aa9c52fb9021d7fc7a6f
+ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67298023"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67308684"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Azure Stack'te Kubernetes panosuna erişme 
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti* 
 > [!Note]   
-> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack'i bağlantısız senaryo preview tarafından şu anda desteklenmiyor. Yalnızca geliştirme için Market öğesi kullanın ve test senaryoları. [AKS altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md) üretim için kullanılabilir.
+> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack'i bağlantısız senaryo preview tarafından şu anda desteklenmiyor. Yalnızca geliştirme için Market öğesi kullanın ve test senaryoları.
 
 Kubernetes, temel yönetim işlemlerini için kullanabileceğiniz bir web Pano içerir. Bu pano, temel sistem durumu ve uygulamalarınız için ölçümleri görüntüleme, oluşturma ve Hizmetleri dağıtın ve mevcut uygulamaları düzenlemek olanak tanır. Bu makalede Azure Stack'te Kubernetes panosunu ayarlama gösterilmektedir.
 

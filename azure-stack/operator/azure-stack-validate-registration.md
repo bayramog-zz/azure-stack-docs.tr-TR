@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 06/23/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: a777fc1d9052eb58bbebd319fe6cc7f42a09cb9a
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: ca2ea89ab73c7a8e056e4b4700e92a872e628f34
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64292194"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316186"
 ---
 # <a name="validate-azure-registration"></a>Azure kaydı doğrula
 
@@ -40,7 +40,7 @@ En son sürümünü indirin **AzsReadinessChecker** gelen [PowerShell Galerisi](
 
 Aşağıdaki Önkoşullar gereklidir:
 
-**Aracın çalıştığı bilgisayarda:**
+### <a name="the-computer-on-which-the-tool-runs"></a>Aracın çalıştığı bilgisayarda
 
 - Windows 10 veya Windows Server 2016, internet bağlantısı.
 - PowerShell 5.1 veya üzeri. Sürümünüzü denetlemek için aşağıdaki PowerShell cmdlet'ini çalıştırın ve daha sonra gözden **ana** ve **küçük** sürümleri:  
@@ -52,7 +52,7 @@ Aşağıdaki Önkoşullar gereklidir:
 - [Azure Stack için yapılandırılmış PowerShell](azure-stack-powershell-install.md).
 - En son sürümünü [Microsoft Azure Stack hazırlık denetleyicisi](https://aka.ms/AzsReadinessChecker).  
 
-**Azure Active Directory ortamı:**
+### <a name="azure-active-directory-environment"></a>Azure Active Directory ortamı
 
 - Kullanıcı adı ve parola, Azure Stack ile kullandığınız Azure aboneliği sahibi olan bir hesap için bu seçeneği belirleyin.  
 - Abonelik kimliği için kullanacağınız Azure aboneliği tanımlayın.
@@ -73,7 +73,7 @@ Aşağıdaki Önkoşullar gereklidir:
    ```
 
    > [!NOTE]
-   > Paylaşılan hizmetler veya IUR aboneliklerini kullanırken bir CSP, bu ilgili AAD'den bir kullanıcının kimlik bilgilerini sağlamanız gerekir. Genellikle bu şuna benzeyecektir `subscriptionowner@iurcontoso.onmicrosoft.com`. Kullanıcı, önceki adımda açıklandığı gibi uygun kimlik bilgileri olmalıdır.
+   > Paylaşılan kullanırken bir CSP olarak hizmet veya IUR abonelik, sağlamalısınız bir kullanıcının kimlik bilgileri, ilgili AAD'den. Genellikle bu şuna benzeyecektir `subscriptionowner@iurcontoso.onmicrosoft.com`. Kullanıcı, önceki adımda açıklandığı gibi uygun kimlik bilgileri olmalıdır.
 
 3. PowerShell isteminden ayarlamak için aşağıdaki komutu çalıştırın `$subscriptionID` olarak kullanılacak Azure aboneliği. Değiştirin `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` kendi abonelik kimliği:
 
@@ -106,7 +106,7 @@ Her zaman doğrulama çalışır ve sonuçları günlükleri **AzsReadinessCheck
 
 Bu dosyalar yardımcı olabilecek Azure Stack dağıtma veya doğrulama sorunları araştırmak için önce doğrulama durumu paylaşın. Her iki dosya her sonraki doğrulama denetimi sonuçlarını kalıcı hale getirin. Rapor dağıtım takım onayınız kimlik yapılandırması sağlar. Günlük dosyası dağıtım veya destek takım doğrulama sorunları araştırmanıza yardımcı olabilir.
 
-Varsayılan olarak, her iki dosya için yazılan **C:\Users\<kullanıcıadı > \AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
+Varsayılan olarak, her iki dosya için yazılan **C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
 
 - Kullanım **- OutputPath** ***&lt;yolu&gt;*** sonunda, farklı rapor konumunu belirtmek için çalışma komut satırı parametresi.
 - Kullanım **- CleanReport** sonunda aracından, önceki çalıştırmaları hakkında bilgi temizlemek için bir run komutu, parametre **AzsReadinessCheckerReport.json**.

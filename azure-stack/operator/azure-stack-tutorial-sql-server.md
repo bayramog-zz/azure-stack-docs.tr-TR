@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: justinha
-ms.reviewer: quying
+ms.reviewer: xiaofmao
 ms.lastreviewed: 11/05/2018
 ms.custom: mvc
-ms.openlocfilehash: cc3af256adbcea8e6055b237945dc2286762437e
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 7198b48eef8ceb2cd802fb81e8ab835f4e254e04
+ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267991"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67308441"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>Öğretici: SQL veritabanları, Azure Stack kullanıcılar için kullanılabilir yap
 
@@ -63,7 +63,7 @@ SQL Server Kaynak sağlayıcısı dağıtılan ve teklif oluşturduğunuza göre
 4. Seçin **tüm hizmetleri** > **abonelikleri** > **TestSQLServerSubscription** > **kaynak sağlayıcıları**.
 5. Seçin **kaydetme** yanındaki **Microsoft.SQLAdapter** sağlayıcısı.
 
-### <a name="create-a-sql-database"></a>SQL veritabanı oluşturun
+### <a name="create-a-sql-database"></a>SQL veritabanı oluşturma
 
 1. Seçin **+**  >  **veri + depolama** > **SQL veritabanı**.
 2. Varsayılan değerleri tutabilir veya bu örnekler için aşağıdaki alanları kullanın:

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: mabrigg
-ms.reviewer: quying
+ms.reviewer: xiaofmao
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 00469e3dedca4609b26e1d4e967837ff0925cb9c
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 9469904ddcb27d5526e35a33091e0ea3e54600f8
+ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618582"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67308603"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>MySQL kaynak sağlayıcı barındırma sunucuları ekleme
 
@@ -37,7 +37,7 @@ Sistem Yöneticisi ayrıcalıklarına sahip bir hesabın kimlik bilgilerini sağ
 
 1. Bir Hizmet Yöneticisi Azure Stack operatörü portalında oturum açın
 2. **Tüm Hizmetler**’i seçin.
-3. Altında **yönetim kaynakları** kategorisi seçin **barındırma MySQL Server** > **+ Ekle**. Bu açılır **barındırma MySQL Server Ekle** iletişim kutusunda, aşağıdaki ekran görüntüsünde gösterilen.
+3. Altında **yönetim kaynakları** kategorisi seçin **barındırma MySQL Server** >  **+ Ekle**. Bu açılır **barındırma MySQL Server Ekle** iletişim kutusunda, aşağıdaki ekran görüntüsünde gösterilen.
 
    ![Bir barındırma sunucusunu yapılandırma](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 

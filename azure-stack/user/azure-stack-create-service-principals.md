@@ -14,12 +14,12 @@ ms.date: 04/15/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 8b3d0ad1f0854f7028e9dfff2d9114df141394a6
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 543e4befb23fe714cfe472f180647a976f6f3af4
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269619"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316226"
 ---
 # <a name="create-service-principals-to-give-applications-access-to-azure-stack-resources"></a>Azure Stack kaynaklarına uygulamalar erişim vermek için hizmet sorumlusu oluşturma
 
@@ -59,7 +59,7 @@ Azure Stack, Azure AD kimlik deposu olarak kullanıyorsa, bir hizmet sorumlusu A
 > [!NOTE]
 > Sahip olduğunuzu denetleyin [Azure AD izinleri gerekli](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) bir hizmet sorumlusu oluşturma işlemi başlamadan önce.
 
-### <a name="create-service-principal"></a>Hizmet sorumlusu oluştur
+### <a name="create-service-principal"></a>Hizmet sorumlusu oluşturma
 
 Uygulamanız için hizmet sorumlusu oluşturmak için:
 
@@ -71,7 +71,7 @@ Uygulamanız için hizmet sorumlusu oluşturmak için:
 
 Uygulamanız için bir hizmet sorumlusu oluşturdunuz.
 
-### <a name="get-credentials"></a>Kimlik bilgilerini al
+### <a name="get-credentials"></a>Kimlik bilgilerini alma
 
 Programlamayla oturum açılırken, uygulamanızın ve bir kimlik doğrulama anahtarı kimliği kullanın. Bu değerleri almak için:
 
@@ -88,7 +88,7 @@ Programlamayla oturum açılırken, uygulamanızın ve bir kimlik doğrulama ana
 
 6. İşiniz bittiğinde, gizli dizisinin değeri görüntülenir. Daha sonra anahtarı alınamıyor çünkü bu değeri yazın. Anahtarı, uygulamanızın alabileceği bir konumda depolayın.
 
-![Anahtar değeri uyarısı için kaydedilen anahtarı.](./media/azure-stack-create-service-principals/image15.png)
+     ![Anahtar değeri uyarısı için kaydedilen anahtarı.](./media/azure-stack-create-service-principals/image15.png)
 
 Son adım [uygulamanızı rol atama](azure-stack-create-service-principals.md).
 
@@ -100,7 +100,7 @@ AD FS kimlik deposu olarak kullanarak Azure Stack dağıttıysanız, aşağıdak
 * Hizmet sorumlusu, rol atayın.
 * Hizmet sorumlusunun kimliğini kullanarak oturum açın.
 
-Hizmet sorumlusu oluşturma hakkında daha fazla ayrıntı için bkz. [AD FS için hizmet sorumlusu oluşturma](../operator/azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
+Hizmet sorumlusu oluşturma hakkında daha fazla ayrıntı için bkz. [bir AD FS hizmet sorumlusunu Yönet](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Hizmet sorumlusu, rol atama
 

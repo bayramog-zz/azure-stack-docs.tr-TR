@@ -15,19 +15,19 @@ ms.date: 06/18/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 65ffa6cc2a9c2d08e5be6733db06a4235829838a
-ms.sourcegitcommit: 759a01b566597a71b18fca25902cacc983a5a63b
+ms.openlocfilehash: 61d2739475a0593671e7a363671dd2859a6e6f24
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67298029"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316241"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes için Azure Stack Marketini Ekle
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 > [!note]  
-> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack'i bağlantısız senaryo preview tarafından şu anda desteklenmiyor. Yalnızca geliştirme için Market öğesi kullanın ve test senaryoları. [AKS altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md) üretim için kullanılabilir.
+> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack'i bağlantısız senaryo preview tarafından şu anda desteklenmiyor. Yalnızca geliştirme için Market öğesi kullanın ve test senaryoları.
 
 Kullanıcılarınız için bir Market öğesi Kubernetes sunabilir. Kullanıcılarınızın ardından, Kubernetes içinde tek ve eşgüdümlü bir işlemle dağıtabilir.
 
@@ -63,7 +63,7 @@ Bir plan, teklif ve Kubernetes Market öğesi için bir abonelik oluşturun. Ayr
 
 ## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>AD FS'de bir hizmet sorumlusu ve kimlik bilgileri oluşturma
 
-Kimlik Yönetimi hizmetiniz için Active Directory Federasyon Hizmetleri'nde (AD FS) kullanıyorsanız, bir hizmet sorumlusu kullanıcıların bir Kubernetes kümesini dağıtırken oluşturmak gerekir. Hizmet sorumlusu istemci gizli anahtarı kullanarak oluşturun. Yönergeler için [istemci gizli anahtarı kullanarak bir hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret).
+Kimlik Yönetimi hizmetiniz için Active Directory Federasyon Hizmetleri'nde (AD FS) kullanıyorsanız, bir hizmet sorumlusu kullanıcıların bir Kubernetes kümesini dağıtırken oluşturmak gerekir. Hizmet sorumlusu istemci gizli anahtarı kullanarak oluşturun. Yönergeler için [istemci gizli anahtarı kullanarak bir hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
 
 ## <a name="add-an-ubuntu-server-image"></a>Ubuntu server resim ekleme
 

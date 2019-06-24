@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: ef9406c8332eb983e20decb64ead723234aa8faa
-ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
+ms.openlocfilehash: 7cc55659df1da1c51d92f0fc2926cee7255c422e
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152574"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67315978"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure Stack için Azure Market öğelerini indirme
 
@@ -177,7 +177,7 @@ Bu senaryo iki bölümü vardır:
    `-AzsCredential` Parametresi isteğe bağlıdır. Süresi dolmuşsa erişim belirtecini yenilemek için kullanılır. Varsa `-AzsCredential` parametresi belirtilmezse ve belirteç süre sonu, işleci kimlik bilgilerini girmek için bir uyarı alırsınız.
 
     > [!Note]  
-    > AD FS kullanıcı kimlikleri ile etkileşimli kimlik doğrulaması yalnızca destekler. Bir kimlik bilgisi nesnesi gerekiyorsa, bir hizmet sorumlusu (SPN) kullanmanız gerekir. Azure Stack ve AD FS ile hizmet sorumlusu, Kimlik Yönetimi Hizmeti ayarlama hakkında daha fazla bilgi için bkz. [Yönet AD FS için hizmet sorumlusu](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
+    > AD FS kullanıcı kimlikleri ile etkileşimli kimlik doğrulaması yalnızca destekler. Bir kimlik bilgisi nesnesi gerekiyorsa, bir hizmet sorumlusu (SPN) kullanmanız gerekir. Azure Stack ve AD FS ile hizmet sorumlusu, Kimlik Yönetimi Hizmeti ayarlama hakkında daha fazla bilgi için bkz. [bir AD FS hizmet sorumlusunu Yönet](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
 
 4. Betik başarıyla tamamlandıktan sonra öğeyi Azure Stack Market'te kullanılabilir olması gerekir.
 

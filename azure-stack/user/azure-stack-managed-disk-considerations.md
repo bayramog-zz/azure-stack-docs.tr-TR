@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 06/23/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: aca01d65df454f03f5726db67b3eaa766339bb77
-ms.sourcegitcommit: 914daff43ae0f0fc6673a06dfe2d42d9b4fbab48
+ms.openlocfilehash: b115bacc0c05eeede7a3ba8e424c8a6ed70774ee
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66043018"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67315882"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack yönetilen diskler: farklılıklar ve dikkat edilmesi gerekenler
 
@@ -29,17 +29,17 @@ Bu makalede bilinen farklılıkları özetler [Azure Stack'te yönetilen diskler
 
 Yönetilen diskler yöneterek Iaas Vm'leri için disk yönetimini basitleştirir [depolama hesapları](../operator/azure-stack-manage-storage-accounts.md) VM diskleriyle ilişkili.
 
-> [!Note]  
-> Azure Stack'te yönetilen diskler, 1808 güncelleştirmeyi kullanılabilir. 1811 güncelleştirmesinden itibaren Azure Stack portalını kullanarak sanal makineler oluştururken, varsayılan olarak etkindir.
+> [!NOTE]  
+> Azure Stack'te yönetilen diskler, kullanılabilir 1808 güncelleştirmesinden itibaren. 1811 güncelleştirmesinden itibaren Azure Stack portalını kullanarak sanal makine oluştururken, varsayılan olarak etkindir.
   
 ## <a name="cheat-sheet-managed-disk-differences"></a>Kopya kağıdı: yönetilen disk farkları
 
 | Özellik | Azure (Genel) | Azure Stack |
 | --- | --- | --- |
-|Bekleyen veriler için şifreleme |Azure depolama hizmeti şifrelemesi (SSE), Azure Disk şifrelemesi (ADE)     |BitLocker 128 bit AES şifrelemesi      |
-|Image          | Yönetilen bir özel görüntü desteği |Desteklenen|
-|Yedekleme seçenekleri |Azure Yedekleme hizmetini destekler |Henüz desteklenmiyor |
-|Olağanüstü durum kurtarma seçenekleri |Azure Site kurtarma desteği |Henüz desteklenmiyor|
+|Bekleyen verilerin şifrelenmesi |Azure depolama hizmeti şifrelemesi (SSE), Azure Disk şifrelemesi (ADE)     |BitLocker 128 bit AES şifrelemesi      |
+|Image          | Yönetilen özel görüntü |Desteklenen|
+|Yedekleme seçenekleri | Azure Backup hizmeti |Henüz desteklenmiyor |
+|Olağanüstü durum kurtarma seçenekleri | Azure Site Recovery |Henüz desteklenmiyor|
 |Disk türleri     |Premium SSD, standart bir SSD ve HDD standart |Premium SSD, standart HDD |
 |Premium diskler  |Tam olarak desteklenir |Performans sınır sağlanabilir veya garanti  |
 |Premium disklerde IOPS  |Disk boyutuna bağlıdır.  |2300 disk başına IOPS |
@@ -73,13 +73,13 @@ Azure Stack diskleri destekleyen aşağıdaki API sürümleri yönetilen:
 ```powershell
 $SubscriptionId = "SubId"
 
-# The name of your resource group where your VM to be converted exists
+# The name of your resource group where your VM to be converted exists.
 $ResourceGroupName ="MyResourceGroup"
 
 # The name of the managed disk to be created.
 $DiskName = "mngddisk"
 
-# The size of the disks in GiB. It should be greater than the VHD file size.
+# The size of the disks in GB. It should be greater than the VHD file size.
 $DiskSize = "50"
 
 # The URI of the VHD file that will be used to create the managed disk.
@@ -91,7 +91,7 @@ $AccountType = "StandardLRS"
 
 # The Azure Stack location where the managed disk will be located.
 # The location should be the same as the location of the storage account in which VHD file is stored.
-# Configure the new managed VM point to the old unmanaged VM's configuration (network config, vm name, location).
+# Configure the new managed VM point to the old unmanaged VM configuration (network config, VM name, location).
 $Location = "local"
 $VirtualMachineName = "unmngdvm"
 $VirtualMachineSize = "Standard_D1"
@@ -99,36 +99,36 @@ $PIpName = "unmngdvm-ip"
 $VirtualNetworkName = "unmngdrg-vnet"
 $NicName = "unmngdvm"
 
-# Set the context to the subscription ID in which the managed disk will be created
+# Set the context to the subscription ID in which the managed disk will be created.
 Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
-# Delete old VM, but keep the OS disk
+# Delete old VM, but keep the OS disk.
 Remove-AzureRmVm -Name $VirtualMachineName -ResourceGroupName $ResourceGroupName
 
-# Create the managed disk configuration
+# Create the managed disk configuration.
 $DiskConfig = New-AzureRmDiskConfig -AccountType $AccountType -Location $Location -DiskSizeGB $DiskSize -SourceUri $VhdUri -CreateOption Import
 
-# Create managed disk
+# Create managed disk.
 New-AzureRmDisk -DiskName $DiskName -Disk $DiskConfig -ResourceGroupName $resourceGroupName
 $Disk = Get-AzureRmDisk -DiskName $DiskName -ResourceGroupName $ResourceGroupName
 $VirtualMachine = New-AzureRmVMConfig -VMName $VirtualMachineName -VMSize $VirtualMachineSize
 
 # Use the managed disk resource ID to attach it to the virtual machine.
-# Change the OS type to "-Windows" if the OS disk has Windows OS.
+# Change the OS type to "-Windows" if the OS disk has the Windows OS.
 $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $Disk.Id -CreateOption Attach -Linux
 
-# Create a public IP for the VM
-$PublicIp = Get-AzureRmPublicIpAddress -Name $PIpName -ResourceGroupName $ResourceGroupName 
+# Create a public IP for the VM.
+$PublicIp = Get-AzureRmPublicIpAddress -Name $PIpName -ResourceGroupName $ResourceGroupName
 
-# Get the virtual network where the virtual machine will be hosted
+# Get the virtual network where the virtual machine will be hosted.
 $VNet = Get-AzureRmVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
 
-# Create NIC in the first subnet of the virtual network
+# Create NIC in the first subnet of the virtual network.
 $Nic = Get-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $ResourceGroupName
 
 $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Nic.Id
 
-# Create the virtual machine with managed disk
+# Create the virtual machine with managed disk.
 New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Location $Location
 ```
 
@@ -139,30 +139,30 @@ Azure Stack destekler *yönetilen görüntüleri*, hangi etkinleştir, yalnızca
 - Yönetilmeyen VM genelleştirilmiş ve bundan sonra yönetilen diskleri kullanmak istiyorsanız.
 - Genelleştirilmiş bir yönetilen VM sahip ve birden çok oluşturmak istersiniz, benzer Vm'leri yönetilen.
 
-### <a name="step-1-generalize-the-vm"></a>1. Adım: VM'yi Genelleştirme
+### <a name="step-1-generalize-the-vm"></a>1\. adım: VM'yi Genelleştirme
 
 Windows için izleyin [Windows Sysprep kullanarak VM'yi Genelleştirme](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) bölümü. Linux için 1. adım izleyin [burada](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
 
 > [!NOTE]
 > Sanal makinenizin genelleştirmek emin olun. Düzgün genelleştirilmiş bir görüntüden VM oluşturma neden olacak şekilde bir **VMProvisioningTimeout** hata.
 
-### <a name="step-2-create-the-managed-image"></a>2. Adım: Yönetilen bir görüntü oluşturma
+### <a name="step-2-create-the-managed-image"></a>2\. adım: Yönetilen bir görüntü oluşturma
 
-Portal, PowerShell veya CLI ile yönetilen bir görüntü oluşturmak için kullanabilirsiniz. Azure makaledeki adımları [burada](/azure/virtual-machines/windows/capture-image-resource).
+Yönetilen bir görüntü oluşturmak için portalı, PowerShell veya CLI kullanın. Bağlantısındaki [yönetilen görüntüsünü oluşturma](/azure/virtual-machines/windows/capture-image-resource).
 
-### <a name="step-3-choose-the-use-case"></a>3. adım: Kullanım örneği seçin
+### <a name="step-3-choose-the-use-case"></a>3\. adım: Kullanım örneği seçin
 
-#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>1. durum: Yönetilmeyen Vm'leri yönetilen disklere geçirme
+#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>1\. durum: Yönetilmeyen Vm'leri yönetilen disklere geçirme
 
 Bu adımı gerçekleştirmeden önce sanal Makinenizin doğru genelleştirmek emin olun. Genelleştirme sonra artık bu VM kullanabilirsiniz. Düzgün genelleştirilmiş bir görüntüden VM oluşturma neden olacak şekilde bir **VMProvisioningTimeout** hata.
 
-Yönergeleri izleyerek [burada](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) bir depolama hesabında genelleştirilmiş bir VHD'den yönetilen bir görüntü oluşturmak için. Yönetilen sanal makineler oluşturmak için ileride bu resmi kullanabilirsiniz.
+Bölümündeki yönergeleri [bir depolama hesabında bir VHD'den Görüntü Oluştur](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) bir depolama hesabında genelleştirilmiş bir VHD'den yönetilen bir görüntü oluşturmak için. Yönetilen sanal makineler oluşturmak için ileride bu resmi kullanabilirsiniz.
 
-#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>2. durum: Powershell kullanarak yönetilen görüntüden yönetilen VM oluşturma
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>2\. durum: Powershell kullanarak yönetilen görüntüden yönetilen VM oluşturma
 
-Bir görüntü mevcut bir yönetilen oluşturduktan sonra komut dosyasını kullanarak VM disk [burada](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), aşağıdaki örnek betik, mevcut bir görüntü nesneden benzer bir Linux VM oluşturur:
+Bir görüntü mevcut bir yönetilen oluşturduktan sonra komut dosyasını kullanarak VM disk [PowerShell kullanarak bir yönetilen diskten görüntü oluşturma](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), aşağıdaki örnek betik, mevcut bir görüntü nesneden benzer bir Linux VM oluşturur.
 
-Azure Stack PowerShell modülü 1.7.0 veya üzeri: yönergeleri [burada](/azure/virtual-machines/windows/create-vm-generalized-managed).
+Azure Stack PowerShell modülü 1.7.0 veya üzeri: yönergeleri [yönetilen bir görüntüden VM oluşturma](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
 Azure Stack PowerShell modülü 1.6.0 veya önceki sürümleri:
 
@@ -223,9 +223,9 @@ Ayrıca, yönetilen bir görüntüden bir VM oluşturmak için portalı kullanab
 1808 uyguladıktan sonra güncelleştirme veya daha sonra yönetilen diskler kullanmadan önce aşağıdaki yapılandırma gerçekleştirmeniz gerekir:
 
 - Bir abonelik 1808 güncelleştirmeden önce oluşturulduysa, abonelik güncelleştirmek için aşağıdaki adımları izleyin. Aksi takdirde, bu abonelikte Vm'leri dağıtma "Disk yöneticisinde iç hata." hata iletisi ile başarısız olabilir
-   1. Kiracı Portalı'nda Git **abonelikleri** ve aboneliği bulunamıyor. Tıklayın **kaynak sağlayıcıları**, ardından **Microsoft.Compute**ve ardından **yeniden kaydettirin**.
-   2. Aynı abonelik altında Git **erişim denetimi (IAM)**, doğrulayın **Azure Stack - yönetilen Disk** listelenir.
-- (Kendi kuruluşunuzda ya da hizmet sağlayıcısından olabilir), bulut operatörü için çok kiracılı bir ortam kullanıyorsanız, sorun her yer alan adımları uygulayarak, Konuk dizinlerinizi yeniden [bu makalede](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). Aksi takdirde, bu Konuk dizin ile ilişkili bir abonelik içindeki Vm'leri dağıtma "Disk yöneticisinde iç hata." hata iletisi ile başarısız olabilir
+   1. Azure Stack Kullanıcı Portalı'nda Git **abonelikleri** ve aboneliği bulunamıyor. Tıklayın **kaynak sağlayıcıları**, ardından **Microsoft.Compute**ve ardından **yeniden kaydettirin**.
+   2. Aynı abonelik altında Git **erişim denetimi (IAM)** , doğrulayın **Azure Stack - yönetilen Disk** listelenir.
+- (Kendi kuruluşunuzda ya da hizmet sağlayıcısından olabilir), bulut operatörü için çok kiracılı bir ortam kullanıyorsanız, sorun her yer alan adımları uygulayarak, Konuk dizinlerinizi yeniden [bu makalede](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). Aksi takdirde, bu Konuk dizin ile ilişkili bir abonelik içindeki Vm'leri dağıtma bir hata iletisiyle başarısız olabilir **disk yöneticisinde iç hata**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

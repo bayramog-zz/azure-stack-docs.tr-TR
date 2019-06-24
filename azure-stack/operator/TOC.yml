@@ -213,7 +213,7 @@
               href: azure-stack-add-new-user-aad.md
             - name: Kullanıcıları AD FS’ye ekleme
               href: azure-stack-add-users-adfs.md
-            - name: Hizmet sorumlusu oluşturma
+            - name: Kaynaklara erişmek için bir uygulama kimliğini kullan
               href: Azure-stack-create-service-principals.md
             - name: Çok kiracılı modeli etkinleştirme
               href: azure-stack-enable-multitenancy.md

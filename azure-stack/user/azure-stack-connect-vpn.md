@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 06/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: f49c6f87ba3f33ae8d9c22068fa9ac4893ab7f0a
-ms.sourcegitcommit: be5382f715a9c1c18c660b630d8fcd823f13aae3
+ms.openlocfilehash: a0e1312beac5f0591658295ac3e48f122aceec4b
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66197400"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316277"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Azure Stack VPN kullanarak Azure'a bağlanma
 
@@ -157,7 +157,7 @@ Bir Hizmet Yöneticisi kullanıcı planları, teklifleri ve kendi kullanıcılar
 1. Kullanıcı portalında oturum açmak için bir kullanıcı hesabı kullanın.
 2. Kullanıcı Portalı'nda seçin **+ kaynak Oluştur**.
 
-    ![Yeni sanal ağ oluştur](media/azure-stack-connect-vpn/image3.png)
+    ![Yeni sanal ağ oluşturma](media/azure-stack-connect-vpn/image3.png)
 
 3. Git **Market**ve ardından **ağ**.
 4. **Sanal ağ**'ı seçin.
@@ -242,7 +242,7 @@ VPN bağlantısını denetlemek için iki VM oluşturun: biri azure'da ve Azure 
 
 9. Üzerinde **özeti** bölümünde ayarları gözden geçirin ve ardından **Tamam**.
 
-## <a name="test-the-connection"></a>Bağlantıyı test et
+## <a name="test-the-connection"></a>Bağlantıyı sınama
 
 Siteden siteye bağlantı kurulduktan sonra her iki yönde akmasını veri alabilirsiniz doğrulamanız gerekir. Bağlantıyı test etmek için en kolay yolu, ping testi yaparak şöyledir:
 

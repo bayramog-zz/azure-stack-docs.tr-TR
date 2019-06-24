@@ -15,19 +15,19 @@ ms.date: 06/18/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: aa196c5dfb56e6b3bbad5e4f6f112e855298dc02
-ms.sourcegitcommit: 759a01b566597a71b18fca25902cacc983a5a63b
+ms.openlocfilehash: c6d96a24866f4371dcca8aa953137288f94ac7ff
+ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67298083"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67308479"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Kubernetes Azure Active Directory'yi kullanarak Azure Stack'e dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 > [!Note]  
-> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack'i bağlantısız senaryo preview tarafından şu anda desteklenmiyor. Yalnızca geliştirme için Market öğesi kullanın ve test senaryoları. [AKS altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md) üretim için kullanılabilir.
+> Azure Stack'te Kubernetes önizlemeye sunuldu. Azure Stack'i bağlantısız senaryo preview tarafından şu anda desteklenmiyor. Yalnızca geliştirme için Market öğesi kullanın ve test senaryoları.
 
 Dağıtma ve Azure Active Directory (Azure AD), tek bir kimlik yönetim hizmeti işlemi Eşgüdümlü olarak kullanırken, Kubernetes için kaynakları ayarlamak için bu makaledeki adımları izleyebilirsiniz.
 

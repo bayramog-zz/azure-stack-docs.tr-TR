@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: justinha
-ms.reviewer: quying
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 61d839e0f34de9387023b272aff32cf69ad9ae13
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: e62e78705d6ca1ec8fa7d839b70eda3f147f82ab
+ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268489"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316297"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Öğretici: Yüksek oranda kullanılabilir olan MySQL veritabanları sunar.
 
@@ -110,11 +110,11 @@ Varsayılan olarak, hiçbir genel erişim konak VM'si için MySQL yapılandırı
 
 1. Yönetici portalındaki MySQL küme dağıtılırken oluşturulan bir kaynak grubuna gidin ve ağ güvenlik grubunu seçin (**varsayılan alt ağ sg**):
 
-   ![aç](media/azure-stack-tutorial-mysqlrp/6.png)
+   ![açık](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. Seçin **gelen güvenlik kuralları** ve ardından **Ekle**.<br><br>Girin **3306** içinde **hedef bağlantı noktası aralığı** ve isteğe bağlı olarak bir açıklama sağlayın **adı** ve **açıklama** alanları. Gelen güvenlik kuralı iletişim kutusunu kapatmak için Ekle'ye tıklayın.
 
-   ![aç](media/azure-stack-tutorial-mysqlrp/7.png)
+   ![açık](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>MySQL kümesi dış erişimi yapılandırma
 Dış erişim MySQL kümenin bir Azure Stack MySQL Server konağı olarak eklenmeden önce etkinleştirilmesi gerekir.
