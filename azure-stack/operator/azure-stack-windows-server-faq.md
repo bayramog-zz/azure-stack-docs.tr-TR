@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/22/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: ffb58392075521b81d9b0cd71928ac0db680991f
-ms.sourcegitcommit: 80775f5c5235147ae730dfc7e896675a9a79cdbe
+ms.openlocfilehash: 0896ea921408d651a4b8e072c3d66ab4e333ebd6
+ms.sourcegitcommit: fdeb2760845c9760ea7df1414b8e140b0624a823
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66459078"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67334421"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Windows Server'da Azure Stack marketini SSS
 
@@ -36,7 +36,7 @@ Ardından, tüm sanal makine ölçek kümeleri belirli bir sürümüne başvuruy
 
 ### <a name="what-are-the-licensing-options-for-windows-server-marketplace-images-on-azure-stack"></a>Windows Server Market görüntüleri için Azure Stack'te lisanslama seçenekleri nelerdir?
 
-Microsoft Azure Stack marketten Windows Server görüntülerini iki sürümünü sunar:
+Microsoft Azure Stack marketten Windows Server görüntülerini iki sürümü sunar. Yalnızca bir sürümü bu görüntü, Azure Stack ortamında kullanılabilir.  
 
 - **Kullandıkça Öde**: Bu görüntüler, tam fiyat Windows ölçümleri çalıştırın.
    Kimin kullanmanız gerekir: Kullanan Kurumsal Anlaşma (EA) müşterileri *tüketim faturalandırma modeli*; SPLA lisans kullanmak istiyor musunuz CSP'ler.
@@ -47,7 +47,9 @@ Azure karma kullanım Avantajı'nı (AHUB), Azure Stack üzerinde desteklenmiyor
 
 ### <a name="what-if-i-downloaded-the-wrong-version-to-offer-my-tenantsusers"></a>Kiracılar/kullanıcılarımın sunmak için yanlış sürüm karşıdan ne olur?
 
-Yanlış sürüm Market yönetiminden silin. Tam olarak tamamlanmasını bekleyin (tamamlama, bildirimleri bakın değil **Market Yönetim** dikey penceresinde). Ardından doğru sürümünü indirin.
+Yanlış sürüm Market yönetiminden silin. Tamamlanmasını bekleyin (tamamlama, bildirimleri bakın değil **Market Yönetim** dikey penceresinde). Ardından doğru sürümünü indirin.
+
+Görüntünün her iki sürümü yüklerseniz, yalnızca en son sürümünü son müşterilere Market galerisinde görülebilir.
 
 ### <a name="what-if-my-user-incorrectly-checked-the-i-have-a-license-box-in-previous-windows-builds-and-they-dont-have-a-license"></a>My kullanıcı yanlış önceki Windows "Bir lisansım" kutuya kullanıma ne oluşturur ve bir lisansına sahip olmayan?
 
