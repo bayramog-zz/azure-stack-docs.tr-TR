@@ -5,16 +5,16 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: Howto
-ms.date: 05/31/2019
+ms.date: 06/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 8e64a570ab45e57e3cf58639bc2ec23d9b9bd81b
-ms.sourcegitcommit: 07cc716d97bf484c7260eb165ae205ae25e09589
+ms.lastreviewed: 06/25/2019
+ms.openlocfilehash: 4e7dd18267060f632e2d059b0a7b0d9158b2e260
+ms.sourcegitcommit: d1fdecdfa843dfc0629bfc226f1baf14f3ea621d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66453499"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67387745"
 ---
 # <a name="connect-to-azure-stack-using-azure-account-extension-in-visual-studio-code"></a>Visual Studio Code'da Azure hesabı uzantısını kullanarak Azure stack'e bağlanma
 
@@ -34,9 +34,15 @@ VS Code, web ve bulut uygulamaları oluşturma ve hata ayıklama için basit bir
 
 ## <a name="steps-to-connect-to-azure-stack"></a>Azure Stack'e bağlanma adımları
 
-1. Açık VS kodu.
+1. Çalıştırma **kimlik** github'da Azure Stack araçları betikten.
 
-2. Seçin **uzantıları** sol taraftaki köşedeki.
+    - Çalıştırmadan önce betiğin, PowerShell sürümünün yüklü ve ortamınız için yapılandırılmış olması gerekecektir. Yönergeler için bkz [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md).
+
+    - İçin **kimlik** betik yönergeleri ve komut dosyası, bkz: [AzureStack-araçları/kimlik](https://github.com/Azure/AzureStack-Tools/tree/master/Identity).
+
+2. Açık VS kodu.
+
+3. Seçin **uzantıları** sol taraftaki köşedeki.
 
 3. Arama kutusuna `Azure Account` yazın.
 
@@ -55,7 +61,7 @@ VS Code, web ve bulut uygulamaları oluşturma ve hata ayıklama için basit bir
 
     Örneğin, Azure Resource Manager uç noktanız için meta verilerini almak için URL şöyle görünebilir: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
 
-    Dönüş JSON'u not edin. Değerleri için ihtiyacınız olacak `loginEndpoint` ve `loginEndgraphEndpointpoint` özelliği.
+    Dönüş JSON'u not edin. Değerleri için ihtiyacınız olacak `loginEndpoint` ve `audiences` özelliği.
 
 7. Tuşuna **Ctrl + Shift + P** seçip **tercihleri: Kullanıcı ayarları (JSON)** .
 
@@ -67,7 +73,7 @@ VS Code, web ve bulut uygulamaları oluşturma ve hata ayıklama için basit bir
         | --- | --- |
         | `tenant-ID` | Azure Stack değerini [Kiracı kimliği](../operator/azure-stack-identity-overview.md). |
         | `activeDirectoryEndpointUrl` | Bu loginEndpoint özelliğinden URL'dir. |
-        | `activeDirectoryResourceId` | Bu loginEndgraphEndpointpoint özelliğinden URL'dir.
+        | `activeDirectoryResourceId` | Bu İzleyici özelliğinden URL'dir.
         | `resourceManagerEndpointUrl` | Azure Stack için Azure Resource Manager için kök URL'yi budur. | 
 
     - JSON parçacığı:
@@ -76,15 +82,15 @@ VS Code, web ve bulut uygulamaları oluşturma ve hata ayıklama için basit bir
       "azure.tenant": "tenant-ID",
       "azure.ppe": {
           "activeDirectoryEndpointUrl": "Login endpoint",
-          "activeDirectoryResourceId": "graph audience",
-          "resourceManagerEndpointUrl": "Management Endpoint",
+          "activeDirectoryResourceId": "This is the URL from the audiences property.",
+          "resourceManagerEndpointUrl": "Aure Resource Management Endpoint",
       },
       "azure.cloud": "AzurePPE"
       ```
 
-8. Kullanıcı ayarları kaydedin ve kullanın **Ctrl + Shift + P** yine. Seçin **Azure: Azure Bulutuna oturum**. Yeni seçenek **AzurePPE**, hedefleri listesinde görünür.
+9. Kullanıcı ayarları kaydedin ve kullanın **Ctrl + Shift + P** yine. Seçin **Azure: Azure Bulutuna oturum**. Yeni seçenek **AzurePPE**, hedefleri listesinde görünür.
 
-9. Seçin **AzurePPE**. Kimlik doğrulaması sayfası tarayıcınızda yükler. Uç noktanız için oturum açın.
+10. Seçin **AzurePPE**. Kimlik doğrulaması sayfası tarayıcınızda yükler. Uç noktanız için oturum açın.
 
 11. Azure Stack aboneliğinize başarıyla kapattınız test etmek için **Ctrl + Shift + P** seçip **Azure: Aboneliği seçin** ve sahip olduğunuz abonelik olup olmadığına bakın.
 

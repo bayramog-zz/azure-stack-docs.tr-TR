@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 06/24/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: d3464681463cfb66a368210beed79d5ef4c28739
-ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
+ms.openlocfilehash: db403f68879efa9103e35bb3581801240c0d64d3
+ms.sourcegitcommit: 1545e18a31cd715a12c7ddc3bcb173b41eb41730
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66828325"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67348728"
 ---
 # <a name="app-service-on-azure-stack-update-6-release-notes"></a>Güncelleştirme 6 sürüm notları Azure Stack üzerinde App Service'e
 
@@ -111,7 +111,11 @@ Kiracılar, genel bulutta geç 2018'de sunulan bir özelliktir dağıtım merkez
 
 - Dağıtım seçenekleri (Klasik) UX ve dağıtım kimlik bilgilerini portalı seçenekleri kullanılamıyor
 
-Azure Stack dağıtımda, kiracılar dağıtım kimlik bilgileri kullanıcı deneyimleri ve dağıtım seçenekleri ulaşmak için erişim portalı kullanarak bu URL formatı - https://portal.&lt; *Bölge*&gt;.&lt; *FQDN*&gt;/? websitesExtension_oldvsts = true - olduğu için ASDK olacaktır [ https://portal.local.azurestack.external/?websitesExtension_oldvsts=true ](https://portal.local.azurestack.external/?websitesExtension_oldvsts=true) ve ardından, uygulamalarına normalde gidin.
+Azure Stack dağıtımda, kiracılar dağıtım kimlik bilgileri kullanıcı deneyimleri ve dağıtım seçenekleri ulaşmak için erişim portalı kullanarak bu URL formatı - https://portal.&lt ; *Bölge*&gt;.&lt; *FQDN*&gt; /? websitesExtension_oldvsts = true - olduğu için ASDK olacaktır [ https://portal.local.azurestack.external/?websitesExtension_oldvsts=true ](https://portal.local.azurestack.external/?websitesExtension_oldvsts=true) ve ardından, uygulamalarına normalde gidin.
+
+- Azure işlevi izleme sürekli olarak "Yükleniyor" içinde portalda görüntülenir
+
+Tek tek İşlevler, Kiracı portalında, izlemek istediğinizde, hiçbir çağrı günlüğü, başarı sayısı ve hata sayısı görürsünüz.  Bu işlevselliği yeniden etkinleştirmek için Git, **işlev uygulaması**Git **Platform özellikleri**ve Git **uygulama ayarları**.  Yeni uygulama ayarı Ekle - ad **AzureWebJobsDashboard** ve değeri AzureWebJobsStorage kümesinde aynı değere ayarlanır.  İşlevinizi İzleyici görünüme gidin ve izleme bilgilerini görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

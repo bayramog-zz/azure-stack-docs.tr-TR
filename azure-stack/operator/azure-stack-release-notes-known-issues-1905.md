@@ -16,12 +16,12 @@ ms.date: 06/05/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 48a97beac6b43e95b52d8b23f20369318e53ebee
-ms.sourcegitcommit: 759a01b566597a71b18fca25902cacc983a5a63b
+ms.openlocfilehash: e90c829edc8c1c5c82068c2eb380123e537994a9
+ms.sourcegitcommit: d1fdecdfa843dfc0629bfc226f1baf14f3ea621d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67297984"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67387767"
 ---
 # <a name="azure-stack-1905-known-issues"></a>Azure Stack 1905 bilinen sorunlar
 
@@ -154,10 +154,10 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 - Neden: 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve oluşturma bir sanal makine ölçek kümesi örneği başarısız oluyor bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hata oluştu ortam.
 - Düzeltme: Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Bununla birlikte, Ölçek kümesi örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
 
-#### <a name="vmss-instance-view-blade-doesnt-load"></a>VMSS örnek görünümü dikey yüklenmiyor
+#### <a name="scale-set-instance-view-blade-doesnt-load"></a>Ölçek kümesi örnek görünümü dikey yüklenmiyor
 
 - Uygulanabilir: Bu sorun, yayın 1904 ve 1905 için geçerlidir.
-- Neden: Azure Stack portalında yer alan bir ölçek kümesi örnek görünümü dikey Pano -> sanal makine Ölçek -> Ayarlar -> AnyScaleSet - örnekleri ->'nı yüklemek için AnyScaleSetInstance başarısız ve crying bir bulut görüntüsünü görüntüler.
+- Neden: Azure Stack portalında bulunan bir sanal makine ölçek örnek görünümü dikey Pano -> sanal makine Ölçek -> Ayarlar -> AnyScaleSet - örnekleri ->'nı yüklemek için AnyScaleSetInstance başarısız ve crying bir bulut görüntüsünü görüntüler.
 - Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar lütfen CLI komutunu `az vmss get-instance-view` bir ölçek kümesi örnek görünümünü elde etmek için.
 
 ### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access

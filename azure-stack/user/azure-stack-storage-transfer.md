@@ -14,12 +14,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: bdbf30a0913aeb4839d31e68c84a4b1b7965bf85
-ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
+ms.openlocfilehash: 27e70df453678bf2f6d3a9427a5a692b3cc62d8d
+ms.sourcegitcommit: d1fdecdfa843dfc0629bfc226f1baf14f3ea621d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66748990"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67387780"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack depolama için veri aktarım araçları kullanın
 
@@ -57,85 +57,57 @@ AzCopy, en iyi performansı sunan basit komutlar kullanılarak Microsoft Azure b
 
 ### <a name="download-and-install-azcopy"></a>AzCopy yükleyip
 
-AzCopy yardımcı programını iki sürümü vardır: Windows ve Linux üzerinde AzCopy üzerinde AzCopy.
+* 1811 güncelleştirme veya daha yeni sürümlerini [AzCopy indirme](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+* Önceki sürümleri (1802 için 1809 güncelleştirme) [AzCopy 7.1.0 indirme](https://aka.ms/azcopyforazurestack20170417).
 
- - **Windows üzerinde AzCopy**
-    - Azure Stack için AzCopy'nın desteklenen sürümünü indirin. Yükleme ve AzCopy Azure Stack'te Azure aynı şekilde kullanın. Daha fazla bilgi için [Windows üzerinde AzCopy](/azure/storage/common/storage-use-azcopy).
-        - 1811 güncelleştirme veya daha yeni sürümlerini [AzCopy 7.3.0 indirme](https://aka.ms/azcopyforazurestack20171109).
-        - Önceki sürümleri (1802 için 1809 güncelleştirme) [AzCopy 7.1.0 indirme](https://aka.ms/azcopyforazurestack20170417).
+### <a name="accopy-101-configuration-and-limits"></a>AcCopy 10.1 yapılandırmayı ve sınırlarını
 
- - **Linux üzerinde AzCopy**
+AzCopy 10.1 önceki API sürümlerini kullanacak şekilde yapılandırılması için sunulmuştur. Bu, Azure Stack (sınırlı) desteği sağlar.
+Azure Stack desteklemek AzCopy için API sürümü yapılandırmak için `AZCOPY_DEFAULT_SERVICE_API_VERSION` ortam değişkenine `2017-11-09`.
 
-    - Yükleme ve AzCopy Azure Stack'te Azure aynı şekilde kullanın. Daha fazla bilgi için [Linux üzerinde AzCopy](/azure/storage/common/storage-use-azcopy-linux).
-    - (1802 için 1809 güncelleştirmeler) önceki sürümleri için bkz: [AzCopy 7.1 ve önceki sürümleri için yükleme adımlarını](/azure/storage/common/storage-use-azcopy-v10#use-the-previous-version-of-azcopy).
+| İşletim sistemi | Komut  |
+|--------|-----------|
+| **Windows** | İçinde bir komut istemi kullanın: `set AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09`<br> PowerShell kullanımda: `$env:AZCOPY_DEFAULT_SERVICE_API_VERSION="2017-11-09"`|
+| **Linux** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
+| **MacOS** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
+
+AzCopy 10.1 Azure Stack için aşağıdaki özellikleri destekler:
+
+| Özellik | Desteklenen eylemler |
+| --- | --- |
+|Kapsayıcı yönetme|Bir kapsayıcı oluşturma<br>Kapsayıcıları listeleme
+|İşi Yönet|İşleri görüntüle<br>Bir işi sürdürme
+|BLOB Kaldır|Tek bir blob Kaldır<br>Tüm veya kısmi sanal dizini Kaldır
+|Dosya yükleme|Dosyayı karşıya yükleme<br>Bir dizin karşıya yükleme<br>Bir dizinin içeriklerini karşıya yükleme
+|Dosyayı indirin|Dosya indirme<br>Bir dizine indirin<br>Bir dizinin içeriğini indirin
+|Dosya eşitleme|Yerel dosya sisteminde bir kapsayıcıya Eşitle<br>Bir kapsayıcıya yerel dosya sistemi Eşitle
+
+   > [!NOTE]
+   > * Azure Stack, Azure Active Directory (AD) kullanarak, AzCopy için sağlayan yetkilendirme kimlik bilgilerini desteklemez. Depolama nesneleri bir paylaşılan erişim imzası (SAS) belirteci kullanarak Azure Stack'te erişmeniz gerekir.
+   > * Azure Stack, iki Azure Stack blob konumlar arasında ve Azure depolama ve Azure Stack arasında zaman uyumsuz veri aktarımı desteklemiyor. "Azcopy cp" kullanamazsınız veri Azure yığını Azure depolama (veya bulmadýðýný şekilde) doğrudan AzCopy 10.1 ile taşıyabilirsiniz.
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Veri aktarımı için AzCopy komut örnekleri
 
-Aşağıdaki örnekler ve Azure Stack bloblarından veri kopyalamak için tipik senaryoları izleyin. Daha fazla bilgi için bkz. [Windows üzerinde AzCopy](/azure/storage/common/storage-use-azcopy) ve [Linux üzerinde AzCopy](/azure/storage/common/storage-use-azcopy-linux).
+Aşağıdaki örnekler ve Azure Stack bloblarından veri kopyalamak için tipik senaryoları izleyin. Daha fazla bilgi için bkz. [Azcopy'i kullanmaya başlama](/azure/storage/common/storage-use-azcopy-v10).
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>Tüm blobları yerel diskinize indirin
 
-**Windows**
-
-```shell
-AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
 ```
-
-**Linux**
-
-```bash
-azcopy \
-    --source https://myaccount.blob.local.azurestack.external/mycontainer \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --recursive
+azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive=true
 ```
 
 ### <a name="upload-single-file-to-virtual-directory"></a>Tek Dosyalı sanal dizine yükleyin
 
-**Windows**
-
-```shell
-AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
-
-**Linux**
-
-```bash
-azcopy \
-    --source /mnt/myfiles/abc.txt \
-    --destination https://myaccount.blob.local.azurestack.external/mycontainer/vd/abc.txt \
-    --dest-key <key>
-```
-
-### <a name="move-data-between-azure-and-azure-stack-storage"></a>Azure ve Azure Stack depolama arasında veri taşıma
-
-Azure depolama ve Azure Stack arasında zaman uyumsuz veri aktarımı desteklenmiyor. Aktarımı belirtmeniz gereken **/SyncCopy** veya **--eşitleme kopyalama** seçeneği.
-
-**Windows**
-
-```shell
-Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
-```
-
-**Linux**
-
-```bash
-azcopy \
-    --source https://myaccount1.blob.local.azurestack.external/myContainer/ \
-    --destination https://myaccount2.blob.core.windows.net/myContainer/ \
-    --source-key <key1> \
-    --dest-key <key2> \
-    --include "abc.txt" \
-    --sync-copy
+azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 ### <a name="azcopy-known-issues"></a>Azcopy bilinen sorunlar
 
  - Dosya depolama henüz Azure Stack'te kullanılabilir olmadığından herhangi bir dosya deposu AzCopy işlemi kullanılabilir değil.
- - Azure depolama ve Azure Stack arasında zaman uyumsuz veri aktarımı desteklenmiyor. Aktarımı belirtebilirsiniz **/SyncCopy** veri kopyalamak için seçenek.
+ - AzCopy 10.1 kullanarak veya Azure Stack ve Azure storage iki Azure Stack blob konumlar arasında veri aktarmak istiyorsanız, verileri yerel konuma indirmeniz ve hedef dizin Azure Stack veya Azure depolama için yeniden yüklemeniz gerekir. AzCopy 7.1 kullanın ve aktarımı belirtin **/SyncCopy** veri kopyalamak için seçenek.  
  - Azcopy Linux sürümünü yalnızca 1802 güncelleştirmesi veya sonraki sürümleri destekler. Ve tablo hizmetini desteklemiyor.
-
+ 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 Azure PowerShell hem Azure hem de Azure Stack hizmetlerini yönetmek için cmdlet'ler sağlayan bir modüldür. Bu, bir görev tabanlı, komut satırı kabuğu ve betik dilidir özellikle sistem yönetimi için tasarlanmış olan.
