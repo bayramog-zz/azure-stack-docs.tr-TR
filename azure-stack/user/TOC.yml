@@ -54,12 +54,12 @@
       href: azure-stack-use-portal.md
     - name: PowerShell ile bağlanma
       href: azure-stack-powershell-configure-user.md
-    - name: Güvenlik ve uyumluluk
+    - name: 'Güvenlik, uyumluluk ve kimlik'
       items:
         - name: Rol tabanlı erişim denetimi kullanma
           href: azure-stack-manage-permissions.md
-        - name: Hizmet sorumlularını kullanma
-          href: Azure-stack-create-service-principals.md
+        - name: Kaynaklara erişmek için bir uygulama kimliğini kullan
+          href: /azure-stack/operator/azure-stack-create-service-principals?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Hizmetleri kullanma
       items:
         - name: İşlem

@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 70d6cfae2eb6e9508e2141aa59c6986ec8817d11
-ms.sourcegitcommit: d1fdecdfa843dfc0629bfc226f1baf14f3ea621d
+ms.openlocfilehash: 68a0d80f02e84affa551b296548a09768eba7e1a
+ms.sourcegitcommit: 6876ccb85c20794969264a1b27e479f4e938f990
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67387712"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67406793"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -142,7 +142,7 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 #### <a name="centos"></a>CentOS
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. 7\.2 centOS Azure Stack üzerinde kullanılabilir değil.
+- Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. 7\.2 centOS kullanılabilir değil Azure Stack Marketini üzerinde dağıtım hatalarını dışarı görüntü bulunamadı aramalar neden olur.
 - Düzeltme: Dağıtımınız için başka bir işletim sistemi veya Market'ten dağıtımdan işleciyle indirildi başka bir CentOS görüntüsü belirten bir Azure Resource Manager şablonu kullanın.
 - Örneği: Common
 

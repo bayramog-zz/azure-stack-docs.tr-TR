@@ -14,12 +14,12 @@ ms.date: 05/26/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/26/2019
-ms.openlocfilehash: 9b5273da44db26f9a98eab4147350c35214b128c
-ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
+ms.openlocfilehash: 6759264afaf3f44dd612662d9778d7de65a15924
+ms.sourcegitcommit: 6876ccb85c20794969264a1b27e479f4e938f990
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67198693"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67406950"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Azure stack'teki Git ile API Sürüm profillerini kullanma
 
@@ -86,7 +86,7 @@ Azure Stack'te Go kod örneği çalıştırmak için aşağıdaki adımları izl
 
 3. Yoksa, bir abonelik oluşturur ve daha sonra kullanılmak üzere abonelik Kimliğini kaydedin. Abonelik oluşturma hakkında daha fazla bilgi için bkz: [Azure Stack'te teklifleri abonelikleri oluşturma](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-4. Bir hizmet sorumlusu oluşturma **abonelik** kapsamı ve **sahibi** rol. Hizmet sorumlusu kimliği ve parolasını kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında daha fazla bilgi için bkz: [hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md). Azure Stack ortamınıza şimdi ayarlayın.
+4. Bir istemcinin kullandığı hizmet sorumlusu ile gizli dizi oluşturma **abonelik** kapsamı ve **sahibi** rol. Hizmet sorumlusu kimliği ve parolasını kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında daha fazla bilgi için bkz: [kaynaklara erişmek için bir uygulama kimliğini kullan](../operator/azure-stack-create-service-principals.md). Azure Stack ortamınıza şimdi ayarlayın.
 
 5. Bir hizmeti modülü kodunuzda Go SDK profilinden içeri aktarın. Azure Stack profilinin geçerli sürümü **2019-03-01**. Örneğin, ağ modülünü içeri aktarmak için **2019-03-01** profil türü, aşağıdaki kodu kullanın:
 
@@ -132,7 +132,7 @@ Alınacak **yetkilendirici** Go SDK kullanarak Azure Active Directory özelliği
 
 Yetkilendirici yetkilendirici kaynağı istemcisi olarak ayarlanmalıdır. İstemci kimlik bilgilerini kullanarak Azure Stack'te yetkilendirici belirteçlerini almak için farklı yolu vardır:
 
-1. Abonelikte sahip rolü hizmet sorumlusuyla varsa, bu adımı atlayın. Aksi takdirde oluşturma bir [hizmet sorumlusu](azure-stack-create-service-principals.md) ve "sahip" rol atayın [aboneliğinize kapsamlı](azure-stack-create-service-principals.md#assign-the-service-principal-to-a-role). Hizmet sorumlusunun uygulama Kimliğini ve parolasını kaydedin.
+1. Abonelikte sahip rolü hizmet sorumlusuyla varsa, bu adımı atlayın. Aksi takdirde bkz [kaynaklara erişmek için bir uygulama kimliğini kullan](../operator/azure-stack-create-service-principals.md) istemci gizli anahtarı kullanan bir hizmet sorumlusu oluşturma ve aboneliğinize kapsamlı bir "sahip" rol atama talimatları. Hizmet sorumlusunun uygulama Kimliğini ve parolasını yakalama emin olun.
 
 2. İçeri aktarma **adal** Git AutoRest paketinden kodunuzda.
 

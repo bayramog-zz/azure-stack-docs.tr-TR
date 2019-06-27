@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/14/2019
+ms.date: 06/26/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: ed85055c04e068ad614a406caf113555601bd620
-ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
+ms.lastreviewed: 06/26/2019
+ms.openlocfilehash: 712aa506cf9209b123d3fafcfd6324d58575ae54
+ms.sourcegitcommit: 6876ccb85c20794969264a1b27e479f4e938f990
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252039"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67406960"
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Öğretici: Uygulamaları Azure ve Azure Stack için hibrit bulut kimliği yapılandırma
 
@@ -52,11 +52,11 @@ Bu öğreticideki adımlar için Azure Stack operatör izinleri olmalıdır.
 
 ## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>Azure AD portalında için hizmet sorumlusu oluşturma
 
-Azure Stack kimlik deposu olarak Azure AD'yi kullanarak dağıttıysanız, Azure için gibi hizmet sorumluları oluşturabilirsiniz. [Hizmet sorumluları oluşturma](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) makalede portal üzerinden adımların nasıl gerçekleştirileceğini gösterir. Sahip olduğunuzu denetleyin [Azure AD izinleri gerekli](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) başlamadan önce.
+Azure Stack kimlik deposu olarak Azure AD'yi kullanarak dağıttıysanız, Azure için gibi hizmet sorumluları oluşturabilirsiniz. [Kaynaklara erişmek için bir uygulama kimliğini kullan](../operator/azure-stack-create-service-principals.md#manage-an-azure-ad-service-principal) portal üzerinden adımların nasıl gerçekleştirileceğini gösterir. Sahip olduğunuzdan emin olmanız [Azure AD izinleri gerekli](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) başlamadan önce.
 
 ## <a name="create-a-service-principal-for-ad-fs-using-powershell"></a>PowerShell kullanarak AD FS için hizmet sorumlusu oluşturma
 
-AD FS ile Azure Stack dağıttıysanız, hizmet sorumlusu oluşturma, erişim için rol atama ve o kimlik kullanarak PowerShell üzerinden oturum için PowerShell kullanabilirsiniz. [AD FS için hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs) PowerShell kullanarak gerekli adımların nasıl gerçekleştirileceğini gösterir.
+AD FS ile Azure Stack dağıttıysanız, hizmet sorumlusu oluşturma, erişim için rol atama ve o kimlik kullanarak PowerShell üzerinden oturum için PowerShell kullanabilirsiniz. [Kaynaklara erişmek için bir uygulama kimliğini kullan](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal) PowerShell kullanarak gerekli adımların nasıl gerçekleştirileceğini gösterir.
 
 ## <a name="using-the-azure-stack-api"></a>Azure yığını API'si kullanma
 

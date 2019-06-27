@@ -14,12 +14,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 27e70df453678bf2f6d3a9427a5a692b3cc62d8d
-ms.sourcegitcommit: d1fdecdfa843dfc0629bfc226f1baf14f3ea621d
+ms.openlocfilehash: a76676c5f4fd1e23a20df04622dafb450e162448
+ms.sourcegitcommit: 6876ccb85c20794969264a1b27e479f4e938f990
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67387780"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67406906"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack depolama için veri aktarım araçları kullanın
 
@@ -57,7 +57,7 @@ AzCopy, en iyi performansı sunan basit komutlar kullanılarak Microsoft Azure b
 
 ### <a name="download-and-install-azcopy"></a>AzCopy yükleyip
 
-* 1811 güncelleştirme veya daha yeni sürümlerini [AzCopy indirme](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+* 1811 güncelleştirme veya daha yeni sürümlerini [indirme AzCopy V10 +](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
 * Önceki sürümleri (1802 için 1809 güncelleştirme) [AzCopy 7.1.0 indirme](https://aka.ms/azcopyforazurestack20170417).
 
 ### <a name="accopy-101-configuration-and-limits"></a>AcCopy 10.1 yapılandırmayı ve sınırlarını
@@ -75,7 +75,7 @@ AzCopy 10.1 Azure Stack için aşağıdaki özellikleri destekler:
 
 | Özellik | Desteklenen eylemler |
 | --- | --- |
-|Kapsayıcı yönetme|Bir kapsayıcı oluşturma<br>Kapsayıcıları listeleme
+|Kapsayıcı yönetme|Bir kapsayıcı oluşturma<br>Kapsayıcı içeriğini listeleme
 |İşi Yönet|İşleri görüntüle<br>Bir işi sürdürme
 |BLOB Kaldır|Tek bir blob Kaldır<br>Tüm veya kısmi sanal dizini Kaldır
 |Dosya yükleme|Dosyayı karşıya yükleme<br>Bir dizin karşıya yükleme<br>Bir dizinin içeriklerini karşıya yükleme
@@ -84,7 +84,7 @@ AzCopy 10.1 Azure Stack için aşağıdaki özellikleri destekler:
 
    > [!NOTE]
    > * Azure Stack, Azure Active Directory (AD) kullanarak, AzCopy için sağlayan yetkilendirme kimlik bilgilerini desteklemez. Depolama nesneleri bir paylaşılan erişim imzası (SAS) belirteci kullanarak Azure Stack'te erişmeniz gerekir.
-   > * Azure Stack, iki Azure Stack blob konumlar arasında ve Azure depolama ve Azure Stack arasında zaman uyumsuz veri aktarımı desteklemiyor. "Azcopy cp" kullanamazsınız veri Azure yığını Azure depolama (veya bulmadýðýný şekilde) doğrudan AzCopy 10.1 ile taşıyabilirsiniz.
+   > * Azure Stack, iki Azure Stack blob konumlar arasında ve Azure depolama ve Azure Stack arasında zaman uyumlu veri aktarımı desteklemiyor. "Azcopy cp" kullanamazsınız veri Azure yığını Azure depolama (veya bulmadýðýný şekilde) doğrudan AzCopy 10.1 ile taşıyabilirsiniz.
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Veri aktarımı için AzCopy komut örnekleri
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: sethm
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: ab5b0b5ac0e67a2a625285bd37a04b084fa8da0f
-ms.sourcegitcommit: 39ba6d18781aed98b29ac5e08aac2d75c37bf18c
+ms.openlocfilehash: d6944fefeb55c1b2a109964271c84daafb8b8ff8
+ms.sourcegitcommit: c9d11be7d27c73797bdf279d4fcabb7a22451541
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65386597"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67397290"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>Siteden siteye VPN bağlantıları için IPSec/IKE ilkesi yapılandırma
 
@@ -30,7 +30,7 @@ Bu makale, siteden siteye (S2S) VPN için bir IPSec/IKE İlkesi yapılandırmak 
 
 ## <a name="ipsec-and-ike-policy-parameters-for-vpn-gateways"></a>VPN ağ geçitleri için IPSec ve IKE ilke parametreleri
 
-Standart IPSec ve IKE protokolü çeşitli birleşimler çok çeşitli şifreleme algoritmalarını destekler. Azure Stack'te parametreleri desteklenen görmek için bkz [IPSec/IKE parametreleri](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), uyumluluk veya güvenlik gereksinimlerinizi karşılayan yardımcı olabilir.
+Standart IPSec ve IKE protokolü çeşitli birleşimler çok çeşitli şifreleme algoritmalarını destekler. Azure Stack'te parametreleri desteklenen görmek için bkz [IPSec/IKE parametreleri](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), uyumluluk veya güvenlik gereksinimlerinizi karşılayan yardımcı olabilir.
 
 Bu makalede, oluşturun ve yeni veya mevcut bir bağlantı için geçerli bir IPSec/IKE ilkesi yapılandırma hakkında yönergeler açıklanmaktadır.
 
@@ -38,9 +38,9 @@ Bu makalede, oluşturun ve yeni veya mevcut bir bağlantı için geçerli bir IP
 
 Bu ilkeler kullanılırken aşağıdaki önemli noktalara dikkat unutmayın:
 
-- IPSec/IKE ilkesi yalnızca üzerinde çalışır *standart* ve *HighPerformance* (rota tabanlı) ağ geçidi SKU'ları.
+- IPSec/IKE ilkesi yalnızca üzerinde çalışır *standart* ve *HighPerformance* (rota tabanlı) ağ geçidi SKU'ları.
 
-- Yalnızca belirtebilirsiniz **bir** belirli bir bağlantı için ilke birleşimi.
+- Belirli bir bağlantı için yalnızca **bir** ilke birleşimi belirtebilirsiniz.
 
 - Hem IKE (ana mod) hem de IPSec (hızlı mod) için tüm algoritmaları ve parametreleri belirtmeniz gerekir. Kısmi ilke belirtimine izin verilmez.
 
@@ -111,25 +111,25 @@ Aşağıdaki tabloda özel ilke tarafından desteklenen karşılık gelen Diffie
 | 20                   | ECP384    | ECP384        | 384 bit ECP   |
 | 24                   | DHGroup24 | PFS24         | 2048 bit MODP |
 
-Daha fazla bilgi için [RFC3526](https://tools.ietf.org/html/rfc3526) ve [RFC5114](https://tools.ietf.org/html/rfc5114).
+Daha fazla bilgi için bkz. [RFC3526](https://tools.ietf.org/html/rfc3526) ve [RFC5114](https://tools.ietf.org/html/rfc5114).
 
-## <a name="part-3---create-a-new-site-to-site-vpn-connection-with-ipsecike-policy"></a>3. Kısım - yeni bir siteden siteye VPN bağlantısı IPSec/IKE ilke oluşturun
+## <a name="part-3---create-a-new-site-to-site-vpn-connection-with-ipsecike-policy"></a>3\. Kısım - yeni bir siteden siteye VPN bağlantısı IPSec/IKE ilke oluşturun
 
 Bu bölümde bir IPSec/IKE İlkesi ile bir siteden siteye VPN bağlantısı oluşturma adımlarında size kılavuzluk eder. Aşağıdaki adımlar, aşağıdaki şekilde gösterildiği gibi bağlantı oluşturun:
 
 ![Site için site İlkesi](media/azure-stack-vpn-s2s/site-to-site.png)
 
-Daha ayrıntılı bir siteden siteye VPN bağlantısı oluşturmak için adım adım yönergeler için bkz. [bir siteden siteye VPN bağlantısı oluşturma](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell).
+Daha ayrıntılı bir siteden siteye VPN bağlantısı oluşturmak için adım adım yönergeler için bkz. [bir siteden siteye VPN bağlantısı oluşturma](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell).
 
 ### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
-- Azure aboneliği. Azure aboneliğiniz yoksa, etkinleştirebilir, [MSDN abone Avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), ya da kaydolun bir [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/).
+- Azure aboneliği. Azure aboneliğiniz yoksa, etkinleştirebilir, [MSDN abone Avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), ya da kaydolun bir [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/).
 
-- Azure Resource Manager PowerShell cmdlet'leri. Bkz: [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md) PowerShell cmdlet'lerini yükleme hakkında daha fazla bilgi.
+- Azure Resource Manager PowerShell cmdlet'leri. Bkz: [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md) PowerShell cmdlet'lerini yükleme hakkında daha fazla bilgi.
 
-### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>1. adım - sanal ağ VPN ağ geçidi ve yerel ağ geçidi oluşturma
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>1\. adım - sanal ağ VPN ağ geçidi ve yerel ağ geçidi oluşturma
 
 #### <a name="1-declare-variables"></a>1. Değişkenleri bildirin
 
@@ -161,7 +161,7 @@ $LNGIP6 = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Aboneliğinize bağlanın ve yeni bir kaynak grubu oluşturun
 
-Resource Manager cmdlet’lerini kullanmak için PowerShell moduna geçtiğinizden emin olun. Daha fazla bilgi için [bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma](azure-stack-powershell-configure-user.md).
+Resource Manager cmdlet’lerini kullanmak için PowerShell moduna geçtiğinizden emin olun. Daha fazla bilgi için [bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma](azure-stack-powershell-configure-user.md).
 
 PowerShell konsolunuzu açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
@@ -201,7 +201,7 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 `
 $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="step-2---create-a-site-to-site-vpn-connection-with-an-ipsecike-policy"></a>2. adım - bir IPSec/IKE İlkesi ile siteden siteye VPN bağlantısı oluşturma
+### <a name="step-2---create-a-site-to-site-vpn-connection-with-an-ipsecike-policy"></a>2\. adım - bir IPSec/IKE İlkesi ile siteden siteye VPN bağlantısı oluşturma
 
 #### <a name="1-create-an-ipsecike-policy"></a>1. Bir IPSec/IKE ilkesi oluşturma
 
@@ -239,7 +239,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 3. Bağlantı IPSec/IKE İlkesi Kaldır
 
 > [!NOTE]
-> IPSec/IKE İlkesi desteklenir *standart* ve *HighPerformance* rota tabanlı VPN ağ geçitleri yalnızca. Üzerinde çalışmaz *temel* ağ geçidi SKU'sunu.
+> IPSec/IKE İlkesi desteklenir *standart* ve *HighPerformance* rota tabanlı VPN ağ geçitleri yalnızca. Üzerinde çalışmaz *temel* ağ geçidi SKU'sunu.
 
 ### <a name="1-show-the-ipsecike-policy-of-a-connection"></a>1. Bir bağlantı IPSec/IKE İlkesi Göster
 
@@ -305,7 +305,7 @@ PfsGroup : None
 
 ### <a name="3-remove-an-ipsecike-policy-from-a-connection"></a>3. Bir bağlantıdan bir IPSec/IKE ilkesini Kaldır
 
-Bir bağlantıdan özel bir ilkeyi kaldırdığınızda, Azure VPN ağ geçidi döner [varsayılan IPSec/IKE teklif](azure-stack-vpn-gateway-settings.md#ipsecike-parameters)ve şirket içi VPN cihazınız ile yeniden anlaşmaya varılır.
+Bir bağlantıdan özel bir ilkeyi kaldırdığınızda, Azure VPN ağ geçidi döner [varsayılan IPSec/IKE teklif](azure-stack-vpn-gateway-settings.md#ipsecike-parameters)ve şirket içi VPN cihazınız ile yeniden anlaşmaya varılır.
 
 ```powershell
 $RG1 = "TestPolicyRG1"

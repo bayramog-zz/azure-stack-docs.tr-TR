@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2019
+ms.date: 06/25/2019
 ms.author: bryanla
 ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: 0fb7f605ff392e0d3fbbe57024eb27f5e5eaab04
-ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
+ms.openlocfilehash: 8c27948185df5f98926a3500db0981a1ccddc321
+ms.sourcegitcommit: c9d11be7d27c73797bdf279d4fcabb7a22451541
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67315945"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67397322"
 ---
 # <a name="use-an-app-identity-to-access-resources"></a>Kaynaklara erişmek için bir uygulama kimliğini kullan
 
@@ -336,7 +336,7 @@ Ayrıca seçtiğiniz kaynak türünü kurar *erişim kapsamının* hizmet soruml
 1. Uygun portalı oturum açma sırasında Azure Stack belirtilen dizine göre yükleme (Azure AD için Azure portalı veya örneğin, AD FS için Azure Stack Kullanıcı Portalı). Bu örnekte, bir kullanıcı Azure Stack kullanıcı portalında oturum açmıştır göstereceğiz.
 
    > [!NOTE]
-   > Belirli bir kaynak için rol atamalarını eklemek için kullanıcı hesabınızın bildiren bir role ait `Microsoft.Authorization/roleAssignments/write` izni. Örneğin, ya da [sahibi](/azure/role-based-access-control/built-in-roles.md#owner) veya [kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles.md#user-access-administrator) yerleşik roller.  
+   > Belirli bir kaynak için rol atamalarını eklemek için kullanıcı hesabınızın bildiren bir role ait `Microsoft.Authorization/roleAssignments/write` izni. Örneğin, ya da [sahibi](/azure/role-based-access-control/built-in-roles#owner) veya [kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator) yerleşik roller.  
 2. Hizmet asıl erişimine izin vermek istediğiniz kaynağa gidin. Bu örnekte, hizmet sorumlusu abonelik kapsamda bir rol seçerek atama **abonelikleri**, ardından belirli bir abonelik. Bunun yerine, bir kaynak grubu veya bir sanal makine gibi belirli bir kaynak seçebilirsiniz. 
 
      ![Abonelik atama için seçin](./media/azure-stack-create-service-principal/select-subscription.png)

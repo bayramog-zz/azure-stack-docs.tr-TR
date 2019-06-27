@@ -386,9 +386,9 @@
         - name: Azure yığını yedekleme
           href: azure-stack-backup-back-up-azure-stack.md
         - name: Azure Stack üzerinde dosya ve uygulama yedekleme
-          href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+          href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure-stack/operator/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Azure Stack sanal makinelerini Azure'a çoğaltma
-          href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+          href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure-stack/operator/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Geri dönülemez veri kaybından kurtarma
           href: azure-stack-backup-recover-data.md
         - name: Yedekleme en iyi uygulamalar
