@@ -11,22 +11,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/27/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 0de27634ac6167637dcdc487474f16d3ef2b2c95
-ms.sourcegitcommit: 427b534634d902b164e7d54dfd97b63c31563084
+ms.openlocfilehash: 1fc07dfd86767f39627e97e42a8dc6de3b7f59b4
+ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67145169"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67419430"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
 Bu makalede, değişiklikler, düzeltmeleri ve bilinen sorunlar Azure Stack geliştirme Seti'ni (ASDK) hakkında bilgi sağlar. Hangi sürümü çalıştırdığınızdan emin değilseniz yapabilecekleriniz [denetlemek için portal'ı kullanmanızı](../operator/azure-stack-updates.md#determine-the-current-version).
 
 Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS akışı](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+
+## <a name="build-11906030"></a>Derleme 1.1906.0.30
+
+### <a name="new-features"></a>Yeni Özellikler
+
+- Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1906.md#whats-in-this-update) Azure yığını sürüm notları.
+
+### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
+
+- Bu sürümde giderilen Azure Stack sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1906.md#fixes) Azure yığını sürüm notları.
+- Bilinen sorunların bir listesi için bkz. [bu makalede](../operator/azure-stack-release-notes-known-issues-1906.md).
+- Unutmayın [kullanılabilir Azure Stack düzeltmelerin](../operator/azure-stack-release-notes-1906.md#hotfixes) Azure Stack ASDK için geçerli değildir.
 
 ## <a name="build-11905040"></a>Derleme 1.1905.0.40
 
@@ -71,23 +83,6 @@ Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-no
 ## <a name="build-1903"></a>Derleme 1903
 
 1903 yükü ASDK yayın içermez.
-
-## <a name="build-11902069"></a>Derleme 1.1902.0.69
-
-### <a name="new-features"></a>Yeni Özellikler
-
-- 1902 derleme planlar, teklifler, kotalar ve eklenti planı oluşturmak için Azure Stack Yönetici portalında yeni bir kullanıcı arabirimi sunar. Ekran görüntüleri de dahil daha fazla bilgi için bkz. [planlar, teklifler ve kotalar oluşturma](../operator/azure-stack-create-plan.md).
-
-- Diğer değişiklikler ve geliştirmeler bu sürümde bir listesi için bkz. [Bu bölümde](../operator/azure-stack-update-1902.md#improvements) Azure Stack'te sürüm notları.
-
-<!-- ### New features
-
-- For a list of new features in this release, see [this section](../operator/azure-stack-update-1902.md#new-features) of the Azure Stack release notes.
-
-### Fixed and known issues
-
-- For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1902.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1902.md#known-issues-post-installation).
-- Note that [available Azure Stack hotfixes](../operator/azure-stack-update-1902.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK. -->
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 

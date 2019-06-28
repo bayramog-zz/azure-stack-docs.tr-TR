@@ -15,12 +15,12 @@ ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: db73f0b787b9b163f39d5af89e260ca6a30855bd
-ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
+ms.openlocfilehash: 437fb7c62436c0565945b851f0a70550a228d54c
+ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66828140"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67419528"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack altyapısını güvenlik durumu
 
@@ -99,6 +99,7 @@ Uyumluluk belgeleri bulunabilir [Microsoft hizmet güveni portalı](https://serv
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Azure Stack güvenlik denetimleri yapılandırın](azure-stack-security-configuration.md)
 - [Azure stack'teki dizilerinizin döndürme hakkında bilgi edinin](azure-stack-rotate-secrets.md)
 - [PCI-DSS ve CSA-CCM belgeleri için Azure Stack](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
 - [Azure Stack için Savunma Bakanlığı ve NIST belgeleri](https://servicetrust.microsoft.com/ViewPage/Blueprint)

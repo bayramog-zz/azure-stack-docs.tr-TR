@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: e90c829edc8c1c5c82068c2eb380123e537994a9
-ms.sourcegitcommit: d1fdecdfa843dfc0629bfc226f1baf14f3ea621d
+ms.lastreviewed: 06/14/2019
+ms.openlocfilehash: 40b2eb51b3e05a25706037f404a53d86fa7cae5a
+ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67387767"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67419558"
 ---
 # <a name="azure-stack-1905-known-issues"></a>Azure Stack 1905 bilinen sorunlar
 
@@ -47,13 +47,6 @@ Bu makalede, Azure Stack 1905 sürümündeki bilinen sorunlar listelenmektedir. 
 - Örneği: Common
 
 ## <a name="portal"></a>Portal
-
-### <a name="administrative-subscriptions"></a>Yönetim abonelikler
-
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: 1804 sürümü ile sunulan iki yönetici aboneliğin kullanılmamalıdır. Abonelik türleridir **ölçüm** aboneliği ve **tüketim** abonelik.
-- Düzeltme: Bu abonelikler 1906 ile başlayan ve sonunda silinen askıya alınır. Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, kullanıcı Aboneliklerdeki 1906 önce yeniden oluşturun.
-- Örneği: Common
 
 ### <a name="subscription-resources"></a>Abonelik kaynakları
 
@@ -88,6 +81,13 @@ Bu makalede, Azure Stack 1905 sürümündeki bilinen sorunlar listelenmektedir. 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı portalında bir blobu kullanarak yüklemeye çalıştığınızda **OAuth(preview)** seçeneği, görev bir hata iletisiyle başarısız olur.
 - Düzeltme: Blob SAS seçeneğini kullanarak yükleyin.
+- Örneği: Common
+
+### <a name="template"></a>Şablon
+
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: Kullanıcı Portalı'nda, "_" (alt çizgi karakteri) ile başlayan şablon adları parametrelerini şablon dağıtımı kullanıcı Arabirimi doldurmaz.
+- Düzeltme: "_" (Alt çizgi karakteri) şablonu adından kaldırın.
 - Örneği: Common
 
 ## <a name="networking"></a>Ağ
@@ -130,6 +130,13 @@ Bu makalede, Azure Stack 1905 sürümündeki bilinen sorunlar listelenmektedir. 
 - Neden: Yeni bir Windows sanal makine (VM) oluştururken, aşağıdaki hata görüntülenebilir: **Sanal makine 'vm-adı' başlatılamadı. Hata: VM 'vm-adı' için seri çıkış ayarları güncelleştirilemedi**.
 Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanılama depolama hesabınızı silerseniz, bir hata meydana gelir.
 - Düzeltme: Daha önce kullandığınız aynı ada sahip bir depolama hesabını yeniden oluşturun.
+- Örneği: Common
+
+### <a name="vm-resize"></a>VM yeniden boyutlandırma
+
+- Uygulanabilir: Bu sorun 1905 sürümü için geçerlidir.
+- Neden: Yönetilen disk sanal makine başarıyla yeniden boyutlandırmak yüklenemiyor. VM'yi yeniden boyutlandırma girişimi, "code" ile bir hata oluşturur: "" Message"InternalOperationError": "İşlemi bir iç hata oluştu."
+- Düzeltme: Sonraki sürümde bu sorunu düzeltmek için çalışıyoruz. Şu anda sanal makine yeni bir VM boyutu ile yeniden oluşturmanız gerekir.
 - Örneği: Common
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi

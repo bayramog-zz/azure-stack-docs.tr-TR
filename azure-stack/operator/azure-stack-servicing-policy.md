@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 06/26/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: bcf499b0b3e7cd58d4b938b4be64c19eecf649e2
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 8965ad94d1c8576e437e85a9714997f842f7dd50
+ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691484"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67419456"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack hizmet İlkesi
 
@@ -33,7 +33,7 @@ Microsoft, hem tam aylık güncelleştirme paketleri, aynı zamanda Düzeltme Pa
 
 Aylık güncelleştirme paketleri, bir güvenli Azure uç noktası barındırılır. Bunları kullanarak el ile indirebilirsiniz [Azure Stack güncelleştirmeleri yükleyici aracı](https://aka.ms/azurestackupdatedownload). Ölçek biriminize bağlıysa, güncelleştirmeyi otomatik olarak Yönetici portalı'nda görünür **güncelleştirme kullanılabilir**. Tam, aylık güncelleştirme paketlerini de her sürümde belgelenmiştir. Her sürüm hakkında daha fazla bilgi için herhangi bir yayın tıklayabilirsiniz [güncelleştirme paketi yayın temposudur](#update-package-release-cadence) bu makalenin.
 
-Düzeltme güncelleştirme paketleri, aynı güvenli Azure uç noktası, barındırılır. Ekli bağlantılar her ilgili düzeltme KB makale el ile kullanarak bunları yükleyebilirsiniz; Örneğin, [Azure Stack düzeltme 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Benzer şekilde tam, aylık güncelleştirme paketleri, Azure Stack operatörleri .xml, .bin ve .exe dosyaları indirebilir ve bunları yordamı kullanarak içeri [güncelleştirmelerini Azure Stack'te](azure-stack-apply-updates.md). Azure Stack operatörleri bağlı ölçek birimleri ile otomatik olarak ileti Yönetici portalı'nda görünür düzeltmeleri görürsünüz **güncelleştirme kullanılabilir**.
+Düzeltme güncelleştirme paketleri, aynı güvenli Azure uç noktası, barındırılır. Ekli bağlantılar her ilgili düzeltme KB makalelerinin kullanarak bunları yükleyebilirsiniz; Örneğin, [Azure Stack düzeltme 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Benzer şekilde tam, aylık güncelleştirme paketleri, Azure Stack operatörleri .xml, .bin ve .exe dosyaları indirebilir ve bunları yordamı kullanarak içeri [güncelleştirmelerini Azure Stack'te](azure-stack-apply-updates.md). Azure Stack operatörleri bağlı ölçek birimleri ile otomatik olarak ileti Yönetici portalı'nda görünür düzeltmeleri görürsünüz **güncelleştirme kullanılabilir**.
 
 Ölçek biriminize bağlı değil ve her düzeltme yayın hakkında bildirim almak istiyorsanız, abone [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) veya [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) her sürümde belirtildiği akışı.  
 
@@ -53,16 +53,18 @@ Planlama ve güncelleştirmeleri yönetme ve geçerli sürümünüzde belirleme 
 
 Belirli bir güncelleştirme hakkında daha fazla bilgi için indirin, güncelleştirme sürüm notları için bkz dahil olmak üzere:
 
+- [Azure Stack 1906 güncelleştirme](azure-stack-release-notes-1906.md)
 - [Azure Stack 1905 güncelleştirme](azure-stack-release-notes-1905.md)
 - [Azure Stack 1904 güncelleştirme](azure-stack-release-notes-1904.md)
 - [Azure Stack 1903 güncelleştirme](azure-stack-update-1903.md)
-- [Azure Stack 1902 güncelleştirme](azure-stack-update-1902.md)
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
 Bazen, Microsoft bu adrese önleyici veya zamana duyarlı genellikle belirli bir sorunun Azure Stack için düzeltmeler sağlar.  Her bir düzeltme sorun, nedeni ve çözümü ayrıntıları karşılık gelen bir Microsoft Bilgi Bankası makalesiyle serbest bırakılır.
 
-Düzeltmeleri indirilir ve Azure Stack için yalnızca normal tam güncelleştirme paketleri gibi yüklü. Ancak, tam güncelleştirme, dakikalar içinde düzeltmeleri yükleyebilirsiniz. Azure Stack operatörleri bakım pencereleri düzeltmeleri yüklerken ayarlamanızı öneririz. Böylece düzeltmeyi uygulanıp uygulanmadığını kolayca belirleyebilir düzeltmeleri Azure Stack bulutunuza sürümünü güncelleştirin. Her Azure Stack, yine destek sürümü için ayrı bir düzeltme sağlanır. Belirli bir yineleme için her bir düzeltme toplanır ve aynı sürüme önceki güncelleştirmeleri içerir. Daha fazla bilgi bankası karşılık gelen bir düzeltmeler de belirli bir düzeltme uygulanabilirliğini hakkında makalesi.  
+Daha fazla bilgi ve bağlantılar belirli düzeltmeler için önceki bölümdeki sürüm notları bağlantılara bakın.
+
+Düzeltmeleri indirilir ve Azure Stack için yalnızca normal tam güncelleştirme paketleri gibi yüklü. Ancak, tam güncelleştirme, dakikalar içinde düzeltmeleri yükleyebilirsiniz. Azure Stack operatörlerinin bakım pencereleri düzeltmeleri yüklerken ayarlamanızı öneririz. Böylece düzeltmeyi uygulanıp uygulanmadığını kolayca belirleyebilir düzeltmeleri Azure Stack bulutunuza sürümünü güncelleştirin. Her Azure Stack, yine destek sürümü için ayrı bir düzeltme sağlanır. Belirli bir yineleme için her düzeltmesi toplanır ve aynı sürüme önceki güncelleştirmeleri içerir. Daha fazla ilgili Bilgi Bankası'nda belirli bir düzeltme uygulanabilirliğini hakkında makalesi. Önceki bölümde sürüm notları bağlantılara bakın.  
 
 ## <a name="keep-your-system-under-support"></a>Sisteminizi desteği altında tutun
 

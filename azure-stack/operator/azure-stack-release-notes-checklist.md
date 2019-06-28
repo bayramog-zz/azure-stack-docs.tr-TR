@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: e079121fda268e9892648fca99da34de04f08101
-ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
+ms.lastreviewed: 06/27/2019
+ms.openlocfilehash: c5108dc8b24fec7569d54964217f146a5cefa5e6
+ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152478"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67419585"
 ---
 # <a name="azure-stack-update-activity-checklist"></a>Azure Stack güncelleştirme etkinlik denetim listesi
 
@@ -31,13 +31,13 @@ Bu makale, Azure Stack operatörleri için güncelleştirme ile ilgili etkinlikl
 
 | Etkinlik              | Ayrıntılar                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
-| Bilinen sorunları gözden geçirin   | [Bilinen sorunların listesi](azure-stack-release-notes-known-issues-1905.md).                |
-| Güvenlik güncelleştirmeleri gözden geçirin | [Güvenlik güncelleştirmelerinin listesi](azure-stack-release-notes-security-updates-1905.md).      |
+| Bilinen sorunları gözden geçirin   | [Bilinen sorunların listesi](azure-stack-release-notes-known-issues-1906.md).                |
+| Güvenlik güncelleştirmeleri gözden geçirin | [Güvenlik güncelleştirmelerinin listesi](azure-stack-release-notes-security-updates-1906.md).      |
 | Test-AzureStack çalıştırın   | Çalıştırma `Test-AzureStack -Group UpdateReadiness` işletimsel sorunları belirlemek için.      |
 | Sorunları çözün        | Tarafından tanımlanan tüm çalışma sorunlarını çözün **Test AzureStack**.                |
 | En son düzeltmeleri uygulama | Şu anda yüklü sürümü için geçerli en son düzeltmeleri uygulama.         |
 | Kapasite Planlayıcısı aracını çalıştırma | En son sürümünü kullandığınızdan emin olun [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) iş yükünüz planlama ve boyutlandırma gerçekleştirmek için aracı. En son sürüm hata düzeltmeleri içerir ve yayımlanan yeni özellikler sağlayan her Azure Stack güncelleştirme. |
-| Güncelleştirme var       | Yalnızca bağlı senaryolarda Azure Stack dağıtımları güvenli bir uç nokta düzenli aralıklarla denetleyin ve bulut için bir güncelleştirme varsa, otomatik olarak bilgilendirme. Bağlantısı kesilmiş müşteriler indirebilir ve paket yeni 1905 kullanarak içeri aktarma [işlemi burada açıklanan](azure-stack-apply-updates.md).               |
+| Güncelleştirme var       | Yalnızca bağlı senaryolarda Azure Stack dağıtımları güvenli bir uç nokta düzenli aralıklarla denetleyin ve bulut için bir güncelleştirme varsa, otomatik olarak bilgilendirme. Bağlantısı kesilmiş müşteriler indirebilir ve paket yeni 1906 kullanarak içeri aktarma [işlemi burada açıklanan](azure-stack-apply-updates.md).               |
 
 ## <a name="during-azure-stack-update"></a>Azure Stack güncelleştirme sırasında
 
@@ -59,5 +59,5 @@ Bu makale, Azure Stack operatörleri için güncelleştirme ile ilgili etkinlikl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bilinen sorunlar listesini inceleyin](azure-stack-release-notes-known-issues-1905.md)
-- [Güvenlik güncelleştirmeleri listesini gözden geçirin](azure-stack-release-notes-security-updates-1905.md)
+- [Bilinen sorunlar listesini inceleyin](azure-stack-release-notes-known-issues-1906.md)
+- [Güvenlik güncelleştirmeleri listesini gözden geçirin](azure-stack-release-notes-security-updates-1906.md)

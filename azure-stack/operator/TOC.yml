@@ -15,7 +15,13 @@
         - name: Güncelleştirmeleri uygulamak için Denetim listesi
           href: azure-stack-release-notes-checklist.md
         - name: Güvenlik güncelleştirmeleri
-          href: azure-stack-release-notes-security-updates-1905.md
+          href: azure-stack-release-notes-security-updates-1906.md
+        - name: 1906 güncelleştirme
+          items:
+            - name: Sürüm notları
+              href: azure-stack-release-notes-1906.md
+            - name: Bilinen sorunlar
+              href: azure-stack-release-notes-known-issues-1906.md
         - name: 1905 güncelleştirme
           items:
             - name: Sürüm notları
@@ -30,8 +36,6 @@
               href: azure-stack-release-notes-known-issues-1904.md
         - name: 1903 güncelleştirme
           href: azure-stack-update-1903.md
-        - name: 1902 güncelleştirme
-          href: azure-stack-update-1902.md
 - name: Hızlı girişler
   expanded: true
   items:
@@ -201,6 +205,8 @@
       items:
         - name: Güvenliğe genel bakış
           href: azure-stack-security-foundations.md
+        - name: Güvenliği yapılandırma
+          href: azure-stack-security-configuration.md
         - name: Kimlik
           items:
             - name: Kimliğe genel bakış
@@ -368,7 +374,7 @@
           items:
             - name: Kullanım verilerini raporlama
               href: azure-stack-usage-reporting.md
-            - name: Bulut hizmeti sağlayıcıları için raporlama altyapınızın kullanımı
+            - name: Kullanım raporlama altyapısı
               href: azure-stack-csp-ref-infrastructure.md
             - name: Sağlayıcı kullanım API’si
               href: azure-stack-provider-resource-api.md
@@ -376,6 +382,12 @@
               href: azure-stack-tenant-resource-usage-api.md
             - name: Kullanım Hakkında SSS
               href: azure-stack-usage-related-faq.md
+            - name: Kullanım sorunlarını giderme
+              items:
+                - name: Kullanım bağlantı hataları
+                  href: azure-stack-usage-issues.md
+                - name: Kullanım kayıt hata kodları
+                  href: azure-stack-registration-errors.md
     - name: Azure yığını yedekleme
       href: azure-stack-backup-infrastructure-backup.md
       items:

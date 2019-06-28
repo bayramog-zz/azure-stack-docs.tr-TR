@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: 68a0d80f02e84affa551b296548a09768eba7e1a
-ms.sourcegitcommit: 6876ccb85c20794969264a1b27e479f4e938f990
+ms.openlocfilehash: f25bc769e7461c21e40017d6413cfbe35186441b
+ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406793"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67419600"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -38,6 +38,13 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Örneği: Common
 
 ## <a name="portal"></a>Portal
+
+### <a name="administrative-subscriptions"></a>Yönetim abonelikler
+
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: 1804 sürümü ile sunulan iki yönetici aboneliğin kullanılmamalıdır. Abonelik türleridir **ölçüm** aboneliği ve **tüketim** abonelik.
+- Düzeltme: Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, bunları kullanıcı aboneliklerini yeniden oluşturun.
+- Örneği: Common
 
 ### <a name="subscription-resources"></a>Abonelik kaynakları
 
@@ -93,6 +100,13 @@ Bu makalede, Azure Stack 1904 sürümündeki bilinen sorunlar listelenmektedir. 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Kullanıcı Portalı'nda görev OAuth(preview) seçeneğini kullanarak bir blob karşıya yüklemek çalıştığınızda bir hata iletisiyle başarısız olur.
 - Düzeltme: Blob SAS seçeneğini kullanarak yükleyin.
+- Örneği: Common
+
+### <a name="template"></a>Şablon
+
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: Kullanıcı Portalı'nda, "_" (alt çizgi karakteri) ile başlayan şablon adları parametrelerini şablon dağıtımı kullanıcı Arabirimi doldurmaz.
+- Düzeltme: "_" (Alt çizgi karakteri) şablonu adından kaldırın.
 - Örneği: Common
 
 ## <a name="networking"></a>Ağ

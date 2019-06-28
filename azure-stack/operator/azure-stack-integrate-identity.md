@@ -10,12 +10,12 @@ ms.date: 05/10/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: 6fb879dc49197b52133750d65aadf96b601bda69
-ms.sourcegitcommit: 914daff43ae0f0fc6673a06dfe2d42d9b4fbab48
+ms.openlocfilehash: de2c0c2181025b7dbbc01691b72b0756fa201274
+ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66043226"
+ms.lasthandoff: 06/27/2019
+ms.locfileid: "67419505"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack veri merkezi tümleştirmesi - kimlik
 
@@ -131,6 +131,7 @@ Aşağıdaki bilgiler gereklidir Otomasyon parametreler için giriş olarak:
 |---------|---------|---------|---------|
 |CustomAdfsName|ADFS sağlayıcı adı|Talep sağlayıcı adı.<br>AD FS giriş sayfasında bu şekilde görünür.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|ADFS meta veri URI'sini|Federasyon meta veri bağlantısı| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
+|SigningCertificateRevocationCheck|NA|CRL denetimini atlamak için isteğe bağlı parametre|None|
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Azure stack'teki Talep sağlayıcı güveni yapılandırmak için tetikleyici Otomasyon
