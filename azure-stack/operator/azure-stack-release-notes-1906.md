@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: db1611557d07ec31ec53edbb5e8356b520256be5
-ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
+ms.openlocfilehash: 233ae3329ad382942c48b0a658ce019ccd214233
+ms.sourcegitcommit: f5d7b3ff34cfc1c7092087a4fa6efd4cf2b4b981
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67419873"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465266"
 ---
 # <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirme
 
@@ -83,6 +83,8 @@ Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri g
 ### <a name="changes"></a>Değişiklikler
 
 - Bir depolama hesabı deneyimi oluşturmak artık Azure ile tutarlı olur.
+
+- Uyarı tetiklenmeden iç gizli dizilerinin sona erme için değiştirilmiştir:
   - Uyarı bildirimleri artık 90 gün önce sona erme tarihini gizli anahtarları oluşturulur.
   - Kritik uyarılar artık 30 gün önce sona erme tarihini gizli anahtarları oluşturulur.
 

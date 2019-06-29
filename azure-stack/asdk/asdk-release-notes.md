@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 06/28/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 1fc07dfd86767f39627e97e42a8dc6de3b7f59b4
-ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
+ms.lastreviewed: 06/28/2019
+ms.openlocfilehash: 4b9162eb662336b3a1acae69660ff86f5f3a0995
+ms.sourcegitcommit: 87da3ab028f39a3fdc90f58f0258c266198a94bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67419430"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67470962"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
@@ -33,6 +33,10 @@ Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-no
 ### <a name="new-features"></a>Yeni Özellikler
 
 - Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1906.md#whats-in-this-update) Azure yığını sürüm notları.
+
+### <a name="changes"></a>Değişiklikler
+
+- Eklenen bir **AzS-SRNG01** halka Azure Stack için günlük toplama hizmetini barındıran VM desteği. Daha fazla bilgi için [sanal makine rolleri](asdk-architecture.md).
 
 ### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
 
