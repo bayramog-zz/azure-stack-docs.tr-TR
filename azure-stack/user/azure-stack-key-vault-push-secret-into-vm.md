@@ -1,5 +1,5 @@
 ---
-title: Azure Stack'te güvenli şekilde depolanan bir sertifika ile bir sanal makine dağıtma | Microsoft Docs
+title: Azure Stack'te güvenli şekilde depolanan bir sertifika ile VM dağıtma | Microsoft Docs
 description: Bir sanal makine dağıtma ve Azure Stack'te bir anahtar kasası kullanarak bir sertifika üzerine gönderme hakkında bilgi edinin
 services: azure-stack
 documentationcenter: ''
@@ -15,37 +15,37 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: f9d4716751a03da1b67881e315abc2f6603428d3
-ms.sourcegitcommit: 07c51a03f07a6a3ee2721aa942d31a7a4c6a339b
+ms.openlocfilehash: 9403931d91756e744dcdb6c34adb26e8281f6d28
+ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67028239"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67492377"
 ---
-# <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Sanal makine oluşturma ve Azure Stack anahtar kasasından alınan bir sertifika yükleyin
+# <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack"></a>Azure Stack'te güvenli şekilde depolanan bir sertifika ile VM dağıtma 
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Bu makalede, bir anahtar kasası sertifikası ile Azure Stack sanal makine'de (VM) oluşturma işlemini açıklar.
+Bu makalede, Azure Stack sanal makine'de (VM) dağıtmak nasıl bir anahtar kasası sertifikası ile açıklanır.
 
 ## <a name="overview"></a>Genel Bakış
 
 Active Directory kimlik doğrulaması veya web trafiği şifreleme gibi birçok senaryoda sertifikalar kullanılır. Azure Stack anahtar kasasındaki gizli diziler olarak sertifikaları güvenli bir şekilde depolayabilirsiniz. Azure Stack anahtar kasası kullanmanın avantajları şunlardır:
 
-* Sertifikalar, bir komut dosyası, komut satırı geçmişinde veya şablonda gösterilmez.
+* Sertifikalar, bir komut dosyası, komut satırı geçmişinde veya şablonda kullanıma sunulmaz.
 * Sertifika yönetimi işlemini kolaylaştırılmış hale getirilir.
 * Sertifikalara erişen anahtarları denetiminizde var.
 
 ## <a name="process-description"></a>İşlem açıklaması
 
-Aşağıdaki adımlar, sanal makine için bir sertifika göndermek için gerekli işlemi açıklanmaktadır:
+Aşağıdaki adımlar, VM'ye sertifika göndermek için gerekli işlemi açıklanmaktadır:
 
-1. Bir Key Vault gizli anahtar oluşturun.
+1. Anahtar kasası gizli dizi oluşturma.
 2. Güncelleştirme **azuredeploy.parameters.json** dosya.
 3. Şablonu dağıtın.
 
 > [!NOTE]
-> VPN birbirine bağlandıysa, Azure Stack geliştirme Seti'ni (ASDK) öğesinden veya bir dış istemcisinden aşağıdaki adımları kullanabilirsiniz.
+> VPN bağlı değilseniz, Azure Stack geliştirme Seti'ni (ASDK) öğesinden veya bir dış istemcisinden aşağıdaki adımları kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -53,7 +53,7 @@ Aşağıdaki adımlar, sanal makine için bir sertifika göndermek için gerekli
 * [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md).
 * [Azure Stack kullanıcının PowerShell ortamını yapılandırmak](azure-stack-powershell-configure-user.md).
 
-## <a name="create-a-key-vault-secret"></a>Bir Key Vault gizli dizisi oluşturma
+## <a name="create-a-key-vault-secret"></a>Anahtar kasası gizli dizi oluşturma
 
 Aşağıdaki betiği .pfx biçiminde bir sertifika oluşturur, bir anahtar kasası oluşturulur ve sertifika anahtar kasasında gizli dizi olarak depolar.
 
@@ -119,9 +119,9 @@ Set-AzureKeyVaultSecret `
    -SecretValue $secret
 ```
 
-Bu komut dosyasını çalıştırdığınızda, çıktı gizli anahtar URI'sini içerir. Bu URI not edin. İçinde başvurmalıdır [Windows Resource Manager şablonu için anında iletme sertifikası](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate). İndirme [anında iletme sertifikası windows vm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) geliştirme bilgisayarınıza şablon klasörü. Bu klasörde **azuredeploy.json** ve **azuredeploy.parameters.json** dosyaları, aşağıdaki adımları gerekir.
+Bu komut dosyasını çalıştırdığınızda, çıktı gizli anahtar URI'sini içerir. İçinde başvurmalıdır bir not alın; çünkü bu URI [Windows Resource Manager şablonu için anında iletme sertifikası](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate). İndirme [anında iletme sertifikası windows vm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) geliştirme bilgisayarınıza şablon klasörü. Bu klasörde **azuredeploy.json** ve **azuredeploy.parameters.json** dosyaları, aşağıdaki adımları gerekir.
 
-Değiştirme **azuredeploy.parameters.json** ortam değerlerinize göre dosya. Belirli ilgilenilen kasa adını, kasa kaynak grubu ve gizli dizi (önceki betiği tarafından oluşturulan gibi) URI parametrelerdir. Aşağıdaki bölümde, bir parametre dosyası örneği gösterilmektedir.
+Değiştirme **azuredeploy.parameters.json** ortam değerlerinize göre dosya. Önemli parametreleri, kasa adını, kasa kaynak grubu ve gizli dizi (önceki betiği tarafından oluşturulan gibi) URI ' dir. Aşağıdaki bölümde, bir parametre dosyası örneği gösterilmektedir.
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>Azuredeploy.parameters.json dosyasını güncelleştirme
 
@@ -177,7 +177,7 @@ New-AzureRmResourceGroupDeployment `
 
 ![Şablon dağıtım sonuçları](media/azure-stack-key-vault-push-secret-into-vm/deployment-output.png)
 
-Azure Stack sertifika dağıtımı sırasında sanal makineye gönderir. Sertifika konumu VM'nin işletim sistemine bağlıdır:
+Azure Stack sertifika VM dağıtımı sırasında iter. Sertifika konumu VM'nin işletim sistemine bağlıdır:
 
 * Sertifika eklenir Windows içinde **LocalMachine** sertifika konumu, kullanıcı tarafından sağlanan sertifika deposuna sahip.
 * Linux sertifika altına yerleştirilir **/var/lib/waagent** dizin dosya adıyla **UppercaseThumbprint.crt** X509 için sertifika dosyası ve **UppercaseThumbprint.prv**  özel anahtar için.

@@ -15,14 +15,14 @@ ms.date: 01/14/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 00f7c3b990e9930571ace8adec9a33d0c9105be6
-ms.sourcegitcommit: 261df5403ec01c3af5637a76d44bf030f9342410
+ms.openlocfilehash: 94554162cc91ddc4e9be7f24f9c7fafc32051e3c
+ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66252028"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67492390"
 ---
-# <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile karma bulut bağlantısı yapılandırma
+# <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Öğretici: Azure Stack ve Azure ile karma bulut bağlantısı yapılandırma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -31,27 +31,27 @@ Azure genel ve karma bağlantı desenini kullanarak, Azure Stack güvenlik ile k
 Bu öğreticide, bir örnek ortama oluşturacaksınız:
 
 > [!div class="checklist"]
-> - Veri gizlilik veya yasal gereksinimleri karşılamak, ancak genel Azure kaynaklarına erişim için şirket içinde tutun.
+> - Veri gizlilik veya yasal gereksinimleri karşılamak için ancak genel Azure kaynaklarına erişimi korumak için şirket içinde tutun.
 > - Eski sistem genel Azure'da bulut ölçeği uygulama dağıtımı ve kaynakları kullanırken korur.
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik bulut bilgi işlem, şirket içi ortamınıza ve hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sunar.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik bulut, şirket içi ortamınıza bilgi işlem, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sunar.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) tasarlama, dağıtma ve karma işletim (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları gözden geçirmeleri uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
+> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bazı bileşenler bir karma bağlantı dağıtımı oluşturmak için gereklidir. Uygun şekilde planlamak gerekir, bu bileşenlerden bazıları hazırlamak için zaman alabilir.
+Bazı bileşenler bir karma bağlantı dağıtımı oluşturmak için gereklidir. Bu bileşenlerden bazıları, hazırlama, böylece buna göre planlayın zaman ayırın.
 
 **Azure Stack**
 
-Bir Azure OEM/donanım iş ortağı bir üretim Azure Stack'te dağıtabilir ve tüm kullanıcıların bir Azure Stack geliştirme Seti'ni (ASDK) dağıtabilirsiniz.
+Bir Azure OEM donanım iş ortağı bir üretim Azure Stack'te dağıtabilir ve tüm kullanıcıların bir Azure Stack geliştirme Seti'ni (ASDK) dağıtabilirsiniz.
 
 **Azure Stack bileşenleri**
 
-Bir Azure Stack operatörü App Service'e dağıtım, planlar ve Teklifler oluşturma, bir kiracı aboneliği oluşturmak ve Windows Server 2016 görüntüsü eklemeniz gerekir. Bu bileşenlerden bazıları zaten varsa, bu öğreticiye başlamadan önce gereksinimleri karşıladığından emin olun.
+Azure Stack operatörü App Service'e dağıtım, planlar ve Teklifler oluşturma, bir kiracı aboneliği oluşturmak ve Windows Server 2016 görüntüsü eklemeniz gerekir. Bu bileşenler zaten varsa, bu öğreticiye başlamadan önce gereksinimleri karşıladığından emin olun.
 
 Bu öğreticide, Azure ve Azure Stack bazı temel bilgi sahibi olduğunuzu varsayar. Bu öğreticiye başlamadan önce daha fazla bilgi için bu makaleleri okuyun:
 
@@ -61,7 +61,7 @@ Bu öğreticide, Azure ve Azure Stack bazı temel bilgi sahibi olduğunuzu varsa
 ### <a name="azure"></a>Azure
 
  - Azure aboneliğiniz yoksa başlamadan önce  [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)  oluşturun.
- - Oluşturma bir [Web uygulaması](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) azure'da. Öğreticide gerekeceği için Web App URL'si not edin.
+ - Oluşturma bir [web uygulaması](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) azure'da. Öğreticide gerekeceği için web app URL'si not edin.
 
 ### <a name="azure-stack"></a>Azure Stack
 
@@ -77,27 +77,27 @@ Bu öğreticide, Azure ve Azure Stack bazı temel bilgi sahibi olduğunuzu varsa
 
 Hibrit bulut bağlantısı yapılandırma başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
- - VPN cihazınız için dışarıya yönelik genel bir IPv4 adresi gerekir. Bu IP adresi bir NAT'nin arkasında olamaz
+ - VPN cihazınız için dışarıya yönelik genel bir IPv4 adresi gerekir. Bu IP adresi NAT (ağ adresi çevirisi) yer almamalıdır.
  - Tüm kaynaklar aynı bölge/konum dağıtılır.
 
 #### <a name="tutorial-example-values"></a>Öğretici örneğinde değerleri
 
-Bu öğreticideki örneklerde aşağıdaki değerler kullanılır. Bir test ortamı oluşturabilir veya bir daha iyi örneklerini anlamak için bunlara başvurmak için bu değerleri kullanabilirsiniz. VPN Gateway hakkında daha fazla bilgi için genel olarak, belirleyebilmesini [VPN Gateway ayarları hakkında](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
+Bu öğreticideki örneklerde aşağıdaki değerler kullanılır. Bir test ortamı oluşturabilir veya bir daha iyi örneklerini anlamak için bunlara başvurmak için bu değerleri kullanabilirsiniz. VPN hakkında daha fazla bilgi için ağ geçidi genel olarak, belirleyebilmesini [VPN Gateway ayarları hakkında](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
 
 Bağlantı özellikleri:
 
- - **VPN türü**: Rota temelli
- - **Bağlantı türü**: Siteden siteye (IPSec)
+ - **VPN türü**: rota tabanlı
+ - **Bağlantı türü**: siteden siteye (IPSec)
  - **Ağ geçidi türü**: VPN
  - **Azure bağlantı adı**: Azure-Gateway-AzureStack-(portalda otomatik doldurulacaktır bu değeri) S2SGateway
  - **Azure Stack bağlantı adı**: AzureStack-Gateway-Azure-(portalda otomatik doldurulacaktır bu değeri) S2SGateway
- - **Paylaşılan anahtar**: İle eşleşen değerler bağlantının her iki tarafındaki VPN donanımına, tüm uyumlu
- - **Abonelik**: Tercih edilen herhangi bir abonelik
+ - **Paylaşılan anahtar**: tüm uyumlu VPN donanımına, bağlantının her iki tarafındaki değerleri eşleşen
+ - **Abonelik**: tercih edilen tüm abonelik
  - **Kaynak grubu**: Test-Infra
 
 Ağ ve alt ağ IP adresleri:
 
-| Azure/Azure Stack bağlantı | Ad | Alt ağ | IP Adresi |
+| Azure/Azure Stack bağlantı | Ad | Subnet | IP Adresi |
 |-------------------------------------|---------------------------------------------|---------------------------------------|-----------------------------|
 | Azure vNet | ApplicationvNet<br>10.100.102.9/23 | ApplicationSubnet<br>10.100.102.0/24 |  |
 |  |  | GatewaySubnet<br>10.100.103.0/24 |  |
@@ -112,7 +112,7 @@ Ağ ve alt ağ IP adresleri:
 
 ## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>Global Azure ve Azure Stack sanal ağ oluşturma
 
-Portalı kullanarak bir sanal ağ oluşturmak için aşağıdaki adımları kullanın. Bunları [örnek değerleri](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) öğretici olarak bu makalede kullanıyorsanız. Ancak, bir üretim ortamını yapılandırmak için bu makalede kullanıyorsanız, örnek ayarları kendi değerlerinizle değiştirin.
+Portalı kullanarak bir sanal ağ oluşturmak için aşağıdaki adımları kullanın. Bunları [örnek değerleri](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) öğretici olarak yalnızca bu makalede kullanıyorsanız. Örnek ayarlar, bir üretim ortamını yapılandırmak için bu makalede kullanıyorsanız, kendi değerlerinizle değiştirin.
 
 > [!IMPORTANT]
 > Azure'da veya Azure Stack'te sanal ağ adres alanları IP adreslerinden oluşan bir çakışma olmadığından emin olmanız gerekir.
@@ -120,7 +120,7 @@ Portalı kullanarak bir sanal ağ oluşturmak için aşağıdaki adımları kull
 Azure'da vNet oluşturmak için:
 
 1. Bağlanmak için tarayıcınızı kullanırsınız [Azure portalında](https://portal.azure.com/) ve Azure hesabınızla oturum açın.
-2. Seçin **kaynak Oluştur**. İçinde **markette Ara** alanına `virtual network`''. Bulma **sanal ağ** sonuç listesini ve ardından **sanal ağ**.
+2. Seçin **kaynak Oluştur**. İçinde **markette Ara** 'sanal ağ' girin. Seçin **sanal ağ** sonuçlarından.
 3. Gelen **dağıtım modeli seçin** listesinde, seçin **Resource Manager**ve ardından **Oluştur**.
 4. Üzerinde **sanal ağ oluştur**, sanal ağ ayarlarını yapılandırın. Gerekli alan adları, kırmızı bir yıldızla öneki alır.  Geçerli bir değer girin, yıldız işareti yeşil onay işareti değiştirir.
 
@@ -154,7 +154,7 @@ Azure'da bir sanal ağ geçidi oluşturmak için aşağıdaki adımları kullan�
 
    - **SKU**: temel
    - **Sanal ağ**: Daha önce oluşturduğunuz sanal ağı seçin. Oluşturduğunuz ağ geçidi alt ağı otomatik olarak seçilir.
-   - **İlk IP yapılandırması**:  Ağ geçidinizin genel IP budur.
+   - **İlk IP yapılandırması**:  Ağ geçidinizin genel IP.
      - Seçin **ağ geçidi IP yapılandırması oluştur**, size aldığı **genel IP adresi seçin** sayfası.
      - Seçin **+ Yeni Oluştur** açmak için **genel IP adresi oluşturma** sayfası.
      - Girin bir **adı** genel IP adresi için. SKU olarak bırakın **temel**ve ardından **Tamam** yaptığınız değişiklikleri kaydedin.
@@ -183,13 +183,13 @@ Yerel ağ geçidi genellikle şirket içi konumunuz anlamına gelir. Site, Azure
   >Şirket içi ağınız değişirse veya VPN cihazının genel IP adresini değiştirmeniz gerekirse, bu değerler daha sonra kolayca güncelleştirebilirsiniz.
 
 1. Portalında **+ kaynak Oluştur**.
-2. Arama kutusuna **yerel ağ geçidi**, ardından **Enter** aranacak. Böylece sonuçların bir listesi döndürülür.
+2. Arama kutusuna **yerel ağ geçidi**, ardından **Enter** aranacak. Sonuçların listesini görüntüler.
 3. Seçin **yerel ağ geçidi**, ardından **Oluştur** açmak için **yerel ağ geçidi Oluştur** sayfası.
 4. Üzerinde **yerel ağ geçidi Oluştur**, yerel ağ geçidiniz için değerlerleri belirtin kullanarak bizim **öğretici örnek değerleri**. Aşağıdaki ek değerler içerir.
 
-    - **IP adresi**: Bu, Azure'da veya Azure Stack'te bağlanmak istediğiniz VPN cihazının genel IP adresidir. Azure adresine ulaşabilmeniz için bir NAT'nin arkasında bulunmayan geçerli bir genel IP adresi belirtin. IP adresi şu anda sahip değilseniz, örnek bir değerden bir yer tutucu olarak kullanabilirsiniz, ancak geri dönüp yer tutucu VPN cihazınızın genel IP adresiyle değiştirmeniz gerekir. Azure, geçerli bir adres sağlamak kadar cihaza bağlanamıyor.
-    - **Adres alanı**: Bu yerel ağın temsil eden ağ adres aralığı budur. Birden fazla adres alanı aralığı ekleyebilirsiniz. Belirttiğiniz aralıkların, bağlanmak istediğiniz diğer ağların aralıklarıyla çakışmadığından emin olun. Azure, belirttiğiniz adres aralığını şirket içi VPN cihazının IP adresine yönlendirir. Örnek değer, şirket içi sitenize bağlanmak istiyorsanız kendi değerlerinizi kullanın.
-    - **BGP ayarları Yapılandır**: Yalnızca BGP'yi yapılandırırken kullanın. Aksi takdirde, bu seçeneği işaretlemeyin.
+    - **IP adresi**: Azure'da veya Azure Stack'te bağlanmak istediğiniz VPN cihazının genel IP adresi. Azure adresine ulaşabilmeniz için bir NAT'nin arkasında bulunmayan geçerli bir genel IP adresi belirtin. IP adresi şu anda sahip değilseniz, örnek bir değerden bir yer tutucu olarak kullanabilirsiniz, ancak geri dönüp yer tutucu VPN cihazınızın genel IP adresiyle değiştirmeniz gerekir. Azure, geçerli bir adres sağlamak kadar cihaza bağlanamıyor.
+    - **Adres alanı**: Bu yerel ağın temsil eden ağ adres aralığı. Birden fazla adres alanı aralığı ekleyebilirsiniz. Belirttiğiniz aralıkların, bağlanmak istediğiniz diğer ağların aralıklarıyla çakışmadığından emin olun. Azure, belirttiğiniz adres aralığını şirket içi VPN cihazının IP adresine yönlendirir. Örnek değer, şirket içi sitenize bağlanmak istiyorsanız kendi değerlerinizi kullanın.
+    - **BGP ayarları Yapılandır**: Yalnızca BGP'yi yapılandırırken kullanın. Aksi takdirde, bu seçeneği belirlemeyin.
     - **Abonelik**: Doğru aboneliğin gösterildiğini doğrulayın.
     - **Kaynak grubu**: Kullanmak istediğiniz kaynak grubunu seçin. Yeni bir kaynak grubu oluşturabilir veya önceden oluşturduğunuz bir tane seçin.
     - **Konum**: Bu nesnenin oluşturulacağı konumu seçin. Ağınızın bulunduğu konumu seçebilirsiniz isteyebilirsiniz, ancak bunu gerçekleştirmek için gereken.
@@ -198,10 +198,10 @@ Yerel ağ geçidi genellikle şirket içi konumunuz anlamına gelir. Site, Azure
 
 ## <a name="configure-your-connection"></a>Bağlantınızı yapılandırın
 
-Bir şirket içi ağı ile Siteden Siteye bağlantılar için VPN cihazı gerekir. VPN cihazı yapılandırdığınız bağlantı olarak adlandırılır. Bağlantınızı yapılandırmak için gerekir:
+Bir şirket içi ağ için siteden siteye bağlantıları bir VPN cihazı gerektirir. VPN cihazı yapılandırdığınız bağlantı olarak adlandırılır. Bağlantınızı yapılandırmak için gerekir:
 
-- Paylaşılan bir anahtar. Siteden Siteye VPN bağlantınızı oluştururken belirttiğiniz paylaşılan anahtarın aynısıdır. Bu örneklerde temel bir paylaşılan anahtar kullanılır. Kullanmak için daha karmaşık bir anahtar oluşturmanız önerilir.
-- Sanal ağ geçidinizin Genel IP adresi. Azure Portal, PowerShell veya CLI kullanarak genel IP adresini görüntüleyebilirsiniz. Azure portalını kullanarak VPN ağ geçidi genel IP adresini bulmak için sanal ağ geçitleri için gidin, sonra ağ geçidi adını seçin.
+- Paylaşılan bir anahtar. Bu anahtar, siteden siteye VPN bağlantınızı oluştururken belirttiğiniz paylaşılan anahtarın aynısıdır. Bu örneklerde temel bir paylaşılan anahtar kullanılır. Kullanmak için daha karmaşık bir anahtar oluşturmanız önerilir.
+- Sanal ağ geçidinizin genel IP adresi. Azure Portal, PowerShell veya CLI kullanarak genel IP adresini görüntüleyebilirsiniz. Azure portalını kullanarak VPN ağ geçidi genel IP adresini bulmak için sanal ağ geçitleri gidin, sonra ağ geçidi adını seçin.
 
 Sanal ağ geçidiniz ile şirket içi VPN cihazınız arasında siteden siteye VPN bağlantısı oluşturmak için aşağıdaki adımları kullanın.
 
@@ -215,8 +215,8 @@ Sanal ağ geçidiniz ile şirket içi VPN cihazınız arasında siteden siteye V
     - **Kaynak grubu**: Test kaynak grubunuzu seçin.
     - **Sanal ağ geçidi**: Oluşturduğunuz sanal ağ geçidi seçin.
     - **Yerel ağ geçidi**: Oluşturduğunuz yerel ağ geçidi seçin.
-    - **Bağlantı adı**: Bu değerleri iki ağ geçidi kullanarak otomatik olarak doldurulur.
-    - **Paylaşılan anahtar**: Bu değer, yerel şirket içi VPN Cihazınızda kullanmakta olduğunuz değerle eşleşmelidir. Öğretici örnekte 'abc123', ancak siz daha karmaşık kullanabilirsiniz ve kullanmalısınız. Önemli olan, bu değer VPN Cihazınızı yapılandırırken belirttiğiniz değerle aynı olmalıdır olmasıdır.
+    - **Bağlantı adı**: Otomatik doldurulan değerleri iki ağ geçidi kullanarak bu adıdır.
+    - **Paylaşılan anahtar**: Bu değer, yerel şirket içi VPN Cihazınızda kullanmakta olduğunuz değerle eşleşmelidir. Öğretici örnekte 'abc123' kullanır, ancak daha karmaşık kullanmanız gerekir. Önemli olan, bu değer VPN Cihazınızı yapılandırırken belirttiğiniz değerle aynı olmalıdır olmasıdır.
     - Değerleri **abonelik**, **kaynak grubu**, ve **konumu** sabittir.
 
 6. Seçin **Tamam** bağlantınızı oluşturmak için.

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 07/01/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: 233ae3329ad382942c48b0a658ce019ccd214233
-ms.sourcegitcommit: f5d7b3ff34cfc1c7092087a4fa6efd4cf2b4b981
+ms.lastreviewed: 07/01/2019
+ms.openlocfilehash: 0ed50a370fd3a47c6721777b07faa9146cea16b1
+ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465266"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67492356"
 ---
 # <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirme
 
@@ -38,7 +38,7 @@ Azure Stack 1906 güncelleştirmenin yapı numarasıdır **1.1906.0.30**.
 
 ### <a name="update-type"></a>Güncelleştirme türü
 
-Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi.
+Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi. 1906 güncelleştirmeyi tamamlamak gereken beklenen süre yaklaşık 10 saattir. Tam güncelleştirme çalışma zamanları genellikle sisteminizde kullanılan Kiracı İş yükleri tarafından (internet'e bağlı değilse), sistem ağ bağlantısı kapasitesine bağlıdır ve sistem donanım yapılandırmanızı. Beklenen değer daha uzun uzun çalışma zamanları nadir değildir ve güncelleştirme başarısız sürece eylem Azure Stack operatörleri tarafından gerektirmez. Bu çalışma zamanı yaklaşık 1906 güncelleştirmeye özgüdür ve diğer Azure Stack güncelleştirmeler karşılaştırılmalıdır değil.
 
 ## <a name="whats-in-this-update"></a>Bu güncelleştirmede nedir
 
@@ -72,6 +72,8 @@ Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri g
 
 - Yeni bir parametre için kullanılabilir **Register-CustomAdfs** cmdlet'i ayrıcalıklı uç noktasını sağlayan AD FS için federasyon güveni yapılandırırken denetimi sertifika iptal listesi atlanıyor.
 
+- Güncelleştirmeleri değil duraklatma olabilirsiniz şekilde 1906 yayın güncelleştirme ilerleme durumunu, daha fazla görünürlük sunar. İşleçler için gösterilen güncelleştirme adımların toplam sayısı arasında bir artış sonuçlanır **güncelleştirme** dikey penceresi. Ayrıca daha fazla bilgi görebilirsiniz güncelleştirme önceki güncelleştirmelerin paralel'olmuyor adımları.
+
 #### <a name="networking-updates"></a>Ağ güncelleştirmeleri
 
 - Güncelleştirilmiş kira süresi, DHCP Yanıtlayıcı Azure ile tutarlı olacak şekilde ayarlayın.
@@ -102,7 +104,7 @@ Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri g
 
 - Güncelleştirme 99 saatten uzun bir süre çalışıyorsa ilk basamak güncelleştirme geçmişi sekmesinden güncelleştirme süresi içinde trim bir sorun düzeltildi.
 
-- Bir sorun düzeltildi **güncelleştirme** dikey: artık bir **sürdürme** başarısız güncelleştirmeleri seçeneği.
+- **Güncelleştirme** dikey içeren bir **sürdürme** başarısız güncelleştirmeleri seçeneği.
 
 - Azure Stack'te kullanılamadığından yönetici ve Kullanıcı Portalı, Docker uzantısını yanlış arama ancak başka bir işlem iade edildiği Market'te sorun düzeltildi, alınması.
 
@@ -142,7 +144,7 @@ Azure Stack 1906 sürüm aşağıdaki düzeltmeleri 1905 sürümle uygulanması 
 Bu güncelleştirme yüklendikten sonra geçerli düzeltmeleri yükleyin. Daha fazla bilgi için müşterilerimize [hizmet İlkesi](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- Düzeltme 1906 için kullanılabilir.
+- [Azure Stack düzeltme 1.1906.1.35](https://support.microsoft.com/help/4511259)
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 

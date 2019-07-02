@@ -1,6 +1,6 @@
 ---
 title: Hibrit bulut kimliği ile Azure'da ve Azure Stack'te uygulama yapılandırma | Microsoft Docs
-description: Azure ve Azure Stack uygulamaları ile karma bulut kimlik yapılandırmayı öğrenin.
+description: Hibrit bulut kimliği ile Azure ve Azure Stack uygulamaları yapılandırmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -15,25 +15,25 @@ ms.date: 06/26/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 06/26/2019
-ms.openlocfilehash: 712aa506cf9209b123d3fafcfd6324d58575ae54
-ms.sourcegitcommit: 6876ccb85c20794969264a1b27e479f4e938f990
+ms.openlocfilehash: 074d971c1f951797b5dc2d53a62eef56d0b7249f
+ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406960"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67492334"
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Öğretici: Uygulamaları Azure ve Azure Stack için hibrit bulut kimliği yapılandırma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Bir karma bulut kimliği, Azure ve Azure Stack uygulamalarınız için yapılandırmayı öğrenin.
+Azure ve Azure Stack uygulamalarınız için bir karma bulut kimlik yapılandırmayı öğrenin.
 
-Uygulamalarınızın genel Azure hem de Azure Stack için erişim izni verme için iki seçeneğiniz vardır.
+Küresel Azure hem de Azure Stack kullanarak uygulamalarınıza erişim izni verme için iki seçeneğiniz vardır.
 
- * Azure Stack sürekli bir Internet bağlantısı varsa, Azure Active Directory (Azure AD) kullanabilirsiniz.
- * Azure Stack, Internet bağlantısı kesildiğinde, Azure Directory Federasyon Hizmetleri'nde (AD FS) kullanabilirsiniz.
+ * Azure Stack sürekli bir internet bağlantısı varsa, Azure Active Directory (Azure AD) kullanabilirsiniz.
+ * Azure Stack, internet bağlantısı kesildiğinde, Azure Directory Federasyon Hizmetleri'nde (AD FS) kullanabilirsiniz.
 
-Hizmet sorumluları, Azure Stack uygulamalarınızın dağıtım veya Azure Stack'te Azure Resource Manager kullanarak yapılandırma amacıyla erişim vermek için kullanın.
+Hizmet sorumluları, Azure Stack uygulamalarınızın dağıtım veya Azure Stack'te Azure Resource Manager kullanarak yapılandırması için erişim vermek için kullanın.
 
 Bu öğreticide, bir örnek ortama oluşturacaksınız:
 
@@ -45,9 +45,9 @@ Bu öğreticideki adımlar için Azure Stack operatör izinleri olmalıdır.
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik bulut bilgi işlem, şirket içi ortamınıza ve hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sunar.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik bulut, şirket içi ortamınıza bilgi işlem, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sunar.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) tasarlama, dağıtma ve karma işletim (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları gözden geçirmeleri uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
+> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
 
 
 ## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>Azure AD portalında için hizmet sorumlusu oluşturma
@@ -68,7 +68,7 @@ Bu hızlı başlangıçta [PowerShell'de Azure Stack ile başlamak için](../ope
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Azure Stack yükleme erişebileceğiniz bir abonelikle Azure Active Directory'ye bağlı. Azure Stack yükleme yoksa, bu yönergeleri ayarlamak için kullanabileceğiniz bir [Azure Stack geliştirme Seti'ni](../asdk/asdk-install.md).
+Azure Active Directory'ye bağlı bir abonelikle erişebileceğiniz bir Azure Stack yükleme ihtiyacınız vardır. Azure Stack yükleme yoksa, bu yönergeleri ayarlamak için kullanabileceğiniz bir [Azure Stack geliştirme Seti'ni](../asdk/asdk-install.md).
 
 #### <a name="connect-to-azure-stack-using-code"></a>Kod kullanarak Azure Stack'e bağlanma
 
