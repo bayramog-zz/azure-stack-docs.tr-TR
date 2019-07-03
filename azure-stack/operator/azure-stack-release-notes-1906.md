@@ -16,12 +16,12 @@ ms.date: 07/01/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/01/2019
-ms.openlocfilehash: 0ed50a370fd3a47c6721777b07faa9146cea16b1
-ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
+ms.openlocfilehash: cc348bba064ddb003bbe6a2a06d2694714ad7894
+ms.sourcegitcommit: 068350a79805366e7e6536fb7df85a412bd0be99
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67492356"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67511270"
 ---
 # <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirme
 
@@ -38,7 +38,7 @@ Azure Stack 1906 güncelleştirmenin yapı numarasıdır **1.1906.0.30**.
 
 ### <a name="update-type"></a>Güncelleştirme türü
 
-Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi. 1906 güncelleştirmeyi tamamlamak gereken beklenen süre yaklaşık 10 saattir. Tam güncelleştirme çalışma zamanları genellikle sisteminizde kullanılan Kiracı İş yükleri tarafından (internet'e bağlı değilse), sistem ağ bağlantısı kapasitesine bağlıdır ve sistem donanım yapılandırmanızı. Beklenen değer daha uzun uzun çalışma zamanları nadir değildir ve güncelleştirme başarısız sürece eylem Azure Stack operatörleri tarafından gerektirmez. Bu çalışma zamanı yaklaşık 1906 güncelleştirmeye özgüdür ve diğer Azure Stack güncelleştirmeler karşılaştırılmalıdır değil.
+Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi. 1906 güncelleştirmenin tamamlanması için beklenen süresini, Azure Stack ortamınıza fiziksel düğüm sayısından bağımsız olarak yaklaşık 10 saat ' dir. Tam güncelleştirme çalışma zamanları genellikle sisteminizde kullanılan Kiracı İş yükleri tarafından (internet'e bağlı değilse), sistem ağ bağlantısı kapasitesine bağlıdır ve, sistemin donanım belirtimleri. Beklenen değer daha uzun uzun çalışma zamanları nadir değildir ve güncelleştirme başarısız sürece eylem Azure Stack operatörleri tarafından gerektirmez. Bu çalışma zamanı yaklaşık 1906 güncelleştirmeye özgüdür ve diğer Azure Stack güncelleştirmeler karşılaştırılmalıdır değil.
 
 ## <a name="whats-in-this-update"></a>Bu güncelleştirmede nedir
 
@@ -144,7 +144,7 @@ Azure Stack 1906 sürüm aşağıdaki düzeltmeleri 1905 sürümle uygulanması 
 Bu güncelleştirme yüklendikten sonra geçerli düzeltmeleri yükleyin. Daha fazla bilgi için müşterilerimize [hizmet İlkesi](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack düzeltme 1.1906.1.35](https://support.microsoft.com/help/4511259)
+- [Azure Stack düzeltme 1.1906.2.37](https://support.microsoft.com/help/4511282)
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 
