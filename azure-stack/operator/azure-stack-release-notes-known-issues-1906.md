@@ -16,12 +16,12 @@ ms.date: 06/28/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/28/2019
-ms.openlocfilehash: 56b0ce3d905f64d6ef1678a5c59cfe4985e24764
-ms.sourcegitcommit: 06b06a719d42012f7be82b4e8623041211c51a86
+ms.openlocfilehash: d1d3b3c33652811964b16a35686df3e3a24eb59a
+ms.sourcegitcommit: 7348876a97e8bed504b5f5d90690ec8d1d9472b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67499606"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67557875"
 ---
 # <a name="azure-stack-1906-known-issues"></a>Azure Stack 1906 bilinen sorunlar
 
@@ -33,7 +33,7 @@ Bu makalede, Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. 
 ## <a name="update-process"></a>Güncelleştirme işlemi
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: 1906 Azure yığını güncelleştirmesi yüklenmeye çalışılırken olmadığında güncelleştirme durumu ve durumuna değiştirin **PreparationFailed**. Bu, düzgün bir şekilde işlemek için bir iç altyapı paylaşımına depolama kapsayıcısından dosya aktarımı erişememe güncelleştirme kaynağı sağlayıcısı tarafından (URP) kaynaklanır. Bu sorun büyük olasılıkla yapabilir, önceki güncelleştirme paketlerini daha büyük 1906 güncelleştirme paketidir.
+- Neden: 1906 Azure yığını güncelleştirmesi yüklenmeye çalışılırken olmadığında güncelleştirme durumu ve durumuna değiştirin **PreparationFailed**. Bu, düzgün bir şekilde işlemek için bir iç altyapı paylaşımına depolama kapsayıcısından dosya aktarımı erişememe güncelleştirme kaynağı sağlayıcısı tarafından (URP) kaynaklanır. 
 - Düzeltme: 1901 (1.1901.0.95) sürümünden itibaren kullanarak bu sorunu geçici olarak tıklayarak çalışabilirsiniz **Şimdi Güncelleştir** yeniden (değil **sürdürme**). URP ardından önceki girişim dosyalarından temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, aşağıdaki güncelleştirme paketini el ile karşıya öneririz [alma ve yükleme güncelleştirmelerini bölümüne](azure-stack-apply-updates.md#import-and-install-updates).
 - Örneği: Common
 

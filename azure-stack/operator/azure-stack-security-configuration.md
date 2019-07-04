@@ -9,12 +9,12 @@ ms.date: 06/17/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/17/2019
-ms.openlocfilehash: c82ba5ca0de27ece5d3bf0ef260efa8d182ad9bf
-ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
+ms.openlocfilehash: b36a6d826dc7249f10b4785b27511096e45923a9
+ms.sourcegitcommit: 7348876a97e8bed504b5f5d90690ec8d1d9472b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67419774"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67557859"
 ---
 # <a name="configure-azure-stack-security-controls"></a>Azure Stack güvenlik denetimleri yapılandırın
 
@@ -31,7 +31,7 @@ Ağ üzerinden şifrelenmiş bir iletişim kurmak için yaygın olarak benimsene
 TLS 1.0 ve 1.1 artımlı olarak kaldırılmaktadır veya kuruluşlar ile uyumluluk standartları yasaklanmış 1906 güncelleştirmesiyle başlayarak artık TLS ilke Azure Stack'te yapılandırabilirsiniz. Burada bir sürüm 1.2 düşük TLS oturum kurma girişimleri izin reddedildi ve dağıtılmamış bir TLS 1.2 yalnızca ilke uygulayabilir.
 
 > [!IMPORTANT]
-> TLS 1.2 kullanarak yalnızca ilke üretim ortamları için hazırlanmıştır.
+> Microsoft Azure Stack üretim ortamları için TLS 1.2 yalnızca ilke kullanılmasını önerir.
 
 ## <a name="get-tls-policy"></a>TLS ilkesini Al
 

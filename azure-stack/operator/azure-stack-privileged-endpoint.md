@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 850d99232b408aa9264caf0d928231ed229e5c23
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.openlocfilehash: b66354baa30bb6bf9ec4b8cb39cab0b9def763f6
+ms.sourcegitcommit: 7348876a97e8bed504b5f5d90690ec8d1d9472b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782425"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67557884"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack'te ayrıcalıklı uç noktası kullanma
 
@@ -167,10 +167,16 @@ Yerel makinenizde CESARETLENDİRİCİ oturumun içeri aktarmak için aşağıdak
 Uç nokta oturumu kapatmak için:
 
 1. CESARETLENDİRİCİ tarafından erişilebilen bir dış dosya paylaşımı oluşturun. Bir geliştirme seti ortamında geliştirme seti konakta yalnızca bir dosya paylaşımı oluşturabilirsiniz.
-2. Çalıştırma `Close-PrivilegedEndpoint` cmdlet'i. 
-3. Transkript günlük dosyasının depolanacağı bir yolu için istenir. Biçiminde daha önce oluşturduğunuz bir dosya paylaşımı belirtin &#92; &#92; *servername*&#92;*sharename*. Bir yol belirtmezseniz, cmdlet başarısız olur ve oturumu açık kalır. 
+2. Cmdlet'ini çalıştırın 
+    ```powershell
+    Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
+    ```
+Burada
+| Parametre | Açıklama | Tür | Gerekli |
+|---------|---------|---------|---------|
+| *TranscriptsPathDestination* | "fileshareIP\sharefoldername" tanımlanan dış dosya paylaşımı yolu | String | evet|
+| *Kimlik bilgisi* | dosya paylaşımına erişmek için kimlik bilgileri | SecureString |  evet |
 
-    ![Transkript hedef yolu belirttiğiniz gösteren Kapat PrivilegedEndpoint cmdlet çıkışı](media/azure-stack-privileged-endpoint/closeendpoint.png)
 
 Transkript günlük dosyaları, dosya paylaşımına başarıyla aktarıldıktan sonra otomatik olarak CESARETLENDİRİCİ silindi. 
 
