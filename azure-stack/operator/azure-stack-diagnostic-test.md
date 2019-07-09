@@ -14,22 +14,22 @@ ms.date: 06/26/2019
 ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 25280d1f5465776aedf2e3e0dfd84118e866a944
-ms.sourcegitcommit: c9d11be7d27c73797bdf279d4fcabb7a22451541
+ms.openlocfilehash: f1c846b6d429fa323e1081d96cbca8bd10f877b5
+ms.sourcegitcommit: 1c4eda123857d714109e38bb853eb1ce49af5f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67397284"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67648075"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack sistem durumu doğrulama
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Azure Stack operatörü, sistem durumunu ve sistem steğe bağlı durumunu belirlemek için gereklidir. Azure Stack doğrulama aracını (**Test AzureStack**) olanak tanıyan bir PowerShell cmdlet'i bir dizi test hataları tanımlamak için sisteminizde çalıştırılır. Genellikle bu aracı istenir [ayrıcalıklı uç noktasına (CESARETLENDİRİCİ)](azure-stack-privileged-endpoint.md) , sizinle Microsoft Müşteri Hizmetleri desteği (CSS) ile ilgili bir sorun. Sistem genelinde durumunu ve durum bilgilerini en el ile CSS toplamak ve ayrıntılı günlükleri analiz ederek, burada bir hata oluştu. ve sorunu çözmek için sizinle çalışma alanı odaklanmak yapabilirsiniz.
+Azure Stack operatörü olarak isteğe bağlı olarak sisteminizin durumunu saptayabilmeniz çok önemlidir. Azure Stack doğrulama aracını (**Test AzureStack**) olanak tanıyan bir PowerShell cmdlet'i bir dizi test hataları tanımlamak için sisteminizde çalıştırılır. Bir sorunla ilgili olarak Microsoft Müşteri Hizmetleri Desteği'ne (CSS) başvurduğunuzda normalde [ayrıcalıklı uç nokta (PEP)](azure-stack-privileged-endpoint.md) üzerinden bu aracı çalıştırmanız istenir. Sistem genelinde durum bilgileri elinizde olduğunda CSS ayrıntılı günlükleri toplayabilir ve analiz edebilir, hatanın oluştuğu alana odaklanabilir ve sizinle birlikte çalışarak sorunu çözebilir.
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>Doğrulama aracını çalıştırma ve sonuçları erişme
 
-Daha önce belirtildiği gibi doğrulama aracını CESARETLENDİRİCİ çalıştırılır. Her test döndürür bir **GEÇER/başarısız** durumu PowerShell penceresinde. Ayrıca, ayrıntılı bir HTML rapor sırasında daha sonra erişilebilen oluşturulduğunda [oturum koleksiyonu](azure-stack-diagnostics.md). Aşağıda, test etme işleminin uçtan uca doğrulama özetini verilmiştir: 
+Daha önce belirtildiği gibi doğrulama aracını CESARETLENDİRİCİ çalıştırılır. Her test döndürür bir **GEÇER/başarısız** durumu PowerShell penceresinde. Aşağıda, test etme işleminin uçtan uca doğrulama özetini verilmiştir: 
 
 1. Ayrıcalıklı uç noktası (CESARETLENDİRİCİ) erişin. CESARETLENDİRİCİ oturum oluşturmak için aşağıdaki komutları çalıştırın:
 
