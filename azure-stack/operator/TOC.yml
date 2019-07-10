@@ -10,7 +10,7 @@
       href: compare-azure-azure-stack.md
     - name: Sürüm notları
       items:
-        - name: Son güncelleştirmeler
+        - name: Güncelleştirmeler ve Bakım İlkesi
           href: azure-stack-servicing-policy.md
         - name: Güncelleştirmeleri uygulamak için Denetim listesi
           href: azure-stack-release-notes-checklist.md

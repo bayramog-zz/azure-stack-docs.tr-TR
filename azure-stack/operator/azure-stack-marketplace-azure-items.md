@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 07/09/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: dd6421e915f170ee576d6486362e8b93ac01465f
-ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
+ms.lastreviewed: 07/09/2019
+ms.openlocfilehash: d18775deb6d73117091a3822c5a60a32d94d4d38
+ms.sourcegitcommit: cb77ffe0d5da14696ad0fe7c09ee6b340c7f66e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152586"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67678995"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilir olan Azure Market öğeleri
 
@@ -38,7 +38,7 @@ Kullandığınız sanal makine (VM) uzantıları için güncelleştirmeler oldu�
 |![PowerShell DSC uzantısı](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC uzantısı](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| **Bu güncelleştirme için PowerShell DSC uzantısı yerleşik sürümünü indirin. TLS 1.2 sürümü desteklemek için güncelleştirildi.** | Microsoft | Windows |
 | ![Microsoft kötü amaçlı yazılımdan koruma uzantısı](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft kötü amaçlı yazılımdan koruma uzantısı](https://docs.microsoft.com/azure/security/azure-security-antimalware)| Azure için Microsoft Antimalware, uygulamalar ve Kiracı ortamlarında, insan müdahalesi olmadan arka planda çalışması için tasarlanmış bir tek aracı çözümüdür. **Bu güncelleştirme, kötü amaçlı yazılımdan koruma uzantısı yerleşik sürümünü indirin.** | Microsoft | Windows |
 | ![Microsoft Azure tanılama uzantısı](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Azure tanılama uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-windows)| Microsoft Azure Tanılama, azure'da dağıtılan bir uygulamada tanılama verilerinin toplanmasını sağlayan özelliktir. **Bu güncelleştirme için tanılama uzantısı Windows yerleşik sürümünü indirin.** | Microsoft | Windows |
-| ![Microsoft Monitoring uzantısı](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft Monitoring Agent uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)| Microsoft Monitoring Agent uzantısı, OMS ile izleme kapasitesine sanal makine sağlamak için kullanılır. **Bu güncelleştirme yerleşik İzleme Aracısı uzantısı için Windows sürümüne indirin.** | Microsoft | Windows |
+| ![Azure İzleyici, güncelleştirme ve yapılandırma yönetimi uzantısı](media/azure-stack-marketplace-azure-items/cse.png) | [Azure İzleyici, güncelleştirme ve yapılandırma yönetimi uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)| Azure İzleyici, güncelleştirme ve yapılandırma yönetimi uzantısı Log Analytics, Azure Güvenlik Merkezi ve Azure Gözcü ile sanal makine yetenek izleme sağlamak amacıyla kullanılır. **Bu güncelleştirme yerleşik İzleme Aracısı uzantısı için Windows sürümüne indirin.** | Microsoft | Windows |
 |![Özel Betik Uzantısı](media/azure-stack-marketplace-azure-items/cse.png) | - [Özel betik uzantısı'nı (sürüm kullanım dışı 1)](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linuxostc) </b>  -  [özel betik uzantısı'nı (sürüm 2)](https://docs.microsoft.com/azure/virtual-machines/extensions/custom-script-linux) |**Bu güncelleştirme, Linux için özel betik uzantısı yerleşik sürümünü indirin. Bu uzantı birden çok sürümü vardır ve 1.5.2.1 hem 2.0.x indirmeniz gerekir.** | Microsoft | Linux |
 | ![Linux için VM erişimi](media/azure-stack-marketplace-azure-items/cse.png) | [Linux için VM erişimi](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| **Bu güncelleştirme için Linux uzantısı VMAccess yerleşik sürümünü indirin. Bu güncelleştirme, Debian Linux Vm'leri kullanmayı planlıyorsanız önemlidir.** | Microsoft | Linux |
 | ![Linux için Acronis yedekleme uzantısı](media/azure-stack-marketplace-azure-items/acronis.png) | [Linux için Acronis yedekleme uzantısı](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure yedekleme uzantısı Acronis Acronis yedekleme veri koruma ürün ailesinin bir parçasıdır. | Uluslararası GmbH Acronis. | Linux |
