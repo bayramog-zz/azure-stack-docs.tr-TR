@@ -1,6 +1,6 @@
 ---
 title: Azure stack'teki kullanıcı başına kaynaklarıyla ilgili izinleri yönetme | Microsoft Docs
-description: Hizmet Yöneticisi veya Kiracı olarak RBAC izinlerinin yönetmeyi öğrenin.
+description: Hizmet Yöneticisi veya Kiracı olarak rol tabanlı erişim denetimi (RBAC) izinleri yönetmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/10/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 0f6cae1604c6635f7eb401ed4db16a9a967e1ab9
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 20bf709cb3c2026910a1283fb0b39ba80c719390
+ms.sourcegitcommit: 7f441f246242fa42147ab5aa69ddc8766ba293e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985678"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67791348"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Azure Stack Role-Based erişim denetimi ile kaynaklara erişimi yönetme
 
@@ -70,7 +70,7 @@ Aşağıdaki adımları izinlerin bir kullanıcı için nasıl yapılandırılac
 1. Yönetmek istediğiniz kaynağa sahip izinlerine sahip bir hesapla oturum açın.
 2. Sol gezinti bölmesinden **Kaynak Grupları**'nı seçin.
 3. İzinlerini ayarlamak istediğiniz kaynak grubu adını seçin.
-4. Kaynak grubu Gezinti bölmesinde **erişim denetimi (IAM)**. **Rol atamaları** görünümü kaynak grubuna erişimi olan öğeleri listeler. Filtre uygulayabilir ve Grup sonuçları.
+4. Kaynak grubu Gezinti bölmesinde **erişim denetimi (IAM)** . **Rol atamaları** görünümü kaynak grubuna erişimi olan öğeleri listeler. Filtre uygulayabilir ve Grup sonuçları.
 5. Üzerinde **erişim denetimi** menü çubuğundan **Ekle**.
 6. Üzerinde **izinleri eklemek** bölmesi:
 
@@ -82,4 +82,4 @@ Aşağıdaki adımları izinlerin bir kullanıcı için nasıl yapılandırılac
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md)
+[Hizmet sorumlusu oluşturma](../operator/azure-stack-create-service-principals.md)

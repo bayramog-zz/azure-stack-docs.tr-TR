@@ -11,22 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 07/09/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: c0f680aec95c23db2567100b47a341a5d3fb9dad
-ms.sourcegitcommit: 5a720b17bd6a5aab44929c0247db8d512e0669ef
+ms.lastreviewed: 07/09/2019
+ms.openlocfilehash: d22b1df33f4fc57cf9f823f620054a6baa6bb5d3
+ms.sourcegitcommit: d2df594e8346a875967e3cfb04c23562a1bd2e3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67197164"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67725773"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell yükleme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Bulut ile çalışmak için Azure Stack uyumlu PowerShell modülleri yüklemeniz gerekir. Uyumluluk adlı bir özellik üzerinden etkin *API profillerini*.
+Azure PowerShell, Azure Stack kaynaklarınızı yönetmek için Azure Resource Manager modelini kullanan cmdlet'ler kümesi sağlar.
+
+Bulut ile çalışmak için Azure Stack uyumlu PowerShell modülleri yüklemeniz gerekir. Azure Stack kullanan **AzureRM** modül yerine yeni **AzureAZ** genel Azure'da kullanılan modül. Ayrıca, kullanmanız gerekecektir *API profillerini* uyumlu uç noktalar Azure Stack kaynak sağlayıcıları için belirtmek için.
 
 API profillerini Azure ve Azure Stack arasında sürümü farkları yönetmek için bir yol sağlar. Bir API Sürüm profili belirli API sürümleri ile Azure Resource Manager PowerShell modüllerini kümesidir. Her bulut platformu desteklenen API sürümü profillerini kümesi vardır. Örneğin, Azure Stack gibi bir özel profil sürümünü destekler **2019-03-01-karma**. Belirtilen profiliyle Azure Resource Manager PowerShell modülleri, bir profil yükleme sırasında yüklenir.
 
@@ -138,6 +140,7 @@ Yükleme dört adım vardır:
 1. Bağlı bir makine için Azure Stack PowerShell'i yükleme
 2. Ek depolama özelliklerini etkinleştirme
 3. Bağlantısı kesilmiş iş istasyonunuzu PowerShell paketler taşıma
+4. El ile bağlantısı kesilmiş iş istasyonunuzu NuGet sağlayıcısında bootstrap.
 4. PowerShell yüklenmesini onaylama
 
 ### <a name="install-azure-stack-powershell"></a>Azure Stack PowerShell’i yükleme
@@ -179,7 +182,9 @@ Yükleme dört adım vardır:
 
 2. Bağlantısı kesilmiş iş istasyonunda oturum açabilir ve paketleri USB cihazından iş istasyonundaki bir konuma kopyalayın.
 
-3. Artık bu konum varsayılan depo Kaydet ve bu depodan AzureRM ve AzureStack modüllerini yükleyin:
+3. El ile bağlantısı kesilmiş iş istasyonunuzu NuGet sağlayıcısında bootstrap. Yönergeler için [el ile Internet'e bağlı olmayan bir makineye NuGet sağlayıcısı önyükleme](https://docs.microsoft.com/powershell/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
+
+4. Artık bu konum varsayılan depo Kaydet ve bu depodan AzureRM ve AzureStack modüllerini yükleyin:
 
    ```powershell
    # requires -Version 5

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 07/09/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 42ed9766b43ce3c0c1c455d8ea286a5b453df325
-ms.sourcegitcommit: 2ee75ded704e8cfb900d9ac302d269c54a5dd9a3
+ms.lastreviewed: 07/09/2019
+ms.openlocfilehash: 27f2b4c1817c28cf5d345f5aa9387a26cd18316b
+ms.sourcegitcommit: d2df594e8346a875967e3cfb04c23562a1bd2e3c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394370"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67725758"
 ---
 # <a name="use-docker-to-run-powershell-in-azure-stack"></a>Azure Stack'te PowerShell'i çalıştırmak için Docker'ı kullanma
 
@@ -33,7 +33,7 @@ Bu makalede, çeşitli arabirimleri ile çalışmak için gerekli PowerShell sü
 1. Powershell veya Bash gibi bir komut satırı programı girin:
 
     ```bash
-        Docker -version
+        Docker --version
     ```
 
 1. Windows 10 gerektiren Windows kapsayıcıları kullanarak Docker çalıştırmanız gerekir. Windows kapsayıcıları için Docker'ı çalıştırdığınızda, geçiş yapın.
