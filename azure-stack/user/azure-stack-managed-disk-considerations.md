@@ -1,5 +1,5 @@
 ---
-title: Farklılıklar ve dikkat edilmesi gerekenler için yönetilen diskleri ve görüntüleri Azure Stack'te yönetilen | Microsoft Docs
+title: Azure Stack yönetilen diskler&#58; farklılıklar ve dikkat edilmesi gerekenler | Microsoft Docs
 description: Yönetilen diskler ve Azure Stack'te yönetilen görüntüleri ile çalışırken farklılıklar ve dikkat edilmesi gerekenler hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
@@ -16,21 +16,21 @@ ms.date: 06/25/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 9ea7c3de75be447870d0506cebbbbe8af0f2ffe9
-ms.sourcegitcommit: 1c4eda123857d714109e38bb853eb1ce49af5f5c
+ms.openlocfilehash: 8ccaa5bf3ae4b53b2c4fe70995a751f87756c039
+ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67648085"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67816235"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack yönetilen diskler: farklılıklar ve dikkat edilmesi gerekenler
 
-Bu makalede bilinen farklılıkları özetler [Azure Stack'te yönetilen diskler](azure-stack-manage-vm-disks.md) ve [yönetilen diskler için Azure](/azure/virtual-machines/windows/managed-disks-overview). Azure Stack ve Azure arasında üst düzey farklılıklar hakkında bilgi edinmek için bkz. [anahtar konuları](azure-stack-considerations.md) makalesi.
+Bu makalede arasındaki farklar özetlenmektedir [yönetilen diskleri Azure Stack'te](azure-stack-manage-vm-disks.md) ve [yönetilen diskler azure'da](/azure/virtual-machines/windows/managed-disks-overview). Azure Stack ve Azure arasında üst düzey farklılıklar hakkında bilgi edinmek için bkz. [anahtar konuları](azure-stack-considerations.md) makalesi.
 
-Yönetilen diskler yöneterek Iaas Vm'leri için disk yönetimini basitleştirir [depolama hesapları](../operator/azure-stack-manage-storage-accounts.md) VM diskleriyle ilişkili.
+Yönetilen diskler yöneterek Iaas sanal makinelerini (VM) için disk yönetimini basitleştirme [depolama hesapları](../operator/azure-stack-manage-storage-accounts.md) VM diskleriyle ilişkili.
 
 > [!NOTE]  
-> Azure Stack'te yönetilen diskler, kullanılabilir 1808 güncelleştirmesinden itibaren. 1811 güncelleştirmesinden itibaren Azure Stack portalını kullanarak sanal makine oluştururken, varsayılan olarak etkindir.
+> Azure Stack'te yönetilen diskler, 1808 güncelleştirmesinden itibaren kullanılabilir. 1811 güncelleştirmesi ile başlayarak, bu Azure Stack portalını kullanarak bir VM oluştururken, varsayılan olarak etkindir.
   
 ## <a name="cheat-sheet-managed-disk-differences"></a>Kopya kağıdı: yönetilen disk farkları
 
@@ -45,9 +45,9 @@ Yönetilen diskler yöneterek Iaas Vm'leri için disk yönetimini basitleştirir
 |Premium disklerde IOPS  |Disk boyutuna bağlıdır.  |2300 disk başına IOPS |
 |Premium disk aktarım hızı |Disk boyutuna bağlıdır. |Disk başına 145 MB/saniye |
 |Disk boyutu  |Azure Premium Disk: P4 (32 GiB) için P80 (32 tib'a kadar)<br>Azure standart SSD Disk: E10 (128 Gib'a) için E80 (32 tib'a kadar)<br>Azure standart HDD Disk: S4 (32 GiB) için S80 (32 tib'a kadar) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 giB |
-|Disk anlık görüntü kopyalama|Anlık görüntü Azure yönetilen diskler desteklenen bir çalışan VM bağlı|Anlık görüntü Azure yönetilen diskler iliştirilmiş çalışan bir VM henüz desteklenmiyor |
+|Disk anlık görüntü kopyalama|Azure yönetilen diskler desteklenen çalışan bir VM'ye ekli anlık görüntüsünü alın|Henüz desteklenmiyor |
 |Disk performansı analiz |Ölçümleri toplamak ve desteklenen disk ölçüm başına |Henüz desteklenmiyor |
-|Geçiş      |Mevcut yönetilen Azure Resource Manager sanal Makineyi yeniden oluşturmaya gerek kalmadan geçirmek için araç sağlar  |Henüz desteklenmiyor |
+|Geçiş      |Var olan yönetilmeyen Azure Resource Manager sanal Makineyi yeniden oluşturmaya gerek kalmadan geçirmek için araç sağlar  |Henüz desteklenmiyor |
 
 > [!NOTE]  
 > Yönetilen diskler IOPS ve aktarım hızı Azure Stack'te uç donanım ve Azure Stack'te çalışan iş yükleri tarafından etkilenebilir bir sağlanan sayı yerine sayıdır.
@@ -56,12 +56,12 @@ Yönetilen diskler yöneterek Iaas Vm'leri için disk yönetimini basitleştirir
 
 Depolama ölçümleri farklılıklar vardır:
 
-- Azure Stack ile depolama ölçümleri işlem verilerinde iç veya dış ağ bant genişliği ayırmaz.
+- Azure Stack ile depolama ölçümleri işlem verilerinde iç veya dış ağ bant genişliği ayrım yapmaz.
 - Azure Stack işlem verileri depolama ölçümleri, bağlama diskleri için sanal makine erişimini içermez.
 
 ## <a name="api-versions"></a>API sürümleri
 
-Azure Stack diskleri destekleyen aşağıdaki API sürümleri yönetilen:
+Azure Stack diskleri destek şu API sürümlerinde yönetilen:
 
 - 2017-03-30
 - 2017-12-01
@@ -69,7 +69,7 @@ Azure Stack diskleri destekleyen aşağıdaki API sürümleri yönetilen:
 ## <a name="convert-to-managed-disks"></a>Yönetilen disklere dönüştürme
 
 > [!NOTE]  
-> Azure PowerShell cmdlet'ini **ConvertTo-AzureRmVMManagedDisk** yönetilmeyen disk Azure Stack'te yönetilen diske dönüştürme için kullanılamaz. Azure Stack, bu cmdlet'i henüz desteklemiyor.
+> Azure PowerShell cmdlet'ini **ConvertTo-AzureRmVMManagedDisk** yönetilmeyen disk Azure Stack'te yönetilen diske dönüştürme için kullanılamaz. Azure Stack, bu cmdlet şu anda desteklemiyor.
 
 Şu anda sağlanan VM'yi yönetilmeyen disklerden yönetilen disklere dönüştürme için aşağıdaki betiği kullanabilirsiniz. Yer tutucuları kendi değerlerinizle değiştirin:
 
@@ -147,7 +147,7 @@ Azure Stack destekler *yönetilen görüntüleri*, hangi etkinleştir, yalnızca
 Windows için izleyin [Windows Sysprep kullanarak VM'yi Genelleştirme](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) bölümü. Linux için 1. adım izleyin [burada](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
 
 > [!NOTE]
-> Sanal makinenizin genelleştirmek emin olun. Düzgün genelleştirilmiş bir görüntüden VM oluşturma neden olacak şekilde bir **VMProvisioningTimeout** hata.
+> Sanal makinenizin genelleştirmek emin olun. Düzgün genelleştirilmemiş bir görüntüden VM oluşturma neden olacak şekilde bir **VMProvisioningTimeout** hata.
 
 ### <a name="step-2-create-the-managed-image"></a>2\. adım: Yönetilen bir görüntü oluşturma
 
@@ -157,15 +157,15 @@ Yönetilen bir görüntü oluşturmak için portalı, PowerShell veya CLI kullan
 
 #### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>1\. durum: Yönetilmeyen Vm'leri yönetilen disklere geçirme
 
-Bu adımı gerçekleştirmeden önce sanal Makinenizin doğru genelleştirmek emin olun. Genelleştirme sonra artık bu VM kullanabilirsiniz. Düzgün genelleştirilmiş bir görüntüden VM oluşturma neden olacak şekilde bir **VMProvisioningTimeout** hata.
+Bu adımı uygulamadan önce sanal Makinenizin doğru genelleştirmek emin olun. Genelleştirme sonra artık bu VM kullanabilirsiniz. Düzgün genelleştirilmemiş bir görüntüden VM oluşturma neden olacak şekilde bir **VMProvisioningTimeout** hata.
 
-Bölümündeki yönergeleri [bir depolama hesabında bir VHD'den Görüntü Oluştur](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) bir depolama hesabında genelleştirilmiş bir VHD'den yönetilen bir görüntü oluşturmak için. Yönetilen sanal makineler oluşturmak için ileride bu resmi kullanabilirsiniz.
+Bölümündeki yönergeleri [bir depolama hesabında bir VHD'den Görüntü Oluştur](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) bir depolama hesabında genelleştirilmiş bir VHD'den yönetilen bir görüntü oluşturmak için. Yönetilen sanal makineler oluşturmak için bu görüntü gelecekte kullanabilirsiniz.
 
 #### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>2\. durum: Powershell kullanarak yönetilen görüntüden yönetilen VM oluşturma
 
-Bir görüntü mevcut bir yönetilen oluşturduktan sonra komut dosyasını kullanarak VM disk [PowerShell kullanarak bir yönetilen diskten görüntü oluşturma](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), aşağıdaki örnek betik, mevcut bir görüntü nesneden benzer bir Linux VM oluşturur.
+Betik kullanarak VM görüntü mevcut bir yönetilen oluşturduktan sonra disk [PowerShell kullanarak bir yönetilen diskten görüntü oluşturma](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), varolan bir görüntü nesneden benzer bir Linux VM oluşturmak için aşağıdaki örnek komut dosyasını kullanın.
 
-Azure Stack PowerShell modülü 1.7.0 veya üzeri: yönergeleri [yönetilen bir görüntüden VM oluşturma](/azure/virtual-machines/windows/create-vm-generalized-managed).
+Azure Stack PowerShell modülü 1.7.0 veya daha sonra: Bölümündeki yönergeleri [yönetilen bir görüntüden VM oluşturma](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
 Azure Stack PowerShell modülü 1.6.0 veya önceki sürümleri:
 
@@ -219,16 +219,16 @@ Add-AzureRmVMNetworkInterface -Id $Nic.Id
 New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VmConfig
 ```
 
-Ayrıca, yönetilen bir görüntüden bir VM oluşturmak için portalı kullanabilirsiniz. Daha fazla bilgi için bkz. Azure yönetilen görüntü makaleleri [Azure'da bir genelleştirilmiş VM'nin yönetilen görüntüsünü oluşturma](/azure/virtual-machines/windows/capture-image-resource) ve [yönetilen bir görüntüden VM oluşturma](/azure/virtual-machines/windows/create-vm-generalized-managed).
+Ayrıca, yönetilen bir görüntüden bir VM oluşturmak için portalı kullanabilirsiniz. Daha fazla bilgi için Azure tarafından yönetilen bir görüntü makalelerine bakın [Azure'da bir genelleştirilmiş VM'nin yönetilen görüntüsünü oluşturma](/azure/virtual-machines/windows/capture-image-resource) ve [yönetilen bir görüntüden VM oluşturma](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
 ## <a name="configuration"></a>Yapılandırma
 
-1808 uyguladıktan sonra güncelleştirme veya daha sonra yönetilen diskler kullanmadan önce aşağıdaki yapılandırma gerçekleştirmeniz gerekir:
+1808 uyguladıktan sonra güncelleştirebilir veya aşağıdaki yapılandırma değişikliğini yönetilen diskler kullanmadan önce daha sonra yapmanız gerekir:
 
 - Bir abonelik 1808 güncelleştirmeden önce oluşturulduysa, abonelik güncelleştirmek için aşağıdaki adımları izleyin. Aksi takdirde, bu abonelikte Vm'leri dağıtma "Disk yöneticisinde iç hata." hata iletisi ile başarısız olabilir
    1. Azure Stack Kullanıcı Portalı'nda Git **abonelikleri** ve aboneliği bulunamıyor. Tıklayın **kaynak sağlayıcıları**, ardından **Microsoft.Compute**ve ardından **yeniden kaydettirin**.
    2. Aynı abonelik altında Git **erişim denetimi (IAM)** , doğrulayın **Azure Stack - yönetilen Disk** listelenir.
-- (Kendi kuruluşunuzda ya da hizmet sağlayıcısından olabilir), bulut operatörü için çok kiracılı bir ortam kullanıyorsanız, sorun her yer alan adımları uygulayarak, Konuk dizinlerinizi yeniden [bu makalede](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). Aksi takdirde, bu Konuk dizin ile ilişkili bir abonelik içindeki Vm'leri dağıtma bir hata iletisiyle başarısız olabilir **disk yöneticisinde iç hata**.
+- (Kendi kuruluşunuzda ya da hizmet sağlayıcısından olabilir), bulut operatörü için çok kiracılı bir ortam kullanıyorsanız, sorun her yer alan adımları uygulayarak, Konuk dizinlerinizi yeniden [bu makalede](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). Aksi takdirde, bu Konuk dizin ile ilişkili bir abonelik içindeki Vm'leri dağıtma "Disk yöneticisinde iç hata." hata iletisi ile başarısız olabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

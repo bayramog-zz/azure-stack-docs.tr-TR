@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te Azure İzleyici | Microsoft Docs
-description: Azure Stack'te Azure İzleyici hakkında bilgi edinin.
+title: Azure Stack'te Azure İzleyicisi'ni kullanmak | Microsoft Docs
+description: Azure Stack'te Azure İzleyicisi'ni kullanmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,24 +14,24 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: a4905951910a220185a8ae0651f5297c97af41f2
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: d243a574e43d3a68d3d5caf0f60235019a57462a
+ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64301489"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67816249"
 ---
-# <a name="azure-monitor-on-azure-stack"></a>Azure Stack'te Azure İzleyici
+# <a name="use-azure-monitor-on-azure-stack"></a>Azure Stack'te Azure İzleyicisi'ni kullanmak
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri*
 
 Bu makalede, Azure Stack'te Azure İzleyici'hizmetine genel bakış sağlar. Azure İzleyici işlemi ve Azure Stack'te Azure İzleyicisi'ni kullanma hakkında ek bilgiler ele alınmaktadır. 
 
-Giriş, Azure İzleyici ile çalışmaya başlama hakkında genel Azure makaleye göz atın ve genel bakış [Azure Stack'te Azure İzleyici ile çalışmaya başlama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
+Azure İzleyici genel bakış için global Azure bkz [Azure Stack'te Azure İzleyici ile çalışmaya başlama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
 
 ![Azure Stack İzleyici dikey penceresi](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
-Azure İzleyici, Azure kaynaklarını izlemeye yönelik tek bir kaynak sağlayan platform hizmetidir. Azure İzleyici ile görselleştirin, sorgulama yapabilir, yönlendirme, arşivleme ve azure'daki kaynaklardan gelen günlükler ve ölçümler üzerinde işlem Aksi takdirde. Azure Stack Yönetici portalını İzleyici PowerShell cmdlet'leri, platformlar arası CLI veya Azure İzleyici REST API'leri kullanarak bu verilerle çalışabilirsiniz. Azure yığını tarafından desteklenen belirli bağlantı için bkz: [Azure Stack izleme verilerini kullanma](azure-stack-metrics-monitor.md)
+Azure İzleyici, Azure kaynaklarını izlemeye yönelik tek bir kaynak sağlayan bir platform hizmetidir. Azure İzleyici, görselleştirin, sorgu, yönlendirme, arşiv ve Azure kaynaklarından gelen ölçüm ve günlükleri üzerinde başka işlemler yapabilirsiniz olanak tanır. Azure Stack Yönetici portalını İzleyici PowerShell cmdlet'leri, platformlar arası CLI veya Azure İzleyici REST API'leri kullanarak bu verilerle çalışabilirsiniz. Azure yığını tarafından desteklenen belirli bağlantı için bkz: [Azure Stack izleme verilerini kullanma](azure-stack-metrics-monitor.md).
 
 > [!Note]
 > Ölçümleri ve tanılama günlükleri, Azure Stack Geliştirme Seti için kullanılamaz.
@@ -44,7 +44,7 @@ Kayıt **Microsoft.insights** aboneliğinizin teklif kaynak sağlayıcı ayarlar
 2. Seçin **sunar**.
 3. Abonelikle ilişkili teklif seçin.
 4. Seçin **kaynak sağlayıcıları** altında **ayarları.** 
-5. Bulma **Microsoft.Insights** listesinde ve durum olduğundan emin olun **kayıtlı.**.
+5. Bulma **Microsoft.Insights** listesinde ve durum olduğundan emin olun **kayıtlı**.
 
 ## <a name="overview-of-azure-monitor-on-azure-stack"></a>Azure Stack'te Azure İzleyicisi'ne genel bakış
 
@@ -55,12 +55,12 @@ Azure'da Azure İzleyici gibi Azure Stack'te Azure İzleyici, temel düzeyde alt
 ![Azure Stack'te Azure İzleyici kaynakları - işlem alt](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
 
 **Microsoft.Compute** Azure Stack'te kaynak sağlayıcısı içerir:
- - Virtual Machines 
+ - Sanal makineler 
  - Sanal makine ölçek kümeleri
 
-### <a name="application---diagnostics-logs-application-logs-and-metrics"></a>Uygulama - tanılama günlükleri, uygulama günlükleri ve ölçümler
+### <a name="application---diagnostics-logs-app-logs-and-metrics"></a>Uygulama - tanılama günlükleri, uygulama günlükleri ve ölçümler
 
-Uygulamaları, çalışan bir sanal makinenin işletim sisteminde çalıştırabilirsiniz **Microsoft.Compute** kaynak sağlayıcısı. Bu uygulamalar ve sanal makineleri kendi günlükleri ve ölçümleri kümesini gösterin. Azure İzleyici çoğu uygulama düzeyi ölçümleri ve günlükleri toplamak için Azure tanılama uzantısını (Windows veya Linux) kullanır. 
+Uygulamaları, çalışan bir sanal makinenin işletim sisteminde çalıştırabilirsiniz **Microsoft.Compute** kaynak sağlayıcısı. Bu uygulamaları ve VM'ler kendi günlükleri ve ölçümleri kümesini gösterin. Azure İzleyici, çoğu uygulama düzeyinde ölçüm ve günlükleri toplamak için Azure tanılama uzantısını (Windows veya Linux) kullanır.
 
 Ölçüler türleri şunlardır:
  - Performans sayaçları
@@ -77,11 +77,11 @@ Uygulamaları, çalışan bir sanal makinenin işletim sisteminde çalıştırab
 
 ### <a name="host-and-guest-vm-metrics"></a>Konak ve Konuk VM ölçümleri
 
-Daha önce listelenen işlem kaynakları, bir VM'nin ayrılmış konak ve konuk işletim sistemi vardır. VM konak ve konuk işletim sistemi kök VM'yi Konuk VM içindeki Hyper-V hiper yönetici ve eşdeğerdir. VM konak ve konuk işletim sistemi için ölçüm toplayabilirsiniz. Ayrıca, konuk işletim sistemi için tanılama günlüklerini toplayabilir. Azure Stack'te konak ve Konuk sanal makine ölçümleri için toplanabilir ölçümlerin bir listesini kullanılabilir [desteklenen ölçümler Azure İzleyici ile Azure Stack üzerinde](azure-stack-metrics-supported.md). 
+Daha önce listelenen işlem kaynakları, bir VM'nin ayrılmış konak ve konuk işletim sistemi vardır. VM konak ve konuk işletim sistemi kök VM'yi Konuk VM içindeki Hyper-V hiper yönetici ve eşdeğerdir. VM konak ve konuk işletim sistemi için ölçüm toplayabilirsiniz. Konuk işletim sistemi için toplama tanılama günlükleri de kullanabilirsiniz. Azure Stack'te konak ve Konuk sanal makine ölçümleri için toplanabilir ölçümlerin bir listesini kullanılabilir [desteklenen ölçümler Azure İzleyici ile Azure Stack üzerinde](azure-stack-metrics-supported.md). 
 
 ### <a name="activity-log"></a>Etkinlik günlüğü
 
-Azure Stack altyapısı tarafından görülen işlem kaynaklarınızı hakkında bilgi için etkinlik günlüklerini arama yapabilirsiniz. Günlük, kaynakların oluşturulduğu veya yok edildiği zamanlar gibi bilgiler içerir. Etkinlik günlükleri, Azure Stack Azure ile tutarlı olur. Daha fazla bilgi için açıklamasına bakın [etkinlik günlüğüne genel bakış azure'da](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). 
+Azure Stack altyapısı tarafından görülen işlem kaynaklarınızı hakkında bilgi için etkinlik günlüklerini arama yapabilirsiniz. Günlük, kaynakların oluşturulduğu veya yok edildiği zamanlar gibi bilgiler içerir. Etkinlik günlükleri, Azure Stack Azure ile tutarlı değil. Daha fazla bilgi için açıklamasına bakın [etkinlik günlüğüne genel bakış azure'da](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). 
 
 
 ## <a name="azure-monitor-sources-everything-else"></a>Azure İzleyici kaynakları: diğer her şey
@@ -115,9 +115,9 @@ Sistem ya da Azure depolama verilere erişmek için Azure İzleyici REST API, pl
 İzleme verilerinizi grafik ve tablo olarak görselleştirmek eğilimleri doğrudan veriye bakmaya göre daha hızlı bulmanıza yardımcı olur. 
 
 Görselleştirme yöntemlerinden bazıları şunlardır:
- - Azure Stack kullanıcı ve Yönetici portalını kullanma
- - Microsoft Power BI için rota verilerini
- - Canlı akış kullanarak veya aracın Azure depolama alanındaki bir arşivden okumasını sağlayarak verileri bir üçüncü taraf görselleştirme aracına yönlendirme
+ - Azure Stack kullanıcı ve Yönetici portalı'nı kullanın.
+ - Microsoft Power BI için rota verileri.
+ - Ya da canlı akış'ı kullanarak bir üçüncü taraf görselleştirme aracı verileri yönlendirmek veya sağlayarak Azure depolamada bir arşiv Aracı'nı okuyun.
 
 ## <a name="methods-of-accessing-azure-monitor-on-azure-stack"></a>Azure Stack'te Azure erişim yöntemleri izleme
 
@@ -131,4 +131,4 @@ Genel olarak, aşağıdaki yöntemlerden birini kullanarak veri izleme, yönlend
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Stack'te izleme veri tüketimi makaledeki seçenekleri hakkında daha fazla bilgi [Azure Stack verilerini izleme Tüket](azure-stack-metrics-monitor.md).
+Azure Stack'te veri tüketimi makaledeki izleme hakkında daha fazla [Azure Stack verilerini izleme Tüket](azure-stack-metrics-monitor.md).

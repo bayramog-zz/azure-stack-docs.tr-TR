@@ -1,6 +1,6 @@
 ---
-title: Azure Stack hızlı başlangıç - Windows sanal makine oluşturma
-description: Azure Stack hızlı başlangıç - portal kullanarak bir Windows VM oluşturma
+title: Azure Stack portal ile Windows VM oluşturma | Microsoft Docs
+description: Azure Stack portal ile Windows Server 2016 sanal makine (VM) oluşturmayı öğrenin.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,56 +11,62 @@ ms.author: mabrigg
 ms.custom: mvc
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a25af39c5fd055989b09e4cf065d0e78bf88fc25
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.openlocfilehash: cc9a6baa3c71e58c2671b1f1b221e18a0c4f38c1
+ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782823"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67816176"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portal ile bir Windows server sanal makinesi oluşturma
+# <a name="quickstart-create-a-windows-server-vm-with-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portal ile Windows server VM oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Azure Stack portalını kullanarak bir Windows Server 2016 sanal makine oluşturabilirsiniz. Bir sanal makine oluşturup, bu makaledeki adımları izleyin.
+Azure Stack portalını kullanarak bir Windows Server 2016 sanal makine (VM) oluşturmayı öğrenin.
 
 > [!NOTE]  
-> Bu makaledeki ekran görüntüleri, Azure Stack 1808 sürümü ile sunulan kullanıcı arabirimini eşleşecek şekilde güncelleştirilir. 1808 kullanma desteği ekler *yönetilen diskler* yönetilmeyen diskler yanı sıra. Önceki bir sürümünü kullanıyorsanız, disk seçimi gibi bazı görüntülerini bu makalede gösterilen değerinden farklı olacaktır.  
+> Bu makalede ekran görüntüleri, 1808 Azure Stack sürümüyle kullanıma sunulan kullanıcı arabirimini eşleşecek şekilde güncelleştirilir. 1808 kullanma desteği ekler *yönetilen diskler* yönetilmeyen diskler yanı sıra. Önceki bir sürümünü kullanıyorsanız, disk seçimi gibi bazı görüntüleri bu makalede gösterilen değerinden farklı olacaktır.  
 
 
 ## <a name="sign-in-to-the-azure-stack-portal"></a>Azure Stack portalında oturum açın
 
 Azure Stack portalında oturum açın. Azure Stack portal'ın adresi, Azure Stack ürünlere ilişkin bağlanmakta olduğunuz bağlıdır:
 
-* Azure Stack geliştirme Seti'ni (ASDK) için Git: https://portal.local.azurestack.external.
+* Azure Stack geliştirme Seti'ni (ASDK için), Git: https://portal.local.azurestack.external.
 * Bir Azure Stack tümleşik sistemi için Azure Stack operatörü sağlanan URL'sine gidin.
 
-## <a name="create-a-virtual-machine"></a>Bir sanal makine oluştur
+## <a name="create-a-vm"></a>VM oluşturma
 
-1. Tıklayın **+ kaynak Oluştur** > **işlem** > **Windows Server 2016 Datacenter --,-kullandıkça**  >   **Oluşturma**. Görmüyorsanız **Windows Server 2016 Datacenter --,-kullandıkça** girişi, Azure Stack operatörü başvurun. Bunlar ve Market içinde anlatıldığı gibi eklemenizi isteyin [Windows Server 2016 VM görüntüsü eklemek için Azure Stack marketini](../operator/azure-stack-create-and-publish-marketplace-item.md) makalesi.
+1. Tıklayın **+ kaynak Oluştur** > **işlem** > **Windows Server 2016 Datacenter --,-kullandıkça**  >   **Oluşturma**. <br> Görmüyorsanız **Windows Server 2016 Datacenter --,-kullandıkça** girişi, Azure Stack operatörü başvurun ve bunlar Market'te açıklandığı şekilde eklemenizi isteyin [Windows Server 2016 VM görüntüsüne ekleyin Azure Stack marketini](../operator/azure-stack-create-and-publish-marketplace-item.md) makalesi.
 
-    ![Portalında bir Windows sanal makinesi oluşturma adımları](media/azure-stack-quick-windows-portal/image01.png)
+    ![Bir Windows VM portal oluşturma adımları](media/azure-stack-quick-windows-portal/image01.png)
+
 2. Altında **Temelleri**, tür a **adı**, **kullanıcı adı**, ve **parola**. Seçin bir **abonelik**. Oluşturma bir **kaynak grubu**, veya varolan bir adet seçin bir **konumu**ve ardından **Tamam**.
 
-    ![Temel ayarları yapılandırın](media/azure-stack-quick-windows-portal/image02.png)
-3. Altında **boyutu** seçin **standart D1**ve ardından **seçin**.  
-    ![Sanal makine boyutunu seçin](media/azure-stack-quick-windows-portal/image03.png)
+    ![Temel ayarları yapılandırma](media/azure-stack-quick-windows-portal/image02.png)
+
+3. Altında **boyutu**seçin **standart D1**ve ardından **seçin**.  
+
+    ![VM boyutunu seçin](media/azure-stack-quick-windows-portal/image03.png)
 
 4. Üzerinde **ayarları** sayfasında, varsayılan olarak istediğiniz değişiklikleri yapın.
-   - Yapılandırabileceğiniz 1808 Azure Stack sürümünden başlayarak **depolama** seçebileceğiniz kullanılacak *yönetilen diskler*. 1808 sürümünden önce yalnızca yönetilmeyen diskler kullanılabilir.  
-   ![Sanal makine ayarlarını yapılandırma](media/azure-stack-quick-windows-portal/image04.png)  
+   - Yapılandırabileceğiniz 1808 Azure Stack sürümünden başlayarak **depolama** seçebileceğiniz kullanılacak *yönetilen diskler*. Yönetilmeyen diskler yalnızca 1808 önce sürümlerinde kullanılabilir.  
+
+   ![VM ayarlarını yapılandırma](media/azure-stack-quick-windows-portal/image04.png)  
+
    Yapılandırmalarınızı hazır olduğunuzda seçin **Tamam** devam etmek için.
 
-5. Altında **özeti**, tıklayın **Tamam** sanal makine oluşturmak için.
-    ![Özet görüntüleyin ve sanal makine oluşturma](media/azure-stack-quick-windows-portal/image05.png)
+5. Altında **özeti**, tıklayın **Tamam** VM oluşturmak için.
+    ![Özet görüntüleyin ve VM oluşturma](media/azure-stack-quick-windows-portal/image05.png)
 
-6. Yeni sanal makinenize görmek için tıklayın **tüm kaynakları**, sanal makine adı için arama yapın ve ardından arama sonuçlarında adına tıklayın.
-    ![Sanal makine bakın](media/azure-stack-quick-windows-portal/image06.png)
+6. Yeni sanal makinenize görmek için tıklayın **tüm kaynakları**VM adını arayın ve arama sonuçlarında seçin.
+
+    ![VM bakın](media/azure-stack-quick-windows-portal/image06.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Sanal makine kullanarak tamamladığınızda, sanal makineyi ve kaynaklarını silin. Bunu yapmak için sanal makine sayfasında kaynak grubunu seçin ve **Sil**.
+VM kullanarak tamamladığınızda, VM ve kaynaklarını silin. Bunu yapmak için VM sayfasında kaynak grubunu seçin ve **Sil**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta basit bir Windows Server sanal makine dağıtıldı. Azure Stack sanal makineleri hakkında daha fazla bilgi için devam [sanal Makineler'de Azure Stack için Değerlendirmeler](azure-stack-vm-considerations.md).
+Bu hızlı başlangıçta, temel Windows Server VM'sine dağıttınız. Azure Stack sanal makineleri hakkında daha fazla bilgi için devam [Azure Stack'te Vm'lerde dikkate alınacak noktalar](azure-stack-vm-considerations.md).

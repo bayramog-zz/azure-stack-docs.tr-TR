@@ -1,5 +1,5 @@
 ---
-title: Azure Stack ağ farklılıklar ve dikkat edilmesi gerekenler | Microsoft Docs
+title: Azure Stack ağ farkları | Microsoft Docs
 description: Azure stack'teki ağ ile çalışırken farklılıklar ve dikkat edilmesi gerekenler hakkında bilgi edinin.
 services: azure-stack
 keywords: ''
@@ -11,14 +11,14 @@ ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: a59b716df7e8bf7c9a76abbfcdbe6b300c985c9f
-ms.sourcegitcommit: c4507a100eadd9073aed0d537d054e394b34f530
+ms.openlocfilehash: 06b61bf80b2c123413425fc3abdcda12961d096c
+ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67198827"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67816229"
 ---
-# <a name="considerations-for-azure-stack-networking"></a>Azure Stack ağ iletişimi için dikkat edilmesi gerekenler
+# <a name="differences-and-considerations-for-azure-stack-networking"></a>Farklılıklar ve Azure Stack ağ iletişimi için dikkat edilmesi gerekenler
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -49,23 +49,23 @@ Bu makalede, Azure Stack ağ iletişimi ve özelliklerini benzersiz konularına 
 |  | Uygulama Güvenlik Grupları | Desteklenen | Henüz desteklenmiyor. |
 | Sanal Ağ Geçitleri | Noktadan siteye VPN ağ geçidi | Desteklenen | Henüz desteklenmiyor. |
 |  | Vnet-Vnet ağ geçidi | Desteklenen | Henüz desteklenmiyor. |
-|  | Sanal ağ geçidi türü | Azure'un destekledikleri VPN<br> Express Route <br> Hiper Net | Azure Stack, şu anda yalnızca VPN türünü destekler. |
+|  | Sanal ağ geçidi türü | Azure'un destekledikleri VPN<br> Express Route <br> Hiper Net. | Azure Stack, şu anda yalnızca VPN türünü destekler. |
 |  | VPN ağ geçidi SKU'ları | Temel, GW1, GW2, GW3, standart, yüksek performanslı, Ultra yüksek performans için destek. | Temel, standart ve yüksek performanslı SKU'ları için destek. |
-|  | VPN türü | Azure İlkesi tabanlı hem de rota tabanlı destekler. | Azure Stack rota tabanlı yalnızca destekler. |
+|  | VPN türü | Hem ilke tabanlı ve rota tabanlı Azure destekler. | Azure Stack rota tabanlı yalnızca destekler. |
 |  | BGP ayarları | Azure, BGP eşlemesi adres ve eş ağırlığı yapılandırılmasını destekler. | BGP eşleme adresi ve eş ağırlığı Azure Stack'te otomatik olarak yapılandırılır. Kullanıcının kendi değerlerle bu ayarları yapılandırmak hiçbir yolu yoktur. |
 |  | Varsayılan ağ geçidi sitesi | Azure, zorlamalı tünel için varsayılan site yapılandırmasını destekler. | Henüz desteklenmiyor. |
 |  | Ağ geçidini yeniden boyutlandırma | Azure, dağıtımdan sonra ağ geçidini yeniden boyutlandırma destekler. | Desteklenen yeniden boyutlandırma değil. |
 |  | Kullanılabilirlik yapılandırması | Etkin/etkin | Aktif/Pasif |
 |  | UsePolicyBasedTrafficSelectors | Azure, ilke tabanlı trafik seçicileri ile rota tabanlı ağ geçidi bağlantıları kullanmayı destekler. | Henüz desteklenmiyor. |
-| Yük dengeleyici | SKU | Temel ve standart Load balancer'ları desteklenir | Temel yük dengeleyici desteklenir.  SKU özelliği desteklenmiyor. |
+| Yük dengeleyici | SKU | Temel ve standart Load balancer'ları desteklenir. | Temel yük dengeleyici desteklenir.  SKU özelliği desteklenmiyor. |
 |  | Bölgeler | Kullanılabilirlik alanları desteklenir. | Henüz desteklenmiyor |
-|  | Hizmet uç noktaları için gelen NAT kuralları desteği | Azure belirten hizmet uç noktaları için gelen NAT kurallarını destekler. | Bunlar belirtilemez bu nedenle azure Stack hizmet uç noktaları, henüz desteklemiyor. |
-|  | Protocol | GRE veya ESP belirterek azure destekler. | Azure Stack'te sınıf protokolü desteklenmiyor. |
+|  | Hizmet uç noktaları için gelen NAT kuralları desteği | Azure belirten hizmet uç noktaları için gelen NAT kurallarını destekler. | Bunlar belirtilemez bu nedenle azure Stack, hizmet uç noktaları, henüz desteklemiyor. |
+|  | Protocol | GRE veya ESP belirterek azure destekler. | Azure Stack'te Protokolü sınıfı desteklenmiyor. |
 | Genel IP Adresi | Genel IP adresi sürümü | Azure, hem IPv6 hem de IPv4 destekler. | Yalnızca IPv4 desteklenir. |
 | Ağ Arabirimi | Etkili rota tablosunu alın | Desteklenen | Henüz desteklenmiyor. |
 |  | Geçerli ACL'ler Al | Desteklenen | Henüz desteklenmiyor. |
 |  | Hızlandırılmış ağ iletişimi etkinleştirin | Desteklenen | Henüz desteklenmiyor. |
-|  | IP İletimi | Varsayılan olarak devre dışıdır.  Etkinleştirilebilir. | Bu ayarın açılıp desteklenmiyor.  Üzerinde varsayılan olarak. |
+|  | IP İletimi | Varsayılan olarak devre dışıdır.  Etkinleştirilebilir. | Bu ayarın açılıp desteklenmez.  Üzerinde varsayılan olarak. |
 |  | Uygulama Güvenlik Grupları | Desteklenen | Henüz desteklenmiyor. |
 |  | İç DNS ad etiketi | Desteklenen | Henüz desteklenmiyor. |
 |  | Özel IP adresi sürümü | IPv6 ve IPv4 desteklenir. | Yalnızca IPv4 desteklenir. |

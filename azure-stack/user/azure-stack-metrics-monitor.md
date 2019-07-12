@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: a068576cb907dfc2f7fcc79b1beea08899a2cb2c
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 0b04a7834218d07706e6314a9c41e0370ff6f6fd
+ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298937"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67816182"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Azure Stack izleme verilerini kullanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri*
 
-Azure İzleyici'de genel Azure izleme verilerini Azure İzleyici işlem hattının bulunduğu, yalnızca tek bir yerde ister bulabilirsiniz. Ancak, tüm genel Azure izleme verileri Azure Stack'te kullanılabilir. Bu makalede, hizmet izleme verilerini programlama yoluyla alabilen çeşitli şekillerde özetini bulabilirsiniz.
+Azure İzleyici'de genel Azure gibi Azure İzleyici'işlem hattı ile tek bir konumda izleme verileri bulunamadı. Ancak, tüm genel Azure izleme verileri Azure Stack'te kullanılabilir. Bu makalede, Azure Stack izleme verilerinin kullanmak için çeşitli yollar özetini sunuyoruz.
  
 ## <a name="options-for-data-consumption"></a>Veri tüketimi seçeneklerini
 
-| Veri türü | Kategori | Desteklenen hizmetler | Erişim yöntemi |
+| Veri türü | Category | Desteklenen hizmetler | Erişim yöntemi |
 |-------------------------------------------------------------|----------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | Azure platform düzeyi ölçümlerini izleme | Ölçümler | [Azure Stack'te Azure İzleyici ile desteklenen ölçümler](azure-stack-metrics-supported.md) | REST API |
-| Konuk işletim sistemi ölçümleri (örneğin, Perf sayısı) işlem | Ölçümler | Windows ve Linux sanal makineleri | Depolama tablo veya blob:<br>Windows veya Linux Azure tanılama <br>Olay hub'ı:<br>Windows Azure Tanılama |
+| Konuk işletim sistemi ölçümleri (örneğin, Perf sayısı) işlem | Ölçümler | Windows ve Linux Vm'leri | Depolama tablo veya blob:<br>Windows veya Linux Azure tanılama <br>Olay hub'ı:<br>Windows Azure Tanılama |
 | Depolama ölçümleri | Ölçümler | Azure Storage | Depolama tablosu:<br>Depolama Analizi |
-| Etkinlik günlüğü | Olaylar | Tüm Azure Hizmetleri | REST API:<br>Azure izleyici olay API'si |
-| Konuk işletim sistemi günlükleri (örneğin, IIS, ETW, Syslog) işlem | Olaylar | Windows ve Linux sanal makineleri | Depolama tablo veya blob:<br>Windows veya Linux Azure tanılama <br>Olay hub'ı:<br>Windows Azure Tanılama |
-| Depolama günlükleri | Olaylar | Azure Storage | Depolama tablosu:<br>Depolama Analizi |
+| Etkinlik günlüğü | Events | Tüm Azure Hizmetleri | REST API:<br>Azure izleyici olay API'si |
+| Konuk işletim sistemi günlükleri (örneğin, IIS, ETW, Syslog) işlem | Events | Windows ve Linux Vm'leri | Depolama tablo veya blob:<br>Windows veya Linux Azure tanılama <br>Olay hub'ı:<br>Windows Azure Tanılama |
+| Depolama günlükleri | Events | Azure Storage | Depolama tablosu:<br>Depolama Analizi |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
