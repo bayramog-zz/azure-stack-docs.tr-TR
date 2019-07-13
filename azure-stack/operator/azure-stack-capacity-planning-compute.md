@@ -16,12 +16,12 @@ ms.date: 06/13/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
-ms.openlocfilehash: 9c263b97deb12a199f2941be7ea4ae05a048837b
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.openlocfilehash: 7c46d2b576f8927ff0da438091a6c1094ae15ddf
+ms.sourcegitcommit: 51ec68b5e6dbf437aaca19a9f35ba07d2c402892
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131626"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67851790"
 ---
 # <a name="azure-stack-compute"></a>Azure Stack işlem
 
@@ -41,6 +41,13 @@ Azure Stack'te bir çoklu VM üretim sisteminin yüksek kullanılabilirlik elde 
 Sanal makine ölçek kümeleri arkasındaki kullanılabilirlik kümelerini kullanın sonlandırmak ve her sanal makine ölçek kümesi örneği olduğundan emin olun, farklı hata etki alanında yerleştirilir. Bu, ayrı Azure Stack altyapısını düğüm kullandıkları anlamına gelir. Örneğin, 4 düğümünde Azure Stack sistemi, olabilir bir durum olduğu bir sanal makine ölçek kümesi 3 örnek oluştururken 3 sanal makine ölçek kümesi örneklerine 3 ayrı Azure Stack düğümlerinde yerleştirmek için 4 düğümlü kapasite eksikliği nedeniyle başarısız olur. Ayrıca, Azure Stack düğümleri yerleştirme denemeden önce değişen düzeylerde doldurulabilir. 
 
 Azure Stack bellek aşırı işleme değil. Ancak, bir üst işlemesi fiziksel çekirdek sayısı için izin verilir. Sanal bir faktör olarak fiziksel çekirdek fazladan sağlama oranı ile var olan konumunda yerleştirme algoritmaları görünmüyor olduğundan, her konak farklı bir oran olabilir. Microsoft rehberlik üzerinde fiziksel-sanal çekirdek oranı nedeniyle iş yükleri ve hizmet düzeyi gereksinimlerini varyasyonu sunmuyoruz. 
+
+## <a name="consideration-for-total-number-of-vms"></a>Toplam VM sayısı için önemli noktalar 
+
+Doğru bir şekilde Azure Stack kapasite planlaması için yeni bir durum yoktur. 1901 güncelleştirme (ve bundan sonra her bir güncelleştirme) ile da artık sanal makinelerin oluşturulabilir toplam sayısına bir sınır yoktur. Bu sınır, çözüm kararsızlığı engellemek için geçici olması amaçlanmıştır. Kaynak konumunda VM'ler, daha yüksek sayıda kararlılık sorunun ele ancak belirli bir zaman çizelgesi düzeltme için değil henüz karar verilmemiştir. Artık bir başına 60 VM'lerin sunucu sınırı 700 toplam çözüm sınırına sahip. Örneğin, bir 8 sunucu Azure Stack VM sınırı 480 (8 * 60) olacaktır. 12-16 sunucu Azure Stack çözüm, sınır 700 olacaktır. Bu sınır, tüm işlem dayanıklılık ayrılmış ve bir işleç damgada sağlamak istediğiniz fiziksel/oranı sanal CPU gibi aklınızda kapasiteyle alakalı durumlar tutma oluşturuldu. Daha fazla bilgi için kapasite Planlayıcı'nın yeni sürümüne bakın. 
+
+Aşağıdaki hata kodları, sonuç olarak, VM ölçek sınırına ulaşıldı, olay, döndürülürdü: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
+
 
 ## <a name="azure-stack-memory"></a>Azure Stack bellek 
 

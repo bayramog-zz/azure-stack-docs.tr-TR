@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2019
+ms.date: 07/12/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/28/2019
-ms.openlocfilehash: 96a29ab11ffc15b35c7035576fa68544caef594b
-ms.sourcegitcommit: 1c4eda123857d714109e38bb853eb1ce49af5f5c
+ms.openlocfilehash: ff64a04731f32934c676ece8e29860bbb9acda3f
+ms.sourcegitcommit: 0bb2fdeccda3183d0bf4572819a28af8ca5f244a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67648038"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67863164"
 ---
 # <a name="azure-stack-1906-known-issues"></a>Azure Stack 1906 bilinen sorunlar
 
@@ -73,12 +73,12 @@ Bu makalede, Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. 
 - Düzeltme: Blob SAS seçeneğini kullanarak yükleyin.
 - Örneği: Common
 
-### <a name="template"></a>Şablon
+### <a name="update"></a>Güncelleştirme
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı Portalı'nda şablon dağıtımı kullanıcı arabirimi, '_' (alt çizgi karakteri) ile başlayan şablon adları için parametreleri doldurmaz.
-- Düzeltme: '_' (Alt çizgi karakteri) şablonu adından kaldırın.
-- Örneği: Common
+- Uygulanabilir: Bu sorun 1906 sürümü için geçerlidir.
+- Neden: İşleci Portalı'nda geçersiz bir durum güncelleştirmesi için düzeltme güncelleştirme durumunu gösterir. Başlangıç durumu devam ediyor olsa bile güncelleştirmeyi yüklemek başarısız olduğunu gösterir.
+- Düzeltme: Durumu "sürüyor." güncelleştirir ve portalı yenileyin
+- Örneği: Aralıklı
 
 ## <a name="networking"></a>Ağ
 

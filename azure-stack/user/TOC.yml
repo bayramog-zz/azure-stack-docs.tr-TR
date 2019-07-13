@@ -240,6 +240,18 @@
           href: azure-stack-rest-api-use.md
     - name: Bulut hizmeti sağlayıcısı etkinleştir
       href: azure-stack-csp-enable-billing-usage-tracking.md
+- name: Kavramlar
+  items:
+    - name: Hibrit bulut desenleri
+      items:
+        - name: Hibrit bulut desenlerine genel bakış
+          href: azure-stack-edge-pattern-overview.md
+        - name: Bulut ölçekleme arası
+          href: azure-stack-edge-pattern-cross-cloud-scaling.md
+        - name: DevOps (karma CI/CD)
+          href: azure-stack-edge-pattern-hybrid-ci-cd.md
+        - name: Coğrafi olarak dağıtılmış uygulama
+          href: azure-stack-edge-pattern-geo-distribution.md
 - name: Başvuru
   items:
     - name: Azure Stack PowerShell

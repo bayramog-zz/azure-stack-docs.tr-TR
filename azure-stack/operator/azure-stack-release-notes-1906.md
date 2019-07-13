@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 07/11/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/01/2019
-ms.openlocfilehash: cc348bba064ddb003bbe6a2a06d2694714ad7894
-ms.sourcegitcommit: 068350a79805366e7e6536fb7df85a412bd0be99
+ms.lastreviewed: 07/11/2019
+ms.openlocfilehash: bd116e2e04f93b96655a32eb50f0057f0d5784ec
+ms.sourcegitcommit: 0bb2fdeccda3183d0bf4572819a28af8ca5f244a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67511270"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67863171"
 ---
 # <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirme
 
@@ -128,7 +128,7 @@ Azure Stack 1906 güncelleştirme paketinden indirebileceğiniz [Azure Stack ind
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
-Azure Stack düzeltmeleri düzenli olarak serbest bırakır. Azure Stack için 1906 güncelleştirmeden önce en son Azure Stack düzeltme için 1905 yüklediğinizden emin olun.
+Azure Stack düzeltmeleri düzenli olarak serbest bırakır. Azure Stack için 1906 güncelleştirmeden önce en son Azure Stack düzeltme için 1905 yüklediğinizden emin olun. Güncelleştirdikten sonra tüm yükleme [1906 için kullanılabilir düzeltmelerin](#after-successfully-applying-the-1906-update).
 
 Azure Stack düzeltmeleri yalnızca Azure Stack tümleşik sistemleri için geçerlidir; üzerinde ASDK düzeltmelerini çalışmayın.
 
@@ -144,7 +144,7 @@ Azure Stack 1906 sürüm aşağıdaki düzeltmeleri 1905 sürümle uygulanması 
 Bu güncelleştirme yüklendikten sonra geçerli düzeltmeleri yükleyin. Daha fazla bilgi için müşterilerimize [hizmet İlkesi](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack düzeltme 1.1906.2.37](https://support.microsoft.com/help/4511282)
+- [Azure Stack düzeltme 1.1906.9.49](https://support.microsoft.com/help/4512794)
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 
