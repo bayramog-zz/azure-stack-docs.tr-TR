@@ -5,18 +5,18 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.date: 06/17/2019
+ms.date: 07/10/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
-ms.reviewer: scottnap
-ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: 06b61bf80b2c123413425fc3abdcda12961d096c
-ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
+ms.reviewer: wamota
+ms.lastreviewed: 07/10/2019
+ms.openlocfilehash: 7e0f533c10e8dae0566284ffb09cfa7281213002
+ms.sourcegitcommit: ca7e6b7b9b27d0d93ee4d5d1eeaf3113bbcea4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67816229"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68229431"
 ---
 # <a name="differences-and-considerations-for-azure-stack-networking"></a>Farklılıklar ve Azure Stack ağ iletişimi için dikkat edilmesi gerekenler
 
@@ -57,7 +57,7 @@ Bu makalede, Azure Stack ağ iletişimi ve özelliklerini benzersiz konularına 
 |  | Ağ geçidini yeniden boyutlandırma | Azure, dağıtımdan sonra ağ geçidini yeniden boyutlandırma destekler. | Desteklenen yeniden boyutlandırma değil. |
 |  | Kullanılabilirlik yapılandırması | Etkin/etkin | Aktif/Pasif |
 |  | UsePolicyBasedTrafficSelectors | Azure, ilke tabanlı trafik seçicileri ile rota tabanlı ağ geçidi bağlantıları kullanmayı destekler. | Henüz desteklenmiyor. |
-| Yük dengeleyici | SKU | Temel ve standart Load balancer'ları desteklenir. | Temel yük dengeleyici desteklenir.  SKU özelliği desteklenmiyor. |
+| Yük dengeleyici | SKU | Temel ve standart Load balancer'ları desteklenir | Temel yük dengeleyici desteklenir.<br>SKU özelliği desteklenmiyor.<br>Temel SKU yük dengeleyici /path/ 5'ten fazla ön uç IP yapılandırmasına sahip olamaz.  |
 |  | Bölgeler | Kullanılabilirlik alanları desteklenir. | Henüz desteklenmiyor |
 |  | Hizmet uç noktaları için gelen NAT kuralları desteği | Azure belirten hizmet uç noktaları için gelen NAT kurallarını destekler. | Bunlar belirtilemez bu nedenle azure Stack, hizmet uç noktaları, henüz desteklemiyor. |
 |  | Protocol | GRE veya ESP belirterek azure destekler. | Azure Stack'te Protokolü sınıfı desteklenmiyor. |

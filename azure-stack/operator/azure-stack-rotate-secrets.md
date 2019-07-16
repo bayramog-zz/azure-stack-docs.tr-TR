@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 07/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
-ms.lastreviewed: 05/14/2019
-ms.openlocfilehash: 4b758cce6741440f5b6a4c00de045e9a4fc8f530
-ms.sourcegitcommit: 1655b2ef4d01d69ceeb52bc16f922bdc19cb968d
+ms.lastreviewed: 07/15/2019
+ms.openlocfilehash: 681daffabda3525effc1815e6aa6657c9c7c526c
+ms.sourcegitcommit: ca7e6b7b9b27d0d93ee4d5d1eeaf3113bbcea4da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/15/2019
-ms.locfileid: "65706338"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68229450"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack gizli Döndür
 
@@ -81,7 +81,7 @@ Azure Stack ile dış sertifikalar bir yeni sertifika yetkilisi (CA) öğesinden
 
 - Bekleyen hizmet hesabının parola süresinin sonu
 - Bekleyen bir iç sertifika süre sonu
-- Bekleyen dış sertifika süre sonu
+- Beklemedeki dış sertifika süre sonu
 
 Aşağıdaki yönergeleri kullanarak gizli döndürmeye çalışıyor, bu uyarıları düzeltin.
 
@@ -138,7 +138,7 @@ Aşağıdaki yönergeleri kullanarak gizli döndürmeye çalışıyor, bu uyarı
 > Örneğin:
 > - Dosya paylaşımını =  **\\ \\ \<IPADDRESS >\\\<ShareName >\\**
 > - CertFolder = **Certificates\AAD**
-> - FullPath = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
+> - FullPath =  **\\ \\ \<IPADDRESS >\\\<ShareName > \Certificates\AAD**
 
 ## <a name="rotating-external-secrets"></a>Dış gizli anahtarları döndürme
 
@@ -192,7 +192,7 @@ Dış gizli anahtarları döndürmek için:
     > [!IMPORTANT]  
     > Oturum girin değil, oturumu bir değişkene depolayın.
 
-3. Çalıştırma  **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**. Ayrıcalıklı uç nokta PowerShell oturumu Değişkeninizi olarak geçirmek **oturumu** parametresi.
+3. Çalıştırma  **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)** . Ayrıcalıklı uç nokta PowerShell oturumu Değişkeninizi olarak geçirmek **oturumu** parametresi.
 
 4. Çalıştırma **başlangıç SecretRotation** şu parametrelerle:
     - **PfxFilesPath**  
@@ -298,13 +298,13 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Tür | Gerekli | Konum | Varsayılan | Açıklama |
+| Parametre | Type | Gerekli | Konum | Varsayılan | Açıklama |
 | -- | -- | -- | -- | -- | -- |
-| `PfxFilesPath` | String  | False  | adlı  | None  | Fileshare yolu **\Certificates** tüm dış içeren dizin ağ uç noktası sertifikaları. Yalnızca dış gizli anahtarları döndürürken gereklidir. Son dizin olmalıdır **\Certificates**. |
-| `CertificatePassword` | SecureString | False  | adlı  | None  | -PfXFilesPath sağlanan tüm sertifikalar için parola. Dış gizli anahtarları Döndürülmüş olduğunda PfxFilesPath sağlanıyorsa değer gereklidir. |
-| `Internal` | String | False | adlı | None | İç bayrağı, iç altyapı gizli dizileri döndürmek Azure Stack operatörü istediği zaman kullanılmalıdır. |
-| `PathAccessCredential` | PSCredential | False  | adlı  | None  | PowerShell kimlik bilgilerini dosya paylaşımını **\Certificates** tüm dış içeren dizin ağ uç noktası sertifikaları. Yalnızca dış gizli anahtarları döndürürken gereklidir.  |
-| `ReRun` | SwitchParameter | False  | adlı  | None  | Gizli anahtar döndürme, başarısız bir girişimden sonra reattempted herhangi bir zamanda yeniden kullanılması gerekir. |
+| `PfxFilesPath` | Dize  | False  | adlı  | Yok.  | Fileshare yolu **\Certificates** tüm dış içeren dizin ağ uç noktası sertifikaları. Yalnızca dış gizli anahtarları döndürürken gereklidir. Son dizin olmalıdır **\Certificates**. |
+| `CertificatePassword` | SecureString | False  | adlı  | Yok.  | -PfXFilesPath sağlanan tüm sertifikalar için parola. Dış gizli anahtarları Döndürülmüş olduğunda PfxFilesPath sağlanıyorsa değer gereklidir. |
+| `Internal` | Dize | False | adlı | Yok. | İç bayrağı, iç altyapı gizli dizileri döndürmek Azure Stack operatörü istediği zaman kullanılmalıdır. |
+| `PathAccessCredential` | PSCredential | False  | adlı  | Yok.  | PowerShell kimlik bilgilerini dosya paylaşımını **\Certificates** tüm dış içeren dizin ağ uç noktası sertifikaları. Yalnızca dış gizli anahtarları döndürürken gereklidir.  |
+| `ReRun` | SwitchParameter | False  | adlı  | Yok.  | Gizli anahtar döndürme, başarısız bir girişimden sonra reattempted herhangi bir zamanda yeniden kullanılması gerekir. |
 
 ### <a name="examples"></a>Örnekler
 
@@ -369,7 +369,11 @@ Bu komut tüm Azure Stack iç ağa kullanıma sunulan altyapı gizli dizileri ve
 
 Temel Kart Yönetim denetleyicisine (BMC) fiziksel sunucularınızı durumunu izler. Özellikleri ve kullanıcı hesabı adı ve parola BMC'nin güncelleştirme yönergeler orijinal ekipman üreticisi (OEM) donanım satıcınıza göre değişir. Parolalarınızı Azure Stack bileşenlerin düzenli olarak güncelleştirmeniz gerekir.
 
-1. Azure Stack fiziksel sunucularda BMC, OEM yönergelerini izleyerek güncelleştirin. Kullanıcı adı ve parola, ortamınızdaki her BMC için aynı olmalıdır. Not BMC kullanıcı adları 16 karakterden uzun olamaz.
+1. Azure Stack fiziksel sunucularda BMC, OEM yönergelerini izleyerek güncelleştirin. Kullanıcı adı ve parola, ortamınızdaki her BMC için aynı olmalıdır. BMC kullanıcı adları, 16 karakterden uzun olamaz.
+
+    > [!Note]  
+    > Önce fiziksel sunucunun temel kart yönetim denetleyicisi BMC kimlik bilgilerini güncelleştirin; Aksi takdirde Azure Stack komutu sırasında doğrulama başarısız olur.
+
 2. Ayrıcalıklı bir uç nokta, Azure Stack oturumunu açın. Yönergeler için [Azure Stack'te ayrıcalıklı uç noktayı kullanarak](azure-stack-privileged-endpoint.md).
 3. Sonra bir PowerShell istemi için değişti **[IP adresi veya ERCS VM adı]: PS >** veya **[azs-ercs01]: PS >** çalıştırabileceğiniz bir ortam, bağlı olarak `Set-BmcCredential` çalıştırarak `Invoke-Command`. Ayrıcalıklı uç nokta oturum değişkeni, bir parametre olarak geçiriyoruz. Örneğin:
 
