@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 07/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/11/2019
-ms.openlocfilehash: bd116e2e04f93b96655a32eb50f0057f0d5784ec
-ms.sourcegitcommit: 0bb2fdeccda3183d0bf4572819a28af8ca5f244a
+ms.lastreviewed: 07/15/2019
+ms.openlocfilehash: 5330136bd1d4950ace26fa3f232be039c90ab144
+ms.sourcegitcommit: 12aef286fc14ab27ed737a17e2761c38f054b9b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67863171"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67885350"
 ---
 # <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirme
 
@@ -144,7 +144,7 @@ Azure Stack 1906 sürüm aşağıdaki düzeltmeleri 1905 sürümle uygulanması 
 Bu güncelleştirme yüklendikten sonra geçerli düzeltmeleri yükleyin. Daha fazla bilgi için müşterilerimize [hizmet İlkesi](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack düzeltme 1.1906.9.49](https://support.microsoft.com/help/4512794)
+- [Azure Stack düzeltme 1.1906.11.52](https://support.microsoft.com/help/4513119)
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 
