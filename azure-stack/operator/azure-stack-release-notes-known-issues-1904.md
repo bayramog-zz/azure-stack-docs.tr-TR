@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/31/2019
-ms.openlocfilehash: f25bc769e7461c21e40017d6413cfbe35186441b
-ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
+ms.openlocfilehash: 3a92a142181b9e2268948d430b0a62d6ffa189d8
+ms.sourcegitcommit: 90ed5aa051d0756b2432c8aca0e2232c8ec493a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67419600"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68239436"
 ---
 # <a name="azure-stack-1904-known-issues"></a>Azure Stack 1904 bilinen sorunlar
 
@@ -173,7 +173,7 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 - Neden: 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve oluşturma bir sanal makine ölçek kümesi örneği başarısız oluyor bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hata oluştu ortam.
 - Düzeltme: Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Bununla birlikte, Ölçek kümesi örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
 
-### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
+### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
 
 - Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
 - Neden: Etkinleştirilmiş SSH yetkilendirme ile oluşturulan bir Ubuntu 18.04 VM oturum açmak için SSH anahtarları kullanmak izin vermez.
@@ -214,6 +214,11 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 - Uygulanabilir: Bu sorun 1904 ve 1905 sürümleri için geçerlidir.
 - Neden: Bir ölçek kümesi örnek görünümü dikey penceresinde bulunan Azure Stack portalında **Pano** > **sanal makine ölçek kümeleri**  >   **AnyScaleSet - örnekler** > **AnyScaleSetInstance** yüklenemiyor.
 - Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar lütfen CLI cmdlet'ini kullanın `az vmss get-instance-view` bir sanal makine ölçek kümesi örnek görünümünü elde etmek için.
+
+### <a name="user-image-service"></a>Kullanıcı Görüntü hizmeti
+- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Neden: Başarısız kullanıcı görüntüsü oluşturma kullanıcı görüntü hizmeti bir hatalı durumuna sokar. Kullanıcı görüntüsü oluşturma ve silme işlemlerinin başarısız olmaya başlar. Kullanıcı görüntüsü silme hatası ile başarısız olabilir: "Hata: Bir iç disk yönetimi hatası oluştu."
+- Düzeltme: Risk azaltma. Microsoft ile bir destek bileti açın.
 
 ## <a name="storage"></a>Depolama
 

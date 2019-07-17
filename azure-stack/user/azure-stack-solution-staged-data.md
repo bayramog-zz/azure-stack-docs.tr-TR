@@ -14,18 +14,18 @@ ms.date: 06/20/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: 7148e93977f50a7c64d79c422c43c6825b22b4a3
-ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
+ms.openlocfilehash: ca4c2480fff511ab3bad43ea82fc81522d9afba0
+ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67308874"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286738"
 ---
-# <a name="tutorial-deploy-a-staged-data-analytics-solution-to-azure-stack"></a>Öğretici: Azure Stack için hazırlanmış veri analizi çözümü dağıtma
+# <a name="deploy-a-staged-data-analytics-solution-to-azure-stack"></a>Azure Stack için hazırlanmış veri analizi çözümü dağıtma
 
 Bu makale koleksiyonu noktasında gerekir ve böylece hızlı kararlar yapılabilmesi için veri toplamak için bir çözümün nasıl dağıtılacağı gösterir. Genellikle bu veri toplama, Internet erişimi oluşur. Bağlantı kurulduğunda verilere ek Öngörüler elde etmek için bir kaynak kullanımı yoğun çözümlemesi gerekebilir.
 
-Bu öğreticide, bir örnek ortama oluşturacaksınız:
+Bu çözümde bir örnek ortama oluşturacaksınız:
 
 > [!div class="checklist"]
 > - Ham veri depolama blob'u oluşturun.
@@ -37,9 +37,9 @@ Bu öğreticide, bir örnek ortama oluşturacaksınız:
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir ve hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sağlar.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
+> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
 
 ## <a name="architecture-for-staged-data-analytics"></a>Hazırlanmış verinin analytics mimarisi
 

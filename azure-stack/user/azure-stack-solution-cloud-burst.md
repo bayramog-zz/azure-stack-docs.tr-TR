@@ -10,19 +10,19 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: scenario
 ms.date: 01/14/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: eb5815a55e5e2c60ce61f9c4af96ee58a1aa684b
-ms.sourcegitcommit: ad2f2cb4dc8d5cf0c2c37517d5125921cff44cdd
+ms.openlocfilehash: 1bbe22bdc78f28aa172c90770cd5d2857878d2c3
+ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67138943"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286908"
 ---
-# <a name="tutorial-create-cross-cloud-scaling-app-solutions-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile Bulutlar arası ölçeklendirme uygulama çözümleri oluşturun
+# <a name="create-cross-cloud-scaling-app-solutions-with-azure-and-azure-stack"></a>Azure ve Azure Stack ile Bulutlar arası ölçeklendirme uygulama çözümleri oluşturun
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -30,7 +30,7 @@ Bir Azure Stack barındırılan web uygulamasından barındırılan bir Azure'a 
 
 Bu düzende, kiracınızın genel bulutta uygulamanızı çalıştırmak hazır olmayabilir. Ancak, bu uygulama için talep artışlarını işlemek için kendi şirket içi ortamda gereken kapasiteyi korumak iş için ekonomik uygun olmayabilir. Kiracınızın yapabilirsiniz genel bulut, şirket içi çözüm ile esneklik kullanın.
 
-Bu öğreticide, bir örnek ortama oluşturacaksınız:
+Bu çözümde bir örnek ortama oluşturacaksınız:
 
 > [!div class="checklist"]
 > - Bir çok düğümlü web uygulaması oluşturun.
@@ -43,7 +43,7 @@ Bu öğreticide, bir örnek ortama oluşturacaksınız:
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
 > Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
+> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

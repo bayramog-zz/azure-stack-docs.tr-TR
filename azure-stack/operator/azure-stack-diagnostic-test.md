@@ -14,12 +14,12 @@ ms.date: 06/26/2019
 ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: f1c846b6d429fa323e1081d96cbca8bd10f877b5
-ms.sourcegitcommit: 1c4eda123857d714109e38bb853eb1ce49af5f5c
+ms.openlocfilehash: a582e1d9abbd690a62f27f6bcaee8c2dd2e6be4b
+ms.sourcegitcommit: 90ed5aa051d0756b2432c8aca0e2232c8ec493a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67648075"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68239459"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack sistem durumu doğrulama
 
@@ -209,8 +209,8 @@ Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSum
 *Önce* altyapı yedeklemeyi yapılandırma, yedekleme paylaşım yolu test edebilir ve kullanarak kimlik bilgisi **AzsBackupShareAccessibility** test: 
 
   ```powershell
-  New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
-  Test-AzureStack -Include AzsBackupShareAccessibility -BackupSharePath "\\<fileserver>\<fileshare>" -BackupShareCredential <PSCredentials-for-backup-share>
+  Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+  Test-AzureStack -Include AzsBackupShareAccessibility -BackupSharePath "\\<fileserver>\<fileshare>" -BackupShareCredential $using:backupcred
   ```
 
 *Sonra* çalıştırabileceğiniz yedeklemeyi yapılandırma, **AzsBackupShareAccessibility** paylaşım doğrulamak için ERCS erişilebilir:

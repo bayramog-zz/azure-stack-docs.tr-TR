@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/20/2019
-ms.openlocfilehash: 7f335a6ad59d6f27c8e402863849d21c87f1cee2
-ms.sourcegitcommit: 75b13158347963063b7ee62b0ec57894b542c1be
+ms.openlocfilehash: fa8c8b43b354b3f63dfed87cc45baf39fa18652b
+ms.sourcegitcommit: 90ed5aa051d0756b2432c8aca0e2232c8ec493a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66748890"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68239466"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 güncelleştirme
 
@@ -143,7 +143,7 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
 <!-- Daniel 3/28 -->
 - Bir depolama hesabındaki bir bloba gidin ve açmaya çalıştığınızda, Kullanıcı Portalı'nda **erişim ilkesi** Gezinti ağacından sonraki pencereyi yüklenemiyordur. Bu sorunu geçici olarak çözmek için aşağıdaki PowerShell cmdlet'lerini oluşturma, alma, ayarlama ve erişim ilkeleri, sırasıyla silme etkinleştir:
 
-  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Yeni AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
   - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
   - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
   - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
@@ -195,6 +195,8 @@ Bu derleme sürümü için yükleme sonrası bilinen sorunlar verilmiştir.
 - Bir ölçek kümesi kaldırılamıyor **sanal makine ölçek kümeleri** dikey penceresi. Geçici çözüm olarak, Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
 
 - 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve oluşturma bir sanal makine ölçek kümesi örneği başarısız oluyor bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hata oluştu ortam. Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Bununla birlikte, Ölçek kümesi örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
+
+- Başarısız kullanıcı görüntüsü oluşturma kullanıcı görüntü hizmeti bir hatalı durumuna sokar. Kullanıcı görüntüsü oluşturma ve silme işlemlerinin başarısız olmaya başlar. Kullanıcı görüntüsü silme hatası ile başarısız olabilir: "Hata: Bir iç disk yönetimi hatası oluştu."
 
 ### <a name="networking"></a>Ağ
 

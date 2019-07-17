@@ -1,5 +1,5 @@
 ---
-title: Öğretici&#58; Azure ve Azure uygulama dağıtma yığın | Microsoft Docs
+title: Azure ve Azure uygulama dağıtma yığın | Microsoft Docs
 description: Azure ve Azure Stack için hibrit CI/CD işlem hattı ile uygulamaları dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -10,25 +10,25 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: solution
 ms.date: 03/11/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 9f0f25e5810fc4c9a27d3607defbaca9dcfc0388
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 9fbadb923452fc2420d1f8626a69d377c4d72e12
+ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692064"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286958"
 ---
-# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack’e uygulama dağıtma
+# <a name="deploy-apps-to-azure-and-azure-stack"></a>Azure ve Azure Stack’e uygulama dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure ve Azure Stack, hibrit sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattı kullanarak uygulama dağıtma konusunda bilgi edinin.
 
-Bu öğreticide, bir örnek ortama oluşturacaksınız:
+Bu çözümde bir örnek ortama oluşturacaksınız:
 
 > [!div class="checklist"]
 > * Azure DevOps Hizmetleri deponuza kod tamamlama dayalı yeni bir derleme başlatır.
@@ -51,9 +51,9 @@ CI ve CD hakkında daha fazla bilgi edinmek için:
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir. Bu hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit buluttur.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Karma uygulama tasarımının en iyi duruma getirme tasarım konuları, üretim ortamlarında sorunlarını en aza yardımcı olur.
+> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -63,9 +63,9 @@ Bileşenleri karma CI/CD işlem hattı oluşturma yerinde olması gerekir. Aşa�
 * Bir Azure Stack operatörü aşağıdakileri tamamlamanız gerekir: App Service'e dağıtım, planlar ve Teklifler oluşturma, bir kiracı aboneliği oluşturmak ve Windows Server 2016 görüntüsü ekleyin.
 
 >[!NOTE]
->Dağıtılan Bu bileşenlerden bazıları zaten varsa, bu öğreticiye başlamadan önce tüm gereksinimleri karşıladığından emin olun.
+>Dağıtılan Bu bileşenlerden bazıları zaten varsa, bu çözüm başlatmadan önce tüm gereksinimleri karşıladığından emin olun.
 
-Bu öğreticide, Azure ve Azure Stack bazı temel bilgi sahibi olduğunuzu varsayar. Bu öğreticiye başlamadan önce daha fazla bilgi için bu makaleleri okuyun:
+Bu çözüm, Azure ve Azure Stack bazı temel bilgiye sahip olduğunuzu varsayar. Çözüm başlatmadan önce daha fazla bilgi için bu makaleleri okuyun:
 
 * [Azure'a giriş](https://azure.microsoft.com/overview/what-is-azure/)
 * [Azure Stack temel kavramları](../operator/azure-stack-overview.md)
@@ -73,12 +73,12 @@ Bu öğreticide, Azure ve Azure Stack bazı temel bilgi sahibi olduğunuzu varsa
 ### <a name="azure-requirements"></a>Azure gereksinimleri
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-* Oluşturma bir [Web uygulaması](https://docs.microsoft.com/azure/app-service/overview) azure'da. Web uygulama URL'sini Not olun, öğreticide kullanmanız gerekir.
+* Oluşturma bir [Web uygulaması](https://docs.microsoft.com/azure/app-service/overview) azure'da. Web uygulama URL'sini Not olun, çözümde kullanmanız gerekir.
 
 ### <a name="azure-stack-requirements"></a>Azure Stack gereksinimleri
 
 * Bir Azure Stack tümleşik sistemi kullanın veya Azure Stack geliştirme Seti'ni (ASDK) dağıtın. ASDK dağıtmak için:
-  * [Öğreticisi: Yükleyiciyi kullanarak ASDK dağıtma](../asdk/asdk-install.md) makalede ayrıntılı dağıtım yönergeleri sağlanır.
+  * [ Çözümü: Yükleyiciyi kullanarak ASDK dağıtma](../asdk/asdk-install.md) makalede ayrıntılı dağıtım yönergeleri sağlanır.
   * Kullanım [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) ASDK dağıtım sonrası adımları otomatikleştirmek için PowerShell Betiği.
 
     > [!Note]
@@ -255,7 +255,7 @@ Visual Studio Online (VSTO) derleme, uç noktaları oluşturarak, Azure Stack i�
 2. İçinde **ayarları**seçin **güvenlik**.
 3. İçinde **Azure DevOps Hizmetleri gruplarında**seçin **uç noktasını oluşturanlar**.
 
-    ![NorthwindCloud Endpoint Creators](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
+    ![NorthwindCloud uç noktasını oluşturanlar](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
 
 4. Üzerinde **üyeleri** sekmesinde **Ekle**.
 
@@ -284,7 +284,7 @@ Mevcut uç nokta bilgileri, Azure Stack bağlantı Azure DevOps Hizmetleri'nin k
 | Bağlantı adı | Azure Stack Azure AD | Bağlantının adı. |
 | Ortam | AzureStack | Ortamınızın adını. |
 | Ortam URL'si | `https://management.local.azurestack.external` | Yönetim uç noktanıza. |
-| Kapsam düzeyi | Abonelik | Bağlantının kapsamı. |
+| Kapsam düzeyi | Subscription | Bağlantının kapsamı. |
 | Abonelik Kimliği | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack kullanıcı abonelik kimliği |
 | Abonelik adı | name@contoso.com | Azure Stack kullanıcı abonelik adı. |
 | Hizmet sorumlusu istemci kimliği | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | Asıl Kimliğinden [bu](azure-stack-solution-pipeline.md#create-a-service-principal) bu makaledeki bir bölüm. |
@@ -309,7 +309,7 @@ Aşağıdaki eşlemeyi kullanarak bir hizmet bağlantı oluşturabilirsiniz:
 | Bağlantı adı | Azure Stack ADFS | Bağlantının adı. |
 | Ortam | AzureStack | Ortamınızın adını. |
 | Ortam URL'si | `https://management.local.azurestack.external` | Yönetim uç noktanıza. |
-| Kapsam düzeyi | Abonelik | Bağlantının kapsamı. |
+| Kapsam düzeyi | Subscription | Bağlantının kapsamı. |
 | Abonelik Kimliği | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack kullanıcı abonelik kimliği |
 | Abonelik adı | name@contoso.com | Azure Stack kullanıcı abonelik adı. |
 | Hizmet sorumlusu istemci kimliği | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | AD FS için oluşturduğunuz gelen hizmet sorumlusu istemci kimliği. |
@@ -324,7 +324,7 @@ Uç nokta oluşturulduktan sonra Azure Stack bağlantı için Azure DevOps kulla
 
 ## <a name="develop-your-application-build"></a>Uygulama derleme geliştirin
 
-Öğreticinin bu bölümünde, gerekir:
+Bu çözümün parçası, gerekir:
 
 * Bir Azure DevOps Services projesi için kod ekleyin.
 * Kendi içinde bir web uygulaması dağıtımı oluşturun.

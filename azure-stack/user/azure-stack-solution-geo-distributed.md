@@ -10,25 +10,25 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: scenario
 ms.date: 01/14/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a348e4e7eada9537defa292f667cfd3eb1e27438
-ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
+ms.openlocfilehash: 47a0fd72da842cc4d2f73372870c561f2d88e48d
+ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67492471"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286948"
 ---
-# <a name="tutorial-create-a-geo-distributed-app-solution-to-direct-traffic-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile trafiği yönlendirmek için bir coğrafi olarak dağıtılmış bir uygulama çözümü oluşturun
+# <a name="create-a-geo-distributed-app-solution-to-direct-traffic-with-azure-and-azure-stack"></a>Azure ve Azure Stack ile trafiği yönlendirmek için bir coğrafi olarak dağıtılmış bir uygulama çözümü oluşturun
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Trafiği coğrafi olarak dağıtılmış uygulamaları desenini kullanarak, çeşitli ölçümlere göre belirli Uç noktalara yönlendirmek öğrenin. Traffic Manager'ı oluşturma, coğrafi tabanlı Yönlendirme ve uç nokta yapılandırma profili bilgileri bölgesel gereksinimleri, kurumsal ve uluslararası düzenleme ve verileri gereksinimlerinize göre Uç noktalara yönlendirilir sağlar.
 
-Bu öğreticide, bir örnek ortama oluşturacaksınız:
+Bu çözümde bir örnek ortama oluşturacaksınız:
 
 > [!div class="checklist"]
 > - Coğrafi olarak dağıtılmış bir uygulama oluşturun.
@@ -42,7 +42,7 @@ Coğrafi olarak dağıtılmış desen ile uygulamanızı bölgeleri kapsar. Gene
 
 #### <a name="scalability-considerations"></a>Ölçeklenebilirlik konusunda dikkat edilmesi gerekenler
 
-Ölçeklenebilirlik uyum sağlamak için bu öğreticiyle oluşturacaksınız çözüm değildir. Ancak, diğer Azure ve şirket içi çözümler ile birlikte kullanıldığında, ölçeklenebilirlik gereksinimlerini barındırabilir. Yöneticisi aracılığıyla trafiği otomatik olarak ölçeklendirme ile karma bir çözüm oluşturma hakkında daha fazla bilgi için bkz: [Azure ile Bulutlar arası ölçeklendirme çözümleri oluşturun](azure-stack-solution-cloud-burst.md).
+Ölçeklenebilirlik uyum sağlamak için bu makaleyi oluşturacaksınız çözüm değildir. Ancak, diğer Azure ve şirket içi çözümler ile birlikte kullanıldığında, ölçeklenebilirlik gereksinimlerini barındırabilir. Yöneticisi aracılığıyla trafiği otomatik olarak ölçeklendirme ile karma bir çözüm oluşturma hakkında daha fazla bilgi için bkz: [Azure ile Bulutlar arası ölçeklendirme çözümleri oluşturun](azure-stack-solution-cloud-burst.md).
 
 #### <a name="availability-considerations"></a>Kullanılabilirlik konusunda dikkat edilmesi gerekenler
 
@@ -74,7 +74,7 @@ Bir dağıtılmış uygulama Ayak izi kullanıma yapılandırmadan önce şunlar
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
 > Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
+> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
 
 ## <a name="part-1-create-a-geo-distributed-app"></a>1\. Bölüm: Coğrafi olarak dağıtılmış bir uygulama oluşturma
 
@@ -245,7 +245,7 @@ Azure DevOps ve Azure DevOps sunucusu yüksek oranda yapılandırılabilir ve y�
 
 [Azure App Service](https://docs.microsoft.com/azure/app-service/overview), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. 
 
-![Azure App Service](media/azure-stack-solution-geo-distributed/image27.png)
+![Azure uygulama hizmeti](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - Mevcut bir özel DNS adını Azure Web Apps'e eşleyin.
@@ -260,9 +260,9 @@ Canlı siteyi ve onun DNS etki alanı adını App Service'e geçirmek için, bkz
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için:
+Bu çözüm tamamlamak için:
 
--   [Bir App Service uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/), veya başka bir öğretici için oluşturduğunuz bir uygulama kullanın.
+-   [Bir App Service uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/), veya başka bir çözüm için oluşturulan bir uygulama kullanın.
 
 -   Bir etki alanı adı satın alın ve etki alanı sağlayıcınız için DNS kayıt defterine erişim emin olun.
 
@@ -371,7 +371,7 @@ Bu bölümünde yapacağız:
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi tamamlamak için:
+Bu çözüm tamamlamak için:
 
 -   [Bir App Service uygulaması oluşturun.](https://docs.microsoft.com/azure/app-service/)
 -   [Özel DNS adını web uygulamanıza eşleme.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
@@ -547,7 +547,7 @@ Web uygulaması sayfasında seçin **SL ayarları**. Ardından **Yalnızca HTTPS
 
 İşlem tamamlandığında, herhangi bir uygulamaya işaret eden HTTP URL'leri gidin. Örneğin:
 
--   https://<app_name>.azurewebsites.net
+-   https://<app_name>.azurewebsites.NET
 -   https://northwindcloud.com
 -   <https://www.northwindcloud.com>
 

@@ -10,19 +10,19 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: solution
 ms.date: 06/26/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 06/26/2019
-ms.openlocfilehash: 074d971c1f951797b5dc2d53a62eef56d0b7249f
-ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
+ms.openlocfilehash: 3ed0c109e0253fe6d710801dbc30de04c0b5a6e5
+ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67492334"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286823"
 ---
-# <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Öğretici: Uygulamaları Azure ve Azure Stack için hibrit bulut kimliği yapılandırma
+# <a name="configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Uygulamaları Azure ve Azure Stack için hibrit bulut kimliği yapılandırma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
@@ -35,19 +35,19 @@ Küresel Azure hem de Azure Stack kullanarak uygulamalarınıza erişim izni ver
 
 Hizmet sorumluları, Azure Stack uygulamalarınızın dağıtım veya Azure Stack'te Azure Resource Manager kullanarak yapılandırması için erişim vermek için kullanın.
 
-Bu öğreticide, bir örnek ortama oluşturacaksınız:
+Bu çözümde bir örnek ortama oluşturacaksınız:
 
 > [!div class="checklist"]
 > - Genel Azure ve Azure Stack'te karma kimlik oluşturma
 > - Azure Stack API'sine erişmek için bir belirteç alır.
 
-Bu öğreticideki adımlar için Azure Stack operatör izinleri olmalıdır.
+Bu çözümde adımlar için Azure Stack operatör izinleri olmalıdır.
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack çevikliğini ve yenilik bulut, şirket içi ortamınıza bilgi işlem, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu sunar.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
 > 
-> Teknik incelemeyi [karma uygulamaları için tasarım konuları](https://aka.ms/hybrid-cloud-applications-pillars) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve çalıştırma için (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) gözden geçirmeleri karma uygulamalar. Tasarım konuları, üretim ortamlarında sorunlarını en aza karma uygulama tasarımının en iyi duruma getirme yardımcı olur.
+> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
 
 
 ## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>Azure AD portalında için hizmet sorumlusu oluşturma
@@ -60,7 +60,7 @@ AD FS ile Azure Stack dağıttıysanız, hizmet sorumlusu oluşturma, erişim i�
 
 ## <a name="using-the-azure-stack-api"></a>Azure yığını API'si kullanma
 
-[Azure Stack API](azure-stack-rest-api-use.md) öğretici Azure Stack API'ye erişmek için bir belirteç alma sürecinde açıklar.
+[Azure Stack API](azure-stack-rest-api-use.md) çözümde Azure Stack API'sine erişmek için bir belirteç alma sürecinde gösterilir.
 
 ## <a name="connect-to-azure-stack-using-powershell"></a>Powershell kullanarak Azure Stack'e bağlanma
 

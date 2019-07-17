@@ -10,23 +10,23 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: scenario
 ms.date: 01/25/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 97869ef7659cb5619ff962fc4b3bc8facbc599ed
-ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
+ms.openlocfilehash: 73fc9559e639973b07c576f8590c756032db0c3e
+ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67492440"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286934"
 ---
-# <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Öğretici: Azure ve Azure Stack ile karma bulut çözümü dağıtma
+# <a name="deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Azure ve Azure Stack ile karma bulut çözümü dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Bu öğreticide, Azure genel bulutunda ve Azure Stack özel bulut kullanan bir karma bulut çözümü dağıtma işlemini göstermektedir.
+Bu senaryo, Azure genel bulutunda ve Azure Stack özel bulut kullanan bir karma bulut çözümü dağıtma işlemini göstermektedir.
 
 Bir hibrit bulut çözümü kullanarak, bir özel bulut uyumluluk avantajlarından genel bulutun ölçeklenebilirliği ile birleştirebilirsiniz. Ayrıca, geliştiricilerinizin Microsoft geliştiricisi ekosistem avantajlarından yararlanın ve becerilerini Bulut ve şirket içi ortamlara Uygula.
 
@@ -46,6 +46,12 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > - Application ınsights'ı izleme ve artan trafiği için uyarı ayarlama.
 > - Küresel Azure ve Azure Stack arasında geçiş yapma otomatik trafiği yapılandırın.
 
+> [!Tip]  
+> ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
+> 
+> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
+
 ### <a name="assumptions"></a>Varsayımlar
 
 Bu öğreticide, genel Azure ve Azure Stack temel bir bilgi sahibi olduğunuzu varsayar. Bu öğreticiye başlamadan önce daha fazla bilgi edinmek istiyorsanız, aşağıdaki makaleleri gözden geçirin:
@@ -57,7 +63,7 @@ Bu öğretici ayrıca bir Azure aboneliğine sahip olduğunuzu varsayar. Bir abo
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce aşağıdaki gereksinimleri karşıladığından emin olun:
+Bu çözüm başlamadan önce aşağıdaki gereksinimleri karşıladığından emin olun:
 
 - Bir Azure Stack geliştirme Seti'ni (ASDK) veya bir Azure Stack tümleşik sisteminde bir abonelik. Bir Azure Stack geliştirme Seti'ni dağıtmak için yönergeleri izleyin. [Yükleyicisi'ni kullanarak ASDK dağıtma](../asdk/asdk-install.md).
 - Azure Stack yüklemenizi aşağıdakilerin yüklü olması:
