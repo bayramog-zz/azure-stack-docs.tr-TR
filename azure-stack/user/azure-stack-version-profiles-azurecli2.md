@@ -1,6 +1,6 @@
 ---
-title: CLI ile Azure stack'e bağlanma | Microsoft Docs
-description: Platformlar arası komut satırı arabirimi (CLI) yönetmek ve Azure Stack'te kaynakları dağıtmak için kullanmayı öğrenin
+title: CLı ile Azure Stack bağlanma | Microsoft Docs
+description: Platformlar arası komut satırı arabirimini (CLı) kullanarak Azure Stack kaynakları yönetme ve dağıtma hakkında bilgi edinin
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -10,49 +10,49 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 07/16/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: 7dba3d791a2ce19429506699ae538c747ed37dbd
-ms.sourcegitcommit: 7ceddf8b67f920d5a5eef4a84e157079a53b3374
+ms.openlocfilehash: 788d0fd6479ab054568d549af2f7a4306a963d3b
+ms.sourcegitcommit: 4139b507d6da98a086929da48e3b4661b70bc4f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/10/2019
-ms.locfileid: "66821790"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68299453"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack'te Azure CLI ile API Sürüm profillerini kullanma
+# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack 'de Azure CLı ile API sürüm profillerini kullanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Linux, Mac ve Windows istemci platformlarını Azure Stack geliştirme Seti'ni (ASDK) kaynaklarını yönetmek için Azure komut satırı arabirimi (CLI) yedekleme ayarlamak için bu makaledeki adımları izleyebilirsiniz.
+Linux, Mac ve Windows istemci platformlarındaki Azure Stack Geliştirme Seti (ASDK) kaynaklarını yönetmek için Azure komut satırı arabirimi 'ni (CLı) ayarlamak üzere bu makaledeki adımları izleyebilirsiniz.
 
-## <a name="prepare-for-azure-cli"></a>Azure CLI için hazırlama
+## <a name="prepare-for-azure-cli"></a>Azure CLı için hazırlanma
 
-Geliştirme makinenizde Azure CLI kullanmak Azure Stack için CA kök sertifikası gerekir. CLI aracılığıyla kaynaklarını yönetmek için bir sertifika kullanın.
+Azure Stack Geliştirme Seti kullanıyorsanız, geliştirme makinenizde Azure CLı kullanmak için Azure Stack CA kök sertifikasına ihtiyacınız olacaktır. Bu sertifikayı CLı aracılığıyla kaynakları yönetmek için kullanırsınız.
 
- - **Azure Stack CA kök sertifikasını** ASDK dışında bir iş istasyonundan CLI kullanıyorsanız gereklidir.  
+ - **Azure Stack CA kök sertifikası** , CLı 'YI asdk dışındaki bir iş istasyonundan kullanıyorsanız gereklidir.  
 
- - **Sanal makine diğer uç nokta** "UbuntuLTS" veya "bir görüntü yayımcısı, teklif, SKU ve sürüm Vm'leri dağıtırken tek bir parametre başvuran Win2012Datacenter," gibi bir diğer ad sağlar.  
+ - **Sanal makine diğer adları uç noktası** , "UbuntuLTS" veya "Win2012Datacenter" gibi bir diğer ad sağlar, bu da VM 'leri dağıtımında tek bir parametre olarak bir görüntü yayımcısı, TEKLIF, SKU ve sürüme başvurur.  
 
-Aşağıdaki bölümlerde, bu değerleri almak nasıl açıklanmaktadır.
+Aşağıdaki bölümlerde bu değerlerin nasıl alınacağı açıklanır.
 
 ### <a name="export-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasını dışarı aktarma
 
 Tümleşik bir sistem kullanıyorsanız, CA kök sertifikasını dışarı aktarmanız gerekmez. Bir ASDK üzerinde CA kök sertifikasını dışarı aktarmanız gerekir.
 
-PEM biçiminde ASDK kök sertifikasını dışarı aktarmak için:
+ASDK kök sertifikasını pek biçiminde dışarı aktarmak için:
 
-1. Azure Stack kök sertifika adını alın:
-    - Azure Stack Kiracı veya Yönetici portalında oturum açın.
-    - "Güvenli" üzerinde adres çubuğuna tıklayın.
-    - Açılır pencerede tıklayın "Geçerli".
-    - Sertifika penceresinde "Sertifika yolu" sekmesine tıklayın. 
-    - Azure Stack Root Cert ','ın adı not edin.
+1. Azure Stack kök sertifikanın adını alın:
+    - Azure Stack kiracı veya yönetici portalında oturum açın.
+    - Adres çubuğunun yakınında "güvenli" seçeneğine tıklayın.
+    - Açılır pencerede "geçerli" a tıklayın.
+    - Sertifika penceresinde, "sertifika yolu" sekmesine tıklayın. 
+    - Azure Stack kök CERT adının bir kısmını aklınızda edin.
 
-    ![Azure Stack kök sertifikasını](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
+    ![Azure Stack kök sertifika](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
-2. [Azure Stack üzerinde bir Windows VM oluşturma](azure-stack-quick-windows-portal.md).
+2. [Azure Stack üzerinde bir Windows sanal makinesi oluşturun](azure-stack-quick-windows-portal.md).
 
 3. Makinede oturum açın, yükseltilmiş bir PowerShell istemi açın ve ardından aşağıdaki betiği çalıştırın:
 
@@ -76,48 +76,48 @@ PEM biçiminde ASDK kök sertifikasını dışarı aktarmak için:
 4. Sertifikayı yerel makinenize kopyalayın.
 
 
-### <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Sanal makine diğer uç nokta ayarlamayı
+### <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Sanal makine diğer adları uç noktasını ayarlama
 
-Sanal makine diğer dosyasını barındıran bir genel olarak erişilebilir uç ayarlayabilirsiniz. Sanal makine diğer dosyasının bir görüntü için ortak bir ad sağlar bir JSON dosyasıdır. Azure CLI parametresi olarak bir VM dağıtırken adı kullanacaksınız.
+Bir sanal makine diğer adı dosyasını barındıran, genel olarak erişilebilen bir uç nokta ayarlayabilirsiniz. Sanal makine diğer adı dosyası, bir görüntü için ortak ad sağlayan bir JSON dosyasıdır. Bir sanal makineyi Azure CLı parametresi olarak dağıtırken bu adı kullanacaksınız.
 
-1. Özel bir görüntü yayımlarsanız, yayımlama sırasında belirtilen yayımcı, teklif, SKU ve sürüm bilgileri not edin. Marketten bir görüntü varsa kullanarak bilgileri görüntüleyebilir ```Get-AzureVMImage``` cmdlet'i.  
+1. Özel bir görüntü yayımlarsanız, yayımlama sırasında belirttiğiniz Yayımcı, teklif, SKU ve sürüm bilgilerini unutmayın. Market 'ten bir görüntüdür, bu bilgileri ```Get-AzureVMImage``` cmdlet 'ini kullanarak görüntüleyebilirsiniz.  
 
-2. İndirme [örnek dosyası](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) github'dan.
+2. [Örnek dosyayı](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) GitHub 'dan indirin.
 
-3. Azure Stack'te bir depolama hesabı oluşturun. Tamamlandığında, bir blob kapsayıcı oluşturun. "Genel" erişim ilkesi ayarlayın  
+3. Azure Stack ' de bir depolama hesabı oluşturun. Bu tamamlandığında bir blob kapsayıcısı oluşturun. Erişim ilkesini "genel" olarak ayarlayın.  
 
-4. JSON dosyasını yeni kapsayıcısına yükleyin. Bu yapıldığında blobun URL'sini görüntüleyebilirsiniz. Blob adı belirledikten sonra URL'yi blob özelliklerini seçin.
+4. JSON dosyasını yeni kapsayıcıya yükleyin. Bu tamamlandığında, Blobun URL 'sini görüntüleyebilirsiniz. Blob adı ' nı ve ardından blob özelliklerinden URL 'YI seçin.
 
-### <a name="install-or-upgrade-cli"></a>Yüklemeniz veya yükseltmeniz CLI
+### <a name="install-or-upgrade-cli"></a>CLı 'yı yükler veya yükseltin
 
-Geliştirme iş istasyonunda oturum açın ve CLI'yı yükleyin. Azure Stack 2.0 veya Azure CLI'ın sonraki bir sürümünü gerektirir. CLI'ın geçerli bir sürüm API profillerini en son sürümünü gerektirir.  İçinde açıklanan adımları kullanarak CLI'yı yükleyebilirsiniz [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli) makalesi. 
+Geliştirme iş istasyonunuzda oturum açın ve CLı 'yı yükledikten sonra. Azure Stack, Azure CLı 'nin 2,0 veya sonraki bir sürümünü gerektirir. API profillerinin en son sürümü, CLı 'nin güncel bir sürümünü gerektirir.  CLı 'yi, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 'yı kullanma makalesinde açıklanan adımları kullanarak yükleyebilirsiniz. 
 
-1. Yüklemenin başarılı olup olmadığını doğrulamak için bir terminal veya komut istemi penceresi açın ve aşağıdaki komutu çalıştırın:
+1. Yüklemenin başarılı olup olmadığını doğrulamak için bir Terminal veya komut istemi penceresi açın ve aşağıdaki komutu çalıştırın:
 
     ```shell
     az --version
     ```
 
-    Azure CLI ve bilgisayarınızda yüklü diğer bağımlı kitaplıkların sürüm görmeniz gerekir.
+    Bilgisayarınızda yüklü olan Azure CLı ve diğer bağımlı kitaplıkların sürümünü görmeniz gerekir.
 
-    ![Azure Stack Python konumu üzerinde Azure CLI](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
+    ![Azure Stack Python konumunda Azure CLı](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-2. CLI'ın Python konumu not edin. ASDK çalıştırıyorsanız, sertifika eklemek için bu konuma gerekir.
+2. CLı 'nın Python konumunu bir yere unutmayın. ASDK çalıştırıyorsanız, sertifikanızı eklemek için bu konumu kullanmanız gerekir.
 
 
 ## <a name="windows-azure-ad"></a>Windows (Azure AD)
 
-Azure AD, kimlik yönetimi hizmeti olarak kullanıyorsanız ve bir Windows makinede CLI kullanıyorsanız bu bölümde, CLI ayarlama yol gösterir.
+Bu bölüm, Azure AD 'yi kimlik yönetimi hizmetiniz olarak kullanıyorsanız ve CLı 'yi bir Windows makinesinde kullanıyorsanız, CLı 'yi ayarlama işleminde size kılavuzluk eder.
 
-### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasını güven
+### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasına güven
 
-ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gerekir. Tümleşik sistemlerle bunu gerekmez.
+ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gerekecektir. Bunu, tümleşik sistemlerle gerçekleştirmeniz gerekmez.
 
-Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Python sürümü için mevcut Python sertifika deposuna ekleyin. Python kendi örneğini çalışıyor olabilir. Azure CLI, Python sürümünü içerir.
+Azure Stack CA kök sertifikasına güvenmek için, Azure CLı ile yüklenen Python sürümü için mevcut Python sertifika deposuna ekleyin. Kendi Python örneğinizi çalıştırıyor olabilirsiniz. Azure CLı, Python 'un kendi sürümünü içerir.
 
-1. Makinenizde sertifika depo konumunu bulun.  Komutunu çalıştırarak konumu bulabilirsiniz `az --version`.
+1. Makinenizde sertifika depolama konumunu bulun.  Komutunu `az --version`çalıştırarak konumu bulabilirsiniz.
 
-2. İçeren klasöre gidin CLI Python uygulaması demektir. Python'ın bu sürümünü çalıştırmak üzere isteyeceksiniz. Python ' sisteminizdeki yolu ayarladıysanız, Python'ı çalıştıran kendi Python sürümünü çalıştırır. Bunun yerine, CLI tarafından kullanılan sürümü çalıştırın ve bu sürüme sertifikanızı eklemek isteyeceksiniz. Örneğin, CLI, Python, olabilir: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
+2. CLı Python uygulamanız olduğunuzu içeren klasöre gidin. Python 'un bu sürümünü çalıştırmak isteyeceksiniz. Sistem YOLUNUZDA Python ayarladıysanız Python 'un çalıştırılması kendi Python sürümünüzü yürütür. Bunun yerine, CLı tarafından kullanılan sürümü çalıştırmak ve sertifikanızı bu sürüme eklemek isteyeceksiniz. Örneğin, CLı Python 'niz şu konumda olabilir: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
 
     Aşağıdaki komutları kullanın:
 
@@ -126,9 +126,9 @@ Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Pytho
     .\python -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu not edin. Örneğin, `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Belirli yolunuzu işletim sisteminiz ve CLI yüklemenizi bağlıdır.
+    Sertifika konumunu bir yere getirin. Örneğin: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Belirli yolunuz, IŞLETIM sisteminize ve CLı yüklemenize bağlı olacaktır.
 
-2. Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir.
+2. Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin.
 
     ```powershell
     $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -161,60 +161,60 @@ Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Pytho
 
 ### <a name="connect-to-azure-stack"></a>Azure Stack'e Bağlanma
 
-1. Azure Stack ortamınıza çalıştırarak kayıt `az cloud register` komutu.
+1. `az cloud register` Komutunu çalıştırarak Azure Stack ortamınızı kaydettirin.
 
-    Bazı senaryolarda, doğrudan giden internet bağlantısı, bir proxy veya SSL durdurma zorlar güvenlik duvarı yönlendirilir. Bu gibi durumlarda, `az cloud register` komut "uç noktalar buluttan alınamıyor." şeklinde bir hata ile başarısız olabilir Bu hatayı çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
+    Bazı senaryolarda, doğrudan giden internet bağlantısı, SSL yakalaşmayı zorlayan bir ara sunucu veya güvenlik duvarı aracılığıyla yönlendirilir. Bu durumlarda, `az cloud register` komut "buluttan uç noktalar alınamıyor" gibi bir hata vererek başarısız olabilir. Bu hatayı geçici olarak çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
 
     ```shell  
     set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-2. Ortamınıza kaydedin. Çalıştırırken aşağıdaki parametreleri kullanın `az cloud register`.
+2. Ortamınızı kaydedin. Çalıştırırken `az cloud register`aşağıdaki parametreleri kullanın.
 
-    | Değer | Örnek | Açıklama |
+    | Value | Örnek | Açıklama |
     | --- | --- | --- |
-    | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
-    | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
+    | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl 'si** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [# # # sanal makine diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
     ```
 
-1. Aşağıdaki komutları kullanarak etkin ortam ayarlayın.
+1. Aşağıdaki komutları kullanarak etkin ortamı ayarlayın.
 
       ```azurecli
       az cloud set -n <environmentname>
       ```
 
-1. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
+1. Ortam yapılandırmanızı Azure Stack belirli API sürümü profilini kullanacak şekilde güncelleştirin. Yapılandırmayı güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
     az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >1808 derlemeden önce bir Azure Stack sürümünü çalıştırıyorsanız, API sürüm profili **2019-03-01-karma**yerine API sürüm profili **2017-03-09-profil** ' i kullanmanız gerekir. Azure CLı 'nin yeni bir sürümünü kullanmanız gerekir.
  
-1. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
+1. `az login` Komutunu kullanarak Azure Stack ortamınızda oturum açın. Azure Stack ortamında Kullanıcı veya [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals)olarak oturum açabilirsiniz. 
 
-   - Olarak oturum bir *kullanıcı*: 
+   - *Kullanıcı*olarak oturum açın: 
 
-     Kullanıcı adı ve parola doğrudan içinde ya da belirtebilirsiniz `az login` komutunu ya da bir tarayıcı kullanarak kimlik doğrulaması. Çok faktörlü kimlik doğrulaması etkin hesabınız varsa, ikincisi yapmanız gerekir:
+     Kullanıcı adını ve parolayı doğrudan `az login` komut içinden belirtebilir veya bir tarayıcı kullanarak kimlik doğrulaması yapabilirsiniz. Hesabınız Multi-Factor Authentication etkinleştirildiyse, ikincisini yapmanız gerekir:
 
      ```azurecli
      az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
      ```
 
      > [!NOTE]
-     > Çok faktörlü kimlik doğrulaması etkin kullanıcı hesabınız varsa kullanabileceğiniz `az login` sağlamadan komutunu `-u` parametresi. Bu komut çalıştıran bir URL ve kimlik doğrulaması yapmak için kullanmanız gereken kodu sağlar.
+     > Kullanıcı hesabınızda Multi-Factor Authentication etkinleştirildiyse, `az login` `-u` parametresini sağlamadan komutunu kullanabilirsiniz. Bu komutun çalıştırılması, kimlik doğrulaması için kullanmanız gereken bir URL ve kod sağlar.
 
-   - Olarak oturum bir *hizmet sorumlusu*: 
+   - *Hizmet sorumlusu*olarak oturum açın: 
     
-     Oturum açarken, önce [Azure Portalı aracılığıyla hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md) veya CLI ve bir rol atayın. Aşağıdaki komutu kullanarak şimdi oturum açın:
+     Oturum açmadan önce, Azure portal veya CLı [aracılığıyla bir hizmet sorumlusu oluşturun](azure-stack-create-service-principals.md) ve bir rol atayın. Şimdi aşağıdaki komutu kullanarak oturum açın:
 
      ```azurecli  
      az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
@@ -222,33 +222,33 @@ Azure Stack CA kök sertifikasına güvenmek için Azure CLI ile yüklenen Pytho
 
 ### <a name="test-the-connectivity"></a>Bağlantısını test etme
 
-Her şeyi ayarlamak, CLI Azure Stack içinde kaynaklar oluşturabiliriz. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
+Her şey ayarlandığında, Azure Stack içinde kaynak oluşturmak için CLı kullanın. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli
 az group create -n MyResourceGroup -l local
 ```
 
-Kaynak grubu başarıyla oluşturulursa, önceki komutta aşağıdaki özellikleri yeni oluşturulan kaynağın verir:
+Kaynak grubu başarıyla oluşturulursa, önceki komut yeni oluşturulan kaynağın aşağıdaki özelliklerini verir:
 
-![Çıkış kaynak grubu oluşturun](media/azure-stack-connect-cli/image1.png)
+![Kaynak grubu çıkış oluştur](media/azure-stack-connect-cli/image1.png)
 
 ## <a name="windows-ad-fs"></a>Windows (AD FS)
 
-Active Directory Federasyon Hizmetleri'nde (AD FS), kimlik yönetimi hizmeti olarak kullanıyorsanız ve bir Windows makinede CLI kullanıyorsanız bu bölümde, CLI ayarlama yol gösterir.
+Bu bölüm, kimlik yönetimi hizmetiniz olarak Active Directory Federasyon Hizmetleri (AD FS) kullanıyorsanız ve CLı 'yi bir Windows makinesinde kullanıyorsanız, CLı ayarlama işleminde size yol gösterecektir.
 
-### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasını güven
+### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasına güven
 
-ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gerekir. Tümleşik sistemlerle bunu gerekmez.
+ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gerekecektir. Bunu, tümleşik sistemlerle gerçekleştirmeniz gerekmez.
 
-1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
+1. Makinenizde sertifika konumunu bulun. Konum, Python 'u yüklediğiniz yere göre farklılık gösterebilir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
 
     ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu not edin. Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuzu işletim sisteminiz ve yüklemiş olduğunuz Python sürümünü bağlıdır.
+    Sertifika konumunu bir yere getirin. Örneğin: `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, IŞLETIM sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
 
-2. Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir.
+2. Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin.
 
     ```powershell
     $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -281,66 +281,66 @@ ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gereki
 
 ### <a name="connect-to-azure-stack"></a>Azure Stack'e Bağlanma
 
-1. Azure Stack ortamınıza çalıştırarak kayıt `az cloud register` komutu.
+1. `az cloud register` Komutunu çalıştırarak Azure Stack ortamınızı kaydettirin.
 
-    Bazı senaryolarda, doğrudan giden internet bağlantısı, bir proxy veya SSL durdurma zorlar güvenlik duvarı yönlendirilir. Bu gibi durumlarda, `az cloud register` komut "uç noktalar buluttan alınamıyor." şeklinde bir hata ile başarısız olabilir Bu hatayı çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
+    Bazı senaryolarda, doğrudan giden internet bağlantısı, SSL yakalaşmayı zorlayan bir ara sunucu veya güvenlik duvarı aracılığıyla yönlendirilir. Bu durumlarda, `az cloud register` komut "buluttan uç noktalar alınamıyor" gibi bir hata vererek başarısız olabilir. Bu hatayı geçici olarak çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
 
     ```shell  
     set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-2. Ortamınıza kaydedin. Çalıştırırken aşağıdaki parametreleri kullanın `az cloud register`.
+2. Ortamınızı kaydedin. Çalıştırırken `az cloud register`aşağıdaki parametreleri kullanın.
 
-    | Değer | Örnek | Açıklama |
+    | Value | Örnek | Açıklama |
     | --- | --- | --- |
-    | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
-    | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
+    | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl 'si** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [# # # sanal makine diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
     ```
 
-1. Aşağıdaki komutları kullanarak etkin ortam ayarlayın.
+1. Aşağıdaki komutları kullanarak etkin ortamı ayarlayın.
 
       ```azurecli
       az cloud set -n <environmentname>
       ```
 
-1. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
+1. Ortam yapılandırmanızı Azure Stack belirli API sürümü profilini kullanacak şekilde güncelleştirin. Yapılandırmayı güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
     az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >1808 derlemeden önce bir Azure Stack sürümünü çalıştırıyorsanız, API sürüm profili **2019-03-01-karma**yerine API sürüm profili **2017-03-09-profil** ' i kullanmanız gerekir. Azure CLı 'nin yeni bir sürümünü kullanmanız gerekir.
 
-1. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
+1. `az login` Komutunu kullanarak Azure Stack ortamınızda oturum açın. Azure Stack ortamında Kullanıcı veya [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals)olarak oturum açabilirsiniz. 
 
-   - Olarak oturum bir *kullanıcı*:
+   - *Kullanıcı*olarak oturum açın:
 
-     Kullanıcı adı ve parola doğrudan içinde ya da belirtebilirsiniz `az login` komutunu ya da bir tarayıcı kullanarak kimlik doğrulaması. Çok faktörlü kimlik doğrulaması etkin hesabınız varsa, ikincisi yapmanız gerekir:
+     Kullanıcı adını ve parolayı doğrudan `az login` komut içinden belirtebilir veya bir tarayıcı kullanarak kimlik doğrulaması yapabilirsiniz. Hesabınız Multi-Factor Authentication etkinleştirildiyse, ikincisini yapmanız gerekir:
 
      ```azurecli
      az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2019-03-01-hybrid"
      ```
 
      > [!NOTE]
-     > Çok faktörlü kimlik doğrulaması etkin kullanıcı hesabınız varsa kullanabileceğiniz `az login` sağlamadan komutunu `-u` parametresi. Bu komut çalıştıran bir URL ve kimlik doğrulaması yapmak için kullanmanız gereken kodu sağlar.
+     > Kullanıcı hesabınızda Multi-Factor Authentication etkinleştirildiyse, `az login` `-u` parametresini sağlamadan komutunu kullanabilirsiniz. Bu komutun çalıştırılması, kimlik doğrulaması için kullanmanız gereken bir URL ve kod sağlar.
 
-   - Olarak oturum bir *hizmet sorumlusu*: 
+   - *Hizmet sorumlusu*olarak oturum açın: 
     
-     Hizmet sorumlusu oturum açma için kullanılacak .pem dosyasını hazırlayın.
+     Hizmet sorumlusu oturum açması için kullanılacak. ped dosyasını hazırlayın.
 
-     Bir pfx özel anahtarla konumundaki gibi asıl oluşturulduğu istemci makinede hizmet sorumlusu sertifikasını dışarı aktarma `cert:\CurrentUser\My`; sertifika adı, sorumlu aynı ada sahip.
+     Sorumlunun oluşturulduğu istemci makinede, hizmet sorumlusu sertifikasını konumunda `cert:\CurrentUser\My`bulunan özel anahtarla bir PFX olarak dışarı aktarın; sertifika adı sorumluyla aynı ada sahiptir.
 
-     Pfx için pem (OpenSSL yardımcı programını kullanın) dönüştürün.
+     Pfx 'i ped 'ye dönüştürün (OpenSSL yardımcı programını kullanın).
 
-     CLI için oturum açın:
+     CLı 'da oturum açın:
   
      ```azurecli  
      az login --service-principal \
@@ -352,44 +352,44 @@ ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gereki
 
 ### <a name="test-the-connectivity"></a>Bağlantısını test etme
 
-Her şeyi ayarlamak, CLI Azure Stack içinde kaynaklar oluşturabiliriz. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
+Her şey ayarlandığında, Azure Stack içinde kaynak oluşturmak için CLı kullanın. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli
 az group create -n MyResourceGroup -l local
 ```
 
-Kaynak grubu başarıyla oluşturulursa, önceki komutta aşağıdaki özellikleri yeni oluşturulan kaynağın verir:
+Kaynak grubu başarıyla oluşturulursa, önceki komut yeni oluşturulan kaynağın aşağıdaki özelliklerini verir:
 
-![Çıkış kaynak grubu oluşturun](media/azure-stack-connect-cli/image1.png)
+![Kaynak grubu çıkış oluştur](media/azure-stack-connect-cli/image1.png)
 
 
 ## <a name="linux-azure-ad"></a>Linux (Azure AD)
 
-Azure AD, kimlik yönetimi hizmeti olarak kullanıyorsanız ve bir Linux makinesinde CLI kullanıyorsanız bu bölümde, CLI ayarlama yol gösterir.
+Bu bölüm, kimlik yönetimi hizmetiniz olarak Azure AD kullanıyorsanız ve bir Linux makinesinde CLı kullanıyorsanız, CLı 'yi ayarlama işleminde size kılavuzluk eder.
 
-### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasını güven
+### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasına güven
 
-ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gerekir. Tümleşik sistemlerle bunu gerekmez.
+ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gerekecektir. Bunu, tümleşik sistemlerle gerçekleştirmeniz gerekmez.
 
-Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir.
+Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin.
 
-1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Pip ve certifi Modülü yüklü olması gerekir. Aşağıdaki bash isteminde Python komutunu kullanabilirsiniz:
+1. Makinenizde sertifika konumunu bulun. Konum, Python 'u yüklediğiniz yere göre farklılık gösterebilir. PIP ve certifi modülünün yüklü olması gerekir. Bash isteminde aşağıdaki Python komutunu kullanabilirsiniz:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu not edin; Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. İşletim sisteminiz ve yüklemiş olduğunuz Python sürümünü belirli yolunuzu bağlıdır.
+    Sertifika konumunu bir yere göz önünde bulundurma; Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
 
-2. Aşağıdaki bash komut sertifikanızı yol ile çalıştırın.
+2. Aşağıdaki Bash komutunu sertifikanızın yoluyla çalıştırın.
 
-   - Uzak Linux makinesi için:
+   - Bir uzak Linux makinesi için:
 
      ```bash  
      sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
      ```
 
-   - Azure Stack ortamında bir Linux makine için:
+   - Azure Stack ortamı içindeki bir Linux makinesi için:
 
      ```bash  
      sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
@@ -397,49 +397,49 @@ Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir
 
 ### <a name="connect-to-azure-stack"></a>Azure Stack'e Bağlanma
 
-Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
+Azure Stack bağlanmak için aşağıdaki adımları kullanın:
 
-1. Azure Stack ortamınıza çalıştırarak kayıt `az cloud register` komutu. Bazı senaryolarda, doğrudan giden internet bağlantısı, bir proxy veya SSL durdurma zorlar güvenlik duvarı yönlendirilir. Bu gibi durumlarda, `az cloud register` komut "uç noktalar buluttan alınamıyor." şeklinde bir hata ile başarısız olabilir Bu hatayı çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
+1. `az cloud register` Komutunu çalıştırarak Azure Stack ortamınızı kaydettirin. Bazı senaryolarda, doğrudan giden internet bağlantısı, SSL yakalaşmayı zorlayan bir ara sunucu veya güvenlik duvarı aracılığıyla yönlendirilir. Bu durumlarda, `az cloud register` komut "buluttan uç noktalar alınamıyor" gibi bir hata vererek başarısız olabilir. Bu hatayı geçici olarak çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
 
    ```shell
    export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
    export ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
-2. Ortamınıza kaydedin. Çalıştırırken aşağıdaki parametreleri kullanın `az cloud register`.
+2. Ortamınızı kaydedin. Çalıştırırken `az cloud register`aşağıdaki parametreleri kullanın.
 
-    | Değer | Örnek | Açıklama |
+    | Value | Örnek | Açıklama |
     | --- | --- | --- |
-    | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
-    | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
+    | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl 'si** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [# # # sanal makine diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
     ```
 
-3. Etkin ortam ayarlayın. 
+3. Etkin ortamı ayarlayın. 
 
       ```azurecli
         az cloud set -n <environmentname>
       ```
 
-4. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
+4. Ortam yapılandırmanızı Azure Stack belirli API sürümü profilini kullanacak şekilde güncelleştirin. Yapılandırmayı güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
       az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >1808 derlemeden önce bir Azure Stack sürümünü çalıştırıyorsanız, API sürüm profili **2019-03-01-karma**yerine API sürüm profili **2017-03-09-profil** ' i kullanmanız gerekir. Azure CLı 'nin yeni bir sürümünü kullanmanız gerekir.
 
-5. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
+5. `az login` Komutunu kullanarak Azure Stack ortamınızda oturum açın. Azure Stack ortamında Kullanıcı veya [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals)olarak oturum açabilirsiniz. 
 
-   * Olarak oturum bir *kullanıcı*:
+   * *Kullanıcı*olarak oturum açın:
 
-     Kullanıcı adı ve parola doğrudan içinde ya da belirtebilirsiniz `az login` komutunu ya da bir tarayıcı kullanarak kimlik doğrulaması. Çok faktörlü kimlik doğrulaması etkin hesabınız varsa, ikincisi yapmanız gerekir:
+     Kullanıcı adını ve parolayı doğrudan `az login` komut içinden belirtebilir veya bir tarayıcı kullanarak kimlik doğrulaması yapabilirsiniz. Hesabınız Multi-Factor Authentication etkinleştirildiyse, ikincisini yapmanız gerekir:
 
      ```azurecli
      az login \
@@ -448,11 +448,11 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
      ```
 
      > [!NOTE]
-     > Çok faktörlü kimlik doğrulaması etkin kullanıcı hesabınız varsa kullanabileceğiniz `az login` sağlamadan komutunu `-u` parametresi. Bu komut çalıştıran bir URL ve kimlik doğrulaması yapmak için kullanmanız gereken kodu sağlar.
+     > Kullanıcı hesabınızda Multi-Factor Authentication etkinleştirildiyse, `az login` `-u` parametresini sağlamadan komutunu kullanabilirsiniz. Bu komutun çalıştırılması, kimlik doğrulaması için kullanmanız gereken bir URL ve kod sağlar.
    
-   * Olarak oturum bir *hizmet sorumlusu*
+   * *Hizmet sorumlusu* olarak oturum açın
     
-     Oturum açarken, önce [Azure Portalı aracılığıyla hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md) veya CLI ve bir rol atayın. Aşağıdaki komutu kullanarak şimdi oturum açın:
+     Oturum açmadan önce, Azure portal veya CLı [aracılığıyla bir hizmet sorumlusu oluşturun](azure-stack-create-service-principals.md) ve bir rol atayın. Şimdi aşağıdaki komutu kullanarak oturum açın:
 
      ```azurecli  
      az login \
@@ -464,43 +464,43 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
 
 ### <a name="test-the-connectivity"></a>Bağlantısını test etme
 
-Her şeyi ayarlamak, CLI Azure Stack içinde kaynaklar oluşturabiliriz. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
+Her şey ayarlandığında, Azure Stack içinde kaynak oluşturmak için CLı kullanın. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli
     az group create -n MyResourceGroup -l local
 ```
 
-Kaynak grubu başarıyla oluşturulursa, önceki komutta aşağıdaki özellikleri yeni oluşturulan kaynağın verir:
+Kaynak grubu başarıyla oluşturulursa, önceki komut yeni oluşturulan kaynağın aşağıdaki özelliklerini verir:
 
-![Çıkış kaynak grubu oluşturun](media/azure-stack-connect-cli/image1.png)
+![Kaynak grubu çıkış oluştur](media/azure-stack-connect-cli/image1.png)
 
 ## <a name="linux-ad-fs"></a>Linux (AD FS)
 
-Active Directory Federasyon Hizmetleri'nde (AD FS), yönetim hizmeti olarak kullanıyorsanız ve bir Linux makinesinde CLI kullanıyorsanız bu bölümde, CLI ayarlama yol gösterir.
+Bu bölüm, yönetim hizmetiniz olarak Active Directory Federasyon Hizmetleri (AD FS) kullanıyorsanız ve bir Linux makinesinde CLı kullanıyorsanız, CLı ayarlama işleminde size yol gösterecektir.
 
-### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasını güven
+### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasına güven
 
-ASDK kullanıyorsanız, CA kök sertifikasını uzak makinenizdeki güven gerekir. Tümleşik sistemlerle bunu gerekmez.
+ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gerekecektir. Bunu, tümleşik sistemlerle gerçekleştirmeniz gerekmez.
 
-Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir.
+Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin.
 
-1. Makinenizde sertifika konumu bulun. Konum, Python yüklediğiniz bağlı olarak değişiklik gösterebilir. Pip ve certifi Modülü yüklü olması gerekir. Aşağıdaki bash isteminde Python komutunu kullanabilirsiniz:
+1. Makinenizde sertifika konumunu bulun. Konum, Python 'u yüklediğiniz yere göre farklılık gösterebilir. PIP ve certifi modülünün yüklü olması gerekir. Bash isteminde aşağıdaki Python komutunu kullanabilirsiniz:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu not edin; Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. İşletim sisteminiz ve yüklemiş olduğunuz Python sürümünü belirli yolunuzu bağlıdır.
+    Sertifika konumunu bir yere göz önünde bulundurma; Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
 
-2. Aşağıdaki bash komut sertifikanızı yol ile çalıştırın.
+2. Aşağıdaki Bash komutunu sertifikanızın yoluyla çalıştırın.
 
-   - Uzak Linux makinesi için:
+   - Bir uzak Linux makinesi için:
 
      ```bash  
      sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
      ```
 
-   - Azure Stack ortamında bir Linux makine için:
+   - Azure Stack ortamı içindeki bir Linux makinesi için:
 
      ```bash  
      sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
@@ -508,66 +508,66 @@ Azure Stack CA kök sertifikasını ekleyerek mevcut Python sertifikaya güvenir
 
 ### <a name="connect-to-azure-stack"></a>Azure Stack'e Bağlanma
 
-Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
+Azure Stack bağlanmak için aşağıdaki adımları kullanın:
 
-1. Azure Stack ortamınıza çalıştırarak kayıt `az cloud register` komutu. Bazı senaryolarda, doğrudan giden internet bağlantısı, bir proxy veya SSL durdurma zorlar güvenlik duvarı yönlendirilir. Bu gibi durumlarda, `az cloud register` komut "uç noktalar buluttan alınamıyor." şeklinde bir hata ile başarısız olabilir Bu hatayı çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
+1. `az cloud register` Komutunu çalıştırarak Azure Stack ortamınızı kaydettirin. Bazı senaryolarda, doğrudan giden internet bağlantısı, SSL yakalaşmayı zorlayan bir ara sunucu veya güvenlik duvarı aracılığıyla yönlendirilir. Bu durumlarda, `az cloud register` komut "buluttan uç noktalar alınamıyor" gibi bir hata vererek başarısız olabilir. Bu hatayı geçici olarak çözmek için aşağıdaki ortam değişkenlerini ayarlayabilirsiniz:
 
    ```shell
    export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
    export ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
-2. Ortamınıza kaydedin. Çalıştırırken aşağıdaki parametreleri kullanın `az cloud register`.
+2. Ortamınızı kaydedin. Çalıştırırken `az cloud register`aşağıdaki parametreleri kullanın.
 
-    | Değer | Örnek | Açıklama |
+    | Value | Örnek | Açıklama |
     | --- | --- | --- |
-    | Ortam adı | AzureStackUser | Kullanım `AzureStackUser` kullanıcı ortam için. İşleci, belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/` **ResourceManagerUrl** tümleşik sisteminde: `https://management.<region>.<fqdn>/` Gerekli meta verilerini almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` Tümleşik sistem uç nokta hakkında bir sorunuz varsa, bulut operatörünüze başvurun. |
-    | Depolama uç noktası | Local.azurestack.external | `local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | Keyvault soneki | .vault.local.azurestack.external | `.vault.local.azurestack.external` için ASDK olur. Tümleşik bir sistem için bir uç nokta sisteminiz için kullanmak istediğiniz.  |
-    | VM görüntüsü diğer belge uç nokta- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adları içeren belge URI'si. Daha fazla bilgi için [### sanal makine diğer uç nokta ayarlamayı](#set-up-the-virtual-machine-aliases-endpoint). |
+    | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl 'si** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanmak isteyeceksiniz.  |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | Sanal makine görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [# # # sanal makine diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
     ```
 
-3. Etkin ortam ayarlayın. 
+3. Etkin ortamı ayarlayın. 
 
       ```azurecli
         az cloud set -n <environmentname>
       ```
 
-4. Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirin. Yapılandırmasını güncelleştirmek için aşağıdaki komutu çalıştırın:
+4. Ortam yapılandırmanızı Azure Stack belirli API sürümü profilini kullanacak şekilde güncelleştirin. Yapılandırmayı güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli
       az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Azure Stack sürümü 1808 yapıdan çalıştırıyorsanız, API Sürüm profili kullanmalısınız **2017-03-09-profile** API Sürüm profili yerine **2019-03-01-karma**. Azure CLI'ın yeni bir sürümü kullanıyor gerekir.
+    >1808 derlemeden önce bir Azure Stack sürümünü çalıştırıyorsanız, API sürüm profili **2019-03-01-karma**yerine API sürüm profili **2017-03-09-profil** ' i kullanmanız gerekir. Azure CLı 'nin yeni bir sürümünü kullanmanız gerekir.
 
-5. Azure Stack ortamınıza kullanarak oturum açın `az login` komutu. Azure Stack ortamına veya bir kullanıcı olarak oturum bir [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals). 
+5. `az login` Komutunu kullanarak Azure Stack ortamınızda oturum açın. Azure Stack ortamında Kullanıcı veya [hizmet sorumlusu](/azure/active-directory/develop/app-objects-and-service-principals)olarak oturum açabilirsiniz. 
 
 6. Oturum Aç: 
 
-   *  Olarak bir **kullanıcı** cihaz kodu ile bir web tarayıcısı kullanarak:  
+   *  Bir cihaz koduyla bir Web tarayıcısı kullanan **Kullanıcı** olarak:  
 
    ```azurecli  
     az login --use-device-code
    ```
 
    > [!NOTE]  
-   >Komut çalıştıran bir URL ve kimlik doğrulaması yapmak için kullanmanız gereken kodu sağlar.
+   >Komutun çalıştırılması, kimlik doğrulaması için kullanmanız gereken bir URL ve kod sağlar.
 
    * Hizmet sorumlusu olarak:
         
-     Hizmet sorumlusu oturum açma için kullanılacak .pem dosyasını hazırlayın.
+     Hizmet sorumlusu oturum açması için kullanılacak. ped dosyasını hazırlayın.
 
-      * Bir pfx özel anahtarla konumundaki gibi asıl oluşturulduğu istemci makinede hizmet sorumlusu sertifikasını dışarı aktarma `cert:\CurrentUser\My`; sertifika adı, sorumlu aynı ada sahip.
+      * Sorumlunun oluşturulduğu istemci makinede, hizmet sorumlusu sertifikasını konumunda `cert:\CurrentUser\My`bulunan özel anahtarla bir PFX olarak dışarı aktarın; sertifika adı sorumluyla aynı ada sahiptir.
   
-      * Pfx için pem (OpenSSL yardımcı programını kullanın) dönüştürün.
+      * Pfx 'i ped 'ye dönüştürün (OpenSSL yardımcı programını kullanın).
 
-     CLI için oturum açın:
+     CLı 'da oturum açın:
 
       ```azurecli  
       az login --service-principal \
@@ -579,26 +579,26 @@ Azure Stack'e bağlanmak için aşağıdaki adımları kullanın:
 
 ### <a name="test-the-connectivity"></a>Bağlantısını test etme
 
-Her şeyi ayarlamak, CLI Azure Stack içinde kaynaklar oluşturabiliriz. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
+Her şey ayarlandığında, Azure Stack içinde kaynak oluşturmak için CLı kullanın. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli
   az group create -n MyResourceGroup -l local
 ```
 
-Kaynak grubu başarıyla oluşturulursa, önceki komutta aşağıdaki özellikleri yeni oluşturulan kaynağın verir:
+Kaynak grubu başarıyla oluşturulursa, önceki komut yeni oluşturulan kaynağın aşağıdaki özelliklerini verir:
 
-![Çıkış kaynak grubu oluşturun](media/azure-stack-connect-cli/image1.png)
+![Kaynak grubu çıkış oluştur](media/azure-stack-connect-cli/image1.png)
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Burada Azure Stack CLI kullanarak karşılaşılan bilinen sorunlar verilmiştir:
+Azure Stack 'de CLı kullanırken bilinen sorunlar vardır:
 
- - CLI etkileşimli mod; Örneğin, `az interactive` komutu, henüz Azure Stack'te desteklenmiyor.
- - Azure Stack'te kullanılabilir sanal makine görüntüleri listesini almak için kullanın `az vm image list --all` komutu yerine `az vm image list` komutu. Belirtme `--all` seçeneği sağlar yanıt yalnızca Azure Stack ortamınıza kullanılabilir görüntüleri döndürür.
- - Azure'da kullanılabilen sanal makine görüntüsü diğer adlar, Azure Stack için geçerli olmayabilir. Sanal makine görüntüleri kullanarak, tüm URN parametresini kullanmanız gerekir (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) yerine görüntü diğer adı. Bu URN görüntü belirtimleri ten türetildiği haliyle eşleşmelidir `az vm images list` komutu.
+ - CLı etkileşimli modu; Örneğin `az interactive` , komutu henüz Azure Stack desteklenmez.
+ - Azure Stack ' de kullanılabilen sanal makine görüntülerinin listesini almak için komutu yerine `az vm image list --all` `az vm image list` komutunu kullanın. `--all` Seçeneğinin belirtilmesi, yanıtın yalnızca Azure Stack ortamınızda bulunan görüntüleri döndürdüğünden emin olmanızı sağlar.
+ - Azure 'da kullanılabilen sanal makine görüntüsü diğer adları Azure Stack için geçerli olmayabilir. Sanal makine görüntülerini kullanırken, görüntü diğer adı yerine tüm URN parametresini (kurallı: UbuntuServer: 14.04.3-LTS: 1.0.0) kullanmanız gerekir. Bu urn, `az vm images list` komuttan türetilen görüntü belirtimleriyle eşleşmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şablonları Azure CLI ile dağıtma](azure-stack-deploy-template-command-line.md)
-- [Azure Stack kullanıcıları (işleç) için Azure CLI'yi etkinleştirme](../operator/azure-stack-cli-admin.md)
+- [Azure CLı ile şablonları dağıtma](azure-stack-deploy-template-command-line.md)
+- [Azure Stack kullanıcıları için Azure CLı 'yi etkinleştirme (operatör)](../operator/azure-stack-cli-admin.md)
 - [Kullanıcı izinlerini yönetme](azure-stack-manage-permissions.md) 

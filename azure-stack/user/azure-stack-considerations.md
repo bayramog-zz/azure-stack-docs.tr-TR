@@ -1,6 +1,6 @@
 ---
-title: Azure Stack ve Azure Hizmetleri ve uygulamaları oluşturma kullanırken arasındaki farkları | Microsoft Docs
-description: Azure Stack ile Azure arasındaki farkları, hizmetleri ve uygulamaları oluşturma kullanırken anlayın.
+title: Hizmetler kullanılırken ve uygulamalar derlerken Azure Stack ile Azure arasındaki farklar | Microsoft Docs
+description: Hizmetleri kullanırken ve uygulamaları derlerken Azure ile Azure Stack arasındaki farkları anlayın.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,86 +12,86 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 07/17/2019
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 9fcf27c8ebbde86e775b54eda593b25fcd03979c
-ms.sourcegitcommit: be5382f715a9c1c18c660b630d8fcd823f13aae3
+ms.openlocfilehash: a7a61e8eef33ee6a6efb87001504fe5234e3cf16
+ms.sourcegitcommit: 2063332b4d7f98ee944dd1f443847eea70eb5614
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66197282"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68303149"
 ---
-# <a name="differences-between-azure-stack-and-azure-when-using-services-and-building-apps"></a>Azure Stack ve Azure Hizmetleri ve uygulamaları oluşturma kullanırken arasındaki farklar
+# <a name="differences-between-azure-stack-and-azure-when-using-services-and-building-apps"></a>Hizmetler kullanılırken Azure Stack ile Azure arasındaki farklar ve uygulama oluşturma
 
-Hizmetleri kullanın veya Azure Stack için uygulamalar oluşturmak önce Azure Stack ve Azure arasındaki farkları anlamak önemlidir. Bu makalede, Azure Stack, hibrit bulut geliştirme ortamı olarak kullanılırken farklı özelliği ve önemli noktalar yer tanımlar.
+Azure Stack için Hizmetleri kullanmadan veya uygulamalar oluşturmadan önce, Azure Stack ve Azure arasındaki farkları anlamak önemlidir. Bu makalede karma bulut geliştirme ortamınız olarak Azure Stack kullanırken farklı özellikler ve önemli konular tanımlanmaktadır.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Stack, şirketinizin veya hizmet sağlayıcısı veri merkezinizi Azure hizmetlerinden kullanmanıza olanak sağlayan bir karma bulut platformudur. Azure Stack'te uygulama oluşturma ve Azure Stack, Azure veya Azure hibrit bulut dağıtın.
+Azure Stack, şirketinizin veya hizmet sağlayıcısı veri merkezinizden Azure hizmetlerini kullanmanızı sağlayan bir karma bulut platformudur. Azure Stack bir uygulama oluşturabilir ve ardından bunu Azure Stack, Azure veya Azure hibrit buluta dağıtabilirsiniz.
 
-Azure Stack operatörünüze hangi Hizmetleri kullanabilmeniz için kullanılabilir ve destek alma size sağlayacaktır. Bunlar, kendi özelleştirilmiş planlar ve teklifler aracılığıyla bu hizmetleri sağlar.
+Azure Stack operatörünüz kullanabileceğiniz Hizmetleri ve nasıl destek alınacağını bilmenizi sağlar. Bu hizmetleri kendi özelleştirilmiş planları ve teklifleri aracılığıyla sunarız.
 
-Azure teknik içeriği bir Azure hizmeti ve Azure Stack için uygulamalar Geliştiriliyor varsayar. Derleme ve Azure Stack'e uygulamaları dağıtma, bazı temel farklar gibi anlamanız gerekir:
+Azure teknik belgeleri içeriği, uygulamaların Azure Stack için değil, Azure hizmeti için geliştirmekte olduğunu varsayar. Azure Stack için uygulama oluşturup dağıtırken, bazı önemli farklılıkları anlamanız gerekir, örneğin:
 
-* Azure Stack Hizmetleri ve Azure'da kullanılabilir olan özelliklerin bir alt kümesini sunar.
-* Şirket veya hizmet sağlayıcınızın sunmak istediğiniz hizmetleri seçebilirsiniz. Kullanılabilir seçenekler, özelleştirilmiş hizmet veya uygulamalar içerebilir. Bunlar, kendi özelleştirilmiş belgeleri sunabilir.
-* Doğru kullanmanız gerekir (örneğin, bir portal adresi ve Azure Resource Manager uç nokta URL'leri) Azure Stack özel uç noktaları.
-* Azure yığını tarafından desteklenen PowerShell ve API sürümleri kullanmanız gerekir. Desteklenen sürümler kullanarak uygulamalarınızı Azure Stack ve Azure iş sağlar.
+* Azure Stack, Azure 'da kullanılabilen hizmetlerin ve özelliklerin bir alt kümesini sunar.
+* Şirketiniz veya hizmet sağlayıcınız, hangi hizmetleri sunmak istediğinizi seçebilir. Kullanılabilir seçenekler özelleştirilmiş hizmetler veya uygulamalar içerebilir. Kendi özelleştirilmiş belgelerini sunabilir.
+* Doğru Azure Stack özgü uç noktaları kullanmanız gerekir (örneğin, Portal adresi URL 'Leri ve Azure Resource Manager uç noktası).
+* Azure Stack tarafından desteklenen PowerShell ve API sürümlerini kullanmanız gerekir. Desteklenen sürümlerin kullanılması, uygulamalarınızın hem Azure Stack hem de Azure 'da çalışmasını sağlar.
 
-## <a name="cheat-sheet-high-level-differences"></a>Kopya kağıdı: Üst düzey farklılıklar
+## <a name="cheat-sheet-high-level-differences"></a>Tek sayfa: Üst düzey farklılıklar
 
-Aşağıdaki tabloda, Azure Stack ve Azure arasında üst düzey farklılıklar açıklanmaktadır. Azure Stack için geliştirme veya Azure Stack hizmetlerini kullanırken bu farklılıkları göz önünde bulundurun.
+Aşağıdaki tabloda Azure Stack ve Azure arasındaki üst düzey farklılıklar açıklanmaktadır. Azure Stack geliştirirken veya Azure Stack hizmetlerini kullandığınızda bu farklılıkları göz önünde bulundurun:
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-| Alan | Azure (Genel) | Azure Stack |
+| Alan | Azure (genel) | Azure Stack |
 | -------- | ------------- | ----------|
-| Kimin çalışır? | Microsoft | Kuruluş veya hizmet sağlayıcısı.|
-| Kimin için desteğe başvurun? | Microsoft | Tümleşik bir sistem için destek, Azure Stack operatörü (en, kuruluş veya hizmet sağlayıcınızın) başvurun.<br><br>Azure Stack geliştirme Seti'ni desteği ziyaret [Microsoft forumları](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Geliştirme Seti değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) aracılığıyla sunulan resmi desteği yoktur.
-| Kullanılabilir hizmetler | Listesine bakın [Azure ürünleri](https://azure.microsoft.com/services/?b=17.04b). Kullanılabilir hizmetler Azure bölgeye göre farklılık gösterir. | Azure Stack, Azure hizmetlerin bir alt kümesini destekler. Gerçek Hizmetleri, kuruluş veya hizmet sağlayıcınızın sunmak seçtiği göre değişir.
-| Azure Resource Manager uç noktası * | https://management.azure.com | Bir Azure Stack tümleşik sistemi için Azure Stack operatörü sağlayan uç noktayı kullanın.<br><br>Geliştirme Seti için kullanın: https://management.local.azurestack.external.
-| Portal URL'si * | [https://portal.azure.com](https://portal.azure.com) | Bir Azure Stack tümleşik sistemi için Azure Stack operatörü sağlayan URL'yi kullanın.<br><br>Geliştirme Seti için kullanın: https://portal.local.azurestack.external.
-| Bölge | Dağıtmak istediğiniz bölgeyi seçebilirsiniz. | Sisteminizde kullanılabilir bölge için bir Azure Stack tümleşik sistemi kullanın.<br><br>Geliştirme Seti için her zaman bölgesi olacak **yerel**.
-| Kaynak grupları | Bir kaynak grubu bölgeleri yayılabilir. | Tümleşik sistemler ve Geliştirme Seti için yalnızca bir bölgesi yoktur.
-|Desteklenen ad alanlarında, kaynak türleri ve API sürümleri | En son (veya henüz kullanım dışı olmayan önceki sürümler). | Azure Stack belirli sürümlerini destekler. Bkz: [sürüm gereksinimleri](#version-requirements) bu makalenin.
+| Kim çalışıyor? | Microsoft | Kuruluşunuz veya hizmet sağlayıcınız.|
+| Destek için kimler sizinle iletişim kurabilirim? | Microsoft | Tümleşik bir sistem için destek için Azure Stack işleçle (kuruluşunuz veya hizmet sağlayıcınız) başvurun.<br><br>Azure Stack Geliştirme Seti (ASDK) desteği için [Microsoft forumlarını](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)ziyaret edin. Geliştirme seti bir değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) ile sunulan resmi bir destek yoktur.
+| Kullanılabilir hizmetler | [Azure ürünlerinin](https://azure.microsoft.com/services/?b=17.04b)listesini görüntüleyin. Kullanılabilir hizmetler Azure bölgesine göre farklılık gösterir. | Azure Stack, Azure hizmetlerinin bir alt kümesini destekler. Gerçek hizmetler, kuruluşunuzun veya hizmet sağlayıcınızın ne kadar önerdiklerine göre farklılık gösterir.
+| Azure Resource Manager uç noktası * | https://management.azure.com | Azure Stack tümleşik bir sistem için Azure Stack operatörünüzün sağladığı uç noktayı kullanın.<br><br>Geliştirme seti için şunu kullanın: https://management.local.azurestack.external.
+| Portal URL 'SI * | [https://portal.azure.com](https://portal.azure.com) | Azure Stack tümleşik bir sistem için Azure Stack operatörünüzün sağladığı URL 'YI kullanın.<br><br>Geliştirme seti için şunu kullanın: https://portal.local.azurestack.external.
+| Bölge | Hangi bölgeyi dağıtmak istediğinizi seçebilirsiniz. | Azure Stack tümleşik bir sistem için sisteminizde bulunan bölgeyi kullanın.<br><br>Geliştirme seti için bölge her zaman **Yerel**olur.
+| Kaynak grupları | Bir kaynak grubu, bölgelere yayılabilir. | Hem tümleşik sistemler hem de geliştirme seti için yalnızca bir bölge vardır.
+|Desteklenen ad alanları, kaynak türleri ve API sürümleri | En son (veya henüz kullanım dışı olmayan önceki sürümler). | Azure Stack belirli sürümleri destekler. Bu makalenin [sürüm gereksinimleri](#version-requirements) bölümüne bakın.
 | | |
 
-* Azure Stack operatörü kullanıyorsanız, bkz. [Yönetici portalını kullanarak](../operator/azure-stack-manage-portals.md) ve [yönetim temel bilgileri](../operator/azure-stack-manage-basics.md) daha fazla bilgi için.
+\* Azure Stack operatörünüz varsa, daha fazla bilgi için bkz. [Yönetici portalını](../operator/azure-stack-manage-portals.md) ve [Yönetim temellerini](../operator/azure-stack-manage-basics.md) kullanma.
 
-## <a name="helpful-tools-and-best-practices"></a>Faydalı araca ve en iyi uygulamalar
+## <a name="helpful-tools-and-best-practices"></a>Yardımcı araçlar ve en iyi uygulamalar
 
-Microsoft Azure Stack için geliştirme, Araçlar ve yardımcı olan rehberlik sağlar.
+Microsoft, Azure Stack için geliştirme yapmanıza yardımcı olacak araçlar ve kılavuzluk sağlar.
 
-| Öneri | Başvurular |
+| Öneri | Referanslar |
 | -------- | ------------- |
-| Doğru Araçlar, geliştirici iş istasyonunuzda yükleyin. | - [PowerShell'i yükleme](../operator/azure-stack-powershell-install.md)<br>- [Araçları indirin](../operator/azure-stack-powershell-download.md)<br>- [PowerShell yapılandırma](azure-stack-powershell-configure-user.md)<br>- [Visual Studio'yu yükleyin](azure-stack-install-visual-studio.md) 
-| Aşağıdaki öğeler hakkındaki bilgileri gözden geçirin:<br>-Azure Resource Manager şablonu konuları<br>-Hızlı Başlangıç şablonları nasıl bulabileceğiniz<br>-Azure, Azure Stack için geliştirme için kullanmanıza yardımcı olması için bir ilke modülü kullanma | [Azure Stack için geliştirme](azure-stack-developer.md) | 
-| Gözden geçirin ve şablonlar için en iyi uygulamaları izleyin. | [Resource Manager hızlı başlangıç şablonları](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
+| Geliştirici iş istasyonunuza doğru araçları yükler. | - [PowerShell 'i yükler](../operator/azure-stack-powershell-install.md)<br>- [İndirme araçları](../operator/azure-stack-powershell-download.md)<br>- [PowerShell 'i yapılandırma](azure-stack-powershell-configure-user.md)<br>- [Visual Studio 'Yu yükler](azure-stack-install-visual-studio.md) 
+| Aşağıdaki öğeler hakkındaki bilgileri gözden geçirin:<br>-Azure Resource Manager şablonu konuları<br>-Hızlı Başlangıç şablonlarını bulma<br>-Azure Stack için geliştirme yapmak üzere Azure kullanmanıza yardımcı olması için bir ilke modülü kullanın | [Azure Stack için geliştirme](azure-stack-developer.md) | 
+| Şablonlar için en iyi uygulamaları gözden geçirin ve izleyin. | [Kaynak Yöneticisi hızlı başlangıç şablonları](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
 | | |
 
 ## <a name="version-requirements"></a>Sürüm gereksinimleri
 
-Azure Stack, Azure PowerShell ve Azure hizmet API'lerini belirli sürümlerini destekler. Desteklenen sürümler her iki Azure stack ve azure'a uygulamanızın dağıtabilirsiniz emin olmak için kullanın.
+Azure Stack, Azure PowerShell ve Azure hizmet API 'Lerinin belirli sürümlerini destekler. Uygulamanızın hem Azure Stack hem de Azure 'a dağıtmasını sağlamak için desteklenen sürümleri kullanın.
 
-Azure PowerShell doğru sürümünü kullandığınızdan emin olmak için [API sürümü profillerini](azure-stack-version-profiles.md). Kullanabileceğiniz en son API Sürüm profili belirlemek için kullanmakta olduğunuz Azure Stack yapımı bulun. Azure Stack yöneticinizden bu bilgi edinebilirsiniz.
+Azure PowerShell doğru bir sürümünü kullandığınızdan emin olmak için [API sürüm profilleri](azure-stack-version-profiles.md)' ni kullanın. Kullanabileceğiniz en son API sürümü profilini öğrenmek için, kullanmakta olduğunuz Azure Stack yapısını bulun. Bu bilgileri Azure Stack yöneticinizden edinebilirsiniz.
 
 > [!NOTE]
-> Azure Stack geliştirme Seti'ni kullanıyorsanız ve yönetici erişiminiz varsa bkz [geçerli sürümünü](../operator/azure-stack-updates.md#determine-the-current-version) Azure Stack derleme belirlemek için bölüm.
+> Azure Stack Geliştirme Seti kullanıyorsanız ve yönetici erişiminiz varsa, Azure Stack derlemeyi öğrenmek için [geçerli sürümü belirleme](../operator/azure-stack-updates.md#determine-the-current-version) bölümüne bakın.
 
-Diğer API'ler için (hala olabilir farklar bir özellik düzeyinde) ad alanları, kaynak türleri ve Azure Stack aboneliğinizde desteklenen API sürümlerini çıktısını almak için aşağıdaki PowerShell komutunu çalıştırın. Bu komutun çalışması için önceden olmalıdır [yüklü](../operator/azure-stack-powershell-install.md) ve [yapılandırılmış](azure-stack-powershell-configure-user.md) PowerShell için Azure Stack ortamı. Ayrıca Azure Stack'te teklif aboneliği olması gerekir.
+Diğer API 'Ler için, Azure Stack aboneliğinizde desteklenen ad alanlarını, kaynak türlerini ve API sürümlerini çıkarmak için aşağıdaki PowerShell komutunu çalıştırın (bir özellik düzeyinde farklılık gösterebilir). Bu komutun çalışması için, zaten bir Azure Stack ortamı için PowerShell 'i [yüklemiş](../operator/azure-stack-powershell-install.md) ve [yapılandırmış](azure-stack-powershell-configure-user.md) olmanız gerekir. Ayrıca, bir Azure Stack teklifine aboneliğiniz olması gerekir.
 
 ```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
-Örnek çıktı: (kesilmiş) ![Get-AzureRmResourceProvider komutunun örnek çıkışı](media/azure-stack-considerations/image1.png)
+Örnek çıkış (kesilmiş): ![Get-AzureRmResourceProvider komutunun örnek çıktısı](media/azure-stack-considerations/image1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir hizmet düzeyinde farklılıklar hakkında daha ayrıntılı bilgi için bkz:
+Hizmet düzeyindeki farklılıklar hakkında daha ayrıntılı bilgi için bkz.:
 
-* [Azure Stack'te VM'LERDE dikkate alınacak noktalar](azure-stack-vm-considerations.md)
-* [Azure stack'teki depolama için dikkat edilmesi gerekenler](azure-stack-acs-differences.md)
+* [Azure Stack VM 'lerle ilgili konular](azure-stack-vm-considerations.md)
+* [Azure Stack depolama ile ilgili konular](azure-stack-acs-differences.md)
 * [Azure Stack ağ iletişiminde dikkat edilmesi gerekenler](azure-stack-network-differences.md)
