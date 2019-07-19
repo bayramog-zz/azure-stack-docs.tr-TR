@@ -1,6 +1,6 @@
 ---
-title: Bir Azure Stack ölçek birimi düğümde bir donanım bileşenini değiştirme | Microsoft Docs
-description: Bir Azure Stack tümleşik sisteminde bir donanım bileşenini değiştirme hakkında bilgi edinin.
+title: Azure Stack ölçek birimi düğümündeki bir donanım bileşenini değiştirme | Microsoft Docs
+description: Azure Stack tümleştirilmiş bir sistemdeki bir donanım bileşenini değiştirmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,69 +11,82 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
-ms.author: mabrigg
-ms.lastreviewed: 12/06/2018
-ms.openlocfilehash: 0e1f379b651d022b2c698777a7d8708ff33bf76f
-ms.sourcegitcommit: cf9440cd2c76cc6a45b89aeead7b02a681c4628a
+ms.date: 07/18/2019
+ms.author: thoroet
+ms.lastreviewed: 07/18/2019
+ms.openlocfilehash: 4c20ab2b007c78aee201ec0a294900fab18a934c
+ms.sourcegitcommit: cb2376ed76c784e475b99352a024eaa7a148f42f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/03/2019
-ms.locfileid: "66469143"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68328778"
 ---
-# <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Bir Azure Stack ölçek birimi düğümde bir donanım bileşenini değiştirme
+# <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Azure Stack ölçek birimi düğümündeki bir donanım bileşenini değiştirme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri*
+*Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Bu makalede olmayan kullanılan donanım bileşenleri değiştirmek için genel işlem açıklanır. Gerçek değiştirme adımları farklılık orijinal ekipman üreticisi (OEM) donanım satıcınıza temel. Azure Stack tümleşik sisteme özgü ayrıntılı adımlar için satıcınızın alan bulunduğu yerde değiştirilebilen biriminin (FRU) belgelerine bakın.
+Bu makalede, sık erişimli olmayan donanım bileşenlerinin yerini alan genel işlem açıklanmaktadır. Gerçek değiştirme adımları, özgün ekipman üreticisi (OEM) donanım satıcınıza göre farklılık gösterir. Azure Stack tümleşik sisteminize özgü ayrıntılı adımlar için satıcınızın alan değiştirilebilir birimi (FRU) belgelerine bakın.
 
-Olmayan sık kullanılan bileşenleri şunları içerir:
+> [!CAUTION]  
+> Üretici yazılımı seviyelendirme, bu makalede açıklanan işlemin başarısı için önemlidir. Bu adımın eksik olması, sistem kararsızlığına, performans düşüşüyle, güvenlik iş parçacıklarından veya Azure Stack otomasyonunun işletim sistemini dağıtmasına engel olabilir. , Uygulanan üretici yazılımının [Azure Stack yönetici portalında](azure-stack-updates.md)görünen OEM sürümüyle eşleşmesini sağlamak için donanımı değiştirirken her zaman donanım iş ortağınızın belgelerine başvurun.
 
-- CPU*
-- Bellek *
-- Ana/temel kart yönetim denetleyicisine (BMC) / video kartı
-- Disk denetleyici/ana veri yolu bağdaştırıcısı (HBA) / devre kartı
+| Donanım Iş ortağı | Bölge | URL |
+|------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Cisco | Tümü | [https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | Tümü | [https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| Fujitsu | JAPONYA | [https://eservice.fujitsu.com/supportdesk-web/](https://eservice.fujitsu.com/supportdesk-web/) |
+|  | EMEA | [https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
+|  |  | [https://support.ts.fujitsu.com/IndexMySupport.asp](https://support.ts.fujitsu.com/IndexMySupport.asp) |
+| HPE | Tümü | [http://www.hpe.com/info/MASupdates](http://www.hpe.com/info/MASupdates) |
+| Lenovo |  | [https://datacentersupport.lenovo.com/us/en/solutions/ht505122](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
+
+Etkin olmayan değiştirilebilir bileşenler şunlardır:
+
+- 'SUNA
+- Bellek
+- Anakart/temel kart yönetim denetleyicisi (BMC)/ekran kartı
+- Disk denetleyicisi/ana bilgisayar veri yolu bağdaştırıcısı (HBA)/geri düzlemi
 - Ağ bağdaştırıcısı (NIC)
-- İşletim sistemi disk *
-- Veri sürücüleri (sık erişimli değiştirme, örneğin PCI-e eklentisi kartları desteklemeyen sürücü) *
+- İşletim sistemi diski *
+- Veri sürücüleri (dinamik değiştirmeyi desteklemeyen sürücüler, örneğin PCI-e eklenti kartları) *
 
-* Bu bileşenler, sık erişimli takas destekliyor olabilir, ancak satıcı uygulamasına göre değişebilir. Ayrıntılı adımlar için OEM satıcınızın FRU belgelerine bakın.
+\* Bu bileşenler, etkin değiştirmeyi destekleyebilir, ancak satıcı uygulamasına göre farklılık gösterebilir. Ayrıntılı adımlar için OEM satıcınızın FRU belgelerine bakın.
 
-Aşağıdaki akış diyagramı olmayan hot çıkarılabilen bir donanım bileşenini değiştirme genel FRU işlemini gösterir.
+Aşağıdaki akış diyagramı, etkin olmayan bir donanım bileşenini değiştirmek için genel FRU işlemini gösterir.
 
-![Akış bileşeni değişiklik akışını gösteren diyagram](media/azure-stack-replace-component/replacecomponentflow.PNG)
+![Bileşen değiştirme akışını gösteren akış diyagramı](media/azure-stack-replace-component/replacecomponentflow.PNG)
 
-* Bu eylem fiziksel donanım koşula göre gerekli olmayabilir.
+* Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
 
-** Olup OEM donanım satıcınıza bileşenini değiştirme ve üretici yazılımı değişiklik yapacaktır güncelleştirmeleri gerçekleştirir, destek sözleşmeniz temel.
+\* * OEM Donanım satıcınızın bileşen değişimini gerçekleştirip gerçekleştirmediği ve bellenim, destek sözleşmeniz temelinde farklılık gösterebilir.
 
-## <a name="review-alert-information"></a>Uyarı bilgileri gözden geçirin
+## <a name="review-alert-information"></a>Uyarı bilgilerini gözden geçirin
 
-Azure Stack durumunu ve izleme sistemi, ağ bağdaştırıcıları ve depolama alanları doğrudan tarafından denetlenen veri sürücüleri durumunu izleyin. Diğer donanım bileşenlerinin izlemiyor. Diğer tüm donanım bileşenleri için donanım yaşam döngüsü konakta çalışan çözüm izleme satıcıya özgü donanım uyarılar oluşturulur.  
+Azure Stack sistem durumu ve izleme sistemi, Depolama Alanları Doğrudan tarafından denetlenen ağ bağdaştırıcılarının ve veri sürücülerinin sistem durumunu izler. Diğer donanım bileşenlerini izlemez. Diğer tüm donanım bileşenleri için, uyarılar, donanım yaşam döngüsü ana bilgisayarında çalışan satıcıya özgü donanım izleme çözümünde oluşturulur.  
 
 ## <a name="component-replacement-process"></a>Bileşen değiştirme işlemi
 
-Aşağıdaki adımlar, bileşeni değiştirme işlemi üst düzey bir genel bakış sağlar. OEM tarafından sağlanan FRU belgelerinize başvuruda bulunmadan bu adımları izlemeyin.
+Aşağıdaki adımlarda bileşen değiştirme işlemine yüksek düzey bir genel bakış sağlanmaktadır. OEM tarafından sunulan FRU belgelerinize başvurmadan bu adımları takip edin.
 
-1. Ölçek birimi düğümlerini düzgün bir şekilde kapatın için kapatma eylemi kullanın. Bu eylem fiziksel donanım koşula göre gerekli olmayabilir.
+1. Ölçek birimi düğümünü düzgün bir şekilde kapatmak için kapatma eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
 
-2. Kapatma eylemi başarısız olası bir durumda kullanın [boşaltma](azure-stack-node-actions.md#drain) ölçek birimi düğümü bakım moduna almak için eylem. Bu eylem fiziksel donanım koşula göre gerekli olmayabilir.
-
-   > [!NOTE]  
-   > Herhangi bir durumda, yalnızca bir düğüm kullanılabilir devre dışı ve aynı anda S2D bozmadan kapalı (depolama alanları doğrudan).
-
-3. Ölçek birimi düğüm bakım modunda olduğunda, kullanmak [gücünün kapatılmasını](azure-stack-node-actions.md#scale-unit-node-actions) eylem. Bu eylem fiziksel donanım koşula göre gerekli olmayabilir.
+2. Beklenmeyen bir durumda, kapatılma eylemi başarısız olursa, ölçek birimi düğümünü bakım moduna almak için [boşalt](azure-stack-node-actions.md#drain) eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
 
    > [!NOTE]  
-   > Eylem kapatma çalışmıyor olası durumda da, temel kart yönetim denetleyicisine (BMC) web arabirimini kullanın.
+   > Herhangi bir durumda, S2D (Depolama Alanları Doğrudan) bozmadan aynı anda yalnızca bir düğüm devre dışı bırakılabilir ve kapatılabilir.
 
-4. Bozuk donanım bileşeni değiştirin. OEM donanım satıcınıza bileşenini değiştirme gerçekleştirip gerçekleştirmediğini, destek sözleşmenize göre farklılık.  
-5. Üretici yazılımı güncelleştirme. Donanım yaşam döngüsü konak düzeyinde uygulanan onaylı bellenim değiştirilen donanım bileşeni olduğundan emin olun kullanmayı, satıcıya özgü üretici yazılımı güncelleştirme işlemini izleyin. OEM donanım satıcınız bu adımı gerçekleştirip gerçekleştirmediğini, destek sözleşmenize göre farklılık.  
-6. Kullanım [onarım](azure-stack-node-actions.md#scale-unit-node-actions) ölçek birimi düğümü Ölçek birimine geri alma eylemi.
-7. Ayrıcalıklı uç noktasına kullanın [sanal disk onarma durumunu](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint). Yeni veri sürücüleri ile tam depolama Onar işi sistem yüküne bağlı olarak birkaç saat sürebilir ve kullanılan alanı.
-8. Onarım işlemi tamamlandıktan sonra tüm etkin uyarıları otomatik olarak kapatılan doğrulayın.
+3. Ölçek birimi düğümü bakım modundan olduktan sonra, [kapatma](azure-stack-node-actions.md#scale-unit-node-actions) eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
+
+   > [!NOTE]  
+   > Kapatma eyleminin çalışmamasının olası olmaması durumunda bunun yerine temel kart yönetim denetleyicisi (BMC) Web arabirimini kullanın.
+
+4. Hasarlı donanım bileşenini değiştirin. OEM Donanım satıcınızın bileşen değişimini gerçekleştirip gerçekleştirmediği, destek sözleşmeniz temelinde farklılık gösterebilir.  
+5. Üretici yazılımını güncelleştirin. Değişen donanım bileşeninin onaylanan bellenim düzeyinin uygulanmış olduğundan emin olmak için, donanım yaşam döngüsü konağını kullanarak satıcıya özgü bellenim güncelleştirme işleminizi izleyin. OEM Donanım satıcınızın bu adımı gerçekleştirip gerçekleştirmediğini, destek sözleşmeniz temelinde farklılık gösterebilir.  
+6. Ölçek birimi düğümünü ölçek birimine geri getirmek için [onarma](azure-stack-node-actions.md#scale-unit-node-actions) eylemini kullanın.
+7. [Sanal disk onarımı durumunu denetlemek](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint)için ayrıcalıklı uç noktasını kullanın. Yeni veri sürücüleriyle, tam bir depolama onarma işi sistem yüküne ve tüketilen alana bağlı olarak birden çok saat sürebilir.
+8. Onarım eylemi tamamlandıktan sonra, tüm etkin uyarıların otomatik olarak kapatıldığını doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sık erişimli çıkarılabilen bir fiziksel disk değiştirme hakkında daha fazla bilgi için bkz. [disk değiştirme](azure-stack-replace-disk.md).
-- Bir fiziksel düğüme değiştirme hakkında daha fazla bilgi için bkz: [bir ölçek birimi düğüm değiştirin](azure-stack-replace-node.md).
+- Etkin değiştirilebilen bir fiziksel diski değiştirme hakkında daha fazla bilgi için bkz. [disk değiştirme](azure-stack-replace-disk.md).
+- Fiziksel bir düğümü değiştirme hakkında daha fazla bilgi için bkz. [ölçek birimi düğümünü değiştirme](azure-stack-replace-node.md).
