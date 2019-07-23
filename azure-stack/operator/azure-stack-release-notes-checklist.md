@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: fd76e862ec98de1a22caca96295173e494d8faff
-ms.sourcegitcommit: c1e10ea5a9fdf1ffc62f84c30aad4d7518050bac
+ms.openlocfilehash: 49b4276da5c7e42728cf96261104f59c70355c20
+ms.sourcegitcommit: 159da88a52701679571bbedde1c36b72bbfe32dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68352919"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380395"
 ---
 # <a name="azure-stack-update-activity-checklist"></a>Azure Stack etkinliği denetim listesini güncelleştir
 
@@ -29,16 +29,17 @@ Bu makale, Azure Stack işleçleri için güncelleştirmeyle ilgili etkinlikleri
 
 ## <a name="prepare-for-azure-stack-update"></a>Azure Stack güncelleştirmesine hazırlanma
 
-| Etkinlik              | Ayrıntılar                                                                          |
-|-----------------------|----------------------------------------------------------------------------------|
-| Bilinen sorunları gözden geçirin   | [Bilinen sorunların listesi](azure-stack-release-notes-known-issues-1906.md).                |
+| Etkinlik                     | Ayrıntılar                                                   |
+|------------------------------|-----------------------------------------------------------|
+| Bilinen sorunları gözden geçirin     | [Bilinen sorunların listesi](azure-stack-release-notes-known-issues-1906.md).                |
 | Güvenlik güncelleştirmelerini gözden geçirin | [Güvenlik güncelleştirmelerinin listesi](azure-stack-release-notes-security-updates-1906.md).      |
-| En son OEM paketini Uygula | Sisteminizin güncelleştirdiğiniz Azure Stack sürümü için en düşük OEM paketi gereksinimlerini karşıladığından emin olmak için OEM 'nize başvurun |
-| Test-AzureStack Çalıştır   | İşlemsel `Test-AzureStack -Group UpdateReadiness` sorunları belirlemek için ' i çalıştırın.      |
-| Sorunları çözme        | **Test-AzureStack**tarafından tanımlanan tüm işlem sorunlarını çözün.                |
-| Son düzeltmeleri Uygula | Şu anda yüklü olan sürüme uygulanan en son düzeltmeleri uygulayın.         |
-| Kapasite planlayıcısı aracını çalıştırma | İş yükü planlama ve boyutlandırmasını gerçekleştirmek için [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) aracının en son sürümünü kullandığınızdan emin olun. En son sürüm hata düzeltmeleri içerir ve her bir Azure Stack güncelleştirmesiyle yayınlanan yeni özellikler sağlar. |
-| Güncelleştirme var       | Yalnızca bağlı senaryolarda, Azure Stack dağıtımları düzenli aralıklarla güvenli bir uç noktayı kontrol edip bulut için bir güncelleştirme varsa bunu otomatik olarak bilgilendirir. Bağlantısı kesilen müşteriler, [burada açıklanan işlemi](azure-stack-apply-updates.md)kullanarak yeni 1906 paketini indirebilir ve içeri aktarabilir.               |
+| En son OEM paketini Uygula | Sisteminizin güncelleştirdiğiniz Azure Stack sürümü için en düşük OEM paketi gereksinimlerini karşıladığından emin olmak için OEM 'nize başvurun. |
+| Test-AzureStack Çalıştır     | İşlemsel `Test-AzureStack -Group UpdateReadiness` sorunları belirlemek için ' i çalıştırın.      |
+| Sorunları çözme          | **Test-AzureStack**tarafından tanımlanan tüm işlem sorunlarını çözün.                |
+| Son düzeltmeleri Uygula   | Şu anda yüklü olan sürüme uygulanan en son düzeltmeleri uygulayın.         |
+| Kapasite planlayıcısı aracını çalıştırma   | İş yükü planlama ve boyutlandırmasını gerçekleştirmek için [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) aracının en son sürümünü kullandığınızdan emin olun. En son sürüm hata düzeltmeleri içerir ve her bir Azure Stack güncelleştirmesiyle yayınlanan yeni özellikler sağlar. |
+| Güncelleştirme var        | Yalnızca bağlı senaryolarda, Azure Stack dağıtımları düzenli aralıklarla güvenli bir uç noktayı kontrol edip bulut için bir güncelleştirme varsa bunu otomatik olarak bilgilendirir. Bağlantısı kesilen müşteriler, [burada açıklanan işlemi](azure-stack-apply-updates.md)kullanarak yeni 1906 paketini indirebilir ve içeri aktarabilir. |
+
 
 ## <a name="during-azure-stack-update"></a>Azure Stack güncelleştirme sırasında
 

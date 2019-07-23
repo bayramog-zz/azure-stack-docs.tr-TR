@@ -1,6 +1,6 @@
 ---
-title: Azure Stack depolamaya giriş
-description: Azure Stack depolama hakkında bilgi edinin
+title: Azure Stack depolamaya giriş | Microsoft Docs
+description: Azure Stack depolama hizmetleri hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,86 +14,86 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9abfeecfba0e159a5e402bb5d49a58e0cd2945e2
-ms.sourcegitcommit: ca46bef5d5f824d22bdbc00605eb881410b1ffd0
+ms.openlocfilehash: c8828076c74e5f12c742206e3c38c8ee44f90b4c
+ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67041993"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68376867"
 ---
-# <a name="introduction-to-azure-stack-storage"></a>Azure Stack depolamaya giriş
+# <a name="introduction-to-azure-stack-storage"></a>Azure Stack depolama 'ya giriş
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Stack depolama Blobları, tablolar ve Azure depolama hizmetleriyle tutarlı olan kuyrukları içeren bir bulut depolama hizmetleri kümesidir.
+Azure Stack depolama, Azure depolama tarafından sunulan hizmetlerle tutarlı bir bulut depolama hizmetleri kümesidir. Bu hizmetler Bloblar, tablolar ve kuyruklar içerir.
 
 ## <a name="azure-stack-storage-services"></a>Azure Stack depolama hizmetleri
 
-Azure Stack depolama, aşağıdaki üç hizmeti sunar:
+Azure Stack depolama aşağıdaki üç hizmeti sağlar:
 
-- **Blob Depolama**
+- **Blob depolama**
 
-    BLOB Depolama, yapılandırılmamış nesne verilerini depolar. Blob; bir belge, ortam dosyası veya uygulama yükleyici gibi herhangi bir türde metin veya ikili veri olabilir.
+    Blob Storage yapılandırılmamış nesne verilerini depolar. Blob, bir belge, medya dosyası veya uygulama yükleyicisi gibi herhangi bir tür metin veya ikili veri olabilir.
 
 - **Tablo depolama**
 
-    Tablo depolama, yapılandırılmış veri kümelerini depolar. Table Storage, yüksek miktarda verinin hızla dağıtılmasını ve verilere hızla erişilebilmesini sağlayan NoSQL anahtar özniteliği veri deposudur.
+    Tablo depolama, yapılandırılmış veri kümelerini depolar. Tablo depolama, çok büyük miktarlarda veriye hızlı geliştirme ve hızlı erişim sağlayan bir NoSQL anahtar özniteliği veri deposudur.
 
 - **Kuyruk depolama**
 
-    Kuyruk depolama, iş akışı işlemeye ve bulut hizmetlerinin bileşenleri arasında iletişime yönelik güvenilir Mesajlaşma sağlar.
+    Kuyruk depolama, iş akışı işleme ve bulut Hizmetleri bileşenleri arasında iletişim için güvenilir mesajlaşma sağlar.
 
-Bir Azure Stack depolama hesabı, Azure Stack depolama hizmetleri sunan güvenli bir hesap erişim ' dir. Depolama hesabınız depolama kaynaklarınız için benzersiz ad alanı sağlar. Aşağıdaki diyagramda bir depolama hesabındaki Azure Stack depolama kaynakları arasındaki ilişkiler gösterilmektedir:
+Azure Stack depolama hesabı, Azure Stack depolama alanındaki hizmetlere erişmenizi sağlayan güvenli bir hesaptır. Depolama hesabınız depolama kaynaklarınız için benzersiz ad alanı sağlar. Aşağıdaki diyagramda bir depolama hesabındaki Azure Stack depolama kaynakları arasındaki ilişkiler gösterilmektedir:
 
 ![Azure Stack depolamaya genel bakış](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
 
 ### <a name="blob-storage"></a>Blob depolama
 
-Blob depolama, bulutta depolamak kullanıcılar için büyük miktarda yapılandırılmamış nesne verilerini, etkili ve ölçeklenebilir bir çözüm sunar. Blob depolama gibi içerik depolamak için kullanabilirsiniz:
+Bulutta depolanacak büyük miktarda yapılandırılmamış nesne verisi olan kullanıcılar için, blob Storage etkili ve ölçeklenebilir bir çözüm sunar. Blob depolamayı kullanarak içeriği depolamak için:
 
 - Belgeler
 - Fotoğraf, video, müzik ve blog gibi sosyal veriler
 - Dosyaların, bilgisayarların, veritabanlarının ve cihazların yedekleri
-- Web uygulamaları için görüntüler ve metinler
+- Web Apps için görüntüler ve metinler
 - Bulut uygulamaları için yapılandırma verileri
 - Günlükler ve diğer büyük veri kümeleri gibi büyük veriler
 
-Her blob bir kapsayıcı halinde düzenlenmiştir. Kapsayıcılar ayrıca nesne gruplarına güvenlik ilkeleri atamaya ilişkin kullanışlı bir yöntem sunar. Bir depolama hesabında herhangi bir sayıda kapsayıcı olabilir ve bir kapsayıcı herhangi bir sayıda depolama hesabının sınırını dolduracak kadar BLOB içerebilir.
+Her blob bir kapsayıcı halinde düzenlenmiştir. Kapsayıcılar ayrıca nesne gruplarına güvenlik ilkeleri atamaya ilişkin kullanışlı bir yöntem sunar. Bir depolama hesabı herhangi bir sayıda kapsayıcı içerebilir ve bir kapsayıcı, herhangi bir sayıda blob (depolama hesabı sınırına kadar) içerebilir.
 
-BLOB Depolama üç tür BLOB sunar:
+BLOB depolama, üç tür blob sunar:
 
-- **Blok blobları**
+- **Blok Blobları**
 
-    Blok blobları, akış ve bulut nesnelerini depolamak için optimize edilmiş ve belgeler, ortam dosyaları, yedeklemeleri ve vb. depolamak için iyi bir seçimdir.
+    Blok Blobları, bulut nesnelerini akışa alma ve depolama için iyileştirilmiştir. Belgeler, medya dosyaları, yedeklemeler ve diğer benzer dosyaları depolamak için iyi bir seçimdir.
 
-- **Ekleme blobları**
+- **Blob ekleme**
 
     Ekleme blobları blok bloblarına benzer ancak ekleme işlemleri için en iyi duruma getirilmiştir. Bir ekleme blobu yalnızca sonuna yeni bir blok eklenerek güncelleştirilebilir. Ekleme blobları, yeni verilerin yalnızca blobun sonuna yazılması gereken günlüğe kaydetme gibi senaryolar için iyi bir seçenektir.
 
-- **Sayfa blobları**
+- **Sayfa Blobları**
 
-    Sayfa blobları Iaas disklerini temsil etmek için optimize edilmiş ve rastgele destekleyen, boyutu 1 TB'ye kadar olan yazar. Bir Azure Stack sanal makine disk bir sayfa blobu depolanan bir vhd'dir Iaas diskine bağlı.
+    Sayfa Blobları IaaS disklerini temsil etmek için optimize edilmiştir ve rastgele yazma işlemlerini 1 TB 'a kadar destekler. IaaS diskine bağlı Azure Stack sanal makine, Sayfa Blobu olarak depolanan bir VHD 'dir.
 
-### <a name="table-storage"></a>Table Storage
+### <a name="table-storage"></a>Tablo depolama alanı
 
-Modern uygulamalar genellikle eski nesil yazılımların gerektirdiğinden daha fazla ölçeklenebilirlik ve esneklik özelliklerine sahip veri depoları gerektirir. Table Storage yüksek seviyede kullanılabilir ve ölçeklenebilir depolama sunar, böylece uygulamanız kullanıcı taleplerini karşılayacak şekilde otomatik olarak ölçeklendirilir. Tablo depolama, Microsoft'un NoSQL anahtar/öznitelik deposu--geleneksel ilişkisel veritabanlarından farklı olarak şemasız bir tasarıma sahiptir. Şemasız veri deposu sayesinde, uygulamanızın ihtiyaçları geliştikçe verilerinizi uyarlamak da kolaylaşır. Table Storage’ın kullanımı son derece kolaydır, böylece geliştiriciler uygulamalarını hızla geliştirebilir.
+Modern uygulamalar genellikle daha fazla ölçeklenebilirlik ve esneklik sağlayan veri depolarını daha önceki nesil yazılıma göre talep altına kaydeder. Tablo depolaması, uygulamanızın kullanıcı taleplerini karşılamak üzere otomatik olarak ölçeklenebilmesi için yüksek oranda kullanılabilir ve yüksek düzeyde ölçeklenebilir depolama alanı sunar. Tablo depolama, Microsoft 'un NoSQL anahtar/öznitelik deposudur ve geleneksel ilişkisel veritabanlarından farklı hale getirerek şemaya daha az bir tasarıma sahiptir. Daha az bir veri deposuyla, uygulamanızın ihtiyaçları geliştikçe verilerinizi kolayca uyarlayabilirsiniz. Tablo depolamanın kullanımı kolaydır, böylece geliştiriciler uygulamaları hızla oluşturabilir.
 
-Tablo depolama türü belirtilmiş bir özellik adı ile bir tablodaki her değerin saklandığı anlamına gelir bir anahtar öznitelik deposudur. Özellik adı filtreleme ve seçim kriterlerinin belirlenmesi için kullanılabilir. Özellik ve değerlerinin toplamı bir varlığı oluşturur. Table storage şemasız olduğu olduğundan, aynı tablodaki iki varlık farklı özellik koleksiyonları içerebilir ve bu özellikler farklı türde olabilir.
+Tablo depolama bir anahtar öznitelik deposudur; bu, bir tablodaki her değerin türü belirtilmiş bir özellik adıyla depolandığı anlamına gelir. Özellik adı, filtre uygulamak ve seçim ölçütlerini belirtmek için kullanılır. Özellik ve değerlerinin toplamı bir varlığı oluşturur. Tablo Depolaması şemayana olduğundan, aynı tablodaki iki varlık farklı özellik koleksiyonları içerebilir ve bu özellikler farklı türlerde olabilir.
 
-Tablo depolama, web uygulamaları, adres defterleri, cihaz bilgileri ve hizmetiniz için gerekli meta verileri başka bir türü için kullanıcı verileri gibi esnek veri kümelerini depolamak için kullanabilirsiniz. Bugünün Internet tabanlı uygulamaları için table storage gibi NoSQL veritabanları, geleneksel veri tabanlarına göre popüler bir alternatif sunar.
+Web uygulamaları için Kullanıcı verileri, adres defterleri, cihaz bilgileri ve hizmetinizin gerektirdiği diğer meta veri türleri gibi esnek veri kümelerini depolamak için tablo depolama alanını kullanabilirsiniz. Bugünün internet tabanlı uygulamaları için tablo depolaması gibi NoSQL veritabanları geleneksel ilişkisel veritabanlarına popüler bir alternatif sağlar.
 
-Bir depolama hesabı herhangi bir sayıda tablo içerebilir ve herhangi bir sayıda varlıklar, depolama hesabının kapasite sınırına kadar tablo içerebilir.
+Bir depolama hesabı herhangi bir sayıda tablo içerebilir ve bir tablo, depolama hesabının kapasite sınırına kadar herhangi bir sayıda varlık içerebilir.
 
 ### <a name="queue-storage"></a>Kuyruk depolama
 
-Ölçeklendirmek üzere uygulama tasarlarken, uygulama bileşenleri birbirinden bağımsız şekilde ölçeklenebilmek için genellikle birbirinden ayrılır. Kuyruk depolama, uygulama bileşenleri arasında zaman uyumsuz iletişim için güvenilir bir Mesajlaşma çözümü sağlar, ister bulutta, masaüstünde, şirket içi sunucusunda veya mobil bir cihazda çalışıyor olsun. Kuyruk depolama zaman uyumsuz görevlerin yönetilmesini ve süreç iş akışlarının oluşturulmasını da destekler.
+Uygulamaları ölçeklendirmek için tasarlarken, uygulama bileşenleri genellikle birbirinden bağımsız olarak ölçeklendirilebilecek şekilde ayrılır. Kuyruk depolama, bulutta, masaüstünde, şirket içi sunucuda veya mobil cihazlarda çalışıp çalışmadığını uygulama bileşenleri arasında zaman uyumsuz iletişim için güvenilir bir mesajlaşma çözümü sağlar. Kuyruk depolama zaman uyumsuz görevlerin yönetilmesini ve süreç iş akışlarının oluşturulmasını da destekler.
 
-Bir depolama hesabı herhangi sayıda kuyruk içerebilir ve bir kuyruk herhangi bir sayıda depolama hesabının kapasite sınırına kadar ileti içerebilir. Tek bir ileti boyut olarak en fazla 64 KB olabilir.
+Bir depolama hesabı herhangi bir sayıda sıra içerebilir ve bir sıra, herhangi bir sayıda ileti içerebilir (depolama hesabının kapasite sınırına kadar). Tek bir ileti boyut olarak en fazla 64 KB olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure ile tutarlı Depolama: farklılıklar ve dikkat edilmesi gerekenler](azure-stack-acs-differences.md)
+- [Azure ile tutarlı depolama: farklar ve konular](azure-stack-acs-differences.md)
 
-- Azure depolama hakkında daha fazla bilgi için bkz: [Microsoft Azure Depolama'ya giriş](/azure/storage/common/storage-introduction)
+- Azure depolama hakkında daha fazla bilgi edinmek için bkz. [tanıtım Microsoft Azure depolama](/azure/storage/common/storage-introduction)

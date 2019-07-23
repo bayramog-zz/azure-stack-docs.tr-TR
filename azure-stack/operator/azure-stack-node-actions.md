@@ -15,12 +15,12 @@ ms.date: 07/18/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: e7d6ac6d025fb6e6e087eb19db8ba1d5c944ea72
-ms.sourcegitcommit: cb2376ed76c784e475b99352a024eaa7a148f42f
+ms.openlocfilehash: 7ac25e86be91cf6a2e8384c88c79fe3022b3f00d
+ms.sourcegitcommit: 159da88a52701679571bbedde1c36b72bbfe32dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68328736"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380471"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack birim düğümü eylemlerini ölçeklendirme
 
@@ -60,8 +60,8 @@ Yönetici portalında, bir ölçek biriminin ve ilişkili düğümlerinin durumu
 |----------------------|-------------------------------------------------------------------|
 | Çalışıyor | Düğüm, ölçek birimine etkin bir şekilde katılıyor. |
 | Durduruldu | Düğüm kullanılamıyor. |
-| Eklemektir | Düğüm, ölçek birimine etkin bir şekilde ekleniyor. |
-| Onar | Düğüm, etkin bir şekilde onarıldı. |
+| Ekleniyor | Düğüm, ölçek birimine etkin bir şekilde ekleniyor. |
+| Onarılıyor | Düğüm, etkin bir şekilde onarıldı. |
 | Bakım | Düğüm duraklatılır ve etkin bir kullanıcı iş yükü çalışmıyor. |
 | Düzeltme gerektirir | Düğümün onarılması gereken bir hata algılandı. |
 
@@ -70,7 +70,7 @@ Yönetici portalında, bir ölçek biriminin ve ilişkili düğümlerinin durumu
 Bir ölçek birimi düğümüyle ilgili bilgileri görüntülediğinizde, şu gibi düğüm eylemleri de gerçekleştirebilirsiniz:
  - Başlat ve Durdur (geçerli güç durumuna bağlı olarak)
  - Disable ve özgeçmişi (işlem durumuna bağlı olarak)
- - Onarımı
+ - Onar
  - Kapat
 
 Düğümün işlemsel durumu hangi seçeneklerin kullanılabilir olduğunu belirler.
@@ -136,20 +136,21 @@ Daha fazla bilgi için bkz. [Disable-AzsScaleUnitNode](https://docs.microsoft.co
 
 Daha fazla bilgi için bkz. [Enable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/enable-azsscaleunitnode).
 
-## <a name="repair"></a>Onarımı
+## <a name="repair"></a>Onar
 
 > [!CAUTION]  
-> Üretici yazılımı seviyelendirme, bu makalede açıklanan işlemin başarısı için önemlidir. Bu adımın eksik olması, sistem kararsızlığına, performans düşüşüyle, güvenlik iş parçacıklarından veya Azure Stack otomasyonunun işletim sistemini dağıtmasına engel olabilir. , Uygulanan üretici yazılımının [Azure Stack yönetici portalında](azure-stack-updates.md)görünen OEM sürümüyle eşleşmesini sağlamak için donanımı değiştirirken her zaman donanım iş ortağınızın belgelerine başvurun.
+> Üretici yazılımı seviyelendirme, bu makalede açıklanan işlemin başarısı için önemlidir. Bu adımın eksik olması, sistem kararsızlığına, performans düşüşüyle, güvenlik iş parçacıklarından veya Azure Stack otomasyonunun işletim sistemini dağıtmasına engel olabilir. , Uygulanan üretici yazılımının [Azure Stack yönetici portalında](azure-stack-updates.md)görünen OEM sürümüyle eşleşmesini sağlamak için donanımı değiştirirken her zaman donanım iş ortağınızın belgelerine başvurun.<br>
+Daha fazla bilgi ve iş ortağı belgelerinin bağlantıları için bkz. [bir donanım bileşenini değiştirme](azure-stack-replace-component.md).
 
 | Donanım Iş ortağı | Bölge | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | Tümü | [https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
-| Dell EMC | Tümü | [https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| Fujitsu | JAPONYA | [https://eservice.fujitsu.com/supportdesk-web/](https://eservice.fujitsu.com/supportdesk-web/) |
-|  | EMEA | [https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
-|  |  | [https://support.ts.fujitsu.com/IndexMySupport.asp](https://support.ts.fujitsu.com/IndexMySupport.asp) |
-| HPE | Tümü | [http://www.hpe.com/info/MASupdates](http://www.hpe.com/info/MASupdates) |
-| Lenovo |  | [https://datacentersupport.lenovo.com/us/en/solutions/ht505122](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
+| Cisco | Tümü | [Microsoft Azure Stack Işlemler Kılavuzu için Cisco Tümleşik Sistem](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[Microsoft Azure Stack için Cisco Tümleşik sistemi sürüm notları](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | Tümü | [Microsoft Azure Stack 14G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Microsoft Azure Stack 13G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| Fujitsu | JAPONYA | [Fujitsu yönetilen hizmet destek masası (hesap ve oturum açma gereklidir)](https://eservice.fujitsu.com/supportdesk-web/) |
+|  | EMEA | [Fujitsu BT ürünlerini ve sistemlerini destekler](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
+|  |  | [Fujitsu MySupport (hesap ve oturum açma gereklidir)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
+| HPE | Tümü | [Microsoft Azure Stack için HPE ProLiant](http://www.hpe.com/info/MASupdates) |
+| Lenovo | Tümü | [Ölçülü Kagile SXD En Iyi Tarifler](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
 
 **Onarım** eylemi bir düğümü onarır. Bunu yalnızca aşağıdaki senaryolardan biri için kullanın:
  - Tam düğüm değiştirme (yeni veri disklerine sahip veya olmayan)

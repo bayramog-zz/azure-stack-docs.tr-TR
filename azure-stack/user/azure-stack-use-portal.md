@@ -1,6 +1,6 @@
 ---
-title: Azure Stack portalını kullanarak | Microsoft Docs
-description: Erişim ve kullanıcı portalını Azure Stack'te kullanmak hakkında bilgi edinin.
+title: Azure Stack portalını kullanma | Microsoft Docs
+description: Azure Stack 'da Kullanıcı portalına erişmeyi ve kullanmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,68 +14,68 @@ ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: dd68364585fd1d204713c5a014b141f4450a1d45
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.openlocfilehash: 629056556b04a7b5d19c2463b619f3da3a70f7e0
+ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131566"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68376905"
 ---
 # <a name="use-the-azure-stack-portal"></a>Azure Stack portalını kullanın
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Genel tekliflere abone olmak için Azure Stack portalını kullanın ve bu teklifleri sağlayan hizmetler kullanır. Zaten genel Azure portal'ı kullandıysanız, siteyi nasıl çalıştığı ile ilgili bilgi sahibi.
+Genel tekliflere abone olmak ve bu tekliflerin sağladığı Hizmetleri kullanmak için Azure Stack portalını kullanın. Küresel Azure portal kullandıysanız, sitenin nasıl çalıştığını zaten öğrenirsiniz.
 
-## <a name="access-the-portal"></a>Portala erişebilir
+## <a name="access-the-portal"></a>Portala erişin
 
-(Bir hizmet sağlayıcısı veya yöneticinin kuruluşunuzdaki), Azure Stack operatörünüze olanak tanır, portala erişmek için doğru URL'yi de biliyorsunuz demektir.
+Azure Stack operatörünüz (bir hizmet sağlayıcısı ya da kuruluşunuzdaki bir yönetici), portala erişmek için doğru URL 'yi bilmenizi sağlar.
 
-- Tümleşik bir sistem için URL, işlecin bölge ve dış etki alanı adına göre değişir ve biçimde olacaktır https://portal.&lt; *Bölge*&gt;.&lt; *FQDN*&gt;.
-- Azure Stack geliştirme Seti'ni kullanıyorsanız, portalı adresidir https://portal.local.azurestack.external.
-- Tüm Azure Stack dağıtımlar için varsayılan saat dilimini Eşgüdümlü Evrensel Saat (UTC) olarak ayarlanır. Bu otomatik olarak UTC'ye varsayılan olarak yükleme sırasında döner ancak Azure Stack, yükleme sırasında bir saat dilimi seçebilirsiniz.
+- Tümleşik bir sistem için, URL, işlecin bölgesine ve dış etki alanı adına göre değişir ve biçiminde https://portal.&lt olacaktır; *bölge.* &gt;&lt; *FQDN* &gt;.
+- Azure Stack Geliştirme Seti (ASDK) kullanıyorsanız, Portal adresi olur https://portal.local.azurestack.external.
+- Tüm Azure Stack dağıtımları için varsayılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) olarak ayarlanır. Azure Stack yüklerken bir saat dilimi seçebilirsiniz ancak yükleme sırasında otomatik olarak UTC 'ye geri döner.
 
-## <a name="customize-the-dashboard"></a>Panoyu özelleştirin
+## <a name="customize-the-dashboard"></a>Panoyu özelleştirme
 
-Pano kutucukları varsayılan kümesini içerir. Seçebileceğiniz **panoyu Düzenle** varsayılan pano değiştirmek veya **yeni Pano** özel bir Pano oluşturmak için. Ekleyerek veya kaldırarak kutucukları bir panoya kolayca özelleştirebilirsiniz. Örneğin, bir işlem kutucuk eklemek için seçin **+ kaynak Oluştur**. Sağ **işlem**ve ardından **panoya Sabitle**.
+Pano varsayılan kutucuk kümesini içerir. Varsayılan panoyu değiştirmek için **panoyu Düzenle** ' yi seçin veya özel bir pano oluşturmak için **Yeni Pano** ' yı seçin. Bölmeleri, kutucuk ekleyerek veya kaldırarak kolayca özelleştirebilirsiniz. Örneğin, bir Işlem kutucuğu eklemek için **+ kaynak oluştur**' u seçin. **işlem**' a sağ tıklayın ve ardından **panoya sabitle**' yi seçin.
 
-![Azure Stack kullanıcı portalının ekran yakalama](media/azure-stack-use-portal/userportal.png)
+![Azure Stack Kullanıcı portalının ekran görüntüsü](media/azure-stack-use-portal/userportal.png)
 
-Pano özgün ayarlarına geri yüklemek için:
-1.  Seçin **düzenleyin, panoyu**. 
-2.  Sağ tıklayıp **varsayılan durumuna sıfırlansın**.
+Panoyu özgün ayarlarına geri yüklemek için:
+1.  **Panoyu Düzenle**' yi seçin. 
+2.  Sağ tıklayın ve **varsayılan duruma Sıfırla**' yı seçin.
 
-## <a name="create-subscription-and-browse-available-resources"></a>Abonelik oluşturmak ve kullanılabilir kaynaklara göz atın
+## <a name="create-subscription-and-browse-available-resources"></a>Abonelik oluşturma ve kullanılabilir kaynaklara gözatın
 
-Zaten bir aboneliğiniz yoksa, yapmanız gereken ilk şey bir teklife abone olur. Bundan sonra kullanılabilir kaynaklara göz atabilirsiniz. Gözat ve kaynakları oluşturmak için aşağıdaki yaklaşımlardan birini kullanın:
+Aboneliğiniz yoksa bir teklife abone olmanız gerekir. Bundan sonra, kullanılabilir kaynaklara gözatabilmeniz gerekir. Kaynaklara gitmek ve kaynakları oluşturmak için aşağıdaki yaklaşımlardan birini kullanın:
 
-- Seçin **Market** Panoda kutucuk.
-- Üzerinde **tüm kaynakları** kutucuk seçin **kaynakları oluşturma**.
-- Sol gezinti bölmesinde seçin **+ kaynak Oluştur**.
+- Panoda **Market** kutucuğunu seçin.
+- **Tüm kaynaklar** kutucuğunda **kaynak oluştur**' u seçin.
+- Sol gezinti bölmesinde **+ kaynak oluştur**' u seçin.
 
-## <a name="learn-how-to-use-available-services"></a>Kullanılabilir hizmetler kullanmayı öğrenin
+## <a name="learn-how-to-use-available-services"></a>Kullanılabilir hizmetleri nasıl kullanacağınızı öğrenin
 
-Kullanılabilir hizmetlerin nasıl kullanılacağı için rehberliğe ihtiyacınız varsa, farklı seçenekler, kullanılabilir olabilir.
+Kullanılabilir hizmetlerin nasıl kullanılacağına ilişkin kılavuza ihtiyacınız varsa, kullanabileceğiniz farklı seçenekler olabilir.
 
-- Kuruluşunuz veya hizmet sağlayıcısı özelleştirilmiş Hizmetleri veya uygulamaları teklifi sunuyorsanız olduğu genellikle kendi belgelerinin sağlayabilir.
-- Üçüncü taraf uygulamalar, kendi belgelerinin sahiptir.
-- Tutarlı Azure Hizmetleri için ilk Azure Stack belgeleri gözden geçirmenizi öneririz. Azure Stack kullanıcı belgeleri erişmek için Yardım simgesini seçin ve ardından **Yardım + Destek**.
+- Kuruluşunuz veya hizmet sağlayıcınız kendi belgelerini sağlayabilir, bu genellikle özelleştirilmiş hizmetler veya uygulamalar sunduklarında bu durumdur.
+- Üçüncü taraf uygulamaların kendi belgeleri vardır.
+- Azure ile tutarlı hizmetler için öncelikle Azure Stack belgelerini incelemenizi önemle öneririz. Azure Stack kullanıcı belgelerine erişmek için, yardım simgesini ( **?** ) seçin ve ardından **Yardım + Destek**' i seçin.
 
-    ![Yardım ve seçenek kullanıcı Arabiriminde destek](media/azure-stack-use-portal/HelpAndSupport.png)
+    ![Kullanıcı arabirimindeki yardım ve destek seçeneği](media/azure-stack-use-portal/HelpAndSupport.png)
 
-    Özellikle, başlamak için aşağıdaki makaleleri gözden geçirmenizi öneririz:
+    Özellikle, başlamak için aşağıdaki makaleleri incelemenizi öneririz:
 
-    - [Önemli noktalar yer: Hizmetleri kullanarak veya Azure Stack için uygulamalar oluşturma](azure-stack-considerations.md)
-    - İçinde **kullanmanıza** bölüm belgelerine, her hizmet için bir konuları makalesi yoktur. Dikkat edilecek noktalar sayfanın Azure'da sunulan hizmet ve Azure Stack'te sunulan aynı hizmet arasındaki farklar açıklanmaktadır. Bir örnek için bkz. [VM konuları](azure-stack-vm-considerations.md). Diğer bilgiler olabilir **kullanmanıza** Azure Stack için benzersiz bir bölüm.
+    - [Önemli noktalar: Azure Stack](azure-stack-considerations.md)için Hizmetleri kullanma veya uygulama oluşturma.
+    - Belgelerde **Hizmetleri kullanma** bölümünde her bir hizmet için bir dikkat edilecek konular vardır. Önemli noktalar sayfasında, Azure 'da sunulan hizmet ile Azure Stack sunulan hizmet arasındaki farklar açıklanmaktadır. Bir örnek için bkz. [VM değerlendirmeleri](azure-stack-vm-considerations.md). Azure Stack için benzersiz olan **Hizmetleri kullan** bölümünde başka bilgiler olabilir.
 
-      Azure belgeleri bir hizmet için genel bir başvuru olarak kullanabilirsiniz, ancak şu farklılıklara olması gerekir. Belgeler üzerinde bağlantıları anlamak **hızlı başlangıç öğreticileri** kutucuğunda Azure belgelerine noktası.
+      Azure belgelerini bir hizmet için genel başvuru olarak kullanabilirsiniz, ancak bu farklılıklara dikkat etmeniz gerekir. **Hızlı başlangıç öğreticileri** kutucuğunda bulunan belge bağlantılarının Azure belgelerine anlayın.
 
 ## <a name="get-support"></a>Destek alın
 
-Desteğe ihtiyacınız varsa, Yardım için kuruluşunuz veya hizmet sağlayıcınıza başvurun.
+Desteğe ihtiyacınız varsa, yardım için kuruluşunuzun veya hizmet sağlayıcınızla iletişim kurun.
 
-Azure Stack geliştirme Seti'ni kullanıyorsanız [Azure Stack Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) desteği yalnızca kaynağıdır.
+Azure Stack Geliştirme Seti (ASDK) kullanıyorsanız, [Azure Stack Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) tek destek kaynağıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Önemli noktalar yer: Hizmetleri kullanarak veya Azure Stack için uygulamalar oluşturma](azure-stack-considerations.md)
+[Önemli noktalar: Azure Stack için Hizmetleri kullanma veya uygulama oluşturma](azure-stack-considerations.md)

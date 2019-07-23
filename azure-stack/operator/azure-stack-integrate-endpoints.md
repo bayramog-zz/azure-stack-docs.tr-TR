@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/22/2019
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 81115a0bb82792a246d191c1cf68a99f44030e12
-ms.sourcegitcommit: cb2376ed76c784e475b99352a024eaa7a148f42f
+ms.lastreviewed: 07/22/2019
+ms.openlocfilehash: 85022f074dd494978780d67db8cc14e4c243a49c
+ms.sourcegitcommit: 159da88a52701679571bbedde1c36b72bbfe32dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68328738"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380449"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack veri merkezi tümleştirmesi-uç noktaları yayımlama
 
@@ -74,10 +74,10 @@ Azure Stack yalnızca saydam proxy sunucuları destekler. Saydam bir proxy 'nin 
 > [!Note]  
 > Azure Stack, aşağıdaki tabloda listelenen Azure hizmetlerine ulaşmak için ExpressRoute kullanımını desteklemez.
 
-|Amaç|Hedef URL 'SI|Protocol|Bağlantı Noktaları|Kaynak ağ|
+|Amaç|Hedef URL 'SI|Protocol|Bağlantı Noktaları|Kaynak Ağ|
 |---------|---------|---------|---------|---------|
 |Kimlik|login.windows.net<br>login.microsoftonline.com<br>Graph.Windows.NET<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com|HTTP<br>HTTPS|80<br>443|Genel VIP-/27<br>Ortak altyapı ağı|
-|Market dağıtımı|https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|Genel VIP-/27|
+|Market dağıtımı|https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net|HTTPS|443|Genel VIP-/27|
 |Düzeltme Eki & güncelleştirmesi|https://&#42;.azureedge.net<br>https:\//aka.MS/azurestackautomaticupdate|HTTPS|443|Genel VIP-/27|
 |Kayıt|https:\//management.azure.com|HTTPS|443|Genel VIP-/27|
 |Kullanım|https://*. trafficmanager. net |HTTPS|443|Genel VIP-/27|

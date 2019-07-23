@@ -1,6 +1,6 @@
 ---
-title: Azure stack'teki kullanıcı başına kaynaklarıyla ilgili izinleri yönetme | Microsoft Docs
-description: Hizmet Yöneticisi veya Kiracı olarak rol tabanlı erişim denetimi (RBAC) izinleri yönetmeyi öğrenin.
+title: Rol tabanlı erişim denetimiyle Azure Stack kaynaklara erişimi yönetme | Microsoft Docs
+description: Rol tabanlı erişim denetimi (RBAC) izinlerini Azure Stack bir yönetici veya kiracı olarak yönetmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -16,30 +16,30 @@ ms.date: 07/10/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 20bf709cb3c2026910a1283fb0b39ba80c719390
-ms.sourcegitcommit: 7f441f246242fa42147ab5aa69ddc8766ba293e3
+ms.openlocfilehash: a5034e92e52c6da760389d7addc77c6220d59674
+ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67791348"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68376834"
 ---
-# <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Azure Stack Role-Based erişim denetimi ile kaynaklara erişimi yönetme
+# <a name="manage-access-to-resources-in-azure-stack-with-role-based-access-control"></a>Rol tabanlı erişim denetimiyle Azure Stack kaynaklara erişimi yönetme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack, rol tabanlı erişim denetimi (RBAC), aynı destekler [erişim yönetimi için güvenlik modeli](https://docs.microsoft.com/azure/role-based-access-control/overview) , Microsoft Azure'ı kullanır. RBAC, kullanıcı, Grup veya uygulama erişimi için abonelik, kaynakları ve hizmetleri yönetmek için kullanabilirsiniz.
+Azure Stack, rol tabanlı erişim denetimi (RBAC), aynı destekler [erişim yönetimi için güvenlik modeli](https://docs.microsoft.com/azure/role-based-access-control/overview) , Microsoft Azure'ı kullanır. Abonelik, kaynak ve hizmetlere Kullanıcı, Grup veya uygulama erişimini yönetmek için RBAC kullanabilirsiniz.
 
 ## <a name="basics-of-access-management"></a>Erişim yönetimi ile ilgili temel bilgiler
 
-Rol tabanlı erişim denetimi, ortamınızın güvenliğini sağlamak için kullanabileceğiniz ayrıntılı erişim denetimi sağlar. Kullanıcıların ihtiyaç duydukları belirli bir kapsamda bir RBAC rolü atanarak tam izinleri verin. Rol atama kapsamı, bir abonelik, kaynak grubu veya tek bir kaynak olabilir. Okuma [Azure portalında rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview) makalede erişim yönetimi hakkında daha ayrıntılı bilgi almak için.
+Rol tabanlı erişim denetimi, ortamınızın güvenliğini sağlamak için kullanabileceğiniz ayrıntılı erişim denetimi sağlar. Belirli bir kapsamda RBAC rolü atayarak kullanıcılara ihtiyaç duydukları tam izinleri verirsiniz. Rol atama kapsamı, bir abonelik, kaynak grubu veya tek bir kaynak olabilir. Okuma [Azure portalında rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview) makalede erişim yönetimi hakkında daha ayrıntılı bilgi almak için.
 
 ### <a name="built-in-roles"></a>Yerleşik roller
 
 Azure Stack, tüm kaynak türleri için uygulayabileceğiniz üç temel rolüne sahiptir:
 
-* **Sahibi** kaynaklara erişim dahil her şeyi yönetebilir.
-* **Katkıda bulunan** kaynaklara erişim dışında her şeyi yönetebilir.
-* **Okuyucu** her şeyi görüntüleyebilir ancak değişiklik yapamazsınız.
+* **Sahip**: kaynaklara erişim dahil her şeyi yönetebilir.
+* **Katkıda bulunan**: kaynaklara erişim dışında her şeyi yönetebilir.
+* **Okuyucu**: her şeyi görüntüleyebilir, ancak değişiklik yapamaz.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Kaynak hiyerarşisi ve devralma
 
@@ -52,14 +52,14 @@ Azure Stack aşağıdaki kaynak hiyerarşi vardır:
 Bir üst kapsamda verdiğiniz erişim alt kapsamların devralınır. Örneğin:
 
 * Atadığınız **okuyucu** abonelik kapsamında bir Azure AD grubu rol. Bu grubun üyeleri, her kaynak grubu ve kaynak abonelikte görüntüleyebilirsiniz.
-* Atadığınız **katkıda bulunan** kaynak grubu kapsamındaki bir uygulama rolü. Uygulama, bu kaynak grubu, ancak diğer kaynak gruplar aboneliği içindeki tüm türlerin kaynakları yönetebilir.
+* **Katkıda** bulunan rolünü, kaynak grubu kapsamındaki bir uygulamaya atarsınız. Uygulama, söz konusu kaynak grubundaki tüm türlerin kaynaklarını yönetebilir, ancak abonelikte diğer kaynak gruplarını yönetemez.
 
 ### <a name="assigning-roles"></a>Rol atama
 
 Bir kullanıcı için birden çok rol atayabilirsiniz ve her rol farklı bir kapsam ile ilişkili olabilir. Örneğin:
 
-* Abonelik-1'den ' de TestUser-A okuyucu rolüne atayın.
-* TestVM-1'de TestUser-A sahip rolü atayın.
+* -1 aboneliğine TestUser-A **okuyucu** rolü atarsınız.
+* TestVM-1 ' e TestUser-A **sahip** rolü atarsınız.
 
 Azure [rol atamaları](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) makale görüntüleme, atama ve rollerin silinmesine hakkında ayrıntılı bilgi sağlar.
 
@@ -70,13 +70,13 @@ Aşağıdaki adımları izinlerin bir kullanıcı için nasıl yapılandırılac
 1. Yönetmek istediğiniz kaynağa sahip izinlerine sahip bir hesapla oturum açın.
 2. Sol gezinti bölmesinden **Kaynak Grupları**'nı seçin.
 3. İzinlerini ayarlamak istediğiniz kaynak grubu adını seçin.
-4. Kaynak grubu Gezinti bölmesinde **erişim denetimi (IAM)** . **Rol atamaları** görünümü kaynak grubuna erişimi olan öğeleri listeler. Filtre uygulayabilir ve Grup sonuçları.
-5. Üzerinde **erişim denetimi** menü çubuğundan **Ekle**.
-6. Üzerinde **izinleri eklemek** bölmesi:
+4. Kaynak grubu Gezinti bölmesinde **erişim denetimi (IAM)** .<BR> **Rol atamaları** görünümü kaynak grubuna erişimi olan öğeleri listeler. Filtre uygulayabilir ve Grup sonuçları.
+5. **Erişim denetimi** menü çubuğunda **Ekle**' yi seçin.
+6. **Izin Ekle** bölmesinde:
 
    * Atamak istediğiniz rolü seçin **rol** aşağı açılan listesi.
    * Atamak istediğiniz kaynağı seçin **erişim Ata** aşağı açılan listesi.
-   * Dizininizde, erişim vermek istediğiniz kullanıcı, grup veya uygulamayı seçin. Görünen adlar, e-posta adresleri ve nesne tanımlayıcıları ile dizinde arama yapabilirsiniz.
+   * Dizininizde erişim vermek istediğiniz kullanıcı, Grup veya uygulamayı seçin. Görünen adlar, e-posta adresleri ve nesne tanımlayıcıları ile dizinde arama yapabilirsiniz.
 
 7. **Kaydet**’i seçin.
 
