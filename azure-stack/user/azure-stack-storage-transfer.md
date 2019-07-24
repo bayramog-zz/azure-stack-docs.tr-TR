@@ -1,6 +1,6 @@
 ---
-title: Azure Stack depolama için Araçlar | Microsoft Docs
-description: Aktarım araçları Azure Stack depolama verileri hakkında bilgi edinin
+title: Azure Stack Storage 'da veri aktarımı araçlarını kullanma | Microsoft Docs
+description: Azure Stack depolama veri aktarımı araçları hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,123 +10,123 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: a76676c5f4fd1e23a20df04622dafb450e162448
-ms.sourcegitcommit: 6876ccb85c20794969264a1b27e479f4e938f990
+ms.openlocfilehash: 6b6ab8ac8292f8d548b49331cf5d2e2ae100e68f
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406906"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418457"
 ---
-# <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack depolama için veri aktarım araçları kullanın
+# <a name="use-data-transfer-tools-in-azure-stack-storage"></a>Azure Stack depolamada veri aktarımı araçlarını kullanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Microsoft Azure Stack diskler, bloblar, tablolar, kuyruklar ve hesap yönetimi işlevleri için depolama hizmetleri sunmaktadır. Yönetmek veya için veya Azure Stack depolama alanından verileri taşımak istiyorsanız, bir dizi Azure storage araçları kullanabilirsiniz. Bu makalede, kullanılabilen araçlara genel bakış sağlar.
+Azure Stack, diskler, Bloblar, tablolar, kuyruklar ve hesap yönetimi işlevleri için bir depolama hizmetleri kümesi sağlar. Bazı Azure depolama araçları, verileri veya Azure Stack depolama alanından yönetmek veya taşımak istiyorsanız kullanılabilir. Bu makalede, kullanılabilir araçlara genel bir bakış sunulmaktadır.
 
-Aşağıdaki araçlar hangisinin sizin için en uygun gereksinimlerinizi belirleyin:
+Gereksinimleriniz aşağıdaki araçlardan hangisinin sizin için en iyi şekilde çalışacağını belirlemektir:
 
 * [AzCopy](#azcopy)
 
-    Bir nesneyi başka bir nesne depolama hesabınızda veya depolama hesapları arasında veri kopyalamak için indirebileceğiniz bir depolama özel, komut satırı yardımcı.
+    Bir nesneden verileri depolama hesaplarınız içinde veya arasında başka bir nesneye kopyalamak için indirebileceğiniz, depolamaya özgü bir komut satırı yardımcı programı.
 
 * [Azure PowerShell](#azure-powershell)
 
-    Bir görev tabanlı, komut satırı kabuğu ve betik dilidir özellikle sistem yönetimi için tasarlanmıştır.
+    Özellikle sistem yönetimi için tasarlanan görev tabanlı, komut satırı kabuğu ve betik dili.
 
 * [Azure CLI](#azure-cli)
 
-    Azure'da ve Azure Stack'te platformları ile çalışmak için bir komut kümesi sağlar. açık kaynaklı, platformlar arası aracı.
+    Azure ve Azure Stack platformlarıyla çalışmaya yönelik bir dizi komut sağlayan açık kaynaklı, platformlar arası bir araç.
 
 * [Microsoft Depolama Gezgini](#microsoft-azure-storage-explorer)
 
-    Kullanımı kolay tek başına uygulama kullanıcı arabirimi ile.
+    Kullanıcı arabirimiyle kullanımı kolay bir tek başına uygulama.
 
-* [Blobfuse](#blobfuse)
+* [Blobsigortası](#blobfuse)
 
-    Sanal dosya sistemi sürücüsü için mevcut blok blobu verileriniz depolama hesabınızda Linux dosya sistemi üzerinden erişmenize olanak sağlayan Azure Blob Depolama. 
+    Azure Blob depolama için bir sanal dosya sistemi sürücüsü, Linux dosya sistemi aracılığıyla Depolama hesabınızdaki mevcut Blok Blobu verilerinize erişmenizi sağlar.
 
-Azure ve Azure Stack arasında depolama hizmetleri farklar nedeniyle aşağıdaki bölümlerde açıklanan her aracı için bazı belirli gereksinimleri olabilir. Azure Stack depolama ve Azure depolama arasında bir karşılaştırma için bkz. [Azure Stack Depolama: Farklılıklar ve dikkat edilmesi gerekenler](azure-stack-acs-differences.md).
+Azure ile Azure Stack arasındaki depolama hizmetleri farklılıkları nedeniyle, aşağıdaki bölümlerde açıklanan her bir araç için bazı özel gereksinimler olabilir. Azure Stack depolama ile Azure depolama arasında bir karşılaştırma için bkz [. Azure Stack depolama: Farklar ve önemli](azure-stack-acs-differences.md)noktalar.
 
 ## <a name="azcopy"></a>AzCopy
 
-AzCopy, en iyi performansı sunan basit komutlar kullanılarak Microsoft Azure blob ve tablo depolama ve veri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır. Verileri bir nesneden diğerine depolama hesabınızda veya depolama hesapları arasında kopyalayabilirsiniz.
+AzCopy, en iyi performansa sahip basit komutları kullanarak Microsoft Azure Blob ve tablo depolamadan veri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır. Verileri, depolama hesaplarınız içinde veya arasında bir nesneden diğerine kopyalayabilirsiniz.
 
-### <a name="download-and-install-azcopy"></a>AzCopy yükleyip
+### <a name="download-and-install-azcopy"></a>AzCopy indirin ve yükleyin
 
-* 1811 güncelleştirme veya daha yeni sürümlerini [indirme AzCopy V10 +](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
-* Önceki sürümleri (1802 için 1809 güncelleştirme) [AzCopy 7.1.0 indirme](https://aka.ms/azcopyforazurestack20170417).
+* 1811 güncelleştirmesi veya daha yeni sürümler için [AzCopy ile v10 arasındaki + indirin](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+* Önceki sürümler için (1802 1809 güncelleştirme), [AzCopy 7.1.0 indirin](https://aka.ms/azcopyforazurestack20170417).
 
-### <a name="accopy-101-configuration-and-limits"></a>AcCopy 10.1 yapılandırmayı ve sınırlarını
+### <a name="azcopy-101-configuration-and-limits"></a>AzCopy 10,1 yapılandırma ve sınırları
 
-AzCopy 10.1 önceki API sürümlerini kullanacak şekilde yapılandırılması için sunulmuştur. Bu, Azure Stack (sınırlı) desteği sağlar.
-Azure Stack desteklemek AzCopy için API sürümü yapılandırmak için `AZCOPY_DEFAULT_SERVICE_API_VERSION` ortam değişkenine `2017-11-09`.
+AzCopy 10,1 artık eski API sürümlerini kullanacak şekilde yapılandırılabilir. Bu, Azure Stack için destek sunar (sınırlı).
+AzCopy için API sürümünü Azure Stack destekleyecek şekilde yapılandırmak için, `AZCOPY_DEFAULT_SERVICE_API_VERSION` ortam değişkenini olarak `2017-11-09`ayarlayın.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
-| **Windows** | İçinde bir komut istemi kullanın: `set AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09`<br> PowerShell kullanımda: `$env:AZCOPY_DEFAULT_SERVICE_API_VERSION="2017-11-09"`|
+| **Windows** | Komut isteminde şunu kullanın:`set AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09`<br> PowerShell kullanımı:`$env:AZCOPY_DEFAULT_SERVICE_API_VERSION="2017-11-09"`|
 | **Linux** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
 | **MacOS** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
 
-AzCopy 10.1 Azure Stack için aşağıdaki özellikleri destekler:
+AzCopy 10,1 ' de, aşağıdaki özellikler Azure Stack desteklenir:
 
 | Özellik | Desteklenen eylemler |
 | --- | --- |
-|Kapsayıcı yönetme|Bir kapsayıcı oluşturma<br>Kapsayıcı içeriğini listeleme
-|İşi Yönet|İşleri görüntüle<br>Bir işi sürdürme
-|BLOB Kaldır|Tek bir blob Kaldır<br>Tüm veya kısmi sanal dizini Kaldır
-|Dosya yükleme|Dosyayı karşıya yükleme<br>Bir dizin karşıya yükleme<br>Bir dizinin içeriklerini karşıya yükleme
-|Dosyayı indirin|Dosya indirme<br>Bir dizine indirin<br>Bir dizinin içeriğini indirin
-|Dosya eşitleme|Yerel dosya sisteminde bir kapsayıcıya Eşitle<br>Bir kapsayıcıya yerel dosya sistemi Eşitle
+|Kapsayıcıyı Yönet|Bir kapsayıcı oluşturma<br>Kapsayıcıların içeriğini listeleyin
+|İşi Yönet|İşleri görüntüle<br>İşi sürdürür
+|Blobu kaldır|Tek bir blobu kaldırma<br>Tüm veya kısmi sanal dizini Kaldır
+|Dosya yükle|Karşıya dosya yükle<br>Bir dizini karşıya yükle<br>Bir dizinin içeriğini karşıya yükleme
+|Dosyayı indir|Dosya indir<br>Bir dizin indirin<br>Bir dizinin içeriğini indirin
+|Dosya eşitlemesini|Kapsayıcıyı yerel dosya sistemiyle eşitler<br>Yerel bir dosya sistemini bir kapsayıcıya eşitler
 
    > [!NOTE]
-   > * Azure Stack, Azure Active Directory (AD) kullanarak, AzCopy için sağlayan yetkilendirme kimlik bilgilerini desteklemez. Depolama nesneleri bir paylaşılan erişim imzası (SAS) belirteci kullanarak Azure Stack'te erişmeniz gerekir.
-   > * Azure Stack, iki Azure Stack blob konumlar arasında ve Azure depolama ve Azure Stack arasında zaman uyumlu veri aktarımı desteklemiyor. "Azcopy cp" kullanamazsınız veri Azure yığını Azure depolama (veya bulmadýðýný şekilde) doğrudan AzCopy 10.1 ile taşıyabilirsiniz.
+   > * Azure Stack, AzCopy için Azure Active Directory (AD) kullanarak yetkilendirme kimlik bilgileri sağlamayı desteklemez. Paylaşılan erişim Imzası (SAS) belirtecini kullanarak Azure Stack depolama nesnelerine erişmeniz gerekir.
+   > * Azure Stack iki Azure Stack blob konumu arasında ve Azure depolama ile Azure Stack arasında zaman uyumlu veri aktarımını desteklemez. Azure Stack verileri Azure depolama 'ya (veya başka bir yolla) doğrudan AzCopy 10,1 ile taşımak için "AzCopy CP" kullanamazsınız.
 
-### <a name="azcopy-command-examples-for-data-transfer"></a>Veri aktarımı için AzCopy komut örnekleri
+### <a name="azcopy-command-examples-for-data-transfer"></a>Veri aktarımı için AzCopy komutu örnekleri
 
-Aşağıdaki örnekler ve Azure Stack bloblarından veri kopyalamak için tipik senaryoları izleyin. Daha fazla bilgi için bkz. [Azcopy'i kullanmaya başlama](/azure/storage/common/storage-use-azcopy-v10).
+Aşağıdaki örnekler, Azure Stack bloblarına ve bunlara veri kopyalamak için tipik senaryoları izler. Daha fazla bilgi için bkz. [AzCopy ile çalışmaya başlama](/azure/storage/common/storage-use-azcopy-v10).
 
-### <a name="download-all-blobs-to-a-local-disk"></a>Tüm blobları yerel diskinize indirin
+### <a name="download-all-blobs-to-a-local-disk"></a>Tüm Blobları yerel bir diske indir
 
 ```
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive=true
 ```
 
-### <a name="upload-single-file-to-virtual-directory"></a>Tek Dosyalı sanal dizine yükleyin
+### <a name="upload-single-file-to-virtual-directory"></a>Sanal dizine tek bir dosya yükle
 
 ```
 azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-### <a name="azcopy-known-issues"></a>Azcopy bilinen sorunlar
+### <a name="azcopy-known-issues"></a>AzCopy bilinen sorunlar
 
- - Dosya depolama henüz Azure Stack'te kullanılabilir olmadığından herhangi bir dosya deposu AzCopy işlemi kullanılabilir değil.
- - AzCopy 10.1 kullanarak veya Azure Stack ve Azure storage iki Azure Stack blob konumlar arasında veri aktarmak istiyorsanız, verileri yerel konuma indirmeniz ve hedef dizin Azure Stack veya Azure depolama için yeniden yüklemeniz gerekir. AzCopy 7.1 kullanın ve aktarımı belirtin **/SyncCopy** veri kopyalamak için seçenek.  
- - Azcopy Linux sürümünü yalnızca 1802 güncelleştirmesi veya sonraki sürümleri destekler. Ve tablo hizmetini desteklemiyor.
+ - Dosya depolama alanı Azure Stack ' de henüz kullanılamadığından, dosya depolaması üzerinde herhangi bir AzCopy işlemi kullanılamaz.
+ - İki Azure Stack blob konumu arasında veya AzCopy 10.1 kullanarak Azure Stack ile Azure depolama arasında veri aktarmak istiyorsanız, önce verileri önce yerel bir konuma indirmeniz ve sonra Azure Stack veya Azure depolama alanında hedef dizine yeniden yüklemeniz gerekir. Veya AzCopy 7,1 ' i kullanabilir ve verileri kopyalamak için **/Synccopy** seçeneğiyle birlikte aktarmayı belirtebilirsiniz.  
+ - AzCopy 'in Linux sürümü yalnızca 1802 güncelleştirme veya sonraki sürümlerini destekler ve tablo hizmetini desteklemez.
  
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell hem Azure hem de Azure Stack hizmetlerini yönetmek için cmdlet'ler sağlayan bir modüldür. Bu, bir görev tabanlı, komut satırı kabuğu ve betik dilidir özellikle sistem yönetimi için tasarlanmış olan.
+Azure PowerShell, hem Azure hem de Azure Stack hizmetleri yönetmek için cmdlet 'ler sağlayan bir modüldür. Bu, özellikle sistem yönetimi için tasarlanan görev tabanlı, komut satırı kabuğu ve betik dilidir.
 
-### <a name="install-and-configure-powershell-for-azure-stack"></a>PowerShell'i yükleme ve Azure Stack için yapılandırma
+### <a name="install-and-configure-powershell-for-azure-stack"></a>Azure Stack için PowerShell 'i yükleyip yapılandırma
 
-Azure Stack uyumlu Azure PowerShell modülleri, Azure Stack ile çalışmak için gereklidir. Daha fazla bilgi için [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md) ve [Azure Stack kullanıcının PowerShell ortamını yapılandırmak](azure-stack-powershell-configure-user.md) daha fazla bilgi için.
+Azure Stack uyumlu Azure PowerShell modüllerinin Azure Stack ile çalışması gerekir. Daha fazla bilgi için bkz. [Azure Stack Için PowerShell 'ı yükleyip](../operator/azure-stack-powershell-install.md) [Azure Stack kullanıcının PowerShell ortamını yapılandırma](azure-stack-powershell-configure-user.md).
 
 ### <a name="powershell-sample-script-for-azure-stack"></a>Azure Stack için PowerShell örnek betiği 
 
-Bu örnek, başarıyla sahip olduğunuzu varsayar [Azure Stack için PowerShell yüklü](../operator/azure-stack-powershell-install.md). Bu betik, yapılandırmayı tamamlamak ve yerel bir PowerShell ortamı için hesabınızı eklemek için kimlik bilgileri, Azure Stack kiracısı isteyin yardımcı olur. Ardından, betiği varsayılan Azure aboneliği, Azure'da yeni bir depolama hesabı oluşturma, bu yeni bir depolama hesabında yeni bir kapsayıcı oluşturur ve var olan bir görüntü dosyası (blob), kapsayıcıya yüklemek. Betik bu kapsayıcıdaki tüm blobları listeler sonra yerel bilgisayarınızda yeni bir hedef dizin oluşturma ve görüntü dosyasını indirin.
+Bu örnek, [Azure Stack Için PowerShell](../operator/azure-stack-powershell-install.md)'ı başarıyla yüklediğinizi varsayar. Bu betik, yapılandırmayı tamamlamanıza ve Azure Stack Kiracı kimlik bilgilerinizin hesabınızı yerel PowerShell ortamına eklemesini istemek için size yardımcı olur. Betik daha sonra varsayılan Azure aboneliğini ayarlar, Azure 'da yeni bir depolama hesabı oluşturur, bu yeni depolama hesabında yeni bir kapsayıcı oluşturur ve var olan bir görüntü dosyasını (blob) bu kapsayıcıya yükler. Komut dosyası, bu kapsayıcıdaki tüm Blobları listeledikten sonra, yerel bilgisayarınızda yeni bir hedef dizin oluşturur ve görüntü dosyasını indirirler.
 
 1. Yükleme [Azure Stack ile uyumlu Azure PowerShell modüllerini](../operator/azure-stack-powershell-install.md).
 2. İndirme [Azure Stack ile çalışması için gereken araçları](../operator/azure-stack-powershell-download.md).
-3. Açık **Windows PowerShell ISE** ve **yönetici olarak çalıştır**, tıklayın **dosya** > **yeni** yeni betik dosyası oluşturma.
-4. Aşağıdaki betiği kopyalayın ve yeni komut dosyasına yapıştırın.
-5. Yapılandırma ayarlarınızı temel alan betik değişkenleri güncelleştirin.
+3. **Windows PowerShell ISE** açın ve **yönetici olarak çalıştır**' a tıklayın ve ardından yeni **Dosya** > ' ya tıklayarak yeni bir komut dosyası oluşturun.
+4. Aşağıdaki betiği kopyalayın ve yeni betik dosyasına yapıştırın.
+5. Yapılandırma ayarlarınıza bağlı olarak komut dosyası değişkenlerini güncelleştirin.
    > [!NOTE]
-   > Bu betik için kök dizininde çalıştırılması gereken **AzureStack_Tools**.
+   > Bu betik, **AzureStack_Tools**için kök dizinde çalıştırılmalıdır.
 
 ```powershell  
 # begin
@@ -193,11 +193,11 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 # end
 ```
 
-### <a name="powershell-known-issues"></a>PowerShell bilinen sorunlar
+### <a name="powershell-known-issues"></a>Bilinen PowerShell sorunları
 
-Azure Stack için geçerli uyumlu Azure PowerShell modülü sürüm için kullanıcı işlemlerini 1.2.11 ' dir. Azure PowerShell'in en son sürümünden farklıdır. Bu fark, depolama hizmetleri işlemi etkiler:
+Azure Stack için geçerli uyumlu Azure PowerShell modülü sürümü Kullanıcı işlemleri için 1.2.11. En son Azure PowerShell sürümünden farklıdır. Bu fark, depolama hizmetleri işlemini aşağıdaki şekilde etkiler:
 
-Dönüş değeri biçimi `Get-AzureRmStorageAccountKey` sürümünde 1.2.11 iki özelliğe sahiptir: `Key1` ve `Key2`, geçerli Azure sürümü tüm hesap anahtarları içeren bir dizi döndürür.
+Version 1.2.11 `Get-AzureRmStorageAccountKey` içindeki dönüş değeri biçimi iki özelliğe sahiptir: `Key1` ve `Key2`geçerli Azure sürümü, tüm hesap anahtarlarını içeren bir dizi döndürür.
 
 ```powershell
 # This command gets a specific key for a storage account, 
@@ -211,32 +211,32 @@ Dönüş değeri biçimi `Get-AzureRmStorageAccountKey` sürümünde 1.2.11 iki 
 -AccountName "MyStorageAccount").Key1
 ```
 
-Daha fazla bilgi için [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey).
+Daha fazla bilgi için bkz. [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey).
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. MacOS, Linux ve Windows üzerinde yükleyin ve komut satırından çalıştırabilirsiniz.
+Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut satırı deneyimidir. Bunu macOS, Linux ve Windows 'a yükleyebilir ve komut satırından çalıştırabilirsiniz.
 
-Azure CLI, Azure kaynaklarını komut satırından yönetmek ve ve Azure Resource Manager'da çalışacak Otomasyon betikleri oluşturmak için optimize edilmiştir. Zengin verilere erişim de dahil olmak üzere Azure Stack portalında bulunan aynı işlevlerin birçoğunu sunar.
+Azure CLı, Azure kaynaklarını komut satırından yönetmek ve yönetmek için ve Azure Resource Manager karşı çalışan Otomasyon betikleri oluşturmak için en iyi duruma getirilmiştir. Azure Stack portalında bulunan ve zengin veri erişimi de dahil olmak üzere aynı işlevlerin birçoğunu sağlar.
 
-Azure Stack, Azure CLI 2.0 veya sonraki bir sürümünü gerektirir. Yükleme ve Azure CLI, Azure Stack ile yapılandırma hakkında daha fazla bilgi için bkz. [yüklemek ve Azure Stack CLI yapılandırma](azure-stack-version-profiles-azurecli2.md). Azure Stack depolama hesabınızdaki kaynaklarla çalışma çeşitli görevleri gerçekleştirmek için Azure CLI kullanma hakkında daha fazla bilgi için bkz. [Azure depolama ile Azure CLI kullanma](/azure/storage/storage-azure-cli)
+Azure Stack için Azure CLı 2,0 veya üzeri bir sürüm gerekir. Azure Stack ile Azure CLı 'yi yükleme ve yapılandırma hakkında daha fazla bilgi için bkz. [Azure Stack CLI 'Yi yükleme ve yapılandırma](azure-stack-version-profiles-azurecli2.md). Azure CLı 'yı kullanarak Azure Stack depolama hesabınızda kaynaklarla çalışan çeşitli görevleri gerçekleştirme hakkında daha fazla bilgi için, bkz. Azure [CLI ile Azure depolama Ile kullanma](/azure/storage/storage-azure-cli).
 
-### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure Stack için Azure CLI örnek betiği
+### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure Stack için Azure CLı örnek betiği
 
-CLI yükleme ve yapılandırmasını tamamladıktan sonra Azure Stack ile depolama kaynaklarını etkileşim kurmak için bir küçük Kabuk örnek betiği çalışmak için aşağıdaki adımları deneyebilirsiniz. Komut aşağıdaki eylemleri gerçekleştirir:
+CLı yükleme ve yapılandırmasını tamamladıktan sonra, Azure Stack depolama kaynaklarıyla etkileşim kurmak için küçük bir Shell örnek betiği ile çalışmak üzere aşağıdaki adımları deneyebilirsiniz. Betik aşağıdaki eylemleri tamamlar:
 
 * Depolama hesabınızda yeni bir kapsayıcı oluşturur.
-* (Blob) olarak mevcut bir dosyayı kapsayıcıya yükler.
-* Tüm blobları kapsayıcıda listeler.
-* Yerel bilgisayarınızda, belirttiğiniz bir hedefe dosyasını indirir.
+* Var olan bir dosyayı (blob olarak) kapsayıcıya yükler.
+* Kapsayıcıdaki tüm Blobları listeler.
+* Dosyayı, belirttiğiniz yerel bilgisayarınızdaki bir hedefe indirir.
 
-Bu betiği çalıştırmadan önce başarıyla için bağlanabilir ve hedef Azure Stack için oturum açın, emin olun.
+Bu betiği çalıştırmadan önce, hedef Azure Stack başarıyla bağlanıp oturum açarak emin olun.
 
-1. Sık kullandığınız metin düzenleyicisinde açın, sonra kopyalayın ve yukarıdaki betik düzenleyiciye yapıştırın.
-2. Betiğin değişkenleri yapılandırma ayarlarınızı yansıtacak şekilde güncelleştirin.
-3. Gerekli değişkenleri güncelleştirdikten sonra komut dosyasını kaydedin ve düzenleyicinizi çıkın. Sonraki adımlarda betiğinizi adlı varsayılır **my_storage_sample.sh**.
-4. Gerekirse, betiği şu yürütülebilir, şekilde işaretle: `chmod +x my_storage_sample.sh`
-5. Bu betiği yürütün. Örneğin, Bash hizmetinde: `./my_storage_sample.sh`
+1. En sevdiğiniz metin düzenleyicinizi açın, ardından önceki betiği kopyalayıp düzenleyiciye yapıştırın.
+2. Betiklerin değişkenlerini yapılandırma ayarlarınızı yansıtacak şekilde güncelleştirin.
+3. Gerekli değişkenleri güncelleştirdikten sonra, betiği kaydedin ve düzenleyiciden çıkın. Sonraki adımlarda, **my_storage_sample. sh**betiğinizi adlandırdığınızı varsayalım.
+4. Gerekirse betiği çalıştırılabilir olarak işaretleyin:`chmod +x my_storage_sample.sh`
+5. Betiği yürütün. Örneğin, bash:`./my_storage_sample.sh`
 
 ```azurecli
 #!/bin/bash
@@ -273,22 +273,22 @@ echo "Done"
 
 ## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Depolama Gezgini
 
-Microsoft Azure Depolama Gezgini, Microsoft'tan bir tek başına uygulamadır. Bu, kolayca Azure depolama ve Azure Stack depolama ile Windows, macOS ve Linux bilgisayarlara çalışmanızı sağlar. Azure Stack depolama verilerinizi yönetmek için kolay bir yol isterseniz, Microsoft Azure Depolama Gezgini'ni kullanarak düşünün.
+Azure Depolama Gezgini, Microsoft 'un tek başına uygulamasıdır. Hem Azure Storage hem de Windows, macOS ve Linux bilgisayarlarda Azure Stack Depolama verileriyle kolayca çalışmanıza olanak sağlar. Azure Stack depolama verilerinizi yönetmenin kolay bir yolunu istiyorsanız Microsoft Azure Depolama Gezgini kullanmayı göz önünde bulundurun.
 
-* Azure Depolama Gezgini'ni Azure Stack ile çalışacak şekilde yapılandırma hakkında daha fazla bilgi edinmek için [Connect Depolama Gezgini'ni Azure Stack aboneliğine](azure-stack-storage-connect-se.md).
-* Microsoft Azure Depolama Gezgini hakkında daha fazla bilgi için bkz: [Depolama Gezgini ile çalışmaya başlama](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* Azure Depolama Gezgini Azure Stack ile çalışacak şekilde yapılandırma hakkında daha fazla bilgi edinmek için bkz [Depolama Gezgini Azure Stack aboneliğine bağlanma](azure-stack-storage-connect-se.md).
+* Microsoft Azure Depolama Gezgini hakkında daha fazla bilgi edinmek için bkz. [Depolama Gezgini ile çalışmaya başlama](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 
-## <a name="blobfuse"></a>Blobfuse 
+## <a name="blobfuse"></a>Blobsigortası 
 
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) Linux dosya sistemi üzerinden mevcut blok blobu verileriniz depolama hesabınızda erişmenize olanak sağlayan Azure Blob Depolama, sanal dosya sistemi sürücüsü içindir. Azure Blob Depolama, bir nesne depolama hizmetidir ve bu nedenle bir hiyerarşik ad alanı yok. Sanal dizin şeması ile ileri eğik çizgi kullanımını kullanarak bu ad alanı Blobfuse sağlar `/` sınırlayıcı olarak. Blobfuse, hem Azure hem de Azure Stack üzerinde çalışır. 
+[Blobsigortası](https://github.com/Azure/azure-storage-fuse) , Azure Blob depolama için bir sanal dosya sistemi sürücüsüdür ve bu sayede, Linux dosya sistemi aracılığıyla Depolama hesabınızdaki mevcut Blok Blobu verilerinize erişebilirsiniz. Azure Blob Storage bir nesne depolama hizmetidir ve bu nedenle hiyerarşik bir ad alanı yoktur. Blobsigortası, bir sınırlayıcı olarak eğik çizgi `/` kullanımıyla sanal dizin düzenini kullanarak bu ad alanını sağlar. Blobsigortası hem Azure hem de Azure Stack üzerinde çalışmaktadır. 
 
-Blob Depolama Blobfuse ile bir dosya sistemi olarak Linux üzerinde bağlama hakkında daha fazla bilgi için bkz: [Blobfuse bağlama Blob depolamaya bir dosya sistemi olarak nasıl](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux). 
+Linux üzerinde Blobsigortası içeren bir dosya sistemi olarak BLOB depolama takma hakkında daha fazla bilgi edinmek için bkz. [BLOB depolamayı bir dosya sistemi olarak Blobsigortası ile bağlama](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux). 
 
-Azure Stack için **blobEndpoint** accountName, accountKey/sasToken, kapsayıcı adı, yanı sıra, bağlama için hazırlama adımında, depolama hesabı kimlik bilgileri yapılandırılırken belirtilmesi gerekiyor. 
+Azure Stack için, depolama hesabı kimlik bilgilerinizi accountName, accountKey/sasToken ve containerName ile birlikte yapılandırırken *Blobendpoint* belirtilmelidir.
 
-Azure Stack Geliştirme Seti, blobEndpoint olmalıdır `myaccount.blob.local.azurestack.external`. Uç noktanız hakkında emin değilseniz, Azure Stack tümleşik sisteminde bulut yöneticinize başvurun. 
+Azure Stack Geliştirme Seti (ASDK) ' de *Blobendpoint* olmalıdır `myaccount.blob.local.azurestack.external`. Azure Stack tümleşik sistemde, uç noktanız hakkında emin değilseniz bulut yöneticinize başvurun.
 
-AccountKey ve sasToken yalnızca yapılandırılmış birer birer olabileceğini lütfen unutmayın. Depolama hesabı anahtarı verildiğinde, kimlik bilgilerini yapılandırma dosyasını aşağıdaki biçimdedir: 
+*Accountkey* ve *sastoken* , tek seferde yalnızca bir tane yapılandırılabilir. Bir depolama hesabı anahtarı verildiğinde, kimlik bilgileri yapılandırma dosyası aşağıdaki biçimdedir:
 
 ```
 accountName myaccount 
@@ -297,7 +297,7 @@ containerName mycontainer
 blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
-Paylaşılan erişim belirteci verildiğinde, kimlik bilgilerini yapılandırma dosyasını aşağıdaki biçimdedir:
+Paylaşılan erişim belirteci verildiğinde, kimlik bilgileri yapılandırma dosyası aşağıdaki biçimdedir:
 
 ```  
 accountName myaccount 
@@ -308,7 +308,7 @@ blobEndpoint myaccount.blob.local.azurestack.external
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Depolama Gezgini, bir Azure Stack aboneliğine bağlanma](azure-stack-storage-connect-se.md)
-* [Depolama Gezgini ile çalışmaya başlama](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-* [Azure ile tutarlı Depolama: farklılıklar ve dikkat edilmesi gerekenler](azure-stack-acs-differences.md)
-* [Microsoft Azure Depolama'ya giriş](/azure/storage/common/storage-introduction)
+* [Depolama Gezginini bir Azure Stack aboneliğine bağlama](azure-stack-storage-connect-se.md)
+* [Depolama Gezgini 'ni kullanmaya başlama](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure ile tutarlı depolama: farklar ve konular](azure-stack-acs-differences.md)
+* [Microsoft Azure depolama 'ya giriş](/azure/storage/common/storage-introduction)
