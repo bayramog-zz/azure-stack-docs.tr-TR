@@ -1,5 +1,5 @@
 ---
-title: Barındırma sunucuları Azure Stack'te MySQL | Microsoft Docs
+title: MySQL barındırma sunucuları Azure Stack | Microsoft Docs
 description: MySQL bağdaştırıcısı kaynak sağlayıcısı aracılığıyla sağlama için MySQL örnekleri ekleme
 services: azure-stack
 documentationCenter: ''
@@ -11,98 +11,98 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 9469904ddcb27d5526e35a33091e0ea3e54600f8
-ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
+ms.openlocfilehash: 4af1f2b163d2ae8eec952b451f21ea88b63e15d1
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67308603"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68417637"
 ---
-# <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>MySQL kaynak sağlayıcı barındırma sunucuları ekleme
+# <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>MySQL kaynak sağlayıcısı için barındırma sunucuları ekleme
 
-İçinde bir MySQL server örneğini bir sanal makine'de (VM) barındıran konak [Azure Stack](azure-stack-overview.md), veya MySQL kaynak sağlayıcı örneği bağlanabilir sürece, Azure Stack ortamınıza dışında bir VM'de.
+MySQL kaynak sağlayıcısı örneğe bağlanabildiği sürece, [Azure Stack](azure-stack-overview.md)veya Azure Stack ortamınızın dışındaki bir sanal makinede bir MySQL barındırma sunucusu örneğini barındırabilirsiniz.
 
 > [!NOTE]
-> MySQL kaynak sağlayıcısı, barındırma MySQL Server Faturalanabilir, kullanıcı aboneliklerini oluşturulması sırasında varsayılan sağlayıcı abonelikte oluşturulmalıdır. Kaynak sağlayıcısı sunucunun kullanıcı veritabanını barındırmak için kullanılmamalıdır.
+> MySQL barındırma sunucuları faturalanabilir, Kullanıcı abonelikleri ' nde oluşturulması gerektiği sürece MySQL kaynak sağlayıcısı varsayılan sağlayıcı aboneliğinde oluşturulmalıdır. Kaynak sağlayıcısı sunucusu, Kullanıcı veritabanlarını barındırmak için kullanılmamalıdır.
 
-MySQL sürüm 5.6, 5.7 ve 8.0, barındırma sunucuları için kullanılabilir. MySQL RP caching_sha2_password kimlik doğrulamasını desteklemez; Bu, sonraki sürümde eklenecek. MySQL 8.0 sunucuları mysql_native_password kullanmak için yapılandırılmalıdır. MariaDB de desteklenir.
+Barındırma sunucularınız için 5,6, 5,7 ve 8,0 MySQL sürümleri kullanılabilir. MySQL RP, caching_sha2_password kimlik doğrulamasını desteklemiyor; Bu, sonraki sürüme eklenecektir. MySQL 8,0 sunucularının mysql_native_password kullanacak şekilde yapılandırılması gerekir. MariaDB de desteklenir.
 
-## <a name="connect-to-a-mysql-hosting-server"></a>Bir MySQL barındırma sunucusuna bağlan
+## <a name="connect-to-a-mysql-hosting-server"></a>MySQL barındırma sunucusuna bağlan
 
-Sistem Yöneticisi ayrıcalıklarına sahip bir hesabın kimlik bilgilerini sağlayın. Bir barındırma sunucusu eklemek için aşağıdaki adımları izleyin:
+Sistem Yöneticisi ayrıcalıklarına sahip bir hesabın kimlik bilgilerine sahip olduğunuzdan emin olun. Bir barındırma sunucusu eklemek için aşağıdaki adımları izleyin:
 
-1. Bir Hizmet Yöneticisi Azure Stack operatörü portalında oturum açın
+1. Azure Stack operatör portalında hizmet yöneticisi olarak oturum açın.
 2. **Tüm Hizmetler**’i seçin.
-3. Altında **yönetim kaynakları** kategorisi seçin **barındırma MySQL Server** >  **+ Ekle**. Bu açılır **barındırma MySQL Server Ekle** iletişim kutusunda, aşağıdaki ekran görüntüsünde gösterilen.
+3. **Yönetim kaynakları** kategorisi altında **MySQL barındırma sunucuları** >  **+ Ekle**' yi seçin. Bu, aşağıdaki ekran yakalama bölümünde gösterilen **MySQL barındırma sunucusu Ekle** iletişim kutusunu açar.
 
-   ![Bir barındırma sunucusunu yapılandırma](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
+   ![Barındırma sunucusu yapılandırma](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
-4. MySQL Server örneğinizi bağlantı ayrıntılarını sağlayın.
+4. MySQL Server örneğinizin bağlantı ayrıntılarını sağlayın.
 
-   * İçin **MySQL barındırma sunucusunun adını**, tam etki alanı adı (FQDN) veya geçerli bir IPv4 adresi sağlayın. Kısa VM adını kullanmayın.
-   * Varsayılan yönetici **kullanıcıadı** Bitnami MySQL Azure Stack marketteki görüntüleri için *kök*. 
-   * Kök bilmiyorsanız **parola**, bkz: [Bitnami belgeleri](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) nasıl edinileceğini öğrenmek için. 
-   * Belirtmek zorunda müşteri varsayılan bir MySQL örneği sağlanmayan **boyut, barındırma sunucusunun GB cinsinden**. Veritabanı sunucusu kapasitesini yakın bir boyutu girin.
-   * Varsayılan ayarı tutun **abonelik**.
-   * İçin **kaynak grubu**, yeni bir tane oluşturun veya varolan bir grubu kullanın.
+   * **MySQL barındırma sunucu adı**için tam etki alanı adı (FQDN) veya geçerli bir IPv4 adresi sağlayın. Kısa VM adını kullanmayın.
+   * Azure Stack marketi 'nde bulunan BitNami MySQL görüntüleri için varsayılan yönetici **Kullanıcı adı** *kök*. 
+   * Kök **parolayı**görmüyorsanız, nasıl alınacağını öğrenmek Için [BitNami belgelerine](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) bakın. 
+   * Varsayılan bir MySQL örneği sağlanmadığından, **barındırma sunucusunun boyutunu GB olarak**belirtmeniz gerekir. Veritabanı sunucusunun kapasitesine yakın bir boyut girin.
+   * **Abonelik**için varsayılan ayarı koruyun.
+   * **Kaynak grubu**için, yeni bir tane oluşturun veya var olan bir grubu kullanın.
 
    > [!NOTE]
-   > MySQL örneği Kiracı ve yönetici Azure Resource Manager tarafından erişilebilen, kaynak sağlayıcısı denetiminde koyabilirsiniz. Ancak, MySQL örneği **gerekir** kaynak sağlayıcıya özel olarak ayrılmış.
+   > MySQL örneğine kiracı ve yönetici Azure Resource Manager erişilebiliyorsa, kaynak sağlayıcısı denetiminin altına koyabilirsiniz. Ancak, MySQL örneği yalnızca  kaynak sağlayıcısına ayrılmalıdır.
 
-5. Seçin **SKU'ları** açmak için **oluşturma SKU** iletişim.
+5. **SKU oluştur** iletişim kutusunu açmak Için **SKU 'ları** seçin.
 
-   ![Bir MySQL SKU oluşturma](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+   ![MySQL SKU 'SU oluşturma](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
-   SKU **adı** kullanıcıların veritabanlarını ve uygun SKU için ucunuzun sku'sunun özelliklerini yansıtmalıdır.
+   Kullanıcıların veritabanlarını uygun SKU 'ya dağıtabilmesi için SKU **adı** SKU 'nun özelliklerini yansıtmalıdır.
 
-6. Seçin **Tamam** SKU oluşturma.
+6. SKU 'YU oluşturmak için **Tamam ' ı** seçin.
    > [!NOTE]
-   > SKU'ları portalda görünür olması için bir saat sürebilir. SKU dağıtılmış ve çalışır olana kadar bir veritabanı oluşturulamıyor.
+   > SKU 'Ların portalda görünür olması bir saate kadar sürebilir. SKU dağıtılmadan ve çalışmadığı sürece bir veritabanı oluşturamazsınız.
 
-7. Altında **barındırma MySQL Server Ekle**seçin **Oluştur**.
+7. **MySQL barındırma sunucusu Ekle**altında **Oluştur**' u seçin.
 
-Sunucuları eklerken, bunları hizmet teklifleri ayırt etmek için yeni veya mevcut SKU için atayın. Örneğin, artan veritabanı ve otomatik yedeklemeler sağlayan bir MySQL Kurumsal örneğine sahip olabilirsiniz. Kuruluşunuzda farklı Departmanlar için bu yüksek performanslı sunucu ayırabilirsiniz.
+Sunucu eklerken, hizmet tekliflerini ayırt etmek için bunları yeni veya mevcut bir SKU 'ya atayın. Örneğin, daha fazla veritabanı ve otomatik yedeklemeler sağlayan bir MySQL kurumsal örneğine sahip olabilirsiniz. Bu yüksek performanslı sunucuyu, kuruluşunuzdaki farklı departmanlar için ayırabilirsiniz.
 
 ## <a name="security-considerations-for-mysql"></a>MySQL için güvenlik konuları
 
 Aşağıdaki bilgiler, RP ve MySQL barındırma sunucuları için geçerlidir:
 
-* Tüm barındırma sunucuları TLS 1.2 kullanarak iletişimi için yapılandırıldığından emin olun. Bkz: [şifrelenmiş bağlantıları kullanmak için MySQL yapılandırma](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html).
-* Görevlendirmek [saydam veri şifrelemesi](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-data-encryption.html).
-* MySQL RP caching_sha2_password kimlik doğrulamasını desteklemez.
+* Tüm barındırma sunucularının TLS 1,2 kullanılarak iletişim için yapılandırıldığından emin olun. Bkz. [şifrelenmiş bağlantıları kullanmak Için MySQL yapılandırma](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html).
+* [Saydam veri şifrelemesi](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-data-encryption.html).
+* MySQL RP, caching_sha2_password kimlik doğrulamasını desteklemiyor.
 
-## <a name="increase-backend-database-capacity"></a>Arka uç veritabanınızın kapasitesini artırmanız
+## <a name="increase-backend-database-capacity"></a>Arka uç veritabanı kapasitesini artırma
 
-Daha fazla MySQL sunucusu Azure Stack portalında dağıtarak arka uç veritabanınızın kapasitesini artırabilir. Bu sunucular için yeni veya mevcut bir SKU ekleyin. Mevcut bir SKU için bir sunucu eklerseniz, sunucu özelliklerini SKU diğer sunucular ile aynı olduğundan emin olun.
+Azure Stack portalında daha fazla MySQL sunucusu dağıtarak arka uç veritabanı kapasitesini artırabilirsiniz. Bu sunucuları yeni veya mevcut bir SKU 'ya ekleyin. Var olan bir SKU 'ya sunucu eklerseniz, sunucu özelliklerinin SKU 'daki diğer sunucularla aynı olduğundan emin olun.
 
 ## <a name="sku-notes"></a>SKU notları
-Kapasite ve performans gibi SKU sunucuların özelliklerini tanımlayan bir SKU adı kullanın. Ad ve uygun SKU için kendi veritabanları dağıtma kullanıcılara yardımcı olmak için yardımcı işlevi görür. Örneğin, hizmet teklifleri aşağıdaki özelliklerle ayırt etmek için SKU adları kullanabilirsiniz:
+SKU 'da kapasite ve performans gibi sunucuların yeteneklerini açıklayan bir SKU adı kullanın. Ad, kullanıcıların veritabanlarını uygun SKU 'ya dağıtmalarına yardımcı olmak için bir yardım görevi görür. Örneğin, hizmet tekliflerini aşağıdaki özelliklerle ayırt etmek için SKU adlarını kullanabilirsiniz:
   
 * yüksek kapasite
-* yüksek performans
-* yüksek kullanılabilirlik
+* yüksek performanslı
+* Yüksek kullanılabilirlik
 
-En iyi uygulama, bir SKU tüm barındırma sunucuları aynı kaynak ve performansın özelliklere sahip olmalıdır.
+En iyi uygulama olarak, bir SKU 'daki tüm barındırma sunucuları aynı kaynak ve performans özelliklerine sahip olmalıdır.
 
-SKU'ları, belirli kullanıcılara veya gruplara atanamaz.
+SKU 'Lar belirli kullanıcılara veya gruplara atanamaz.
 
-Bir SKU düzenlemek için şuraya gidin: **tüm hizmetleri** > **MySQL bağdaştırıcısı** > **SKU'ları**. SKU'ları değiştirmek, gerekli değişiklikleri yapın ve tıklayın seçin **Kaydet** değişiklikleri kaydedin. 
+Bir SKU 'yu düzenlemek için **tüm hizmetler** > **MySQL bağdaştırıcı** > **SKU 'larına**gidin. Değiştirilecek SKU 'yu seçin, tüm gerekli değişiklikleri yapın ve değişiklikleri kaydetmek için **Kaydet** ' e tıklayın. 
 
-Artık gerekli olmadığında bir SKU silmek için Git **tüm hizmetleri** > **MySQL bağdaştırıcısı** > **SKU'ları**. SKU adı sağ tıklayıp **Sil** silmek için.
-
-> [!IMPORTANT]
-> Bu Kullanıcı Portalı'nda kullanılabilir olması yeni SKU'lara bir saate kadar sürebilir.
-
-## <a name="make-mysql-database-servers-available-to-your-users"></a>MySQL veritabanı sunucularını, kullanıcılar için kullanılabilir yap
-
-Planlar ve teklifler MySQL veritabanı sunucularını kullanıcıları için kullanılabilir hale getirmek oluşturun. Microsoft.MySqlAdapter hizmet planına ekleyin ve bir yeni kota oluştur. MySQL veritabanlarının boyutunu sınırlama izin vermez.
+Artık gerekli olmayan bir SKU 'yu silmek için **tüm hizmetler** > **MySQL bağdaştırıcı** > **SKU 'larına**gidin. SKU adına sağ tıklayın ve Sil ' i **seçerek silin** .
 
 > [!IMPORTANT]
-> Uygulamanın, Kullanıcı Portalı'nda veya değiştirilmiş bir kota uygulanmadan önce kullanılabilir olması için yeni kotalar iki saate kadar sürebilir.
+> Yeni SKU 'Ların Kullanıcı portalında kullanılabilmesi bir saate kadar sürebilir.
+
+## <a name="make-mysql-database-servers-available-to-your-users"></a>MySQL veritabanı sunucularını kullanıcılarınız için kullanılabilir hale getirme
+
+MySQL veritabanı sunucularını kullanıcılar için kullanılabilir hale getirmek için planlar ve teklifler oluşturun. Plana Microsoft. MySqlAdapter hizmetini ekleyin ve yeni bir kota oluşturun. MySQL, veritabanlarının boyutunu sınırlandırmaya izin vermez.
+
+> [!IMPORTANT]
+> Yeni kotaların Kullanıcı portalında veya değiştirilen bir kota zorlanmadan önce kullanılabilmesi iki saate kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

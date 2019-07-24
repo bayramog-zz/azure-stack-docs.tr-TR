@@ -1,6 +1,6 @@
 ---
-title: Azure stack'teki ayrıcalıklı uç noktayı kullanarak güncelleştirmeleri izleyin | Microsoft Docs
-description: Azure Stack tümleşik sistemleri güncelleştirme durumunu izlemek için ayrıcalıklı uç noktası kullanmayı öğrenin.
+title: Ayrıcalıklı uç noktayı kullanarak Azure Stack güncelleştirmeleri izleme | Microsoft Docs
+description: Azure Stack tümleşik sistemlerin güncelleştirme durumunu izlemek için ayrıcalıklı uç noktayı nasıl kullanacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,51 +10,51 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 3ee71fe48b73c6edd2b0fcb8b0dc83cdf5d77910
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: fd9564e25690c2119bfa3d576802858514ef0475
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985065"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68417727"
 ---
-# <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktayı kullanarak Azure stack'teki güncelleştirmelerini izleme
+# <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktayı kullanarak Azure Stack güncelleştirmeleri izleme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri*
+*Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Kullanabileceğiniz [ayrıcalıklı uç nokta](azure-stack-privileged-endpoint.md) Azure Stack ilerlemesini izlemek için güncelleştirme çalıştırın ve başarısız bir güncelleştirme son başarılı adımından çalışmaya devam etmek için Azure Stack portalını kullanılamaz duruma gelir.  Azure Stack portalını kullanarak Azure Stack'te güncelleştirmeleri yönetmek için önerilen yöntemdir.
+Azure Stack güncelleştirme çalıştırmasının ilerlemesini izlemek ve son başarılı adımla başarısız bir güncelleştirme çalıştırmasını devam etmek için [ayrıcalıklı uç noktayı](azure-stack-privileged-endpoint.md) kullanabilirsiniz ve Azure Stack portalı kullanılamaz hale gelir.  Azure Stack portalını kullanmak, Azure Stack güncelleştirmeleri yönetmek için önerilen yöntemdir.
 
-Güncelleştirme yönetimi için aşağıdaki yeni PowerShell cmdlet'leri, Azure Stack tümleşik sistemleri 1710 güncelleştirmesine dahil edilir.
+Güncelleştirme yönetimi için aşağıdaki yeni PowerShell cmdlet 'leri Azure Stack tümleşik sistemler için 1710 güncelleştirmesine dahildir.
 
 | Cmdlet  | Açıklama  |
 |---------|---------|
-| `Get-AzureStackUpdateStatus` | Şu anda çalışan, tamamlandı veya başarısız güncelleştirme durumunu döndürür. Güncelleştirme işlemi ve geçerli adımı ve karşılık gelen durumunu hem açıklayan bir XML belgesi üst düzey durumunu sağlar. |
-| `Resume-AzureStackUpdate` | Başarısız olduğu bir noktada başarısız bir güncelleştirme devam ettirir. Belirli senaryolarda güncelleştirmeye devam et önce risk azaltma adımlarını tamamlamanız gerekebilir.         |
+| `Get-AzureStackUpdateStatus` | Şu anda çalışan, tamamlanan veya başarısız güncelleştirme durumunu döndürür. Güncelleştirme işleminin üst düzey durumunu ve hem geçerli adımı hem de karşılık gelen durumu açıklayan bir XML belgesini sağlar. |
+| `Resume-AzureStackUpdate` | Başarısız olan bir güncelleştirmeyi başarısız olduğu noktada sürdürür. Bazı senaryolarda, güncelleştirmeyi sürdürmeye başlamadan önce risk azaltma adımlarını tamamlamanızı gerekebilir.         |
 | | |
 
-## <a name="verify-the-cmdlets-are-available"></a>Cmdlet'lerin kullanılabilir olduğunu doğrulayın
-Cmdlet'ler, Azure Stack için 1710 güncelleştirme paketindeki yeni olduğundan, izleme olanağı kullanılabilir olmadan önce belirli bir noktaya almak 1710 güncelleştirme işlemi gerekiyor. Genellikle, cmdlet'leri Yönetici portalını durum 1710 güncelleştirme sırasında olduğunu gösteriyorsa, kullanılabilir **depolama konakları yeniden** adım. Özellikle, cmdlet güncelleştirme sırasında ortaya çıkan **. adım: 2.6 - güncelleştirme PrivilegedEndpoint beyaz liste adım çalıştırılıyor**.
+## <a name="verify-the-cmdlets-are-available"></a>Cmdlet 'lerinin kullanılabilir olduğunu doğrulayın
+Cmdlet 'ler Azure Stack için 1710 güncelleştirme paketinde yeni olduklarından, 1710 güncelleştirme işleminin izleme yeteneği kullanılabilir olmadan önce belirli bir noktaya sahip olması gerekir. Genellikle, yönetici portalındaki durum 1710 güncelleştirmesinin **depolama Konakları yeniden Başlat** adımında olduğunu gösteriyorsa cmdlet 'ler kullanılabilir. Özellikle, cmdlet güncelleştirmesi şu adım sırasında **oluşur: Adım 2,6-güncelleştirme PrivilegedEndpoint beyaz listesini**çalıştırma.
 
-Ayrıca, cmdlet öğelerini programlı olarak ayrıcalıklı uç noktasından komut listesi sorgulayarak kullanılabilir olup olmadığını belirleyebilirsiniz. Bunu yapmak için donanım yaşam döngüsü konak ya da bir ayrıcalıklı erişim iş istasyonu aşağıdaki komutları çalıştırın. Ayrıca, bir güvenilir ana bilgisayar ayrıcalıklı uç noktası olduğundan emin olun. Daha fazla bilgi için bkz: 1. adımı [ayrıcalıklı uç noktasına erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
+Ayrıca, ayrıcalıklı uç noktadan komut listesini sorgulayarak cmdlet 'lerin programlı olarak kullanılabilir olup olmayacağını belirleyebilirsiniz. Bunu yapmak için, donanım yaşam döngüsü konaktan veya ayrıcalıklı erişim Iş Istasyonundan aşağıdaki komutları çalıştırın. Ayrıca, ayrıcalıklı uç noktanın güvenilen bir konak olduğundan emin olun. Daha fazla bilgi için bkz. [ayrıcalıklı uç noktaya erişim](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)1. adım. 
 
-1. Azure Stack ortamınıza ERCS sanal makinelerin herhangi bir PowerShell oturumu oluşturun (*önek*-ERCS01, *önek*-ERCS02, veya *önek*-ERCS03). Değiştirin *önek* ortamınıza özgü olan sanal makine ön eki dizesi ile.
+1. Azure Stack ortamınızdaki her bir ERCS sanal makinesi üzerinde bir PowerShell oturumu oluşturun (*ön ek*-ERCS01, *ön ek*-ERCS02 veya *önek*-ERCS03). *Öneki* , ortamınıza özgü sanal makine ön eki dizesiyle değiştirin.
 
    ```powershell
    $cred = Get-Credential
 
    $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
    ```
-   Kimlik bilgileri istendiğinde kullanın &lt; *Azure Stack etki*&gt;\cloudadmin hesabı veya CloudAdmins grubunun bir üyesi olan bir hesap. CloudAdmin hesabı için AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında sağlanan parolanın aynısını girin.
+   Kimlik bilgileri istendiğinde, *Azure Stack Domain*&gt;\cloudadmin &lt;hesabını ya da cloudadmins grubunun üyesi olan bir hesabı kullanın. CloudAdmin hesabı için, AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında girilen parolayı girin.
 
-2. Ayrıcalıklı uç noktasında kullanılabilir komutların tam listesini alın. 
+2. Ayrıcalıklı uç noktada kullanılabilen komutların tam listesini alın. 
 
    ```powershell
    $commands = Invoke-Command -Session $pepSession -ScriptBlock { Get-Command } 
    ```
-3. Ayrıcalıklı uç nokta güncelleştirildi belirleyin.
+3. Ayrıcalıklı uç noktanın güncelleştirilip güncelleştirilmediğini belirleme.
 
    ```powershell
    $updateManagementModuleName = "Microsoft.Azurestack.UpdateManagement"
@@ -65,7 +65,7 @@ Ayrıca, cmdlet öğelerini programlı olarak ayrıcalıklı uç noktasından ko
     } 
    ```
 
-4. Microsoft.AzureStack.UpdateManagement modülü özgü komutların listesi.
+4. Microsoft. AzureStack. UpdateManagement modülüne özgü komutları listeleyin.
 
    ```powershell
    $commands | ? Source -eq $updateManagementModuleName 
@@ -80,25 +80,25 @@ Ayrıca, cmdlet öğelerini programlı olarak ayrıcalıklı uç noktasından ko
    Function        Resume-AzureStackUpdate                            0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    ``` 
 
-## <a name="use-the-update-management-cmdlets"></a>Güncelleştirme yönetimi cmdlet'leri kullanın
+## <a name="use-the-update-management-cmdlets"></a>Güncelleştirme yönetimi cmdlet 'lerini kullanma
 
 > [!NOTE]
-> Donanım yaşam döngüsü ana makineden veya bir ayrıcalıklı erişim iş istasyonu aşağıdaki komutları çalıştırın. Ayrıca, bir güvenilir ana bilgisayar ayrıcalıklı uç noktası olduğundan emin olun. Daha fazla bilgi için bkz: 1. adımı [ayrıcalıklı uç noktasına erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint).
+> Donanım yaşam döngüsü konaktan veya ayrıcalıklı erişim Iş Istasyonundan aşağıdaki komutları çalıştırın. Ayrıca, ayrıcalıklı uç noktanın güvenilen bir konak olduğundan emin olun. Daha fazla bilgi için bkz. [ayrıcalıklı uç noktaya erişim](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)1. adım.
 
-### <a name="connect-to-the-privileged-endpoint-and-assign-session-variable"></a>Ayrıcalıklı uç noktasına bağlanmak ve oturum değişkeni atayın
+### <a name="connect-to-the-privileged-endpoint-and-assign-session-variable"></a>Ayrıcalıklı uç noktaya bağlanma ve oturum değişkenini atama
 
-Azure Stack ortamınıza ERCS sanal makinelerin herhangi bir PowerShell oturumu oluşturmak için aşağıdaki komutları çalıştırın (*önek*-ERCS01, *önek*-ERCS02, veya *önek*-ERCS03) ve bir oturum değişkeni atayın.
+Azure Stack ortamınızdaki ERCS sanal makinelerinin herhangi birinde (*ön ek*-ERCS01, *ön ek*-ERCS02 veya *önek*-ERCS03) bir PowerShell oturumu oluşturmak ve bir oturum değişkeni atamak için aşağıdaki komutları çalıştırın.
 
 ```powershell
 $cred = Get-Credential
 
 $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
 ```
- Kimlik bilgileri istendiğinde kullanın &lt; *Azure Stack etki*&gt;\cloudadmin hesabı veya CloudAdmins grubunun bir üyesi olan bir hesap. CloudAdmin hesabı için AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında sağlanan parolanın aynısını girin.
+ Kimlik bilgileri istendiğinde, *Azure Stack Domain*&gt;\cloudadmin &lt;hesabını ya da cloudadmins grubunun üyesi olan bir hesabı kullanın. CloudAdmin hesabı için, AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında girilen parolayı girin.
 
-### <a name="get-high-level-status-of-the-current-update-run"></a>Üst düzey geçerli güncelleştirme çalıştırma durumu 
+### <a name="get-high-level-status-of-the-current-update-run"></a>Geçerli güncelleştirme çalıştırmasının üst düzey durumunu al 
 
-Üst düzey geçerli güncelleştirme çalıştırma durumu almak için aşağıdaki komutları çalıştırın: 
+Geçerli güncelleştirme çalıştırmasının üst düzey durumunu almak için aşağıdaki komutları çalıştırın: 
 
 ```powershell
 $statusString = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateStatus -StatusOnly }
@@ -113,11 +113,11 @@ Olası değerler şunlardır:
 - Başarısız 
 - İptal edildi
 
-Art arda en güncel durumunu görmek için şu komutları çalıştırabilirsiniz. Yeniden denetlemek için bir bağlantı yeniden oluşturmak zorunda değilsiniz.
+En güncel durumu görmek için, bu komutları tekrar tekrar çalıştırabilirsiniz. Yeniden denetlemek için bir bağlantıyı yeniden oluşturmanız gerekmez.
 
-### <a name="get-the-full-update-run-status-with-details"></a>Tam güncelleştirme çalıştırma durumu ayrıntıları alın 
+### <a name="get-the-full-update-run-status-with-details"></a>Ayrıntıları içeren tam güncelleştirme çalıştırması durumunu alın 
 
-XML dizesi olarak özeti Çalıştır tam güncelleştirme alabilirsiniz. Dize inceleme, bir dosyaya yazma veya bir XML belgesine dönüştürmek ve ayrıştırmak için PowerShell kullanın. Aşağıdaki komut, şu anda çalışan adımlar, hiyerarşik bir listesini almak için XML ayrıştırır.
+Tam güncelleştirme çalıştırması özetini bir XML dizesi olarak alabilirsiniz. İnceleme için bir dosyaya dize yazabilir veya bir XML belgesine dönüştürebilir ve PowerShell kullanarak bunu ayrıştırmaya ekleyebilirsiniz. Aşağıdaki komut, şu anda çalışan adımların hiyerarşik bir listesini almak için XML 'i ayrıştırır.
 
 ```powershell
 [xml]$updateStatus = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateStatus }
@@ -125,7 +125,7 @@ XML dizesi olarak özeti Çalıştır tam güncelleştirme alabilirsiniz. Dize i
 $updateStatus.SelectNodes("//Step[@Status='InProgress']")
 ```
 
-Aşağıdaki örnekte, güncelleştirme ve depolama ana bilgisayarları yeniden başlatmak için bir alt planı (bulut güncelleştirmesi) en üst düzey adım vardır. Bu depolama konakları yeniden planı Blob Depolama hizmetini konaklardan birine güncelleştiriyor gösterir.
+Aşağıdaki örnekte, üst düzey adım (bulut güncelleştirmesi), depolama konaklarınızı güncelleştirmek ve yeniden başlatmak için bir alt plana sahiptir. Yeniden başlatma depolama Konakları planının, konaklardan birindeki blob Storage hizmetini güncelleştirdiğinden emin olur.
 
 ```powershell
 [xml]$updateStatus = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateStatus }
@@ -158,9 +158,9 @@ $updateStatus.SelectNodes("//Step[@Status='InProgress']")
     Task          : Task
 ```
 
-### <a name="resume-a-failed-update-operation"></a>Başarısız güncelleştirme işlemi sürdürme
+### <a name="resume-a-failed-update-operation"></a>Başarısız bir güncelleştirme işlemini sürdürür
 
-Güncelleştirme başarısız olursa, güncelleştirme çalışması kaldığı yerden devam edebilir.
+Güncelleştirme başarısız olursa, güncelleştirme çalıştırmasını kaldığınız yerden sürdürebilirsiniz.
 
 ```powershell
 Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate } 
@@ -168,7 +168,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-Ayrıcalıklı uç noktası, Azure Stack ortamında tüm ERCS sanal makinelerde kullanılabilir. Yüksek oranda kullanılabilir bir uç noktasına bağlantı bırakılmaz nedeniyle zaman kesintiler, uyarı veya hata iletilerini karşılaşabilirsiniz. Bu iletiler oturum kesildi veya ECE hizmetiyle iletişim kurulurken bir hata olduğunu gösteriyor olabilir. Bu beklenen bir davranıştır. Birkaç dakika sonra işlemi yeniden deneyin veya diğer ERCS sanal makinelerden birinde yeni bir ayrıcalıklı uç nokta oturumu oluşturur. 
+Ayrıcalıklı uç nokta, Azure Stack ortamındaki tüm ERCS sanal makinelerde kullanılabilir. Bağlantı, yüksek oranda kullanılabilir bir uç noktada yapılmadığından, zaman zaman kesintiler, uyarı veya hata iletileriyle karşılaşabilirsiniz. Bu iletiler, oturumun bağlantısının kesileceğini veya ECE hizmetiyle iletişim kurulurken bir hata olduğunu gösteriyor olabilir. Bu davranış beklenmektedir. İşlemi birkaç dakika içinde yeniden deneyebilir veya diğer ERCS sanal makinelerinden birinde yeni bir ayrıcalıklı uç nokta oturumu oluşturabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

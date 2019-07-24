@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te PowerShell kullanarak bir Linux VM oluşturma | Microsoft Docs
-description: Azure Stack'te PowerShell kullanarak bir Linux VM oluşturun.
+title: Azure Stack 'de PowerShell kullanarak bir Linux VM oluşturma | Microsoft Docs
+description: Azure Stack 'de PowerShell kullanarak bir Linux VM oluşturun.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,43 +11,43 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 5302ef65ab7132c29361f1a2a489282ce9f216d8
-ms.sourcegitcommit: 2ee75ded704e8cfb900d9ac302d269c54a5dd9a3
+ms.openlocfilehash: 7cb5d7b90359b73292d9e8209d4237e9d8914302
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394384"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418516"
 ---
-# <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack'te PowerShell kullanarak bir Linux sunucusu VM'si oluşturma
+# <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack 'de PowerShell kullanarak bir Linux Server VM oluşturma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack PowerShell kullanarak Ubuntu Server 16.04 LTS sanal makine'de (VM) oluşturabilirsiniz. Bu makalede, oluşturun ve bir sanal makine kullanın. Bu makalede ayrıca gösterilmektedir için:
+Azure Stack PowerShell kullanarak bir Ubuntu Server 16,04 LTS sanal makinesi (VM) oluşturabilirsiniz. Bu makalede, bir sanal makine oluşturup kullanacaksınız. Bu makalede ayrıca nasıl yapılacağı gösterilmektedir:
 
-* Bir uzak istemci ile VM'ye bağlanın.
-* Bir NGINX web sunucusu yüklemek ve varsayılan giriş sayfasını görüntüleyin.
+* Uzak bir istemciyle VM 'ye bağlanın.
+* Bir NGıNX Web sunucusu yükleyip varsayılan giriş sayfasını görüntüleyin.
 * Kullanılmayan kaynakları temizleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Stack Marketini içindeki bir Linux görüntüsü. Azure Stack marketini varsayılan olarak bir Linux görüntüsü yok. İhtiyacınız Ubuntu Server 16.04 LTS görüntüsüne sağlayan Azure Stack operatörü vardır. İşleç'ndaki yönergeleri kullanabilirsiniz [Azure Stack için Azure Market indirme öğeleri](../operator/azure-stack-download-azure-marketplace-item.md).
+* Azure Stack Market 'teki bir Linux görüntüsü. Azure Stack marketi 'nin varsayılan olarak bir Linux görüntüsü yoktur. Azure Stack işlecine ihtiyacınız olan Ubuntu Server 16,04 LTS görüntüsünü sağlayın. İşleci, [Azure 'Dan Market öğelerini indirme bölümündeki yönergeleri Azure Stack için](../operator/azure-stack-download-azure-marketplace-item.md)kullanabilir.
 
-* Azure Stack alt kaynakları oluşturup yönetmek için Azure CLI'yı belirli bir sürümünü gerektirir. 
-  * Azure Stack için yapılandırılmış PowerShell yoksa bkz [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md). 
-  * Azure Stack PowerShell ayarlandıktan sonra Azure Stack ortamınıza bağlanırsınız. Yönergeler için [bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma](azure-stack-powershell-configure-user.md).
+* Azure Stack, kaynaklarını oluşturmak ve yönetmek için Azure CLı 'nin belirli bir sürümünü gerektirir. 
+  * Azure Stack için PowerShell 'i yapılandırmadıysanız, bkz. [Azure Stack Için PowerShell 'ı yüklemeyi](../operator/azure-stack-powershell-install.md). 
+  * Azure Stack PowerShell kurulduktan sonra, Azure Stack ortamınıza bağlanırsınız. Yönergeler için bkz. [PowerShell ile Kullanıcı olarak Azure Stack bağlama](azure-stack-powershell-configure-user.md).
 
-* Adlı bir genel güvenli Kabuk (SSH) anahtarının *id_rsa.pub* kaydedilmiş *.ssh* Windows kullanıcı profilinizin dizin. SSH anahtarları oluşturma hakkında ayrıntılı bilgi için bkz: [bir SSH ortak anahtarı kullanmak](azure-stack-dev-start-howto-ssh-public-key.md).
+* Windows Kullanıcı profilinizin *. SSH* dizinine kaydedilen *id_rsa. pub* adlı BIR genel Secure Shell (SSH) anahtarı. SSH anahtarları oluşturma hakkında ayrıntılı bilgi için bkz. [SSH ortak anahtarı kullanma](azure-stack-dev-start-howto-ssh-public-key.md).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bir kaynak grubu, dağıtma ve Azure Stack kaynaklarını yönetme mantıksal bir kapsayıcıdır. Bir kaynak grubu, Azure Stack geliştirme Seti'ni (ASDK) ya da aşağıdaki kod bloğunu çalıştırmak, Azure Stack tümleşik sistemi oluşturmak için: 
+Kaynak grubu Azure Stack kaynaklarını dağıtabileceğiniz ve yönetebileceğiniz bir mantıksal kapsayıcıdır. Azure Stack Geliştirme Seti (ASDK) veya Azure Stack tümleşik sistemden bir kaynak grubu oluşturmak için aşağıdaki kod bloğunu çalıştırın: 
 
 > [!NOTE]
-> Biz aşağıdaki kod örnekleri, tüm değişkenlerin değerlerini atadınız. Ancak, kendi değerlerinizi atayabilirsiniz.
+> Aşağıdaki kod örneklerinde tüm değişkenler için değerler atandık. Ancak, kendi değerlerinizi atayabilirsiniz.
 
 ```powershell  
 # Create variables to store the location and resource group names.
@@ -61,7 +61,7 @@ New-AzureRmResourceGroup `
 
 ## <a name="create-storage-resources"></a>Depolama kaynakları oluşturma
 
-Bir depolama hesabı oluşturun ve ardından Ubuntu Server 16.04 LTS görüntüsüne için bir depolama kapsayıcısı oluşturun.
+Bir depolama hesabı oluşturun ve ardından Ubuntu Server 16,04 LTS görüntüsü için bir depolama kapsayıcısı oluşturun.
 
 ```powershell  
 # Create variables to store the storage account name and the storage account SKU information
@@ -83,7 +83,7 @@ Set-AzureRmCurrentStorageAccount `
 
 ## <a name="create-networking-resources"></a>Ağ kaynakları oluşturma
 
-Bir sanal ağ, bir alt ağ ve genel bir IP adresi oluşturun. Bu kaynaklar VM ağ bağlantısı sağlamak için kullanılır.
+Bir sanal ağ, alt ağ ve genel IP adresi oluşturun. Bu kaynaklar VM 'ye ağ bağlantısı sağlamak için kullanılır.
 
 ```powershell
 # Create a subnet configuration
@@ -111,7 +111,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Ağ güvenliği grubu ve ağ güvenliği grup kuralı oluşturma
 
-Ağ güvenlik grubu, gelen ve giden kuralları kullanarak sanal Makinenin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin verecek şekilde 3389 numaralı bağlantı noktası için bir gelen kuralı ve gelen web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturun.
+Ağ güvenlik grubu, gelen ve giden kurallarını kullanarak VM 'nin güvenliğini sağlar. Gelen Uzak Masaüstü bağlantılarına izin vermek için bağlantı noktası 3389 için bir gelen kuralı ve gelen Web trafiğine izin vermek için 80 numaralı bağlantı noktası için bir gelen kuralı oluşturun.
 
 ```powershell
 # Create variables to store the network security group and rules names.
@@ -135,9 +135,9 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $ResourceGroupName -Lo
 -Name $nsgName -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-### <a name="create-a-network-card-for-the-vm"></a>VM için bir ağ kartı oluşturun
+### <a name="create-a-network-card-for-the-vm"></a>VM için bir ağ kartı oluşturma
 
-Ağ kartı VM alt ağ, ağ güvenlik grubu ve genel IP adresine bağlanır.
+Ağ kartı VM 'yi bir alt ağa, ağ güvenlik grubuna ve genel IP adresine bağlar.
 
 ```powershell
 # Create a virtual network card and associate it with public IP address and NSG
@@ -152,7 +152,7 @@ $nic = New-AzureRmNetworkInterface `
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Bir VM yapılandırması oluşturun. Bu yapılandırma, (örneğin, kullanıcı kimlik bilgilerini, boyutu ve sanal makine görüntüsünü) VM dağıtırken kullanılacak ayarları içerir.
+VM yapılandırması oluşturun. Bu yapılandırma, VM 'yi dağıtırken kullanılacak ayarları (örneğin, Kullanıcı kimlik bilgileri, boyut ve VM görüntüsü) içerir.
 
 ```powershell
 # Define a credential object
@@ -206,7 +206,7 @@ New-AzureRmVM `
 ## <a name="vm-quick-create-full-script"></a>VM hızlı oluşturma: Tam betik
 
 > [!NOTE]
-> Bu adım, temelde birlikte, ancak bir parola yerine ile bir SSH anahtarı kimlik doğrulaması için birleştirilmiş Yukarıdaki kod.
+> Bu adım temel olarak, bir önceki kod birlikte birleştirilir, ancak kimlik doğrulaması için SSH anahtarı yerine bir parola kullanılır.
 
 ```powershell
 ## Create a resource group
@@ -374,23 +374,23 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-Sanal Makineyi dağıttıktan sonra bir SSH bağlantısı için yapılandırma. Sanal makinenin genel IP adresini almak için kullanın [Get-Azurermpublicıpaddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) komutu:
+VM 'yi dağıttıktan sonra, bunun için bir SSH bağlantısı yapılandırın. VM 'nin genel IP adresini almak için [Get-Azurermpublicıpaddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) komutunu kullanın:
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-SSH yüklü olan bir istemci sisteminden sanal Makineye bağlanmak için aşağıdaki komutu kullanın. Windows üzerinde çalışıyorsanız, kullanabileceğiniz [PuTTY](https://www.putty.org/) bağlantı oluşturmak için.
+SSH yüklü bir istemci sisteminden, sanal makineye bağlanmak için aşağıdaki komutu kullanın. Windows üzerinde çalışıyorsanız, bağlantıyı oluşturmak için [Putty](https://www.putty.org/) kullanabilirsiniz.
 
 ```
 ssh <Public IP Address>
 ```
 
-İstendiğinde, olarak oturum açın **azureuser**. SSH anahtarları oluştururken bir parola kullandıysanız parolayı girmeniz gerekir.
+İstendiğinde, **azureuser**olarak oturum açın. SSH anahtarlarını oluştururken bir parola kullandıysanız, parolayı sağlamanız gerekir.
 
-## <a name="install-the-nginx-web-server"></a>NGINX web sunucusunu yükleme
+## <a name="install-the-nginx-web-server"></a>NGıNX Web sunucusunu yükler
 
-Paket kaynaklarını güncelleştirmek ve en son NGINX paketini yüklemek için aşağıdaki betiği çalıştırın:
+Paket kaynaklarını güncelleştirmek ve en son NGıNX paketini yüklemek için aşağıdaki betiği çalıştırın:
 
 ```bash
 #!/bin/bash
@@ -404,13 +404,13 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX karşılama sayfasını görüntüleme
 
-NGINX web sunucusunun yüklenmesiyle ve 80 numaralı bağlantı noktası sanal makinenizde ile sanal makinenin genel IP adresini kullanarak web sunucusuna erişebilirsiniz. Bir web tarayıcısı açın ve gidin ```http://<public IP address>```.
+NGıNX Web sunucusu yüklü ve VM 'niz üzerinde bağlantı noktası 80 açık olduğunda, VM 'nin genel IP adresini kullanarak Web sunucusuna erişebilirsiniz. Bir Web tarayıcısı açın ve adresine gidin ```http://<public IP address>```.
 
-![NGINX web sunucusu Karşılama sayfası](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
+![NGıNX Web sunucusu karşılama sayfası](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık kullanarak ihtiyacınız olmayan kaynakları temizleyebilirsiniz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) komutu. Kaynak grubunu ve tüm kaynaklarını silmek için aşağıdaki komutu çalıştırın:
+[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) komutunu kullanarak, gerek duymayacak kaynakları temizleyebilirsiniz. Kaynak grubunu ve tüm kaynaklarını silmek için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -418,4 +418,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta basit bir Linux sunucusu VM dağıtılır. Azure Stack sanal makineleri hakkında daha fazla bilgi için Git [Azure Stack'te Vm'lerde dikkate alınacak noktalar](azure-stack-vm-considerations.md).
+Bu hızlı başlangıçta, temel bir Linux sunucu VM 'si dağıttınız. Azure Stack VM 'Ler hakkında daha fazla bilgi edinmek için [Azure Stack sanal makinelere yönelik hususlar](azure-stack-vm-considerations.md)bölümüne gidin.

@@ -1,6 +1,6 @@
 ---
 title: Azure Stack depolama hesaplarını yönetme | Microsoft Docs
-description: Bulma, yönetme, kurtarma ve Azure Stack depolama hesaplarının geri kazanmak hakkında bilgi edinin
+description: Azure Stack depolama hesaplarını bulma, yönetme, kurtarma ve geri kazanma hakkında bilgi edinin
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,140 +11,140 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 5d5fe68d9641b6ba7099268f631c1bfe89fb0674
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 4f9e9c4f79a06e0f1f74db8152047beb3af07b75
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985164"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68417536"
 ---
 # <a name="manage-azure-stack-storage-accounts"></a>Azure Stack depolama hesaplarını yönetme
 
-Azure Stack depolama hesaplarını yönetmeyi öğrenin. Bulma, kurtarma ve iş ihtiyaçlarına göre depolama kapasiteyi geri kazanmak.
+Azure Stack depolama hesaplarını yönetmeyi öğrenin. İş ihtiyaçlarına göre depolama kapasitesini bulun, kurtarın ve geri kazanın.
 
-## <a name="find-a-storage-account"></a>Bir depolama hesabı bulunamadı
+## <a name="find-a-storage-account"></a>Depolama hesabı bulma
 
-Bölgede depolama hesaplarının listesi Azure yığını tarafından görüntülenebilir:
+Bölgesindeki depolama hesaplarının listesi, Azure Stack tarafından görüntülenebilir:
 
-1. Oturum [Yönetici portalı](https://adminportal.local.azurestack.external).
+1. [Yönetim portalında](https://adminportal.local.azurestack.external)oturum açın.
 
-2. Seçin **tüm hizmetleri** > **depolama** > **depolama hesapları**.
+2. **Tüm hizmetler** > depolamadepolama > **hesapları**' nı seçin.
 
    ![Azure Stack depolama hesapları](media/azure-stack-manage-storage-accounts/image4.png)
 
-Varsayılan olarak, ilk 10 hesapları görüntülenir. Daha fazla bilgi almak seçebileceğiniz tıklayarak **daha fazla Yükle** listenin altındaki bağlantıyı.
+Varsayılan olarak, ilk 10 hesap görüntülenir. Listenin en altındaki **daha fazla yükle** bağlantısına tıklayarak daha fazlasını getirmeyi tercih edebilirsiniz.
 
 OR
 
-Belirli bir depolama hesabında - ilgileniyorsanız yapabilecekleriniz **filtrelemek ve ilgili hesapları fetch** yalnızca.
+Belirli bir depolama hesabıyla ilgileniyorsanız, yalnızca **ilgili hesaplara filtre uygulayabilir ve bunları getirebilirsiniz** .
 
 
-**Hesaplar için filtre uygulamak için:**
+**Hesapları filtrelemek için:**
 
-1. Seçin **filtre** bölmenin üstünde.
-2. Filtre bölmesini üzerinde bu belirtmenizi sağlar **hesap adı**, **abonelik kimliği**, veya **durumu** görüntülenecek depolama hesaplarının listesi ince ayar yapmak için. Bunları uygun şekilde kullanın.
-3. Siz yazarken liste otomatik olarak filtre uygulanır.  .
+1. Bölmenin en üstünde bulunan **filtre** ' yi seçin.
+2. Filtre bölmesinde, görüntülenecek depolama hesapları listesinde ince ayar yapmak için **Hesap adı**, **abonelik kimliği**veya **durum** belirtmenize olanak tanır. Bunları uygun şekilde kullanın.
+3. Siz yazarken, liste otomatik olarak filtreyi uygular.  .
    
-    ![Azure Stack depolama hesaplarının Filtrele](media/azure-stack-manage-storage-accounts/image5.png)
+    ![Azure Stack depolama hesaplarını filtrele](media/azure-stack-manage-storage-accounts/image5.png)
 
-4. Filtreyi sıfırlamak için: seçin **filtre**, seçimleri Temizle ve güncelleştirin.
+4. Filtreyi sıfırlamak için: **filtre**' yi seçin, seçimleri kaldırın ve güncelleştirin.
 
-Arama metin kutusuna (üst kısmındaki depolama hesaplarının listesi bölmesinde) hesapları listesinde seçili metni vurgulayın olanak tanır. Tam adı veya kimliği kolayca kullanılabilir olmadığı durumlarda kullanabilirsiniz.
+Arama metin kutusu (depolama hesapları liste bölmesinin üst kısmında), hesaplar listesinde seçilen metni vurgulamanızı sağlar. Tam adı veya KIMLIĞI kolayca kullanılabilir olmadığında bunu kullanabilirsiniz.
 
-İlgilendiğiniz hesap bulmak için serbest metin kullanabilirsiniz.
+İlgilendiğiniz hesabı bulmaya yardımcı olması için burada ücretsiz metin kullanabilirsiniz.
 
-![Azure Stack depolama hesaplarını bulma](media/azure-stack-manage-storage-accounts/image6.png)
+![Azure Stack depolama hesabı bulun](media/azure-stack-manage-storage-accounts/image6.png)
 
-## <a name="look-at-account-details"></a>Hesap ayrıntılarını inceleyin
-Görüntüleme ilgilendiğiniz hesaplarını bulduktan sonra belirli ayrıntılarını görüntülemek için belirli bir hesabı seçebilirsiniz. Yeni bir bölme hesabı ayrıntıları gibi açar: hesap, oluşturma zamanı, konum, vb. türü.
+## <a name="look-at-account-details"></a>Hesap ayrıntılarına bakın
+Görüntülemekte olduğunuz hesapları bulduktan sonra, belirli ayrıntıları görüntülemek için belirli bir hesap seçebilirsiniz. Hesap ayrıntılarıyla birlikte yeni bir bölme açılır: hesabın türü, oluşturma saati, konum, vb.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
-## <a name="recover-a-deleted-account"></a>Silinen hesabı kurtarma
-Silinen hesabı kurtarma için gerek duyduğunuz bir durumda olabilir.
+## <a name="recover-a-deleted-account"></a>Silinen bir hesabı kurtarma
+Silinen bir hesabı kurtarmanız gereken bir durumda olabilirsiniz.
 
-Azure Stack'te Bunu yapmak için basit bir yolu yoktur:
+Azure Stack, bunu yapmanın basit bir yolu vardır:
 
-1. Depolama hesapları listesine göz atın. Daha fazla bilgi için bu makaledeki bir depolama hesabı Bul bakın.
-2. Bu belirli hesabını listede bulun. Filtre gerekebilir.
-3. Denetleme *durumu* hesabının. Söyleyin **silinmiş**.
-4. Hesap ayrıntıları bölmesi açılır hesabı seçin.
-5. Bu bölmede üzerinde bulun **kurtarmak** düğmesini tıklatın ve seçin.
+1. Depolama hesapları listesine gidin. Daha fazla bilgi için bu makaledeki depolama hesabı bulma bölümüne bakın.
+2. Listede bu belirli hesabı bulun. Filtrelemeniz gerekebilir.
+3. Hesabın *durumunu* kontrol edin. **Silinmelidir**.
+4. Hesap ayrıntıları bölmesini açan hesabı seçin.
+5. Bu bölmenin en üstünde, **kurtar** düğmesini bulun ve seçin.
 6. Onaylamak için **Evet**’i seçin.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
-7. Yer artık kurtarma *işlem... bekleme* için başarılı olduğunu göstergesidir.
-   İlerleme göstergeleri görüntülemek için portalın üst kısmındaki "zil" simgesini de seçebilirsiniz.
+7. Kurtarma işlemi şu anda *işlemde...* başarılı olduğunu belirten bir gösterge bekleyin.
+   Ayrıca, devam eden göstergeleri görüntülemek için portalın üst kısmındaki "zil" simgesini de seçebilirsiniz.
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
-   Kurtarılan hesabı başarıyla eşitlendi sonra yeniden kullanılabilir.
+   Kurtarılan hesap başarıyla eşitlendikten sonra yeniden kullanılabilir.
 
-### <a name="some-gotchas"></a>Bazı tuzakları
-* Hesabınız silindi durumu olarak gösterir **bekletme dışında**.
+### <a name="some-gotchas"></a>Bazı gotchas
+* Silinen hesabınız **, bekletme dışında**durumunu gösterir.
   
-  Silinen hesabı saklama süresini aştı ve olmayabilir kurtarılabilir dışında bekletme anlamına gelir.
-* Silinen hesabınızı hesaplar listesinde göstermez.
+  Saklama süresi, silinen hesabın bekletme süresini aşması ve kurtarılamadığını gösterir.
+* Silinen hesabınız hesaplar listesinde gösterilmez.
   
-  Silinen hesabı zaten atık bırakıldığında hesabınız hesap listesinde gösterilmeyebilir. Bu durumda, kurtarılamaz. Bkz: [kapasiteyi geri kazanmak](#reclaim) bu makaledeki.
+  Silinen hesap zaten atık olarak toplanmışsa hesabınız hesap listesinde görüntülenmeyebilir. Bu durumda, kurtarılamaz. Bu makaledeki [kapasiteyi geri](#reclaim) alma bölümüne bakın.
 
-## <a name="set-the-retention-period"></a>Bekletme süresini ayarlama
-Saklama dönemi ayarı aşamasında olası tüm silinen hesabı kurtarılabilir gün içinde (0 ve 9999 gün arasında) bir zaman aralığı belirtmek bir bulut işlecini verir. Varsayılan saklama süresi 0 gün olarak ayarlanır. Tüm silinen hesabı hemen bekletme dışında olan ve düzenli çöp toplama için işaretlenmiş, "0" anlamına gelir değeri ayarlanamadı.
+## <a name="set-the-retention-period"></a>Saklama süresini ayarlama
+Bekletme dönemi ayarı, bir bulut işlecinin, silinen hesabın büyük olasılıkla kurtarılabileceği gün (0 ve 9999 gün arasında) cinsinden bir süre belirtmesini sağlar. Varsayılan saklama süresi 0 gün olarak ayarlanır. Değerin "0" olarak ayarlanması, silinen her hesabın hemen bekletme dışı ve düzenli çöp toplama için işaretlenme anlamına gelir.
 
-**Bekletme süresini değiştirmek için:**
+**Saklama süresini değiştirmek için:**
 
-1. Oturum [Yönetici portalı](https://adminportal.local.azurestack.external).
-2. Seçin **tüm hizmetleri** > **bölge Yönetimi** altında **Yönetim**.
-3. Seçin **kaynak sağlayıcıları** > **depolama** > **ayarları**. Giriş yoludur > *bölge* -kaynak sağlayıcıları > depolama.
-4. Seçin **yapılandırma** Bekletme dönemi değerini düzenleyin.
+1. [Yönetim portalında](https://adminportal.local.azurestack.external)oturum açın.
+2. **Yönetim**altındaki **tüm hizmetler** > **Bölge yönetimi** ' ni seçin.
+3. **Kaynak sağlayıcıları** > depolamaAyarları > ' nı seçin. Yolunuz, ana > *bölgesi* -kaynak sağlayıcıları > depolama alanı.
+4. **Yapılandırma** ' yı seçin ve Bekletme dönemi değerini düzenleyin.
 
-   Gün sayısını ayarlayın ve kaydedin.
+   Gün sayısını ayarlayın ve sonra kaydedin.
    
-   Bu değer, hemen etkili olur ve bölgeniz için ayarlanır.
+   Bu değer hemen etkindir ve tüm bölgeniz için ayarlanır.
 
    ![](media/azure-stack-manage-storage-accounts/image10.png)
 
-## <a name="reclaim"></a>Kapasiteyi geri kazanmak
-Bir bekletme dönemi yan etkileri silinen hesabı dışında bir bekletme dönemi gelene kadar kapasite kullanma devam ettiğinden biridir. Bir bulut işleci olarak saklama süresi henüz süresi olsa bile silinen hesabı alan kazanmak için bir yol gerekebilir.
+## <a name="reclaim"></a>Kapasiteyi geri kazanma
+Saklama dönemi elde eden yan etkilerden biri, silinen bir hesabın, bekletme döneminin dışına çıkana kadar kapasiteyi tüketmeye devam etmektedir. Bulut operatörü olarak, saklama süresi henüz sona ermediği halde, silinen hesap alanını geri kazanmak için bir yol gerekebilir.
 
-Portal veya PowerShell kullanarak kapasite kazanabilirsiniz.
+Portalı veya PowerShell 'i kullanarak kapasiteyi geri kazanabilirsiniz.
 
 **Portalı kullanarak kapasiteyi geri kazanmak için:**
-1. Depolama hesapları bölmesine gidin. Bulma bir depolama hesabına bakın.
-2. Seçin **alanı geri kazan** bölmenin üstünde.
-3. İleti okumak ve ardından **Tamam**.
+1. Depolama hesapları bölmesine gidin. Bkz. depolama hesabı bulma.
+2. Bölmenin en üstünde **yer alan geri kazanmak** ' ı seçin.
+3. İletiyi okuyun ve **Tamam**' ı seçin.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
-4. Başarı bildirimini bakın portalında zil simgesine bekleyin.
+4. Başarı bildirimini bekle portalda zil simgesine bakın.
 
     ![](media/azure-stack-manage-storage-accounts/image12.png)
-5. Depolama hesapları sayfayı yenileyin. Bunlar temizlenmiş olduğundan silinen hesaplar artık listesinde gösterilir.
+5. Depolama hesapları sayfasını yenileyin. Silinen hesaplar temizlendikleri için listede artık gösterilmemektedir.
 
-Ayrıca Bekletme dönemi açıkça geçersiz kılmak için PowerShell kullanın ve hemen kapasiteyi geri kazanmak.
+Ayrıca, bekletme süresini açıkça geçersiz kılmak ve kapasiteyi hemen geri kazanmak için PowerShell 'i de kullanabilirsiniz.
 
-**Kapasiteyi geri kazanmak için PowerShell'i kullanma:**   
+**PowerShell kullanarak kapasiteyi geri kazanmak için:**   
 
-1. Azure PowerShell sürümünün yüklü ve yapılandırılmış olduğunu doğrulayın. Aksi durumda, aşağıdaki yönergeleri kullanın: 
-   * En son Azure PowerShell sürümünü yükleyin ve Azure aboneliğinizle ilişkilendirmek için bkz: [Azure PowerShell'i yükleme ve yapılandırma işlemini](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   Azure Resource Manager cmdlet'leri hakkında daha fazla bilgi için bkz: [Azure PowerShell'i Azure Resource Manager ile kullanma](https://go.microsoft.com/fwlink/?LinkId=394767)
-2. Aşağıdaki cmdlet'leri çalıştırın:
+1. Azure PowerShell yüklendiğini ve yapılandırıldığını doğrulayın. Aksi takdirde, aşağıdaki yönergeleri kullanın: 
+   * En son Azure PowerShell sürümünü yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   Azure Resource Manager cmdlet 'leri hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile Azure PowerShell kullanma](https://go.microsoft.com/fwlink/?LinkId=394767)
+2. Aşağıdaki cmdlet 'leri çalıştırın:
 
 > [!NOTE]  
-> Bu cmdlet'leri çalıştırmak, hesabını ve içeriğini kalıcı olarak sil. Kurtarılabilir değil. Bu, dikkatli kullanın.
+> Bu cmdlet 'leri çalıştırırsanız, hesabı ve içeriğini kalıcı olarak silersiniz. Kurtarılamaz. Bunu dikkatli kullanın.
 
 ```powershell  
     $farm_name = (Get-AzsStorageFarm)[0].name
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ```
 
-Daha fazla bilgi için [Azure Stack PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
+Daha fazla bilgi için bkz. [PowerShell belgeleri Azure Stack](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- - İzinleri yönetme hakkında bilgi için bkz. [Manage Role-Based erişim denetimi](azure-stack-manage-permissions.md).
- - Azure Stack için depolama kapasitesi yönetme hakkında daha fazla bilgi için bkz: [Azure Stack için depolama kapasitesi yönetme](azure-stack-manage-storage-shares.md).
+ - İzinleri yönetme hakkında bilgi için bkz. [rol tabanlı Access Control yönetme](azure-stack-manage-permissions.md).
+ - Azure Stack için depolama kapasitesini yönetme hakkında bilgi için bkz. [Azure Stack depolama kapasitesini yönetme](azure-stack-manage-storage-shares.md).

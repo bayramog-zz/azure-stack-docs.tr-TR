@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te çok kiracılılık
-description: Azure Stack'te birden çok Azure Active Directory dizin desteği hakkında bilgi edinin
+title: Azure Stack 'de çok kiracılı
+description: Azure Stack birden çok Azure Active Directory dizinini desteklemeyi öğrenin
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -15,45 +15,45 @@ ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: bryanr
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 8547c1aea70d7b72538b5a681e7c8dd4b4d10a02
-ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
+ms.openlocfilehash: d8fbcba9a635d47927b1d6eb08336e0959704cfd
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66828295"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68417188"
 ---
-# <a name="multi-tenancy-in-azure-stack"></a>Azure Stack'te çok kiracılılık
+# <a name="multi-tenancy-in-azure-stack"></a>Azure Stack 'de çok kiracılı
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack, Azure Stack'te hizmetler kullanmak için Azure Active Directory (Azure AD) birden çok kiracıdan gelen kullanıcıların destekleyecek şekilde yapılandırabilirsiniz. Örneğin, aşağıdaki senaryoyu göz önünde bulundurun:
+Azure Stack, birden çok Azure Active Directory (Azure AD) kiracısından Azure Stack hizmetleri kullanmak için kullanıcıları destekleyecek şekilde yapılandırabilirsiniz. Örneğin, aşağıdaki senaryoyu göz önünde bulundurun:
 
-- Azure Stack yüklendiği contoso.onmicrosoft.com adresinin, Hizmet Yöneticisi olduğunuz.
-- Mary Directory Fabrikam.onmicrosoft.com adresli, konuk kullanıcıların bulunduğu yere yöneticisidir.
-- Mary'nin şirket Iaas ve PaaS Hizmetleri, şirketten alır ve Azure Stack kaynaklarına contoso.onmicrosoft.com olarak oturum açın ve kullanıcıların Konuk dizininden (Fabrikam.onmicrosoft.com adresli) gerekir.
+- Azure Stack yüklendiği yerde contoso.onmicrosoft.com hizmet yöneticisi olursunuz.
+- Mary, konuk kullanıcıların bulunduğu fabrikam.onmicrosoft.com 'in Dizin yöneticisidir.
+- Mary şirketinin şirketi, şirketinizdeki IaaS ve PaaS hizmetlerini alır ve konuk dizinindeki (fabrikam.onmicrosoft.com) kullanıcıların oturum açmasını ve contoso.onmicrosoft.com 'de Azure Stack kaynaklarını kullanmasına izin vermesi gerekir.
 
-Bu kılavuz, çok kiracılı Azure Stack'te yapılandırmak için bu senaryo bağlamında gerekli adımları sağlar. Bu senaryoda ve birincil kullanıcılar oturum açabilir ve Azure Stack dağıtım contoso'da servislerini Fabrikam etkinleştirme adımları tamamlamanız gerekir.  
+Bu kılavuz, Azure Stack içinde çok kiracılı olarak yapılandırmak için bu senaryonun bağlamında gerekli adımları sağlar. Bu senaryoda, siz ve Mary kullanıcıların, contoso 'daki Azure Stack dağıtımından oturum açmasını ve hizmetleri kullanmasını sağlamak için adımları tamamlaması gerekir.  
 
 ## <a name="enable-multi-tenancy"></a>Çok kiracılı modeli etkinleştirme
 
-Azure Stack'te çok kiracılı yapılandırmadan önce hesaba birkaç önkoşul vardır:
+Azure Stack ' de çok kiracılı yapılandırmadan önce hesabına yönelik birkaç önkoşul vardır:
   
- - Siz ve birincil yönetim adımları hem Azure Stack (Contoso) içinde yüklü olduğu dizin ve Konuk dizin (Fabrikam) arasında koordine gerekir.  
- - Seçtiğiniz emin [yüklü](azure-stack-powershell-install.md) ve [yapılandırılmış](azure-stack-powershell-configure-admin.md) Azure Stack için PowerShell.
- - [Azure Stack araçları indirin](azure-stack-powershell-download.md)ve bağlanma ve kimlik modülleri içeri aktarın:
+ - Siz ve Mary, her iki dizin Azure Stack de (contoso) ve konuk dizini (Fabrikam) üzerinde yönetim adımlarını koordine etmelidir.  
+ - Azure Stack için PowerShell 'i [yükleyip](azure-stack-powershell-install.md) [yapılandırdığınızdan](azure-stack-powershell-configure-admin.md) emin olun.
+ - [Azure Stack araçlarını indirin](azure-stack-powershell-download.md)ve Connect ve Identity modüllerini içeri aktarın:
 
     ```powershell  
     Import-Module .\Connect\AzureStack.Connect.psm1
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
 
-### <a name="configure-azure-stack-directory"></a>Azure Stack dizinini yapılandırın
+### <a name="configure-azure-stack-directory"></a>Azure Stack dizinini yapılandırma
 
-Bu bölümde, Azure Stack, oturum açma Fabrikam Azure AD directory kiracılardan izin verecek şekilde yapılandırın.
+Bu bölümde, Fabrikam Azure AD dizin kiracılarındaki oturum açma işlemleri için Azure Stack yapılandırırsınız.
 
-Yerleşik yapılandırarak Azure Resource Manager'ı, kullanıcıların kabul etmesi ve hizmet sorumluları Konuk dizin kiracısında Azure Stack için konuk dizin Kiracı (Fabrikam).
+Konuk Dizin kiracısından kullanıcıları ve hizmet sorumlularını kabul etmek üzere Azure Resource Manager yapılandırarak Azure Stack Konuk Dizin kiracısını (Fabrikam) ekleyin.
 
-Hizmet Yöneticisi contoso.onmicrosoft.com adresinin aşağıdaki komutları çalıştırır.
+Contoso.onmicrosoft.com Hizmet Yöneticisi aşağıdaki komutları çalıştırır.
 
 ```powershell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -78,13 +78,13 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
  -ResourceGroupName $ResourceGroupName
 ```
 
-### <a name="configure-guest-directory"></a>Konuk dizininden yapılandırın
+### <a name="configure-guest-directory"></a>Konuk dizinini yapılandırma
 
-Bir kez Azure Stack yönetici / işleci, Azure Stack ile kullanılacak Fabrikam dizini etkinleştirilmiş, Gamze Azure Stack Fabrikam'ın directory kiracısı ile kaydetmeniz gerekir.
+Azure Stack Yöneticisi/operatörü Azure Stack ile kullanılacak fabrikam dizinini etkinleştirdikten sonra, Mary fabrikam 'ın Dizin kiracısıyla Azure Stack kaydolmalıdır.
 
-#### <a name="registering-azure-stack-with-the-guest-directory"></a>Azure Stack ile Konuk dizininden kaydediliyor
+#### <a name="registering-azure-stack-with-the-guest-directory"></a>Konuk diziniyle Azure Stack kaydetme
 
-Mary Fabrikam dizin Yöneticisi aşağıdaki komutları Konuk dizin Fabrikam.onmicrosoft.com adresli içinde çalışır.
+Fabrikam Dizin Yöneticisi, fabrikam.onmicrosoft.com Konuk dizininde aşağıdaki komutları çalıştırır.
 
 ```powershell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -100,23 +100,23 @@ Register-AzSWithMyDirectoryTenant `
 ```
 
 > [!IMPORTANT]
-> Azure Stack yöneticinize yeni hizmetlerin veya güncelleştirmelerin gelecekte yüklerse, bu komut dosyasını yeniden çalıştırmanız gerekebilir.
+> Azure Stack yöneticiniz gelecekte yeni hizmet veya güncelleştirme yüklerse, bu betiği yeniden çalıştırmanız gerekebilir.
 >
-> Bu betik dizininizdeki Azure Stack uygulamalarının durumunu denetlemek için dilediğiniz zaman yeniden çalıştırın.
+> Dizininizde Azure Stack uygulamaların durumunu denetlemek için bu betiği dilediğiniz zaman yeniden çalıştırın.
 >
-> Yeni bir yönetilen disklerde (1808 güncelleştirmeyle getirilen), VM'ler oluşturma konusunda sorun fark etmiş varsa **Disk kaynak sağlayıcısı** , tekrar çalıştırmak için bu betiği gerektiren eklendi.
+> Yönetilen disklerde (1808 güncelleştirmesinde tanıtılan) VM oluşturmayla ilgili sorunlar olduğunu fark ediyorsanız, yeni bir **disk kaynak sağlayıcısı** eklenmiştir ve bu betiğin yeniden çalıştırılmasını gerektirir.
 
-### <a name="direct-users-to-sign-in"></a>Doğrudan kullanıcılar oturum açabilir
+### <a name="direct-users-to-sign-in"></a>Kullanıcıların oturum açması için doğrudan
 
-Mary, Fabrikam kullanıcılar oturum açabilir ve Mary ekleme Mary'nin dizinine adımları tamamladığınıza göre yönlendirebilir.  Fabrikam kullanıcıların (diğer bir deyişle, Fabrikam.onmicrosoft.com adresli sonekini taşıyan kullanıcılar) ziyaret ederek oturum https://portal.local.azurestack.external.  
+Artık ve Mary Mary 'nin dizinini ekleme adımlarını tamamladığınıza göre, Mary fabrikam kullanıcılarını oturum açmaya yönlendirebilir.  Fabrikam kullanıcıları (yani, fabrikam.onmicrosoft.com soneki olan kullanıcılar) https\://Portal.Local.azurestack.external. ziyaret ederek oturum açtığında  
 
-Mary herhangi doğrudan [yabancı sorumlu](/azure/role-based-access-control/rbac-and-directory-admin-roles) Fabrikam dizininde (diğer bir deyişle, Fabrikam.onmicrosoft.com adresli soneki olmadan Fabrikam dizinindeki kullanıcı) kullanarak oturum açmanız https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Bu URL'yi kullanmıyorsanız, varsayılan dizini (Fabrikam) gönderildiniz ve bunların yönetici tarafından onaylanan taşınmadığından diyen bir hata alırsınız.
+Mary, Fabrikam dizinindeki tüm [yabancı sorumluları](/azure/role-based-access-control/rbac-and-directory-admin-roles) (diğer bir deyişle, Fabrikam dizinindeki kullanıcılar fabrikam.onmicrosoft.com) https\://Portal.Local.azurestack.external/kullanarak oturum açmak için yönlendirir. fabrikam.onmicrosoft.com.  Bu URL 'YI kullanmazsa, varsayılan dizinine (Fabrikam) gönderilir ve yöneticisinin yönetici tarafından ayrılmadığını belirten bir hata alırlar.
 
-## <a name="disable-multi-tenancy"></a>Çok kiracılılık devre dışı bırak
+## <a name="disable-multi-tenancy"></a>Çoklu kirayı devre dışı bırak
 
-Azure Stack birden fazla Kiracı artık istemiyorsanız aşağıdaki adımları sırayla uygulayarak çok kiracılı devre dışı bırakabilirsiniz:
+Azure Stack birden çok kiracıyı artık istemiyorsanız, aşağıdaki adımları sırasıyla yaparak çoklu kiracıyı devre dışı bırakabilirsiniz:
 
-1. Çalıştır (Bu senaryoda Mary), Konuk dizin Yöneticisi olarak *Unregister-AzsWithMyDirectoryTenant*. Cmdlet, tüm Azure Stack uygulamaları yeni dizinden kaldırır.
+1. Konuk dizinin Yöneticisi olarak (Bu senaryoda Mary), *Unregister-AzsWithMyDirectoryTenant*komutunu çalıştırın. Cmdlet 'i yeni dizindeki tüm Azure Stack uygulamalarını kaldırır.
 
     ``` PowerShell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -131,7 +131,7 @@ Azure Stack birden fazla Kiracı artık istemiyorsanız aşağıdaki adımları 
      -Verbose 
     ```
 
-2. Çalıştırma Azure Stack (, bu senaryoda), Hizmet Yöneticisi olarak *Unregister-AzSGuestDirectoryTenant*. 
+2. Azure Stack hizmet yöneticisi olarak (Bu senaryoda), *Unregister-AzSGuestDirectoryTenant*komutunu çalıştırın. 
 
     ``` PowerShell  
     ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -153,11 +153,11 @@ Azure Stack birden fazla Kiracı artık istemiyorsanız aşağıdaki adımları 
     ```
 
     > [!WARNING]
-    > Çok kiracılılık devre dışı bırakma adımları sırayla gerçekleştirilmesi gerekir. #2. adım önce tamamlanırsa #1. adım başarısız olur.
+    > Çok kiracılı olmayan adımların devre dışı bırakılması, sırasıyla gerçekleştirilmelidir. Adım #2 önce tamamlandığında adım #1 başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sağlayıcı temsilcisi olarak yönetme](azure-stack-delegated-provider.md)
-- [Azure Stack temel kavramları](azure-stack-overview.md)
+- [Temsil edilen sağlayıcıları yönetme](azure-stack-delegated-provider.md)
+- [Azure Stack temel kavramlar](azure-stack-overview.md)
 - [Bulut Hizmeti Sağlayıcısı olarak Azure Stack kullanım ve faturalandırma özelliklerini yönetme](azure-stack-add-manage-billing-as-a-csp.md)
 - [Azure Stack’e kullanım ve fatura kiracısı ekleme](azure-stack-csp-howto-register-tenants.md)

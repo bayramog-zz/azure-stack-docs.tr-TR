@@ -1,47 +1,46 @@
 ---
-title: Azure Stack eğitimleri ve sertifikaları
-description: Azure Stack eğitim sertifika fırsatları hakkında bilgi edinin
+title: Eğitim ve sertifika Azure Stack
+description: Azure Stack eğitim sertifikası fırsatları hakkında bilgi edinin
 services: azure-stack
-author: WenJason
-manager: digimobile
+author: mattbriggs
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-origin.date: 04/15/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 07/23/2019
+ms.author: mabrigg
 ms.lastreviewed: 03/20/2019
 ms.reviewer: efemmano
-ms.openlocfilehash: fc00a1e40e4bd78da7d9ee9ee0b9288aa311483a
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: dc4942df6a5a461b6b40ef402ea5a282cf1d01ee
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64296858"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68417865"
 ---
-# <a name="azure-stack-training-and-certification"></a>Azure Stack eğitimleri ve sertifikaları
+# <a name="azure-stack-training-and-certification"></a>Eğitim ve sertifika Azure Stack
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri*
+*Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Azure Stack hakkında bilgi edinin ve Azure Stack yeterliliğinizi gösterir yardımcı olması aşağıdaki eğitim ve sertifika fırsatları kullanılabilir.
+Aşağıdaki eğitim ve sertifika fırsatları, Azure Stack hakkında bilgi edinmenize ve Azure Stack profliğinizi göstermeye yardımcı olur.
 
 ## <a name="training"></a>Eğitim
 
-- Microsoft resmi isteğe bağlı kurslar
-   - [ODX20537: Yapılandırma ve işletim (180 günlük) ve Microsoft Azure Stack ile hibrit bulut](https://www.microsoft.com/en-us/learning/course.aspx?cid=ODX20537)
-   - [OD20537: Yapılandırma ve işletim (90 gün) ve Microsoft Azure Stack ile hibrit bulut](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20537)
+- İsteğe bağlı Microsoft resmi kurslar
+   - [ODX20537: Karma bulutu Microsoft Azure Stack ile yapılandırma ve çalıştırma (180 gün)](https://www.microsoft.com/en-us/learning/course.aspx?cid=ODX20537)
+   - [OD20537: Karma bulutu Microsoft Azure Stack ile yapılandırma ve çalıştırma (90 gün)](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20537)
 
-- Microsoft IT Eğitim kursu
-   - [Kurs 20537A: Yapılandırma ve hibrit bulut Microsoft Azure Stack ile çalışma](https://aka.ms/azsmoc)
+- Microsoft IT eğitim kursu
+   - [Kurs 20537A: Microsoft Azure Stack ile karma bulutu yapılandırma ve çalıştırma](https://aka.ms/azsmoc)
 
-- Açık edx
-   - [edX: Yapılandırma ve Microsoft Azure Stack işletim çevrimiçi kurs](https://aka.ms/AzureStackMOOC)
+- EDX 'i aç
+   - [EdX Microsoft Azure Stack çevrimiçi kursu yapılandırma ve çalıştırma](https://aka.ms/AzureStackMOOC)
    
 - Microsoft öğrenme yolları
    - [İş rolleri ve öğrenme yolları](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>Sertifika
 
-*Yapılandırma ve Microsoft Azure Stack sertifika ile hibrit bulut işletim*, [sınav 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
+*Microsoft Azure Stack sertifikası Ile karma bulutu yapılandırma ve çalıştırma*, [Sınav 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

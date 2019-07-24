@@ -1,6 +1,6 @@
 ---
-title: Yeni bir Azure Stack çözüm doğrulama | Microsoft Docs
-description: Hizmet olarak doğrulama ile yeni bir Azure Stack çözüm doğrulamak hakkında bilgi edinin.
+title: Yeni bir Azure Stack çözümü doğrulama | Microsoft Docs
+description: Hizmet olarak doğrulama ile yeni bir Azure Stack çözümünü doğrulamayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,43 +10,43 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: fb7b98a5307606f7335e76ada42d583b975730f5
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: fe744fc95c79cb7482e1baa213471335ebb6e1fd
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64299597"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418301"
 ---
-# <a name="validate-a-new-azure-stack-solution"></a>Yeni bir Azure Stack çözüm doğrula
+# <a name="validate-a-new-azure-stack-solution"></a>Yeni bir Azure Stack çözümünü doğrulama
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Nasıl kullanacağınızı öğrenin **çözüm doğrulama** yeni Azure Stack çözümleri onaylamak için iş akışı.
+Yeni Azure Stack çözümlerini onaylamak için **Çözüm doğrulama** iş akışını nasıl kullanacağınızı öğrenin.
 
-Tüm dünyada Microsoft ve iş ortağı arasında Windows Server logo sertifikası gereksinimleri sağladıktan sonra anlaşılan donanım ürün reçetesi (BoM) bir Azure Stack çözümüdür. BoM donanım bir değişiklik olduğunda, bir çözüm recertified gerekir. Ekip, ne zaman yeniden Onayla çözümleri hakkında daha fazla soru için kişi [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com).
+Azure Stack çözümü, Windows Server logosu sertifika gereksinimleri yükseltildikten sonra Microsoft ile iş ortağı arasında ortaklaşa anlaşılabilecek bir donanım ürün reçetesinden (BoM). Donanım ürün reçetesinde değişiklik yapıldığında bir çözümün yeniden başlatılması gerekir. Çözümlerin ne zaman yeniden düzeltilme [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com)hakkında daha fazla bilgi için, konusundaki ekibine başvurun.
 
-Çözümünüzü onaylamak için çözüm doğrulama iş akışı iki kez çalıştırın. İçin bir kez çalıştır *en düşük düzeyde* yapılandırması desteklenir. İkinci bir kez çalıştır *maximally* yapılandırması desteklenir. Her iki yapılandırma tüm sınamaları geçmesi durumunda Microsoft çözümü onaylar.
+Çözümünüzü onaylamak için çözüm doğrulama iş akışını iki kez çalıştırın. En *düşük* düzeyde desteklenen yapılandırma için bunu bir kez çalıştırın. En *yüksek düzeyde* desteklenen yapılandırma için bu dosyayı ikinci kez çalıştırın. Her iki yapılandırma da tüm testleri iletmezse, Microsoft bu çözümü onaylar.
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
-## <a name="create-a-solution-validation-workflow"></a>Bir çözüm doğrulama iş akışı oluşturma
+## <a name="create-a-solution-validation-workflow"></a>Çözüm doğrulama iş akışı oluşturma
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-solution](includes/azure-stack-vaas-workflow-step_select-solution.md)]
 
-3. Seçin **Başlat** üzerinde **çözüm doğrulamaları** Döşe.
+3. **Çözüm doğrulamaları** kutucuğunda **Başlat** ' ı seçin.
 
-    ![Çözüm doğrulama iş akışı kutucuğu](media/tile_validation-solution.png)
+    ![Çözüm doğrulamaları iş akışı kutucuğu](media/tile_validation-solution.png)
 
 4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 
-5. Seçin **çözüm yapılandırması**.
-    - **En düşük**: Çözüm desteklenen düğüm sayısı alt sınırı ile yapılandırılır.
-    - **En fazla**: çözüm en fazla desteklenen düğüm sayısını ile yapılandırılır.
+5. **Çözüm yapılandırmasını**seçin.
+    - **Minimum**: çözüm, desteklenen en az sayıda düğüm ile yapılandırılır.
+    - **Maksimum**: çözüm desteklenen en fazla düğüm sayısıyla yapılandırılır.
 6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
     ![Çözüm doğrulama bilgileri](media/workflow_validation-solution_info.png)
@@ -54,39 +54,39 @@ Tüm dünyada Microsoft ve iş ortağı arasında Windows Server logo sertifikas
 7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
-    > Bir iş akışını oluşturduktan sonra ortam parametrelerini değiştirilemez.
+    > Ortam parametreleri, iş akışı oluşturulduktan sonra değiştirilemez.
 
 8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
 9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
-    Testleri Özet sayfasına yönlendirilirsiniz.
+    Testler özet sayfasına yönlendirilirsiniz.
 
-## <a name="run-solution-validation-tests"></a>Çözüm doğrulama testlerini çalıştırın
+## <a name="run-solution-validation-tests"></a>Çözüm doğrulama testlerini Çalıştır
 
-İçinde **çözüm doğrulama testleri özeti** sayfasında doğrulamayı tamamlamak için gereken testlerin bir listesini görürsünüz.
+**Çözüm doğrulama sınamaları Özeti** sayfasında, doğrulamayı tamamlamak için gereken testlerin bir listesini görürsünüz.
 
-Doğrulama iş akışlarında **zamanlama** test iş akışı oluşturma işlemi sırasında belirtilen düzey iş akışı ortak parametreleri kullanır (bkz [hizmetolarakAzureStackdoğrulamaişakışıortakparametreleri](azure-stack-vaas-parameters.md)). Herhangi bir test parametre değerleri geçersiz hale gelirse, bunları belirtildiği gibi resupply gerekir [iş akışı parametreleri değiştirmek](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+Doğrulama iş akışlarında, bir testin **zamanlanması** , iş akışı oluşturma sırasında belirttiğiniz iş akışı düzeyi ortak parametrelerini kullanır (bkz. [hizmet olarak Azure Stack doğrulaması için iş akışı ortak parametreleri](azure-stack-vaas-parameters.md)). Herhangi bir test parametresi değeri geçersiz hale gelirse, [iş akışı parametrelerini değiştirme](azure-stack-vaas-monitor-test.md#change-workflow-parameters)bölümünde belirtildiği gibi onları yeniden silmelisiniz.
 
 > [!NOTE]
-> Var olan bir örneği üzerinde bir doğrulama testi zamanlama portalda eski örneği yerine yeni bir örneğini oluşturur. Eski örneği için günlükleri korunur ancak Portalı'ndan erişilebilir değildir.  
-Bir test başarıyla tamamlandıktan sonra **zamanlama** eylemi devre dışı kalır.
+> Mevcut bir örnek üzerinde bir doğrulama testinin zamanlanması, portalda eski örnek yerine yeni bir örnek oluşturur. Eski örnek için Günlükler korunur, ancak portaldan erişilebilir olmayacaktır.  
+Bir sınama başarıyla tamamlandıktan sonra, **zamanlama** eylemi devre dışı bırakılır.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
 
-2. Aşağıdaki testler seçin:
+2. Aşağıdaki testleri seçin:
     - Bulut benzetimi altyapısı
-    - SDK'sı işletimsel Suite işlem
-    - Disk kimliği Test
-    - KeyVault uzantı SDK'sı işletimsel paketi
-    - KeyVault SDK Operational Suite
-    - Ağ SDK işletimsel paketi
-    - Depolama hesabı SDK işletimsel paketi
+    - İşlem SDK 'Sı Işlem paketi
+    - Disk kimliği sınaması
+    - Keykasauzantısı SDK 'Sı çalışma paketi
+    - Keykasasdk Işlem paketi
+    - Ağ SDK Işlem paketi
+    - Depolama hesabı SDK 'Sı Işlem paketi
 
-3. Seçin **zamanlama** bağlam menüsünden test örneği zamanlamak için bir istem açın.
+3. Test örneğini zamanlamaya yönelik bir istem açmak için bağlam menüsünden **zamanlama** ' yı seçin.
 
-4. Test parametreleri gözden geçirin ve ardından **Gönder** test yürütme için zamanlamak için.
+4. Test parametrelerini gözden geçirin ve ardından testleri yürütmeye zamanlamak için **Gönder** ' i seçin.
 
-![Zamanlama çözümü doğrulama sınaması](media/workflow_validation-solution_schedule-test.png)
+![Çözüm doğrulama testini zamanla](media/workflow_validation-solution_schedule-test.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İzleme ve testleri VaaS portalında yönetme](azure-stack-vaas-monitor-test.md)
+- [VaaS portalındaki testleri izleme ve yönetme](azure-stack-vaas-monitor-test.md)

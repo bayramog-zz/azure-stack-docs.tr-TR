@@ -1,6 +1,6 @@
 ---
-title: Hizmet olarak Azure Stack doğrulama iş akışı ortak parametrelerinin | Microsoft Docs
-description: İş akışı ortak parametreleri için bir hizmet olarak Azure Stack doğrulama
+title: Hizmet olarak Azure Stack doğrulamasında iş akışı ortak parametreleri | Microsoft Docs
+description: Hizmet olarak Azure Stack doğrulaması için iş akışı ortak parametreleri
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,37 +10,37 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0979588e358d1e163a29ab46bdbe99c27fc37649
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 7e5467945db4987bdd86b7265117c486fb6f7e1b
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64299839"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418335"
 ---
-# <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>İş akışı ortak parametreleri için bir hizmet olarak Azure Stack doğrulama
+# <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Hizmet olarak Azure Stack doğrulaması için iş akışı ortak parametreleri
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Ortak parametreleri içeren değerleri gibi ortam değişkenlerini ve kullanıcı kimlik bilgilerini doğrulama (VaaS) hizmet olarak tüm testler için gerekli. Bu değerler, oluşturduğunuzda veya bir iş akışını değiştirme iş akışı düzeyinde tanımlanır. Testleri planlama, bu değerler her test altındaki iş akışı parametreleri olarak geçirilir.
+Ortak Parametreler, hizmet olarak doğrulama (VaaS) içindeki tüm testlerin gerektirdiği ortam değişkenleri ve Kullanıcı kimlik bilgileri gibi değerleri içerir. Bu değerler iş akışını oluşturduğunuzda veya değiştirirken iş akışı düzeyinde tanımlanır. Testler planlanırken, bu değerler iş akışı altındaki her teste parametre olarak geçirilir.
 
 > [!NOTE]
-> Her test, kendi parametreleri kümesini tanımlar. Zamanlama süresi, test, ortak parametreleri bağımsız olarak bir değer girmesini gerektirebilir veya ortak parametre değeri geçersiz kılmak izin verebilir.
+> Her test kendi parametre kümesini tanımlar. Zamanlama zamanında, bir test ortak parametrelerden bağımsız olarak bir değer girmenizi gerektirebilir veya ortak parametre değerini geçersiz kılmanıza olanak sağlayabilir.
 
 ## <a name="environment-parameters"></a>Ortam parametreleri
 
-Test edilen Azure Stack ortamınıza ortam parametrelerini açıklar. Bu değerleri oluşturmak ve test ettiğiniz belirli örneği için bir Azure Stack damga bilgi dosyası karşıya yükleme tarafından sağlanmalıdır.
+Ortam parametreleri test altındaki Azure Stack ortamını anlatmaktadır. Bu değerler, test ettiğiniz belirli bir örnek için bir Azure Stack damga bilgi dosyası oluşturarak ve karşıya yükleyerek sağlanmalıdır.
 
 > [!NOTE]
-> Resmi doğrulama iş akışları, iş akışını oluşturduktan sonra ortam parametrelerini değiştirilemez.
+> Resmi doğrulama iş akışlarında, ortam parametreleri iş akışı oluşturulduktan sonra değiştirilemez.
 
-### <a name="generate-the-stamp-information-file"></a>Damga bilgi dosyası oluştur
+### <a name="generate-the-stamp-information-file"></a>Damga bilgi dosyasını oluşturma
 
-1. DVM veya Azure Stack ortamınıza erişimi olan herhangi bir makineye oturum açın.
+1. DVD veya Azure Stack ortamına erişimi olan herhangi bir makinede oturum açın.
 2. Yükseltilmiş bir PowerShell penceresinde aşağıdaki komutları çalıştırın:
 
     ```powershell  
@@ -51,44 +51,44 @@ Test edilen Azure Stack ortamınıza ortam parametrelerini açıklar. Bu değerl
     ConvertTo-Json $params > stampinfoproperties.json
     ```
 
-### <a name="locate-values-in-the-ece-configuration-file"></a>Değerleri ECE yapılandırma dosyasında bulunamıyor
+### <a name="locate-values-in-the-ece-configuration-file"></a>ECE yapılandırma dosyasındaki değerleri bulma
 
-Ortam parametre değerlerini de el ile konumlandırılabilir içinde **ECE yapılandırma dosyası** konumundaki `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` DVM üzerinde.
+Ortam parametresi değerleri de DVD `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` üzerinde bulunan **ece yapılandırma dosyasında** el ile bulunabilir.
 
 ## <a name="test-parameters"></a>Test parametreleri
 
-Genel test parametreleri yapılandırma dosyalarında depolanan hassas bilgiler içerir. Bu el ile sağlanmalı.
+Ortak test parametreleri, yapılandırma dosyalarında depolanabilecek hassas bilgileri içerir. Bunların el ile sağlanması gerekir.
 
 Parametre    | Açıklama
 -------------|-----------------
-Kiracı Yöneticisi kullanıcı                            | Azure Active Directory Kiracı bir AAD dizini Hizmet Yöneticisi tarafından sağlanan Yöneticisi. Bu kullanıcı kaynakları (VM'ler, depolama hesapları, vb.) ayarlamak için şablonları dağıtma ve iş yüklerini çalıştırma gibi Kiracı düzeyinde Eylemler gerçekleştirir. Kiracı hesabı sağlama hakkında daha fazla bilgi için bkz [yeni bir Azure Stack kiracısı ekleme](../operator/azure-stack-add-new-user-aad.md).
-Hizmet Yöneticisi kullanıcı             | AAD dizin Kiracısında Azure Stack dağıtım sırasında belirtilen Azure Active Directory Yöneticisi. Arama `AADTenant` ECE yapılandırma dosyası ve bir değer seçin `UniqueName` öğesi.
-Bulut yönetici kullanıcı               | Azure Stack etki alanı yöneticisi hesabı (örneğin, `contoso\cloudadmin`). Arama `User Role="CloudAdmin"` ECE yapılandırma dosyası ve bir değer seçin `UserName` öğesi.
-Tanılama bağlantı dizesi          | Bir Azure depolama hesabı için hangi tanılama günlükleri test yürütme sırasında kopyalanacak bir SAS URL'si. SAS URL'si oluşturma yönergeleri için bkz: [tanılama bağlantı dizesi oluştur](#generate-the-diagnostics-connection-string). |
+Kiracı Yöneticisi Kullanıcı                            | AAD dizininde hizmet yöneticisi tarafından sağlanan Kiracı Yöneticisi Azure Active Directory. Bu Kullanıcı, kaynakları (VM 'Ler, depolama hesapları vb.) ayarlamak ve iş yüklerini yürütmek için şablon dağıtma gibi kiracı düzeyinde eylemler gerçekleştirir. Kiracı hesabını sağlama hakkında ayrıntılı bilgi için bkz. [yeni Azure Stack kiracı ekleme](../operator/azure-stack-add-new-user-aad.md).
+Hizmet Yöneticisi kullanıcısı             | Azure Stack dağıtımı sırasında belirtilen AAD Dizin kiracının Yöneticisi Azure Active Directory. ECE yapılandırma dosyasında arama yapın ve `UniqueName` öğesindeki değeri seçin. `AADTenant`
+Bulut Yöneticisi kullanıcısı               | Azure Stack etki alanı yöneticisi hesabı (örneğin, `contoso\cloudadmin`). ECE yapılandırma dosyasında arama yapın ve `UserName` öğesindeki değeri seçin. `User Role="CloudAdmin"`
+Tanılama bağlantı dizesi          | Test yürütmesi sırasında tanılama günlüklerinin kopyalanacağı bir Azure depolama hesabına yönelik SAS URL 'SI. SAS URL 'SI oluşturma yönergeleri için bkz. [Tanılama bağlantı dizesi oluşturma](#generate-the-diagnostics-connection-string). |
 
 > [!IMPORTANT]
-> **Tanılama bağlantı dizesi** devam etmeden önce geçerli olmalıdır.
+> Devam etmeden önce **Tanılama bağlantı dizesi** geçerli olmalıdır.
 
 ### <a name="generate-the-diagnostics-connection-string"></a>Tanılama bağlantı dizesi oluştur
 
-Tanılama bağlantı dizesi, test yürütme sırasında tanılama günlükleri depolamak için gereklidir. Kurulum sırasında oluşturulan Azure depolama hesabı kullanın (bkz [doğrulama hizmet kaynakları olarak ayarlama](azure-stack-vaas-set-up-resources.md)) VaaS günlükleri karşıya yükleme, depolama hesabınıza erişimi vermek için paylaşılan erişim imzası (SAS) URL'si oluşturmak için.
+Tanılama bağlantı dizesi, test yürütmesi sırasında tanılama günlüklerini depolamak için gereklidir. Depolama hesabınıza karşıya yükleme günlüklerini sağlamak üzere bir paylaşılan erişim imzası (SAS) URL 'SI oluşturmak için kurulum sırasında oluşturulan Azure Storage hesabını kullanın (bkz. [doğrulamadan hizmet kaynakları olarak ayarlama](azure-stack-vaas-set-up-resources.md)).
 
 1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
 
-1. Seçin **Blob** gelen **izin verilen hizmetler seçenekleri**. Diğer seçenekleri seçimini kaldırın.
+1. **Izin verilen hizmetler seçeneklerinden** **BLOB** ' u seçin. Kalan seçeneklerin seçimini kaldırın.
 
-1. Seçin **hizmet**, **kapsayıcı**, ve **nesne** gelen **izin verilen kaynak türleri**.
+1. **Izin verilen kaynak türlerindeki** **hizmeti**, **kapsayıcıyı**ve **nesneyi** seçin.
 
-1. Seçin **okuma**, **yazma**, **listesi**, **ekleme**, **oluşturma** gelen **izin izinleri**. Diğer seçenekleri seçimini kaldırın.
+1. **Okuma**, **yazma**, **Listeleme**, **ekleme**, **izin verilen izinlerden** **Oluştur** ' u seçin. Kalan seçeneklerin seçimini kaldırın.
 
-1. Ayarlama **başlangıç zamanı** geçerli saat ve **bitiş saati** geçerli saatten üç ay için.
+1. **Başlangıç saatini** geçerli saate ve **son saati** , geçerli zamandan üç aya kadar ayarlayın.
 
 1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
 
 > [!NOTE]  
-> SAS URL'sini URL oluşturulduğunda, belirtilen bitiş zaman süresi dolar.  
-Testleri planlama yaparken, en az 30 gün boyunca URL'SİNİN geçerli olduğundan artı (üç ay önerilir) test çalıştırması için gerekli süre emin olun.
+> SAS URL 'si, URL oluşturulduğunda belirtilen bitiş saatinde sona erer.  
+Testleri zamanlarken, URL 'nin en az 30 gün ve test yürütmesi için gereken süre için geçerli olduğundan emin olun (üç ay önerilir).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hakkında bilgi edinin [doğrulama olarak hizmet temel kavramları](azure-stack-vaas-key-concepts.md)
+- [Hizmet anahtar kavramları olarak doğrulama](azure-stack-vaas-key-concepts.md) hakkında bilgi edinin

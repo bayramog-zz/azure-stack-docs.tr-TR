@@ -1,6 +1,6 @@
 ---
-title: Azure Stack tümleşik sistemleri dağıtımı için Azure Stack ortak anahtar altyapısı sertifikaları doğrulamak | Microsoft Docs
-description: Azure Stack tümleşik sistemleri Azure Stack PKI sertifikalarını doğrulamak açıklar. Azure Stack sertifika Denetleyicisi aracını kullanmayı ele alır.
+title: Azure Stack tümleşik sistemler dağıtımı için ortak anahtar altyapısı sertifikalarının Azure Stack doğrulama | Microsoft Docs
+description: Azure Stack tümleşik sistemler için Azure Stack PKI sertifikalarının nasıl doğrulanacağını açıklar. Azure Stack sertifika Denetleyicisi aracının kullanımını içerir.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,67 +11,67 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: abf2d10c50271217220d9dc218b4d50f7411d867
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 8d929a3b1fd67f3ec73137b2e1a87f594ea5b544
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64984521"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68417833"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI sertifikalarını doğrulama
 
-Bu makalede açıklanan Azure Stack hazırlık Denetleyicisi aracı kullanılabilir [PowerShell Galerisi'ndeki](https://aka.ms/AzsReadinessChecker). Aracı doğrulamak için kullanabileceğiniz [oluşturulan PKI sertifikalarını](azure-stack-get-pki-certs.md) dağıtım öncesi için uygundur. Sertifikalar gerekiyorsa sertifikaları yeniden gönderin ve test için yeterli zaman bırakarak doğrulayın.
+Bu makalede açıklanan Azure Stack hazırlık Denetleyicisi aracı [PowerShell Galerisi](https://aka.ms/AzsReadinessChecker)sunulmaktadır. Aracı, [oluşturulan PKI sertifikalarının](azure-stack-get-pki-certs.md) dağıtım öncesi için uygun olduğunu doğrulamak için kullanabilirsiniz. Gerektiğinde sertifikaları test etmek ve yeniden vermek için yeterli zaman bırakarak sertifikaları doğrulayın.
 
-Hazır olma denetimi aracı, aşağıdaki sertifika doğrulama gerçekleştirir:
+Hazırlık Denetleyicisi aracı aşağıdaki sertifika doğrulamaları gerçekleştirir:
 
-- **PFX okuyun**  
-    Doğru parolayı geçerli PFX dosyası için denetler ve olup ortak bilgilerini parola ile korunmuyor. 
+- **PFX oku**  
+    Geçerli PFX dosyasını, parolayı doğru parolayı ve genel bilgilerin parola tarafından korunup korunmadığını denetler. 
 - **İmza algoritması**  
-    İmza algoritması SHA1 olmadığını denetler.
+    İmza algoritmasının SHA1 olmadığını denetler.
 - **Özel anahtar**  
-    Özel anahtarı yok ve yerel makine özniteliğiyle verilir denetimleri. 
+    Özel anahtarın mevcut olduğunu ve yerel makine özniteliğiyle birlikte verildiğini denetler. 
 - **Sertifika zinciri**  
-    Denetimleri sertifika zinciri, otomatik olarak imzalanan sertifikaları için bir onay dahil olduğu.
+    Otomatik olarak imzalanan sertifikalara yönelik bir denetim dahil olmak üzere, sertifika zincirini denetler.
 - **DNS adları**  
-    SAN her uç nokta için ilgili DNS adlarını içeren veya destekleniyorsa bir joker karakter varsa denetler.
+    SAN 'ın her bir uç nokta için ilgili DNS adlarını içerip içermediğini denetler veya bir destekleyici joker karakter varsa.
 - **Anahtar kullanımı**  
-    Anahtar kullanımı bir dijital imza ve anahtar şifreleme içerir ve sunucu kimlik doğrulaması ve istemci kimlik doğrulaması Gelişmiş anahtar kullanımı içeren denetler.
+    Anahtar kullanımının dijital imza ve anahtar şifreleme içerip içermediğini denetler ve gelişmiş anahtar kullanımı sunucu kimlik doğrulaması ve istemci kimlik doğrulaması içerir.
 - **Anahtar boyutu**  
-    Anahtar boyutu 2048 ya da daha büyük olup olmadığını denetler.
+    Anahtar boyutunun 2048 veya daha büyük olup olmadığını denetler.
 - **Zincir sırası**  
-    Sipariş doğru olduğunu doğrulama sertifikaları sırasını denetler.
-- **Diğer sertifikaları**  
-    Diğer Sertifika PFX içinde ilgili yaprak sertifikayı ve kendi zinciri dışında paketlenmiş emin olun.
+    Diğer sertifikaların sırasını, siparişin doğru olduğunu doğrulayan kontrol eder.
+- **Diğer sertifikalar**  
+    PFX 'de, ilgili yaprak sertifikası ve zinciri dışında başka bir sertifika paketlenmiş olmadığından emin olun.
 - **Profil yok**  
-    Yeni bir kullanıcı PFX verilerinin sertifika bakım sırasında gMSA hesabı davranışını yakından taklit eden bir kullanıcı profili yüklendi, olmadan yükleyebilir denetler.
+    Yeni bir kullanıcının bir kullanıcı profili yüklenmeden PFX verilerini yükleyip yükleyemediğini denetler. Bu, sertifika Bakımı sırasında gMSA hesaplarının davranışını göz önyükler.
 
 > [!IMPORTANT]  
-> PKI sertifikasını bir PFX dosyası ve parola gizli bilgi değerlendirilmelidir.
+> PKI sertifikası bir PFX dosyasıdır ve parola, hassas bilgiler olarak değerlendirilmelidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Sisteminizde Azure Stack dağıtımı için PKI sertifikaları doğrulamadan önce aşağıdaki önkoşulları karşılamalıdır:
+Bir Azure Stack dağıtımı için PKI sertifikalarını doğrulamadan önce sisteminizin aşağıdaki önkoşulları karşılaması gerekir:
 
 - Microsoft Azure Stack hazırlık denetleyicisi
-- SSL dışarı aşağıdaki sertifikaları [hazırlık yönergeleri](azure-stack-prepare-pki-certs.md)
-- DeploymentData.json
+- SSL sertifikaları, [hazırlama yönergelerinden](azure-stack-prepare-pki-certs.md) sonra verildi
+- DeploymentData. JSON
 - Windows 10 veya Windows Server 2016
 
-## <a name="perform-core-services-certificate-validation"></a>Çekirdek hizmetler sertifika doğrulama gerçekleştirme
+## <a name="perform-core-services-certificate-validation"></a>Çekirdek Hizmetleri sertifika doğrulamasını gerçekleştirme
 
-Hazırlama ve dağıtım ve gizli döndürme Azure Stack PKI sertifikalarını doğrulamak için aşağıdaki adımları kullanın:
+Dağıtım ve gizli anahtar döndürme için Azure Stack PKI sertifikalarını doğrulamak ve doğrulamak üzere bu adımları kullanın:
 
-1. Yükleme **AzsReadinessChecker** aşağıdaki cmdlet'i çalıştırarak bir PowerShell isteminden (5.1 veya üstü):
+1. Aşağıdaki cmdlet 'i çalıştırarak **Azsreadinesschecker** 'Yi bir PowerShell isteminden (5,1 veya üzeri) çalıştırın:
 
     ```powershell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ```
 
-2. Sertifika dizin yapısı oluşturun. Aşağıdaki örnekte, değiştirebileceğiniz `<c:\certificates>` için tercih ettiğiniz yeni bir dizin yolu.
+2. Sertifika dizin yapısını oluşturun. Aşağıdaki örnekte, tercih ettiğiniz yeni bir dizin `<c:\certificates>` yoluna geçiş yapabilirsiniz.
     ```powershell  
     New-Item C:\Certificates -ItemType Directory
     
@@ -83,18 +83,18 @@ Hazırlama ve dağıtım ve gizli döndürme Azure Stack PKI sertifikalarını d
     ```
     
     > [!Note]  
-    > AD FS ve graf kimlik sisteminizde AD FS kullanıyorsanız gereklidir. Örneğin:
+    > Kimlik sisteminiz olarak AD FS kullanıyorsanız AD FS ve grafik gereklidir. Örneğin:
     >
     > ```powershell  
     > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'ARM Admin', 'ARM Public', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal'
     > ```
     
-     - Önceki adımda oluşturduğunuz uygun dizinleri sertifikalarınız yerleştirin. Örneğin:  
+     - Sertifika (ler) i önceki adımda oluşturulan uygun dizinlere yerleştirin. Örneğin:  
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
         - `c:\certificates\Admin Portal\CustomerCertificate.pfx`
         - `c:\certificates\ARM Admin\CustomerCertificate.pfx`
 
-3. PowerShell penceresinde değerlerini değiştirmek **RegionName** ve **FQDN** Azure Stack ortamına uygun ve aşağıdaki komutu çalıştırın:
+3. PowerShell penceresinde, **RegionName** ve **FQDN** değerlerini Azure Stack ortamına uygun şekilde değiştirin ve aşağıdakileri çalıştırın:
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -102,7 +102,7 @@ Hazırlama ve dağıtım ve gizli döndürme Azure Stack PKI sertifikalarını d
     Invoke-AzsCertificateValidation -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
     ```
 
-4. Çıktı ve tüm sertifikaları geçirmek tüm testleri denetleyin. Örneğin:
+4. Çıktıyı denetleyin ve tüm sertifikalar tüm testleri iletir. Örneğin:
 
 ```powershell
 Invoke-AzsCertificateValidation v1.1809.1005.1 started.
@@ -152,9 +152,9 @@ Invoke-AzsCertificateValidation Completed
 
 **Belirti**: Testler atlandı
 
-**Neden**: Bir bağımlılık uyulmazsa AzsReadinessChecker belirli testleri atlar:
+**Neden**: AzsReadinessChecker bir bağımlılık karşılanmazsa belirli testleri atlar:
 
- - Sertifika zinciri başarısız olursa, diğer sertifikalar atlanır.
+ - Sertifika zinciri başarısız olursa diğer sertifikalar atlanır.
 
     ```powershell  
     Testing: ACSBlob\singlewildcard.pfx
@@ -177,19 +177,19 @@ Invoke-AzsCertificateValidation Completed
     Invoke-AzsCertificateValidation Completed
     ```
 
-**Çözüm**: Her her sertifika için test kümesini altındaki ayrıntılar bölümünde Aracı'nın yönergeleri izleyin.
+**Çözüm**: Her sertifika için her bir test kümesi altındaki Ayrıntılar bölümünde bulunan araç kılavuzunu izleyin.
 
-## <a name="perform-platform-as-a-service-certificate-validation"></a>Platform bir hizmet sertifika doğrulama gerçekleştirme
+## <a name="perform-platform-as-a-service-certificate-validation"></a>Hizmet sertifikası doğrulaması olarak platform gerçekleştirme
 
-SQL/MySQL veya uygulama hizmetleri dağıtımları planlı hazırlayıp hizmet (PaaS) sertifikaları, platform için Azure Stack PKI sertifikalarını doğrulamak için aşağıdaki adımları kullanın.
+SQL/MySQL veya App Services dağıtımları planlansa, hizmet olarak platform (PaaS) sertifikalarına yönelik Azure Stack PKI sertifikalarını hazırlamak ve doğrulamak için bu adımları kullanın.
 
-1.  Yükleme **AzsReadinessChecker** aşağıdaki cmdlet'i çalıştırarak bir PowerShell isteminden (5.1 veya üstü):
+1.  Aşağıdaki cmdlet 'i çalıştırarak **Azsreadinesschecker** 'Yi bir PowerShell isteminden (5,1 veya üzeri) çalıştırın:
 
     ```powershell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
     ```
 
-2.  Yollar ve doğrulama gerektiren her bir PaaS sertifikanın parolasını içeren iç içe geçmiş bir karma tablosu oluşturun. Çalıştırma PowerShell penceresinde:
+2.  Doğrulamaya ihtiyaç duyan her PaaS sertifikasına yönelik yollar ve parola içeren iç içe bir Hashtable oluşturun. PowerShell penceresinde şunu çalıştırın:
 
     ```powershell  
         $PaaSCertificates = @{
@@ -201,12 +201,12 @@ SQL/MySQL veya uygulama hizmetleri dağıtımları planlı hazırlayıp hizmet (
         }
     ```
 
-3.  Değerlerini değiştirmek **RegionName** ve **FQDN** doğrulamayı başlatmak için Azure Stack ortamınıza uyum sağlaması için. Ardından şunu çalıştırın:
+3.  Doğrulamayı başlatmak için **RegionName** ve **FQDN** değerlerini Azure Stack ortamınızla eşleşecek şekilde değiştirin. Ardından şunu çalıştırın:
 
     ```powershell  
     Invoke-AzsCertificateValidation -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
-4.  Tüm sertifikaları çıktı ve, tüm sınamaları geçmesi denetleyin.
+4.  Çıktının ve tüm sertifikaların tüm testleri geçirmediğinden emin olun.
 
     ```powershell
     Invoke-AzsCertificateValidation v1.0 started.
@@ -254,26 +254,26 @@ SQL/MySQL veya uygulama hizmetleri dağıtımları planlı hazırlayıp hizmet (
 
 | Dizin | Sertifika |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\<bölge > _\<externalFQDN > |
-| ACSQueue  |  wildcard_queue_\<region>_\<externalFQDN> |
-| ACSTable  |  wildcard_table_\<bölge > _\<externalFQDN > |
-| Yönetici uzantısı konağı  |  wildcard_adminhosting_\<bölge > _\<externalFQDN > |
-| Yönetici portalı  |  adminportal_\<bölge > _\<externalFQDN > |
-| ARM yönetici  |  adminmanagement_\<bölge > _\<externalFQDN > |
-| ARM genel  |  management_\<bölge > _\<externalFQDN > |
-| KeyVault  |  wildcard_vault_\<region>_\<externalFQDN> |
-| KeyVaultInternal  |  wildcard_adminvault_\<bölge > _\<externalFQDN > |
-| Genel uzantı konak  |  wildcard_hosting_\<bölge > _\<externalFQDN > |
-| Genel kullanıma açık portala  |  portal_\<bölge > _\<externalFQDN > |
+| acsBlob | wildcard_blob_\<Region > _\<externalfqdn > |
+| ACSQueue  |  wildcard_queue_\<Region > _\<externalfqdn > |
+| ACSTable  |  wildcard_table_\<Region > _\<externalfqdn > |
+| Yönetici uzantısı ana bilgisayarı  |  wildcard_adminhosting_\<Region > _\<externalfqdn > |
+| Yönetici portalı  |  adminportal_\<Region > _\<externalfqdn > |
+| ARM Yöneticisi  |  adminmanagement_\<Region > _\<externalfqdn > |
+| ARM genel  |  management_\<Region > _\<externalfqdn > |
+| KeyVault  |  wildcard_vault_\<Region > _\<externalfqdn > |
+| Keyvaultınternal  |  wildcard_adminvault_\<Region > _\<externalfqdn > |
+| Ortak uzantı Konağı  |  wildcard_hosting_\<Region > _\<externalfqdn > |
+| Ortak Portal  |  portal_\<Region > _\<externalfqdn > |
 
-## <a name="using-validated-certificates"></a>Doğrulanmış bir sertifika kullanma
+## <a name="using-validated-certificates"></a>Doğrulanan sertifikaları kullanma
 
-Sertifikalarınızı AzsReadinessChecker tarafından doğrulandıktan sonra Azure Stack dağıtımınıza veya Azure Stack gizli döndürme için kullanıma hazır olursunuz. 
+Sertifikalarınız AzsReadinessChecker tarafından doğrulandıktan sonra bunları Azure Stack dağıtımınızda veya Azure Stack gizli dizi dönüştürme için kullanmaya hazır olursunuz. 
 
- - Böylece bunlar bunları belirtildiği gibi dağıtım konağı üzerine kopyalayabilirsiniz dağıtımı için dağıtım mühendisinize sertifikalarınızı güvenli bir şekilde aktarın. [Azure Stack PKI gereksinimleri belgeleri](azure-stack-pki-certs.md).
- - Gizli dönüş izleyerek Azure Stack ortamınızın genel altyapı uç noktalar için eski sertifikaları güncelleştirmek için sertifikaları kullanabilirsiniz [Azure Stack gizli döndürme belgeleri](azure-stack-rotate-secrets.md).
- - PaaS Hizmetleri için takip ederek Azure Stack'te SQL, MySQL ve App Services kaynak sağlayıcılarını yüklemek için sertifikaları kullanabilirsiniz [Azure Stack belgeleri hizmetleri sunan genel bakış](azure-stack-offer-services-overview.md).
+ - Dağıtım için sertifikalarınızı, [Azure Stack PKI gereksinimleri belgelerinde](azure-stack-pki-certs.md)belirtilen şekilde dağıtım konağına kopyalayabilmeleri için dağıtım Mühendisinize güvenli bir şekilde aktarın.
+ - Gizli anahtar döndürmesi için, [Azure Stack gizli döndürme belgelerini](azure-stack-rotate-secrets.md)izleyerek Azure Stack ortamınızın ortak altyapı uç noktaları için eski sertifikaları güncelleştirmek üzere sertifikaları kullanabilirsiniz.
+ - PaaS hizmetleri için, [Azure Stack belgelerindeki hizmetleri sunma genel görünümünü](azure-stack-offer-services-overview.md)IZLEYEREK Azure Stack SQL, MySQL ve App Services kaynak sağlayıcılarını yüklemek için sertifikaları kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Veri merkezi kimlik tümleştirme](azure-stack-integrate-identity.md)
+[Veri merkezi kimlik tümleştirmesi](azure-stack-integrate-identity.md)

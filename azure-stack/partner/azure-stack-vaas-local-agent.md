@@ -1,6 +1,6 @@
 ---
-title: Yerel aracı dağıtma | Microsoft Docs
-description: Azure Stack doğrulama için yerel aracı bir hizmet olarak dağıtın.
+title: Yerel aracıyı dağıtma | Microsoft Docs
+description: Azure Stack doğrulaması için yerel aracıyı hizmet olarak dağıtın.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,52 +10,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e194583b583bfc442a3c7b99a842ee788fc423c
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: b1a658b428d13cdd12c16b767430f87a80e89fdc
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298948"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418375"
 ---
-# <a name="deploy-the-local-agent"></a>Yerel aracı dağıtma
+# <a name="deploy-the-local-agent"></a>Yerel aracıyı dağıtma
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Doğrulama Hizmeti (VaaS) yerel aracı, doğrulama testlerini çalıştırmak için kullanmayı öğrenin. Yerel aracı doğrulama testlerini çalıştırmadan önce dağıtılmalıdır.
+Doğrulama testlerini çalıştırmak için hizmet olarak doğrulama (VaaS) yerel aracısını kullanmayı öğrenin. Doğrulama testlerini çalıştırmadan önce yerel aracısının dağıtılması gerekir.
 
 > [!Note]  
-> Yerel aracı üzerinde çalıştığı makinenin internet'e giden erişimini kaybeder değil emin olun. Bu makine VaaS adına kiracınızı kullanmak için yetkili kullanıcılar tarafından erişilebilir olmalıdır.
+> Yerel aracısının çalıştırıldığı makinenin internet 'e giden erişimi kaybetmediğinden emin olun. Bu makineye yalnızca kiracınız adına VaaS kullanma yetkisine sahip olan kullanıcılar erişilebilir olmalıdır.
 
-Yerel aracı dağıtmak için:
+Yerel aracıyı dağıtmak için:
 
-1. Yerel aracıyı yükleyin.
-2. Sağlamlık denetimleri gerçekleştirin.
-3. Yerel aracı çalıştırın.
+1. Yerel aracıyı yükler.
+2. Sağlamlık denetimleri yapın.
+3. Yerel aracıyı çalıştırın.
 
-## <a name="download-and-start-the-local-agent"></a>İndirin ve yerel Aracısı'nı başlatın
+## <a name="download-and-start-the-local-agent"></a>Yerel aracıyı indir ve Başlat
 
-Veri merkezinizde önkoşulları karşıladığını ve tüm Azure Stack uç noktalarına erişimi olan bir makine için aracıyı indirin. Bu makine Azure Stack sisteminin parçası olmamalıdır veya Azure Stack bulut üzerinde barındırılan.
+Aracıyı, veri merkezinizdeki önkoşulları karşılayan ve tüm Azure Stack uç noktalarına erişebilen bir makineye indirin. Bu makine Azure Stack sisteminin bir parçası olmamalıdır veya Azure Stack bulutta barındırılmalıdır.
 
 ### <a name="machine-prerequisites"></a>Makine önkoşulları
 
-Makinenizde aşağıdaki ölçütleri karşıladığından emin olun:
+Makinenizin aşağıdaki ölçütleri karşıladığından emin olun:
 
-- Tüm Azure Stack uç noktalarına erişimi
-- .NET 4.6 ve PowerShell 5.0 yüklü
+- Tüm Azure Stack uç noktalarına erişim
+- .NET 4,6 ve PowerShell 5,0 yüklendi
 - En az 8 GB RAM
-- En az 8 çekirdek işlemcileri
-- En az 200 GB disk alanı
-- İnternet'e kararlı ağ bağlantısı
+- En az 8 çekirdek işlemci
+- Minimum 200 GB disk alanı
+- İnternet 'e yönelik kararlı ağ bağlantısı
 
 ### <a name="download-and-install-the-agent"></a>Aracısını indirme ve yükleme
 
-1. Testleri çalıştırmak için kullanacağınız makinede yükseltilmiş isteminde Windows PowerShell'i açın.
-2. Yerel aracı indirmek için aşağıdaki komutu çalıştırın:
+1. Testleri çalıştırmak için kullanacağınız makinede, yükseltilmiş bir istemde Windows PowerShell 'i açın.
+2. Yerel aracıyı indirmek için aşağıdaki komutu çalıştırın:
 
     ```powershell
     Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "OnPremAgent.zip"
@@ -63,7 +63,7 @@ Makinenizde aşağıdaki ölçütleri karşıladığından emin olun:
     Set-Location VaaSOnPremAgent\lib\net46
     ```
 
-3. Yerel aracı bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
+3. Yerel Aracı bağımlılıklarını yüklemek için aşağıdaki komutu çalıştırın:
 
     ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -78,38 +78,38 @@ Makinenizde aşağıdaki ölçütleri karşıladığından emin olun:
 
     | Parametre | Açıklama |
     | --- | --- |
-    | aadServiceAdminUser | Azure AD kiracınız için genel yönetici kullanıcı. Örneğin olabilir, vaasadmin@contoso.onmicrosoft.com. |
-    | aadServiceAdminPassword | Genel yönetici kullanıcı parolası. |
-    | AadTenantId | Azure hesabı için Azure AD Kiracı kimlik doğrulama hizmet olarak kayıtlı. |
-    | ExternalFqdn | Tam etki alanı adı yapılandırma dosyasından alabilirsiniz. Yönergeler için bkz [hizmet olarak Azure Stack doğrulama iş akışı ortak parametrelerinin](azure-stack-vaas-parameters.md). |
-    | Bölge | Azure AD kiracınızın bölge. |
+    | aadServiceAdminUser | Azure AD kiracınız için genel yönetici kullanıcı. Örneğin, vaasadmin@contoso.onmicrosoft.comolabilir. |
+    | aadServiceAdminPassword | Genel yönetici kullanıcısının parolası. |
+    | AadTenantId | Hizmet olarak doğrulamaya kayıtlı Azure hesabı için Azure AD kiracı KIMLIĞI. |
+    | ExternalFqdn | Yapılandırma dosyasından tam etki alanı adını alabilirsiniz. Yönergeler için bkz. [hizmet olarak Azure Stack doğrulamasında Iş akışı ortak parametreleri](azure-stack-vaas-parameters.md). |
+    | Bölge | Azure AD kiracınızın bölgesi. |
 
-Komut bir ortak görüntü deposu (PIR) görüntü (işletim sistemi VHD'si) ve kopyalama, bir Azure blob depolama alanından Azure Stack depolama indirir.
+Komutu ortak görüntü deposu (PIR) görüntüsünü indirir ve bir Azure Blob depolama alanından Azure Stack depolama alanına kopyalar.
 
-![Önkoşulları indirin](media/installingprereqs.png)
+![Önkoşulları indir](media/installingprereqs.png)
 
 > [!Note]
-> Bu görüntüleri indirirken yavaş ağ hızı karşılaşıyorsanız, bunları ayrı ayrı bir yerel paylaşıma indirin ve parametresini **- LocalPackagePath** *FileShareOrLocalPath*. Daha fazla rehberliğe PIR indirmenizin bölümünde bulabilirsiniz [tanıtıcı yavaş ağ bağlantısı](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity) , [hizmet olarak sorun giderme doğrulama](azure-stack-vaas-troubleshoot.md).
+> Bu görüntüleri indirirken yavaş ağ hızına karşılaşıyorsanız, bunları yerel bir paylaşıma ayrı olarak indirin ve **-LocalPackagePath** *fileshareorlocalpath*parametresini belirtin. [Bir hizmet olarak doğrulama sorunlarını gidermek](azure-stack-vaas-troubleshoot.md)için [yavaş ağ bağlantısını işleme](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity) bölümünde PIR indirilebilirliğinizi daha fazla rehberlik bulabilirsiniz.
 
-## <a name="checks-before-starting-the-tests"></a>Testlere başlamadan önce denetimleri
+## <a name="checks-before-starting-the-tests"></a>Testleri başlatmadan önce denetimler
 
-Uzak operations testleri çalıştırın. Testleri çalıştıran makine Azure Stack uç noktalarına erişime sahip olmalıdır, aksi takdirde testleri çalışmaz. VaaS yerel aracı kullanıyorsanız, aracı çalıştıracağınız makinenin kullanın. Aşağıdaki denetimleri çalıştırarak makinenizi Azure Stack Uç noktalara erişimi olduğunu denetleyebilirsiniz:
+Testler uzak işlemleri çalıştırır. Testleri çalıştıran makinenin Azure Stack uç noktalarına erişimi olması gerekir, aksi takdirde testler çalışmaz. VaaS yerel aracısını kullanıyorsanız, aracının çalıştırılacağı makineyi kullanın. Aşağıdaki denetimleri çalıştırarak makinenizin Azure Stack uç noktalara erişimi olup olmadığını kontrol edebilirsiniz:
 
-1. Taban URI erişilebildiğini kontrol edin. Bir komut istemi veya bash kabuğu ve aşağıdaki komutu çalıştırın komutuyla değiştirerek `<EXTERNALFQDN>` ortamınızın dış FQDN ile:
+1. Taban URI 'sine ulaşılabildiğini denetleyin. Bir komut istemi veya bash kabuğu açın ve aşağıdaki komutu çalıştırarak ortamınızın dış FQDN 'si `<EXTERNALFQDN>` ile değiştirin:
 
     ```bash
     nslookup adminmanagement.<EXTERNALFQDN>
     ```
 
-2. Bir web tarayıcısı açın ve gidin `https://adminportal.<EXTERNALFQDN>` MAS portalı erişilebildiğini denetlemek için.
+2. Bir Web tarayıcısı açın ve bu portala `https://adminportal.<EXTERNALFQDN>` gidip gelmediğini denetlemek için adresine gidin.
 
-3. Azure AD kullanarak oturum açar, test geçiş oluştururken girdiğiniz yönetici adı ve parola değerlerini hizmeti.
+3. Test geçişi oluştururken belirtilen Azure AD hizmet yöneticisi adı ve parola değerlerini kullanarak oturum açın.
 
-4. Sistem durumu denetleyin **Test AzureStack** açıklandığı gibi PowerShell cmdlet'i [Azure Stack için bir doğrulama sınamasını çalıştırmanızı](../operator/azure-stack-diagnostic-test.md). Herhangi bir test başlatmadan önce tüm uyarıları ve hataları düzeltin.
+4. [Azure Stack için doğrulama testi çalıştırma](../operator/azure-stack-diagnostic-test.md)bölümünde açıklandığı gibi **Test-azurestack** PowerShell cmdlet 'ini çalıştırarak sistemin sistem durumunu kontrol edin. Herhangi bir testi başlatmadan önce tüm uyarıları ve hataları düzeltin.
 
-## <a name="run-the-agent"></a>Aracıyı çalıştırın
+## <a name="run-the-agent"></a>Aracıyı çalıştırma
 
-1. Windows PowerShell'i yükseltilmiş isteminde açın.
+1. Windows PowerShell 'i yükseltilmiş bir istemde açın.
 
 2. Şu komutu çalıştırın:
 
@@ -121,22 +121,22 @@ Uzak operations testleri çalıştırın. Testleri çalıştıran makine Azure S
 
     | Parametre | Açıklama |
     | --- | --- |
-    | VaaSUserId | Kullanıcı kimliği kullanılan VaaS portalda oturum açmak için (örneğin, kullanıcı adı\@Contoso.com) |
-    | VaaSTenantId | Azure hesabı için Azure AD Kiracı kimlik doğrulama hizmet olarak kayıtlı. |
+    | Vaasuserıd | Vaas portalında oturum açmak için kullanılan Kullanıcı kimliği (örneğin, Kullanıcı adı\@contoso.com) |
+    | VaaSTenantId | Hizmet olarak doğrulamaya kayıtlı Azure hesabı için Azure AD kiracı KIMLIĞI. |
 
     > [!Note]  
-    > Aracı çalıştırdığınızda, geçerli çalışma dizinine yürütülebilir, Görev Altyapısı ana konumu olmalıdır **Microsoft.VaaSOnPrem.TaskEngineHost.exe.**
+    > Aracıyı çalıştırdığınızda geçerli çalışma dizini, **Microsoft. Vaasonpred. TaskEngineHost. exe** görev altyapısı ana bilgisayar yürütülebilir dosyasının konumu olmalıdır.
 
-Hataları bildirilen görmüyorsanız, yerel aracı başarılı oldu. Aşağıdaki örnek metni konsol penceresinde görünür.
+Bildirilen bir hata görmüyorsanız, yerel aracı başarılı olmuştur. Aşağıdaki örnek metin konsol penceresinde görünür.
 
 `Heartbeat Callback at 11/8/2016 4:45:38 PM`
 
-![Başlatılan aracı](media/startedagent.png)
+![Aracı başlatıldı](media/startedagent.png)
 
-Bir aracıyı adlarıyla benzersiz olarak tanımlanır. Varsayılan olarak, burada başlatıldığından makinenin tam etki alanı adı (FQDN) kullanır. Tüm yanlışlıkla seçer penceresinde önlemek için pencerenin en aza odağı değiştirilmesi, diğer tüm eylemler duraklatır.
+Bir aracı adıyla benzersiz olarak tanımlanır. Varsayılan olarak, başlatıldığı yerden makinenin tam etki alanı adı (FQDN) adını kullanır. Odağı değiştirmek diğer tüm işlemleri durakladıkça pencerede yanlışlıkla seçim yapmadan kaçınmak için pencereyi en aza indirmiş olmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hizmet olarak doğrulama sorunlarını giderme](azure-stack-vaas-troubleshoot.md)
-- [Hizmet temel kavramları olarak doğrulama](azure-stack-vaas-key-concepts.md)
-- [Hızlı Başlangıç: Doğrulama, ilk test zamanlamak için bir servis portalı kullanın.](azure-stack-vaas-schedule-test-pass.md)
+- [Hizmet anahtar kavramları olarak doğrulama](azure-stack-vaas-key-concepts.md)
+- [Hızlı Başlangıç: İlk testinizi zamanlamak için bir hizmet portalı olarak doğrulamayı kullanın](azure-stack-vaas-schedule-test-pass.md)

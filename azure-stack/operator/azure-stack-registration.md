@@ -1,6 +1,6 @@
 ---
-title: Azure kaydı için Azure Stack tümleşik sistemleri | Microsoft Docs
-description: Azure Stack Azure bağlı çok düğümlü dağıtımlar için Azure kayıt işlemi açıklanmaktadır.
+title: Azure Stack tümleşik sistemler için Azure kaydı | Microsoft Docs
+description: Çok düğümlü Azure Stack Azure 'a bağlı dağıtımlar için Azure kayıt işlemini açıklar.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,120 +12,120 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 94eb107450271722af773bc96bec7dfeb12ff52e
-ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
+ms.openlocfilehash: 3fd84e5c294c2cdcfa942aeaf9c2daf9f9245891
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66836707"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418223"
 ---
-# <a name="register-azure-stack-with-azure"></a>Azure Stack Azure ile kaydedin
+# <a name="register-azure-stack-with-azure"></a>Azure ile Azure Stack kaydetme
 
-Azure Stack'in Azure'a kaydedilmesi Azure'dan market öğeleri indirmenize ve Microsoft'a ticaret verileri raporları geri göndermeyi ayarlamanıza olanak tanır. Azure Stack kaydettikten sonra kullanım için Azure ticaret bildirilir ve Azure faturalandırma abonelik kaydı için kullanılan kimliği altında görebilirsiniz.
+Azure Stack'in Azure'a kaydedilmesi Azure'dan market öğeleri indirmenize ve Microsoft'a ticaret verileri raporları geri göndermeyi ayarlamanıza olanak tanır. Azure Stack kaydolduktan sonra, kullanım Azure ticareti ' ne bildirilir ve kayıt için kullanılan Azure Faturalandırma abonelik KIMLIĞI altında görebilirsiniz.
 
-Bu makaledeki bilgiler, Azure ile kayıt Azure Stack tümleşik sistemleri açıklanmaktadır. Azure ile ASDK kaydetme hakkında daha fazla bilgi için bkz: [Azure Stack kayıt](../asdk/asdk-register.md) ASDK belgelerinde.
+Bu makaledeki bilgiler, Azure ile Azure Stack tümleşik sistemleri kaydetmeyi açıklamaktadır. ASDK 'yi Azure ile kaydetme hakkında daha fazla bilgi için, bkz. [Azure Stack kaydolma](../asdk/asdk-register.md) , asdk belgeleri.
 
 > [!IMPORTANT]  
-> Kayıt teklifi Market'te öğeleri dahil olmak üzere tam Azure Stack işlevleri desteklemek için gereklidir. Ayrıca, Azure Stack-,-Kullandıkça Ödeme modeli kullanılırken kaydedilmezse lisanslama koşulları ihlal olacaktır. Azure Stack lisanslama modelleri hakkında daha fazla bilgi için bkz. [sayfa satın alma](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
+> Market 'teki öğelerin sunumu dahil olmak üzere tam Azure Stack işlevselliği desteklemek için kayıt gereklidir. Ayrıca, Kullandıkça Öde faturalandırma modelini kullanırken kaydolmazsınız Azure Stack lisanslama koşullarını ihlal etmezsiniz. Azure Stack lisanslama modelleri hakkında daha fazla bilgi edinmek için lütfen [satın alma sayfasına](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Kaydetmeden önce aşağıdaki yerinde gerekir:
+Kaydolmadan önce aşağıdakiler gereklidir:
 
  - Kimlik bilgilerinizi doğrulayın
- - PowerShell dil modunu ayarlayın
+ - PowerShell dil modunu ayarlama
  - Azure Stack için PowerShell yükleme
- - Azure Stack araçları indirin
- - Kayıt senaryonuz belirleme
+ - Azure Stack araçlarını indirin
+ - Kayıt senaryonuzu belirleme
 
 ### <a name="verify-your-credentials"></a>Kimlik bilgilerinizi doğrulayın
 
-Azure Stack Azure ile kaydetmeden önce şunlara sahip olmalısınız:
+Azure ile Azure Stack kaydolmadan önce, şunları yapmanız gerekir:
 
-- Abonelik kimliği için bir Azure aboneliği. Yalnızca EA, CSP veya CSP paylaşılan hizmetler abonelikleri kaydı için desteklenir. CSP'ler gerek karar vermek kullanılıp kullanılmayacağını [CSP veya APSS bir abonelik kullanın](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>Kimliğini almak için Azure'da oturum açın, sırayla **tüm hizmetleri**. Ardından, altında **genel** kategorisi seçin **abonelikleri**, kullanmak istediğiniz aboneliğe tıklayın ve altında **Essentials** abonelik kimliği bulabilirsiniz
+- Bir Azure aboneliğinin abonelik KIMLIĞI. Kayıt için yalnızca EA, CSP veya CSP paylaşılan hizmetleri abonelikleri desteklenir. CSP 'Lerin [BIR CSP veya APSS aboneliği](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)kullanıp kullanmayacağınızı karar vermesini gerekir.<br><br>KIMLIĞI almak için Azure 'da oturum açın, **tüm hizmetler**' e tıklayın. Ardından, **genel** kategori altında, **abonelikler**' i seçin, kullanmak Istediğiniz aboneliğe tıklayın ve **temel parçalar** altında abonelik kimliğini bulabilirsiniz.
 
   > [!Note]  
   > Almanya bulut abonelikleri şu anda desteklenmemektedir.
 
-- Kullanıcı adı ve parola için aboneliğin sahibi olan bir hesap.
+- Abonelik sahibi olan bir hesabın Kullanıcı adı ve parolası.
 
-- Kullanıcı hesabı, Azure aboneliğine erişiminiz olması ve bu abonelikle dizinde kimlik uygulama ve hizmet sorumluları oluşturma izniniz gerekiyor. Azure Stack Azure ile kaydedin en az ayrıcalıklı yönetim kullanmanızı öneririz. Kayıt için aboneliğinize erişimi sınırlayan bir özel rol tanımını oluşturma hakkında daha fazla bilgi için bkz. [Azure Stack için bir kayıt oluşturup](azure-stack-registration-role.md).
+- Kullanıcı hesabının Azure aboneliğine erişimi olması ve bu abonelikle ilişkili dizinde kimlik uygulamaları ve hizmet sorumluları oluşturma izinlerine sahip olması gerekir. Azure Stack Azure ile en az ayrıcalıklı yönetim kullanarak kaydetmenizi öneririz. Kayıt için aboneliğinize erişimi sınırlayan özel bir rol tanımı oluşturma hakkında daha fazla bilgi için, bkz. [Azure Stack için bir kayıt rolü oluşturma](azure-stack-registration-role.md).
 
-- Azure Stack kaynak sağlayıcısına kayıtlı (Ayrıntılar için aşağıdaki Azure Stack kaynak sağlayıcısını kaydetme bölümüne bakın).
+- Azure Stack kaynak sağlayıcısı kaydedildi (Ayrıntılar için aşağıdaki kayıt Azure Stack kaynak sağlayıcısına bakın bölümüne bakın).
 
-Kayıt sonrasında Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden devreye sokmanız veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.
+Kayıttan sonra, Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler genel yönetici kimlik bilgilerini gerektirebilir. Örneğin, kaynak sağlayıcısı yükleyici betiği veya izin verilmesi gereken yeni bir özellik. Hesabın genel yönetici izinlerini geçici olarak yeniden başlatabilir ya da *varsayılan sağlayıcı aboneliğinin*sahibi olan ayrı bir genel yönetici hesabı kullanabilirsiniz.
 
-Azure Stack kaydeden kullanıcı hizmet sorumlusu Azure Active Directory'de sahibidir. Azure Stack kaydolan kullanıcı, Azure Stack kayıt değiştirebilirsiniz. Kayıt hizmet sorumlusu sahibi değil ve yönetici olmayan bir kullanıcı kaydetmek veya Azure Stack yeniden kaydolmak çalışırsa, bunlar bir 403 yanıt karşılaşabilirsiniz. Kullanıcı işlemi tamamlamak için yeterli izne sahip bir 403 yanıt gösterir.
+Azure Stack kaydeden Kullanıcı, Azure Active Directory hizmet sorumlusunun sahibidir. Yalnızca Azure Stack kaydeden Kullanıcı Azure Stack kaydını değiştirebilir. Kayıt hizmeti sorumlusunun sahibi olmayan yönetici olmayan bir Kullanıcı Azure Stack kaydetmeyi veya yeniden kaydetmeyi denerse, 403 yanıtıyla karşılaşabilir. 403 yanıtı, kullanıcının işlemi gerçekleştirmek için yeterli izinlere sahip olduğunu gösterir.
 
-Bu gereksinimleri karşıladığını Azure aboneliğiniz yoksa, şunları yapabilirsiniz [buradan ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/?b=17.06). Azure aboneliğinize ücret ödemeden Azure Stack kaydetme artmasına neden olur.
+Bu gereksinimleri karşılayan bir Azure aboneliğiniz yoksa [burada ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/free/?b=17.06). Kayıt Azure Stack Azure aboneliğinizde hiçbir ücret alınmaz.
 
 > [!NOTE]
-> Birden fazla Azure Stack varsa, en iyi uygulama, her Azure Stack, kendi aboneliğine kaydolun sağlamaktır. Bu, kullanımı izlemenizi kolaylaştırır.
+> Birden fazla Azure Stack varsa, her Azure Stack kendi aboneliğine kaydetmek en iyi uygulamadır. Bu, kullanımı izlemenize daha kolay hale getirir.
 
 ### <a name="powershell-language-mode"></a>PowerShell dil modu
 
-Azure Stack başarıyla kaydetmek için PowerShell dil modunu ayarlanmalıdır **FullLanguageMode**.  Geçerli dil modunu tam, yükseltilmiş bir PowerShell penceresi açın ve aşağıdaki PowerShell cmdlet'lerini çalıştırmak için ayarlandığını doğrulamak için:
+Azure Stack başarıyla kaydolmak için, PowerShell dil modunun **Fulllanguagemode**olarak ayarlanması gerekir.  Geçerli dil modunun tam olarak ayarlandığını doğrulamak için, yükseltilmiş bir PowerShell penceresi açın ve aşağıdaki PowerShell cmdlet 'lerini çalıştırın:
 
 ```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-Çıktıyı döndürür olun **FullLanguageMode**. Diğer bir dil modu döndürülür, kayıt başka bir makinede çalıştırılması gerekiyor veya dil modu ayarlamak için gereken **FullLanguageMode** devam etmeden önce.
+Çıktının **Fulllanguagemode**döndürdüğünden emin olun. Başka bir dil modu döndürülürse, kaydın başka bir makinede çalıştırılması veya dil modunun devam etmeden önce **Fulllanguagemode** olarak ayarlanması gerekir.
 
 ### <a name="install-powershell-for-azure-stack"></a>Azure Stack için PowerShell yükleme
 
-Azure ile kaydetmek için Azure Stack için en son PowerShell kullanın.
+Azure 'a kaydolmak için Azure Stack için en son PowerShell 'i kullanın.
 
-En son sürümü zaten yüklü değilse bkz [Azure Stack için PowerShell yükleme](azure-stack-powershell-install.md).
+En son sürüm zaten yüklü değilse bkz. [Azure Stack Için PowerShell 'i yükleme](azure-stack-powershell-install.md).
 
-### <a name="download-the-azure-stack-tools"></a>Azure Stack araçları indirin
+### <a name="download-the-azure-stack-tools"></a>Azure Stack araçlarını indirin
 
-Azure Stack araçları GitHub deposunu Azure Stack işlevselliği destekleyen PowerShell modüllerini içerir. Kayıt işlevleri dahil olmak üzere. İçeri aktarma ve kullanmak gereken kayıt işlemi sırasında **RegisterWithAzure.psm1** PowerShell modülü, Azure Stack örneğinizin Azure ile kaydetmek için Azure Stack araçları deposunda bulunamadı.
+Azure Stack araçları GitHub deposu, Azure Stack işlevselliğini destekleyen PowerShell modülleri içerir; kayıt işlevselliği dahil. Kayıt işlemi sırasında, Azure Stack örneğinizi Azure 'a kaydetmek için Azure Stack araçları deposunda bulunan **Registerwithazure. psm1** PowerShell modülünü içeri aktarıp kullanmanız gerekir.
 
-En son sürümü kullandığınızdan emin olmak için Azure Stack araçları var olan tüm sürümlerini silmeniz gerekir ve [Github'dan en son sürümünü indirin](azure-stack-powershell-download.md) Azure'la kaydetmeden önce.
+En son sürümü kullandığınızdan emin olmak için Azure Stack araçlarının var olan sürümlerini silmeniz ve Azure 'a kaydolmadan önce [GitHub 'dan en son sürümü indirmeniz](azure-stack-powershell-download.md) gerekir.
 
-### <a name="determine-your-registration-scenario"></a>Kayıt senaryonuz belirleme
+### <a name="determine-your-registration-scenario"></a>Kayıt senaryonuzu belirleme
 
-Azure Stack dağıtımınıza olabilir *bağlı* veya *bağlantısı kesildi*.
+Azure Stack dağıtımınız *bağlı* veya *bağlantısı kesilmiş*olabilir.
 
- - **Bağlı**  
- İnternet'e ve azure'a bağlanabilmesi için Azure Stack dağıttığınız anlamına gelir bağlı. Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS), kimlik deposu ya da sahip. Bağlı bir dağıtım ile iki faturalandırma modelimiz seçebilirsiniz:-,-kullandıkça veya kapasite tabanlı.
-    - [Azure'ı kullanarak bağlı bir Azure Stack kayıt **-,-kullandıkça** faturalandırma modeli](#register-connected-with-pay-as-you-go-billing)
-    - [Azure'ı kullanarak bağlı bir Azure Stack kayıt **kapasite** faturalandırma modeli](#register-connected-with-capacity-billing)
+ - **Yapıldı**  
+ Bağlı, Internet 'e ve Azure 'a bağlanabilmeleri için Azure Stack dağıttığınız anlamına gelir. Kimlik deponuzda Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sahip olursunuz. Bağlı bir dağıtım ile iki faturalandırma modeli arasından seçim yapabilirsiniz: Kullandıkça Öde veya kapasite tabanlı.
+    - [**Kullandıkça Öde** faturalandırma modelini kullanarak Azure ile bağlı bir Azure Stack kaydetme](#register-connected-with-pay-as-you-go-billing)
+    - [**Kapasite** faturalandırma modelini kullanarak Azure ile bağlı bir Azure Stack kaydetme](#register-connected-with-capacity-billing)
 
- - **Bağlantısı kesildi**  
- Bağlantısı kesilmiş olan Azure dağıtım seçeneği, dağıtma ve Azure Stack internet bağlantısı olmadan kullanın. Ancak, bağlantısı kesilmiş bir dağıtım ile bir AD FS kimlik deposunu ve kapasite tabanlı faturalandırma modeli için sınırlı olursunuz.
-    - [Bağlantısı kesilmiş bir Azure Stack kullanarak kaydolmanız **kapasite** faturalandırma modeli ](#register-disconnected-with-capacity-billing)
+ - **Bağlantınızı**  
+ Azure dağıtım bağlantısı kesildi seçeneğiyle, Azure Stack Internet bağlantısı olmadan dağıtabilir ve kullanabilirsiniz. Ancak, bağlantısı kesilen bir dağıtımla AD FS kimlik deposu ve kapasite tabanlı faturalandırma modeliyle sınırlı olursunuz.
+    - [**Kapasite** faturalandırma modelini kullanarak bağlantısı kesilen Azure Stack kaydetme](#register-disconnected-with-capacity-billing)
 
-### <a name="determine-a-unique-registration-name-to-use"></a>Kullanmak için benzersiz kayıt adını belirleme 
-Azure Stack Azure ile kaydettiğinizde, benzersiz kayıt adı sağlamanız gerekir. Azure Stack aboneliğinizi bir Azure kaydı ile ilişkilendirmek için kolay bir yolu, Azure Stack kullanmaktır **bulut kimliği**. 
+### <a name="determine-a-unique-registration-name-to-use"></a>Kullanılacak benzersiz bir kayıt adı belirleme 
+Azure ile Azure Stack kaydettiğinizde, benzersiz bir kayıt adı belirtmeniz gerekir. Azure Stack aboneliğinizi Azure kaydıyla ilişkilendirmenin kolay bir yolu, Azure Stack **bulut kimliğinizi**kullanmaktır. 
 
 > [!NOTE]
-> Kapasite tabanlı bir faturalandırma modelini kullanarak azure Stack kayıtlarını sürece bu yıllık abonelik süresi dolduktan sonra yeniden kaydederken benzersiz adını değiştirmek gerekir, [süresi dolmuş kayıt silme](azure-stack-registration.md#change-the-subscription-you-use) ve yeniden kaydedin Azure.
+> Kapasite tabanlı faturalandırma modelini kullanan Azure Stack kayıtları, [tarihi dolan kaydı silip](azure-stack-registration.md#change-the-subscription-you-use) Azure 'a yeniden kaydolmadığınız müddetçe, bu yıllık aboneliklerden sonra yeniden kaydolurken benzersiz adı değiştirmesi gerekecektir.
 
-Azure Stack dağıtımınıza bulut kimliği belirlemek için aşağıdaki komutları çalıştırın, ayrıcalıklı uç noktasına erişmek bir bilgisayarda bir yönetici olarak PowerShell'i açın ve kaydı **Cloudıd** değeri: 
+Azure Stack dağıtımınızın bulut KIMLIĞINI öğrenmek için, PowerShell 'i ayrıcalıklı uç noktaya erişebilen bir bilgisayarda yönetici olarak açın, aşağıdaki komutları çalıştırın ve **Cloudıd** değerini kaydedin: 
 
 ```powershell
 Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
 Run: Get-AzureStackStampInformation 
 ```
 
-## <a name="register-connected-with-pay-as-you-go-billing"></a>Kullandıkça Öde faturalandırma ile bağlı kaydetme
+## <a name="register-connected-with-pay-as-you-go-billing"></a>Kullandıkça Öde faturalandırmasıyla kaydolun
 
-Azure Stack-,-Kullandıkça Ödeme modelini kullanarak Azure ile kaydetmek için aşağıdaki adımları kullanın.
+Kullandıkça Öde faturalandırma modelini kullanarak Azure ile Azure Stack kaydetmek için bu adımları kullanın.
 
 > [!Note]  
-> Bu adımların tümünü (CESARETLENDİRİCİ) ayrıcalıklı uç noktasına erişimi olan bir bilgisayardan çalıştırmanız gerekir. CESARETLENDİRİCİ hakkında daha fazla ayrıntı için bkz: [Azure Stack'te ayrıcalıklı uç noktayı kullanarak](azure-stack-privileged-endpoint.md).
+> Tüm bu adımların ayrıcalıklı uç noktaya (PEP) erişimi olan bir bilgisayardan çalıştırılması gerekir. PEP hakkında daha fazla bilgi için, bkz. [Azure Stack ayrıcalıklı uç noktası kullanma](azure-stack-privileged-endpoint.md).
 
-Azure ve internet bağlantılı ortamlar erişebilirsiniz. Bu ortamlar için Azure ile Azure Stack kaynak sağlayıcısını kaydedin ve ardından faturalama modelinizi yapılandırmanız gerekir.
+Bağlı ortamlar Internet ve Azure 'a erişebilir. Bu ortamlar için Azure Stack kaynak sağlayıcısını Azure ile kaydetmeniz ve ardından Faturalandırma modelinizi yapılandırmanız gerekir.
 
-1. Azure ile Azure Stack kaynak sağlayıcısını kaydetmek için PowerShell ISE yönetici olarak başlatın ve aşağıdaki PowerShell cmdlet'leriyle **EnvironmentName** parametre uygun Azure aboneliğini türüne (bkz: parametreleri aşağıdaki).
+1. Azure Stack kaynak sağlayıcısını Azure ile kaydetmek için, PowerShell ıSE 'yi yönetici olarak başlatın ve aşağıdaki PowerShell cmdlet 'lerini uygun Azure abonelik türüne ayarlanmış olan **Environmentname** parametresiyle birlikte kullanın (aşağıdaki parametrelere bakın).
 
-2. Azure Stack kaydetmek için kullandığınız bir Azure hesabı ekleyin. Hesap eklemek için şunu çalıştırın **Add-AzureRmAccount** cmdlet'i. Azure hesabı kimlik bilgilerinizi girmeniz istenir ve hesabınızın yapılandırmasına bağlı olarak 2 faktörlü kimlik doğrulaması kullanmak zorunda kalabilirsiniz.
+2. Azure Stack kaydetmek için kullandığınız Azure hesabını ekleyin. Hesabı eklemek için **Add-AzureRmAccount** cmdlet 'ini çalıştırın. Azure hesabı kimlik bilgilerinizi girmeniz istenir ve hesabınızın yapılandırmasına göre 2 öğeli kimlik doğrulaması kullanmanız gerekebilir.
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -133,27 +133,27 @@ Azure ve internet bağlantılı ortamlar erişebilirsiniz. Bu ortamlar için Azu
 
    | Parametre | Açıklama |  
    |-----|-----|
-   | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları **AzureCloud**, **AzureUSGovernment**, veya Çin Azure aboneliği kullanıyorsanız **AzureChinaCloud**.  |
+   | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları, **Azurecsesli**, **AzureUSGovernment**veya Çin Azure aboneliği kullanılıyorsa, **AzureChinaCloud**.  |
 
-3. Birden fazla aboneliğiniz varsa, kullanmak istediğiniz seçmek için aşağıdaki komutu çalıştırın:  
+3. Birden çok aboneliğiniz varsa, kullanmak istediğiniz birini seçmek için aşağıdaki komutu çalıştırın:  
 
    ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
-4. Azure aboneliğinizdeki Azure Stack kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
+4. Azure aboneliğinize Azure Stack kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
 
    ```powershell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. PowerShell ISE yönetici olarak başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarma **RegisterWithAzure.psm1** kullanarak PowerShell Modülü:
+5. PowerShell ıSE 'yi yönetici olarak başlatın ve Azure Stack araçları 'nı indirdiğinizde oluşturulan **Azurestack-Tools-Master** dizinindeki **kayıt** klasörüne gidin. **Registerwithazure. psm1** modülünü PowerShell kullanarak içeri aktarın:
 
    ```powershell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Ardından, aynı PowerShell oturumunda, doğru Azure PowerShell bağlamına oturum emin olun. Daha önce Azure Stack kaynak sağlayıcısını kaydetmek için kullanılan Azure hesap budur. Çalıştırılacak Powershell:
+6. Ardından, aynı PowerShell oturumunda, doğru Azure PowerShell bağlamında oturum açtığınızdan emin olun. Bu, daha önce Azure Stack kaynak sağlayıcısını kaydetmek için kullanılan Azure hesabıdır. Çalıştırmak için PowerShell:
 
    ```powershell  
    Connect-AzureRmAccount -Environment "<environment name>"
@@ -161,9 +161,9 @@ Azure ve internet bağlantılı ortamlar erişebilirsiniz. Bu ortamlar için Azu
 
    | Parametre | Açıklama |  
    |-----|-----|
-   | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları **AzureCloud**, **AzureUSGovernment**, veya Çin Azure aboneliği kullanıyorsanız **AzureChinaCloud**.  |
+   | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları, **Azurecsesli**, **AzureUSGovernment**veya Çin Azure aboneliği kullanılıyorsa, **AzureChinaCloud**.  |
 
-7. Aynı PowerShell oturumunda çalıştırın **kümesi AzsRegistration** cmdlet'i. Çalıştırılacak PowerShell:  
+7. Aynı PowerShell oturumunda, **set-AzsRegistration** cmdlet 'ini çalıştırın. Çalıştırmak için PowerShell:  
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -174,22 +174,22 @@ Azure ve internet bağlantılı ortamlar erişebilirsiniz. Bu ortamlar için Azu
       -BillingModel PayAsYouUse `
       -RegistrationName $RegistrationName
    ```
-   Set-AzsRegistration cmdlet'i hakkında daha fazla bilgi için bkz. [kayıt başvuru](#registration-reference).
+   Set-AzsRegistration cmdlet 'i hakkında daha fazla bilgi için bkz. [kayıt başvurusu](#registration-reference).
 
-   İşlem, 10 ile 15 dakika arasında sürer. Komut tamamlandığında, ileti gördüğünüz **"ortamınızı şimdi kaydedilir ve sağlanan parametreleri kullanarak etkinleştirildi."**
+   İşlem 10 ile 15 dakika arasında sürer. Komut tamamlandığında, **"ortamınız artık kayıtlı ve belirtilen parametreler kullanılarak etkinleştirildi"** iletisini görürsünüz.
 
-## <a name="register-connected-with-capacity-billing"></a>Kapasite faturalandırmayla bağlı kaydetme
+## <a name="register-connected-with-capacity-billing"></a>Kapasite faturalandırmaya bağlı kayıt
 
-Azure Stack-,-Kullandıkça Ödeme modelini kullanarak Azure ile kaydetmek için aşağıdaki adımları kullanın.
+Kullandıkça Öde faturalandırma modelini kullanarak Azure ile Azure Stack kaydetmek için bu adımları kullanın.
 
 > [!Note]  
-> Bu adımların tümünü (CESARETLENDİRİCİ) ayrıcalıklı uç noktasına erişimi olan bir bilgisayardan çalıştırmanız gerekir. CESARETLENDİRİCİ hakkında daha fazla ayrıntı için bkz: [Azure Stack'te ayrıcalıklı uç noktayı kullanarak](azure-stack-privileged-endpoint.md).
+> Tüm bu adımların ayrıcalıklı uç noktaya (PEP) erişimi olan bir bilgisayardan çalıştırılması gerekir. PEP hakkında daha fazla bilgi için, bkz. [Azure Stack ayrıcalıklı uç noktası kullanma](azure-stack-privileged-endpoint.md).
 
-Azure ve internet bağlantılı ortamlar erişebilirsiniz. Bu ortamlar için Azure ile Azure Stack kaynak sağlayıcısını kaydedin ve ardından faturalama modelinizi yapılandırmanız gerekir.
+Bağlı ortamlar Internet ve Azure 'a erişebilir. Bu ortamlar için Azure Stack kaynak sağlayıcısını Azure ile kaydetmeniz ve ardından Faturalandırma modelinizi yapılandırmanız gerekir.
 
-1. Azure ile Azure Stack kaynak sağlayıcısını kaydetmek için PowerShell ISE yönetici olarak başlatın ve aşağıdaki PowerShell cmdlet'leriyle **EnvironmentName** parametre uygun Azure aboneliğini türüne (bkz: parametreleri aşağıdaki).
+1. Azure Stack kaynak sağlayıcısını Azure ile kaydetmek için, PowerShell ıSE 'yi yönetici olarak başlatın ve aşağıdaki PowerShell cmdlet 'lerini uygun Azure abonelik türüne ayarlanmış olan **Environmentname** parametresiyle birlikte kullanın (aşağıdaki parametrelere bakın).
 
-2. Azure Stack kaydetmek için kullandığınız bir Azure hesabı ekleyin. Hesap eklemek için şunu çalıştırın **Add-AzureRmAccount** cmdlet'i. Azure hesabı kimlik bilgilerinizi girmeniz istenir ve hesabınızın yapılandırmasına bağlı olarak 2 faktörlü kimlik doğrulaması kullanmak zorunda kalabilirsiniz.
+2. Azure Stack kaydetmek için kullandığınız Azure hesabını ekleyin. Hesabı eklemek için **Add-AzureRmAccount** cmdlet 'ini çalıştırın. Azure hesabı kimlik bilgilerinizi girmeniz istenir ve hesabınızın yapılandırmasına göre 2 öğeli kimlik doğrulaması kullanmanız gerekebilir.
 
    ```powershell  
    Connect-AzureRmAccount -Environment "<environment name>"
@@ -197,21 +197,21 @@ Azure ve internet bağlantılı ortamlar erişebilirsiniz. Bu ortamlar için Azu
 
    | Parametre | Açıklama |  
    |-----|-----|
-   | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları **AzureCloud**, **AzureUSGovernment**, veya Çin Azure aboneliği kullanıyorsanız **AzureChinaCloud**.  |
+   | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları, **Azurecsesli**, **AzureUSGovernment**veya Çin Azure aboneliği kullanılıyorsa, **AzureChinaCloud**.  |
 
-3. Birden fazla aboneliğiniz varsa, kullanmak istediğiniz seçmek için aşağıdaki komutu çalıştırın:  
+3. Birden çok aboneliğiniz varsa, kullanmak istediğiniz birini seçmek için aşağıdaki komutu çalıştırın:  
 
    ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
-4. Azure aboneliğinizdeki Azure Stack kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
+4. Azure aboneliğinize Azure Stack kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
 
    ```powershell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. PowerShell ISE yönetici olarak başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarma **RegisterWithAzure.psm1** kullanarak PowerShell Modülü:
+5. PowerShell ıSE 'yi yönetici olarak başlatın ve Azure Stack araçları 'nı indirdiğinizde oluşturulan **Azurestack-Tools-Master** dizinindeki **kayıt** klasörüne gidin. **Registerwithazure. psm1** modülünü PowerShell kullanarak içeri aktarın:
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -224,48 +224,48 @@ Azure ve internet bağlantılı ortamlar erişebilirsiniz. Bu ortamlar için Azu
       -RegistrationName $RegistrationName
    ```
    > [!Note]  
-   > Kullanım için UsageReportingEnabled parametreli raporlama devre dışı bırakabilirsiniz **kümesi AzsRegistration** cmdlet parametresini false olarak ayarlayarak. 
+   > Parametresini false olarak ayarlayarak **set-AzsRegistration** cmdlet 'inin UsageReportingEnabled parametresiyle kullanım raporlamayı devre dışı bırakabilirsiniz. 
    
-   Set-AzsRegistration cmdlet'i hakkında daha fazla bilgi için bkz. [kayıt başvuru](#registration-reference).
+   Set-AzsRegistration cmdlet 'i hakkında daha fazla bilgi için bkz. [kayıt başvurusu](#registration-reference).
 
-## <a name="register-disconnected-with-capacity-billing"></a>Kayıt kapasite faturalandırmayla bağlantısı kesildi
+## <a name="register-disconnected-with-capacity-billing"></a>Kapasite faturalandırmayla bağlantısı kesildi
 
-Azure Stack bağlantısı kesilmiş bir ortamda (internet bağlantısı olmayan) kaydediyorsanız Azure Stack ortamından bir kayıt belirtecinizi almak ve sonra bu belirteci Azure'a bağlanabilir ve Azure Stack için PowerShell olan bir bilgisayarda gerekir yüklü.  
+Bağlantısı kesilmiş bir ortama Azure Stack kaydediyorsanız (internet bağlantısı olmadan), Azure Stack ortamından bir kayıt belirteci almanız ve ardından bu belirteci Azure 'a bağlanabilecek ve PowerShell 'e sahip olan bir bilgisayarda kullanmanız gerekir Azure Stack yüklendiyse.  
 
-### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Azure Stack ortamından bir kayıt belirtecinizi almak
+### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Azure Stack ortamından bir kayıt belirteci alın
 
-1. PowerShell ISE yönetici olarak başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarma **RegisterWithAzure.psm1** Modülü:  
+1. PowerShell ıSE 'yi yönetici olarak başlatın ve Azure Stack araçları 'nı indirdiğinizde oluşturulan **Azurestack-Tools-Master** dizinindeki **kayıt** klasörüne gidin. **Registerwithazure. psm1** modülünü içeri aktarın:  
 
    ```powershell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-2. Kayıt belirtecinizi almak için aşağıdaki PowerShell cmdlet'lerini çalıştırın:  
+2. Kayıt belirtecini almak için aşağıdaki PowerShell cmdlet 'lerini çalıştırın:  
 
    ```Powershell
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$False -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
-   Get-AzsRegistrationToken cmdlet'i hakkında daha fazla bilgi için bkz. [kayıt başvuru](#registration-reference).
+   Get-AzsRegistrationToken cmdlet 'i hakkında daha fazla bilgi için bkz. [kayıt başvurusu](#registration-reference).
 
    > [!Tip]  
-   > Kayıt belirteç için belirtilen dosya kaydedilir *$FilePathForRegistrationToken*. Dosya yolu veya dosya adı, günlüklerinizin bekletilme değiştirebilirsiniz.
+   > Kayıt belirteci, *$FilePathForRegistrationToken*için belirtilen dosyaya kaydedilir. FilePath veya dosya adını dilediğiniz şekilde değiştirebilirsiniz.
 
-3. Azure üzerinde kullanım için bu kayıt belirtecinizi kaydetme makine bağlı. Dosya veya metin $FilePathForRegistrationToken kopyalayabilirsiniz.
+3. Bu kayıt belirtecini Azure bağlı makinesinde kullanmak üzere kaydedin. $FilePathForRegistrationToken dosya veya metin kopyalayabilirsiniz.
 
-### <a name="connect-to-azure-and-register"></a>Azure ve kayıt bağlanma
+### <a name="connect-to-azure-and-register"></a>Azure 'a bağlanma ve kaydetme
 
-Internet'e bağlı bilgisayarda RegisterWithAzure.psm1 modülünü içeri aktarın ve oturum açmak için doğru Azure Powershell bağlamı için aynı adımları gerçekleştirin. Ardından kayıt AzsEnvironment çağırın. Azure ile kaydetmek için kayıt belirtecini belirtin. Azure Stack aynı Azure abonelik Kimliğini kullanarak birden fazla örneğini kaydediyorsanız, benzersiz kayıt adı belirtin.
+Internet 'e bağlı bilgisayarda, RegisterWithAzure. psm1 modülünü içeri aktarmak için aynı adımları gerçekleştirin ve doğru Azure PowerShell bağlamına oturum açın. Ardından Register-AzsEnvironment çağırın. Azure 'a kaydolmak için kayıt belirtecini belirtin. Aynı Azure abonelik KIMLIĞINI kullanarak Azure Stack birden fazla örneğini kaydediyorsanız, benzersiz bir kayıt adı belirtin.
 
-Kayıt belirtecinizi ve benzersiz bir belirteç adı gerekir.
+Kayıt belirtecinize ve benzersiz bir belirteç adına ihtiyacınız olacaktır.
 
-1. PowerShell ISE yönetici olarak başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarma **RegisterWithAzure.psm1** Modülü:  
+1. PowerShell ıSE 'yi yönetici olarak başlatın ve Azure Stack araçları 'nı indirdiğinizde oluşturulan **Azurestack-Tools-Master** dizinindeki **kayıt** klasörüne gidin. **Registerwithazure. psm1** modülünü içeri aktarın:  
 
    ```powershell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-2. Ardından, aşağıdaki PowerShell cmdlet'lerini çalıştırın:  
+2. Ardından aşağıdaki PowerShell cmdlet 'lerini çalıştırın:  
 
   ```powershell  
   $RegistrationToken = "<Your Registration Token>"
@@ -273,17 +273,17 @@ Kayıt belirtecinizi ve benzersiz bir belirteç adı gerekir.
   Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
   ```
 
-İsteğe bağlı olarak, kayıt belirtecinizi içeren bir dosyaya işaret edecek şekilde Get-Content cmdlet'ini kullanabilirsiniz.
+İsteğe bağlı olarak, Get-Content cmdlet 'ini kullanarak kayıt belirtecinizi içeren bir dosyayı işaret edebilir.
 
-Kayıt belirtecinizi ve benzersiz bir belirteç adı gerekir.
+Kayıt belirtecinize ve benzersiz bir belirteç adına ihtiyacınız olacaktır.
 
-1. PowerShell ISE yönetici olarak başlatın ve gidin **kayıt** klasöründe **AzureStack araçları ana** Azure Stack araçları yüklendiğinde oluşturulan dizin. İçeri aktarma **RegisterWithAzure.psm1** Modülü:  
+1. PowerShell ıSE 'yi yönetici olarak başlatın ve Azure Stack araçları 'nı indirdiğinizde oluşturulan **Azurestack-Tools-Master** dizinindeki **kayıt** klasörüne gidin. **Registerwithazure. psm1** modülünü içeri aktarın:  
 
   ```powershell  
   Import-Module .\RegisterWithAzure.psm1
   ```
 
-2. PowerShell cmdlet'lerini aşağıdaki ardından çalıştırın:  
+2. Ardından aşağıdaki PowerShell cmdlet 'lerini çalıştırın:  
 
   ```powershell  
   $RegistrationToken = Get-Content -Path '<Path>\<Registration Token File>'
@@ -291,13 +291,13 @@ Kayıt belirtecinizi ve benzersiz bir belirteç adı gerekir.
   ```
 
   > [!Note]  
-  > Kayıt kaynak adı ve gelecekte başvurmak için kayıt belirtecini kaydedin.
+  > Kayıt kaynağı adını ve kayıt belirtecini ileride başvurmak üzere kaydedin.
 
-### <a name="retrieve-an-activation-key-from-azure-registration-resource"></a>Azure kaydı kaynaktan etkinleştirme anahtarı alma
+### <a name="retrieve-an-activation-key-from-azure-registration-resource"></a>Azure kayıt kaynağından bir etkinleştirme anahtarı alma
 
-Ardından, Azure'da Register-AzsEnvironment sırasında oluşturulan kayıt kaynağıyla etkinleştirme anahtarı almak gerekir.
+Ardından, Register-AzsEnvironment sırasında Azure 'da oluşturulan kayıt kaynağından bir etkinleştirme anahtarı almanız gerekir.
 
-Etkinleştirme anahtarı almak için aşağıdaki PowerShell cmdlet'lerini çalıştırın:  
+Etkinleştirme anahtarını almak için aşağıdaki PowerShell cmdlet 'lerini çalıştırın:  
 
   ```Powershell
   $RegistrationResourceName = "<unique-registration-name>"
@@ -306,66 +306,66 @@ Etkinleştirme anahtarı almak için aşağıdaki PowerShell cmdlet'lerini çal�
   ```
 
   > [!Tip]  
-  > Etkinleştirme anahtarı için belirtilen dosyada kaydedilmiş *$KeyOutputFilePath*. Dosya yolu veya dosya adı, günlüklerinizin bekletilme değiştirebilirsiniz.
+  > Etkinleştirme anahtarı *$KeyOutputFilePath*için belirtilen dosyaya kaydedilir. FilePath veya dosya adını dilediğiniz şekilde değiştirebilirsiniz.
 
-### <a name="create-an-activation-resource-in-azure-stack"></a>Azure Stack'te bir etkinleştirme kaynağını oluşturma
+### <a name="create-an-activation-resource-in-azure-stack"></a>Azure Stack bir etkinleştirme kaynağı oluşturma
 
-Azure Stack ortamına, Get-AzsActivationKey oluşturulan etkinleştirme anahtarından dosya ya da metin döndürür. Ardından bu etkinleştirme anahtarı kullanarak Azure Stack'te bir etkinleştirme kaynağını oluşturun. Bir etkinleştirme kaynağını oluşturmak için aşağıdaki PowerShell cmdlet'lerini çalıştırın: 
+Get-AzsActivationKey öğesinden oluşturulan etkinleştirme anahtarından dosya veya metin ile Azure Stack ortamına dönün. Daha sonra, bu etkinleştirme anahtarını kullanarak Azure Stack bir etkinleştirme kaynağı oluşturursunuz. Etkinleştirme kaynağı oluşturmak için aşağıdaki PowerShell cmdlet 'lerini çalıştırın: 
 
   ```Powershell
   $ActivationKey = "<activation key>"
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
 
-İsteğe bağlı olarak, kayıt belirtecinizi içeren bir dosyaya işaret edecek şekilde Get-Content cmdlet'i kullanabilirsiniz:
+İsteğe bağlı olarak, Get-Content cmdlet 'ini kullanarak kayıt belirtecinizi içeren bir dosyayı işaret edebilirsiniz:
 
   ```Powershell
   $ActivationKey = Get-Content -Path '<Path>\<Activation Key File>'
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
 
-## <a name="verify-azure-stack-registration"></a>Azure Stack kayıt doğrulayın
+## <a name="verify-azure-stack-registration"></a>Azure Stack kaydı doğrulama
 
-Kullanabileceğiniz **bölge Yönetimi** Azure Stack kaydın başarılı olduğunu doğrulamak için bir kutucuk. Bu kutucuk, Yönetim Portalı'nda varsayılan pano üzerinde kullanılabilir. Durum kayıtlı veya kayıtlı değil. Kaydettiyseniz, Azure Stack adını ve kayıt kaynak grubunun yanı sıra kaydolmak için kullandığınız ayrıca Azure abonelik Kimliğini gösterir.
+Azure Stack kaydın başarılı olduğunu doğrulamak için **Bölge yönetimi** kutucuğunu kullanabilirsiniz. Bu kutucuk, yönetim portalındaki varsayılan panoda bulunur. Durum kaydedilebilir veya kaydettirilmemiş olabilir. Kaydedilmişse, kayıt kaynağı grubu ve adı ile birlikte Azure Stack kaydetmek için kullandığınız Azure abonelik KIMLIĞINI de gösterir.
 
-1. Oturum [Azure Stack Yönetim Portalı](https://adminportal.local.azurestack.external).
+1. [Azure Stack yönetim portalında](https://adminportal.local.azurestack.external)oturum açın.
 
-2. Panoda **bölge Yönetimi**.
+2. Panodan **Bölge yönetimi**' ni seçin.
 
-3. Seçin **özellikleri**. Bu dikey pencere, ortamınızın ayrıntılarını ve durumunu gösterir. Durum olabilir **kayıtlı**, **kayıtlı**, veya **süresi dolan**.
+3. Seçin **özellikleri**. Bu dikey pencere, ortamınızın durumunu ve ayrıntılarını gösterir. Durum **kaydedilebilir**, **kaydettirilmemiş**veya **geçerliliği zaman aşımına**eklenebilir.
 
-    [![Bölge Yönetimi kutucuğu](media/azure-stack-registration/admin1sm.png "bölge Yönetimi kutucuğu")](media/azure-stack-registration/admin1.png#lightbox)
+    [![Bölge yönetimi kutucuğu](media/azure-stack-registration/admin1sm.png "Bölge yönetimi kutucuğu")](media/azure-stack-registration/admin1.png#lightbox)
 
-    Kayıtlı, özellikler şunlardır:
+    Kaydedilmişse, özellikler şunları içerir:
     
-    - **Kayıt abonelik kimliği**: Kayıtlı ve Azure Stack'e ilişkili Azure abonelik kimliği
-    - **Kayıt kaynak grubu**: Azure kaynak grubu Azure Stack kaynakları içeren ilişkili aboneliği.
+    - **Kayıt ABONELIK kimliği**: Azure Stack kayıtlı ve ilişkili Azure abonelik KIMLIĞI
+    - **Kayıt kaynak grubu**: Azure Stack kaynaklarını içeren ilişkili abonelikte Azure Kaynak grubu.
 
-4. Azure Stack'i uygulama kayıtları görüntülemek için Azure portalını kullanın. Azure Stack kaydolmak için kullandığınız aboneliği ilişkili bir hesabı kullanarak Azure portalında oturum açın. Azure Stack ile ilişkilendirilen Kiracı geçin.
-5. Gidin **Azure Active Directory > Uygulama kayıtları > tüm uygulamaları görüntüle**.
+4. Azure Stack uygulama kayıtlarını görüntülemek için Azure portal kullanın. Azure Stack kaydettirmek için kullandığınız abonelikle ilişkili bir hesabı kullanarak Azure portal oturum açın. Azure Stack ilişkili kiracıya geçiş yapın.
+5. **Tüm uygulamaları görüntülemek > Azure Active Directory > uygulama kayıtları**gidin.
 
     ![Uygulama kayıtları](media/azure-stack-registration/app-registrations.png)
 
-    Azure Stack uygulama kayıtları önekiyle **Azure Stack**.
+    Azure Stack uygulama kayıtlarına ön eki eklenmiş **Azure Stack**.
 
-Alternatif olarak, Market yönetim özelliğini kullanarak kaydınız başarılı olup olmadığını doğrulayabilirsiniz. Market öğesi Market yönetim dikey penceresindeki listesini görürseniz kaydınız başarılı oldu. Ancak, bağlantısı kesilmiş ortamlarda, Market yönetiminde Market öğeleri görmesi mümkün olmayacaktır.
+Alternatif olarak, Market yönetim özelliğini kullanarak kayıt işleminin başarılı olup olmadığını doğrulayabilirsiniz. Market yönetimi dikey penceresinde Market öğelerinin bir listesini görürseniz kaydınız başarılı oldu. Ancak, bağlantısı kesilen ortamlarda Market yönetimi 'nde Market öğelerini göremezsiniz.
 
 > [!NOTE]
-> Kayıt tamamlandıktan sonra değil kaydetmek için etkin uyarı görünmeyecek. Bağlantısı kesilmiş senaryolarda Market yönetim başarıyla kayıtlı olsa bile, kaydetme ve Azure Stack, etkinleştirmek için soran bir ileti görürsünüz.
+> Kayıt tamamlandıktan sonra, kayıt olmayan etkin uyarı artık görünmez. Bağlantısı kesik senaryolarda, Market yönetimi 'nde, başarıyla kaydolduysanız bile Azure Stack kaydetmenizi ve etkinleştirmenizi isteyip istemediğinizi soran bir ileti görürsünüz.
 
-## <a name="renew-or-change-registration"></a>Yenileme veya kaydı değiştirme
+## <a name="renew-or-change-registration"></a>Kaydı yenileme veya değiştirme
 
-### <a name="renew-or-change-registration-in-connected-environments"></a>Yenileme veya bağlı ortamlarda kaydı değiştirme
+### <a name="renew-or-change-registration-in-connected-environments"></a>Bağlı ortamlardaki kayıtları yenileme veya değiştirme
 
-Güncelleştirebilir veya aşağıdaki durumlarda kaydınızı yenilemeniz gerekir:
+Aşağıdaki koşullarda kaydınızı güncelleştirmeniz veya yenilemeniz gerekir:
 
-- Sonra kapasite tabanlı yıllık aboneliğinizi yenileyin.
-- Faturalandırma modelinizin değiştirdiğinizde.
-- Ne zaman kapasite kullanıma dayalı faturalandırma için değişiklikleri (düğüm ekleme/kaldırma) ölçeklendirin.
+- Kapasite tabanlı yıllık aboneliğinizi yeniledikten sonra.
+- Faturalama modelinizi değiştirdiğinizde.
+- Kapasite tabanlı faturalandırma için değişiklikleri ölçeklendirirseniz (düğüm Ekle/Kaldır).
 
-#### <a name="change-the-subscription-you-use"></a>Kullandığınız aboneliği Değiştir
+#### <a name="change-the-subscription-you-use"></a>Kullandığınız aboneliği değiştirme
 
-Aboneliğinizi değiştirmek istiyorsanız, kullanırsanız, önce çalıştırmalısınız **Remove-AzsRegistration** cmdlet'ini doğru Azure PowerShell bağlamına oturum açtığınızdan emin olun ve son olarak çalıştırın **AzsRegistration kümesi**  değiştirilen dahil olmak üzere herhangi bir parametre ile `<billing model>`:
+Kullandığınız aboneliği değiştirmek istiyorsanız, önce **Remove-azsregistration** cmdlet 'ini çalıştırmanız, ardından doğru Azure PowerShell bağlamında oturum açtığınızdan emin olmanız ve son olarak, değiştirilen parametrelerle **set-azsregistration** komutunu çalıştırmanız gerekir Aşağıdakiler `<billing model>`dahil:
 
   ```powershell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -RegistrationName $RegistrationName
@@ -373,57 +373,57 @@ Aboneliğinizi değiştirmek istiyorsanız, kullanırsanız, önce çalıştırm
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
-#### <a name="change-the-billing-model-or-how-to-offer-features"></a>Faturalandırma modeli veya nasıl sunacağınızı özelliklerini değiştirme
+#### <a name="change-the-billing-model-or-how-to-offer-features"></a>Faturalandırma modelini değiştirme veya özellikleri sunma
 
-Faturalandırma modeli veya nasıl sunacağınızı yüklemenizin özelliklerini değiştirmek istiyorsanız, yeni değerleri ayarlamak için kayıt işlevi çağırabilir. Geçerli kaydı silmeniz gerekmez:
+Faturalandırma modelini değiştirmek veya yüklemenizin özelliklerini sunmak isterseniz, yeni değerleri ayarlamak için kayıt işlevini çağırabilirsiniz. Önce geçerli kaydı kaldırmanız gerekmez:
 
   ```powershell  
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
-### <a name="renew-or-change-registration-in-disconnected-environments"></a>Yenileme veya bağlantısı kesilmiş ortamlarda kaydı değiştirme
+### <a name="renew-or-change-registration-in-disconnected-environments"></a>Bağlantısı kesilen ortamlarda kaydı yenileme veya değiştirme
 
-Güncelleştirebilir veya aşağıdaki durumlarda kaydınızı yenilemeniz gerekir:
+Aşağıdaki koşullarda kaydınızı güncelleştirmeniz veya yenilemeniz gerekir:
 
-- Sonra kapasite tabanlı yıllık aboneliğinizi yenileyin.
-- Faturalandırma modelinizin değiştirdiğinizde.
-- Ne zaman kapasite kullanıma dayalı faturalandırma için değişiklikleri (düğüm ekleme/kaldırma) ölçeklendirin.
+- Kapasite tabanlı yıllık aboneliğinizi yeniledikten sonra.
+- Faturalama modelinizi değiştirdiğinizde.
+- Kapasite tabanlı faturalandırma için değişiklikleri ölçeklendirirseniz (düğüm Ekle/Kaldır).
 
-#### <a name="remove-the-activation-resource-from-azure-stack"></a>Azure yığını etkinleştirme kaynağını kaldırın
+#### <a name="remove-the-activation-resource-from-azure-stack"></a>Etkinleştirme kaynağını Azure Stack kaldır
 
-İlk Azure Stack ve Azure kayıt kaynakta etkinleştirme kaynak kaldırmak gerekir.  
+Önce etkinleştirme kaynağını Azure Stack ve ardından Azure 'daki kayıt kaynağını kaldırmanız gerekir.  
 
-Azure Stack'te etkinleştirme kaynak kaldırmak için Azure Stack ortamınıza aşağıdaki PowerShell cmdlet'lerini çalıştırın:  
+Etkinleştirme kaynağını Azure Stack kaldırmak için Azure Stack ortamınızda aşağıdaki PowerShell cmdlet 'lerini çalıştırın:  
 
   ```Powershell
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
-Ardından, Azure'da kayıt kaynağı kaldırmak için bağlı bir Azure üzerinde olduğundan emin olun, bilgisayar için doğru Azure PowerShell bağlamı oturum açın ve aşağıda açıklandığı gibi uygun bir PowerShell cmdlet'lerini çalıştırın.
+Ardından, Azure 'daki kayıt kaynağını kaldırmak için Azure bağlı bir bilgisayarda olduğunuzdan emin olun, doğru Azure PowerShell bağlamında oturum açın ve aşağıda açıklandığı gibi uygun PowerShell cmdlet 'lerini çalıştırın.
 
-Kaynak oluşturmak için kullanılan kayıt belirtecinizi kullanabilirsiniz:  
+Kaynağı oluşturmak için kullanılan kayıt belirtecini kullanabilirsiniz:  
 
   ```Powershell
   $RegistrationToken = "<registration token>"
   Unregister-AzsEnvironment -RegistrationToken $RegistrationToken
   ```
 
-Veya, kayıt adı kullanabilirsiniz:
+Ya da kayıt adını kullanabilirsiniz:
 
   ```Powershell
   $RegistrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $RegistrationName
   ```
 
-### <a name="re-register-using-disconnected-steps"></a>Bağlantısı kesilmiş adımları kullanarak yeniden kaydolun
+### <a name="re-register-using-disconnected-steps"></a>Bağlantısı kesik adımları kullanarak yeniden kaydolun
 
-Artık tamamen bağlantısı kesilmiş bir senaryoda kaydı ve bir Azure Stack ortamına bağlı olmayan bir senaryoda kaydetmek için adımları yinelemeniz gerekir.
+Bağlantısı kesilmiş bir senaryoda tamamen kaydolmamış ve bağlantısı kesilmiş bir senaryoya Azure Stack ortamı kaydetme adımlarını tekrarlamanız gerekir.
 
-### <a name="disable-or-enable-usage-reporting"></a>Kullanım raporlama etkinleştirmek veya devre dışı
+### <a name="disable-or-enable-usage-reporting"></a>Kullanım raporlamayı devre dışı bırakma veya etkinleştirme
 
-Reporting ile kullanım kapasite faturalandırma modeli kullandığınız Azure Stack ortamlarda, kapatmak **UsageReportingEnabled** parametresi kullanarak **kümesi AzsRegistration** veya  **Get-AzsRegistrationToken** cmdlet'leri. Azure Stack, varsayılan olarak kullanım ölçümleri raporları. Kapasite kullanır veya bağlantısı kesilmiş bir ortam destekleyen işleçlerle kullanım bildirimini devre dışı bırak gerekir.
+Kapasite faturalandırma modeli kullanan Azure Stack ortamları için, **set-AzsRegistration** veya **Get-AzsRegistrationToken** cmdlet 'lerini kullanarak **UsageReportingEnabled** parametresiyle birlikte kullanım raporlamayı devre dışı bırakın. Azure Stack kullanım ölçümlerini varsayılan olarak raporlar. Kapasite kullanımları veya bağlantısı kesilmiş bir ortamı destekleyen operatörler, kullanım raporlamayı devre dışı bırakır.
 
-#### <a name="with-a-connected-azure-stack"></a>Bağlı bir Azure Stack ile
+#### <a name="with-a-connected-azure-stack"></a>Bağlı bir Azure Stack
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -435,9 +435,9 @@ Reporting ile kullanım kapasite faturalandırma modeli kullandığınız Azure 
       -RegistrationName $RegistrationName
    ```
 
-#### <a name="with-a-disconnected-azure-stack"></a>Bağlantısı kesilmiş bir Azure Stack ile
+#### <a name="with-a-disconnected-azure-stack"></a>Bağlantısı kesik Azure Stack
 
-1. Kayıt belirtecini değiştirmek için aşağıdaki PowerShell cmdlet'lerini çalıştırın:  
+1. Kayıt belirtecini değiştirmek için aşağıdaki PowerShell cmdlet 'lerini çalıştırın:  
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
@@ -446,22 +446,22 @@ Reporting ile kullanım kapasite faturalandırma modeli kullandığınız Azure 
    ```
 
    > [!Tip]  
-   > Kayıt belirteç için belirtilen dosya kaydedilir *$FilePathForRegistrationToken*. Dosya yolu veya dosya adı, günlüklerinizin bekletilme değiştirebilirsiniz.
+   > Kayıt belirteci, *$FilePathForRegistrationToken*için belirtilen dosyaya kaydedilir. FilePath veya dosya adını dilediğiniz şekilde değiştirebilirsiniz.
 
-2. Azure üzerinde kullanım için bu kayıt belirtecinizi kaydetme makine bağlı. Dosya veya metin $FilePathForRegistrationToken kopyalayabilirsiniz.
+2. Bu kayıt belirtecini Azure bağlı makinesinde kullanmak üzere kaydedin. $FilePathForRegistrationToken dosya veya metin kopyalayabilirsiniz.
 
-## <a name="move-a-registration-resource"></a>Kayıt kaynak taşıma
-Kayıt kaynak aynı abonelik altında kaynak grupları arasında taşıma **olduğu** tüm ortamlar için desteklenir. Her iki aboneliğin aynı iş ortağı kimliğine çözümlediğinizde ancak kayıt kaynak abonelikler arasında taşıma yalnızca CSP'ler için desteklenir Kaynakları yeni kaynak grubuna taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+## <a name="move-a-registration-resource"></a>Kayıt kaynağını taşıma
+Aynı **abonelik altındaki** kaynak grupları arasında bir kayıt kaynağını taşımak tüm ortamlar için desteklenir. Ancak, bir kayıt kaynağını abonelikler arasında taşımak yalnızca her iki abonelik aynı Iş ortağı KIMLIĞINE çözümlenirse CSP 'Ler için desteklenir. Kaynakları yeni bir kaynak grubuna taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="registration-reference"></a>Kayıt başvurusu
 
 ### <a name="set-azsregistration"></a>Set-AzsRegistration
 
-Azure Stack Azure ile kaydedin ve etkinleştirme veya teklif Market ve kullanım raporlama öğelerinin devre dışı bırakmak için Set-AzsRegistration kullanabilirsiniz.
+Set-AzsRegistration kullanarak Azure ile Azure Stack kaydedebilir ve Market ve kullanım raporlamadaki öğelerin teklifini etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
-Cmdlet'i çalıştırmak için ihtiyacınız vardır:
-- Herhangi bir türde genel bir Azure aboneliği.
-- Ayrıca Azure PowerShell için sahip veya bu abonelik için katkıda bulunanı olan bir hesapla oturum açmanız gerekir.
+Cmdlet 'ini çalıştırmak için şunlar gerekir:
+- Her türden küresel bir Azure aboneliği.
+- Ayrıca, bu aboneliğe sahip veya katkıda bulunan bir hesapla Azure PowerShell için oturum açmış olmanız gerekir.
 
 ```powershell
 Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String> [[-AzureContext]
@@ -470,55 +470,55 @@ Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedE
     <String>] [<CommonParameters>]
 ```
 
-| Parametre | Tür | Açıklama |
+| Parametre | Type | Açıklama |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PrivilegedEndpointCredential | PSCredential | İçin kullanılan kimlik bilgileri [ayrıcalıklı uç noktasına erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Kullanıcı adı şu biçimdedir **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | String | Dağıtım görevleri ile günlük toplama ve diğer posta gibi özellikler sağlayan bir önceden yapılandırılmış Uzaktan PowerShell Konsolu. Daha fazla bilgi edinmek için bkz [ayrıcalıklı uç noktayı kullanarak](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) makalesi. |
+| PrivilegedEndpointCredential | PSCredential | [Ayrıcalıklı uç noktaya erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)için kullanılan kimlik bilgileri. Kullanıcı adı **AzureStackDomain\CloudAdmin**biçimindedir. |
+| Ayrıcalıklı Gedendpoint | Dize | Size günlük toplama ve diğer dağıtım sonrası görevleri gibi yetenekler sağlayan, önceden yapılandırılmış bir uzak PowerShell konsolu. Daha fazla bilgi edinmek için [ayrıcalıklı uç noktayı kullanma](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) makalesini inceleyin. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | String |  |
-| ResourceGroupLocation | String |  |
-| BillingModel | String | Faturalandırma modeli, aboneliğinizin kullanır. Bu parametre için izin verilen değerler şunlardır: Kapasite, PayAsYouUse ve geliştirme. |
-| MarketplaceSyndicationEnabled | True/False | Portalda Market yönetim özelliği kullanılabilir olup olmadığını belirler. İnternet bağlantısı ile kaydetme gerekiyorsa true olarak ayarlayın. Bağlantısı kesilmiş ortamlarda kaydediliyor false olarak ayarlayın. Bağlantısı kesilmiş kayıtları için [çevrimdışı dağıtım aracı](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) Market öğelerini indirme için kullanılabilir. |
-| UsageReportingEnabled | True/False | Azure Stack, varsayılan olarak kullanım ölçümleri raporları. Kapasite kullanır veya bağlantısı kesilmiş bir ortam destekleyen işleçlerle kullanım bildirimini devre dışı bırak gerekir. Bu parametre için izin verilen değerler şunlardır: TRUE, False. |
-| AgreementNumber değeri | String |  |
-| registrationName | String | Kayıt betiği Azure Stack birden fazla örneğinde aynı Azure abonelik kimliği kullanarak çalıştırıyorsanız kayıt için benzersiz bir ad ayarlayın. Parametrenin varsayılan değeri **AzureStackRegistration**. Azure Stack birden fazla örneğinde aynı adı kullanın, ancak komut başarısız olur. |
+| ResourceGroupName | Dize |  |
+| ResourceGroupLocation | Dize |  |
+| BillingModel | Dize | Aboneliğinizin kullandığı faturalandırma modeli. Bu parametre için izin verilen değerler şunlardır: Kapasite, Payasyoukullanım ve geliştirme. |
+| Pazar Placesyndicationenabled | True/False | Market yönetim özelliğinin portalda kullanılabilir olup olmadığını belirler. İnternet bağlantısına kaydolurken doğru olarak ayarlayın. Bağlantısı kesilen ortamlara kaydolmak için false olarak ayarlayın. Bağlantısı kesilen kayıtlar için, Market öğelerini indirmek üzere [çevrimdışı dağıtım aracı](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) kullanılabilir. |
+| UsageReportingEnabled | True/False | Azure Stack kullanım ölçümlerini varsayılan olarak raporlar. Kapasite kullanımları veya bağlantısı kesilmiş bir ortamı destekleyen operatörler, kullanım raporlamayı devre dışı bırakır. Bu parametre için izin verilen değerler şunlardır: True, false. |
+| AgreementNumber | Dize |  |
+| RegistrationName | Dize | Kayıt betiğini aynı Azure abonelik KIMLIĞINI kullanarak Azure Stack birden fazla örneğinden çalıştırıyorsanız, kayıt için benzersiz bir ad ayarlayın. Parametrenin varsayılan bir **Azurestackregistration**değeri vardır. Ancak, birden fazla Azure Stack örneğinde aynı adı kullanırsanız, komut dosyası başarısız olur. |
 
 ### <a name="get-azsregistrationtoken"></a>Get-AzsRegistrationToken
 
-Get-AzsRegistrationToken giriş parametrelerini kayıt belirtecinizi oluşturur.
+Get-AzsRegistrationToken, Giriş parametrelerinden bir kayıt belirteci oluşturur.
 
 ```powershell  
 Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String>
     [-BillingModel] <String> [[-TokenOutputFilePath] <String>] [-UsageReportingEnabled] [[-AgreementNumber] <String>]
     [<CommonParameters>]
 ```
-| Parametre | Tür | Açıklama |
+| Parametre | Type | Açıklama |
 |-------------------------------|--------------|-------------|
-| PrivilegedEndpointCredential | PSCredential | İçin kullanılan kimlik bilgileri [ayrıcalıklı uç noktasına erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Kullanıcı adı şu biçimdedir **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | String |  Dağıtım görevleri ile günlük toplama ve diğer posta gibi özellikler sağlayan bir önceden yapılandırılmış Uzaktan PowerShell Konsolu. Daha fazla bilgi edinmek için bkz [ayrıcalıklı uç noktayı kullanarak](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) makalesi. |
+| PrivilegedEndpointCredential | PSCredential | [Ayrıcalıklı uç noktaya erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)için kullanılan kimlik bilgileri. Kullanıcı adı **AzureStackDomain\CloudAdmin**biçimindedir. |
+| Ayrıcalıklı Gedendpoint | Dize |  Size günlük toplama ve diğer dağıtım sonrası görevleri gibi yetenekler sağlayan, önceden yapılandırılmış bir uzak PowerShell konsolu. Daha fazla bilgi edinmek için [ayrıcalıklı uç noktayı kullanma](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) makalesini inceleyin. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | String |  |
-| ResourceGroupLocation | String |  |
-| BillingModel | String | Faturalandırma modeli, aboneliğinizin kullanır. Bu parametre için izin verilen değerler şunlardır: Kapasite, PayAsYouUse ve geliştirme. |
-| MarketplaceSyndicationEnabled | True/False |  |
-| UsageReportingEnabled | True/False | Azure Stack, varsayılan olarak kullanım ölçümleri raporları. Kapasite kullanır veya bağlantısı kesilmiş bir ortam destekleyen işleçlerle kullanım bildirimini devre dışı bırak gerekir. Bu parametre için izin verilen değerler şunlardır: TRUE, False. |
-| AgreementNumber değeri | String |  |
+| ResourceGroupName | Dize |  |
+| ResourceGroupLocation | Dize |  |
+| BillingModel | Dize | Aboneliğinizin kullandığı faturalandırma modeli. Bu parametre için izin verilen değerler şunlardır: Kapasite, Payasyoukullanım ve geliştirme. |
+| Pazar Placesyndicationenabled | True/False |  |
+| UsageReportingEnabled | True/False | Azure Stack kullanım ölçümlerini varsayılan olarak raporlar. Kapasite kullanımları veya bağlantısı kesilmiş bir ortamı destekleyen operatörler, kullanım raporlamayı devre dışı bırakır. Bu parametre için izin verilen değerler şunlardır: True, false. |
+| AgreementNumber | Dize |  |
 
 ## <a name="registration-failures"></a>Kayıt hataları
 
-Azure Stack kayıt çalışırken hatalardan birini görebilirsiniz:
-1. $HostName için zorunlu donanım bilgileri alınamadı. Fiziksel konak ve bağlantı denetleyin ardından kayıt yeniden deneyin.
+Azure Stack kaydını gerçekleştirmeye çalışırken aşağıdaki hatalardan birini görebilirsiniz:
+1. $HostName için zorunlu donanım bilgisi alınamadı. Fiziksel ana bilgisayarı ve bağlantıyı denetleyip kaydı yeniden çalıştırmayı deneyin.
 
-2. Donanım bilgilerini al - Lütfen fiziksel konak ve bağlantı ardından kayıt yeniden denemek için $hostName bağlanamıyor.
+2. Donanım bilgilerini almak için $hostName bağlanılamıyor. lütfen fiziksel ana bilgisayarı ve bağlantıyı denetleyip kaydı yeniden çalıştırmayı deneyin.
 
-> Neden: etkinleştirme girişiminde konaklarından UUID, BIOS ve CPU gibi donanım ayrıntıları edinmeye ve fiziksel konağa bağlanamama nedeniyle mümkün değildi tipik olmasıdır.
+> Neden: Bu genellikle, etkinleştirmeyi denemek için ana bilgisayarlardan UUID, BIOS ve CPU gibi donanım ayrıntılarını edinmeyi denediğimiz ve fiziksel ana bilgisayara bağlanamama nedeniyle bağlanamadığımız için.
 
-Market yönetim erişmeye çalışırken, ürünleri yayınlamak çalışılırken bir hata oluşur. 
-> Neden: Azure Stack kayıt kaynağa erişmek mümkün olduğunda bu genellikle gerçekleşir. Bunun yaygın nedenlerinden biri, bir Azure aboneliğinin dizin Kiracı değiştiğinde, kayıt sıfırlar ' dir. Aboneliğin Dizin Kiracı değiştirdiyseniz, Market ya da rapor Azure Stack kullanım erişemez. Bu sorunu gidermek için yeniden kaydetmeniz gerekir.
+Market yönetimine erişmeye çalışırken, ürünleri yayınlamak isterken bir hata oluşur. 
+> Neden: Bu genellikle Azure Stack kayıt kaynağına erişeamadığında oluşur. Bunun yaygın bir nedeni, Azure aboneliğinin Dizin kiracının kayıt değişikliğini sıfırlamasıdır. Aboneliğin Dizin kiracısını değiştirdiyseniz Azure Stack marketi veya rapor kullanımına erişemezsiniz. Bu sorunu giderecek şekilde yeniden kaydetmeniz gerekir.
 
-Market yönetim yine de kaydolmanızı ve hatta zaten bağlantısı kesilmiş işlemi kullanarak damganız kaydettiğinize göre Azure Stack etkinleştirmek ister. 
-> Neden: bağlantısı kesilen ortam için bilinen bir sorun budur. Kayıt durumunuzu izleyerek doğrulayabilirsiniz [adımları](azure-stack-registration.md#verify-azure-stack-registration). Market yönetim kullanmak için kullanmanız gerekecektir [çevrimdışı aracı](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). 
+Market yönetimi hala, bağlantısı kesilen işlemi kullanarak damganız zaten kaydolduktan sonra bile Azure Stack kaydetmenizi ve etkinleştirmenizi ister. 
+> Neden: Bu, bağlantısı kesilen ortamlar için bilinen bir sorundur. Aşağıdaki [adımları](azure-stack-registration.md#verify-azure-stack-registration)izleyerek kayıt durumunuzu doğrulayabilirsiniz. Market yönetimini kullanabilmek için [çevrimdışı aracını](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)kullanmanız gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)
+[Azure 'dan Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)

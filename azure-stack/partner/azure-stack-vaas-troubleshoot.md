@@ -1,6 +1,6 @@
 ---
 title: Hizmet olarak Azure Stack doğrulama sorunlarını giderme | Microsoft Docs
-description: Azure Stack için hizmet olarak doğrulama sorunlarını giderin.
+description: Azure Stack hizmet olarak doğrulama sorunlarını giderin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,55 +10,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: fedfd7f83a35398586734fa647751e537b850bf8
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 9c8807d6fb28a99c9de8464a0eaff7114bd6a162
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64297826"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418261"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>Hizmet olarak doğrulama sorunlarını giderme
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Yazılım sürümleri ve çözümleri için ilgisiz yaygın sorunlar aşağıda verilmiştir.
+Aşağıda, yazılım yayınları ve çözümlerinin ilgisi olmayan yaygın sorunlar verilmiştir.
 
-## <a name="local-agent"></a>Yerel aracı
+## <a name="local-agent"></a>Yerel Aracı
 
-### <a name="the-portal-shows-local-agent-in-debug-mode"></a>Portal, yerel aracı hata ayıklama modunda gösterir.
+### <a name="the-portal-shows-local-agent-in-debug-mode"></a>Portal, yerel aracıyı hata ayıklama modunda gösterir
 
-Aracı sinyal hizmete bir dengesiz bir ağ bağlantısı nedeniyle gönderemiyor olduğu için bu büyük olasılıkla budur. Beş dakikada bir sinyal gönderilmedi. Hizmet 15 dakika boyunca bir sinyal ulaşmazsa, hizmet Aracısı devre dışı olarak değerlendirir ve testleri artık üzerinde zamanlanacak. Hata iletisi iade *Agenthost.log* dizininde bulunan dosya nerede aracısı başlatıldı.
-
-> [!Note]
-> Zaten aracı üzerinde çalışan herhangi bir test çalışmasına devam eder ancak sinyal değilse, test sona ermeden önce geri sonra aracıyı test durumunu güncelleştirmek ya da günlükleri karşıya yükleme başarısız olur. Test olarak her zaman görünür **çalıştıran** ve iptal edilmesi gerekir.
-
-### <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>Aracı makine üzerindeki işlem yürütülürken test kapatıldı. Neler?
-
-Aracı işlemi ungracefully örneğin kapatılırsa, makine yeniden başlatıldı, işlem sonlandırıldı (CTRL + C aracı penceresinde kapatılmasını sayılır) üzerinde çalışan bir test olarak göstermeye devam eder sonra **çalıştıran**. Aracıyı yeniden başlatıldıktan sonra aracı test durumunu güncelleştirir **iptal**. Aracı olmayan yeniden başlatıldıktan sonra test olarak görünür **çalıştıran** ve el ile test iptal etmeniz gerekir.
+Bunun nedeni, aracının kararsız bir ağ bağlantısı nedeniyle hizmete sinyal gönderemediği için olasıdır. Her beş dakikada bir sinyal gönderilir. Hizmet, 15 dakika boyunca bir sinyal almadığında, hizmet aracıyı devre dışı olarak kabul eder ve testlerin bundan sonra planlanmayacak. Aracının başlatıldığı dizinde bulunan,. *log* dosyasındaki hata iletisini kontrol edin.
 
 > [!Note]
-> Bir iş akışı içinde testleri, sırayla çalışmak üzere zamanlanır. **Bekleyen** çalıştırılmamış testler testlerinde kadar **çalıştıran** tam aynı iş akışı durum.
+> Aracıda çalışmakta olan tüm testler çalışmaya devam eder, ancak test bitmeden önce sinyal geri yüklenemezse, aracı test durumunu güncelleştiremez veya günlükleri karşıya yükleyebilir. Test her zaman **çalışıyor** olarak görünür ve iptal edilmesi gerekir.
+
+### <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>Test yürütülürken makinedeki Aracı işlemi kapatıldı. Beklensin mi?
+
+Aracı işlemi düzgün şekilde kapalıysa, makine yeniden başlatılır, işlem sonlandırıldı (aracı penceresinde CTRL + C) düzgün kapanma olarak kabul edilir), üzerinde çalışan test **çalışıyor**olarak gösterilmeye devam eder. Aracı yeniden başlatılırsa, aracı testin durumunu **iptal edildi**olarak güncelleştirir. Aracı yeniden başlatılmazsa, test **çalışıyor** olarak görünür ve testi el ile iptal etmeniz gerekir.
+
+> [!Note]
+> Bir iş akışı içindeki testler sırayla çalışacak şekilde zamanlanır. **Bekleyen** testler, **çalışma** durumundaki testler aynı iş akışında tamamlanana kadar yürütülmeyecektir.
 
 ## <a name="vm-images"></a>VM görüntüleri
 
-### <a name="handle-slow-network-connectivity"></a>Yavaş ağ bağlantısı işleme
+### <a name="handle-slow-network-connectivity"></a>Yavaş ağ bağlantısını işleme
 
-Yerel veri merkezinizde bir paylaşıma PIR görüntü indirebilirsiniz. ' İ tıklatın ve ardından görüntüyü kontrol edebilirsiniz.
+PIR görüntüsünü yerel veri merkezinizdeki bir paylaşıma indirebilirsiniz. Ardından görüntüyü kontrol edebilirsiniz.
 
 <!-- This is from the appendix to the Deploy local agent topic. -->
 
-#### <a name="download-pir-image-to-local-share-in-case-of-slow-network-traffic"></a>Yavaş ağ trafiğini durumunda Yerel paylaşım için PIR görüntü indirin
+#### <a name="download-pir-image-to-local-share-in-case-of-slow-network-traffic"></a>Ağ trafiği yavaş olduğunda PIR görüntüsünü yerel paylaşıma indirin
 
-1. Azcopy'nin indirin: [vaasexternaldependencies(AzCopy)](https://vaasexternaldependencies.blob.core.windows.net/prereqcomponents/AzCopy.zip)
+1. AzCopy şuradan indirin: [vaasexternaldependencies (AzCopy)](https://vaasexternaldependencies.blob.core.windows.net/prereqcomponents/AzCopy.zip)
 
-2. AzCopy.zip ayıklayın ve AzCopy.exe içeren dizine geçin
+2. AzCopy. zip dosyasını ayıklayın ve AzCopy. exe ' yi içeren dizine geçin
 
-3. Windows PowerShell'i yükseltilmiş isteminden açın. Aşağıdaki komutları çalıştırın:
+3. Yükseltilmiş bir komut isteminden Windows PowerShell 'i açın. Aşağıdaki komutları çalıştırın:
 
 ```powershell  
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Server2016DatacenterFullBYOL.vhd' /NC:12 /V:azcopylog.log /Y
@@ -69,58 +69,58 @@ Yerel veri merkezinizde bir paylaşıma PIR görüntü indirebilirsiniz. ' İ t�
 ```
 
 > [!Note]  
-> LocalFileShare, paylaşım yolu veya yerel yol değil.
+> LocalFileShare, paylaşma yolu veya yerel yoldur.
 
-#### <a name="verifying-pir-image-file-hash-value"></a>PIR resim dosya karma değeri doğrulanıyor
+#### <a name="verifying-pir-image-file-hash-value"></a>PIR görüntü dosyası karma değeri doğrulanıyor
 
-Kullanabileceğiniz **Get-HashFile** karma değeri, görüntü dosyalarını, resimleri bütünlüğünü kontrol etmek için indirilen ortak görüntü deposuna almak için cmdlet.
+Görüntülerin bütünlüğünü denetlemek için, indirilen ortak görüntü deposu görüntü dosyalarının karma değerini almak üzere **Get-HashFile** cmdlet 'ini kullanabilirsiniz.
 
 | Dosya Adı | SHA256 |
 |---------------------------------------|------------------------------------------------------------------|
-| Server2016DatacenterFullBYOL.vhd | 6ED58DCA666D530811A1EA563BA509BF9C29182B902D18FCA03C7E0868F733E9 |
-| WindowsServer2012R2DatacenterBYOL.vhd | 9792CBF742870B1730B9B16EA814C683A8415EFD7601DDB6D5A76D0964767028 |
+| Server2016DatacenterFullBYOL. vhd | 6ED58DCA666D530811A1EA563BA509BF9C29182B902D18FCA03C7E0868F733E9 |
+| WindowsServer2012R2DatacenterBYOL. vhd | 9792CBF742870B1730B9B16EA814C683A8415EFD7601DDB6D5A76D0964767028 |
 | Server2016DatacenterCoreBYOL.vhd | 5E80E1A6721A48A10655E6154C1B90E320DF5558487D6A0D7BFC7DCD32C4D9A5 |
-| Ubuntu1404LTS.vhd | B24CDD12352AAEBC612A4558AB9E80F031A2190E46DCB459AF736072742E20E0 |
-| Ubuntu1604-20170619.1.vhd | C481B88B60A01CBD5119A3F56632A2203EE5795678D3F3B9B764FFCA885E26CB |
+| Ubuntu1404LTS. vhd | B24CDD12352AAEBC612A4558AB9E80F031A2190E46DCB459AF736072742E20E0 |
+| Ubuntu1604-20170619.1. vhd | C481B88B60A01CBD5119A3F56632A2203EE5795678D3F3B9B764FFCA885E26CB |
 
-### <a name="failure-occurs-when-uploading-vm-image-in-the-vaasprereq-script"></a>Sanal makine görüntüsünü karşıya yüklenirken hata oluşması `VaaSPreReq` betiği
+### <a name="failure-occurs-when-uploading-vm-image-in-the-vaasprereq-script"></a>`VaaSPreReq` Betikte VM görüntüsü karşıya yüklenirken hata oluştu
 
-Önce ortamın sağlıklı olup olmadığını denetleyin:
+Öncelikle ortamın sağlıklı olup olmadığını denetleyin:
 
-1. DVM gelen / atlama kutusunu, yönetici kimlik bilgilerini kullanarak yönetim portalına başarıyla oturum açabildiğinizi kontrol edin.
-1. Hiçbir uyarı veya uyarılar olduğundan emin olun.
+1. DVı/atbox kutusundan yönetici kimlik bilgilerini kullanarak yönetici portalında başarıyla oturum açabilistediğinizi kontrol edin.
+1. Uyarı veya uyarı olmadığından emin olun.
 
-Ortamın sağlıklı olup olmadığını el ile VaaS test çalıştırmaları için gereken 5 VM görüntülerini karşıya yükleyin:
+Ortam sağlıklı ise, VaaS test çalıştırmaları için gereken 5 VM görüntüsünü el ile karşıya yükleyin:
 
-1. Yönetim portalında Hizmet Yöneticisi olarak oturum açın. Yönetim portalında bulabilirsiniz ECE deposu veya damga bilgi dosyanızın URL. Yönergeler için [ortam parametrelerini](azure-stack-vaas-parameters.md#environment-parameters).
-1. Seçin **diğer hizmetler** > **kaynak sağlayıcıları** > **işlem** > **VM görüntüleri**.
-1. Seçin **+ Ekle** üst kısmındaki düğmeye **VM görüntüleri** dikey penceresi.
-1. Değiştirebilir veya ilk VM görüntüsü için aşağıdaki alanların değerlerini kontrol edin:
+1. Yönetim Portalı 'nda hizmet yöneticisi olarak oturum açın. Yönetim Portalı URL 'sini, ECE deposundan veya damga bilgi dosyanızda bulabilirsiniz. Yönergeler için bkz. [Ortam parametreleri](azure-stack-vaas-parameters.md#environment-parameters).
+1. **Diğer hizmetler** > **kaynak sağlayıcıları** > işlemVM > **görüntülerini**seçin.
+1. **VM görüntüleri** dikey penceresinin en üstündeki **+ Ekle** düğmesini seçin.
+1. İlk VM görüntüsü için aşağıdaki alanların değerlerini değiştirin veya denetleyin:
     > [!IMPORTANT]
-    > Tüm Varsayılanları, var olan bir Market öğesi için doğrudur.
+    > Mevcut Market öğesi için tüm varsayılanlar doğru değil.
 
-    | Alan  | Değer  |
+    | Alan  | Value  |
     |---------|---------|
     | Yayımcı | MicrosoftWindowsServer |
     | Sunduğu | WindowsServer |
-    | İşletim Sistemi Türü | Windows |
+    | İşletim sistemi türü | Windows |
     | SKU | 2012-R2-Datacenter |
     | Version | 1.0.0 |
-    | İşletim sistemi diski Blob URİ'si | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
+    | İşletim sistemi diski blob URI 'SI | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 
 1. **Oluştur** düğmesini seçin.
-1. Kalan VM görüntüleri için yineleyin.
+1. Kalan VM görüntüleri için tekrarlayın.
 
-Tüm 5 VM görüntüleri özelliklerini aşağıdaki gibidir:
+Tüm 5 VM görüntülerinin özellikleri şunlardır:
 
-| Yayımcı  | Sunduğu  | İşletim Sistemi Türü | SKU | Version | İşletim sistemi diski Blob URİ'si |
+| Yayımcı  | Sunduğu  | İşletim sistemi türü | SKU | Version | İşletim sistemi diski blob URI 'SI |
 |---------|---------|---------|---------|---------|---------|
 | MicrosoftWindowsServer| WindowsServer | Windows | 2012-R2-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
-| MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |
+| MicrosoftWindowsServer | WindowsServer | Windows | 2016-veri merkezi | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |
 | MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter-Server-Core | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterCoreBYOL.vhd |
 | Canonical | UbuntuServer | Linux | 14.04.3-LTS | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1404LTS.vhd |
 | Canonical | UbuntuServer | Linux | 16.04-LTS | 16.04.20170811 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1604-20170619.1.vhd |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gözden geçirme [hizmet olarak doğrulama için sürüm notları](azure-stack-vaas-release-notes.md) değişikliklerin en son sürümlerde.
+- En son sürümlerde değişiklikler için [hizmet olarak doğrulama Için sürüm notlarını](azure-stack-vaas-release-notes.md) gözden geçirin.

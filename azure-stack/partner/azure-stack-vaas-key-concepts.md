@@ -1,6 +1,6 @@
 ---
-title: Azure Stack doğrulama olarak hizmet temel kavramları | Microsoft Docs
-description: Hizmet olarak Azure Stack doğrulama temel kavramları açıklar.
+title: Hizmet anahtarı kavramlarını doğrulama Azure Stack | Microsoft Docs
+description: Hizmet olarak Azure Stack doğrulamada temel kavramları açıklar.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,77 +10,77 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3830dc15cebe24a8fb910b641b7b986437aeec52
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 1ffb66bb1abe9f2ffb64162f834c682df2aaa609
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64298508"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418405"
 ---
-# <a name="validation-as-a-service-key-concepts"></a>Hizmet temel kavramları olarak doğrulama
+# <a name="validation-as-a-service-key-concepts"></a>Hizmet anahtar kavramları olarak doğrulama
 
-Bu makalede hizmet (VaaS) olarak doğrulama temel kavramları açıklar.
+Bu makalede hizmet olarak doğrulama (VaaS) içindeki temel kavramlar açıklanmaktadır.
 
 ## <a name="solutions"></a>Çözümler
 
-VaaS çözüm belirli donanım ürün reçetesi (BoM) ile bir Azure Stack çözüm temsil eder. VaaS çözümü, Azure Stack çözüm karşı çalışan iş akışları için kapsayıcı görevi görür.
+Bir VaaS çözümü, belirli bir donanım ürün reçetesinden (BoM) Azure Stack bir çözümü temsil eder. VaaS çözümü, Azure Stack çözümüne karşı çalışan iş akışları için bir kapsayıcı görevi görür.
 
-### <a name="create-a-solution-in-the-vaas-portal"></a>VaaS portalda bir çözüm oluşturma
+### <a name="create-a-solution-in-the-vaas-portal"></a>VaaS portalında çözüm oluşturma
 
-1. Oturum [VaaS portalı](https://azurestackvalidation.com).
-2. Çözüm panosunda seçin **yeni çözüm**.
-3. Çözüm için bir ad girin. Öneriler adlandırmak için bkz: [VaaS çözümleri adlandırma](azure-stack-vaas-best-practice.md#naming-convention-for-vaas-solutions).
-4. Seçin **Kaydet** çözümü oluşturmak için.
+1. [Vaas portalında](https://azurestackvalidation.com)oturum açın.
+2. Çözümler panosunda **yeni çözüm**' ı seçin.
+3. Çözüm için bir ad girin. Adlandırma önerileri için bkz. [VaaS çözümleri Için adlandırma kuralı](azure-stack-vaas-best-practice.md#naming-convention-for-vaas-solutions).
+4. Çözümü oluşturmak için **Kaydet** ' i seçin.
 
-## <a name="workflows"></a>İş akışları
+## <a name="workflows"></a>Workflows
 
-VaaS iş akışı VaaS çözüm bağlamında çalışır. Bu test paketleri, bir Azure Stack dağıtımı işlevselliğini çalışma kümesini temsil eder. Bir iş akışı, her bir Azure Stack Çözüm dağıtımı veya yazılım güncelleştirmesi oluşturulmalıdır.
+Bir VaaS iş akışı, VaaS çözümünün bağlamı içinde çalışır. Azure Stack dağıtımının işlevlerini gerçekleştiren bir test paketi kümesini temsil eder. Bir Azure Stack çözümünün her dağıtım veya yazılım güncelleştirmesi için bir iş akışı oluşturulmalıdır.
 
-İş akışları, senaryo türünü test ederek ayrılır. Terim ve kısaltmalarla sınamada **Test geçiş** iş akışı tüm kullanılabilir VaaS malzemeleri testleri seçmenize olanak sağlar. Resmi sınamada **doğrulama** iş akışlarını hedeflemek Microsoft tarafından seçilen belirli test senaryoları.
+İş akışları, test senaryosu türüne göre kategorilere ayrılır. Resmi olmayan sınamalarda, **test geçişi** iş akışı, tüm kullanılabilir Vaas yardımcı malzemeleri arasından testler seçmenizi sağlar. Resmi test halinde, **doğrulama** , Microsoft tarafından seçilen belirli test senaryolarını hedefleyin.
 
 ![VaaS iş akışı kutucukları](media/tile_all-workflows.png)
 
 > [!NOTE]
-> **Paket doğrulama** iş akışı şu anda iki senaryo da destekler: [OEM paketleri doğrulama](azure-stack-vaas-validate-oem-package.md) ve [yazılım güncelleştirmelerini Microsoft gelen doğrulama](azure-stack-vaas-validate-microsoft-updates.md).
+> **Paket doğrulama** iş akışı şu anda iki senaryoyu desteklemektedir: [OEM paketlerini doğrulayın](azure-stack-vaas-validate-oem-package.md) ve [Microsoft 'Tan yazılım güncelleştirmelerini doğrulayın](azure-stack-vaas-validate-microsoft-updates.md).
 
-İş akışı türleri hakkında daha fazla bilgi için bkz. [Azure Stack için hizmet olarak doğrulama nedir?](azure-stack-vaas-overview.md).
+İş akışı türleri hakkında daha fazla bilgi için bkz. [Azure Stack Için hizmet olarak doğrulama nedir?](azure-stack-vaas-overview.md).
 
-### <a name="getting-started-with-vaas-workflows"></a>VaaS iş akışları ile çalışmaya başlama
+### <a name="getting-started-with-vaas-workflows"></a>VaaS iş akışlarıyla çalışmaya başlama
 
-1. Çözümleri Panoda yeni bir çözüm oluşturun veya var olan bir'ı seçin. Bu yeniler ve iş akışı kutucukları etkinleştirir.
-2. Yeni bir iş akışı oluşturmak için seçin **Başlat** herhangi bir kutucuğa üzerinde. Her iş akışına özel bilgiler için aşağıdaki makalelere bakın:
-    - Test geçişi: [Hızlı Başlangıç: Doğrulama, ilk test zamanlamak için bir servis portalı kullanın.](azure-stack-vaas-schedule-test-pass.md)
-    - Çözüm doğrulama: [Yeni Azure Stack çözümünü doğrulama](azure-stack-vaas-validate-solution-new.md)
-    - Paket doğrulaması (aylık güncelleştirme): [Microsoft yazılım güncelleştirmeleri doğrulayın](azure-stack-vaas-validate-microsoft-updates.md)
-    - Paket doğrulaması (paket imzalama): [OEM paketleri doğrula](azure-stack-vaas-validate-oem-package.md)
+1. Çözümler panosunda yeni bir çözüm oluşturun veya var olan bir çözümü seçin. Bu, iş akışı kutucuklarını yeniler ve etkinleştirir.
+2. Yeni bir iş akışı oluşturmak için herhangi bir kutucukta **Başlat** ' ı seçin. Her iş akışına özgü bilgiler için aşağıdaki makalelere bakın:
+    - Test geçişi: [Hızlı Başlangıç: İlk testinizi zamanlamak için bir hizmet portalı olarak doğrulamayı kullanın](azure-stack-vaas-schedule-test-pass.md)
+    - Çözüm doğrulaması: [Yeni Azure Stack çözümünü doğrulama](azure-stack-vaas-validate-solution-new.md)
+    - Paket doğrulaması (aylık güncelleştirme): [Microsoft 'tan yazılım güncelleştirmelerini doğrulama](azure-stack-vaas-validate-microsoft-updates.md)
+    - Paket doğrulaması (paket imzalama): [OEM paketlerini doğrula](azure-stack-vaas-validate-oem-package.md)
 
-3. Yönettiğiniz veya izlediğiniz varolan bir iş akışı için seçin **Yönet** iş akışı kutucuğundaki. Kullanım ve iş akışı adını seçin **Düzenle** özelliklerini görüntüleyin ya da ortak test parametreleri değiştirmek için düğme.
+3. Mevcut bir iş akışını yönetmek veya izlemek için iş akışı kutucuğunda **Yönet** ' i seçin. İş akışının adını seçin ve özellikleri görüntülemek veya ortak test parametrelerini değiştirmek için **Düzenle** düğmesini kullanın.
 
-İş akışı özellikleri ve parametreleri hakkında daha fazla bilgi için bkz. [iş akışı ortak parametreleri için bir hizmet olarak Azure Stack doğrulama](azure-stack-vaas-parameters.md).
+İş akışı özellikleri ve parametreleri hakkında daha fazla bilgi için bkz. [hizmet olarak Azure Stack doğrulaması Için Iş akışı ortak parametreleri](azure-stack-vaas-parameters.md).
 
 ## <a name="tests"></a>Testler
 
-Azure Stack çözümünü karşı çalışan işlemlerin bir paketini VaaS testinde oluşur. Testiniz tanımlanan bir kategoriye göre farklı hedeflenen amaçları işlevsel ister veya güvenilirlik ve bir veya daha fazla Azure Stack hizmetlerini hedefleyin. Her test kendine ait bir dizi parametrenin bazıları içeren iş akışı ortak parametreleri tarafından belirtilir tanımlar.
+VaaS 'deki bir test, Azure Stack çözümüne karşı çalışan bir işlem paketinden oluşur. Testlerin, işlevsel veya güvenilirlik gibi bir kategori tarafından tanımlanan farklı amaçlanan amaçları vardır ve Azure Stack bir veya daha fazla hizmeti hedefleyin. Her test, bir kısmı kapsayan iş akışının ortak parametreleri tarafından belirtilen kendi parametre kümesini tanımlar.
 
-Yönetme ve izleme sınamaları hakkında daha fazla bilgi için bkz. [İzleyici ve testleri VaaS portalında yönetme](azure-stack-vaas-monitor-test.md).
+Testleri yönetme ve izleme hakkında daha fazla bilgi için bkz. [VaaS portalındaki testleri izleme ve yönetme](azure-stack-vaas-monitor-test.md).
 
-Test parametreleri hakkında daha fazla bilgi için bkz. [iş akışı ortak parametreleri için bir hizmet olarak Azure Stack doğrulama](azure-stack-vaas-parameters.md).
+Test parametreleri hakkında daha fazla bilgi için bkz. [hizmet olarak Azure Stack doğrulaması Için Iş akışı ortak parametreleri](azure-stack-vaas-parameters.md).
 
 ## <a name="agents"></a>Aracılar
 
-Test yürütme VaaS aracı beraberinde getirir. İki tür aracılar VaaS Testleri Çalıştır:
+Bir VaaS Aracısı sürücüleri test yürütmesi. İki aracı türü, VaaS testlerini çalıştırır:
 
-- **Bulut Aracısı**. Varsayılan aracı VaaS içinde kullanılabilir budur. Kurulum gereklidir, ancak bu, ortamınıza bağlı olarak bağlantı gerektirir ve Azure Stack uç noktaları internet'ten çözülebilir olması gerekir. Bazı testler Bulut aracı ile uyumlu değildir.
-- A **yerel aracı**. Bu, ortamınıza bağlı olarak bağlantı uygun olmadığı yerde senaryolarında doğrulama çalışmasını sağlar. Bazı Test yürütme yerel aracı üzerinden gerektirir.
+- **Bulut Aracısı**. Bu, VaaS 'de kullanılabilen varsayılan aracıdır. Kurulum gerekmez, ancak bu ortamınıza bağlı bağlantı gerektirir ve Azure Stack uç noktaları internet 'ten çözümlenebilmelidir. Bazı testler bulut aracısıyla uyumlu değildir.
+- **Yerel bir aracı**. Bu, ortamınıza bağlı bağlantıların uygun olmadığı senaryolarda doğrulamayı çalıştırmanıza olanak sağlar. Bazı testlerin yerel aracı aracılığıyla yürütülmesi gerekir.
 
-Yerel aracılar herhangi belirli Azure Stack veya VaaS çözüme bağlı değil. En iyi uygulama, bir Azure Stack ortamın dışında çalıştırmanız gerekir.
+Yerel aracılar herhangi bir belirli Azure Stack veya VaaS çözümüne bağlı değildir. En iyi uygulama olarak, bir Azure Stack ortamının dışında çalışmalıdır.
 
-Yerel aracı ekleme ile ilgili yönergeler için bkz: [yerel aracı dağıtma](azure-stack-vaas-local-agent.md).
+Yerel Aracı ekleme hakkında yönergeler için bkz. [Yerel aracıyı dağıtma](azure-stack-vaas-local-agent.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

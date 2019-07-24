@@ -11,33 +11,33 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 03/15/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: fa4013c00cd9d496b6c8bb479d9fe6cbfe113575
-ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
+ms.openlocfilehash: f0195ecf033454763b757f6b8edb03ee4e8e9e49
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316211"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418208"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>PowerShell ile Azure Stack operatör bağlanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 Azure Stack tekliflerini, planları, kotalar ve Uyarılar oluşturmak gibi kaynakları yönetmek için PowerShell kullanmak için yapılandırabilirsiniz. Bu konuda işleci ortam yapılandırmanıza yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdaki Önkoşullar'nden ya da çalıştırmak [Geliştirme Seti](../asdk/asdk-connect.md#connect-with-rdp) veya size bir istemciden Windows tabanlı dış [ASDK VPN aracılığıyla bağlı](../asdk/asdk-connect.md#connect-with-vpn). 
+Aşağıdaki önkoşulları, [geliştirme seti](../asdk/asdk-connect.md#connect-with-rdp) 'Nden veya Windows tabanlı bir dış istemciden, [ASDK ile VPN üzerinden bağlıysanız](../asdk/asdk-connect.md#connect-with-vpn)çalıştırın. 
 
  - Yükleme [Azure Stack ile uyumlu Azure PowerShell modüllerini](azure-stack-powershell-install.md).  
  - İndirme [Azure Stack ile çalışması için gereken araçları](azure-stack-powershell-download.md).  
 
 ## <a name="connect-with-azure-ad"></a>Azure AD'ye bağlanma
 
-PowerShell ile Azure Stack operatörü ortam yapılandırın. Aşağıdaki komut dosyalarından birini çalıştırın: Azure Active Directory (Azure AD) Kiracıadı ve Azure Resource Manager uç nokta değerleri kendi ortamınızdaki yapılandırmayı ile değiştirin. 
+PowerShell ile Azure Stack operatörü ortam yapılandırın. Aşağıdaki betiklerin birini çalıştırın: Azure Active Directory (Azure AD) tenantName ve Azure Resource Manager Endpoint değerlerini kendi ortam yapılandırmanızla değiştirin. 
 
 ```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
@@ -71,7 +71,7 @@ PowerShell ile Azure Active Directory Federasyon Hizmetleri (Azure AD FS) ile Az
   ```
 
 > [!Note]  
-> AD FS kullanıcı kimlikleri ile etkileşimli kimlik doğrulaması yalnızca destekler. Bir kimlik bilgisi nesnesi gerekiyorsa, bir hizmet sorumlusu (SPN) kullanmanız gerekir. Azure Stack ve AD FS ile hizmet sorumlusu, Kimlik Yönetimi Hizmeti ayarlama hakkında daha fazla bilgi için bkz. [bir AD FS hizmet sorumlusunu Yönet](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
+> AD FS yalnızca Kullanıcı kimlikleriyle etkileşimli kimlik doğrulamasını destekler. Bir kimlik bilgisi nesnesi gerekliyse, bir hizmet sorumlusu (SPN) kullanmanız gerekir. Azure Stack ve AD FS kimlik yönetimi hizmetiniz olarak bir hizmet sorumlusu ayarlama hakkında daha fazla bilgi için bkz. [AD FS hizmet sorumlusunu yönetme](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
 
 ## <a name="test-the-connectivity"></a>Bağlantısını test etme
 
@@ -85,4 +85,4 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Şablonları Azure Stack için geliştirme](../user/azure-stack-develop-templates.md)
 - [Şablonları PowerShell ile dağıtma](../user/azure-stack-deploy-template-powershell.md)
-  - [Azure Stack modül başvurusu](https://docs.microsoft.com/powershell/azure/azure-stack/overview)  
+  - [Azure Stack modülü başvurusu](https://docs.microsoft.com/powershell/azure/azure-stack/overview)  

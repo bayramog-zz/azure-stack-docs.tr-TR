@@ -1,6 +1,6 @@
 ---
 title: Azure Stack SQL kaynak sağlayıcısı güncelleştiriliyor | Microsoft Docs
-description: Azure Stack SQL kaynak sağlayıcısı nasıl güncelleştirme hakkında bilgi edinin.
+description: Azure Stack SQL kaynak sağlayıcısını nasıl güncelleştirebileceğinizi öğrenin.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -11,66 +11,66 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 558853309faecbf2955a08d7a8f629d83a38dbd1
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 6554a18ee881f053eebc2fc3df8d846cd8d9d12e
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617837"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68417961"
 ---
-# <a name="update-the-sql-resource-provider"></a>SQL kaynak sağlayıcısını güncelle
+# <a name="update-the-sql-resource-provider"></a>SQL kaynak sağlayıcısını güncelleştirme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri.*
+*Uygulama hedefi: Tümleşik sistemler Azure Stack.*
 
-Yeni bir SQL kaynak sağlayıcısı, Azure Stack için yeni bir derleme güncelleştirildiğinde yayımlanan. Mevcut kaynak sağlayıcısını çalışmaya devam eder, ancak için en son sürüme mümkün olan en kısa sürede güncelleştirilmesi öneririz. 
+Azure Stack yeni bir yapıya güncelleştirildiği zaman yeni bir SQL kaynak sağlayıcısı serbest kalabilir. Mevcut kaynak sağlayıcı çalışmaya devam etse de en kısa sürede en son yapıya güncelleştirmenizi öneririz. 
 
-SQL kaynak sağlayıcısı sürüm 1.1.33.0 sürümünden başlayarak, güncelleştirmeleri birikmeli özelliktedir ve yayımlanmış olan yüklü olması gerekmez; Başlangıç 1.1.24.0 sürümünden veya üzeri olduğu sürece. SQL kaynak sağlayıcısı 1.1.24.0 sürümünü çalıştırıyorsanız, örneğin, ardından 1.1.33.0 sürümüne veya daha sonra ilk sürümünü 1.1.30.0 yüklemeye gerek olmadan yükseltebilirsiniz. Kullanılabilir kaynak sağlayıcısı sürümleri ve üzerinde desteklenir, Azure Stack sürümünü gözden geçirmek için sürümleri listesinde bakın [kaynak sağlayıcı önkoşulları dağıtma](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
+SQL kaynak sağlayıcısı sürüm 1.1.33.0 sürümünden başlayarak, güncelleştirmeler birikimlidir ve yayımlandıkları sıraya göre yüklenmesi gerekmez; sürümünden itibaren 1.1.24.0 veya sonraki bir sürümden başladığınızı sürece. Örneğin, SQL kaynak sağlayıcısı 'nın 1.1.24.0 sürümünü çalıştırıyorsanız, önce sürüm 1.1.30.0 'yi yüklemeye gerek kalmadan 1.1.33.0 veya üzeri sürüme yükseltebilirsiniz. Kullanılabilir kaynak sağlayıcısı sürümlerini ve bunların desteklendiği Azure Stack sürümünü gözden geçirmek için, [kaynak sağlayıcısı önkoşullarını dağıtma](./azure-stack-sql-resource-provider-deploy.md#prerequisites)' daki sürümler listesine bakın.
 
-Kaynak Sağlayıcısı'nı güncelleştirmek için *UpdateSQLProvider.ps1* betiği. Bu betik yeni SQL kaynak Sağlayıcısı'nin karşıdan yüklemesiyle dahil edilir. Güncelleştirme işlemi için kullanılan işleme benzer [kaynak sağlayıcısı dağıtma](./azure-stack-sql-resource-provider-deploy.md). Güncelleştirme betiğini DeploySqlProvider.ps1 komut dosyası olarak aynı bağımsız değişkenleri kullanır ve sertifika bilgilerini sağlamanız gerekir.
+Kaynak sağlayıcısını güncelleştirmek için *Updatesqlprovider. ps1* betiğini kullanın. Bu komut dosyası, yeni SQL kaynak sağlayıcısı 'nın indirilmesine dahildir. Güncelleştirme işlemi, [kaynak sağlayıcısını dağıtmak](./azure-stack-sql-resource-provider-deploy.md)için kullanılan işleme benzerdir. Güncelleştirme betiği, DeploySqlProvider. ps1 betiği ile aynı bağımsız değişkenleri kullanır ve sertifika bilgilerini sağlamanız gerekir.
 
  > [!IMPORTANT]
- > Kaynak Sağlayıcısı'nı yükseltmeden önce yeni işlevler, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için sürüm notlarını gözden geçirin.
+ > Kaynak sağlayıcısını yükseltmeden önce, yeni işlevsellik, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için sürüm notlarını gözden geçirin.
 
-## <a name="update-script-processes"></a>Güncelleştirme betik işlemleri
+## <a name="update-script-processes"></a>Betik süreçlerini Güncelleştir
 
-*UpdateSQLProvider.ps1* betik en son kaynak sağlayıcı kodu ile yeni bir sanal makine (VM) oluşturur.
+*Updatesqlprovider. ps1* betiği, en son kaynak sağlayıcısı kodu ile yeni bir sanal makıne (VM) oluşturur.
 
 > [!NOTE]
-> En son Windows Server 2016 Core görüntüyü Market Yönetimi'nden indirmenizi öneririz. Bir güncelleştirme yüklemeniz gerekiyorsa, yerleştirebilirsiniz bir **tek** MSU paketinde bağımlılık yerel yolu. Bu konumda birden fazla MSU dosyası yoksa, betiği başarısız olur.
+> Market yönetiminden en son Windows Server 2016 çekirdek görüntüsünü indirmeniz önerilir. Bir güncelleştirme yüklemeniz gerekiyorsa, **tek** bir msu paketini yerel bağımlılık yoluna yerleştirebilirsiniz. Bu konumda birden fazla MSU dosyası varsa betik başarısız olur.
 
-Sonra *UpdateSQLProvider.ps1* betik yeni bir VM oluşturur, betik aşağıdaki ayarları eski sağlayıcısından VM geçirir:
+*Updatesqlprovider. ps1* betiği yenı bir VM oluşturduktan sonra, komut dosyası eskı sağlayıcı VM 'sinden aşağıdaki ayarları geçirir:
 
 * veritabanı bilgileri
 * barındırma sunucusu bilgileri
 * gerekli DNS kaydı
 
-## <a name="update-script-parameters"></a>Betik parametreleri güncelleştirin
+## <a name="update-script-parameters"></a>Betik parametrelerini Güncelleştir
 
-Programını çalıştırdığınızda, komut satırından aşağıdaki parametreleri belirtebilirsiniz **UpdateSQLProvider.ps1** PowerShell Betiği. Yoksa veya herhangi bir parametre doğrulaması başarısız olursa, gerekli parametreleri sağlamanız istenir.
+**Updatesqlprovider. ps1** PowerShell betiğini çalıştırdığınızda komut satırından aşağıdaki parametreleri belirtebilirsiniz. Aksi takdirde veya herhangi bir parametre doğrulaması başarısız olursa, gerekli parametreleri sağlamanız istenir.
 
-| Parametre adı | Açıklama | Açıklama veya varsayılan değeri |
+| Parametre adı | Açıklama | Açıklama veya varsayılan değer |
 | --- | --- | --- |
-| **CloudAdminCredential** | Ayrıcalıklı uç nokta erişmek için gerekli bulut Yöneticisi kimlik bilgileri. | _Gerekli_ |
-| **AzCredential** | Azure Stack hizmet yönetici hesabının kimlik bilgileri. Azure Stack dağıtmak için kullanılan kimlik bilgilerini kullanın. | _Gerekli_ |
-| **VMLocalCredential** | SQL kaynak sağlayıcısı VM yerel yönetici hesabı için kimlik bilgileri. | _Gerekli_ |
-| **PrivilegedEndpoint** | Ayrıcalıklı uç noktasının DNS adı veya IP adresi. |  _Gerekli_ |
-| **AzureEnvironment** | Azure Stack dağıtmak için kullanılan hizmet yönetici hesabının Azure ortamı. Yalnızca Azure AD dağıtımları için gereklidir. Desteklenen ortam adları **AzureCloud**, **AzureUSGovernment**, veya bir Azure AD, Çin kullanıyorsanız **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | Ayrıca, sertifika .pfx dosyasını bu dizinde yerleştirmeniz gerekir. | _Çok düğümlü zorunlu ancak tek bir düğüm için isteğe bağlı_ |
-| **DefaultSSLCertificatePassword** | .Pfx sertifika için parola. | _Gerekli_ |
-| **MaxRetryCount** | Her işlem bir hata olursa yeniden denemek istiyor sayısı.| 2 |
-| **RetryDuration** |Saniye cinsinden yeniden denemeler arasındaki zaman aşımı aralığı. | 120 |
-| **Kaldırma** | Kaynak sağlayıcısı ile ilişkili tüm kaynakları kaldırır. | Hayır |
-| **DebugMode** | Otomatik temizleme başarısız engeller. | Hayır |
+| **CloudAdminCredential** | Ayrıcalıklı uç noktaya erişmek için gerekli olan bulut yöneticisinin kimlik bilgileri. | _Gerekli_ |
+| **AzCredential** | Azure Stack hizmeti yönetici hesabı için kimlik bilgileri. Azure Stack dağıtmak için kullandığınız kimlik bilgilerini kullanın. | _Gerekli_ |
+| **VMLocalCredential** | SQL kaynak sağlayıcısı VM 'sinin yerel yönetici hesabının kimlik bilgileri. | _Gerekli_ |
+| **PrivilegedEndpoint** | Ayrıcalıklı uç noktanın IP adresi veya DNS adı. |  _Gerekli_ |
+| **AzureEnvironment** | Azure Stack dağıtmak için kullandığınız hizmet yönetici hesabının Azure ortamı. Yalnızca Azure AD dağıtımları için gereklidir. Desteklenen ortam adları **Azurecsesli**, **AzureUSGovernment**veya Çin Azure AD, **AzureChinaCloud**kullanıyorsa. | AzureCloud |
+| **DependencyFilesLocalPath** | Certificate. pfx dosyanızı da bu dizine yerleştirmeniz gerekir. | _Tek düğüm için isteğe bağlıdır, ancak çoklu düğüm için zorunludur_ |
+| **DefaultSSLCertificatePassword** | . Pfx sertifikası için parola. | _Gerekli_ |
+| **MaxRetryCount** | Bir hata oluşursa her işlemi yeniden denemek istediğiniz zaman sayısı.| 2 |
+| **RetryDuration** |Yeniden denemeler arasındaki zaman aşımı aralığı (saniye cinsinden). | 120 |
+| **Kaldırma** | Kaynak sağlayıcıyı ve tüm ilişkili kaynakları kaldırır. | Hayır |
+| **DebugMode** | Hata durumunda otomatik temizlemeyi önler. | Hayır |
 
-## <a name="update-script-powershell-example"></a>PowerShell örnek betiği güncelleştir
-Kullanımının bir örneği verilmiştir *UpdateSQLProvider.ps1* yükseltilmiş bir PowerShell konsolundan çalıştırarak betiği. Değişken bilgileri ve parolaları gerektiği şekilde değiştirdiğinizden emin olun:  
+## <a name="update-script-powershell-example"></a>Güncelleştirme betiği PowerShell örneği
+Aşağıda, yükseltilmiş bir PowerShell konsolundan çalıştırabileceğiniz *Updatesqlprovider. ps1* betiğini kullanmanın bir örneği verilmiştir. Değişken bilgilerini ve parolaları gerektiği gibi değiştirdiğinizden emin olun:  
 
 > [!NOTE]
-> Bu güncelleştirme işlemi, yalnızca Azure Stack tümleşik sistemleri için geçerlidir.
+> Bu güncelleştirme işlemi yalnızca tümleşik sistemler Azure Stack için geçerlidir.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -121,4 +121,4 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[SQL kaynak sağlayıcısı koru](azure-stack-sql-resource-provider-maintain.md)
+[SQL kaynak sağlayıcısını koruyun](azure-stack-sql-resource-provider-maintain.md)

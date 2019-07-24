@@ -1,6 +1,6 @@
 ---
-title: Azure Stack izleme verilerini kullanma | Microsoft Docs
-description: Azure Stack izleme verilerini kullanan seçenekler hakkında bilgi edinin.
+title: Azure Stack izleme verilerini tüketme | Microsoft Docs
+description: Azure Stack izleme verilerini tüketme seçenekleri hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,31 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 0b04a7834218d07706e6314a9c41e0370ff6f6fd
-ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
+ms.openlocfilehash: 64935022f8ace33bd4350ab4ef5421636ff3991e
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67816182"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418513"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Azure Stack izleme verilerini kullanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri*
+*Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Azure İzleyici'de genel Azure gibi Azure İzleyici'işlem hattı ile tek bir konumda izleme verileri bulunamadı. Ancak, tüm genel Azure izleme verileri Azure Stack'te kullanılabilir. Bu makalede, Azure Stack izleme verilerinin kullanmak için çeşitli yollar özetini sunuyoruz.
+İzleme verileri, Azure Izleyici işlem hattı ile tek bir konumda bulunur, tıpkı Global Azure 'da Azure Izleyici gibi. Genel Azure 'da bulunan tüm izleme verileri Azure Stack ' de kullanılabilir. Bu makalede, Azure Stack izleme verilerini kullanmanın çeşitli yolları hakkında bir Özet sağlıyoruz.
  
-## <a name="options-for-data-consumption"></a>Veri tüketimi seçeneklerini
+## <a name="options-for-data-consumption"></a>Veri tüketimi için seçenekler
 
-| Veri türü | Category | Desteklenen hizmetler | Erişim yöntemi |
+| Veri türü | Category | Desteklenen hizmetler | Erişim yöntemleri |
 |-------------------------------------------------------------|----------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Azure platform düzeyi ölçümlerini izleme | Ölçümler | [Azure Stack'te Azure İzleyici ile desteklenen ölçümler](azure-stack-metrics-supported.md) | REST API |
-| Konuk işletim sistemi ölçümleri (örneğin, Perf sayısı) işlem | Ölçümler | Windows ve Linux Vm'leri | Depolama tablo veya blob:<br>Windows veya Linux Azure tanılama <br>Olay hub'ı:<br>Windows Azure Tanılama |
+| Azure Izleyici platformu düzeyi ölçümleri | Ölçümler | [Azure Stack Azure Izleyici ile desteklenen ölçümler](azure-stack-metrics-supported.md) | REST API |
+| Konuk işletim sistemi ölçümlerini hesapla (örneğin, performans sayısı) | Ölçümler | Windows ve Linux VM 'Leri | Depolama tablosu veya blobu:<br>Windows veya Linux Azure Tanılama <br>Olay Hub 'ı:<br>Windows Azure Tanılama |
 | Depolama ölçümleri | Ölçümler | Azure Storage | Depolama tablosu:<br>Depolama Analizi |
-| Etkinlik günlüğü | Events | Tüm Azure Hizmetleri | REST API:<br>Azure izleyici olay API'si |
-| Konuk işletim sistemi günlükleri (örneğin, IIS, ETW, Syslog) işlem | Events | Windows ve Linux Vm'leri | Depolama tablo veya blob:<br>Windows veya Linux Azure tanılama <br>Olay hub'ı:<br>Windows Azure Tanılama |
+| Etkinlik günlüğü | Events | Tüm Azure Hizmetleri | REST API:<br>Azure Izleyici olay API 'SI |
+| Konuk işletim sistemi günlüklerini hesaplama (örneğin, IIS, ETW, syslogs) | Events | Windows ve Linux VM 'Leri | Depolama tablosu veya blobu:<br>Windows veya Linux Azure Tanılama <br>Olay Hub 'ı:<br>Windows Azure Tanılama |
 | Depolama günlükleri | Events | Azure Storage | Depolama tablosu:<br>Depolama Analizi |
 
 ## <a name="next-steps"></a>Sonraki adımlar

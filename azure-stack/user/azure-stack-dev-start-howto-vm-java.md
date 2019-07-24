@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te bir sanal makineye bir Java WAR dağıtma | Microsoft Docs
-description: Java War dosyası, bir sanal makineye Azure Stack'te dağıtın.
+title: Azure Stack bir Java WAR 'i sanal makineye dağıtma | Microsoft Docs
+description: Azure Stack içindeki bir Java WAR 'i sanal makineye dağıtın.
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
@@ -9,77 +9,77 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 1738d106a0688518f7a739d3fb02ec1b16c2b8b9
-ms.sourcegitcommit: 05a16552569fae342896b6300514c656c1df3c4e
+ms.openlocfilehash: 28d60e8fc5b575cd2fbefee1298220418e4f59a1
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65838366"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418243"
 ---
-# <a name="deploy-a-java-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için bir Java web uygulaması dağıtma
+# <a name="deploy-a-java-web-app-to-a-vm-in-azure-stack"></a>Azure Stack bir Java Web uygulamasını bir VM 'ye dağıtma
 
-Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak için oluşturabilirsiniz. Bu makalede, yükleme ve Azure stack'teki Linux VM'de bir Apache Tomcat sunucusunu yapılandırın. Bir Java Web uygulaması kaynak (WAR) dosyası sonra sunucuya yükleyin. Bir WAR dosyası Java arşiv (JAR) dosyaları, sınıflar, metin, resimler, XML ve HTML gibi Java kaynak ve bir web uygulaması sunmak için kullanılan diğer kaynaklar içeren sıkıştırılmış bir koleksiyonunu dağıtmak için kullanılır.
+Python web uygulamanızı Azure Stack barındırmak için bir sanal makine (VM) oluşturabilirsiniz. Bu makalede, Azure Stack bir Linux sanal makinesine Apache Tomcat sunucusu yükleyip yapılandırırsınız. Daha sonra bir Java Web uygulaması kaynağı (WAR) dosyasını sunucuya yüklersiniz. Bir WAR dosyası, bir Java Arşivi (JAR) dosyaları koleksiyonunu, sınıflar, metin, resimler, XML ve HTML gibi Java kaynaklarını içeren sıkıştırılmış dosyaları ve bir Web uygulaması teslim etmek için kullanılan diğer kaynakları dağıtmak için kullanılır.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-1. ' Ndaki yönergeleri takip ederek, Azure Stack sanal ayarlama [Azure Stack'te bir web uygulaması barındırmak üzere bir Linux VM dağıtmak](azure-stack-dev-start-howto-deploy-linux.md).
+1. [Azure Stack ' de bir Web uygulaması barındırmak için bir Linux sanal makinesi dağıtma](azure-stack-dev-start-howto-deploy-linux.md)bölümündeki yönergeleri izleyerek sanal makineyi Azure Stack ' de ayarlayın.
 
-2. VM ağ bölmesinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
+2. VM ağı bölmesinde, aşağıdaki bağlantı noktalarına erişilebilir olduğundan emin olun:
 
     | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), Web sayfalarını sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür. |
-    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanın. |
-    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü (RDP), makinenizde bir grafik kullanıcı arabirimini kullanarak bir Uzak Masaüstü bağlantısı sağlar.   |
-    | 8080 | Özel | Apache Tomcat hizmeti için varsayılan bağlantı noktası. Bir üretim sunucusu için 80 ve 443 üzerinden trafiğiniz yol. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), sunuculardan Web sayfalarını teslim etmek için kullanılan protokoldür. İstemciler bir DNS adı veya IP adresi ile HTTP aracılığıyla bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), bir güvenlik sertifikası gerektiren ve şifreli bilgi iletimi sağlayan güvenli bir HTTP sürümüdür. |
+    | 22 | SSH | Secure Shell (SSH), güvenli iletişimler için şifreli bir ağ protokolüdür. Bu bağlantıyı, sanal makineyi yapılandırmak ve uygulamayı dağıtmak için bir SSH istemcisiyle birlikte kullanırsınız. |
+    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü (RDP), uzak masaüstü bağlantısının makinenizde bir grafik kullanıcı arabirimi kullanmasına izin verir.   |
+    | 8080 | Özel | Apache Tomcat hizmeti için varsayılan bağlantı noktası. Bir üretim sunucusu için, trafiğinizi 80 ve 443 ile yönlendirmenize sahip olursunuz. |
 
-## <a name="install-java"></a>Java'yı yükleme
+## <a name="install-java"></a>Java 'Yı yükler
 
-1. SSH istemciniz kullanarak VM'nize bağlanın. Yönergeler için [PuTTY SSH üzerinden Bağlan](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
+1. SSH istemcinizi kullanarak sanal makinenize bağlanın. Yönergeler için bkz. [PuTTY Ile SSH aracılığıyla bağlanma](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
-2. Sanal makinenizin üzerinde bash isteminde aşağıdaki komutu çalıştırın:
+2. SANAL makinenizin Bash isteminde aşağıdaki komutu çalıştırın:
 
     ```bash  
         sudo apt-get install default-jdk
     ```
 
-3. Yüklemenizi doğrulayın. Hala sanal Makinenize SSH oturumunuzda bağlı, aşağıdaki komutu çalıştırın:
+3. Yüklemenizi doğrulayın. SSH oturumunuzda sanal makinenize hala bağlı, aşağıdaki komutu çalıştırın:
 
     ```bash  
         java -version
     ```
 
-## <a name="install-and-configure-tomcat"></a>Yükleme ve Tomcat yapılandırma
+## <a name="install-and-configure-tomcat"></a>Tomcat 'i yükleyip yapılandırma
 
-1. SSH istemciniz kullanarak VM'nize bağlanın. Yönergeler için [PuTTY SSH üzerinden Bağlan](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
+1. SSH istemcinizi kullanarak sanal makinenize bağlanın. Yönergeler için bkz. [PuTTY Ile SSH aracılığıyla bağlanma](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
-1. Aşağıdakileri yaparak Tomcat kullanıcı oluşturun:
+1. Aşağıdakileri yaparak bir Tomcat kullanıcısı oluşturun:
 
-    a. Aşağıdaki komutu çalıştırarak yeni Tomcat grubu oluşturun:
+    a. Aşağıdaki komutu çalıştırarak yeni bir Tomcat grubu oluşturun:
 
     ```bash  
         sudo groupadd tomcat
     ```
      
-    b. Yeni Tomcat kullanıcı oluşturun. Giriş dizini ile Tomcat grubuna bu kullanıcı ekleme */opt/tomcat*. Bu dizine Tomcat dağıttığınız:
+    b. Yeni bir Tomcat kullanıcısı oluşturun. Bu kullanıcıyı, */seçenek/Tomcat*giriş diziniyle birlikte Tomcat grubuna ekleyin. Tomcat 'i bu dizine dağıtırsınız:
 
     ```bash  
         sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
     ```
 
-1. Tomcat, aşağıdakileri yaparak yükleyin:
+1. Aşağıdakileri yaparak Tomcat 'i yüklersiniz:
 
-    a. Tomcat 8'den en son sürümü için hedefi URL'sini alma [Tomcat 8 indirme sayfası](http://tomcat.apache.org/download-80.cgi).
+    a. [Tomcat 8 indirme sayfasından](http://tomcat.apache.org/download-80.cgi)en son Tomcat 8 sürümü IÇIN tar URL 'sini alın.
 
-    b. Bağlantıyı kullanarak en son sürümü indirmek için cURL kullanın. Aşağıdaki komutları çalıştırın:
+    b. Bağlantıyı kullanarak en son sürümü indirmek için kıvrımlı kullanın. Aşağıdaki komutları çalıştırın:
 
     ```bash  
         cd /tmp 
         curl -O <URL for the tar for the latest version of Tomcat 8>
     ```
 
-    c. Yükleme için Tomcat */opt/tomcat* dizin. Klasör oluşturun ve ardından arşiv açın:
+    c. */Seçenek/Tomcat* dizinine Tomcat 'i yükler. Klasörünü oluşturun ve ardından arşivi açın:
 
     ```bash  
         sudo mkdir /opt/tomcat
@@ -87,7 +87,7 @@ Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak iç
         sudo chown -R tomcat webapps/ work/ temp/ logs/
     ```
 
-1. Aşağıdaki komutları çalıştırarak izinleri tomcat güncelleştirin:
+1. Aşağıdaki komutları çalıştırarak Tomcat izinlerini güncelleştirin:
 
     ```bash  
         sudo chgrp -R tomcat /opt/tomcat
@@ -95,30 +95,30 @@ Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak iç
         sudo chmod g+x conf
     ```
 
-1. Oluşturma bir *systemd* Tomcat hizmet olarak çalıştırabilmeniz için dosya, hizmet.
+1. Bir hizmet olarak Tomcat çalıştırabilmeniz için bir *systemd* hizmet dosyası oluşturun.
 
-   a. Tomcat, Java yüklediğiniz bilmesi gerekir. Bu yol, yaygın olarak adlandırılır *JAVA_HOME*. Konumun çalıştırarak bulabilirsiniz:
+   a. Tomcat 'in Java 'Yı nerede yüklediklerinizi bilmelidir. Bu yol genellikle *JAVA_HOME*olarak adlandırılır. Şunu çalıştırarak konumu bulun:
 
     ```bash  
         sudo update-java-alternatives -l
     ```
 
-    Bu, aşağıdaki gibi oluşturur:
+    Bu, aşağıdakine benzer bir şey üretir:
 
     ```Text  
         Output
         java-1.8.0-openjdk-amd64       1081       /usr/lib/jvm/java-1.8.0-openjdk-amd64
     ```
 
-    Oluşturulabilir *JAVA_HOME* çıkış yolu alma ve ekleyerek değişken değeri */jre*. Örneğin, önceki örnekte kullanarak */usr/lib/jvm/java-1.8.0-openjdk-amd64/jre*.
+    *JAVA_HOME* değişken değerini, çıktısından yolu alarak ve */JRE*ekleyerek oluşturabilirsiniz. Örneğin, önceki örneği kullanarak */usr/lib/jvm/Java-1.8.0-OpenJDK-AMD64/JRE*.
 
-    b. Systemd hizmeti dosyası oluşturmak için değer sunucunuzdan kullanın:
+    b. Systemd hizmet dosyasını oluşturmak için, sunucunuzdaki değeri kullanın:
 
     ```bash  
         sudo nano /etc/systemd/system/tomcat.service
     ```
 
-    c. Aşağıdaki içeriği hizmet dosyanıza yapıştırın. Değerini değiştirmek *JAVA_HOME*, gerekirse, sisteminizde bulunan değer ile eşleşmelidir. CATALINA_OPTS içinde belirtilen bellek ayırma ayarlarını değiştirmek isteyebilirsiniz:
+    c. Aşağıdaki içerikleri hizmet dosyanıza yapıştırın. Gerekirse, *JAVA_HOME*değerini, sisteminizde bulduğunuz değerle eşleşecek şekilde değiştirin. Ayrıca, CATALINA_OPTS içinde belirtilen bellek ayırma ayarlarını da değiştirmek isteyebilirsiniz:
 
     ```Text  
         [Unit]
@@ -150,7 +150,7 @@ Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak iç
 
     d. Dosyayı kaydedin ve kapatın.
 
-    e. Bu hizmet dosyanızı bilebilmesi systemd arka plan programı yeniden yükleyin:
+    e. Hizmet dosyanızı bilmesi için systemd arka plan programını yeniden yükleyin:
 
     ```bash  
         sudo systemctl daemon-reload
@@ -162,48 +162,48 @@ Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak iç
         sudo systemctl start tomcat
     ```
 
-    g. Girerek hatasız başlatıldığını doğrulayın:
+    g. Şunu girerek hata olmadan başlatıldığını doğrulayın:
 
     ```bash  
         sudo systemctl status tomcat
     ```
 
-1. Tomcat sunucusunun doğrulayın. Tomcat, geleneksel isteklerini kabul etmek için bağlantı noktası 8080 kullanır. Trafik, bağlantı noktası için aşağıdaki komutu çalıştırarak izin ver:
+1. Tomcat sunucusunu doğrulayın. Tomcat geleneksel istekleri kabul etmek için 8080 bağlantı noktasını kullanır. Aşağıdaki komutu çalıştırarak bu bağlantı noktasına giden trafiğe izin verin:
 
     ```bash  
         sudo ufw allow 8080
     ```
 
-    Henüz eklediyseniz *gelen bağlantı noktası kuralları* Azure Stack VM'niz için bunları şimdi ekleyin. Daha fazla bilgi için [VM oluşturma](#create-a-vm).
+    Azure Stack VM 'niz için *gelen bağlantı noktası kurallarını* eklemediyseniz, şimdi ekleyin. Daha fazla bilgi için bkz. [VM oluşturma](#create-a-vm).
 
-1. Azure Stack aynı ağda bir tarayıcı açın ve sunucunuzun açın *yourmachine.local.cloudapp.azurestack.external:8080*.
+1. Azure Stack aynı ağda bir tarayıcı açın ve ardından sunucunuzu ( *yourmachine. Local. cloudapp. azurestack. external: 8080*) açın.
 
-    ![Bir Azure Stack VM üzerinde Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
+    ![Azure Stack VM 'de Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
 
-    Apache Tomcat sayfanın sunucunuzdaki yükler. Ardından, sunucu, sunucu durumunu, Yöneticisi uygulama ve ana bilgisayar yöneticisi erişmesine olanak sağlamak için yapılandırın.
+    Sunucunuzdaki Apache Tomcat sayfası yüklenir. Daha sonra, sunucuyu sunucu durumuna, yönetici uygulamasına ve konak yöneticisine erişmenize izin verecek şekilde yapılandırırsınız.
 
-1. Hizmet dosya sunucunuzu yeniden başlattığınızda, Tomcat otomatik olarak başlatılmasını etkinleştirin:
+1. Sunucunuzu yeniden başlattığınızda Tomcat 'in otomatik olarak başlaması için hizmet dosyasını etkinleştirin:
 
     ```bash  
         sudo systemctl enable tomcat
     ```
 
-1. Kendiniz izin verecek şekilde erişmek için bir web yönetimi arabirimi, Tomcat sunucusunun yapılandırın. 
+1. Web yönetimi arabirimine erişim sağlamak için, Tomcat sunucusunu yapılandırın. 
 
-   a. Düzen *tomcat users.xml* dosya ve oturum açın, böylece rol ve kullanıcı tanımlayın. Erişmek için kullanıcı tanımlı `manager-gui` ve `admin-gui`.
+   a. *Tomcat-Users. xml* dosyasını düzenleyin ve oturum açabilmeniz için bir rol ve Kullanıcı tanımlayın. `manager-gui` Ve '`admin-gui`a erişmek için kullanıcıyı tanımlayın.
 
     ```bash  
         sudo nano /opt/tomcat/conf/tomcat-users.xml
     ```
 
-   b. Aşağıdaki öğeleri ekleyin `<tomcat-users>` bölümü:
+   b. Aşağıdaki öğeleri `<tomcat-users>` bölümüne ekleyin:
 
     ```XML  
         <role rolename="tomcat"/>
         <user username="<username>" password="<password>" roles="tomcat,manager-gui,admin-gui"/>
     ```
 
-    Örneğin, son dosyanız aşağıdakine benzer:
+    Örneğin, son dosyanız şöyle görünebilir:
 
     ```XML  
         <tomcat-users xmlns="http://tomcat.apache.org/xml"
@@ -217,15 +217,15 @@ Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak iç
 
     c. Dosyayı kaydedin ve kapatın.
 
-1. Tomcat erişimi kısıtlayan *Manager* ve *ana bilgisayar yöneticisi* sunucudan gelen bağlantılar için uygulamalar. Azure Stack'te bir VM üzerinde Tomcat yüklemekte için bu kısıtlamayı kaldırmak isteyebilirsiniz. Bu uygulamalar üzerinde IP adresi sınırlamaları uygun düzenleyerek değiştirme *context.xml* dosyaları.
+1. Tomcat, sunucudan gelen bağlantılarla *yönetici* ve *ana bilgisayar yöneticisi* uygulamalarına erişimi kısıtlar. Tomcat 'i Azure Stack bir sanal makineye yükletireceğiz, bu kısıtlamayı kaldırmak isteyeceksiniz. Uygun *Context. xml* dosyalarını düzenleyerek, bu uygulamalardaki IP adresi kısıtlamalarını değiştirin.
 
-    a. Güncelleştirme *context.xml* Manager uygulamasında:
+    a. Manager uygulamasında *Context. xml* ' i güncelleştirin:
 
     ```bash  
         sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
     ```
 
-    b. IP adresi kısıtlaması herhangi bir gelen bağlantılara izin verin veya Tomcat için bağlanmak için kullandığınız makinenin IP adresini ekleyin açıklama satırı yapın.
+    b. Her yerden bağlantılara izin vermek için IP adresi kısıtlamasını açıklama veya Tomcat 'e bağlanmak için kullandığınız makinenin IP adresini ekleyin.
 
     ```XML  
     <Context antiResourceLocking="false" privileged="true" >
@@ -236,7 +236,7 @@ Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak iç
 
     c. Dosyayı kaydedin ve kapatın.
 
-    d. Güncelleştirme *context.xml* benzer bir güncelleştirme ile ana bilgisayar yöneticisi uygulama:
+    d. *Context. xml* adlı konak Yöneticisi uygulamasını benzer bir güncelleştirmeyle güncelleştirin:
 
     ```bash  
         sudo nano /opt/tomcat/webapps/host-manager/META-INF/context.xml
@@ -244,55 +244,56 @@ Bir sanal makine (VM) Azure Stack'te Python web uygulamanızı barındırmak iç
 
     e. Dosyayı kaydedin ve kapatın.
 
-1. Sunucu değişikliklerle güncelleştirmek için Tomcat hizmetini yeniden başlatın:
+1. Sunucuyu değişikliklerle güncelleştirmek için Tomcat hizmetini yeniden başlatın:
 
     ```bash  
         sudo systemctl restart tomcat
     ```
 
-1. Azure Stack aynı ağda bir tarayıcı açın ve sunucunuzun açın: *yourmachine.local.cloudapp.azurestack.external:8080*.
+1. Azure Stack aynı ağda bir tarayıcı açın ve ardından sunucunuzu açın: *yourmachine. Local. cloudapp. azurestack. external: 8080*.
 
-    a. Tomcat sunucusunun durumunu gözden geçirin ve erişime sahip olduğunu doğrulamak için **sunucu durumu**.
+    a. Tomcat sunucusunun durumunu gözden geçirmek ve erişiminizin olduğunu doğrulamak için **sunucu durumu**' nu seçin.
 
     b. Tomcat kimlik bilgilerinizle oturum açın.
 
-    ![Bir Azure Stack VM üzerinde Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-management-app.png)
+    ![Azure Stack VM 'de Apache Tomcat](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-management-app.png)
 
 ## <a name="create-an-app"></a>Uygulama oluşturma
 
-Tomcat için dağıtılacak War dosyası oluşturmanız gerekir. Yalnızca ortamınızın denetlemek istiyorsanız, WAR örnek bulabilirsiniz, [Apache Tomcat site](https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/).
+Tomcat 'e dağıtmak için bir WAR oluşturmanız gerekir. Yalnızca ortamınızı denetlemek istiyorsanız [Apache Tomcat sitesinde](https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/)bir örnek War bulabilirsiniz.
 
-Azure'da Java uygulamaları geliştirme hakkında yönergeler için bkz. [azure'da Java uygulamaları oluşturup dağıtmayı](https://azure.microsoft.com/develop/java/).
+Azure 'da Java uygulamaları geliştirme hakkında yönergeler için bkz. [Azure 'Da Java uygulamaları oluşturma ve dağıtma](https://azure.microsoft.com/develop/java/).
 
 ## <a name="deploy-and-run-the-app"></a>Uygulamayı dağıtma ve çalıştırma
 
-1. SSH istemciniz kullanarak VM'nize bağlanın. Yönergeler için [PuTTY SSH üzerinden Bağlan](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
+1. SSH istemcinizi kullanarak sanal makinenize bağlanın. Yönergeler için bkz. [PuTTY Ile SSH aracılığıyla bağlanma](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
-1. Sunucu uygulama paketinizle birlikte güncelleştirmek için Tomcat hizmeti durdurun:
+1. Sunucuyu uygulama paketinizdeki güncelleştirmek için Tomcat hizmetini durdurun:
 
     ```bash  
         sudo systemctl stop tomcat
     ```
 
-1. Webapps klasörüne yazmak için FTP kullanıcı Tomcat grubuna ekleyin. FTP kullanıcı Azure Stack'te VM'nizi oluşturduğunuzda, tanımladığınız bir kullanıcıdır.
+1. Webapps klasörüne yazabilmesi için FTP kullanıcısını Tomcat grubuna ekleyin. FTP kullanıcılarınız, Azure Stack ' de sanal makineyi oluşturduğunuzda tanımladığınız Kullanıcı.
 
     ```bash  
         sudo usermod -a -G tomcat <VM-user>
     ```
 
-1. Webapps klasörüne temizleyin ve ardından, yeni veya güncelleştirilmiş WAR yüklemek için FileZilla ile sanal makinenize bağlanın. Yönergeler için [Connect SFTP FileZilla ile ile](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-sftp-with-filezilla).
+1. Webapps klasörünü temizlemek ve sonra yeni veya güncelleştirilmiş WAR ' ı yüklemek için, FileZilla ile sanal makinenize bağlanın. Yönergeler için bkz. [FileZilla Ile SFTP Ile bağlanma](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-sftp-with-filezilla).
 
-    a. NET *TOMCAT_HOME/webapps*.
+    a. Clear *TOMCAT_HOME/webapps*.
 
-    b. Eklemek için WAR *TOMCAT_HOME/webapps* (örneğin, */opt / / webapps/tomcat*).
+    b. WAR 'nizi *TOMCAT_HOME/webapps* 'e ekleyin (örneğin, */seçenek/Tomcat/webapps/* ).
 
-1.  Tomcat, otomatik olarak genişletir ve uygulamayı dağıtır. Daha önce oluşturduğunuz DNS adını kullanarak görüntüleyebilirsiniz. Örneğin:
+1.  Tomcat, uygulamayı otomatik olarak genişletir ve dağıtır. Daha önce oluşturduğunuz DNS adını kullanarak görüntüleyebilirsiniz. Örneğin:
 
     ```HTTP  
        http://yourmachine.local.cloudapp.azurestack.external:8080/sample
+    ```
+    
+## <a name="next-steps"></a>Sonraki adımlar
 
-## Next steps
-
-- Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
-- Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
-- To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).
+- [Azure Stack için geliştirme](azure-stack-dev-start.md)hakkında daha fazla bilgi edinin.
+- [Azure Stack için genel dağıtımlar IaaS olarak](azure-stack-dev-start-deploy-app.md)hakkında bilgi edinin.
+- Java programlama dilini öğrenmek ve Java için ek kaynaklar bulmak için bkz. [Java.com](https://www.java.com).

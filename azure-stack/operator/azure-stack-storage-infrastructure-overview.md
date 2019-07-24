@@ -1,6 +1,6 @@
 ---
 title: Azure Stack için depolama altyapısını yönetme | Microsoft Docs
-description: Azure Stack için depolama altyapısını yönetme.
+description: Azure Stack için depolama altyapısını yönetin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,83 +11,83 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: c7ae7f0c8fa510b0f2b55e458266065544e1bd5e
-ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
+ms.openlocfilehash: 4c57cad7a5b002e6c73c0555c450a8103eaf8aa4
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66828221"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418003"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Azure Stack için depolama altyapısını yönetme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bu makalede, Azure Stack depolama altyapı kaynaklarını işletimsel durumunu ve sistem durumu açıklar. Bu kaynaklar, depolama sürücülerini ve birimleri içerir. Bu konu başlığı altındaki bilgiler, bir sürücü için bir havuz eklenemez gibi çeşitli sorunlarını girişimi sırasında olmada çok yararlı olabilir.
+Bu makalede Azure Stack depolama altyapısı kaynaklarının sistem durumu ve işletimsel durumu açıklanır. Bu kaynaklar depolama sürücüleri ve birimleri içerir. Bu konudaki bilgiler, bir sürücü gibi çeşitli sorunları gidermeye çalışırken çok değerli olabilir.
 
-## <a name="understand-drives-and-volumes"></a>Sürücüleri ve birimler anlama
+## <a name="understand-drives-and-volumes"></a>Sürücüleri ve birimleri anlama
 
-### <a name="drives"></a>Sürücüleri
+### <a name="drives"></a>Disk
 
-Windows Server yazılımı tarafından desteklenen, Azure Stack depolama özellikleri depolama alanları doğrudan (S2D) ve bir yüksek performanslı, ölçeklenebilir ve sağlamak için Windows Server Yük Devretme Kümelemesi ve dayanıklı depolama hizmeti ile tanımlar.
+Windows Server yazılımıyla desteklenen Azure Stack, bir performans, ölçeklenebilir ve dayanıklı depolama hizmeti sağlamak için Depolama Alanları Doğrudan (S2D) ve Windows Server Yük Devretme Kümelemesi birleşimiyle depolama özelliklerini tanımlar.
 
-Azure Stack tümleşik sistem iş ortakları, çok çeşitli depolama esnekliği de dahil olmak üzere çok sayıda çözüm çeşitlemeleri sunar. Şu anda üç sürücü türleri bir birleşimini seçebilirsiniz: NVMe (geçici olmayan belleği Express), SATA/SSD (katı hal sürücüsü)'ı SAS HDD (Sabit Disk sürücüsü).
+Azure Stack tümleşik sistem ortakları, geniş kapsamlı depolama esnekliği dahil olmak üzere çok sayıda çözüm çeşitlemelerini sunmaktadır. Şu anda üç sürücü türünün birleşimini seçebilirsiniz: NVMe (geçici olmayan bellek Express), SATA/SAS SSD (katı hal sürücüsü), HDD (sabit disk sürücüsü).
 
-Depolama alanları doğrudan, depolama performansını en üst düzeye çıkarmak için bir önbellek sunar. Tek veya birden çok sürücü türleri ile Azure Stack gereç depolama alanları doğrudan otomatik olarak kullanan tüm sürücülerin "Hızlı" (NVMe &gt; SSD &gt; HDD) önbelleğe alma türü. Kalan sürücüler kapasite için kullanılır. Sürücüleri "tamamen flash" veya "karma" dağıtım gruplandırılır:
+Depolama Alanları Doğrudan depolama performansını en üst düzeye çıkarmak için bir önbellek sunar. Tek veya birden çok sürücü türü olan Azure Stack gereç içinde, depolama alanları doğrudan, önbelleğe alma için "en hızlı" (NVMe &gt; SSD &gt; HDD) türünün tüm sürücülerinizi otomatik olarak kullanır. Kalan sürücüler kapasite için kullanılır. Sürücüler "All-Flash" veya "hibrit" dağıtımında gruplandırılabilir:
 
 ![Azure Stack depolama altyapısı](media/azure-stack-storage-infrastructure-overview/image1.png)
 
-Dağıtımlar, depolama performansını en üst düzeye çıkarmak amacıyla tamamen flash ve döngüsel sabit disk sürücülerinin (HDD) içermez.
+Tüm-Flash dağıtımları depolama performansını en üst düzeye çıkarmak ve rotasyonlu sabit disk sürücüleri (HDD) içermez.
 
 ![Azure Stack depolama altyapısı](media/azure-stack-storage-infrastructure-overview/image2.png)
 
-Karma dağıtımlar, performans ve kapasite dengelemek için veya kapasiteyi en üst düzeye çıkarmak için hedefleyin ve döngüsel sabit disk sürücülerinin (HDD) içerir.
+Karma dağıtımlar performans ve kapasiteyi dengelemek ya da kapasiteyi en üst düzeye çıkarmak ve rotasyonlu sabit disk sürücüleri (HDD) dahil etmek için hedeflenir.
 
-Önbellek davranışı için önbelleğe sürücüleri türlerini göre otomatik olarak belirlenir. Yalnızca yazma işlemleri için katı hal sürücüleri (NVMe SSD için önbelleğe alma gibi) önbelleğe alırken önbelleğe alınır. Bu kapasite sürücülerindeki toplam trafik için kapasite sürücülerini azaltarak ve kendi ömürlerine genişletme wear azaltır. Bu arada, okuma flash ömrü önemli ölçüde etkilemez çünkü ve katı hal sürücüleri Evrensel okuma gecikme süresi düşük sunduklarından okuma önbelleğe alınmaz. Sabit disk sürücülerini (HDD'ler için önbelleğe alma SSD gibi), hem okuma ve yazma önbelleğe alınır, flash gibi gecikme süresi sağlamak için önbelleğe alırken (genellikle yaklaşık 10 daha iyi x) hem de.
+Önbelleğin davranışı, önbelleğe alınan sürücülerin türlerine göre otomatik olarak belirlenir. Katı hal sürücüleri (SSD 'Ler için NVMe önbelleğe alma gibi) önbelleğe alırken yalnızca yazma işlemleri önbelleğe alınır. Bu, kapasite sürücülerinde aşı azaltır, bu da kapasite sürücülerine yönelik kümülatif trafiği azaltır ve yaşam sürelerini genişletmelidir. Bu arada, okuma, Flash 'un ömrü önemli ölçüde etkilemediğinden ve katı hal sürücüleri evrensel olarak düşük okuma gecikmesi sağladığından, okumalar önbelleğe alınmaz. Sabit disk sürücüleri (HDD 'Ler için SSDs önbelleği gibi) için önbelleğe alırken hem okuma hem de yazma işlemleri, her ikisi için de Flash benzeri gecikme süresi (genellikle/~ 10X daha iyi) sağlamak üzere önbelleğe alınır.
 
 ![Azure Stack depolama altyapısı](media/azure-stack-storage-infrastructure-overview/image3.png)
 
-Kullanılabilir yapılandırma depolama için Azure Stack OEM iş ortağı denetleyebilirsiniz (https://azure.microsoft.com/overview/azure-stack/partners/) ayrıntılı belirtimi için.
+Depolama alanının kullanılabilir yapılandırması için, Azure Stack OEM iş ortağı (https://azure.microsoft.com/overview/azure-stack/partners/) ayrıntılı belirtim için) kontrol edebilirsiniz.
 
 > [!Note]  
-> Azure Stack Gereci hem HDD ve SSD (veya NVMe) sürücüsü ile karma bir dağıtımda teslim edilebilir. Ancak daha hızlı türü sürücüleri önbellek sürücüleri olarak kullanılır ve tüm kalan sürücüler kapasite sürücülerini bir havuz olarak olarak kullanılacaktır. Kiracı verilerini (BLOB'lar, tablolar, kuyruklar ve diskler) kapasite sürücülerde yerleştirilir. Bu nedenle premium diskler sağlama veya premium depolama hesabı türü nesneleri gelmez seçerek garanti edilir SSD üzerinde ayrılacak veya NVMe sürücüler ve daha yüksek performans elde edin.
+> Azure Stack gereç, hem HDD hem de SSD (veya NVMe) sürücülerle karma bir dağıtımda teslim edilebilir. Ancak daha hızlı türdeki sürücüler önbellek sürücüleri olarak kullanılır ve kalan tüm sürücüler havuz olarak kapasite sürücüleri olarak kullanılır. Kiracı verileri (blob 'lar, tablolar, kuyruklar ve diskler) kapasite sürücülerine yerleştirilir. Bu nedenle, Premium diskleri sağlama veya Premium depolama hesabı türü seçme, nesnelerin SSD veya NVMe sürücülerinde ayrılmaları garanti edilir ve daha fazla performans elde edilir.
 
 ### <a name="volumes"></a>Birimler
 
-*Depolama hizmeti* kullanılabilir depolama sistemi ve Kiracı verileri tutmak için ayrılan ayrı birime bölümler. Sürücüleri hata toleransı, ölçeklenebilirlik ve performans avantajlarının depolama alanları doğrudan'ı tanıtmak için depolama havuzundaki birimler birleştirin.
+*Depolama hizmeti* , kullanılabilir depolamayı sistem ve kiracı verilerini tutmak için ayrılan ayrı birimlerde bölümler. Birimler, Depolama Alanları Doğrudan hata toleransı, ölçeklenebilirlik ve performans avantajlarını tanıtmak için depolama havuzundaki sürücüleri birleştirir.
 
 ![Azure Stack depolama altyapısı](media/azure-stack-storage-infrastructure-overview/image4.png)
 
-Azure Stack depolama havuzunda oluşturulan birimlerin üç tür vardır:
+Azure Stack depolama havuzunda oluşturulan üç tür birim vardır:
 
--   Altyapı: Ana bilgisayar dosyaları Azure Stack altyapısı Vm'leri ve Çekirdek Hizmetleri tarafından kullanılan.
+-   Altyapı: Azure Stack altyapısı VM 'Leri ve Çekirdek Hizmetleri tarafından kullanılan ana bilgisayar dosyaları.
 
--   VM Temp: konak geçici diskler Kiracı Vm'lere bağlı ve bu verileri bu disklerin depolanır.
+-   VM geçici: Kiracı VM 'lerine bağlı geçici diskleri barındırın ve bu veriler bu disklerde saklanır.
 
--   Nesne Store: konak Kiracı verilerini bloblar, tablolar, kuyruklar ve VM disklerini hizmet.
+-   Nesne deposu: kiracı veri Bakımı blob 'ları, tabloları, kuyrukları ve VM disklerini barındırın.
 
-VM Temp ve nesne Store birimler sayısı Azure Stack dağıtım eşit sayıda düğüme olmakla birlikte, bir çok düğümlü dağıtımda üç altyapı birimleri görür:
+Çok düğümlü bir dağıtımda, üç altyapı birimi görürsünüz, ancak VM geçici birimlerinin ve nesne deposu birimlerinin sayısı Azure Stack dağıtımındaki düğümlerin sayısına eşittir:
 
--   Bir dört düğümlü dağıtım dört eşit VM Temp ve dört eşit nesne Store birimler vardır.
+-   Dört düğümlü bir dağıtımda, dört adet eşit VM geçici birimi ve dört eşit nesne deposu birimi vardır.
 
--   Kümeye yeni bir düğüm eklerseniz, her iki tür oluşturulması için yeni bir birim olacaktır.
+-   Kümeye yeni bir düğüm eklerseniz, her iki tür için de yeni bir birim oluşturulur.
 
--   Birim sayısı, hatalı düğüm bile kalır veya kaldırılır.
+-   Bir düğüm arızalı veya kaldırılmış olsa bile birim sayısı aynı kalır.
 
--   Azure Stack geliştirme Seti'ni kullanırsanız, birden çok paylaşımları ile tek bir birim yok.
+-   Azure Stack geliştirici setini kullanıyorsanız, birden çok paylaşım içeren tek bir birim vardır.
 
-Birimleri depolama alanları doğrudan sürücü veya sunucu hataları gibi donanım sorunlarına karşı korumak ve yazılım güncelleştirmeleri gibi sunucu bakım boyunca sürekli kullanılabilirliği Etkinleştir için dayanıklılık sağlar. Azure Stack dağıtım veri esnekliği sağlamak için üç yönlü yansıtma kullanıyor. Kiracı verilerin üç kopyasını nerede bunlar önbellekte kavuşmak, farklı sunucular yazılır:
+Depolama Alanları Doğrudan birimler, sürücü veya sunucu hataları gibi donanım sorunlarına karşı koruma sağlamak ve yazılım güncelleştirmeleri gibi sunucu bakımı genelinde sürekli kullanılabilirliği etkinleştirmek için dayanıklılık sağlar. Azure Stack dağıtımı, Data esnekliği sağlamak için üç yönlü yansıtma kullanıyor. Kiracı verilerinin üç kopyası, önbellekte yer aldıkları farklı sunuculara yazılır:
 
 ![Azure Stack depolama altyapısı](media/azure-stack-storage-infrastructure-overview/image5.png)
 
-Yansıtma, tüm verilerin birden çok kopyasını tutarak, hataya dayanıklılık sağlar. Bu verilerin nasıl şeritli ve yerleştirilmiş önemsiz değil (daha fazla bilgi için bu blog bakın), ancak kesinlikle yansıtma kullanarak depolanan tüm veriler yazılır, sunabilen, say true birden çok kez. Her kopya için farklı fiziksel olarak yazılır (farklı sunucular farklı sürücülere) donanım başarısız bağımsız olarak kabul edilir. Üç yönlü yansıtma güvenli bir şekilde en az iki donanım sorunları (sürücü veya sunucu) aynı anda dayanabilir. Örneğin, bir sunucu zaman aniden yeniden başlatılıyor başka bir sürücüye veya sunucu başarısız olur, tüm veriler kalırken güvenli ve sürekli olarak erişilebilir.
+Yansıtma, tüm verilerin birden çok kopyasını tutarak hata toleransı sağlar. Bu verilerin nasıl şeritlenmiştir ve yerleştirilmesi basit değildir (daha fazla bilgi edinmek için bu bloga bakın), ancak yansıtma kullanılarak depolanan tüm verilerin tam olarak birden çok kez yazıldığını söylemek için kesinlikle doğru. Her kopya, bağımsız olarak başarısız olarak kabul edilen farklı fiziksel donanıma (farklı sunuculardaki farklı sürücülere) yazılır. Üç yönlü yansıtma, aynı anda en az iki donanım sorununu (sürücü veya sunucu) güvenle kabul edebilir. Örneğin, aniden başka bir sürücü veya sunucu başarısız olduğunda bir sunucuyu yeniden yüklüyorsanız, tüm veriler güvenli ve sürekli olarak erişilebilir durumda kalır.
 
 ## <a name="volume-states"></a>Birim durumları
 
-Hangi durumu birimler içinde olduğunu bulmak için aşağıdaki PowerShell komutlarını kullanın:
+Hangi durum birimlerinin içinde olduğunu öğrenmek için aşağıdaki PowerShell komutlarını kullanın:
 
 ```powershell
 $scaleunit_name = (Get-AzsScaleUnit)[0].name
@@ -97,55 +97,55 @@ $subsystem_name = (Get-AzsStorageSubSystem -ScaleUnit $scaleunit_name)[0].name
 Get-AzsVolume -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Select-Object VolumeLabel, HealthStatus, OperationalStatus, RepairStatus, Description, Action, TotalCapacityGB, RemainingCapacityGB
 ```
 
-Ayrılmış birim ve düşürülmüş/eksik bir birim gösteren çıktının bir örneği aşağıda verilmiştir:
+Ayrılmış bir birimi ve düşürülmüş/tamamlanmamış bir birimi gösteren bir çıktı örneği aşağıda verilmiştir:
 
 | VolumeLabel | HealthStatus | OperationalStatus |
 |-------------|--------------|------------------------|
 | ObjStore_1 | Bilinmiyor | Ayrılmış |
-| ObjStore_2 | Uyarı | {Düşürülmüş, eksik} |
+| ObjStore_2 | Uyarı | {Azaltılmış, tamamlanmamış} |
 
-Aşağıdaki bölümler, sistem durumu ve işletimsel durumlarını listeler.
+Aşağıdaki bölümlerde sistem durumu ve işletimsel durumlar listelenmektedir.
 
-### <a name="volume-health-state-healthy"></a>Birim durumu: Sorunsuz
+### <a name="volume-health-state-healthy"></a>Birim sistem durumu: Sorunsuz
 
-| İşlemsel durumu | Açıklama |
+| İşlemsel durum | Açıklama |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Tamam | Birim, iyi durumda. |
-| Yetersiz | Verileri eşit olarak sürücülerde yazılan değil.<br> <br>**Eylem:** Lütfen depolama havuzunda sürücü kullanımını iyileştirmek için desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. Başarısız bağlantı geri yüklendikten sonra yedekten geri yüklemeniz gerekebilir. |
+| Tamam | Birim sağlıklı. |
+| Yetersiz | Veriler, sürücüler arasında eşit olarak yazılmaz.<br> <br>**Ön** Depolama havuzundaki sürücü kullanımını iyileştirmek için lütfen desteğe başvurun. Bunu yapmadan önce, ' den gelen https://aka.ms/azurestacklogfiles Kılavuzu kullanarak günlük dosyası toplama işlemini başlatın. Başarısız bağlantı geri yüklendikten sonra yedekten geri yükleme yapmanız gerekebilir. |
 
 
-### <a name="volume-health-state-warning"></a>Birim durumu: Uyarı
+### <a name="volume-health-state-warning"></a>Birim sistem durumu: Uyarı
 
-Birimi bir uyarı sistem durumunda olduğunda, bir veya daha fazla kopyasını kullanılamıyor, ancak Azure Stack, verilerinizin en az bir kopyasını hala okuyabilirsiniz anlamına gelir.
+Birim bir uyarı sistem durumundaysa, verilerinizin bir veya daha fazla kopyasının kullanılamadığı anlamına gelir, ancak Azure Stack verilerinizin en az bir kopyasını okuyabilirler.
 
-| İşlemsel durumu | Açıklama |
+| İşlemsel durum | Açıklama |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Hizmette | Azure Stack birim gibi ekleme veya bir sürücüyü kaldırma sonrasında onarıyor. Onarım işlemi tamamlandığında, birim için Tamam durumu döndürmelidir.<br> <br>**Eylem:** Birim onarma tamamlamak Azure Stack için bekleyin ve daha sonra durumu denetleyin. |
-| Eksik | Bir veya daha fazla sürücü başarısız oldu veya eksik olduğundan birimin esnekliği azaltılır. Bununla birlikte, eksik sürücüleri verilerinizi güncel kopyalarını içerir.<br> <br>**Eylem:** Eksik sürücüleri yeniden, başarısız olan herhangi bir sürücü değiştirin ve çevrimdışı sunucuları çevrimiçi. |
-| Düşürüldü | Birimin esnekliği, çünkü bir veya daha fazla sürücü başarısız oldu veya eksik olabilir ve bu sürücüde verilerinizin güncel kopyasını vardır azaltılır.<br> <br>**Eylem:** Eksik sürücüleri yeniden, başarısız olan herhangi bir sürücü değiştirin ve çevrimdışı sunucuları çevrimiçi. |
+| Hizmette | Azure Stack, bir sürücü eklendikten veya kaldırıldıktan sonra olduğu gibi birimi onarıyor. Onarım tamamlandığında, birim, tamam sistem durumuna döndürmelidir.<br> <br>**Ön** Azure Stack birimi onarmayı bitirmesini bekleyin ve durumu daha sonra denetleyin. |
+| Eksik | Bir veya daha fazla sürücü başarısız olduğu veya eksik olduğu için birimin esnekliği düzeyi azaltılmıştır. Ancak, eksik sürücüler verilerinizin güncel kopyalarını içerir.<br> <br>**Ön** Eksik sürücüleri yeniden bağlayın, tüm başarısız sürücüleri değiştirin ve çevrimdışı olan tüm sunucuları çevrimiçi hale getirin. |
+| Düşürüldü | Bir veya daha fazla sürücü başarısız olduğu veya eksik olduğu için birimin esnekliği düşürüldü ve bu sürücülerde verilerinizin güncel olmayan kopyaları var.<br> <br>**Ön** Eksik sürücüleri yeniden bağlayın, tüm başarısız sürücüleri değiştirin ve çevrimdışı olan tüm sunucuları çevrimiçi hale getirin. |
 
  
 
-### <a name="volume-health-state-unhealthy"></a>Birim durumu: İyi durumda değil
+### <a name="volume-health-state-unhealthy"></a>Birim sistem durumu: İyi durumda değil
 
-Bir birim bir kötü sistem durumu durumda olduğunda, birimdeki verilerin tümünün veya şu anda erişilemiyor.
+Bir birim sağlıksız bir sistem durumundaysa, birimdeki verilerin bazılarına veya tümüne Şu anda erişilemiyor.
 
-| İşlemsel durumu | Açıklama |
+| İşlemsel durum | Açıklama |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Artıklık | Çok fazla sürücüleri başarısız olduğundan veri birimi kaybetti.<br> <br>**Eylem:** Lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. |
+| Artıklık yok | Çok fazla sürücü başarısız olduğundan birim veri kaybetti.<br> <br>**Ön** Lütfen desteğe başvurun. Bunu yapmadan önce, ' den gelen https://aka.ms/azurestacklogfiles Kılavuzu kullanarak günlük dosyası toplama işlemini başlatın. |
 
 
-### <a name="volume-health-state-unknown"></a>Birim durumu: Bilinmiyor
+### <a name="volume-health-state-unknown"></a>Birim sistem durumu: Bilinmiyor
 
-Birim içinde bilinmeyen durumu sanal disk ayrılmış duruma da olabilir.
+Sanal disk ayrılmışsa birim bilinmeyen sistem durumunda da olabilir.
 
-| İşlemsel durumu | Açıklama |
+| İşlemsel durum | Açıklama |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ayrılmış | Depolama aygıtı hata oluştu. erişilemez olmasına neden olabilir. Bazı veriler kaybolabilir.<br> <br>**Eylem:** <br>1. Fiziksel denetleyin ve ağ bağlantısını tüm depolama cihazı.<br>2. Tüm cihazları doğru bir şekilde bağlantınız varsa, lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. Başarısız bağlantı geri yüklendikten sonra yedekten geri yüklemeniz gerekebilir. |
+| Ayrılmış | Birimin erişilemez olmasına neden olabilecek bir depolama cihazı hatası oluştu. Bazı veriler kaybolabilir.<br> <br>**Ön** <br>1. Tüm depolama cihazlarının fiziksel ve ağ bağlantısını denetleyin.<br>2. Tüm cihazlar doğru bağlandıysa, lütfen desteğe başvurun. Bunu yapmadan önce, ' den gelen https://aka.ms/azurestacklogfiles Kılavuzu kullanarak günlük dosyası toplama işlemini başlatın. Başarısız bağlantı geri yüklendikten sonra yedekten geri yükleme yapmanız gerekebilir. |
 
 ## <a name="drive-states"></a>Sürücü durumları
 
-Sürücü durumunu izlemek için aşağıdaki PowerShell komutlarını kullanın:
+Sürücülerin durumunu izlemek için aşağıdaki PowerShell komutlarını kullanın:
 
 ```powershell
 $scaleunit_name = (Get-AzsScaleUnit)[0].name
@@ -155,67 +155,67 @@ $subsystem_name = (Get-AzsStorageSubSystem -ScaleUnit $scaleunit_name)[0].name
 Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Select-Object StorageNode, PhysicalLocation, HealthStatus, OperationalStatus, Description, Action, Usage, CanPool, CannotPoolReason, SerialNumber, Model, MediaType, CapacityGB
 ```
 
-Aşağıdaki bölümlerde, bir sürücü kullanılabilir sistem durumları açıklanmaktadır.
+Aşağıdaki bölümlerde bir sürücünün içinde bulunabileceği sistem durumları açıklanır.
 
 ### <a name="drive-health-state-healthy"></a>Sürücü durumu: Sorunsuz
 
-| İşlemsel durumu | Açıklama |
+| İşlemsel durum | Açıklama |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Tamam | Birim, iyi durumda. |
-| Hizmette | Sürücü bazı iç kayıt tutma işlemlerini gerçekleştiriyor. İşlem tamamlandığında, sürücü Tamam durumu döndürmelidir. |
+| Tamam | Birim sağlıklı. |
+| Hizmette | Sürücü, bazı iç temizlik işlemleri gerçekleştiriyor. Eylem tamamlandığında, sürücü, tamam sistem durumuna döndürmelidir. |
 
 ### <a name="drive-health-state-healthy"></a>Sürücü durumu: Sorunsuz
 
-Uyarı durumu can sürücüde okuyun ve başarıyla veri yazma ancak bir sorun vardır.
+Uyarı durumundaki bir sürücü verileri okuyabilir ve yazabilir, ancak bir sorun olabilir.
 
-| İşlemsel durumu | Açıklama |
+| İşlemsel durum | Açıklama |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| İletişim kaybedildi | Sürücüye bağlantısı kesildi.<br> <br>**Eylem:** Tüm sunucuları tekrar çevrimiçi duruma getirin. Bu sorunu çözmüyorsa, sürücünün yeniden bağlanın. Bu gerçekleştiği tutar, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
-| Öngörülen hata | Sürücünün hata yakında tahmin edildiğinde.<br> <br>**Eylem:** Mümkün olan en kısa sürede tam dayanıklılık sağlamak için sürücüyü değiştirin. |
-| G/ç hatası | Sürücü erişirken geçici bir hata oluştu.<br> <br>**Eylem:** Bu gerçekleştiği tutar, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
-| Geçici hata | Sürücüyü geçici bir hata oluştu. Bu genellikle sürücünün yanıt vermiyor, ancak bunu Ayrıca, depolama alanları koruyucu bölümü sürücüden uygunsuz bir şekilde kaldırıldı doğrudan gelebilir anlamına gelir. <br> <br>**Eylem:** Bu gerçekleştiği tutar, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
-| Olağan dışı bir gecikme süresi | Sürücü bazen yanıt vermiyor ve hatanın belirtileri gösteriliyor.<br> <br>**Eylem:** Bu gerçekleştiği tutar, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
-| Havuzdan kaldırılıyor | Azure Stack, sürücü, depolama havuzundan kaldırma işleminde ' dir.<br> <br>**Eylem:** Sürücü kaldırılmasını tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin.<br>Bu durum devam ederse, lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. |
+| İletişim kesildi | Sürücüye bağlantı kaybedildi.<br> <br>**Ön** Tüm sunucuları yeniden çevrimiçi duruma getirin. Bu dosyayı düzelmezse sürücüyü yeniden bağlayın. Bu durum devam ederse, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
+| Tahmine dayalı hata | Sürücünün bir başarısızlığı yakında gerçekleşecek şekilde tahmin edilir.<br> <br>**Ön** Tam dayanıklılık sağlamak için sürücüyü mümkün olan en kısa sürede değiştirin. |
+| GÇ hatası | Sürücüye erişilirken geçici bir hata oluştu.<br> <br>**Ön** Bu durum devam ederse, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
+| Geçici hata | Sürücüde geçici bir hata oluştu. Bu genellikle sürücünün yanıt vermediği anlamına gelir, ancak Depolama Alanları Doğrudan koruyucu bölümünün sürücüden uygun şekilde kaldırıldığı anlamına da gelebilir. <br> <br>**Ön** Bu durum devam ederse, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
+| Olağan dışı gecikme | Sürücü bazen yanıt vermiyor ve hata işaretlerini gösteriyor.<br> <br>**Ön** Bu durum devam ederse, tam dayanıklılık sağlamak için sürücüyü değiştirin. |
+| Havuzdan kaldırılıyor | Azure Stack, sürücüyü depolama havuzundan kaldırma sürecinizdir.<br> <br>**Ön** Azure Stack sürücüyü kaldırma işleminin bitmesini bekleyin ve durumu daha sonra denetleyin.<br>Durum kalırsa, lütfen desteğe başvurun. Bunu yapmadan önce, ' den gelen https://aka.ms/azurestacklogfiles Kılavuzu kullanarak günlük dosyası toplama işlemini başlatın. |
 |  |  |
-| Bakım modu başlangıç | Sürücüye bakım moduna almadan sürecinde Azure yığınıdır. Bu geçici bir durumdur - sürücü yakında In Bakım modu durumunda olması gerekir.<br> <br>**Eylem:** İşlemi tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin. |
-| Bakım modunda | Sürücü okuma durdurma bakım modunda ve sürücüye yazar. Bu, genellikle sürücünün PNU veya FRU çalışıyor gibi Azure Stack yönetim görevleri anlamına gelir. Ancak yönetici aynı zamanda bakım modunda sürücü yerleştirebilirsiniz.<br> <br>**Eylem:** Yönetim görevi tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin.<br>Bu durum devam ederse, lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. |
+| Bakım modu başlatılıyor | Azure Stack, sürücüyü bakım moduna getirme sürecinizdeki bir işlemdir. Bu geçici bir durumdur. sürücü yakında bakım modu durumunda olmalıdır.<br> <br>**Ön** Azure Stack işlemin bitmesini bekleyin ve ardından durumu daha sonra denetleyin. |
+| Bakım modunda | Sürücü bakım modunda olduğundan, sürücüden okuma ve yazma işlemleri durduruluyor. Bu genellikle, PNU veya FRU gibi yönetim görevlerinin sürücüyü Azure Stack anlamına gelir. Ancak yönetici Ayrıca sürücüyü bakım moduna geçirebilir.<br> <br>**Ön** Azure Stack yönetim görevinin bitmesini bekleyip durumu daha sonra denetleyin.<br>Durum kalırsa, lütfen desteğe başvurun. Bunu yapmadan önce, ' den gelen https://aka.ms/azurestacklogfiles Kılavuzu kullanarak günlük dosyası toplama işlemini başlatın. |
 |  |  |
-| Bakım modunu durdurma | Azure Stack, sürücü tekrar çevrimiçi duruma getirmeden sürecinde ' dir. Bu geçici bir durumdur - sürücü yakında başka bir durumda - ideal olarak iyi durumda olması gerekir.<br> <br>**Eylem:** İşlemi tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin. |
+| Bakım modu durduruluyor | Azure Stack, sürücüyü yeniden çevrimiçi hale getirme sürecidir. Bu geçici bir durumdur. sürücünün yakında daha Iyi bir durumda olması gerekir.<br> <br>**Ön** Azure Stack işlemin bitmesini bekleyin ve ardından durumu daha sonra denetleyin. |
 
  
 
 ### <a name="drive-health-state-unhealthy"></a>Sürücü durumu: İyi durumda değil
 
-Kötü durumda bir sürücü şu anda yazılan veya olamaz erişilebilir.
+Sağlıksız durumdaki bir sürücü şu anda yazılamaz veya erişilemez durumda olamaz.
 
-| İşlemsel durumu | Açıklama |
+| İşlemsel durum | Açıklama |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Böl | Sürücü havuzdan ayrılmış haline gelir.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. Bu disk kullanmanız gerekiyorsa, disk sistemden kaldırmak, hiç yararlı veri diskte olduğundan emin olun, disk silme ve ardından diski yeniden takın. |
-| Kullanılamaz | Fiziksel disk çözüm satıcınız tarafından desteklenmediği için karantinaya alındı. Çözüm için onaylanmış ve doğru bir disk üretici yazılımı olan diskleri desteklenir.<br> <br>**Eylem:** Onaylanan üretici ve model numarası çözümü içeren bir disk sürücüsüne değiştirin. |
-| Eski meta veriler | Yeni disk, önceden kullanılmış ve bilinmeyen depolama sistemi verileri içerebilir. Disk karantinaya alındı.        <br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. Bu disk kullanmanız gerekiyorsa, disk sistemden kaldırmak, hiç yararlı veri diskte olduğundan emin olun, disk silme ve ardından diski yeniden takın. |
-| Tanınmayan meta veriler | Tanınmayan meta veriler genellikle sürücü üzerindeki farklı bir havuzdan meta verileri olduğu anlamına gelir sürücüdeki bulunamadı.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. Bu disk kullanmanız gerekiyorsa, disk sistemden kaldırmak, hiç yararlı veri diskte olduğundan emin olun, disk silme ve ardından diski yeniden takın. |
-| Başarısız ortam | Sürücü başarısız oldu ve depolama alanları tarafından artık kullanılmayacak.<br> <br>**Eylem:** Mümkün olan en kısa sürede tam dayanıklılık sağlamak için sürücüyü değiştirin. |
-| Cihaz donanım hatası | Bu sürücüde bir donanım hatası vardı. <br> <br>**Eylem:** Mümkün olan en kısa sürede tam dayanıklılık sağlamak için sürücüyü değiştirin. |
-| Üretici yazılımı güncelleştiriliyor | Azure Stack, sürücü bellenimini güncelleştirme işlemidir. Bu pencere, genellikle bir dakikadan kısa sürer ve hangi sırasında havuzdaki diğer sürücülerin kodlayıp zaman okuyan ve yazan geçici bir durumdur.<br> <br>**Eylem:** Güncelleştirmeyi tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin. |
-| Başlatılıyor | Sürücü işlemi için hazırlanıyor. Bu geçici bir durum - tamamlandıktan sonra sürücü farklı işletimsel durumuna geçiş olmalıdır.<br> <br>**Eylem:** İşlemi tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin. |
+| Böl | Sürücü havuzdan ayrılmış hale geldi.<br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. Bu diski kullanmanız gerekiyorsa, diski sistemden kaldırın, diskte yararlı bir veri olmadığından emin olun, diski silin ve sonra diski yeniden takın. |
+| Kullanılamaz | Fiziksel disk, çözüm satıcınız tarafından desteklenmediğinden karantinaya alındı. Yalnızca çözüm için onaylanan ve doğru disk üretici yazılımına sahip olan diskler desteklenir.<br> <br>**Ön** Sürücüyü, çözüm için onaylanmış bir üretici ve model numarası olan bir diskle değiştirin. |
+| Eski meta veriler | Değiştirilen disk daha önce kullanılmış ve bilinmeyen bir depolama sisteminden veri içeriyor olabilir. Disk karantinaya alındı.        <br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. Bu diski kullanmanız gerekiyorsa, diski sistemden kaldırın, diskte yararlı bir veri olmadığından emin olun, diski silin ve sonra diski yeniden takın. |
+| Tanınmayan meta veriler | Sürücüde tanınmayan meta veriler bulundu, bu, genellikle sürücüde bulunan farklı bir havuzdan meta veriler olduğu anlamına gelir.<br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. Bu diski kullanmanız gerekiyorsa, diski sistemden kaldırın, diskte yararlı bir veri olmadığından emin olun, diski silin ve sonra diski yeniden takın. |
+| Başarısız medya | Sürücü başarısız oldu ve artık depolama alanları tarafından kullanılmayacak.<br> <br>**Ön** Tam dayanıklılık sağlamak için sürücüyü mümkün olan en kısa sürede değiştirin. |
+| Cihaz donanım hatası | Bu sürücüde bir donanım hatası vardı. <br> <br>**Ön** Tam dayanıklılık sağlamak için sürücüyü mümkün olan en kısa sürede değiştirin. |
+| Üretici yazılımı güncelleştiriliyor | Azure Stack, sürücüdeki üretici yazılımını güncelleştiriyor. Bu, genellikle bir dakikadan kısa bir süre boyunca ve havuzdaki diğer sürücülerin tüm okuma ve yazma işlemlerini işleyeceği geçici bir durumdur.<br> <br>**Ön** Azure Stack güncelleştirmeyi tamamlamasını bekleyin ve sonra durumu kontrol edin. |
+| Başlatılıyor | Sürücü işleme hazırlanıyor. Bu geçici bir durum olmalıdır. tamamlandıktan sonra sürücü farklı bir işlemsel duruma geçiş yapılmalıdır.<br> <br>**Ön** Azure Stack işlemin bitmesini bekleyin ve ardından durumu daha sonra denetleyin. |
  
 
-## <a name="reasons-a-drive-cant-be-pooled"></a>Bir sürücü havuza nedenleri
+## <a name="reasons-a-drive-cant-be-pooled"></a>Bir sürücünün havuza alınamıyor nedenleri
 
-Bazı sürücüler yalnızca Azure Stack depolama havuzunda olmasını hazır değil. Neden bir sürücü bir sürücünün CannotPoolReason özelliğine bakılarak havuz için uygun değil kullanıma bulabilirsiniz. Aşağıdaki tabloda her biri nedeniyle biraz daha ayrıntılı bilgi sağlar.
+Bazı sürücüler yalnızca Azure Stack depolama havuzunda olmaya hazırız. Bir sürücünün CannotPoolReason özelliğine bakarak, bir sürücünün neden havuza uygun olmadığını öğrenebilirsiniz. Aşağıdaki tabloda nedenlerden her biri hakkında biraz daha ayrıntılı bilgi verilmektedir.
 
 | Reason | Açıklama |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Donanım uyumlu değil | Sistem sağlığı hizmeti kullanılarak belirtilen onaylanan depolama modelleri listesinde sürücü değil.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
-| Üretici yazılımı uyumlu değil | Fiziksel sürücü bellenimini, sistem sağlığı hizmeti kullanarak onaylı üretici yazılımı sürümlerini listesinde değil.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
-| Küme tarafından kullanımda | Sürücü, şu anda bir yük devretme kümesi tarafından kullanılır.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
-| Çıkarılabilir medya | Sürücünün bir çıkarılabilir sürücü olarak sınıflandırılır. <br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
-| İyi | Sürücü, iyi durumda olmayan ve değiştirilmesi gerekebilir.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. |
-| Yeterli kapasite | Sürücüdeki boş alanı alma bölümler vardır.<br> <br>**Eylem:** Sürücü yeni bir disk ile değiştirin. Bu disk kullanmanız gerekiyorsa, disk sistemden kaldırmak, hiç yararlı veri diskte olduğundan emin olun, disk silme ve ardından diski yeniden takın. |
-| Doğrulama devam ediyor | Sistem sağlığı hizmeti kullanmak için sürücü veya sürücü bellenimini onaylanırsa görmek için denetliyor.<br> <br>**Eylem:** İşlemi tamamlamak Azure Stack için bekleyin ve daha sonra denetleyin. |
-| Doğrulama başarısız oldu | Sistem sağlığı hizmeti kullanmak için sürücü veya sürücü bellenimini onaylanırsa görmeye denetlenemedi.<br> <br>**Eylem:** Lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. |
-| Çevrimdışı | Çevrimdışı sürücüdür. <br> <br>**Eylem:** Lütfen desteğe başvurun. Kılavuzu kullanarak günlük dosya toplama işlemi başlamadan önce https://aka.ms/azurestacklogfiles. |
+| Donanım uyumlu değil | Sürücü, Sistem Sağlığı Hizmeti kullanılarak belirtilen onaylanan depolama modelleri listesinde değildir.<br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. |
+| Bellenim uyumlu değil | Fiziksel sürücüdeki üretici yazılımı, Sistem Sağlığı Hizmeti kullanılarak onaylanan bellenim düzeltmeleri listesinde değildir.<br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. |
+| Küme tarafından kullanılıyor | Sürücü şu anda bir yük devretme kümesi tarafından kullanılıyor.<br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. |
+| Çıkarılabilir medya | Sürücü çıkarılabilir bir sürücü olarak sınıflandırılır. <br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. |
+| Sağlıklı durumda değil | Sürücü sağlıklı durumda değil ve değiştirilmelidir.<br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. |
+| Yetersiz kapasite | Sürücüdeki boş alanı alan bölümler vardır.<br> <br>**Ön** Sürücüyü yeni bir diskle değiştirin. Bu diski kullanmanız gerekiyorsa, diski sistemden kaldırın, diskte yararlı bir veri olmadığından emin olun, diski silin ve sonra diski yeniden takın. |
+| Doğrulama devam ediyor | Sistem Sağlığı Hizmeti, sürücüdeki sürücünün veya bellenimin kullanım için onaylandığını denetlemek için kontrol edilir.<br> <br>**Ön** Azure Stack işlemin bitmesini bekleyin ve ardından durumu daha sonra denetleyin. |
+| Doğrulama başarısız oldu | Sistem Sağlığı Hizmeti sürücüdeki sürücünün veya bellenimin kullanım için onaylandığından emin olup olmadığını denetlemedi.<br> <br>**Ön** Lütfen desteğe başvurun. Bunu yapmadan önce, ' den gelen https://aka.ms/azurestacklogfiles Kılavuzu kullanarak günlük dosyası toplama işlemini başlatın. |
+| Çevrimdışı | Sürücü çevrimdışı. <br> <br>**Ön** Lütfen desteğe başvurun. Bunu yapmadan önce, ' den gelen https://aka.ms/azurestacklogfiles Kılavuzu kullanarak günlük dosyası toplama işlemini başlatın. |
 
 ## <a name="next-step"></a>Sonraki adım
 
-[Depolama kapasitesi yönetme](azure-stack-manage-storage-shares.md) 
+[Depolama kapasitesini yönetme](azure-stack-manage-storage-shares.md) 

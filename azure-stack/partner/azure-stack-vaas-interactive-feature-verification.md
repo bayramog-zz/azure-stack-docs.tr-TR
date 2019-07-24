@@ -1,6 +1,6 @@
 ---
-title: Hizmet olarak Azure Stack doğrulama test etkileşimli özellik doğrulama | Microsoft Docs
-description: Doğrulama bir hizmet olarak Azure Stack için etkileşimli özellik doğrulama testleri oluşturmayı öğrenin.
+title: Hizmet olarak Azure Stack doğrulamada etkileşimli Özellik doğrulama testi | Microsoft Docs
+description: Hizmet olarak doğrulama ile Azure Stack için etkileşimli Özellik doğrulama testleri oluşturmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,67 +10,67 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: af36943ebaa78ad1838506d6614a7fd6671afe4f
+ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64303260"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68418479"
 ---
-# <a name="interactive-feature-verification-testing"></a>Etkileşimli özellik doğrulama testi  
+# <a name="interactive-feature-verification-testing"></a>Etkileşimli Özellik doğrulama testi  
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Sisteminiz için testleri istemek için etkileşimli özellik doğrulama test çerçevesi'ni kullanabilirsiniz. Bir test istediğinde Microsoft framework etkileşimli el ile yapılacak adımlar gerekli testleri hazırlamak için kullanır. Microsoft, birden fazla tek başına otomatik testleri bir araya zincirleyebilirsiniz çerçevesini kullanabilirsiniz.
+Sisteminiz için testler istemek üzere etkileşimli Özellik doğrulama test çerçevesini kullanabilirsiniz. Bir test istediğinizde, Microsoft, el ile etkileşimli adımlar gerektiren testleri hazırlamak için Framework 'ü kullanır. Microsoft, birçok tek başına otomatikleştirilmiş testi birlikte zincirlemek için çerçevesini kullanabilir.
 
-Bu makalede, basit bir el ile senaryosu açıklanır. Azure stack'teki disk değiştirme test denetler. Framework, her bir adımı tanılama günlüklerini toplar. Bulduğunuz gibi sorunları hata ayıklaması yapabilirsiniz. Framework ayrıca diğer araçları veya işlemler tarafından üretilen günlükleri paylaşıma izin veren ve senaryoya geri bildirim sağlamak sağlar.
+Bu makalede, basit bir el ile senaryo açıklanmaktadır. Test denetimleri Azure Stack bir diski değiştirir. Framework, her adımda tanılama günlüklerini toplar. Sorunları bulduğunuz hata ayıklaması yapabilirsiniz. Çerçeve ayrıca diğer araçlar veya süreçler tarafından oluşturulan günlüklerin paylaşılmasını sağlar ve senaryo hakkında geri bildirim sağlamanıza olanak tanır.
 
 > [!Important]  
-> Bu makalede, Disk kimliği gerçekleştirme adımları başvuruyor. Test geçiş iş akışını toplanan herhangi bir sonuç yeni bir çözüm doğrulama için kullanılamaz olarak yalnızca bir örnek budur.
+> Bu makale, disk kimliği gerçekleştirme adımlarına başvurur. Test geçiş iş akışından toplanan tüm sonuçlar yeni çözüm doğrulaması için kullanılamaz olabileceğinden bu yalnızca bir gösterimdir.
 
-## <a name="overview-of-interactive-testing"></a>Etkileşimli test genel bakış
+## <a name="overview-of-interactive-testing"></a>Etkileşimli teste genel bakış
 
-Disk değiştirme için bir test sık karşılaşılan bir senaryodur. Bu örnekte, test beş adımı vardır:
+Disk değiştirme için bir test yaygın bir senaryodur. Bu örnekte, testte beş adım vardır:
 
-1. Yeni bir **Test geçiş** iş akışı.
-2. Seçin **Disk kimliği Test**.
-3. İstendiğinde el ile adımı tamamlayın.
-4. Senaryo sonucunu denetleyin.
-5. Test sonucu Microsoft'a gönderin.
+1. Yeni bir **test geçiş** iş akışı oluşturun.
+2. **Disk tanımlama testini**seçin.
+3. İstendiğinde el ile adımı doldurun.
+4. Senaryonun sonucunu denetleyin.
+5. Test sonucunu Microsoft 'a gönderin.
 
-## <a name="create-a-new-test-pass"></a>Yeni bir test geçişi oluşturma
+## <a name="create-a-new-test-pass"></a>Yeni test geçişi oluştur
 
-Kullanılabilir geçirmek varolan bir testi yoksa Lütfen için yönergeleri izleyin [test zamanlama](azure-stack-vaas-schedule-test-pass.md).
+Mevcut bir test geçişiniz yoksa, lütfen [bir testi zamanlamaya](azure-stack-vaas-schedule-test-pass.md)yönelik yönergeleri izleyin.
 
-## <a name="schedule-the-test"></a>Test zamanlama
+## <a name="schedule-the-test"></a>Testi zamanlayın
 
-1. Seçin **Disk kimliği Test**.
+1. **Disk kimlik testi**seçin.
 
     > [!Note]  
-    > Test malzemeleri geliştirmeleri yapılmış gibi test sürümünü artırır. Aksi halde Microsoft belirtmiyorsa en yüksek sürümü her zaman kullanılmalıdır.
+    > Test yardımcı kullanımına yönelik iyileştirmeler yapıldıktan sonra testin sürümü artacaktır. Microsoft tarafından aksi belirtilmedikçe en yüksek sürüm her zaman kullanılmalıdır.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
-1. Etki alanı yönetici kullanıcı adı ve parola girmek **Düzenle**.
+1. **Düzenle**seçeneğini belirleyerek etki alanı yönetici kullanıcı adını ve parolasını sağlayın.
 
-1. Uygun test yürütme aracısı / test başlatmaya DVM seçin.
+1. Testi başlatmak için uygun test yürütme aracısını/DVD 'yi seçin.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
-1. Seçin **Gönder** testi başlatmak için.
+1. Testi başlatmak için **Gönder** ' i seçin.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image6.png)
 
-1. Önceki adımda seçtiğiniz aracısından etkileşimli test için UI erişin.
+1. Önceki adımda seçilen aracıdan etkileşimli test için Kullanıcı arabirimine erişin.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image8.png)
 
-1. İzleyin **belgeleri** ve **doğrulama** bağlantıları bu senaryoyu gerçekleştirmek nasıl Microsoft gelen yönergeleri gözden geçirin.
+1. Bu senaryonun nasıl gerçekleştirileceği konusunda Microsoft 'un yönergelerini gözden geçirmek için **belge** ve **doğrulama** bağlantılarını izleyin.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image9.png)
 
@@ -78,40 +78,40 @@ Kullanılabilir geçirmek varolan bir testi yoksa Lütfen için yönergeleri izl
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image10.png)
 
-1. Precheck betiği çalıştırmak için yönergeleri izleyin.
+1. Ön denetim betiğini çalıştırmak için yönergeleri izleyin.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
-1. Precheck betik başarıyla tamamlandıktan sonra el ile senaryoyu (Disk değiştirme) olarak başına çalıştırma **belgeleri** ve **doğrulama** gelen bağlantılar **bilgi**sekmesi.
+1. Ön denetim betiği başarıyla tamamlandıktan sonra, **bilgi** sekmesindeki **belge** ve **doğrulama** bağlantıları için el ile senaryoyu (disk değiştirme) çalıştırın.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 
     > [!Important]  
-    > El ile senaryo gerçekleştirirken iletişim kutusunu kapatmayın.
+    > El ile senaryoyu gerçekleştirirken iletişim kutusunu kapatmayın.
 
-1. El ile senaryo gerçekleştirme tamamladığınızda onay sonrası betiği çalıştırmak için yönergeleri izleyin.
+1. El ile senaryoyu tamamladıktan sonra, yönergeleri izleyerek gönderi denetim betiğini çalıştırın.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image13.png)
 
-1. Başarıyla tamamlandığında el ile senaryosunun (Disk değiştirme), seçin **sonraki**.
+1. El ile senaryonun başarıyla tamamlanmasında (disk değiştirme), **İleri**' yi seçin.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
     > [!Important]  
-    > Pencereyi kapatırsanız yapıldığını önce test durur.
+    > Pencereyi kapatırsanız, test tamamlanmadan önce durur.
 
-1. Test deneyimini için geri bildirim sağlayın. Bu soruları senaryo başarı oranı ve yayın kalitesini değerlendirmek Microsoft yardımcı olur.
+1. Test deneyimi için geri bildirim sağlayın. Bu sorular, Microsoft 'un, senaryonun başarı oranını ve yayın kalitesini değerlendirmesine yardımcı olur.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image15.png)
 
-1. Microsoft'a göndermek istediğiniz herhangi bir günlük dosyasının ekleyin.
+1. Microsoft 'a göndermek istediğiniz günlük dosyalarını ekleyin.
 
     ![Alternatif metin](media/azure-stack-vaas-interactive-feature-verification/image16.png)
 
-1. Geri bildirim gönderimine EULA'yı kabul edin.
+1. Geri bildirim gönderimi EULA 'sını kabul edin.
 
-1. Seçin **Gönder** sonuçlarını Microsoft'a gönderilecek.
+1. Sonuçları Microsoft 'a göndermek için **Gönder** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İzleme ve testleri VaaS portalında yönetme](azure-stack-vaas-monitor-test.md)
+- [VaaS portalındaki testleri izleme ve yönetme](azure-stack-vaas-monitor-test.md)
