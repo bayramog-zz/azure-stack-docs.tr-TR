@@ -1,6 +1,6 @@
 ---
-title: Bu öğreticide, bir Azure Stack teklife abone olmayı öğrenin | Microsoft Docs
-description: Bu öğreticide Azure Stack Hizmetleri için yeni bir abonelik oluşturmak ve test teklifini test sanal makinesi oluşturarak gösterilmektedir.
+title: Azure Stack bir teklifiyle bir abonelik oluşturun | Microsoft Docs
+description: Azure Stack bir teklifle yeni bir abonelik oluşturmayı ve sonra teklifi bir test VM 'si ile test yapmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -17,80 +17,74 @@ ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 3f577ebd5a57b271a449b5db262ea70779ebdb3d
-ms.sourcegitcommit: a427e72e4f3b6cd6000b1459af9bbf221e049e08
+ms.openlocfilehash: 5b72ccee255aadd5d8f42aefea9e397ba310812c
+ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66506361"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68376817"
 ---
-# <a name="tutorial-create-and-test-a-subscription"></a>Öğretici: oluşturma ve test aboneliği
+# <a name="tutorial-create-and-test-a-subscription-in-azure-stack"></a>Öğretici: Azure Stack abonelik oluşturma ve test etme
 
-Bu öğreticide, bir teklif içeren bir aboneliği oluşturun ve ardından test gösterilmektedir. Test için bir bulutun Yöneticisi olarak Azure Stack kullanıcı portalında oturum açın, teklife abone olun ve sonra bir sanal makine oluşturun.
+Bu öğreticide, bir teklif içeren bir abonelik oluşturma ve ardından nasıl test yapılacağı gösterilmektedir. Test için, Azure Stack Kullanıcı portalında bir bulut Yöneticisi olarak oturum açın, teklife abone olur ve sonra bir sanal makine (VM) oluşturun.
 
 > [!TIP]
-> Daha fazla Gelişmiş değerlendirme için bir deneyim, yapabilecekleriniz [belirli bir kullanıcı için bir abonelik oluşturmak](../operator/azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) ve Kullanıcı Portalı'nda, bir kullanıcı olarak oturum açın.
+> Daha gelişmiş bir değerlendirme deneyimi için, [belirli bir kullanıcı için bir abonelik oluşturabilir](../operator/azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) ve ardından Kullanıcı portalında bu kullanıcı olarak oturum açabilirsiniz.
 
-Bu öğreticide, Azure Stack teklife abone olma işlemi gösterilmektedir.
+Bu öğreticide, bir Azure Stack teklifine nasıl abone olunacağı gösterilmektedir.
 
-Ne öğreneceksiniz:
+Öğrenecekleriniz:
 
 > [!div class="checklist"]
 > * Bir teklife abone olma 
-> * Test teklifini
+> * Teklifi test etme
 
 ## <a name="subscribe-to-an-offer"></a>Bir teklife abone olma
 
-Bir kullanıcı olarak bir teklife abone olmak için Azure Stack Kullanıcı Portalı Azure Stack operatör tarafından sunulan Hizmetleri bulmak için oturum açın.
+Bir teklife Kullanıcı olarak abone olmak için, Azure Stack işleci tarafından sunulan kullanılabilir hizmetleri denetlemek için Azure Stack Kullanıcı portalında oturum açın.
 
-1. Kullanıcı seçin ve portal oturum açma **bir abonelik edinmeniz**.
+1. Kullanıcı portalında oturum açın ve **abonelik al**' ı seçin.
 
-   ![Bir aboneliği edinin](media/azure-stack-subscribe-services/get-subscription.png)
+   ![Abonelik edinin](media/azure-stack-subscribe-services/get-subscription.png)
 
-2. **Görünen Ad** alanına aboneliğiniz için bir ad yazın. Ardından **teklif** kullanılabilir teklif birini seçmeniz **bir teklif seçin** bölümü. Ardından **Oluştur**’u seçin.
+2. **Görünen Ad** alanına aboneliğiniz için bir ad yazın. Teklif **Seç** bölümünde mevcut tekliflerden birini seçmek için **teklif** ' i seçin. Ardından **Oluştur**’u seçin.
 
    ![Teklif oluşturma](media/azure-stack-subscribe-services/create-subscription.png)
 
    > [!TIP]
-   > Şimdi aboneliğinizi kullanmaya başlamak için Kullanıcı Portalı yenilemeniz gerekir.
+   > Aboneliğinizi kullanmaya başlamak için Kullanıcı portalını yenileyin.
 
-3. Oluşturduğunuz aboneliği görüntülemek için seçin **tüm hizmetleri**. Ardından, altında **genel** kategorisi seçin **abonelikleri**ve sonra yeni aboneliğinizi seçin. Bir teklife abone olduktan sonra yeni hizmetler, yeni aboneliği bir parçası olarak dahil edilmiştir, görmek için portalı yenileyin. Bu örnekte, **sanal makineler** eklendi.
+3. Oluşturduğunuz aboneliği görüntülemek için **tüm hizmetler**' i seçin. Ardından, **genel** kategori altında **abonelikler**' i seçin ve ardından yeni aboneliğinizi seçin. Teklife abone olduktan sonra yeni aboneliğin bir parçası olarak yeni hizmetlerin dahil edilip edilmediğini görmek için portalı yenileyin. Bu örnekte, **sanal makineler** eklenmiştir.
 
    ![Aboneliği görüntüle](media/azure-stack-subscribe-services/view-subscription.png)
 
-## <a name="test-the-offer"></a>Test teklifini
+## <a name="test-the-offer"></a>Teklifi test etme
 
-Kullanıcı portalında oturum açmış durumdayken yeni abonelik özelliklerini kullanarak bir sanal makine sağlama tarafından teklif test edebilirsiniz.
+Kullanıcı portalında oturum açana sırada, yeni abonelik yeteneklerini kullanarak bir (VM) sağlayarak teklifi test edin.
 
 > [!NOTE]
-> Bu test, bir Windows Server 2016 Datacenter VM için Azure Stack marketini ilk eklendiğini gerektirir.
+> Bu test, öncelikle Azure Stack Market 'e bir Windows Server 2016 Datacenter VM 'nin eklenmesini gerektirir.
 
 1. Kullanıcı portalında oturum açın.
 
-2. Kullanıcı Portalı'nda seçin **sanal makineler**, ardından **Ekle**, ardından **Windows Server 2016 Datacenter**ve ardından **Oluştur**.
+2. Kullanıcı portalında, **sanal makineler**' i seçin, sonra  **Windows Server 2016 Datacenter**' u ve ardından **Oluştur**' u seçin.
 
-3. İçinde **Temelleri** bölümüne şunu yazın bir **adı**, **kullanıcı adı**, ve **parola**, seçin bir **abonelik**, oluşturma bir **kaynak grubu** (veya varolan bir tanesini seçin) ve ardından **Tamam**.
+3. **Temel bilgiler** bölümünde bir **ad**, **Kullanıcı adı**ve **parola**yazıp bir **abonelik**seçin, bir **kaynak grubu** oluşturun (veya mevcut bir tane seçin) ve ardından **Tamam**' ı seçin.
 
-4. İçinde **bir boyut seçin** bölümünden **standart A1**ve ardından **seçin**.  
+4. **Boyut seçin** bölümünde **a1 standart**' ı seçin ve ardından **Seç**' i seçin.  
 
-5. İçinde **ayarları** dikey penceresinde, Varsayılanları kabul edin ve seçin **Tamam**.
+5. **Ayarlar** dikey penceresinde varsayılan değerleri kabul edin ve **Tamam**' ı seçin.
 
-6. İçinde **özeti** bölümünde **Tamam** sanal makine oluşturmak için.  
+6. **Özet** bölümünde, VM 'yi oluşturmak için **Tamam** ' ı seçin.  
 
-7. Yeni sanal makinenize görmek için seçin **sanal makineler**, sonra yeni sanal makine için arama yapın ve onun adına tıklayın.
+7. Yeni VM 'nizi görmek için **sanal makineler**' i seçin ve ardından yeni VM 'yi arayın ve adını seçin.
 
     ![Tüm kaynaklar](media/azure-stack-subscribe-services/view-vm.png)
 
 > [!NOTE]
-> Sanal makine dağıtımını tamamlanması birkaç dakika sürer.
+> VM dağıtımının tamamlanabilmesi birkaç dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide öğrendiklerinizi:
-
-> [!div class="checklist"]
-> * Bir teklife abone olma 
-> * Test teklifini
-
 > [!div class="nextstepaction"]
-> [Topluluk şablonundan bir VM oluşturma](azure-stack-create-vm-template.md)
+> [Bir topluluk şablonundan VM oluşturma](azure-stack-create-vm-template.md)

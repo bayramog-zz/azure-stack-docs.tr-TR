@@ -1,6 +1,6 @@
 ---
-title: Azure stack'teki API sürümü profillerini yönetme | Microsoft Docs
-description: Azure stack'teki API sürümü profillerini hakkında bilgi edinin.
+title: Azure Stack | API sürüm profillerini yönetme | Microsoft Docs
+description: Azure Stack 'deki API sürüm profilleri hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -14,84 +14,86 @@ ms.date: 05/16/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 9ebb4759ce8145ec190b65ced610dec533ed181f
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 9d0597d4e2687c6563c365470be57c1603bbe616
+ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269454"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68376739"
 ---
-# <a name="manage-api-version-profiles-in-azure-stack"></a>Azure stack'teki API sürümü profillerini yönetme
+# <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack API sürüm profillerini yönetme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-API profillerini Azure kaynak sağlayıcısı ve Azure REST uç noktaları için API sürümü belirtin. Özel istemciler API profilleri kullanılarak farklı dillerde oluşturabilirsiniz. Her istemci, Azure Stack’e ilişkin doğru kaynak sağlayıcısı ve API sürümüne başvurmak için bir API profili kullanır.
+API profillerini Azure kaynak sağlayıcısı ve Azure REST uç noktaları için API sürümü belirtin. API profillerini kullanarak farklı dillerde özel istemciler oluşturabilirsiniz. Her istemci, Azure Stack’e ilişkin doğru kaynak sağlayıcısı ve API sürümüne başvurmak için bir API profili kullanır.
 
-Tam olarak hangi sürümün her kaynak sağlayıcısı API'si, Azure Stack ile uyumlu olduğunu sıralamaya gerek kalmadan Azure kaynak sağlayıcıları ile çalışmak için bir uygulama oluşturabilirsiniz. Yalnızca bir profili uygulamanıza hizalama; SDK'sı doğru API sürümüne geri döner.
+Her bir kaynak sağlayıcısı API 'sinin tam olarak hangi sürümünün Azure Stack uyumlu olduğunu sıralamak zorunda kalmadan Azure Kaynak sağlayıcılarıyla çalışmak üzere bir uygulama oluşturabilirsiniz. Uygulamanızı bir profile hizalamanız yeterlidir ve SDK doğru API sürümüne geri döner.
 
-Bu konuda size yardımcı olur:
+Bu konu size yardımcı olur:
 
  - Azure Stack için API profillerini anlayın.
  - Çözümlerinizi geliştirmek için API profillerini nasıl kullanabileceğinizi öğrenin.
- - Kod özgü yönergeler nerede bulacağını bakın.
+ - Bkz. koda özgü kılavuzun nerede bulunacağını öğrenin.
 
-## <a name="summary-of-api-profiles"></a>API profillerini özeti
+## <a name="summary-of-api-profiles"></a>API profillerinin Özeti
 
-- API profilleri, bir Azure kaynak sağlayıcıları ve API sürümlerini temsil etmek için kullanılır.
-- Birden çok Azure bulutlarda şablonları oluşturmak için API profillerini oluşturulur. Profilleri, uyumlu ve kararlı bir arabirim sağlar.
-- Profilleri, yılda dört kez serbest bırakılır.
-- Üç profil adlandırma kuralları kullanılır:
-    - **en son**  
-        Genel Azure'da yayımlanan en son API sürümlerini içerir.
+- API profilleri, Azure Kaynak sağlayıcılarının ve API sürümlerinin bir kümesini temsil etmek için kullanılır.
+- Birden çok Azure bulutu arasında şablon oluşturmanız için API profilleri oluşturuldu. Profiller uyumlu ve kararlı bir arabirim sağlar.
+- Profiller yılda dört kez serbest bırakılır.
+- Üç profil adlandırma kuralı kullanılır:
+    - **sürümü**  
+        Küresel Azure 'da yayınlanan en son API sürümlerini içerir.
     - **yyyy-mm-dd-hybrid**  
-    Yılda iki kez serbest, bu sürüm tutarlılığı ve kararlılığı üzerinde birden fazla bulutlarda odaklanır. Bu profil, en iyi Azure Stack uyumluluk hedefler.
-    - **yyyy-aa-gg-profili** en iyi kararlılık ve en son özellikleri dengeler.
+    Bu sürüm, birden fazla bulutta tutarlılık ve kararlılık üzerine odaklanır. Bu profil, uyumluluk Azure Stack en iyi şekilde hedefler.
+    - **yyyy-aa-gg-profil** <br>
+    En iyi kararlılığı ve en son özellikleri dengeler.
 
-## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API profillerini ve Azure Stack uyumluluğu
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API profilleri ve Azure Stack uyumluluğu
 
-En yeni Azure API profillerini Azure Stack ile uyumlu değildir. Azure Stack çözümlerinizi kullanmak için hangi profil tanımlamak için aşağıdaki adlandırma kurallarını kullanabilirsiniz.
+En yeni Azure API profilleri Azure Stack uyumlu değildir. Azure Stack çözümleriniz için hangi profillerin kullanılacağını belirlemek için aşağıdaki adlandırma kurallarını kullanın:
 
-**en son**  
-Bu profili hangi Azure Stack'te çalışmaz genel Azure'da bulunan en güncel API sürümü vardır. **En son** en çok sayıda önemli değişikliklere sahiptir. Profil, kararlılık ve diğer bulutlarda uyumluluğunu kenara koyar. En güncel API sürümlerini kullanan çalışıyorsanız **son** kullanmanız gerektiğini profilidir.
+**Sürümü**  
+Bu profilde, genel Azure 'da bulunan en güncel API sürümleri bulunur ve bu, Azure Stack ' de çalışmaz. **En son** , en fazla sayıda Son değişiklik sayısına sahiptir. Profil, kararlılığı ve diğer bulutlarla uyumluluğu getirir. En güncel API sürümlerini kullanmaya çalışıyorsanız **en son** , kullanmanız gereken profildir.
 
 **Yyyy-aa-gg-karma**  
-Bu profil, her yıl Mart ve Eylül aylarında serbest bırakılır. Bu, en iyi kararlılık ve çeşitli Bulutlar ile uyumluluk sahiptir. **Yyyy-aa-gg-karma** genel Azure ve Azure Stack hedeflemek için tasarlanmıştır. Bu profilde listelenen Azure API sürümleri, Azure Stack üzerinde listelenen olanları ile aynı olacaktır. Bu profili, karma bulut çözümleri için kodunu geliştirmek için kullanabilirsiniz.
+Bu profil, her yıl Mart ayında yayımlanmıştır. En iyi kararlılık ve çeşitli bulutlarla uyumluluk vardır. **Yyyy-aa-gg-karma** , küresel Azure ve Azure Stack hedeflemek için tasarlanmıştır. Bu profilde listelenen Azure API sürümleri, Azure Stack listelenen olanlarla aynı olacaktır. Karma bulut çözümleri için kod geliştirmek üzere bu profili kullanın.
 
-**yyyy-aa-gg-profili**  
-Bu profil için genel Azure Haziran ve aralık içinde yayımlanır. Azure Stack ile çalışmaz; Genellikle, birçok önemli değişiklikler olacaktır. En iyi kararlılık ve en son özellikleri arasındaki farkı dengeleyen rağmen **son** ve bu profili **son** API ne zaman bağımsız olarak en yeni API sürümlerinde, her zaman oluşur yayımladı. Yeni bir API sürümü için işlem API yarın oluşturulursa, örneğin, bu API sürümü listelenir **son**, fakat **yyyy-aa-gg-profili** bu profili zaten var olduğundan, profil. **yyyy-aa-gg-profili** Haziran önce veya aralık önce yayımlanan en güncel sürümleri kapsar.
+**yyyy-aa-gg-profil**  
+Bu profil Haziran ve Aralık ayında Global Azure için yayımlanmıştır. Azure Stack ile çalışmaz ve genellikle birçok Son değişiklik olacaktır. En iyi kararlılığı ve en son özellikleri dengeleyip, en **son ve bu** profil arasındaki fark, en **son** API SÜRÜMLERINDEN bağımsız olarak, API 'nin ne zaman YAYıNLANDıĞıNA bakılmaksızın en yeni API sürümlerinden oluşur. Örneğin, yarın Işlem API 'si için yeni bir API sürümü oluşturulursa, bu profil zaten mevcut olduğundan, bu API sürümü en son, **yyyy-aa-gg-profile** profilinde listelenmez ancak **en son**içinde listelenir. **yyyy-aa-gg-profil** , Haziran 'dan önce veya Aralık öncesinde yayınlanan en güncel sürümleri içerir.
 
-## <a name="azure-resource-manager-api-profiles"></a>Azure Resource Manager API'si profilleri
+## <a name="azure-resource-manager-api-profiles"></a>Azure Resource Manager API profilleri
 
-Azure Stack genel Azure'da bulunan API sürümlerini en son sürümünü kullanır. Bir çözüm oluşturduğunuzda, Azure Stack ile uyumlu olan her bir Azure kaynak sağlayıcısı için API sürümü bulmanız gerekir.
+Azure Stack, genel Azure 'da bulunan API sürümlerinin en son sürümünü kullanmaz. Bir çözüm oluşturduğunuzda, Azure Stack ile uyumlu olan her bir Azure Kaynak sağlayıcısı için API sürümünü bulmanız gerekir.
 
-Bunun yerine her kaynak sağlayıcısı ve Azure Stack tarafından desteklenen belirli sürüm araştırma daha API profili kullanabilirsiniz. Profil bir kaynak sağlayıcıları ve API sürümlerini belirtir. SDK'sı veya SDK'sıyla oluşturulan bir aracı hedef dönecek `api-version` profilinde belirtilen. API profillerine sahip tüm bir şablonla ve çalışma zamanında geçerli bir profil sürümü belirtebilirsiniz, Azure Resource Manager kaynağı doğru sürümünü seçer.
+Her kaynak sağlayıcısını ve Azure Stack tarafından desteklenen belirli sürümü araştırmak yerine bir API profili kullanabilirsiniz. Profil, bir kaynak sağlayıcıları ve API sürümleri kümesi belirtir. SDK veya SDK ile oluşturulmuş bir araç, profilde belirtilen hedefe `api-version` döndürülecek. API profilleriyle, tüm şablon için geçerli olan bir profil sürümü belirtebilirsiniz. Çalışma zamanında, Azure Resource Manager kaynağın doğru sürümünü seçer.
 
-Azure Resource Manager, PowerShell, Azure CLI, SDK'sı ve Microsoft Visual Studio code gibi araçlar API profillerini çalışın. Araçlar ve SDK'lar profillerini modülleri ve bir uygulama oluştururken eklenecek kitaplıklar hangi sürümünü okumak için kullanabilirsiniz.
+API profilleri, PowerShell, Azure CLı, SDK 'da sunulan kod ve Microsoft Visual Studio gibi Azure Resource Manager kullanan araçlarla çalışır. Araçlar ve SDK 'lar, bir uygulama oluştururken hangi modül ve kitaplıkların hangi sürümünün dahil edileceğini okumak için profilleri kullanabilir.
 
-Örneğin, PowerShell kullanarak bir depolama hesabı oluşturmak için kullandığınız **Microsoft.Storage** destekleyen kaynak sağlayıcısı **api sürümü** 2016-03-30 ve kullanarak bir VM  **Microsoft.Compute** kaynak sağlayıcısı ile **api sürümü** 2015-12-01, depolama için PowerShell modülü destekleyen 2016-03-30 bakın ve hangi modülü için işlem, 2015-02-01 destekler ve ardından bunları yükleyin. Bunun yerine, bir profil kullanabilirsiniz. Cmdlet'i kullanmak `Install-Profile <profilename>`, PowerShell modülleri doğru sürümünü yükler.
+Örneğin, PowerShell 'i kullanarak bir depolama hesabı oluşturmak için PowerShell kullanıyorsanız, **API-** sürümü 2016-03-30 ve API-Version ile **Microsoft. COMPUTE** kaynak sağlayıcısını kullanan bir VM 'Yi destekleyen **Microsoft. Storage** kaynak sağlayıcısını destekler 2015-12-01, depolama için 2016-03-30 ' yi hangi PowerShell modülünün desteklediğini ve hangi modülün işlem için 2015-02-01 ' i desteklediğini aramanız ve ardından bunları yüklemesi gerekir. Bunun yerine, bir profil kullanabilirsiniz. Cmdlet 'ini `Install-Profile <profilename>`kullanın ve PowerShell, modüllerin doğru sürümünü yükler.
 
-Benzer şekilde, Python tabanlı bir uygulama oluşturmak için Python SDK'sı kullanırken, profil belirtebilirsiniz. SDK'sı, betikte belirttiğiniz kaynak sağlayıcıları için doğru modülleri yükler.
+Benzer şekilde, Python tabanlı bir uygulama oluşturmak için Python SDK kullanırken, profili belirtebilirsiniz. SDK, betikte belirttiğiniz kaynak sağlayıcıları için doğru modülleri yükler.
 
-Bir geliştirici olarak, çözümünüzü yazmaya odaklanmasına olanak tanır. Hangi API sürümleri, kaynak sağlayıcısı ve bulut üzerinde araştırma yerine birlikte çalışarak, bir profil ve profilin destekleyen tüm Bulutlar arasında kodunuzun çalıştığını bilmeniz kullanabilirsiniz.
+Geliştirici olarak, çözümünüzü yazmaya odaklanırsınız. Hangi API sürümlerini, kaynak sağlayıcısını ve bulutu birlikte çalıştığını araştırmak yerine, bir profil kullanabilir ve kodunuzun bu profili destekleyen tüm bulutlarda çalıştığını bilirsiniz.
 
 ## <a name="api-profile-code-samples"></a>API profili kod örnekleri
 
-Profilleri kullanılarak çözümünüzü Azure Stack ile tercih ettiğiniz dili ile tümleştirmenize yardımcı olmak için kod örnekleri bulabilirsiniz. Şu anda aşağıdaki diller için yönergeler ve örnekler bulabilirsiniz:
+Profilleri kullanarak Azure Stack, çözümünüzü tercih ettiğiniz dille tümleştirmenize yardımcı olması için kod örnekleri bulabilirsiniz. Şu anda aşağıdaki diller için rehberlik ve örnekler bulabilirsiniz:
 
-- **.NET** .NET API profili, bir kaynak sağlayıcısı paketindeki her kaynak türünün en son ve en çok kararlı sürümünü almak için kullanabilirsiniz. Daha fazla bilgi için [.NET ile Azure Stack ile kullanım API Sürüm profillerini](azure-stack-version-profiles-net.md).
+- **.NET** <br>
+Bir kaynak sağlayıcısı paketindeki her kaynak türünün en son, en kararlı sürümünü almak için .NET API profilini kullanın. Daha fazla bilgi için bkz. [Azure Stack .net Ile API sürüm profillerini kullanma](azure-stack-version-profiles-net.md).
 - **PowerShell**  
-Kullanabileceğiniz **AzureRM.Bootstrapper** modülü PowerShell cmdlet'leri ile API Sürüm profillerini çalışması için gereken almak için PowerShell Galerisi aracılığıyla kullanılabilir. Bilgi için [kullanımı API sürümü profillerini PowerShell](azure-stack-version-profiles-powershell.md).
+API sürümü profilleriyle çalışmak için gerekli PowerShell cmdlet 'lerini almak için PowerShell Galerisi aracılığıyla kullanılabilen **Azurerm. Bootstrapper** modülünü kullanın. Bilgi için bkz. [PowerShell IÇIN API sürüm profillerini kullanma](azure-stack-version-profiles-powershell.md).
 - **Azure CLI**  
-Azure Stack belirli API Sürüm profili kullanmak için ortamınızdaki yapılandırmayı güncelleştirebilirsiniz. Bilgi için [Azure CLI için kullanım API sürümü profillerini](azure-stack-version-profiles-azurecli2.md).
+Ortam yapılandırmanızı Azure Stack belirli API sürümü profilini kullanacak şekilde güncelleştirin. Bilgi için bkz. [Azure CLI IÇIN API sürüm profillerini kullanma](azure-stack-version-profiles-azurecli2.md).
 - **Go**  
-Go SDK, bir profil farklı sürümlerini farklı hizmetlerden farklı kaynak türlerinin birleşimidir. Profil sürümü profilleri/yol altında kullanılabilir **YYYY-AA-GG** biçimi. Bilgi için [Go için kullanım API sürümü profillerini](azure-stack-version-profiles-go.md).
+Git SDK 'da, bir profil farklı hizmetlerden farklı sürümlere sahip farklı kaynak türlerinin bir birleşimidir. Profiller, profiller/yol altında, sürümleri **yyyy-aa-gg** biçiminde kullanılabilir. Bilgi için bkz. [Go IÇIN API sürüm profillerini kullanma](azure-stack-version-profiles-go.md).
 - **Ruby**  
-Ruby SDK'sı için Azure Stack Kaynak Yöneticisi'ni oluşturmanıza ve altyapınızı yönetmenize yardımcı olacak araçlar sağlar. İşlem, sanal ağlar ve depolama ile Ruby dil SDK kaynak sağlayıcılarını içerir. Bilgi için [kullanımı API sürümü profillerini Ruby ile](azure-stack-version-profiles-ruby.md)
+Azure Stack Kaynak Yöneticisi için Ruby SDK, altyapınızı oluşturmanıza ve yönetmenize yardımcı olacak araçlar sağlar. SDK 'daki kaynak sağlayıcıları, Ruby dili ile işlem, sanal ağlar ve depolama alanı içerir. Bilgi için bkz. [Ruby Ile API sürüm profillerini kullanma](azure-stack-version-profiles-ruby.md).
 - **Python**  
-Python SDK'sı, Azure yığını ve genel Azure gibi farklı bulut platformları hedeflemek için API sürümü profillerini destekler. Hibrit bulut çözümleri oluşturmak için API profillerini kullanabilirsiniz. Bilgi için [kullanımı API sürümü profillerini ile Python](azure-stack-version-profiles-python.md)
+Python SDK, Azure Stack ve küresel Azure gibi farklı bulut platformlarını hedeflemek için API sürüm profillerini destekler. Karma bulut için çözümler oluşturmak üzere API profillerini kullanın. Bilgi için bkz. [Python Ile API sürüm profillerini kullanma](azure-stack-version-profiles-python.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md)
 * [Azure Stack kullanıcının PowerShell ortamını yapılandırma](azure-stack-powershell-configure-user.md)
-* [Kaynak sağlayıcısı API sürümleri profilleri tarafından desteklenen hakkındaki ayrıntıları](azure-stack-profiles-azure-resource-manager-versions.md).
+* [Profiller tarafından desteklenen kaynak sağlayıcısı API sürümleri hakkındaki ayrıntıları gözden geçirin](azure-stack-profiles-azure-resource-manager-versions.md).
