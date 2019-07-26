@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 07/16/2019
-ms.openlocfilehash: 09e38de68f740cab50e7a3e0ee8cc7364a9909b9
-ms.sourcegitcommit: 4139b507d6da98a086929da48e3b4661b70bc4f3
+ms.openlocfilehash: ac0bca9d7073af68e7d2e7c2b7d5ce56bec856ac
+ms.sourcegitcommit: 82d09bbae3e5398d2fce7e2f998dfebff018716c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68299430"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68497872"
 ---
 # <a name="azure-stack-vm-features"></a>Azure Stack VM özellikleri
 
@@ -41,7 +41,7 @@ Azure Stack sanal makineler (VM 'Ler) isteğe bağlı, ölçeklenebilir bilgi i�
 | Sanal makine disk performansı | Disk türüne ve boyutuna bağlıdır. | , Disklerin eklendiği VM 'nin VM boyutuna bağlıdır. Daha fazla bilgi için [Azure Stack makalesinde desteklenen VM boyutlarına](azure-stack-vm-sizes.md) bakın.
 | API sürümleri | Azure her zaman tüm VM özellikleri için en son API sürümlerine sahiptir. | Azure Stack, bu hizmetlere yönelik belirli Azure hizmetlerini ve belirli API sürümlerini destekler. Desteklenen API sürümlerinin listesini görüntülemek için, bu makalenin [API sürümleri](#api-versions) bölümüne bakın. |
 | Azure Instance Metadata Service | Azure Instance Metadata Service, VM 'nizi yönetmek ve ayarlamak için kullanılabilen sanal makine örnekleri hakkında bilgi sağlar.  | Azure Instance Metadata Service Azure Stack desteklenmez. |
-| Sanal makine kullanılabilirlik kümeleri|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Birden çok güncelleştirme etki alanı.|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Birden çok güncelleştirme etki alanı (en fazla 20).|
+| Sanal makine kullanılabilirlik kümeleri|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Birden çok güncelleştirme etki alanı.|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Güncelleştirme sırasında iş yüklerini korumak için dinamik geçiş ile tek bir güncelleştirme etki alanı.|
 | Sanal makine ölçek kümeleri|Otomatik ölçeklendirme destekleniyor.|Otomatik ölçeklendirme desteklenmiyor.<br><br>Portal, Kaynak Yöneticisi şablonları veya PowerShell 'i kullanarak bir ölçek kümesine daha fazla örnek ekleyin. |
 | Bulut tanığı | Azure Stack bulunan depolama hesabı özelliklerindeki uç noktaları seçin. | [Bulut tanığı](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) , küme çekirdeği üzerinde oy sağlamak için Microsoft Azure kullanan bir yük devretme kümesi çekirdek tanığı türüdür.<br>Genel Azure 'daki Azure Stack ile karşılaştırıldığında uç noktalar şu şekilde görünebilir:<br>Küresel Azure için:<br>`https://mywitness.blob.core.windows.net/`<br>Azure Stack için:<br>`https://mywitness.blob.<region>.<FQDN>/`|
 | Sanal makine tanılama | Linux VM tanılaması desteklenir. | Linux VM tanılaması Azure Stack desteklenmez. VM tanılaması etkin bir Linux sanal makinesi dağıttığınızda, dağıtım başarısız olur. Tanılama ayarları aracılığıyla Linux VM temel ölçümleri etkinleştirirseniz, ayrıca dağıtım başarısız olur. |

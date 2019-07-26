@@ -15,12 +15,12 @@ ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e8a1e40ec5b333862eaca59d7269a46a91460237
-ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
+ms.openlocfilehash: 6dda8562e47f17c97da5e0597a2ed88865bc6425
+ms.sourcegitcommit: 82d09bbae3e5398d2fce7e2f998dfebff018716c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68376787"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68497850"
 ---
 # <a name="use-idns-in-azure-stack"></a>Azure Stack 'da IDNs kullanma 
 
@@ -34,7 +34,7 @@ Azure Stack, iDNS ile özel DNS sunucusu girişleri belirtmeye gerek kalmadan a�
 
 - Kiracı iş yükleri için paylaşılan DNS ad çözümleme hizmetleri.
 - Kiracı sanal ağı içindeki ad çözümlemesi ve DNS kaydı için yetkili DNS hizmeti.
-- Kiracı VM 'lerinden internet adlarının çözümlenmesi için özyinelemeli DNS hizmeti. Kiracıların Internet adlarını çözümlemek için özel DNS girdileri belirtmesi gerekmez (örneğin, www.bing.com.)
+- Kiracı VM 'lerinden internet adlarının çözümlenmesi için özyinelemeli DNS hizmeti. Kiracıların Internet adlarını çözümlemek için özel DNS girdileri belirtmesi gerekmez (örneğin, www\.Bing.com.)
 
 Yine de kendi DNS 'nizi alabilir ve özel DNS sunucuları kullanabilirsiniz. Ancak, IDNs kullanarak, özel DNS girişleri oluşturmaya gerek kalmadan internet DNS adlarını çözümleyebilir ve aynı sanal ağdaki diğer VM 'lere bağlanabilirsiniz.
 

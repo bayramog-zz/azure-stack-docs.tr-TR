@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Geliştirme Seti sürüm notları | Microsoft Docs
-description: Geliştirmeleri, düzeltmeleri ve bilinen sorunlar için Azure Stack Geliştirme Seti.
+title: Microsoft Azure Stack Development Kit sürüm notları | Microsoft Docs
+description: Azure Stack Geliştirme Seti için geliştirmeler, düzeltmeler ve bilinen sorunlar.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -11,39 +11,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2019
+ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 06/28/2019
-ms.openlocfilehash: ba3ad4bf5e5d7f76d5d29e7967944be72e989c27
-ms.sourcegitcommit: 068350a79805366e7e6536fb7df85a412bd0be99
+ms.lastreviewed: 07/25/2019
+ms.openlocfilehash: a2b000f60c5867e557ef5b0621f994ea7ec23913
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67511300"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68493774"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
-Bu makalede, değişiklikler, düzeltmeleri ve bilinen sorunlar Azure Stack geliştirme Seti'ni (ASDK) hakkında bilgi sağlar. Hangi sürümü çalıştırdığınızdan emin değilseniz yapabilecekleriniz [denetlemek için portal'ı kullanmanızı](../operator/azure-stack-updates.md#determine-the-current-version).
+Bu makale, Azure Stack Geliştirme Seti (ASDK) içindeki değişiklikler, düzeltmeler ve bilinen sorunlar hakkında bilgi sağlar. Hangi sürümü çalıştırdığınızdan emin değilseniz, [denetlemek için portalı kullanabilirsiniz](../operator/azure-stack-updates.md#determine-the-current-version).
 
-Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS akışı](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)abone [ ![](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) olarak, asdk 'deki yenilikleri güncel tutun.
+
+## <a name="build-11907020"></a>Derleme 1.1907.0.20
+
+### <a name="new-features"></a>Yeni Özellikler
+
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1907.md#whats-in-this-update) bakın.
+
+<!-- ### Changes -->
+
+### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
+
+- Bazı Market görüntülerini kullanarak sanal makine kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
+- Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1907.md#fixes) bakın.
+- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1907.md)bakın.
+- [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1907.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 
 ## <a name="build-11906030"></a>Derleme 1.1906.0.30
 
 ### <a name="new-features"></a>Yeni Özellikler
 
-- Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1906.md#whats-in-this-update) Azure yığını sürüm notları.
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1906.md#whats-in-this-update) bakın.
 
 ### <a name="changes"></a>Değişiklikler
 
-- Eklenen bir **AzS-SRNG01** halka Azure Stack için günlük toplama hizmetini barındıran VM desteği. Daha fazla bilgi için [sanal makine rolleri](asdk-architecture.md).
+- Azure Stack için günlük toplama hizmetini barındıran bir **AZS-SRNG01** destek halkası sanal makinesi eklendi. Daha fazla bilgi için bkz. [sanal makine rolleri](asdk-architecture.md).
 
-### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
+### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
-- Bazı Market görüntülerini kullanarak sanal makine kaynakları oluştururken, dağıtımın tamamlanması mümkün olmayabilir. Geçici bir çözüm olarak tıklayabilirsiniz **şablon ve parametreleri indir** bağlantısını **özeti** sayfasında ve tıklayarak **Dağıt** düğmesine **şablonu**  dikey penceresi. 
-- Bu sürümde giderilen Azure Stack sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1906.md#fixes) Azure yığını sürüm notları.
-- Bilinen sorunların bir listesi için bkz. [bu makalede](../operator/azure-stack-release-notes-known-issues-1906.md).
-- Unutmayın [kullanılabilir Azure Stack düzeltmelerin](../operator/azure-stack-release-notes-1906.md#hotfixes) Azure Stack ASDK için geçerli değildir.
+- Bazı Market görüntülerini kullanarak sanal makine kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
+- Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1906.md#fixes) bakın.
+- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1906.md)bakın.
+- [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1906.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 
 ## <a name="build-11905040"></a>Derleme 1.1905.0.40
 
@@ -51,14 +66,14 @@ Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-no
 
 ### <a name="new-features"></a>Yeni Özellikler
 
-- Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1905.md#whats-in-this-update) Azure yığını sürüm notları.
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1905.md#whats-in-this-update) bakın.
 
-### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
+### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
-- Hangi tablonuz düzenlemek bir sorun düzeltildi **RegisterWithAzure.psm1** için PowerShell Betiği [ASDK kaydetme](asdk-register.md) başarıyla.
-- Bu sürümde giderilen diğer Azure Stack sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1905.md#fixes) Azure yığını sürüm notları.
-- Bilinen sorunların bir listesi için bkz. [bu makalede](../operator/azure-stack-release-notes-known-issues-1905.md).
-- Unutmayın [kullanılabilir Azure Stack düzeltmelerin](../operator/azure-stack-release-notes-1905.md#hotfixes) Azure Stack ASDK için geçerli değildir.
+- [ASDK](asdk-register.md) 'yi başarıyla kaydetmek Için **registerwithazure. psm1** PowerShell betiğini düzenlemeniz gereken bir sorun düzeltildi.
+- Bu sürümde düzeltilen diğer Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1905.md#fixes) bakın.
+- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1905.md)bakın.
+- [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1905.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 
 ## <a name="build-11904036"></a>Derleme 1.1904.0.36
 
@@ -66,70 +81,22 @@ Abone olarak ASDK yenilikler ile güncel kalın [ ![RSS](./media/asdk-release-no
 
 ### <a name="new-features"></a>Yeni Özellikler
 
-- Bu sürümdeki yeni özellikler listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1904.md#whats-in-this-update) Azure yığını sürüm notları.
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1904.md#whats-in-this-update) bakın.
 
-### <a name="fixed-and-known-issues"></a>Sabit ve bilinen sorunlar
+### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
-- Kayıt betiği için çalıştırırken bir hizmet sorumlusu zaman aşımı nedeniyle [ASDK kaydetme](asdk-register.md) başarıyla düzenlemelisiniz **RegisterWithAzure.psm1** PowerShell Betiği. Şunları yapın:
+- Kayıt betiğini çalıştırırken bir hizmet sorumlusu zaman aşımı nedeniyle, [ASDK](asdk-register.md) 'yi başarıyla kaydetmek Için **registerwithazure. psm1** PowerShell betiğini düzenlemeniz gerekir. Şunları yapın:
 
-  1. Dosyayı ASDK ana bilgisayarda açın **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** yükseltilmiş izinlerle bir düzenleyicide.
-  2. 1249 satırına ekleme bir `-TimeoutInSeconds 1800` sonunda parametresi. Bu kayıt komut dosyası çalıştırılırken bir hizmet sorumlusu zaman aşımı nedeniyle gereklidir. Satır 1249 artık şu şekilde görünmelidir:
+  1. ASDK ana bilgisayarında, **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** dosyasını yükseltilmiş izinlerle bir düzenleyicide açın.
+  2. Satır 1249 ' de sonuna bir `-TimeoutInSeconds 1800` parametre ekleyin. Kayıt betiği çalıştırılırken hizmet sorumlusu zaman aşımı nedeniyle bu gereklidir. Satır 1249 Şu anda aşağıdaki gibi görünmelidir:
 
      ```powershell
       $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
       ```
 
-- Tanımlanan VPN bağlantısı sorunu düzeltildi [burada 1902 serbest bırakmak](#known-issues).
+- Sürüm 1902 ' de tanımlanan VPN bağlantı sorunu düzeltildi.
 
-- Bu sürümde giderilen diğer Azure Stack sorunların bir listesi için bkz. [Bu bölümde](../operator/azure-stack-release-notes-1904.md#fixes) Azure yığını sürüm notları.
-- Bilinen sorunların bir listesi için bkz. [bu makalede](../operator/azure-stack-release-notes-known-issues-1904.md).
-- Unutmayın [kullanılabilir Azure Stack düzeltmelerin](../operator/azure-stack-release-notes-1904.md#hotfixes) Azure Stack ASDK için geçerli değildir.
+- Bu sürümde düzeltilen diğer Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1904.md#fixes) bakın.
+- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1904.md)bakın.
+- [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1904.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 
-## <a name="build-1903"></a>Derleme 1903
-
-1903 yükü ASDK yayın içermez.
-
-### <a name="known-issues"></a>Bilinen sorunlar
-
-- İçindeki adımları kullanarak ASDK içine başka bir konaktan bir VPN bağlantısı kurulurken bir sorun var. [bu makalede](asdk-connect.md). VPN istemcinizi ASDK ortama bağlanma girişiminde bulunduğunuzda bir hata görürsünüz, **kullanıcı adı veya parola yanlış**, kullanılan doğru hesabı ve parola doğru yazdığınızdan emin olduğunuzda bile. Kimlik bilgileriniz ile değil, ancak bunun yerine bir değişiklik ASDK VPN bağlantısı için kullanılan kimlik doğrulama protokolü ile bir sorundur. Bu sorunu geçici olarak çözmek için aşağıdaki adımları gerçekleştirin:
-
-   ASDK sunucu tarafında kullanılan kimlik doğrulama protokolü için ilk olarak, değişiklikleri yapın:
-
-   1. RDP ASDK konağa.
-   2. Olarak AzureStack\AzureStackAdmin, dağıtım sırasında sağladığınız parola kullanarak oturum açmayı yükseltilmiş bir PowerShell oturumu açın.
-   3. Aşağıdaki komutları çalıştırın:
-
-      ```powershell
-      netsh nps set np name = "Connections to Microsoft Routing and Remote Access server" profileid = "0x100a" profiledata = "1A000000000000000000000000000000" profileid = "0x1009" profiledata = "0x5"
-      restart-service remoteaccess -force
-      ```
-
-   Ardından, istemci-tarafı bağlantı komut dosyasını değiştirin. Bunu yapmanın en kolay yolu, doğrudan C:\AzureStack-Tools-master\connect\azurestack.connect.psm1 betik modülündeki değişiklikler yapmak için verilmiştir:
-
-   1. Değiştirme **Ekle AzsVpnConnection** değiştirmek için cmdlet `AuthenticationMethod` parametresinden `MsChapv2` için `EAP`:
-
-      ```powershell
-      $connection = Add-VpnConnection -Name $ConnectionName -ServerAddress $ServerAddress -TunnelType L2tp -EncryptionLevel Required -AuthenticationMethod Eap -L2tpPsk $PlainPassword -Force -RememberCredential -PassThru -SplitTunneling
-      ```
-
-   2. Değişiklik **Connect AzsVpn** cmdlet'ini kullanarak `rasdial @ConnectionName $User $PlainPassword` kullanarak `rasphone`, etkileşimli oturum açma EAP gerektirir:
-
-      ```powershell
-      rasphone $ConnectionName
-      ```
-
-   3. Yaptığınız değişiklikleri kaydedin ve yeniden içeri **azurestack.connect.psm1** modülü.
-   4. Bölümündeki yönergeleri [bu makalede](asdk-connect.md#set-up-vpn-connectivity).
-   5. Windows için giderek VPN aracılığıyla ASDK bağlandığınızda, bağlama **ağ ve Internet ayarları**, ardından **VPN**, görev çubuğundan emin olmak için istenir bağlanmak yerine kimlik bilgileri.
-
-- Soruna hangi paketlerin 1450 bayt bir iç yük dengeleyici (ILB) için bırakılan belirlenmiştir. Sorunu 1901 itibarıyla konağa taşınamaz rolü, geçiş yapan kapsüllenmiş VXLAN paket uyum sağlamak için çok düşük olan konak üzerindeki MTU ayarı kaynaklanır. İçinde bu sorunu kendisini bildirim gördük karşılaşabileceğiniz en az iki senaryo vardır:
-
-  - Bir iç yük dengeleyici (ILB) arkasında ve 660 bayt üzerinde olduğundan SQL her zaman açık SQL sorguları.
-  - Birden çok ana sunucu etkinleştirmeye Kubernetes dağıtımları başarısız.  
-
-  Aynı sanal ağda ancak farklı alt ağlarda bir ILB ile bir VM arasındaki iletişimi varsa sorun oluşur. Bu sorunu geçici olarak ASDK ana bilgisayarda yükseltilmiş komut isteminde aşağıdaki komutları çalıştırarak çalışabilirsiniz:
-
-  ```shell
-  netsh interface ipv4 set sub "hostnic" mtu=1660
-  netsh interface ipv4 set sub "management" mtu=1660
-  ```

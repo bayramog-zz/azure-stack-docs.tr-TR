@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1904 sürüm notları | Microsoft Docs
-description: Bilinen sorunlar ve arşivlenmiş Azure Stack sürüm notları ve güncelleştirme karşıdan yükleme konumu yenilikler dahil olmak üzere, Azure Stack tümleşik sistemleri 1904 güncelleştirmesi hakkında bilgi edinin.
+description: Yenilikler, bilinen sorunlar ve güncelleştirme Azure Stack sürüm notlarının nerede indirileceği dahil Azure Stack tümleşik sistemler için 1904 güncelleştirmesi hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -16,38 +16,38 @@ ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 05/30/2019
-ms.openlocfilehash: d3a50288464b81104ddd1dd032f93128fde43eae
-ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
+ms.openlocfilehash: 71ad5812472534ae4a7e3dc34feabf7a1a02faa0
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152521"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494042"
 ---
-# <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirme
+# <a name="azure-stack-1904-update"></a>Azure Stack 1904 güncelleştirmesi
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri*
+*Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Bu makalede 1904 güncelleştirme paketinin içeriğini açıklar. Yenilikler güncelleştirme içerir. iyileştirmeler ve düzeltmeler bu sürümü, Azure Stack için. Bu makalede, aşağıdaki bilgileri içerir:
+Bu makalede 1904 güncelleştirme paketinin içeriği açıklanır. Güncelleştirme yenilikleri ve bu Azure Stack sürümü için düzeltmeler içerir. Bu makalede aşağıdaki bilgiler yer alır:
 
-- [Yeniliklerin açıklaması, geliştirmeleri, düzeltmeler ve güvenlik güncelleştirmeleri](azure-stack-release-notes-1904.md#whats-in-this-update)
-- [Planlama güncelleştir](azure-stack-release-notes-1904.md#update-planning)
+- [Yenilikler, iyileştirmeler, düzeltmeler ve güvenlik güncelleştirmelerinin açıklaması](azure-stack-release-notes-1904.md#whats-in-this-update)
+- [Planlamayı Güncelleştir](azure-stack-release-notes-1904.md#update-planning)
 
 > [!IMPORTANT]  
 > Yalnızca Azure Stack tümleşik sistemleri için bu güncelleştirme paketidir. Bu güncelleştirme paketi için Azure Stack geliştirme Seti'ni geçerli değildir.
 
 ## <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
-Gördüğünüz [Azure Stack eski sürümlerinin sürüm notları TechNet Galerisi'ndeki](http://aka.ms/azsarchivedrelnotes). Bu sürüm notları yalnızca başvuru amacıyla sağlanmıştır ve bu sürümleri için destek anlamına gelmediğini arşivlenir. Daha fazla yardım için Microsoft Müşteri Destek Hizmetleri'ne başvurun.
+[Azure Stack sürüm notlarının eski sürümlerini TechNet galerisinde](http://aka.ms/azsarchivedrelnotes)görebilirsiniz. Bu arşivlenmiş sürüm notları yalnızca başvuru amacıyla sağlanır ve bu sürümler için destek göstermez. Daha fazla yardım için Microsoft Müşteri Destek Hizmetleri 'ne başvurun.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
 
-Azure Stack 1904 güncelleştirmenin yapı numarasıdır **1.1904.0.36**.
+Azure Stack 1904 güncelleştirme yapı numarası **1.1904.0.36**.
 
 ### <a name="update-type"></a>Güncelleştirme türü
 
-Azure Stack 1904 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi. 1904 güncelleştirmeyi tamamlamak gereken beklenen süre yaklaşık 16 saat, ancak tam süreleri değişebilir. Bu çalışma zamanı yaklaşık 1904 güncelleştirmeye özgüdür ve diğer Azure Stack güncelleştirmeler karşılaştırılmalıdır değil.
+Azure Stack 1904 güncelleştirme yapı türü **Express**'dir. Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için [Azure Stack güncelleştirmeleri yönetme](azure-stack-updates.md) makalesine bakın. 1904 güncelleştirmesinin tamamlaması için gereken süre yaklaşık 16 saat, ancak tam süreler farklılık gösterebilir. Bu çalışma zamanı yaklaşık 1904 güncelleştirmesine özeldir ve diğer Azure Stack güncelleştirmeleriyle karşılaştırılmamalıdır.
 
-## <a name="whats-in-this-update"></a>Bu güncelleştirmede nedir
+## <a name="whats-in-this-update"></a>Bu güncelleştirmede neler vardır
 
 <!-- The current theme (if any) of this release. -->
 
@@ -57,153 +57,153 @@ Azure Stack 1904 güncelleştirme derleme türü **Express**. Derleme türleri g
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- Önemli geliştirmeler, yazılım tanımlı ağ (SDN) yığına 1904 yapılmıştır. Bu geliştirmeler, genel bakım ve Azure Stack'te SDN yığınını güvenilirliğini artırın.
+- Yazılım tanımlı ağ (SDN) yığınında 1904 içinde önemli iyileştirmeler yapılmıştır. Bu geliştirmeler, Azure Stack içindeki SDN yığınının genel bakımını ve güvenilirliğini artırır.
 
-- Bir bildirim Yönetici portalı'nda eklenmesi şu anda oturum açmış kullanıcının düzgün bir şekilde yüklemek bir Pano sağlayan gerekli izinleri yok. Ayrıca, hangi hesapların dağıtımı sırasında kullanılan kimlik sağlayıcısına bağlı olarak uygun izinlere sahip açıklayan belgeler için bir bağlantı içerir.
+- Şu anda oturum açmış olan kullanıcı gerekli izinlere sahip olmadığında yönetici portalına bir bildirim eklediniz. Bu, panonun düzgün yüklenmesine olanak sağlar. Ayrıca, dağıtım sırasında kullanılan kimlik sağlayıcısına bağlı olarak hangi hesapların uygun izinlere sahip olduğunu açıklayan belgelere bir bağlantı içerir.
 
-- VM dayanıklılığını ve tüm sanal makineler sanal makine yapılandırma dosyalarını içeren depolama birimi çevrimdışı olursa Çevrimdışı Git senaryo çözümler çalışma süresi geliştirmeleri eklendi.
-
-<!-- 1901,2,3 related hotfix -->
-- Sanal makine sayısı için eklenen iyileştirme eşzamanlı olarak evacuated ve adresi VM kısmi ya da ağ ağır yük altında değilse blackouts tüketilen bant genişliği üst sınır yerleştirildiği. Bu değişiklik, bir sistem güncelleştirirken VM'nin çalışma süresine artırır.
+- VM esnekliği ve çalışma süresine yönelik iyileştirmeler, VM yapılandırma dosyalarını içeren depolama birimi çevrimdışı kaldığında tüm VM 'Lerin çevrimdışı olduğu senaryoyu çözümler.
 
 <!-- 1901,2,3 related hotfix -->
-- Uygun ölçekte başarısız işlemler Portalı'nda bunun sonucunda, platform kaynakları tüketme iç işlemlere karşı korumak için bir sistem çalışırken geliştirilmiş kaynak azaltma.
+- Eş zamanlı olarak ayrılan VM sayısına en iyi duruma getirme eklendi ve ağ ağır yük altındaysa VM 'de veya blackouts ' e bir sınır yerleştirdi. Bu değişiklik, bir sistem güncelleştirilirken VM çalışma süresini artırır.
 
-- Geliştirilmiş filtreleme yetenekleri aynı anda birden fazla filtre uygulamak olanak tanır. Yalnızca üzerinde sıralayabilir **adı** yeni kullanıcı arabiriminde sütun.
+<!-- 1901,2,3 related hotfix -->
+- Bir sistem, platform kaynaklarını tükettirilen iç işlemlere karşı koruma sağlamak üzere ölçek üzerinde çalışırken geliştirilmiş kaynak azaltma, portalda başarısız olan işlemlere neden olur.
 
-- Tekliflerini, planları, kotalar ve abonelikleri silme işlemi iyileştirmeleri. Silmek istediğiniz nesne hiçbir bağımlılıkları varsa, artık başarıyla teklifleri, kotalar, planlar ve abonelikleri Yönetici portalı'ndan silebilirsiniz. Daha fazla bilgi için [bu makaleye](azure-stack-delete-offer.md) bakın.  
+- Geliştirilmiş filtreleme özellikleri, işleçlerin aynı anda birden çok filtre uygulamasına olanak tanır. Yalnızca yeni kullanıcı arabirimindeki **ad** sütununda sıralama yapabilirsiniz.
+
+- Teklifler, planlar, Kotalar ve abonelikler silme sürecinde iyileştirmeler. Artık, silmek istediğiniz nesnenin bağımlılığı yoksa yönetici portalından teklifleri, kotaları, planları ve abonelikleri başarıyla silebilirsiniz. Daha fazla bilgi için [bu makaleye](azure-stack-delete-offer.md) bakın.  
 
 <!-- this applies to bug 3725384 and bug #4225643 -->
-- Syslog ileti hacmi gereksiz olayları da filtreleme ve yönlendirilmiş iletiler için istediğiniz önem düzeyi seçmek için bir yapılandırma parametresi sağlayarak geliştirildi. Önem düzeyi yapılandırma hakkında daha fazla bilgi için bkz. [Azure Stack'i veri merkezi tümleştirmesi - syslog iletmeyi](azure-stack-integrate-security.md).
+- Gereksiz olayları filtreleyerek ve iletilen iletiler için istenen önem derecesini seçmek üzere bir yapılandırma parametresi sağlayarak iyileştirilmiş Syslog ileti birimi. Önem düzeyini yapılandırma hakkında daha fazla bilgi için bkz. [Azure Stack Datacenter Integration-Syslog iletme](azure-stack-integrate-security.md).
 
 <!--this applied to Bug 1473487 -->
-- Yeni bir özellik için eklenen **Get-AzureStackLog** ek bir parametre ekleme tarafından cmdlet'i `-OutputSASUri`. Artık ortamınızı Azure Stack günlükleri toplayıp bunları belirtilen Azure depolama blob kapsayıcısında yer depolar. Daha fazla bilgi için [Azure Stack'te tanılama](azure-stack-diagnostics.md#examples).
+- **Get-AzureStackLog** cmdlet 'ine ek bir parametre `-OutputSASUri`ekleyerek yeni bir özellik eklendi. Artık ortamınızdan Azure Stack günlüklerini toplayıp belirtilen Azure Depolama Blobu kapsayıcısında depolayabiliriz. Daha fazla bilgi için bkz. [tanılama Azure Stack](azure-stack-configure-on-demand-diagnostic-log-collection.md#examples).
 
-- Yeni bellek onay işareti eklenen **Test AzureStack** `UpdateReadiness` grubu yığında güncelleştirmesinin başarıyla tamamlamak yeterli bellek olup olmadığını denetler.
+- Güncelleştirmenin başarıyla tamamlanabilmesi için yığında yeterli kullanılabilir bellek olup olmadığını kontrol eden **Test-azurestack** `UpdateReadiness` grubunda yeni bir bellek denetimi eklendi.
 
 <!-- Bug/Task 4311058 -->
-- Yapılan geliştirmeler **Test AzureStack** Service Fabric sistem durumunu değerlendirme.
+- Service Fabric sistem durumunu değerlendirmek için **Test-AzureStack** geliştirmeleri.
 
 <!-- feature: 2976966 -->
-- Sürücü bellenimini tamamlamak için gereken süreyi azaltır donanım güncelleştirmeler, geliştirmeler, 2-4 saat olarak güncelleştirin. Güncelleştirme altyapısı, dinamik olarak bağlı olarak paketteki içerik yürütmek hangi bölümlerinin güncelleştirmesi gerekir belirler.
+- Donanım güncelleştirmelerine yönelik iyileştirmeler, bu sayede sürücü üretici yazılımının güncelleştirme 2-4 saat için geçen süreyi azaltır. Güncelleştirme altyapısı, paketteki içeriğe bağlı olarak güncelleştirmenin hangi bölümlerinin yürütülmesi gerektiğini dinamik olarak belirler.
 
 <!-- Feature 3906611 -->
-- Kullanılabilirliği etkileyen kesintiye uğratan altyapı rol örneği işlemleri önlemek için eklenen sağlam işlemi ön denetimler.
+- Kullanılabilirliği etkileyen altyapı rolü örnek işlemlerinin kesintiye uğramasını engellemek için sağlam işlem ön denetimleri eklendi.
 
 <!-- Feature 3780326 -->
-- Altyapı yedekleme eylem planı Teklik iyileştirmeleri.
+- Altyapı yedeklemesi eylem planının ssotne kadar iyileştirmeleri.
 
 <!--Bug/Task 3139609 -->
-- Azure Stack günlük toplama iyileştirmeleri. Bu geliştirmeler, günlükleri kümesini almak için gereken süreyi azaltın. Ayrıca, [Get-AzureStackLog](azure-stack-diagnostics.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system) cmdlet artık OEM rolü için varsayılan günlükleri oluşturur. Yürütülmesi gereken [Invoke-AzureStackOnDemandLog](azure-stack-diagnostics.md#invoke-azurestackondemandlog) cmdlet'i, OEM günlükleri almak için rol belirtme. Daha fazla bilgi için [Azure Stack'te tanılama](azure-stack-diagnostics.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
+- Azure Stack günlük toplama geliştirmeleri. Bu geliştirmeler, günlük kümesini almak için gereken süreyi azaltır. Ayrıca, [Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system) cmdlet 'ı artık OEM rolü için varsayılan Günlükler oluşturmaz. OEM günlüklerini almak için rolü belirterek [Invoke-Azurestackon, log](azure-stack-configure-on-demand-diagnostic-log-collection.md#invoke-azurestackondemandlog) cmdlet 'ini yürütmeniz gerekir. Daha fazla bilgi için bkz. [tanılama Azure Stack](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
 
-- Azure Stack artık ADFS ile veri merkezi tümleştirmesi için sağlanan Federasyon veri URL'si izler. Bu, müşteri ADFS örneğinin veya grup gizli dönüşü sırasında güvenilirliğini artırır.
+- Azure Stack artık ADFS ile veri merkezi tümleştirmesi için sunulan Federasyon veri URL 'sini izler. Bu, müşteri ADFS örneğinin veya grubunun gizli bir dönüşü sırasında güvenilirliği artırır.
 
 ### <a name="changes"></a>Değişiklikler
 
 <!-- Feature 3906611 -->
-- Yönetici portalını altyapı rol örneğini kapatmak, Azure Stack operatörleri için seçeneğini kaldırdık. Yeniden başlatma işlevleri altyapı rol örneği yeniden başlatmadan önce bir temiz kapatma girişimi sağlar. Gelişmiş senaryolar için API ve PowerShell işlevselliği kullanılabilir kalır.
+- Yönetici portalındaki altyapı rolü örneklerini kapatmak için Azure Stack işleçleri seçeneği kaldırılmıştır. Yeniden başlatma işlevselliği, altyapı rolü örneğini yeniden başlatmadan önce temiz bir kapatılma denemesi sağlar. Gelişmiş senaryolar için API ve PowerShell işlevleri kullanılabilir kalır.
 
 <!-- Feature ## 4199257 -->
-- Market görüntülerini ve kaynak sağlayıcıları için ayrı ekranlara ile yeni bir Market yönetim deneyimi vardır. Şimdilik **kaynak sağlayıcıları** penceresi boşsa, ancak gelecekteki sürümlerde yeni PaaS tekliflerini görünür ve içinde yönetilen **kaynak sağlayıcıları** penceresi.
+- Market görüntüleri ve kaynak sağlayıcıları için ayrı ekranlar içeren yeni bir market yönetim deneyimi vardır. Şimdilik **kaynak sağlayıcıları** penceresi boştur, ancak gelecek sürümlerde yeni PaaS hizmet teklifleri görünür ve **kaynak sağlayıcıları** penceresinde yönetilir.
 
 <!-- Feature ## 4199257 -->
-- Güncelleştirme deneyimini işleci Portalı'nda yapılan değişiklikler. Kaynak sağlayıcı güncelleştirmeleri için yeni bir kılavuz vardır. Kaynak sağlayıcıları güncelleştirilmesini sağlayan özelliği henüz kullanılamıyor.
+- Operatör portalındaki güncelleştirme deneyiminde yapılan değişiklikler. Kaynak sağlayıcısı güncelleştirmeleri için yeni bir kılavuz vardır. Kaynak sağlayıcılarını güncelleştirme özelliği henüz kullanılamıyor.
 
 <!-- Task ## 3748423  -->
-- Güncelleştirme yükleme deneyiminde işleci Portalı'nda yapılan değişiklikler. Azure yığını işleçleri yanıt uygun bir güncelleştirme sorunu gidermek için portal otomatik olarak çalıştırarak türetilmiş gibi daha belirli önerileri, Ölçek birimi Durumu'na göre artık sağlar **Test AzureStack** ve ayrıştırma sonuçları. Sonuca bağlı, işleci iki işlemlerden birini yapmanız için size bildirir:
+- İşletmen portalındaki güncelleştirme yükleme deneyiminde yapılan değişiklikler. Azure Stack işleçlerinin bir güncelleştirme sorununa uygun bir şekilde yanıt vermesini sağlamak için Portal artık, **Test-AzureStack** çalıştırılarak ve sonuçları ayrıştırırken otomatik olarak türetilen ölçek biriminin durumuna göre daha özel öneriler sağlar. Sonuca bağlı olarak, işleci iki eylemden birini alacak şekilde bilgilendirir:
 
-  - "Soft" uyarı "en son güncelleştirme ilgilenilmesi. okuyan portalda görüntülenir Microsoft, normal iş saatleri sırasında bir hizmet isteği açma önerir. Güncelleştirme işleminin bir parçası olarak, Test AzureStack gerçekleştirilen tabanlı ve çıktı size en uygun olan uyarıyı oluşturur. Bu durumda, Test AzureStack geçirildi."
+  - Portalda "geçici" bir uyarı uyarısı görüntülenir ve bu, en son güncelleştirme Için ilgilenilmesi gereken "' i okur. Microsoft, normal çalışma saatlerinde bir hizmet isteği açılmasını öneriyor. Güncelleştirme sürecinin bir parçası olarak, test-AzureStack gerçekleştirilir ve en uygun uyarıyı ürettiğimiz çıktıyı temel alır. Bu durumda, test-AzureStack geçildi. "
 
-  - "Sabit" Kritik Uyarı okur, "en son güncelleştirme başarısız oldu. portalda görüntülenir. Microsoft, hizmet isteğini olabildiğince çabuk açma önerir. Güncelleştirme işleminin bir parçası olarak, Test AzureStack gerçekleştirilen tabanlı ve çıktı size en uygun olan uyarıyı oluşturur. Bu durumda, Test AzureStack de başarısız oldu."
+  - Portalda "en son güncelleştirme başarısız oldu" yazan "Hard" kritik uyarısı görüntülenir. Microsoft, bir hizmet isteğini mümkün olan en kısa sürede açmayı öneriyor. Güncelleştirme sürecinin bir parçası olarak, test-AzureStack gerçekleştirilir ve en uygun uyarıyı ürettiğimiz çıktıyı temel alır. Bu durumda, test-AzureStack de başarısız oldu. "
 
-- Güncelleştirilmiş Azure Linux Aracısı sürümü 2.2.38.0. Bu destek, müşterilerin Azure ve Azure Stack arasında tutarlı Linux görüntüleri tutmak olanak tanır.
+- Azure Linux Aracısı sürümü 2.2.38.0 güncelleştirildi. Bu destek, müşterilerin Azure ile Azure Stack arasında tutarlı Linux görüntüleri korumasına olanak tanır.
 
-- Bu güncelleştirmede yapılan değişiklikler işleci Portalı'nda günlüğe kaydeder. Başarılı güncelleştirme günlükleri almak için istekleri artık kullanılamaz. Tanılama için eyleme dönüştürülebilir olduğundan başarısız güncelleştirme günlükleri için yükleme yine kullanılabilir durumdadır.
+- Operatör portalındaki güncelleştirme günlüklerinde yapılan değişiklikler. Başarılı güncelleştirme günlüklerini alma istekleri artık kullanılamıyor. Tanılama için kullanılabilir durumda olduklarından, günlükleri güncelleştirme başarısız olduğundan, hala indirilmek üzere kullanılabilir.
 
 ### <a name="fixes"></a>Düzeltmeleri
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-- Hangi syslog yapılandırmasını güncelleştirme döngüsü boyunca, syslog istemci yapılandırmasını ve iletilen durdurmak için syslog iletileri kaybetmenize neden trvalý değil bir sorun düzeltildi. Syslog yapılandırmasını şimdi korunur.
+- Syslog yapılandırmasının bir güncelleştirme döngüsüyle kalıcı olmadığı, syslog istemcisinin yapılandırmasını kaybetmesine ve ileti iletilmesi durdurulacak Syslog iletilerinin kaybolmasına neden olan bir sorun düzeltildi. Syslog yapılandırması artık korunuyor.
 
-- Vm'leri ayırmayı kaldırma engellenen CRP bir sorun düzeltildi. Bir VM büyük birden fazla yönetilen disk içeriyorsa, daha önce VM serbest bırakılıyor bir zaman aşımı hatası ile başarısız olmuş olabilir.
+- CRP 'de VM 'lerin ayırmayı engelleyen bir sorun düzeltildi. Daha önce, bir VM birden çok büyük yönetilen disk içeriyorsa, VM 'nin ayırmayı kaldırma işlemi zaman aşımı hatası vererek başarısız olmuş olabilir.
 
-- Windows Defender altyapısıyla ölçek birimi depolama erişimi etkileyen bir sorun düzeltildi.
+- Windows Defender altyapısında, ölçek birimi depolamaya erişimi etkileyen sorun düzeltildi.
 
-- Blob depolama hesapları için erişim ilkesi penceresine yüklenemedi, bir kullanıcı portalı bir sorun düzeltildi.
+- BLOB depolama hesapları için erişim Ilkesi penceresinin yüklenmesi başarısız olan bir Kullanıcı Portalı sorunu düzeltildi.
 
-- Hatalı bildirimler hakkında genel Azure portalında görüntülendiği hem yönetici hem de Kullanıcı Portalı içinde bir sorun düzeltildi.
+- Yönetici ve Kullanıcı portallarında, genel Azure portal ilgili hatalı bildirimlerin görüntülendiği bir sorun düzeltildi.
 
-- Hangi seçme içinde bir kullanıcı portalı sorun düzeltildi **geri bildirim** kutucuk neden bir boş tarayıcı sekmesini açın.
+- **Geri bildirim** kutucuğunu seçen bir Kullanıcı Portalı sorunu düzeltildi, boş bir tarayıcı sekmesinin açılmasını neden oldu.
 
-- Hangi ağa bağlanan bir IP yapılandırması için statik bir IP adresi değiştirmekle bağdaştırıcısı bir VM örneğine iliştirilmiş neden görüntülenecek hata iletisi portal bir sorun düzeltildi.
+- Bir VM örneğine bağlı bir ağ bağdaştırıcısına bağlı bir IP yapılandırması için statik IP adresini değiştirmenin bir hata iletisinin görüntülenmesine neden olan bir portal sorunu düzeltildi.
 
-- Hangi çalışırken, bir kullanıcı portalı sorun düzeltildi **ağ arabirimi ekleme** var olan bir sanal makineye **ağ** penceresi işlemi bir hata iletisiyle başarısız olmasına neden oldu.
+- Ağ **penceresi aracılığıyla** mevcut bir VM 'ye **ağ arabirimi eklemeye** çalışan bir Kullanıcı Portalı sorunu düzeltildi, işlemin bir hata iletisiyle başarısız olmasına neden oldu.
 
-- Hangi Azure Stack 4'ten fazla ağ arabirimlerini (NIC'ler) bir sanal makine örneğine eklenmesini desteklememektedir bir sorun düzeltildi.
+- Azure Stack, bir VM örneğine 4 ' ten fazla ağ arabirimi (NIC) eklenmesi desteklenmeyen bir sorun düzeltildi.
 
-- Bir gelen güvenlik kuralı ekleme ve seçerek bir portal sorun düzeltildi **hizmet etiketi** kaynak olarak Azure Stack için kullanılabilir olmayan çeşitli seçenekler görüntülenir.
+- Bir gelen güvenlik kuralı ekleyen ve kaynak olarak **hizmet etiketi** seçen bir portal sorunu düzeltildi, Azure Stack için kullanılamayan çeşitli seçenekler gösteriliyor.
 
-- Hangi ağ güvenlik grupları (Nsg'ler) Azure Stack'te genel Azure aynı şekilde çalışmaması sorunu düzeltildi.
+- Ağ güvenlik gruplarının (NSG 'ler) Azure Stack içinde, küresel Azure ile aynı şekilde çalışmayan sorun düzeltildi.
 
-- Kayıt süresi dolana veya sözleşme kaldırılır, indirilen tüm ürünleri gizler Market Yönetimi'nde, bir sorun düzeltildi.
+- Market yönetiminde bir sorun düzeltildi, bu, kaydın süresi dolarsa veya kaldırılırsa indirilen tüm ürünleri gizler.
 
-- Hangi veren bir sorunu düzeltildi bir **Set-AzureRmVirtualNetworkGatewayConnection** var olan bir sanal ağ geçidi bağlantısı için PowerShell komutu başarısız oldu, hata iletisiyle **geçersiz paylaşılan anahtarı yapılandırılmış ...** .
+- PowerShell 'de var olan bir **set-AzureRmVirtualNetworkGatewayConnection** komutunun mevcut bir sanal ağ geçidi bağlantısına verilme sorunu düzeltildi, şu hata iletisiyle başarısız oldu **paylaşılan anahtar yapılandırıldı...** .
 
-- İstenen kaynağa bunun sonucunda, Ağ denetleyicisi ile eşitlenmemiş olması için ağ kaynak sağlayıcısı (NRP) kaynaklanan bir sorun düzeltildi. Bazı durumlarda, bir hata durumunda üst kaynak bırakarak içinde sonuçlandı.
+- Ağ kaynak sağlayıcısı 'nın (NRP) ağ denetleyicisiyle eşitlenmesine neden olan bir sorun düzeltildi ve bu, istenen yinelenen kaynaklara neden oldu. Bazı durumlarda, bu, üst kaynağın bir hata durumunda ayrılmasıyla sonuçlandı.
 
-- Okuma okuma izinleri, bir aboneliğe katkıda bulunan rolü atandı, ancak açıkça verilmemiş bir kullanıcı, bir hata oluşturulduğu bir sorun düzeltildi **... İstemci 'somelogonaccount@domain.com' nesne kimliği {GUID} eylemi gerçekleştirme yetkisi yok...**  bir kaynağa bir değişikliği kaydetmek çalışırken.
+- Bir aboneliğe katkıda bulunan bir rol atanmış, ancak açıkça okuma izinleri verilmemişse bir sorun düzeltildi...  **{GUID}somelogonaccount@domain.comnesne kimliğine sahip ' ' istemcisinin,** bir kaynağın değişikliğini kaydetmeye çalışırken eylem gerçekleştirme yetkisi yok...
 
-- İçinde Market yönetim ekran çevrimdışı Dağıtım Aracı'nı, görüntüleri karşıya yüklemek için kullanılan ve bunları herhangi biri URI(s) simgesi eksik, boş bir sorun düzeltildi.
+- Çevrimdışı dağıtım aracı resimleri karşıya yüklemek için kullanılmışsa ve bunlardan birinde simge URI 'leri eksikse Market yönetimi ekranının boş olduğu bir sorun düzeltildi.
 
-- Market yönetiminde silinmiş indirilemedi ürünleri engelleyen bir sorun düzeltildi.
+- Market yönetiminde, indirmeyen ürünlerin silinmesinin engellenmediği bir sorun düzeltildi.
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Bu güncelleştirme, Azure Stack, Azure Stack barındıran temel işletim sistemi için güvenlik güncelleştirmeleri içermez. Bilgi için [Azure Stack güvenlik güncelleştirmeleri.](azure-stack-release-notes-security-updates-1904.md)
+Bu Azure Stack güncelleştirmesi, Azure Stack barındıran temel işletim sistemine yönelik güvenlik güncelleştirmelerini içermez. Bilgi için bkz [. Azure Stack güvenlik güncelleştirmeleri.](azure-stack-release-notes-security-updates-1904.md)
 
-## <a name="update-planning"></a>Planlama güncelleştir
+## <a name="update-planning"></a>Planlamayı Güncelleştir
 
-Güncelleştirmeyi uygulamadan önce aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
+Güncelleştirmeyi uygulamadan önce, aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
 
 - [Bilinen sorunlar](azure-stack-release-notes-known-issues-1904.md)
 - [Güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates-1904.md)
-- [Önce ve güncelleştirmeyi uyguladıktan sonra etkinlikler listesi](azure-stack-release-notes-checklist.md)
+- [Güncelleştirme uygulandıktan önceki ve sonraki etkinliklerin denetim listesi](azure-stack-release-notes-checklist.md)
 
 > [!NOTE]
-> En son sürümünü kullandığınızdan emin olun [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) iş yükünüz planlama ve boyutlandırma gerçekleştirmek için aracı. En son sürüm hata düzeltmeleri içerir ve yayımlanan yeni özellikler sağlayan her Azure Stack güncelleştirme.
+> İş yükü planlama ve boyutlandırmasını gerçekleştirmek için [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) aracının en son sürümünü kullandığınızdan emin olun. En son sürüm hata düzeltmeleri içerir ve her bir Azure Stack güncelleştirmesiyle yayınlanan yeni özellikler sağlar.
 
 ## <a name="download-the-update"></a>Güncelleştirmeyi indirin
 
-Azure Stack 1904 güncelleştirme paketinden indirebileceğiniz [Azure Stack indirme sayfasına](https://aka.ms/azurestackupdatedownload).
+Azure Stack 1904 güncelleştirme paketini [Azure Stack indirme sayfasından](https://aka.ms/azurestackupdatedownload)indirebilirsiniz.
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
-Azure Stack düzeltmeleri düzenli olarak serbest bırakır. Azure Stack için 1904 güncelleştirmeden önce en son Azure Stack düzeltme için 1903 yüklediğinizden emin olun.
+Düzeltmeleri düzenli aralıklarla yayınlar Azure Stack. Azure Stack 1904 ' e güncelleştirmeden önce 1903 için en son Azure Stack düzeltmesini yüklediğinizden emin olun.
 
-Azure Stack düzeltmeleri yalnızca Azure Stack tümleşik sistemleri için geçerlidir; üzerinde ASDK düzeltmelerini çalışmayın.
+Azure Stack düzeltmeler yalnızca Azure Stack tümleşik sistemler için geçerlidir; ASDK 'ye düzeltme yüklemeyi denemeyin.
 
-### <a name="before-applying-the-1904-update"></a>1904 uygulamadan önce güncelleştirme
+### <a name="before-applying-the-1904-update"></a>1904 güncelleştirmesini uygulamadan önce
 
-Azure Stack 1904 sürüm aşağıdaki düzeltmeleri 1903 sürümle uygulanması gerekir:
+Azure Stack 1904 sürümü aşağıdaki düzeltmelere sahip 1903 sürümüne uygulanmalıdır:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack düzeltme 1.1903.2.39](https://support.microsoft.com/help/4500638)
+- [Azure Stack Hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638)
 
-### <a name="after-successfully-applying-the-1904-update"></a>1904 başarıyla uygulandıktan sonra güncelleştir
+### <a name="after-successfully-applying-the-1904-update"></a>1904 güncelleştirmesini başarıyla uyguladıktan sonra
 
-Bu güncelleştirme yüklendikten sonra geçerli düzeltmeleri yükleyin. Daha fazla bilgi için müşterilerimize [hizmet İlkesi](azure-stack-servicing-policy.md).
+Bu güncelleştirmenin yüklenmesinden sonra, geçerli düzeltmeleri yükleme. Daha fazla bilgi için bkz. [hizmet ilkeniz](azure-stack-servicing-policy.md).
 
-- [Azure Stack düzeltme 1.1904.4.45](https://support.microsoft.com/help/4505688)
+- [Azure Stack Hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 
-Müşteriler altyapı ağdan internet erişimi olan sistemlerle **güncelleştirme kullanılabilir** işleci portalında iletisi. İnternet erişimi olmayan sistemleri, indirin ve karşılık gelen .xml ile .zip dosyasını içeri aktarabilirsiniz.
+Altyapı ağından internet 'e erişebilen sistemlere sahip müşteriler, operatör portalındaki **güncelleştirme kullanılabilir** iletisini görür. İnternet erişimi olmayan sistemler. zip dosyasını indirebilir ve ilgili. xml ile içe aktarabilir.
 
 > [!TIP]  
-> Aşağıdaki abone olmak *RSS* veya *Atom* Azure Stack düzeltmelerle birlikte kalmasını sağlamak için akışları:
+> Azure Stack düzeltmelere devam etmek için aşağıdaki *RSS* veya *atom* akışlarına abone olun:
 >
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - ['YI](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
 > - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ## <a name="next-steps"></a>Sonraki adımlar

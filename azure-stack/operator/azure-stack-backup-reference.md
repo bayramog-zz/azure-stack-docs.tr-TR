@@ -1,6 +1,6 @@
 ---
-title: Azure Stack altyapısını yedekleme hizmeti başvurusu | Microsoft Docs
-description: Bu makale, Azure Stack altyapısını yedekleme hizmeti için başvuru bilgileri içerir.
+title: Infrastructure Backup hizmet başvurusunu Azure Stack | Microsoft Docs
+description: Bu makale Azure Stack Infrastructure Backup hizmeti için başvuru malzemeleri içerir.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,56 +16,56 @@ ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 40be490efceb6747bf848518c55cca64784492da
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: d45b11eb70533125ff8136763be24a3333c1f7dc
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268756"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68493945"
 ---
-# <a name="infrastructure-backup-service-reference"></a>Altyapı Backup hizmeti başvurusu
+# <a name="infrastructure-backup-service-reference"></a>Infrastructure Backup hizmet başvurusu
 
-## <a name="azure-backup-infrastructure"></a>Azure Yedekleme Altyapısı
+## <a name="azure-backup-infrastructure"></a>Azure Backup altyapısı
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack portal, Azure Resource Manager'ı oluşturan çok sayıda hizmetten oluşur ve altyapı yönetimi deneyimi. Azure Stack Gereci gibi yönetim deneyimini kullanıma sunulan çözüm işlecine karmaşıklığı azaltmak üzerinde odaklanır.
+Azure Stack Portal, Azure Resource Manager ve altyapı yönetim deneyimini oluşturan birçok hizmetten oluşur. Azure Stack gereç gibi yönetim deneyimi, çözümün işlecine sunulan karmaşıklığı azaltmaya odaklanır.
 
-Altyapı yedeklemeyi yedekleme karmaşıklığı internalize için tasarlanmıştır ve altyapı hizmetleri için verilerin geri yüklenmesi, işleçler sağlayarak çözümü yönetme ve kullanıcılar için bir SLA'yı tutarak odaklanabilirsiniz.
+Infrastructure Backup, altyapı hizmetleri için veri yedekleme ve geri yükleme karmaşıklığına internalize üzere tasarlanmıştır. Bu, işleçlerin çözümü yönetmeye ve kullanıcılara SLA 'yı korumaya odaklanmasına odaklanabilmenizi sağlar.
 
-Dış bir paylaşıma yedekleme verileri dışarı aktarma, yedeklemeler aynı sistemde depolanmasını önlemek için gereklidir. Yönetici, bir dış paylaşım gerektiren var olan şirket BC/DR ilkelerine bağlı olarak verilerin depolanacağı konumu belirlemek için esnekliği sunar. 
+Yedeklemelerin aynı sistemde depolanmasını önlemek için yedekleme verilerinin bir dış paylaşıma verilmesi gerekir. Dış bir paylaşımın istenmesi, yöneticinin verileri mevcut şirket BC/DR ilkelerine göre nerede depolayaceğini belirleme esnekliği sağlar. 
 
-### <a name="infrastructure-backup-components"></a>Altyapı Backup bileşenleri
+### <a name="infrastructure-backup-components"></a>Infrastructure Backup bileşenleri
 
-Yedekleme Altyapısı aşağıdaki bileşenleri içerir:
+Infrastructure Backup aşağıdaki bileşenleri içerir:
 
- - **Yedekleme Altyapısı denetleyici**  
- Yedekleme Altyapısı Denetleyici ile örneği ve her Azure Stack bulutunda yer alan.
+ - **Infrastructure Backup denetleyicisi**  
+ Infrastructure Backup denetleyicisi, ile birlikte oluşturulur ve her Azure Stack bulutta bulunur.
  - **Yedekleme kaynak sağlayıcısı**  
- Yedekleme kaynak sağlayıcısı (Yedekleme RP) için Azure Stack altyapısının temel yedekleme işlevselliği kullanıma sunma kullanıcı arabirimi ve uygulama programı arabirimleri (API) s oluşur.
+ Yedekleme kaynak sağlayıcısı (Backup RP), Azure Stack altyapısı için temel yedekleme işlevlerini açığa çıkaran Kullanıcı arabirimi ve uygulama programı arabirimleri (API) ' den oluşur.
 
-#### <a name="infrastructure-backup-controller"></a>Yedekleme Altyapısı denetleyici
+#### <a name="infrastructure-backup-controller"></a>Infrastructure Backup denetleyicisi
 
-Altyapı yedekleme hizmeti için bir Azure Stack bulut örneği bir Service Fabric denetleyicisidir. Yedekleme kaynakları bölgesel düzeyi ve yakalama bölgeye özgü verileri bir hizmet AD, CA, Azure Kaynak Yöneticisi'nden en oluşturulur CRP, SRP, NRP, anahtar kasası, RBAC. 
+Infrastructure Backup denetleyicisi, bir Azure Stack bulutu için örneği oluşturulan Service Fabric bir hizmettir. Yedekleme kaynakları bölgesel düzeyde oluşturulur ve AD, CA, Azure Resource Manager, CRP, SRP, NRP, Keykasa, RBAC 'den bölgeye özgü hizmet verilerini yakalar. 
 
 ### <a name="backup-resource-provider"></a>Yedekleme kaynak sağlayıcısı
 
-Yedekleme kaynak sağlayıcısı, Azure Stack portalında temel yapılandırmasını ve yedekleme kaynaklar listesi için kullanıcı arabirimi sunar. İşleci kullanıcı arabiriminin aşağıdaki işlemleri gerçekleştirebilirsiniz:
+Yedekleme kaynak sağlayıcısı, yedekleme kaynaklarını temel yapılandırma ve listeleme için Azure Stack portalında Kullanıcı arabirimini sunar. İşleci Kullanıcı arabiriminde aşağıdaki işlemleri gerçekleştirebilir:
 
- - Dış depolama konumu, kimlik bilgilerini ve şifreleme anahtarı sağlayarak ilk kez yedeklemeyi etkinleştirme
- - Yedekleme ve durum kaynaklarının oluşturma'nın altında tamamlandı görünümü oluşturan
- - Burada yedekleme verilerini yedekleme denetleyicisi yerleştirir depolama konumu değiştirin
- - Yedekleme denetleyicisi dış depolama konumuna erişmek için kullandığı kimlik bilgilerini değiştirme
- - Yedekleme denetleyicisi yedeklemeleri şifrelemek için kullanılan şifreleme anahtarını değiştir 
+ - Dış depolama konumu, kimlik bilgileri ve şifreleme anahtarı sağlayarak yedeklemeyi ilk kez etkinleştirin
+ - Oluşturulan yedekleme kaynaklarını ve durum kaynaklarını oluşturma bölümünde görüntüle
+ - Yedekleme denetleyicisinin yedekleme verilerini yerleştirdiği depolama konumunu değiştirme
+ - Yedekleme denetleyicisinin dış depolama konumuna erişmek için kullandığı kimlik bilgilerini değiştirme
+ - Yedekleme denetleyicisinin yedekleri şifrelemek için kullandığı şifreleme anahtarını değiştirme 
 
 
 ## <a name="backup-controller-requirements"></a>Yedekleme denetleyicisi gereksinimleri
 
-Bu bölümde altyapı yedeklemesine önemli gereksinimleri açıklanmaktadır. Azure Stack Örneğiniz için yedeklemeyi etkinleştirme ve ardından geri gerektiğinde dağıtım ve sonraki işlemi sırasında başvurduğu önce bilgileri dikkatlice gözden öneririz.
+Bu bölümde Infrastructure Backup için önemli gereksinimler açıklanmaktadır. Azure Stack örneğiniz için yedeklemeyi etkinleştirmeden önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
 
-Gereksinimleri şunları içerir:
+Gereksinimler şunlardır:
 
-  - **Yazılım gereksinimleri** -desteklenen depolama konumlarını ve boyutlandırma kılavuzluğu açıklar. 
+  - **Yazılım gereksinimleri** -desteklenen depolama konumlarını ve boyutlandırma kılavuzunu açıklar. 
   - **Ağ gereksinimleri** -farklı depolama konumları için ağ gereksinimlerini açıklar.  
 
 ### <a name="software-requirements"></a>Yazılım gereksinimleri
@@ -74,9 +74,9 @@ Gereksinimleri şunları içerir:
 
 | Depolama konumu                                                                 | Ayrıntılar                                                                                                                                                  |
 |----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Güvenilen ağ ortamında bir depolama cihazı üzerinde barındırılan SMB dosya paylaşımı | SMB, Azure Stack dağıtıldığı aynı veri merkezinde veya farklı bir veri merkezinde paylaşın. Azure Stack birden fazla aynı dosya paylaşımını kullanabilirsiniz. |
-| Azure'da SMB dosya paylaşımı                                                          | Şu anda desteklenmiyor.                                                                                                                                 |
-| Azure BLOB Depolama                                                            | Şu anda desteklenmiyor.                                                                                                                                 |
+| Güvenilen ağ ortamı içindeki bir depolama cihazında barındırılan SMB dosya paylaşma | Azure Stack dağıtıldığı veri merkezinde veya farklı bir veri merkezinde SMB paylaşma. Birden çok Azure Stack örneği aynı dosya paylaşımının kullanımını kullanabilir. |
+| Azure 'da SMB dosya paylaşma                                                          | Şu anda desteklenmiyor.                                                                                                                                 |
+| Azure 'da BLOB depolama                                                            | Şu anda desteklenmiyor.                                                                                                                                 |
 
 #### <a name="supported-smb-versions"></a>Desteklenen SMB sürümleri
 
@@ -84,68 +84,83 @@ Gereksinimleri şunları içerir:
 |-----|---------|
 | SMB | 3.x     |
 
+#### <a name="smb-encryption"></a>SMB şifrelemesi
+
+**1907 ve daha fazla**
+
+Altyapı yedekleme hizmeti, yedekleme verilerinin sunucu tarafında SMB Şifrelemesi etkin olan bir dış depolama konumuna aktarılmasını destekler. Sunucu SMB şifrelemesini desteklemiyorsa veya özelliği etkinleştirilmemişse, altyapı yedekleme hizmeti şifresiz veri aktarımına geri döner. Dış depolama konumuna yerleştirilmiş yedekleme verileri her zaman bekleyen olarak şifrelenir ve SMB şifrelemeye bağlı değildir. 
+
 #### <a name="storage-location-sizing"></a>Depolama konumu boyutlandırma 
 
-Altyapı yedekleme denetleyicisi verilerini isteğe bağlı olarak yedekler. En son iki gün ve canlı en fazla yedi güne kadar yedek yedeklemek için önerilir. 
+Öneri, günde en son iki kez yedeklenmek ve en fazla yedi günde bir yedekleme yapmak olur. Bu, Azure Stack altyapı yedeklemelerini etkinleştirdiğinizde varsayılan davranıştır. 
 
-**1811 ve sonraki süreci desteleyen**
+**1907 ve daha fazla**
 
-| Ortam ölçek | Yedekleme tahmini boyutu | Toplam gereken alan miktarı |
+***Azure AD Identity sağlayıcısına bağlı sistem***
+
+| Ortam ölçeği | Yedeğin tahmini boyutu | Gereken toplam alan miktarı |
+|-------------------|--------------------------|--------------------------------|
+| 4-16 düğüm/ASDK   | 1 GB                     | 20 GB                          |
+
+***ADFS aracılığıyla şirket AD kimlik sağlayıcısına bağlı sistem***
+
+| Ortam ölçeği | Yedeğin tahmini boyutu | Gereken toplam alan miktarı |
 |-------------------|--------------------------|--------------------------------|
 | 4-16 düğümleri        | 20 GB                    | 280 GB                        |
 | ASDK              | 10 GB                    | 140 GB                        |
 
-**Öncesi 1811**
+**1907 öncesi**
 
-| Ortam ölçek | Yedekleme tahmini boyutu | Toplam gereken alan miktarı |
+| Ortam ölçeği | Yedeğin tahmini boyutu | Gereken toplam alan miktarı |
 |-------------------|--------------------------|--------------------------------|
-| 4-16 düğüm ASDK  | 10 GB                     | 140 GB                        |
+| 4-16 düğümleri        | 20 GB                    | 280 GB                        |
+| ASDK              | 10 GB                    | 140 GB                        |
 
 ### <a name="network-requirements"></a>Ağ gereksinimleri
 
 | Depolama konumu                                                                 | Ayrıntılar                                                                                                                                                                                 |
 |----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Güvenilen ağ ortamında bir depolama cihazı üzerinde barındırılan SMB dosya paylaşımı | Azure Stack örneği bağlantısıyla bir ortamda yer alıyorsa, 445 bağlantı noktası gereklidir. Altyapı yedekleme denetleyicisi bağlantı noktası 445 üzerinden SMB dosya sunucusu için bir bağlantı başlatır. |
-| Dosya sunucusu FQDN'si kullanmak için ad CESARETLENDİRİCİ çözülebilir olması gerekir             |                                                                                                                                                                                         |
+| Güvenilen ağ ortamı içindeki bir depolama cihazında barındırılan SMB dosya paylaşma | Azure Stack örneği güvenlik duvarlı bir ortamda yer alıyorsa, bağlantı noktası 445 gereklidir. Infrastructure Backup denetleyicisi, 445 numaralı bağlantı noktası üzerinden SMB dosya sunucusuyla bağlantı başlatacak. |
+| Dosya sunucusu FQDN 'SI kullanmak için adın PEP 'den çözümlenebilmelidir             |                                                                                                                                                                                         |
 
 > [!Note]  
-> Hiçbir gelen bağlantı noktalarının açılması gerekir.
+> Hiçbir gelen bağlantı noktasının açılması gerekmez.
 
 ### <a name="encryption-requirements"></a>Şifreleme gereksinimleri
 
-İçinde 1901 başlayarak, altyapı yedekleme hizmeti ortak anahtara sahip bir sertifika kullanır (. Yedekleme verileri ve sertifikayı özel anahtarla şifrelemek için CER) (. PFX) bulut Kurtarma sırasında yedek verilerin şifresini çözmek için kullanılır.   
- - Sertifika anahtarlarının taşıma için kullanılır ve güvenli bir kimliği doğrulanmış iletişim kurmak için kullanılmaz. Bu nedenle, sertifika otomatik olarak imzalanan bir sertifika olabilir. Azure Stack dış internet erişimi gerekli değildir. Bu nedenle, kök veya bu sertifikanın güven doğrulayın gerekmez.
+1901 ' den başlayarak, altyapı yedekleme hizmeti ortak anahtara sahip bir sertifika kullanır (. CER) yedekleme verilerini ve özel anahtarla bir sertifikayı şifrelemek için (. PFX) bulut kurtarması sırasında yedekleme verilerinin şifresini çözün.   
+ - Sertifika, anahtarların taşınması için kullanılır ve güvenli kimliği doğrulanmış iletişim kurmak için kullanılmaz. Bu nedenle, sertifika otomatik olarak imzalanan bir sertifika olabilir. Azure Stack dış internet erişimi gerekmediği için bu sertifikanın kökünü veya güvenini doğrulaması gerekmez.
  
-Otomatik olarak imzalanan sertifika, iki parça, bir ortak anahtara sahip ve bir özel anahtarla birlikte gelir:
- - Yedekleme verilerini şifrele: (Dışarı. ortak anahtara sahip sertifika CER dosyası), yedekleme verilerini şifrelemek için kullanılır
- - Yedekleme verilerinin şifresini: (Dışarı. Özel anahtarlı sertifika PFX dosyası) yedek verilerin şifresini çözmek için kullanılır
+Otomatik olarak imzalanan sertifika, biri ortak anahtara ve diğeri de özel anahtara sahip iki bölüme gelir:
+ - Yedekleme verilerini şifreleyin: Ortak anahtara sahip sertifika (öğesine aktarma. CER dosyası), yedekleme verilerini şifrelemek için kullanılır
+ - Yedekleme verilerinin şifresini çözün: Özel anahtara sahip sertifika (öğesine aktarma. PFX dosyası), yedekleme verilerinin şifresini çözmek için kullanılır
 
-Sertifikanın ortak anahtarı ile (. CER) iç gizli döndürme tarafından yönetilmiyor. Sertifika döndürmek için yeni bir otomatik olarak imzalanan sertifika oluşturmak ve yeni bir dosya ile Yedekleme ayarlarını güncelleştirme yapmanız gerekir (. CER).  
- - Tüm mevcut yedeklemeler önceki ortak anahtar kullanılarak şifrelenmiş olarak kalır. Yeni yedeklemeleri yeni ortak anahtarı kullanır. 
+Ortak anahtara sahip sertifika (. CER), iç gizli döndürme tarafından yönetilmez. Sertifikayı döndürmek için, otomatik olarak imzalanan yeni bir sertifika oluşturmanız ve yedekleme ayarlarını yeni dosyayla güncelleştirmeniz gerekir (. CER).  
+ - Mevcut tüm yedeklemeler, önceki ortak anahtar kullanılarak şifrelenmiş olarak kalır. Yeni yedeklemeler yeni ortak anahtarı kullanır. 
  
-Bulut Kurtarma sırasında kullanılan özel anahtarla sertifikayı (. PFX) tarafından Azure Stack güvenlik nedeniyle kalıcı olmaz. Bu dosya, bulut Kurtarma sırasında açıkça sağlanması gerekir.  
+Özel anahtarla bulut kurtarma sırasında kullanılan sertifika (. PFX) güvenlik nedeniyle Azure Stack kalıcı değildir. Bu dosyanın, bulut kurtarma sırasında açıkça sağlanması gerekir.  
 
-**Geriye dönük uyumluluk modu** içinde 1901 başlayarak, anahtar şifreleme desteği kullanım dışıdır ve gelecek sürümde kaldırılacak. Zaten bir şifreleme anahtarı kullanarak etkin yedek ile 1811 güncelleştirdiyseniz, şifreleme anahtarını kullanmak Azure Stack devam eder. Geriye dönük uyumluluk modu için en az 3 sürüm desteklenecektir. Bundan sonra bir sertifika gerekir. 
- * Şifreleme anahtarı için sertifika güncelleştirilirken bir tek yönlü bir işlemdir.  
- * Tüm mevcut yedeklemeler şifreleme anahtar kullanılarak şifrelenmiş olarak kalır. Yeni yedeklemeleri sertifikayı kullanır. 
+**Geriye dönük uyumluluk modu** 1901 ' den başlayarak şifreleme anahtarı desteği kullanım dışıdır ve gelecek sürümde kaldırılacaktır. Bir şifreleme anahtarı kullanılarak 1811 ' den yedekleme zaten etkinleştirilmiş olarak güncelleştirilirse, Azure Stack şifreleme anahtarını kullanmaya devam eder. Geriye doğru uyumluluk modu, en az 3 sürüm için desteklenecek. Bu süreden sonra bir sertifika gerekli olacaktır. 
+ * Şifreleme anahtarından sertifikaya güncelleştirme tek yönlü bir işlemdir.  
+ * Mevcut tüm yedeklemeler şifreleme anahtarı kullanılarak şifreli olarak kalır. Yeni yedeklemeler sertifikayı kullanır. 
 
-## <a name="infrastructure-backup-limits"></a>Yedekleme Altyapısı sınırları
+## <a name="infrastructure-backup-limits"></a>Infrastructure Backup sınırları
 
-Planlama, dağıtma ve Microsoft Azure Stack örneklerinizin çalışmak gibi bu sınırları göz önünde bulundurun. Bu sınırlar aşağıdaki tabloda açıklanmaktadır.
+Microsoft Azure Stack örneklerinizi planlarken, dağıtırken ve işletirken bu limitleri göz önünde bulundurun. Aşağıdaki tabloda bu sınırlar açıklanmaktadır.
 
-### <a name="infrastructure-backup-limits"></a>Altyapı yedekleme sınırları
+### <a name="infrastructure-backup-limits"></a>Infrastructure Backup sınırları
 
 | Sınır tanımlayıcı                                                 | Sınır        | Açıklamalar                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Yedekleme türü                                                      | Yalnızca tam    | Altyapı yedekleme denetleyicisi, yalnızca tam yedeklemeleri destekler. Artımlı yedeklemeler desteklenmez.                                          |
-| Zamanlanmış yedeklemeler                                                | Zamanlanmış ve el ile  | Zamanlanmış ve isteğe bağlı yedeklemeler yedekleme denetleyicisi destekler                                                                                 |
-| En fazla eş zamanlı yedekleme işleri                                   | 1            | Yedekleme denetleyici örneği başına yalnızca bir etkin yedek iş desteklenir.                                                                  |
-| Ağ anahtarı yapılandırmasının                                     | Kapsam içinde değil | Yönetici, OEM araçlar kullanarak ağ anahtarı yapılandırmasının yedeklemeniz gerekir. Azure Stack her OEM satıcısı tarafından sağlanan belgelere bakın. |
-| Donanım yaşam döngüsü konak                                          | Kapsam içinde değil | Yönetici, donanım yaşam döngüsü OEM araçlarını kullanarak konak yedeklemeniz gerekir. Azure Stack her OEM satıcısı tarafından sağlanan belgelere bakın.      |
-| En fazla sayıda dosya paylaşımı                                    | 1            | Yalnızca bir dosya paylaşımını yedekleme verilerini depolamak için kullanılabilir                                                                                        |
-| Uygulama Hizmetleri, işlev, SQL, mysql kaynak sağlayıcı verilerini yedekleme | Kapsam içinde değil | Dağıtma ve yönetme değeri-Microsoft tarafından oluşturulan RPs eklemek için yayımlanan kılavuzuna bakın.                                                  |
-| Yedekleme üçüncü taraf kaynak sağlayıcıları                              | Kapsam içinde değil | Dağıtma ve yönetme değeri-üçüncü taraf satıcıları ile oluşturulan RPs eklemek için yayımlanan kılavuzuna bakın.                                          |
+| Yedekleme türü                                                      | Yalnızca tam    | Infrastructure Backup denetleyicisi yalnızca tam yedeklemeleri destekler. Artımlı yedeklemeler desteklenmez.                                          |
+| Zamanlanan yedeklemeler                                                | Zamanlanmış ve el ile  | Yedekleme denetleyicisi zamanlanmış ve isteğe bağlı yedeklemeleri destekler                                                                                 |
+| Maksimum eşzamanlı yedekleme işi                                   | 1\.            | Yedekleme denetleyicisi örneği başına yalnızca bir etkin yedekleme işi desteklenir.                                                                  |
+| Ağ anahtarı yapılandırması                                     | Kapsamda değil | Yöneticinin, OEM araçlarını kullanarak ağ anahtarı yapılandırmasını yedeklemesi gerekir. Her OEM satıcısı tarafından verilen Azure Stack için belgelere bakın. |
+| Donanım yaşam döngüsü Konağı                                          | Kapsamda değil | Yöneticinin, OEM araçlarını kullanarak donanım yaşam döngüsü konağını yedeklemesi gerekir. Her OEM satıcısı tarafından verilen Azure Stack için belgelere bakın.      |
+| En fazla dosya paylaşımı sayısı                                    | 1\.            | Yedekleme verilerini depolamak için yalnızca bir dosya paylaşma kullanılabilir                                                                                        |
+| App Services, Function, SQL, MySQL kaynak sağlayıcısı verilerini yedekleme | Kapsamda değil | Microsoft tarafından oluşturulan RPs 'lerin dağıtımı ve yönetimi için yayımlanan kılavuza bakın.                                                  |
+| Üçüncü taraf kaynak sağlayıcılarını yedekleme                              | Kapsamda değil | Üçüncü taraf satıcılar tarafından oluşturulan RPs değerlerini dağıtmak ve yönetmek için yayımlanan kılavuza bakın.                                          |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- - Altyapı Backup hizmeti hakkında daha fazla bilgi için bkz: [altyapı Backup hizmeti ile Azure Stack için yedekleme ve veri kurtarma](azure-stack-backup-infrastructure-backup.md).
+ - Infrastructure Backup hizmeti hakkında daha fazla bilgi edinmek için bkz. [Infrastructure Backup hizmeti ile Azure Stack Için Yedekleme ve veri kurtarma](azure-stack-backup-infrastructure-backup.md).

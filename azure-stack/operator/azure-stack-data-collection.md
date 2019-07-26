@@ -1,6 +1,6 @@
 ---
-title: Azure Stack günlük ve veri işleme | Microsoft Docs
-description: Azure Stack bilgileri nasıl topladığı hakkında bilgi edinin.
+title: Günlük ve veri işleme Azure Stack | Microsoft Docs
+description: Azure Stack nasıl bilgi topladığı hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -16,51 +16,51 @@ ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: chengwei
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 9da7ced492a86cb97a1b90a2224383d834073423
-ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
+ms.openlocfilehash: 495b75359cb8c859e532885a1c9fa284691bd90f
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66828356"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68493805"
 ---
-# <a name="azure-stack-log-and-customer-data-handling"></a>Azure Stack günlük ve müşteri verilerini işleme 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*  
+# <a name="azure-stack-log-and-customer-data-handling"></a>Azure Stack günlüğü ve müşteri verileri işleme 
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*  
 
-Ölçüde Microsoft işlemci veya subprocessor kişisel verilerin Azure Stack bağlantılı olarak, Microsoft'un sunduğu tüm müşteriler için etkili 25 Mayıs 2018'den itibaren taahhüt içinde (a) "kişisel verilerin işlenmesini; GDPR"Hazırlama"Veri koruma koşulları"bölümünün [çevrimiçi hizmet koşulları](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) ve (b), Avrupa Birliği genel veri koruma yönetmeliği'koşullarını ek 4 [çevrimiçi hizmet koşulları](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). 
+Microsoft, Microsoft 'un Azure Stack ile bağlantılı olarak kişisel verilerin bir işlemcisi veya alt işlemcisidir. Microsoft, "kişisel verileri Işleme" içindeki (a) taahhütlik, 25 Mayıs 2018 ' de tüm müşterileri sağlar. GDPR, çevrimiçi hizmetler koşullarının "veri koruma koşulları" [bölümünün ve (](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) b), [çevrimiçi hizmet koşulları](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)'nın ek 4 ' te bulunan Avrupa Birliği genel veri koruma yönetmeliği terimleri. 
 
-Azure Stack müşteri veri merkezlerinde bulunan gibi Microsoft yalnızca Microsoft ile paylaşılan verilerinin veri denetleyicisi, [tanılama](azure-stack-diagnostics.md), [Telemetri](azure-stack-telemetry.md), ve [Faturalama](azure-stack-usage-reporting.md).  
+Azure Stack müşteri veri merkezlerinde bulunduğu için, Microsoft, yalnızca [Tanılama](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep), [telemetri](azure-stack-telemetry.md)ve [faturalandırma](azure-stack-usage-reporting.md)aracılığıyla Microsoft ile paylaşılan verilerden oluşan veri denetleyicisidir.  
 
 ## <a name="data-access-controls"></a>Veri erişim denetimleri 
-Belirli bir destek talebi araştırmak için atanan Microsoft çalışanlarının, şifrelenmiş verilere salt okunur erişim verilir. Microsoft çalışanları ayrıca gerekirse verileri silmek için kullanılan araçları erişebilir. Tüm müşteri verilerine erişim denetlenir ve günlüğe kaydedilir.  
+Belirli bir destek durumunu araştırmak için atanan Microsoft çalışanlarına, şifrelenmiş verilere salt okuma erişimi verilecektir. Microsoft çalışanları, gerekirse verileri silmek için kullanılan araçlara de erişebilir. Müşteri verilerine tüm erişim denetlenir ve günlüğe kaydedilir.  
 
-Veri erişimi denetimlerini:
-1.  Veriler yalnızca en fazla 90 gün sonra çalışması için korunur.
-2.  Müşteri, her zaman bu 90 günlük süre içinde herhangi bir zamanda kaldırılan verilerin seçeneği vardır.
-3.  Microsoft çalışanları olay temelinde verilere erişim verilir ve yalnızca gerektiğinde Yardım için destek sorunu çözün. 
-4.  Olay Microsoft OEM iş ortaklarıyla Müşteri verilerinin nerede paylaşmalıdır müşteri onayı zorunludur.  
+Veri erişim denetimleri:
+- Veriler yalnızca, büyük/küçük harf kapatıldıktan sonra en fazla 90 gün boyunca tutulur.
+- Müşterinin her zaman, söz konusu 90 günlük dönemde verileri her zaman kaldırma seçeneği vardır.
+- Microsoft çalışanları, büyük/küçük harfe göre verilere erişim ve yalnızca destek sorununu çözmeye yardımcı olmak için gereklidir. 
+- Microsoft 'un müşteri verilerini OEM iş ortaklarıyla paylaşması gereken olayda, müşteri onayı zorunludur.  
 
-### <a name="what-data-subject-requests-dsr-controls-do-customers-have"></a>Veri sahibi istekleri (DSR) denetimleri yapın müşterilerin var mı?
-Daha önce bahsedildiği gibi Microsoft Müşteri istek başına isteğe bağlı veri silme destekler. Müşteriler, bizim destek mühendisi dilediğiniz zaman verileri kalıcı olarak silinmeden önce müşteri'nin, seçme, belirli bir çalışması için tüm günlükleri silmek isteyebilirsiniz.  
+### <a name="what-data-subject-requests-dsr-controls-do-customers-have"></a>Müşterilerin hangi veri sahibi Istekleri (DSR) denetimleri vardır?
+Daha önce belirtildiği gibi, Microsoft müşteri isteği başına isteğe bağlı veri silmeyi destekler. Müşteriler, veri kalıcı olarak silinmeden önce, destek mühendisimizin herhangi bir zamanda belirli bir servis talebi için tüm günlüklerini silmesini talep edebilir.  
 
-### <a name="does-microsoft-notify-customers-when-the-data-is-deleted"></a>Microsoft, veri silindiğinde müşterilere bildirmek mu?
-Otomatik veri silme eylemi için (çalışması kapattıktan sonra 90 gün) biz değil proaktif bir şekilde müşterilere başvurun ve silme hakkında bildirim yollayın. 
+### <a name="does-microsoft-notify-customers-when-the-data-is-deleted"></a>Microsoft, veriler silindiğinde müşterilere bilgilendirsin mi?
+Otomatik veri silme eylemi için (büyük/küçük bir süre sonra 90 gün sonra), müşterilerle ilgili olarak iletişim kurmazlar ve silme hakkında bildirim göndereceğiz. 
 
-İsteğe bağlı veri silme eylemi için Microsoft destek mühendisine nerede bunlar isteğe bağlı verileri silme işlemini başlatabilir ve bittiğinde onaylama telefonda müşteriyle sağlayabilirler aracına erişebilir.
+İsteğe bağlı veri silme eylemi için, Microsoft destek mühendisinin istek üzerine veri silme işlemini başlatabilecekleri ve tamamlandığında müşteriyle ilgili onay sağlayabilecekleri araca erişimi vardır.
 
 ## <a name="diagnostic-data"></a>Tanılama verileri
-Destek işleminin bir parçası olarak, Azure Stack operatörleri için [tanılama günlükleri paylaş](azure-stack-diagnostics.md) sorun giderme sürecini kolaylaştırmak için Azure Stack desteği ve mühendislik ekipleri ile.
+Azure Stack Işleçleri, destek sürecinin bir parçası olarak, sorun gidermeyi kolaylaştırmak için Azure Stack destek ve mühendislik ekipleriyle [tanılama günlüklerini paylaşabilir](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) .
 
-Bir aracı Microsoft sağlar ve müşterilerin toplamak ve karşıya yüklemek betik tanılama günlük dosyaları istendi. Toplandığında, günlük dosyalarını üzerinden aktarılır Microsoft'a şifreli bağlantı HTTPS korumalı. HTTPS kablo üzerinden şifreleme sağladığından, aktarım sırasında şifreleme için gereken parolası yoktur. Alındıktan sonra günlükleri şifrelenir ve otomatik olarak destek servis talebi kapatıldığında ettikten 90 gün sonra silinmelerinden depolanır.
+Microsoft, müşterilerin istenen tanılama günlük dosyalarını toplayıp yüklemesi için bir araç ve betik sağlar. Toplandıktan sonra, günlük dosyaları HTTPS ile korunan şifreli bir bağlantı üzerinden Microsoft 'a aktarılır. HTTPS, kablo üzerinde şifrelemeyi sağladığından, aktarım sırasında şifreleme için gereken parola yok. Bunlar alındıktan sonra, destek durumu kapatıldıktan sonraki 90 gün sonra otomatik olarak silinene kadar Günlükler şifrelenir ve depolanır.
 
 ## <a name="telemetry-data"></a>Telemetri verileri
-[Azure Stack telemetrisini](azure-stack-telemetry.md) bağlı kullanıcı deneyimi aracılığıyla Microsoft Sistem verilerini otomatik olarak yükler. Azure Stack operatörleri, herhangi bir zamanda telemetri özellikleri ve gizlilik ayarlarını özelleştirmek için denetimleri içerir.
+[Azure Stack telemetri](azure-stack-telemetry.md) , bağlı kullanıcı deneyimi aracılığıyla sistem verilerini Microsoft 'a otomatik olarak yükler. Azure Stack Işleçleri, telemetri özelliklerini ve gizlilik ayarlarını dilediğiniz zaman özelleştirmek için denetimlere sahiptir.
 
-Microsoft, kredi kartı numaraları, kullanıcı adları ve parolalar, e-posta adresleri veya benzer hassas bilgiler gibi hassas verileri toplamak istediğiniz değil. Hassas bilgilerin yanlışlıkla alındı karar verirseniz, sileceğiz. 
+Microsoft, kredi kartı numaraları, Kullanıcı adları ve parolalar, e-posta adresleri veya benzer gizli bilgiler gibi hassas veriler toplamaya yönelik değildir. Gizli bilgilerin yanlışlıkla alındığını belirlediğimiz takdirde, bu bilgileri sileriz. 
 
-## <a name="billing-data"></a>Faturalama verileri
-[Azure Stack faturalama](azure-stack-usage-reporting.md) genel Azure'nın faturalama ve kullanım işlem hattı ve bu nedenle Microsoft Uyumluluk kuralları ile uyumlu yararlanır.
+## <a name="billing-data"></a>Faturalandırma verileri
+[Azure Stack faturalandırma](azure-stack-usage-reporting.md) küresel Azure 'ın faturalandırma ve kullanım ardışık düzenine yararlanır ve bu nedenle Microsoft Uyumluluk kılavuzlarıyla hizalanır.
 
-Azure Stack operatörlerinin Azure Stack, kullanım bilgilerini Azure'a faturalandırması iletecek şekilde yapılandırabilirsiniz. Bu,-,-kullandıkça faturalandırma modeli seçen çok düğümlü Azure Stack müşterileri için gereklidir. Kullanım raporlama alınan telemetri bağımsız olarak denetlenir ve kapasite modeli istemeyen çok düğümlü müşterilere veya Azure Stack geliştirme Seti'ni kullanıcılar gerekli değildir. Bu senaryolar için kullanım raporlamayı kullanarak kapatılabilir [kayıt betiği](azure-stack-usage-reporting.md).
+Azure Stack Işleçler, faturalandırma için kullanım bilgilerini Azure 'a iletecek Azure Stack yapılandırabilir. Bu, Kullandıkça Öde faturalandırma modeli 'ni seçen çok düğümlü Azure Stack müşteriler için gereklidir. Kullanım raporlaması telemetriden bağımsız olarak denetlenir ve kapasite modelini veya Azure Stack Geliştirme Seti kullanıcıları seçen çok düğümlü müşteriler için gerekli değildir. Bu senaryolar için, kullanım raporlaması [kayıt betiği](azure-stack-usage-reporting.md)kullanılarak kapatılabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 

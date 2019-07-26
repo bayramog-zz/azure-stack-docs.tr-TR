@@ -4,42 +4,46 @@
   items:
     - name: Azure Stack nedir?
       href: azure-stack-overview.md
-    - name: Azure Stack HCI nedir?
+    - name: Azure Stack HCı nedir?
       href: azure-stack-hci-overview.md
-    - name: Azure ekosistemi ile karşılaştırma
+    - name: Azure ekosistemini karşılaştırma
       href: compare-azure-azure-stack.md
     - name: Sürüm notları
       items:
-        - name: Güncelleştirmeler ve Bakım İlkesi
+        - name: Güncelleştirmeler ve bakım ilkesi
           href: azure-stack-servicing-policy.md
-        - name: Güncelleştirmeleri uygulamak için Denetim listesi
+        - name: Güncelleştirmeleri uygulamak için denetim listesi
           href: azure-stack-release-notes-checklist.md
         - name: Güvenlik güncelleştirmeleri
-          href: azure-stack-release-notes-security-updates-1906.md
-        - name: 1906 güncelleştirme
+          href: azure-stack-release-notes-security-updates-1907.md
+        - name: 1907 güncelleştirmesi
+          items:
+            - name: Sürüm notları
+              href: azure-stack-release-notes-1907.md
+            - name: Bilinen sorunlar
+              href: azure-stack-release-notes-known-issues-1907.md
+        - name: 1906 güncelleştirmesi
           items:
             - name: Sürüm notları
               href: azure-stack-release-notes-1906.md
             - name: Bilinen sorunlar
               href: azure-stack-release-notes-known-issues-1906.md
-        - name: 1905 güncelleştirme
+        - name: 1905 güncelleştirmesi
           items:
             - name: Sürüm notları
               href: azure-stack-release-notes-1905.md
             - name: Bilinen sorunlar
               href: azure-stack-release-notes-known-issues-1905.md
-        - name: 1904 güncelleştirme
+        - name: 1904 güncelleştirmesi
           items:
             - name: Sürüm notları
               href: azure-stack-release-notes-1904.md
             - name: Bilinen sorunlar
               href: azure-stack-release-notes-known-issues-1904.md
-        - name: 1903 güncelleştirme
-          href: azure-stack-update-1903.md
 - name: Hızlı girişler
   expanded: true
   items:
-    - name: Yönetim portalını kullanın
+    - name: Yönetim portalını kullanma
       href: azure-stack-manage-portals.md
 - name: Öğreticiler
   items:
@@ -97,7 +101,7 @@
           items:
             - name: Bir kimlik sağlayıcısı seçin
               href: azure-stack-integrate-identity.md
-            - name: Kayıt rolü oluşturun
+            - name: Kayıt rolü oluşturma
               href: azure-stack-registration-role.md
             - name: Azure kimlik doğrulama
               href: azure-stack-validate-identity.md
@@ -147,7 +151,7 @@
           href: azure-stack-registration.md
         - name: Bölge yönetimi
           href: azure-stack-region-management.md
-        - name: ExpressRoute kullanarak Azure'a bağlama
+        - name: ExpressRoute kullanarak Azure 'a bağlanma
           href: azure-stack-connect-expressroute.md
         - name: Kullanıcılar için CLI’yi etkinleştirme
           href: azure-stack-cli-admin.md
@@ -219,11 +223,11 @@
               href: azure-stack-add-new-user-aad.md
             - name: Kullanıcıları AD FS’ye ekleme
               href: azure-stack-add-users-adfs.md
-            - name: Kaynaklara erişmek için bir uygulama kimliğini kullan
+            - name: Kaynaklara erişmek için bir uygulama kimliği kullanın
               href: Azure-stack-create-service-principals.md
             - name: Çok kiracılı modeli etkinleştirme
               href: azure-stack-enable-multitenancy.md
-        - name: Veri bekleyen şifreleme
+        - name: Rest şifrelemesindeki veriler
           href: azure-stack-security-bitlocker.md
         - name: Gizli dizileri Döndür
           href: azure-stack-rotate-secrets.md
@@ -235,6 +239,8 @@
       items:
         - name: Market’e genel bakış
           href: azure-stack-marketplace.md
+        - name: Market değişiklikleri
+          href: azure-stack-marketplace-changes.md
         - name: Market öğelerini indirme
           href: azure-stack-download-azure-marketplace-item.md
         - name: Azure Stack için Azure Market öğeleri
@@ -306,11 +312,11 @@
       items:
         - name: 'App Service, kapasite planlaması'
           href: azure-stack-app-service-capacity-planning.md
-        - name: App Service'nın faturalandırma ile ilgili SSS
+        - name: App Service faturalandırma hakkında SSS
           href: app-service-billing-faq.md
         - name: Başlamadan önce
           href: azure-stack-app-service-before-you-get-started.md
-        - name: App Service dağıtma
+        - name: App Service Dağıtma
           href: azure-stack-app-service-deploy.md
         - name: Yüksek kullanılabilirlik için App Service dağıtma
           href: app-service-deploy-ha.md
@@ -320,13 +326,13 @@
           href: azure-stack-app-service-update.md
         - name: Güncelleştirme uygulama hizmet çevrimdışı
           href: azure-stack-app-service-update-offline.md
-        - name: App Service altyapısını rolleri ekleme
+        - name: App Service altyapı rolleri ekleme
           href: azure-stack-app-service-add-worker-roles.md
         - name: Dağıtım kaynaklarını yapılandırma
           href: azure-stack-app-service-configure-deployment-sources.md
-        - name: App Service ' yedekleme
+        - name: Yedekleme App Service
           href: app-service-back-up.md
-        - name: App Service'ı kurtarma
+        - name: App Service Kurtar
           href: app-service-recover.md
         - name: Sürüm Notları Azure Stack üzerinde App Service'e
           items:
@@ -338,9 +344,9 @@
               href: azure-stack-app-service-release-notes-update-three.md
             - name: Güncelleştirme 4 sürüm notları Azure Stack üzerinde App Service'e
               href: azure-stack-app-service-release-notes-update-four.md
-            - name: Güncelleştirme 5 sürüm notları Azure Stack üzerinde App Service'e
+            - name: App Service Azure Stack güncelleştirme 5 sürüm notları
               href: azure-stack-app-service-release-notes-update-five.md
-            - name: Güncelleştirme 6 sürüm notları Azure Stack üzerinde App Service'e
+            - name: App Service Azure Stack güncelleştirme 6 sürüm notları
               href: azure-stack-app-service-release-notes-update-six.md
     - name: 'Plan, teklif ve kota oluşturma'
       items:
@@ -354,7 +360,7 @@
           href: azure-stack-create-offer.md
         - name: Bir teklife abone olma
           href: azure-stack-subscribe-plan-provision-vm.md
-        - name: Teklifler Sil
+        - name: Teklifleri silme
           href: azure-stack-delete-offer.md
         - name: Azure Stack’te teklifleri yetkilendirme
           href: azure-stack-delegated-provider.md
@@ -384,9 +390,9 @@
               href: azure-stack-usage-related-faq.md
             - name: Kullanım sorunlarını giderme
               items:
-                - name: Kullanım bağlantı hataları
+                - name: Kullanım bağlantısı hataları
                   href: azure-stack-usage-issues.md
-                - name: Kullanım kayıt hata kodları
+                - name: Kullanım kaydı hata kodları
                   href: azure-stack-registration-errors.md
     - name: Azure yığını yedekleme
       href: azure-stack-backup-infrastructure-backup.md
@@ -409,23 +415,33 @@
           href: azure-stack-backup-reference.md
     - name: Destek alın
       items:
-        - name: Yardım ve Destek
-          href: azure-stack-help-and-support-overview.md
-        - name: Sorun giderme
+        - name: Yardım & Destek Portalı
           items:
-            - name: Bilinen sorunlar
-              href: azure-stack-troubleshooting.md
-            - name: Azure Stack’te tanılama
-              href: azure-stack-diagnostics.md
-            - name: Azure Stack için doğrulama
-              href: azure-stack-diagnostic-test.md
+            - name: Genel Bakış
+              href: azure-stack-help-and-support-overview.md
+            - name: Tanılama günlüğü koleksiyonu
+              items:
+                - name: Genel Bakış
+                  href: azure-stack-diagnostic-log-collection-overview.md
+                - name: Otomatik toplama
+                  items:
+                    - name: Otomatik toplamayı yapılandır
+                      href: azure-stack-configure-automatic-diagnostic-log-collection.md
+                    - name: En iyi uygulamalar
+                      href: azure-stack-best-practices-automatic-diagnostic-log-collection.md
+                - name: İsteğe bağlı koleksiyon
+                  href: azure-stack-configure-on-demand-diagnostic-log-collection.md
+        - name: Azure Stack için doğrulama
+          href: azure-stack-diagnostic-test.md
+        - name: Bilinen sorunlar
+          href: azure-stack-troubleshooting.md
 - name: Başvuru
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview
 - name: İlgili
   items:
-    - name: Azure Stack kullanıcı belgeleri
+    - name: Azure Stack Kullanıcı belgeleri
       href: /azure-stack/user/
     - name: ASDK belgeleri
       href: /azure-stack/asdk/

@@ -15,12 +15,12 @@ ms.date: 07/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 07/15/2019
-ms.openlocfilehash: fb49649227cf17356c7d383e6505dd3e1c2c5648
-ms.sourcegitcommit: 159da88a52701679571bbedde1c36b72bbfe32dd
+ms.openlocfilehash: 7d8990616bcf5cdca628f4aad91e2aee6b95d42a
+ms.sourcegitcommit: 82d09bbae3e5398d2fce7e2f998dfebff018716c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380420"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68497828"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack gizli dizileri döndürme
 
@@ -252,9 +252,9 @@ Remove-PSSession -Session $PEPSession
 
 3. Gizli dizileri döndürürken bekleyin.
 
-Gizli döndürme başarıyla tamamlandığında, konsolunuz genel eylem durumunu **görüntüleyecektir: Başarılı**.
+   Gizli döndürme başarıyla tamamlandığında, konsolunuz genel eylem durumunu **görüntüleyecektir: Başarılı**.
     > [!Note]
-    > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
+    > Gizli döndürme başarısız olursa, hata iletisindeki yönergeleri uygulayın ve **-Internal** ve **-yeniden çalıştır** parametreleriyle **Start-secretrotation** ' ı yeniden çalıştırın.  
 
 ```powershell
 Start-SecretRotation -Internal -ReRun
@@ -300,11 +300,11 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 | Parametre | Type | Gerekli | Konum | Varsayılan | Açıklama |
 | -- | -- | -- | -- | -- | -- |
-| `PfxFilesPath` | Dize  | False  | Adlandırılır  | None  | Tüm dış ağ uç noktası sertifikalarını içeren **\Certificates** dizininin FileShare yolu. Yalnızca dış gizlilikler döndürme sırasında gereklidir. Son dizin **\ sertifikalar**olmalıdır. |
-| `CertificatePassword` | SecureString | False  | Adlandırılır  | None  | -PfXFilesPath içinde belirtilen tüm sertifikaların parolası. Dış gizlilikler döndürüldüğünde PfxFilesPath sağlanırsa gerekli değer. |
-| `Internal` | Dize | False | Adlandırılır | None | İç altyapının gizli dizilerini döndürmek için bir Azure Stack işleci her zaman kullanılması gerekir. |
-| `PathAccessCredential` | PSCredential | False  | Adlandırılır  | None  | Tüm dış ağ uç noktası sertifikalarını içeren **\Certificates** dizininin dosya paylaşımının PowerShell kimlik bilgileri. Yalnızca dış gizlilikler döndürme sırasında gereklidir.  |
-| `ReRun` | SwitchParameter | False  | Adlandırılır  | Yok.  | Yeniden çalıştırma işlemi, başarısız bir denemeden sonra her zaman gizli dizi rotasyonda yeniden denenmelidir. |
+| `PfxFilesPath` | Dize  | False  | Adlandırılır  | Yok.  | Tüm dış ağ uç noktası sertifikalarını içeren **\Certificates** dizininin FileShare yolu. Yalnızca dış gizlilikler döndürme sırasında gereklidir. Son dizin **\ sertifikalar**olmalıdır. |
+| `CertificatePassword` | SecureString | False  | Adlandırılır  | Yok.  | -PfXFilesPath içinde belirtilen tüm sertifikaların parolası. Dış gizlilikler döndürüldüğünde PfxFilesPath sağlanırsa gerekli değer. |
+| `Internal` | Dize | False | Adlandırılır | Yok. | İç altyapının gizli dizilerini döndürmek için bir Azure Stack işleci her zaman kullanılması gerekir. |
+| `PathAccessCredential` | PSCredential | False  | Adlandırılır  | Yok.  | Tüm dış ağ uç noktası sertifikalarını içeren **\Certificates** dizininin dosya paylaşımının PowerShell kimlik bilgileri. Yalnızca dış gizlilikler döndürme sırasında gereklidir.  |
+| `ReRun` | SwitchParameter | False  | Adlandırılır  | None  | Yeniden çalıştırma işlemi, başarısız bir denemeden sonra her zaman gizli dizi rotasyonda yeniden denenmelidir. |
 
 ### <a name="examples"></a>Örnekler
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te ayrıcalıklı uç noktayı kullanarak | Microsoft Docs
-description: Ayrıcalıklı uç noktası (CESARETLENDİRİCİ) kullanmak nasıl Azure Stack'te (Azure Stack operatörü için) gösterir.
+title: Azure Stack 'da ayrıcalıklı uç nokta kullanma | Microsoft Docs
+description: Azure Stack (Azure Stack işleci için) ayrıcalıklı uç noktanın (PEP) nasıl kullanılacağını gösterir.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,59 +15,59 @@ ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: c9e796a4ece453c3cd74bbf9a2fb6996757a0b4e
-ms.sourcegitcommit: 44f1bf6e0bfa85ee14819cad27c9b1de65d375df
+ms.openlocfilehash: 9d088cb128243b0b178e7a317ba05176a59e83c1
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67596072"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494071"
 ---
-# <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack'te ayrıcalıklı uç noktası kullanma
+# <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack 'da ayrıcalıklı uç noktası kullanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack operatörü olarak, gündelik yönetim görevlerinin çoğunda yönetici portalını, PowerShell'i veya Azure Resource Manager API'lerini kullanmanız gerekir. Ancak, bazı yaygın işlemlerin daha az kullanmanız gerekir *ayrıcalıklı uç nokta* (CESARETLENDİRİCİ). Gerekli bir görevi gerçekleştirmenize yardımcı olması için yeterli özellikleriyle sağlayan önceden yapılandırılmış bir uzak PowerShell konsolunu CESARETLENDİRİCİ var. Uç nokta kullanan [PowerShell JEA (yeterli yönetim)](https://docs.microsoft.com/powershell/jea/overview) yalnızca sınırlı bir dizi cmdlet kullanıma sunmak için. Düşük ayrıcalıklı hesap CESARETLENDİRİCİ erişmek ve kısıtlı bir cmdlet kümesi çağırmak için kullanılır. Hiç yönetici hesabı gereklidir. Ek güvenlik için komut dosyası izin verilmez.
+Azure Stack operatörü olarak, gündelik yönetim görevlerinin çoğunda yönetici portalını, PowerShell'i veya Azure Resource Manager API'lerini kullanmanız gerekir. Ancak, bazı daha az yaygın işlemler için *ayrıcalıklı uç noktayı* (Pep) kullanmanız gerekir. PEP, gerekli bir görevi gerçekleştirmenize yardımcı olmak için size yeterli yetenek sağlayan, önceden yapılandırılmış bir uzak PowerShell konsoludur. Uç nokta, yalnızca kısıtlı bir cmdlet kümesini kullanıma sunmak için [PowerShell JEA 'yı (yeterli yönetim)](https://docs.microsoft.com/powershell/jea/overview) kullanır. PEP 'ye erişmek ve kısıtlanmış cmdlet 'ler kümesini çağırmak için düşük ayrıcalıklı bir hesap kullanılır. Yönetici hesabı gerekli değildir. Ek güvenlik için komut dosyasına izin verilmez.
 
-CESARETLENDİRİCİ aşağıdaki gibi görevleri gerçekleştirmek için kullanabilirsiniz:
+PEP 'yi aşağıdakiler gibi görevleri gerçekleştirmek için kullanabilirsiniz:
 
-- Gibi alt düzey görevleri gerçekleştirmek için [tanılama günlüklerinin toplanması](azure-stack-diagnostics.md#log-collection-tool).
-- Microsoft Graph tümleştirmenin, Active Directory Federasyon Hizmetleri (AD FS) Tümleştirmesi ayarlanması dağıtımdan sonra etki alanı adı sistemi (DNS) ileticiler eklemek gibi tümleşik sistemler için birçok dağıtım sonrası datacenter tümleştirme görevleri gerçekleştirmek için Sertifika döndürme, vb.
-- Geniş kapsamlı tümleşik bir sistem sorun giderme için geçici, üst düzey erişim elde etmek için destek ile çalışmak için.
+- [Tanılama günlüklerini toplama](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep)gibi alt düzey görevleri gerçekleştirmek için.
+- Dağıtımdan sonra etki alanı adı sistemi (DNS) ileticileri ekleme, Microsoft Graph tümleştirme, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tümleştirmesi gibi tümleşik sistemler için çok dağıtım sonrası veri merkezi tümleştirme görevlerini gerçekleştirmek için Sertifika döndürme, vb.
+- Tümleşik bir sistemin derinlemesine sorunlarını gidermek için geçici ve yüksek düzeyde erişim sağlamak amacıyla desteğiyle birlikte çalışmak için.
 
-Her eylem (ve karşılık gelen çıktısını) PowerShell oturumunda gerçekleştiren CESARETLENDİRİCİ kaydeder. Bu, tam şeffaflık sağlamak ve tüm işlemlerin denetimini sağlar. Gelecekteki denetimleri için bu günlük dosyalarını tutabilirsiniz.
-
-> [!NOTE]
-> Azure Stack geliştirme Seti'ni (ASDK içinde), içinde CESARETLENDİRİCİ kullanılabilir komutlardan bazıları doğrudan bir PowerShell oturumundan Geliştirme Seti ana bilgisayarda çalıştırabilirsiniz. Ancak, bu tek yöntem tümleşik sistemleri ortamında belirli işlemlerin gerçekleştirilmesi kullanılabilir olduğundan kullanarak günlük toplama gibi CESARETLENDİRİCİ bazı işlemleri test etmek isteyebilirsiniz.
-
-## <a name="access-the-privileged-endpoint"></a>Ayrıcalıklı uç noktasına erişmesi
-
-CESARETLENDİRİCİ CESARETLENDİRİCİ sanal makinede uzak PowerShell oturumu aracılığıyla erişin. Bu sanal makine ASDK adlandırılır **AzS-ERCS01**. Tümleşik bir sistem kullanıyorsanız, her çalışan CESARETLENDİRİCİ üç örneği vardır bir sanal makine içinde (*önek*-ERCS01, *önek*-ERCS02, veya *önek*- ERCS03) dayanıklılık için farklı konaklarda. 
-
-Tümleşik bir sistem için bu yordama başlamadan önce IP adresi veya DNS aracılığıyla CESARETLENDİRİCİ erişebildiğinden emin olun. Azure Stack ilk dağıtımdan sonra DNS tümleştirme henüz ayarlanmamış olduğundan yalnızca IP adresine göre CESARETLENDİRİCİ erişebilir. OEM donanım satıcınıza adlı bir JSON dosyası sağlayacak **AzureStackStampDeploymentInfo** , CESARETLENDİRİCİ IP adreslerini içerir.
-
+PEP, PowerShell oturumunda gerçekleştirdiğiniz her eylemi (ve ilgili çıktıyı) günlüğe kaydeder. Bu, tam saydamlığın yanı sıra işlemlerin tam denetimini sağlar. Bu günlük dosyalarını gelecekteki denetimler için koruyabilirsiniz.
 
 > [!NOTE]
-> Güvenlik nedenleriyle, biz size CESARETLENDİRİCİ için yalnızca bir sağlamlaştırılmış sanal makine çalıştırma donanım yaşam döngüsü konak üzerinde veya ayrılmış, güvenli bir bilgisayar gibi bağlanmasını gerektirecek bir [ayrıcalıklı erişim iş istasyonu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations). Ya da bunu için CESARETLENDİRİCİ bağlanmak için kullanılması gereken özgün donanım yaşam döngüsü konağın yapılandırmasını yeni bir yazılım yükleme dahil olmak üzere kendi özgün yapılandırmasından değiştirilmemelidir.
+> Azure Stack Geliştirme Seti (ASDK) ' de, PEP 'de bulunan komutlardan bazılarını, geliştirme seti konağındaki bir PowerShell oturumundan doğrudan çalıştırabilirsiniz. Ancak, tümleşik sistemler ortamında belirli işlemleri gerçekleştirmek için kullanılabilecek tek yöntem olduğundan, günlük toplama gibi PEP 'yi kullanarak bazı işlemleri test etmek isteyebilirsiniz.
 
-1. Güven oluşturun.
+## <a name="access-the-privileged-endpoint"></a>Ayrıcalıklı uç noktaya erişin
 
-    - Tümleşik bir sistemde CESARETLENDİRİCİ donanım yaşam döngüsü konak veya ayrıcalıklı erişim iş istasyonu çalışan sağlamlaştırılmış sanal makinede güvenilir bir konak olarak eklemek için yükseltilmiş bir Windows PowerShell oturumunda aşağıdaki komutu çalıştırın.
+Pep 'yi, PEP 'yi barındıran sanal makinede bulunan uzak bir PowerShell oturumu aracılığıyla erişirsiniz. Bu sanal makine, ASDK 'de **AZS-ERCS01**olarak adlandırılır. Tümleşik bir sistem kullanıyorsanız, her biri bir sanal makinede (*ön ek*-ERCS01, *ön*ek-ERCS02 veya *ön*ek-ERCS03) esneklik için farklı konaklarda çalışan Pep 'nin üç örneği vardır. 
+
+Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine veya DNS aracılığıyla erişebildiğinizden emin olun. İlk Azure Stack dağıtımından sonra, DNS tümleştirmesi henüz ayarlanmadığından PEP 'ye yalnızca IP adresi ile erişebilirsiniz. OEM donanım satıcınız, PEP IP adreslerini içeren **Azurestackstampdeploymentınfo** ADLı bir JSON dosyası sağlar.
+
+
+> [!NOTE]
+> Güvenlik nedenleriyle, PEP 'yi yalnızca donanım yaşam döngüsü konağının üzerinde çalışan sağlamlaştırılmış bir sanal makineden veya [ayrıcalıklı erişim Iş istasyonu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)gibi adanmış, güvenli bir bilgisayardan bağlanmanız gerekir. Donanım yaşam döngüsü konağının özgün yapılandırması, yeni yazılım yükleme de dahil olmak üzere özgün yapılandırmasından değiştirilmemelidir, ne de PEP 'ye bağlanmak için kullanılması gerekir.
+
+1. Güveni oluşturun.
+
+    - Tümleşik bir sistemde, PEP 'yi, donanım yaşam döngüsü konağında veya ayrıcalıklı erişim Iş Istasyonunda çalışan sağlamlaştırılmış sanal makineye güvenilir bir konak olarak eklemek için yükseltilmiş bir Windows PowerShell oturumundan aşağıdaki komutu çalıştırın.
 
       ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
-    - ASDK çalıştırıyorsanız, Geliştirme Seti ana bilgisayara oturum açın.
+    - ASDK çalıştırıyorsanız, geliştirme seti ana bilgisayarında oturum açın.
 
-2. Sağlamlaştırılmış donanım yaşam döngüsü konak veya ayrıcalıklı erişim iş istasyonu üzerinde çalışan sanal makinenin üzerinde bir Windows PowerShell oturumu açın. CESARETLENDİRİCİ sanal makinede uzaktan oturum oluşturmak için aşağıdaki komutları çalıştırın:
+2. Donanım yaşam döngüsü konağı veya ayrıcalıklı erişim Iş Istasyonu üzerinde çalışan sağlamlaştırılmış sanal makinede, bir Windows PowerShell oturumu açın. PEP 'yi barındıran sanal makinede uzak bir oturum oluşturmak için aşağıdaki komutları çalıştırın:
  
-   - Tümleşik bir sistem üzerinde:
+   - Tümleşik bir sistemde:
      ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
-     `ComputerName` Parametresi, IP adresi veya DNS adını CESARETLENDİRİCİ barındıran sanal makinelerden birinde olabilir. 
+     `ComputerName` Parametresi, Pep 'yi barındıran sanal makinelerden birinin IP adresi ya da DNS adı olabilir. 
    - ASDK çalıştırıyorsanız:
      
      ```powershell
@@ -76,30 +76,30 @@ Tümleşik bir sistem için bu yordama başlamadan önce IP adresi veya DNS arac
        Enter-PSSession -ComputerName azs-ercs01 `
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ``` 
-     İstendiğinde aşağıdaki kimlik bilgilerini kullanın:
+     İstendiğinde, aşağıdaki kimlik bilgilerini kullanın:
 
-     - **Kullanıcı adı**: CloudAdmin hesabı, belirttiğiniz biçimde  **&lt; *Azure Stack etki*&gt;\cloudadmin**. (ASDK için kullanıcı adı. **azurestack\cloudadmin**.)
-     - **Parola**: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında sağlanan parolanın aynısını girin.
+     - **Kullanıcı adı**:  **&lt; *Azure Stack*Domain\cloudadminbiçimindeCloudAdminhesabınıbelirtin&gt;** . (ASDK için, Kullanıcı adı **azurestack\cloudadmin**.)
+     - **Parola**: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında girilen parolayı girin.
 
      > [!NOTE]
-     > ERCS uç noktasına bağlantı kuramazsa, bir ve ikinci adımlar için zaten bağlanmak denemediniz ERCS VM'deki IP adresini kullanarak yeniden deneyin.
+     > ERCS uç noktasına bağlanamıyorsanız, daha önce bağlanmaya çalışmadığınız bir ERCS sanal makinesinin IP adresiyle bir veya iki kez yeniden deneyin.
 
-3. Bağlandıktan sonra istemde değişir **[*IP adresi veya ERCS VM adı*]: PS >** veya **[azs-ercs01]: PS >** ortamı bağlı olarak. Buradan, çalıştırma `Get-Command` kullanılabilir cmdlet'lerin listesini görüntülemek için.
+3. Bağlandıktan sonra, istem [ ***IP adresi veya ercs VM adı*] olarak değişir: PS >** **veya [AZS-ercs01]: PS,** ortama göre >. Buradan, kullanılabilir cmdlet `Get-Command` 'lerin listesini görüntülemek için öğesini çalıştırın.
 
-   Bu cmdlet'lerin çoğu yalnızca tümleşik sistem ortamları (örneğin, veri merkezi tümleştirmesiyle ilgili cmdlet'ler) için tasarlanmıştır. Aşağıdaki cmdlet ASDK içinde doğrulandı:
+   Bu cmdlet 'lerin birçoğu yalnızca tümleşik sistem ortamları için tasarlanmıştır (örneğin, veri merkezi tümleştirmesiyle ilgili cmdlet 'ler). ASDK 'de, aşağıdaki cmdlet 'ler doğrulandıktan sonra:
 
-   - Konak Temizle
-   - PrivilegedEndpoint Kapat
+   - Şifresiz ana bilgisayar
+   - Close-PrivilegedEndpoint
    - Çıkış-PSSession
    - Get-AzureStackLog
    - Get-AzureStackStampInformation
    - Get-Command
    - Get-FormatData
-   - Get-Help
-   - Get-ThirdPartyNotices
-   - Ölçü nesnesi
-   - Yeni CloudAdminUser
-   - Varsayılan dışarı
+   - Yardım alın
+   - On-üç Dpartybildirimleri
+   - Ölçü-nesne
+   - New-CloudAdminUser
+   - Dışarı-varsayılan
    - Remove-CloudAdminUser
    - Select-Object
    - Set-CloudAdminUserPassword
@@ -107,39 +107,39 @@ Tümleşik bir sistem için bu yordama başlamadan önce IP adresi veya DNS arac
    - Stop-AzureStack
    - Get-ClusterLog
 
-## <a name="tips-for-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktası kullanımıyla ilgili ipuçları 
+## <a name="tips-for-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktayı kullanmaya yönelik ipuçları 
 
-Yukarıda belirtildiği gibi CESARETLENDİRİCİ olduğu bir [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) uç noktası. Bir JEA uç noktası bir güçlü güvenlik katman sağlamasının yanı sıra, bazı komut dosyası veya sekme tamamlama gibi temel PowerShell özelliklerini azaltır. Komut dosyası işlemi herhangi bir türde çalışırsanız, işlem hatasıyla başarısız **ScriptsNotAllowed**. Bu beklenen bir davranıştır.
+Yukarıda belirtildiği gibi, PEP bir [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) uç noktasıdır. Güçlü bir güvenlik katmanı sağlarken, bir JEA uç noktası, komut dosyası veya sekme tamamlama gibi bazı temel PowerShell özelliklerini azaltır. Herhangi bir tür betik işlemi denerseniz, işlem **Scriptsnotallowed**hatasıyla başarısız olur. Bu beklenen bir davranıştır.
 
-Bu nedenle, örneğin, belirli bir cmdlet için parametrelerin listesini almak için aşağıdaki komutu çalıştırın:
+Bu nedenle, örneğin, belirli bir cmdlet 'in parametre listesini almak için aşağıdaki komutu çalıştırın:
 
 ```powershell
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Alternatif olarak, [Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) yerel makinenizdeki geçerli oturuma tüm CESARETLENDİRİCİ cmdlet'lerini içeri aktarmak için cmdlet'ini. Bunu yaptığınızda, tüm cmdlet'ler ve İşlevler CESARETLENDİRİCİ, artık genel olarak, komut yerel makinenizde, sekme tamamlama ve daha fazlası ile birlikte kullanılabilir. 
+Alternatif olarak, tüm PEP cmdlet 'lerini yerel makinenizde geçerli oturuma aktarmak için [Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) cmdlet 'ini de kullanabilirsiniz. Bunu yaparak, PEP 'nin tüm cmdlet 'leri ve işlevleri artık yerel makinenizde, sekme tamamlama ve genel, betik oluşturma ile birlikte kullanılabilir. 
 
-Yerel makinenizde CESARETLENDİRİCİ oturumun içeri aktarmak için aşağıdaki adımları uygulayın:
+Yerel makinenizde PEP oturumunu içeri aktarmak için aşağıdaki adımları uygulayın:
 
-1. Güven oluşturun.
+1. Güveni oluşturun.
 
-    -Tümleşik bir sistem üzerinde CESARETLENDİRİCİ donanım yaşam döngüsü konak veya ayrıcalıklı erişim iş istasyonu çalışan sağlamlaştırılmış sanal makinede güvenilir bir konak olarak eklemek için yükseltilmiş bir Windows PowerShell oturumunda aşağıdaki komutu çalıştırın.
+    -Tümleşik bir sistemde, PEP 'yi, donanım yaşam döngüsü konağında veya ayrıcalıklı erişim Iş Istasyonunda çalışan sağlamlaştırılmış sanal makineye güvenilir bir konak olarak eklemek için yükseltilmiş bir Windows PowerShell oturumunda aşağıdaki komutu çalıştırın.
 
       ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
-    - ASDK çalıştırıyorsanız, Geliştirme Seti ana bilgisayara oturum açın.
+    - ASDK çalıştırıyorsanız, geliştirme seti ana bilgisayarında oturum açın.
 
-2. Sağlamlaştırılmış donanım yaşam döngüsü konak veya ayrıcalıklı erişim iş istasyonu üzerinde çalışan sanal makinenin üzerinde bir Windows PowerShell oturumu açın. CESARETLENDİRİCİ sanal makinede uzaktan oturum oluşturmak için aşağıdaki komutları çalıştırın:
+2. Donanım yaşam döngüsü konağı veya ayrıcalıklı erişim Iş Istasyonu üzerinde çalışan sağlamlaştırılmış sanal makinede, bir Windows PowerShell oturumu açın. PEP 'yi barındıran sanal makinede uzak bir oturum oluşturmak için aşağıdaki komutları çalıştırın:
  
-   - Tümleşik bir sistem üzerinde:
+   - Tümleşik bir sistemde:
      ```powershell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
-     `ComputerName` Parametresi, IP adresi veya DNS adını CESARETLENDİRİCİ barındıran sanal makinelerden birinde olabilir. 
+     `ComputerName` Parametresi, Pep 'yi barındıran sanal makinelerden birinin IP adresi ya da DNS adı olabilir. 
    - ASDK çalıştırıyorsanız:
      
      ```powershell
@@ -148,43 +148,43 @@ Yerel makinenizde CESARETLENDİRİCİ oturumun içeri aktarmak için aşağıdak
       $session = New-PSSession -ComputerName azs-ercs01 `
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ``` 
-     İstendiğinde aşağıdaki kimlik bilgilerini kullanın:
+     İstendiğinde, aşağıdaki kimlik bilgilerini kullanın:
 
-     - **Kullanıcı adı**: CloudAdmin hesabı, belirttiğiniz biçimde  **&lt; *Azure Stack etki*&gt;\cloudadmin**. (ASDK için kullanıcı adı. **azurestack\cloudadmin**.)
-     - **Parola**: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında sağlanan parolanın aynısını girin.
+     - **Kullanıcı adı**:  **&lt; *Azure Stack*Domain\cloudadminbiçimindeCloudAdminhesabınıbelirtin&gt;** . (ASDK için, Kullanıcı adı **azurestack\cloudadmin**.)
+     - **Parola**: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında girilen parolayı girin.
 
-3. Yerel makinenize CESARETLENDİRİCİ oturumun içeri aktarma
-    ```powershell 
+3. PEP oturumunu yerel makinenize aktarma
+     ```powershell 
         Import-PSSession $session
-    ```
-4. Şimdi, sekme tamamlamayı kullanma ve her zaman olduğu gibi tüm işlevleri ve CESARETLENDİRİCİ cmdlet'lerin yerel PowerShell oturumunuzda üzerinde Azure Stack güvenlik duruşunu azaltmayı olmadan komut gerçekleştirebilirsiniz. Keyfini çıkarın!
+   ```
+4. Şimdi, Azure Stack güvenlik duruşunu azaltmadan, her zamanki gibi, PEP 'nin tüm işlevleri ve cmdlet 'leri ile birlikte sekme tamamlama ve komut dosyası oluşturma 'yı kullanabilirsiniz. Keyfini çıkarın!
 
 
-## <a name="close-the-privileged-endpoint-session"></a>Ayrıcalıklı uç nokta Oturumu Kapat
+## <a name="close-the-privileged-endpoint-session"></a>Ayrıcalıklı uç nokta oturumunu kapatma
 
- Daha önce belirtildiği gibi her eylem (ve karşılık gelen çıktısını) PowerShell oturumunda gerçekleştiren CESARETLENDİRİCİ günlüğe kaydeder. Kullanarak oturumu kapatmanız gerekir `Close-PrivilegedEndpoint` cmdlet'i. Bu cmdlet doğru uç noktaya kapatır ve günlük dosyaları bekletme için bir dış dosya paylaşımına aktarır.
+ Daha önce belirtildiği gibi, PEP, PowerShell oturumunda gerçekleştirdiğiniz her eylemi (ve ilgili çıktıyı) günlüğe kaydeder. `Close-PrivilegedEndpoint` Cmdlet 'ini kullanarak oturumu kapatmanız gerekir. Bu cmdlet, uç noktayı doğru bir şekilde kapatır ve bekletme için günlük dosyalarını bir dış dosya paylaşımında aktarır.
 
-Uç nokta oturumu kapatmak için:
+Uç nokta oturumunu kapatmak için:
 
-1. CESARETLENDİRİCİ tarafından erişilebilen bir dış dosya paylaşımı oluşturun. Bir geliştirme seti ortamında geliştirme seti konakta yalnızca bir dosya paylaşımı oluşturabilirsiniz.
-2. Cmdlet'ini çalıştırın 
-    ```powershell
-    Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
-    ```
-Burada
+1. PEP tarafından erişilebilen bir dış dosya paylaşma oluşturun. Bir geliştirme seti ortamında, yalnızca geliştirme seti ana bilgisayarında bir dosya paylaşma oluşturabilirsiniz.
+2. Aşağıdaki cmdlet'i çalıştırın: 
+     ```powershell
+     Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
+     ```
+   , aşağıdaki tablodaki parametreleri kullanır.
 
-| Parametre | Açıklama | Tür | Gerekli |
-|---------|---------|---------|---------|
-| *TranscriptsPathDestination* | "fileshareIP\sharefoldername" tanımlanan dış dosya paylaşımı yolu | String | evet|
-| *Kimlik bilgisi* | dosya paylaşımına erişmek için kimlik bilgileri | SecureString |  evet |
+   | Parametre | Açıklama | Type | Gerekli |
+   |---------|---------|---------|---------|
+   | *TranscriptsPathDestination* | "Fileshareıp\shareklasöradı" olarak tanımlanan dış dosya paylaşımının yolu | Dize | evet|
+   | *Kimlik bilgisi* | dosya paylaşımıyla erişim için kimlik bilgileri | SecureString |   evet |
 
 
-Transkript günlük dosyaları, dosya paylaşımına başarıyla aktarıldıktan sonra otomatik olarak CESARETLENDİRİCİ silindi. 
+Döküm dosyası günlük dosyaları başarıyla dosya paylaşımında aktarıldıktan sonra, PEP 'den otomatik olarak silinir. 
 
 > [!NOTE]
-> Cmdlet'lerini kullanarak CESARETLENDİRİCİ oturumu kapatmak, `Exit-PSSession` veya `Exit`, veya PowerShell konsolunu kapatmanız yeterlidir, döküm günlükleri bir dosya paylaşımına aktarılmıyor. İçinde CESARETLENDİRİCİ kalırlar. Bir sonraki çalıştırmanızda `Close-PrivilegedEndpoint` ve bir dosya paylaşımı eklemek, önceki döküm günlüklerinden de oturumlara aktarır. Kullanmayın `Exit-PSSession` veya `Exit` ; CESARETLENDİRİCİ oturumu kapatmak için kullanmak `Close-PrivilegedEndpoint` yerine.
+> Cmdlet 'lerini `Exit-PSSession` `Exit`kullanarak Pep oturumunu kapatır veya yalnızca PowerShell konsolunu kapatırsanız, döküm günlükleri bir dosya paylaşımında aktarılmaz. Bunlar PEP içinde kalır. Bir sonraki çalıştırışınızda `Close-PrivilegedEndpoint` ve bir dosya paylaşımının dahil olması halinde, önceki oturumlardan gelen döküm günlükleri de aktarılır. Pep oturumunu `Exit-PSSession` kapatmak `Exit` için veya kullanmayın; bunun yerine kullanın `Close-PrivilegedEndpoint` .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack tanılama araçları](azure-stack-diagnostics.md)
+[Azure Stack tanılama araçları](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep)

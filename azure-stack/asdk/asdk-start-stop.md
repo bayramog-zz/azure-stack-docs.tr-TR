@@ -1,6 +1,6 @@
 ---
-title: Azure Stack geliştirme Seti'ni (ASDK) başlatıp | Microsoft Docs
-description: Başlatın ve Azure Stack geliştirme Seti'ni (ASDK) aşağı kapatma hakkında bilgi edinin.
+title: Azure Stack Geliştirme Seti başlatın ve durdurun (ASDK) | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) başlatma ve kapatma hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -12,82 +12,82 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 07/18/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: d3289ae5db5e54ee6ad5d1948653ef82946d16ff
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.lastreviewed: 07/18/2019
+ms.openlocfilehash: 6736da0f792c0e01d1a0af06e35a0984ec398158
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267456"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68493704"
 ---
-# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Azure Stack geliştirme Seti'ni (ASDK) başlatıp
-Yalnızca ASDK ana bilgisayarı yeniden başlatmak için önerilmez. Bunun yerine, düzgün bir şekilde kapatılmasını ve ASDK hizmetleri yeniden başlatmak için bu makaleyi yordamlarını izlemelisiniz. 
+# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Azure Stack Geliştirme Seti başlatma ve durdurma (ASDK)
+Yalnızca ASDK ana bilgisayar bilgisayarı yeniden başlatmanız önerilmez. Bunun yerine, bu makaledeki yordamları izleyerek, ASDK hizmetlerini doğru şekilde kapatıp yeniden başlatın. 
 
-## <a name="stop-azure-stack"></a>Azure Stack Durdur 
-Azure Stack hizmetlerinin ve ASDK ana bilgisayar doğru kapatmak için aşağıdaki PowerShell komutlarını kullanın:
+## <a name="stop-azure-stack"></a>Azure Stack durdur 
+Azure Stack Hizmetleri ve ASDK ana bilgisayar bilgisayarını düzgün bir şekilde kapatmak için aşağıdaki PowerShell komutlarını kullanın:
 
-1. AzureStack\AzureStackAdmin ASDK ana bilgisayarda oturum açın.
-2. PowerShell'i yönetici olarak (PowerShell ISE değil) açın.
-3. Ayrıcalıklı uç noktası (CESARETLENDİRİCİ) oturum oluşturmak için aşağıdaki komutları çalıştırın: 
+1. ASDK ana bilgisayarında AzureStack\AzureStackAdmin olarak oturum açın.
+2. PowerShell 'i yönetici olarak açın (PowerShell ıSE).
+3. Ayrıcalıklı uç nokta (PEP) oturumu oluşturmak için aşağıdaki komutları çalıştırın: 
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. Ardından, CESARETLENDİRİCİ oturumunda kullanın **Stop-AzureStack** ASDK ana bilgisayarı ve Azure Stack hizmetlerini durdurmak için cmdlet:
+4. Sonra, PEP oturumunda, Azure Stack hizmetlerini durdurmak ve ASDK ana bilgisayarını kapatmak için **stop-AzureStack** cmdlet 'ini kullanın:
 
    ```powershell
    Stop-AzureStack
    ```
-5. ASDK ana bilgisayar kapatılmadan önce tüm Azure Stack Hizmetleri başarılı bir şekilde kapatıldığından emin olmak için PowerShell çıkışını gözden geçirin. Kapatma işlemi birkaç dakika sürer.
+5. Tüm Azure Stack hizmetlerinin, ASDK konak bilgisayarı kapatılmadan önce başarıyla kapatılmasını sağlamak için PowerShell çıkışını gözden geçirin. Kapalı işlemi birkaç dakika sürer.
 
 ## <a name="start-azure-stack"></a>Azure Stack Başlat 
-ASDK Hizmetleri, ana bilgisayar başlatıldığında otomatik olarak başlayacaktır. Ancak, ASDK altyapı hizmetleri başlatma süresini ASDK ana bilgisayar donanım yapılandırması performansını göre değişir. Uygulamanın başarıyla bazı durumlarda yeniden başlatmak tüm hizmetleri için birkaç saat sürebilir.
+Ana bilgisayar başlatıldığında ASDK Hizmetleri otomatik olarak başlamalıdır. Ancak, ASDK Altyapı Hizmetleri başlangıç süresi, ASDK ana bilgisayar donanım yapılandırmasının performansına göre farklılık gösterir. Bazı durumlarda tüm hizmetlerin başarıyla yeniden başlatılması birkaç saat sürebilir.
 
-ASDK nasıl kapatıldığı bağımsız olarak ana bilgisayar açılana sonra tüm Azure Stack hizmetleri kullanmaya başlama ve tam olarak işlevsel olduğunu doğrulamak için aşağıdaki adımları kullanmalısınız: 
+ASDK 'nin nasıl kapatıldığına bakılmaksızın, tüm Azure Stack hizmetlerinin başlatıldığını ve ana bilgisayar oturum açtıktan sonra tam olarak çalıştığını doğrulamak için aşağıdaki adımları kullanmanız gerekir: 
 
-1. Güç ASDK ana bilgisayarda. 
-2. AzureStack\AzureStackAdmin ASDK ana bilgisayarda oturum açın.
-3. PowerShell'i yönetici olarak (PowerShell ISE değil) açın.
-4. Ayrıcalıklı uç noktası (CESARETLENDİRİCİ) oturum oluşturmak için aşağıdaki komutları çalıştırın:
+1. ASDK ana bilgisayarında güç. 
+2. ASDK ana bilgisayarında AzureStack\AzureStackAdmin olarak oturum açın.
+3. PowerShell 'i yönetici olarak açın (PowerShell ıSE).
+4. Ayrıcalıklı uç nokta (PEP) oturumu oluşturmak için aşağıdaki komutları çalıştırın:
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-5. Ardından, CESARETLENDİRİCİ oturumunda, Azure Stack hizmetlerinin başlangıç durumunu denetlemek için aşağıdaki komutları çalıştırın:
+5. Sonra, PEP oturumunda Azure Stack hizmetlerinin başlatma durumunu denetlemek için aşağıdaki komutları çalıştırın:
 
    ```powershell
    Get-ActionStatus Start-AzureStack
    ```
-6. Azure Stack Hizmetleri başarıyla yeniden başlattığınızdan emin olmak için çıkışını gözden geçirin.
+6. Azure Stack hizmetlerinin başarıyla yeniden başlatıldığından emin olmak için çıktıyı gözden geçirin.
 
-Düzgün bir şekilde kapatılmasını ve Azure Stack hizmetlerini yeniden başlatmak için önerilen yordamları hakkında daha fazla bilgi için bkz: [başlatma ve durdurma Azure Stack](../operator/azure-stack-start-and-stop.md). 
+Azure Stack hizmetlerini düzgün bir şekilde kapatmak ve yeniden başlatmak için Önerilen yordamlar hakkında daha fazla bilgi edinmek için bkz. [Azure Stack başlatma ve durdurma](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep). 
 
-## <a name="troubleshoot-startup-and-shutdown"></a>Başlatma ve kapatma sorunlarını giderme 
-Azure Stack hizmetlerini, power ASDK ana bilgisayarınızda iki saat içinde başarıyla başlatma, aşağıdaki adımları gerçekleştirin:
+## <a name="troubleshoot-startup-and-shutdown"></a>Başlatma ve kapatmadan ilgili sorunları giderme 
+Azure Stack Hizmetleri, ASDK ana bilgisayar bilgisayarınızı etkinleştirdikten sonra iki saat içinde başarıyla başlamazsa, bu adımları gerçekleştirin:
 
-1. AzureStack\AzureStackAdmin ASDK ana bilgisayarda oturum açın.
-2. PowerShell'i yönetici olarak (PowerShell ISE değil) açın.
-3. Ayrıcalıklı uç noktası (CESARETLENDİRİCİ) oturum oluşturmak için aşağıdaki komutları çalıştırın:
+1. ASDK ana bilgisayarında AzureStack\AzureStackAdmin olarak oturum açın.
+2. PowerShell 'i yönetici olarak açın (PowerShell ıSE).
+3. Ayrıcalıklı uç nokta (PEP) oturumu oluşturmak için aşağıdaki komutları çalıştırın:
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. Ardından, CESARETLENDİRİCİ oturumunda, Azure Stack hizmetlerinin başlangıç durumunu denetlemek için aşağıdaki komutları çalıştırın:
+4. Sonra, PEP oturumunda Azure Stack hizmetlerinin başlatma durumunu denetlemek için aşağıdaki komutları çalıştırın:
 
    ```powershell
    Test-AzureStack
    ```
-5. Çıktıyı gözden geçirin ve hataları çözün. Daha fazla bilgi için [Azure Stack bir doğrulama sınamasını çalıştırmanızı](../operator/azure-stack-diagnostic-test.md).
-6. Azure Stack hizmetlerinden CESARETLENDİRİCİ oturumundan çalıştırarak yeniden **başlangıç AzureStack** cmdlet:
+5. Çıktıyı gözden geçirin ve hataları çözün. Daha fazla bilgi için bkz. [Azure Stack doğrulama testi çalıştırma](../operator/azure-stack-diagnostic-test.md).
+6. **Start-AzureStack** cmdlet 'ini çalıştırarak Pep oturumunun içinden Azure Stack hizmetlerini yeniden başlatın:
 
    ```powershell
    Start-AzureStack
    ```
 
-Çalışıyorsa **başlangıç AzureStack** ziyaret sonuçları, hataya [Azure Stack Destek Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) ASDK sorun giderme desteği almak için. 
+**Start-AzureStack** çalıştırmak bir hata ile sonuçlanırsa, asdk sorun giderme desteğini almak için [Azure Stack destek forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) ziyaret edin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-Azure Stack'te Tanılama aracı hakkında daha fazla bilgi edinin ve günlük sorun için bkz: [Azure Stack'te tanılama araçları](../operator/azure-stack-diagnostics.md).
+Azure Stack Tanılama aracı ve sorun günlüğü hakkında daha fazla bilgi edinin, bkz. [Azure Stack tanılama araçları](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).

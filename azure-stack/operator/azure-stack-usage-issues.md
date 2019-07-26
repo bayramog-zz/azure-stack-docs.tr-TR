@@ -1,6 +1,6 @@
 ---
-title: Azure Stack hatalarını ve kullanım bağlantı sorunları | Microsoft Docs
-description: Azure Stack kullanım sorunlarını ve hataları giderme.
+title: Azure Stack 'de kullanım bağlantısı sorunları ve hataları | Microsoft Docs
+description: Azure Stack kullanım sorunlarını ve hatalarını giderme.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,30 +15,30 @@ ms.date: 06/27/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: 57c546ec3583c9e04594e4da542a3c2ce3f72c62
-ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
+ms.openlocfilehash: 68bf47ab2a0842b0aeeae07030272e7106a63220
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67419763"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494122"
 ---
-# <a name="usage-connectivity-errors"></a>Kullanım bağlantı hataları
+# <a name="usage-connectivity-errors"></a>Kullanım bağlantısı hataları
 
-Azure Stack kullanım verileri, Azure tarafından gönderildiği [ *Azure köprüsü* bileşen](azure-stack-usage-reporting.md) Azure Stack'te. Azure Stack içinde köprü Azure kullanım hizmetine bağlanamıyor, aşağıdaki hatayı görürsünüz:
+Azure Stack kullanım verileri, Azure Stack [ *Azure Bridge* bileşeni](azure-stack-usage-reporting.md) tarafından Azure 'a gönderilir. Azure Stack içindeki köprü Azure kullanım hizmeti 'ne bağlanamıyorsa aşağıdaki hatayı görürsünüz:
 
-![Kullanım köprü hatası](media/azure-stack-usage-issues/usageerror2.png)
+![Kullanım Köprüsü hatası](media/azure-stack-usage-issues/usageerror2.png)
 
-Pencere hata ve çözümü hakkında daha fazla bilgi sağlayabilir:
+Bu pencere, hata ve çözüm hakkında daha fazla bilgi verebilir:
 
-![Hata Çözümleme](media/azure-stack-usage-issues/usageerror3.png)
+![hata çözümleme](media/azure-stack-usage-issues/usageerror3.png)
 
-## <a name="resolve-connectivity-issues"></a>Bağlantı sorunlarını gidermek
+## <a name="resolve-connectivity-issues"></a>Bağlantı sorunlarını çözme
 
-Sorunu gidermek için aşağıdaki adımları deneyin:
+Sorunu azaltmak için aşağıdaki adımları deneyin:
 
-- Bu ağ yapılandırması, uzak hizmete bağlanmak Azure köprüsü izin verdiğinden emin olun.
+- Ağ yapılandırmasının, Azure Bridge uzak hizmete bağlanmasına izin verdiğini doğrulayın.
 
-- Git [ **bölge Yönetimi** > **özellikleri** ](azure-stack-registration.md#verify-azure-stack-registration) dikey penceresinde, kayıt, kaynak grubu ve adı için kullanılan Azure abonelik kimliği bulunamadı Kayıt kaynak. Azure portalında doğru Azure abonelik kimliği altında kayıt kaynağı var olduğunu doğrulayın. Bunu yapmak için Git **tüm kaynakları** Azure abonelik kimliği ve onay altında oluşturulan **gizli türleri Göster** kutusu. Kayıt kaynağı bulamıyorsanız, adımları [yenileme ya da değişiklik kaydı](azure-stack-registration.md#renew-or-change-registration) Azure Stack yeniden kaydetmek için.
+- Kayıt kaynağının kaydı, kaynak grubu ve adı için kullanılan Azure abonelik kimliğini bulmak için [ **Bölge yönetimi** > **özellikleri** ](azure-stack-registration.md#verify-azure-stack-registration) dikey penceresine gidin. Kayıt kaynağının, Azure portal içindeki doğru Azure abonelik KIMLIĞI altında mevcut olduğunu doğrulayın. Bunu yapmak için Azure abonelik KIMLIĞI altında oluşturulan **tüm kaynaklar** ' a gidin ve **gizli türleri göster** kutusunu işaretleyin. Kayıt kaynağını bulamıyorsanız, Azure Stack yeniden kaydettirmek için [yenileme veya değişiklik kaydı](azure-stack-registration.md#renew-or-change-registration) bölümündeki adımları izleyin.
 
   ![Portal](media/azure-stack-usage-issues/stackres.png)
 
@@ -48,17 +48,17 @@ Bu bölümde, kullanım hata kodları açıklanmaktadır.
 
 | Hata kodu                 | Sorun                                                                                                                                             | Düzeltme                                                                                                                                                                                                                                                                                        |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| NetworkError               | Kullanım Hizmeti uç noktası azure'da isteği göndermek Azure Stack köprüsü silemiyor.                                                            | Bir proxy engelleme veya kullanım Hizmeti uç noktası erişimi kesintiye olmadığını kontrol edin.                                                                                                                                                                                                             |
-| RequestTimedOut            | Azure Köprüsü'nden bir istek gönderildi ancak azure'da kullanım hizmeti zaman aşımı süresi içinde yanıt vermedi.                             | Bir proxy engelleme veya kullanım Hizmeti uç noktası erişimi kesintiye olmadığını kontrol edin.                                                                                                                                                                                                                        |
-| LoginError                 | Microsoft Azure Active Directory ile kimlik doğrulaması yapılamıyor.                                                                                                             | Azure AD oturum açma uç noktası Azure Stack'te tüm XRP vm'lerinden erişilebilir olduğundan emin olun.                                                                                                                                                                                                                     |
-| CertificateValidationError | Azure köprüsü Azure hizmeti ile kimlik doğrulaması mümkün olmadığı için istek gönderebilirsiniz değil.                                    | Azure Stack XRP makine kullanım ağ geçidi uç noktası arasındaki HTTPS trafiğini kesintiye bir ara sunucu olup olmadığını denetleyin.                                                                                                                                                                                      |
-| Yetkilendirilmemiş               | Azure hizmet Azure Stack köprüsü kimlik doğrulaması için olmadığından Azure köprüsü, azure'da kullanım hizmeti için veri göndermeye ilişkin kuramıyor. | Kayıt kaynak değiştirilmiş denetleyin ve bu durumda, Azure Stack yeniden kaydedin. <br><br> Bazı durumlarda, bir zaman Azure Stack ve Azure AD arasında eşitleme sorunu bu hataya neden olabilir. Bu durumda, zamanları Azure Stack'te XRP vm'lerinde Azure AD ile eşitlenmiş durumda emin olun. |
+| NetworkError               | Azure Stack Köprüsü Azure 'da kullanım hizmeti uç noktasına istek gönderemedi.                                                            | Bir proxy 'nin kullanım hizmeti uç noktasına erişimi engelleyip engellemediğini veya kesintiye uğratan emin olun.                                                                                                                                                                                                             |
+| Istek zaman aşımına uğradı            | İstek Azure Bridge gönderildi ancak Azure 'daki kullanım hizmeti, zaman aşımı süresi içinde yanıt veremedi.                             | Bir proxy 'nin kullanım hizmeti uç noktasına erişimi engelleyip engellemediğini veya kesintiye uğratan emin olun.                                                                                                                                                                                                                        |
+| LoginError                 | Microsoft Azure Active Directory kimlik doğrulaması yapılamıyor.                                                                                                             | Azure AD oturum açma uç noktasına Azure Stack içindeki tüm XRP VM 'lerinden erişilebildiğinden emin olun.                                                                                                                                                                                                                     |
+| CertificateValidationError | Azure Köprüsü, Azure hizmeti ile kimlik doğrulaması yapamadığı için isteği gönderemiyor.                                    | Azure Stack XRP makinesi ile kullanım ağ geçidi uç noktası arasında bir proxy kesintiye uğratan HTTPS trafiği olup olmadığını denetleyin.                                                                                                                                                                                      |
+| Yetkilendirilmemiş               | Azure Köprüsü Azure Stack köprünün kimliğini doğrulayamadığından Azure Köprüsü Azure 'daki kullanım hizmetine veri gönderemeyebilir. | Kayıt kaynağının değiştirilip değiştirilmediğini denetleyin ve varsa Azure Stack yeniden kaydedin. <br><br> Bazen Azure Stack ile Azure AD arasında bir zaman eşitleme sorunu bu hataya neden olabilir. Bu durumda, Azure Stack üzerindeki XRP VM 'lerinin Azure AD ile eşitlenmiş durumda olduğundan emin olun. |
 |                            |                                                                                                                                                   |                                                                                                                                                                                                                                                                                                    |
 
-Ayrıca, Azure Köprüsü ve WAS WASPublic bileşenleri için günlük dosyalarını sağlıyorlar gerekebilir [adımları](azure-stack-diagnostics.md#log-collection-tool).
+Ayrıca, [Bu adımları](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep)izleyerek Azure BRIDGE, was ve Waspublik bileşenlerine yönelik günlük dosyalarını sağlamanız gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi edinin [Azure'da Azure Stack kullanım verilerini raporlama](azure-stack-usage-reporting.md).
-- Kayıt işleminizi tetiklendikten hata iletilerini gözden geçirin için bkz: [Kiracı kayıt hata iletileri](azure-stack-registration-errors.md).
-- Daha fazla bilgi edinin [kullanım raporlama altyapısı için bulut hizmeti sağlayıcıları](azure-stack-csp-ref-infrastructure.md).
+- [Kullanım verilerini Azure 'a raporlama Azure Stack](azure-stack-usage-reporting.md)hakkında daha fazla bilgi edinin.
+- Kayıt sürecinizdeki tetiklendiklerinde hata iletilerini gözden geçirmek için bkz. [kiracı kayıt hata iletileri](azure-stack-registration-errors.md).
+- [Bulut hizmeti sağlayıcıları Için kullanım raporlama altyapısı](azure-stack-csp-ref-infrastructure.md)hakkında daha fazla bilgi edinin.

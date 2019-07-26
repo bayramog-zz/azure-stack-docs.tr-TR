@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 1906 bilinen sorunlar | Microsoft Docs
-description: Azure Stack 1906 ' de bilinen sorunlar hakkında bilgi edinin.
+title: Azure Stack 1907 bilinen sorunlar | Microsoft Docs
+description: Azure Stack 1907 ' de bilinen sorunlar hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2019
+ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/28/2019
-ms.openlocfilehash: bcdcb43cb58535a4ab4a8a543c1fbf31824dacbc
+ms.lastreviewed: 07/25/2019
+ms.openlocfilehash: 93ac5da096642870e41a36f13611056ee51539f4
 ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494128"
+ms.locfileid: "68497194"
 ---
-# <a name="azure-stack-1906-known-issues"></a>Azure Stack 1906 bilinen sorunlar
+# <a name="azure-stack-1907-known-issues"></a>Azure Stack 1907 bilinen sorunlar
 
-Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Yeni sorunlar tanımlandıkları için liste güncellenir.
+Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Yeni sorunlar tanımlandıkları için liste güncellenir.
 
 > [!IMPORTANT]  
 > Güncelleştirmeyi uygulamadan önce bu bölümü gözden geçirin.
@@ -33,7 +33,7 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 ## <a name="update-process"></a>Güncelleştirme işlemi
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1906 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur. 
+- Neden: 1906 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur. 1906 güncelleştirme paketi önceki güncelleştirme paketlerinden daha büyük olduğundan, bu sorunun oluşma olasılığını daha yüksektir.
 - Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md#import-and-install-updates)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
 - Oluşum Common
 
@@ -46,24 +46,18 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 - Düzeltmesi Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, bunları Kullanıcı aboneliklerinde yeniden oluşturun.
 - Oluşum Common
 
-### <a name="subscription-resources"></a>Abonelik kaynakları
-
+### <a name="subscriptions-properties-blade"></a>Abonelikler Özellikler dikey penceresi
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı abonelikleri sonuçlarında yalnız bırakılmış kaynakları siliniyor.
-- Düzeltmesi Önce kullanıcı kaynaklarını veya tüm kaynak grubunu silin ve ardından Kullanıcı aboneliklerini silin.
+- Neden: Yönetici portalında, abonelikler için özellikler dikey penceresi doğru yüklenmez
+- Düzeltmesi Bu abonelikler özelliklerini, abonelikler genel bakış dikey penceresinin temel bileşenler bölmesinde görüntüleyebilirsiniz.
 - Oluşum Common
+
 
 ### <a name="subscription-permissions"></a>Abonelik izinleri
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Azure Stack portalı kullanarak aboneliğinize izinleri görüntüleyemezsiniz.
 - Düzeltmesi [İzinleri doğrulamak Için PowerShell 'i](/powershell/module/azurerm.resources/get-azurermroleassignment)kullanın.
-- Oluşum Common
-
-### <a name="subscriptions-properties-blade"></a>Abonelikler Özellikler dikey penceresi
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Yönetici portalında, abonelikler için **Özellikler** dikey penceresi doğru yüklenmez
-- Düzeltmesi Bu abonelikler özelliklerini, abonelikler genel bakış dikey penceresinin temel bileşenler bölmesinde görüntüleyebilirsiniz.
 - Oluşum Common
 
 ### <a name="storage-account-settings"></a>Depolama hesabı ayarları
@@ -78,13 +72,6 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 - Neden: Kullanıcı portalında, **OAuth (Önizleme)** seçeneğini kullanarak bir blobu karşıya yüklemeye çalıştığınızda, görev bir hata iletisiyle başarısız olur.
 - Düzeltmesi SAS seçeneğini kullanarak blobu karşıya yükleyin.
 - Oluşum Common
-
-### <a name="update"></a>Güncelleştirme
-
-- Uygunsa Bu sorun 1906 sürümü için geçerlidir.
-- Neden: Operatör portalında, düzeltmenin güncelleştirme durumu güncelleştirme için yanlış bir durum gösterir. İlk durum, güncelleştirme devam ediyor olsa bile güncelleştirmenin yüklenemediğini belirtir.
-- Düzeltmesi Portalı yenileyin ve durum "sürüyor" olarak güncelleşecek.
-- Oluşum Aralıklı
 
 ## <a name="networking"></a>Ağ
 
@@ -102,6 +89,13 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 - Oluşum Common
 
 ### <a name="virtual-network-gateway"></a>Sanal Ağ Geçidi
+
+#### <a name="local-network-gateway-deletion"></a>Yerel ağ geçidi silme
+
+- Uygunsa Bu sorun 1906 sürümü için geçerlidir.
+- Neden: Kullanıcı portalında, yerel ağ geçidini silmek şu hata iletisini görüntüler: "Etkin bağlantı olmasa bile," etkin bağlantı olan bir yerel ağ geçidi silinemiyor. 
+- Mayı Bu sorunun düzeltilmesi 1907 ' de yayımlanacak. Bu soruna yönelik bir geçici çözüm olarak, aynı IP adresi, adres alanı ve yapılandırma ayrıntıları farklı bir adla yeni bir yerel ağ geçidi oluşturmaktır. Ortam 1907 olarak güncelleştirildikten sonra eski LNG silinebilir. 
+- Oluşum Common
 
 #### <a name="alerts"></a>Uyarılar
 
@@ -124,29 +118,13 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 #### <a name="documentation"></a>Belgeler
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Sanal ağ geçidinin Genel Bakış sayfasındaki belge bağlantıları, Azure Stack yerine Azure 'a özgü belgelere bağlanır. Azure Stack belgeler için lütfen aşağıdaki bağlantıları kullanın:
+- Neden: Sanal ağ geçidinin Genel Bakış sayfasındaki belge bağlantıları, Azure Stack yerine Azure 'a özgü belgelere bağlanır. Azure Stack belgeleri için aşağıdaki bağlantıları kullanın:
 
   - [Ağ Geçidi SKU 'Ları](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
   - [Yüksek oranda kullanılabilir bağlantılar](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
   - [Azure Stack BGP 'yi yapılandırma](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
   - [ExpressRoute devreleri](azure-stack-connect-expressroute.md)
   - [Özel IPSec/ıKE ilkeleri belirtme](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
-
-### <a name="load-balancer"></a>Yük dengeleyici
-
-#### <a name="add-backend-pool"></a>Arka uç havuzu ekle
-
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında bir **Load Balancer** **arka uç havuzu** eklemeye çalışırsanız, işlem hata iletisiyle başarısız olur **Load Balancer güncelleştirilemedi...**
-- Düzeltmesi Arka uç havuzunu bir yük dengeleyici kaynağıyla ilişkilendirmek için PowerShell, CLı veya Kaynak Yöneticisi şablonu kullanın.
-- Oluşum Common
-
-#### <a name="create-inbound-nat"></a>Gelen NAT oluşturma
-
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, bir **Load Balancer**Için BIR **gelen NAT kuralı** oluşturmaya çalışırsanız, işlem hata iletisiyle başarısız olur **Load Balancer güncelleştirilemedi...**
-- Düzeltmesi Arka uç havuzunu bir yük dengeleyici kaynağıyla ilişkilendirmek için PowerShell, CLı veya Kaynak Yöneticisi şablonu kullanın.
-- Oluşum Common
 
 ## <a name="compute"></a>İşlem
 
@@ -159,31 +137,11 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
-#### <a name="centos"></a>CentOS
-
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Sanal makine ölçek kümesi oluşturma deneyimi, dağıtım için bir seçenek olarak CentOS tabanlı 7,2 sağlar. CentOS 7,2 Azure Stack kullanılamıyor.
-- Düzeltmesi Dağıtımınız için başka bir işletim sistemi seçin ya da Market 'ten bir operatör aracılığıyla dağıtımdan önce indirilen başka bir CentOS görüntüsünü belirten Azure Resource Manager şablonu kullanın.
-- Oluşum Common
-
-#### <a name="remove-scale-set"></a>Ölçek kümesini kaldır
-
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Ölçek kümesini **Sanal Makine Ölçek Kümeleri** dikey penceresinden kaldıramazsınız.
-- Düzeltmesi Kaldırmak istediğiniz ölçek kümesini seçin, sonra **genel bakış** bölmesinden **Sil** düğmesine tıklayın.
-- Oluşum Common
-
 #### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki sırasında oluşturma ve 4 düğümlü Azure Stack ortamlarında güncelleştirme
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: 4 düğümlü bir Azure Stack ortamında güncelleştirme işlemi sırasında, 3 hata etki alanı kullanılabilirlik kümesinde VM oluşturma ve sanal makine ölçek kümesi örneği oluşturma işlemi **FabricVmPlacementErrorUnsupportedFaultDomainSize** hatasıyla başarısız oluyor.
 - Düzeltmesi 2 hata etki alanı içeren bir kullanılabilirlik kümesinde tek VM 'Ler oluşturabilirsiniz. Ancak, 4 düğümlü Azure Stack güncelleştirme işlemi sırasında ölçek kümesi örneği oluşturma yine de kullanılamaz.
-
-#### <a name="scale-set-instance-view-blade-does-not-load"></a>Ölçek kümesi örneği görünümü dikey penceresi yüklenmedi
-
-- Uygunsa Bu sorun 1904, 1905 ve 1906 sürümleri için geçerlidir.
-- Neden: Azure Stack portalında bulunan bir sanal makine ölçek kümesinin örnek görünümü dikey penceresinde, **pano > sanal makine ölçek kümeleri > AnyScaleSet > örnekleri > AnyScaleSetInstance** yüklenemez ve bir "Rainy Cloud" görüntüsünü görüntüler.
-- Düzeltmesi Şu anda bir düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. Bundan sonra, bir ölçek kümesinin örnek görünümünü `az vmss get-instance-view` almak için lütfen CLI komutunu kullanın.
 
 ### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
 
@@ -194,21 +152,21 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 ### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Sanal makine ölçek kümesi sıfırlama parolası çalışmıyor
 
-- Uygunsa Bu sorun 1906 sürümü için geçerlidir.
+- Uygunsa Bu sorun 1906, 1907 sürümü için geçerlidir.
 - Neden: Ölçek kümesi Kullanıcı arabiriminde yeni bir sıfırlama parolası dikey penceresi görünür ancak Azure Stack, henüz bir ölçek kümesindeki parolanın sıfırlanmasını desteklemez.
 - Düzeltmesi Yok.
 - Oluşum Common
 
 ### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Ölçek kümesi tanılamasında Rainy bulutu
 
-- Uygunsa Bu sorun 1906 sürümü için geçerlidir.
+- Uygunsa Bu sorun 1906, 1907 sürümü için geçerlidir.
 - Neden: Sanal makine ölçek kümesine genel bakış sayfası boş bir grafik gösterir. Boş grafiğe tıkladığınızda bir "Rainy Cloud" dikey penceresi açılır. Bu, CPU yüzdesi gibi ölçek kümesi tanılama bilgilerine yönelik bir grafiktir ve geçerli Azure Stack derlemesinde desteklenen bir özellik değildir.
 - Düzeltmesi Yok.
 - Oluşum Common
 
 ### <a name="virtual-machine-diagnostic-settings-blade"></a>Sanal makine Tanılama ayarları dikey penceresi
 
-- Uygunsa Bu sorun 1906 sürümü için geçerlidir.
+- Uygunsa Bu sorun 1906, 1907 sürümü için geçerlidir.
 - Neden: Sanal makine Tanılama ayarları dikey penceresinde bir **Havuz** sekmesi bulunur ve bu bir Application Insights **hesabı**ister. Bu, yeni bir dikey pencerenin sonucudur ve Azure Stack henüz desteklenmemiştir.
 - Düzeltmesi Yok.
 - Oluşum Common
@@ -223,4 +181,4 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Güncelleştirme etkinliği denetim listesini gözden geçir](azure-stack-release-notes-checklist.md)
-- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](azure-stack-release-notes-security-updates-1906.md)
+- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](azure-stack-release-notes-security-updates-1907.md)

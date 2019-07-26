@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: 49b4276da5c7e42728cf96261104f59c70355c20
-ms.sourcegitcommit: 159da88a52701679571bbedde1c36b72bbfe32dd
+ms.lastreviewed: 07/25/2019
+ms.openlocfilehash: 01bbd8b9de5c3d5446b34483125e2dcdcb4a5c20
+ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380395"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494028"
 ---
 # <a name="azure-stack-update-activity-checklist"></a>Azure Stack etkinliği denetim listesini güncelleştir
 
@@ -61,5 +61,5 @@ Bu makale, Azure Stack işleçleri için güncelleştirmeyle ilgili etkinlikleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bilinen sorunların listesini gözden geçirin](azure-stack-release-notes-known-issues-1906.md)
-- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](azure-stack-release-notes-security-updates-1906.md)
+- [Bilinen sorunların listesini gözden geçirin](azure-stack-release-notes-known-issues-1907.md)
+- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](azure-stack-release-notes-security-updates-1907.md)
