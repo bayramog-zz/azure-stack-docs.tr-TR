@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2019
+ms.date: 07/25/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/24/2019
-ms.openlocfilehash: 5409cf49f298d18680a0fb9428c71552dad54ff9
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.lastreviewed: 07/25/2019
+ms.openlocfilehash: 17f68039382453312114dff8737072d1515a583d
+ms.sourcegitcommit: b752f4e6733d9ebe56dbd171a14528dcb9a693fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68497095"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68522031"
 ---
 # <a name="overview-of-azure-stack-diagnostic-log-collection"></a>Azure Stack tanılama günlüğü koleksiyonuna genel bakış 
 
@@ -77,4 +77,4 @@ Daha fazla bilgi için bkz. [otomatik Azure Stack günlük toplama Için en iyi 
 
 [Paylaşılan erişim imzaları (SAS) kullanma](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 
-[Otomatik Azure Stack günlük toplama Için en iyi uygulamalar](azure-stack-best-practices-automatic-diagnostic-log-collection.md).
+[Otomatik Azure Stack günlük toplama için en iyi yöntemler](azure-stack-best-practices-automatic-diagnostic-log-collection.md)

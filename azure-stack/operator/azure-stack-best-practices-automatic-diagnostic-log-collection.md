@@ -16,12 +16,12 @@ ms.date: 07/25/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 566119a6c81e19962d648172ac5274ca6ab51b66
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: 03fb0550bfaa41a3336ff17dd1c44e03bcea1402
+ms.sourcegitcommit: b752f4e6733d9ebe56dbd171a14528dcb9a693fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68497150"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68522039"
 ---
 # <a name="best-practices-for-automatic-azure-stack-log-collection"></a>Otomatik Azure Stack günlük toplama için en iyi yöntemler 
 
@@ -64,14 +64,17 @@ Aşağıdaki tabloda, Azure için sınırlı veya tarifeli bağlantıları olan 
 | Ağ bağlantısı | Etkisi |
 |--------------------|--------|
 | Düşük-bant genişliği/yüksek gecikmeli bağlantı | Günlük yüklemesinin tamamlanması uzun zaman alır | 
-| Paylaşılan bağlantı | Karşıya yükleme, ağ bağlantısını paylaşan diğer uygulamaları/kullanıcıları da etkileyebilir. |
-| Tarifeli bağlantı | Ek ağ kullanımı için ISS 'nizden ek ücret ödemeniz gerekebilir. |
+| Paylaşılan bağlantı | Karşıya yükleme, ağ bağlantısını paylaşan diğer uygulamaları/kullanıcıları da etkileyebilir |
+| Tarifeli bağlantı | Ek ağ kullanımı için ISS 'nizden ek ücret ödemeniz gerekebilir |
 
 
 ## <a name="managing-costs"></a>Maliyetleri yönetme
 
 Azure [BLOB depolama ücretleri](https://azure.microsoft.com/pricing/details/storage/blobs/) , her ay ne kadar veri kaydedildiğini ve veri artıklığı gibi diğer faktörleri temel alır. Mevcut bir depolama hesabınız yoksa, Azure portal oturum açabilir, **depolama hesapları**' na tıklayabilir ve [Azure Blob kapsayıcı SAS URL 'si oluşturmak](azure-stack-configure-automatic-diagnostic-log-collection.md)için adımları izleyebilirsiniz.
 
-En iyi uygulama olarak, devam eden depolama maliyetlerini en aza indirmek için bir Azure Blob depolama [yaşam döngüsü yönetim ilkesi](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) oluşturun. Depolama hesabının nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [otomatik Azure Stack tanılama günlüğü toplamayı yapılandırma](azure-stack-configure-automatic-diagnostic-log-collection.md).
+En iyi uygulama olarak, devam eden depolama maliyetlerini en aza indirmek için bir Azure Blob depolama [yaşam döngüsü yönetim ilkesi](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) oluşturun. Depolama hesabının nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [otomatik Azure Stack tanılama günlüğü toplamayı yapılandırma](azure-stack-configure-automatic-diagnostic-log-collection.md)
 
+## <a name="see-also"></a>Ayrıca bkz.
+
+[Otomatik Azure Stack günlük toplamayı yapılandırma](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
 

@@ -16,12 +16,12 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 01bbd8b9de5c3d5446b34483125e2dcdcb4a5c20
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: 0c7840c723aedd38b51002e4a1f18f5a87d66ec4
+ms.sourcegitcommit: c2690b2dd36918ff3e47e359cac926128bb83101
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494028"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68544066"
 ---
 # <a name="azure-stack-update-activity-checklist"></a>Azure Stack etkinliği denetim listesini güncelleştir
 
@@ -58,6 +58,7 @@ Bu makale, Azure Stack işleçleri için güncelleştirmeyle ilgili etkinlikleri
 |-----------------------|----------------------------------------------------------------------------------|
 | Son düzeltmeleri Uygula | Güncelleştirilmiş sürüme uygulanabilen en son düzeltmeleri uygulayın.                          |
 | Şifreleme anahtarlarını alma | Rest şifreleme anahtarlarındaki verileri alın ve Azure Stack dağıtımınızın dışında güvenli bir şekilde depolayın. [Anahtarları alma yönergelerini](azure-stack-security-bitlocker.md)izleyin. |
+| Çoklu kiratı yeniden etkinleştirme | Çok kiracılı bir Azure Stack olması durumunda, başarılı bir güncelleştirmeden sonra [tüm konuk Dizin kiracılarını yapılandırmadığınızdan emin olun](https://docs.microsoft.com/azure-stack/operator/azure-stack-enable-multitenancy#configure-guest-directory) . |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
