@@ -1,82 +1,82 @@
 ---
-title: Visual Studio Code'da Azure hesabı uzantısını kullanarak Azure stack'e bağlanma | Microsoft Docs
-description: Bir geliştirici olarak, Azure Stack Visual Studio Code'da Azure hesabı uzantısını kullanarak bağlanma
+title: Visual Studio Code Azure Hesap uzantısı 'nı kullanarak Azure Stack bağlanın | Microsoft Docs
+description: Bir geliştirici olarak, Visual Studio Code Azure hesap uzantısını kullanarak Azure Stack bağlanın
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
-ms.topic: Howto
+ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 06/25/2019
-ms.openlocfilehash: 4e7dd18267060f632e2d059b0a7b0d9158b2e260
-ms.sourcegitcommit: d1fdecdfa843dfc0629bfc226f1baf14f3ea621d
+ms.openlocfilehash: 9f45e94f26e577f1a47f60b7df24758d7bc88767
+ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67387745"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68603047"
 ---
-# <a name="connect-to-azure-stack-using-azure-account-extension-in-visual-studio-code"></a>Visual Studio Code'da Azure hesabı uzantısını kullanarak Azure stack'e bağlanma
+# <a name="connect-to-azure-stack-using-azure-account-extension-in-visual-studio-code"></a>Visual Studio Code Azure hesap uzantısını kullanarak Azure Stack bağlanma
 
-Bu makalede, biz size Azure hesabı uzantısını kullanarak Azure Stack'e bağlanma yol gösterir. Visual Studio Code (VS Code) ayarlarınızı güncelleştirmeniz gerekir.
+Bu makalede, Azure hesap uzantısını kullanarak Azure Stack nasıl bağlanacağımız konusunda size kılavuzluk edeceğiz. Visual Studio Code (VS Code) ayarlarınızı güncelleştirmeniz gerekecektir.
 
-VS Code, web ve bulut uygulamaları oluşturma ve hata ayıklama için basit bir düzenleyicidir. ASP.NET Core, Python, NodeJS, Git ve diğer geliştiriciler tarafından kullanılır. Azure hesabı uzantısı ile tek bir Azure kullanabileceğiniz filtreleme için ek Azure uzantıları aboneliği ile oturum açın. Uzantı, Azure Cloud shell'e VS Code tümleşik terminale kullanılabilir hale getirir. Eklentiyi kullanarak, hem Azure kullanarak, Azure Stack aboneliğine bağlanabilirsiniz AD (Azure AD) ve Active Directory Federasyon Hizmetleri (AD FS), Identity manager için. Bu, Azure Stack için oturum açın, aboneliğinizi seçin ve yeni bir komut satırı cloud shell'de açmak sağlar. 
+VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik hafif bir düzenleyicidir. ASP.NET Core, Python, NodeJS, Go ve diğer geliştiriciler tarafından kullanılır. Azure hesap Uzantısı ile, ek Azure uzantıları için abonelik filtrelemesine sahip tek bir Azure oturum açma özelliği kullanabilirsiniz. Uzantı, Azure Cloud Shell VS Code tümleşik terminalde kullanılabilir hale getirir. Uzantıyı kullanarak, kimlik yöneticiniz için hem Azure AD (Azure AD) hem de Active Directory Federasyon Hizmetleri (AD FS) kullanarak Azure Stack aboneliğinize bağlanabilirsiniz. Bu, Azure Stack oturum açmanızı, aboneliğinizi seçmenizi ve bir Cloud Shell 'de yeni bir komut satırı açmanızı sağlar. 
 
 > [!Note]  
-> Bir Active Directory Federasyon Hizmetleri'nde (AD FS) ortamı için bu makaledeki adımları kullanabilirsiniz. AD FS kimlik bilgilerini ve uç noktaları kullanın.
+> Active Directory Federasyon Hizmetleri (AD FS) ortamı için bu makaledeki adımları kullanabilirsiniz. AD FS kimlik bilgilerinizi ve uç noktalarını kullanın.
 
-## <a name="pre-requisites-for-the-azure-account-extension"></a>Azure hesabı uzantısı için ön koşullar
+## <a name="pre-requisites-for-the-azure-account-extension"></a>Azure Hesap uzantısı için önkoşulların önkoşulları
 
-1. Azure Stack ortamı 1904 derleme veya üzeri
+1. Azure Stack Environment 1904 derlemesi veya üzeri
 2. [Visual Studio Code](https://code.visualstudio.com/)
 3. [Azure hesabı uzantısı](https://github.com/Microsoft/vscode-azure-account)
-4. [Azure Stack aboneliğine](https://azure.microsoft.com/overview/azure-stack/)
+4. [Azure Stack aboneliği](https://azure.microsoft.com/overview/azure-stack/)
 
-## <a name="steps-to-connect-to-azure-stack"></a>Azure Stack'e bağlanma adımları
+## <a name="steps-to-connect-to-azure-stack"></a>Azure Stack bağlanma adımları
 
-1. Çalıştırma **kimlik** github'da Azure Stack araçları betikten.
+1. GitHub 'daki Azure Stack araçlarından **kimlik** betiğini çalıştırın.
 
-    - Çalıştırmadan önce betiğin, PowerShell sürümünün yüklü ve ortamınız için yapılandırılmış olması gerekecektir. Yönergeler için bkz [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md).
+    - Betiği çalıştırmadan önce, PowerShell 'in ortamınız için yüklü ve yapılandırılmış olması gerekir. Yönergeler için bkz. [Azure Stack Için PowerShell 'ı Install](../operator/azure-stack-powershell-install.md).
 
-    - İçin **kimlik** betik yönergeleri ve komut dosyası, bkz: [AzureStack-araçları/kimlik](https://github.com/Azure/AzureStack-Tools/tree/master/Identity).
+    - **Kimlik** betiği yönergeleri ve betiği için bkz. [azurestack-Tools/Identity](https://github.com/Azure/AzureStack-Tools/tree/master/Identity).
 
-2. Açık VS kodu.
+2. VS Code açın.
 
-3. Seçin **uzantıları** sol taraftaki köşedeki.
+3. Sol taraftaki köşedeki **Uzantılar** ' ı seçin.
 
 3. Arama kutusuna `Azure Account` yazın.
 
-4. Seçin **Azure hesabı** seçip **yükleme**.
+4. **Azure hesabı** ' nı seçin ve ardından **yüklemeyi**seçin.
 
-      ![Azure Stack Visual Studio kodu](media/azure-stack-dev-start-vscode-azure/image1.png)
+      ![Azure Stack Visual Studio Code](media/azure-stack-dev-start-vscode-azure/image1.png)
 
-5. Uzantıyı yüklemek için VS Code'u yeniden başlatın.
+5. Uzantıyı yüklemek için VS Code yeniden başlatın.
 
-6. Azure Stack, Azure Resource Manager'a bağlanmak için meta veriler alır. 
+6. Azure Stack Azure Resource Manager bağlanmak için meta verileri alın. 
     
-    Microsoft Azure Resource Manager dağıtma, yönetme ve Azure kaynaklarınızı izlemenize olanak tanıyan bir yönetim çerçevesidir.
-    - Azure Stack geliştirme Seti'ni (ASDK) için kaynak yöneticisi URL'si şöyledir: `https://management.local.azurestack.external/` 
-    - Tümleşik bir Sistem Kaynağı Yöneticisi URL'si şudur: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
-    - URL'nizi meta verilerine erişmek için aşağıdaki metni ekleyin: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+    Microsoft Azure Kaynak Yöneticisi, Azure kaynaklarını dağıtmanıza, yönetmenize ve izlemenize olanak tanıyan bir yönetim çerçevesidir.
+    - Azure Stack Geliştirme Seti (ASDK) Kaynak Yöneticisi URL 'SI:`https://management.local.azurestack.external/` 
+    - Tümleşik bir sistemin Kaynak Yöneticisi URL 'SI:`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+    - Meta verilere erişmek için URL 'nize aşağıdaki metni ekleyin:`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
-    Örneğin, Azure Resource Manager uç noktanız için meta verilerini almak için URL şöyle görünebilir: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
+    Örneğin, Azure Resource Manager uç noktanız için meta verileri almaya yönelik URL şöyle görünebilir:`https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
 
-    Dönüş JSON'u not edin. Değerleri için ihtiyacınız olacak `loginEndpoint` ve `audiences` özelliği.
+    Dönüş JSON 'sini bir yere iade edin. `loginEndpoint` Ve`audiences` özelliğinin değerlerine ihtiyacınız olacaktır.
 
-7. Tuşuna **Ctrl + Shift + P** seçip **tercihleri: Kullanıcı ayarları (JSON)** .
+7. **CTRL + SHIFT + P** tuşlarına basın ve Tercihler **' i seçin: Kullanıcı ayarları 'nı (JSON)** açın.
 
-8. Kod düzenleyicisinde, aşağıdaki JSON kod parçacığında, ortamınız için değerlerle güncelleştirin ve sonra blok kod parçacığını yapıştırın.
+8. Kod Düzenleyicisi 'nde, aşağıdaki JSON kod parçacığını ortamınızın değerleriyle güncelleştirin ve ardından bir kod parçacığını ayarlar bloğuna yapıştırın.
 
-    - Değerler:
+    - Deðerler
 
         | Parametre | Açıklama |
         | --- | --- |
-        | `tenant-ID` | Azure Stack değerini [Kiracı kimliği](../operator/azure-stack-identity-overview.md). |
-        | `activeDirectoryEndpointUrl` | Bu loginEndpoint özelliğinden URL'dir. |
-        | `activeDirectoryResourceId` | Bu İzleyici özelliğinden URL'dir.
-        | `resourceManagerEndpointUrl` | Azure Stack için Azure Resource Manager için kök URL'yi budur. | 
+        | `tenant-ID` | Azure Stack [KIRACı kimliğinizin](../operator/azure-stack-identity-overview.md)değeri. |
+        | `activeDirectoryEndpointUrl` | Bu, loginEndpoint özelliğinden alınan URL 'dir. |
+        | `activeDirectoryResourceId` | Bu, izleyiciler özelliğinden URL 'dir.
+        | `resourceManagerEndpointUrl` | Bu, Azure Stack için Azure Resource Manager kök URL 'sidir. | 
 
-    - JSON parçacığı:
+    - JSON kod parçacığı:
 
       ```JSON  
       "azure.tenant": "tenant-ID",
@@ -88,25 +88,25 @@ VS Code, web ve bulut uygulamaları oluşturma ve hata ayıklama için basit bir
       "azure.cloud": "AzurePPE"
       ```
 
-9. Kullanıcı ayarları kaydedin ve kullanın **Ctrl + Shift + P** yine. Seçin **Azure: Azure Bulutuna oturum**. Yeni seçenek **AzurePPE**, hedefleri listesinde görünür.
+9. Kullanıcı ayarlarını kaydedin ve **CTRL + SHIFT + P** 'yi bir kez daha kullanın. Azure **seçin: Azure bulutta**oturum açın. Yeni seçenek olan **Azureppe**, hedef listesinde görünür.
 
-10. Seçin **AzurePPE**. Kimlik doğrulaması sayfası tarayıcınızda yükler. Uç noktanız için oturum açın.
+10. **Azureppe**öğesini seçin. Kimlik doğrulama sayfası tarayıcınızda yüklenir. Uç noktanıza oturum açın.
 
-11. Azure Stack aboneliğinize başarıyla kapattınız test etmek için **Ctrl + Shift + P** seçip **Azure: Aboneliği seçin** ve sahip olduğunuz abonelik olup olmadığına bakın.
+11. Azure Stack aboneliğinizde başarıyla oturum açtığınızı test etmek için **CTRL + SHIFT + P** tuşlarını kullanın ve Azure ' u seçin **: Abonelik** ' ı seçin ve sahip olduğunuz aboneliğin kullanılabilir olup olmadığını görün.
 
 ## <a name="commands"></a>Komutlar
 
 | Azure: Oturum Aç | Azure aboneliğinizde oturum açın |
 | --- | --- |
-| Azure: Cihaz kodu ile oturum açın | Bir cihaz kodu ile Azure aboneliğinizde oturum açın. Bu ayarlar burada oturum komutu çalışmıyor kullanın. |
-| Azure: Azure Bulutuna oturum açın | Bağımsız bulutlarda biriyle Azure aboneliğinizde oturum açın. |
-| Azure: Oturumu Kapatma | Dışında Azure aboneliğinizde oturum açın. |
-| Azure: Abonelikleri seçin | Birlikte çalışmak istediğiniz abonelikleri kümesini seçin. Uzantı yalnızca filtrelenen abonelik içindeki kaynaklara gösterir. |
-| Azure: Bir hesap oluşturun | Bir Azure hesabınız yoksa, şunları yapabilirsiniz [kaydolun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-azure-account&mktingSource=vscode-azure-account) için bir bugün alıp \$200 ücretsiz krediler. |
-| Azure: Açık Cloud Shell'deki Bash hizmetinde | Cloud Shell'de Bash çalıştıran yeni bir terminal açın. |
-| Azure: Cloud shell'de PowerShell'i açın | Cloud Shell'de PowerShell çalıştıran yeni bir terminal açın. |
-| Azure: Cloud Shell için karşıya yükleme | Bir dosyayı Cloud Shell depolama hesabınıza yükleyin. |
+| Azure: Cihaz koduyla oturum açın | Bir cihaz koduyla Azure aboneliğinizde oturum açın. Bu bunu, oturum açma komutunun çalışmadaki kurulumların içinde kullanın. |
+| Azure: Azure bulutta oturum açın | Bağımsız bulutlarından birinde Azure aboneliğinizde oturum açın. |
+| Azure: Oturumu Kapat | Azure aboneliğinizde oturumunuzu kapatın. |
+| Azure: Abonelikleri Seç | Birlikte çalışmak istediğiniz abonelik kümesini seçin. Uzantı yalnızca filtrelenmiş abonelikler içindeki kaynakları gösterir. |
+| Azure: Hesap oluşturun | Azure hesabınız yoksa bugün [kaydolun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-azure-account&mktingSource=vscode-azure-account) ve ücretsiz kredilerle 200 alabilirsiniz \$. |
+| Azure: Bash 'i Cloud Shell açın | Cloud Shell yeni bir Terminal çalıştıran yeni bir Terminal açın. |
+| Azure: PowerShell 'i Cloud Shell açın | Cloud Shell yeni bir Terminal çalıştıran PowerShell açın. |
+| Azure: Cloud Shell karşıya yükle | Cloud Shell depolama hesabınıza bir dosya yükleyin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack geliştirme ortamında ayarlama ](azure-stack-dev-start.md)
+[Azure Stack bir geliştirme ortamı ayarlama](azure-stack-dev-start.md)

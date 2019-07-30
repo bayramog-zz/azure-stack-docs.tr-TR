@@ -1,6 +1,6 @@
 ---
-title: Azure ve Azure Stack ile hibrit bulut dağıtın | Microsoft Docs
-description: Azure'da ve Azure Stack'te hibrit bir bulutla dağıtmayı öğrenin.
+title: Azure ile karma bulut dağıtma ve Azure Stack | Microsoft Docs
+description: Azure ve Azure Stack ile karma bulut dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -10,280 +10,280 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: scenario
+ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 73fc9559e639973b07c576f8590c756032db0c3e
-ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
+ms.openlocfilehash: 201af19756ef3958e943549482610ee32e208f01
+ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68286934"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68603075"
 ---
-# <a name="deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Azure ve Azure Stack ile karma bulut çözümü dağıtma
+# <a name="deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Azure ve Azure Stack bir karma bulut çözümü dağıtın
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bu senaryo, Azure genel bulutunda ve Azure Stack özel bulut kullanan bir karma bulut çözümü dağıtma işlemini göstermektedir.
+Bu senaryoda, Azure genel bulutu ve Azure Stack özel bulutu kullanan bir hibrit bulut çözümünün nasıl dağıtılacağı gösterilmektedir.
 
-Bir hibrit bulut çözümü kullanarak, bir özel bulut uyumluluk avantajlarından genel bulutun ölçeklenebilirliği ile birleştirebilirsiniz. Ayrıca, geliştiricilerinizin Microsoft geliştiricisi ekosistem avantajlarından yararlanın ve becerilerini Bulut ve şirket içi ortamlara Uygula.
+Karma bulut çözümünü kullanarak, özel bir bulutun uyumluluk avantajlarını genel bulutun ölçeklenebilirliği ile birleştirebilirsiniz. Ayrıca, geliştiricileriniz Microsoft Developer ekosisteminden faydalanabilir ve yeteneklerini buluta ve şirket içi ortamlara uygulayabilir.
 
 ## <a name="overview-and-assumptions"></a>Genel bakış ve varsayımlar
 
-Genel Bulut ve özel bulut için bir aynı web uygulaması dağıtma geliştiricilerinin bir iş akışı ayarlamak için bu öğreticiden yararlanın. Bu uygulama, özel bulut üzerinde barındırılan olmayan Internet yönlendirilebilir bir ağa erişebilir. Bu web uygulamaları izlenir ve trafiğin bir ani değişiklik olduğunda, bir program Genel buluta trafiği yönlendirmek için DNS kayıtları değiştirir. Trafik ani önce düzeyine düştüğünde trafik özel buluta yönlendirilir.
+Geliştiricilerin aynı Web uygulamasını ortak bir buluta ve özel buluta dağıtmasına imkan tanıyan bir iş akışı ayarlamak için bu öğreticiyi izleyin. Bu uygulama, özel bulutta barındırılan internet 'e ait olmayan yönlendirilebilir ağa erişebilir. Bu Web uygulamaları izlenir ve trafikte ani bir artış olduğunda, bir program trafiği genel buluta yönlendirmek için DNS kayıtlarını değiştirir. Trafik, ani bir düzeye düştüğünde trafik, özel buluta geri yönlendirilir.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> - Karma bağlı SQL Server veritabanı sunucusu dağıtın.
-> - Genel bir Azure web uygulamasında bir karma ağına bağlayın.
-> - DNS, Bulutlar arası ölçeklendirme için yapılandırın.
-> - Bulutlar arası ölçeklendirmeye yönelik SSL sertifikaları yapılandırın.
-> - Yapılandırın ve web uygulaması dağıtın.
-> - Traffic Manager profili oluşturur ve Bulutlar arası ölçeklendirme için yapılandırır.
-> - Application ınsights'ı izleme ve artan trafiği için uyarı ayarlama.
-> - Küresel Azure ve Azure Stack arasında geçiş yapma otomatik trafiği yapılandırın.
+> - Karma bağlantılı SQL Server veritabanı sunucusu dağıtın.
+> - Küresel Azure 'da bir Web uygulamasını karma ağa bağlayın.
+> - DNS 'i platformlar arası ölçekleme için yapılandırın.
+> - Platformlar arası ölçeklendirme için SSL sertifikaları yapılandırın.
+> - Web uygulamasını yapılandırın ve dağıtın.
+> - Traffic Manager profili oluşturun ve bulut tabanlı ölçeklendirme için yapılandırın.
+> - Artan trafik için Application Insights izlemeyi ve uyarı ayarlamayı ayarlayın.
+> - Genel Azure ve Azure Stack arasında otomatik trafik geçişini yapılandırın.
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
 > 
-> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
+> [Karma uygulamalar Için tasarım konuları](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
 
-### <a name="assumptions"></a>Varsayımlar
+### <a name="assumptions"></a>Çoğu
 
-Bu öğreticide, genel Azure ve Azure Stack temel bir bilgi sahibi olduğunuzu varsayar. Bu öğreticiye başlamadan önce daha fazla bilgi edinmek istiyorsanız, aşağıdaki makaleleri gözden geçirin:
+Bu öğreticide, küresel Azure ve Azure Stack temel bir bilginiz olduğunu varsaymaktadır. Öğreticiyi başlatmadan önce daha fazla bilgi edinmek istiyorsanız, şu makaleleri gözden geçirin:
 
  - [Azure'a giriş](https://azure.microsoft.com/overview/what-is-azure/)
  - [Azure Stack temel kavramları](../operator/azure-stack-overview.md)
 
-Bu öğretici ayrıca bir Azure aboneliğine sahip olduğunuzu varsayar. Bir aboneliğiniz yoksa, şunları yapabilirsiniz [ücretsiz bir hesap oluşturma](https://azure.microsoft.com/free/) başlamadan önce.
+Bu öğreticide Ayrıca bir Azure aboneliğiniz olduğunu varsaymaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu çözüm başlamadan önce aşağıdaki gereksinimleri karşıladığından emin olun:
+Bu çözüme başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun:
 
-- Bir Azure Stack geliştirme Seti'ni (ASDK) veya bir Azure Stack tümleşik sisteminde bir abonelik. Bir Azure Stack geliştirme Seti'ni dağıtmak için yönergeleri izleyin. [Yükleyicisi'ni kullanarak ASDK dağıtma](../asdk/asdk-install.md).
-- Azure Stack yüklemenizi aşağıdakilerin yüklü olması:
-  - Azure App Service. Azure App Service ortamınıza yapılandırmak ve dağıtmak, Azure Stack operatörü ile çalışır. Bu öğretici, App Service, en az bir (1) kullanılabilir bir adanmış çalışan rolüne sahip olmasını gerektirir.
+- Bir Azure Stack Geliştirme Seti (ASDK) veya Azure Stack tümleşik bir sistemde bir abonelik. Azure Stack Geliştirme Seti dağıtmak için, [yükleyiciyi kullanarak ASDK dağıtma](../asdk/asdk-install.md)bölümündeki yönergeleri izleyin.
+- Azure Stack yüklemenizde aşağıdakiler yüklü olmalıdır:
+  - Azure App Service. Ortamınızdaki Azure App Service dağıtmak ve yapılandırmak için Azure Stack Işleçle çalışın. Bu öğreticide, App Service için en az bir (1) ayrılmış çalışan rolü olması gerekir.
   - Bir Windows Server 2016 görüntüsü.
-  - Microsoft SQL Server görüntüsü ile bir Windows Server 2016.
+  - Microsoft SQL Server bir görüntüyle Windows Server 2016.
   - Uygun planlar ve teklifler.
-  - Web uygulamanız için bir etki alanı adı. Bir etki alanı adı yoksa, bir GoDaddy Bluehost ve InMotion gibi bir etki alanı sağlayıcısından satın alabilirsiniz.
-- Etki alanınızın LetsEncrypt gibi güvenilen bir sertifika yetkilisinden SSL sertifikası.
-- Bir SQL Server veritabanı ile iletişim kurar ve Application Insights'ı destekleyen bir web uygulaması. İndirebileceğiniz [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) github'dan örnek uygulaması.
-- Bir Azure sanal ağ ve Azure Stack sanal ağ arasında bir hibrit ağ. Ayrıntılı yönergeler için bkz. [Azure Stack ve Azure ile karma bulut bağlantısı yapılandırma](azure-stack-solution-hybrid-connectivity.md).
+  - Web uygulamanız için bir etki alanı adı. Bir etki alanı adınız yoksa, GoDaddy, BlueHost ve Inmotion gibi bir etki alanı sağlayıcısından bir tane satın alabilirsiniz.
+- Letiniz gibi güvenilir bir sertifika yetkilisinden etki alanınız için bir SSL sertifikası.
+- SQL Server veritabanıyla iletişim kuran ve Application Insights destekleyen bir Web uygulaması. [Dotnetcore-SQLDB-öğreticisi](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) örnek uygulamasını GitHub 'dan indirebilirsiniz.
+- Azure sanal ağı ile Azure Stack sanal ağı arasındaki karma ağ. Ayrıntılı yönergeler için bkz. [Azure ile karma bulut bağlantısını yapılandırma ve Azure Stack](azure-stack-solution-hybrid-connectivity.md).
 
-- Azure Stack'te karma sürekli tümleştirme/sürekli dağıtım (CI/CD) işlem hattı ile özel bir derleme aracısı. Ayrıntılı yönergeler için bkz. [karma bulut kimliği ile Azure'da ve Azure Stack'te uygulama yapılandırma](azure-stack-solution-hybrid-identity.md).
+- Azure Stack üzerinde özel yapı aracısına sahip karma bir sürekli tümleştirme/sürekli dağıtım (CI/CD) işlem hattı. Ayrıntılı yönergeler için bkz. [Azure ve Azure Stack uygulamalarla karma bulut kimliğini yapılandırma](azure-stack-solution-hybrid-identity.md).
 
-## <a name="deploy-a-hybrid-connected-sql-server-database-server"></a>Karma bağlı SQL Server veritabanı sunucusunu dağıtma
+## <a name="deploy-a-hybrid-connected-sql-server-database-server"></a>Karma bağlantılı SQL Server veritabanı sunucusu dağıtma
 
-1. Azure Stack kullanıcı portalında oturum açın.
+1. Azure Stack Kullanıcı portalında oturum açın.
 
-2. Üzerinde **Pano**seçin **Market**.
+2. **Panoda** **Market**' i seçin.
 
     ![Azure Stack Market](media/azure-stack-solution-hybrid-cloud/image1.png)
 
-3. İçinde **Market**seçin **işlem**ve ardından **daha fazla**. Altında **daha fazla**seçin **ücretsiz SQL Server Lisansı: Windows Server üzerinde SQL Server 2017 Developer** görüntü.
+3. **Market**' te **işlem**' i seçin ve **daha sonra diğer**' i seçin. **Daha fazla bilgi**için **ücretsiz SQL Server lisansını seçin: Windows Server** görüntüsünde 2017 SQL Server geliştirici.
 
-    ![Bir sanal makine görüntüsü seçme](media/azure-stack-solution-hybrid-cloud/image2.png)
+    ![Bir sanal makine görüntüsü seçin](media/azure-stack-solution-hybrid-cloud/image2.png)
 
-4. Üzerinde **ücretsiz SQL Server Lisansı: Windows Server üzerinde SQL Server 2017 Developer**seçin **Oluştur**.
+4. **Ücretsiz SQL Server Lisansı: Windows Server**'da 2017 SQL Server Geliştirici, **Oluştur**' u seçin.
 
-5. Üzerinde **temelleri > temel ayarları yapılandırma**, sağlayan bir **adı** sanal makine (VM) için bir **kullanıcı adı** SQL Server SA ve **parola** sa.  Gelen **abonelik** aşağı açılan listesinde, dağıtım yapıyorsanız bir abonelik seçin. İçin **kaynak grubu**, kullanın **seçin varolan** ve Azure Stack web uygulamanızla aynı kaynak grubunda VM yerleştirin.
+5. **Temel ayarları yapılandırma > temel bilgiler**, sanal makıne (VM) Için bir **ad** , SQL Server SA için BIR **Kullanıcı adı** ve SA için bir **parola** sağlayın.  **Abonelik** açılan listesinden, dağıtmakta olduğunuz aboneliği seçin. **Kaynak grubu**için **var olanı seç** ' i kullanın ve sanal makineyi Azure Stack Web uygulamanızla aynı kaynak grubuna yerleştirin.
 
     ![VM için temel ayarları yapılandırma](media/azure-stack-solution-hybrid-cloud/image3.png)
 
-6. Altında **boyutu**, sanal Makineniz için bir boyut seçin. Bu öğreticide, A2_Standard veya bir DS2_V2_Standard öneririz.
+6. **Boyut**bölümünde VM 'niz için bir boyut seçin. Bu öğretici için A2_Standard veya DS2_V2_Standard önerilir.
 
-7. Altında **Ayarları > isteğe bağlı Özellikleri Yapılandır**, aşağıdaki ayarları yapılandırın:
+7. **Ayarlar > isteğe bağlı özellikleri yapılandırmak**için aşağıdaki ayarları yapılandırın:
 
-   - **Depolama hesabı**: Bir gereksinim duyarsanız, yeni bir hesap oluşturun.
+   - **Depolama hesabı**: Gerekiyorsa yeni bir hesap oluşturun.
    - **Sanal ağ**:
 
      > [!Important]  
-     > SQL Server sanal Makinenizi aynı sanal ağ VPN ağ geçitleri üzerinde dağıtıldığından emin olun.
+     > SQL Server VM VPN ağ geçitleri ile aynı sanal ağda dağıtıldığından emin olun.
 
    - **Genel IP adresi**: Varsayılan ayarları kullanın.
    - **Ağ güvenlik grubu**: (NSG). Yeni bir NSG oluşturun.
-   - **Uzantıları ve izleme**: Varsayılan ayarları koruyun.
-   - **Tanılama depolama hesabı**: Bir gereksinim duyarsanız, yeni bir hesap oluşturun.
-   - Seçin **Tamam** yapılandırmanızı kaydetmek için.
+   - **Uzantılar ve izleme**: Varsayılan ayarları koruyun.
+   - **Tanılama depolama hesabı**: Gerekiyorsa yeni bir hesap oluşturun.
+   - Yapılandırmanızı kaydetmek için **Tamam ' ı** seçin.
 
-     ![İsteğe bağlı özellikleri yapılandırma](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![İsteğe bağlı özellikleri yapılandır](media/azure-stack-solution-hybrid-cloud/image4.png)
 
-8. Altında **SQL Server ayarları**, aşağıdaki ayarları yapılandırın:
-   - İçin **SQL Bağlantısı**seçin için **genel (Internet)** .
-   - İçin **bağlantı noktası**, varsayılan değeri değiştirmeyin **1433**.
-   - İçin **SQL kimlik doğrulaması**seçin **etkinleştirme**.
+8. **SQL Server ayarları**altında aşağıdaki ayarları yapılandırın:
+   - **SQL bağlantısı**için **Genel (Internet)** seçeneğini belirleyin.
+   - **Bağlantı noktası**için, varsayılan **1433**' ı koruyun.
+   - **SQL kimlik doğrulaması**için **Etkinleştir**' i seçin.
 
      > [!Note]  
-     > SQL kimlik doğrulaması'nı etkinleştirdiğinizde, otomatik olarak yapılandırdığınız "SQLAdmin" bilgilerle doldurmak **Temelleri**.
+     > SQL kimlik doğrulamasını etkinleştirdiğinizde, **temel**bilgiler ' de yapılandırdığınız "SQLAdmin" bilgileri ile otomatik olarak doldurulur.
 
-   - Ayarların geri kalanı için varsayılan değerleri koruyun. **Tamam**’ı seçin.
+   - Ayarların geri kalanı için varsayılan değerleri tutun. **Tamam**’ı seçin.
 
      ![SQL Server ayarlarını yapılandırma](media/azure-stack-solution-hybrid-cloud/image5.png)
 
-9. Üzerinde **özeti**, sanal makine yapılandırmasını gözden geçirin ve ardından **Tamam** dağıtımı başlatmak için.
+9. **Özet**sayfasında, sanal makine yapılandırmasını gözden geçirin ve ardından dağıtımı başlatmak için **Tamam** ' ı seçin.
 
     ![Yapılandırma Özeti](media/azure-stack-solution-hybrid-cloud/image6.png)
 
-10. Yeni VM oluşturmak için biraz zaman alabilir. Sanal makineleriniz durumunu görüntüleyebilirsiniz **sanal makineler**.
+10. Yeni VM 'yi oluşturmak biraz zaman alır. **Sanal makinelerde**VM 'nizin durumunu görüntüleyebilirsiniz.
 
     ![Sanal makineler](media/azure-stack-solution-hybrid-cloud/image7.png)
 
-## <a name="create-web-apps-in-azure-and-azure-stack"></a>Azure ve Azure Stack Web uygulamaları oluşturun
+## <a name="create-web-apps-in-azure-and-azure-stack"></a>Azure 'da ve Azure Stack Web uygulamaları oluşturun
 
-Azure App Service çalıştıran ve bir web uygulamasını yönetme sürecini basitleştirir. App Service, Azure Stack Azure ile tutarlı olduğundan, her iki ortamlarda çalıştırabilirsiniz. Uygulamanızı barındırmak için App Service'ı kullanacaksınız.
+Azure App Service, bir Web uygulamasını çalıştırmayı ve yönetmeyi basitleştirir. Azure Stack Azure ile tutarlı olduğundan, App Service her iki ortamda da çalıştırılabilir. Uygulamanızı barındırmak için App Service kullanacaksınız.
 
-### <a name="create-web-apps"></a>Web uygulamaları oluşturun
+### <a name="create-web-apps"></a>Web uygulamaları oluşturma
 
-1. Yönergeleri izleyerek, Azure'da bir web uygulaması oluşturma [bir Azure App Service planında yönetme](https://docs.microsoft.com/azure/app-service/app-service-plan-manage#create-an-app-service-plan). Web uygulaması aynı abonelik ve kaynak grubu, hibrit ağ koyduğunuzdan emin olun.
+1. Azure 'da [App Service planını yönetme](https://docs.microsoft.com/azure/app-service/app-service-plan-manage#create-an-app-service-plan)bölümündeki yönergeleri izleyerek Azure 'da bir Web uygulaması oluşturun. Web uygulamasını karma ağınızla aynı aboneliğe ve kaynak grubuna yerleştirdiğinizden emin olun.
 
-2. Azure Stack'te (1) önceki adımı yineleyin.
+2. Azure Stack önceki adımını (1) yineleyin.
 
 ### <a name="add-route-for-azure-stack"></a>Azure Stack için rota Ekle
 
-Azure Stack üzerinde App Service'te kullanıcıların uygulamanıza erişmesine izin vermek için genel internet'ten yönlendirilebilir olması gerekir. Azure Stack internet'ten erişilebiliyorsa, bir URL ya da genel kullanıma yönelik IP adresi Azure Stack web uygulamasının not edin.
+Azure Stack üzerindeki App Service, kullanıcıların uygulamanıza erişmesine izin vermek için genel İnternet 'ten yönlendirilebilir olmalıdır. Azure Stack internet 'ten erişilebiliyorsa, Azure Stack Web uygulaması için genel kullanıma yönelik IP adresini veya URL 'YI bir yere göz önüne alın.
 
-Bir ASDK kullanıyorsanız, yapabilecekleriniz [bir statik NAT eşlemesi yapılandırma](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal) App Service, sanal ortamın dışında kullanıma sunmak için.
+Bir ASDK kullanıyorsanız, sanal ortam dışında App Service göstermek için [statik BIR NAT eşlemesi yapılandırabilirsiniz](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal) .
 
-### <a name="connect-a-web-app-in-azure-to-a-hybrid-network"></a>Bir web uygulamasını azure'da bir karma ağa bağlanma
+### <a name="connect-a-web-app-in-azure-to-a-hybrid-network"></a>Azure 'da bir Web uygulamasını karma ağa bağlama
 
-Azure'da ön uç web uygulamaları ve Azure Stack'te SQL Server veritabanı arasında bağlantı sağlamak için Azure ve Azure Stack arasında hibrit ağ web uygulamasına bağlanmalıdır. Bağlantıyı etkinleştirmek için aşağıdakiler:
+Azure 'daki Web ön ucu ve Azure Stack SQL Server veritabanı arasında bağlantı sağlamak için, Web uygulamasının Azure ile Azure Stack arasında karma ağa bağlanması gerekir. Bağlantıyı etkinleştirmek için şunları yapmanız gerekir:
 
-- Noktadan siteye bağlantısı yapılandırın.
-- Web uygulaması yapılandırırsınız.
-- Azure Stack'te yerel ağ geçidi değiştirin.
+- Noktadan siteye bağlantıyı yapılandırın.
+- Web uygulamasını yapılandırın.
+- Azure Stack yerel ağ geçidini değiştirin.
 
-### <a name="configure-the-azure-virtual-network-for-point-to-site-connectivity"></a>Azure sanal ağı için noktadan siteye bağlantı yapılandırma
+### <a name="configure-the-azure-virtual-network-for-point-to-site-connectivity"></a>Noktadan siteye bağlantı için Azure sanal ağını yapılandırma
 
-Azure hibrit ağ tarafında sanal ağ geçidi, Azure App Service ile tümleştirmek noktadan siteye bağlantıları izin vermeniz gerekir.
+Karma ağın Azure tarafındaki sanal ağ geçidi, Azure App Service ile tümleştirilecek Noktadan siteye bağlantılara izin vermelidir.
 
-1. Azure'da sanal ağ geçidi sayfasına gidin. Altında **ayarları**seçin **noktadan siteye yapılandırma**.
+1. Azure 'da sanal ağ geçidi sayfasına gidin. **Ayarlar**' ın altında, **Noktadan siteye yapılandırma**' yı seçin.
 
     ![Noktadan siteye seçeneği](media/azure-stack-solution-hybrid-cloud/image8.png)
 
-2. Seçin **Şimdi Yapılandır** noktadan siteye yapılandırma.
+2. Noktadan siteye yapılandırmak için **Şimdi Yapılandır** ' ı seçin.
 
-    ![Noktadan siteye yapılandırma başlatma](media/azure-stack-solution-hybrid-cloud/image9.png)
+    ![Noktadan siteye yapılandırmayı Başlat](media/azure-stack-solution-hybrid-cloud/image9.png)
 
-3. Üzerinde **noktadan siteye** yapılandırma sayfasında, kullanmak istediğiniz özel IP adresi aralığını girin **adres havuzu**.
+3. **Noktadan siteye** yapılandırma sayfasında, **adres havuzunda**kullanmak istediğiniz özel IP adresi aralığını girin.
 
    > [!Note]  
-   > Belirttiğiniz aralığın bileşenlerde genel Azure'da veya Azure Stack'te hibrit ağ alt ağları tarafından zaten kullanılan adres aralıklardan herhangi biriyle çakışmayacak emin olun.
+   > Belirttiğiniz aralığın, karma ağın genel Azure veya Azure Stack bileşenlerinde bulunan alt ağlar tarafından zaten kullanılmakta olan adres aralıklarıyla çakışmadığından emin olun.
 
-   Altında **tünel türü**, onay kutusunu temizleyin **Ikev2 VPN**. Seçin **Kaydet** noktadan siteye yapılandırmayı tamamlamak için.
+   **Tünel türü**altında, **IKEv2 VPN**seçeneğinin işaretini kaldırın. Noktadan siteye yapılandırmayı sona **kazanmak Için kaydet** ' i seçin.
 
    ![Noktadan siteye ayarları](media/azure-stack-solution-hybrid-cloud/image10.png)
 
-### <a name="integrate-the-azure-app-service-app-with-the-hybrid-network"></a>Azure App Service uygulamasını karma ağ ile tümleştirme
+### <a name="integrate-the-azure-app-service-app-with-the-hybrid-network"></a>Azure App Service uygulamasını karma ağla tümleştirme
 
-1. Uygulama Azure sanal ağa bağlanmak için yönergeleri izleyin. [ağ geçidi gerekli VNet tümleştirmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration).
+1. Uygulamayı Azure VNet 'e bağlamak için [Ağ Geçidi gerekli VNET tümleştirmesi](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration)bölümündeki yönergeleri izleyin.
 
-2. Gidin **ayarları** web uygulamasını barındıran bir App Service planınız için. İçinde **ayarları**seçin **ağ**.
+2. Web uygulamasını barındıran App Service planına yönelik **Ayarlar** ' a gidin. **Ayarlar**' da **ağ**' ı seçin.
 
     ![Ağı yapılandırma](media/azure-stack-solution-hybrid-cloud/image11.png)
 
-3. İçinde **VNET tümleştirmesi**seçin **yönetmek için buraya tıklayın**.
+3. **Sanal ağ tümleştirmesi**, **yönetmek Için buraya tıklayın ' ı**seçin.
 
-    ![VNET tümleştirmesi yönetme](media/azure-stack-solution-hybrid-cloud/image12.png)
+    ![VNET tümleştirmesini yönetme](media/azure-stack-solution-hybrid-cloud/image12.png)
 
-4. Yapılandırmak istediğiniz sanal ağ seçin. Altında **için IP adresleri VNET'e YÖNLENDİRİLMİŞ**, Azure sanal ağı, Azure Stack VNet ve noktadan siteye adres alanlarının IP adresi aralığını girin. Seçin **Kaydet** doğrulamak ve bu ayarları kaydedin.
+4. Yapılandırmak istediğiniz VNET 'i seçin. **VNET 'e yönlendirilen IP adresleri**altında, Azure vnet, Azure Stack VNET ve Noktadan siteye adres ALANLARı için IP adresi aralığını girin. Bu ayarları doğrulamak ve kaydetmek için **Kaydet** ' i seçin.
 
-    ![Yönlendirmek için IP adresi aralıkları](media/azure-stack-solution-hybrid-cloud/image13.png)
+    ![Rota için IP adresi aralıkları](media/azure-stack-solution-hybrid-cloud/image13.png)
 
-App Service'nın Azure Vnet ile nasıl tümleştirildiği hakkında daha fazla bilgi için bkz: [uygulamanızı bir Azure sanal ağ ile tümleştirme](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet).
+App Service Azure sanal ağları ile tümleştirme hakkında daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet).
 
-### <a name="configure-the-azure-stack-virtual-network"></a>Azure Stack sanal ağı yapılandırma
+### <a name="configure-the-azure-stack-virtual-network"></a>Azure Stack sanal ağını yapılandırma
 
-Yerel ağ geçidi Azure Stack sanal ağ trafiği yönlendirmek için App Service noktadan siteye adres aralığından yapılandırılması gerekir.
+Azure Stack sanal ağındaki yerel ağ geçidinin, trafiği App Service Noktadan siteye adres aralığından yönlendirmek üzere yapılandırılması gerekir.
 
-1. Azure Stack'te gidin **yerel ağ geçidi**. **Ayarlar** altında **Yapılandırma**'yı seçin.
+1. Azure Stack, **yerel ağ geçidi**' ne gidin. **Ayarlar** altında **Yapılandırma**'yı seçin.
 
-    ![Ağ geçidi yapılandırma seçeneği](media/azure-stack-solution-hybrid-cloud/image14.png)
+    ![Ağ Geçidi yapılandırma seçeneği](media/azure-stack-solution-hybrid-cloud/image14.png)
 
-2. İçinde **adres alanı**, azure'da sanal ağ geçidine noktadan siteye adres aralığını girin.
+2. **Adres alanı**' nda, Azure 'daki sanal ağ geçidi için Noktadan siteye adres aralığını girin.
 
     ![Noktadan siteye adres alanı](media/azure-stack-solution-hybrid-cloud/image15.png)
 
-3. Seçin **Kaydet** doğrulamak ve yapılandırmayı kaydetmek için.
+3. Yapılandırmayı doğrulamak ve kaydetmek için **Kaydet** ' i seçin.
 
-## <a name="configure-dns-for-cross-cloud-scaling"></a>Bulutlar arası ölçeklendirme için DNS yapılandırma
+## <a name="configure-dns-for-cross-cloud-scaling"></a>DNS 'i platformlar arası ölçeklendirme için yapılandırma
 
-Kullanıcılar, Bulutlar arası uygulamalar için doğru DNS yapılandırarak, web uygulamanızın genel Azure ve Azure Stack örnekleri erişebilir. Yükü artırır veya azaltır, Bu öğretici için DNS yapılandırmasını ayrıca Azure Traffic Manager trafiği yönlendirme sağlar.
+Kullanıcılar, platformlar arası uygulamalar için düzgün şekilde yapılandırılarak, Web uygulamanızın Genel Azure ve Azure Stack örneklerine erişebilirler. Bu öğreticinin DNS yapılandırması, Yük arttıkça veya azaldıkça Azure Traffic Manager trafiği yönlendirmeye de olanak tanır.
 
-Bu öğreticide, App Service etki alanları için çalışmaz DNS yönetmek için Azure DNS'yi kullanır.
+Bu öğretici, DNS 'yi yönetmek için Azure DNS kullanır, çünkü App Service etki alanları çalışmıyor.
 
 ### <a name="create-subdomains"></a>Alt etki alanları oluşturma
 
-Traffic Manager DNS CNAME üzerinde bağımlı olduğundan, doğru trafiği Uç noktalara yönlendirmek için bir alt etki alanı gereklidir. DNS kayıtlarını ve etki alanı eşlemesi hakkında daha fazla bilgi için bkz: [Traffic Manager ile etki alanlarını eşleme](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager-custom-domain-name).
+Traffic Manager DNS CNAMEs ' i kullandığından, trafiği uç noktalara doğru bir şekilde yönlendirmek için bir alt etki alanı gerekir. DNS kayıtları ve etki alanı eşlemesi hakkında daha fazla bilgi için bkz. [Traffic Manager etki alanlarını eşleme](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager-custom-domain-name).
 
-Azure uç noktası için kullanıcıların web uygulamanıza erişmek için kullanabileceği bir alt etki alanı oluşturacaksınız. Bu öğretici için kullanabileceğiniz **app.northwind.com**, ancak kendi etki alanını temel alarak bu değer için özelleştirme yapmanız gerekir.
+Azure uç noktası için kullanıcıların Web uygulamanıza erişmek için kullanabileceği bir alt etki alanı oluşturacaksınız. Bu öğretici için **app.Northwind.com**kullanabilir, ancak bu değeri kendi etki alanınızı temel alarak özelleştirmeniz gerekir.
 
-Azure Stack uç noktası için bir A kaydı bir alt etki alanı oluşturmak gerekir. Kullanabileceğiniz **azurestack.northwind.com**.
+Ayrıca, Azure Stack uç noktası için bir kayıt içeren bir alt etki alanı oluşturmanız gerekecektir. **Azurestack.Northwind.com**kullanabilirsiniz.
 
-### <a name="configure-a-custom-domain-in-azure"></a>Azure'da özel bir etki alanını yapılandırma
+### <a name="configure-a-custom-domain-in-azure"></a>Azure 'da özel bir etki alanı yapılandırma
 
-1. Ekleme **app.northwind.com** tarafından Azure web uygulaması için ana bilgisayar adı [Azure App Service için bir CNAME eşlemesi](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-a-cname-record).
+1. [CNAME 'i Azure App Service ile eşleyerek](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-a-cname-record) **app.Northwind.com** ana bilgisayar adını Azure Web uygulamasına ekleyin.
 
-### <a name="configure-custom-domains-in-azure-stack"></a>Azure Stack'te özel etki alanlarını yapılandırma
+### <a name="configure-custom-domains-in-azure-stack"></a>Azure Stack özel etki alanlarını yapılandırma
 
-1. Ekleme **azurestack.northwind.com** ana bilgisayar adı için Azure Stack web uygulaması tarafından [Azure App Service için bir A kaydını eşleme](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-an-a-record). Internet yönlendirilebilir IP adresi için App Service uygulamasını kullanın.
+1. [Bir kaydı Azure App Service ile eşleyerek](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-an-a-record)Azure Stack **Web ana bilgisayar** adını ekleyin. App Service uygulaması için Internet yönlendirilebilir IP adresini kullanın.
 
-2. Ekleme **app.northwind.com** ana bilgisayar adı için Azure Stack web uygulaması tarafından [Azure App Service için bir CNAME eşlemesi](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-a-cname-record). Önceki adımda (1) için CNAME hedefi olarak yapılandırılmış bir ana bilgisayar adı kullanın.
+2. [CNAME 'i Azure App Service eşleyerek](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-a-cname-record)Azure Stack **Web ana bilgisayar** adını Web uygulamasına ekleyin. Önceki adımda yapılandırdığınız ana bilgisayar adını (1) CNAME için hedef olarak kullanın.
 
-## <a name="configure-ssl-certificates-for-cross-cloud-scaling"></a>Bulutlar arası ölçeklendirmeye yönelik SSL sertifikaları yapılandırma
+## <a name="configure-ssl-certificates-for-cross-cloud-scaling"></a>Platformlar arası ölçeklendirme için SSL sertifikalarını yapılandırma
 
-Web uygulamanız tarafından toplanan hassas verileri aktarım için ve SQL veritabanı'nda depolanan güvenli olduğundan emin olmak önemlidir.
+Web uygulamanız tarafından toplanan gizli verilerin, SQL veritabanında depolanan ve ' de yapılan aktarım sırasında güvenli olduğundan emin olmanız önemlidir.
 
-Tüm gelen trafik için SSL sertifikaları kullanmak için Azure ve Azure Stack web apps yapılandıracaksınız.
+Azure ve Azure Stack Web uygulamalarınızı tüm gelen trafik için SSL sertifikaları kullanacak şekilde yapılandıracaksınız.
 
-### <a name="add-ssl-to-azure-and-azure-stack"></a>SSL ekleyin, Azure ve Azure Stack
+### <a name="add-ssl-to-azure-and-azure-stack"></a>Azure ve Azure Stack SSL ekleme
 
-Azure'da SSL eklemek için:
+Azure 'a SSL eklemek için:
 
-1. SSL sertifikası elde oluşturduğunuz alt etki alanı için geçerli olduğundan emin olun. (Joker karakterli sertifikalar kullanmak sorun değildir.)
+1. Aldığınız SSL sertifikasının oluşturduğunuz alt etki alanı için geçerli olduğundan emin olun. (Joker karakter sertifikaları kullanmak normaldir.)
 
-2. Azure'da yönergeleri **web uygulamanızı hazırlama** ve **SSL sertifikanızı bağlama** bölümlerini [Azure Web Apps'e mevcut özel bir SSL sertifikası bağlama](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) makale. Seçin **SNI tabanlı SSL** olarak **SSL türü**.
+2. Azure 'da, **Web uygulamanızı hazırlama** **ve** [var olan özel bir SSL sertifikasını Azure 'a](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) bağlama bölümündeki yönergeleri izleyin Web Apps makalesine gidin. **SSL türü**olarak **SNı tabanlı SSL** ' yi seçin.
 
-3. Tüm trafiği HTTPS bağlantı noktasına yönlendirin. Bölümündeki yönergeleri **HTTPS zorlama** bölümünü [Azure Web Apps'e mevcut özel bir SSL sertifikası bağlama](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) makalesi.
+3. Tüm trafiği HTTPS bağlantı noktasına yönlendir. [Var olan bir özel SSL sertifikası 'nı Web Apps Azure 'A bağlama](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) makalesindeki **https 'yi zorla** bölümünde bulunan yönergeleri izleyin.
 
-Azure Stack için SSL eklemek için:
+Azure Stack SSL eklemek için:
 
-- Azure'da kullanılan 1-3. adımları tekrarlayın.
+- Azure için kullandığınız 1-3 adımlarını yineleyin.
 
 ## <a name="configure-and-deploy-the-web-app"></a>Web uygulamasını yapılandırma ve dağıtma
 
-Uygulama kodu doğru Application Insights örneği rapor telemetriye yapılandırın ve web uygulamaları ile doğru bağlantı dizelerini yapılandırma. Application Insights hakkında daha fazla bilgi için bkz: [Application Insights nedir?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
+Uygulama kodunu Telemetriyi doğru Application Insights örneğine rapor verecek şekilde yapılandıracaksınız ve Web uygulamalarını doğru bağlantı dizelerine yapılandıracaksınız. Application Insights hakkında daha fazla bilgi edinmek için bkz. [Application Insights nedir?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
 
-### <a name="add-application-insights"></a>Application Insights ekleme
+### <a name="add-application-insights"></a>Application Insights Ekleme
 
-1. Microsoft Visual Studio ile web uygulamanızı açın.
+1. Web uygulamanızı Microsoft Visual Studio açın.
 
-2. [Application Insights ekleme](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-client-side-telemetry-for-web-applications) projenize Application Insights web trafiğini artış veya Azalış uyarılar oluşturmak için kullandığı telemetri iletmek için.
+2. Web trafiği arttıkça veya azaldıkça, Application Insights tarafından uyarı oluşturmak için kullanılan Telemetriyi iletmek üzere projenize [Application Insights ekleyin](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-client-side-telemetry-for-web-applications) .
 
 ### <a name="configure-dynamic-connection-strings"></a>Dinamik bağlantı dizelerini yapılandırma
 
-Web uygulamasının her örneği, SQL veritabanına bağlanmak için farklı bir yöntem kullanır. Uygulamayı azure'da SQL Server sanal makinesi (VM) özel IP adresini ve Azure Stack'te uygulama SQL Server VM'nin genel IP adresini kullanır.
+Web uygulamasının her örneği SQL veritabanına bağlanmak için farklı bir yöntem kullanacaktır. Azure 'daki uygulama SQL Server sanal makinenin (VM) özel IP adresini kullanır ve Azure Stack içindeki uygulama SQL Server VM genel IP adresini kullanır.
 
 > [!Note]  
-> Bir Azure Stack tümleşik sisteminde, genel IP adresini Internet yönlendirilebilir olmamalıdır. Bir Azure Stack geliştirme Seti'ni (ASDK üzerinde), genel IP adresini ASDK yönlendirilebilir değildir.
+> Azure Stack tümleşik bir sistemde, genel IP adresi internet yönlendirilebilir olmamalıdır. Bir Azure Stack Geliştirme Seti (ASDK) üzerinde genel IP adresi, ASDK dışında yönlendirilebilir değildir.
 
-Uygulamanın her örneği için farklı bir bağlantı dizesi geçirmek için App Service ortam değişkenlerini kullanabilirsiniz.
+App Service ortam değişkenlerini, uygulamanın her örneğine farklı bir bağlantı dizesi geçirmek için kullanabilirsiniz.
 
-1. Uygulamayı Visual Studio'da açın.
+1. Uygulamayı Visual Studio 'da açın.
 
-2. Startup.cs dosyasını açın ve aşağıdaki kod bloğunu bulun:
+2. Startup.cs açın ve aşağıdaki kod bloğunu bulun:
 
     ```C#
     services.AddDbContext<MyDatabaseContext>(options =>
         options.UseSqlite("Data Source=localdatabase.db"));
     ```
 
-3. Önceki kod bloğu içinde tanımlanan bir bağlantı dizesi kullanan aşağıdaki kodla değiştirin *appsettings.json* dosyası:
+3. Önceki kod bloğunu, *appSettings. JSON* dosyasında tanımlı bir bağlantı dizesi kullanan aşağıdaki kodla değiştirin:
 
     ```C#
     services.AddDbContext<MyDatabaseContext>(options =>
@@ -292,263 +292,263 @@ Uygulamanın her örneği için farklı bir bağlantı dizesi geçirmek için Ap
      services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
     ```
 
-### <a name="configure-app-service-app-settings"></a>App Service uygulaması ayarlarını yapılandırma
+### <a name="configure-app-service-app-settings"></a>App Service uygulama ayarlarını yapılandırma
 
-1. Azure ve Azure Stack için bağlantı dizeleri oluşturun. Dizeleri, kullanılan IP adreslerini hariç eşit olmalıdır.
+1. Azure ve Azure Stack için bağlantı dizeleri oluşturun. Dizeler, kullanılan IP adresleri dışında, aynı olmalıdır.
 
-2. Azure ve Azure Stack, uygun bir bağlantı dizesi Ekle [bir uygulama ayarı olarak](https://docs.microsoft.com/azure/app-service/web-sites-configure) web uygulamasında kullanarak `SQLCONNSTR\_` adı ön eki olarak.
+2. Azure ve Azure Stack ' de, ad içinde ön ek olarak kullanarak `SQLCONNSTR\_` , Web uygulamasında uygun bağlantı dizesini [uygulama ayarı olarak](https://docs.microsoft.com/azure/app-service/web-sites-configure) ekleyin.
 
-3. **Kaydet** web uygulaması ayarları ve uygulamayı yeniden başlatın.
+3. Web uygulaması ayarlarını **kaydedin** ve uygulamayı yeniden başlatın.
 
-## <a name="enable-automatic-scaling-in-global-azure"></a>Genel Azure'da otomatik ölçeklendirmeyi etkinleştir
+## <a name="enable-automatic-scaling-in-global-azure"></a>Küresel Azure 'da otomatik ölçeklendirmeyi etkinleştirme
 
-Bir App Service ortamında web uygulamanızı oluşturduğunuzda, bir örnek ile başlar. Otomatik olarak daha fazla bilgi işlem kaynakları uygulamanız için sağlamak için örnekleri eklemek için ölçeği genişletebilirsiniz. Benzer şekilde, otomatik olarak ölçeklendirmek ve örnek sayısını azaltmak uygulama ihtiyaçlarınızı.
+Web uygulamanızı bir App Service ortamında oluşturduğunuzda, tek bir örnekle başlar. Uygulamanız için daha fazla işlem kaynağı sağlamak üzere örnekleri eklemek için otomatik olarak ölçeği değiştirebilirsiniz. Benzer şekilde, uygulamanızda otomatik olarak ölçeklendirme yapabilir ve uygulamanızın ihtiyaç duyacağı örnek sayısını azaltabilirsiniz.
 
 > [!Note]  
-> Ölçek genişletme ve ölçek yapılandırmak için bir App Service planı olması gerekir. Bir plana sahip değilseniz, sonraki adımları uygulamaya başlamadan önce oluşturun.
+> Ölçek Genişletme ve ölçekleme yapılandırmak için bir App Service planına sahip olmanız gerekir. Bir planınız yoksa, sonraki adımları başlatmadan önce bir tane oluşturun.
 
-### <a name="enable-automatic-scale-out"></a>Otomatik ölçek genişletme etkinleştir
+### <a name="enable-automatic-scale-out"></a>Otomatik ölçeklendirmeyi etkinleştir
 
-1. Azure'da ölçeği genişletme ve ardından istediğiniz site için App Service planı bulmak **ölçeği genişletme (App Service planı)** .
+1. Azure 'da, genişletmek istediğiniz siteler için App Service planı bulun ve ardından **genişleme (App Service planı)** öğesini seçin.
 
     ![Ölçeği genişletme](media/azure-stack-solution-hybrid-cloud/image16.png)
 
-2. Seçin **etkinleştirmek otomatik ölçeklendirme**.
+2. **Otomatik ölçeklendirmeyi etkinleştir**' i seçin.
 
     ![Otomatik ölçeklendirmeyi etkinleştir](media/azure-stack-solution-hybrid-cloud/image17.png)
 
-3. İçin bir ad girin **otomatik ölçeklendirme ayarı adı**. İçin **varsayılan** otomatik ölçek kuralı, select **ölçek dayalı bir ölçüme göre**. Ayarlama **örnek limitleri** için **en az: 1**, **en fazla: 10**, ve **varsayılan: 1**.
+3. **Otomatik ölçeklendirme ayarı adı**için bir ad girin. **Varsayılan** otomatik ölçeklendirme kuralı için, **ölçüm temelinde ölçek**' i seçin. **Örnek sınırlarını** en az olarak **ayarlayın: 1** ,**en fazla: 10** ve**varsayılan: 1**.
 
-    ![Otomatik ölçeklendirmeyi yapılandırma](media/azure-stack-solution-hybrid-cloud/image18.png)
+    ![Otomatik ölçeklendirmeyi Yapılandır](media/azure-stack-solution-hybrid-cloud/image18.png)
 
-4. Seçin **+ alınabilecek**.
+4. **+ Kural Ekle**' yi seçin.
 
-5. İçinde **ölçüm kaynağı**seçin **geçerli kaynak**. Kural için aşağıdaki ölçütleri ve eylemleri kullanın.
+5. **Ölçüm kaynağı**' nda **geçerli kaynak**' ı seçin. Kural için aşağıdaki ölçütleri ve eylemleri kullanın.
 
 **Ölçütler**
 
-1. Altında **zaman toplama** seçin **ortalama**.
+1. Zaman toplama altında **Ortalama** **' ı** seçin.
 
-2. Altında **ölçüm adı**seçin **CPU yüzdesi**.
+2. **Ölçüm adı**altında **CPU yüzdesi**' ni seçin.
 
-3. Altında **işleci**seçin **büyüktür**.
+3. **İşleç**altında, **büyüktür**' i seçin.
 
-   - Ayarlama **eşiği** için **50**.
-   - Ayarlama **süresi** için **10**.
+   - **Eşiği** **50**olarak ayarlayın.
+   - **Süreyi** **10**olarak ayarlayın.
 
 **Eylem**
 
-1. Altında **işlemi**seçin **sayıyı şu kadar Artır**.
+1. **İşlem**altında, **sayıyı göre artır**' ı seçin.
 
-2. Ayarlama **örnek sayısı** için **2**.
+2. **Örnek sayısını** **2**olarak ayarlayın.
 
-3. Ayarlama **soğuma** için **5**.
+3. **Cool tuşuna** **5**olarak ayarlayın.
 
 4. **Add (Ekle)** seçeneğini belirleyin.
 
-5. Seçin **+ alınabilecek**.
+5. **+ Kural Ekle**' yi seçin.
 
-6. İçinde **ölçüm kaynağı**seçin **geçerli kaynak.**
+6. **Ölçüm kaynağı**' nda **geçerli kaynak** ' ı seçin.
 
    > [!Note]  
-   > App Service planının adı/GUID, geçerli kaynak içerir ve **kaynak türü** ve **kaynak** açılan listeler kullanılamaz.
+   > Geçerli kaynak App Service planınızın adını/GUID 'sini içerecektir ve **kaynak türü** ve **kaynak** açılan listeleri kullanılamaz.
 
-### <a name="enable-automatic-scale-in"></a>Otomatik ölçek kümesinde etkinleştirin
+### <a name="enable-automatic-scale-in"></a>Otomatik ölçeklendirmeyi etkinleştir
 
-Trafiğini azaltır, Azure web uygulamasına otomatik olarak maliyetlerini azaltmak için etkin örnek sayısını azaltabilirsiniz. Bu eylem, Ölçek genişletme daha az agresiftir ve uygulama kullanıcılar üzerindeki etkiyi en aza indirir.
+Trafik azaldıkça Azure Web uygulaması, maliyetleri azaltmak için etkin örnek sayısını otomatik olarak azaltabilir. Bu eylem, ölçeklendirmeden daha az agresif ve uygulama kullanıcıları üzerindeki etkiyi en aza indirir.
 
-1. Gidin **varsayılan** ölçek genişletme koşulunun seçin **+ alınabilecek**. Kural için aşağıdaki ölçütleri ve eylemleri kullanın.
+1. **Varsayılan** genişleme durumuna gidin, **+ Kural Ekle**' yi seçin. Kural için aşağıdaki ölçütleri ve eylemleri kullanın.
 
 **Ölçütler**
 
-1. Altında **zaman toplama** seçin **ortalama**.
+1. Zaman toplama altında **Ortalama** **' ı** seçin.
 
-2. Altında **ölçüm adı**seçin **CPU yüzdesi**.
+2. **Ölçüm adı**altında **CPU yüzdesi**' ni seçin.
 
-3. Altında **işleci**seçin **küçüktür**.
+3. **İşleç**altında küçüktür ' **i seçin.**
 
-   - Ayarlama **eşiği** için **30**.
-   - Ayarlama **süresi** için **10**.
+   - **Eşiği** **30**olarak ayarlayın.
+   - **Süreyi** **10**olarak ayarlayın.
 
 **Eylem**
 
-1. Altında **işlemi**seçin **sayıyı şu kadar Azalt**.
+1. **İşlem**altında **sayıyı göre azalt**' ı seçin.
 
-   - Ayarlama **örnek sayısı** için **1**.
-   - Ayarlama **soğuma** için **5**.
+   - **Örnek sayısını** **1**olarak ayarlayın.
+   - **Cool tuşuna** **5**olarak ayarlayın.
 
 2. **Add (Ekle)** seçeneğini belirleyin.
 
-## <a name="create-a-traffic-manager-profile-and-configure-cross-cloud-scaling"></a>Bir Traffic Manager profili oluşturun ve Bulutlar arası ölçeklendirmeyi yapılandırma
+## <a name="create-a-traffic-manager-profile-and-configure-cross-cloud-scaling"></a>Traffic Manager profili oluşturma ve platformlar arası ölçeklendirmeyi yapılandırma
 
-Azure'da bir Traffic Manager profili oluşturma ve uç noktaları, Bulutlar arası ölçeklendirmeyi etkinleştirmek için yapılandırın.
+Azure 'da bir Traffic Manager profili oluşturun ve sonra da platformlar arası ölçeklendirmeyi etkinleştirmek için uç noktaları yapılandırın.
 
-### <a name="create-traffic-manager-profile"></a>Traffic Manager profili oluşturma
+### <a name="create-traffic-manager-profile"></a>Traffic Manager profili oluştur
 
 1. Seçin **kaynak Oluştur**.
-2. Seçin **ağ**.
-3. Seçin **Traffic Manager profili** ve aşağıdaki ayarları yapılandırın:
+2. **Ağ**' ı seçin.
+3. **Traffic Manager profil** ' i seçin ve aşağıdaki ayarları yapılandırın:
 
-   - İçinde **adı**, profiliniz için bir ad girin. Bu ad **gerekir** trafficmanager.net bölgesinde benzersiz olması ve yeni bir DNS adı (örneğin, northwindstore.trafficmanager.net) oluşturmak için kullanılır.
-   - İçin **yönlendirme yöntemi**seçin **ağırlıklı**.
-   - İçin **abonelik**, bu profilde oluşturmak istediğiniz aboneliği seçin.
-   - İçinde **kaynak grubu**, bu profili için yeni bir kaynak grubu oluşturun.
-   - **Kaynak grubu konumu** alanında kaynak grubunun konumunu seçin. Bu ayar, kaynak grubunun konumunu ifade eder ve küresel olarak dağıtılan Traffic Manager profilini etkilemez.
+   - **Ad**alanına profiliniz için bir ad girin. Bu ad trafficmanager.net bölgesinde benzersiz **olmalıdır** ve yenı bir DNS adı oluşturmak için kullanılır (örneğin, northwindstore.trafficmanager.net).
+   - **Yönlendirme yöntemi**için **ağırlıklı**' ı seçin.
+   - **Abonelik**için, bu profili oluşturmak istediğiniz aboneliği seçin.
+   - **Kaynak grubu**' nda, bu profil için yeni bir kaynak grubu oluşturun.
+   - **Kaynak grubu konumu** alanında kaynak grubunun konumunu seçin. Bu ayar, kaynak grubunun konumunu ifade eder ve genel olarak dağıtılan Traffic Manager profilini etkilemez.
 
 4. **Oluştur**’u seçin.
 
-    ![Traffic Manager profili oluşturma](media/azure-stack-solution-hybrid-cloud/image19.png)
+    ![Traffic Manager profili oluştur](media/azure-stack-solution-hybrid-cloud/image19.png)
 
-   Traffic Manager profilinizin genel dağıtımı tamamlandığında, kaynaklar altında oluşturduğunuz kaynak grubunda listesinde gösterilir.
+   Traffic Manager profilinizin genel dağıtımı tamamlandığında, altında oluşturduğunuz kaynak grubu için kaynak listesinde gösterilir.
 
 ### <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
 
-1. Traffic Manager profilini oluşturduğunuz arayın. Profil için kaynak grubu için geldiyseniz, profili seçin.
+1. Oluşturduğunuz Traffic Manager profilini arayın. Profil için kaynak grubuna gezindiyseniz, profili seçin.
 
-2. İçinde **Traffic Manager profili**altında **ayarları**seçin **uç noktaları**.
+2. **Traffic Manager profilinde**, **Ayarlar**altında **uç noktalar**' ı seçin.
 
 3. **Add (Ekle)** seçeneğini belirleyin.
 
-4. İçinde **uç noktası ekleme**, Azure Stack için aşağıdaki ayarları kullanın:
+4. **Uç nokta Ekle**' de Azure Stack için aşağıdaki ayarları kullanın:
 
-   - İçin **türü**seçin **dış uç noktası**.
-   - Girin bir **adı** uç noktası için.
-   - İçin **tam etki alanı adı (FQDN) veya IP**, Azure Stack web uygulamanız için dış URL'yi girin.
-   - İçin **ağırlık**, varsayılan değeri değiştirmeyin **1**. Bu ağırlığı tüm trafiğin sağlıksız olması durumunda bu uç noktaya gitmesiyle sonuçlanır.
-   - Bırakın **devre dışı olarak Ekle** seçeneği işaretli değil.
+   - **Tür**için **dış uç nokta**' ı seçin.
+   - Uç nokta için bir **ad** girin.
+   - **Tam etki alanı adı (FQDN) veya IP**için, Azure Stack Web uygulamanızın dış URL 'sini girin.
+   - **Ağırlık**için varsayılan değer olan **1**' i tutun. Bu ağırlık, sağlıklı ise bu uç noktaya giden tüm trafik ile sonuçlanır.
+   - **Eklemeyi devre dışı** bırak işareti kaldırılmış olarak bırakın.
 
-5. Seçin **Tamam** Azure Stack uç nokta kaydetmek için.
+5. Azure Stack uç noktasını kaydetmek için **Tamam ' ı** seçin.
 
-Sonraki Azure uç noktası yapılandıracaksınız.
+Sonraki Azure uç noktasını yapılandıracaksınız.
 
-1. Üzerinde **Traffic Manager profili**seçin **uç noktaları**.
-2. Seçin **+ Ekle**.
-3. Üzerinde **uç noktası ekleme**, Azure için aşağıdaki ayarları kullanın:
+1. **Traffic Manager profilinde** **uç noktalar**' ı seçin.
+2. **+ Ekle**' yi seçin.
+3. **Uç nokta Ekle**sayfasında Azure için aşağıdaki ayarları kullanın:
 
-   - İçin **türü**seçin **Azure uç noktası**.
-   - Girin bir **adı** uç noktası için.
-   - İçin **hedef kaynak türü**seçin **App Service**.
-   - İçin **hedef kaynak**seçin **uygulama hizmeti seçin** aynı abonelikte bulunan Web uygulamalarının bir listesini görmek için.
+   - **Tür**için **Azure uç noktası**' nı seçin.
+   - Uç nokta için bir **ad** girin.
+   - **Hedef kaynak türü**için **App Service**seçin.
+   - **Hedef kaynak**için, aynı abonelikte Web Apps listesini görmek üzere **bir App Service seçin** öğesini seçin.
    - **Kaynak** bölümünde ilk uç nokta olarak kullanmak istediğiniz uygulama hizmetini seçin.
-   - İçin **ağırlık**seçin **2**. Bu ayar tüm trafiğin birincil uç noktaya sağlam değil veya tetiklendiğinde trafiği yönlendiren bir kural/uyarısı varsa, bu uç noktaya gitmesiyle sonuçlanır.
-   - Bırakın **devre dışı olarak Ekle** seçeneği işaretli değil.
+   - **Ağırlık**için **2**' yi seçin. Bu ayar, birincil uç noktanın sağlıksız olması durumunda ya da tetiklendiğinde trafiği yeniden yönlendiren bir kuralınız/uyarıınız varsa, bu uç noktaya giden tüm trafiğe neden olur.
+   - **Eklemeyi devre dışı** bırak işareti kaldırılmış olarak bırakın.
 
-4. Seçin **Tamam** Azure uç noktasını kaydetmek için.
+4. Azure uç noktasını kaydetmek için **Tamam ' ı** seçin.
 
-Her iki bitiş noktası yapılandırıldıktan sonra içinde listelendikleri **Traffic Manager profili** seçtiğinizde **uç noktaları**. Aşağıdaki ekran görüntüsünde Bu örnek iki uç nokta, her biri için durumu ve yapılandırma bilgileri gösterir.
+Her iki uç nokta yapılandırıldıktan sonra, **uç noktalar**' ı seçerken **Traffic Manager profilde** listelenir. Aşağıdaki ekran yakalamadaki örnek, her biri için durum ve yapılandırma bilgileriyle iki uç nokta gösterir.
 
 ![Uç Noktalar](media/azure-stack-solution-hybrid-cloud/image20.png)
 
-## <a name="set-up-application-insights-monitoring-and-alerting"></a>Uygulama izleme ve uyarı ınsights'ı ayarlama
+## <a name="set-up-application-insights-monitoring-and-alerting"></a>Application Insights izlemeyi ve uyarı ayarlamayı ayarlama
 
-Azure Application Insights uygulamanızı izlemek ve yapılandırdığınız koşullara göre uyarı gönder olanak sağlar. Bazı örnekler şunlardır: kullanılamaz, hataları yaşıyor veya performans sorunları gösteren uygulama.
+Azure Application Insights, uygulamanızı izlemenizi ve yapılandırdığınız koşullara göre uyarı göndermenizi sağlar. Bazı örnekler şunlardır: uygulama kullanılamıyor, hatalarla karşılaşıyor veya performans sorunlarını gösteriyor.
 
-Application Insights ölçümleri, Uyarılar oluşturmak için kullanacaksınız. Bu uyarıları tetiklemek, web uygulamanızın örneği ölçeğini genişletmek için Azure otomatik olarak Azure yığını geçin ve ardından ölçeklendirme, Azure Stack yeniden.
+Uyarı oluşturmak için Application Insights ölçümleri kullanacaksınız. Bu uyarılar tetiklenmesi durumunda, Web uygulamanızın örneği ölçeği genişletmek için Azure Stack otomatik olarak Azure 'a geçer ve sonra ölçeklendirmek için Azure Stack geri dönecek.
 
-### <a name="create-an-alert-from-metrics"></a>Ölçümleri bir uyarı oluştur
+### <a name="create-an-alert-from-metrics"></a>Ölçülerden uyarı oluşturma
 
-Bu öğretici için kaynak grubuna gidin ve ardından açmak için Application Insights örneği **Application Insights**.
+Bu öğretici için kaynak grubuna gidin ve **Application Insights**açmak için Application Insights örneğini seçin.
 
 ![Application Insights](media/azure-stack-solution-hybrid-cloud/image21.png)
 
-Bu görünüm uyarı genişletme ve ölçeği uyarıda oluşturmak için kullanacaksınız.
+Bu görünümü, bir ölçek genişletme uyarısı ve uyarı ölçeğini oluşturmak için kullanacaksınız.
 
-### <a name="create-the-scale-out-alert"></a>Ölçeği genişletme uyarı oluşturma
+### <a name="create-the-scale-out-alert"></a>Ölçek Genişletme uyarısını oluşturma
 
-1. Altında **yapılandırma**seçin **uyarılar (Klasik)** .
-2. Seçin **ölçüm uyarısı Ekle (Klasik)** .
-3. İçinde **Kuralı Ekle**, aşağıdaki ayarları yapılandırın:
+1. **Yapılandır**altında **Uyarılar (klasik)** öğesini seçin.
+2. **Ölçüm uyarısı Ekle (klasik)** seçeneğini belirleyin.
+3. **Kural Ekle**' de, aşağıdaki ayarları yapılandırın:
 
-   - İçin **adı**, girin **Azure Bulutuna veri bloğu**.
-   - A **açıklama** isteğe bağlıdır.
-   - Altında **kaynak** > **uyar**seçin **ölçümleri**.
-   - Altında **ölçütleri**, aboneliğiniz için Traffic Manager profilinizin ve Traffic Manager profilinin adı kaynağı için kaynak grubunu seçin.
+   - **Ad**Için **Azure buluta veri bloğu**girin.
+   - **Açıklama** isteğe bağlıdır.
+   - **Kaynak** > **uyarısı**' nın altında, **ölçümler**' i seçin.
+   - **Ölçüt**altında, aboneliğinizi, Traffic Manager profilinizin kaynak grubunu ve kaynak için Traffic Manager profilinin adını seçin.
 
-4. İçin **ölçüm**seçin **istek hızı**.
-5. İçin **koşul**seçin **büyüktür**.
-6. İçin **eşiği**, girin **2**.
-7. İçin **süresi**seçin **son 5 dakika üzerinden**.
-8. Altında **şu şekilde bildir**:
-   - Onay için **e-posta sahipleri, Katkıda Bulunanlar ve okuyucular**.
-   - E-posta adresinizi girin **ek yönetici email(s)** .
+4. **Ölçüm**Için **istek hızı**' nı seçin.
+5. **Koşul**Için **şundan büyüktür**' i seçin.
+6. **Eşik**için **2**girin.
+7. **Süre**için **son 5 dakikayı**seçin.
+8. **Bildirim**altında:
+   - **E-posta sahipleri, katkıda bulunanlar ve okuyucular**için onay kutusunu işaretleyin.
+   - **Ek yönetici e-postaları**için e-posta adresinizi girin.
 
-9. Menü çubuğunda, seçin **Kaydet**.
+9. Menü çubuğunda **Kaydet**' i seçin.
 
-### <a name="create-the-scale-in-alert"></a>Ölçek uyarısı oluşturma
+### <a name="create-the-scale-in-alert"></a>Uyarı içinde ölçek oluşturma
 
-1. Altında **yapılandırma**seçin **uyarılar (Klasik)** .
-2. Seçin **ölçüm uyarısı Ekle (Klasik)** .
-3. İçinde **Kuralı Ekle**, aşağıdaki ayarları yapılandırın:
+1. **Yapılandır**altında **Uyarılar (klasik)** öğesini seçin.
+2. **Ölçüm uyarısı Ekle (klasik)** seçeneğini belirleyin.
+3. **Kural Ekle**' de, aşağıdaki ayarları yapılandırın:
 
-   - İçin **adı**, girin **Azure Stack uygulamasına geri ölçek**.
-   - A **açıklama** isteğe bağlıdır.
-   - Altında **kaynak** > **uyar**seçin **ölçümleri**.
-   - Altında **ölçütleri**, aboneliğiniz için Traffic Manager profilinizin ve Traffic Manager profilinin adı kaynağı için kaynak grubunu seçin.
+   - **Ad**Için **Azure Stack ölçeği geri ' ye**girin.
+   - **Açıklama** isteğe bağlıdır.
+   - **Kaynak** > **uyarısı**' nın altında, **ölçümler**' i seçin.
+   - **Ölçüt**altında, aboneliğinizi, Traffic Manager profilinizin kaynak grubunu ve kaynak için Traffic Manager profilinin adını seçin.
 
-4. İçin **ölçüm**seçin **istek hızı**.
-5. İçin **koşul**seçin **küçüktür**.
-6. İçin **eşiği**, girin **2**.
-7. İçin **süresi**seçin **son 5 dakika üzerinden**.
-8. Altında **şu şekilde bildir**:
-   - Onay için **e-posta sahipleri, Katkıda Bulunanlar ve okuyucular**.
-   - E-posta adresinizi girin **ek yönetici email(s)** .
+4. **Ölçüm**Için **istek hızı**' nı seçin.
+5. **Koşul**için küçüktür ' **i seçin.**
+6. **Eşik**için **2**girin.
+7. **Süre**için **son 5 dakikayı**seçin.
+8. **Bildirim**altında:
+   - **E-posta sahipleri, katkıda bulunanlar ve okuyucular**için onay kutusunu işaretleyin.
+   - **Ek yönetici e-postaları**için e-posta adresinizi girin.
 
-9. Menü çubuğunda, seçin **Kaydet**.
+9. Menü çubuğunda **Kaydet**' i seçin.
 
-Aşağıdaki ekran görüntüsü yakalamayı ölçek genişletme ve ölçek için uyarılar gösterilir.
+Aşağıdaki ekran yakalama, ölçeği genişletme ve ölçekleme için uyarıları gösterir.
 
    ![Uyarılar (klasik)](media/azure-stack-solution-hybrid-cloud/image22.png)
 
-## <a name="redirect-traffic-between-azure-and-azure-stack"></a>Azure Stack ile Azure arasındaki trafiği yeniden yönlendirme
+## <a name="redirect-traffic-between-azure-and-azure-stack"></a>Azure ile Azure Stack arasında trafiği yeniden yönlendirme
 
-Azure ve Azure Stack arasında geçiş yapma, web uygulaması trafiğinizi, el ile veya Otomatik geçiş yapılandırabilirsiniz.
+Azure ile Azure Stack arasında Web uygulaması trafiği geçişi için el ile veya otomatik geçişi yapılandırabilirsiniz.
 
-### <a name="configure-manual-switching-between-azure-and-azure-stack"></a>Azure Stack ve Azure arasında elle değiştirme yapılandırın
+### <a name="configure-manual-switching-between-azure-and-azure-stack"></a>Azure ile Azure Stack arasında el ile geçiş yapılandırma
 
-Web sitenizi eşiklerce ulaştığında bir uyarı alırsınız. El ile Azure'a trafiği yönlendirmek için aşağıdaki adımları kullanın.
+Web siteniz yapılandırdığınız eşiklere ulaştığında bir uyarı alırsınız. Trafiği Azure 'a el ile yönlendirmek için aşağıdaki adımları kullanın.
 
-1. Azure portalında Traffic Manager profilinizi seçin.
+1. Azure portal Traffic Manager profilinizi seçin.
 
     ![Traffic Manager uç noktaları](media/azure-stack-solution-hybrid-cloud/image20.png)
 
-2. Seçin **uç noktaları**.
-3. Seçin **Azure uç noktası**.
-4. Altında **durumu**seçin **etkin**ve ardından **Kaydet**.
+2. **Uç noktaları**seçin.
+3. **Azure uç noktasını**seçin.
+4. **Durum**altında, **etkin**' i seçin ve ardından **Kaydet**' i seçin.
 
-    ![Azure uç noktası etkinleştirin](media/azure-stack-solution-hybrid-cloud/image23.png)
+    ![Azure uç noktasını etkinleştir](media/azure-stack-solution-hybrid-cloud/image23.png)
 
-5. Üzerinde **uç noktaları** seçmek için Traffic Manager profili, **dış uç noktası**.
-6. Altında **durumu**seçin **devre dışı bırakılmış**ve ardından **Kaydet**.
+5. Traffic Manager profilinin **uç noktalarında** **dış uç nokta**' ı seçin.
+6. **Durum**altında **devre dışı**' yı seçin ve ardından **Kaydet**' i seçin.
 
-    ![Azure Stack uç noktayı devre dışı](media/azure-stack-solution-hybrid-cloud/image24.png)
+    ![Azure Stack uç noktasını devre dışı bırak](media/azure-stack-solution-hybrid-cloud/image24.png)
 
-Uç noktaları yapılandırıldıktan sonra uygulama trafiği Azure genişleme web uygulamanız Azure Stack web uygulaması yerine gider.
+Uç noktalar yapılandırıldıktan sonra, uygulama trafiği Azure Stack Web uygulaması yerine Azure genişleme Web uygulamanıza gider.
 
- ![Değiştirilen uç noktaları](media/azure-stack-solution-hybrid-cloud/image25.png)
+ ![Uç noktalar değişti](media/azure-stack-solution-hybrid-cloud/image25.png)
 
-Azure Stack'e akışı tersine çevirmek için önceki adımları kullanın:
+Akışı Azure Stack geri çevirmek için önceki adımları kullanın:
 
-- Azure Stack uç noktası etkinleştirin.
-- Azure uç noktası devre dışı bırakın.
+- Azure Stack uç noktasını etkinleştirin.
+- Azure uç noktasını devre dışı bırakın.
 
-### <a name="configure-automatic-switching-between-azure-and-azure-stack"></a>Azure ve Azure Stack arasında otomatik geçiş yapılandırın
+### <a name="configure-automatic-switching-between-azure-and-azure-stack"></a>Azure ile Azure Stack arasında otomatik geçiş yapılandırma
 
-Uygulamanız çalışıyorsa Application Insights izleme kullanabilirsiniz bir [sunucusuz](https://azure.microsoft.com/overview/serverless-computing/) Azure işlevleri tarafından sağlanan ortam.
+Uygulamanız Azure Işlevleri tarafından sunulan [sunucusuz](https://azure.microsoft.com/overview/serverless-computing/) bir ortamda çalıştırılıyorsa Application Insights izlemeyi da kullanabilirsiniz.
 
-Bu senaryoda, Application Insights'ın çağıran bir işlev uygulaması Web kancası kullanmak için yapılandırabilirsiniz. Bu uygulama, otomatik olarak etkinleştirir veya bir uç nokta bir uyarıya yanıt olarak devre dışı bırakır.
+Bu senaryoda, bir işlev uygulaması çağıran bir Web kancasını kullanmak için Application Insights yapılandırabilirsiniz. Bu uygulama, bir uyarıya yanıt olarak bir uç noktayı otomatik olarak sağlar veya devre dışı bırakır.
 
-Aşağıdaki adımlar otomatik trafik geçişini yapılandırmak için bir kılavuz olarak kullanın.
+Otomatik trafik geçişini yapılandırmak için aşağıdaki adımları kılavuz olarak kullanın.
 
-1. Bir Azure işlev uygulaması oluşturun.
+1. Bir Azure Işlev uygulaması oluşturun.
 2. HTTP ile tetiklenen bir işlev oluşturun.
-3. Resource Manager, Web uygulamaları ve Traffic Manager için Azure SDK'ları alma.
-4. Kod geliştirme:
+3. Kaynak Yöneticisi, Web Apps ve Traffic Manager için Azure SDK 'larını içeri aktarın.
+4. Kodu şu şekilde geliştirin:
 
-   - Azure aboneliğiniz için kimlik doğrulaması.
-   - Traffic Manager uç noktaları trafiği Azure'a veya Azure Stack değiştirir bir parametreyi kullanın.
+   - Azure aboneliğinizde kimlik doğrulaması yapın.
+   - Traffic Manager uç noktalarına trafiği Azure 'a veya Azure Stack yönlendirmek için geçiş yapan bir parametre kullanın.
 
-5. Kodunuzu kaydedin ve eklemek için uygun parametrelerle işlev uygulamanızın URL'sine **Web kancası** Application Insights uyarı kuralı ayarları bölümü.
-6. Bir Application Insights uyarı tetiklendiğinde, trafiği otomatik olarak yönlendirilir.
+5. Kodunuzu kaydedin ve işlev uygulamasının URL 'sini, Application Insights uyarı kuralı ayarlarının **Web kancası** bölümüne uygun parametrelerle ekleyin.
+6. Application Insights bir uyarı tetiklendiğinde trafik otomatik olarak yönlendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

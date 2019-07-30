@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 07/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 9d0597d4e2687c6563c365470be57c1603bbe616
-ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
+ms.lastreviewed: 07/24/2019
+ms.openlocfilehash: 2d57c0ff71cd0aa4280e6a21df4727ee4bbe7fb6
+ms.sourcegitcommit: 7961fda0bfcdd3db8cf94a8c405b5c23a23643af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68376739"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68616492"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack API sürüm profillerini yönetme
 
@@ -91,6 +91,8 @@ Git SDK 'da, bir profil farklı hizmetlerden farklı sürümlere sahip farklı k
 Azure Stack Kaynak Yöneticisi için Ruby SDK, altyapınızı oluşturmanıza ve yönetmenize yardımcı olacak araçlar sağlar. SDK 'daki kaynak sağlayıcıları, Ruby dili ile işlem, sanal ağlar ve depolama alanı içerir. Bilgi için bkz. [Ruby Ile API sürüm profillerini kullanma](azure-stack-version-profiles-ruby.md).
 - **Python**  
 Python SDK, Azure Stack ve küresel Azure gibi farklı bulut platformlarını hedeflemek için API sürüm profillerini destekler. Karma bulut için çözümler oluşturmak üzere API profillerini kullanın. Bilgi için bkz. [Python Ile API sürüm profillerini kullanma](azure-stack-version-profiles-python.md).
+- **Node.js**  
+Azure Stack Kaynak Yöneticisi için Node. js SDK 'Sı, altyapınızı oluşturmanıza ve yönetmenize yardımcı olacak araçlar sağlar. Daha fazla bilgi için bkz. [Node. js Ile API sürüm profillerini kullanma](azure-stack-version-profile-nodejs.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

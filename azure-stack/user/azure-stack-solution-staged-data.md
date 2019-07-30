@@ -1,11 +1,12 @@
 ---
-title: Azure Stack için hazırlanmış veri analizi çözümü dağıtma | Microsoft Docs
-description: Azure Stack için hazırlanmış veri analizi çözümü dağıtmayı öğrenin
+title: Azure Stack için hazırlanmış bir veri analizi çözümü dağıtma | Microsoft Docs
+description: Azure Stack için hazırlanmış bir veri analizi çözümünü dağıtmayı öğrenin
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
+ms.topic: conceptual
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,50 +15,50 @@ ms.date: 06/20/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: ca4c2480fff511ab3bad43ea82fc81522d9afba0
-ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
+ms.openlocfilehash: 859d80c9782926602769664006375cb131de8637
+ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68286738"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602943"
 ---
-# <a name="deploy-a-staged-data-analytics-solution-to-azure-stack"></a>Azure Stack için hazırlanmış veri analizi çözümü dağıtma
+# <a name="deploy-a-staged-data-analytics-solution-to-azure-stack"></a>Azure Stack için hazırlanmış bir veri analizi çözümü dağıtın
 
-Bu makale koleksiyonu noktasında gerekir ve böylece hızlı kararlar yapılabilmesi için veri toplamak için bir çözümün nasıl dağıtılacağı gösterir. Genellikle bu veri toplama, Internet erişimi oluşur. Bağlantı kurulduğunda verilere ek Öngörüler elde etmek için bir kaynak kullanımı yoğun çözümlemesi gerekebilir.
+Bu makalede, hızlı kararların yapılabilmesi için koleksiyon noktasında analiz gerektiren verileri toplamaya yönelik bir çözümün nasıl dağıtılacağı gösterilir. Genellikle bu veri koleksiyonu Internet erişimi olmadan oluşur. Bağlantı oluşturulduğunda, ek Öngörüler kazanmak için verilerin yoğun kaynak bir analizini yapmanız gerekebilir.
 
-Bu çözümde bir örnek ortama oluşturacaksınız:
+Bu çözümde şu şekilde bir örnek ortam oluşturacaksınız:
 
 > [!div class="checklist"]
-> - Ham veri depolama blob'u oluşturun.
-> - Verileri temizleme Azure yığını, Azure'a taşımak için yeni bir Azure Stack işlevi oluşturun.
-> - Blob Depolama ile tetiklenen bir işlev oluşturun.
-> - Azure Stack, blob ve kuyruk içeren bir depolama hesabı oluşturun.
-> - Kuyruk ile tetiklenen bir işlev oluşturun.
-> - Test kuyruk ile tetiklenen işlev.
+> - Ham veri depolama blobu oluşturun.
+> - Temiz verileri Azure Stack Azure 'a taşımak için yeni bir Azure Stack Işlevi oluşturun.
+> - BLOB depolama ile tetiklenen bir işlev oluşturun.
+> - Blob ve kuyruk içeren Azure Stack depolama hesabı oluşturun.
+> - Kuyruğa geçirilmiş bir işlev oluşturun.
+> - Kuyruğa tetiklenen işlevi test edin.
 
 > [!Tip]  
 > ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, hibrit uygulamaları her yerde oluşturup dağıtmayı olanak tanıyan tek hibrit Bulutu çevikliğini ve yenilik, şirket içi ortamınıza bulut getirir.  
+> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
 > 
-> Makaleyi [karma uygulamaları için tasarım konuları](azure-stack-edge-pattern-overview.md) (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) yazılım kalitesinin yapı taşları tasarlama, dağıtma ve karma çalıştırma için gözden geçirmeleri uygulamalar. Tasarım konuları, karma uygulama tasarımı, üretim ortamlarında sorunlarını en aza en iyi duruma getirme yardımcı olur.
+> [Karma uygulamalar Için tasarım konuları](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
 
-## <a name="architecture-for-staged-data-analytics"></a>Hazırlanmış verinin analytics mimarisi
+## <a name="architecture-for-staged-data-analytics"></a>Hazırlanan veri analizi için mimari
 
-![hazırlanmış verinin analizi](media/azure-stack-solution-staged-data/image1.png)
+![hazırlanan veri analizi](media/azure-stack-solution-staged-data/image1.png)
 
-## <a name="prerequisites-for-staged-data-analytics"></a>Hazırlanmış veri analizi için Önkoşullar
+## <a name="prerequisites-for-staged-data-analytics"></a>Hazırlanan veri analizi önkoşulları
 
   - Azure aboneliği.
-  - Azure ve Azure Stack Kiracı aboneliği için izinlere sahip bir Azure Active Directory (AAD) hizmet sorumlusu. Azure Stack, Azure aboneliğiniz daha farklı bir AAD kiracısı kullanıyorsa, iki hizmet sorumluları oluşturmanız gerekebilir. Azure Stack için hizmet sorumlusu oluşturma konusunda bilgi almak için Git [uygulamaları Azure Stack kaynaklarına erişmenizi sağlayacak bir hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
-      - **Her hizmet sorumlusunun uygulama kimliği, istemci parolası, Azure AD Kiracı kimliği ve Kiracı adı (xxxxx.onmicrosoft.com) not edin.**
-  - Veri analizi için veri koleksiyonunu sağlamanız gerekir. Örnek verileri sağlanır.
-  - [Windows için docker](https://docs.docker.com/docker-for-windows/) yerel makinenizde yüklü.
+  - Azure ve Azure Stack kiracı aboneliğine yönelik izinlere sahip bir Azure Active Directory (AAD) hizmet sorumlusu. Azure Stack Azure aboneliğinizden farklı bir AAD kiracısı kullanıyorsa, iki hizmet sorumlusu oluşturmanız gerekebilir. Azure Stack için hizmet sorumlusu oluşturma hakkında bilgi edinmek için, [uygulamalara Azure Stack kaynaklarına erişim sağlamak için hizmet sorumluları oluşturun](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals)bölümüne gidin.
+      - **Her bir hizmet sorumlusunun uygulama KIMLIĞI, istemci parolası, Azure AD kiracı KIMLIĞI ve kiracı adı (xxxxx.onmicrosoft.com) gibi bir yere dikkat edin.**
+  - Veri analizi için bir veri koleksiyonu sağlamanız gerekir. Örnek veriler sağlanır.
+  - Yerel makinenizde yüklü [Docker for Windows](https://docs.docker.com/docker-for-windows/) .
 
-## <a name="get-the-docker-image"></a>Docker görüntüsünü Al
+## <a name="get-the-docker-image"></a>Docker görüntüsünü al
 
-Her dağıtım için docker görüntülerini, Azure PowerShell farklı sürümleri arasında bağımlılık sorunlarını ortadan kaldırın.
-1.  Windows kapsayıcıları için Docker Windows kullandığından emin olun.
-2.  Dağıtım betikleri ile Docker kapsayıcısı almak için yükseltilmiş bir komut isteminde aşağıdaki komutu çalıştırın.
+Her dağıtım için Docker görüntüleri farklı Azure PowerShell sürümleri arasındaki bağımlılık sorunlarını ortadan kaldırır.
+1.  Docker for Windows Windows kapsayıcıları ' nı kullandığınızdan emin olun.
+2.  Dağıtım betikleri ile Docker kapsayıcısını almak için yükseltilmiş bir komut isteminde aşağıdakileri çalıştırın.
 
 ```
  docker pull intelligentedge/stageddatasolution:1.0.0
@@ -65,19 +66,19 @@ Her dağıtım için docker görüntülerini, Azure PowerShell farklı sürümle
 
 ## <a name="deploy-the-solution"></a>Çözümü dağıtma
 
-1.  Kapsayıcı görüntüsünü başarıyla çekilen sonra görüntüyü başlatın.
+1.  Kapsayıcı görüntüsü başarıyla çekildikten sonra görüntüyü başlatın.
 
       ```powershell  
       docker run -it intelligentedge/stageddatasolution:1.0.0 powershell
       ```
 
-2.  Kapsayıcı başladıktan sonra yükseltilmiş bir PowerShell terminalde kapsayıcı verilir. Dağıtım betiğine almak için dizinleri değiştirin.
+2.  Kapsayıcı başlatıldıktan sonra, kapsayıcıda yükseltilmiş bir PowerShell terminali vermiş olursunuz. Dağıtım betiğine ulaşmak için dizinleri değiştirin.
 
       ```powershell  
       cd .\SDDemo\
       ```
 
-3.  Dağıtımı'nı çalıştırın. Kimlik bilgileri ve kaynak sağlamanız gerektiğinde adları. HA HA kümenin dağıtılacağı Azure Stack ve DR kümenin dağıtılacağı Azure Stack için DR ifade eder.
+3.  Dağıtımı çalıştırın. Gereken yerlerde kimlik bilgileri ve kaynak adları sağlayın. HA, HA kümesinin dağıtılacağı Azure Stack ve Dr kümesinin dağıtılacağı Azure Stack DR anlamına gelir.
 
       ```powershell
       .\DeploySolution-Azure-AzureStack.ps1 `
@@ -92,28 +93,28 @@ Her dağıtım için docker görüntülerini, Azure PowerShell farklı sürümle
       -ResourcePrefix "aPrefixForResources"
       ```
 
-1.  İstenirse; Application Insights ve Azure dağıtım için bir bölge girin.
+1.  İstenirse; Azure dağıtımı için bir bölge girin ve Application Insights.
 
-2.  ", Azure ve Azure Stack dağıtıma izin vermek için yüklenecek API profili"2018-03-01-karma"modülleri kazandırın yüklenmesi NuGet sağlayıcısı izin vermek için Y" yazın.
+2.  NuGet sağlayıcısının yüklenmesine izin vermek için "Y" yazın. Bu, Azure ve Azure Stack dağıtımına izin vermek üzere yüklenecek "2018-03-01-karma" modüllerinin API profilini devre dışı bırakır.
 
-3.  Kaynakları dağıtıldıktan sonra Azure Stack ve Azure için verileri oluşturulacak test edin.
+3.  Kaynaklar dağıtıldıktan sonra, verilerin hem Azure Stack hem de Azure için oluşturulacağını test edin.
 
     ```powershell  
       .\TDAGenerator.exe
     ```
 
-4.  Azure veya Azure Stack dağıtılan web uygulamaları giderek işlenen verilere bakın.
+4.  Azure 'a veya Azure Stack dağıtılan Web uygulamalarına giderek işlenmekte olan verilere bakın.
 
 ### <a name="azure-web-app"></a>Azure Web Uygulaması
  
-![hazırlanmış veri analizi çözümü](media/azure-stack-solution-staged-data/image2.png)
+![hazırlanan veri analizi çözümü](media/azure-stack-solution-staged-data/image2.png)
  
 ### <a name="azure-stack-web-app"></a>Azure Stack Web uygulaması
  
-![Azure Stack için hazırlanmış veri analizi çözümü](media/azure-stack-solution-staged-data/image3.png)
+![Azure Stack için hazırlanan veri analizi çözümü](media/azure-stack-solution-staged-data/image3.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-  - Hibrit bulut uygulamaları hakkında daha fazla bilgi için bkz: [hibrit bulut çözümleri.](https://aka.ms/azsdevtutorials)
+  - Hibrit bulut uygulamaları hakkında daha fazla bilgi için bkz [. karma bulut çözümleri.](https://aka.ms/azsdevtutorials)
 
-  - Bu örnek için kodu değiştirin veya kendi verilerinizi kullanmak [GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns).
+  - Kendi verilerinizi kullanın veya [GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns)'da bu örnekteki kodu değiştirin.
