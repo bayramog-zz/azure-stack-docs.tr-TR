@@ -2,60 +2,82 @@
 documentType: LandingData
 title: Azure Stack Operatör Belgeleri
 metadata:
-  document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
-  title: 'Azure Stack Operatör Belgeleri - Öğreticiler, API Başvurusu'
-  description: 'Azure Stack, veri merkezinizden Azure Hizmetleri sunmak için kullanmayı öğrenin. Öğrenin ve Geliştirme Seti veya bir tümleşik sistem ortam özelliklerini gösterir.'
+  title: 'Azure Stack Belgeleri - Öğreticiler, API Başvurusu'
+  meta.description: azure-stack
   services: azure-stack
-  author: mattbriggs
+  author: justinha
   manager: femila
+  layout: LandingPage
+  ms.assetid: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   ms.service: azure-stack
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.tgt_pltfrm: from-team
+  ms.devlang: from-team
   ms.topic: landing-page
-  ms.date: 06/17/2019
-  ms.author: mabrigg
+  ms.date: 07/09/2019
+  ms.author: justinha
 abstract:
-  description: 'Microsoft Azure Stack, veri merkezinden Azure hizmetleri sağlama olanağı sunan bir karma bulut platformudur. Azure Stack tümleşik sistemleri altyapısını yönetme ve Hizmetleri hızlı başlangıç kılavuzlarımız ve öğreticilerimizden yararlanarak teklif öğrenin.<br/><br/>Hizmetleri kullanan veya Azure Stack için uygulamalar oluşturur bir Azure Stack kullanıcısı değilseniz, bkz. bizim <a href="/azure-stack/user">kullanıcı belgeleri</a>.<br/><br/>Azure Stack geliştirme Seti''ni (ASDK içinde), bir tek düğümlü dağıtım Azure Stack, indirin ve ücretsiz olarak kullanmak istiyorsanız bir Azure Stack operatörü olup olmadığını görmek bizim <a href="/azure-stack/asdk">ASDK belgeleri</a>.'
+  description: 'Microsoft Azure Stack, veri merkezinden Azure hizmetleri sağlama olanağı sunan bir karma bulut platformudur. Azure Stack tümleşik sistem altyapısını yönetmeyi ve hızlı başlangıçlar ve öğreticilerimizi kullanarak hizmet sunmayı öğrenin.<br/><br/>Azure Stack için hizmetler veya uygulamalar derleme kullanan Azure Stack bir kullanıcılarınız varsa, <a href="/azure-stack/user">Kullanıcı belgelerimize</a>bakın.<br/><br/>Ücretsiz olarak indirebileceğiniz ve kullanabileceğiniz bir Azure Stack tek düğümlü bir dağıtımı olan Azure Stack Geliştirme Seti (ASDK) ile ilgilenen bir Azure Stack operatörünüz varsa, <a href="/azure-stack/asdk">asdk belgelerimize</a>bakın.'
 sections:
-  - title: Hızlı Başlangıç
-    items:
-      - type: paragraph
-        text: Günlük yönetimi için Yönetim Portalı'nı kullanmayı öğrenin.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            text: Azure Stack yönetim portalını kullanın
-            href: azure-stack-manage-portals.md
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: Azure Stack dağıtımınıza hizmet eklemeyi öğrenin.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure-stack/operator/azure-stack-tutorial-tenant-vm">Azure Stack üzerinde sanal makine teklifi</a>
-          - html: <a href="/azure-stack/operator/azure-stack-tutorial-sql-server">Azure Stack üzerinde SQL veritabanı teklifi</a>
-          - html: <a href="/azure-stack/operator/azure-stack-tutorial-sql">Yüksek oranda kullanılabilir SQL veritabanı oluşturma</a>
-          - html: <a href="/azure-stack/operator/azure-stack-tutorial-mysql">Yüksek oranda kullanılabilir olan MySQL veritabanları oluşturma</a>
-          - html: <a href="/azure-stack/operator/azure-stack-tutorial-app-service">Azure Stack üzerinde Web Apps teklifi</a>
-  - title: Ücretsiz Pluralsight Video Eğitimi
+  - title: Azure Stack kullanmaya başlayın
     items:
       - type: list
         style: cards
-        className: cardsFTitle
+        className: cardsA
         items:
-          - title: Azure Stack ile ilgili temel bilgileri öğrenme
-            href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54'
-  - title: Başvuru
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-manage-portals">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_portal.svg" alt="">
+              <br><b>Yönetim portalını kullanma</b></a>
+              <p>Günlük yönetimi için yönetim portalını ve Azure Stack işlemlerini kullanın.</p>
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-powershell-install">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Azure Stack PowerShell</b></a>
+              <p>Azure Stack kaynaklarınızı PowerShell 'ten kolayca yönetin.</p>
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-capacity-planning-overview">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_load-testing.svg" alt="">
+              <br><b>Kapasite planlama</b></a>
+              <p>Farklı işlem kaynağı ayırmalarının, donanım tekliflerinin seçimine nasıl uyduğunu görün.</p>
+  - title: Azure Stack hizmetleri sunma
     items:
       - type: list
         style: cards
-        className: cardsD
+        className: cardsA
         items:
-          - title: Komut Satırı
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-sql-resource-provider">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_SQL.svg" alt="hybrid cloud app ci/cd">
+              <br><b>PaaS olarak SQL sunun</b></a>
+              <p>SQL veritabanlarını Azure Stack bir hizmet olarak sunmak için SQL Server kaynak sağlayıcısını kullanın.</p>
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-mysql-resource-provider">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_mysql.svg" alt="hybrid cloud app identity">
+              <br><b>MySQL as PaaS olarak sunun</b></a>
+              <p>MySQL veritabanlarını Azure Stack bir hizmet olarak sunmak için MySQL kaynak sağlayıcısını kullanın.</p>
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-app-service-overview">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-apps.svg" alt="hybrid cloud app scaling">
+              <br><b>PaaS olarak Azure App Service teklif edin</b></a>
+              <p>Kullanıcıların herhangi bir platform veya cihaz için Web uygulamaları ve API 'Ler oluşturmalarına yardımcı olun.</p>
+  - title: Azure Stack yönetme
+    items:
+      - type: list
+        style: cards
+        className: cardsA
+        items:
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-updates">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_upgrade.svg" alt="">
+              <br><b>Güncelleştirme Azure Stack</b></a>
+              <p>Microsoft, her ay Azure Stack tümleşik sistemleri güncel tutmak için tek bir paket paketlemiştir. </p>
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-backup-infrastructure-backup">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_usb.svg" alt="">
+              <br><b>Yedekleme Azure Stack</b></a>
+              <p>Infrastructure Backup hizmetini kullanarak yapılandırma ve hizmet verilerini yedekleyin ve geri yükleyin.</p>
+          - html: |-
+              <a href="/azure-stack/operator/azure-stack-security-configuration">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cloud-security.svg" alt="">
+              <br><b>Azure Stack güvenliği yapılandırma</b></a>
+              <p>Azure Stack modern tehditlere karşı savunmak ve uyumluluk standartlarını karşılamak için tasarlanmıştır.</p>
