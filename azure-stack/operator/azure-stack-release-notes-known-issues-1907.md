@@ -16,12 +16,12 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 93ac5da096642870e41a36f13611056ee51539f4
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: fb5c02eae73dcc2191e8b65bacea32efc0068b2e
+ms.sourcegitcommit: 9a4966fa66a0ed3bfd3a10376df2a6ffd3dd60a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68497194"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68665104"
 ---
 # <a name="azure-stack-1907-known-issues"></a>Azure Stack 1907 bilinen sorunlar
 
@@ -34,7 +34,7 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: 1906 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur. 1906 güncelleştirme paketi önceki güncelleştirme paketlerinden daha büyük olduğundan, bu sorunun oluşma olasılığını daha yüksektir.
-- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md#import-and-install-updates)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
+- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçicibir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md#import-and-install-updates)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
 - Oluşum Common
 
 ## <a name="portal"></a>Portal
@@ -47,11 +47,11 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 - Oluşum Common
 
 ### <a name="subscriptions-properties-blade"></a>Abonelikler Özellikler dikey penceresi
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Yönetici portalında, abonelikler için özellikler dikey penceresi doğru yüklenmez
-- Düzeltmesi Bu abonelikler özelliklerini, abonelikler genel bakış dikey penceresinin temel bileşenler bölmesinde görüntüleyebilirsiniz.
-- Oluşum Common
 
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Yönetici portalında, abonelikler için **Özellikler** dikey penceresi doğru yüklenmez
+- Düzeltmesi Bu abonelik özelliklerini, **Abonelikler genel bakış** dikey penceresinin **temel** bileşenler bölmesinde görüntüleyebilirsiniz.
+- Oluşum Common
 
 ### <a name="subscription-permissions"></a>Abonelik izinleri
 
@@ -93,8 +93,8 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 #### <a name="local-network-gateway-deletion"></a>Yerel ağ geçidi silme
 
 - Uygunsa Bu sorun 1906 sürümü için geçerlidir.
-- Neden: Kullanıcı portalında, yerel ağ geçidini silmek şu hata iletisini görüntüler: "Etkin bağlantı olmasa bile," etkin bağlantı olan bir yerel ağ geçidi silinemiyor. 
-- Mayı Bu sorunun düzeltilmesi 1907 ' de yayımlanacak. Bu soruna yönelik bir geçici çözüm olarak, aynı IP adresi, adres alanı ve yapılandırma ayrıntıları farklı bir adla yeni bir yerel ağ geçidi oluşturmaktır. Ortam 1907 olarak güncelleştirildikten sonra eski LNG silinebilir. 
+- Neden: Kullanıcı portalında, **yerel ağ geçidini** silmek şu hata iletisini görüntüler: Etkin bir bağlantı olmasa bile, **etkin bir bağlantıyla yerel ağ geçidi**silinemez.
+- Mayı Bu sorunun düzeltilmesi 1907 ' de yayımlanacak. Bu soruna yönelik bir geçici çözüm olarak, aynı IP adresi, adres alanı ve yapılandırma ayrıntıları farklı bir adla yeni bir yerel ağ geçidi oluşturmaktır. Ortam 1907 olarak güncelleştirildikten sonra eski LNG silinebilir.
 - Oluşum Common
 
 #### <a name="alerts"></a>Uyarılar
@@ -152,21 +152,21 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 ### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Sanal makine ölçek kümesi sıfırlama parolası çalışmıyor
 
-- Uygunsa Bu sorun 1906, 1907 sürümü için geçerlidir.
+- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
 - Neden: Ölçek kümesi Kullanıcı arabiriminde yeni bir sıfırlama parolası dikey penceresi görünür ancak Azure Stack, henüz bir ölçek kümesindeki parolanın sıfırlanmasını desteklemez.
 - Düzeltmesi Yok.
 - Oluşum Common
 
 ### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Ölçek kümesi tanılamasında Rainy bulutu
 
-- Uygunsa Bu sorun 1906, 1907 sürümü için geçerlidir.
+- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
 - Neden: Sanal makine ölçek kümesine genel bakış sayfası boş bir grafik gösterir. Boş grafiğe tıkladığınızda bir "Rainy Cloud" dikey penceresi açılır. Bu, CPU yüzdesi gibi ölçek kümesi tanılama bilgilerine yönelik bir grafiktir ve geçerli Azure Stack derlemesinde desteklenen bir özellik değildir.
 - Düzeltmesi Yok.
 - Oluşum Common
 
 ### <a name="virtual-machine-diagnostic-settings-blade"></a>Sanal makine Tanılama ayarları dikey penceresi
 
-- Uygunsa Bu sorun 1906, 1907 sürümü için geçerlidir.
+- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
 - Neden: Sanal makine Tanılama ayarları dikey penceresinde bir **Havuz** sekmesi bulunur ve bu bir Application Insights **hesabı**ister. Bu, yeni bir dikey pencerenin sonucudur ve Azure Stack henüz desteklenmemiştir.
 - Düzeltmesi Yok.
 - Oluşum Common

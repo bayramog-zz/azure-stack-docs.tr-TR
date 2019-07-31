@@ -1,6 +1,6 @@
 ---
-title: Azure Stack için uygulamalar geliştirin | Microsoft Docs
-description: Prototip oluşturma uygulamaları Azure Stack için geliştirme konuları
+title: Azure Stack yönelik uygulamalar geliştirin | Microsoft Docs
+description: Azure hizmetlerini kullanarak Azure Stack prototipsiz uygulamalar için geliştirme konuları.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -16,30 +16,30 @@ ms.date: 05/21/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 4273326001dc79abb7ea522c3bd4c01e46bceb2b
-ms.sourcegitcommit: 6fcd5df8b77e782ef72f0e1419f1f75ec8c16c04
+ms.openlocfilehash: 059e7961cae5c6d6faa8d79d05dbc08a05a13893
+ms.sourcegitcommit: b3dac698f2e1834491c2f9af56a80e95654f11f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991290"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68658559"
 ---
 # <a name="develop-for-azure-stack"></a>Azure Stack için geliştirme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bir Azure Stack ortama erişiminiz yoksa bile uygulamalar bugün geliştirmeye başlayabilirsiniz. Azure Stack, veri merkezinizde çalışan Microsoft Azure hizmetleri sunar çünkü benzer araçları ve işlemleri Azure ile olduğu gibi Azure Stack'te geliştirmek için kullanabilirsiniz.
+Bir Azure Stack ortamına erişiminiz olmasa bile, bugün uygulama geliştirmeye başlamanızı sağlayabilirsiniz. Azure Stack, veri merkezinizde çalışan Microsoft Azure hizmetleri sunar. Bu, Azure Stack geliştirmek için aynı Azure araçlarını ve süreçlerini kullanabileceğiniz anlamına gelir.
 
 ## <a name="development-considerations"></a>Geliştirme konuları
 
-Bazı hazırlık ve aşağıdaki konulardaki yönergeleri kullanarak, bir Azure Stack ortamına öykünmek için Azure'ı kullanabilirsiniz.
+Bazı hazırlıklar ve aşağıdaki konularda bulunan Kılavuzu kullanarak, bir Azure Stack ortamına öykünmek için Azure 'u kullanabilirsiniz.
 
-* Azure'da, Azure Stack için dağıtılabilen bir Azure Resource Manager şablonları oluşturabilirsiniz. Bkz: [şablonu konuları](azure-stack-develop-templates.md) taşınabilirliği sağlamak için şablon geliştirme konusunda yönergeler için.
-* Hizmet kullanılabilirliği ve hizmet sürümü oluşturma Azure ve Azure Stack arasında farklılıklar vardır. Kullanabileceğiniz [Azure Stack ilke modülü](azure-stack-policy-module.md) nedir kullanılabilir Azure Stack'te Azure hizmet kullanılabilirliği ve kaynak türlerini kısıtlamak için. Hizmetleri sınırlamak için uygulamalarınızı Azure Stack için kullanılabilen hizmetler kullandığını sağlar.
-* [Azure Stack hızlı başlangıç şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates) göstermek için Azure ve Azure Stack dağıtılabilir şablonlarını nasıl geliştireceğinizi yaygın senaryo örnekleri.
+* Azure 'da, Azure Stack dağıtılabilir Azure Resource Manager şablonlar oluşturabilirsiniz. Taşınabilirlik sağlamak için şablon geliştirmeye yönelik yönergeler için bkz. [şablon konuları](azure-stack-develop-templates.md) .
+* Azure ile Azure Stack arasında hizmet kullanılabilirliği ve hizmet sürümü oluşturma farklılıkları vardır. Azure hizmet kullanılabilirliğini ve kaynak türlerini Azure Stack kullanılabilir olanlarla kısıtlamak için [Azure Stack İlkesi modülünü](azure-stack-policy-module.md) kullanabilirsiniz. Kısıtlama Hizmetleri, uygulamalarınızın Azure Stack için kullanılabilen hizmetlere dayanmasını sağlar.
+* [Azure Stack hızlı başlangıç şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates) , hem Azure hem de Azure Stack için dağıtılabilir şablonlar geliştirmeyi gösteren yaygın senaryo örnekleridir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Stack geliştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure Resource Manager şablonu en iyi uygulamaları](azure-stack-develop-templates.md)
-* [Github'da Azure Stack hızlı başlangıç şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates)
+* [Resource Manager şablonu en iyi yöntemleri](azure-stack-develop-templates.md)
+* [GitHub 'daki Azure Stack hızlı başlangıç şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates)

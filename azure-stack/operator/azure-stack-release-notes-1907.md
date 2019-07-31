@@ -16,12 +16,12 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 961233bea7c2581e20cb5cae875b9dab9f617758
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: b5ed44dfaaf8f34279126d3007f4879e2af1b192
+ms.sourcegitcommit: 9a4966fa66a0ed3bfd3a10376df2a6ffd3dd60a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68497249"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68665102"
 ---
 # <a name="azure-stack-1907-update"></a>Azure Stack 1907 güncelleştirmesi
 
@@ -38,10 +38,11 @@ Azure Stack 1907 güncelleştirme yapı numarası **1.1907.0.20**.
 
 ### <a name="update-type"></a>Güncelleştirme türü
 
-Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için [Azure Stack güncelleştirmeleri yönetme](azure-stack-updates.md) makalesine bakın. İç teste bağlı olarak, 1907 güncelleştirmesinin tamamlaması için gereken süre yaklaşık 13 saattir. 
- - Tamamen güncelleştirme çalışma zamanları, genellikle kiracı iş yükleri, sistem ağ bağlantınız (internet 'e bağlıysa) ve sistem donanım yapılandırmanız tarafından sisteminizde kullanılan kapasiteye bağlıdır. 
- - Beklenen değerden daha uzun süre içinde yer kalmayan çalışma zamanları, güncelleştirme başarısız olmadığı için Azure Stack işleçlere göre işlem gerektirmemektedir. 
- - Bu çalışma zamanı yaklaşık 1907 güncelleştirmesine özeldir ve diğer Azure Stack güncelleştirmeleriyle karşılaştırılmamalıdır.
+Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için [Azure Stack güncelleştirmeleri yönetme](azure-stack-updates.md) makalesine bakın. İç teste bağlı olarak, 1907 güncelleştirmesinin tamamlaması için gereken süre yaklaşık 13 saattir.
+
+- Tam güncelleştirme çalışma zamanları, genellikle kiracı iş yükleri, sistem ağ bağlantınız (internet 'e bağlıysa) ve sistem donanım yapılandırmanız tarafından sisteminizde kullanılan kapasiteye bağlıdır.
+- Beklenenden uzun süre içinde olan çalışma zamanları seyrek değildir ve güncelleştirme başarısız olmazsa Azure Stack işleçlere göre eylem gerektirmez.
+- Bu çalışma zamanı yaklaşık 1907 güncelleştirmesine özeldir ve diğer Azure Stack güncelleştirmeleriyle karşılaştırılmamalıdır.
 
 ## <a name="whats-in-this-update"></a>Bu güncelleştirmede neler vardır
 
@@ -59,9 +60,9 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- Azure Stack güncelleştirme dikey penceresinde artık etkin güncelleştirmeler için bir "son adım tamamlandı" süresi görüntülenir. Bu, güncelleştirme dikey penceresine gidip çalışan bir güncelleştirmeye tıklanarak görülebilir. "Çalışma ayrıntılarını güncelleştir" bölümünde "son adım tamamlandı" kullanılabilir.
+- Azure Stack güncelleştirme dikey penceresinde artık etkin güncelleştirmeler için **son adım tamamlanmış** bir zaman görüntülenir. Bu, güncelleştirme dikey penceresine gidip çalışan bir güncelleştirmeye tıklanarak görülebilir. **Son adım tamamlandığında** **güncelleştirme çalıştırması ayrıntıları** bölümünde kullanılabilir.
 
-- **Start-AzureStack** ve **stop-azurestack** işleç eylemlerine yönelik iyileştirmeler. Azure Stack başlama zamanı, ortalama% 50 oranında azaltılmıştır. Azure Stack kapatma süresi, ortalama% 30 oranında azaltılmıştır. Ortalama başlatma ve kapatılma süreleri, bir ölçek birimindeki düğümlerin sayısı arttıkça aynı kalır. 
+- **Start-AzureStack** ve **stop-azurestack** işleç eylemlerine yönelik iyileştirmeler. Azure Stack başlama zamanı, ortalama% 50 oranında azaltılmıştır. Azure Stack kapatma süresi, ortalama% 30 oranında azaltılmıştır. Ortalama başlatma ve kapatılma süreleri, bir ölçek birimindeki düğümlerin sayısı arttıkça aynı kalır.
 
 - Bağlantısı kesilen Market aracı için geliştirilmiş hata işleme. **Export-AzSOfflineMarketplaceItem**kullanılırken bir indirme başarısız olursa veya kısmen başarılı olursa, hata ve risk azaltma adımları hakkında daha fazla ayrıntı içeren ayrıntılı bir hata iletisi görüntülenir.
 
@@ -70,17 +71,17 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
 - Beklenmedik sanal disk ayırmayı önlemek için bir düğümü kapatmadan önce sanal disk sistem durumu denetimi geliştirildi.
 
-- Yönetici işlemlerine yönelik iç günlüklerin depolanması geliştirildi. Bu, iç günlük işlemlerinin bellek ve depolama tüketimini en aza indirerek yönetici işlemleri sırasında performansı ve güvenilirliği artırır. Müşteriler Ayrıca yönetici portalındaki güncelleştirme dikey penceresinin Gelişmiş sayfa yükleme sürelerini de fark edebilir. Bu iyileştirmesinin bir parçası olarak, 6 aydan eski olan güncelleştirme günlükleri sistemde artık kullanılamaz. Bu güncelleştirmeler için günlüklere ihtiyacınız varsa, 1907 güncelleştirmesini gerçekleştirmeden önce 6 aydan eski tüm güncelleştirme çalıştırmaları için [Özet indirdiğinizden](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-apply-updates) emin olun.
+- Yönetici işlemlerine yönelik iç günlüklerin depolanması geliştirildi. Bu durum, iç günlük işlemlerinin bellek ve depolama tüketimini en aza indirerek yönetici işlemleri sırasında performansı ve güvenilirliği elde ediyor. Yönetici portalındaki güncelleştirme dikey penceresinin Gelişmiş sayfa yükleme sürelerini de fark edebilirsiniz. Bu iyileştirmesinin bir parçası olarak, 6 aydan eski olan güncelleştirme günlükleri sistemde artık kullanılamaz. Bu güncelleştirmeler için günlüklere ihtiyacınız varsa, 1907 güncelleştirmesini gerçekleştirmeden önce 6 aydan eski tüm güncelleştirme çalıştırmaları için [Özeti indirdiğinizden](azure-stack-apply-updates.md) emin olun.
 
 ### <a name="changes"></a>Değişiklikler
 
 - Azure Stack tanılama günlüğü toplama hizmeti için iletişimi etkinleştirmek üzere yeni bir giden kuralı (HTTPS) eklendi. Daha fazla bilgi için bkz. [Azure Stack Datacenter Integration-son nokta yayımlama](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
-- Dış depolama konumu kapasiteden biterse altyapı yedekleme hizmeti kısmen karşıya yüklenen yedeklemeleri silecektir.
+- Altyapı yedekleme hizmeti artık dış depolama konumu kapasiteyi tükeniyorsa kısmen karşıya yüklenen yedeklemeleri siler.
 
 - Altyapı yedeklemeleri artık etki alanı Hizmetleri verilerinin bir yedeklemesini içermez. Bu, yalnızca kimlik sağlayıcısı olarak Azure Active Directory kullanan sistemler için geçerlidir.
 
-- Artık, Işlem > VM görüntüleri dikey penceresine alınan bir görüntünün Sayfa Blobu türünde olduğunu doğrulayacağız.
+- Artık, **işlem > VM görüntüleri** dikey penceresine alınan bir görüntünün Sayfa Blobu türünde olduğunu doğrulayacağız.
 
 ### <a name="fixes"></a>Düzeltmeleri
 
@@ -90,23 +91,24 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/129536438/home -->
 - Depolama hizmeti meta verilerinin yedeklenmesi sırasında zaman aşımları nedeniyle, bir **Partialsucceeded** hata iletisiyle başarısız olan yedeklemelerle ilgili bir sorun düzeltildi.  
 
-- Kullanıcı aboneliklerinin silinmesinin yalnız bırakılmış kaynaklarla sonuçlandığı sorun düzeltildi.
+- Kullanıcı aboneliklerinin silinmesinin yalnız bırakılmış kaynaklarla sonuçlandığı bir sorun düzeltildi.
+
+- Bir teklif oluşturulurken açıklama alanı kaydedilmemiş bir sorun düzeltildi.
 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
 - WMI sağlayıcısı ana bilgisayarı tarafından kilitlenen bir DLL dosyası nedeniyle güncelleştirmenin başarısız olduğu bir sorun düzeltildi.
 
--   Güncelleştirme hizmetinde, güncelleştirme kutucuğunda veya kaynak sağlayıcısında kullanılabilir güncelleştirmelerin görüntülenmesini önleyen bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4511282](https://support.microsoft.com/help/4511282/)içinde düzeltildi.
+- Güncelleştirme hizmetinde, güncelleştirme kutucuğunda veya kaynak sağlayıcısında kullanılabilir güncelleştirmelerin görüntülenmesini önleyen bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4511282](https://support.microsoft.com/help/4511282/)içinde düzeltildi.
 
 - Hatalı bir yapılandırma nedeniyle yönetim düzlemi sağlıksız olduğundan güncelleştirmelerin başarısız olmasına neden olabilecek bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4512794](https://support.microsoft.com/help/4512794/)içinde düzeltildi.
 
-- Kullanıcıların Market 'ten üçüncü taraf görüntülerin dağıtımını tamamlamasını engelleyen bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4511259](https://support.microsoft.com/help/4511259/)ile düzeltildi.
+- Kullanıcıların Market 'ten üçüncü taraf görüntülerin dağıtımını tamamlamasını engelleyen bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4511259](https://support.microsoft.com/help/4511259/)içinde düzeltildi.
 
-- Kullanıcı görüntüsü Yöneticisi hizmeti kilitlenmekte olduğundan yönetilen görüntülerden VM oluşturma 'nın başarısız olmasına neden olabilecek bir sorun düzeltildi. Bu sorun 1906 ' de bulundu ve [KB4512794](https://support.microsoft.com/help/4512794/) ile düzeltildi
+- Kullanıcı görüntüsü Yöneticisi hizmeti kilitlenmekte olduğundan yönetilen görüntülerden VM oluşturma 'nın başarısız olmasına neden olabilecek bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4512794](https://support.microsoft.com/help/4512794/) düzeltildi
 
-- Appgateway önbelleğinin beklendiği gibi yenilenmediği için VM CRUD işlemlerinin başarısız olmasına neden olan bir sorun düzeltildi. Bu sorun 1906 ' de bulundu ve [KB4513119](https://support.microsoft.com/en-us/help/4513119/) ile düzeltildi
+- Uygulama ağ geçidi önbelleğinin beklendiği şekilde yenilenmediği için VM CRUD işlemlerinin başarısız olmasına neden olan bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4513119](https://support.microsoft.com/en-us/help/4513119/) düzeltildi
 
--   Sistem durumu kaynak sağlayıcısında, yönetici portalındaki bölge ve uyarı dikey pencerelerinin kullanılabilirliğini etkileyen bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve [KB4512794](https://support.microsoft.com/help/4512794)ile düzeltildi.
-
+- Sistem durumu kaynak sağlayıcısında, yönetici portalındaki bölge ve uyarı dikey pencerelerinin kullanılabilirliğini etkileyen bir sorun düzeltildi. Bu sorun 1906 sürümünde bulunur ve düzeltme [KB4512794](https://support.microsoft.com/help/4512794)içinde düzeltildi.
 
 ## <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
@@ -146,7 +148,7 @@ Bu güncelleştirmenin yüklenmesinden sonra, geçerli düzeltmeleri yükleme. D
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 
-Altyapı ağından internet 'e erişebilen sistemlere sahip müşteriler, operatör portalındaki **güncelleştirme kullanılabilir** iletisini görür. İnternet erişimi olmayan sistemler. zip dosyasını indirebilir ve ilgili. xml ile içe aktarabilir.
+Altyapı ağından internet 'e erişebilen sistemler, operatör portalındaki **güncelleştirme kullanılabilir** iletisini görür. İnternet erişimi olmayan sistemler. zip dosyasını indirebilir ve ilgili. xml ile içe aktarabilir.
 
 > [!TIP]  
 > Azure Stack düzeltmelere devam etmek için aşağıdaki *RSS* veya *atom* akışlarına abone olun:
