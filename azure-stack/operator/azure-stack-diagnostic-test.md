@@ -14,12 +14,12 @@ ms.date: 06/26/2019
 ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 43179dfaed48385c901fcf4ad7684d225e36b3df
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: da89c973637042b18410db9dc3dc618bfbde12d5
+ms.sourcegitcommit: d96adbb821175167f6a4c8f3aba305981d7e7c3e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493786"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68685516"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack sistem durumunu doğrula
 
@@ -50,7 +50,7 @@ Daha önce belirtildiği gibi, doğrulama aracı PEP aracılığıyla çalışt�
 
 3. Herhangi bir test raporu **başarısız**olursa, `Get-AzureStackLog`öğesini çalıştırın. Tümleşik bir sistemle ilgili yönergeler için bkz. [Get-azurestacklog Azure Stack tümleşik sistemlerde](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems)veya asdk 'de çalıştırmak için, bkz. [bir Azure Stack geliştirme seti (asdk) sisteminde Get-azurestacklog çalıştırma](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
 
-   Cmdlet 'i test-AzureStack tarafından oluşturulan günlükleri toplar. Günlükler toplamamalıdır veya testler raporu uyarsa CSS 'ye başvurmalısınız .
+   Cmdlet 'i test-AzureStack tarafından oluşturulan günlükleri toplar. Günlükler toplamamalıdır veya testler raporu uyarsa CSS 'ye başvurmalısınız.
 
 4. Doğrulama aracını CSS tarafından çalıştırmanız istenirse, CSS temsilcisi sorununuzu gidermeye devam etmek için topladığınız günlükleri ister.
 
@@ -78,6 +78,7 @@ Bu düşük etkili testler bir altyapı düzeyinde çalışır ve çeşitli sist
 | Azure Stack altyapı kapasitesi                  | Azsınfracapacity                  |
 | Altyapı performansını Azure Stack               | Azsınfraperformance               |
 | Azure Stack altyapısı rolü Özeti              | AzsInfraRoleSummary               |
+| Azure Stack Network Infra                            | AzsNetworkInfra                   |
 | Azure Stack Portal ve API Özeti                   | AzsPortalAPISummary               |
 | Azure Stack ölçek birimi VM olayları                     | AzsScaleUnitEvents                |
 | Azure Stack ölçek birimi VM kaynakları                  | AzsScaleUnitResources             |
@@ -226,6 +227,16 @@ Yapılandırılan yedekleme paylaşımıyla yeni kimlik bilgilerini test etmek i
   Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
   Test-AzureStack -Include AzsBackupShareAccessibility -BackupShareCredential "<PSCredential for backup share>"
   ```
+
+### <a name="run-validation-tool-to-test-network-infrastructure"></a>Ağ altyapısını sınamak için doğrulama aracını çalıştırma 
+
+Bu test, Azure Stack yazılım tanımlı ağ (SDN) atlayarak ağ altyapısının bağlantısını denetler. Ortak bir VIP 'den yapılandırılmış DNS ileticilerine, NTP sunucularına ve kimlik doğrulama uç noktalarına olan bağlantıyı gösterir. Bu, kimlik sağlayıcısı olarak ADFS kullanılırken kimlik sağlayıcısı olarak Azure AD veya federasyon sunucusu kullanılırken Azure bağlantısı içerir. 
+
+Komutun ayrıntılı bir çıkışını almak için hata ayıklama parametresini ekleyin:
+
+```powershell 
+Test-AzureStack -Include AzsNetworkInfra -Debug
+```
 
 
 

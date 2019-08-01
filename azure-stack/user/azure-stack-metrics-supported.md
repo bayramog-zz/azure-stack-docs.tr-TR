@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/06/2018
-ms.openlocfilehash: c099d67c6446fbd77db62f4c496868437d861f85
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: a66b6fce646a591efac17a5b6e4ed804dba211e7
+ms.sourcegitcommit: bf4d265a3522cbfdd9dd295a0f4ad0daf2ed5eca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418495"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68692150"
 ---
 # <a name="supported-metrics-for-azure-monitor-on-azure-stack"></a>Azure Stack 'de Azure Izleyici için desteklenen ölçümler
 
@@ -50,8 +50,7 @@ Aşağıdaki tablolarda, Azure Stack üzerinde Azure Izleyici ölçüm işlem ha
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama Türü | Açıklama | Boyutlar |
-|----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+|--------|---------------------|------|------------------|-------------|------------|
 | BlobCapacity | Blob Kapasitesi | Bayt | Toplam | Depolama hesabının blob hizmeti tarafından bayt olarak kullanılan depolama miktarı. | BlobType |
 | BLOB sayısı | Blob Sayısı | Sayı | Toplam | Depolama hesabının blob hizmetindeki Blobların sayısı. | BlobType |
 | ContainerCount | Blob Kapsayıcı Sayısı | Sayı | Average | Depolama hesabının blob hizmetindeki kapsayıcı sayısı. | Boyut yok |

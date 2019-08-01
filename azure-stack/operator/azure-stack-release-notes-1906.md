@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1906 sürüm notları | Microsoft Docs
-description: Yenilikler dahil olmak üzere, Azure Stack tümleşik sistemleri 1906 güncelleştirmesi hakkında bilinen sorunlar ve güncelleştirmeyi yüklemek nereye öğrenin.
+description: Yenilikler, bilinen sorunlar ve güncelleştirmenin indirileceği gibi Azure Stack tümleşik sistemler için 1906 güncelleştirmesi hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -16,149 +16,153 @@ ms.date: 07/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/15/2019
-ms.openlocfilehash: 5330136bd1d4950ace26fa3f232be039c90ab144
-ms.sourcegitcommit: 12aef286fc14ab27ed737a17e2761c38f054b9b3
+ms.openlocfilehash: ffd6436b9e7bf27ef069ecdc44ff2d6efadfc795
+ms.sourcegitcommit: d96adbb821175167f6a4c8f3aba305981d7e7c3e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67885350"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68685552"
 ---
-# <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirme
+# <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirmesi
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri*
+*Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Bu makalede 1906 güncelleştirme paketinin içeriğini açıklar. Yenilikler güncelleştirme içerir. iyileştirmeler ve düzeltmeler bu sürümü, Azure Stack için.
+Bu makalede 1906 güncelleştirme paketinin içeriği açıklanır. Güncelleştirme yenilikleri ve bu Azure Stack sürümü için düzeltmeler içerir.
 
 > [!IMPORTANT]  
 > Yalnızca Azure Stack tümleşik sistemleri için bu güncelleştirme paketidir. Bu güncelleştirme paketi için Azure Stack geliştirme Seti'ni geçerli değildir.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
 
-Azure Stack 1906 güncelleştirmenin yapı numarasıdır **1.1906.0.30**.
+Azure Stack 1906 güncelleştirme yapı numarası **1.1906.0.30**.
 
 ### <a name="update-type"></a>Güncelleştirme türü
 
-Azure Stack 1906 güncelleştirme derleme türü **Express**. Derleme türleri güncelleştirme hakkında daha fazla bilgi için bkz: [Azure Stack'te güncelleştirmeleri yönetme](azure-stack-updates.md) makalesi. 1906 güncelleştirmenin tamamlanması için beklenen süresini, Azure Stack ortamınıza fiziksel düğüm sayısından bağımsız olarak yaklaşık 10 saat ' dir. Tam güncelleştirme çalışma zamanları genellikle sisteminizde kullanılan Kiracı İş yükleri tarafından (internet'e bağlı değilse), sistem ağ bağlantısı kapasitesine bağlıdır ve, sistemin donanım belirtimleri. Beklenen değer daha uzun uzun çalışma zamanları nadir değildir ve güncelleştirme başarısız sürece eylem Azure Stack operatörleri tarafından gerektirmez. Bu çalışma zamanı yaklaşık 1906 güncelleştirmeye özgüdür ve diğer Azure Stack güncelleştirmeler karşılaştırılmalıdır değil.
+Azure Stack 1906 güncelleştirme yapı türü **Express**'dir. Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için [Azure Stack güncelleştirmeleri yönetme](azure-stack-updates.md) makalesine bakın. 1906 güncelleştirmesinin tamamlaması için gereken süre, Azure Stack ortamınızdaki fiziksel düğümlerin sayısından bağımsız olarak yaklaşık 10 saattir. Tamamen güncelleştirme çalışma zamanları, genellikle kiracı iş yükleri, sistem ağ bağlantınız (internet 'e bağlıysa) ve sistem donanımınızın belirtimleri tarafından sisteminizde kullanılan kapasiteye bağlıdır. Beklenen değerden daha uzun süre içinde yer kalmayan çalışma zamanları, güncelleştirme başarısız olmadığı için Azure Stack işleçlere göre işlem gerektirmemektedir. Bu çalışma zamanı yaklaşık 1906 güncelleştirmesine özeldir ve diğer Azure Stack güncelleştirmeleriyle karşılaştırılmamalıdır.
 
-## <a name="whats-in-this-update"></a>Bu güncelleştirmede nedir
+## <a name="whats-in-this-update"></a>Bu güncelleştirmede neler vardır
 
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
 
-- Eklenen bir **kümesi TLSPolicy** cmdlet'i ayrıcalıklı uç noktasını tüm uç noktaları TLS 1.2 zorlama (CESARETLENDİRİCİ). Daha fazla bilgi için [Azure Stack güvenlik denetimleri](azure-stack-security-configuration.md).
+- Tüm uç noktalarında TLS 1,2 zorlamak için ayrıcalıklı uç noktaya (PEP) bir **set-TLSPolicy** cmdlet 'i eklendi. Daha fazla bilgi için bkz. [Azure Stack güvenlik denetimleri](azure-stack-security-configuration.md).
 
-- Eklenen bir **Get-TLSPolicy** cmdlet'i ayrıcalıklı uç noktasını (CESARETLENDİRİCİ uygulanan TLS ilkeyi almak için). Daha fazla bilgi için [Azure Stack güvenlik denetimleri](azure-stack-security-configuration.md).
+- Uygulanan TLS ilkesini almak için ayrıcalıklı uç noktaya (PEP) bir **Get-TLSPolicy** cmdlet 'i eklendi. Daha fazla bilgi için bkz. [Azure Stack güvenlik denetimleri](azure-stack-security-configuration.md).
 
-- Sistem Güncelleştirme sırasında gerekli olarak iç TLS sertifikalarını döndürmek için bir iç gizli döndürme prosedürünün eklendi.
+- Bir sistem güncelleştirmesi sırasında iç TLS sertifikalarını gereken şekilde döndürmek için bir iç gizli anahtar prosedürü eklendi.
 
-- İç gizli dizilerinin sona erme süresi dolacak gizli diziler üzerinde önemli bir uyarı göz ardı edilir durumunda iç gizli anahtarları döndürme zorlayarak önlemek için bir önlem eklendi. Bu üzerinde bir normal işletim yordamı kullanılmamalıdır. Gizli dizileri döndürme bir bakım penceresi sırasında planlanması gerekir. Daha fazla bilgi için [Azure Stack gizli dönüş](azure-stack-rotate-secrets.md).
+- Süresi dolan gizli dizi uyarısı yok sayıldığında iç gizli dizileri zorlayarak iç Parolaların süresinin dolmasını önlemek için bir koruma eklendi. Bu, normal bir işletim yordamı olarak güvenilmemelidir. Gizli dizi yönü, bakım penceresi sırasında planlanmalıdır. Daha fazla bilgi için bkz. [Azure Stack gizli döndürme](azure-stack-rotate-secrets.md).
 
-- Visual Studio Code ile AD FS kullanarak Azure Stack dağıtımı artık desteklenmektedir.
+- Visual Studio Code artık AD FS kullanarak Azure Stack dağıtımı ile desteklenmektedir.
 
 ### <a name="improvements"></a>Geliştirmeleri
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- **Get-GraphApplication** ayrıcalıklı uç noktasını cmdlet artık şu anda kullanılan sertifikanın parmak izini görüntüler. AD FS ile Azure Stack dağıtıldığında bu hizmet sorumluları için sertifika yönetimi artırır.
+- Ayrıcalıklı uç noktasındaki **Get-GraphApplication** cmdlet 'i artık kullanılmakta olan sertifikanın parmak izini görüntüler. Bu, Azure Stack AD FS dağıtıldığında hizmet sorumluları için sertifika yönetimini geliştirir.
 
-- Yeni sistem durumu izleme kuralları, AD Graph ve AD FS, oluşturulacak olanağı dahil olmak üzere kullanılabilirliğini doğrulamak için eklendi.
+- Uyarı verme özelliği de dahil olmak üzere AD grafiğinin ve AD FS kullanılabilirliğini doğrulamak için yeni sistem durumu izleme kuralları eklenmiştir.
 
-- Yedekleme kaynak sağlayıcısı altyapı yedekleme hizmeti başka bir örneğine taşındığında güvenilirlik geliştirmeleri.
+- Altyapı yedekleme hizmeti başka bir örneğe taşırken, yedekleme kaynak sağlayıcısının güvenilirliğini artırmaya yönelik geliştirmeler.
 
-- Bakım penceresi zamanlaması kolaylaştırmak için Tekdüzen bir yürütme süresi sağlamak için dış gizli döndürme prosedürünün performans iyileştirme.
+- Bakım penceresinin planlanmasını kolaylaştırmak için Tekdüzen yürütme süresi sağlamak üzere dış gizli anahtar döndürme yordamının performans iyileştirmesi.
 
-- **Test AzureStack** cmdlet'i artık (kritik uyarılar) dolmak üzere olan iç parolaları raporlar.
+- **Test-AzureStack** cmdlet 'i artık sona ermek üzere olan iç gizli dizileri (kritik uyarılar) bildiriyor.
 
-- Yeni bir parametre için kullanılabilir **Register-CustomAdfs** cmdlet'i ayrıcalıklı uç noktasını sağlayan AD FS için federasyon güveni yapılandırırken denetimi sertifika iptal listesi atlanıyor.
+- AD FS için Federasyon güveni yapılandırılırken, sertifika iptal listesi denetimini atlamayı sağlayan ayrıcalıklı uç noktada **register-CustomAdfs** cmdlet 'i için yeni bir parametre mevcuttur.
 
-- Güncelleştirmeleri değil duraklatma olabilirsiniz şekilde 1906 yayın güncelleştirme ilerleme durumunu, daha fazla görünürlük sunar. İşleçler için gösterilen güncelleştirme adımların toplam sayısı arasında bir artış sonuçlanır **güncelleştirme** dikey penceresi. Ayrıca daha fazla bilgi görebilirsiniz güncelleştirme önceki güncelleştirmelerin paralel'olmuyor adımları.
+- 1906 sürümü güncelleştirme ilerleme durumunun daha büyük bir görünürlüğünü sunarak güncelleştirmelerin duraklatılmadığından emin olabilirsiniz. Bu, **güncelleştirme** dikey penceresindeki işleçlere gösterilen güncelleştirme adımlarının toplam sayısının artmasına neden olur. Ayrıca, önceki güncelleştirmelerden daha fazla güncelleştirme adımı olduğunu fark edebilirsiniz.
 
 #### <a name="networking-updates"></a>Ağ güncelleştirmeleri
 
-- Güncelleştirilmiş kira süresi, DHCP Yanıtlayıcı Azure ile tutarlı olacak şekilde ayarlayın.
+- DHCP Yanıtlayıcının Azure ile tutarlı olması için ayarlanan kira süresi güncelleştirildi.
 
-- Kaynakların başarısız dağıtım senaryosunda kaynak sağlayıcısı için geliştirilmiş yeniden deneme hızları.
+- Kaynak sağlayıcıya, başarısız kaynakların dağıtımı senaryosunda geliştirilmiş yeniden deneme oranları.
 
-- Kaldırılan **standart** SKU, yük dengeleyici hem genel IP olarak şu anda desteklenmeyen seçenek.
+- **Standart** SKU seçeneği şu anda desteklenmeyen şekilde hem yük dengeleyiciden hem de genel IP 'den kaldırılmıştır.
 
 ### <a name="changes"></a>Değişiklikler
 
-- Bir depolama hesabı deneyimi oluşturmak artık Azure ile tutarlı olur.
+- Depolama hesabı deneyimi oluşturmak artık Azure ile tutarlıdır.
 
-- Uyarı tetiklenmeden iç gizli dizilerinin sona erme için değiştirilmiştir:
-  - Uyarı bildirimleri artık 90 gün önce sona erme tarihini gizli anahtarları oluşturulur.
-  - Kritik uyarılar artık 30 gün önce sona erme tarihini gizli anahtarları oluşturulur.
+- İç gizli dizi süresi sonu için uyarı Tetikleyicileri değiştirildi:
+  - Uyarı uyarıları artık gizli dizi süresi dolmadan 90 gün önce tetiklenir.
+  - Kritik uyarılar artık gizli dizileri sona ermeden önce 30 gün sonra tetiklenir.
 
-- Tutarlı terminolojisi altyapı yedekleme kaynak sağlayıcısının güncelleştirilmiş dizeleri.
+- Tutarlı terminoloji için altyapı yedekleme kaynak sağlayıcısındaki dizeler güncelleştirildi.
 
 ### <a name="fixes"></a>Düzeltmeleri
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-- Bir yönetilen diskin VM yeniden boyutlandırma başarısız olduğu ile bir sorun düzeltildi bir **iç işlem hatası**.
+- Yönetilen bir disk VM 'sinin yeniden boyutlandırılırken bir **Iç Işlem hatasıyla**başarısız olan bir sorun düzeltildi.
 
-- Bir sorun düzeltildi: başarısız kullanıcı görüntüsü oluşturma puts görüntüleri yöneten hizmet hatalı bir durumda olduğunda; Bu, başarısız görüntünün silme ve yeni görüntüleri oluşturulmasını engeller. Bu ayrıca 1905 düzeltmeyi sabittir.
+- Başarısız bir Kullanıcı görüntüsü oluşturmanın, görüntüleri yöneten hizmeti kötü durumda olduğu bir sorun düzeltildi; Bu, başarısız olan görüntünün silinmesini ve yeni görüntülerin oluşturulmasını engeller. Bu, 1905 düzeltmesinde de düzeltilir.
 
-- İç süresi dolacak gizli diziler üzerinde etkin uyarılar artık iç gizli döndürme başarılı yürütme sonrasında otomatik olarak kapatılır.
+- Süresi dolan iç gizliliklerin etkin uyarıları, iç gizli döndürmenin başarılı bir şekilde yürütülmesinden sonra otomatik olarak kapatılır.
 
-- Güncelleştirme 99 saatten uzun bir süre çalışıyorsa ilk basamak güncelleştirme geçmişi sekmesinden güncelleştirme süresi içinde trim bir sorun düzeltildi.
+- Güncelleştirme geçmişi sekmesindeki güncelleştirme süresinin 99 saatten uzun bir süredir çalışıyor olması durumunda ilk basamağı kırpabileceği bir sorun düzeltildi.
 
-- **Güncelleştirme** dikey içeren bir **sürdürme** başarısız güncelleştirmeleri seçeneği.
+- **Güncelleştirme** dikey penceresinde, başarısız güncelleştirmeler Için bir **özgeçmişi** seçeneği bulunur.
 
-- Azure Stack'te kullanılamadığından yönetici ve Kullanıcı Portalı, Docker uzantısını yanlış arama ancak başka bir işlem iade edildiği Market'te sorun düzeltildi, alınması.
+- Yönetici ve Kullanıcı portalları ' nde, Docker uzantısının aramadan hatalı şekilde döndürüldüğü, ancak başka bir eylem gerçekleştirilmediğinden, Azure Stack ' de kullanılamadığından Market 'teki sorunu düzeltildi.
 
-- Şablon dağıtımı şablon adı '_' alt çizgiyle başlıyorsa parametreleri doldurmaz UI içinde bir sorun düzeltildi.
+- Şablon adı ' _ ' alt çizgiyle başlıyorsa parametreleri doldurmayan şablon dağıtım Kullanıcı arabirimindeki bir sorun düzeltildi.
+
+- Sanal makine ölçek kümesi oluşturma deneyiminin dağıtım seçeneği olarak CentOS tabanlı 7,2 sağladığı bir sorun düzeltildi. CentOS 7,2 Azure Stack kullanılamıyor. Şimdi dağıtım için bir seçenek olarak CentOS 7,5 sunuyoruz
+
+- Artık **Sanal Makine Ölçek Kümeleri** dikey penceresinden bir ölçek kümesini kaldırabilirsiniz.
 
 ## <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Azure Stack güvenlik güncelleştirmelerinde Bu güncelleştirme hakkında daha fazla bilgi için bkz. [Azure Stack güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates-1906.md).
+Bu Azure Stack güncelleştirmesinde güvenlik güncelleştirmeleri hakkında daha fazla bilgi için bkz. [Azure Stack Security Updates](azure-stack-release-notes-security-updates-1906.md).
 
-## <a name="update-planning"></a>Planlama güncelleştir
+## <a name="update-planning"></a>Planlamayı Güncelleştir
 
-Güncelleştirmeyi uygulamadan önce aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
+Güncelleştirmeyi uygulamadan önce, aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
 
 - [Bilinen sorunlar](azure-stack-release-notes-known-issues-1906.md)
 - [Güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates-1906.md)
-- [Önce ve güncelleştirmeyi uyguladıktan sonra etkinlikler listesi](azure-stack-release-notes-checklist.md)
+- [Güncelleştirme uygulandıktan önceki ve sonraki etkinliklerin denetim listesi](azure-stack-release-notes-checklist.md)
 
 ## <a name="download-the-update"></a>Güncelleştirmeyi indirin
 
-Azure Stack 1906 güncelleştirme paketinden indirebileceğiniz [Azure Stack indirme sayfasına](https://aka.ms/azurestackupdatedownload).
+Azure Stack 1906 güncelleştirme paketini [Azure Stack indirme sayfasından](https://aka.ms/azurestackupdatedownload)indirebilirsiniz.
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
-Azure Stack düzeltmeleri düzenli olarak serbest bırakır. Azure Stack için 1906 güncelleştirmeden önce en son Azure Stack düzeltme için 1905 yüklediğinizden emin olun. Güncelleştirdikten sonra tüm yükleme [1906 için kullanılabilir düzeltmelerin](#after-successfully-applying-the-1906-update).
+Düzeltmeleri düzenli aralıklarla yayınlar Azure Stack. Azure Stack 1906 ' e güncelleştirmeden önce 1905 için en son Azure Stack düzeltmesini yüklediğinizden emin olun. Güncelleştirme sonrasında, [1906 için kullanılabilir düzeltmeleri](#after-successfully-applying-the-1906-update)yüklersiniz.
 
-Azure Stack düzeltmeleri yalnızca Azure Stack tümleşik sistemleri için geçerlidir; üzerinde ASDK düzeltmelerini çalışmayın.
+Azure Stack düzeltmeler yalnızca Azure Stack tümleşik sistemler için geçerlidir; ASDK 'ye düzeltme yüklemeyi denemeyin.
 
-### <a name="before-applying-the-1906-update"></a>1906 uygulamadan önce güncelleştirme
+### <a name="before-applying-the-1906-update"></a>1906 güncelleştirmesini uygulamadan önce
 
-Azure Stack 1906 sürüm aşağıdaki düzeltmeleri 1905 sürümle uygulanması gerekir:
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack düzeltme 1.1905.3.48](https://support.microsoft.com/help/4510078)
-
-### <a name="after-successfully-applying-the-1906-update"></a>1906 başarıyla uygulandıktan sonra güncelleştir
-
-Bu güncelleştirme yüklendikten sonra geçerli düzeltmeleri yükleyin. Daha fazla bilgi için müşterilerimize [hizmet İlkesi](azure-stack-servicing-policy.md).
+Azure Stack 1906 sürümü aşağıdaki düzeltmelere sahip 1905 sürümüne uygulanmalıdır:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack düzeltme 1.1906.11.52](https://support.microsoft.com/help/4513119)
+- [Azure Stack Hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
+
+### <a name="after-successfully-applying-the-1906-update"></a>1906 güncelleştirmesini başarıyla uyguladıktan sonra
+
+Bu güncelleştirmenin yüklenmesinden sonra, geçerli düzeltmeleri yükleme. Daha fazla bilgi için bkz. [hizmet ilkeniz](azure-stack-servicing-policy.md).
+
+<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
+- [Azure Stack Hotfix 1.1906.11.52](https://support.microsoft.com/help/4513119)
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 
-Müşteriler altyapı ağdan internet erişimi olan sistemlerle **güncelleştirme kullanılabilir** işleci portalında iletisi. İnternet erişimi olmayan sistemleri, indirin ve karşılık gelen .xml ile .zip dosyasını içeri aktarabilirsiniz.
+Altyapı ağından internet 'e erişebilen sistemlere sahip müşteriler, operatör portalındaki **güncelleştirme kullanılabilir** iletisini görür. İnternet erişimi olmayan sistemler. zip dosyasını indirebilir ve ilgili. xml ile içe aktarabilir.
 
 > [!TIP]  
-> Aşağıdaki abone olmak *RSS* veya *Atom* Azure Stack düzeltmelerle birlikte kalmasını sağlamak için akışları:
+> Azure Stack düzeltmelere devam etmek için aşağıdaki *RSS* veya *atom* akışlarına abone olun:
 >
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - ['YI](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
 > - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ## <a name="archived-release-notes"></a>Arşivlenmiş sürüm notları
 
-Gördüğünüz [Azure Stack eski sürümlerinin sürüm notları TechNet Galerisi'ndeki](https://aka.ms/azsarchivedrelnotes). Bu sürüm notları yalnızca başvuru amacıyla sağlanmıştır ve bu sürümleri için destek anlamına gelmediğini arşivlenir. Azure Stack desteği hakkında daha fazla bilgi için bkz. [Azure Stack hizmet İlkesi](azure-stack-servicing-policy.md). Daha fazla yardım için Microsoft Müşteri Destek Hizmetleri'ne başvurun.
+[Azure Stack sürüm notlarının eski sürümlerini TechNet galerisinde](https://aka.ms/azsarchivedrelnotes)görebilirsiniz. Bu arşivlenmiş sürüm notları yalnızca başvuru amacıyla sağlanır ve bu sürümler için destek göstermez. Azure Stack desteği hakkında bilgi için bkz. [Azure Stack hizmet ilkesi](azure-stack-servicing-policy.md). Daha fazla yardım için Microsoft Müşteri Destek Hizmetleri 'ne başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

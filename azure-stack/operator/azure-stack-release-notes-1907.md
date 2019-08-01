@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 07/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: b5ed44dfaaf8f34279126d3007f4879e2af1b192
-ms.sourcegitcommit: 9a4966fa66a0ed3bfd3a10376df2a6ffd3dd60a8
+ms.lastreviewed: 07/31/2019
+ms.openlocfilehash: de6d45aa18dab4f6a5e4c7c772732242e296aa3a
+ms.sourcegitcommit: bf4d265a3522cbfdd9dd295a0f4ad0daf2ed5eca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68665102"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68692062"
 ---
 # <a name="azure-stack-1907-update"></a>Azure Stack 1907 güncelleştirmesi
 
@@ -52,7 +52,9 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 
 <!-- What's new, also net new experiences and features. -->
 
-- Tanılama günlüğü toplamayı kolaylaştırmak ve geliştirmek için Azure Stack tanılama günlüğü toplama hizmetinin genel kullanım sürümü. Azure Stack tanılama günlüğü toplama hizmeti, Microsoft Müşteri Destek Hizmetleri (CSS) ile tanılama günlüklerini toplayıp paylaşmak için basitleştirilmiş bir yöntem sağlar. Azure Stack tanılama günlüğü toplama hizmeti, operatörlerin belirli kritik uyarıların ne zaman ortaya çıktığında veya gerçekleştirileceği bir depolama blobuna otomatik olarak yüklenmesini sağlayan Azure Stack yönetici portalında yeni bir kullanıcı deneyimi sağlar. isteğe bağlı işlem. Daha fazla bilgi için bkz. [tanılama günlüğü toplama](azure-stack-diagnostic-log-collection-overview.md) makalesi.
+- Tanılama günlüğü toplamayı kolaylaştırmak ve geliştirmek için Azure Stack tanılama günlüğü toplama hizmetinin genel kullanım sürümü. Azure Stack tanılama günlüğü toplama hizmeti, Microsoft Müşteri Destek Hizmetleri (CSS) ile tanılama günlüklerini toplayıp paylaşmak için basitleştirilmiş bir yöntem sağlar. Bu tanılama günlüğü toplama hizmeti, operatörlerin bir depolama blobuna belirli kritik uyarıların ne zaman yapıldığında otomatik olarak yüklenmesini veya aynı işlemi gerçekleştirmesini sağlayan Azure Stack yönetici portalında yeni bir kullanıcı deneyimi sağlar. isteğe bağlı işlem. Daha fazla bilgi için bkz. [tanılama günlüğü toplama](azure-stack-diagnostic-log-collection-overview.md) makalesi.
+
+- Azure Stack doğrulama aracının **Test-AzureStack**'in bir parçası olarak Azure Stack ağ altyapısı doğrulamasının genel kullanım sürümü. Azure Stack ağ altyapısı, Azure Stack ağ altyapısında bir hata oluşup oluşmadığını belirlemek için **Test-AzureStack**'in bir parçası olacaktır. Test, yazılım tanımlı Azure Stack ağı atlayarak ağ altyapısının bağlantısını denetler. Ortak bir VIP 'den yapılandırılmış DNS ileticilerine, NTP sunucularına ve kimlik uç noktalarına olan bağlantıyı gösterir. Ayrıca, kimlik sağlayıcısı olarak Azure AD 'yi kullanırken veya ADFS kullanılırken Federasyon sunucusu ile Azure 'a bağlantıyı denetler. Daha fazla bilgi için [Azure Stack doğrulama aracı](azure-stack-diagnostic-test.md) makalesine bakın.
 
 - Bir sistem güncelleştirmesi sırasında, iç SQL TLS sertifikalarını gereken şekilde döndürmek için bir iç gizli dizi döndürme yordamı eklenmiştir.
 

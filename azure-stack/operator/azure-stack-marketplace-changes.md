@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/31/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 07/17/2019
-ms.openlocfilehash: a8958761f17bddcaae685e18556e4680100b8b9c
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.lastreviewed: 07/31/2019
+ms.openlocfilehash: c70334bea80a84166a4bb614f15852e44f2b99f4
+ms.sourcegitcommit: bf4d265a3522cbfdd9dd295a0f4ad0daf2ed5eca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68603081"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68692126"
 ---
 # <a name="azure-stack-marketplace-changes"></a>Market değişikliklerini Azure Stack
 
@@ -43,7 +43,10 @@ Bu makalede, yaklaşık 3 ayda, yaklaşık olarak gerçekleşen Market değişik
 
 ## <a name="updated-marketplace-items"></a>Güncelleştirilmiş Market öğeleri
 
-- Güncelleştirmelerin listesi, muhtemelen güncelleştirme tarihidir.
+- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard ve Enterprise Edition) 13.2.20190410
+- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard ve Enterprise Edition) 13.2.20190410
+- 07/30/2019: SQL Server 2017 (Express, Developer, Standard ve Enterprise Edition) 14.0.20190410
+- 07/30/2019: Sqliaasextenma 1.3.20180
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

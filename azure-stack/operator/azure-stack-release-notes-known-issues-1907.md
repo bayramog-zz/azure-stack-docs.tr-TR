@@ -16,12 +16,12 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: fb5c02eae73dcc2191e8b65bacea32efc0068b2e
-ms.sourcegitcommit: 9a4966fa66a0ed3bfd3a10376df2a6ffd3dd60a8
+ms.openlocfilehash: cf09162fb29630ed01834aa6b2b508785206a088
+ms.sourcegitcommit: d96adbb821175167f6a4c8f3aba305981d7e7c3e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68665104"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68685580"
 ---
 # <a name="azure-stack-1907-known-issues"></a>Azure Stack 1907 bilinen sorunlar
 
@@ -33,7 +33,7 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 ## <a name="update-process"></a>Güncelleştirme işlemi
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1906 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur. 1906 güncelleştirme paketi önceki güncelleştirme paketlerinden daha büyük olduğundan, bu sorunun oluşma olasılığını daha yüksektir.
+- Neden: 1907 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur.
 - Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçicibir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md#import-and-install-updates)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
 - Oluşum Common
 
@@ -166,7 +166,7 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 ### <a name="virtual-machine-diagnostic-settings-blade"></a>Sanal makine Tanılama ayarları dikey penceresi
 
-- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
+- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.    
 - Neden: Sanal makine Tanılama ayarları dikey penceresinde bir **Havuz** sekmesi bulunur ve bu bir Application Insights **hesabı**ister. Bu, yeni bir dikey pencerenin sonucudur ve Azure Stack henüz desteklenmemiştir.
 - Düzeltmesi Yok.
 - Oluşum Common

@@ -16,12 +16,12 @@ ms.date: 07/12/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/28/2019
-ms.openlocfilehash: bcdcb43cb58535a4ab4a8a543c1fbf31824dacbc
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: cb98d587f766a3039887e0ba800ab255686121bc
+ms.sourcegitcommit: d96adbb821175167f6a4c8f3aba305981d7e7c3e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494128"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68685536"
 ---
 # <a name="azure-stack-1906-known-issues"></a>Azure Stack 1906 bilinen sorunlar
 
@@ -34,7 +34,7 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: 1906 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur. 
-- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md#import-and-install-updates)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
+- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçicibir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md#import-and-install-updates)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
 - Oluşum Common
 
 ## <a name="portal"></a>Portal
@@ -159,31 +159,12 @@ Bu makalede Azure Stack 1906 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
-#### <a name="centos"></a>CentOS
-
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Sanal makine ölçek kümesi oluşturma deneyimi, dağıtım için bir seçenek olarak CentOS tabanlı 7,2 sağlar. CentOS 7,2 Azure Stack kullanılamıyor.
-- Düzeltmesi Dağıtımınız için başka bir işletim sistemi seçin ya da Market 'ten bir operatör aracılığıyla dağıtımdan önce indirilen başka bir CentOS görüntüsünü belirten Azure Resource Manager şablonu kullanın.
-- Oluşum Common
-
-#### <a name="remove-scale-set"></a>Ölçek kümesini kaldır
-
-- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Ölçek kümesini **Sanal Makine Ölçek Kümeleri** dikey penceresinden kaldıramazsınız.
-- Düzeltmesi Kaldırmak istediğiniz ölçek kümesini seçin, sonra **genel bakış** bölmesinden **Sil** düğmesine tıklayın.
-- Oluşum Common
 
 #### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki sırasında oluşturma ve 4 düğümlü Azure Stack ortamlarında güncelleştirme
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: 4 düğümlü bir Azure Stack ortamında güncelleştirme işlemi sırasında, 3 hata etki alanı kullanılabilirlik kümesinde VM oluşturma ve sanal makine ölçek kümesi örneği oluşturma işlemi **FabricVmPlacementErrorUnsupportedFaultDomainSize** hatasıyla başarısız oluyor.
 - Düzeltmesi 2 hata etki alanı içeren bir kullanılabilirlik kümesinde tek VM 'Ler oluşturabilirsiniz. Ancak, 4 düğümlü Azure Stack güncelleştirme işlemi sırasında ölçek kümesi örneği oluşturma yine de kullanılamaz.
-
-#### <a name="scale-set-instance-view-blade-does-not-load"></a>Ölçek kümesi örneği görünümü dikey penceresi yüklenmedi
-
-- Uygunsa Bu sorun 1904, 1905 ve 1906 sürümleri için geçerlidir.
-- Neden: Azure Stack portalında bulunan bir sanal makine ölçek kümesinin örnek görünümü dikey penceresinde, **pano > sanal makine ölçek kümeleri > AnyScaleSet > örnekleri > AnyScaleSetInstance** yüklenemez ve bir "Rainy Cloud" görüntüsünü görüntüler.
-- Düzeltmesi Şu anda bir düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. Bundan sonra, bir ölçek kümesinin örnek görünümünü `az vmss get-instance-view` almak için lütfen CLI komutunu kullanın.
 
 ### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
 
