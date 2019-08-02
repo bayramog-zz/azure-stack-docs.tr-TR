@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/01/2019
 ms.author: mabrigg
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 3fd84e5c294c2cdcfa942aeaf9c2daf9f9245891
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: d36761cd7480d782ea01bc1b0d3606b5fa244ed3
+ms.sourcegitcommit: 49cfe13427f5255915d5ccbed87b36eec2caf8ca
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418223"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720040"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure ile Azure Stack kaydetme
 
@@ -34,13 +34,13 @@ Bu makaledeki bilgiler, Azure ile Azure Stack tümleşik sistemleri kaydetmeyi a
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Kaydolmadan önce aşağıdakiler gereklidir:
+Kaydolmadan önce aşağıdaki önkoşulların yerine getirmeniz gerekir:
 
- - Kimlik bilgilerinizi doğrulayın
- - PowerShell dil modunu ayarlama
- - Azure Stack için PowerShell yükleme
- - Azure Stack araçlarını indirin
- - Kayıt senaryonuzu belirleme
+- Kimlik bilgilerinizi doğrulayın
+- PowerShell dil modunu ayarlama
+- Azure Stack için PowerShell yükleme
+- Azure Stack araçlarını indirin
+- Kayıt senaryonuzu belirleme
 
 ### <a name="verify-your-credentials"></a>Kimlik bilgilerinizi doğrulayın
 
@@ -92,16 +92,17 @@ En son sürümü kullandığınızdan emin olmak için Azure Stack araçlarını
 
 Azure Stack dağıtımınız *bağlı* veya *bağlantısı kesilmiş*olabilir.
 
- - **Yapıldı**  
+- **Yapıldı**  
  Bağlı, Internet 'e ve Azure 'a bağlanabilmeleri için Azure Stack dağıttığınız anlamına gelir. Kimlik deponuzda Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sahip olursunuz. Bağlı bir dağıtım ile iki faturalandırma modeli arasından seçim yapabilirsiniz: Kullandıkça Öde veya kapasite tabanlı.
-    - [**Kullandıkça Öde** faturalandırma modelini kullanarak Azure ile bağlı bir Azure Stack kaydetme](#register-connected-with-pay-as-you-go-billing)
-    - [**Kapasite** faturalandırma modelini kullanarak Azure ile bağlı bir Azure Stack kaydetme](#register-connected-with-capacity-billing)
+  - [**Kullandıkça Öde** faturalandırma modelini kullanarak Azure ile bağlı bir Azure Stack kaydetme](#register-connected-with-pay-as-you-go-billing)
+  - [**Kapasite** faturalandırma modelini kullanarak Azure ile bağlı bir Azure Stack kaydetme](#register-connected-with-capacity-billing)
 
- - **Bağlantınızı**  
+- **Bağlantınızı**  
  Azure dağıtım bağlantısı kesildi seçeneğiyle, Azure Stack Internet bağlantısı olmadan dağıtabilir ve kullanabilirsiniz. Ancak, bağlantısı kesilen bir dağıtımla AD FS kimlik deposu ve kapasite tabanlı faturalandırma modeliyle sınırlı olursunuz.
-    - [**Kapasite** faturalandırma modelini kullanarak bağlantısı kesilen Azure Stack kaydetme](#register-disconnected-with-capacity-billing)
+  - [**Kapasite** faturalandırma modelini kullanarak bağlantısı kesilen Azure Stack kaydetme](#register-disconnected-with-capacity-billing)
 
 ### <a name="determine-a-unique-registration-name-to-use"></a>Kullanılacak benzersiz bir kayıt adı belirleme 
+
 Azure ile Azure Stack kaydettiğinizde, benzersiz bir kayıt adı belirtmeniz gerekir. Azure Stack aboneliğinizi Azure kaydıyla ilişkilendirmenin kolay bir yolu, Azure Stack **bulut kimliğinizi**kullanmaktır. 
 
 > [!NOTE]
@@ -341,17 +342,13 @@ Azure Stack kaydın başarılı olduğunu doğrulamak için **Bölge yönetimi**
     - **Kayıt ABONELIK kimliği**: Azure Stack kayıtlı ve ilişkili Azure abonelik KIMLIĞI
     - **Kayıt kaynak grubu**: Azure Stack kaynaklarını içeren ilişkili abonelikte Azure Kaynak grubu.
 
-4. Azure Stack uygulama kayıtlarını görüntülemek için Azure portal kullanın. Azure Stack kaydettirmek için kullandığınız abonelikle ilişkili bir hesabı kullanarak Azure portal oturum açın. Azure Stack ilişkili kiracıya geçiş yapın.
-5. **Tüm uygulamaları görüntülemek > Azure Active Directory > uygulama kayıtları**gidin.
-
-    ![Uygulama kayıtları](media/azure-stack-registration/app-registrations.png)
-
-    Azure Stack uygulama kayıtlarına ön eki eklenmiş **Azure Stack**.
+4. Azure Stack kayıt kaynaklarını görüntülemek için Azure portal kullanabilir ve sonra kaydın başarılı olduğunu doğrulayabilirsiniz. Azure Stack kaydettirmek için kullandığınız abonelikle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin, **gizli türleri göster** onay kutusunu etkinleştirin ve kayıt adını seçin.
+5. Kayıt başarılı olmadıysa, sorunu çözmek için [buradaki adımları](#change-the-subscription-you-use) izleyerek yeniden kaydolmanız gerekir.  
 
 Alternatif olarak, Market yönetim özelliğini kullanarak kayıt işleminin başarılı olup olmadığını doğrulayabilirsiniz. Market yönetimi dikey penceresinde Market öğelerinin bir listesini görürseniz kaydınız başarılı oldu. Ancak, bağlantısı kesilen ortamlarda Market yönetimi 'nde Market öğelerini göremezsiniz.
 
 > [!NOTE]
-> Kayıt tamamlandıktan sonra, kayıt olmayan etkin uyarı artık görünmez. Bağlantısı kesik senaryolarda, Market yönetimi 'nde, başarıyla kaydolduysanız bile Azure Stack kaydetmenizi ve etkinleştirmenizi isteyip istemediğinizi soran bir ileti görürsünüz.
+> Kayıt tamamlandıktan sonra, kayıt olmayan etkin uyarı artık görünmez. 1904 ' den önceki Azure Stack sürümlerde, bağlantısı kesilen senaryolarda, Market yönetimi 'nde, başarıyla kaydolduysanız bile Azure Stack kaydetmenizi ve etkinleştirmenizi isteyip istemediğinizi soran bir ileti görürsünüz. Bu ileti Release 1904 ve üzeri sürümlerde görünmez.
 
 ## <a name="renew-or-change-registration"></a>Kaydı yenileme veya değiştirme
 
@@ -451,15 +448,20 @@ Kapasite faturalandırma modeli kullanan Azure Stack ortamları için, **set-Azs
 2. Bu kayıt belirtecini Azure bağlı makinesinde kullanmak üzere kaydedin. $FilePathForRegistrationToken dosya veya metin kopyalayabilirsiniz.
 
 ## <a name="move-a-registration-resource"></a>Kayıt kaynağını taşıma
-Aynı **abonelik altındaki** kaynak grupları arasında bir kayıt kaynağını taşımak tüm ortamlar için desteklenir. Ancak, bir kayıt kaynağını abonelikler arasında taşımak yalnızca her iki abonelik aynı Iş ortağı KIMLIĞINE çözümlenirse CSP 'Ler için desteklenir. Kaynakları yeni bir kaynak grubuna taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+
+Aynı **abonelik altındaki** kaynak grupları arasında bir kayıt kaynağını taşımak tüm ortamlar için desteklenir. Ancak, bir kayıt kaynağını abonelikler arasında taşımak yalnızca her iki abonelik aynı Iş ortağı KIMLIĞINE çözümlenirse CSP 'Ler için desteklenir. Kaynakları yeni bir kaynak grubuna taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](/azure/azure-resource-manager/resource-group-move-resources).
+
+> [!IMPORTANT]
+> Portalda kayıt kaynaklarının yanlışlıkla silinmesini engellemek için, kayıt betiği kaynağa otomatik olarak bir kilit ekler. Taşımadan veya silmeden önce bu kilidi kaldırmanız gerekir. Yanlışlıkla silinmeye engel olmak için kayıt kaynağına bir kilit eklemeniz önerilir.
 
 ## <a name="registration-reference"></a>Kayıt başvurusu
 
 ### <a name="set-azsregistration"></a>Set-AzsRegistration
 
-Set-AzsRegistration kullanarak Azure ile Azure Stack kaydedebilir ve Market ve kullanım raporlamadaki öğelerin teklifini etkinleştirebilir veya devre dışı bırakabilirsiniz.
+**Set-AzsRegistration** kullanarak Azure ile Azure Stack kaydedebilir ve Market ve kullanım raporlamadaki öğelerin teklifini etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
 Cmdlet 'ini çalıştırmak için şunlar gerekir:
+
 - Her türden küresel bir Azure aboneliği.
 - Ayrıca, bu aboneliğe sahip veya katkıda bulunan bir hesapla Azure PowerShell için oturum açmış olmanız gerekir.
 
