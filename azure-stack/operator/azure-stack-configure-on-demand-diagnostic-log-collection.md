@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 25b72df875dd78e7ddea42c4505345f4225cc948
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.lastreviewed: 07/31/2019
+ms.openlocfilehash: 988c24f004222d80b866024c2c392473cdf73bab
+ms.sourcegitcommit: ddb625bb01de11bfb75d9f7a1cc61d5814b3bc31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68497117"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68712952"
 ---
 # <a name="collect-azure-stack-diagnostic-logs-now-on-demand"></a>Azure Stack tanılama günlüklerini şimdi toplayın (isteğe bağlı)
 
@@ -186,28 +186,28 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
 * Döküm dosyası günlük toplama varsayılan olarak devre dışıdır. Etkinleştirmek için **ıncludedumpfile** Switch parametresini kullanın.
 * Şu anda, **FilterByRole** parametresini kullanarak günlük toplamayı aşağıdaki rollere göre filtreleyebilirsiniz:
 
-  |   |   |   |    |
-  | - | - | - | -  |
-  |ACS                   |CA                             |HRP                            |OboService|
-  |ACSBlob               |CacheService                   |IBC                            |OEM|
-  |ACSDownloadService    |İşlem                        |InfraServiceController         |OnboardRP|
-  |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE|
-  |ACSFrontEnd           |CRP                            |Keyvaultcontroldüzlemi           |QueryServiceCoordinator|
-  |Acsölçümler            |DeploymentMachine              |Keyvaultdatadüzlemi              |QueryServiceWorker|
-  |ACSMigrationService   |DiskRP                         |Keyvaultınternalcontroldüzlemi   |SeedRing|
-  |ACSMonitoringService  |Etki Alanı                         |Keyvaultınternaldatadüzlemi      |SeedRingServices|
-  |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB|
-  |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL|
-  |ACSTableServer        |EventRP                        |MetricsAdminRP                 |'DE   |
-  |ACSWac                |ExternalDNS                    |MetricsRP                      |Depolama|
-  |ADFS                  |FabricRing                     |MetricsServer                  |StorageController   |
-  |ApplicationController |FabricRingServices             |MetricsStoreService            |URP   |
-  |Aşama Ppgateway          |FirstTierAggregationService    |MonAdminRP                     |UsageBridge|
-  |AzureBridge           |FRP                            |MonRP                          |VirtualMachines   |
-  |AzureMonitor          |Ağ geçidi                        |KSK                             |BULUNAMADI|
-  |BareMetal             |'De               |NonPrivilegedAppGateway        |WASPUBLIK|
-  |BRP                   |HintingServiceV2               |NRP                            |   |
-  |   |   |   |    |
+  |   |   |   |    |     |
+  | - | - | - | -  |  -  |
+  |ACS                   |CA                             |HRP                            |OboService                |VirtualMachines|
+  |ACSBlob               |CacheService                   |IBC                            |OEM                       |BULUNAMADI            |
+  |ACSDownloadService    |İşlem                        |InfraServiceController         |OnboardRP                 |WASPUBLIK|
+  |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE                       |         |
+  |ACSFrontEnd           |CRP                            |Keyvaultcontroldüzlemi           |QueryServiceCoordinator   |         | 
+  |Acsölçümler            |DeploymentMachine              |Keyvaultdatadüzlemi              |QueryServiceWorker        |         |
+  |ACSMigrationService   |DiskRP                         |Keyvaultınternalcontroldüzlemi   |SeedRing                  |         |
+  |ACSMonitoringService  |Etki Alanı                         |Keyvaultınternaldatadüzlemi      |SeedRingServices          |         |
+  |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB                       |         |
+  |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL                       |         |
+  |ACSTableServer        |EventRP                        |MetricsAdminRP                 |'DE                       |         |
+  |ACSWac                |ExternalDNS                    |MetricsRP                      |Depolama                   |         |
+  |ADFS                  |FabricRing                     |MetricsServer                  |StorageController         |         |
+  |ApplicationController |FabricRingServices             |MetricsStoreService            |URP                       |         |
+  |Aşama Ppgateway          |FirstTierAggregationService    |MonAdminRP                     |Supportköprücontroller   |         |
+  |AzureBridge           |FRP                            |MonRP                          |Destektring               |         |
+  |AzureMonitor          |Ağ geçidi                        |KSK                             |SupportRingServices       |         |
+  |BareMetal             |'De               |NonPrivilegedAppGateway        |SupportBridgeRP           |         |
+  |BRP                   |HintingServiceV2               |NRP                            |UsageBridge               |         |
+  |   |   |   |    |     | 
 
 ### <a name="additional-considerations"></a>Diğer konular
 
