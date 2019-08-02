@@ -1,6 +1,6 @@
 ---
-title: Azure Stack için şablonları denetlemek için bir şablon doğrulama aracını kullanın | Microsoft Docs
-description: Azure Stack dağıtım şablonları denetleme
+title: Azure Stack 'de şablon doğrulama aracını kullanma | Microsoft Docs
+description: Şablon doğrulama aracıyla Azure Stack dağıtım için şablonları denetleyin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -16,58 +16,57 @@ ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 3cba34e2748d00ebb886e7122ce1dd7151325c85
-ms.sourcegitcommit: 07c51a03f07a6a3ee2721aa942d31a7a4c6a339b
+ms.openlocfilehash: 30513e279b406561fd2bcf88f9119807b371e4a1
+ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67028274"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68376771"
 ---
-# <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Şablonlarınızı Azure Stack için şablon doğrulama aracı ile denetleyin.
+# <a name="use-the-template-validation-tool-in-azure-stack"></a>Azure Stack içinde şablon doğrulama aracını kullanma
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
-
-Şablon doğrulama aracını denetlemek için kullanabileceğiniz olup olmadığını, Azure Resource Manager [şablonları](azure-stack-arm-templates.md) Azure Stack'e dağıtmaya hazırsınız. Şablon doğrulama aracı, Azure Stack Araçları'nın bir parçası kullanılabilir. İçinde açıklanan adımları kullanarak Azure Stack araçları indirin [Github'dan araçları indirme](../operator/azure-stack-powershell-download.md).
+Azure Resource Manager şablonlarınızın Azure Stack dağıtıma hazırlanma olup olmadığını denetlemek için [](azure-stack-arm-templates.md) şablon doğrulama aracını kullanın. Şablon doğrulama aracı Azure Stack araçlarının bir parçası olarak kullanılabilir. Azure Stack araçlarını [GitHub 'Dan indirme araçları](../operator/azure-stack-powershell-download.md)bölümünde açıklanan adımları kullanarak indirin.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir şablon doğrulamak için ilk bulut özellikleri dosyası oluşturun ve sonra doğrulama aracını çalıştırın. Aşağıdaki PowerShell modülleri Azure Stack araçları kullanabilirsiniz:
+Bir şablonu doğrulamak için, önce bir bulut özellikleri dosyası oluşturmanız ve ardından doğrulama aracını çalıştırmanız gerekir. Azure Stack araçlarından aşağıdaki PowerShell modüllerini kullanın:
 
-- İçinde **CloudCapabilities** klasör: `AzureRM.CloudCapabilities.psm1` Hizmetleri ve Azure Stack bulut sürümlerinde temsil eden bir bulut özellikleri JSON dosyası oluşturur.
-- İçinde **TemplateValidator** klasör: `AzureRM.TemplateValidator.psm1` dağıtım için şablonlar Azure Stack'te test etmek için bir bulut özellikleri JSON dosyası kullanır.
+- **Cloudcapabilities** klasöründe: `AzureRM.CloudCapabilities.psm1` bir Azure Stack buluttaki Hizmetleri ve sürümleri temsil eden bir bulut yetenekleri JSON dosyası oluşturur.
+- **Templatevalidator** klasöründe: `AzureRM.TemplateValidator.psm1` Azure Stack dağıtım için şablonları test etmek üzere bir bulut yetenekleri JSON dosyası kullanır.
 
-## <a name="build-the-cloud-capabilities-file"></a>Bulut özellikleri dosyası oluşturma
+## <a name="build-the-cloud-capabilities-file"></a>Bulut özellikleri dosyasını oluşturun
 
-Şablon Doğrulayıcı kullanmadan önce çalıştırmak **AzureRM.CloudCapabilities** bir JSON dosyası oluşturmak için PowerShell modülü.
+Şablon Doğrulayıcı 'yı kullanmadan önce, bir JSON dosyası derlemek için **Azurere. CloudCapabilities** PowerShell modülünü çalıştırın.
 
 >[!NOTE]
-> Tümleşik sisteminizi güncelleştirin veya herhangi bir yeni hizmetleri veya sanal uzantıları ekleyin, bu modül yeniden çalıştırmanız gerekir.
+> Tümleşik sisteminizi güncelleştirir veya yeni hizmetleri ya da sanal uzantıları eklerseniz, bu modülü yeniden çalıştırmalısınız.
 
-1. Azure Stack bağlantısı olduğundan emin olun. Bu adımlar, Azure Stack Geliştirme Seti konaktan gerçekleştirilebilir veya kullanabileceğiniz bir [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) istasyonunuzdan bağlanmak için.
-2. İçeri aktarma **AzureRM.CloudCapabilities** PowerShell Modülü:
+1. Azure Stack bağlantınız olduğundan emin olun. Bu adımlar Azure Stack Geliştirme Seti (ASDK) konağından yapılabilir veya iş istasyonunuzdan bağlanmak için bir [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) kullanabilirsiniz.
+2. **Azurerd. CloudCapabilities** PowerShell modülünü içeri aktarın:
 
     ```powershell
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Kullanım `Get-CloudCapabilities` cmdlet'ini hizmet sürümlerini almak ve bir bulut özellikleri JSON dosyası oluşturun. Belirtmezseniz `-OutputPath`, AzureCloudCapabilities.Json geçerli dizinde oluşturulan dosya. Gerçek Azure konumunuz kullanın:
+3. `Get-CloudCapabilities` Cmdlet 'ini kullanarak hizmet sürümlerini alıp bulut yetenekleri JSON dosyası oluşturun. Belirtmezseniz `-OutputPath`, azurechoparlör Capabilities. JSON dosyası geçerli dizinde oluşturulur. Gerçek Azure konumunuzu kullanın:
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
     ```
 
-## <a name="validate-templates"></a>Şablonları doğrula
+## <a name="validate-templates"></a>Şablonları doğrulama
 
-Şablonları kullanarak doğrulamak için aşağıdaki adımları kullanın **AzureRM.TemplateValidator** PowerShell modülü. Kendi şablonlarınızı kullanın veya doğrulama [Azure Stack hızlı başlangıç şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates).
+**Azurere. TemplateValidator** PowerShell modülünü kullanarak şablonları doğrulamak için bu adımları kullanın. Kendi şablonlarınızı kullanabilir veya [Azure Stack hızlı başlangıç şablonlarını](https://github.com/Azure/AzureStack-QuickStart-Templates)doğrulayabilirsiniz.
 
-1. İçeri aktarma **AzureRM.TemplateValidator.psm1** PowerShell Modülü:
+1. **Azurerd. TemplateValidator. psm1** PowerShell modülünü içeri aktarın:
 
     ```powershell
     cd "c:\AzureStack-Tools-master\TemplateValidator"
     Import-Module .\AzureRM.TemplateValidator.psm1
     ```
 
-2. Şablon Doğrulayıcı çalıştırın:
+2. Şablon doğrulayıcısı 'nı çalıştırın:
 
     ```powershell
     Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
@@ -75,27 +74,27 @@ Bir şablon doğrulamak için ilk bulut özellikleri dosyası oluşturun ve sonr
     -Verbose
     ```
 
-Şablon doğrulama uyarıları veya hataları PowerShell konsolunda görüntülenir ve kaynak dizininde bir HTML dosyasına yazılır. Aşağıdaki ekran görüntüsünde, bir doğrulama raporu örneğidir:
+Şablon doğrulama uyarıları veya hataları PowerShell konsolunda görüntülenir ve kaynak dizindeki bir HTML dosyasına yazılır. Aşağıdaki ekran görüntüsü, doğrulama raporuna bir örnektir:
 
 ![Şablon doğrulama raporu](./media/azure-stack-validate-templates/image1.png)
 
 ### <a name="parameters"></a>Parametreler
 
-Şablon Doğrulayıcı cmdlet aşağıdaki parametreleri destekler.
+Şablon Doğrulayıcı cmdlet 'i aşağıdaki parametreleri destekler.
 
 | Parametre | Açıklama | Gerekli |
 | ----- | -----| ----- |
-| `TemplatePath` | Yinelemeli olarak yolunu bulun Azure Resource Manager şablonlarını belirtir. | Evet |
+| `TemplatePath` | Azure Resource Manager şablonlarının yinelemeli olarak bulunacağı yolu belirtir. | Evet |
 | `TemplatePattern` | Eşleştirilecek şablon dosyalarının adını belirtir. | Hayır |
-| `CapabilitiesPath` | Bulut özellikleri JSON dosyasının yolunu belirtir. | Evet |
-| `IncludeComputeCapabilities` | VM boyutları ve VM uzantıları gibi Iaas kaynaklarının değerlendirme içerir. | Hayır |
-| `IncludeStorageCapabilities` | SKU türü gibi depolama kaynaklarını değerlendirmesini içerir. | Hayır |
-| `Report` | Oluşturulan HTML raporu adını belirtir. | Hayır |
-| `Verbose` | Konsola, hataları ve uyarıları günlüğe kaydeder. | Hayır|
+| `CapabilitiesPath` | Bulut yetenekleri JSON dosyasının yolunu belirtir. | Evet |
+| `IncludeComputeCapabilities` | , VM boyutları ve VM uzantıları gibi IaaS kaynaklarının değerlendirilmesini içerir. | Hayır |
+| `IncludeStorageCapabilities` | SKU türleri gibi depolama kaynaklarının değerlendirmesini içerir. | Hayır |
+| `Report` | Oluşturulan HTML raporunun adını belirtir. | Hayır |
+| `Verbose` | Hataları ve uyarıları konsola kaydeder. | Hayır|
 
 ### <a name="examples"></a>Örnekler
 
-Bu örnekte, tüm doğrulama [Azure Stack hızlı başlangıç şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates) yerel depolama birimine yüklenen. Örnek aynı zamanda sanal makine boyutları ve uzantıları Azure Stack geliştirme Seti'ni özellikleri karşı doğrular:
+Bu örnek, yerel depolamaya indirilen [Azure Stack hızlı başlangıç şablonlarının](https://github.com/Azure/AzureStack-QuickStart-Templates) tümünü doğrular. Örnek ayrıca, sanal makine (VM) boyutlarını ve uzantılarını Azure Stack Geliştirme Seti özelliklerine göre doğrular:
 
 ```powershell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
@@ -107,5 +106,5 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şablonları Azure Stack'e dağıtma](azure-stack-arm-templates.md)
+- [Şablonları Azure Stack dağıtma](azure-stack-arm-templates.md)
 - [Şablonları Azure Stack için geliştirme](azure-stack-develop-templates.md)
