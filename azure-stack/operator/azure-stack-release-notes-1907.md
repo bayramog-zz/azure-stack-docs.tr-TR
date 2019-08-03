@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/02/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: b3270571cd69a701395e647c50a1141d940414e6
-ms.sourcegitcommit: 49cfe13427f5255915d5ccbed87b36eec2caf8ca
+ms.lastreviewed: 08/02/2019
+ms.openlocfilehash: e868cd1e7d6ec24ddb350305c82cc1d87a334d91
+ms.sourcegitcommit: 56778bf71d5f6bbe2768fbc38c2ed2208114b867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68719999"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756649"
 ---
 # <a name="azure-stack-1907-update"></a>Azure Stack 1907 güncelleştirmesi
 
@@ -97,6 +97,8 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 
 - Bir teklif oluşturulurken açıklama alanı kaydedilmemiş bir sorun düzeltildi.
 
+- **Salt okuma** izinlerine sahip bir kullanıcının kaynakları oluşturabildiği, düzenleyebilen ve silebileceği bir sorun düzeltildi. Artık Kullanıcı, **katkıda** bulunan izin atandığında yalnızca kaynak oluşturabiliyor. 
+
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
 - WMI sağlayıcısı ana bilgisayarı tarafından kilitlenen bir DLL dosyası nedeniyle güncelleştirmenin başarısız olduğu bir sorun düzeltildi.
 
@@ -146,7 +148,7 @@ Azure Stack 1907 sürümü aşağıdaki düzeltmelere sahip 1906 sürümüne uyg
 Bu güncelleştirmenin yüklenmesinden sonra, geçerli düzeltmeleri yükleme. Daha fazla bilgi için bkz. [hizmet ilkeniz](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hotfix 1.1907.7.35](https://support.microsoft.com/help/4515310)
+- [Azure Stack Hotfix 1.1907.8.37](https://support.microsoft.com/help/4515650)
 
 ## <a name="automatic-update-notifications"></a>Otomatik güncelleştirme bildirimleri
 
