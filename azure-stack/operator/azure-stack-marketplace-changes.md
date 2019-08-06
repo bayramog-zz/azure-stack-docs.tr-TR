@@ -11,28 +11,50 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/05/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: c70334bea80a84166a4bb614f15852e44f2b99f4
-ms.sourcegitcommit: bf4d265a3522cbfdd9dd295a0f4ad0daf2ed5eca
+ms.openlocfilehash: 3d0aad849395a93b1086daf5cf2c17e198d69ed5
+ms.sourcegitcommit: 0e0d010c4e010f2fd6799471db8bf71652d8d4e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68692126"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68806927"
 ---
 # <a name="azure-stack-marketplace-changes"></a>Market değişikliklerini Azure Stack
 
-Bu makalede, [Azure Stack Market öğelerinin](azure-stack-marketplace-azure-items.md)son eklemeleri, güncelleştirmeleri, değişiklikleri ve kaldırma işlemleri açıklanmaktadır. Bu bölümdeki bilgiler sıklıkla güncelleştirilir, bu nedenle değişiklikler için sık sık kontrol edin.
+Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azure-stack-marketplace-azure-items.md) son eklemeleri, güncelleştirmeleri, değişiklikleri ve kaldırma işlemleri açıklanmaktadır. Bu bölümdeki bilgiler sıklıkla güncelleştirilir, bu nedenle değişiklikler için sık sık kontrol edin.
 
-Bu makalede, yaklaşık 3 ayda, yaklaşık olarak gerçekleşen Market değişiklikleri açıklanmaktadır. [Azure Stack Market öğeleri](azure-stack-marketplace-azure-items.md) makalesi her zaman kullanılabilir Azure Stack Market öğelerinin en güncel listesini içerir.
+[Azure Stack Market öğeleri](azure-stack-marketplace-azure-items.md) makalesi her zaman kullanılabilir Azure Stack Market öğelerinin en güncel listesini içerir.
 
 ## <a name="new-marketplace-items"></a>Yeni Market öğeleri
 
-- Yedekleme & çoğaltma™® veead: İşletmelerin tüm iş yükleri (sanal, fiziksel ve bulut tabanlı iş yükleri) için kapsamlı veri koruması elde etmesine yardımcı olur. Tek bir konsol ile hızlı, esnek ve güvenilir yedekleme, tüm uygulama ve verilerin kurtarılmasını ve çoğaltılmasını elde edin. 6/14/2019 eklendi.
+- 1/25/2019: A10 vThunder: L4-L7 uygulama teslim denetleyicisi, genel sunucu yük dengelemesi (GSLB), SSL Insight
 
-- A10 vThunder: L4-L7 uygulama teslim denetleyicisi, genel sunucu yük dengelemesi (GSLB), SSL öngörüleri. 1/25/2019 eklendi.
+- 6/14/2019: Yedekleme & çoğaltma™® veeab
+
+- 08/05/2019: Drupal
+
+- 08/05/2019: etcd
+
+- 08/05/2019: Grafana
+
+- 08/05/2019: Neo4j
+
+- 08/05/2019: Sunucuyu Ayrıştır
+
+- 08/05/2019: WordPress çoklu site
+
+- 08/05/2019: ZooKeeper
+
+- 08/05/2019: TensorFlow sunma
+
+- 08/05/2019: NAT
+
+- 08/05/2019: Review Board
+
+- 08/05/2019: Birleşik SR
 
 ## <a name="deprecated-marketplace-items"></a>Kullanımdan kaldırılan Market öğeleri
 

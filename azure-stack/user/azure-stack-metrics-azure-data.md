@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/02/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: aafdc25293ea3cc584d24688d071dadb2151ce22
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 329ef95f7902f3fe6dfcdd71b599675fdf7c6286
+ms.sourcegitcommit: 0e0d010c4e010f2fd6799471db8bf71652d8d4e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418546"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68806939"
 ---
 # <a name="use-azure-monitor-on-azure-stack"></a>Azure Stack Azure Izleyicisini kullanın
 
@@ -121,13 +121,16 @@ Görselleştirme yöntemlerinden bazıları şunlardır:
 
 ## <a name="methods-of-accessing-azure-monitor-on-azure-stack"></a>Azure Stack Azure izleyici 'ye erişme yöntemleri
 
-Genel olarak, aşağıdaki yöntemlerden birini kullanarak veri izleme, yönlendirme ve alma yöntemlerini yönetebilirsiniz. Tüm eylemler veya veri türleri için tüm yöntemler kullanılabilir olmayabilir.
+Aşağıdaki yöntemlerden birini kullanarak veri izleme, Yönlendirme ve alma ile çalışabilirsiniz. Tüm eylemler veya veri türleri için tüm yöntemler kullanılabilir olmayabilir. 
 
  - [Azure Stack portalı](azure-stack-use-portal.md)
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Platformlar arası komut satırı arabirimi (CLı)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
  - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+
+> [!Important]  
+> Bir VM 'nin performans grafiğini görüntülerken **kaynak bulunamadı** hatasıyla karşılaşırsanız, Microsoft. ıNSIGHTS 'ı VM ile ilişkili abonelikte kaydettiğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/05/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 07/12/2019
-ms.openlocfilehash: edb11dc0f80702d804305ea671427d91f13cc786
-ms.sourcegitcommit: bf4d265a3522cbfdd9dd295a0f4ad0daf2ed5eca
+ms.lastreviewed: 08/05/2019
+ms.openlocfilehash: 76ce6d491969913ad48486fd9004f7686af8e6f3
+ms.sourcegitcommit: 0e0d010c4e010f2fd6799471db8bf71652d8d4e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68692162"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68806965"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilen Azure Marketi öğeleri
 
@@ -118,6 +118,7 @@ Microsoft Azure Stack, aşağıdaki Azure Marketi sanal makinelerini ve çözüm
 | ![Cassandra kümesi](media/azure-stack-marketplace-azure-items/cassandra.png) | [Cassandra kümesi](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.cassandra-cluster) | Apache Cassandra, çok sayıda emtia sunucusunda büyük miktarlarda veriyi işlemek için tasarlanan ve tek hata noktası olmadan yüksek kullanılabilirlik sağlayan açık kaynaklı bir dağıtılmış veritabanı yönetim sistemidir. **Bu çözüm şablonu Ayrıca, Linux 2,0 uzantısı için de, 8 ve özel betik gerektirir.** | Bitnami |
 | ![CiviCRM](media/azure-stack-marketplace-azure-items/civicrm.png) | [CiviCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.civicrm) | Web tabanlı basit ilişki yönetimi sistemi. | Bitnami |
 | ![CMS basit yapıldı](media/azure-stack-marketplace-azure-items/cmsmadesimple.png) | [CMS basit yapıldı](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.cmsmadesimple) | Web sitesi oluşturmanın ve yönetmenin hızlı ve kolay yolu. | Bitnami |
+| ![Birleşik SR](media/azure-stack-marketplace-azure-items/composr.png) | [Birleşik SR](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.ocportal) | Composr, gelişmiş içerik, sosyal, etkileşimli ve dinamik özelliklerle bir CMS 'dir. Tamamen esnek, tema özellikli ve Genişletilebilir: neredeyse her türlü web sitesi oluşturmak için uygundur. | Bitnami |
 | ![Concrete5](media/azure-stack-marketplace-azure-items/concrete5.png) | [Concrete5](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.concrete5) | Web uygulamalarını, Web sitelerini, mağazaları ve forumları kolayca dağıtın. | Bitnami |
 | ![Coppermine](media/azure-stack-marketplace-azure-items/coppermine.png) | [Coppermine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.coppermine) | Çok amaçlı, tam özellikli Web Galerisi. | Bitnami |
 | ![CouchDB](media/azure-stack-marketplace-azure-items/couchdb.png) | [CouchDB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.couchdb) | Kullanımı kolay açık kaynaklı veritabanı sistemi. | Bitnami |
@@ -127,14 +128,17 @@ Microsoft Azure Stack, aşağıdaki Azure Marketi sanal makinelerini ve çözüm
 | ![Dolibarr](media/azure-stack-marketplace-azure-items/dolibarr.png) | [Dolibarr](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.dolibarr) | Ücretsiz açık kaynaklı yazılım paketi. | Bitnami |
 | ![DokuWiki](media/azure-stack-marketplace-azure-items/dokuwiki.png) | [DokuWiki](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.dokuwiki) | Çok yönlü açık kaynaklı wiki yazılımı. | Bitnami |
 | ![DreamFactory](media/azure-stack-marketplace-azure-items/dreamfactory.png) | [DreamFactory](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.dreamfactory) | SQL, NoSQL ve BLOB gibi hizmetlerle açık kaynaklı REST API. | Bitnami |
+| ![Drupal](media/azure-stack-marketplace-azure-items/drupal.png) | [Drupal](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.drupal) | Drupal, dünyanın en çok yönlü açık kaynaklı içerik yönetim sistemlerinden biridir. Ctools ve views modülleri ile önceden yapılandırılmıştır, Drush ve otomatik yapılandırma desteğini şifreleyelim. | Bitnami |
 | ![Elasticsearch](media/azure-stack-marketplace-azure-items/elasticsearch.png) | [Elasticsearch](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.elastic-search) | Esnek ve güçlü açık kaynaklı analiz altyapısı. | Bitnami |
 | ![ELK](media/azure-stack-marketplace-azure-items/elk.png) | [ELK](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.elk) | Elaun Search, kibana ve Logstash 'ten oluşan büyük veri paketi. | Bitnami |
 | ![ERPNext](media/azure-stack-marketplace-azure-items/erpnext.png) | [ERPNext](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.erpnext) | Açık kaynaklı kurumsal kaynak planlama (ERP) platformu. | Bitnami |
 | ![EspoCRM](media/azure-stack-marketplace-azure-items/espocrm.png) | [EspoCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.espocrm) | Müşteri ilişkilerinin yönetilmesine yardımcı olan basit CRM sistemi. | Bitnami |
+| ![etcd](media/azure-stack-marketplace-azure-items/etcd.png) | [etcd](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.etcd) | etcd, verileri bir küme genelinde güvenli bir şekilde depolamak için tasarlanan dağıtılmış bir anahtar-değer deposudur. etcd, üretimde güvenilirlik, hata toleransı ve kullanım kolaylığı için yaygın olarak kullanılır. | Bitnami |
 | ![eXo platformu](media/azure-stack-marketplace-azure-items/exoplatform.png) | [eXo platformu](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.exoplatform) | Kuruluşlar için tasarlanan açık kaynaklı, sosyal yazılım. | Bitnami |
 | ![FAT ücretsiz CRM](media/azure-stack-marketplace-azure-items/fatfreecrm.png) | [FAT ücretsiz CRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.fatfreecrm) | Açık kaynaklı Ruby, Raya tabanlı CRM 'de. | Bitnami |
 | ![GitLab Community sürümü](media/azure-stack-marketplace-azure-items/bitnami.png) | [GitLab Community sürümü](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.gitlab) | Hızlı, güvenli git yönetim yazılımı. | Bitnami |
 | ![Ghost](media/azure-stack-marketplace-azure-items/ghost.png) | [Hayali](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.ghost) | Yayımlamaya ayrılmış bir platform. | Bitnami |
+| ![Grafana](media/azure-stack-marketplace-azure-items/grafana.png) | [Grafana](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.grafana) | Grafana, Graphite, Elam araması, Prometheus, MariaDB/MySQL, PostgreSQL, etkileyen IDB, OpenTSDB ve çok daha fazlası dahil 40 ' den fazla veri kaynağından oluşan açık kaynaklı analiz ve izleme panolarıdır. | Bitnami |
 | ![Hadoop](media/azure-stack-marketplace-azure-items/hadoop.png) | [Hadoop](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.hadoop) | Güvenilir, ölçeklenebilir ve dağıtılmış bilgi işlem için çerçeve. | Bitnami |
 | ![SSVM](media/azure-stack-marketplace-azure-items/hhvm.png) | [SSVM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.hhvmstack) | Tamamen tümleşik ve çalıştırılabilir geliştirme ortamı. | Bitnami |
 | ![Horde Groupware web postası](media/azure-stack-marketplace-azure-items/hordegroupwarewebmail.png) | [Horde Groupware web postası](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.hordegroupwarewebmail) | Ücretsiz, kurumsal özellikli, tarayıcı tabanlı iletişim paketi. | Bitnami |
@@ -167,7 +171,9 @@ Microsoft Azure Stack, aşağıdaki Azure Marketi sanal makinelerini ve çözüm
 | ![MyBB](media/azure-stack-marketplace-azure-items/mybb.png) | [MyBB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mybb) | Ücretsiz ve açık kaynaklı Forum yazılımı. | Bitnami |
 | ![MySQL](media/azure-stack-marketplace-azure-items/mysql.png) | [MySQL](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mysql) | En popüler veritabanı sistemi. | Bitnami |
 | ![Çoğaltma ile MySQL](media/azure-stack-marketplace-azure-items/mysql.png) | [Çoğaltma ile MySQL](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mysql-cluster) | MySQL, hızlı, güvenilir, ölçeklenebilir ve açık kaynaklı ilişkisel veritabanı sistemi kullanımı kolay bir işlemdir. MySQL Server, görev açısından kritik, ağır yük üretim sistemleri ve toplu dağıtılan yazılıma ekleme amaçlıdır. Bu çözüm, veritabanlarını ana düğümden yapılandırılabilir sayıda çoğaltmaya çoğaltmak için birden çok VM kullanır. **Bu çözüm şablonu Ayrıca, Linux 2,0 uzantısı için de, 8 ve özel betik gerektirir.** | Bitnami |
+| ![NAT](media/azure-stack-marketplace-azure-items/nats.png) | [NAT](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nats) | NAT 'ler açık kaynaklı, hafif ve yüksek performanslı bir mesajlaşma sistemidir. Dağıtılmış sistemler için idealdir ve modern bulut mimarilerini ve yayımlama-abone ol, istek Yanıtla ve kuyruğa alma modellerini destekler. | Bitnami |
 | ![Neos](media/azure-stack-marketplace-azure-items/neos.png) | [Neos](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.neos) | Çok yönlü açık kaynaklı Içerik yönetim sistemi. | Bitnami |
+| ![Neo4j](media/azure-stack-marketplace-azure-items/neo4j.png) | [Neo4j](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.neo4j) | Neo4j, yakın bir sorgu dili ve ACID işlemleri gibi, Olgun ve sağlam bir veritabanında beklenen tüm özellikleri içeren yüksek performanslı bir grafik deposudur.| Bitnami |
 | ![Nginx](media/azure-stack-marketplace-azure-items/nginx.png) | [NGINX](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nginxstack) | Tüm PHP, MySQL ve NGINX geliştirme ortamı. | Bitnami |
 | ![Noalyss](media/azure-stack-marketplace-azure-items/noalyss.png) | [Noalyss](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.noalyss) | Güçlü çift girişli muhasebe sistemi. | Bitnami |
 | ![Node.js](media/azure-stack-marketplace-azure-items/nodejs.png) | [node.js](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.nodejs) | Kolay oluşturma için JavaScript 'te yazılmış açık kaynaklı ortam. | Bitnami |
@@ -182,6 +188,7 @@ Microsoft Azure Stack, aşağıdaki Azure Marketi sanal makinelerini ve çözüm
 | ![Slass](media/azure-stack-marketplace-azure-items/osclass.png) | [Slass](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.osclass) | Teknik bilgi içermeyen, ücretsiz sınıflandırılan reklamlar oluşturun ve yönetin. | Bitnami |
 | ![ownCloud](media/azure-stack-marketplace-azure-items/owncloud.png) | [ownCloud](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.owncloud) | Popüler açık kaynak dosya eşitleme ve paylaşma çözümü. | Bitnami |
 | ![OXıD eShop](media/azure-stack-marketplace-azure-items/oxideshop.png) | [OXıD eShop](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.oxid-eshop) | Güvenilir açık kaynaklı e-ticaret sistemi. | Bitnami |
+| ![Sunucuyu Ayrıştır](media/azure-stack-marketplace-azure-items/parseserver.png) | [Ayrıştırma sunucusu](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.parseserver) | Parse, kullanıcıların iOS, Android, JavaScript, Windows, Unity ve daha fazlası için tam özellikli bir uygulama başlatmak üzere ölçeklenebilir ve güçlü bir arka uç eklemesine olanak tanıyan bir platformdur. | Bitnami |
 | ![phpBB](media/azure-stack-marketplace-azure-items/phpbb.png) | [phpBB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.phpbb) | Özelleştirilebilir bülten panosu çözümü. | Bitnami |
 | ![phpList](media/azure-stack-marketplace-azure-items/phplist.png) | [phpList](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.phplist) | Tek yönlü e-posta duyurusu teslim sistemi. | Bitnami |
 | ![Pımcore](media/azure-stack-marketplace-azure-items/pimcore.png) | [Pımcore](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.pimcore) | Güçlü bir katılım yönetimi platformu (Ced/CXM). | Bitnami |
@@ -205,6 +212,7 @@ Microsoft Azure Stack, aşağıdaki Azure Marketi sanal makinelerini ve çözüm
 | ![ReportServer topluluğu](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer topluluğu](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Açık kaynaklı iş zekası platformu. | Bitnami |
 | ![ReportServer kurumsal](media/azure-stack-marketplace-azure-items/reportserverenterprise.png) | [ReportServer kurumsal](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserverenterprise) | Kurumsal iş zekası platformu. | Bitnami |
 | ![ResourceSpace](media/azure-stack-marketplace-azure-items/resourcespace.png) | [Resourcessize](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.resourcespace) | İyileştirilmiş işbirliği için dijital varlık yönetim sistemi. | Bitnami |
+| ![Review Board](media/azure-stack-marketplace-azure-items/reviewboard.png) | [Panoyu İncele](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reviewboard) | Gözden geçirme panosu, geliştiricilere kolayca basitleştirilmiş kod İncelemeleri yürütmek üzere çeşitli araçlar sunan Web tabanlı bir kod inceleme uygulamasıdır. Küçük projelerden büyük şirketlere kadar iyi ölçeklendirme yapar.| Bitnami |
 | ![Roundcube](media/azure-stack-marketplace-azure-items/roundcube.png) | [Roundcube](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.roundcube) | MIME desteği gibi işlevlere sahip tarayıcı tabanlı IMAP istemcisi. | Bitnami |
 | ![Ruby](media/azure-stack-marketplace-azure-items/ruby.png) | [Ruby](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rubystack) | Ruby on rayları için kullanımı kolay geliştirme ortamı. | Bitnami |
 | ![SEO paneli](media/azure-stack-marketplace-azure-items/seopanel.png) | [SEO paneli](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.seopanel) | Birden çok Web sitesini izlemek için açık kaynak SEO yönetim uygulaması. | Bitnami |
@@ -213,6 +221,7 @@ Microsoft Azure Stack, aşağıdaki Azure Marketi sanal makinelerini ve çözüm
 | ![Spree](media/azure-stack-marketplace-azure-items/spree.png) | [Spree](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.spree) | Kullanımı kolay eticaret platformu. | Bitnami |
 | ![Subversion](media/azure-stack-marketplace-azure-items/subversion.png) | [Subversion](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.subversion) | Açık kaynaklı sürüm denetim sistemi. | Bitnami |
 | ![SuiteCRM](media/azure-stack-marketplace-azure-items/suitecrm.png) | [SuiteCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.suitecrm) | Popüler kurumsal sınıf CRM uygulaması. | Bitnami |
+| ![TensorFlow sunma](media/azure-stack-marketplace-azure-items/tensorflow.png) | [TensorFlow hizmeti](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.tensorflowserving) | TensorFlow hizmeti, makine öğrenimi modellerine hizmet veren bir sistemdir. Bu yığın, görüntü tanıma için eğitilen verilerle birlikte sürüm 3 ile birlikte gelir, ancak başka modellere de sunulacak şekilde genişletilebilir. | Bitnami |
 | ![TestLink](media/azure-stack-marketplace-azure-items/testlink.png) | [TestLink](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.testlink) | Kalite güvencesini kolaylaştırmaya yönelik test yönetimi yazılımı. | Bitnami |
 | ![Tiki wiki CMS Groupware](media/azure-stack-marketplace-azure-items/tikiwikicmsgroupware.png) | [Tiki wiki CMS Groupware](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.tikiwikicmsgroupware) | Tam özellikli wiki platformu. | Bitnami |
 | ![Küçük küçük RSS](media/azure-stack-marketplace-azure-items/tinytinyrss.png) | [Küçük küçük RSS](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.tinytinyrss) | Esnek açık kaynaklı web tabanlı haber akışı ve toplayıcısı. | Bitnami |
@@ -223,8 +232,10 @@ Microsoft Azure Stack, aşağıdaki Azure Marketi sanal makinelerini ve çözüm
 | ![WebMail Pro PHP](media/azure-stack-marketplace-azure-items/webmailprophp.png) | [WebMail Pro PHP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.webmailpro) | Kurumsal özelliklerle Webmail sistemi. | Bitnami |
 | ![Yavaya](media/azure-stack-marketplace-azure-items/wildfly.png) | [Yavaya](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.wildfly) | Apache, Yavaya, MySQL ve Java içeren uygulama sunucusu. | Bitnami |
 | ![WordPress](media/azure-stack-marketplace-azure-items/wordpress.png) | [WordPress](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.wordpress) | En popüler ve hazırdan go CMS. | Bitnami |
+| ![WordPress çoklu site](media/azure-stack-marketplace-azure-items/wordpress.png) | [WordPress çoklu site](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.wordpress-multisite) | WordPress, dünyanın en popüler blog ve içerik yönetimi platformudur. WordPress çoklu site ile aynı sunucu ve arabirimden birden çok blogu ve Web sitesini yöneterek kaynakları tasarruf edin. | Bitnami |
 | ![Xne](media/azure-stack-marketplace-azure-items/xoops.png) | [Xne](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.xoops) | Dinamik Web siteleri oluşturan CMS ve Web portalı programı. | Bitnami |
 | ![Zurmo dili](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo dili](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zurmo) | Açık kaynaklı CRM sistemi: Mobil, sosyal ve gaz. | Bitnami |
+| ![ZooKeeper](media/azure-stack-marketplace-azure-items/zookeeper.png) | [ZooKeeper](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zookeeper) | ZooKeeper dağıtılmış uygulamalar için güvenilir, merkezi bir yapılandırma verileri ve hizmetleri sağlar. | Bitnami |
 | ![Denetim noktası vSEC güvenlik yönetimi](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Denetim noktası vSEC güvenlik yönetimi](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Check Point vSEC, Azure 'daki müşteri varlıklarını kötü amaçlı yazılımlara ve gelişmiş tehditlere karşı korumak için gelişmiş, çok katmanlı tehdit önleme olanağı sunuyor. **Hem Check Point vSEC Market öğelerini indirin.** | Check Point |
 | ![Chef Automate](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef Otomatikleştir](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) | Sürekli Otomasyon platformu olan Chef otomatikleştirmesine sahip oluşturun, dağıtın ve yönetin. **Her Iki Chef Market öğesini indirin**. | Chef Software, Inc |
 | ![Commvault](media/azure-stack-marketplace-azure-items/commvault.png) | [Commvault](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault) | Tek bir çözümde Azure Stack ortamları için yedekleme ve kurtarma, uygulama ve sanal makine Azure Stack geçişi ve olağanüstü durum kurtarma için kapsamlı bir çözümdür. | Commvault |
