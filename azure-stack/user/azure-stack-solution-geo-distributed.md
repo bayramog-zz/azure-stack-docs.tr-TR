@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7f50c1f5cf565040425e0c655585c3d65b837eb3
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.openlocfilehash: bac13382c1fe579a04b96274d8f310d5a1737be2
+ms.sourcegitcommit: a0dcb61890ad0f7b8e1f738f7186198681adcc2e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68603137"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68820785"
 ---
 # <a name="create-a-geo-distributed-app-solution-to-direct-traffic-with-azure-and-azure-stack"></a>Trafiği Azure ile yönlendirmek için coğrafi olarak dağıtılmış bir uygulama çözümü oluşturma ve Azure Stack
 
@@ -302,7 +302,7 @@ DNS kayıtları sayfasının bir örneğini aşağıdaki ekran görüntüsünde 
 
 2. Bir alt etki alanını uygulamanın varsayılan ana bilgisayar adına eşlemek için bir CNAME kaydı ekleyin.
 
-   Www.northwindcloud.com etki alanı örneği için adı < App\_name >. azurewebsites. net olarak eşleyen bir CNAME kaydı ekleyin.
+   Www\.northwindcloud.com etki alanı örneği için adı < App\_name >. azurewebsites. net olarak eşleyen bir CNAME kaydı ekleyin.
 
 CNAME eklendikten sonra DNS kayıtları sayfası aşağıdaki örneğe benzer şekilde görünür:
 
@@ -563,7 +563,7 @@ Uygulama, artık [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data
 
 ### <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
-1.  Profil  >  > oluştur Traffic Manager kaynak ağı oluştur ' u seçin. > 
+1.  Profil >  > oluştur Traffic Manager kaynak ağı oluştur ' u seçin. > 
 
 2.  **Traffic Manager profili oluştur** dikey penceresini aşağıdaki gibi doldurun:
 
@@ -595,7 +595,7 @@ Uygulama, artık [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data
 
 5. **Tür**için **dış uç nokta**' ı seçin.
 
-6. Bu uç **nokta için,** ideal olarak Azure Stack adını belirtin.
+6. Bu uç nokta için, ideal olarak Azure Stack adını belirtin.
 
 7. Tam etki alanı adı (**FQDN**) için, Azure Stack Web UYGULAMASıNıN dış URL 'sini kullanın.
 

@@ -1,6 +1,6 @@
 ---
-title: Anahtar Kasası'nda Azure Stack PowerShell kullanarak yönetme | Microsoft Docs
-description: PowerShell kullanarak anahtar Kasası'nda Azure Stack yönetmeyi öğrenin
+title: PowerShell kullanarak Azure Stack Key Vault yönetme | Microsoft Docs
+description: PowerShell kullanarak Azure Stack Key Vault yönetmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: sethm
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 613fec37e1677698e72ff09d3ffdc35502a57de5
-ms.sourcegitcommit: c755c7eac0f871960f9290591421cf5990b9e734
+ms.openlocfilehash: ca303590d4dc923380e10e50fc9b8b9ce2e5aac6
+ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506085"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68842968"
 ---
-# <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Anahtar Kasası'nda Azure Stack PowerShell kullanarak yönetme
+# <a name="manage-key-vault-in-azure-stack-using-powershell"></a>PowerShell kullanarak Azure Stack Key Vault yönetme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Anahtar Kasası'nda Azure Stack PowerShell kullanarak yönetebilirsiniz. Anahtar kasası PowerShell cmdlet'leri için kullanmayı öğrenin:
+Bu makalede, PowerShell kullanarak Azure Stack bir anahtar kasasının nasıl oluşturulacağı ve yönetileceği açıklanmaktadır. Key Vault PowerShell cmdlet 'lerini nasıl kullanacağınızı öğreneceksiniz:
 
 * Bir anahtar kasası oluşturma.
-* Store ve şifreleme anahtarlarını ve gizli yönetin.
-* Kullanıcılar veya uygulamalar operations kasada çağırmak için yetkilendirin.
+* Şifreleme anahtarlarını ve gizli dizileri depolayın ve yönetin.
+* Kullanıcıları veya uygulamaları kasadaki işlemleri çağırmak için yetkilendirin.
 
 >[!NOTE]
->Bu makalede açıklanan anahtar kasası PowerShell cmdlet'leri, Azure PowerShell SDK'sı sağlanır.
+>Bu makalede açıklanan Key Vault PowerShell cmdlet 'leri Azure PowerShell SDK 'sında verilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Key Vault hizmetini içeren bir teklife abone olması gerekir.
-* [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md).
-* [Azure Stack kullanıcının PowerShell ortamını yapılandırmak](azure-stack-powershell-configure-user.md).
+* Azure Key Vault hizmetini içeren bir teklife abone olmanız gerekir.
+* [Azure Stack Için PowerShell 'ı yükler](../operator/azure-stack-powershell-install.md).
+* [Azure Stack kullanıcının PowerShell ortamını yapılandırın](azure-stack-powershell-configure-user.md).
 
-## <a name="enable-your-tenant-subscription-for-key-vault-operations"></a>Anahtar kasası işlemleri için Kiracı aboneliğinizi etkinleştirme
+## <a name="enable-your-tenant-subscription-for-key-vault-operations"></a>Key Vault işlemler için kiracı aboneliğinizi etkinleştirme
 
-Herhangi bir anahtar kasası işlemleri vermeden önce kasa işlemleri için Kiracı aboneliğinizin etkinleştirildiğinden emin emin olmanız gerekir. Kasa işlemleri etkinleştirildiğini doğrulamak için aşağıdaki komutu çalıştırın:
+Bir anahtar kasasında herhangi bir işlem yapabilmeniz için önce kiracı aboneliğinizin kasa işlemlerinde etkinleştirildiğinden emin olmanız gerekir. Kasa işlemlerinin etkinleştirildiğini doğrulamak için şu komutu çalıştırın:
 
 ```powershell  
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 ```
 
-Aboneliğiniz için kasa işlemleri etkinleştirilirse, çıktı gösterir **RegistrationState** olduğu **kayıtlı** bir anahtar kasası, tüm kaynak türleri için.
+Aboneliğiniz kasa işlemleri için etkinleştirilmişse, çıkış, bir anahtar kasasının tüm kaynak türleri Için **registrationstate** ' i gösterir.
 
-![Anahtar kasası kayıt durumu](media/azure-stack-key-vault-manage-powershell/image1.png)
+![PowerShell 'de Anahtar Kasası kayıt durumu](media/azure-stack-key-vault-manage-powershell/image1.png)
 
-Kasa işlemleri etkinleştirilmezse, Key Vault hizmeti, aboneliğinize kaydetmek için aşağıdaki komutu yürütün:
+Kasa işlemleri etkinleştirilmemişse Key Vault hizmetini aboneliğinize kaydetmek için aşağıdaki komutu verin:
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
@@ -61,35 +61,35 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 Kayıt başarılı olursa, aşağıdaki çıktı döndürülür:
 
-![Kaydet](media/azure-stack-key-vault-manage-powershell/image2.png)
+![PowerShell 'de Anahtar Kasası kaydı başarılı](media/azure-stack-key-vault-manage-powershell/image2.png)
 
-Anahtar kasası komutları çağırdığınızda "abonelik 'Microsoft.KeyVault' ad alanını kullanacak şekilde kaydedilmemiş."gibi bir hata alabilirsiniz Bir hata alırsanız, önceki yönergeleri izleyerek Key Vault kaynak sağlayıcısı etkinleştirdiğinizden emin olun.
+Anahtar Kasası komutlarını çağırdığınızda, "abonelik ' Microsoft. Keykasası ' ad alanını kullanacak şekilde kaydedilmemiş" gibi bir hata alabilirsiniz. Bir hata alırsanız, önceki yönergeleri izleyerek Key Vault kaynak sağlayıcısını etkinleştirdiğini doğrulayın.
 
 ## <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
-Bir anahtar kasası oluşturmadan önce böylece tüm anahtar kasasıyla ilgili kaynakları bir kaynak grubunda mevcut bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
+Anahtar Kasası oluşturmadan önce, anahtar kasası ile ilgili tüm kaynakların bir kaynak grubunda mevcut olması için bir kaynak grubu oluşturun. Yeni bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
 
 ```powershell
 New-AzureRmResourceGroup -Name "VaultRG" -Location local -verbose -Force
 ```
 
-![Yeni kaynak grubu](media/azure-stack-key-vault-manage-powershell/image3.png)
+![PowerShell 'de oluşturulan yeni kaynak grubu](media/azure-stack-key-vault-manage-powershell/image3.png)
 
-Artık, **New-AzureRMKeyVault** daha önce oluşturduğunuz kaynak grubunda bir anahtar kasası oluşturmak için komutu. Bu komut üç zorunlu parametreye okur: kaynak grubu adı, anahtar kasası adı ve coğrafi konum.
+Şimdi, daha önce oluşturduğunuz kaynak grubunda bir Anahtar Kasası oluşturmak için **New-Azurermkeykasası** komutunu kullanın. Bu komut üç zorunlu parametreyi okur: kaynak grubu adı, Anahtar Kasası adı ve coğrafi konum.
 
-Bir anahtar kasası oluşturmak için aşağıdaki komutu çalıştırın:
+Bir Anahtar Kasası oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location local -verbose
 ```
 
-![Yeni anahtar kasası](media/azure-stack-key-vault-manage-powershell/image4.png)
+![PowerShell 'de oluşturulan yeni Anahtar Kasası](media/azure-stack-key-vault-manage-powershell/image4.png)
 
-Bu komutun çıktısı, oluşturduğunuz anahtar kasasının özelliklerini gösterir. Bir uygulama bu kasa eriştiğinde kullanmalısınız **Vault URI'si** özelliğinin `https://vault01.vault.local.azurestack.external` Bu örnekte.
+Bu komutun çıktısı, oluşturduğunuz anahtar kasasının özelliklerini gösterir. Bir uygulama bu kasaya eriştiğinde, bu örnekteki **kasa URI** özelliğini `https://vault01.vault.local.azurestack.external` kullanması gerekir.
 
-### <a name="active-directory-federation-services-ad-fs-deployment"></a>Active Directory Federasyon Hizmetleri (AD FS) dağıtımı
+### <a name="active-directory-federation-services-ad-fs-deployment"></a>Active Directory Federasyon Hizmetleri (AD FS) (AD FS) dağıtımı
 
-AD FS dağıtımında, bu uyarı alabilirsiniz: "Erişim İlkesi ayarlanmadı. Herhangi bir kullanıcı veya uygulama bu kasayı kullanmak için erişim izni var." Bu sorunu çözmek için kasa için bir erişim ilkesi kullanarak ayarlamak [Set-AzureRmKeyVaultAccessPolicy](#authorize-an-application-to-use-a-key-or-secret) komutu:
+AD FS dağıtımında şu uyarıyı alabilirsiniz: "Erişim ilkesi ayarlanmadı. Bu kasayı kullanmak için hiçbir Kullanıcı veya uygulamanın erişim izni yok. " Bu sorunu çözmek için [set-AzureRmKeyVaultAccessPolicy](#authorize-an-app-to-use-a-key-or-secret) komutunu kullanarak kasa için bir erişim ilkesi ayarlayın:
 
 ```powershell
 # Obtain the security identifier(SID) of the active directory user
@@ -100,30 +100,30 @@ $objectSID = $adUser.SID.Value
 Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName "{resource group name}" -ObjectId "{object SID}" -PermissionsToKeys {permissionsToKeys} -PermissionsToSecrets {permissionsToSecrets} -BypassObjectIdValidation
 ```
 
-## <a name="manage-keys-and-secrets"></a>Anahtarları ve gizli anahtarları yönetme
+## <a name="manage-keys-and-secrets"></a>Anahtarları ve gizli dizileri yönetme
 
-Bir kasayı oluşturduktan sonra anahtarları ve kasadaki gizli anahtarları oluşturmak ve yönetmek için aşağıdaki adımları kullanın.
+Bir kasa oluşturduktan sonra, kasada anahtar ve gizli dizileri oluşturmak ve yönetmek için bu adımları kullanın.
 
 ### <a name="create-a-key"></a>Anahtar oluşturma
 
-Kullanım **Add-AzureKeyVaultKey** komutu oluşturun veya bir anahtar kasasına yazılım korumalı bir anahtar alın:
+Anahtar kasasında yazılım korumalı anahtar oluşturmak veya içeri aktarmak için **Add-AzureKeyVaultKey** komutunu kullanın:
 
 ```powershell
 Add-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01" -verbose -Destination Software
 ```
 
-**Hedef** parametre anahtarı yazılım korumalı olduğunu belirtmek için kullanılır. Komut, anahtarı başarıyla oluşturulduğunda oluşturulan anahtarı ayrıntılarını çıkarır.
+**Hedef** parametresi, anahtarın yazılım korumalı olduğunu belirtmek için kullanılır. Anahtar başarıyla oluşturulduğunda, komut oluşturulan anahtarın ayrıntılarını çıktı olarak verir.
 
-![Yeni anahtar](media/azure-stack-key-vault-manage-powershell/image5.png)
+![PowerShell 'de oluşturulan yeni anahtar kasası anahtarı](media/azure-stack-key-vault-manage-powershell/image5.png)
 
-Artık, oluşturulan anahtar URI'sini kullanarak başvurabilirsiniz. Oluşturun veya var olan bir anahtar aynı ada sahip bir anahtarı içeri aktarma, özgün anahtar yeni anahtarında belirtilen değerleri ile güncelleştirilir. Önceki sürümü anahtarının sürüme özgü URI'sini kullanarak erişebilirsiniz. Örneğin:
+Şimdi oluşturulan anahtara URI 'sini kullanarak başvurabilirsiniz. Varolan bir anahtarla aynı ada sahip bir anahtar oluşturur veya içeri aktarırsanız, özgün anahtar yeni anahtarda belirtilen değerlerle güncelleştirilir. Önceki sürüme, anahtarın sürüme özgü URI 'sini kullanarak erişebilirsiniz. Örneğin:
 
-* Kullanım `https://vault10.vault.local.azurestack.external:443/keys/key01` her zaman geçerli sürümü almak için.
-* Kullanım `https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a` bu belirli sürümü almak için.
+* Her `https://vault10.vault.local.azurestack.external:443/keys/key01` zaman geçerli sürümü almak için kullanın.
+* Bu `https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a` belirli sürümü almak için kullanın.
 
-### <a name="get-a-key"></a>Bir anahtarı alma
+### <a name="get-a-key"></a>Anahtar al
 
-Kullanım **Get-AzureKeyVaultKey** bir anahtar ve ayrıntılarını okumak için komut:
+Bir anahtarı ve ayrıntılarını okumak için **Get-AzureKeyVaultKey** komutunu kullanın:
 
 ```powershell
 Get-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01"
@@ -131,36 +131,36 @@ Get-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01"
 
 ### <a name="create-a-secret"></a>Gizli dizi oluşturma
 
-Kullanım **Set-AzureKeyVaultSecret** oluşturulacak veya güncelleştirilecek bir kasada bir gizli dizi komutu. Gizli dizi bir zaten mevcut değilse oluşturulur. Zaten varsa, yeni bir gizli dizi sürümü oluşturulur:
+Bir kasada gizli dizi oluşturmak veya güncelleştirmek için **set-AzureKeyVaultSecret** komutunu kullanın. Bir gizli dizi yoksa bir gizli dizi oluşturulur. Zaten varsa, gizli dizinin yeni bir sürümü oluşturulur:
 
 ```powershell
 $secretvalue = ConvertTo-SecureString "User@123" -AsPlainText -Force
 Set-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01" -SecretValue $secretvalue
 ```
 
-![Gizli dizi oluşturma](media/azure-stack-key-vault-manage-powershell/image6.png)
+![PowerShell 'de gizli dizi oluşturma](media/azure-stack-key-vault-manage-powershell/image6.png)
 
-### <a name="get-a-secret"></a>Gizli dizi alma
+### <a name="get-a-secret"></a>Gizli dizi alın
 
-Kullanım **Get-AzureKeyVaultSecret** bir anahtar kasasındaki gizli dizi okumak için komutu. Bu komut tüm döndürebilir veya belirli bir gizli anahtarın sürümlerini:
+Anahtar kasasındaki bir gizli anahtarı okumak için **Get-AzureKeyVaultSecret** komutunu kullanın. Bu komut, bir gizli dizinin tüm veya belirli sürümlerini döndürebilir:
 
 ```powershell
 Get-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01"
 ```
 
-Anahtarları ve gizli anahtarları oluşturduktan sonra dış uygulamalara bunları kullanabilmeleri için yetki verebilir.
+Anahtarları ve gizli dizileri oluşturduktan sonra, bunları kullanmak için dış uygulamalara yetki verebilirsiniz.
 
-## <a name="authorize-an-application-to-use-a-key-or-secret"></a>Bir uygulamayı bir anahtar veya gizli anahtarı kullanması için yetkilendirin
+## <a name="authorize-an-app-to-use-a-key-or-secret"></a>Bir uygulamayı anahtar veya gizli dizi kullanacak şekilde yetkilendirme
 
-Kullanım **Set-AzureRmKeyVaultAccessPolicy** bir anahtar veya gizli anahtar Kasası'nda erişmek için bir uygulamanın komutu.
+Bir uygulamanın anahtar kasasındaki bir anahtara veya gizli anahtara erişmesini yetkilendirmek için **set-AzureRmKeyVaultAccessPolicy** komutunu kullanın.
 
-Aşağıdaki örnekte, kasa adı olan *ContosoKeyVault* ve yetkilendirmek istediğiniz uygulama istemci Kimliğini *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed*. Uygulama yetkilendirmek için aşağıdaki komutu çalıştırın. İsteğe bağlı olarak belirleyebileceğiniz **PermissionsToKeys** parametresini kullanarak bir kullanıcı, uygulama veya bir güvenlik grubu için izinleri ayarlayın.
+Aşağıdaki örnekte, kasa adı *Contosokeykasadır* ve yetkilendirmek istediğiniz uygulamanın, *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed*istemci kimliği vardır. Uygulamayı yetkilendirmek için aşağıdaki komutu çalıştırın. Ayrıca, bir Kullanıcı, uygulama veya güvenlik grubu için izinleri ayarlamak üzere **Permissionstokeys** parametresini de belirtebilirsiniz.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 ```
 
-Aynı uygulamayı kasanızdaki gizli anahtarları okumak için yetkilendirmek istiyorsanız, aşağıdaki cmdlet'i çalıştırın:
+Kasadaki gizli dizileri okumak için aynı uygulamayı yetkilendirmek istiyorsanız aşağıdaki cmdlet 'i çalıştırın:
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get
@@ -168,5 +168,5 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalNa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Key Vault'ta depolanan bir parola ile VM dağıtma](azure-stack-key-vault-deploy-vm-with-secret.md)
-* [Key Vault'ta depolanan bir sertifika ile VM dağıtma](azure-stack-key-vault-push-secret-into-vm.md)
+* [Key Vault depolanan bir parolayla VM dağıtma](azure-stack-key-vault-deploy-vm-with-secret.md)
+* [Key Vault depolanan bir sertifika ile VM dağıtma](azure-stack-key-vault-push-secret-into-vm.md)

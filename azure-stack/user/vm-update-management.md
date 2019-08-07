@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: cae4c6c5b96dd7bdbd6fcec7859309e0dd995a44
-ms.sourcegitcommit: b3dac698f2e1834491c2f9af56a80e95654f11f3
+ms.openlocfilehash: 891727c8e80af479e800feef9c292f7355fb208c
+ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68658685"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68842696"
 ---
 # <a name="vm-update-and-management-automation-in-azure-stack"></a>Azure Stack 'de VM güncelleştirme ve yönetim Otomasyonu
 Azure Stack kullanılarak dağıtılan Windows ve Linux sanal makinelerini (VM 'Ler) yönetmek için aşağıdaki Azure Otomasyonu çözüm özelliklerini kullanın:
@@ -131,6 +131,7 @@ Azure Stack ' de çalışan Windows ve Linux VM 'lerinde bulunan uygulama bileş
 
    ![Azure Izleyici VM eşleme sekmesi](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
+[VM'ler için Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) herhangi bir performans verisi gösterilmiyorsa, [Loganalytics çalışma alanı](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters) gelişmiş ayarlarınızda Windows ve Linux için performans verileri koleksiyonunu etkinleştirmeniz gerekir.
 
 ## <a name="enable-update-management-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Güncelleştirme Yönetimi etkinleştirme
 Çok sayıda Azure Stack sanal makinesi varsa, [bu Azure Resource Manager şablonunu](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) kullanarak çözümü VM 'lerde daha kolay dağıtabilirsiniz. Şablon, Microsoft Monitoring Agent uzantısını mevcut bir Azure Stack sanal makinesine dağıtır ve var olan bir Azure LogAnalytics çalışma alanına ekler.

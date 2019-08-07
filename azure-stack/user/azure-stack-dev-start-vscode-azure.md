@@ -5,22 +5,22 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/05/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 06/25/2019
-ms.openlocfilehash: 9f45e94f26e577f1a47f60b7df24758d7bc88767
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.lastreviewed: 08/05/2019
+ms.openlocfilehash: 44d35d59b2b50682dd6911f6d2b08fea8e005938
+ms.sourcegitcommit: a0dcb61890ad0f7b8e1f738f7186198681adcc2e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68603047"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68820814"
 ---
 # <a name="connect-to-azure-stack-using-azure-account-extension-in-visual-studio-code"></a>Visual Studio Code Azure hesap uzantısını kullanarak Azure Stack bağlanma
 
 Bu makalede, Azure hesap uzantısını kullanarak Azure Stack nasıl bağlanacağımız konusunda size kılavuzluk edeceğiz. Visual Studio Code (VS Code) ayarlarınızı güncelleştirmeniz gerekecektir.
 
-VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik hafif bir düzenleyicidir. ASP.NET Core, Python, NodeJS, Go ve diğer geliştiriciler tarafından kullanılır. Azure hesap Uzantısı ile, ek Azure uzantıları için abonelik filtrelemesine sahip tek bir Azure oturum açma özelliği kullanabilirsiniz. Uzantı, Azure Cloud Shell VS Code tümleşik terminalde kullanılabilir hale getirir. Uzantıyı kullanarak, kimlik yöneticiniz için hem Azure AD (Azure AD) hem de Active Directory Federasyon Hizmetleri (AD FS) kullanarak Azure Stack aboneliğinize bağlanabilirsiniz. Bu, Azure Stack oturum açmanızı, aboneliğinizi seçmenizi ve bir Cloud Shell 'de yeni bir komut satırı açmanızı sağlar. 
+VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik hafif bir düzenleyicidir. ASP.NET Core, Python, NodeJS, Go ve diğer geliştiriciler VS Code kullanır. Azure hesap Uzantısı ile, ek Azure uzantıları için abonelik filtrelemesine sahip tek bir Azure oturum açma özelliği kullanabilirsiniz. Uzantı, Azure Cloud Shell VS Code tümleşik terminalde kullanılabilir hale getirir. Uzantıyı kullanarak, kimlik yöneticiniz için hem Azure AD (Azure AD) hem de Active Directory Federasyon Hizmetleri (AD FS) kullanarak Azure Stack aboneliğinize bağlanabilirsiniz. Azure Stack oturum açabilir, aboneliğinizi seçebilir ve bir Cloud Shell 'de yeni bir komut satırı açabilirsiniz. 
 
 > [!Note]  
 > Active Directory Federasyon Hizmetleri (AD FS) ortamı için bu makaledeki adımları kullanabilirsiniz. AD FS kimlik bilgilerinizi ve uç noktalarını kullanın.
@@ -40,19 +40,28 @@ VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik haf
 
     - **Kimlik** betiği yönergeleri ve betiği için bkz. [azurestack-Tools/Identity](https://github.com/Azure/AzureStack-Tools/tree/master/Identity).
 
+    - Aynı oturumda şunu çalıştırın:
+
+    ```powershell  
+    Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManagerEndpoint `
+    -DirectoryTenantName $homeDirectoryTenantName -Verbose
+    Register-AzsWithMyDirectoryTenant -TenantResourceManagerEndpoint $tenantARMEndpoint `
+    -DirectoryTenantName $guestDirectoryTenantName
+    ```
+
 2. VS Code açın.
 
 3. Sol taraftaki köşedeki **Uzantılar** ' ı seçin.
 
-3. Arama kutusuna `Azure Account` yazın.
+4. Arama kutusuna `Azure Account` yazın.
 
-4. **Azure hesabı** ' nı seçin ve ardından **yüklemeyi**seçin.
+5. **Azure hesabı** ' nı seçin ve ardından **yüklemeyi**seçin.
 
       ![Azure Stack Visual Studio Code](media/azure-stack-dev-start-vscode-azure/image1.png)
 
-5. Uzantıyı yüklemek için VS Code yeniden başlatın.
+6. Uzantıyı yüklemek için VS Code yeniden başlatın.
 
-6. Azure Stack Azure Resource Manager bağlanmak için meta verileri alın. 
+7. Azure Stack Azure Resource Manager bağlanmak için meta verileri alın. 
     
     Microsoft Azure Kaynak Yöneticisi, Azure kaynaklarını dağıtmanıza, yönetmenize ve izlemenize olanak tanıyan bir yönetim çerçevesidir.
     - Azure Stack Geliştirme Seti (ASDK) Kaynak Yöneticisi URL 'SI:`https://management.local.azurestack.external/` 
@@ -63,9 +72,9 @@ VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik haf
 
     Dönüş JSON 'sini bir yere iade edin. `loginEndpoint` Ve`audiences` özelliğinin değerlerine ihtiyacınız olacaktır.
 
-7. **CTRL + SHIFT + P** tuşlarına basın ve Tercihler **' i seçin: Kullanıcı ayarları 'nı (JSON)** açın.
+8. **CTRL + SHIFT + P** tuşlarına basın ve Tercihler **' i seçin: Kullanıcı ayarları 'nı (JSON)** açın.
 
-8. Kod Düzenleyicisi 'nde, aşağıdaki JSON kod parçacığını ortamınızın değerleriyle güncelleştirin ve ardından bir kod parçacığını ayarlar bloğuna yapıştırın.
+9. Kod Düzenleyicisi 'nde, aşağıdaki JSON kod parçacığını ortamınızın değerleriyle güncelleştirin ve ardından bir kod parçacığını ayarlar bloğuna yapıştırın.
 
     - Deðerler
 
@@ -88,17 +97,17 @@ VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik haf
       "azure.cloud": "AzurePPE"
       ```
 
-9. Kullanıcı ayarlarını kaydedin ve **CTRL + SHIFT + P** 'yi bir kez daha kullanın. Azure **seçin: Azure bulutta**oturum açın. Yeni seçenek olan **Azureppe**, hedef listesinde görünür.
+10. Kullanıcı ayarlarını kaydedin ve **CTRL + SHIFT + P** 'yi bir kez daha kullanın. Azure **seçin: Azure bulutta**oturum açın. Yeni seçenek olan **Azureppe**, hedef listesinde görünür.
 
-10. **Azureppe**öğesini seçin. Kimlik doğrulama sayfası tarayıcınızda yüklenir. Uç noktanıza oturum açın.
+11. **Azureppe**öğesini seçin. Kimlik doğrulama sayfası tarayıcınızda yüklenir. Uç noktanıza oturum açın.
 
-11. Azure Stack aboneliğinizde başarıyla oturum açtığınızı test etmek için **CTRL + SHIFT + P** tuşlarını kullanın ve Azure ' u seçin **: Abonelik** ' ı seçin ve sahip olduğunuz aboneliğin kullanılabilir olup olmadığını görün.
+12. Azure Stack aboneliğinizde başarıyla oturum açtığınızı test etmek için **CTRL + SHIFT + P** tuşlarını kullanın ve Azure ' u seçin **: Abonelik** ' ı seçin ve sahip olduğunuz aboneliğin kullanılabilir olup olmadığını görün.
 
 ## <a name="commands"></a>Komutlar
 
 | Azure: Oturum Aç | Azure aboneliğinizde oturum açın |
 | --- | --- |
-| Azure: Cihaz koduyla oturum açın | Bir cihaz koduyla Azure aboneliğinizde oturum açın. Bu bunu, oturum açma komutunun çalışmadaki kurulumların içinde kullanın. |
+| Azure: Cihaz koduyla oturum açın | Bir cihaz koduyla Azure aboneliğinizde oturum açın. Kurulum 'da oturum açma komutunun çalışmadaki bir cihaz kodu kullanın. |
 | Azure: Azure bulutta oturum açın | Bağımsız bulutlarından birinde Azure aboneliğinizde oturum açın. |
 | Azure: Oturumu Kapat | Azure aboneliğinizde oturumunuzu kapatın. |
 | Azure: Abonelikleri Seç | Birlikte çalışmak istediğiniz abonelik kümesini seçin. Uzantı yalnızca filtrelenmiş abonelikler içindeki kaynakları gösterir. |

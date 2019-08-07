@@ -1,6 +1,6 @@
 ---
-title: Anahtar Kasası'nda Azure Stack portalını kullanarak yönetme | Microsoft Docs
-description: Anahtar Kasası'nda Azure Stack portalını kullanarak yönetmeyi öğrenin
+title: Portalı kullanarak Azure Stack Key Vault yönetme | Microsoft Docs
+description: Azure Stack portalını kullanarak Azure Stack Key Vault yönetmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,88 +15,88 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 57a23dc63c72657c19a92fa8f69e029be7f12f60
-ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
+ms.openlocfilehash: 4b6d6e784a640894fb1ef304d4469586e9fc2297
+ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66836870"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68842741"
 ---
-# <a name="manage-key-vault-in-azure-stack-using-the-portal"></a>Anahtar Kasası'nda Azure Stack portalı kullanarak yönetme
+# <a name="manage-key-vault-in-azure-stack-using-the-portal"></a>Portalı kullanarak Azure Stack Key Vault yönetme
 
-Anahtar Kasası'nda Azure Stack Azure Stack portalını kullanarak yönetebilirsiniz. Bu makalede oluşturma ve Azure Stack'te bir anahtar kasasını yönetebilirsiniz.
+Bu makalede Azure Stack portalını kullanarak Azure Stack bir anahtar kasasının nasıl oluşturulacağı ve yönetileceği açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure Key Vault hizmetini içeren bir teklife abone olması gerekir.
+Azure Key Vault hizmetini içeren bir teklife abone olmanız gerekir.
 
 ## <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
-1. Oturum [kullanıcı portalı](https://portal.local.azurestack.external).
+1. [Kullanıcı portalında](https://portal.local.azurestack.external)oturum açın.
 
-2. Panoda **+ kaynak Oluştur**, ardından **güvenlik + kimlik**, ardından **Key Vault**.
+2. Panodan **+ kaynak oluştur**' u seçin, sonra **Güvenlik ve Kimlik**ve ardından **Key Vault**.
 
-    ![Key Vault ekran](media/azure-stack-key-vault-manage-portal/image1.png)
+    ![Key Vault ekranı](media/azure-stack-key-vault-manage-portal/image1.png)
 
-3. İçinde **Key Vault Oluştur** bölmesinde atamak bir **adı** kasanız için. Kasa adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir. Bir sayıyla başlamamalıdır.
+3. **Key Vault oluştur** bölmesinde, kasanıza bir **ad** atayın. Kasa adları yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir. Bir sayıyla başlamamaları gerekir.
 
-4. Seçin bir **abonelik** kullanılabilir abonelikler listesinden. Key Vault hizmetinin sunduğu tüm abonelikler, aşağı açılan listede görüntülenir.
+4. Kullanılabilir abonelikler listesinden bir **abonelik** seçin. Key Vault hizmeti sunan tüm abonelikler açılan listede görüntülenir.
 
-5. Mevcut bir seçin **kaynak grubu**, ya da yeni bir tane oluşturun.
+5. Var olan bir **kaynak grubunu**seçin veya yeni bir tane oluşturun.
 
-6. Seçin **fiyatlandırma katmanı**. Azure Stack geliştirme Seti'ni (ASDK içinde), anahtar kasaları Destek **standart** yalnızca SKU'ları.
+6. **Fiyatlandırma katmanını**seçin. Azure Stack Geliştirme Seti (ASDK), Anahtar kasaları yalnızca **Standart** SKU 'ları destekler.
 
-7. Var olan birini seçin **erişim ilkeleri** veya yeni bir tane oluşturun. Bir erişim ilkesi, bir kullanıcı, uygulama veya bir güvenlik grubu bu kasayla işlemleri gerçekleştirmek izinler sağlar.
+7. Mevcut **erişim ilkelerinden** birini seçin veya yeni bir tane oluşturun. Erişim ilkesi, bu kasada işlem gerçekleştirmek üzere bir Kullanıcı, uygulama veya güvenlik grubu için izin vermenizi sağlar.
 
-8. İsteğe bağlı olarak, bir **Gelişmiş erişim ilkesi** özelliklere erişimi etkinleştirmek için. Örneğin: dağıtım için Resource Manager şablon dağıtımı ve Azure Disk şifrelemesi birim şifreleme için erişim için sanal makineleri (VM'ler).
+8. İsteğe bağlı olarak, özelliklere erişimi etkinleştirmek için **Gelişmiş bir erişim ilkesi** seçin. Örneğin: dağıtım için sanal makineler (VM), şablon dağıtımı için Kaynak Yöneticisi ve birim şifrelemesi için Azure disk şifrelemesi 'ne erişim.
 
-9. Ayarları yapılandırdıktan sonra seçin **Tamam**ve ardından **Oluştur**. Bu anahtar kasası dağıtım başlatır.
+9. Ayarları yapılandırdıktan sonra **Tamam**' ı seçin ve ardından **Oluştur**' u seçin. Bu adım Anahtar Kasası dağıtımını başlatır.
 
-## <a name="manage-keys-and-secrets"></a>Anahtarları ve gizli anahtarları yönetme
+## <a name="manage-keys-and-secrets"></a>Anahtarları ve gizli dizileri yönetme
 
-Bir anahtar kasası oluşturduktan sonra anahtarları ve gizli dizileri kasa içinde oluşturmak ve yönetmek için aşağıdaki yordamı kullanın.
+Bir Anahtar Kasası oluşturduktan sonra, kasadaki anahtarları ve gizli dizileri oluşturmak ve yönetmek için aşağıdaki yordamı kullanın:
 
-### <a name="create-a-key"></a>Bir anahtar oluşturma
+### <a name="create-a-key"></a>Anahtar oluşturma
 
-1. Oturum [kullanıcı portalı](https://portal.local.azurestack.external).
+1. [Kullanıcı portalında](https://portal.local.azurestack.external)oturum açın.
 
-2. Panoda **tüm kaynakları**, daha önce oluşturduğunuz anahtar kasasını seçin ve ardından **anahtarları** Döşe.
+2. Panodan **tüm kaynaklar**' ı seçin, daha önce oluşturduğunuz anahtar kasasını seçin ve ardından **anahtarlar** kutucuğunu seçin.
 
-3. İçinde **anahtarları** bölmesinde **Ekle**.
+3. **Anahtarlar** bölmesinde **Ekle**' yi seçin.
 
-4. İçinde **anahtar oluşturma** bölmesinden listesini **seçenekleri**, bir anahtar oluşturmak için kullanmak istediğiniz yöntemi seçin. Şunları yapabilirsiniz **Oluştur** yeni bir anahtar **karşıya** mevcut bir anahtar veya kullanın **geri yedekleme** anahtarının bir yedekleme seçin.
+4. **Anahtar oluştur** bölmesinde, **Seçenekler**listesinden, anahtar oluşturmak için kullanmak istediğiniz yöntemi seçin. Yeni bir anahtar **oluşturabilir** , var olan bir anahtarı **yükleyebilir** veya bir anahtarın yedeğini seçmek için **yedekleme geri yükleme** ' yi kullanabilirsiniz.
 
-5. Girin bir **adı** anahtarınız için. Anahtar adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir.
+5. Anahtarınız için bir **ad** girin. Anahtar adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir.
 
-6. İsteğe bağlı olarak, yapılandırma **etkinleştirme tarihi ayarlamak** ve **sona erme tarihi ayarlayın** anahtarınız için değerler.
+6. İsteğe bağlı olarak, anahtar için **etkinleştirme tarihini ayarla** ve **sona erme tarihi değerlerini ayarla** ' yı yapılandırın.
 
-7. Seçin **Oluştur** dağıtımı başlatmak için.
+7. Dağıtımı başlatmak için **Oluştur** ' u seçin.
 
-Anahtar başarıyla oluşturulduktan sonra altında seçebilirsiniz **anahtarları** görüntüleyebilir veya özellikleri değiştirin. Özellikler bölümü içeren **anahtar tanımlayıcısı**, dış uygulama bu anahtara erişmek için bir Tekdüzen Kaynak Tanımlayıcısı (URI) olduğu. Bu anahtar işlemleri sınırlandırmak için ayarları yapılandırma **işlemlerine izin**.
+Anahtar başarılı bir şekilde oluşturulduktan sonra **anahtarlar** altında seçim yapabilir ve özelliklerini görüntüleyebilir veya değiştirebilirsiniz. Özellikler bölümü, dış uygulamaların bu anahtara erişmek için kullandığı bir Tekdüzen Kaynak tanımlayıcısı (URI) olan **anahtar tanımlayıcısını**içerir. Bu anahtardaki işlemleri sınırlandırmak için **Izin verilen işlemler**altındaki ayarları yapılandırın.
 
-![Anahtar URI'si](media/azure-stack-key-vault-manage-portal/image4.png)
+![URI anahtarı](media/azure-stack-key-vault-manage-portal/image4.png)
 
-### <a name="create-a-secret"></a>Gizli anahtar oluşturma
+### <a name="create-a-secret"></a>Gizli dizi oluşturma
 
-1. Oturum [kullanıcı portalı](https://portal.local.azurestack.external).
+1. [Kullanıcı portalında](https://portal.local.azurestack.external)oturum açın.
 
-2. Panoda **tüm kaynakları**, daha önce oluşturduğunuz anahtar kasasını seçin ve ardından **gizli dizileri** kutucuk.
+2. Panodan **tüm kaynaklar**' ı seçin, daha önce oluşturduğunuz anahtar kasasını seçin ve ardından **gizlilikler** kutucuğunu seçin.
 
-3. Altında **gizli dizileri**seçin **Ekle**.
+3. **Gizlilikler**altında **Ekle**' yi seçin.
 
-4. Altında **gizli dizi oluşturma**, listesinden **karşıya yükleme seçenekleri**, istediğiniz bir gizli dizi oluşturmak bir seçenek belirleyin. Gizli dizi oluşturabilirsiniz **el ile** , gizli dizi için bir değer girin veya karşıya bir **sertifika** yerel makinenizden.
+4. **Gizli dizi oluştur**altında, **karşıya yükleme seçenekleri**listesinden, gizli dizi oluşturmak istediğiniz bir seçeneği belirleyin. Gizli dizi için bir değer girerseniz veya yerel makinenizden bir **sertifika** yüklerseniz **el ile** gizli dizi oluşturabilirsiniz.
 
-5. Girin bir **adı** için gizli anahtarı. Gizli dizi adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir.
+5. Gizli dizi için bir **ad** girin. Gizli dizi adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir.
 
-6. İsteğe bağlı olarak, belirtin **içerik türü**ve değerlerini yapılandırmak **etkinleştirme tarihi ayarlamak** ve **sona erme tarihi ayarlayın** için gizli anahtarı.
+6. İsteğe bağlı olarak, **içerik türünü**belirtin ve **etkinleştirme tarihini ayarla** ve gizli anahtar Için **süre sonu tarihi ayarla** değerlerini yapılandırın.
 
-7. Seçin **Oluştur** dağıtımı başlatmak için.
+7. Dağıtımı başlatmak için **Oluştur** ' u seçin.
 
-Gizli dizi başarıyla oluşturulduktan sonra altında seçebilirsiniz **gizli dizileri** görüntüleyebilir veya özellikleri değiştirin. **Gizli dizi tanımlayıcısı** dış uygulama bu gizli dizi erişmek için kullanabileceğiniz bir URI.
+Gizli anahtar başarıyla oluşturulduktan sonra **gizli** dizi altında seçim yapabilir ve özelliklerini görüntüleyebilir veya değiştirebilirsiniz. **Gizli dizi kimliği** , dış uygulamaların bu gizli dizi erişimi için KULLANABILECEĞI bir URI 'dir.
 
-![URI gizli anahtarı](media/azure-stack-key-vault-manage-portal/image5.png)
+![URI gizli dizisi](media/azure-stack-key-vault-manage-portal/image5.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Key Vault'ta depolanan parola alarak bir VM dağıtma](azure-stack-key-vault-deploy-vm-with-secret.md)
-* [Key Vault'ta depolanan bir sertifika ile VM dağıtma](azure-stack-key-vault-push-secret-into-vm.md)
+* [Key Vault depolanan parolayı alarak VM dağıtma](azure-stack-key-vault-deploy-vm-with-secret.md)
+* [Key Vault depolanan sertifika ile VM dağıtma](azure-stack-key-vault-push-secret-into-vm.md)

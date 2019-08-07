@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te güvenli şekilde depolanan parola ile VM dağıtma | Microsoft Docs
-description: Azure Stack Key Vault'ta depolanan bir parola kullanarak bir VM dağıtma hakkında bilgi edinin
+title: Key Vault içinde depolanan bir parolayı kullanarak Azure Stack VM dağıtma | Microsoft Docs
+description: Azure Stack anahtar kasasında depolanan bir parolayı kullanarak bir VM dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,44 +15,44 @@ ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e4163921662b88cbd62f77eedc92d3a7db4bf491
-ms.sourcegitcommit: ca46bef5d5f824d22bdbc00605eb881410b1ffd0
+ms.openlocfilehash: 480740b12796fe90e2acd6fd1eb164b4c89d5ded
+ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67041963"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68842820"
 ---
-# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Azure Stack Key Vault'ta depolanan bir güvenli parola kullanarak bir sanal makine oluşturun
+# <a name="deploy-an-azure-stack-vm-using-a-password-stored-in-key-vault"></a>Key Vault depolanan bir parolayı kullanarak Azure Stack VM dağıtma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack Key Vault'ta depolanan bir parola kullanarak bir Windows Server sanal makine dağıtımı aracılığıyla bu makalede adımları. Bir anahtar kasası parolası kullanarak, bir düz metin parola geçirerek değerinden daha güvenlidir.
+Bu makalede, Azure Stack Key Vault depolanan bir parolayı kullanarak bir Windows Server sanal makinesi (VM) dağıtma adımları sağlanır. Anahtar Kasası parolasının kullanılması, düz metin parolası geçirmeden daha güvenlidir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Stack anahtar kasasındaki gizli dizi olarak parola gibi değerleri depolayabilir. Gizli dizi oluşturduktan sonra Azure Resource Manager şablonlarında başvurabilirsiniz. Gizli dizileri ile Kaynak Yöneticisi'ni kullanarak aşağıdaki avantajları sağlar:
+Parola gibi değerleri, bir Azure Stack anahtar kasasında gizli dizi olarak saklayabilirsiniz. Gizli dizi oluşturduktan sonra, Azure Resource Manager şablonlarda başvurabilirsiniz. Kaynak Yöneticisi ile gizli dizileri kullanmak aşağıdaki avantajları sağlar:
 
-* Gizli dizi olarak kaynak dağıtma her zaman el ile girmeniz gerekmez.
-* Belirli kullanıcılar ya da hizmet sorumluları bir gizli dizi erişip belirtebilirsiniz.
+* Her kaynak dağıttığınızda gizli anahtarı el ile girmeniz gerekmez.
+* Hangi kullanıcıların veya hizmet sorumlularının gizli bir parolaya erişebileceğini belirtebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Key Vault hizmetini içeren bir teklife abone olması gerekir.
-* [Azure Stack için PowerShell yükleyin.](../operator/azure-stack-powershell-install.md)
+* Key Vault hizmetini içeren bir teklife abone olmanız gerekir.
+* [Azure Stack için PowerShell 'i yükler.](../operator/azure-stack-powershell-install.md)
 * [PowerShell ortamınızı yapılandırın.](azure-stack-powershell-configure-user.md)
 
-Aşağıdaki adımlar, bir anahtar Kasası'nda depolanan parola alarak sanal makine oluşturmak için gereken işlemi açıklanmaktadır:
+Aşağıdaki adımlarda, bir Key Vault depolanan parolayı alarak VM oluşturmak için gereken işlem açıklanır:
 
-1. Bir Key Vault gizli anahtar oluşturun.
-2. Azuredeploy.parameters.json dosyasını güncelleştirin.
+1. Key Vault gizli dizisi oluşturun.
+2. `azuredeploy.parameters.json` Dosyayı güncelleştirin.
 3. Şablonu dağıtın.
 
 > [!NOTE]  
-> VPN birbirine bağlandıysa, dış istemciden veya Azure Stack geliştirme Seti'ni bu adımları kullanabilirsiniz.
+> Bu adımları Azure Stack Geliştirme Seti (ASDK) veya VPN üzerinden bağlıysanız bir dış istemciden kullanabilirsiniz.
 
-## <a name="create-a-key-vault-secret"></a>Bir Key Vault gizli dizisi oluşturma
+## <a name="create-a-key-vault-secret"></a>Key Vault gizli dizi oluşturma
 
-Aşağıdaki betik, bir anahtar kasası oluşturulur ve bir parola anahtar kasasında gizli dizi olarak depolar. Kullanım `-EnabledForDeployment` anahtar kasası oluşturulurken parametre. Bu parametre, anahtar kasası Azure Resource Manager şablonlarından başvurulabilir emin olur.
+Aşağıdaki betik bir Anahtar Kasası oluşturur ve anahtar kasasında bir parolayı gizli olarak depolar. Anahtar kasasını oluştururken parametresini kullanın. `-EnabledForDeployment` Bu parametre, anahtar kasasının Azure Resource Manager şablonlarından başvurulduğundan emin olmanızı sağlar.
 
 ```powershell
 
@@ -80,13 +80,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-Önceki betiği çalıştırdığınızda, çıktı gizli anahtar URI'sini içerir. Bu URI not edin. İçinde başvurmak zorunda [dağıtma Windows sanal makine şablonunda anahtar kasası parolası ile](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv). İndirme [101-vm-güvenli-parola](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) geliştirme bilgisayarınıza klasör. Bu klasörde `azuredeploy.json` ve `azuredeploy.parameters.json` dosyaları, sonraki adımlarda gerekecektir.
+Önceki betiği çalıştırdığınızda, çıktı gizli URI 'yi (Tekdüzen Kaynak tanımlayıcısı) içerir. Bu URI 'yi bir yere getirin. [Anahtar Kasası şablonunda WINDOWS VM 'yi parolayla dağıtma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) ' ya başvurmanız gerekir. Geliştirme bilgisayarınıza [101-VM-Secure-Password](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) klasörünü indirin. Bu klasör, sonraki `azuredeploy.json` adımlarda `azuredeploy.parameters.json` ihtiyacınız olacak ve dosyalarını içerir.
 
-Değiştirme `azuredeploy.parameters.json` ortam değerlerinize göre dosya. Özel ilgi kasa adını, kasa kaynak grubu ve gizli dizi (önceki betiği tarafından oluşturulan gibi) URI parametrelerdir. Aşağıdaki dosya, bir parametre dosyası örneğidir:
+`azuredeploy.parameters.json` Dosyayı ortam değerlerinize göre değiştirin. Özel ilgilendiğiniz parametreler kasa adı, kasa kaynak grubu ve gizli URI (önceki komut dosyası tarafından oluşturulan). Aşağıdaki dosya bir parametre dosyası örneğidir.
 
-## <a name="update-the-azuredeployparametersjson-file"></a>Azuredeploy.parameters.json dosyasını güncelleştirme
+## <a name="update-the-azuredeployparametersjson-file"></a>Azuredeploy. Parameters. json dosyasını güncelleştirme
 
-KeyVault URI'si secretName, ortamınıza göre sanal makine değerlerinin adminUsername olan azuredeploy.parameters.json dosyasını güncelleştirin. Şablon parametreleri dosyası örneği aşağıdaki JSON dosyası gösterir:
+`azuredeploy.parameters.json` Dosyayı ortamınıza göre sanal makine değerlerinin keykasası URI 'si, secretname, AdminUserName ile güncelleştirin. Aşağıdaki JSON dosyası, şablon parametreleri dosyasına bir örnek gösterir:
 
 ```json
 {
@@ -127,11 +127,11 @@ New-AzureRmResourceGroupDeployment `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
 
-Şablon başarıyla dağıtıldıktan sonra aşağıdaki çıktı sonuçları:
+Şablon başarıyla dağıtıldığında, aşağıdaki çıkışa neden olur:
 
 ![Dağıtım çıkışı](media/azure-stack-key-vault-deploy-vm-with-secret/deployment-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Key Vault örnek bir uygulamayla dağıtma](azure-stack-key-vault-sample-app.md)
-* [Anahtar kasası sertifikası ile VM dağıtma](azure-stack-key-vault-push-secret-into-vm.md)
+* [Key Vault örnek uygulama dağıtma](azure-stack-key-vault-sample-app.md)
+* [Key Vault sertifikası ile VM dağıtma](azure-stack-key-vault-push-secret-into-vm.md)

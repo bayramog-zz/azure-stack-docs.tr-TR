@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te genel IP adresi kullanımını görüntüleme | Microsoft Docs
-description: Yöneticiler, bir bölgede genel IP adresi kullanımını görüntüleyebilir
+title: Azure Stack ağ kaynakları 'nı yönetme | Microsoft Docs
+description: Yöneticiler, MAC adresi havuzu ve bir bölgedeki genel IP adreslerinin tüketimi dahil olmak üzere ağ kaynaklarını yönetebilir
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,61 +15,78 @@ ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 35dc40fc3539038ab3c44318374e8c1fb327e6e4
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.openlocfilehash: d056cbf73e2417bd826fba7a7de263cc8e015b7d
+ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782448"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68842905"
 ---
-# <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack'te genel IP adresi kullanımını görüntüleme
+# <a name="manage-network-resources"></a>Ağ kaynaklarını yönetme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+## <a name="mac-address-pool"></a>MAC adresi havuzu
 
-Bulut Yöneticisi olarak, görüntüleyebilirsiniz:
- - Kiracılar için ayrılmış genel IP adresleri sayısı.
- - Ayırma için hala kullanılabilir genel IP adresi sayısı.
- - Bu konumda ayrılmış genel IP adresleri yüzdesi.
+Azure Stack, otomatik olarak MAC adresi oluşturmak ve sanal makinelere atamak için statik bir MAC adresi havuzu kullanır.
+Bu MAC adres havuzu, dağıtım sırasında otomatik olarak oluşturulur ve aşağıdaki aralığı kullanır:
 
-**Genel IP havuzlarını kullanım** kutucuk genel IP adresi havuzları arasında kullanılan genel IP adresleri sayısını gösterir. Her IP adresi için kutucuğun örnekleri, doku altyapı hizmetleri ve kiracılar tarafından açıkça oluşturulan genel IP adresi kaynakları Kiracı Iaas VM için kullanımını gösterir.
+- StartMacAddress: 00-1D-D8-B7-00-00
+- EndMacAddress: 00-1D-D8-F4-FF-FF
 
-Kutucuk amacı, Azure Stack operatörlerinin bu konumda kullanılan genel IP adresleri sayısını bir fikir vermektir. Sayı, bu kaynak üzerinde düşük çalışıp çalışmadığını belirleme yöneticilere yardımcı olur.
+> [!Note]  
+> Bu MAC adres havuzu her bir Azure Stack sisteminde aynıdır ve yapılandırılamaz.
 
-**Genel IP adresleri** menü öğesi altında **Kiracı kaynaklarını** olan yalnızca bu genel IP adresleri listelenir *kiracılar tarafından açıkça oluşturulan*. Menü öğesi bulabilirsiniz **kaynak sağlayıcıları**, **ağ** bölmesi. Sayısı **kullanılan** genel IP adresleri üzerindeki **genel IP havuzlarını kullanım** kutucuk (büyük) öğesinden farklı her zaman şirket sayısı **genel IP adresleri** kutucuğuna altında **Kiracı kaynaklarını**.
+Sanal ağların mevcut şirket ağlarına nasıl bağlandığına bağlı olarak, sanal makinelerin yinelenen MAC adreslerini de bekleyebilir.
 
-## <a name="view-the-public-ip-address-usage-information"></a>Genel IP adresi kullanım bilgilerini görüntüleme
+Azure Stack yönetici PowerShell modülündeki [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) cmdlet 'INI kullanarak MAC adresi havuzu kullanımı hakkında daha fazla bilgi bulabilirsiniz.
 
-Bölgede kullanılan genel IP adresleri toplam sayısını görüntülemek için:
+## <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack genel IP adresi tüketimini görüntüleme
 
-1. Azure Stack Yönetici portalında **tüm hizmetleri**. Ardından, altında **Yönetim** kategorisi seçin **ağ**.
-1. **Ağ** bölmesini görüntüler **genel IP havuzlarını kullanım** kutucuğu **genel bakış** bölümü.
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+
+Bulut Yöneticisi olarak şunları görebilirsiniz:
+ - Kiracılara ayrılan genel IP adreslerinin sayısı.
+ - Ayırma için hala kullanılabilir olan genel IP adreslerinin sayısı.
+ - Bu konumda ayrılan genel IP adreslerinin yüzdesi.
+
+Genel IP **havuzları kullanım** kutucuğu, genel IP adresi havuzları genelinde TÜKETILEN genel IP adreslerinin sayısını gösterir. Her IP adresi için kutucuk, kiracı IaaS VM örnekleri, yapı altyapısı Hizmetleri ve kiracılar tarafından açıkça oluşturulan genel IP adresi kaynakları için kullanımı gösterir.
+
+Kutucuğun amacı, bu konumda kullanılan genel IP adresi sayısını Azure Stack işleçlerine vermektir. Numara, yöneticilerin bu kaynakta düşük çalışıp çalışmadığını belirlemesine yardımcı olur.
+
+**Kiracı kaynakları** altındakı **genel IP adresleri** menü öğesi yalnızca *KIRACıLAR tarafından açıkça oluşturulan*genel IP adreslerini listeler. Menü öğesini **kaynak sağlayıcıları**, **ağ** bölmesinde bulabilirsiniz. **Genel IP havuzları kullanım** kutucuğunda **kullanılan** genel IP adreslerinin sayısı, **kiracı kaynakları**altındaki **genel IP adresleri** kutucuğunda bulunan sayıdan her zaman farklıdır (büyüktür).
+
+### <a name="view-the-public-ip-address-usage-information"></a>Genel IP adresi kullanım bilgilerini görüntüleme
+
+Bölgede tüketilen genel IP adreslerinin toplam sayısını görüntülemek için:
+
+1. Azure Stack Yönetici portalı ' nda **tüm hizmetler**' i seçin. Ardından, **Yönetim** kategorisi altında **ağ**' ı seçin.
+1. **Ağ** bölmesi **genel bakış** bölümünde **genel IP havuzları kullanım** kutucuğunu görüntüler.
 
 ![Ağ kaynak sağlayıcısı bölmesi](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
 
-**Kullanılan** numarası, genel IP adresi havuzlarını atanmış genel IP adresleri sayısını temsil eder. **Ücretsiz** sayı temsil genel bir IP adresi genel IP sayısı adres henüz atanmamış ve hala kullanılabilir havuzları. **% Kullanılan** numarası kullanılan veya bir genel IP adresi havuzları o konumda genel IP adresleri toplam sayısının yüzdesi olarak atanmış adresleri sayısını temsil eder.
+**Kullanılan** sayı, genel IP adresi havuzlarından atanan genel IP adreslerinin sayısını temsil eder. **Ücretsiz** numara, atanmamış ve hala kullanılabilir olan genel IP adresi havuzlarından gelen genel IP adresi sayısını temsil eder. **% Kullanılan** sayı, bu KONUMDAKI genel IP adresi HAVUZLARıNDAKI genel IP adreslerinin toplam sayısının yüzdesi olarak kullanılan veya atanan adreslerin sayısını temsil eder.
 
-## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>Kiracı abonelik tarafından oluşturulan genel IP adreslerini görüntüle
+### <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>Kiracı abonelikleri tarafından oluşturulan genel IP adreslerini görüntüleme
 
-Seçin **genel IP adresleri** altında **Kiracı kaynaklarını**. Belirli bir bölgede Kiracı abonelikler tarafından açıkça oluşturulan genel IP adresleri listesini gözden geçirin.
+**Kiracı kaynakları**altında **genel IP adresleri** ' ni seçin. Belirli bir bölgedeki kiracı abonelikleri tarafından açıkça oluşturulan genel IP adreslerinin listesini gözden geçirin.
 
-![Kiracı genel IP adresleri](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
+![Kiracı Genel IP adresleri](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
 
-Dinamik olarak ayrılan bazı genel IP adresleri listesinde göründüğünü fark edebilirsiniz. Ancak, bir adresi henüz kendileriyle ilişkili olmamıştır. Ağ kaynak sağlayıcısı ancak henüz Ağ denetleyicisi adresi kaynağı oluşturuldu.
+Dinamik olarak ayrılan bazı genel IP adreslerinin listede göründüğünü fark edebilirsiniz. Ancak, henüz bir adres ilişkilendirilmemiştir. Adres kaynağı ağ kaynak sağlayıcısında oluşturulmuştur, ancak henüz ağ denetleyicisinde oluşturulmamıştır.
 
-Ağ denetleyicisi bir arabirim, bir ağ arabirimi kartı (NIC), bir yük dengeleyici veya bir sanal ağ geçidi bağlar kadar bir adresi kaynağa atamaz. Bir arabirim için genel IP adresine bağlar, Ağ denetleyicisi, bir IP adresi ayırır. Adres görünür **adresi** alan.
+Ağ denetleyicisi, bir arabirime, ağ arabirimi kartına (NIC), yük dengeleyicisine veya bir sanal ağ geçidine bağlaana kadar kaynağa bir adres atamaz. Genel IP adresi bir arabirime bağlandığında, ağ denetleyicisi bir IP adresi ayırır. Adres, adres alanında görüntülenir .
 
-## <a name="view-the-public-ip-address-information-summary-table"></a>Genel IP adresi bilgileri Özet tablosunu görüntüleme
+### <a name="view-the-public-ip-address-information-summary-table"></a>Genel IP adresi bilgileri özet tablosunu görüntüleme
 
-Farklı durumlarda adres bir liste veya başka bir görünür olup olmadığını belirleyen genel IP adresleri atanır.
+Farklı durumlarda, adresin bir listede mi yoksa başka bir listede mi göründüğünü belirleyecek genel IP adresleri atanır.
 
-| **Genel IP adresi ataması durumu** | **Kullanım Özeti görüntülenir.** | **Kiracı genel IP adresi listesinde görünür.** |
+| **Genel IP adresi atama durumu** | **Kullanım özetinde görünür** | **Kiracı Genel IP adresleri listesinde görüntülenir** |
 | --- | --- | --- |
-| Henüz bir NIC veya yük dengeleyiciye (geçici) atanan dinamik genel IP adresi |Hayır |Evet |
-| Bir NIC veya yük dengeleyiciye atanan dinamik genel IP adresidir. |Evet |Evet |
-| Bir kiracı NIC veya yük dengeleyiciye atanan statik genel IP adresidir. |Evet |Evet |
-| Statik genel IP adresi doku altyapısı hizmet uç noktası atanmış. |Evet |Hayır |
-| Genel IP adresi örtük olarak Iaas sanal makine örnekleri için oluşturulan ve giden NAT sanal ağ üzerinde kullanılır. Her bir kiracı bir sanal makine örneği oluşturur ve böylece VM'ler bilgilerini Internet'e gönderebilirsiniz bunlar Sahne arkasında oluşturulur. |Evet |Hayır |
+| Henüz bir NIC veya yük dengeleyiciye atanmamış dinamik genel IP adresi (geçici) |Hayır |Evet |
+| Bir NIC veya yük dengeleyiciye atanan dinamik genel IP adresi. |Evet |Evet |
+| Bir kiracı NIC 'sine veya yük dengeleyiciye atanan statik genel IP adresi. |Evet |Evet |
+| Bir Fabric altyapı hizmeti uç noktasına atanan statik genel IP adresi. |Evet |Hayır |
+| IaaS VM örnekleri için genel IP adresi örtük olarak oluşturulur ve sanal ağda giden NAT için kullanılır. Bunlar, sanal makinelerin Internet 'e bilgi gönderebilmesi için bir kiracı bir sanal makine örneği oluşturduğunda her bir arka planda oluşturulur. |Evet |Hayır |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure stack'teki depolama hesapları yönetme](azure-stack-manage-storage-accounts.md)
+[Azure Stack depolama hesaplarını yönetme](azure-stack-manage-storage-accounts.md)
