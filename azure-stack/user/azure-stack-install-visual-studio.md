@@ -1,6 +1,6 @@
 ---
-title: Visual Studio'yu yükleyin ve Azure Stack'e bağlanma | Microsoft Docs
-description: Visual Studio'yu yükleyin ve Azure Stack'e bağlanmak için gereken adımları öğrenin
+title: Visual Studio 'Yu yükleyip Azure Stack bağlanın | Microsoft Docs
+description: Visual Studio 'Yu yüklemeyi ve Azure Stack bağlanmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -16,78 +16,78 @@ ms.date: 04/08/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 11d389b96ed730d6395231ecf24eced6a65fbae8
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: 12f0b8d13ebaa7a31153dd89f65f27fd97294700
+ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64302600"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68842949"
 ---
-# <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio'yu yükleyin ve Azure Stack'e bağlanma
+# <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio 'Yu yükleyip Azure Stack bağlanın
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Visual Studio yazma ve Azure Resource Manager'ı dağıtmak için kullanabileceğiniz [şablonları](azure-stack-arm-templates.md) Azure Stack için. Bu makaledeki adımlarda Visual Studio yükleme açıklayan [Azure Stack](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), veya Azure Stack ile kullanmayı planlıyorsanız bir dış bilgisayara [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
+Azure Stack için Azure Resource Manager [şablonları](azure-stack-arm-templates.md) yazmak ve dağıtmak üzere Visual Studio 'yu kullanabilirsiniz. Bu makaledeki adımlarda, [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)aracılığıyla Azure Stack kullanmayı planlıyorsanız, Visual Studio 'yu [Azure Stack](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) veya harici bir bilgisayara nasıl yükleyeceğiniz açıklanır.
 
-## <a name="install-visual-studio"></a>Visual Studio yükleme
+## <a name="install-visual-studio"></a>Visual Studio'yu yükleme
 
-1. İndirme ve çalıştırma [Web Platformu yükleyicisi](https://www.microsoft.com/web/downloads/platform.aspx).  
+1. [Web platformu yükleyicisini](https://www.microsoft.com/web/downloads/platform.aspx)indirip çalıştırın.  
 
-2. Açık **Microsoft Web Platformu yükleyicisi**.
+2. **Microsoft Web Platformu Yükleyicisi**açın.
 
-3. Arama **- 2.9.6 Microsoft Azure SDK'sı ile Visual Studio Community 2015**. Tıklayın **ekleme**, ve **yükleme**.
+3. **MICROSOFT Azure SDK-2.9.6 Ile Visual Studio Community 2015**aratın. **Ekle**' ye ve ardından' a tıklayın.
 
-4. Kaldırma **Microsoft Azure PowerShell** Azure SDK'ın bir parçası olarak yüklenir.
+4. Azure SDK 'nın bir parçası olarak yüklenen **Microsoft Azure PowerShell** kaldırın.
 
-    ![Ekran görüntüsü, Webpı yükleme adımları](./media/azure-stack-install-visual-studio/image1.png)
+    ![WebPI install adımlarının ekran görüntüsü](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md)
+5. [Azure Stack Için PowerShell 'ı yükler](../operator/azure-stack-powershell-install.md).
 
-6. Yükleme tamamlandıktan sonra işletim sistemi yeniden başlatın.
+6. Yükleme tamamlandıktan sonra işletim sistemini yeniden başlatın.
 
-## <a name="connect-to-azure-stack-with-azure-ad"></a>Azure AD ile Azure stack'e bağlanma
-
-1. Visual Studio'yu başlatın.
-
-2. Gelen **görünümü** menüsünde **Cloud Explorer**.
-
-3. Yeni bölmesinde seçin **hesabı Ekle** ve Azure Active Directory (Azure AD) kimlik bilgilerinizle oturum açın.  
-
-    ![Bir kez oturum açıp Azure Stack'e bağlı bulut Gezgini'nin ekran görüntüsü](./media/azure-stack-install-visual-studio/image2.png)
-
-Oturum açtıktan sonra [şablonları dağıtma](azure-stack-deploy-template-visual-studio.md) veya kendi şablonlarınızı oluşturmak için kullanılabilir kaynak türleri ve kaynak gruplarını bulun.  
-
-## <a name="connect-to-azure-stack-with-ad-fs"></a>AD FS ile Azure stack'e bağlanma
+## <a name="connect-to-azure-stack-with-azure-ad"></a>Azure AD ile Azure Stack bağlanma
 
 1. Visual Studio'yu başlatın.
 
-2. Gelen **Araçları**seçin **seçenekleri**.
+2. **Görünüm** menüsünde, **bulut Gezgini**' ni seçin.
 
-3. Genişletin **ortam** içinde **Gezinti bölmesinde** seçip **hesapları**.
+3. Yeni bölmede **Hesap Ekle** ' yi seçin ve Azure Active Directory (Azure AD) kimlik bilgilerinizle oturum açın.  
 
-4. Seçin **Ekle**ve kullanıcı Azure Resource Manager uç noktasını girin. Azure Stack Geliştirme Seti için URL'dir: `https://management.local.azurestack/external`.  Azure Stack tümleşik sistemleri için URL'si şudur: `https://management.[Region}.[External FQDN]`.
+    ![Oturum açıldıktan ve Azure Stack bağlandığında Cloud Explorer 'ın ekran görüntüsü](./media/azure-stack-install-visual-studio/image2.png)
 
-    ![X](./media/azure-stack-install-visual-studio/image5.png)
+Oturum açtıktan sonra, kendi şablonlarınızı oluşturmak için [şablonları dağıtabilir](azure-stack-deploy-template-visual-studio.md) veya kullanılabilir kaynak türlerine ve kaynak gruplarına gidebilirsiniz.  
+
+## <a name="connect-to-azure-stack-with-ad-fs"></a>AD FS Azure Stack bağlanma
+
+1. Visual Studio'yu başlatın.
+
+2. **Araçlar**' da **Seçenekler**' i seçin.
+
+3. **Gezinti bölmesinde** **ortamı** genişletin ve **hesaplar**' ı seçin.
+
+4. **Ekle**' yi seçin ve Kullanıcı Azure Resource Manager uç noktasını girin. Azure Stack Geliştirme Seti (ASDK) için URL: `https://management.local.azurestack/external`.  Azure Stack tümleşik sistemler için URL: `https://management.[Region}.[External FQDN]`.
+
+    ![Yeni Azure Cloud Discovery uç noktası ekle](./media/azure-stack-install-visual-studio/image5.png)
 
 5. **Add (Ekle)** seçeneğini belirleyin.  
 
-    Visual Studio Azure Kaynak Yöneticisi çağırır ve kimlik doğrulama uç noktası Azure Directory Federasyon Hizmetleri için (AD FS) dahil olmak üzere, uç noktaları bulur.
+    Visual Studio, Azure Resource Manager 'ı çağırır ve Azure Directory Federasyon Hizmetleri (AD FS) için kimlik doğrulama uç noktası da dahil olmak üzere uç noktaları bulur.
 
-    ![Bir kez oturum açıp Azure Stack'e bağlı bulut Gezgini'nin ekran görüntüsü](./media/azure-stack-install-visual-studio/image6.png)
+    ![Oturum açıldıktan ve Azure Stack bağlandığında Cloud Explorer 'ın ekran görüntüsü](./media/azure-stack-install-visual-studio/image6.png)
 
-6. Seçin **Cloud Explorer** gelen **görünümü** menüsü.
+6. **Görünüm** menüsünden **bulut Gezgini** ' ni seçin.
 
-7. Seçin **hesabı Ekle** ve AD FS kimlik bilgilerinizle oturum açın.  
+7. **Hesap Ekle** ' yi seçin ve AD FS kimlik bilgilerinizle oturum açın.  
 
-    ![Cloud Explorer](./media/azure-stack-install-visual-studio/image7.png)
+    ![Cloud Explorer 'da Visual Studio 'da oturum açın](./media/azure-stack-install-visual-studio/image7.png)
 
-    Kullanılabilir abonelikler cloud Explorer sorgular. Yönetmek için mevcut bir aboneliği seçebilirsiniz.
+    Cloud Explorer, kullanılabilir abonelikleri sorgular. Yönetmek için kullanılabilir bir abonelik seçebilirsiniz.
 
-    ![Cloud Explorer](./media/azure-stack-install-visual-studio/image8.png)
+    ![Cloud Explorer 'da yönetilecek abonelikleri seçin](./media/azure-stack-install-visual-studio/image8.png)
 
-8. Var olan kaynakları, kaynak grupları göz atın veya şablonları dağıtma.
+8. Var olan kaynaklarınıza, kaynak gruplarına veya şablonları dağıtmaya göre inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Visual Studio hakkında daha fazla bilgiyi [yan yana](/visualstudio/install/install-visual-studio-versions-side-by-side) diğer Visual Studio sürümleriyle birlikte.
-- [Şablonları Azure Stack için geliştirme](azure-stack-develop-templates.md).
+- Diğer Visual Studio sürümleriyle yan [](/visualstudio/install/install-visual-studio-versions-side-by-side) yana Visual Studio hakkında daha fazla bilgi edinin.
+- [Azure Stack için şablonlar geliştirin](azure-stack-develop-templates.md).
