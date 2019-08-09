@@ -9,22 +9,26 @@ ms.topic: article
 ms.date: 07/30/2019
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 07/30/2019
-ms.openlocfilehash: b97d542c5a885078fa80108cdb0c16e6ccb79b98
-ms.sourcegitcommit: 0e0d010c4e010f2fd6799471db8bf71652d8d4e1
+ms.lastreviewed: 08/05/2019
+ms.openlocfilehash: 6ffd13982a4acf90896b152adcee360e34c02b79
+ms.sourcegitcommit: 8de4c18b25bd1047fc270812a795f24e8f1e9244
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68806958"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68865882"
 ---
-# <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack veri merkezi tümleştirmesi-uç noktaları yayımlama
+# <a name="azure-stack-datacenter-integration---publish-azure-stack-services"></a>Azure Stack Datacenter Integration-Azure Stack hizmetleri yayımlama
 
-Azure Stack altyapı rolleri için sanal IP adresleri (VIP) ayarlar. Bu VIP 'ler genel IP adresi havuzundan ayrılır. Her VIP, yazılım tanımlı ağ katmanında bir erişim denetim listesi (ACL) ile güvenli hale getirilir. ACL 'Ler, çözümün daha fazla olması için fiziksel anahtarlar (lar ve BMC) genelinde da kullanılır. Dağıtım zamanında belirtilen dış DNS bölgesindeki her bir uç nokta için bir DNS girişi oluşturulur.
-
+Azure Stack altyapı rolleri için sanal IP adresleri (VIP) ayarlar. Bu VIP 'ler genel IP adresi havuzundan ayrılır. Her VIP, yazılım tanımlı ağ katmanında bir erişim denetim listesi (ACL) ile güvenli hale getirilir. ACL 'Ler, çözümün daha fazla olması için fiziksel anahtarlar (lar ve BMC) genelinde da kullanılır. Dağıtım zamanında belirtilen dış DNS bölgesindeki her bir uç nokta için bir DNS girişi oluşturulur. Örneğin, Kullanıcı portalına portalın DNS ana bilgisayar girişi atanır. *Bölge >.&lt; &lt; FQDN >* .
 
 Aşağıdaki mimari diyagramda farklı ağ katmanları ve ACL 'Leri gösterilmektedir:
 
 ![Yapısal resim](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+
+### <a name="ports-and-urls"></a>Bağlantı noktaları ve URL 'Ler
+Azure Stack Hizmetleri (portallar, Azure Resource Manager, DNS vb.) dış ağlarda kullanılabilir hale getirmek için, belirli URL 'Ler, bağlantı noktaları ve protokoller için bu uç noktalara gelen trafiğe izin vermeniz gerekir.
+ 
+Geleneksel bir ara sunucu veya bir güvenlik duvarının, çözümü koruduğu bir dağıtımda, hem [gelen](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) hem de [giden](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) iletişim için belirli bağlantı noktalarına ve URL 'lere izin vermeniz gerekir. Bunlar kimlik bağlantı noktaları ve URL 'Ler, Market, düzeltme eki ve güncelleştirme, kayıt ve kullanım verileri içerir.
 
 ## <a name="ports-and-protocols-inbound"></a>Bağlantı noktaları ve protokoller (gelen)
 

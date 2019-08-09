@@ -16,41 +16,41 @@ metadata:
   ms.date: 07/11/2019
   ms.author: mabrigg
 abstract:
-  description: 'Azure Stack, şirketinizin veya hizmet sağlayıcınızın veri merkezinden Azure hizmetleri sağlama olanağı sunan bir hibrit bulut platformudur. Bir geliştirici olarak Azure Stack’te uygulama derleyebilirsiniz. Daha sonra bu uygulamaları Azure Stack’te dağıtabilir veya Azure Stack bulut ve Azure arasındaki bağlantıdan yararlanan tamamen karma uygulamalar derleyebilirsiniz. Hızlı başlangıç kılavuzlarımız ve öğreticilerimizden yararlanarak kaynak oluşturma ve uygulamaları dağıtma hakkında bilgi edinin.<br/><br/>Altyapıyı yöneten ve hizmetleri sunan Azure Stack operatörü kullanıyorsanız bkz bizim <a href="../operator/">operatör belgeleri</a>.<br/><br/>Azure Stack geliştirme Seti''ni (ASDK içinde), bir tek düğümlü dağıtım Azure Stack, indirin ve ücretsiz olarak kullanmak istiyorsanız bir Azure Stack kullanıcı olup olmadığını görmek bizim <a href="../asdk">ASDK belgeleri</a>.'
+  description: 'Azure Stack, şirketinizin veya hizmet sağlayıcınızın veri merkezinden Azure hizmetleri sağlama olanağı sunan bir hibrit bulut platformudur. Bir geliştirici olarak Azure Stack’te uygulama derleyebilirsiniz. Daha sonra bu uygulamaları Azure Stack’te dağıtabilir veya Azure Stack bulut ve Azure arasındaki bağlantıdan yararlanan tamamen karma uygulamalar derleyebilirsiniz. Hızlı başlangıç kılavuzlarımız ve öğreticilerimizden yararlanarak kaynak oluşturma ve uygulamaları dağıtma hakkında bilgi edinin.<br/><br/>Altyapıyı yöneten ve hizmet sunan bir Azure Stack işletmeni kullanıyorsanız, bkz. <a href="../operator/">operatör belgeleri</a>.<br/><br/>Ücretsiz olarak indirebileceğiniz ve kullanabileceğiniz bir Azure Stack tek düğümlü bir dağıtımı olan Azure Stack Geliştirme Seti (ASDK) ile ilgilenen Azure Stack bir kullanıcılığımız varsa, <a href="../asdk">asdk belgelerimize</a>bakın.'
 sections:
-  - title: Azure Stack’i kullanmaya başlama
+  - title: Azure Stack kullanmaya başlayın
     items:
       - type: list
         style: cards
         className: cardsA
         items:
-          - html: '<a href="/azure-stack/user/azure-stack-dev-start"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt=""> <br><b>Azure Stack ile çözümler geliştirin</b></a> <p>Windows 10, Linux veya macOS iş istasyonu kullanarak Azure Stack için uygulamalar geliştirin.</p>'
-          - html: '<a href="/azure-stack/operator/azure-stack-powershell-install"> <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt=""> <br><b>Azure Stack PowerShell</b></a> <p>Kolayca Azure Stack kaynaklarınızı Powershell''den yönetin.</p>'
-          - html: '<a href="/azure-stack/user/azure-stack-version-profiles-azurecli2"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt=""> <br><b>Azure Komut Satırı Arabirimi (CLI)</b></a> <p>Azure Stack kaynaklarını yönetmek için komut satırı deneyimi.</p>'
-  - title: Hibrit bulut uygulamaları
+          - html: '<a href="/azure-stack/user/azure-stack-dev-start"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt=""> <br><b>Azure Stack çözümleri geliştirme</b></a> <p>Windows 10, Linux veya macOS Workstation kullanarak Azure Stack uygulamalar geliştirin.</p>'
+          - html: '<a href="https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json"><img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt=""> <br><b>Azure Stack PowerShell</b></a> <p>Azure Stack kaynaklarınızı PowerShell ''ten kolayca yönetin.</p>'
+          - html: '<a href="/azure-stack/user/azure-stack-version-profiles-azurecli2"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt=""> <br><b>Azure Komut Satırı Arabirimi (CLI)</b></a> <p>Azure Stack kaynaklarını yönetmek için komut satırı deneyimi.</p>'
+  - title: Karma bulut uygulamaları
     items:
       - type: list
         style: cards
         className: cardsA
         items:
-          - html: '<a href="/azure-stack/user/azure-stack-solution-pipeline"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_workflow.svg" alt="hybrid cloud app ci/cd"> <br><b>Karma uygulama sürekli tümleştirme ve teslim</b></a> <p>Karma uygulamalar, Azure ve Azure Stack kullanarak karma sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattı dağıtın.</p>'
-          - html: '<a href="/azure-stack/user/azure-stack-solution-hybrid-identity"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_identity-protection.svg" alt="hybrid cloud app identity"> <br><b>Hibrit bulut kimliği yapılandırma</b></a> <p>Azure ve Azure Stack uygulamalarınız için bir karma bulut kimlik yapılandırın.</p>'
-          - html: '<a href="/azure-stack/user/azure-stack-solution-cloud-burst"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling"> <br><b>Bulutlar arası ölçeklendirme çözümleri</b></a> <p>Bir Azure yığını geçiş yapmak için el ile tetiklenen bir işlem barındırılan web uygulaması, web uygulaması için bir Azure barındırılan sağlamak için bir Bulutlar arası çözümü oluşturun.</p>'
-  - title: Olarak-hizmet altyapı (Iaas) Azure Stack üzerinde
+          - html: '<a href="/azure-stack/user/azure-stack-solution-pipeline"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_workflow.svg" alt="hybrid cloud app ci/cd"> <br><b>Karma uygulama sürekli tümleştirme ve teslimi</b></a> <p>Karma uygulamaları Azure ''a dağıtın ve karma bir sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattı kullanarak Azure Stack.</p>'
+          - html: '<a href="/azure-stack/user/azure-stack-solution-hybrid-identity"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_identity-protection.svg" alt="hybrid cloud app identity"> <br><b>Karma bulut kimliğini yapılandırma</b></a> <p>Azure ve Azure Stack uygulamalarınız için karma bulut kimliği yapılandırın.</p>'
+          - html: '<a href="/azure-stack/user/azure-stack-solution-cloud-burst"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling"> <br><b>Platformlar arası ölçeklendirme çözümleri</b></a> <p>Azure Stack barındırılan bir Web uygulamasından Azure ''da barındırılan bir Web uygulamasına geçiş için el ile tetiklenen bir işlem sağlamak üzere bir çoklu bulut çözümü oluşturun.</p>'
+  - title: Azure Stack hizmet olarak altyapı (IaaS)
     items:
       - type: list
         style: cards
         className: cardsA
         items:
-          - html: '<a href="/azure-stack/user/azure-stack-create-vm-template"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt=""> <br><b>Şablon ile VM Iaas ile dağıtın.</b></a> <p>Azure Stack Resource Manager şablonlarını kullanarak VM oluşturma</p>'
-          - html: '<a href="/azure-stack/user/azure-stack-quick-linux-portal"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt=""> <br><b>Hızlı Başlangıç - VM oluşturma</b></a> <p>Uygulamanızı barındırmak için bir VM oluşturun.</p>'
-          - html: '<a href="/azure-stack/user/azure-stack-dev-start-deploy-app"> <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt=""> <br><b>Kodunuzda yazılan uygulamaları barındırın.</b></a> <p>Azure yığını ve dağıtımı uygulamasını kullanarak bir VM ayarlama C#, Java, Python, Go, Ruby veya NodeJS.</p>'
-  - title: Platform-bir hizmet olarak (PaaS) Azure Stack üzerinde
+          - html: '<a href="/azure-stack/user/azure-stack-create-vm-template"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt=""> <br><b>Bir şablon ile IaaS içinde bir VM dağıtın.</b></a> <p>Azure Stack Kaynak Yöneticisi şablonları kullanarak VM oluşturma</p>'
+          - html: '<a href="/azure-stack/user/azure-stack-quick-linux-portal"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt=""> <br><b>Hızlı başlangıç-VM oluşturma</b></a> <p>Uygulamanızı barındırmak için bir VM oluşturun.</p>'
+          - html: '<a href="/azure-stack/user/azure-stack-dev-start-deploy-app"><img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt=""> <br><b>Kodunuzda yazılmış uygulamaları barındırın.</b></a> <p>Azure Stack '' de bir VM ayarlayın ve uygulamanızı, Java, Python C#, Go, Ruby veya NodeJS kullanarak dağıtma.</p>'
+  - title: Azure Stack bir hizmet olarak platform (PaaS)
     items:
       - type: list
         style: cards
         className: cardsA
         items:
-          - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster"> <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt=""> <br><b>Bir Service Fabric kümesine dağıtma</b></a> <p>Azure Stack güvenli bir Service Fabric kümesinde dağıtın.</p>
-          - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy"> <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt=""> <br><b>Bir Kubernetes kümesi dağıtma</b></a> <p>Dağıtın ve kaynakları Kubernetes için tek ve eşgüdümlü bir işlemle ayarlayın.</p>
-          - html: '<a href="/azure-stack/user/azure-stack-solution-template-cognitive-services"> <img height="48" width="48" src="/azure-stack/user/media/index/icon-cognitive-services.svg" alt=""> <br><b>Azure Bilişsel hizmetler dağıtma</b></a> <p>Azure Bilişsel hizmetler kapsayıcı desteği, Azure''da kullanılabilen API''leri kullanmanıza olanak sağlar.</p>'
+          - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster"><img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt=""> <br><b>Service Fabric kümesi dağıtma</b></a> <p>Azure Stack bir güvenli Service Fabric kümesi dağıtın.</p>
+          - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy"><img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt=""> <br><b>Kubernetes kümesi dağıtma</b></a> <p>Kubernetes kaynaklarını tek ve eşgüdümlü bir işlemde dağıtın ve ayarlayın.</p>
+          - html: '<a href="/azure-stack/user/azure-stack-solution-template-cognitive-services"><img height="48" width="48" src="/azure-stack/user/media/index/icon-cognitive-services.svg" alt=""> <br><b>Azure bilişsel hizmetler ''i dağıtma</b></a> <p>Azure bilişsel hizmetler ''deki kapsayıcı desteği, Azure ''da bulunan API ''Leri kullanmanıza olanak sağlar.</p>'

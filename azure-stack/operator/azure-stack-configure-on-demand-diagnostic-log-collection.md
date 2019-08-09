@@ -16,12 +16,12 @@ ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 988c24f004222d80b866024c2c392473cdf73bab
-ms.sourcegitcommit: ddb625bb01de11bfb75d9f7a1cc61d5814b3bc31
+ms.openlocfilehash: 007703facf882eccd594dfb6f78941570c9cfb02
+ms.sourcegitcommit: 8de4c18b25bd1047fc270812a795f24e8f1e9244
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68712952"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68865898"
 ---
 # <a name="collect-azure-stack-diagnostic-logs-now-on-demand"></a>Azure Stack tanılama günlüklerini şimdi toplayın (isteğe bağlı)
 
@@ -41,7 +41,7 @@ Bir sorunu gidermek için CSS, önceki haftadan belirli bir zaman penceresi içi
    ![İsteğe bağlı günlük toplama ekran görüntüsü](media/azure-stack-automatic-log-collection/collect-logs-now.png)
 
 >[!NOTE]
->Otomatik tanılama günlüğü koleksiyonu etkinleştirilirse, günlük toplama işlemi devam ederken **Yardım ve destek** görüntülenir. Otomatik günlük toplama işlemi sürerken bir hedefleyen zamanından günlükleri toplamak için **Şimdi günlükleri topla** ' ya tıklarsanız, otomatik günlük toplama tamamlandıktan sonra isteğe bağlı koleksiyon başlar. 
+>Otomatik tanılama günlüğü koleksiyonu etkinleştirilirse, günlük toplama işlemi devam ederken **Yardım ve destek** görüntülenir. Otomatik günlük toplama işlemi devam ederken belirli bir zamandan günlükleri toplamak için **günlükleri topla** ' ya tıklarsanız, otomatik günlük toplama tamamlandıktan sonra isteğe bağlı koleksiyon başlar. 
 
 ## <a name="using-pep"></a>PEP kullanma
 

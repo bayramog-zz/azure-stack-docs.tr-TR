@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: c5a53fcd2aa2ec516e5677e85a1516ac10208c3f
-ms.sourcegitcommit: c2690b2dd36918ff3e47e359cac926128bb83101
+ms.openlocfilehash: a64f4682f3fa46bc6213dd12128c61944b7d6dab
+ms.sourcegitcommit: 8de4c18b25bd1047fc270812a795f24e8f1e9244
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68544122"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68865921"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure 'dan Market öğelerini Azure Stack 'a indirin
 
@@ -77,7 +77,7 @@ Azure Stack bağlantısı kesik bir moddadır ve internet bağlantısı olmadan,
 Market dağıtım aracı, bağlı bir senaryoda da kullanılabilir. 
 
 Bu senaryonun iki bölümü vardır:
-- **1. Bölüm:** Azure Marketi 'nden indirin. İnternet erişimi olan bilgisayarda PowerShell 'i yapılandırın, dağıtım aracını indirin ve ardından Azure Marketi ' nde öğeleri indirin.  
+- **1. Bölüm:** Azure Marketi 'nden indirin. İnternet erişimi olan bilgisayarda PowerShell 'i yapılandırın, dağıtım aracını indirin ve ardından Azure Marketi 'nden öğeleri indirin.  
 - **Bölüm 2:** Azure Stack marketi ' ne yükleyin ve yayımlayın. İndirdiğiniz dosyaları Azure Stack ortamınıza taşıyın, Azure Stack içeri aktarıp Azure Stack Market 'Te yayımlayabilirsiniz.  
 
 
