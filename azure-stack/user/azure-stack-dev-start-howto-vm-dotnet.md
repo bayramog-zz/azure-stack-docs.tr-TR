@@ -1,32 +1,32 @@
 ---
-title: Dağıtım bir C# ASP.NET web uygulamasını bir sanal makineye Azure Stack'te | Microsoft Docs
-description: Dağıtım bir C# Azure Stack'te bir VM için ASP.NET web uygulaması.
+title: Azure Stack bir C# ASP.NET Web uygulamasını bir sanal makineye dağıtma | Microsoft Docs
+description: Azure Stack bir C# sanal makineye bir ASP.NET Web uygulaması dağıtın.
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 08/09/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 14baf5d5ca411e7c32cbfcf4a6138193a2215b0a
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.lastreviewed: 08/09/2019
+ms.openlocfilehash: beddafb351af39f0a21a1cd0d7a7baa4ccfee28e
+ms.sourcegitcommit: 94669fe8a55fadd3103e80be307e9e8c823bf746
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783095"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68940271"
 ---
-# <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack"></a>Dağıtım bir C# Azure Stack'te bir VM için ASP.NET web uygulaması
+# <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack"></a>Azure Stack bir C# sanal makineye bir ASP.NET Web uygulaması dağıtma
 
-Konağa sanal makine (VM) oluşturabilirsiniz, C# Azure Stack'te ASP.NET web uygulaması. Bu makalede, sunucunuzu ayarlarken izlemeniz gereken yönergeleri ele alınmaktadır barındırmak için yapılandırmak, C# ASP.NET web uygulaması ve sonra uygulamayı doğrudan Visual Studio'dan dağıtma.
+Azure Stack 'de C# ASP.NET Web uygulamanızı barındırmak için bir sanal makıne (VM) oluşturabilirsiniz. Bu makalede, sunucunuzu ayarlarken izlenecek yönergeler ele alınmaktadır, C# ASP.NET Web uygulamanızı barındıracak şekilde yapılandırılır ve ardından uygulamayı doğrudan Visual Studio 'dan dağıtırsınız.
 
-Bu makalede bir C# 6.0 kullanan bir Windows 2016 sunucusu üzerinde çalışan ASP.NET Core 2.2 uygulaması.
+Bu makalede, bir C# Windows 2016 sunucusunda çalışan ASP.NET Core 2,2 kullanan 6,0 uygulaması kullanılmaktadır.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-1. Oluşturma bir [Windows Server VM](azure-stack-quick-windows-portal.md).
+1. Bir [Windows Server VM](azure-stack-quick-windows-portal.md)'si oluşturun.
 
-1. Sanal Makinenize (Yönetim konsoluyla) IIS ve ASP.NET 4.6 bileşenleri yüklemek için aşağıdaki betiği çalıştırın:
+1. IIS 'yi (Yönetim Konsolu ile) ve ASP.NET 4,6 bileşenlerini sanal makinenizde yüklemek için aşağıdaki betiği çalıştırın:
 
     ```PowerShell  
     # Install IIS (with Management Console)
@@ -39,96 +39,96 @@ Bu makalede bir C# 6.0 kullanan bir Windows 2016 sunucusu üzerinde çalışan A
     Install-WindowsFeature -Name Web-Mgmt-Service
     ```
 
-1. İndirme [Web dağıtımı v3.6](https://www.microsoft.com/download/details.aspx?id=43717). MSI dosyasından yükleyin ve ardından tüm özelliklerini etkinleştirin.
+1. [Web dağıtımı v 3.6](https://www.microsoft.com/download/details.aspx?id=43717)indirin. MSI dosyasından yükleyip tüm özellikleri etkinleştirin.
 
-1. .NET Core 2.2 barındırma paket sunucunuza yükleyin. Yönergeler için [.NET Core yükleyici](https://dotnet.microsoft.com/download/dotnet-core/2.2). Geliştirme makinenizde hem de hedef sunucunuz üzerinde .NET Core sürümüyle aynı sürümü kullandığınızdan emin olun.
+1. Sunucunuza .NET Core 2,2 barındırma paketi 'ni yükler. Yönergeler için bkz. [.NET Core yükleyicisi](https://dotnet.microsoft.com/download/dotnet-core/2.2). Hem geliştirme makinenizde hem de hedef sunucunuzda .NET Core 'un aynı sürümünü kullandığınızdan emin olun.
 
-1. Azure Stack portalında sanal Makineniz için Ağ Ayarları'nda listelenen bağlantı noktaları açın.
+1. Azure Stack portalında, sanal makinenizin ağ ayarlarında listelenen bağlantı noktalarını açın.
 
     a. Kiracınız için Azure Stack portalını açın.
 
-    b. Sanal makinenizin arayın. VM, panoya sabitlenmiş veya içinde arama yapabilirsiniz **kaynak Ara** kutusu.
+    b. VM 'niz için arama yapın. Sanal makineyi panonuza sabitlemiş olabilirsiniz veya **arama kaynakları** kutusunda arama yapabilirsiniz.
 
-    c. Seçin **ağ**.
+    c. **Ağ**' ı seçin.
 
-    d. Seçin **gelen bağlantı noktası kuralı Ekle** VM altında.
+    d. VM altında **gelen bağlantı noktası kuralı ekle** ' yi seçin.
 
     e. Aşağıdaki bağlantı noktaları için bir gelen güvenlik kuralı ekleyin:
 
     | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), web sayfaları sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür.  |
-    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanır. |
-    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü bir grafik kullanıcı arabirimi kullanılacak Uzak Masaüstü bağlantısı için makinenizi sağlar.   |
-    | 8080 | Özel | Apache Tomcat hizmeti için varsayılan bağlantı noktası 8080'dir. Bir üretim sunucusu için 80 ve 443, trafiği yönlendirmek isteyebilirsiniz. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), sunuculardan Web sayfaları teslim etmek için kullanılan protokoldür. İstemciler bir DNS adı veya IP adresi ile HTTP aracılığıyla bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), bir güvenlik sertifikası gerektiren ve şifreli bilgi iletimi sağlayan güvenli bir HTTP sürümüdür.  |
+    | 22 | SSH | Secure Shell (SSH), güvenli iletişimler için şifreli bir ağ protokolüdür. Bu bağlantıyı, sanal makineyi yapılandırmak ve uygulamayı dağıtmak için bir SSH istemcisiyle kullanacaksınız. |
+    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü, bir uzak masaüstü bağlantısının makinenize bir grafik kullanıcı arabirimi kullanmasına izin verir.   |
+    | 8172 | Özel | WebDeploy tarafından kullanılan bağlantı noktası. |
 
-    Her bağlantı noktası:
+    Her bağlantı noktası için:
 
-    a. İçin **kaynak**seçin **herhangi**.
+    a. **Kaynak**Için **herhangi bir**seçin.
 
-    b. İçin **kaynak bağlantı noktası aralığı**, bir yıldız işareti girin (**\***).
+    b. **Kaynak bağlantı noktası aralığı**için bir yıldız işareti ( **\*** ) yazın.
 
-    c. İçin **hedef**seçin **herhangi**.
+    c. **Hedef**Için **herhangi birini**seçin.
 
-    d. İçin **hedef bağlantı noktası aralığı**, açmak istediğiniz bağlantı noktasını ekleyin.
+    d. **Hedef bağlantı noktası aralığı**için, açmak istediğiniz bağlantı noktasını ekleyin.
 
-    e. İçin **Protokolü**seçin **herhangi**.
+    e. **Protokol**Için **herhangi bir**seçin.
 
     f. **Eylem** alanında **İzin ver**'i seçin.
 
-    g. İçin **öncelik**, varsayılan seçimi bırakın.
+    g. **Öncelik**için varsayılan seçimi bırakın.
 
-    h. Girin bir **adı** ve **açıklama** neden bağlantı noktasının açık olduğundan anımsamanıza yardımcı olacak.
+    h. Bağlantı noktasının neden açık olduğunu anımsamanıza yardımcı olması için bir **ad** ve **Açıklama** girin.
 
     i. **Add (Ekle)** seçeneğini belirleyin.
 
-1.  İçinde **ağ** Azure Stack, VM için ayarları sunucunuz için bir DNS adı oluşturun. Kullanıcılar Web sitenize URL kullanarak bağlanabilir.
+1.  SANAL makinenizin **ağ** ayarları Azure Stack ' de, sunucunuz IÇIN bir DNS adı oluşturun. Kullanıcılar, URL 'YI kullanarak Web sitenize bağlanabilir.
 
     a. Kiracınız için Azure Stack portalını açın.
 
-    b. Sanal makinenizin arayın. VM, panoya sabitlenmiş veya içinde arama yapabilirsiniz **kaynak Ara** kutusu.
+    b. VM 'niz için arama yapın. Sanal makineyi panonuza sabitlemiş olabilirsiniz veya **arama kaynakları** kutusunda arama yapabilirsiniz.
 
     c. **Genel Bakış**’ı seçin.
 
-    d. Altında **VM**seçin **yapılandırma**.
+    d. **VM**altında **Yapılandır**' ı seçin.
 
-    e. İçin **atama**seçin **dinamik**.
+    e. **Atama**için **dinamik**' i seçin.
 
-    f. DNS ad etiketi girin **mywebapp şeklindedir**, tam URL'nizi haline gelebilmesi *mywebapp.local.cloudapp.azurestack.external*.
+    f. Tam URL 'nizin *MyWebApp. Local. cloudapp. azurestack. external*haline gelmesi için **MYWEBAPP**gibi DNS ad etiketini girin.
 
 ## <a name="create-an-app"></a>Uygulama oluşturma 
 
-Kendi web uygulamanızla ya da örneğe kullanabileceğiniz [Visual Studio ile Azure'a bir ASP.NET Core uygulaması yayımlama](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-). Bu makalede, oluşturma ve Visual Studio 2017'de Azure sanal makineler Yayımlama özelliğini kullanarak bir Azure sanal makinesi için bir ASP.NET web uygulaması yayımlama açıklanır. Yüklü ve uygulamanızı yerel olarak çalıştığından emin olduktan sonra Windows VM yayımlama hedef Azure Stack Örneğinizde güncelleştireceksiniz.
+Visual Studio [](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
+)ile Azure 'da kendi web uygulamanızı veya bir ASP.NET Core uygulaması yayımlama örneğini kullanabilirsiniz. Makalesinde, Visual Studio 2017 ' deki Azure sanal makineler yayımlama özelliğini kullanarak bir Azure sanal makinesine bir ASP.NET Web uygulaması oluşturma ve yayımlama açıklanmaktadır. ' Yi yükledikten ve uygulamanızın yerel olarak çalıştığından emin olduktan sonra, yayımlama hedefini Azure Stack örneğinizdeki Windows VM 'sine güncelleştirebilirsiniz.
 
 ## <a name="deploy-and-run-the-app"></a>Uygulamayı dağıtma ve çalıştırma
 
-Yayımlama hedefi vm'niz Azure Stack'te oluşturun.
+Azure Stack ' de sanal makinenizde bir yayımlama hedefi oluşturun.
 
-1. İçinde **Çözüm Gezgini**, projenize sağ tıklayın ve ardından **Yayımla**.
+1. **Çözüm Gezgini**, projenize sağ tıklayın ve ardından **Yayımla**' yı seçin.
 
-    ![Bir ASP.NET web uygulamasını Azure Stack'e dağıtma yayımlama](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
+    ![Azure Stack yayımlamak için bir ASP.NET Web uygulaması dağıtma](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
 
-1. İçinde **Yayımla** penceresinde **yeni profili**.
-1. Seçin **IIS**, **FTP**ve benzeri.
+1. **Yayımla** penceresinde **Yeni profil**' i seçin.
+1. **IIS**, **FTP**, vb. seçin.
 1. **Yayımla**’yı seçin.
-1. İçin **yayımlama yöntemi**seçin **Web dağıtımı**.
-1. İçin **sunucu** daha önce tanımladığınız DNS adını girin gibi *w21902.local.cloudapp.azurestack.external*.
-1. İçin **Site adı**, girin **varsayılan Web sitesi**.
-1. İçin **kullanıcı adı**, makine kullanıcı adını girin.
-1. İçin **parola**, makine için parolayı girin.
-1. İçin **hedef URL**, site için URL girin, gibi *mywebapp.local.cloudapp.azurestack.external*.
+1. **Yayımla yöntemi**için **Web dağıtımı**' yi seçin.
+1. **Sunucu** için, daha önce tanımladığınız DNS adını girin (örneğin, *w21902. Local. cloudapp. azurestack. external*).
+1. **Site adı**Için **varsayılan Web sitesi**' ni girin.
+1. **Kullanıcı adı**için makinenin Kullanıcı adını girin.
+1. **Parola**için, makinenin parolasını girin.
+1. **Hedef URL**'si için, sitenin URL 'sini girin (örneğin, *MyWebApp. Local. cloudapp. azurestack. external*).
 
-    ![ASP.NET web uygulamasını dağıtma - Web dağıtımı yapılandırma](media/azure-stack-dev-start-howto-vm-dotnet/configure-web-deploy.png)
+    ![Bir ASP.NET Web uygulaması dağıtma-Web Dağıtımı yapılandırma](media/azure-stack-dev-start-howto-vm-dotnet/configure-web-deploy.png)
 
-1. Doğrulamak için web dağıtımı yapılandırması, seçin **bağlantısını doğrulama**ve ardından **sonraki**.
-1. Ayarlama **yapılandırma** olarak **yayın**.
-1. Ayarlama **hedef Framework** olarak **netcoreapp2.2**.
-1. Ayarlama **hedef çalışma zamanı** olarak **taşınabilir**.
+1. Web dağıtımı yapılandırmanızı doğrulamak için **bağlantıyı doğrula**' yı seçin ve ardından **İleri**' yi seçin.
+1. **Yapılandırmayı** **yayın**olarak ayarlayın.
+1. **Hedef çerçeveyi** **netcoreapp 2.2**olarak ayarlayın.
+1. **Hedef çalışma zamanını** **Taşınabilir**olarak ayarlayın.
 1. **Kaydet**’i seçin.
 1. **Yayımla**’yı seçin.
-1. Yeni sunucunuza gidin. Çalışan web uygulamanızın görmeniz gerekir.
+1. Yeni sunucunuza gidin. Çalışan Web uygulamanızı görmeniz gerekir.
 
     ```http  
         mywebapp.local.cloudapp.azurestack.external
@@ -136,6 +136,6 @@ Yayımlama hedefi vm'niz Azure Stack'te oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bilgi edinmek için nasıl [Azure Stack geliştirme ortamında ayarlama](azure-stack-dev-start.md).
-- Hakkında bilgi edinin [Iaas olarak Azure Stack için ortak dağıtımları](azure-stack-dev-start-deploy-app.md).
-- Bilgi edinmek için C# programlama dilini ve ek kaynaklar için bulma C#, bkz: [ C# Kılavuzu](https://docs.microsoft.com/dotnet/csharp/)
+- [Azure Stack bir geliştirme ortamı ayarlamayı](azure-stack-dev-start.md)öğrenin.
+- [Azure Stack için genel dağıtımlar IaaS olarak](azure-stack-dev-start-deploy-app.md)hakkında bilgi edinin.
+- C# Programlama dilini öğrenmek ve için C#ek kaynaklar bulmak için [ C# kılavuzuna](https://docs.microsoft.com/dotnet/csharp/) bakın

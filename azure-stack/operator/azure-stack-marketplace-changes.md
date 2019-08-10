@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2019
+ms.date: 08/09/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 3d0aad849395a93b1086daf5cf2c17e198d69ed5
-ms.sourcegitcommit: 0e0d010c4e010f2fd6799471db8bf71652d8d4e1
+ms.openlocfilehash: 123849750cbfb343fc63cb43376651a6554ab6b4
+ms.sourcegitcommit: 6239b35370d21852529978777c0e39cfba5a4552
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68806927"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68917544"
 ---
 # <a name="azure-stack-marketplace-changes"></a>Market değişikliklerini Azure Stack
 
@@ -55,6 +55,8 @@ Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azur
 - 08/05/2019: Review Board
 
 - 08/05/2019: Birleşik SR
+
+- 08/09/2019: Oracle Linux
 
 ## <a name="deprecated-marketplace-items"></a>Kullanımdan kaldırılan Market öğeleri
 
