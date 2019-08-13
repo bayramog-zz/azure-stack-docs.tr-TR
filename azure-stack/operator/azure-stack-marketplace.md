@@ -1,6 +1,6 @@
 ---
-title: Azure Stack (bulut işleci) bir özel Market öğesi yayımlama | Microsoft Docs
-description: Azure Stack operatör Azure Stack'te bir özel Market öğesi yayımlama hakkında bilgi edinin.
+title: Azure Stack (bulut işleci) içinde özel Market öğesi yayımlama | Microsoft Docs
+description: Azure Stack operatörü olarak, Azure Stack bir özel Market öğesini yayımlamayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,47 +12,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: d00f7f90f05eddaeb52555a1759187b8282aaf1a
-ms.sourcegitcommit: 593d40bccf1b2957a763017a8a2d7043f8d8315c
+ms.openlocfilehash: be62ddc3c3e5ea7180164cac95edd125030cbc6a
+ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152494"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68959492"
 ---
-# <a name="azure-stack-marketplace-overview"></a>Azure Stack Marketini genel bakış
+# <a name="azure-stack-marketplace-overview"></a>Azure Stack Market 'e genel bakış
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack Marketini, hizmetleri, uygulamaları ve Azure Stack için özelleştirilmiş bir kaynaklar koleksiyonudur. Kaynaklar, ağları, sanal makineler, depolama ve daha fazlasını içerir. Market yeni kaynaklar oluşturmak ve yeni uygulamalar dağıtmak için kullanın. veya göz atın ve kullanmak istediğiniz öğeleri seçin. Bir Market öğesi kullanmak için kullanıcılar bunları öğesine erişimi veren bir teklife abone olması gerekir.
+Azure Stack Marketi, Azure Stack için özelleştirilmiş hizmetler, uygulamalar ve kaynaklar koleksiyonudur. Kaynakları, ağları, sanal makineleri, depolamayı ve daha fazlasını içerir. Market 'i kullanarak yeni kaynaklar oluşturun ve yeni uygulamalar dağıtın; ya da kullanmak istediğiniz öğeleri bulup seçin. Market öğesini kullanmak için kullanıcıların öğeye erişim izni veren bir teklife abone olmaları gerekir.
 
-Azure Stack operatör eklenecek öğeleri karar verin (Market'te yayımlama). Uygulama Hizmetleri, veritabanları gibi öğeleri Yayımla ve benzeri. Yayımlama bunları tüm kullanıcılara görünür hale getirir. Oluşturduğunuz özel öğeler yayımlayabilir veya bir büyümesini öğelerini yayımlamadan [Azure Market öğeleri listesi](azure-stack-marketplace-azure-items.md). Kullanıcıların bir öğe Market'te yayımladığınızda, beş dakika içinde görebilirsiniz.
+Azure Stack operatörü olarak, Market 'e hangi öğelerin ekleneceğini (yayımlayacağınıza) karar verirsiniz. Veritabanları, uygulama hizmetleri ve daha fazlası gibi öğeleri yayımlayabilirsiniz. Yayımlama, öğeleri tüm kullanıcılarınız için görünür hale getirir. Oluşturduğunuz özel öğeleri yayımlayabilir veya büyüyen bir [Azure Market öğesi listesinden](azure-stack-marketplace-azure-items.md)öğe yayımlayabilirsiniz. Market 'e bir öğe yayımladığınızda, kullanıcılar bu süreyi beş dakika içinde görebilir.
 
 > [!CAUTION]  
-> Görüntüleri ve JSON dosyaları dahil tüm galeri öğesi yapıtlar, Azure Stack Market'te kullanılabilir hale getirme sonra kimlik doğrulama olmadan erişilebilir. Özel Market öğesi yayımlama sırasında daha fazla konular için bkz [oluşturun ve bir Market öğesi yayımlama](azure-stack-create-and-publish-marketplace-item.md).
+> Görüntüler ve JSON dosyaları da dahil olmak üzere tüm galeri öğesi yapılarına Azure Stack marketi 'nde kullanılabilir hale getirdikten sonra kimlik doğrulaması olmadan erişilebilir. Özel Market öğelerini yayımlarken daha fazla dikkat edilmesi için bkz. [Market öğesi oluşturma ve yayımlama](azure-stack-create-and-publish-marketplace-item.md).
 
-Yönetici portalı Seç Market açmak için **+ kaynak Oluştur**.
+Market 'i açmak için yönetici portalında **+ kaynak oluştur**' u seçin.
 
 ![Market](media/azure-stack-marketplace/marketplace1.png)
 
-## <a name="marketplace-items"></a>Market öğesi
+## <a name="marketplace-items"></a>Marketplace öğeleri
 
-Bir Azure Stack Marketini öğe, bir hizmet, uygulama veya kullanıcılarınızın indirip kullanabilirsiniz kaynak değil. Planlar ve teklifler gibi yönetim öğelerini de dahil olmak üzere tüm kullanıcılarınız, tüm Azure Stack Marketini öğeleri görülebilir. Bu öğelerin görünüm, ancak bunlar kullanıcılara işlevsel aboneliği gerektirmez.
+Azure Stack Market öğesi, kullanıcılarınızın indirebileceğiniz ve kullanabileceği bir hizmet, uygulama veya kaynaktır. Tüm Azure Stack Market öğeleri, planlar ve teklifler gibi yönetim öğeleri de dahil olmak üzere tüm kullanıcılarınız tarafından görülebilir. Bu yönetim öğeleri görüntülemek için bir abonelik gerektirmez, ancak kullanıcılara işlevsel değildir.
 
-Her bir Market öğesi sahiptir:
+Her Market öğesi şunları içerir:
 
 * Kaynak sağlama için bir Azure Resource Manager şablonu.
-* Meta veriler, dizeler, simgeler ve diğer pazarlama Güvenceleri gibi.
-* Portalda öğeyi görüntülemek için biçimlendirme bilgileri.
+* Dizeler, simgeler ve diğer pazarlama yardımcı malzemeleri gibi meta veriler.
+* Öğeyi portalda göstermek için biçimlendirme bilgileri.
 
-Market'te her öğe, Azure galeri paketi (.azpkg) biçimini kullanır. Azure Stack, dağıtım veya çalışma zamanı kaynakları (kod, yazılım veya sanal makine görüntüleri .zip dosyalarını) Market öğesi bir parçası olarak değil ayrı ayrı ekleyin.
+Market 'Te yayımlanan her öğe Azure Galeri paketi (. azpkg) biçimini kullanır. Market öğesinin bir parçası olarak değil, ayrıca Azure Stack için dağıtım veya çalışma zamanı kaynakları (yazılım veya sanal makine görüntüleri içeren kod,. zip dosyaları) ekleyin.
 
-Azure veya özel görüntüleri karşıya yüklemek, indirmek, 1803 ve üzeri sürümü ile Azure Stack görüntüleri seyrek dosyalarına dönüştürür. Bu işlem süresini uzatır görüntü eklerken, ancak kazandırır ve bu görüntülerin dağıtımını hızlandırır. Dönüştürme, yalnızca yeni görüntüleri için geçerlidir. Var olan görüntülerden değiştirilmez.
+Sürüm 1803 ve üzeri ile, Azure Stack Azure 'dan indirdiklerinde veya özel görüntüleri karşıya yüklerken görüntüleri seyrek dosyalara dönüştürür. Bu işlem bir görüntü eklerken zaman ekler, ancak alan kaydeder ve bu görüntülerin dağıtımını hızlandırır. Dönüştürme yalnızca yeni görüntüler için geçerlidir. Mevcut görüntüler değiştirilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)  
-* [Bir Market öğesi oluşturma ve yayımlama](azure-stack-create-and-publish-marketplace-item.md)
+* [Market öğesi oluşturma ve yayımlama](azure-stack-create-and-publish-marketplace-item.md)

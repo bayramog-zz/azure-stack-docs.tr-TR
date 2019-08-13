@@ -1,6 +1,6 @@
 ---
-title: Azure Stack üzerinde App Service'te yedekleme | Microsoft Docs
-description: Ayrıntılı yönergeler için Azure Stack App Service yedekleme.
+title: Azure Stack App Service yedekleme | Microsoft Docs
+description: Azure Stack üzerinde uygulama hizmetlerini nasıl yedekleyeceğinizi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -16,52 +16,52 @@ ms.date: 04/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 8e8e866efe8de4d4c5d116339edbe81082c6545e
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: b49390434990ac2efb81692c1177c634aee4bab0
+ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269264"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68959524"
 ---
-# <a name="back-up-app-service-on-azure-stack"></a>Azure Stack üzerinde App Service ' yedekleme
+# <a name="back-up-app-service-on-azure-stack"></a>Azure Stack App Service yedekleme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*  
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*  
 
-Bu belge, Azure Stack üzerinde App Service ' yedekleme hakkında yönergeler sağlar.
+Bu belge Azure Stack App Service nasıl yedekleyeceğiniz hakkında yönergeler sağlar.
 
 > [!IMPORTANT]
-> Azure Stack üzerinde App Service'te yedeklenmez parçası olarak [Azure Stack altyapısını yedekleme](azure-stack-backup-infrastructure-backup.md). Azure Stack operatör App Service, başarıyla gerekirse kurtarılabilmesini sağlamak için adımları atmanız gerekir.
+> Azure Stack App Service, [Azure Stack altyapı yedeklemesinin](azure-stack-backup-infrastructure-backup.md)bir parçası olarak yedeklenmez. Azure Stack operatörü olarak, gerekirse App Service başarıyla kurtarılabilmesini sağlamak için adımlar uygulamanız gerekir.
 
-Azure Stack'te Azure App Service için olağanüstü durum kurtarma planlaması yaparken dikkate alınması gereken dört ana bileşenden oluşur:
-1. Kaynak sağlayıcısı altyapı; Sunucu rolleri, çalışan katmanları, vb. 
-2. App Service gizli dizileri
-3. Uygulama hizmeti SQL Server barındırma ve ölçüm veritabanları
-4. App Service dosya paylaşımında depolanabilir App Service kullanıcı iş yükü içerik   
+Azure Stack Azure App Service olağanüstü durum kurtarma planlaması yaparken dikkate alınması gereken dört ana bileşen vardır:
+1. Kaynak Sağlayıcısı Altyapısı; sunucu rolleri, çalışan katmanları ve benzeri. 
+2. App Service gizli dizileri.
+3. App Service SQL Server barındırma ve ölçüm veritabanları.
+4. App Service Kullanıcı iş yükü içeriği App Service dosya paylaşımında depolanır.
 
-## <a name="back-up-app-service-secrets"></a>App Service gizli diziler ' yedekleme
-App Service yedekten kurtarma işlemi gerçekleştirirken, ilk dağıtım tarafından kullanılan App Service anahtarları sağlamanız yeterlidir. Bu bilgiler, App Service başarıyla dağıtılan ve güvenli bir konumda depolanan hemen sonra kaydedilmelidir. Kaynak sağlayıcısı altyapı yapılandırmasını App Service kurtarma PowerShell cmdlet'lerini kullanarak Kurtarma sırasında yedek kopyadan yeniden oluşturulacak.
+## <a name="back-up-app-service-secrets"></a>App Service gizli dizileri yedekleme
+Yedeklemeden App Service kurtarılırken ilk dağıtım tarafından kullanılan App Service anahtarlarını sağlamanız gerekir. App Service başarılı bir şekilde dağıtılıp, güvenli bir konuma depolandıktan sonra bu bilgiler kaydedilmelidir. Kaynak sağlayıcısı altyapı yapılandırması, kurtarma sırasında App Service Recovery PowerShell cmdlet 'leri kullanılarak yedekten yeniden oluşturulur.
 
-Aşağıdaki adımları izleyerek uygulama hizmeti gizli anahtarları için Yönetim Portalı'nı kullanın: 
+Aşağıdaki adımları izleyerek App Service gizli dizilerini yedeklemek için yönetim portalını kullanın: 
 
-1. Azure Stack yönetim portalında Hizmet Yöneticisi olarak oturum açın.
+1. Hizmet Yöneticisi olarak Azure Stack yönetici portalında oturum açın.
 
-2. Gözat **App Service'e** -> **gizli dizileri**. 
+2. **App Service** -> **gizli**anahtarlara gidin. 
 
-3. Seçin **gizli dizileri indir**.
+3. **Gizli dizileri indir**' i seçin.
 
-   ![Gizli dizileri indir](./media/app-service-back-up/download-secrets.png)
+   ![Azure Stack yönetici portalında gizli dizileri indirin](./media/app-service-back-up/download-secrets.png)
 
-4. Gizli diziler indirme için hazır olduğunuzda, tıklayın **Kaydet** ve App Service gizli dizileri depolamak (**SystemSecrets.JSON**) güvenli bir konumda dosya. 
+4. Gizli dizileri indirmeye hazırsanız, **Kaydet** ' e tıklayın ve App Service gizli dizi (**SYSTEMGIZLILIKLER. JSON**) dosyasını güvenli bir konumda saklayın. 
 
-   ![Gizli dizilerini kaydetme](./media/app-service-back-up/save-secrets.png)
+   ![Azure Stack yönetici portalında gizli dizileri kaydetme](./media/app-service-back-up/save-secrets.png)
 
 > [!NOTE]
-> App Service gizli dizileri Döndürülmüş her zaman bu adımları yineleyin.
+> App Service gizli dizileri her döndürüldüğünde bu adımları yineleyin.
 
 ## <a name="back-up-the-app-service-databases"></a>App Service veritabanlarını yedekleme
-App Service'ı geri yüklemek için ihtiyacınız olacak **Appservice_hosting** ve **Appservice_metering** veritabanı yedeklemeleri. Bu veritabanları yedeklenir ve güvenli bir şekilde düzenli olarak kaydedilen emin olmak için SQL Server bakım planları veya Azure Backup sunucusu kullanmanızı öneririz. Normal SQL yedeklerini sağlama herhangi bir yöntem oluşturulur ancak kullanılabilir.
+App Service geri yüklemek için **Appservice_hosting** ve **Appservice_metering** veritabanı yedeklerinin olması gerekir. Bu veritabanlarının yedeklenmesini ve düzenli olarak güvenli bir şekilde kaydedilmesini sağlamak için SQL Server bakım planlarını veya Azure Backup Sunucusu kullanmanızı öneririz. Ancak, düzenli SQL yedeklemelerinin oluşturulmasını sağlamaya yönelik herhangi bir yöntem kullanılabilir.
 
-El ile SQL Server'a her açmışken bu veritabanlarını yedeklemek için aşağıdaki PowerShell komutlarını kullanabilirsiniz:
+SQL Server oturum açarken bu veritabanlarını el ile yedeklemek için aşağıdaki PowerShell komutlarını kullanın:
 
   ```powershell
   $s = "<SQL Server computer name>"
@@ -72,16 +72,16 @@ El ile SQL Server'a her açmışken bu veritabanlarını yedeklemek için aşağ
   ```
 
 > [!NOTE]
-> SQL AlwaysOn veritabanlarını yedeklemek gerekirse izleyin [bu yönergeleri](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017). 
+> SQL AlwaysOn veritabanlarını yedeklemeniz gerekiyorsa, [Bu yönergeleri](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017)izleyin. 
 
-Tüm veritabanları başarıyla yedeklendi sonra App Service gizli bilgilerle birlikte güvenli bir konuma .bak dosyaları kopyalayın.
+Tüm veritabanları başarıyla yedeklendikten sonra,. bak dosyalarını App Service gizli dizi bilgileriyle birlikte güvenli bir konuma kopyalayın.
 
-## <a name="back-up-the-app-service-file-share"></a>App Service dosya paylaşımını yedekleme
-App Service Kiracı uygulama bilgileri depolar Dosya paylaşımındaki. Böylece geri yükleme gerekiyorsa mümkün olduğunca küçük veriler kaybolur bu App Service veritabanlarının yanı sıra düzenli olarak yedeklemelisiniz. 
+## <a name="back-up-the-app-service-file-share"></a>App Service dosya paylaşımının yedeklenmesi
+App Service, kiracı uygulama bilgilerini dosya paylaşımında depolar. Bu dosya paylaşımının, geri yükleme gerektiğinde olabildiğince az veri kaybolması için App Service veritabanlarıyla birlikte düzenli olarak yedeklenmesi gerekir.
 
-App Service dosya paylaşımını yedekleme düzenli olarak dosya paylaşımı kopyalamak için Azure Backup sunucusu veya başka bir yöntemi kullanabilirsiniz, içerik için içerik konumu için önceki tüm kurtarma bilgilerini kaydettiğiniz. 
+App Service dosya paylaşma içeriğini yedeklemek için, dosya paylaşma içeriğini önceki tüm kurtarma bilgilerini kaydettiğiniz konuma düzenli olarak kopyalamak üzere Azure Backup Sunucusu veya başka bir yöntem kullanın.
 
-Örneğin, bir Windows PowerShell (PowerShell ISE değil) konsol oturumundan robocopy kullanmak için aşağıdaki adımları kullanabilirsiniz:
+Örneğin, bir Windows PowerShell (PowerShell ıSE) konsol oturumundan Robocopy kullanmak için bu adımları kullanabilirsiniz:
 
 ```powershell
 $source = "<file share location>"
@@ -92,4 +92,4 @@ net use $destination /delete
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Stack üzerinde App Service'e geri yükleme](app-service-recover.md)
+[Azure Stack App Service geri yükleme](app-service-recover.md)

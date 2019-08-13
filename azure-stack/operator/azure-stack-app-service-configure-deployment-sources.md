@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te uygulama hizmetleri için dağıtım kaynaklarını yapılandırma | Microsoft Docs
-description: Hizmet Yöneticisi Azure Stack'te uygulama hizmetleri için dağıtım kaynakları (Git, GitHub, BitBucket, DropBox ve OneDrive) nasıl yapılandıracağınız
+title: Azure Stack uygulama hizmetleri için dağıtım kaynaklarını yapılandırma | Microsoft Docs
+description: Bir hizmet yöneticisinin uygulama hizmetleri için dağıtım kaynaklarını (git, GitHub, BitBucket, DropBox ve OneDrive) nasıl yapılandırabilirim Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -17,129 +17,129 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2018
 ms.openlocfilehash: 8512568c709770f736d6740d83578dee7391adff
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "66269253"
 ---
 # <a name="configure-deployment-sources"></a>Dağıtım kaynaklarını yapılandırma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack'te App Service, isteğe bağlı dağıtım birden çok kaynak denetim sağlayıcılarından destekler. Bu özellik, uygulama geliştiricilerin kendi kaynak denetim depolarından doğrudan dağıtma olanak sağlar. Kullanıcılar App Service'ı için depolardaki bağlanmak için yapılandırmak istiyorsanız, bir bulut işleci Azure Stack'te App Service ve kaynak denetimi sağlayıcısı arasındaki tümleştirmeden önce yapılandırmanız gerekir.  
+App Service Azure Stack birden çok kaynak denetimi sağlayıcısından isteğe bağlı dağıtımı destekler. Bu özellik, uygulama geliştiricilerinin doğrudan kaynak denetimi depolarından dağıtmasını sağlar. Kullanıcılar, depolarına bağlanmak üzere App Service yapılandırmak istiyorsam, bir bulut operatörü öncelikle Azure Stack ve kaynak denetimi sağlayıcısındaki App Service arasındaki tümleştirmeyi yapılandırmalıdır.  
 
-Yerel Git ek olarak, aşağıdaki kaynak denetimi sağlayıcıları desteklenir:
+Yerel git 'e ek olarak, aşağıdaki kaynak denetimi sağlayıcıları desteklenir:
 
 * GitHub
 * BitBucket
 * OneDrive
-* DropBox
+* Kutusunun
 
-## <a name="view-deployment-sources-in-app-service-administration"></a>App Service yönetim dağıtım kaynakları görüntüle
+## <a name="view-deployment-sources-in-app-service-administration"></a>App Service yönetiminde dağıtım kaynaklarını görüntüleme
 
-1. Azure Stack Yönetici portalında oturum açın (https://adminportal.local.azurestack.external) Hizmet Yöneticisi olarak.
-2. Gözat **tüm hizmetleri** seçip **App Service**.
-    ![App Service kaynak sağlayıcısı yönetici][1]
-3. Tıklayın **kaynak denetimi Yapılandırması**. Tüm yapılandırılan dağıtım kaynakları listesini görebilirsiniz.
-    ![App Service kaynak sağlayıcısı yönetici kaynak denetimi yapılandırması][2]
+1. Azure Stack yönetim portalında oturum açın (https://adminportal.local.azurestack.external) hizmet yöneticisi olarak).
+2. **Tüm hizmetlere** gidin ve **App Service**seçin.
+    ![App Service kaynak sağlayıcısı Yöneticisi][1]
+3. **Kaynak denetimi yapılandırması**' na tıklayın. Tüm yapılandırılmış dağıtım kaynaklarının listesini görebilirsiniz.
+    ![App Service kaynak sağlayıcısı Yöneticisi kaynak denetimi yapılandırması][2]
 
-## <a name="configure-github"></a>GitHub'ı yapılandırma
+## <a name="configure-github"></a>GitHub 'ı yapılandırma
 
-Bu görevi tamamlamak için bir GitHub hesabınızın olması gerekir. Kişisel hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
+Bu görevi gerçekleştirmek için bir GitHub hesabınızın olması gerekir. Kişisel bir hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
 
-1. Github'da oturum açın, Gözat https://www.github.com/settings/developersve ardından **yeni bir uygulamayı kaydetme**.
-    ![GitHub - yeni uygulama kaydı][3]
-2. Girin bir **uygulama adı**; Örneğin, **Azure Stack üzerinde App Service'te**.
-3. Girin **giriş sayfası URL'si**. Giriş sayfası URL'si, Azure Stack portal adresi olmalıdır. Örneğin, https://portal.local.azurestack.external.
-4. Girin bir **uygulama açıklaması**.
-5. Girin **yetkilendirme geri çağırma URL'si**. Varsayılan bir Azure Stack dağıtımı biçiminde URL'dir https://portal.local.azurestack.external/TokenAuthorize. Farklı bir etki alanı altında çalışıyorsa, local.azurestack.external için etki alanı adınızla değiştirin.
-6. Tıklayın **kaydetme uygulama**. Bir sayfa listesi görüntülenir **istemci kimliği** ve **gizli** uygulama için.
-    ![GitHub - tamamlanan uygulama kaydı][5]
-7.  Yeni bir tarayıcı sekmesinde veya penceresinde, Azure Stack Yönetici portalında oturum açın (https://adminportal.local.azurestack.external) Hizmet Yöneticisi olarak.
-8.  Gözat **kaynak sağlayıcıları**seçip **App Service kaynak sağlayıcısı yönetici**.
-9. Tıklayın **kaynak denetimi Yapılandırması**.
-10. Kopyalama ve yapıştırma **istemci kimliği** ve **gizli** kutuları için GitHub karşılık gelen bir giriş ekleyin.
+1. GitHub 'da oturum açın, öğesine gidin https://www.github.com/settings/developers ve ardından **Yeni bir uygulama kaydet**' e tıklayın.
+    ![GitHub-yeni bir uygulamayı kaydetme][3]
+2. Bir **uygulama adı**girin; Örneğin, **Azure Stack App Service**.
+3. **Giriş sayfası URL 'sini**girin. Giriş sayfası URL 'SI Azure Stack Portal adresi olmalıdır. Örneğin: https://portal.local.azurestack.external.
+4. Bir **uygulama açıklaması**girin.
+5. **Yetkilendirme geri çağırma URL 'sini**girin. Varsayılan bir Azure Stack dağıtımında URL biçiminde olur https://portal.local.azurestack.external/TokenAuthorize. Farklı bir etki alanı altında çalıştırıyorsanız, yerel. azurestack. external için etki alanı adınızı yerine koyun.
+6. Tıklayın **kaydetme uygulama**. Uygulama için **ISTEMCI kimliği** ve **istemci gizliliğini** listelemek üzere bir sayfa görüntülenir.
+    ![GitHub-tamamlanmış uygulama kaydı][5]
+7.  Yeni bir tarayıcı sekmesi veya penceresinde, Azure Stack yönetici portalında (https://adminportal.local.azurestack.external) hizmet yöneticisi olarak) oturum açın.
+8.  **Kaynak sağlayıcıları**' na gidin ve **App Service kaynak sağlayıcısı Yöneticisi**' ni seçin.
+9. **Kaynak denetimi yapılandırması**' na tıklayın.
+10. **ISTEMCI kimliğini** ve **istemci gizli** anahtarını kopyalayıp GitHub için karşılık gelen giriş kutularına yapıştırın.
 11. **Kaydet**’e tıklayın.
 
-## <a name="configure-bitbucket"></a>BitBucket yapılandırın
+## <a name="configure-bitbucket"></a>BitBucket 'ı Yapılandır
 
-Bu görevi tamamlamak için bir BitBucket hesabına ihtiyacınız vardır. Kişisel hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
+Bu görevi gerçekleştirmek için bir BitBucket hesabınız olmalıdır. Kişisel bir hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
 
-1. BitBucket için oturum açın ve gidin **tümleştirmeler** hesabınız kapsamında.
-    ![BitBucket Pano - tümleştirmeleri][7]
-2. Tıklayın **OAuth** erişim yönetimi altında ve **Ekle tüketici**.
-    ![BitBucket OAuth tüketicisi ekleyin][8]
-3. Girin bir **adı** için tüketici; Örneğin, **Azure Stack üzerinde App Service'te**.
-4. Girin bir **açıklama** uygulama için.
-5. Girin **geri çağırma URL'si**. Varsayılan bir Azure Stack dağıtımı geri çağırma URL'si biçimindedir https://portal.local.azurestack.external/TokenAuthorize. Farklı bir etki alanı altında çalışıyorsa, azurestack.local için etki alanı adınızla değiştirin. BitBucket tümleştirme başarılı olması, URL'sini burada listelenen büyük/küçük harf izlemeniz gerekir.
-6. Girin **URL**. Bu URL, Azure Stack portalı olmalıdır; URL Örneğin, https://portal.local.azurestack.external.
-7. Seçin **izinleri** gerekli:
-    - **Depoları**: *Okuma*
+1. BitBucket 'ta oturum açın ve hesabınızda **tümleştirmelere** gidin.
+    ![BitBucket panosu-tümleştirmeler][7]
+2. Erişim yönetimi altında **OAuth** ' a tıklayın ve **Tüketici ekleyin**.
+    ![BitBucket OAuth tüketicisi Ekle][8]
+3. Tüketici için bir **ad** girin; Örneğin, **Azure Stack App Service**.
+4. Uygulama için bir **Açıklama** girin.
+5. **Geri çağırma URL 'sini**girin. Varsayılan Azure Stack dağıtımında, geri çağırma URL 'SI https://portal.local.azurestack.external/TokenAuthorize biçimindedir. Farklı bir etki alanı altında çalıştırıyorsanız, azurestack. Local için etki alanı adınızı yerine koyun. BitBucket tümleştirmesinin başarılı olması için, URL 'nin burada listelenen büyük küçük harfleri izlemesi gerekir.
+6. **URL 'yi**girin. Bu URL Azure Stack Portal URL 'SI olmalıdır; Örneğin, https://portal.local.azurestack.external.
+7. Gerekli **izinleri** seçin:
+    - **Depolar**: *Okuma*
     - **Web kancaları**: *Okuma ve yazma*
-8. **Kaydet**’e tıklayın. İle birlikte bu yeni uygulama artık bkz **anahtarı** ve **gizli**altında **OAuth tüketiciler**.
+8. **Kaydet**’e tıklayın. Artık bu yeni uygulamayı, **OAuth tüketicileri**altında anahtar ve **gizli** **anahtar** ile birlikte görürsünüz.
     ![BitBucket uygulama listesi][9]
-9.  Yeni bir tarayıcı sekmesinde veya penceresinde, Azure Stack Yönetici portalında oturum açın (https://adminportal.local.azurestack.external) Hizmet Yöneticisi olarak.
-10.  Gözat **kaynak sağlayıcıları** seçip **App Service kaynak sağlayıcısı yönetici**.
-11. Tıklayın **kaynak denetimi Yapılandırması**.
-12. Kopyalama ve yapıştırma **anahtarı** içine **istemci kimliği** giriş kutusu ve **gizli** içine **gizli** BitBucket için giriş kutusu.
+9.  Yeni bir tarayıcı sekmesi veya penceresinde, Azure Stack yönetici portalında (https://adminportal.local.azurestack.external) hizmet yöneticisi olarak) oturum açın.
+10.  **Kaynak sağlayıcıları** ' na gidin ve **App Service kaynak sağlayıcısı Yöneticisi**' ni seçin.
+11. **Kaynak denetimi yapılandırması**' na tıklayın.
+12. Anahtar **ISTEMCI kimliği** giriş kutusuna ve **gizli** **anahtarı** , Bitbucket için **istemci gizli anahtarı** giriş kutusuna kopyalayıp yapıştırın.
 13. **Kaydet**’e tıklayın.
 
-## <a name="configure-onedrive"></a>OneDrive'ı yapılandırma
+## <a name="configure-onedrive"></a>OneDrive 'ı yapılandırma
 
-Bu görevi tamamlamak için Microsoft OneDrive hesabınıza bağlı Account olması gerekir.  Kişisel hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
+Bu görevi gerçekleştirmek için OneDrive hesabına bağlı bir Microsoft hesabınızın olması gerekir.  Kişisel bir hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
 
 > [!NOTE]
-> OneDrive iş hesapları için henüz desteklenmemektedir.
+> OneDrive Iş hesapları Şu anda desteklenmemektedir.
 
-1. Gözat https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm Microsoft Account kullanarak oturum açın.
-2. Altında **uygulamalarım**, tıklayın **uygulama ekleme**.
+1. Microsoft hesabınızı kullanarak gidin veoturumaçın. https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm
+2. **Uygulamalarım**altında **Uygulama Ekle**' ye tıklayın.
 ![OneDrive uygulamaları][10]
-3. Girin bir **adı** yeni uygulama kaydı için: girin **Azure Stack üzerinde App Service'te**ve ardından **uygulama oluşturma**
-4. Sonraki ekranda yeni uygulamanızın özelliklerini listeler. Kaydet **uygulama kimliği** geçici bir konuma.
-![OneDrive uygulaması özellikleri][11]
-5. Altında **uygulama gizli dizilerini**, tıklayın **yeni parola oluştur**. Not **yeni parola oluşturuldu**. Bu uygulama gizli anahtarı ve tıkladığınızda alınabilir değil **Tamam**.
-6. Altında **platformları**, tıklayın **Platform Ekle**ve ardından **Web**.
-7. Girin **yeniden yönlendirme URI'si**. Varsayılan bir Azure Stack dağıtımı yeniden yönlendirme URI'si biçimindedir https://portal.local.azurestack.external/TokenAuthorize. Farklı bir etki alanı altında çalışıyorsa, azurestack.local için etki alanı adınızla değiştirin.
-![OneDrive uygulaması - Web Platformu Ekle][12]
-8. Ekleme **Microsoft Graph izinleri** - **temsilci izinleri**
+3. Yeni uygulama kaydı için bir **ad** girin: **Azure Stack App Service**girin ve ardından **uygulama oluştur** ' a tıklayın.
+4. Sonraki ekranda, yeni uygulamanızın özellikleri listelenir. **Uygulama kimliğini** geçici bir konuma kaydedin.
+![OneDrive uygulama özellikleri][11]
+5. **Uygulama gizli**dizileri altında **Yeni parola oluştur**' a tıklayın. **Oluşturulan yeni parolayı**bir yere göz önünde alın. Bu, uygulamanızın gizli anahtarı ve **Tamam**' a tıkladıktan sonra alınabilir değildir.
+6. **Platformlar**altında **Platform Ekle**' ye ve ardından **Web**' i seçin.
+7. **Yeniden YÖNLENDIRME URI**'sini girin. Varsayılan bir Azure Stack dağıtımında, yeniden yönlendirme URI 'SI formundadır https://portal.local.azurestack.external/TokenAuthorize. Farklı bir etki alanı altında çalıştırıyorsanız, azurestack. Local için etki alanı adınızı yerine koyun.
+![OneDrive uygulaması-Web platformu ekleme][12]
+8. **Temsilci izinleri** **Microsoft Graph** - ekleme
     - **Files.ReadWrite.AppFolder**
-    - **Kullanıcı. Okuma**  
-      ![OneDrive uygulaması - Graph izinleri][13]
+    - **Kullanıcısını. Okuyamaz**  
+      ![OneDrive uygulaması-grafik Izinleri][13]
 9. **Kaydet**’e tıklayın.
-10.  Yeni bir tarayıcı sekmesinde veya penceresinde, Azure Stack Yönetici portalında oturum açın (https://adminportal.local.azurestack.external) Hizmet Yöneticisi olarak.
-11.  Gözat **kaynak sağlayıcıları** seçip **App Service kaynak sağlayıcısı yönetici**.
-12. Tıklayın **kaynak denetimi Yapılandırması**.
-13. Kopyalama ve yapıştırma **uygulama kimliği** içine **istemci kimliği** giriş kutusu ve **parola** içine **gizli** OneDrive için giriş kutusu.
+10.  Yeni bir tarayıcı sekmesi veya penceresinde, Azure Stack yönetici portalında (https://adminportal.local.azurestack.external) hizmet yöneticisi olarak) oturum açın.
+11.  **Kaynak sağlayıcıları** ' na gidin ve **App Service kaynak sağlayıcısı Yöneticisi**' ni seçin.
+12. **Kaynak denetimi yapılandırması**' na tıklayın.
+13. **Uygulama kimliği** ' ni kopyalayın ve **istemci kimliği** giriş kutusuna ve **parolaya** OneDrive için **istemci gizli anahtar** kutusuna yapıştırın.
 14. **Kaydet**’e tıklayın.
 
-## <a name="configure-dropbox"></a>DropBox'ı yapılandırma
+## <a name="configure-dropbox"></a>DropBox 'ı Yapılandır
 
 > [!NOTE]
-> Bu görevi tamamlamak için bir DropBox hesabı olması gerekir. Kişisel hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
+> Bu görevi gerçekleştirmek için bir DropBox hesabınız olmalıdır. Kişisel bir hesap yerine kuruluşunuz için bir hesap kullanmak isteyebilirsiniz.
 
-1. Gözat https://www.dropbox.com/developers/apps DropBox hesabı kimlik bilgilerinizi kullanarak oturum açın.
-2. Tıklayın **uygulaması oluşturma**.
+1. Dropbox hesabı https://www.dropbox.com/developers/apps kimlik bilgilerinizi kullanarak gidin ve oturum açın.
+2. **Uygulama oluştur**' a tıklayın.
 
-    ![Dropbox uygulamalar][14]
+    ![Dropbox uygulamaları][14]
 
-3. Seçin **DropBox API**.
-4. Erişim düzeyini ayarlayın **uygulama klasörü**.
-5. Girin bir **adı** uygulamanız için.
+3. **Dropbox API 'sini**seçin.
+4. Erişim düzeyini **uygulama klasörü**olarak ayarlayın.
+5. Uygulamanız için bir **ad** girin.
 ![Dropbox uygulama kaydı][15]
-6. Tıklayın **uygulaması oluşturma**. Uygulama ayarlarını listelendiği bir sayfa ile sunulan dahil olmak üzere **uygulama anahtarı** ve **uygulama gizli anahtarı**.
-7. Emin olun **uygulama klasörü adı** ayarlanır **Azure Stack üzerinde App Service'te**.
-8. Ayarlama **OAuth 2 yeniden yönlendirme URI'si** ve ardından **Ekle**. Varsayılan bir Azure Stack dağıtımı yeniden yönlendirme URI'si biçimindedir https://portal.local.azurestack.external/TokenAuthorize. Farklı bir etki alanı altında çalışıyorsa, etki alanınız için azurestack.local değiştirin.
+6. **Uygulama oluştur**' a tıklayın. Uygulama **anahtarı** ve **uygulama gizli**dizisi dahil olmak üzere uygulamanın ayarlarını listelerken size bir sayfa sunulur.
+7. **Uygulama klasörü adının** **Azure Stack App Service**olarak ayarlandığından emin olun.
+8. **OAuth 2 yeniden YÖNLENDIRME URI** 'sini ayarlayın ve ardından **Ekle**' ye tıklayın. Varsayılan bir Azure Stack dağıtımında, yeniden yönlendirme URI 'SI formundadır https://portal.local.azurestack.external/TokenAuthorize. Farklı bir etki alanı altında çalıştırıyorsanız, etki alanınızı azurestack. Local olarak değiştirin.
 ![Dropbox uygulama yapılandırması][16]
-9.  Yeni bir tarayıcı sekmesinde veya penceresinde, Azure Stack Yönetici portalında oturum açın (https://adminportal.local.azurestack.external) Hizmet Yöneticisi olarak.
-10.  Gözat **kaynak sağlayıcıları** seçip **App Service kaynak sağlayıcısı yönetici**.
-11. Tıklayın **kaynak denetimi Yapılandırması**.
-12. Kopyalama ve yapıştırma **uygulama anahtarı** içine **istemci kimliği** giriş kutusu ve **uygulama gizli anahtarı** içine **gizli** DropBox için giriş kutusu.
+9.  Yeni bir tarayıcı sekmesi veya penceresinde, Azure Stack yönetici portalında (https://adminportal.local.azurestack.external) hizmet yöneticisi olarak) oturum açın.
+10.  **Kaynak sağlayıcıları** ' na gidin ve **App Service kaynak sağlayıcısı Yöneticisi**' ni seçin.
+11. **Kaynak denetimi yapılandırması**' na tıklayın.
+12. **Uygulama anahtarını** kopyalayıp Dropbox Için **istemci gizli** giriş kutusuna **Istemci kimliği** giriş kutusuna ve **uygulama gizli** anahtarına yapıştırın.
 13. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcılar artık kullanabilir dağıtım kaynakları gibi şeyler için [sürekli dağıtım](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [yerel Git dağıtımı](https://docs.microsoft.com/azure/app-service/deploy-local-git), ve [bulut klasör eşitleme](https://docs.microsoft.com/azure/app-service/deploy-content-sync).
+Kullanıcılar artık [sürekli dağıtım](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment), [Yerel git dağıtımı](https://docs.microsoft.com/azure/app-service/deploy-local-git)ve [bulut klasörü eşitlemesi](https://docs.microsoft.com/azure/app-service/deploy-content-sync)gibi işlemler için dağıtım kaynaklarını kullanabilir.
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin.png
