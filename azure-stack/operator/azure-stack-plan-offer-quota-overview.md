@@ -1,6 +1,6 @@
 ---
-title: Azure Stack plan, teklif, kota ve abonelik genel bakış | Microsoft Docs
-description: Bulut operatörü olarak, Azure Stack planlar, teklifler, kotalar ve abonelikleri anlamak istiyorum.
+title: Azure Stack plan, teklif, kota ve aboneliğe genel bakış | Microsoft Docs
+description: Bulut operatörü olarak Azure Stack planları, teklifleri, kotaları ve abonelikleri anlamak istiyorum.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,81 +12,81 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 10/12/2018
-ms.openlocfilehash: 8aa75e3a66fbec2494a653fb62405fe6c9134d7d
-ms.sourcegitcommit: 85c3acd316fd61b4e94c991a9cd68aa97702073b
+ms.openlocfilehash: 6f417b8afdf5315f581db52dc4b850f72e02b1f0
+ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64985204"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991745"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Plan, teklif, kota ve aboneliğe genel bakış
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-[Azure Stack](azure-stack-overview.md) , çok çeşitli iletmenizi sağlar, sanal makineler gibi SQL Server veritabanları, SharePoint, Exchange, hizmetleri ve hatta [Azure Market öğeleri](azure-stack-marketplace-azure-items.md). Azure Stack operatör olarak yapılandırın ve bu hizmetler, planlar, teklifler ve kotalar kullanarak Azure Stack'te sunun.
+[Azure Stack](azure-stack-overview.md) , sanal makineler, SQL Server veritabanları, SharePoint, Exchange ve hatta [Azure Market öğeleri](azure-stack-marketplace-azure-items.md)gibi çok çeşitli hizmetler sunmanızı sağlar. Azure Stack operatörü olarak, planlar, teklifler ve Kotalar kullanarak Azure Stack bu hizmetleri yapılandırıp teslim edersiniz.
 
-Bir veya daha fazla plan teklifleri içerir ve her planı bir veya daha fazla hizmet içerir. Planları oluşturmak ve bunları farklı bir teklif birleştiren yönetebilirsiniz:
+Teklifler bir veya daha fazla plan içerir ve her plan bir veya daha fazla hizmet içerir. Planlar oluşturup bunları farklı tekliflerle birleştirerek şunları yönetebilirsiniz:
 
-- Kullanıcılarınız, hangi hizmet ve kaynaklara erişebilir.
-- Kullanıcıların kullanabileceği kaynakları miktarı.
-- Hangi bölgeler kaynaklara erişebilir.
+- Kullanıcılarınızın erişebileceği hizmet ve kaynaklar.
+- Kullanıcıların tüketebileceği kaynak miktarı.
+- Kaynaklara erişimi olan bölgeler.
 
-Bir hizmeti sunmak, üst düzey adımları izleyin:
+Bir hizmet sundığınızda, bu üst düzey adımları izleyin:
 
-1. Kullanıcılarınıza sunmak istediğiniz bir hizmet ekleyin.
-2. Bir veya daha fazla hizmet sahip bir plan oluşturun. Bir plan oluştururken seçin veya kaynak sınırları her hizmetin planında tanımlamak kotalar oluşturun.
-3. Bir veya daha fazla plan içeren bir teklif oluşturun. Bu teklif, temel planlar ve isteğe bağlı eklenti planları dahil edebilirsiniz.
+1. Kullanıcılarınıza teslim etmek istediğiniz bir hizmet ekleyin.
+2. Bir veya daha fazla hizmet içeren bir plan oluşturun. Bir plan oluştururken, plandaki her bir hizmetin kaynak sınırlarını tanımlayan Kotalar ' ı seçin veya oluşturun.
+3. Bir veya daha fazla plan içeren bir teklif oluşturun. Teklif, temel planları ve isteğe bağlı eklenti planlarını içerebilir.
 
-Teklif oluşturduktan sonra kullanıcılarınızın teklif sağlar Hizmetleri ve kaynaklarına erişmek için abone olabilirsiniz. Kullanıcılar istedikleri sayıda teklifler için abone olabilirsiniz. Aşağıdaki şekilde iki tekliflere abone bir kullanıcının basit bir örnek gösterilmektedir. Bir plan veya iki her bir teklifin vardır ve her plan bunları hizmetlerine erişmenizi sağlar.
+Teklifi oluşturduktan sonra kullanıcılarınız, teklifin sağladığı hizmetlere ve kaynaklara erişmek için bu hizmete abone olabilir. Kullanıcılar istedikleri sayıda teklife abone olabilir. Aşağıdaki şekilde, iki tekliflere abone olan bir kullanıcıya ilişkin basit bir örnek gösterilmektedir. Her teklifin bir planı veya ikisi vardır ve her plan onlara hizmetlere erişim sağlar.
 
-![Kiracı abonelik teklifleri ve planlar](media/azure-stack-key-features/image4.png)
+![Tekliflerle ve planlarla kiracı aboneliği](media/azure-stack-key-features/image4.png)
 
 ## <a name="plans"></a>Planlar
 
-Planlar, bir veya birden fazla hizmetten oluşan gruplardır. Azure Stack operatör olarak, [planları oluşturun](azure-stack-create-plan.md) kullanıcılarınıza sunmak için. Böylece kullanıcılarınız tekliflerinize abone olarak, bu tekliflerin içerdiği planları ve hizmetleri kullanabilir. Planları oluştururken, kota ayarlamak, temel planlarınızı tanımlayabilirsiniz ve isteğe bağlı eklenti planları dahil etmeyi düşünün emin olun.
+Planlar, bir veya birden fazla hizmetten oluşan gruplardır. Azure Stack operatörü olarak kullanıcılarınıza sunmak için [planlar oluşturursunuz](azure-stack-create-plan.md) . Böylece kullanıcılarınız tekliflerinize abone olarak, bu tekliflerin içerdiği planları ve hizmetleri kullanabilir. Planlar oluştururken, kotalarınızı ayarladığınızdan, temel planlarınızı tanımladığınız ve isteğe bağlı eklenti planları dahil etmeyi göz önünde bulundurduğunuzdan emin olun.
 
 ### <a name="quotas"></a>Kotalar
 
-Bulut kapasitenizi yönetmenize yardımcı olmak için kullanabileceğiniz önceden yapılandırılmış *kotalar*, veya bir plandaki her hizmet için yeni bir kota oluşturun. Kotalar bir kullanıcı aboneliği sağlama veya tüketen üst kaynak sınırlarını tanımlayın. Örneğin, bir kota beş adede kadar sanal makineler (VM'ler) oluşturmak bir kullanıcı izin verebilir.
+Bulut kapasitenizi yönetmenize yardımcı olmak için önceden yapılandırılmış *kotaları*kullanabilir veya bir plandaki her hizmet için yeni bir kota oluşturabilirsiniz. Kotalar, bir Kullanıcı aboneliğinin sağlayabileceği veya tüketebileceği üst kaynak sınırlarını tanımlar. Örneğin, bir kota, kullanıcının en fazla beş sanal makine (VM) oluşturmasına izin verebilir.
 
 > [!IMPORTANT]
-> Uygulamanın, Kullanıcı Portalı'nda veya değiştirilmiş bir kota uygulanmadan önce kullanılabilir olması için yeni kotalar iki saate kadar sürebilir.
+> Yeni kotaların Kullanıcı portalında veya değiştirilen bir kota zorlanmadan önce kullanılabilmesi iki saate kadar sürebilir.
 
-Bölgeye göre kotalarını yapılandırabilirsiniz. Örneğin, bir bölge için bilgi işlem hizmetleri sağlayan bir plan kota iki VM olabilir.
+Kotaları bölgeye göre yapılandırabilirsiniz. Örneğin, A bölgesi için işlem hizmetleri sağlayan bir planda iki VM kotası olabilir.
 
 >[!NOTE]
->Azure Stack geliştirme Seti'ni yalnızca tek bir bölge içinde (adlı *yerel*) kullanılabilir.
+>Azure Stack Geliştirme Seti, yalnızca bir bölge ( *Yerel*olarak adlandırılır) kullanılabilir.
 
-Daha fazla bilgi edinin [kota türleri Azure Stack'te](azure-stack-quota-types.md).
+[Azure Stack 'de kota türleri](azure-stack-quota-types.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="base-plan"></a>Temel plan
 
-Hizmet Yöneticisi, bir teklifi oluştururken, temel plan içerebilir. Bu temel plan, kullanıcı söz konusu teklife abone olduğunda varsayılan olarak dahil edilir. Bir kullanıcı abone olduğunda, bu temel planlar (ile ilgili kotalar) belirtilen tüm kaynak sağlayıcılarına erişim için sahiptirler.
+Bir teklif oluştururken, hizmet yöneticisi bir temel plan içerebilir. Bu temel planlar, bir Kullanıcı bu teklifine abone olduğunda varsayılan olarak dahil edilir. Bir kullanıcı abone olduğunda, bu temel planlarda belirtilen tüm kaynak sağlayıcılarına erişimi vardır (ilgili kotalarla birlikte).
 
 ### <a name="add-on-plans"></a>Eklenti planları
 
-Eklenti planları için teklif ekleme isteğe bağlı planları oluşturulabilir. Eklenti planı varsayılan abonelik olarak dahil edilmez. Eklenti planları bir abone için aboneliklerini ekleyebileceğiniz bir teklifi bulunan ek planları (kotalar ile) oluşturulabilir. Örneğin, bir hizmeti benimsemek zorunda karar müşteriler deneme için sınırlı kaynaklarla temel plan ve daha önemli kaynaklara sahip bir eklenti planı sunabilir.
+Eklenti planları, bir teklifine eklediğiniz isteğe bağlı planlardır. Eklenti planları abonelikte varsayılan olarak dahil edilmez. Eklenti planları, bir abonenin aboneliklerine ekleyebileceği bir teklifte ek planlardır (kotalar ile). Örneğin, deneme için sınırlı kaynaklarla bir temel plan ve hizmeti benimsemeye karar veren müşterilere daha fazla önemli kaynak içeren bir eklenti planı sunabilirsiniz.
 
 ## <a name="offers"></a>Teklifler
 
-Teklifler, oluşturduğunuz ve böylece kullanıcılar kendilerine abone olabilir bir veya daha fazla plan gruplarıdır. Örneğin, alfa teklif planı A, bilgi işlem hizmetleri kümesi sağlar ve depolama ve ağ hizmetleri sunmaktadır planlama B içerebilir.
+, Kullanıcıların bunlara abone olabilmesi için oluşturduğunuz bir veya daha fazla plan gruplarıdır. Örneğin, teklif Alpha, bir dizi depolama ve ağ hizmeti sağlayan bir dizi işlem hizmeti ve plan B sağlayan bir plan A içerebilir.
 
-Olduğunda, [teklif oluşturma](azure-stack-create-offer.md), en az bir temel plan eklemeniz gerekir, ancak bunların aboneliğe kullanıcı eklemek eklenti planları oluşturabilirsiniz.
+[Bir teklif oluşturduğunuzda](azure-stack-create-offer.md), en az bir temel plan eklemeniz gerekir, ancak kullanıcıların aboneliğine ekleyebileceği eklenti planları da oluşturabilirsiniz.
 
-## <a name="subscriptions"></a>Subscriptions
+## <a name="subscriptions"></a>Abonelikler
 
-Kullanıcıların tekliflerinizi erişme bir aboneliktir. Azure Stack operatörü bir hizmet sağlayıcısı için varsa, kullanıcılarınızın (kiracılar) için tekliflerinize abone olarak hizmetlerinizi satın alın. Azure Stack operatörü bir kuruluşta kullanıyorsanız, kullanıcılarınızın (çalışan) ödeme yapmadan sunduğunuz hizmetler için abone olabilirsiniz.
+Bir abonelik, kullanıcıların tekliflerinizi nasıl eriştedir. Bir hizmet sağlayıcısı için Azure Stack operatörünüz varsa, kullanıcılarınız (kiracılar) tekliflerinize abone olarak hizmetlerinizi satın alır. Bir kuruluşta Azure Stack işleçseniz kullanıcılarınız (çalışanlar), ödeyerek Sunduğunuz hizmetlere abone olabilir.
 
-Her bir teklif olan bir kullanıcı birleşimi benzersiz bir aboneliktir. Bir kullanıcı birden çok teklife abone olabilir, ancak her abonelik yalnızca bir teklif için geçerlidir. Planlar, teklifler ve kotalar benzersiz bir abonelik için yalnızca uygulama - abonelikler arasında paylaşılamaz. Bir kullanıcının oluşturduğu her kaynak bir abonelik ile ilişkilidir.
+Bir kullanıcının teklifini içeren her birleşimi benzersiz bir abonelik olur. Bir kullanıcının birden fazla tekliflere abonelikleri olabilir, ancak her abonelik yalnızca bir teklif için geçerlidir. Planlar, teklifler ve Kotalar yalnızca benzersiz bir abonelik için geçerlidir; abonelikler arasında paylaştırılamaz. Bir kullanıcının oluşturduğu her kaynak bir abonelikle ilişkilendirilir.
 
 ### <a name="default-provider-subscription"></a>Varsayılan sağlayıcı aboneliği
 
-Azure Stack geliştirme Seti'ni dağıttığınızda varsayılan sağlayıcı aboneliği otomatik olarak oluşturulur. Bu abonelik, Azure Stack yönetmek, ek kaynak sağlayıcıları dağıtmak ve planlar ve teklifler için kullanıcı oluşturmak için kullanılabilir. Güvenlik ve lisans nedenleriyle, müşteri iş yüklerini ve uygulamaları çalıştırmak için kullanılmamalıdır.
+Varsayılan sağlayıcı aboneliği, Azure Stack Geliştirme Seti dağıtırken otomatik olarak oluşturulur. Bu abonelik Azure Stack yönetmek, ek kaynak sağlayıcıları dağıtmak ve kullanıcılar için planlar ve teklifler oluşturmak için kullanılabilir. Güvenlik ve lisanslama nedenleriyle, müşteri iş yüklerini ve uygulamalarını çalıştırmak için kullanılmamalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Planlar ve teklifler hakkında daha fazla bilgi için bkz: [bir plan oluşturmanız](azure-stack-create-plan.md).
+Planlar ve teklifler hakkında daha fazla bilgi için bkz. [plan oluşturma](azure-stack-create-plan.md).

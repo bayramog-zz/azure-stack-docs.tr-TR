@@ -1,10 +1,10 @@
 ---
-title: Azure stack'teki bölge Yönetimi | Microsoft Docs
-description: Azure stack'teki bölge yönetimine genel bakış.
+title: Azure Stack 'de bölge yönetimi | Microsoft Docs
+description: Azure Stack 'de bölge yönetimine genel bakış.
 services: azure-stack
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: sethmanheim
+manager: femila
 editor: ''
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
@@ -12,51 +12,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 04/16/2019
-ms.date: 04/29/2019
-ms.author: v-jay
+ms.date: 08/13/2019
+ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: d0c61d5a0056b416bcbfaa26003f55955a89d0ad
-ms.sourcegitcommit: 0973dddb81db03cf07c8966ad66526d775ced8b9
+ms.openlocfilehash: da80b144987e1dd90e45e83bb7be4ed581db143e
+ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64295307"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991754"
 ---
-# <a name="region-management-in-azure-stack"></a>Azure stack'teki bölge Yönetimi
+# <a name="region-management-in-azure-stack"></a>Azure Stack 'de bölge yönetimi
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack kavramını kullanır *bölgeleri*, Azure Stack altyapısını oluşturan donanım kaynakları oluşan mantıksal varlıkların olduğu. Bölge Yönetimi'nde, Azure Stack altyapısının başarılı biçimde çalışması için gerekli tüm kaynakları bulabilirsiniz.
+Azure Stack, Azure Stack altyapısını oluşturan donanım kaynaklarından oluşan mantıksal varlıklar olan *bölge*kavramını kullanır. Bölge yönetimi 'nde, Azure Stack altyapısını başarıyla işletmek için gereken tüm kaynakları bulabilirsiniz.
 
-Bir tümleşik sistemi dağıtımı (olarak adlandırılan bir *Azure Stack bulut*) tek bir bölgede yapar. Her Azure Stack geliştirme Seti'ni (ASDK) adlı bir bölge sahip **yerel**. İkinci bir Azure Stack tümleşik sistemi dağıtmak ya da başka bir örneğinin ayrı donanım geliştirme setinde ayarlamak, bu Azure Stack Bulutu farklı bir bölgedir.
+Tümleşik bir sistem dağıtımı ( *Azure Stack bulutu*olarak adlandırılır) tek bir bölge oluşturur. Her Azure Stack Geliştirme Seti (ASDK), **Yerel**adlı bir bölgeye sahiptir. İkinci bir Azure Stack tümleşik sistem dağıtırsanız veya ayrı donanımda ASDK 'nin başka bir örneğini ayarlarsanız, bu Azure Stack bulut farklı bir bölgedir.
 
-## <a name="information-available-through-the-region-management-tile"></a>Bölge Yönetimi kutucuğu aracılığıyla kullanılabilir bilgileri
+## <a name="information-available-through-the-region-management-tile"></a>Bölge yönetimi kutucuğu üzerinden kullanılabilir bilgiler
 
-Azure Stack sahip bir dizi içinde kullanılabilen bölge yönetim özellikleri **bölge Yönetimi** Döşe. Bu kutucuk, Yönetici portalı'ndaki varsayılan Panoda Azure Stack operatörü için kullanılabilir. Bu kutucuğu aracılığıyla izleyin ve Azure Stack bölgeniz ve bölgeye özgü bileşenlerinden güncelleştirin.
+Azure Stack, **Bölge yönetimi** kutucuğunda kullanılabilen bir dizi bölge yönetimi özelliğine sahiptir. Bu kutucuk, yönetici portalındaki varsayılan panoda bir Azure Stack işleci ile kullanılabilir. Bu kutucuk sayesinde, bölgeye özgü olan Azure Stack bölgenizi ve bileşenlerini izleyebilir ve güncelleştirebilirsiniz.
 
-![Bölge Yönetimi kutucuğu](media/azure-stack-region-management/image1.png)
+![Bölge yönetimi kutucuğu](media/azure-stack-region-management/image1.png)
 
-Bir bölgede tıklarsanız **bölge Yönetimi** kutucuğu, aşağıdaki bilgileri erişebilirsiniz:
+**Bölge yönetimi** kutucuğunda bir bölgeye tıklarsanız, aşağıdaki bilgilere erişebilirsiniz:
 
-[![Bölge Yönetimi dikey penceresinde bölmeleri açıklamasını](media/azure-stack-region-management/regionssm.png "bölge Yönetimi dikey penceresi")](media/azure-stack-region-management/regions.png#lightbox)
+[![Bölge yönetimi dikey penceresindeki bölmelerin açıklaması](media/azure-stack-region-management/regionssm.png "Bölge yönetimi dikey") penceresi](media/azure-stack-region-management/regions.png#lightbox)
 
-1. **Kaynak menüsünde**. Belirli bir altyapı Yönetimi alanlara erişmek ve görüntüleyin ve depolama hesapları ve sanal ağlar gibi kullanıcı kaynaklarını yönetin.
+1. **Kaynak menüsü**: Belirli altyapı yönetimi bölümlerine erişin ve depolama hesapları ve sanal ağlar gibi kullanıcı kaynaklarını görüntüleyin ve yönetin.
 
-2. **Uyarılar**. Sistem genelinde uyarıları listeleme ve her uyarıların ayrıntılarını sağlayın.
+2. **Uyarılar**: Sistem genelindeki uyarıları listeleyin ve bu uyarıların her biriyle ilgili ayrıntıları sağlayın.
 
-3. **Güncelleştirmeleri**. Geçerli sürümü, Azure Stack altyapısını, kullanılabilir güncelleştirmeleri ve güncelleştirme geçmişini görüntüleyin. Ayrıca, tümleşik sistem güncelleştirebilirsiniz.
+3. **Güncelleştirmeler**: Azure Stack altyapınızın güncel sürümünü, kullanılabilir güncelleştirmeleri ve güncelleştirme geçmişini görüntüleyin. Ayrıca, tümleşik sisteminizi güncelleştirebilirsiniz.
 
-4. **Kaynak sağlayıcıları**. Azure Stack'i çalıştırmak için gerekli bileşenler tarafından sunulan kullanıcı işlevselliği yönetin. Her kaynak sağlayıcısı, bir yönetim deneyimi ile birlikte gelir. Bu deneyim, belirli bir sağlayıcıyı, ölçümleri ve diğer yönetim özelliklerini kaynak sağlayıcıya özel uyarıları içerebilir.
+4. **Kaynak sağlayıcıları**: Azure Stack çalıştırmak için gereken bileşenler tarafından sunulan Kullanıcı işlevselliğini yönetin. Her kaynak sağlayıcı bir yönetim deneyimiyle birlikte gelir. Bu deneyim, belirli sağlayıcı, ölçümler ve kaynak sağlayıcısına özgü diğer yönetim özelliklerine yönelik uyarıları içerebilir.
 
-5. **Altyapı rollerini**. Azure Stack'i çalıştırmak için gereken bileşenler. Uyarı raporu altyapı rolleri listelenir. Bir rolü seçerek rolü ve bu rolün çalıştığı rol örneği ile ilişkili uyarıları görüntüleyebilirsiniz.
+5. **Altyapı rolleri**: Azure Stack çalıştırmak için gereken bileşenler. Yalnızca uyarıları rapor eden altyapı rolleri listelenir. Rol seçerek, rolle ilişkili uyarıları ve bu rolün çalıştırıldığı rol örneklerini görebilirsiniz.
 
-6. **Özellikleri**. Kayıt durumu ve bölge yönetim dikey penceresindeki ortamınızın ayrıntılarını. Durum olabilir **kayıtlı**, **kayıtlı**, veya **süresi dolan**. Kaydettiyseniz, Azure Stack, adını ve kayıt kaynak grubunun yanı sıra kaydolmak için kullandığınız ayrıca Azure abonelik Kimliğini gösterir.
+6. **Özellikler**: Bölge yönetimi dikey penceresinde ortamınızın kayıt durumu ve ayrıntıları. Durum **kaydedilebilir**, **kaydettirilmemiş**veya **geçerliliği zaman aşımına**eklenebilir. Kaydolduysanız, kayıt kaynak grubu ve adıyla birlikte Azure Stack kaydetmek için kullandığınız Azure abonelik KIMLIĞINI de gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Stack’de işlevsel durumu ve uyarıları izleme](azure-stack-monitor-health.md)
 - [Azure Stack güncelleştirmelerini yönetme](azure-stack-updates.md)
-
-<!-- Update_Description: wording update -->

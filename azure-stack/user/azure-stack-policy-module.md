@@ -1,6 +1,6 @@
 ---
-title: Azure Stack ilke modülü kullanma | Microsoft Docs
-description: Azure aboneliğinin bir Azure Stack aboneliğine gibi davranacak şekilde sınırlama hakkında bilgi edinin
+title: Azure Stack İlkesi modülünü kullanma | Microsoft Docs
+description: Azure aboneliğini Azure Stack bir abonelik gibi davranmaya kısıtlama hakkında bilgi edinin
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,37 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.lastreviewed: 03/26/2019
-ms.openlocfilehash: fdb17c1f8f7fd183b4542a1a0417b6880a8afe9b
-ms.sourcegitcommit: b36d078e699c7924624b79641dbe9021af9606ba
+ms.openlocfilehash: c0872c598cc621250c3b2c5d39aca0e392f71b29
+ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67816151"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991611"
 ---
-# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Azure Stack ilke modülünü kullanarak Azure İlkesi yönetme
+# <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Azure Stack Ilkesi modülünü kullanarak Azure ilkesini yönetme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack ilke modülü aynı sürüm oluşturma ve hizmet kullanılabilirliği olarak Azure Stack ile bir Azure aboneliği yapılandırmanızı sağlar. Modül kullanan [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) bir abonelikte kullanılabilen hizmetler ve kaynak türlerini sınırlayan bir Azure ilkesi oluşturmak için PowerShell cmdlet'i. Ardından kullanarak uygun kapsam içinde bir ilke ataması oluşturma [New-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) cmdlet'i. İlkeyi yapılandırdıktan sonra Azure aboneliğinizin Azure Stack için hedeflenen uygulamalar geliştirmek için kullanabilirsiniz.
+Azure Stack ilke modülü, aynı sürüm oluşturma ve hizmet kullanılabilirliğiyle Azure Stack ile bir Azure aboneliği yapılandırmanıza olanak sağlar. Modül, bir abonelikte bulunan kaynak türlerini ve Hizmetleri sınırlayan bir Azure ilkesi oluşturmak için [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) PowerShell cmdlet 'ini kullanır. Ardından, [New-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) cmdlet 'ini kullanarak uygun kapsam içinde bir ilke ataması oluşturursunuz. İlkeyi yapılandırdıktan sonra, Azure aboneliğinizi Azure Stack için hedeflenen uygulamalar geliştirmek üzere kullanabilirsiniz.
 
-## <a name="install-the-module"></a>Modülünü yükleme
+## <a name="install-the-module"></a>Modülü yükler
 
-1. Adım 1'de açıklandığı gibi gerekli AzureRM PowerShell modülü sürümü yükleyin [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md).
-2. [Azure Stack araçları Github'dan indirin](../operator/azure-stack-powershell-download.md).
-3. [PowerShell ve Azure Stack ile kullanılacak şekilde yapılandırma](azure-stack-powershell-configure-user.md).
-4. İçeri aktarma *AzureStack.Policy.psm1* Modülü:
-
+1. [Azure Stack Için PowerShell 'ı Install](../operator/azure-stack-powershell-install.md)ın 1. adımında açıklandığı gibi Azurerd PowerShell modülünün gerekli sürümünü yükler.
+2. [Azure Stack araçlarını GitHub 'Dan indirin](../operator/azure-stack-powershell-download.md).
+3. [PowerShell 'i Azure Stack ile kullanmak üzere yapılandırın](azure-stack-powershell-configure-user.md).
+4. *Azurestack. Policy. psm1* modülünü içeri aktarın:
 
    ```powershell
    Import-Module .\Policy\AzureStack.Policy.psm1
    ```
 
-## <a name="apply-policy-to-azure-subscription"></a>Azure aboneliğiniz için ilke geçerli
+## <a name="apply-policy-to-azure-subscription"></a>İlkeyi Azure aboneliğine Uygula
 
-Azure aboneliğinizde bir varsayılan Azure Stack ilkeyi uygulamak için aşağıdaki komutu kullanabilirsiniz. Bu komutu çalıştırmadan önce değiştirin `Azure subscription name` Azure aboneliğinizin adı:
+Azure aboneliğinize karşı varsayılan bir Azure Stack ilkesi uygulamak için aşağıdaki komutları kullanabilirsiniz. Bu komutları çalıştırmadan önce, ' `Azure subscription name` yi Azure aboneliğinizin adıyla değiştirin:
 
 ```powershell
 Add-AzureRmAccount
@@ -52,9 +51,9 @@ $subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID
 ```
 
-## <a name="apply-policy-to-a-resource-group"></a>Bir kaynak grubu için ilke uygulayın
+## <a name="apply-policy-to-a-resource-group"></a>İlkeyi bir kaynak grubuna Uygula
 
-Daha ayrıntılı olan ilkeleri uygulamak isteyebilirsiniz. Örneğin, aynı abonelikte çalışan diğer kaynaklara sahip olabilir. Bu sayede uygulamalarınızı Azure Stack için Azure kaynaklarını kullanarak test etmek belirli bir kaynak grubu için ilke uygulaması kapsamını belirleyebilirsiniz. Aşağıdaki komutu çalıştırmadan önce değiştirin `Azure subscription name` Azure aboneliğinizin adı:
+Daha ayrıntılı olan ilkeler uygulamak isteyebilirsiniz. Örneğin, aynı abonelikte çalışan başka kaynaklarınız olabilir. İlke uygulamasını, Azure kaynaklarını kullanarak uygulamalarınızı Azure Stack test etmenizi sağlayan belirli bir kaynak grubuna kapsamını belirtebilirsiniz. Aşağıdaki komutları çalıştırmadan önce, ' yi `Azure subscription name` Azure aboneliğinizin adıyla değiştirin:
 
 ```powershell
 Add-AzureRmAccount
@@ -65,14 +64,14 @@ $subscriptionID = $s.Subscription.SubscriptionId
 New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /subscriptions/$subscriptionID/resourceGroups/$rgName
 ```
 
-## <a name="policy-in-action"></a>Çalışırken İlkesi
+## <a name="policy-in-action"></a>İlke eyleminde
 
-Azure İlkesi dağıttıktan sonra ilke tarafından yasaklanmış bir kaynağa dağıtmak denediğinizde bir hata alırsınız:
+Azure ilkesini dağıttıktan sonra, ilke tarafından yasaklanmış bir kaynağı dağıtmaya çalıştığınızda bir hata alırsınız:
 
-![Kaynak dağıtım hatası ilke kısıtlaması nedeniyle sonucu](./media/azure-stack-policy-module/image1.png)
+![İlke kısıtlaması nedeniyle kaynak dağıtım başarısızlığının sonucu](./media/azure-stack-policy-module/image1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Şablonları PowerShell ile dağıtma](azure-stack-deploy-template-powershell.md)
-* [Şablonları Azure CLI ile dağıtma](azure-stack-deploy-template-command-line.md)
+* [Azure CLı ile şablonları dağıtma](azure-stack-deploy-template-command-line.md)
 * [Şablonları Visual Studio ile dağıtma](azure-stack-deploy-template-visual-studio.md)

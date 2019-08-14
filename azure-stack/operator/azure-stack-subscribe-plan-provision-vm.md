@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te bir teklife abone olma | Microsoft Docs
-description: Azure Stack'te teklifler için abonelikleri oluşturma
+title: Azure Stack bir teklife abone olma | Microsoft Docs
+description: Azure Stack teklifler için abonelikler oluşturma
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,91 +12,91 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: 792589eabf13b9aca493e230f7e3e93cfab21736
-ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
+ms.openlocfilehash: 51b61eae1f2c00a959eded275c13c5c4b8d06e4c
+ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65532363"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991799"
 ---
-# <a name="create-subscriptions-to-offers-in-azure-stack"></a>Azure Stack'te teklifleri abonelikleri oluşturma
+# <a name="create-subscriptions-to-offers-in-azure-stack"></a>Azure Stack tekliflere abonelik oluşturma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Çalıştırdıktan sonra [teklif oluşturma](azure-stack-create-offer.md), kullanıcıların, kullanmadan önce bu teklif için bir abonelik gerekir. Kullanıcıların abone iki yolla bir teklif için:
+Kullanıcıların [oluşturduğunuz teklifi](azure-stack-create-offer.md) kullanabilmeleri için bir aboneliğe ihtiyaçları vardır. Kullanıcılar iki yolla teklife abone olabilir:
 
-- Bulut operatörü olarak, bir kullanıcının yönetici portalından bir aboneliği oluşturabilirsiniz. Oluşturduğunuz abonelik için genel ve özel teklifler olabilir.
-- Bir kiracı kullanıcı olarak, Kullanıcı Portalı'nı kullandığınızda ortak bir teklife abone olabilirsiniz.  
+- Bulut operatörü olarak yönetim portalının içinden kullanıcı için abonelik oluşturabilirsiniz Oluşturduğunuz abonelikler hem genel hem de özel teklifler için olabilir.
+- Kiracı kullanıcısı olarak, kullanıcı portalını kullanırken bir genel teklife abone olabilirsiniz.  
 
-## <a name="create-a-subscription-as-a-cloud-operator"></a>Bulut işleci olarak bir abonelik oluşturun
+## <a name="create-a-subscription-as-a-cloud-operator"></a>Bulut işletmeni olarak abonelik oluşturma
 
-Bulut operatörleri, bir kullanıcı için bir teklif için bir abonelik oluşturmak için Yönetici portalını kullanabilir. Kendi dizin Kiracı üyeleri için abonelikleri oluşturabilirsiniz. Zaman [çok kiracılı](azure-stack-enable-multitenancy.md) olan etkin kullanıcılar için abonelikler ek dizin Kiracı oluşturabilirsiniz.
+Bulut işleçleri, bir kullanıcı için bir teklif aboneliği oluşturmak üzere Yönetici portalını kullanabilir. Kendi dizin kiracınızın üyeleri için abonelikler oluşturabilirsiniz. [Birden çok kiracının](azure-stack-enable-multitenancy.md) etkin olduğu durumlarda, ek Dizin kiracılarında kullanıcılar için de abonelikler oluşturabilirsiniz.
 
-Kiracılarınızın kendi abonelikleri oluşturabilir, tekliflerinizi özelleştirin ve ardından, kiracılar için abonelikler oluşturmak istemiyorum. Bu yaklaşım, Azure Stack dış faturalama veya hizmet Kataloğu sistemleri ile tümleştirdiğinizde yaygındır.
+Kiracılarınızın kendi aboneliklerini oluşturmasını istemiyorsanız, tekliflerinizi özel yapın ve ardından kiracılar için abonelikler oluşturun. Bu yaklaşım, Azure Stack dış faturalandırma veya hizmet kataloğu sistemleriyle tümleştirilirken yaygındır.
 
-Bir kullanıcı için bir abonelik oluşturduktan sonra kullanıcı portalında oturum açın ve teklife abone olduğunuz bakın.  
+Bir kullanıcı için abonelik oluşturduktan sonra, Kullanıcı portalında oturum açabilir ve bu kullanıcıların teklifine abone olduklarını görebilirler.  
 
-### <a name="to-create-a-subscription-for-a-user"></a>Bir kullanıcı için bir abonelik oluşturmak için
+### <a name="to-create-a-subscription-for-a-user"></a>Bir kullanıcı için abonelik oluşturmak için
 
-1. Yönetim Portalı'nda Git **kullanıcı aboneliklerini.**
-2. **Add (Ekle)** seçeneğini belirleyin. Altında **yeni kullanıcı aboneliği**, aşağıdaki bilgileri girin:  
+1. Yönetim portalında, **Kullanıcı abonelikleri** ' ne gidin.
+2. **Add (Ekle)** seçeneğini belirleyin. **Yeni Kullanıcı aboneliği**altında aşağıdaki bilgileri girin:  
 
-   - **Görünen ad** -olarak görünür aboneliği tanımlamak için bir kolay ad *kullanıcı abonelik adı*.
-   - **Kullanıcı** -Bu abonelik için bir kullanılabilir dizin kiracıda bir kullanıcı belirtin. Kullanıcı adı olarak görünür *sahibi*.  Kullanıcı adının biçimi, kimlik çözümünüzde bağlıdır. Örneğin:
+   - **Görünen ad** - *Kullanıcı abonelik adı*olarak görünen aboneliği belirlemek için kolay bir ad.
+   - **Kullanıcı** -bu abonelik için kullanılabilir bir dizin kiracısından Kullanıcı belirtin. Kullanıcı adı, *sahip*olarak görünür.  Kullanıcı adının biçimi kimlik çözümünüze bağlıdır. Örneğin:
 
      - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
      - **AD FS:** `<user1>@<azurestack.local>`
 
-   - **Dizin kiracısı** -kullanıcı hesabına ait olduğu dizin kiracısı seçin. Çok kiracılılık etkinleştirmediyseniz, yalnızca yerel dizin kiracınız kullanılabilir.
+   - **Dizin kiracısı** -Kullanıcı hesabının ait olduğu dizin kiracısını seçin. Çoklu kiracıyı etkinleştirmediyseniz, yalnızca yerel dizin kiracınız kullanılabilir.
 
-3. Seçin **teklif**. Altında **sunar**, seçin bir **teklif** Bu abonelik için. Bir kullanıcı için abonelik oluşturduğumuzdan seçin **özel** erişilebilirlik durumu.
+3. **Teklif**' i seçin. **Teklifler**altında bu abonelik Için bir **teklif** seçin. Bir kullanıcı için abonelik oluşturmakta olduğunuzdan, Erişilebilirlik durumu olarak **özel** ' i seçin.
 
-4. Seçin **Oluştur** aboneliği oluşturmak için. Yeni Abonelik altında görünür **kullanıcı aboneliği**. Kullanıcının kullanıcı portalında oturum açtığında, abonelik ayrıntıları görebilir.
+4. Aboneliği oluşturmak için **Oluştur** ' u seçin. Yeni Abonelik **Kullanıcı aboneliği**altında görüntülenir. Kullanıcı Kullanıcı portalında oturum açtığında, abonelik ayrıntılarını görebilirler.
 
-### <a name="to-make-an-add-on-plan-available"></a>Eklenti planı kullanılabilir hale getirmek için
+### <a name="to-make-an-add-on-plan-available"></a>Eklenti planını kullanılabilir hale getirmek için
 
-Bir bulut işleci bir plan daha önce oluşturulan bir aboneliği dilediğiniz zaman ekleyebilirsiniz:
+Bulut operatörü, daha önce oluşturulmuş bir aboneliğe istediğiniz zaman bir plan ekleyebilir:
 
-1. Yönetim Portalı'nda seçin **tüm hizmetleri** altındaki **yönetim kaynakları** kategorisi, select **kullanıcı aboneliklerini**. Değiştirmek istediğiniz aboneliği seçin.
+1. Yönetici portalı ' nda **tüm hizmetler** ' i seçin ve ardından **Yönetim kaynakları** kategorisinin altında **Kullanıcı abonelikleri**' ni seçin. Değiştirmek istediğiniz aboneliği seçin.
 
-2. Seçin **eklentileri** seçip **+ Ekle**.  
+2. Eklentiler ' i seçin ve **+ Ekle**' yi seçin.  
 
-3. Altında **planı Ekle**, planı eklenti olarak seçin.
+3. **Plan Ekle**' nin altında, eklenti olarak istediğiniz planı seçin.
 
-## <a name="create-a-subscription-as-a-user"></a>Bir kullanıcı olarak bir abonelik oluşturun
+## <a name="create-a-subscription-as-a-user"></a>Kullanıcı olarak abonelik oluşturma
 
-Bir kullanıcı olarak, bulup directory kiracınız için (kuruluş), genel teklifler ve eklenti planları için abone kullanıcı portalında oturum açabilirsiniz.
+Kullanıcı olarak, Dizin kiracınız (kuruluş) için genel teklifleri ve eklenti planlarını bulmak ve bunlara abone olmak için Kullanıcı portalında oturum açabilirsiniz.
 
 >[!NOTE]
->Azure Stack ortamınıza destekliyorsa [çok kiracılı](azure-stack-enable-multitenancy.md), ayrıca bir Uzak dizin kiracısı teklifler için abone olabilirsiniz.
+>Azure Stack ortamınız [Çoklu kiracıyı](azure-stack-enable-multitenancy.md)destekliyorsa, uzak bir dizin kiracısından tekliflere de abone olabilirsiniz.
 
-### <a name="to-subscribe-to-an-offer"></a>Bir teklife abone olma
+### <a name="to-subscribe-to-an-offer"></a>Teklife abone olmak için
 
-1. [Oturum](../asdk/asdk-connect.md) için [Azure Stack kullanıcı portalı](https://portal.local.azurestack.external) seçip **bir abonelik edinmeniz**.
+1. [Azure Stack Kullanıcı portalında](https://portal.local.azurestack.external) [oturum açın](../asdk/asdk-connect.md) ve **abonelik al**' ı seçin.
 
    ![Abonelik edinin](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
-2. Altında **bir abonelik edinmeniz**, abonelikte kolay adını girin **görünen ad**. Seçin **teklif** altında **bir teklif seçin**, bir teklif seçin. Seçin **Oluştur** aboneliği oluşturmak için.
+2. **Abonelik al**' ın altında, **görünen ad**' de aboneliğin kolay adını girin. **Teklif** ' i seçin ve **teklif Seç**' in altında bir teklif seçin. Aboneliği oluşturmak için **Oluştur** ' u seçin.
 
    ![Teklif oluşturma](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
-3. Bir teklife abone olduktan sonra yeni aboneliğe hangi hizmetlerin kapsamındaki görmek için portalı yenileyin.
+3. Teklife abone olduktan sonra, hangi hizmetlerin yeni aboneliğin parçası olduğunu görmek için portalı yenileyin.
 
-4. Oluşturduğunuz aboneliği görmek için seçin **tüm hizmetleri** altındaki **genel** kategorisi seçin **abonelikleri**. Abonelik Ayrıntıları görmek için bir abonelik seçin.  
+4. Oluşturduğunuz aboneliği görmek için **tüm hizmetler** ' i seçin ve ardından **genel** kategori altında **abonelikler**' i seçin. Abonelik ayrıntılarını görmek için aboneliği seçin.  
 
-### <a name="to-subscribe-to-an-add-on-plan"></a>Bir eklenti plana abone olma
+### <a name="to-subscribe-to-an-add-on-plan"></a>Bir eklenti planına abone olmak için
 
-Eklenti planı bir teklif varsa aboneliğinizi istediğiniz zaman bu planı ekleyebilirsiniz.  
+Bir teklifin eklenti planı varsa, istediğiniz zaman bu planı aboneliğinize ekleyebilirsiniz.  
 
-1. Kullanıcı Portalı'nda seçin **tüm hizmetleri**. Sonraki altında **genel** kategorisi, select **abonelikleri**ve ardından değişiklik istediğiniz aboneliği seçin. Kullanılabilir Eklenti planları varsa **+ Ekle-planı** etkin olduğu ve bir kutucuk için **eklenti planları**.
+1. Kullanıcı portalında, **tüm hizmetler**' i seçin. Sonra, **genel** kategori altında, **abonelikler**' i seçin ve ardından değiştirmek istediğiniz aboneliği seçin. Kullanılabilir herhangi bir eklenti planı varsa **+ plan Ekle** etkindir ve **eklenti planları**için bir kutucuk vardır.
 
-   Varsa **+ Ekle-planı** etkin değil, eğer bu abonelikle ilişkili teklif için eklenti planı yok.
+   Eğer ve **ekleme planı** etkin değilse, bu abonelikle ilişkili teklif için eklenti planı yoktur.
 
-1. Seçin **+ Ekle-planı** veya **eklenti planları** Döşe. Altında **eklenti planları**, eklemek istediğiniz planı seçin.
+1. **+ Plan Ekle** veya **eklenti planları** kutucuğunu seçin. **Eklenti planları**altında, eklemek istediğiniz planı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

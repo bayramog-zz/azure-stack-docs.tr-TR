@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: ca303590d4dc923380e10e50fc9b8b9ce2e5aac6
-ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
+ms.openlocfilehash: f3f2b715206c834d2c24685b57c068b53cc7020a
+ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842968"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991684"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>PowerShell kullanarak Azure Stack Key Vault yönetme
 
@@ -43,7 +43,7 @@ Bu makalede, PowerShell kullanarak Azure Stack bir anahtar kasasının nasıl ol
 
 ## <a name="enable-your-tenant-subscription-for-key-vault-operations"></a>Key Vault işlemler için kiracı aboneliğinizi etkinleştirme
 
-Bir anahtar kasasında herhangi bir işlem yapabilmeniz için önce kiracı aboneliğinizin kasa işlemlerinde etkinleştirildiğinden emin olmanız gerekir. Kasa işlemlerinin etkinleştirildiğini doğrulamak için şu komutu çalıştırın:
+Bir anahtar kasasında herhangi bir işlem yapabilmeniz için önce kiracı aboneliğinizin kasa işlemlerinde etkinleştirildiğinden emin olmanız gerekir. Anahtar Kasası işlemlerinin etkinleştirildiğini doğrulamak için şu komutu çalıştırın:
 
 ```powershell  
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
@@ -75,7 +75,7 @@ New-AzureRmResourceGroup -Name "VaultRG" -Location local -verbose -Force
 
 ![PowerShell 'de oluşturulan yeni kaynak grubu](media/azure-stack-key-vault-manage-powershell/image3.png)
 
-Şimdi, daha önce oluşturduğunuz kaynak grubunda bir Anahtar Kasası oluşturmak için **New-Azurermkeykasası** komutunu kullanın. Bu komut üç zorunlu parametreyi okur: kaynak grubu adı, Anahtar Kasası adı ve coğrafi konum.
+Şimdi, daha önce oluşturduğunuz kaynak grubunda bir Anahtar Kasası oluşturmak için **New-Azurermkeykasası** cmdlet 'ini kullanın. Bu komut üç zorunlu parametreyi okur: kaynak grubu adı, Anahtar Kasası adı ve coğrafi konum.
 
 Bir Anahtar Kasası oluşturmak için aşağıdaki komutu çalıştırın:
 
@@ -154,7 +154,7 @@ Anahtarları ve gizli dizileri oluşturduktan sonra, bunları kullanmak için d�
 
 Bir uygulamanın anahtar kasasındaki bir anahtara veya gizli anahtara erişmesini yetkilendirmek için **set-AzureRmKeyVaultAccessPolicy** komutunu kullanın.
 
-Aşağıdaki örnekte, kasa adı *Contosokeykasadır* ve yetkilendirmek istediğiniz uygulamanın, *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed*istemci kimliği vardır. Uygulamayı yetkilendirmek için aşağıdaki komutu çalıştırın. Ayrıca, bir Kullanıcı, uygulama veya güvenlik grubu için izinleri ayarlamak üzere **Permissionstokeys** parametresini de belirtebilirsiniz.
+Aşağıdaki örnekte, kasa adı **Contosokeykasadır** ve yetkilendirmek istediğiniz uygulamanın, **8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed**istemci kimliği vardır. Uygulamayı yetkilendirmek için aşağıdaki komutu çalıştırın. Ayrıca, bir Kullanıcı, uygulama veya güvenlik grubu için izinleri ayarlamak üzere **Permissionstokeys** parametresini de belirtebilirsiniz.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign

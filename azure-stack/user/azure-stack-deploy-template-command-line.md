@@ -1,6 +1,6 @@
 ---
-title: Azure Stack komut satırında bir şablonla dağıtma | Microsoft Docs
-description: Şablonları Azure Stack'e dağıtma için platformlar arası komut satırı arabirimi (CLI) kullanmayı öğrenin.
+title: Azure Stack | komut satırı ile şablon dağıtma | Microsoft Docs
+description: Azure Stack için şablonları dağıtmak üzere Azure platformlar arası komut satırı arabirimi 'ni (CLı) nasıl kullanacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -11,41 +11,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: CLI
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 92c9189f8144804f36e551ab89d8b4fc4c1f8598
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: da17e80c802e210d53effbad8f264b1a4019e6e0
+ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691374"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991841"
 ---
-# <a name="deploy-a-template-with-the-command-line-in-azure-stack"></a>Şablon Azure Stack'te komut satırı ile dağıtma
+# <a name="deploy-a-template-with-the-command-line-in-azure-stack"></a>Azure Stack içinde komut satırı ile şablon dağıtma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack'te Azure Resource Manager şablonlarını dağıtmak için Azure komut satırı arabirimi (CLI) kullanın. Azure Resource Manager şablonları, dağıtın ve kaynakları tek ve eşgüdümlü bir işlemle uygulamanızda sağlayın.
+Azure Stack Azure Resource Manager şablonlarını dağıtmak için Azure komut satırı arabirimi 'ni (CLı) kullanabilirsiniz. Azure Resource Manager şablonlar, uygulamanıza yönelik kaynakları tek ve eşgüdümlü bir işlem halinde dağıtıp temin ediyor.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-- [Yükleme ve bağlanma](azure-stack-version-profiles-azurecli2.md) Azure CLI ile Azure Stack için.
-- Dosyaları indirmek *azuredeploy.json* ve *azuredeploy.parameters.json* gelen [depolama hesabı örnek şablonu oluşturma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account).
+- Azure CLı ile Azure Stack [yükleyip bağlayın](azure-stack-version-profiles-azurecli2.md) .
+- [Depolama hesabı oluşturma örnek şablonundan](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account) *azuredeploy. JSON* ve *azuredeploy. Parameters. JSON* dosyalarını indirin.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Bu dosyalar indirilir ve şablonu dağıtmak için aşağıdaki komutu çalıştırın klasörüne gidin:
+Bu dosyaların indirileceği klasöre gidin ve şablonu dağıtmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli
 az group create "cliRG" "local" -f azuredeploy.json -d "testDeploy" -e azuredeploy.parameters.json
 ```
 
-Bu komut kaynak grubuna şablon dağıtır **cliRG** Azure Stack POC varsayılan konumda.
+Bu komut, şablonu Azure Stack POC varsayılan konumundaki **cliRG** kaynak grubuna dağıtır.
 
-## <a name="validate-template-deployment"></a>Şablon dağıtımı doğrulama
+## <a name="validate-template-deployment"></a>Şablon dağıtımını doğrula
 
-Bu kaynak grubu ve depolama hesabı görmek için aşağıdaki CLI komutları kullanın:
+Bu kaynak grubunu ve depolama hesabını görmek için aşağıdaki CLı komutlarını kullanın:
 
 ```azurecli
 az group list
@@ -55,4 +55,4 @@ az storage account list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [şablonlar, PowerShell kullanarak dağıtma](azure-stack-deploy-template-powershell.md).
+[PowerShell kullanarak şablonları dağıtmayı](azure-stack-deploy-template-powershell.md)öğrenin.
