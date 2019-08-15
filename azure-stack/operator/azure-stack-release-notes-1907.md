@@ -16,12 +16,12 @@ ms.date: 08/02/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 08/02/2019
-ms.openlocfilehash: e868cd1e7d6ec24ddb350305c82cc1d87a334d91
-ms.sourcegitcommit: 56778bf71d5f6bbe2768fbc38c2ed2208114b867
+ms.openlocfilehash: d13f3a25d0a46f0f29405858efb06e0a4d634da0
+ms.sourcegitcommit: 86e2b776383a9f761072199ec6b6b8a7d2e6b798
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756649"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69021694"
 ---
 # <a name="azure-stack-1907-update"></a>Azure Stack 1907 güncelleştirmesi
 
@@ -76,6 +76,8 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 - Yönetici işlemlerine yönelik iç günlüklerin depolanması geliştirildi. Bu durum, iç günlük işlemlerinin bellek ve depolama tüketimini en aza indirerek yönetici işlemleri sırasında performansı ve güvenilirliği elde ediyor. Yönetici portalındaki güncelleştirme dikey penceresinin Gelişmiş sayfa yükleme sürelerini de fark edebilirsiniz. Bu iyileştirmesinin bir parçası olarak, 6 aydan eski olan güncelleştirme günlükleri sistemde artık kullanılamaz. Bu güncelleştirmeler için günlüklere ihtiyacınız varsa, 1907 güncelleştirmesini gerçekleştirmeden önce 6 aydan eski tüm güncelleştirme çalıştırmaları için [Özeti indirdiğinizden](azure-stack-apply-updates.md) emin olun.
 
 ### <a name="changes"></a>Değişiklikler
+
+- Azure Stack sürüm 1907, operatörlere 1908 güncelleştirme **yapmadan önce** işletmenlerinin sistem OEM paketini 2,1 veya sonraki bir sürüme güncelleştirdiğinizden emin olan bir uyarı uyarısı içerir. Donanım sağlayıcıları, Azure Stack sürüm 1908 ile aynı zamanda OEM paketi 2,1 ' i serbest bırakır. OEM paketi 2,1 veya üzeri, Azure Stack sürüm 1908 için bir önkoşul olacaktır. OEM paketi 2,1 veya sonraki bir sürümünü indirme hakkında daha fazla bilgi için sisteminizin donanım sağlayıcısına başvurun.
 
 - Azure Stack tanılama günlüğü toplama hizmeti için iletişimi etkinleştirmek üzere yeni bir giden kuralı (HTTPS) eklendi. Daha fazla bilgi için bkz. [Azure Stack Datacenter Integration-son nokta yayımlama](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
