@@ -171,6 +171,8 @@
               href: azure-stack-updates.md
             - name: Güncelleştirme uygulama
               href: azure-stack-apply-updates.md
+            - name: OEM güncelleştirmelerini uygulama
+              href: azure-stack-update-oem.md
             - name: İzleyici güncelleştirme durumu
               href: azure-stack-monitor-update.md
         - name: Sistem durumu ve uyarıları izleme
