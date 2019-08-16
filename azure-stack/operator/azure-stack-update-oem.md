@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/15/2019
 ms.author: mabrigg
-ms.lastreviewed: 08/14/2019
+ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 92b33603ee75560d66b6604188c2ae103a1d10a3
-ms.sourcegitcommit: 6284fd52a61680ee4ba3a73ce8d13c9c5496d838
+ms.openlocfilehash: 1342eb503abb81308740c0103b1d54887a46cf85
+ms.sourcegitcommit: f62d58ae724020a24fa5905b6663abb5f1d62178
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519776"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69520912"
 ---
 # <a name="apply-azure-stack-original-equipment-manufacturer-oem-updates"></a>Özgün donanım üreticisi (OEM) güncelleştirmelerini Azure Stack Uygula
 
@@ -32,7 +32,7 @@ Kullanıcılarınızın etkilerini en aza indirerek güvenlik düzeltme eklerini
 
 Microsoft Azure Stack güncelleştirmelere ek olarak, birçok OEM, Azure Stack donanımınız için sürücü ve bellenim güncelleştirmeleri gibi düzenli güncelleştirmeleri de serbest bırakmasını sağlar. Bunlar **OEM paketi güncelleştirmeleri**olarak adlandırılır. OEM 'nin OEM paketi güncelleştirmelerini yayımlayıp güncelleştirmediğini anlamak için, [oem Azure Stack belgelerine](#oem-contact-information)bakın.
 
-Azure Stack güncelleştirme 1905 ile başlayarak, bu OEM paketi güncelleştirmeleri **updateadminaccount** depolama hesabına yüklenir ve Azure Stack Yönetici portalı aracılığıyla uygulanır. Daha fazla bilgi için bkz. [OEM güncelleştirmelerini uygulama](#apply-oem-updates).
+Bu OEM paketi güncelleştirmeleri, **updateadminaccount** depolama hesabına yüklenir ve Azure Stack Yönetici portalı aracılığıyla uygulanır. Daha fazla bilgi için bkz. [OEM güncelleştirmelerini uygulama](#apply-oem-updates).
 
 OEM paketi güncelleştirme bildirimlerinin kuruluşunuza ulaşmasını sağlamak için, özgün ekipman üreticinizden (OEM) belirli bildirim işlemleri hakkında sorun.
 
@@ -57,13 +57,15 @@ Bu bölüm, OEM iletişim bilgilerini ve OEM Azure Stack başvuru malzemelerinde
 
 Aşağıdaki adımlarla OEM paketlerini uygulayın:
 
-1. OEM paketinizi indirmek için en iyi yöntem hakkında OEM ile görüşün.
+1. Şu şekilde OEM 'nize başvurmanız gerekir:
+      - OEM paketinizin güncel sürümünü saptayın.  
+      - OEM paketinizi indirmek için en iyi yöntemi bulun.  
 2. [Tümleşik sistemler için güncelleştirme paketlerini indirme](azure-stack-servicing-policy.md#download-update-packages-for-integrated-systems)bölümünde ÖZETLENEN adımlarla OEM paketinizi hazırlayın.
 3. Güncelleştirmeleri [Azure Stack güncelleştirme uygulama](azure-stack-apply-updates.md)bölümünde özetlenen adımlarla uygulayın.
 
 ## <a name="configure-hardware-vendor-vm"></a>Donanım satıcısı VM 'sini yapılandırma
 
-Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. Bu VM 'Leri oluşturmaktan donanım satıcınız sorumlu olacaktır. VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** cmdlet 'i ile yapılandırabilirsiniz.
+Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. Donanım satıcınız, bu VM 'leri oluşturmaktan sorumludur ve **set-oemexternalvm** cmdlet `ProxyVM` 'ini `HardwareManager` çalıştırırken veya için veya için gerekiyorsa, belgelenebilir. VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** ile yapılandırın.
 
 Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azure Stack ayrıcalıklı uç noktasını kullanma](azure-stack-privileged-endpoint.md).
 
@@ -78,12 +80,12 @@ Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azu
 2. **Set-OEMExternalVM** cmdlet 'ini kullanarak donanım satıcısı VM 'sini yapılandırın. Cmdlet 'i **-vmtype** `ProxyVM`için IP adresini ve kimlik bilgilerini doğrular. For **-vmtype** `HardwareManager` cmdlet 'i girişi doğrulamaz.
 
     ```powershell  
-    $VMCred = Get-Credential
     
     Invoke-Command -Session $session
         { 
     Set-OEMExternalVM -VMType <Either "ProxyVM" or "HardwareManager">
-        -IPAddress <IP Address of hardware vendor VM> -credential $using:VMCred
+        -IPAddress <IP Address of hardware vendor VM>
+        }
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
