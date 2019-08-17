@@ -86,6 +86,8 @@
               href: azure-stack-network.md
             - name: Kenarlık bağlantısı
               href: azure-stack-border-connectivity.md
+            - name: Anahtar yapılandırması
+              href: azure-stack-customer-defined.md
             - name: DNS tümleştirme
               href: azure-stack-integrate-dns.md
             - name: Güvenlik duvarı tümleştirmesi
