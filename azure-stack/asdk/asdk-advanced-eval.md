@@ -1,6 +1,6 @@
 ---
-title: Gelişmiş Azure Stack değerlendirme görevleri | Microsoft Docs
-description: Bu makalede, Gelişmiş Azure Stack değerlendirme görevleri açıklar.
+title: Gelişmiş ASDK değerlendirme görevleri | Microsoft Docs
+description: Gelişmiş Azure Stack geliştirme seti (ASDK) değerlendirme görevleri hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,34 +16,34 @@ ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: fe78fa4b99ef7acad924165b98e20ca6156777bb
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 36c4dae72f7fcf91438880f07231c94c8d286253
+ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267107"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69579082"
 ---
-# <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>Gelişmiş Azure Stack geliştirme Seti'ni değerlendirme görevleri
-Temel Azure Stack geliştirme Seti'ni (ASDK) hizmeti özellikler ve yetenekler konusunda öğrendikten sonra daha gelişmiş senaryolarını test etmeye göre daha fazla Azure Stack Anlayışınızı güçlendirmenizi. Bu daha gelişmiş değerlendirme görevleri Azure Stack operatörü belgelerinde belgelenmiştir.
+# <a name="advanced-asdk-evaluation-tasks"></a>Gelişmiş ASDK değerlendirme görevleri
+Temel Azure Stack Geliştirme Seti (ASDK) hizmet özellikleri ve özellikleriyle benzerlik kazandıktan sonra, daha gelişmiş senaryolar sunarak Azure Stack daha fazla bilgi sahibi olabilirsiniz. Bu daha gelişmiş değerlendirme görevleri, Azure Stack Işleci belgelerinde tam olarak belgelenmiştir.
 
 > [!NOTE]
-> Tüm kullanım senaryoları, birçok işleci görev ASDK hem de üretim, çok düğümlü Azure Stack dağıtımlar için desteklenirken ASDK dağıtımları için desteklenir. Bkz: [ASDK ve çok düğümlü Azure Stack farklılıkları](asdk-what-is.md#asdk-and-multi-node-azure-stack-differences) daha fazla bilgi için.
+> Hem ASDK hem de üretim ve çok düğümlü Azure Stack dağıtımları için birçok işleç görevi desteklenirken, tüm kullanım senaryoları ASDK dağıtımları için desteklenmez. Daha fazla bilgi için bkz. [asdk ve çok düğümlü Azure Stack farkları](asdk-what-is.md#asdk-and-multi-node-azure-stack-differences).
 
 ## <a name="delegate-offers-in-azure-stack"></a>Azure Stack’te teklifleri yetkilendirme
-Azure Stack operatörü, genellikle diğer kişilerin sorumlu teklifleri oluşturma ve kullanıcıları imzalama yerleştirmek istediğiniz. Örneğin, bir hizmet sağlayıcı barındırıyorsanız, müşterileri oturum ve sizin adınıza yönetmek için Satıcılar isteyebilirsiniz. Veya merkezi bir BT grubu, bir kuruluşta bir parçası kullanıyorsanız, müdahale olmadan kullanıcılar kuruluşlarının isteyebilirsiniz.
+Azure Stack operatörü olarak genellikle diğer kişileri teklif oluşturma ve Kullanıcı imzalama ücretine koymak istersiniz. Örneğin, bir hizmet sağlayıcısıysanız, satıcıların müşterilere kaydolmasını ve bunları sizin adınıza yönetmesini isteyebilirsiniz. Ya da bir kuruluştaki merkezi bir BT grubunun parçasıysa, bağlı kuruluşlarının kullanıcıları müdahale etmeden imzalamasını isteyebilirsiniz.
 
-[Azure Stack'te teklifler için temsilci seçme](../operator/azure-stack-delegated-provider.md) erişmek ve doğrudan daha fazla kullanıcı yönetmek mümkün hale getirerek bu görevleri yardımcı olur.
+[Azure Stack teklifleri temsilci seçme](../operator/azure-stack-delegated-provider.md) , doğrudan sizin tarafınızdan daha fazla kullanıcıyı daha fazla kullanıcıya ulaşarak bu görevlerde size yardımcı olur.
 
-## <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL veritabanları, Azure Stack kullanıcıları için kullanılabilir yap
-Azure Stack operatör, kullanıcılarınızın sağlayan teklifler oluşturabilirsiniz (kiracılar), bulutta çalışan uygulamalar, Web siteleri ve iş yüklerini kullanabileceğiniz SQL veritabanları oluşturun. Bu özel, isteğe bağlı, bulut tabanlı veritabanları kullanıcılarınıza sağlayarak bunları zamandan ve kaynaklardan tasarruf sağlayabilirsiniz.
+## <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL veritabanlarını Azure Stack kullanıcılarınız için kullanılabilir hale getirme
+Azure Stack operatörü olarak, kullanıcılarınızın (kiracılar) bulutta yerel uygulamalar, Web siteleri ve iş yükleriyle kullanabilecekleri SQL veritabanları oluşturmalarına olanak sağlayan teklifler oluşturabilirsiniz. Kullanıcılarınıza bu özel, isteğe bağlı, bulut tabanlı veritabanlarını sağlayarak zaman ve kaynak tasarrufu sağlayabilirsiniz.
 
-İçin SQL Server Kaynak sağlayıcısı bağdaştırıcısını kullanmak [SQL veritabanları, Azure Stack kullanıcılarına kullandırmak](../operator/azure-stack-tutorial-sql-server.md) Azure Stack, hizmet olarak. Kaynak sağlayıcısını yükledikten sonra bir veya daha fazla SQL Server örneklerine bağlanabilirsiniz.
+SQL veritabanlarını bir Azure Stack hizmeti olarak [Azure Stack kullanıcılarınız için kullanılabilir hale getirmek](../operator/azure-stack-tutorial-sql-server.md) üzere SQL Server kaynak sağlayıcısı bağdaştırıcısını kullanın. Kaynak sağlayıcısını yükledikten sonra, bir veya daha fazla SQL Server örneğine bağlanırsınız.
 
-## <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web ve API apps, Azure Stack kullanıcılar için kullanılabilir yap
-Azure Stack operatör, kullanıcılarınızın sağlayan teklifler oluşturabilirsiniz (kiracılar), Azure işlevleri ve web ve API uygulamaları oluşturun. Kullanıcılarınız için bu isteğe bağlı, bulut tabanlı uygulamalara erişim sağlayarak bunları zamandan ve kaynaklardan tasarruf sağlayabilirsiniz.
+## <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web ve API uygulamalarını Azure Stack kullanıcılarınız için kullanılabilir hale getirme
+Azure Stack operatörü olarak, kullanıcılarınızın (kiracılar) Azure Işlevleri ve Web ve API Apps oluşturmalarına olanak sağlayan teklifler oluşturabilirsiniz. Kullanıcılarınıza bu isteğe bağlı ve bulut tabanlı uygulamalara erişim sağlayarak bunları ve kaynaklarını kaydedebilirsiniz.
 
-App Service kaynak sağlayıcısı için dağıtma [web ve API apps, Azure Stack kullanıcılar için kullanılabilir yap](../operator/azure-stack-tutorial-app-service.md)
+[Web ve API uygulamalarını Azure Stack kullanıcılarınız için kullanılabilir hale getirmek](../operator/azure-stack-tutorial-app-service.md)için App Service kaynak sağlayıcısını dağıtın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack tümleşik sistemleri ile hizmetleri sunan hakkında daha fazla bilgi edinin](../operator/azure-stack-offer-services-overview.md)
+[Azure Stack tümleşik sistemlerle hizmet sunma hakkında daha fazla bilgi edinin](../operator/azure-stack-offer-services-overview.md)

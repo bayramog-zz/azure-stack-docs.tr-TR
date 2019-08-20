@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Geliştirme Seti temel bilgileri | Microsoft Docs
-description: Azure Stack geliştirme Seti'ni (ASDK) için temel yönetim görevlerini gerçekleştirmek nasıl açıklar.
+title: ASDK Yönetim Temelleri | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) için temel yönetici görevleri yapmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,57 +16,57 @@ ms.date: 02/19/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a375cc83410214f56eb38f676bf45cf529641972
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 2982012901b410b9e6e3830aa24fe4c62be8aa4c
+ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691104"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69579052"
 ---
-# <a name="asdk-administration-basics"></a>ASDK yönetim temel bilgileri 
-Azure Stack geliştirme Seti'ni (ASDK) yönetim için yeni bilmeniz gereken birkaç şey vardır. Bu kılavuz değerlendirme ortamında Azure Stack operatörü olarak sizin rolünüze genel bir bakış sağlar ve test kullanıcılarınızın emin olmak nasıl hızlı şekilde üretken hale gelebilir.
+# <a name="asdk-admin-basics"></a>ASDK Yönetim Temelleri
+Azure Stack Geliştirme Seti (ASDK) yönetimi için yeni başladığınızı bilmeniz gereken birkaç nokta vardır. Bu kılavuz, değerlendirme ortamında rolünüze bir Azure Stack işletmeni olarak bir genel bakış sağlar. Bu bilgiyle kendinizi alıştırarak, test kullanıcılarınızın mümkün olduğunca hızlı bir şekilde üretken hale gelmesini sağlar.
 
-İlk olarak, gözden geçirmeniz gereken [Azure Stack geliştirme Seti'ni nedir?](asdk-what-is.md) makalenin amacı, ASDK ve kısıtlamalarını anladığınızdan emin olun. Geliştirme ve üretim dışı ortamda uygulamalarınızı test etmek için Azure Stack burada değerlendirebilirsiniz, bir "korumalı alan," Geliştirme Seti kullanmanız gerekir. 
+İlk olarak, ASDK 'nin amacını ve sınırlamalarını anladığınızdan emin olmak için [Azure Stack geliştirme seti nedir?](asdk-what-is.md) makalesini gözden geçirmeniz gerekir. Geliştirme setini, uygulamalarınızı üretim dışı bir ortamda geliştirmek ve test etmek için Azure Stack değerlendirebileceğiniz bir "korumalı alan" olarak kullanmanız gerekir. 
 
-Biz ASDK, yeni derlemeler düzenli olarak kullanıma sunarız şekilde Azure'da olduğu gibi Azure Stack hızlı bir şekilde yeniliklerine öncülük ediyor. Ancak, Azure Stack tümleşik sistemleri dağıtımları gibi ASDK yükseltemezsiniz. En son derlemeye taşımak istiyorsanız, bu nedenle, tamamen gerekir [ASDK yeniden](asdk-redeploy.md). Güncelleştirme paketleri uygulanamıyor. Bu işlem zaman alır, ancak kullanılabilir olduklarında hemen sonra en son özellikleri deneyebilirsiniz avantajdır. 
+Azure gibi Azure Stack hızlı bir şekilde, ASDK 'nin yeni yapılarını düzenli olarak yayınlarız. Ancak, tümleşik sistem dağıtımlarını Azure Stack gibi, ASDK 'yi yükseltemezsiniz. Bu nedenle, en son yapıya geçmek istiyorsanız, [ASDK](asdk-redeploy.md)'yi tamamen yeniden dağıtmanız gerekir. Güncelleştirme paketlerini uygulayamazsınız. Bu işlem zaman alır, ancak en son özellikleri kullanılabilir duruma geldiğinde deneyebileceğiniz avantajdır. 
 
 ## <a name="what-account-should-i-use"></a>Hangi hesabı kullanmalıyım?
-Azure Stack yönetirken bilmeniz gereken birkaç hesabında dikkate alınacak noktalar vardır. Dağıtımlarda özellikle Windows Server Active Directory Federasyon Hizmetleri (ADFS) yerine Azure Active Directory (Azure AD) kimlik sağlayıcısı olarak kullanma. Azure Stack tümleşik sistemleri ve ASDK dağıtımları için aşağıdaki hesabı maddeler geçerlidir:
+Azure Stack yönetirken dikkat etmeniz gereken birkaç hesap dikkate alınması gerekir. Bu özellikle, Azure Active Directory (Azure AD) yerine kimlik sağlayıcısı olarak Windows Server Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanan dağıtımlar için geçerlidir. Azure Stack tümleşik sistemler ve ASDK dağıtımları için aşağıdaki hesap değerlendirmeleri geçerlidir:
 
 |Hesap|Azure AD|AD FS|
 |-----|-----|-----|
-|Yerel yönetici (. \Administrator)|ASDK konak yönetici|ASDK konak yönetici|
-|AzureStack\AzureStackAdmin|ASDK konak yönetici<br><br>Azure Stack yönetim portalında oturum açmak için kullanılabilir<br><br>Service Fabric halkaları yönetmek ve görüntülemek için erişim|ASDK konak yönetici<br><br>Azure Stack yönetim portalına erişim yok<br><br>Service Fabric halkaları yönetmek ve görüntülemek için erişim<br><br>Artık sahibi varsayılan sağlayıcı aboneliği (DPS)|
-|AzureStack\CloudAdmin|Erişebilir ve ayrıcalıklı uç nokta içinde izin verilen komutları çalıştırın|Erişebilir ve ayrıcalıklı uç nokta içinde izin verilen komutları çalıştırın<br><br>ASDK ana bilgisayara oturum açamıyorum<br><br>Varsayılan sağlayıcı aboneliği (yu DPS) sahibi|
-|Azure AD genel Yöneticisi|Yükleme sırasında kullanılan<br><br>Varsayılan sağlayıcı aboneliği (yu DPS) sahibi|Geçerli değil|
+|Yerel yönetici (.\administrator)|ASDK konak Yöneticisi|ASDK konak Yöneticisi|
+|AzureStack\AzureStackAdmin|ASDK konak Yöneticisi<br><br>Azure Stack yönetici portalında oturum açmak için kullanılabilir<br><br>Service Fabric halkalarını görüntüleme ve yönetmeye erişme|ASDK konak Yöneticisi<br><br>Azure Stack yönetici portalına erişim yok<br><br>Service Fabric halkalarını görüntüleme ve yönetmeye erişme<br><br>Artık varsayılan sağlayıcı Aboneliğinin sahibi yok (DPS)|
+|AzureStack\CloudAdmin|Ayrıcalıklı uç nokta içinde izin verilen komutlara erişebilir ve bunları çalıştırabilir|Ayrıcalıklı uç nokta içinde izin verilen komutlara erişebilir ve bunları çalıştırabilir<br><br>ASDK konağında oturum açılamıyor<br><br>Varsayılan sağlayıcı Aboneliğinin sahibi (DPS)|
+|Azure AD Genel Yöneticisi|Yükleme sırasında kullanılır<br><br>Varsayılan sağlayıcı Aboneliğinin sahibi (DPS)|Geçerli değil|
 |
 
-## <a name="what-tools-do-i-use-to-manage"></a>Yönetmek için hangi araçları kullanabilir?
-Kullanabileceğiniz [Azure Stack Yönetici portalı](https://adminportal.local.azurestack.external) veya Azure Stack yönetmek için PowerShell'i. Temel kavramları öğrenmenin en kolay yolu portalı kullanmaktır. PowerShell kullanmak istiyorsanız, yüklemeniz gerekir [Azure Stack için PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) ve [Azure Stack araçları Github'dan indirin](asdk-post-deploy.md#download-the-azure-stack-tools).
+## <a name="what-tools-do-i-use-to-manage"></a>Yönetmek için hangi araçları kullanabilirim?
+Azure Stack yönetmek için [Azure Stack yönetim portalını](https://adminportal.local.azurestack.external) veya PowerShell 'i kullanabilirsiniz. Temel kavramları öğrenmenin en kolay yolu Portal üzerinden yapılır. PowerShell 'i kullanmak istiyorsanız, [Azure Stack Için PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) 'i yüklemeniz ve [Azure Stack araçlarını GitHub 'dan indirmeniz](asdk-post-deploy.md#download-the-azure-stack-tools)gerekir.
 
-Azure Stack, Azure Resource Manager, temel alınan dağıtımı, yönetimi ve kuruluş mekanizması olarak kullanır. Azure Stack yönetmek ve kullanıcıların desteklemeye yardımcı olmak için kullanacaksanız, Azure Resource Manager hakkında bilgi edinin. Okuyarak daha fazla bilgi [Azure Resource Manager Teknik İnceleme ile çalışmaya başlama](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
+Azure Stack, temel aldığı dağıtım, yönetim ve kuruluş mekanizması olarak Azure Resource Manager kullanır. Azure Stack yönetiyoruz ve kullanıcıları desteklemeye yardımcı olmaya devam ediyorsanız, Azure Resource Manager hakkında bilgi almanız gerekir. [Azure Resource Manager Ile çalışmaya başlama teknik](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)incelemesini okuyarak daha fazla bilgi edinebilirsiniz.
 
-## <a name="your-typical-responsibilities"></a>Tipik sizin Sorumluluklarınız
-Kullanıcıların hizmetleri kullanmak istiyorsunuz. Kendi bakış açısına ana rolünüz hizmetlerin kullanılabilir olmasını sağlamaktır. ASDK kullanarak hangi hizmetlerin sunduğu bilgi edinin ve tarafından kullanılabilir hale getirmeniz nasıl Hizmetleri [planlar, teklifler ve kotaları oluşturmaya](../operator/azure-stack-tutorial-tenant-vm.md). Sanal makine görüntüleri gibi Market öğeleri eklemek gerekir. En kolay yolu [Market öğelerini indirme](../operator/azure-stack-create-and-publish-marketplace-item.md) Azure Stack için azure'dan.
+## <a name="your-typical-responsibilities"></a>Tipik sorumluluklarınız
+Kullanıcılarınız hizmetleri kullanmak istiyor. Perspektifinden, ana rolünüzün bu hizmetleri kendileri için kullanılabilir hale getirmek gerekir. ASDK 'yi kullanarak hangi hizmetlerin sunduğunu ve [planlar, teklifler ve Kotalar oluşturarak](../operator/azure-stack-tutorial-tenant-vm.md)bu hizmetleri nasıl kullanılabilir hale ayarlayacağınızı öğrenebilirsiniz. Ayrıca, sanal makine (VM) görüntüleri gibi Market 'e öğe eklemeniz gerekir. En kolay yol, [Market öğelerini](../operator/azure-stack-create-and-publish-marketplace-item.md) Azure 'dan Azure Stack 'e indirmenin en kolay yoludur.
 
 > [!NOTE]
-> Planlar, teklifler ve Hizmetleri test etmek isterseniz, kullanması gereken [kullanıcı portalı](https://portal.local.azurestack.external); değil [Yönetici portalı](https://adminportal.local.azurestack.external).
+> Planlarınızı, tekliflerinizi ve hizmetlerinizi test etmek isterseniz, [Kullanıcı portalını](https://portal.local.azurestack.external)kullanmanız gerekir; [Yönetici portalı](https://adminportal.local.azurestack.external)değildir.
 
-Hizmetleri sağlamaya ek olarak, bir Azure Stack operatörü, tüm normal görevlerini ASDK çalışmaya tutmak için gerçekleştirmeniz gerekir. Bu görevleri, aşağıdaki gibi işlemler şunlardır:
-- Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) dağıtımı için kullanıcı hesaplarını ekleyin.
-- Rol tabanlı erişim denetimi (RBAC) rolleri (Bu yalnızca yöneticiler tarafından kısıtlı değildir) atayın.
-- Altyapı sistem durumunu izleme
-- Ağ ve depolama kaynaklarını yönetme
-- Başarısız Geliştirme Seti ana bilgisayar donanımı değiştirme 
+Hizmetleri sağlamaya ek olarak, bir Azure Stack Işlecinin tüm olağan görevlerini gerçekleştirerek, bu da ASDK çalışır durumda tutun. Bu görevler aşağıdakileri içerir:
+- Azure AD veya AD FS dağıtımları için Kullanıcı hesapları ekleyin.
+- Rol tabanlı erişim denetimi (RBAC) rolleri atayın (Bu yalnızca yöneticilerle sınırlı değildir).
+- Altyapı durumunu izleyin.
+- Ağ ve depolama kaynaklarını yönetme.
+- Başarısız olan geliştirme seti Konak bilgisayar donanımını değiştirin.
 
-## <a name="where-to-get-support"></a>Nereden destek
-Azure Stack geliştirme Seti'ni (ASDK için), içinde destek ile ilgili sorular sorabilirsiniz [Azure Stack MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+## <a name="where-to-get-support"></a>Nereden destek alınacağı
+ASDK için, [Azure Stack MSDN forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)destekle ilgili sorularınızı sorabilirsiniz.
 
-Tıklayabilirsiniz **yardımcı** (soru işareti) Yönetici portalı'nı ve ardından sağ üst köşesindeki **Yardım + Destek** Yardım + destek açmak için **genel bakış**, sahip olduğu bir foruma bağlayın. MSDN Forumları düzenli olarak izlenir.  
+Ayrıca, yönetim portalının sağ üst köşesindeki **Yardım** (soru işareti) seçeneğine tıklayarak forumlara erişebilirsiniz. Ardından Yardım + destek ' e tıklayarak yardım + destek' i açın ve bu da forumuna bir bağlantı içerir. MSDN forumları düzenli olarak izlenir.  
 
 > [!IMPORTANT]
-> ASDK değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) aracılığıyla sunulan resmi desteği yoktur.
+> ASDK bir değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) ile sunulan resmi bir destek yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[ASDK dağıtma](asdk-install.md)
+[ASDK 'yi dağıtma](asdk-install.md)
 

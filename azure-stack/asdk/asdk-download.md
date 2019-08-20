@@ -1,6 +1,6 @@
 ---
-title: İndirin ve ayıklayın Azure Stack geliştirme Seti'ni (ASDK) | Microsoft Docs
-description: İndirmeyi ve ayıklamayı Azure Stack geliştirme Seti'ni (ASDK) açıklar.
+title: ASDK 'yi indir ve Ayıkla | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) indirme ve ayıklama hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,40 +16,40 @@ ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2018
-ms.openlocfilehash: ebb72826a94a51c54aaa27ae4d85d7a31d76dbb5
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: a4d0258d2a7a5168c94159d9eae13605b1269b86
+ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267018"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69579132"
 ---
-# <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>İndirin ve Azure Stack geliştirme Seti'ni (ASDK) ayıklayın
-Geliştirme Seti ana bilgisayarınız ASDK yüklemeye yönelik temel gereksinimleri karşıladığından emin olduktan sonra indirmeyi ve ayıklamayı ASDK dağıtım paketi Cloudbuilder.vhdx almak için sonraki adım olacaktır.
+# <a name="download-and-extract-the-asdk"></a>ASDK 'yi indir ve Ayıkla
+Geliştirme seti ana bilgisayarınızın Azure Stack Geliştirme Seti (ASDK) yüklemek için temel gereksinimleri karşıladığından emin olduktan sonra, bir sonraki adım Cloudbuilder. vhdx 'i almak için ASDK dağıtım paketini indirip ayıklamaya yöneliktir.
 
-## <a name="download-the-asdk"></a>ASDK indirin
-1. Yükleme başlamadan önce bilgisayarınızın aşağıdaki gereksinimleri karşıladığından emin olun:
+## <a name="download-the-asdk"></a>ASDK 'yi indirin
+1. İndirmeyi başlamadan önce, bilgisayarınızın aşağıdaki önkoşulları karşıladığından emin olun:
 
-   - Bilgisayarda en az 60 işletim sistemi diski için ayrıca boş dört ayrı, aynı mantıksal sabit disk sürücüler üzerinde disk alanı GB olmalıdır.
-   - [.NET framework 4.6 (veya sonraki bir sürümü)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) yüklü olması gerekir.
+   - Bilgisayarınızda, işletim sistemi diskine ek olarak dört ayrı ve özdeş mantıksal sabit sürücüde en az 60 GB boş disk alanı bulunmalıdır.
+   - [.NET Framework 4,6 (veya sonraki bir sürüm)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) yüklü olmalıdır.
 
-2. [Başlangıç sayfasına gidin](https://azure.microsoft.com/overview/azure-stack/try/?v=try) , Azure Stack geliştirme Seti'ni indirme, ayrıntılarınızı girin ve ardından **Gönder**.
-3. İndirme ve çalıştırma [Azure Stack Geliştirme Seti için dağıtım denetleyicisi](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) önkoşul denetleyicisini komut dosyası. Bu tek başına komut dosyası için Azure Stack geliştirme Seti'ni Kurulumu tarafından yapılan ön koşullar denetimleri geçer. Azure Stack Geliştirme Seti için daha büyük paketi yüklemeden önce donanım ve yazılım gereksinimleri karşılayıp onaylamak için bir yol sunar.
-4. Altında **yazılım indirme**, tıklayın **Azure Stack geliştirme Seti'ni**.
+2. ASDK 'yi indirebileceğiniz [Başlarken sayfasına gidin](https://azure.microsoft.com/overview/azure-stack/try/?v=try) , ayrıntılarınızı sağlayın ve ardından **Gönder**' e tıklayın.
+3. ASDK önkoşul denetleyicisi betiği [Için dağıtım denetleyicisi](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) ' ni indirip çalıştırın. Bu tek başına betiği, ASDK kurulumu tarafından gerçekleştirilen önkoşul denetimlerinden geçer. Bu, ASDK için daha büyük paketi indirmeden önce donanım ve yazılım gereksinimlerini karşıladığınızı doğrulamak için bir yol sağlar.
+4. **Yazılımı İndir**altında **Azure Stack geliştirme seti**' ye tıklayın.
 
    > [!NOTE]
-   > ASDK indirme (AzureStackDevelopmentKit.exe) yaklaşık 10 GB'dir.
+   > ASDK indirmesi (AzureStackDevelopmentKit. exe) yaklaşık 10 GB 'dir.
 
-## <a name="extract-the-asdk"></a>ASDK ayıklayın
-1. İndirme tamamlandıktan sonra tıklayın **çalıştırma** ASDK ayıklayıcısı (AzureStackDevelopmentKit.exe) başlatmak için.
-2. Gözden geçirin ve görüntülenen Lisans Sözleşmesi'nden kabul **Lisans Sözleşmesi** ayıklayıcısı Sihirbazı'nı ve ardından sayfanın **sonraki**.
-3. Görüntülenen gizlilik bildirimi bilgileri gözden geçirin **önemli bildirim** ayıklayıcısı Sihirbazı'nı ve ardından sayfanın **sonraki**.
-4. Açık olarak ayıklanacak Azure Stack kurulum dosyalarının konumunu seçin **hedef konum seçin** ayıklayıcısı Sihirbazı'nı ve ardından sayfanın **sonraki**. Varsayılan konum *geçerli klasör*\Azure Stack Geliştirme Seti. 
-5. Hedef konumun özetini inceleyin **ayıklamaya hazır** ayıklayıcısı Sihirbazı'nı ve ardından sayfanın **ayıklamak** (yaklaşık, 28 GB) CloudBuilder.vhdx ayıklanacak ve ThirdPartyLicenses.rtf dosyaları. Bu işlemin tamamlanması biraz zaman alabilir.
-6. Kopyalayın veya CloudBuilder.vhdx dosya ASDK ana bilgisayarda C:\ sürücüsüne (C:\CloudBuilder.vhdx) kök dizinine taşıyın.
+## <a name="extract-the-asdk"></a>ASDK 'yi Ayıkla
+1. İndirme tamamlandıktan sonra, ASDK Self-Extractor (AzureStackDevelopmentKit. exe) başlatmak için **Çalıştır** ' a tıklayın.
+2. Self-Extractor sihirbazının **Lisans Sözleşmesi** sayfasında, görüntülenmiş lisans sözleşmesini gözden geçirin ve kabul edin ve ardından **İleri**' ye tıklayın.
+3. Self-Extractor sihirbazının **önemli duyuru** sayfasında görünen gizlilik bildirimi bilgilerini gözden geçirin ve ardından **İleri**' ye tıklayın.
+4. Self-Extractor sihirbazının **hedef konumunu seçin** sayfasında Ayıklanacak Azure Stack kurulum dosyalarının konumunu seçin ve ardından **İleri**' ye tıklayın. Varsayılan konum *geçerli klasör*\Azure Stack geliştirme seti ' dir. 
+5. Self-Extractor sihirbazının **ayıklanmaya hazırlanma** sayfasında hedef konum özetini gözden geçirin ve ardından cloudbuilder. vhdx (yaklaşık 28gb) ve üçüncü taraf lisansları. rtf dosyalarını ayıklamak için **Ayıkla** ' ya tıklayın. Bu işlemin tamamlanabilmesi biraz zaman alır.
+6. CloudBuilder. vhdx dosyasını kopyalayın veya C:\ ' un köküne taşıyın. sürücüsünü (`C:\CloudBuilder.vhdx`), asdk ana bilgisayarında.
 
 > [!NOTE]
-> Dosyaları ayıklayın sonra silebilirsiniz. EXE ve. Sabit disk alanını kurtarmak için DEPO dosyaları'nı tıklatın. Veya ASDK tekrar dağıtmanız gerekirse dosyaları tekrar indirmeniz gerekmez, bu dosyaları yedekleyin.
+> Dosyaları ayıkladıktan sonra, öğesini silebilirsiniz. EXE ve. Sabit disk alanını kurtarmak için BIN dosyaları. Ya da, ASDK 'yi yeniden dağıtmanız gerekiyorsa dosyaları indirmeniz gerekmiyorsa bu dosyaları yedekleyebilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[ASDK ana bilgisayarını hazırlayın](asdk-prepare-host.md)
+[ASDK ana bilgisayarını hazırlama](asdk-prepare-host.md)
