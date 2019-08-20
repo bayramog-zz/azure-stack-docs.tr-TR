@@ -1,6 +1,6 @@
 ---
-title: Yüksek oranda kullanılabilir bir yapılandırmada Azure Stack App Service'e dağıtma | Microsoft Docs
-description: Azure Stack kullanarak yüksek kullanılabilirliğe sahip yapılandırmaya App Service'te dağıtmayı öğrenin.
+title: Yüksek oranda kullanılabilir bir yapılandırmada Azure Stack App Service dağıtma | Microsoft Docs
+description: Yüksek oranda kullanılabilir bir yapılandırma kullanarak Azure Stack App Service dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -16,230 +16,230 @@ ms.date: 03/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 2d2aab654f2283cf019e609e9de14790ed44a76a
-ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
+ms.openlocfilehash: 01e359b2fc92abfe2c4903b75fd52687c2246d56
+ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66837030"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68959541"
 ---
-# <a name="deploy-app-service-in-a-highly-available-configuration"></a>App Service'ı yüksek oranda kullanılabilir bir yapılandırmada dağıtın
+# <a name="deploy-app-service-in-a-highly-available-configuration"></a>Yüksek oranda kullanılabilir bir yapılandırmada App Service dağıtma
 
-Bu makalede, yüksek oranda kullanılabilir bir yapılandırmada Azure Stack için App Service dağıtmak için Azure Stack Market öğesi kullanmayı gösterir. Kullanılabilir Market öğesi ek olarak, bu çözüm ayrıca kullanır [appservice-dosya paylaşımı-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hızlı Başlangıç şablonu. Bu şablon, App Service kaynak Sağlayıcısı'nı barındırmak için yüksek oranda kullanılabilir bir altyapı oluşturma otomatikleştirir. App Service, ardından bu yüksek oranda kullanılabilir VM altyapısında yüklenir. 
+Bu makalede, yüksek oranda kullanılabilir bir yapılandırmada Azure Stack için App Service dağıtmak üzere Azure Stack Market öğelerinin nasıl kullanılacağı gösterilmektedir. Bu çözüm, kullanılabilir Market öğelerine ek olarak [appservice-FileShare-SqlServer-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack hızlı başlangıç şablonunu da kullanır. Bu şablon App Service kaynak sağlayıcısını barındırmak için yüksek oranda kullanılabilir bir altyapının oluşturulmasını otomatikleştirir. App Service daha sonra bu yüksek oranda kullanılabilir VM altyapısına yüklenir. 
 
-## <a name="deploy-the-highly-available-app-service-infrastructure-vms"></a>Yüksek oranda kullanılabilir App Service altyapısı Vm'leri dağıtma
-[Appservice-dosya paylaşımı-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hızlı Başlangıç şablonu, App Service dağıtımı yüksek oranda kullanılabilir bir yapılandırmaya basitleştirir. Varsayılan sağlayıcı abonelikte dağıtılmalıdır. 
+## <a name="deploy-the-highly-available-app-service-infrastructure-vms"></a>Yüksek oranda kullanılabilir App Service altyapısı VM 'lerini dağıtma
+[Appservice-FileShare-SqlServer-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack hızlı başlangıç şablonu, yüksek oranda kullanılabilir bir yapılandırmada App Service dağıtımını basitleştirir. Varsayılan sağlayıcı aboneliğine dağıtılmalıdır. 
 
-Azure Stack'te özel bir kaynak oluşturmak için kullanıldığında, şablon oluşturur:
+Azure Stack içinde özel bir kaynak oluşturmak için kullanıldığında, şablon şunları oluşturur:
 - Bir sanal ağ ve gerekli alt ağlar.
-- Dosya sunucusu, SQL Server ve Active Directory etki alanı Hizmetleri (AD DS) alt ağları için ağ güvenlik grupları.
-- VM diskleri ve bulut tanığı küme için depolama hesapları.
-- Özel IP ile SQL VM'ler için bir iç yük dengeleyici için SQL AlwaysOn dinleyicisinde bağlı.
-- AD DS, dosya sunucusu kümesi ve SQL kümesi için üç kullanılabilirlik kümeleri.
+- Dosya sunucusu, SQL Server ve Active Directory Domain Services (AD DS) alt ağları için ağ güvenlik grupları.
+- VM diskleri ve küme bulutu tanığı için depolama hesapları.
+- SQL VM 'Leri için SQL AlwaysOn dinleyicisine göre özel IP 'si olan bir iç yük dengeleyici.
+- AD DS, dosya sunucusu kümesi ve SQL kümesi için üç kullanılabilirlik kümesi.
 - İki düğümlü SQL kümesi.
 - İki düğümlü dosya sunucusu kümesi.
 - İki etki alanı denetleyicisi.
 
-### <a name="required-azure-stack-marketplace-items"></a>Gerekli Azure Stack Market öğesi
-Bu şablonu kullanmadan önce aşağıdakilerden emin [Azure Stack Market öğesi](azure-stack-marketplace-azure-items.md) Azure Stack Örneğinizde kullanılabilir:
+### <a name="required-azure-stack-marketplace-items"></a>Market öğelerini gerekli Azure Stack
+Bu şablonu kullanmadan önce, aşağıdaki [Azure Stack Market öğelerinin](azure-stack-marketplace-azure-items.md) Azure Stack örneğiniz içinde kullanılabilir olduğundan emin olun:
 
-- Windows Server 2016 Datacenter çekirdek görüntüsü (AD DS ve dosya sunucusu için Vm'leri)
-- SQL Server 2016 SP2 Windows Server 2016 (Kurumsal)
-- En son SQL Iaas uzantısı 
-- En son PowerShell Desired State Configuration uzantısı 
+- Windows Server 2016 Datacenter çekirdek görüntüsü (AD DS ve dosya sunucusu VM 'Leri için)
+- Windows Server 2016 üzerinde SQL Server 2016 SP2 (Enterprise)
+- En son SQL IaaS uzantısı 
+- En son PowerShell Istenen durum yapılandırma uzantısı 
 
 > [!TIP]
-> Gözden geçirme [şablon Benioku dosyası](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) şablon gereksinimleri ve varsayılan değerleri hakkında daha fazla ayrıntı için GitHub üzerindeki. 
+> Şablon gereksinimleri ve varsayılan değerler hakkında daha fazla bilgi için GitHub 'daki [şablon Benioku dosyasını](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) gözden geçirin. 
 
 ### <a name="deploy-the-app-service-infrastructure"></a>App Service altyapısını dağıtma
-Kullanarak bir özel dağıtım oluşturmak için bu bölümdeki adımları kullanın **appservice-dosya paylaşımı-sqlserver-ha** Azure Stack Hızlı Başlangıç şablonu.
+**Appservice-FileShare-SqlServer-ha** Azure Stack hızlı başlangıç şablonunu kullanarak özel bir dağıtım oluşturmak için bu bölümdeki adımları kullanın.
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. Seçin **\+** **kaynak Oluştur** > **özel**, ardından **şablon dağıtımı**.
+2. Kaynak **\+** oluşturÖzel'iseçinveardındanşablondağıtımı. > 
 
    ![Özel şablon dağıtımı](media/app-service-deploy-ha/1.png)
 
 
-3. Üzerinde **özel dağıtım** dikey penceresinde **şablonu Düzen** > **Hızlı Başlangıç şablonu** ve sonra kullanılabilir özel şablonlar için aşağı açılan listesini kullanın seçin **appservice-dosya paylaşımı-sqlserver-ha** şablon tıklayın **Tamam**, ardından **Kaydet**.
+3. **Özel dağıtım** dikey penceresinde, **şablon** > **hızlı başlangıç şablonu** Düzenle ' yi seçin ve ardından, kullanılabilir özel şablonların açılan listesini kullanarak **appservice-FileShare-SqlServer-ha** şablonunu seçin. **Tamam**' a ve ardından **Kaydet**' e tıklayın.
 
-   ![Appservice-dosya paylaşımı-sqlserver-ha Hızlı Başlangıç şablonu seçin](media/app-service-deploy-ha/2.png)
+   ![Appservice-FileShare-SqlServer-ha hızlı başlangıç şablonunu seçin](media/app-service-deploy-ha/2.png)
 
-4. Üzerinde **özel dağıtım** dikey penceresinde **parametreleri Düzenle** ve aşağı kaydırma varsayılan şablon değerlerini gözden geçirin. Tüm gerekli parametre bilgilerini sağlayın ve ardından gerekiyorsa bu değerleri değiştirme **Tamam**.<br><br> En az karmaşık parolalar ADMINPASSWORD, FILESHAREOWNERPASSWORD FILESHAREUSERPASSWORD SQLSERVERSERVICEACCOUNTPASSWORD ve SQLLOGINPASSWORD parametrelerini belirtin.
+4. **Özel dağıtım** dikey penceresinde **parametreleri Düzenle** ' yi seçin ve varsayılan şablon değerlerini gözden geçirmek için aşağı kaydırın. Tüm gerekli parametre bilgilerini sağlamak için bu değerleri gereken şekilde değiştirin ve ardından **Tamam**' a tıklayın.<br><br> En azından,,, ve `ADMINPASSWORD` `FILESHAREUSERPASSWORD` `SQLSERVERSERVICEACCOUNTPASSWORD` `FILESHAREOWNERPASSWORD`parametreleriiçinkarmaşık parolalarsağlayın`SQLLOGINPASSWORD` .
     
-   ![Özel dağıtım parametreleri Düzenle](media/app-service-deploy-ha/3.png)
+   ![Özel dağıtım parametrelerini Düzenle](media/app-service-deploy-ha/3.png)
 
-5. Üzerinde **özel dağıtım** dikey penceresinde olun **varsayılan sağlayıcı aboneliği** olarak kullanın ve yeni bir kaynak grubu oluşturun veya mevcut bir kaynak grubunu, özel seçin için abonelik seçildi Dağıtım.<br><br> Ardından, kaynak grubu konumunu seçin (**yerel** ASDK yüklemeleri için) ve ardından **Oluştur**. Şablon dağıtımı başlamadan önce özel dağıtım ayarlarını doğrulanır.
+5. **Özel dağıtım** dikey penceresinde, kullanılacak abonelik olarak **varsayılan sağlayıcı aboneliğinin** seçildiğinden emin olun ve ardından yeni bir kaynak grubu oluşturun veya özel dağıtım için var olan bir kaynak grubunu seçin.<br><br> Sonra, kaynak grubu konumunu (ASDK yüklemeleri için**Yerel** ) seçin ve ardından **Oluştur**' a tıklayın. Özel dağıtım ayarları, şablon dağıtımı başlamadan önce onaylanır.
 
-    ![Özel dağıtım oluşturma](media/app-service-deploy-ha/4.png)
+    ![Özel dağıtım oluştur](media/app-service-deploy-ha/4.png)
 
-6. Yönetim portalında **kaynak grupları** ve ardından kaynak grubunun adı için özel dağıtım oluşturduğunuz (**app-service-ha** Bu örnekte). Tüm dağıtımlar başarıyla tamamladınız emin olmak için dağıtım durumunu görüntüleyin.
+6. Yönetim portalında, **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnekteki**App-Service-ha** ) seçin. Tüm dağıtımların başarıyla tamamlandığından emin olmak için dağıtımın durumunu görüntüleyin.
 
    > [!NOTE]
-   > Şablon dağıtımı, tamamlanması yaklaşık bir saat sürer.
+   > Şablon dağıtımının tamamlanmasını yaklaşık bir saat sürer.
 
-   [![](media/app-service-deploy-ha/5-sm.png "Şablonu dağıtım durumunu gözden geçirin")](media/app-service-deploy-ha/5-lg.png#lightbox)
+   [![](media/app-service-deploy-ha/5-sm.png "Şablon dağıtım durumunu gözden geçirme")](media/app-service-deploy-ha/5-lg.png#lightbox)
 
 
-### <a name="record-template-outputs"></a>Kayıt şablonu çıkarır
-Sonra şablon dağıtım şablon dağıtımı çıkarır kaydı başarıyla tamamlar. App Service yükleyici çalıştırırken bu bilgileri sağlamanız gerekir. 
+### <a name="record-template-outputs"></a>Kayıt şablonu çıkışları
+Şablon dağıtımı başarıyla tamamlandıktan sonra, şablon dağıtım çıkışlarını kaydedin. App Service yükleyicisini çalıştırırken bu bilgiye ihtiyacınız vardır.
 
-Bu çıkış değerlerin her birini kayıt emin olun:
-- FileSharePath
+Bu çıkış değerlerinin her birini kaydetmeyi sağlayın:
+- Dosya SharePath
 - FileShareOwner
 - FileShareUser
-- SqlServer
+- SQLserver
 - SQLuser
 
-Şablon çıkış değerleri bulmak için aşağıdaki adımları izleyin:
+Şablon çıkış değerlerini öğrenmek için şu adımları izleyin:
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. Yönetim portalında **kaynak grupları** ve ardından kaynak grubunun adı için özel dağıtım oluşturduğunuz (**app-service-ha** Bu örnekte). 
+2. Yönetim portalında, **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnekteki**App-Service-ha** ) seçin. 
 
-3. Tıklayın **dağıtımları** seçip **Microsoft.Template**.
+3. **Dağıtımlar** ' a tıklayın ve **Microsoft. Template**' i seçin.
 
-    ![Microsoft.Template dağıtım](media/app-service-deploy-ha/6.png)
+    ![Microsoft. Şablon dağıtımı](media/app-service-deploy-ha/6.png)
 
-4. Seçtikten sonra **Microsoft.Template** dağıtım, select **çıkışları** ve şablon parametresinin çıktısı kaydedin. Bu bilgiler, App Service dağıtımı sırasında gerekli olacaktır.
+4. **Microsoft. Template** dağıtımını seçtikten sonra, **çıktılar** ' i seçin ve şablon parametresi çıkışını kaydedin. App Service dağıtıldığında bu bilgiler gereklidir.
 
-    ![Çıkış parametresi](media/app-service-deploy-ha/7.png)
+    ![Parametre çıkışı](media/app-service-deploy-ha/7.png)
 
 
-## <a name="deploy-app-service-in-a-highly-available-configuration"></a>App Service'ı yüksek oranda kullanılabilir bir yapılandırmada dağıtın
-Temel yüksek oranda kullanılabilir bir yapılandırmaya Azure Stack için App Service dağıtmak için bu bölümdeki adımları [appservice-dosya paylaşımı-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hızlı Başlangıç şablonu. 
+## <a name="deploy-app-service-in-a-highly-available-configuration"></a>Yüksek oranda kullanılabilir bir yapılandırmada App Service dağıtma
+[Appservice-FileShare-SqlServer-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack hızlı başlangıç şablonunu temel alan yüksek kullanılabilirliğe sahip bir yapılandırmada Azure Stack için App Service dağıtmak üzere bu bölümdeki adımları izleyin. 
 
-App Service kaynak Sağlayıcısı'nı yükledikten sonra teklifler ve planlar içerebilir. Kullanıcıların hizmete almak ve uygulamalar oluşturmaya başlamak için abone olabilirsiniz.
+App Service kaynak sağlayıcısı 'nı yükledikten sonra, bu sürümü tekliflerinizi ve planlarınıza dahil edebilirsiniz. Kullanıcılar daha sonra hizmeti almak ve uygulama oluşturmaya başlamak için abone olabilir.
 
 > [!IMPORTANT]
-> Kaynak sağlayıcı yükleyicisini çalıştırmadan önce yeni işlevler, düzeltmeler ve dağıtımınızı etkileyebilecek tüm bilinen sorunlar hakkında bilgi edinmek için her App Service sürüm ile birlikte gelen sürüm notlarını okuduğunuzdan emin olun.
+> Kaynak sağlayıcısı yükleyicisini çalıştırmadan önce, yeni işlevsellik, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için her bir App Service sürümüyle birlikte gelen sürüm notlarını okuduğunuzdan emin olun.
 
 ### <a name="prerequisites"></a>Önkoşullar
-App Service yükleyiciyi çalıştırmadan önce birkaç adım açıklandığı gibi gerekli [App Service ile Azure Stack makaleye başlamadan önce](azure-stack-app-service-before-you-get-started.md):
+App Service yükleyicisini çalıştırmadan önce, [Azure Stack makalesinde App Service kullanmaya başlamadan önce](azure-stack-app-service-before-you-get-started.md)bölümünde açıklandığı gibi birkaç adım gerekir:
 
 > [!TIP]
-> Açıklanan tüm adımları başlamadan önce makalede gerekli şablon dağıtımı için altyapı Vm'leri yapılandırdığından. 
+> Şablon dağıtımı, altyapı VM 'lerini sizin için yapılandırdığından, [App Service ile çalışmaya başlamadan önce](azure-stack-app-service-before-you-get-started.md) ' de açıklanan adımların tümü gereklidir.
 
-- [App Service yükleyici ve yardımcı betikleri indirin](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
-- [En son özel betik uzantısı için Azure Stack marketini indirme](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
-- [Gerekli sertifikaları oluşturmak](azure-stack-app-service-before-you-get-started.md#get-certificates).
-- Azure Stack için seçtiğiniz kimlik sağlayıcısı dayalı kimliği uygulaması oluşturun. Uygulama kimliği için yapılabilir [Azure AD'ye](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application) veya [Active Directory Federasyon Hizmetleri](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-application) ve uygulama kimliğini kaydedin
-- Azure Stack Market'te Windows Server 2016 Datacenter görüntüsü eklediğinizden emin olun. Bu uygulama hizmeti yüklemesi için gereklidir.
+- [App Service yükleyicisini ve yardımcı betikleri indirin](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
+- [Azure Stack Market 'e en son özel betik uzantısını indirin](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
+- [Gerekli sertifikaları oluştur](azure-stack-app-service-before-you-get-started.md#get-certificates).
+- Azure Stack için seçtiğiniz kimlik sağlayıcısını temel alarak kimlik uygulamasını oluşturun. KIMLIK uygulaması, [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application) veya [Active Directory Federasyon Hizmetleri (AD FS)](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-application) IÇIN yapılabilir ve uygulama kimliğini kaydedebilir.
+- Windows Server 2016 Datacenter görüntüsünü Azure Stack Market 'e eklemiş olduğunuzdan emin olun. Bu görüntü App Service yüklemesi için gereklidir.
 
-### <a name="deploy-app-service-in-highly-available-configuration"></a>App Service'ı yüksek oranda kullanılabilir bir yapılandırmada dağıtın
-App Service kaynak Sağlayıcısı'nı yükleme, en az bir saat sürer. Kaç rol örnekleri üzerinde gereken sürenin uzunluğunu bağlıdır dağıtın. Dağıtım sırasında aşağıdaki görevleri yükleyiciyi çalıştırır:
+### <a name="steps-for-app-service-deployment"></a>App Service dağıtım adımları
+App Service kaynak sağlayıcısını yüklemek en az bir saat sürer. Gereken sürenin uzunluğu, kaç tane rol örneğine dağıtım yapmanız gerektiğini gösterir. Dağıtım sırasında, yükleyici aşağıdaki görevleri çalıştırır:
 
-- Belirtilen Azure Stack depolama hesabındaki bir blob kapsayıcısı oluşturun.
+- Belirtilen Azure Stack depolama hesabında bir blob kapsayıcısı oluşturun.
 - App Service için bir DNS bölgesi ve girişleri oluşturun.
 - App Service kaynak sağlayıcısını kaydedin.
 - App Service galeri öğelerini kaydedin.
 
-App Service kaynak sağlayıcısı dağıtmak için aşağıdaki adımları izleyin:
+App Service kaynak sağlayıcısını dağıtmak için şu adımları izleyin:
 
-1. Daha önce indirilen App Service yükleyiciyi çalıştırın (**appservice.exe**) yönetici olarak Azure Stack yönetici Azure kaynak yönetimi uç noktasına erişebildiğinden bir bilgisayar.
+1. Daha önce indirilen App Service yükleyicisini (**appservice. exe**), Azure Stack Yöneticisi Azure Kaynak Yönetimi uç noktasına erişebilen bir bilgisayardan yönetici olarak çalıştırın.
 
-2. Seçin **App Service dağıtın veya en son sürüme yükseltme**.
+2. App Service Dağıt ' ı seçin **veya en son sürüme yükseltin**.
 
-    ![Dağıtın veya yükseltin](media/app-service-deploy-ha/01.png)
+    ![App Service dağıtma veya yükseltme](media/app-service-deploy-ha/01.png)
 
-3. Microsoft lisans koşulları kabul edin ve tıklayın **sonraki**.
+3. Microsoft lisans koşulları 'nı kabul edin ve **İleri**' ye tıklayın.
 
-    ![Microsoft lisans koşulları](media/app-service-deploy-ha/02.png)
+    ![App Service Microsoft Lisanslama Koşulları](media/app-service-deploy-ha/02.png)
 
-4. Microsoft olmayan lisans koşullarını kabul edin ve tıklayın **sonraki**.
+4. Microsoft dışı lisans koşullarını kabul edin ve **İleri**' ye tıklayın.
 
-    ![Microsoft olmayan lisans koşulları](media/app-service-deploy-ha/03.png)
+    ![App Service Microsoft dışı lisans koşulları](media/app-service-deploy-ha/03.png)
 
-5. App Service, Azure Stack ortamınıza bulut uç noktası yapılandırmasını sağlar.
+5. Azure Stack ortamınız için App Service bulut uç noktası yapılandırmasını sağlayın.
 
-    ![App Service bulut uç noktası yapılandırması](media/app-service-deploy-ha/04.png)
+    ![App Service üzerinde App Service bulut uç noktası yapılandırması](media/app-service-deploy-ha/04.png)
 
-6. **Connect** Azure Stack aboneliğine yükleme ve konumu seçin. 
+6. Yükleme için kullanılacak Azure Stack aboneliğine **bağlanın** ve konumu seçin. 
 
-    ![Azure Stack aboneliğine bağlanma](media/app-service-deploy-ha/05.png)
+    ![App Service Azure Stack aboneliğine bağlanma](media/app-service-deploy-ha/05.png)
 
-7. Seçin **mevcut bir VNet ve alt ağları kullan** ve **kaynak grubu adı** yüksek oranda kullanılabilir bir şablonu dağıtmak için kullanılan kaynak grubu için.<br><br>Ardından, şablon dağıtımının bir parçası oluşturduğunuz sanal ağı seçin ve ardından açılır liste seçeneklerinden uygun rolü alt ağları seçin. 
+7. Yüksek oranda kullanılabilir şablonu dağıtmak için kullanılan kaynak grubu için **mevcut VNET ve alt ağları** ve **kaynak grubu adını** kullan ' ı seçin.<br><br>Ardından, şablon dağıtımının bir parçası olarak oluşturulan sanal ağı seçin ve ardından aşağı açılan liste seçeneklerinden uygun rol alt ağlarını seçin. 
 
-    ![Vnet seçimi](media/app-service-deploy-ha/06.png)
+    ![App Service sanal ağ seçimi](media/app-service-deploy-ha/06.png)
 
-8. Daha önce kaydedilen şablon dosya paylaşım yolu ve dosya paylaşımı sahibi parametrelerini bilgilerini çıkarır sağlar. İşiniz bittiğinde tıklayın **sonraki**.
+8. Dosya paylaşma yolu ve dosya paylaşımının sahibi parametreleri için önceden kaydedilen şablon çıkışları bilgilerini sağlayın. İşiniz bittiğinde **İleri**' ye tıklayın.
 
-    ![Dosya Paylaşımı çıkış bilgileri](media/app-service-deploy-ha/07.png)
+    ![App Service dosya paylaşma çıkış bilgileri](media/app-service-deploy-ha/07.png)
 
-9. App Service yüklemek için kullanılan makine App Service dosya paylaşımı barındırmak için kullanılan dosya sunucusu olarak aynı VNet üzerinde bulunmadığından adını çözümlemek mümkün olmayacaktır. **Bu beklenen bir davranıştır**.<br><br>Dosya Paylaşımı için UNC yolu ve hesap bilgilerini girdiğiniz bilgilerin doğru olduğundan emin olun ve basın **Evet** App Service yüklemeye devam etmek için uyarı iletişim kutusunda.
+9. App Service yüklemek için kullanılan makine, App Service dosya paylaşımının barındırıldığında kullanılan dosya sunucusuyla aynı VNet üzerinde bulunmadığından, adı çözeyükleyemezsiniz. **Bu hata beklenen davranıştır**.<br><br>Dosya paylaşımının UNC yolu ve hesap bilgileri için girilen bilgisinin doğru olduğundan emin olun. Sonra App Service yüklemeye devam etmek için uyarı iletişim kutusunda **Evet** ' e basın.
 
-    ![Beklenen hata iletişim kutusu](media/app-service-deploy-ha/08.png)
+    ![App Service için beklenen hata iletişim kutusu](media/app-service-deploy-ha/08.png)
 
-    Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-    - Kaynak: Tüm
+    Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, giden bir güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağı ve dosya sunucusu arasında SMB trafiğine izin vermez. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+    - Kaynak: Any
     - Kaynak bağlantı noktası aralığı: *
-    - Hedef: IP Adresleri
-    - Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
+    - Hedefine IP Adresleri
+    - Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
     - Hedef bağlantı noktası aralığı: 445
     - Protokol: TCP
-    - Eylem: İzin Ver
-    - Önceliği: 700
-    - Ad: Outbound_Allow_SMB445
+    - Eylem: Allow
+    - Priority 700
+    - Adı: Outbound_Allow_SMB445
 
-10. Identity Application kimliği ve yolunu ve kimlik sertifikası için parola sağlayın ve tıklayın **sonraki**:
-    - Uygulama Kimliği sertifikası (biçimi **sso.appservice.local.azurestack.external.pfx**)
-    - Azure Resource Manager kök sertifika (**AzureStackCertificationAuthority.cer**)
+10. Kimlik sertifikalarına kimlik uygulama KIMLIĞINI ve yolu ve parolaları sağlayın ve **İleri**' ye tıklayın:
+    - Kimlik uygulama sertifikası ( **SSO. appservice. Local. azurestack. external. pfx**biçiminde)
+    - Azure Resource Manager kök sertifika (**Azurestackcertificationauthority. cer**)
 
-    ![Kimliği uygulama sertifikası ve kök sertifikası](media/app-service-deploy-ha/008.png)
+    ![App Service KIMLIK uygulama sertifikası ve kök sertifikası](media/app-service-deploy-ha/008.png)
 
-10. Ardından, aşağıdaki sertifikalar için gerekli kalan bilgileri sağlayın ve tıklayın **sonraki**:
-    - Varsayılan Azure Stack SSL sertifikası (biçimi **_.appservice.local.azurestack.external.pfx**)
-    - API SSL sertifikası (biçimi **api.appservice.local.azurestack.external.pfx**)
-    - Yayımcı sertifikası (biçiminde **ftp.appservice.local.azurestack.external.pfx**) 
+11. Ardından, aşağıdaki sertifikalar için kalan gerekli bilgileri sağlayın ve **İleri**' ye tıklayın:
+    - Varsayılan Azure Stack SSL sertifikası ( **_. appservice. Local. azurestack. external. pfx**biçiminde)
+    - API SSL sertifikası ( **API. appservice. Local. azurestack. external. pfx**biçiminde)
+    - Yayımcı sertifikası ( **FTP. appservice. Local. azurestack. external. pfx**biçiminde) 
 
-    ![Ek yapılandırma sertifikaları](media/app-service-deploy-ha/09.png)
+    ![App Service ek yapılandırma sertifikaları](media/app-service-deploy-ha/09.png)
 
-11. Yüksek kullanılabilirlik şablon dağıtım çıkışı gelen SQL Server bağlantı bilgilerini kullanarak SQL Server bağlantı bilgileri sağlayın:
+12. Yüksek kullanılabilirlik şablonu dağıtım çıktılarından SQL Server bağlantı bilgilerini kullanarak SQL Server bağlantı bilgilerini girin:
 
-    ![SQL Server bağlantı bilgileri](media/app-service-deploy-ha/10.png)
+    ![App Service bağlantı bilgilerini SQL Server](media/app-service-deploy-ha/10.png)
 
-12. App Service yüklemek için kullanılan makine aynı sanal ağa App Service veritabanlarını barındırmak için kullanılan SQL sunucusu üzerinde bulunmadığından adını çözümlemek mümkün olmayacaktır.  **Bu beklenen bir davranıştır**.<br><br>SQL Server adı ve hesap bilgilerini için girilen bilgilerin doğru olduğundan emin olun ve basın **Evet** App Service yüklemeye devam etmek için. **İleri**’ye tıklayın.
+13. App Service yüklemek için kullanılan makine, App Service veritabanlarını barındırmak için kullanılan SQL Server ile aynı VNet üzerinde bulunmadığından, adı gidereyükleyemezsiniz.  **Bu beklenen davranıştır**.<br><br>SQL Server adı ve hesap bilgileri için girilen bilgilerinizin doğru olduğundan emin olun ve App Service yüklemeye devam etmek için **Evet** ' e basın.           **İleri**'ye tıklayın.
 
-    ![SQL Server bağlantı bilgileri](media/app-service-deploy-ha/11.png)
+    ![App Service bağlantı bilgilerini SQL Server](media/app-service-deploy-ha/11.png)
 
-13. Varsayılan rol yapılandırma değerleri kabul edin veya önerilen değerlerin değiştirip'ı **sonraki**.<br><br>App Service altyapısını rol örnekleri için varsayılan değerleri için yüksek oranda kullanılabilir yapılandırmalara aşağıdaki gibi değiştirilmesi öneririz:
+14. Varsayılan rol yapılandırma değerlerini kabul edin veya önerilen değerlere değiştirin ve **İleri**' ye tıklayın.<br><br>App Service altyapısı rol örnekleri için varsayılan değerlerin, yüksek kullanılabilirliğe sahip yapılandırmalarda aşağıdaki şekilde değiştirilmesini öneririz:
 
-    |Rol|Varsayılan|Yüksek oranda kullanılabilir bir öneri|
+    |Role|Varsayılan|Yüksek oranda kullanılabilir öneri|
     |-----|-----|-----|
     |Denetleyici rolü|2|2|
-    |Yönetim rolü|1|3|
-    |Yayımcı rolü|1|3|
-    |FrontEnd rolü|1|3|
-    |Paylaşılan çalışan rolü|1|10|
+    |Yönetim Rolü|1\.|3|
+    |Yayımcı rolü|1\.|3|
+    |FrontEnd Rolü|1\.|3|
+    |Paylaşılan çalışan rolü|1\.|10|
     |     |     |     |
 
-    ![Altyapı rol örneği değerleri](media/app-service-deploy-ha/12.png)
+    ![App Service altyapı rolü örnek değerleri](media/app-service-deploy-ha/12.png)
 
     > [!NOTE]
-    > Bu varsayılan değerlerinin değiştirilmesi bu tutoral artışlar App Service'ı yüklemeye yönelik donanım gereksinimleri önerilir. Toplam 26 çekirdek ve 46,592 MB RAM 15 VM'ler için varsayılan 18 çekirdek ve 32.256 MB RAM yerine önerilen 21 Vm'leri desteklemek için gereklidir.
+    > Varsayılan değerlerden bu tutoral için önerilen olarak değiştirilmesi, App Service yüklemek için donanım gereksinimlerini arttırır. 15 VM için varsayılan 18 çekirdek ve 32.256 MB RAM yerine önerilen 21 VM 'yi desteklemek için toplam 26 çekirdek ve 46.592 MB RAM gereklidir.
 
-14. App Service altyapısı Vm'leri yüklemek için kullanılacak platform görüntüsünü seçin ve tıklayın **sonraki**:
+15. App Service altyapısı VM 'lerini yüklemek için kullanılacak platform görüntüsünü seçin ve **İleri**' ye tıklayın:
 
-    ![Platform görüntü seçimi](media/app-service-deploy-ha/13.png)
+    ![App Service platform görüntüsü seçimi](media/app-service-deploy-ha/13.png)
 
-15. App Service, kullanılması ve altyapı rolü kimlik bilgilerini sağlayın **sonraki**:
+16. Kullanılacak App Service altyapı rolü kimlik bilgileri sağlayın ve **İleri**' ye tıklayın:
 
-    ![Altyapı rolü kimlik bilgileri](media/app-service-deploy-ha/14.png)
+    ![App Service 'de altyapı rolü kimlik bilgileri](media/app-service-deploy-ha/14.png)
 
-16. ' A tıklayın ve App Service dağıtmak için kullanılacak bilgilerin **sonraki** dağıtımına başlamak için. 
+17. App Service dağıtmak için kullanılacak bilgileri gözden geçirin ve dağıtıma başlamak için **İleri** ' ye tıklayın.
 
-    ![Yükleme özetini gözden geçirme](media/app-service-deploy-ha/15.png)
+    ![App Service yükleme özetini gözden geçirin](media/app-service-deploy-ha/15.png)
 
-17. App Service dağıtımın ilerleme durumunu gözden geçirin. Bu, üzerinde belirli bir dağıtım yapılandırması ve donanım bağlı olarak bir saat sürebilir. Yükleyici başarıyla tamamlandıktan sonra Seç **çıkış**.
+18. App Service dağıtımı ilerlemesini gözden geçirin. Bu dağıtım, belirli dağıtım yapılandırmanıza ve donanımınıza bağlı olarak bir saatten fazla sürebilir. Yükleyici başarıyla tamamlandıktan sonra **Çıkış**' ı seçin.
 
-    ![Kurulum Tamamlandı](media/app-service-deploy-ha/16.png)
+    ![App Service için Kurulum tamamlanmıştır](media/app-service-deploy-ha/16.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleme](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) bir SQL her zaman şirket örneği ile App Service kaynak sağlayıcısı sağlamışsanız. Veritabanı yük devretme durumunda hizmet kaybını önlemek için veritabanlarını eşitleyin.
+Bir SQL Always on örneğiyle App Service kaynak sağlayıcısı sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleyin](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) . Veritabanı yük devretmesi durumunda herhangi bir hizmet kaybını engellemek için veritabanlarını eşitler.
 
-[App Service ölçeğinizi](azure-stack-app-service-add-worker-roles.md). Ortamınızda beklenen talebi karşılamak için ek App Service altyapısını rol çalışanları eklemeniz gerekebilir. Varsayılan olarak, Azure Stack üzerinde App Service ücretsiz ve paylaşılan çalışan katmanları destekler. Diğer çalışan katmanları eklemek için daha fazla çalışan rolü eklemeniz gerekir.
+[Ölçeği genişletme App Service](azure-stack-app-service-add-worker-roles.md). Ortamınızdaki beklenen uygulama taleplerini karşılamak için ek App Service altyapı rolü çalışanları eklemeniz gerekebilir. Varsayılan olarak, Azure Stack App Service ücretsiz ve paylaşılan çalışan katmanlarını destekler. Diğer çalışan katmanlarını eklemek için daha fazla çalışan rolü eklemeniz gerekir.
 
-[Dağıtım kaynaklarını yapılandırma](azure-stack-app-service-configure-deployment-sources.md). Ek yapılandırma, GitHub, BitBucket, OneDrive ve DropBox gibi birden çok kaynak denetim sağlayıcılarından isteğe bağlı dağıtım desteklemek için gereklidir.
+[Dağıtım kaynaklarını yapılandırın](azure-stack-app-service-configure-deployment-sources.md). GitHub, BitBucket, OneDrive ve DropBox gibi birden çok kaynak denetimi sağlayıcısından isteğe bağlı dağıtımı desteklemek için ek yapılandırma gerekir.
 
-[App Service yedekleme](app-service-back-up.md). Başarılı bir şekilde dağıtma ve App Service'ı yapılandırdıktan sonra veri kaybını önlemeye ve kurtarma işlemleri sırasında gereksiz hizmet kapalı kalma süresini önlemek için olağanüstü durum kurtarma için gerekli tüm bileşenleri yedeklenir emin olmalısınız.
+[Yedekleme App Service](app-service-back-up.md). App Service başarıyla dağıttıktan ve yapılandırıldıktan sonra, olağanüstü durum kurtarma için gerekli tüm bileşenlerin yedeklendiğinden emin olmanız gerekir. Temel bileşenlerinizi yedeklemek, kurtarma işlemleri sırasında veri kaybını ve gereksiz hizmet kesintilerini önlemeye yardımcı olur.
