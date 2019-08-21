@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/20/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 24fc0f7993001ce95a21e175c84f37d755a5ce6c
-ms.sourcegitcommit: ec38ec569ad2193369c438f55e5c190aa5f0efd5
+ms.openlocfilehash: b9e1e9a1cdd0afe18a5395c99fb2eef932791667
+ms.sourcegitcommit: 1a8ebd8103608b5ee9e804d7015eefe05ef55185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68956594"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69643845"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Market öğesi oluşturma ve yayımlama
 
@@ -55,7 +55,7 @@ ms.locfileid: "68956594"
    >
    >
 
-8. **Manifest. JSON** dosyasında **ad** ' ı Market öğesinin adıyla değiştirin. Ayrıca, **yayımcıyı** adınız veya şirketiniz olarak değiştirin.
+8. **Manifest. JSON** dosyasında **ad** ' ı Market öğesinin adıyla değiştirin. Ayrıca, **yayımcıyı** adınız veya şirketiniz olarak değiştirin. Görüntüyü yayımlamadan önce, manifest. json dosyasını güncelleştirin ve şu satırı güncelleştirin: "ad": "xxx". Her görüntü sürümü için farklı bir ad kullandığınızdan emin olun.
 9. **Yapıtlar**bölümünde **adı** ve **yolu** , eklediğiniz Azure Resource Manager şablonu için doğru bilgiler olarak değiştirin:
 
    ```json
@@ -131,15 +131,15 @@ ms.locfileid: "68956594"
 
 ### <a name="identity-information"></a>Kimlik bilgileri
 
-| Ad | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
-| Ad |X |Dize |[A-Za-z0-9]+ | |
+| Name |X |Dize |[A-Za-z0-9]+ | |
 | Yayımcı |X |Dize |[A-Za-z0-9]+ | |
 | Version |X |Dize |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Meta Veriler
 
-| Ad | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |80 karakter önerisi |Portal 80 karakterden uzunsa öğe adınızı doğru görüntülenmeyebilir. |
 | PublisherDisplayName |X |Dize |30 karakterlik öneri |Portal, 30 karakterden uzunsa Yayımcı adınızı doğru şekilde görüntülemeyebilir. |
@@ -152,7 +152,7 @@ ms.locfileid: "68956594"
 
 Market aşağıdaki simgeleri kullanır:
 
-| Ad | Genişlik | Yükseklik | Notlar |
+| Name | Genişlik | Yükseklik | Notlar |
 | --- | --- | --- | --- |
 | Geniş |255 px |115 piksel |Her zaman gerekli |
 | Büyük |115 piksel |115 piksel |Her zaman gerekli |
@@ -168,7 +168,7 @@ Her Market öğesi, öğenin Portal Kullanıcı arabiriminde nerede göründüğ
 
 Her Market öğesi, ek içeriğe yönelik çeşitli bağlantılar içerebilir. Bağlantılar adların ve URI 'lerin listesi olarak belirtilir:
 
-| Ad | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |En fazla 64 karakter. | |
 | Uri |X |URI | | |
@@ -177,7 +177,7 @@ Her Market öğesi, ek içeriğe yönelik çeşitli bağlantılar içerebilir. B
 
 Market yazarları, önceki meta verilere ek olarak aşağıdaki biçimde özel anahtar/değer çifti verileri sağlayabilir:
 
-| Ad | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |En fazla 25 karakter. | |
 | Value |X |Dize |En fazla 30 karakter. | |
