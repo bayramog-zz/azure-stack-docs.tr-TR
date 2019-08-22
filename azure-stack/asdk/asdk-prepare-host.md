@@ -1,6 +1,6 @@
 ---
-title: Azure Stack geliştirme Seti'ni (ASDK) ana bilgisayar hazırlama | Microsoft Docs
-description: Azure Stack geliştirme Seti'ni (ASDK) ana bilgisayar ASDK yüklemesine hazırlanmak açıklar.
+title: Azure Stack Geliştirme Seti (ASDK) konak bilgisayarı hazırlama | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) ana bilgisayarının, ASDK yüklemesi için nasıl hazırlanacağını açıklar.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -12,28 +12,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/21/2019
+ms.date: 08/20/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 3352df80a64bb259320a49729e42c02cb19fca58
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.lastreviewed: 08/20/2019
+ms.openlocfilehash: 291042e0a7af78ed2431c901901e7e44b1f05de1
+ms.sourcegitcommit: fc7da38321736e952b2cc6d5d07f276d095dc8d1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267601"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69887130"
 ---
-# <a name="prepare-the-asdk-host-computer"></a>ASDK ana bilgisayarını hazırlayın
-Ana bilgisayarda ASDK yükleyebilmek için önce ASDK konak yükleme için hazırlıklı olmalıdır. Geliştirme Seti ana bilgisayar hazırlandığınızda ASDK dağıtımına başlamak için CloudBuilder.vhdx sanal makine sabit sürücüden önyükleme yapmaz.
+# <a name="prepare-the-asdk-host-computer"></a>ASDK ana bilgisayarını hazırlama
+Ana bilgisayara ASDK yüklemeden önce, ASDK konağının yüklenmek üzere hazırlanmalıdır. Geliştirme seti ana bilgisayar bilgisayarı hazırlandığında, ASDK dağıtımına başlamak için CloudBuilder. VHDX sanal makinesi sabit sürücüsünden önyükleme yapılır.
 
-## <a name="prepare-the-development-kit-host-computer"></a>Geliştirme Seti ana bilgisayarını hazırlayın
-Ana bilgisayarda ASDK yükleyebilmek için önce ASDK ana bilgisayar ortamı hazırlanmalıdır.
-1. Geliştirme Seti ana bilgisayarınızda yerel yönetici olarak oturum açın.
-2. CloudBuilder.vhdx dosyayı C:\ sürücüsüne (C:\CloudBuilder.vhdx) kök dizinine taşındığından emin olun.
-3. Gelen geliştirme seti yükleyicisini (installer.ps1 asdk) indirmek için aşağıdaki betiği çalıştırın [Azure Stack GitHub araçları depo](https://github.com/Azure/AzureStack-Tools) için **C:\AzureStack_Installer** klasöründe, Geliştirme Seti ana bilgisayarı:
+## <a name="prepare-the-development-kit-host-computer"></a>Geliştirme Seti konak bilgisayarını hazırlama
+Ana bilgisayara ASDK yüklemeden önce, ASDK ana bilgisayar ortamı hazırlanmalıdır.
+1. Geliştirme seti ana bilgisayarınızda yerel yönetici olarak oturum açın.
+2. CloudBuilder. vhdx dosyasının C:\ ' un köküne taşındığından emin olun. Sürücü (C:\cloudbuilder.asp. vhdx).
+3. [Azure Stack GitHub araçları deposundan](https://github.com/Azure/AzureStack-Tools) geliştirme seti yükleyici dosyasını (asdk-installer. ps1) geliştirme seti ana bilgisayarınızın **C:\azurestack_ınstaller** klasörüne indirmek için aşağıdaki betiği çalıştırın:
 
    > [!IMPORTANT]
-   > ASDK yüklediğiniz her zaman asdk installer.ps1 dosyayı indirmek emin olun. Bu betik için sık sık değişiklik ve her ASDK dağıtımı için en güncel sürümü kullanılmalıdır. Betik daha eski sürümleri, en son sürüm ile çalışmayabilir.
+   > Asdk-installer. ps1 dosyasını, ASDK 'yi her yüklediğinizde indirdiğinizden emin olun. Bu betikte sık yapılan değişiklikler yapıldı ve en güncel sürüm her bir ASDK dağıtımı için kullanılmalıdır. Betiğin eski sürümleri en güncel sürümle çalışmayabilir.
 
    ```powershell
    # Variables
@@ -47,32 +47,41 @@ Ana bilgisayarda ASDK yükleyebilmek için önce ASDK ana bilgisayar ortamı haz
    Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
    ```
 
-4. Yükseltilmiş bir PowerShell konsolundan başlatın **C:\AzureStack_Installer\asdk-installer.ps1** betik ve ardından **hazırlama ortamı**.
+4. Yükseltilmiş bir PowerShell konsolundan **C:\azurestack_ınstaller\asdk-Installer.exe** ' ı başlatın ve ardından **ortamı hazırla**' ya tıklayın.
 
-    ![](media/asdk-prepare-host/1.PNG) 
+    ![Ortam hazırlama ekran görüntüsü](media/asdk-prepare-host/1.PNG) 
 
-5. Üzerinde **seçin Cloudbuilder vhdx** yükleyici, bulun ve seçin sayfasında **cloudbuilder.vhdx** yüklediğiniz ve açtığınız içinde dosya [önceki adımları](asdk-download.md). Bu sayfada, ayrıca, isteğe bağlı olarak, etkinleştirebilirsiniz **sürücüleri ekleme** Geliştirme Seti ana bilgisayara ek sürücüler eklemeniz gerekiyorsa onay kutusu. **İleri**’ye tıklayın.  
+5. Yükleyicinin **cloudbuilder VHDX seçin** sayfasında, [önceki adımlarda](asdk-download.md)indirdiğiniz ve ayıkladığınız **cloudbuilder. vhdx** dosyasına gidin ve bu dosyayı seçin. Bu sayfada Ayrıca, geliştirme seti ana bilgisayarına ek sürücüler eklemeniz gerekiyorsa, isteğe bağlı olarak **Sürücü Ekle** onay kutusunu da etkinleştirebilirsiniz. **İleri**'ye tıklayın.  
 
-    ![](media/asdk-prepare-host/2.PNG)
+    ![Cloudbuilder. vhdx seçme ekran görüntüsü](media/asdk-prepare-host/2.PNG)
 
-6. Üzerinde **isteğe bağlı ayarlar** sayfasında, yerel yöneticinizden hesap Geliştirme Seti konak bilgisayar için bilgi ve ardından **sonraki**.<br><br>Bu adımda yerel yönetici kimlik bilgileri sağlamazsanız, Geliştirme Seti ayarlama bir parçası olarak bilgisayar yeniden başlatıldıktan sonra doğrudan ya da konağa KVM erişim gerekir.
+6. **Isteğe bağlı ayarlar** sayfasında, geliştirme seti ana bilgisayarı için yerel yönetici hesabı bilgilerini belirtin ve ardından **İleri**' ye tıklayın.<br><br>Bu adımda Yerel yönetici kimlik bilgilerini sağlamazsanız, geliştirme setini ayarlamanın bir parçası olarak bilgisayar yeniden başlatıldıktan sonra doğrudan veya KVM 'ye erişmeniz gerekir.
 
-   ![](media/asdk-prepare-host/3.PNG)
+   ![Isteğe bağlı ayarların ekran görüntüsü](media/asdk-prepare-host/3.PNG)
 
-    Aşağıdaki isteğe bağlı ayarları için değerleri de sağlayabilirsiniz:
-    - **ComputerName**: Bu seçenek, Geliştirme Seti konak adını ayarlar. Adı, FQDN gereksinimlere uygun olmalıdır ve 15 karakter veya daha az olmalıdır. Varsayılan Windows tarafından oluşturulan bir rastgele bir bilgisayar adıdır.
-    - **Statik IP yapılandırması**: Dağıtımınızı statik bir IP adresi kullanacak şekilde ayarlar. Aksi takdirde, yükleyici cloudbuilder.vhdx yeniden başlatıldığında, ağ arabirimleri DHCP ile yapılandırılır. Bir statik IP yapılandırması kullanmayı seçerseniz, burada da gerekir ek seçenekler görüntülenir:
-      - Bir ağ bağdaştırıcısını seçin. Tıklamadan önce bağdaştırıcısına bağlanabilir olduğundan emin olun **sonraki**.
-      - Emin olun görüntülenen **IP adresi**, **ağ geçidi**, ve **DNS** değerlerin doğru olduğundan ve ardından **sonraki**.
-13. Tıklayın **sonraki** hazırlama işlemini başlatmak için.
-14. Hazırlık zaman gösterdiği **tamamlandı**, tıklayın **sonraki**.
+    Aşağıdaki isteğe bağlı ayarlar için de değerler sağlayabilirsiniz:
+    - **ComputerName**: Bu seçenek, geliştirme seti konağının adını ayarlar. Ad, FQDN gereksinimleriyle uyumlu olmalıdır ve 15 karakter uzunluğunda veya daha az olmalıdır. Varsayılan değer, Windows tarafından oluşturulan rastgele bir bilgisayar adıdır.
+    - **STATIK IP yapılandırması**: Dağıtımınızı statik bir IP adresi kullanacak şekilde ayarlar. Aksi takdirde, yükleyici cloudbuilder. vhdx ' de yeniden başlatıldığında, ağ arabirimleri DHCP ile yapılandırılır. Statik IP yapılandırması kullanmayı seçerseniz, ek seçenekler de şunları yapmanız gereken yerde görüntülenir:
+      - Bir ağ bağdaştırıcısı seçin. **İleri**' ye tıklamadan önce bağdaştırıcıya bağlanabildiğinizden emin olun.
 
-    ![](media/asdk-prepare-host/4.PNG)
+        ![Ağ bağdaştırıcısı ayarlarının ekran görüntüsü](media/asdk-prepare-host/step-four-network-adapter.png)
 
-15. Tıklayın **şimdi yeniden Başlat** Geliştirme Seti ana bilgisayar cloudbuilder.vhdx önyükleme ve [dağıtım işlemine devam etmek](asdk-install.md).
+      - Görüntülenen **IP adresi**, **ağ geçidi**ve **DNS** değerlerinin doğru olduğundan emin olun, geçerli bir **saat sunucusu IP** adresi sağlayın ve ardından **İleri**' ye tıklayın.
 
-    ![](media/asdk-prepare-host/5.PNG)
+        >[!TIP]
+        >Bir saat sunucusu IP adresi bulmak için [ntppool.org](https://www.ntppool.org/) veya PING Time.Windows.com adresini ziyaret edin. 
+
+        ![IP yapılandırma ayarlarının ekran görüntüsü](media/asdk-prepare-host/step-five-host-ip-config.png)
+
+7. Hazırlama işlemini başlatmak için **İleri** ' ye tıklayın.
+8. Hazırlık **tamamlandığında**, **İleri**' ye tıklayın.
+
+    ![Tamamlanan ekranın ekran görüntüsü](media/asdk-prepare-host/4.PNG)
+
+9. Geliştirme seti ana bilgisayarını cloudbuilder. vhdx ' e önyüklemek ve [dağıtım işlemine devam](asdk-install.md)etmek Için **Şimdi yeniden Başlat** ' a tıklayın.
+
+    ![Şimdi yeniden başlatmanın ekran görüntüsü](media/asdk-prepare-host/5.PNG)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[ASDK yükleyin](asdk-install.md)
+[ASDK 'yi yükler](asdk-install.md)

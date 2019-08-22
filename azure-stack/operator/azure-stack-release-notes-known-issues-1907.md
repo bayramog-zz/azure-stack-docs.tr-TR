@@ -16,12 +16,12 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 41d07532960776cd5ed9312007877489e9ebbf20
-ms.sourcegitcommit: 83d9dbecd7334f37862e47ca028a50f8d7dafe2d
+ms.openlocfilehash: 0b305f07344540555b444017a04c1002bb8a08a8
+ms.sourcegitcommit: 250689d6d09acc677bf59de76510d5d5f1c6190e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68738336"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69896334"
 ---
 # <a name="azure-stack-1907-known-issues"></a>Azure Stack 1907 bilinen sorunlar
 
@@ -107,6 +107,12 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Kullanıcı portalında, **Bağlantılar** dikey penceresinde **VPN sorun giderici**adlı bir özellik gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
 - Oluşum Common
+
+### <a name="network-connection-type"></a>Ağ bağlantısı türü
+
+- Uygunsa Bu sorun, 1906 veya 1907 ortamları için geçerlidir. 
+- Neden: Kullanıcı portalında, **AddConnection** dikey penceresinde **VNET-VNET**' i kullanma seçeneği gösterilmektedir. Bu özellik şu anda Azure Stack desteklenmiyor. 
+- Oluşum Common 
 
 #### <a name="documentation"></a>Belgeler
 
