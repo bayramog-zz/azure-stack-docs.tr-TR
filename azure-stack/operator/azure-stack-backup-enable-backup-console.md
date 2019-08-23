@@ -16,12 +16,12 @@ ms.date: 08/21/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
-ms.openlocfilehash: d3ac538109f48e38f6483cd1ecae4896f1d3e635
-ms.sourcegitcommit: 250689d6d09acc677bf59de76510d5d5f1c6190e
+ms.openlocfilehash: 84dd8fdc91a796a94df71926788e62d98b5ef1ae
+ms.sourcegitcommit: 22814dd79664206a260ba0160ed3ae2612e33495
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896376"
+ms.locfileid: "69976179"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Yönetim portalından Azure Stack için yedeklemeyi etkinleştir
 Azure Stack altyapı yedeklemeleri oluşturabilmesi için yönetim portalı aracılığıyla Infrastructure Backup hizmetini etkinleştirin. Donanım ortağı, bu yedeklemeleri, çok [zararlı bir hata](./azure-stack-backup-recover-data.md)durumunda bulut kurtarma kullanarak ortamınızı geri yüklemek için kullanabilir. Bulut kurtarma işleminin amacı, Kurtarma tamamlandıktan sonra işleçlerinizin ve kullanıcılarınızın portala oturum açabilmesini sağlamaktır. Kullanıcıların abonelikleri, rol tabanlı erişim izinleri ve rolleri, orijinal planlar, teklifler ve daha önce tanımlanan işlem, depolama, ağ kotaları ve Key Vault gizli dizileri dahil, geri yüklenir.
@@ -53,7 +53,7 @@ Yöneticiler ve kullanıcılar, IaaS ve PaaS kaynaklarını altyapı yedekleme i
     > [!Note]  
     > Saklama süresinden daha eski olan yedeklemeleri arşivlemek istiyorsanız, Scheduler 'ın yedekleri silmesi için önce dosyaları yedeklediğinizden emin olun. Yedekleme saklama süresini (örn. 7 günden 5 güne kadar) azaldıysanız Zamanlayıcı, yeni saklama süresinden daha eski tüm yedeklemeleri siler. Bu değeri güncelleştirmeden önce, yedeklemelerin silindiği için Tamam olduğunuzdan emin olun. 
 
-9. Şifreleme ayarları ' nda, Certificate. cer dosya kutusunda bir sertifika belirtin. Yedekleme dosyaları, sertifikadaki bu ortak anahtar kullanılarak şifrelenir. Yedekleme ayarlarını yapılandırırken yalnızca ortak anahtar bölümünü içeren bir sertifika sağlamalısınız. Bu sertifikayı ilk kez ayarladıktan veya sertifikayı gelecekte döndürdüğünüzde, yalnızca sertifikanın parmak izini görüntüleyebilirsiniz. Karşıya yüklenen sertifika dosyasını indiremez veya görüntüleyemezsiniz. Sertifika dosyasını oluşturmak için, ortak ve özel anahtarlarla kendinden imzalı bir sertifika oluşturmak ve yalnızca ortak anahtar bölümüyle bir sertifikayı dışarı aktarmak için aşağıdaki PowerShell komutunu çalıştırın. Sertifikayı yönetici portalından erişilebilen her yere koyabilirsiniz.
+9. Şifreleme ayarları ' nda, Certificate. cer dosya kutusuna bir sertifika sağlayın. Yedekleme dosyaları, sertifikadaki bu ortak anahtar kullanılarak şifrelenir. Yedekleme ayarlarını yapılandırırken yalnızca ortak anahtar bölümünü içeren bir sertifika sağlamalısınız. Bu sertifikayı ilk kez ayarladıktan veya sertifikayı gelecekte döndürdüğünüzde, yalnızca sertifikanın parmak izini görüntüleyebilirsiniz. Karşıya yüklenen sertifika dosyasını indiremez veya görüntüleyemezsiniz. Sertifika dosyasını oluşturmak için, ortak ve özel anahtarlarla kendinden imzalı bir sertifika oluşturmak ve yalnızca ortak anahtar bölümüyle bir sertifikayı dışarı aktarmak için aşağıdaki PowerShell komutunu çalıştırın. Sertifikayı yönetici portalından erişilebilen her yere kaydedebilirsiniz.
 
     ```powershell
 
