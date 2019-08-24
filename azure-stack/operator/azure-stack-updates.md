@@ -1,6 +1,6 @@
 ---
-title: Azure Stack genel bakış 'da güncelleştirmeleri yönetme | Microsoft Docs
-description: Azure Stack tümleşik sistemler için güncelleştirme yönetimi hakkında bilgi edinin.
+title: Azure Stack güncelleştirmeleri yönetme | Microsoft Docs
+description: Azure Stack güncelleştirmeleri yönetmeyi öğrenin
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,31 +11,89 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/23/2019
 ms.author: mabrigg
-ms.lastreviewed: 04/04/2019
-ms.reviewer: justini
-ms.openlocfilehash: a5fb41e63a8cd9e5f57e4476b1b7c23738f116bb
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.lastreviewed: 08/23/2019
+ms.reviewer: ppacent
+ms.openlocfilehash: 0cd83c7a16ef56e3432de7dcba39cc11ca20a379
+ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418008"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70008462"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack genel bakış 'da güncelleştirmeleri yönetme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Azure Stack tümleşik sistemler için Microsoft Update paketleri genellikle her ay serbest. Kuruluşunuza ulaşacak güncelleştirme bildirimleri sağlamak için, özgün ekipman üreticinizden (OEM) belirli bildirim işlemleri hakkında sorun. Bu belge kitaplığını, etkin destek 'teki yayınlar hakkında bilgi için **genel bakış** > **sürüm notları** altına da iade edebilirsiniz.
+Azure Stack tam ve hızlı güncelleştirme, düzeltme ve özgün ekipman üreticisi (OEM) paket güncelleştirmelerini uygulayarak Azure Stack güncel tutmanız gerekir. En son güncelleştirmelerle Azure Stack güncel tut, sisteminize en son güvenlik düzeltme eklerini, ürün güncelleştirmelerini ve sürücü ve bellenim güncelleştirmelerini uygular. Bu makalede, farklı güncelleştirme paketlerine, bu sürüm paketlerine yönelik temposunda, geçerli yayınlar hakkında bilgi bulacağınız ve genel güncelleştirme sürecinde genel bir bakış sunulmaktadır.
 
-Microsoft yazılım güncelleştirmelerinin her sürümü tek bir güncelleştirme paketi olarak paketlenmiştir. Azure Stack operatörü olarak, Azure Stack yönetim portalından güncelleştirme paketlerinin yükleme ilerlemesini içeri aktarabilir, yükleyebilir ve izleyebilirsiniz.
+> [!Note]  
+> Azure Stack güncelleştirme paketlerini Azure Stack Geliştirme Seti (ASDK) uygulayamazsınız. Güncelleştirme paketleri tümleşik sistemler için tasarlanmıştır. Bilgi için bkz. [ASDK](https://docs.microsoft.com/azure-stack/asdk/asdk-redeploy)'Yi yeniden dağıtma.
 
-Ayrıca, OEM satıcınız sürücü ve bellenim güncelleştirmeleri gibi güncelleştirmeleri de serbest bırakacaktır. Bu güncelleştirmeler satıcıya göre ayrı paketler olarak teslim edilirken, bazıları Microsoft 'tan güncelleştirme paketleriyle aynı şekilde alınır, yüklenir ve yönetilir.
+## <a name="update-package-types"></a>Güncelleştirme paketi türleri
 
-Sisteminizi destek altında tutmak için Azure Stack belirli bir sürüm düzeyine güncel tutmanız gerekir. [Azure Stack bakım ilkesini](azure-stack-servicing-policy.md)gözden geçirdiğinizden emin olun.
+Tümleşik sistemler için üç tür güncelleştirme paketi vardır:
 
-> [!NOTE]
-> Azure Stack güncelleştirme paketlerini Azure Stack Geliştirme Seti (ASDK) uygulayamazsınız. Güncelleştirme paketleri tümleşik sistemler için tasarlanmıştır. Bilgi için bkz. [ASDK](../asdk/asdk-redeploy.md)'Yi yeniden dağıtma.
+-   **Yazılım güncelleştirmelerini Azure Stack**. Microsoft, Microsoft yazılım güncelleştirme paketlerinin uçtan uca hizmet yaşam döngüsüyle sorumludur. Bu paketler, en son Windows Server güvenlik güncelleştirmelerini, güvenlik dışı güncelleştirmeleri ve Azure Stack Özellik güncelleştirmelerini içerebilir. Bu güncelleştirme paketlerini doğrudan Microsoft 'tan indirebilirsiniz.
+
+    Her güncelleştirme paketine karşılık gelen **tam** veya **hızlı**bir tür vardır. 
+ 
+    **Tam** güncelleştirme paketleri, ölçek birimindeki fiziksel ana bilgisayar işletim sistemlerini güncelleştirir ve daha büyük bir bakım penceresi gerektirir. 
+
+    **Hızlı** güncelleştirme paketlerinin kapsamı vardır ve temel alınan fiziksel ana bilgisayar işletim sistemlerini güncelleştirmez.
+
+-   **Düzeltmeler Azure Stack**. Microsoft, genellikle koruyucu veya zamana duyarlı belirli bir sorunu ele alan Azure Stack düzeltmeler sağlar. Her bir düzeltme, sorunun, nedenin ve çözümlemenin ayrıntılarını veren ilgili bir Microsoft Bilgi Bankası makalesiyle birlikte yayımlanır. Azure Stack için düzenli tam güncelleştirme paketleri gibi düzeltmeleri indirip yüklersiniz. Düzeltmeler birikimlidir ve birkaç dakika içinde yüklenebilir.
+
+-   **OEM donanımı-satıcı tarafından belirtilen güncelleştirmeler**. Azure Stack Donanım ortakları, donanımla ilgili bellenim ve sürücü güncelleştirme paketleri için uçtan uca hizmet yaşam döngüsüyle (rehberlik dahil) sorumludur. Bunlara ek olarak, Azure Stack donanım iş ortakları, donanım yaşam döngüsü konağındaki tüm yazılım ve donanımların kılavuzunu korur. OEM donanım satıcısı, bu güncelleştirme paketlerini kendi indirme sitelerinde barındırır.
+
+## <a name="when-to-update"></a>Ne zaman güncelleştirilecek
+
+Aşağıdaki temposunda üç güncelleştirme türü yayımlanır:
+
+-   **Yazılım güncelleştirmelerini Azure Stack**. Microsoft, her ay yazılım güncelleştirme paketlerini genellikle yayınlar.
+
+-   **Düzeltmeler Azure Stack**. Düzeltmeler, herhangi bir zamanda yayımlananlar zamana duyarlı yayınlardır.
+
+-   **OEM donanım satıcısı tarafından belirtilen güncelleştirmeler**. OEM donanım satıcıları güncelleştirmelerini gerektiği şekilde serbest bırakabilir.
+
+Destek almaya devam etmek için Azure Stack ortamınızı desteklenen bir Azure Stack yazılım sürümünde saklamanız gerekir. Daha fazla bilgi için bkz. [hizmet ilkesi Azure Stack](azure-stack-update-servicing-policy.md).
+
+## <a name="where-to-get-notice-of-an-update"></a>Bir güncelleştirme bildirimi nereden alınır?
+
+Güncelleştirme bildirimi, Internet bağlantınız ve güncelleştirme türü gibi birkaç faktörde değişiklik gösterir.
+
+- **Microsoft yazılım güncelleştirmeleri ve düzeltmeleri** 
+
+    Microsoft yazılım güncelleştirmeleri ve düzeltmeleri için bir güncelleştirme uyarısı, internet 'e bağlı Azure Stack örneklerine yönelik güncelleştirme dikey penceresinde görüntülenir.
+
+    Örneğiniz bağlı değilse ve her bir düzeltme sürümü hakkında bildirim almak istiyorsanız, [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/32d322a8-acae-202d-e9a9-7371dccf381b/rss) veya [atom](https://support.microsoft.com/app/content/api/content/feeds/sap/32d322a8-acae-202d-e9a9-7371dccf381b/atom) akışına abone olun.
+
+- **OEM donanım satıcısı tarafından belirtilen güncelleştirmeler**
+
+    OEM güncelleştirmeleri, üreticinize göre değişir. OEM 'nizden uygulanması gereken güncelleştirmelerin olduğunu bilmeniz için, OEM 'niz ile bir iletişim kanalı oluşturmanız gerekecektir. OEM 'Ler ve OEM güncelleştirme süreci hakkında daha fazla bilgi için bkz. [Apply Azure Stack özgün ekipman üreticisi (OEM) güncelleştirmeleri](azure-stack-update-oem.md).
+
+## <a name="update-processes"></a>Güncelleştirme süreçler
+
+Bir güncelleştirme olduğunu öğrendikten sonra, aşağıdaki adımlarla güncelleştirme uygulayın.
+
+![Azure Stack güncelleştirme işlemi](./media/azure-stack-updates/azure-stack-update-process.png)
+
+1. **Güncelleştirmeyi planlayın**.
+
+    Kullanıcılarınız üzerinde en az etkisi olması için Azure Stack güncelleştirme işlemini olabildiğince sorunsuz şekilde hazırlayın. Kullanıcılarınıza olası hizmet kesintilerinden sorumlu olarak bildirimde bulunmak ve sonra örneğinizi güncelleştirme için hazırlama adımlarını izleyin. Güncelleştirmeyi planlamak için daha fazla adım için bkz. [plan Azure Stack Update](azure-stack-update-plan.md).
+
+2. **Güncelleştirme paketini karşıya yükleyin ve hazırlayın**.
+
+    İnternet 'e bağlı Azure Stack ortamlarında, Azure Stack yazılım güncelleştirmeleri ve düzeltmeleri otomatik olarak sisteme içeri aktarılır ve güncelleştirme için hazırlanır.
+
+    İnternet bağlantısı kesilen Azure Stack ortamları ve ortamları, zayıf veya aralıklı internet bağlantısı olan ortamlarda, güncelleştirme paketleri Azure Stack Yönetici portalı aracılığıyla Azure Stack depolama alanına içeri aktarılır. Güncelleştirme paketini karşıya yükleme ve hazırlama hakkında daha fazla bilgi için, bkz. [Azure Stack güncelleştirme paketi yükleme ve hazırlama](azure-stack-update-prepare-package.md).
+
+    Tüm OEM güncelleştirme paketleri, Azure Stack sisteminizin internet bağlantısına bakılmaksızın ortamınıza el ile aktarılır. Güncelleştirme paketini içeri ve hazırlamaya yönelik diğer adımlar için, bkz. [Azure Stack güncelleştirme paketini karşıya yükleme ve hazırlama](azure-stack-update-prepare-package.md)).
+
+3. **Güncelleştirmeyi uygulayın**.
+
+    Azure Stack güncelleştirme dikey penceresini kullanarak güncelleştirmeyi uygulayın. Güncelleştirme sırasında güncelleştirme ilerlemesini izleyin ve gerekirse güncelleştirme işleminde sorun giderin. Güncelleştirmeyi planlamaya yönelik daha fazla adım için bkz. [Azure Stack güncelleştirme uygulama](azure-stack-apply-updates.md).
 
 ## <a name="the-update-resource-provider"></a>Güncelleştirme kaynak sağlayıcısı
 
@@ -43,59 +101,8 @@ Azure Stack, Microsoft yazılım güncelleştirmelerinin uygulamasını işleyen
 
 Güncelleştirmeler yüklendikten sonra, güncelleştirme işlemi Azure Stack çeşitli alt sistemleri (örneğin, fiziksel konaklar ve altyapı sanal makineleri) hedeflediğinden, üst düzey durumunu görüntüleyebilirsiniz.
 
-## <a name="plan-for-updates"></a>Güncelleştirmeleri planlayın
-
-Her türlü bakım işlemini kullanıcılara bilgilendirmenizi ve mümkünse olağan bakım pencerelerini iş dışı saatlerde zamanlamanızı kesinlikle öneririz. Bakım işlemleri, hem kiracı iş yüklerini hem de Portal işlemlerini etkileyebilir.
-
-Bakım pencereniz için planlama yaparken, Microsoft 'tan yayınlanan ve ilgili sürüm notunda çağırılan belirli güncelleştirme paketi türünü gözden geçirmeniz önemlidir. Ara sıra sonrasında her güncelleştirme paketi, karşılık gelen bir tür, **tam** veya **hızlı**olacaktır. Tam güncelleştirme paketleri, ölçek birimindeki fiziksel ana bilgisayar işletim sistemlerini güncelleştirir ve daha büyük bir bakım penceresi gerektirir. Hızlı güncelleştirme paketlerinin kapsamı vardır ve temel alınan fiziksel ana bilgisayar işletim sistemlerini güncelleştirmez.
-
-Bu güncelleştirme yüklemesi başlamadan önce çalıştırması [Test AzureStack](azure-stack-diagnostic-test.md) bulunan tüm çalışma sorunlarını çözün ve Azure Stack durumunu doğrulamak için aşağıdaki parametreleri, tüm uyarılar ve hatalar dahil olmak üzere. Ayrıca etkin Uyarıları gözden geçirin ve eylemi gerektiren tüm çözümleyin.  
-
-```powershell
-Test-AzureStack -Group UpdateReadiness
-```
-
-## <a name="using-the-update-tile-to-manage-updates"></a>Güncelleştirmeleri yönetmek için güncelleştirme kutucuğunu kullanma
-
-Güncelleştirmeleri yönetici portalından yönetirsiniz. Azure Stack işleci olarak, panoda **güncelleştirme** kutucuğunu kullanarak şunları yapabilirsiniz:
-
-- Geçerli sürüm gibi önemli bilgileri görüntüleyin.
-- Güncelleştirmeleri yükler ve ilerlemeyi izleyin.
-- Daha önce yüklenmiş güncelleştirmelerin güncelleştirme geçmişini gözden geçirin.
-- Bulutun geçerli OEM paketi sürümünü görüntüleyin.
-
-## <a name="determine-the-current-version"></a>Geçerli sürümü belirleme
-
-Güncel Azure Stack sürümünü **güncelleştirme** kutucuğunda görüntüleyebilirsiniz. Kutucuğu açmak için:
-
-1. Azure Stack Yönetici portalı ' nı açın.
-2. **Pano**seçeneğini belirleyin. **Güncelleştirme** kutucuğunda geçerli sürüm listelenir.
-
-    ![Varsayılan panoda güncelleştirme kutucuğu](./media/azure-stack-updates/image1.png)
-
-    Örneğin, bu görüntüde sürüm 1.1903.0.35.
-
-## <a name="install-updates-and-monitor-progress"></a>Güncelleştirmeleri yükler ve ilerlemeyi izleme
-
-1. Azure Stack Yönetici portalı ' nı açın.
-2. **Pano**seçeneğini belirleyin. **Güncelleştirme** kutucuğunu seçin.
-3. **Şimdi Güncelleştir**' i seçin.
-
-    ![Azure Stack güncelleştirme çalıştırması ayrıntıları](media/azure-stack-updates/azure-stack-update-button.png)
-
-4. Güncelleştirme işlemi Azure Stack içindeki çeşitli alt sistemler arasında yineleme yaparken üst düzey durumu görüntüleyebilirsiniz. Örnek alt sistemler fiziksel Konakları, Service Fabric, altyapı sanal makinelerini ve hem yönetici hem de Kullanıcı portallarını sağlayan hizmetleri içerir. Güncelleştirme işlemi boyunca güncelleştirme kaynak sağlayıcısı, güncelleştirme hakkında, başarılı olan adımların sayısı ve devam eden sayı gibi ek ayrıntıları raporlar.
-
-5. Tam günlükleri indirmek için güncelleştirme çalıştırması ayrıntıları dikey penceresinden **tam günlükleri indir** ' i seçin.
-
-    ![Azure Stack güncelleştirme çalıştırması ayrıntıları](media/azure-stack-updates/update-run-details.png)
-
-6. Güncelleştirme kaynak sağlayıcısı tamamlandığında, güncelleştirme işleminin tamamlandığını ve ne kadar sürdüğünü göstermek için **başarılı** bir onay sağlar. Buradan, filtre kullanarak tüm güncelleştirmeler, kullanılabilir güncelleştirmeler veya yüklü güncelleştirmeler hakkında bilgi görüntüleyebilirsiniz.
-
-    ![Azure Stack güncelleştirme çalıştırması ayrıntıları başarısı](media/azure-stack-updates/update-success.png)
-
-   Güncelleştirme başarısız olursa, **güncelleştirme** kutucuk raporlarında **dikkat edilmesi gerekir**. Güncelleştirmenin başarısız olduğu üst düzey bir durum almak için **tam günlükleri indir** seçeneğini kullanın. Azure Stack log koleksiyonu, tanılamayı ve sorun gidermeyi kolaylaştırmaya yardımcı olur.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack hizmet ilkesi](azure-stack-servicing-policy.md) 
-- [Azure Stack 'de bölge yönetimi](azure-stack-region-management.md)
+- Güncelleştirme işlemini başlatmak için [Azure Stack güncelleştirme planı](azure-stack-update-plan.md)' nda bulunan adımları izleyin.
+- Azure Stack sürümlerinin DESTEKDE olduğunu öğrenmek için, bkz. [Azure Stack hizmet ilkesi](azure-stack-servicing-policy.md).  
+- Güncel ve son güncelleştirmeler hakkında daha fazla bilgi edinmek için [Azure Stack sürüm notlarına](azure-stack-release-notes-security-updates-1907.md)bakın.

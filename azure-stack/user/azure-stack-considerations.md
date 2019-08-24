@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 07/17/2019
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: a7a61e8eef33ee6a6efb87001504fe5234e3cf16
-ms.sourcegitcommit: 2063332b4d7f98ee944dd1f443847eea70eb5614
+ms.openlocfilehash: fc04032f7741c61a9b2b86e23a9173ca268a1e11
+ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68303149"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70008337"
 ---
 # <a name="differences-between-azure-stack-and-azure-when-using-services-and-building-apps"></a>Hizmetler kullanılırken Azure Stack ile Azure arasındaki farklar ve uygulama oluşturma
 
@@ -77,7 +77,7 @@ Azure Stack, Azure PowerShell ve Azure hizmet API 'Lerinin belirli sürümlerini
 Azure PowerShell doğru bir sürümünü kullandığınızdan emin olmak için [API sürüm profilleri](azure-stack-version-profiles.md)' ni kullanın. Kullanabileceğiniz en son API sürümü profilini öğrenmek için, kullanmakta olduğunuz Azure Stack yapısını bulun. Bu bilgileri Azure Stack yöneticinizden edinebilirsiniz.
 
 > [!NOTE]
-> Azure Stack Geliştirme Seti kullanıyorsanız ve yönetici erişiminiz varsa, Azure Stack derlemeyi öğrenmek için [geçerli sürümü belirleme](../operator/azure-stack-updates.md#determine-the-current-version) bölümüne bakın.
+> Azure Stack Geliştirme Seti kullanıyorsanız ve yönetici erişiminiz varsa, Azure Stack derlemeyi öğrenmek için [geçerli sürümü belirleme](../operator/azure-stack-updates.md) bölümüne bakın.
 
 Diğer API 'Ler için, Azure Stack aboneliğinizde desteklenen ad alanlarını, kaynak türlerini ve API sürümlerini çıkarmak için aşağıdaki PowerShell komutunu çalıştırın (bir özellik düzeyinde farklılık gösterebilir). Bu komutun çalışması için, zaten bir Azure Stack ortamı için PowerShell 'i [yüklemiş](../operator/azure-stack-powershell-install.md) ve [yapılandırmış](azure-stack-powershell-configure-user.md) olmanız gerekir. Ayrıca, bir Azure Stack teklifine aboneliğiniz olması gerekir.
 

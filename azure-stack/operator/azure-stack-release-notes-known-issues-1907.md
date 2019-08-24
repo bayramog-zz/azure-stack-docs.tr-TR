@@ -16,12 +16,12 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 0b305f07344540555b444017a04c1002bb8a08a8
-ms.sourcegitcommit: 250689d6d09acc677bf59de76510d5d5f1c6190e
+ms.openlocfilehash: 2d87ff424c224f10bede28099435915ab6cd6bce
+ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896334"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70008615"
 ---
 # <a name="azure-stack-1907-known-issues"></a>Azure Stack 1907 bilinen sorunlar
 
@@ -34,7 +34,7 @@ Bu makalede Azure Stack 1907 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: 1907 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur.
-- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçicibir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md#import-and-install-updates)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
+- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçicibir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
 - Oluşum Common
 
 ## <a name="portal"></a>Portal

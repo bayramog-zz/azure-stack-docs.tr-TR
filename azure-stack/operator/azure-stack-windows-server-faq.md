@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2019
+ms.date: 08/23/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 177d18261d8a85807826226b0dcabdfd03e87135
-ms.sourcegitcommit: 0e0d010c4e010f2fd6799471db8bf71652d8d4e1
+ms.openlocfilehash: 21364595b30c62f47c293e38bdcb9c5663c56e90
+ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68806902"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70008331"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack Market 'te Windows Server SSS
 
@@ -53,11 +53,29 @@ Görüntünün her iki sürümünü de indirdiğinizde, Market galerisindeki son
 
 ### <a name="what-if-my-user-incorrectly-checked-the-i-have-a-license-box-in-previous-windows-builds-and-they-dont-have-a-license"></a>Kullanıcı önceki Windows Derlemeleriyle "lisanslıyorum" kutusunu yanlış denetlerse ve lisanslarsa ne yapmalıyım?
 
-Bkz. [Windows Server KLG VM 'lerini Kullandıkça Öde 'ye dönüştürme](/azure/virtual-machines/windows/hybrid-use-benefit-licensing#powershell-1).
+Aşağıdaki betiği çalıştırarak, lisans modeli özniteliğini, kendi lisansını getir (KLG) öğesini Kullandıkça Öde (PAYG) modeline geçiş yapacak şekilde değiştirebilirsiniz:
+
+```powershell
+vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm.LicenseType = "Windows_Server"
+Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
+```
+
+Aşağıdaki komutları çalıştırarak sanal makinenizin lisans türünü kontrol edebilirsiniz. Lisans modeli **Windows_Server**diyor ise, bu, PAYG modeline göre Windows lisansı için ücretlendirilirsiniz:
+
+```powershell
+$vm | ft Name, VmId,LicenseType,ProvisioningState
+```
 
 ### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-enterprise-agreement-entitlement"></a>Daha eski bir görüntünüz varsa ve kullanıcım "bir lisans aldım" kutusunu denetlemeyi unutdum veya kendi görüntülerimizi kullanıyoruz ve Kurumsal Anlaşma yetkilendirmemiz gerekiyor mu?
 
-Bkz. [var olan bir Windows Server VM 'SINI KLG 'e dönüştürme](/azure/virtual-machines/windows/hybrid-use-benefit-licensing#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server). Azure Hibrit Avantajı Azure Stack için geçerli değildir, ancak bu ayarın etkisi geçerli olur.
+Aşağıdaki komutları çalıştırarak lisans modeli özniteliğini kendi lisans modelinizi getir olarak değiştirebilirsiniz:
+
+```powershell
+$vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm.LicenseType = "None"
+Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
+```
 
 ### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>SQL veya Machine Learning Server gibi Windows Server kullanan diğer VM 'Ler hakkında ne olacak?
 

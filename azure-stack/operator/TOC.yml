@@ -10,10 +10,6 @@
       href: compare-azure-azure-stack.md
     - name: Sürüm notları
       items:
-        - name: Güncelleştirmeler ve bakım ilkesi
-          href: azure-stack-servicing-policy.md
-        - name: Güncelleştirmeleri uygulamak için denetim listesi
-          href: azure-stack-release-notes-checklist.md
         - name: Güvenlik güncelleştirmeleri
           href: azure-stack-release-notes-security-updates-1907.md
         - name: 1907 güncelleştirmesi
@@ -171,12 +167,22 @@
           items:
             - name: Güncelleştirmeleri yönetmeye genel bakış
               href: azure-stack-updates.md
+            - name: Güncelleştirmeler ve bakım ilkesi
+              href: azure-stack-servicing-policy.md
+            - name: Güncelleştirmeleri uygulamak için denetim listesi
+              href: azure-stack-release-notes-checklist.md
+            - name: Güncelleştirme planı
+              href: azure-stack-update-plan.md
+            - name: Güncelleştirme paketini hazırlama
+              href: azure-stack-update-prepare-package.md
             - name: Güncelleştirme uygulama
-              href: azure-stack-apply-updates.md
-            - name: OEM güncelleştirmelerini uygulama
-              href: azure-stack-update-oem.md
+              items:
+                - name: Güncelleştirme uygulama
+                  href: azure-stack-apply-updates.md
+                - name: OEM güncelleştirmelerini uygulama
+                  href: azure-stack-update-oem.md
             - name: İzleyici güncelleştirme durumu
-              href: azure-stack-monitor-update.md
+              href: azure-stack-update-monitor.md
         - name: Sistem durumu ve uyarıları izleme
           href: azure-stack-monitor-health.md
         - name: Ağ kaynaklarını yönetme

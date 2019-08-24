@@ -15,16 +15,16 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: a2b000f60c5867e557ef5b0621f994ea7ec23913
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: 058eff278dbfb7834e3b929967851f998b15f91b
+ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493774"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70008238"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
-Bu makale, Azure Stack Geliştirme Seti (ASDK) içindeki değişiklikler, düzeltmeler ve bilinen sorunlar hakkında bilgi sağlar. Hangi sürümü çalıştırdığınızdan emin değilseniz, [denetlemek için portalı kullanabilirsiniz](../operator/azure-stack-updates.md#determine-the-current-version).
+Bu makale, Azure Stack Geliştirme Seti (ASDK) içindeki değişiklikler, düzeltmeler ve bilinen sorunlar hakkında bilgi sağlar. Hangi sürümü çalıştırdığınızdan emin değilseniz, [denetlemek için portalı kullanabilirsiniz](../operator/azure-stack-updates.md).
 
 RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)abone [ ![](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) olarak, asdk 'deki yenilikleri güncel tutun.
 

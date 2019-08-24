@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1905 bilinen sorunlar | Microsoft Docs
-description: Azure Stack 1905'de bilinen sorunlar hakkında bilgi edinin.
+description: Azure Stack 1905 ' de bilinen sorunlar hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -16,163 +16,163 @@ ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 40b2eb51b3e05a25706037f404a53d86fa7cae5a
-ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
+ms.openlocfilehash: 619bd20b3ed9affb93bceed7b253c15bdb1e3609
+ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67419558"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70008767"
 ---
 # <a name="azure-stack-1905-known-issues"></a>Azure Stack 1905 bilinen sorunlar
 
-Bu makalede, Azure Stack 1905 sürümündeki bilinen sorunlar listelenmektedir. Yeni sorunlar tanımlanan liste güncelleştirilir.
+Bu makalede Azure Stack 1905 sürümündeki bilinen sorunlar listelenmektedir. Yeni sorunlar tanımlandıkları için liste güncellenir.
 
 > [!IMPORTANT]  
-> Bu bölümde, güncelleştirmeyi uygulamadan önce gözden geçirin.
+> Güncelleştirmeyi uygulamadan önce bu bölümü gözden geçirin.
 
 ## <a name="update-process"></a>Güncelleştirme işlemi
 
-### <a name="host-node-update-prerequisite-failure"></a>Ana bilgisayar düğümünü güncelleştirmeyi önkoşul hatası
+### <a name="host-node-update-prerequisite-failure"></a>Ana bilgisayar düğümü güncelleştirme önkoşulu hatası
 
-- Uygulanabilir: Bu sorun 1905 güncelleştirmesi için geçerlidir.
-- Neden: 1905 Azure Stack güncelleştirmeyi yüklemeye çalışırken, güncelleştirme durumu nedeniyle başarısız olabilir **ana düğüm güncelleştirme önkoşul**. Bunun nedeni genellikle yeterli boş disk alanı olan bir konak düğümü tarafından.
-- Düzeltme: Ana bilgisayar düğümü disk alanı temizleme Yardım almak için Azure Stack desteği'ne başvurun.
-- Örneği: Seyrek
+- Uygunsa Bu sorun 1905 güncelleştirmesi için geçerlidir.
+- Neden: 1905 Azure Stack güncelleştirme yüklenmeye çalışıldığında güncelleştirme durumu, **ana bilgisayar düğümü güncelleştirme önkoşulu**nedeniyle başarısız olabilir. Bu genellikle, yetersiz boş disk alanına sahip bir ana bilgisayar düğümü nedeniyle oluşur.
+- Düzeltmesi Konak düğümündeki disk alanını temizleme hakkında yardım almak için Azure Stack desteğe başvurun.
+- Oluşum Genel olmayan
 
-### <a name="preparation-failed"></a>Hazırlama başarısız
+### <a name="preparation-failed"></a>Hazırlama başarısız oldu
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: 1905 Azure yığını güncelleştirmesi yüklenmeye çalışılırken olmadığında güncelleştirme durumu ve durumuna değiştirin **PreparationFailed**. Bu, düzgün bir şekilde işlemek için bir iç altyapı paylaşımına depolama kapsayıcısından dosya aktarımı erişememe güncelleştirme kaynağı sağlayıcısı tarafından (URP) kaynaklanır. 1905 güncelleştirme paketi, bu sorun büyük olasılıkla yapabilir, önceki güncelleştirme paketlerini büyüktür.
-- Düzeltme: 1901 (1.1901.0.95) sürümünden itibaren kullanarak bu sorunu geçici olarak tıklayarak çalışabilirsiniz **Şimdi Güncelleştir** yeniden (değil **sürdürme**). URP ardından önceki girişim dosyalarından temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, aşağıdaki güncelleştirme paketini el ile karşıya öneririz [alma ve yükleme güncelleştirmelerini bölümüne](azure-stack-apply-updates.md#import-and-install-updates).
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: 1905 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur. 1905 güncelleştirme paketi, bu sorunun oluşma olasılığını daha büyük hale getirmek için önceki güncelleştirme paketlerinden daha büyüktür.
+- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçicibir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
+- Oluşum Common
 
 ## <a name="portal"></a>Portal
 
 ### <a name="subscription-resources"></a>Abonelik kaynakları
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Kullanıcı abonelikleri sonuçlarında yalnız bırakılmış kaynakları siliniyor.
-- Düzeltme: Kullanıcı kaynaklar veya kaynak grubunun tamamını silin ve sonra kullanıcı abonelikleri silin.
-- Örneği: Common
+- Düzeltmesi Önce kullanıcı kaynaklarını veya tüm kaynak grubunu silin ve ardından Kullanıcı aboneliklerini silin.
+- Oluşum Common
 
 ### <a name="subscription-permissions"></a>Abonelik izinleri
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Azure Stack portalı kullanarak aboneliğinize izinleri görüntüleyemezsiniz.
-- Düzeltme: Kullanım [izinleri doğrulamak için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment).
-- Örneği: Common
+- Düzeltmesi [İzinleri doğrulamak Için PowerShell 'i](/powershell/module/azurerm.resources/get-azurermroleassignment)kullanın.
+- Oluşum Common
 
-### <a name="marketplace-management"></a>Market Yönetimi
+### <a name="marketplace-management"></a>Market yönetimi
 
-- Uygulanabilir: Bu sorun 1904 ve 1905 için geçerlidir
-- Neden: Yönetici portalında oturum açtığınızda Market yönetim ekran görünür değil.
-- Düzeltme: Tarayıcıyı yenileyin veya Git **ayarları** ve seçeneğini **varsayılan ayarlarına geri döndürmeyi**.
-- Örneği: Aralıklı
+- Uygunsa Bu sorun 1904 ve 1905 için geçerlidir
+- Neden: Yönetici portalında oturum açtığınızda Market yönetim ekranı görünür değildir.
+- Düzeltmesi Tarayıcıyı yenileyin veya **Ayarlar** ' a gidin ve **varsayılan ayarlara Sıfırla**seçeneğini belirleyin.
+- Oluşum Aralıklı
 
 ### <a name="docker-extension"></a>Docker uzantısı
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Yönetici ve kullanıcı portalı için arama yaparsanız, **Docker**, öğenin yanlış döndürülür. Azure Stack'te kullanılamıyor. Bunu oluşturmayı denerseniz, bir hata görüntülenir.
-- Düzeltme: Risk azaltma.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Hem yönetici hem de Kullanıcı portalında, **Docker**için arama yaparsanız öğe yanlış döndürülür. Azure Stack'te kullanılamıyor. Oluşturmayı denerseniz bir hata görüntülenir.
+- Düzeltmesi Risk azaltma yok.
+- Oluşum Common
 
 ### <a name="upload-blob"></a>Blobu karşıya yükle
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı portalında bir blobu kullanarak yüklemeye çalıştığınızda **OAuth(preview)** seçeneği, görev bir hata iletisiyle başarısız olur.
-- Düzeltme: Blob SAS seçeneğini kullanarak yükleyin.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Kullanıcı portalında, **OAuth (Önizleme)** seçeneğini kullanarak bir blobu karşıya yüklemeye çalıştığınızda, görev bir hata iletisiyle başarısız olur.
+- Düzeltmesi SAS seçeneğini kullanarak blobu karşıya yükleyin.
+- Oluşum Common
 
 ### <a name="template"></a>Şablon
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı Portalı'nda, "_" (alt çizgi karakteri) ile başlayan şablon adları parametrelerini şablon dağıtımı kullanıcı Arabirimi doldurmaz.
-- Düzeltme: "_" (Alt çizgi karakteri) şablonu adından kaldırın.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Kullanıcı portalında, şablon dağıtımı Kullanıcı arabirimi, "_" (alt çizgi karakteri) ile başlayan şablon adları için parametreleri doldurmaz.
+- Düzeltmesi Şablon adından "_" (alt çizgi karakterini) kaldırın.
+- Oluşum Common
 
 ## <a name="networking"></a>Ağ
 
 ### <a name="load-balancer"></a>Yük dengeleyici
 
-#### <a name="add-backend-pool"></a>Arka uç havuzu Ekle
+#### <a name="add-backend-pool"></a>Arka uç havuzu ekle
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı portalında eklemeye çalışırsa bir **arka uç havuzu** için bir **yük dengeleyici**, işlem hata iletisiyle başarısız **yük dengeleyici güncelleştirilemedi...** .
-- Düzeltme: PowerShell, CLI veya Resource Manager şablonu ile bir yük dengeleyici kaynağını arka uç havuzunu ilişkilendirmek için kullanın.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Kullanıcı portalında bir **Load Balancer** **arka uç havuzu** eklemeye çalışırsanız, işlem hata iletisiyle başarısız olur **Load Balancer güncelleştirilemedi...**
+- Düzeltmesi Arka uç havuzunu bir yük dengeleyici kaynağıyla ilişkilendirmek için PowerShell, CLı veya Kaynak Yöneticisi şablonu kullanın.
+- Oluşum Common
 
-#### <a name="create-inbound-nat"></a>Gelen NAT'ı oluşturma
+#### <a name="create-inbound-nat"></a>Gelen NAT oluşturma
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Oluşturmayı denerseniz, Kullanıcı Portalı'nda bir **gelen NAT kuralı** için bir **yük dengeleyici**, işlem hata iletisiyle başarısız **yük dengeleyici güncelleştirilemedi...** .
-- Düzeltme: PowerShell, CLI veya Resource Manager şablonu ile bir yük dengeleyici kaynağını arka uç havuzunu ilişkilendirmek için kullanın.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Kullanıcı portalında, bir **Load Balancer**Için BIR **gelen NAT kuralı** oluşturmaya çalışırsanız, işlem hata iletisiyle başarısız olur **Load Balancer güncelleştirilemedi...**
+- Düzeltmesi Arka uç havuzunu bir yük dengeleyici kaynağıyla ilişkilendirmek için PowerShell, CLı veya Kaynak Yöneticisi şablonu kullanın.
+- Oluşum Common
 
-#### <a name="create-load-balancer"></a>Yük dengeleyici oluşturma
+#### <a name="create-load-balancer"></a>Yük dengeleyici oluştur
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı Portalı'nda **Load Balancer oluşturma** penceresi oluşturma seçeneğiniz gösterir bir **standart** yük dengeleyici SKU. Bu seçenek, Azure Stack'te desteklenmiyor.
-- Düzeltme: Kullanım **temel** bunun yerine yük dengeleyici seçenekleri.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Kullanıcı portalında, **oluştur Load Balancer** penceresinde **Standart** yük dengeleyici SKU 'su oluşturma seçeneği gösterilir. Bu seçenek Azure Stack desteklenmez.
+- Düzeltmesi Bunun yerine **temel** yük dengeleyici seçeneklerini kullanın.
+- Oluşum Common
 
 ### <a name="public-ip-address"></a>Genel IP adresi
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Kullanıcı Portalı'nda **genel IP adresi oluşturma** penceresi oluşturma seçeneğiniz gösterir bir **standart** SKU. **Standart** SKU Azure Stack'te desteklenmez.
-- Düzeltme: Kullanım **temel** SKU genel IP adresi için.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Kullanıcı portalında **genel IP adresi oluştur** penceresinde **Standart** SKU oluşturma seçeneği gösterilir. **Standart** SKU Azure Stack desteklenmez.
+- Düzeltmesi Genel IP adresi için **temel** SKU 'yu kullanın.
+- Oluşum Common
 
 ## <a name="compute"></a>İşlem
 
 ### <a name="vm-boot-diagnostics"></a>VM önyükleme tanılaması
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Yeni bir Windows sanal makine (VM) oluştururken, aşağıdaki hata görüntülenebilir: **Sanal makine 'vm-adı' başlatılamadı. Hata: VM 'vm-adı' için seri çıkış ayarları güncelleştirilemedi**.
-Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanılama depolama hesabınızı silerseniz, bir hata meydana gelir.
-- Düzeltme: Daha önce kullandığınız aynı ada sahip bir depolama hesabını yeniden oluşturun.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Yeni bir Windows sanal makinesi (VM) oluştururken aşağıdaki hata görüntülenebilir: **' VM-adı ' sanal makinesi başlatılamadı. Hata: VM ' VM-adı '** için seri çıkış ayarları güncelleştirilemedi.
+Bir VM 'de önyükleme tanılamayı etkinleştirip önyükleme tanılama depolama hesabınızı sildiğinizde hata oluşur.
+- Düzeltmesi Daha önce kullandığınız adla depolama hesabını yeniden oluşturun.
+- Oluşum Common
 
 ### <a name="vm-resize"></a>VM yeniden boyutlandırma
 
-- Uygulanabilir: Bu sorun 1905 sürümü için geçerlidir.
-- Neden: Yönetilen disk sanal makine başarıyla yeniden boyutlandırmak yüklenemiyor. VM'yi yeniden boyutlandırma girişimi, "code" ile bir hata oluşturur: "" Message"InternalOperationError": "İşlemi bir iç hata oluştu."
-- Düzeltme: Sonraki sürümde bu sorunu düzeltmek için çalışıyoruz. Şu anda sanal makine yeni bir VM boyutu ile yeniden oluşturmanız gerekir.
-- Örneği: Common
+- Uygunsa Bu sorun 1905 sürümü için geçerlidir.
+- Neden: Yönetilen bir disk VM 'si başarıyla yeniden boyutlandırılamıyor. Sanal makineyi yeniden boyutlandırmaya çalışmak "Code" ile bir hata oluşturur: "Internaloperationerror", "Message": "İşlemde bir iç hata oluştu."
+- Düzeltmesi Sonraki sürümde bunu düzeltmek için çalışıyoruz. Şu anda VM 'yi yeni VM boyutuyla yeniden oluşturmanız gerekir.
+- Oluşum Common
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
 #### <a name="centos"></a>CentOS
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Dağıtım için bir seçenek olarak, 7.2 CentOS tabanlı sanal makine ölçek kümesi oluşturma deneyimi sağlar. 7\.2 centOS kullanılabilir değil Azure Stack Marketini üzerinde dağıtım hatalarını dışarı görüntü bulunamadı aramalar neden olur.
-- Düzeltme: Dağıtımınız için başka bir işletim sistemi veya Market'ten dağıtımdan işleciyle indirildi başka bir CentOS görüntüsü belirten bir Azure Resource Manager şablonu kullanın.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Sanal makine ölçek kümesi oluşturma deneyimi, dağıtım için bir seçenek olarak CentOS tabanlı 7,2 sağlar. CentOS 7,2, görüntünün bulunamadığını arayan dağıtım hatalarının oluşmasına neden olacak Azure Stack marketi 'nde kullanılamaz.
+- Düzeltmesi Dağıtımınız için başka bir işletim sistemi seçin ya da Market 'ten bir operatör aracılığıyla dağıtımdan önce indirilen başka bir CentOS görüntüsünü belirten Azure Resource Manager şablonu kullanın.
+- Oluşum Common
 
-#### <a name="remove-scale-set"></a>Ölçek kümesi Kaldır
+#### <a name="remove-scale-set"></a>Ölçek kümesini kaldır
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Bir ölçek kümesi kaldırılamıyor **sanal makine ölçek kümeleri** dikey penceresi.
-- Düzeltme: Ölçek kümesini kaldırmak isteyip istemediğiniz seçin ardından **Sil** düğmesini **genel bakış** bölmesi.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: Ölçek kümesini **Sanal Makine Ölçek Kümeleri** dikey penceresinden kaldıramazsınız.
+- Düzeltmesi Kaldırmak istediğiniz ölçek kümesini seçin, sonra **genel bakış** bölmesinden **Sil** düğmesine tıklayın.
+- Oluşum Common
 
-#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki ve güncelleştirme 4 düğümlü Azure Stack ortamlarında sırasında hatalar oluşturun
+#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki sırasında oluşturma ve 4 düğümlü Azure Stack ortamlarında güncelleştirme
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: 3 hata etki alanı'bir kullanılabilirlik kümesindeki Vm'leri oluşturma ve oluşturma bir sanal makine ölçek kümesi örneği başarısız oluyor bir **FabricVmPlacementErrorUnsupportedFaultDomainSize** bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hata oluştu ortam.
-- Düzeltme: Bir kullanılabilirlik ile 2 hata etki alanı başarıyla ayarlandı tek VM'ler oluşturabilirsiniz. Bununla birlikte, Ölçek kümesi örnek oluşturma bir 4 düğümlü Azure Stack'te güncelleştirme işlemi sırasında hala kullanılamıyor.
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: 4 düğümlü bir Azure Stack ortamında güncelleştirme işlemi sırasında, 3 hata etki alanı kullanılabilirlik kümesinde VM oluşturma ve sanal makine ölçek kümesi örneği oluşturma işlemi **FabricVmPlacementErrorUnsupportedFaultDomainSize** hatasıyla başarısız oluyor.
+- Düzeltmesi 2 hata etki alanı içeren bir kullanılabilirlik kümesinde tek VM 'Ler oluşturabilirsiniz. Ancak, 4 düğümlü Azure Stack güncelleştirme işlemi sırasında ölçek kümesi örneği oluşturma yine de kullanılamaz.
 
-#### <a name="scale-set-instance-view-blade-doesnt-load"></a>Ölçek kümesi örnek görünümü dikey yüklenmiyor
+#### <a name="scale-set-instance-view-blade-doesnt-load"></a>Ölçek kümesi örneği görünümü dikey penceresi yüklenmedi
 
-- Uygulanabilir: Bu sorun, yayın 1904 ve 1905 için geçerlidir.
-- Neden: Azure Stack portalında bulunan bir sanal makine ölçek örnek görünümü dikey Pano -> sanal makine Ölçek -> Ayarlar -> AnyScaleSet - örnekleri ->'nı yüklemek için AnyScaleSetInstance başarısız ve crying bir bulut görüntüsünü görüntüler.
-- Düzeltme: Şu anda düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. O zamana kadar lütfen CLI komutunu `az vmss get-instance-view` bir ölçek kümesi örnek görünümünü elde etmek için.
+- Uygunsa Bu sorun 1904 ve 1905 sürümü için geçerlidir.
+- Neden: Azure Stack Portal-> Panosu-> Sanal Makine Ölçek Kümeleri-> AnyScaleSet-Instances-> AnyScaleSetInstance konumunda bulunan bir sanal makine ölçek kümesinin örnek görünümü dikey penceresi yükleme başarısız olur ve bir ağlayan bulut görüntüsünü görüntüler.
+- Düzeltmesi Şu anda bir düzeltme yoktur ve bir düzeltme üzerinde çalışıyoruz. Bundan sonra, bir ölçek kümesinin örnek görünümünü `az vmss get-instance-view` almak için lütfen CLI komutunu kullanın.
 
-### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
+### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
 
-- Uygulanabilir: Bu sorun, tüm desteklenen sürümleri için geçerlidir.
-- Neden: Etkinleştirilmiş SSH yetkilendirme ile oluşturulan bir Ubuntu 18.04 VM oturum açmak için SSH anahtarları kullanmak izin vermez.
-- Düzeltme: VM erişimi Linux uzantısı için SSH anahtarları sağladıktan sonra uygulamak için veya parola tabanlı kimlik doğrulaması kullanın.
-- Örneği: Common
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
+- Neden: SSH yetkilendirmesi etkinken oluşturulan bir Ubuntu 18,04 VM, oturum açmak için SSH anahtarlarını kullanmanıza izin vermez.
+- Düzeltmesi Sağlama sonrasında SSH anahtarları uygulamak veya parola tabanlı kimlik doğrulaması kullanmak için Linux uzantısı için VM erişimi kullanın.
+- Oluşum Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -183,5 +183,5 @@ Bir VM'de önyükleme tanılamalarını etkinleştirme, ancak önyükleme tanıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Gözden geçirme güncelleştirme etkinlik denetim listesi](azure-stack-release-notes-checklist.md)
-- [Güvenlik güncelleştirmeleri listesini gözden geçirin](azure-stack-release-notes-security-updates-1905.md)
+- [Güncelleştirme etkinliği denetim listesini gözden geçir](azure-stack-release-notes-checklist.md)
+- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](azure-stack-release-notes-security-updates-1905.md)

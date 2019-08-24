@@ -15,12 +15,12 @@ ms.date: 08/15/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 1342eb503abb81308740c0103b1d54887a46cf85
-ms.sourcegitcommit: f62d58ae724020a24fa5905b6663abb5f1d62178
+ms.openlocfilehash: 9e7ac8a795849ac633a6569b3a7e027f89e4ce9d
+ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69520912"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70008530"
 ---
 # <a name="apply-azure-stack-original-equipment-manufacturer-oem-updates"></a>Özgün donanım üreticisi (OEM) güncelleştirmelerini Azure Stack Uygula
 
@@ -60,12 +60,12 @@ Aşağıdaki adımlarla OEM paketlerini uygulayın:
 1. Şu şekilde OEM 'nize başvurmanız gerekir:
       - OEM paketinizin güncel sürümünü saptayın.  
       - OEM paketinizi indirmek için en iyi yöntemi bulun.  
-2. [Tümleşik sistemler için güncelleştirme paketlerini indirme](azure-stack-servicing-policy.md#download-update-packages-for-integrated-systems)bölümünde ÖZETLENEN adımlarla OEM paketinizi hazırlayın.
+2. [Tümleşik sistemler için güncelleştirme paketlerini indirme](azure-stack-servicing-policy.md)bölümünde ÖZETLENEN adımlarla OEM paketinizi hazırlayın.
 3. Güncelleştirmeleri [Azure Stack güncelleştirme uygulama](azure-stack-apply-updates.md)bölümünde özetlenen adımlarla uygulayın.
 
 ## <a name="configure-hardware-vendor-vm"></a>Donanım satıcısı VM 'sini yapılandırma
 
-Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. Donanım satıcınız, bu VM 'leri oluşturmaktan sorumludur ve **set-oemexternalvm** cmdlet `ProxyVM` 'ini `HardwareManager` çalıştırırken veya için veya için gerekiyorsa, belgelenebilir. VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** ile yapılandırın.
+Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. **Set-oemexternalvm** cmdlet 'ini çalıştırırken ve için hangi kimlik bilgilerinin `ProxyVM` kullanılması `HardwareManager` gerektiği ve için **-vmtype** gerekliyse, bu VM 'leri oluşturmak ve belgelemek için donanım satıcınız sorumlu olacaktır.  **Kimlik bilgileri**. VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** ile yapılandırın.
 
 Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azure Stack ayrıcalıklı uç noktasını kullanma](azure-stack-privileged-endpoint.md).
 
@@ -77,14 +77,14 @@ Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azu
     -ConfigurationName PrivilegedEndpoint -Credential $cred
     ```
 
-2. **Set-OEMExternalVM** cmdlet 'ini kullanarak donanım satıcısı VM 'sini yapılandırın. Cmdlet 'i **-vmtype** `ProxyVM`için IP adresini ve kimlik bilgilerini doğrular. For **-vmtype** `HardwareManager` cmdlet 'i girişi doğrulamaz.
+2. **Set-OEMExternalVM** cmdlet 'ini kullanarak donanım satıcısı VM 'sini yapılandırın. Cmdlet 'i **-vmtype** `ProxyVM`için IP adresini ve kimlik bilgilerini doğrular. For **-vmtype** `HardwareManager` cmdlet 'i girişi doğrulamaz. **Set-OEMExternalVM** için belirtilen **-Credential** parametresi, donanım satıcısı belgelerinin açıkça belgelendiği bir sağlayıcıdır.  Ayrıcalıklı uç noktayla veya diğer mevcut Azure Stack kimlik bilgileriyle kullanılan CloudAdmin kimlik bilgisi DEĞILDIR.
 
     ```powershell  
-    
+    $VmCred = Get-Credential
     Invoke-Command -Session $session
         { 
     Set-OEMExternalVM -VMType <Either "ProxyVM" or "HardwareManager">
-        -IPAddress <IP Address of hardware vendor VM>
+        -IPAddress <IP Address of hardware vendor VM> -Credential $using:VmCred
         }
     ```
 
