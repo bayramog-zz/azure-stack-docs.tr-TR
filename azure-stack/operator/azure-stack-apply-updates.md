@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 22e6945c5064a93a8dbaf6daa5c39df36cccb597
-ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
+ms.openlocfilehash: 792790c2ae5c14e31914b64fc6e5d7eba11aacc0
+ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70008873"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70025925"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack güncelleştirmeleri uygulama
 
@@ -55,15 +55,15 @@ Güncel Azure Stack sürümünü **güncelleştirmeler** dikey penceresinde gör
 
 3.  Uygulamak istediğiniz kullanılabilir güncelleştirmeyi seçin. **Kullanılabilir**olarak işaretlenmiş bir güncelleştirmeniz yoksa, [güncelleştirme paketini hazırlamanız](azure-stack-update-prepare-package.md) gerekir
 
-4.  **Şimdi Güncelleştir**' i seçin. .
+4.  **Şimdi Güncelleştir**' i seçin.
 
     ![Azure Stack güncelleştirme çalıştırması ayrıntıları](./media/azure-stack-update-apply/image2.png)
 
 5.  Güncelleştirme işlemi Azure Stack içindeki çeşitli alt sistemler arasında yineleme yaparken üst düzey durumu görüntüleyebilirsiniz. Örnek alt sistemler fiziksel Konakları, Service Fabric, altyapı sanal makinelerini ve hem yönetici hem de Kullanıcı portallarını sağlayan hizmetleri içerir. Güncelleştirme işlemi boyunca güncelleştirme kaynak sağlayıcısı güncelleştirme hakkında, başarılı olan adımların sayısı ve devam eden sayı gibi ek ayrıntıları raporlar.
 
-6.  Tam günlükleri indirmek için güncelleştirme çalıştırması ayrıntıları dikey penceresinden **tam günlükleri indir** ' i seçin.
+6.  Tam günlükleri indirmek için güncelleştirme çalıştırması ayrıntıları dikey penceresinden **indirme Özeti** ' ni seçin.
 
-    Güncelleştirmeyi izlerken bir sorunla karşılaşırsanız, bir Azure Stack güncelleştirme çalıştırmasının ilerlemesini izlemek ve başarısız bir [](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) güncelleştirme çalıştırmasını son başarılı adımla devam etmek için Azure Stack portalı kullanılamaz hale gelmelidir. Yönergeler için bkz.[PowerShell kullanarak Azure Stack güncelleştirmeleri izleme](azure-stack-update-monitor.md).
+    Güncelleştirmeyi izlerken bir sorunla karşılaşırsanız, bir Azure Stack güncelleştirme çalıştırmasının ilerlemesini izlemek ve başarısız bir [](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) güncelleştirme çalıştırmasını son başarılı adımla devam etmek için Azure Stack portalı kullanılamaz hale gelmelidir. Yönergeler için bkz. [PowerShell kullanarak Azure Stack güncelleştirmeleri izleme](azure-stack-update-monitor.md).
 
     ![Azure Stack güncelleştirme çalıştırması ayrıntıları](./media/azure-stack-update-apply/image3.png)
 
@@ -81,9 +81,9 @@ Güncel Azure Stack sürümünü **güncelleştirmeler** dikey penceresinde gör
 
 3.  **Güncelleştirme geçmişi**' ni seçin.
 
-![Azure Stack güncelleştirme geçmişi](./media/azure-stack-update-apply/image7.png)
+    ![Azure Stack güncelleştirme geçmişi](./media/azure-stack-update-apply/image7.png)
 
-# <a name="next-steps"></a>Sonraki adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 -   [Azure Stack güncelleştirmelerini yönetmeye genel bakış](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)  
 -   [Azure Stack hizmet ilkesi](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy)  

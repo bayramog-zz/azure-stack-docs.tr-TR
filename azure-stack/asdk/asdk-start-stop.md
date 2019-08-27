@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Geliştirme Seti başlatın ve durdurun (ASDK) | Microsoft Docs
-description: Azure Stack Geliştirme Seti (ASDK) başlatma ve kapatma hakkında bilgi edinin.
+title: ASDK 'yi başlatma ve durdurma | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) başlatma ve durdurma hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,15 +16,15 @@ ms.date: 07/18/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 6736da0f792c0e01d1a0af06e35a0984ec398158
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: 5232b1087414d6e7149157063a253b18a6b6e13a
+ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493704"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70025803"
 ---
-# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Azure Stack Geliştirme Seti başlatma ve durdurma (ASDK)
-Yalnızca ASDK ana bilgisayar bilgisayarı yeniden başlatmanız önerilmez. Bunun yerine, bu makaledeki yordamları izleyerek, ASDK hizmetlerini doğru şekilde kapatıp yeniden başlatın. 
+# <a name="start-and-stop-the-asdk"></a>ASDK 'yi başlatma ve durdurma
+Yalnızca ASDK ana bilgisayar bilgisayarı yeniden başlatmanız önerilmez. Bunun yerine, bu makaledeki yordamları izleyerek, ASDK hizmetlerini doğru şekilde kapatıp yeniden başlatın.
 
 ## <a name="stop-azure-stack"></a>Azure Stack durdur 
 Azure Stack Hizmetleri ve ASDK ana bilgisayar bilgisayarını düzgün bir şekilde kapatmak için aşağıdaki PowerShell komutlarını kullanın:
@@ -63,7 +63,7 @@ ASDK 'nin nasıl kapatıldığına bakılmaksızın, tüm Azure Stack hizmetleri
    ```
 6. Azure Stack hizmetlerinin başarıyla yeniden başlatıldığından emin olmak için çıktıyı gözden geçirin.
 
-Azure Stack hizmetlerini düzgün bir şekilde kapatmak ve yeniden başlatmak için Önerilen yordamlar hakkında daha fazla bilgi edinmek için bkz. [Azure Stack başlatma ve durdurma](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep). 
+Azure Stack hizmetlerini düzgün bir şekilde kapatmak ve yeniden başlatmak için Önerilen yordamlar hakkında daha fazla bilgi edinmek için bkz. [Azure Stack başlatma ve durdurma](../operator/azure-stack-start-and-stop.md).
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>Başlatma ve kapatmadan ilgili sorunları giderme 
 Azure Stack Hizmetleri, ASDK ana bilgisayar bilgisayarınızı etkinleştirdikten sonra iki saat içinde başarıyla başlamazsa, bu adımları gerçekleştirin:

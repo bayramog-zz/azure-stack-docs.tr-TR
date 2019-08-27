@@ -1,6 +1,6 @@
 ---
-title: Azure Stack geliştirme Seti'ni (ASDK) yükleme | Microsoft Docs
-description: Azure Stack geliştirme Seti'ni (ASDK) yüklemeyi açıklar.
+title: ASDK 'yi yükler | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) yüklemeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,72 +16,76 @@ ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 277b2e8c86cda65167a734d0e5775ec1748ef219
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: c616736cf9ea8cc350c2c53bb7d6994346dac990
+ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267634"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70025964"
 ---
-# <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack geliştirme Seti'ni (ASDK) yükleyin
-Sonra [ASDK ana bilgisayar hazırlama](asdk-prepare-host.md), bu makalede aşağıdaki adımları kullanarak CloudBuilder.vhdx görüntüye ASDK dağıtılabilir.
+# <a name="install-the-asdk"></a>ASDK 'yi yükler
+[Asdk ana bilgisayar bilgisayarı hazırlandıktan](asdk-prepare-host.md)sonra, bu makaledeki aşağıdaki adımları kullanarak cloudbuilder. vhdx resmine Azure Stack geliştirme seti (asdk) dağıtılabilir.
 
-## <a name="install-the-asdk"></a>ASDK yükleyin
-Bu makaledeki adımlarda, indirme ve çalıştırma tarafından sağlanan bir grafik kullanıcı arabirimi (GUI) kullanarak ASDK dağıtmayı Göster **asdk installer.ps1** PowerShell Betiği.
+## <a name="install-the-asdk"></a>ASDK 'yi yükler
+Bu makaledeki adımlarda, **asdk-installer. ps1** PowerShell betiğini indirip çalıştırarak, bir grafik kullanıcı ARABIRIMI (GUI) kullanarak asdk dağıtma işlemi gösterilmektedir.
 
 > [!NOTE]
-> Azure Stack geliştirme Seti'ni yükleyicisi kullanıcı arabirimi, WCF ve PowerShell temel alan bir açık kaynaklı komut dosyasıdır.
+> ASDK için yükleyici Kullanıcı arabirimi, WCF ve PowerShell tabanlı açık kaynaklı bir betiktir.
 
 
-1. Ana bilgisayar CloudBuilder.vhdx görüntünün başarıyla başlatıldıktan sonra yönetici kimlik bilgilerini kullanarak oturum belirtilen, [Geliştirme Seti ana bilgisayar hazırlanmış](asdk-prepare-host.md) ASDK yükleme. Bu Geliştirme Seti ana bilgisayar yerel yönetici kimlik bilgileriyle aynı olmalıdır.
-2. Yükseltilmiş bir PowerShell konsolu açın ve çalıştırın  **&lt;sürücü harfi > \AzureStack_Installer\asdk-installer.ps1** PowerShell Betiği. Betik CloudBuilder.vhdx görüntüde C:\ farklı bir sürücüde artık olabileceğini unutmayın. **Yükle**'ye tıklatın.
+1. Ana bilgisayar CloudBuilder. vhdx görüntüsüne başarıyla önyüklendiğinde, asdk [ana bilgisayarını](asdk-prepare-host.md) asdk yüklemesi için hazırladığınız sırada belirtilen yönetici kimlik bilgilerini kullanarak oturum açın. Bu, ASDK ana bilgisayar yerel yönetici kimlik bilgileriyle aynı olmalıdır.
+2. Yükseltilmiş bir PowerShell konsolu açın ve  **&lt;sürücü harfini > \azurestack_ınstaller\asdk-Installer.exe** adlı PowerShell betiği çalıştırın. Betiğinizin artık C:\ ' dan farklı bir sürücüde olabileceğini unutmayın. CloudBuilder. vhdx görüntüsünde. **Yükle**'ye tıklatın.
 
-    ![](media/asdk-install/1.PNG) 
+    ![ASDK 'yi yükler](media/asdk-install/1.PNG) 
 
-3. Kimlik sağlayıcısındaki **türü** açılan kutusunda **Azure Çin Bulutu**, **Azure ABD kamu Bulutu**, **AD FS**, veya **Azure bulut**. Altında **yerel yönetici parolasını** yazın (geçerli yapılandırılmış yerel yönetici parolasını eşleşmelidir) bir yerel yönetici parolasını **parola** kutusuna ve ardından  **Sonraki**.
+3. Kimlik sağlayıcısı **türü** açılan kutusunda **Azure Çin bulutu**, **azure ABD kamu bulutu**, **AD FS**veya **Azure bulutu**' nı seçin. **Yerel yönetici parolası** altında, **parola** kutusunda yerel yönetici parolasını (yapılandırılmış geçerli yerel yönetici parolasıyla eşleşmesi gerekir) yazın ve ardından **İleri**' ye tıklayın.
 
-    ![](media/asdk-install/2.PNG) 
+    ![ASDK 'de kimlik sağlayıcısı türü açılan eklentisi](media/asdk-install/2.PNG) 
   
-   Bir Azure aboneliği kimlik sağlayıcısı seçin, bir Azure AD alanının tam adı bir internet bağlantısı gerekir dizin Kiracı biçiminde *domainname*. onmicrosoft.com veya Azure AD'yi özel etki alanı adını ve genel doğrulandı Belirtilen dizin için yönetici kimlik bilgileri.<br><br>Dağıtımdan sonra Azure Active Directory genel yönetici izni gerekli değildir. Ancak, bazı işlemler, genel yönetici kimlik bilgileri gerektirebilir. Örneğin, bir kaynak sağlayıcısı yükleyicisi betiği veya izin verilecek gerektiren yeni bir özelliktir. Geçici olarak hesap genel yönetici izinleri yeniden devreye sokmanız veya sahiplerinden biri olan ayrı bir genel yönetici hesabı kullanın *varsayılan sağlayıcı aboneliği*.<br><br>AD FS kimlik sağlayıcısı olarak kullanırken, varsayılan damga dizin hizmeti kullanılır. Oturum açmak için varsayılan hesap azurestackadmin@azurestack.local, ve kullanılacak kurulumunun bir parçası sağlanan bir paroladır.
+    Bir Azure aboneliği kimlik sağlayıcısı seçerseniz, bir internet bağlantısı, bir Azure AD dizin kiracının *DomainName*. onmicrosoft.com biçiminde tam adı veya BIR Azure AD tarafından doğrulanan özel etki alanı adı gerekir. Ayrıca, belirtilen dizin için genel yönetici kimlik bilgilerine de ihtiyacınız vardır.
+
+    Dağıtımdan sonra, Azure Active Directory (AAD) genel yönetici izni gerekli değildir. Ancak, bazı işlemler genel yönetici kimlik bilgileri gerektirebilir. Örneğin, kaynak sağlayıcısı yükleyici betiği veya izin verilmesi gereken yeni bir özellik. Hesabın genel yönetici izinlerini geçici olarak yeniden başlatabilir ya da *varsayılan sağlayıcı aboneliğinin*sahibi olan ayrı bir genel yönetici hesabı kullanabilirsiniz.
+
+    Kimlik sağlayıcısı olarak AD FS kullanırken, varsayılan damga dizin hizmeti kullanılır. İle azurestackadmin@azurestack.localoturum açmak için kullanılan varsayılan hesap, kurulum 'un bir parçası olarak belirttiğiniz paroladır.
 
    > [!NOTE]
-   > Kimlik sağlayıcısı olarak, AD FS kullanarak, bağlantısı kesilmiş bir Azure Stack ortam kullanmak istediğiniz bile en iyi sonuçlar için internet'e bağlıyken ASDK yüklemek en iyisidir. Böylece, Geliştirme Seti yükleme işlemine dahil Windows Server 2016 Değerlendirme sürümü, dağıtım sırasında etkinleştirilebilir.
+   > En iyi sonuçlar için, kimlik sağlayıcısı olarak AD FS kullanarak bağlantısı kesilen Azure Stack ortamı kullanmak istiyor olsanız bile, internet 'e bağlıyken ASDK 'yi yüklemek en iyisidir. Bu şekilde, ASDK yüklemesinde bulunan Windows Server 2016 değerlendirme sürümü, dağıtım sırasında etkinleştirilebilir.
 
-4. Geliştirme Seti kullanın ve ardından bir ağ bağdaştırıcısını seçin **sonraki**.
+4. ASDK için kullanılacak bir ağ bağdaştırıcısı seçin ve ardından **İleri**' ye tıklayın.
 
-    ![](media/asdk-install/3.PNG)
+    ![ASDK için ağ bağdaştırıcısı seçin](media/asdk-install/3.PNG)
 
-5. Üzerinde **ağ yapılandırması** sayfasında, geçerli bir sağlayın **zaman sunucu IP'si** adresi. Başka bir gerekli alan Geliştirme Seti tarafından kullanılacak saat sunucusu belirler. Bu parametre, geçerli saat sunucusu IP adresi olarak sağlanmalıdır. Sunucu adları desteklenmez.
+5. **Ağ yapılandırması** sayfasında, geçerli bir **saat sunucusu IP** adresi sağlayın. Bu gerekli alan, ASDK tarafından kullanılacak saat sunucusunu ayarlar. Bu parametrenin geçerli bir saat sunucusu IP adresi olarak sağlanması gerekir. Sunucu adları desteklenmez.
 
       > [!TIP]
-      > Bir saat sunucusu IP adresini bulmak için ziyaret [ntppool.org](https://www.ntppool.org/) veya time.windows.com ping işlemi. 
+      > Bir saat sunucusu IP adresi bulmak için [ntppool.org](https://www.ntppool.org/) veya PING Time.Windows.com adresini ziyaret edin. 
 
-    **İsteğe bağlı olarak**, sunabilir bir **DNS ileticisi** IP adresi. Bir DNS sunucusu, Azure Stack dağıtımının bir parçası oluşturulur. Damga dışında adlarını çözümlemek için çözüm içindeki bilgisayarları izin vermek için mevcut altyapı DNS sunucunuzu sağlar. Damga DNS sunucusu bu sunucusuna Bilinmeyen ad çözümleme isteklerini iletir.
+    **Isteğe bağlı**olarak, **DNS ileticisi** IP adresi sağlayabilirsiniz. Azure Stack dağıtımının bir parçası olarak bir DNS sunucusu oluşturulur. Çözümdeki bilgisayarların damga dışında adları çözümlemesine izin vermek için, mevcut altyapı DNS sunucunuzu sağlayın. Damga içi DNS sunucusu bilinmeyen ad çözümleme isteklerini bu sunucuya iletir.
 
-    ![](media/asdk-install/4.PNG)
+    ![ASDK 'de DNS ileticisi ve ağ yapılandırması](media/asdk-install/4.PNG)
 
-6. Üzerinde **ağ arabirim kartının özellikleri doğrulanıyor** sayfasında, bir ilerleme çubuğu görürsünüz. Doğrulama tamamlandığında tıklayın **sonraki**.
+6. **Ağ arabirim kartı özelliklerini doğrulama** sayfasında, bir ilerleme çubuğu görürsünüz. Doğrulama tamamlandığında **İleri**' ye tıklayın.
 
-    ![](media/asdk-install/5.PNG)
+    ![ASDK 'de ağ arabirim kartı özellikleri doğrulanıyor](media/asdk-install/5.PNG)
 
-7. Üzerinde **özeti** sayfasında **Dağıt** Geliştirme Seti ana bilgisayarda ASDK yüklemeyi başlatmak için.
+7. **Özet** sayfasında, asdk ana bilgisayarına yüklemeyi başlatmak için **Dağıt** ' a tıklayın.
 
-    ![](media/asdk-install/6.PNG)
+    ![ASDK içinde dağıtılmadan önce betik Özeti](media/asdk-install/6.PNG)
 
     > [!TIP]
-    > Burada geliştirme Seti'ni yüklemek için kullanılan PowerShell Kurulum komutları kopyalayabilirsiniz. İçin ihtiyacınız varsa yararlıdır [ASDK PowerShell kullanarak ana bilgisayarda yeniden](asdk-deploy-powershell.md).
+    > Burada, ASDK 'yi yüklemek için kullanılacak PowerShell kurulum komutlarını da kopyalayabilirsiniz. Bu, [PowerShell 'i kullanarak ana bilgisayarda ASDK 'yi yeniden dağıtmanız](asdk-deploy-powershell.md)gerekiyorsa yararlıdır.
 
-8. Bir Azure AD dağıtım gerçekleştiriyorsanız, Kurulum başladıktan sonra birkaç dakika sonra Azure AD genel yönetici hesabı kimlik bilgilerinizi girmeniz istenir.
+8. Bir Azure AD dağıtımı gerçekleştiriyorsanız, Kurulum başladıktan sonra Azure AD Genel yönetici hesabı kimlik bilgilerinizi birkaç dakika sonra girmeniz istenir.
 
-9. Dağıtım işlemi sırasında hangi zaman ana bilgisayar otomatik olarak bir kez yeniden birkaç saat sürer. Dağıtımın ilerleme durumunu izlemek istiyorsanız, Geliştirme Seti konak yeniden başlatıldıktan sonra azurestack\AzureStackAdmin oturum açın. Dağıtım başarılı olduktan sonra PowerShell konsolunu görüntüler: **TAMAMLAYIN: Eylem 'Dağıtımı'** . 
+9. Dağıtım işlemi birkaç saat sürer. bu zaman, ana bilgisayar bir kez otomatik olarak yeniden başlatılır. Dağıtım ilerlemesini izlemek isterseniz, ASDK ana bilgisayarı yeniden başlatıldıktan sonra azurestack\AzureStackAdmin olarak oturum açın. Dağıtım başarılı olduğunda, PowerShell konsolu şunları görüntüler: **TAMAM ' Dağıtım '** eylemi. 
     > [!IMPORTANT]
-    > Makine azurestack etki alanına katıldıktan sonra yerel yönetici olarak oturum açarsanız, dağıtımın ilerleme durumunu göremezsiniz. Dağıtım yeniden değil, bunun yerine azurestack\AzureStackAdmin çalıştığını doğrulamak oturum açın.
+    > Makine azurestack etki alanına katıldıktan sonra yerel yönetici olarak oturum açarsanız, dağıtım ilerleme durumunu görmezsiniz. Dağıtımı yeniden çalıştırmayın, bunun çalıştığını doğrulamak için azurestack\AzureStackAdmin olarak oturum açın.
 
-    ![](media/asdk-install/7.PNG)
+    ![ASDK dağıtım başarısı](media/asdk-install/7.PNG)
 
-Tebrikler, ASDK başarıyla yüklediğiniz!
+Tebrikler, ASDK 'yi başarıyla yüklediniz!
 
-Dağıtım için herhangi bir nedenle başarısız olursa, yapabilecekleriniz [yeniden](asdk-redeploy.md) sıfırdan ya da kullanım aşağıdaki PowerShell, aynı yükseltilmiş PowerShell penceresinden, son başarılı adımdan dağıtımı yeniden komutları:
+Dağıtım bazı nedenlerle başarısız olursa, son başarılı adımdan dağıtımı [](asdk-redeploy.md) yeniden başlatmak için sıfırdan yeniden dağıtım yapabilir veya aşağıdaki PowerShell komutlarını kullanabilirsiniz. Komutlar aynı yükseltilmiş PowerShell penceresinden kullanılabilir:
 
   ```powershell
   cd C:\CloudDeployment\Setup

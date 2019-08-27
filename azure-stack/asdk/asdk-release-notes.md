@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Development Kit sürüm notları | Microsoft Docs
-description: Azure Stack Geliştirme Seti için geliştirmeler, düzeltmeler ve bilinen sorunlar.
+title: ASDK sürüm notları | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) için geliştirmeler, düzeltmeler ve bilinen sorunlar.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,16 +15,16 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 058eff278dbfb7834e3b929967851f998b15f91b
-ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
+ms.openlocfilehash: 3f11a7b5066d0b50d85a40be1df47dfe1a5ade38
+ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70008238"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70025838"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
-Bu makale, Azure Stack Geliştirme Seti (ASDK) içindeki değişiklikler, düzeltmeler ve bilinen sorunlar hakkında bilgi sağlar. Hangi sürümü çalıştırdığınızdan emin değilseniz, [denetlemek için portalı kullanabilirsiniz](../operator/azure-stack-updates.md).
+Bu makalede, Azure Stack Geliştirme Seti (ASDK) içindeki değişiklikler, düzeltmeler ve bilinen sorunlar hakkında bilgi verilmektedir. Hangi sürümü çalıştırdığınızdan emin değilseniz, [denetlemek için portalını kullanın](../operator/azure-stack-updates.md).
 
 RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)abone [ ![](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) olarak, asdk 'deki yenilikleri güncel tutun.
 
@@ -38,7 +38,7 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 
 ### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
-- Bazı Market görüntülerini kullanarak sanal makine kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
+- Bazı Market görüntülerini kullanarak VM kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
 - Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1907.md#fixes) bakın.
 - Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1907.md)bakın.
 - [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1907.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
@@ -55,7 +55,7 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 
 ### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
-- Bazı Market görüntülerini kullanarak sanal makine kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
+- Bazı Market görüntülerini kullanarak VM kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
 - Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1906.md#fixes) bakın.
 - Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1906.md)bakın.
 - [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1906.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
@@ -88,7 +88,7 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 - Kayıt betiğini çalıştırırken bir hizmet sorumlusu zaman aşımı nedeniyle, [ASDK](asdk-register.md) 'yi başarıyla kaydetmek Için **registerwithazure. psm1** PowerShell betiğini düzenlemeniz gerekir. Şunları yapın:
 
   1. ASDK ana bilgisayarında, **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** dosyasını yükseltilmiş izinlerle bir düzenleyicide açın.
-  2. Satır 1249 ' de sonuna bir `-TimeoutInSeconds 1800` parametre ekleyin. Kayıt betiği çalıştırılırken hizmet sorumlusu zaman aşımı nedeniyle bu gereklidir. Satır 1249 Şu anda aşağıdaki gibi görünmelidir:
+  2. Satır 1249 ' de sonuna bir `-TimeoutInSeconds 1800` parametre ekleyin. Bu ekleme, kayıt betiği çalıştırılırken hizmet sorumlusu zaman aşımı nedeniyle gereklidir. Satır 1249 Şu anda aşağıdaki gibi görünmelidir:
 
      ```powershell
       $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }

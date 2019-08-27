@@ -15,20 +15,27 @@ ms.date: 08/15/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 969aea2134f7980eb2b3a5b6e8d00a987c410744
-ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
+ms.openlocfilehash: ab7b764e608ed1fb8008071296d0004f6ef65e7a
+ms.sourcegitcommit: 1c45814696e70ba987dd39ce61d93ea4ef5222ea
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70010236"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70029474"
 ---
 # <a name="prepare-an-azure-stack-update-package"></a>Azure Stack güncelleştirme paketi hazırlama
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Bu makalede, Azure Stack ortamınızı güncelleştirmek için kullanılabilmesi için Azure Stack güncelleştirme paketlerinin hazırlanmasında bir genel bakış sunulmaktadır. Bu işlem, internet 'e bağlı sistemlerdeki Azure Stack yazılım güncelleştirmeleri ve düzeltmeleri için otomatik olarak yapılır. Tüm OEM paket güncelleştirmeleri ve Azure Stack yazılım güncelleştirmeleri ve sistemlerinde, zayıf veya aralıklı Internet-connectivty ile yazılım güncelleştirmeleri ve düzeltmeleri için güncelleştirme paketleri, Azure Stack güncelleştirme paketi veya OEM güncelleştirmesi yüklenerek hazırlanır paketi, Azure Stack güncelleştirme sağlayıcısı tarafından erişilebilmesi için paket ve depoya içeri aktarma. Tablo, bu makaledeki adımların gerçekleştirilmesi gereken zaman görüntülenir:
+Bu makalede, Azure Stack ortamınızı güncelleştirmek için kullanılabilmesi için Azure Stack güncelleştirme paketlerinin hazırlanmasında bir genel bakış sunulmaktadır. Bu işlem aşağıdakilerden oluşur:
 
-| Güncelleştirme türü | Internet bağlantısı | Action |
+- [Güncelleştirme paketi indiriliyor](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#download-the-update-package)
+- [Azure Stack Yönetici portalı aracılığıyla güncelleştirme paketini Azure Stack ortamınıza aktarma](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#import-and-install-updates)
+
+Bu işlem, [Azure Stack otomatik güncelleştirme uç noktalarına](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages)Internet-connectivty ile sistemlerdeki Azure Stack yazılım güncelleştirmeleri ve düzeltmeleri için otomatik olarak yapılır.
+
+Aşağıdaki tablo, güncelleştirme paketlerinin el ile hazırlık gerektirdiğini ve otomatik olarak hazırlandığını gösterir:
+
+| Güncelleştirme türü | Azure Stack ortamın [Azure Stack otomatik güncelleştirme uç noktalarına](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages) bağlantısı | Eylem Gereklidir |
 | --- | --- | --- |
 | Yazılım güncelleştirmelerini Azure Stack | Bağlı | Güncelleştirme uygulandığında güncelleştirme otomatik olarak indirilir ve hazırlanır. |
 | Azure Stack düzeltmeler | Bağlı | Güncelleştirme uygulandığında güncelleştirme otomatik olarak indirilir ve hazırlanır. |
@@ -45,15 +52,19 @@ Paket içeriğini gözden geçirin. Bir güncelleştirme paketi genellikle aşa�
 -   **Kendiliğinden ayıklanan \<bir PackageName >. zip dosyası**. Bu dosya güncelleştirme yükünü içerir.
 - **Meta veri. xml dosyası**. Bu dosya, güncelleştirme ile ilgili temel bilgileri içerir, örneğin Yayımcı, ad, önkoşul, boyut ve destek yolu URL 'SI.
 
-## <a name="azure-stack-software-updates"></a>Yazılım güncelleştirmelerini Azure Stack
+### <a name="automatic-download-and-preparation-for-update-packages"></a>Güncelleştirme paketleri için otomatik indirme ve hazırlık
+Azure Stack yazılım güncelleştirmeleri ve düzeltmeler **Azure Stack otomatik güncelleştirme uç noktalarına**bağlantı olan sistemler için otomatik olarak hazırlanır: https://*. azureedge. net ve https://aka.ms/azurestackautomaticupdate. **Azure Stack otomatik güncelleştirme uç noktalarına**bağlantı ayarlama hakkında daha fazla bilgi için bkz. [Azure Stack güvenlik duvarı tümleştirmesinde](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound) özetlenen **Düzeltme Eki ve güncelleştirme** uç noktaları
 
-Azure Stack yazılım güncelleştirmeleri güvenli bir Azure uç noktasında barındırılır. Bağlı örneklerle Azure Stack işleçler, Azure Stack güncelleştirmeleri otomatik olarak yönetim portalı 'nda **bulunan Ileti güncelleştirmesi**ile görüntülenir. Güncelleştirme uygulandığında Azure Stack güncelleştirmeler Internet 'e bağlı sistemlere otomatik olarak indirilir. İnternet bağlantısı kesilmiş sistemler veya zayıf internet bağlantısı olan sistemler için güncelleştirme paketleri [Azure Stack Updates Downloader aracı](https://aka.ms/azurestackupdatedownload)kullanılarak indirilebilir. Azure Stack yazılım güncelleştirme paketleri, Azure Stack hizmetlerine yönelik güncelleştirmeleri ve Azure Stack ölçek birimlerinin işletim sistemine yönelik güncelleştirmeleri içerebilir.
+### <a name="where-to-download-azure-stack-update-packages"></a>Azure Stack güncelleştirme paketlerinin indirileceği
 
-### <a name="azure-stack-hotfixes"></a>Azure Stack düzeltmeler 
+[Tam ve hızlı güncelleştirmeler](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) için Azure Stack güncelleştirmeleri, güvenli bir Azure uç noktasında barındırılır. Bağlı örneklerle Azure Stack işleçler, [Azure Stack güncelleştirmelerinin yönetim portalında otomatik olarak göründüğünü](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages)görür. İnternet bağlantısı kesilmiş sistemler veya zayıf internet bağlantısı olan sistemler için güncelleştirme paketleri [Azure Stack Updates Downloader aracı](https://aka.ms/azurestackupdatedownload)kullanılarak indirilebilir. Azure Stack yazılım güncelleştirme paketleri, Azure Stack hizmetlerine yönelik güncelleştirmeleri ve Azure Stack ölçek birimlerinin işletim sistemine yönelik güncelleştirmeleri içerebilir.
 
-Düzeltme güncelleştirme paketleri aynı güvenli Azure uç noktasında barındırılır. Bağlı örneklerle Azure Stack işleçler, düzeltmeler, **kullanılabilir Ileti güncelleştirmesiyle**birlikte otomatik olarak yönetim portalında görünür. Azure Stack düzeltmeler, güncelleştirme uygulandığında Internet 'e bağlı sistemlere otomatik olarak indirilir. İlgili düzeltme KB makalelerinin her birinde ekli bağlantıları kullanarak bunları indirebilirsiniz; Örneğin, [1.1906.11.52 düzeltmesini Azure Stack](https://support.microsoft.com/help/4515650). Düzeltmeleri Azure Stack sürümünüze karşılık gelen sürüm notlarında bulabilirsiniz. OEM donanım satıcısı tarafından belirtilen güncelleştirmeler
+### <a name="where-to-download-azure-stack-hotfix-packages"></a>Azure Stack düzeltme paketlerinin indirileceği
 
-Ayrıca, OEM satıcınız sürücü ve bellenim güncelleştirmeleri gibi güncelleştirmeleri de serbest bırakacaktır. Bu güncelleştirmeler satıcıya göre ayrı paketler olarak teslim edilirken, bazıları Microsoft 'tan güncelleştirme paketleriyle aynı şekilde alınır, yüklenir ve yönetilir. Satıcı iletişim bağlantılarının bir listesini, [Azure Stack özgün ekipman üreticisi (OEM) güncelleştirmeleri uygulayın](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information)' de bulabilirsiniz.
+[Azure Stack düzeltmelerinin](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) paketi, Azure Stack güncelleştirmeleriyle aynı güvenli Azure uç noktasında barındırılır. Bağlı örneklerle Azure Stack işleçler, [Azure Stack güncelleştirmelerinin yönetim portalında otomatik olarak göründüğünü](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages)görür. İlgili düzeltme KB makalelerinin her birinde ekli bağlantıları kullanarak bunları indirebilirsiniz; Örneğin, [1.1906.11.52 düzeltmesini Azure Stack](https://support.microsoft.com/help/4515650). Düzeltmeleri Azure Stack sürümünüze karşılık gelen sürüm notlarında bulabilirsiniz. OEM donanım satıcısı tarafından belirtilen güncelleştirmeler
+
+### <a name="where-to-download-oem-update-packages"></a>OEM güncelleştirme paketlerinin indirileceği
+Ayrıca, OEM satıcınız sürücü ve bellenim güncelleştirmeleri gibi güncelleştirmeleri de serbest bırakacaktır. Bu güncelleştirmeler donanım satıcınız tarafından ayrı [OEM paketi güncelleştirmeleri](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) olarak teslim edilirken, Microsoft 'tan güncelleştirme paketleriyle aynı şekilde içeri aktarılmakta, yüklenir ve yönetilir. Satıcı iletişim bağlantılarının bir listesini, [Azure Stack özgün ekipman üreticisi (OEM) güncelleştirmeleri uygulayın](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information)' de bulabilirsiniz.
 
 ## <a name="import-and-install-updates"></a>Güncelleştirmeleri içeri ve dışarı aktarma
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Geliştirme Seti için dağıtım sonrası yapılandırma (ASDK) | Microsoft Docs
-description: Azure Stack Geliştirme Seti yükledikten sonra yapılacak önerilen yapılandırma değişikliklerini açıklar (ASDK).
+title: ASDK için dağıtım sonrası yapılandırma | Microsoft Docs
+description: Azure Stack Geliştirme Seti yükledikten sonra yapılacak önerilen yapılandırma değişiklikleri hakkında bilgi edinin (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,16 +16,16 @@ ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: cbf9872fa75013fdb3e933c102b813924d396a83
-ms.sourcegitcommit: bf4d265a3522cbfdd9dd295a0f4ad0daf2ed5eca
+ms.openlocfilehash: 111e8e6cb72baac64229e4808003818efece54cd
+ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68692104"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70025873"
 ---
-# <a name="post-asdk-installation-configuration-tasks"></a>ASDK yükleme yapılandırma görevlerinin sonrası
+# <a name="post-deployment-configurations-for-asdk"></a>ASDK için dağıtım sonrası yapılandırma
 
-[Azure Stack geliştirme seti (asdk)](asdk-install.md)yüklendikten sonra, asdk ana bilgisayarında AzureStack\AzureStackAdmin olarak oturum açtığınızda birkaç önerilen yükleme sonrası yapılandırma değişikliği yapmanız gerekir.
+[Azure Stack geliştirme seti (asdk)](asdk-install.md)yükledikten sonra, asdk ana bilgisayarında AzureStack\AzureStackAdmin olarak oturum açtığınızda birkaç önerilen dağıtım sonrası yapılandırma değişikliği yapmanız gerekir.
 
 ## <a name="install-azure-stack-powershell"></a>Azure Stack PowerShell’i yükleme
 
@@ -37,14 +37,14 @@ Azure Stack için PowerShell komutları PowerShell Galerisi aracılığıyla yü
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 
-Azure Stack uyumlu Azurerd modüllerini belirtmek için API sürüm profillerini kullanabilirsiniz.  API sürüm profilleri, Azure ile Azure Stack arasındaki sürüm farklarını yönetmek için bir yol sağlar. API sürümü profili, belirli API sürümleriyle bir Azurerd PowerShell modülleri kümesidir. PowerShell Galerisi aracılığıyla kullanılabilen **Azurerm. BootStrapper** modülü, API sürüm profilleriyle çalışmak için gerekli olan PowerShell cmdlet 'lerini sağlar.
+Azure Stack uyumlu Azurerd modüllerini belirtmek için API sürüm profillerini kullanın.  API sürüm profilleri, Azure ile Azure Stack arasındaki sürüm farklarını yönetmek için bir yol sağlar. API sürümü profili, belirli API sürümleriyle bir Azurerd PowerShell modülleri kümesidir. PowerShell Galerisi aracılığıyla kullanılabilen **Azurerm. BootStrapper** modülü, API sürüm profilleriyle çalışmak için gerekli olan PowerShell cmdlet 'lerini sağlar.
 
-En son Azure Stack PowerShell modülünü, ASDK ana bilgisayarına Internet bağlantısı olmadan veya bunlarla yükleyebilirsiniz:
+En son Azure Stack PowerShell modülünü, ASDK ana bilgisayarına internet bağlantısı olmadan veya bunlarla yükleyebilirsiniz:
 
 > [!IMPORTANT]
 > Gerekli sürümü yüklemeden önce, [var olan Azure PowerShell modüllerini kaldırdığınızdan](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules)emin olun.
 
-- ASDK ana bilgisayarından **İnternet bağlantısı ile** . Bu modülleri geliştirme seti yüklemenize yüklemek için aşağıdaki PowerShell betiğini çalıştırın:
+- ASDK ana bilgisayarından **İnternet bağlantısı ile** : Bu modülleri ASDK yüklemenize yüklemek için aşağıdaki PowerShell betiğini çalıştırın:
 
 
   ```powershell  
@@ -61,7 +61,7 @@ En son Azure Stack PowerShell modülünü, ASDK ana bilgisayarına Internet bağ
 
   Yükleme başarılı olursa Azurerd ve AzureStack modülleri çıktıda görüntülenir.
 
-- ASDK ana bilgisayarından **İnternet bağlantısı olmadan** . Bağlantısı kesilmiş bir senaryoda, önce aşağıdaki PowerShell komutlarını kullanarak PowerShell modüllerini Internet bağlantısı olan bir makineye indirmeniz gerekir:
+- ASDK ana bilgisayarından **İnternet bağlantısı olmadan** : Bağlantısı kesilmiş bir senaryoda, önce aşağıdaki PowerShell komutlarını kullanarak PowerShell modüllerini Internet bağlantısı olan bir makineye indirmeniz gerekir:
 
   ```powershell
   $Path = "<Path that is used to save the packages>"
@@ -109,7 +109,7 @@ En son Azure Stack PowerShell modülünü, ASDK ana bilgisayarına Internet bağ
 
 ## <a name="validate-the-asdk-installation"></a>ASDK yüklemesini doğrulama
 
-ASDK dağıtımınızın başarılı olduğundan emin olmak için, aşağıdaki adımları izleyerek test-AzureStack cmdlet 'ini kullanabilirsiniz:
+ASDK dağıtımınızın başarılı olduğundan emin olmak için aşağıdaki adımları izleyerek test-AzureStack cmdlet 'ini kullanın:
 
 1. ASDK ana bilgisayarında AzureStack\AzureStackAdmin olarak oturum açın.
 2. PowerShell 'i yönetici olarak açın (PowerShell ıSE).
@@ -118,7 +118,7 @@ ASDK dağıtımınızın başarılı olduğundan emin olmak için, aşağıdaki 
 
 Testlerin tamamlanması birkaç dakika sürer. Yükleme başarılı olduysa, çıkış aşağıdakine benzer şekilde görünür:
 
-![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
+![Test Azure Stack-yükleme başarılı](media/asdk-post-deploy/test-azurestack.png)
 
 Bir hata oluşursa, yardım almak için sorun giderme adımlarını izleyin.
 
