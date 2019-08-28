@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/27/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: 4c57cad7a5b002e6c73c0555c450a8103eaf8aa4
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: c2a61e165ee64c4b0ee91fbe387973aaa5039f46
+ms.sourcegitcommit: 9cb82df1eccb0486bcabec0bd674162d4820c00c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418003"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060210"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Azure Stack için depolama altyapısını yönetme
 
@@ -83,7 +83,7 @@ Depolama Alanları Doğrudan birimler, sürücü veya sunucu hataları gibi dona
 
 ![Azure Stack depolama altyapısı](media/azure-stack-storage-infrastructure-overview/image5.png)
 
-Yansıtma, tüm verilerin birden çok kopyasını tutarak hata toleransı sağlar. Bu verilerin nasıl şeritlenmiştir ve yerleştirilmesi basit değildir (daha fazla bilgi edinmek için bu bloga bakın), ancak yansıtma kullanılarak depolanan tüm verilerin tam olarak birden çok kez yazıldığını söylemek için kesinlikle doğru. Her kopya, bağımsız olarak başarısız olarak kabul edilen farklı fiziksel donanıma (farklı sunuculardaki farklı sürücülere) yazılır. Üç yönlü yansıtma, aynı anda en az iki donanım sorununu (sürücü veya sunucu) güvenle kabul edebilir. Örneğin, aniden başka bir sürücü veya sunucu başarısız olduğunda bir sunucuyu yeniden yüklüyorsanız, tüm veriler güvenli ve sürekli olarak erişilebilir durumda kalır.
+Yansıtma, tüm verilerin birden çok kopyasını tutarak hata toleransı sağlar. Bu verilerin nasıl şeritlenmiştir ve yerleştirilebileceği, ancak yansıtma kullanılarak depolanan verilerin tamamen, birden çok kez yazıldığı söylenmiştir. Her kopya, bağımsız olarak başarısız olarak kabul edilen farklı fiziksel donanıma (farklı sunuculardaki farklı sürücülere) yazılır. Üç yönlü yansıtma, aynı anda en az iki donanım sorununu (sürücü veya sunucu) güvenle kabul edebilir. Örneğin, aniden başka bir sürücü veya sunucu başarısız olduğunda bir sunucuyu yeniden yüklüyorsanız, tüm veriler güvenli ve sürekli olarak erişilebilir durumda kalır.
 
 ## <a name="volume-states"></a>Birim durumları
 
