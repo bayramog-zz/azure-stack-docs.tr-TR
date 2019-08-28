@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/27/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 329ef95f7902f3fe6dfcdd71b599675fdf7c6286
-ms.sourcegitcommit: 0e0d010c4e010f2fd6799471db8bf71652d8d4e1
+ms.openlocfilehash: 88b07c5c3325263e068de49b78df25d17861a37e
+ms.sourcegitcommit: f1a21af6517978ddb62f4cbfa1d1df8c867814d1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68806939"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70064187"
 ---
 # <a name="use-azure-monitor-on-azure-stack"></a>Azure Stack Azure Izleyicisini kullanın
 
@@ -40,7 +40,7 @@ Azure Izleyici, Azure kaynaklarını izlemeye yönelik tek bir kaynak sağlayan 
 
 **Microsoft. Insights** kaynak sağlayıcısını, aboneliğinizin teklif kaynak sağlayıcıları ayarlarına kaydedin. Kaynak sağlayıcının, aboneliğinizle ilişkili teklifiniz için kullanılabilir olduğunu doğrulayabilirsiniz:
 
-1. Azure Stack Yönetici portalı ' nı açın.
+1. Azure Stack Kullanıcı portalını açın.
 2. **Teklifler**' i seçin.
 3. Abonelikle ilişkili teklifi seçin.
 4. Ayarlar altında **kaynak sağlayıcıları** ' nı seçin **.** 
@@ -123,7 +123,7 @@ Görselleştirme yöntemlerinden bazıları şunlardır:
 
 Aşağıdaki yöntemlerden birini kullanarak veri izleme, Yönlendirme ve alma ile çalışabilirsiniz. Tüm eylemler veya veri türleri için tüm yöntemler kullanılabilir olmayabilir. 
 
- - [Azure Stack portalı](azure-stack-use-portal.md)
+ - [Azure Stack Kullanıcı Portalı](azure-stack-use-portal.md)
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Platformlar arası komut satırı arabirimi (CLı)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
