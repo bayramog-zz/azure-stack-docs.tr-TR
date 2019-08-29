@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te genel IP adresleri ekleme | Microsoft Docs
-description: Daha fazla genel IP adresleri Azure Stack'e ekleme konusunda bilgi edinin.
+title: Azure Stack genel IP adresleri ekleme | Microsoft Docs
+description: Azure Stack genel IP adresleri eklemeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,44 +16,44 @@ ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 54caca10d729968f4c7f05dea456ee13056e4e7e
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.openlocfilehash: 6d99e5b293f86f4bdb62d35fc111054f12d57172
+ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131044"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70118721"
 ---
 # <a name="add-public-ip-addresses"></a>Genel IP adresleri ekleme
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*  
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*  
 
-Daha fazla genel IP adresleri Azure Stack'e ekleme konusunda bilgi edinin.  Bu makalede, genel IP adresleri olarak dış adresleri diyoruz, ancak Azure Stack'te bu IP adresi blokları, dış ağa eklenmesi başvurmak için tasarlanmıştır.  Olup, dış ağ genel Internet yönlendirilebilir veya intranette yer ve özel adres alanınızı kullanır, bu makalenin amaçları önemli değildir.  Adımları aynıdır. 
+Bu makalede, genel IP adresleri olarak dış adreslere başvuruyoruz. Azure Stack bağlamında, genel IP adresi, Azure Stack dışından erişilebilen bir IP adresidir. Bu dış ağın genel İnternet yönlendirilebilir olup olmadığı veya bir intranette olup olmadığı ve özel adres alanını kullandığı, bu makalenin amaçlarına bakılmaksızın, adımlar aynıdır.
 
-## <a name="add-a-public-ip-address-pool"></a>Bir genel IP adres havuzu ekleme
-Azure Stack sistemi ilk kez dağıtıldıktan sonra herhangi bir zamanda, genel IP adresleri, Azure Stack sisteminize ekleyebilirsiniz. İşlemlerini nasıl gerçekleştirebileceğinizi [görünümü genel IP adresi kullanımını](azure-stack-viewing-public-ip-address-consumption.md) hangi geçerli kullanım ve genel IP adresi görmek için Azure Stack kullanılabilirlik kümesidir.
+## <a name="add-a-public-ip-address-pool"></a>Genel IP adresi havuzu ekleme
+Azure Stack sisteminin ilk dağıtımından sonra dilediğiniz zaman Azure Stack sisteminize genel IP adresleri ekleyebilirsiniz. Geçerli kullanımın ve genel IP adresi kullanılabilirliğinin Azure Stack nasıl olduğunu görmek için [genel IP adresi tüketimini görüntüleme](azure-stack-viewing-public-ip-address-consumption.md) bölümüne bakın.
 
-Yüksek düzeyde, yeni bir genel IP adresi bloğu Azure Stack'e ekleme işlemini şu şekilde görünür:
+Yüksek düzeyde, Azure Stack yeni bir genel IP adresi bloğu ekleme işlemi şuna benzer:
 
  ![IP akışı Ekle](media/azure-stack-add-ips/flow.PNG)
 
-## <a name="obtain-the-address-block-from-your-provider"></a>Sağlayıcınızdan adres bloğu
-Yapmanız gereken ilk şey, Azure Stack için eklemek istediğiniz adres bloğu elde edilir.  Adresi bloğundan elde yere bağlı olarak, ne sağlama süresi olan ve bu, Azure Stack'te genel IP adresleri kullanan oranı karşı yönetme göz önünde bulundurmanız gerekir.  
+## <a name="obtain-the-address-block-from-your-provider"></a>Sağlayıcınızdan adres bloğunu alın
+Yapmanız gereken ilk şey, Azure Stack eklemek istediğiniz adres bloğunu elde etmek için gereklidir. Adres bloğunu nereden elde ettiğinize bağlı olarak, sağlama süresinin ne olduğunu değerlendirin ve bunu Azure Stack genel IP adreslerini tükettiğinizde ücretle karşılaştırarak bunu yönetin.
 
 > [!IMPORTANT]
-> Azure Stack geçerli adresi bloğu ve Azure Stack'te var olan bir adres aralığı ile çakışmadığını sürece sağlayan, herhangi bir adres bloğu kabul eder.  Yönlendirilebilir ve Azure Stack bağlandığı dış ağ ile olmayan çakışan bir geçerli adresi bloğu elde emin olun.  Azure Stack'e aralığı ekledikten sonra kaldırılamaz.
+> Azure Stack, geçerli bir adres bloğu olduğu ve Azure Stack var olan bir adres aralığıyla çakışmayacak şekilde sağladığınız tüm adres bloğunu kabul eder. Lütfen Azure Stack bağlı olduğu dış ağla yönlendirilebilir ve çakışmayan geçerli bir adres bloğu aldığınızdan emin olun. Aralığı Azure Stack ekledikten sonra kaldıramazsınız.
 
-## <a name="add-the-ip-address-range-to-azure-stack"></a>Azure Stack için IP adres aralığı Ekle
+## <a name="add-the-ip-address-range-to-azure-stack"></a>IP adresi aralığını Azure Stack ekleyin
 
-1. Bir Internet tarayıcısında yönetici portal panonuza gidin.  Bu örnekte, kullanacağız https://adminportal.local.azurestack.external.  
-2.  Bir bulut işleci olarak Azure Stack yönetim portalında oturum açın.
-3.  Varsayılan Panoda - bölge yönetim listesini bulmak ve yönetmek için bu örnekte, yerel istediğiniz bölgeyi seçin.
-4.  Kaynak sağlayıcıları kutucuğu ve üzerinde ağ kaynak Sağlayıcısı'na tıklayın bulun.
-5.  Genel IP tıklayarak kullanım kutucuğu havuzlara ayırır.
-6.  Ekleme IP havuzu düğmesine tıklayın.
-7.  IP havuzu için bir ad sağlayın.  Yalnızca istediğiniz gibi çağırabilmek IP havuzu kolayca belirlemenize izin vermesidir seçtiğiniz adı.  Adres aralığı ile aynı adı yapmak iyi bir uygulamadır, ancak bu gerekli değildir.
-8.   CIDR gösteriminde eklemek istediğiniz adres bloğu girin.  Örneğin: 192.168.203.0/24
-9.  Adres aralığı (CIDR bloğu) alanına başlangıç IP adresi geçerli bir CIDR aralığı sağladığınızda, bitiş IP adresi ve kullanılabilir IP adresi alanları otomatik olarak doldurulur.  Bunlar salt okunur ve bu adresi aralığı alanındaki değer değiştirmeden değiştiremezsiniz otomatik olarak oluşturulur.
-10. Dikey penceresindeki bilgileri gözden geçirdikten ve her şeyi onayladıktan sonra görünen düzeltin, değişikliği kaydetmek ve adres aralığı Azure Stack'e ekleme için Tamam'a tıklayın.
+1. Bir tarayıcıda, yönetim portalı panonuza gidin. Bu örnekte, https://adminportal.local.azurestack.external kullanacağız.
+2. Azure Stack yönetici portalında Bulut işletmeni olarak oturum açın.
+3. Varsayılan panoda, bölge yönetimi listesini bulun ve yönetmek istediğiniz bölgeyi seçin. Bu örnekte, yerel kullanırız.
+4. Kaynak sağlayıcıları kutucuğunu bulun ve ağ kaynak sağlayıcısına tıklayın.
+5. Genel IP havuzları kullanım kutucuğuna tıklayın.
+6. IP Havuzu Ekle düğmesine tıklayın.
+7. IP havuzu için bir ad girin. Seçtiğiniz ad, IP havuzunu kolayca belirlemenize yardımcı olur. Adı adres aralığıyla aynı hale getirmek iyi bir uygulamadır, ancak bu gerekli değildir.
+8. CıDR gösteriminde eklemek istediğiniz adres bloğunu girin. Örneğin: 192.168.203.0/24
+9. Adres aralığı (CıDR bloğu) alanında geçerli bir CıDR aralığı sağladığınızda başlangıç IP adresi, bitiş IP adresi ve kullanılabilir IP adresleri alanları otomatik olarak doldurulur. Bunlar salt okunurdur ve otomatik olarak oluşturulur, böylece adres aralığı alanındaki değeri değiştirmeden bu alanları değiştiremezsiniz.
+10. Dikey penceredeki bilgileri inceledikten ve her şeyin doğru göründüğünü doğruladıktan sonra, değişikliği yürütmek için **Tamam** ' a tıklayın ve adres aralığını Azure Stack ekleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-[Ölçek birimi düğüm eylemleri gözden geçirin](azure-stack-node-actions.md) 
+[Ölçek birimi düğüm eylemlerini gözden geçirin](azure-stack-node-actions.md).

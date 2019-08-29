@@ -1,6 +1,6 @@
 ---
-title: Yeni bir Azure Stack Kiracı hesabı Azure Active Directory'ye ekleme | Microsoft Docs
-description: Microsoft Azure Stack geliştirme Seti'ni dağıttıktan sonra Kiracı portalında keşfedebilirsiniz için en az bir Kiracı Kullanıcı hesabı oluşturmanız gerekir.
+title: Azure Active Directory yeni bir Azure Stack kiracı hesabı ekleyin | Microsoft Docs
+description: Kiracı portalını keşfedebilmeniz için, ASDK 'de kiracı hesabı oluşturmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -16,66 +16,66 @@ ms.date: 05/20/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 70151d7793ef1f58b544517cecb7aa53bf5b3041
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 5d5292753b6fedfb7468a0bc68dd821a2da4cd54
+ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691405"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70118705"
 ---
-# <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Azure Active Directory'de yeni bir Azure Stack Kiracı hesabı Ekle
+# <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Azure Active Directory yeni bir Azure Stack kiracı hesabı ekleyin
 
-Sonra [Azure Stack geliştirme Seti'ni dağıtma](../asdk/asdk-install.md), Kiracı portalında keşfedin ve test teklifleri ve planları için bir Kiracı Kullanıcı hesabı gerekir. Bir kiracı hesabı ile oluşturabileceğiniz [Azure portalını kullanarak](#create-an-azure-stack-tenant-account-using-the-azure-portal) veya PowerShell'i kullanarak.
+[Azure Stack geliştirme seti (ASDK) dağıttıktan](../asdk/asdk-install.md)sonra, kiracı portalını araştırabilmeniz ve tekliflerinizi ve planlarınızı test edebilmeniz için bir Kiracı Kullanıcı hesabına ihtiyacınız vardır. [Azure Portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) veya PowerShell 'i kullanarak Azure Active Directory (Azure AD) içinde bir kiracı hesabı oluşturabilirsiniz.
 
-## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Azure portalını kullanarak bir Azure Stack Kiracı hesabı oluşturun
+## <a name="create-an-azure-stack-tenant-account-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Stack kiracı hesabı oluşturun
 
-Azure portalını kullanmak üzere bir Azure aboneliğine sahip olmalıdır.
+Azure portal kullanmak için bir Azure aboneliğinizin olması gerekir.
 
-1. Oturum [Azure](https://portal.azure.com).
-2. Sol gezinti çubuğunda **Active Directory** ve Azure Stack için kullanmak istediğiniz dizine geçin veya yeni bir tane oluşturun.
-3. Seçin **Azure Active Directory** > **kullanıcılar** > **yeni kullanıcı**.
+1. [Azure](https://portal.azure.com)'da oturum açın.
+2. Sol gezinti çubuğunda **Active Directory** ' yi seçin ve Azure Stack için kullanmak istediğiniz dizine geçin (veya yeni bir tane oluşturun).
+3. **Azure Active Directory** > kullanıcılarıYeni > **Kullanıcı**' yı seçin.
 
     ![Kullanıcılar - yeni kullanıcı ile vurgulanmış tüm kullanıcılar sayfası](media/azure-stack-add-new-user-aad/new-user-all-users.png)
 
-4. Üzerinde **kullanıcı** sayfasında, gerekli bilgileri doldurun.
+4. **Kullanıcı** sayfasında, gerekli bilgileri doldurun.
 
     ![Yeni kullanıcı, kullanıcı bilgileri kullanıcının Sayfası Ekle](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-   - **Ad (gerekli).** Yeni kullanıcı ilk ve son adı. Örneğin, Gamze Parker.
-   - **Kullanıcı adı (gerekli).** Yeni kullanıcının kullanıcı adı. Örneğin, mary@contoso.com.
-       Kullanıcı adının etki alanı bölümünü ya da ilk varsayılan etki alanı adı kullanmanız gerekir <_etkialanıadınız_>. onmicrosoft.com ya da bir özel etki alanı adı contoso.com gibi. Özel etki alanı adı oluşturma hakkında daha fazla bilgi için bkz. [Azure Active Directory'ye özel etki alanı adı ekleme](/azure/active-directory/fundamentals/add-custom-domain).
-   - **Profili.** İsteğe bağlı olarak, kullanıcı hakkında daha fazla bilgi ekleyebilirsiniz. Daha sonraki bir zamanda kullanıcı bilgileri de ekleyebilirsiniz. Kullanıcı bilgileri ekleme hakkında daha fazla bilgi için bkz. [eklemek veya kullanıcı profili bilgilerini değiştirmek nasıl](/azure/active-directory/fundamentals/active-directory-users-profile-azure-portal).
-   - **Dizin rolü.**  seçin **kullanıcı**.
+   - **Ad (gerekli)** : Yeni kullanıcı ilk ve son adı. Örneğin, Gamze Parker.
+   - **Kullanıcı adı (gerekli)** : Yeni kullanıcının kullanıcı adı. Örneğin, mary@contoso.com.
+       Kullanıcı adının etki alanı bölümünü ya da ilk varsayılan etki alanı adı kullanmanız gerekir <_etkialanıadınız_>. onmicrosoft.com ya da bir özel etki alanı adı contoso.com gibi. Özel etki alanı adı oluşturma hakkında daha fazla bilgi için bkz. [Azure AD 'ye özel etki alanı adı ekleme](/azure/active-directory/fundamentals/add-custom-domain).
+   - **Profil**: İsteğe bağlı olarak, Kullanıcı hakkında daha fazla bilgi ekleyebilirsiniz. Ayrıca, daha sonra Kullanıcı bilgileri de ekleyebilirsiniz. Kullanıcı bilgilerini ekleme hakkında daha fazla bilgi için bkz. [Kullanıcı profili bilgilerini ekleme veya değiştirme](/azure/active-directory/fundamentals/active-directory-users-profile-azure-portal).
+   - **Dizin rolü**: **Kullanıcı**' yı seçin.
 
-5. Denetleme **Göster parola** ve sağlanan otomatik olarak oluşturulan parola kopyalayın **parola** kutusu. İlk oturum açma işlemi için bu parola gerekir.
+5. **Parolayı göster** ' i kontrol edin ve **parola** kutusunda belirtilen otomatik oluşturulan parolayı kopyalayın. İlk oturum açma işlemi için bu parolaya ihtiyacınız olacak.
 
 6. **Oluştur**’u seçin.
 
     Kullanıcı oluşturulur ve Azure AD kiracınıza eklenir.
 
-7. Microsoft Azure portalında yeni hesapla oturum açın. İstendiğinde parolayı değiştirin.
-8. Oturum `https://portal.local.azurestack.external` Kiracı portalında görmek için yeni bir hesap ile.
+7. Azure portal yeni hesapla oturum açın. İstendiğinde parolayı değiştirin.
+8. `https://portal.local.azurestack.external` Kiracı portalını görmek için yeni hesapla oturum açın.
 
-## <a name="create-an-azure-stack-user-account-using-powershell"></a>PowerShell kullanarak bir Azure Stack kullanıcı hesabı oluşturma
+## <a name="create-an-azure-stack-user-account-using-powershell"></a>PowerShell kullanarak Azure Stack Kullanıcı hesabı oluşturma
 
-Azure aboneliğiniz yoksa, bir Kiracı Kullanıcı hesabı eklemek için Azure portal'ı kullanamazsınız. Bu durumda, bunun yerine Azure Active Directory için Windows PowerShell modülü kullanabilirsiniz.
+Azure aboneliğiniz yoksa, Kiracı Kullanıcı hesabı eklemek için Azure portal kullanamazsınız. Bu durumda, bunun yerine Windows PowerShell için Azure AD modülünü kullanabilirsiniz.
 
 > [!NOTE]
-> Azure Stack geliştirme Seti'ni dağıtmak için Microsoft Account kullanıyorsanız, Kiracı hesabı oluşturmak için Azure AD PowerShell kullanamazsınız. 
+> ASDK 'yi dağıtmak için Microsoft hesabı kullanıyorsanız, kiracı hesabı oluşturmak için Azure AD PowerShell kullanamazsınız.
 
-1. Yükleme **64-bit** sürümünü [BT uzmanları RTW için Microsoft Online Services oturum açma Yardımcısı](https://go.microsoft.com/fwlink/p/?LinkId=286152).
+1. [BT UZMANLARı RTW Için Microsoft Online Services oturum açma Yardımcısı](https://go.microsoft.com/fwlink/p/?LinkId=286152)'nın **64 bitlik** sürümünü yükler.
 
-2. Microsoft Azure Active Directory için Windows PowerShell modülü ile aşağıdaki adımları yükleyin:
+2. Windows PowerShell için Microsoft Azure AD Modülü şu adımlarla birlikte yüklemelisiniz:
 
-    - (Windows PowerShell'i yönetici olarak çalıştır) yükseltilmiş bir Windows PowerShell komut istemi açın.
-    - Çalıştırma **Install-Module MSOnline** komutu.
-    - NuGet sağlayıcısı yüklemeniz istenirse, seçin **Y** ve **Enter**.
-    - PSGallery modülü yüklemek isteyip istemediğiniz sorulduğunda seçin **Y** ve **Enter**.
+    - Yükseltilmiş bir Windows PowerShell komut istemi açın (Windows PowerShell 'i yönetici olarak çalıştırın).
+    - **Install-Module MSOnline** komutunu çalıştırın.
+    - NuGet sağlayıcısını yüklemek isteyip istemediğiniz sorulursa **Y** ' yi seçin ve **girin**.
+    - Bu modülü PSGallery 'den yüklemek isteyip istemediğiniz sorulursa **Y** ' yi seçin ve **girin**.
 
-3. Aşağıdaki cmdlet'leri çalıştırın:
+3. Aşağıdaki cmdlet 'leri çalıştırın:
 
     ```powershell
-    # Provide the AAD credential you use to deploy Azure Stack Development Kit
+    # Provide the Azure AD credential you use to deploy the ASDK.
 
             $msolcred = get-credential
 
@@ -87,8 +87,8 @@ Azure aboneliğiniz yoksa, bir Kiracı Kullanıcı hesabı eklemek için Azure p
 
     ```
 
-1. Microsoft Azure'da yeni bir hesapla oturum açın. İstendiğinde parolayı değiştirin.
-2. Oturum `https://portal.local.azurestack.external` Kiracı portalında görmek için yeni bir hesap ile.
+1. Yeni hesapla Azure 'da oturum açın. İstendiğinde parolayı değiştirin.
+2. `https://portal.local.azurestack.external` Kiracı portalını görmek için yeni hesapla oturum açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack sorunlarını giderme | Microsoft Docs
-description: Azure Stack geliştirme Seti'ni (sorun giderme bilgileri ASDK).
+title: ASDK sorunlarını giderme | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) sorunlarını giderme hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,60 +16,60 @@ ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a84e85eacb033fc872241feea905b742eee0591b
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 7946b8339c9ff1127c0a9d9572c49527208b38f2
+ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267255"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70118656"
 ---
-# <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure Stack geliştirme Seti'ni (ASDK) sorunlarını giderme
-Bu makalede ASDK için genel sorun giderme bilgileri sağlar. Belgelenmemiş bir sorunla karşılaşıyorsanız, kontrol ettiğinizden emin olun [Azure Stack MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) ilişkin daha fazla Yardım ve bilgileri.  
+# <a name="troubleshoot-the-asdk"></a>ASDK sorunlarını giderme
+Bu makalede Azure Stack Geliştirme Seti (ASDK) için genel sorun giderme bilgileri sağlanmaktadır. Belgelenmemiş bir sorun yaşıyorsanız, yardım için [Azure Stack MSDN forumunu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) kontrol ettiğinizden emin olun.  
 
 > [!IMPORTANT]
-> ASDK değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) aracılığıyla sunulan resmi desteği yoktur.
+> ASDK bir değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) ile sunulan resmi bir destek yoktur.
 
-Bu bölümde açıklanan sorunları gidermek için öneriler, çeşitli kaynaklardan elde edilen ve olabilir veya belirli sorununuzu çözebilir değil. Kod örnekleri "olduğu gibi" sağlanmıştır ve beklenen sonuçları garanti edilemez. Bu bölüm, ürün geliştirmeleri uygulandığı şekilde sık düzenlemeleri ve güncelleştirmeleri tabi değildir.
+Bu bölümde açıklanan sorunları gidermeye yönelik öneriler, çeşitli kaynaklardan türetilir ve belirli bir sorunu çözemeyebilir veya gideremeyebilir. Kod örnekleri "olduğu gibi" verilmiştir ve beklenen sonuçlar garanti edilemez. Bu bölüm, ürüne yönelik iyileştirmeler uygulandıklarında sık yapılan düzenlemelere ve güncelleştirmelere tabidir.
 
 ## <a name="deployment"></a>Dağıtım
 ### <a name="deployment-failure"></a>Dağıtım hatası
-Yükleme sırasında bir hatayla karşılaşırsanız, başarısız olan adımda dağıtımdan kullanarak başlatabilirsiniz dağıtım betiği aşağıdaki örnekte olduğu gibi yeniden çalıştırma seçeneği:
+Yükleme sırasında bir hata yaşarsanız dağıtım betiğinin-yeniden çalıştır seçeneğini kullanarak dağıtımı başarısız adımdan yeniden başlatabilirsiniz. Örneğin:
 
   ```powershell
   cd C:\CloudDeployment\Setup
   .\InstallAzureStackPOC.ps1 -Rerun
   ```
 
-### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Dağıtımın sonundaki PowerShell oturumu hala açıksa ve herhangi bir çıktı göstermiyor
-Seçili olduğunda bu davranış büyük olasılıkla yalnızca bir PowerShell komut penceresi varsayılan davranışını sonucudur. Geliştirme Seti dağıtım başarılı oldu ancak komut penceresi seçerken duraklatıldı. "Komut penceresinde başlık çubuğu seçin" sözcüğünü bakarak Kurulum Tamamlandı doğrulayabilirsiniz. Bunu seçimini kaldırmak için ESC tuşuna basın ve sonra tamamlama ileti gösterilecek.
+### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Dağıtımın sonunda, PowerShell oturumu hala açık ve herhangi bir çıkış göstermez
+Bu davranış, bir PowerShell komut penceresi seçildiğinde yalnızca varsayılan davranışın sonucudur. ASDK dağıtımı başarılı oldu ancak pencere seçilirken betik duraklatıldı. Komut penceresinin başlık çubuğunda "Seç" sözcüğünü arayarak kurulumun tamamlandığını doğrulayabilirsiniz. Bu seçeneğin seçimini kaldırmak için ESC tuşuna basın ve sonra tamamlanma iletisi gösterilmelidir.
 
 ## <a name="virtual-machines"></a>Sanal makineler
 ### <a name="default-image-and-gallery-item"></a>Varsayılan görüntü ve galeri öğesi
-Azure stack'teki Vm'leri dağıtmadan önce bir Windows Server görüntüsünü ve galeri öğesi eklenmesi gerekir.
+Azure Stack ' de VM 'Ler dağıtılmadan önce bir Windows Server görüntüsü ve galeri öğesi eklenmelidir.
 
-### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>My Azure Stack ana bilgisayar yeniden başlatıldıktan sonra bazı VM'ler otomatik olarak başlatılamayabilir.
-Ana bilgisayar yeniden başlatıldıktan sonra Azure Stack Hizmetleri hemen kullanılamaz fark edebilirsiniz. Azure Stack olmasıdır [altyapı Vm'leri](asdk-architecture.md#virtual-machine-roles) ve bazı tutarlılık denetimi zaman ancak sonunda otomatik olarak başlatılacak RPs gerçekleştirin.
+### <a name="after-restarting-my-azure-stack-host-some-vms-dont-automatically-start"></a>Azure Stack ana makinelerimi yeniden başlattıktan sonra bazı VM 'Ler otomatik olarak başlatılmaz.
+Ana bilgisayarınızı yeniden başlattıktan sonra Azure Stack hizmetleri hemen kullanılabilir olmayabilir. Bunun nedeni, Azure Stack [altyapı VM](asdk-architecture.md#virtual-machine-roles) 'Lerinin ve RPS 'nin tutarlılığı denetlemek için biraz zaman sürmesine, ancak sonunda otomatik olarak başlayacak.
 
-Ayrıca, bu Kiracı Vm'leri otomatik olarak Azure Stack Geliştirme Seti konağın yeniden başlatmanın ardından başlatma fark edebilirsiniz. Bu bilinen bir sorundur ve yalnızca çevrimiçi duruma getirmek için birkaç adımı gerektirir:
+Ayrıca, Kiracı VM 'lerinin, ASDK konağının yeniden başlatıldıktan sonra otomatik olarak başlamadığına da dikkat edebilirsiniz. Bu bilinen bir sorundur ve yalnızca çevrimiçi duruma getirmek için birkaç el ile adım gerektirir:
 
-1.  Azure Stack Geliştirme Seti konağında başlatın **yük devretme kümesi Yöneticisi** Başlat menüsünden.
-2.  Kümeyi seçin **S Cluster.azurestack.local**.
-3.  Seçin **rolleri**.
-4.  Kiracı VM görünür bir *kaydedilmiş* durumu. Tüm altyapı Vm'lere çalışmaya sonra Kiracı Vm'lere sağ tıklayıp **Başlat** VM sürdürmek için.
+1.  ASDK ana bilgisayarında başlangıç menüsünden **Yük devretme kümesi Yöneticisi** başlatın.
+2.  **S-Cluster. azurestack. Local**kümesini seçin.
+3.  **Rolleri**seçin.
+4.  Kiracı VM 'Leri *kaydedilmiş* durumda görüntülenir. Tüm altyapı VM 'Leri çalışır olduktan sonra, Kiracı VM 'lerine sağ tıklayıp **Başlat** ' ı seçerek VM 'yi sürdürebilirsiniz.
 
-### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Bazı sanal makineler silinmiş, ancak disk üzerinde VHD dosyalarını görmeye devam ediyor. Bu davranış beklenmektedir?
-Evet, bu beklenen bir davranıştır. Çünkü, bu şekilde tasarlanmıştır:
+### <a name="ive-deleted-some-vms-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Bazı VM 'Leri sildim, ancak yine de diskte VHD dosyaları görüyorum. Bu davranış beklensin mi?
+Evet, bu beklenen davranıştır. Bu şekilde tasarlanmıştır çünkü:
 
-* Bir VM'yi sildiğinizde VHD'ler silinmez. Diskleri, kaynak grubundaki ayrı kaynaklardır.
-* Bir depolama hesabı silindiğinde, silme işlemini Azure Resource Manager aracılığıyla hemen görünür, ancak çöp toplama çalışana kadar içerebilir diskleri yine de depolama alanında tutulur.
+* Bir VM 'yi sildiğinizde, VHD 'ler silinmez. Diskler, kaynak grubundaki ayrı kaynaklardır.
+* Bir depolama hesabı silindiğinde, silme işlemi hemen Azure Resource Manager aracılığıyla görünür, ancak içerebileceği diskler hala çöp toplama çalışana kadar depolama alanında tutulur.
 
-"Artık" VHD'ler görürseniz, klasör, silinen bir depolama hesabı için bir parçası olup olmadığını bilmek önemlidir. Depolama hesabı silindi, hala orada mısınız normal bir durumdur.
+"Artık" VHD 'ler görürseniz, silinen bir depolama hesabının klasörünün bir parçası olup olmadığını bilmeniz önemlidir. Depolama hesabı silinmediyse, VHD 'Lerin kalması normaldir.
 
-Daha fazla bekletme eşiği ve isteğe bağlı kazanma yapılandırma hakkında daha fazla [depolama hesaplarını yönetme](../operator/azure-stack-manage-storage-accounts.md).
+[Depolama hesaplarını yönetme](../operator/azure-stack-manage-storage-accounts.md)bölümünde bekletme eşiğini ve isteğe bağlı geri kazanma yapılandırma hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="storage"></a>Depolama
 ### <a name="storage-reclamation"></a>Depolama geri kazanma
-Bu portalda gösterilmesi, geri kazanılan Kapasite 14 saate kadar sürebilir. Alan geri kazanma bloğu blob Deposu'nda kullanım yüzdesi iç kapsayıcı dosyaları gibi çeşitli etkenlere bağlıdır. Bu nedenle, ne kadar veri silinmiş bağlı olarak, garantisi yoktur Atık toplayıcısının çalışacağı kazanılacak alanı miktarı.
+Geri kazanılan kapasitenin portalda gösterilmesi 14 saate kadar sürebilir. Space geri kazanma, Blok Blobu deposundaki iç kapsayıcı dosyalarının kullanım yüzdesi gibi çeşitli faktörlere bağlıdır. Bu nedenle, ne kadar veri silindiğine bağlı olarak, çöp toplayıcı çalıştırıldığında geri kazanılabilecek alan miktarı garantisi yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure Stack destek forumunu ziyaret edin](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)

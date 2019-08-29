@@ -1,6 +1,6 @@
 ---
-title: Azure Stack geliştirme Seti'ni (ASDK) giriş | Microsoft Docs
-description: ASDK yenilikler açıklanır ve Microsoft Azure Stack değerlendirme ortak kullanım durumları.
+title: ASDK nedir? | Microsoft Docs
+description: Azure Stack Geliştirme Seti (ASDK) ve Azure Stack değerlendirmek için nasıl kullanıldığı hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -17,68 +17,68 @@ ms.date: 02/08/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 0c6019fd07b21bf82d32bc516a05c5d491041783
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 50a08480a098c9ca5a6d50e94dd6dc7dbfc78b09
+ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66267236"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70118614"
 ---
-# <a name="what-is-the-azure-stack-development-kit"></a>Azure Stack geliştirme Seti'ni nedir?
-[Microsoft Azure Stack tümleşik sistemleri](../operator/azure-stack-overview.md) aralık boyutu 4-16 düğümlerden ve tüm dünyada bir donanım iş ortağı ve Microsoft tarafından desteklenir. Azure Stack tümleşik sistemleri, üretim iş yükleriniz için yeni senaryoları etkinleştirmek için kullanın. Tümleşik sistemler altyapıyı yöneten ve hizmetleri sunan Azure Stack operatörü kullanıyorsanız bkz bizim [operatör belgeleri](/azure-stack/operator).
+# <a name="what-is-the-asdk"></a>ASDK nedir?
+4-16 düğümlerden oluşan boyut olarak [Tümleşik sistemleri Microsoft Azure Stack](../operator/azure-stack-overview.md) ve bir donanım ortağı ve Microsoft tarafından ortaklaşa desteklenir. Üretim iş yükleriniz için yeni senaryolar sağlamak üzere Azure Stack tümleşik sistemleri kullanın. Tümleşik sistemler altyapısını yöneten ve hizmet sunan bir Azure Stack işletmeni kullanıyorsanız, bkz. [operatör belgeleri](/azure-stack/operator).
 
-Azure Stack geliştirme Seti'ni (ASDK) indirin ve kullanabileceğiniz bir Azure Stack, tek düğümlü dağıtımıdır **ücretsiz**. Tek bir ana bilgisayar sunucu bilgisayarda çalışan karşılayan veya aşan sanal makinelerin içinde tüm ASDK bileşenler yüklü [en düşük donanım gereksinimlerini](asdk-deploy-considerations.md#hardware). ASDK Azure Stack'i değerlendirin ve Azure'da tutarlı araç ve API'leri kullanarak modern uygulamalar geliştirin, bir ortam sağlamak üzere tasarlanmıştır bir *üretim dışı* ortam. 
+Azure Stack Geliştirme Seti (ASDK), indirebileceğiniz ve **ücretsiz**olarak kullanabileceğiniz Azure Stack tek düğümlü bir dağıtımdır. Tüm ASDK bileşenleri, [En düşük donanım gereksinimlerini](asdk-deploy-considerations.md#hardware)karşılaması veya aşması gereken tek bir ana bilgisayar bilgisayarında çalışan sanal makinelere (VM) yüklenir. ASDK, Azure Stack değerlendirebileceğiniz ve Azure ile bir *Üretim dışı* ortamda Azure ile tutarlı araçlar kullanarak modern uygulamalar geliştirebileceğiniz bir ortam sağlamaktır. 
 
 > [!IMPORTANT]
-> ASDK kullanılabilir veya desteklenen bir üretim ortamında kullanılmaya yönelik değildir.
+> ASDK 'nin bir üretim ortamında kullanılması veya desteklenmesi amaçlanmamaktadır.
 
-ASDK bileşenlerinin tümünü tek bir geliştirme seti ana bilgisayara dağıtıldığından, sınırlı fiziksel kaynakları kullanılabilen vardır. ASDK dağıtımlarda Azure Stack altyapısı Vm'leri ve Kiracı Vm'leri üzerinde bir arada aynı sunucu bilgisayarındaki. Bu yapılandırma, Ölçek veya performans değerlendirmesi için tasarlanmamıştır.
+Tüm ASDK bileşenleri tek bir ana bilgisayara dağıtıldığından, kullanılabilir sınırlı sayıda fiziksel kaynak vardır. ASDK dağıtımları ile, hem Azure Stack altyapısı VM 'Leri hem de Kiracı VM 'Leri aynı sunucu bilgisayarında birlikte bulunamaz. Bu yapılandırma, ölçek veya performans değerlendirmesi için tasarlanmamıştır.
 
-ASDK için Azure ile tutarlı bir hibrit bulut deneyimi sunmak üzere tasarlanmıştır:
-- **Yöneticiler** (Azure Stack operatörleri). ASDK değerlendirmek ve kullanılabilir Azure Stack hizmetleri hakkında bilgi edinmek için harika bir kaynaktır.
-- **Geliştiriciler**. ASDK, karma veya modern uygulamalar şirket içi (geliştirme/test ortamlarını) geliştirmek için kullanılabilir. Bu geliştirme deneyiminin yanı sıra, Azure Stack üretim dağıtımları veya öncesinde yinelenebilirliği sunar. 
+ASDK, için Azure ile tutarlı bir karma bulut deneyimi sağlamak üzere tasarlanmıştır:
+- **Yöneticiler** (Azure Stack Işleçler): ASDK, kullanılabilir Azure Stack hizmetlerini değerlendirmek ve öğrenmek için harika bir kaynaktır.
+- **Geliştiriciler**: ASDK, şirket içinde karma veya modern uygulamalar geliştirmek için kullanılabilir (geliştirme ve test ortamları). Bu esneklik, Azure Stack Üretim dağıtımlarından önce ya da bunların yanı sıra geliştirme deneyiminin yinelenebilirlik sunar.
 
-ASDK hakkında daha fazla bilgi için şu kısa videoyu izleyin:
+ASDK hakkında daha fazla bilgi edinmek için bu kısa videoyu izleyin:
 
 > [!VIDEO https://www.youtube.com/embed/dbVWDrl00MM]
 
 
 ## <a name="asdk-and-multi-node-azure-stack-differences"></a>ASDK ve çok düğümlü Azure Stack farklılıkları
-Tek düğümlü ASDK dağıtımları çok düğümlü Azure Stack dağıtımları farkında olmanız gereken birkaç önemli şekilde değişir.
+Tek düğümlü ASDK dağıtımları, çok düğümlü Azure Stack dağıtımlarından birkaç önemli şekilde farklılık gösterir:
 
 |Açıklama|ASDK|Çok düğümlü Azure Stack|
 |-----|-----|-----|
-|**Ölçeklendirme**|Tüm bileşenleri tek bir düğüm server yüklü bir bilgisayara yüklenir.|4-16 düğüm boyutu değişebilir.|
-|**Esnekliği**|Tek bir düğüm yapılandırması, yüksek kullanılabilirlik sağlamaz|[Yüksek kullanılabilirlik](../operator/azure-stack-overview.md#providing-high-availability) özellikleri desteklenir.|
-|**Ağ**|ASDK konak tüm ASDK ağ trafiğini yönlendirir. Ek geçiş gereksinimi yoktur.|Daha karmaşık [ağ Yönlendirme Altyapısı](../operator/azure-stack-network.md#network-infrastructure) Top-Of-Rack (TOR), temel kart yönetim denetleyicisi (BMC) ve Kenarlık (veri merkezi ağı) anahtarları dahil olmak üzere çok düğümlü dağıtımda gereklidir.|
-|**Düzeltme eki ve güncelleştirme işlemi**|ASDK yeni bir sürümüne taşımak için Geliştirme Seti ana bilgisayarda ASDK yeniden dağıtmanız gerekir.|[Düzeltme eki uygulama ve güncelleştirme](../operator/azure-stack-updates.md) yüklü olan Azure Stack sürümü güncelleştirmek için kullanılan işlem.|
-|**Destek**|Azure Stack MSDN Forumu. Microsoft Müşteri Hizmetleri ve desteği (CSS) desteği *değil* üretim dışı ortamlar için kullanılabilir.|[Azure Stack MSDN Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) ve tam CSS desteği.|
+|**Ölçeklendirme**|Tüm bileşenler tek düğümlü bir sunucu bilgisayara yüklenir.|4-16 düğümden boyut aralığında değişebilir.|
+|**Esnekliği**|Tek düğümlü yapılandırma yüksek kullanılabilirlik sağlamıyor|[Yüksek kullanılabilirlik](../operator/azure-stack-overview.md#providing-high-availability) özellikleri desteklenir.|
+|**Ağ**|ASDK ana bilgisayarı tüm ASDK ağ trafiğini yönlendirir. Ek anahtar gereksinimi yoktur.|Çok düğümlü dağıtımlardaki daha karmaşık [ağ yönlendirme altyapısı](../operator/azure-stack-network.md#network-infrastructure) , raf üstü (Tor), temel kart yönetim DENETLEYICISI (BMC) ve sınır (Datacenter ağı) anahtarları dahil olmak üzere gereklidir.|
+|**Düzeltme Eki ve güncelleştirme işlemi**|ASDK 'nin yeni bir sürümüne geçmek için, asdk ana bilgisayar bilgisayarındaki ASDK 'yi yeniden dağıtmanız gerekir.|Yüklü Azure Stack sürümünü güncelleştirmek için [Düzeltme Eki ve güncelleştirme](../operator/azure-stack-updates.md) işlemi kullanılır.|
+|**Destek**|MSDN Azure Stack Forumu. Microsoft Müşteri Hizmetleri ve desteği (CSS) desteği, üretim dışı ortamlar için kullanılamaz.|[MSDN Azure Stack Forumu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) ve tam CSS desteği.|
 | | |
 
-## <a name="learn-about-available-services"></a>Kullanılabilir hizmetleri hakkında bilgi edinin
-Azure Stack operatör hangi hizmetlerin, kullanıcılarınıza sunabileceğiniz bilmeniz gerekir. Azure Stack Azure hizmetlerin bir alt kümesini destekler ve desteklenen hizmet listesini zamanla gelişmesinin devam eder.
+## <a name="learn-about-available-services"></a>Kullanılabilir hizmetler hakkında bilgi edinin
+Azure Stack operatörü olarak, kullanıcılarınız için kullanabileceğiniz Hizmetleri bilmeniz gerekir. Azure Stack, Azure hizmetlerinin bir alt kümesini destekler ve desteklenen hizmetlerin listesi zaman içinde gelişmeye devam edecektir.
 
-### <a name="foundational-services"></a>Temel Hizmetleri
-Varsayılan olarak, Azure Stack şu "temel" Hizmetleri ASDK dağıtırken:
+### <a name="foundational-services"></a>Temel hizmetler
+Varsayılan olarak, Azure Stack, ASDK 'yi dağıtırken aşağıdaki "temel hizmetler" i içerir:
 - İşlem
 - Depolama
 - Ağ
 - Key Vault
 
-Bu temel hizmetlerle minimal yapılandırma ile kullanıcılarınıza-olarak-hizmet altyapı (Iaas) sunabilir.
+Bu temel hizmetlerle, en az yapılandırmayla kullanıcılarınıza hizmet olarak altyapı (IaaS) sunabilirsiniz.
 
 ### <a name="additional-services"></a>Ek hizmetler
-Şu anda, aşağıdaki ek olarak bir-hizmet Platform (PaaS) Hizmetleri desteklenmektedir:
+Şu anda aşağıdaki ek hizmet olarak platform (PaaS) Hizmetleri desteklenir:
 - App Service
 - Azure İşlevleri
 - SQL ve MySQL veritabanları
 
 > [!NOTE]
-> Bu hizmetler, bunları kullanıcılarınıza sunabileceğiniz önce ek yapılandırma gerektirir ve ASDK yüklediğinizde varsayılan olarak kullanılabilir değil.
+> Bu hizmetler, kullanıcılarınız için kullanılabilir hale gelmeden önce ek yapılandırma gerektirir ve ASDK 'yi yüklediğinizde varsayılan olarak kullanılabilir olmaz.
 
 ## <a name="service-roadmap"></a>Hizmet yol haritası
-Azure Stack, ek Azure Hizmetleri için destek eklemeye devam edeceğiz. Azure Stack ile beklediğini bilgi edinmek için [Azure Stack yol haritası](https://azure.microsoft.com/roadmap/?tag=azure-stack). 
+Azure Stack, ek Azure hizmetleri için destek eklemeye devam edecektir. Azure Stack sonraki bir sırada yakında sunulacak hakkında daha fazla bilgi edinmek için [Azure Stack yol haritasını](https://azure.microsoft.com/roadmap/?tag=azure-stack)inceleyin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Stack değerlendirme başlama için öncelikle gerekir [son ASDK indirme](asdk-download.md) ve ASDK ana bilgisayar hazırlayın. Geliştirme Seti konak hazırladıktan sonra ASDK yüklemek ve Azure Stack kullanmaya başlamak için yönetici ve kullanıcı portalı için oturum açın.
+Azure Stack değerlendirmeye başlamak için öncelikle [en son ASDK 'yi indirmeniz](asdk-download.md) ve asdk ana bilgisayarı hazırlamanız gerekir. Daha sonra, Azure Stack kullanmaya başlamak için, ASDK 'yi yükleyebilir ve yönetici ve Kullanıcı portalında oturum açabilirsiniz.
