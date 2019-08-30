@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/28/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 08/20/2019
-ms.openlocfilehash: 23cacc7a9005e1695f7394d1e441298f3f90bca8
-ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
+ms.lastreviewed: 08/28/2019
+ms.openlocfilehash: cf15aebac3ad4d099892270bb2e334d32f82f580
+ms.sourcegitcommit: 5efa09034a56eb2f3dc0c9da238fe60cff0c67ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70025954"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70144023"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>ASDK ana bilgisayarını hazırlama
 Ana bilgisayara Azure Stack Geliştirme Seti (ASDK) yüklemeden önce, ASDK konağının yüklenmek üzere hazırlanmalıdır. Konak hazırlandıktan sonra, ASDK dağıtımına başlamak için CloudBuilder. VHDX sanal makinesi (VM) sabit sürücüsünden önyükleme yapılır.
@@ -64,12 +64,17 @@ Ana bilgisayara ASDK yüklemeden önce, ASDK ana bilgisayar ortamı hazırlanmal
 
     Aşağıdaki isteğe bağlı ayarlar için de değerler sağlayabilirsiniz:
     - **ComputerName**: Bu seçenek, ASDK konağının adını ayarlar. Ad, FQDN gereksinimleriyle uyumlu olmalıdır ve 15 karakter uzunluğunda veya daha az olmalıdır. Varsayılan değer, Windows tarafından oluşturulan rastgele bir bilgisayar adıdır.
-    - **STATIK IP yapılandırması**: Dağıtımınızı statik bir IP adresi kullanacak şekilde ayarlar. Aksi takdirde, yükleyici cloudbuilder. vhdx ' de yeniden başlatıldığında, ağ arabirimleri DHCP ile yapılandırılır. Statik IP yapılandırması kullanmayı seçerseniz, ek seçenekler de şunları yapmanız gereken yerde görüntülenir:
-      - Bir ağ bağdaştırıcısı seçin. **İleri**' ye tıklamadan önce bağdaştırıcıya bağlanabildiğinizden emin olun.
-      - Görüntülenen **IP adresi**, **ağ geçidi**ve **DNS** değerlerinin doğru olduğundan emin olun ve ardından **İleri**' ye tıklayın.
 
-   > [!TIP]
-   > Bir saat sunucusu IP adresi bulmak için [ntppool.org](https://www.ntppool.org/) veya PING Time.Windows.com adresini ziyaret edin.
+        - Bir ağ bağdaştırıcısı seçin. **İleri**' ye tıklamadan önce bağdaştırıcıya bağlanabildiğinizden emin olun.
+
+            ![Ağ bağdaştırıcısı ayarlarının ekran görüntüsü](media/asdk-prepare-host/step-four-network-adapter.png)
+
+        - Görüntülenen **IP adresi**, **ağ geçidi**ve **DNS** değerlerinin doğru olduğundan emin olun, geçerli bir **saat sunucusu IP** adresi sağlayın ve ardından **İleri**' ye tıklayın.
+
+            >[!TIP]
+            >Bir saat sunucusu IP adresi bulmak için [ntppool.org](https://www.ntppool.org/) veya PING Time.Windows.com adresini ziyaret edin. 
+
+            ![IP yapılandırma ayarlarının ekran görüntüsü](media/asdk-prepare-host/step-five-host-ip-config.png)
 
 7. Hazırlama işlemini başlatmak için **İleri** ' ye tıklayın.
 8. Hazırlık **tamamlandığında**, **İleri**' ye tıklayın.

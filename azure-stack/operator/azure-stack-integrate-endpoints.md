@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 07/30/2019
-ms.author: mabrigg
+ms.date: 08/21/2019
+ms.author: justinha
 ms.reviewer: wamota
-ms.lastreviewed: 08/05/2019
-ms.openlocfilehash: 6ffd13982a4acf90896b152adcee360e34c02b79
-ms.sourcegitcommit: 8de4c18b25bd1047fc270812a795f24e8f1e9244
+ms.lastreviewed: 08/21/2019
+ms.openlocfilehash: 129033057c6bc7b98b81fde6fbb517a502282467
+ms.sourcegitcommit: 701685f0b59e5a3d1a8d39fe477b8df701a51cd2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68865882"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70159582"
 ---
 # <a name="azure-stack-datacenter-integration---publish-azure-stack-services"></a>Azure Stack Datacenter Integration-Azure Stack hizmetleri yayımlama
 
@@ -34,16 +34,12 @@ Geleneksel bir ara sunucu veya bir güvenlik duvarının, çözümü koruduğu b
 
 Dış ağlara Azure Stack uç noktaları yayımlamak için bir altyapı VIP kümesi gereklidir. *Uç nokta (VIP)* tablosunda her uç nokta, gerekli bağlantı noktası ve protokol gösterilmektedir. SQL kaynak sağlayıcısı gibi ek kaynak sağlayıcıları gerektiren uç noktalar için belirli kaynak sağlayıcısı dağıtım belgelerine bakın.
 
-Azure Stack yayımlamak için gerekli olmadıklarından iç altyapı VIP 'leri listelenmez.
+Azure Stack yayımlamak için gerekli olmadıklarından iç altyapı VIP 'leri listelenmez. Kullanıcı VIP 'leri, kullanıcılar tarafından Azure Stack işleçle hiçbir denetim olmadan tanımlanmış dinamik bir şekilde tanımlanır.
 
 > [!Note]  
-> Kullanıcı VIP 'leri, kullanıcılar tarafından Azure Stack işleçle hiçbir denetim olmadan tanımlanmış dinamik bir şekilde tanımlanır.
+> IKEv2 VPN, UDP bağlantı noktası 500 ve 4500 ve TCP bağlantı noktası 50 kullanan standart tabanlı bir IPSec VPN çözümüdür. Güvenlik duvarları bu bağlantı noktalarını her zaman açmaz, bu nedenle IKEv2 VPN, proxy 'leri ve güvenlik duvarlarını geçemeyebilir.
 
-> [!Note]  
-> IKEv2 VPN. Standart tabanlı bir IPsec VPN çözümü olan IKEv2 VPN, UDP bağlantı noktası 500 ve 4500 ile 50 numaralı IP protokolünü kullanır. Güvenlik duvarları her zaman bu bağlantı noktalarını açmaz ve bu nedenle IKEv2 VPN’nin proxy ile güvenlik duvarlarını geçememe olasılığı vardır.
-
-> [!Note]  
-> 1811 güncelleştirmesinde itibariyle, [uzantı konağının](azure-stack-extension-host-prepare.md)eklenmesi nedeniyle, 12495-30015 aralığındaki bağlantı noktalarının artık açık olması gerekmez.
+[Uzantı konağının](azure-stack-extension-host-prepare.md)eklenmesiyle, 12495-30015 aralığındaki bağlantı noktaları gerekli değildir.
 
 |Uç nokta (VIP)|DNS ana bilgisayar A kaydı|Protocol|Bağlantı Noktaları|
 |---------|---------|---------|---------|
@@ -80,11 +76,11 @@ Azure Stack yalnızca saydam proxy sunucuları destekler. Geleneksel bir ara sun
 
 |Amaç|Hedef URL 'SI|Protocol|Bağlantı Noktaları|Kaynak Ağ|
 |---------|---------|---------|---------|---------|
-|Kimlik|**Azure**<br>login.windows.net<br>login.microsoftonline.com<br>Graph.Windows.NET<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com<br>**Azure Devlet Kurumları**<br>https:\//Login.microsoftonline.us/<br>https:\//Graph.Windows.net/<br>**Azure Çin 21Vianet**<br>https:\//Login.chinacloudapi.cn/<br>https:\//Graph.chinacloudapi.cn/<br>|HTTP<br>HTTPS|80<br>443|Genel VIP-/27<br>Ortak altyapı ağı|
-|Market dağıtımı|**Azure**<br>https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://&#42;.azureedge.net<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>https://&#42;. blob.Core.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn/<br>http://&#42;. blob.Core.chinacloudapi.cn/|HTTPS|443|Genel VIP-/27|
+|Kimlik|**Azure**<br>login.windows.net<br>login.microsoftonline.com<br>Graph.Windows.NET<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com<br>**Azure Devlet Kurumları**<br>https:\//Login.microsoftonline.us/<br>https:\//Graph.Windows.net/<br>**Azure Çin 21Vianet**<br>https:\//Login.chinacloudapi.cn/<br>https:\//Graph.chinacloudapi.cn/<br>**Azure Almanya**<br>https:\//Login.microsoftonline.de/<br>https:\//Graph.cloudapi.de/|HTTP<br>HTTPS|80<br>443|Genel VIP-/27<br>Ortak altyapı ağı|
+|Market dağıtımı|**Azure**<br>https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://&#42;.azureedge.net<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>https://&#42;. blob.Core.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn/<br>http://&#42;. blob.Core.chinacloudapi.cn<br>**Azure Almanya**<br>https:\//Management.MicrosoftAzure.de/<br>http://&#42;. blob.Core.cloudapi.de/|HTTPS|443|Genel VIP-/27|
 |Düzeltme Eki & güncelleştirmesi|https://&#42;.azureedge.net<br>https:\//aka.MS/azurestackautomaticupdate|HTTPS|443|Genel VIP-/27|
-|Kayıt|**Azure**<br>https:\//management.azure.com<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn/|HTTPS|443|Genel VIP-/27|
-|Kullanım|**Azure**<br>https://&#42;. trafficmanager.net<br>**Azure Devlet Kurumları**<br>https://&#42;. usgovtrafficmanager.net<br>**Azure Çin 21Vianet**<br>https://&#42;. trafficmanager.cn|HTTPS|443|Genel VIP-/27|
+|Kayıt|**Azure**<br>https:\//management.azure.com<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn<br>**Azure Almanya**<br>https:\//Management.Core.cloudapi.de/|HTTPS|443|Genel VIP-/27|
+|Kullanım|**Azure**<br>https://&#42;. trafficmanager.net<br>**Azure Devlet Kurumları**<br>https://&#42;. usgovtrafficmanager.net<br>**Azure Çin 21Vianet**<br>https://&#42;. trafficmanager.cn<br>**Azure Almanya**<br>https://&#42;. azuretrafficmanager.de|HTTPS|443|Genel VIP-/27|
 |Windows Defender|&#42;. wdcp.microsoft.com<br>&#42;. wdcpalt.microsoft.com<br>&#42;. wd.microsoft.com<br>&#42;. update.microsoft.com<br>&#42;. download.microsoft.com<br>https:\//www.Microsoft.com/pkiops/CRL<br>https:\//www.Microsoft.com/pkiops/certs<br>https:\//CRL.Microsoft.com/pki/CRL/Products<br>https:\//www.Microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Genel VIP-/27<br>Ortak altyapı ağı|
 |NTP|(Dağıtım için belirtilen NTP sunucusu IP 'si)|UDP|123|Genel VIP-/27|
 |DNS|(Dağıtım için belirtilen DNS sunucusu IP 'si)|TCP<br>UDP|53|Genel VIP-/27|

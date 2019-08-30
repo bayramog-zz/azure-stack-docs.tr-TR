@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 53a423ebc8e9f503934bfd3df2f4962a7b584059
-ms.sourcegitcommit: b3dac698f2e1834491c2f9af56a80e95654f11f3
+ms.openlocfilehash: 9fa12d91e9f2ec738c68f4a04438a93415bd36fb
+ms.sourcegitcommit: 5efa09034a56eb2f3dc0c9da238fe60cff0c67ac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68658580"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70144028"
 ---
 # <a name="configure-vpn-gateway-settings-for-azure-stack"></a>Azure Stack için VPN Gateway ayarlarını yapılandırma
 
@@ -39,8 +39,8 @@ Her Azure Stack sanal ağ, **VPN**türünde olması gereken tek bir sanal ağ ge
 Bir sanal ağ geçidi oluşturduğunuzda, yapılandırmanız için ağ geçidi türünün doğru olduğundan emin olmanız gerekir. Bir VPN ağ geçidi, `-GatewayType Vpn` bayrak gerektirir; örneğin:
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
--Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn
+New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+-Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
 ```
 
@@ -70,27 +70,25 @@ Bir Kaynak Yöneticisi sanal ağ geçidi oluşturmak için Azure Stack portalın
 
 #### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell örneği, `-GatewaySku` **VpnGw1**olarak belirtir:
+Aşağıdaki PowerShell örneği, `-GatewaySku` **Standart**olarak belirtir:
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
--Location 'West US' -IpConfigurations $gwipconfig -GatewaySku VpnGw1
+New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+-Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
 ### <a name="connection-types"></a>Bağlantı türleri
 
-Kaynak Yöneticisi dağıtım modelinde, her yapılandırma için belirli bir sanal ağ geçidi bağlantı türü gerekir. `-ConnectionType` için kullanılabilir Resource Manager PowerShell değerleri şunlardır:
+Kaynak Yöneticisi dağıtım modelinde, her yapılandırma için belirli bir sanal ağ geçidi bağlantı türü gerekir. İçin `-ConnectionType` kullanılabilir Kaynak Yöneticisi PowerShell değerleri **IPSec**.
 
-* **Bkz**
+Aşağıdaki PowerShell örneğinde IPSec bağlantı türü gerektiren bir S2S bağlantısı oluşturulur:
 
-   Aşağıdaki PowerShell örneğinde IPSec bağlantı türü gerektiren bir S2S bağlantısı oluşturulur:
-
-   ```powershell
-   New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
-   -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local
-   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
-   ```
+```powershell
+New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
+-Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
+-ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+```
 
 ### <a name="vpn-types"></a>VPN türleri
 
@@ -111,8 +109,8 @@ Bir VPN ağ geçidi yapılandırması için sanal ağ geçidi oluşturduğunuzda
 Aşağıdaki PowerShell örneği, `-VpnType` **routebased**olarak belirtir. Bir ağ geçidi oluşturduğunuzda, yapılandırmanız için doğru olduğundan emin `-VpnType` olmanız gerekir.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
--Location 'West US' -IpConfigurations $gwipconfig
+New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+-Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
@@ -123,7 +121,7 @@ Aşağıdaki tabloda VPN ağ geçitleri için gereksinimler listelenmektedir.
 | |İlke Temelli Temel VPN Gateway | Rota Temelli Temel VPN Gateway | Rota Temelli Standart VPN Gateway | Rota Temelli Yüksek Performanslı VPN Gateway|
 |--|--|--|--|--|
 | **Siteden siteye bağlantı (S2S bağlantısı)** | Desteklenmiyor | Rota temelli VPN yapılandırması | Rota temelli VPN yapılandırması | Rota temelli VPN yapılandırması |
-| **Kimlik doğrulama yöntemi**  | Desteklenmiyor | S2S bağlantısı için önceden paylaşılan anahtar  | S2S bağlantısı için önceden paylaşılan anahtar  | S2S bağlantısı için önceden paylaşılan anahtar  |
+| **Kimlik doğrulama yöntemi**  | Desteklenmiyor | S2S bağlantısı için Önceden paylaşılan anahtar  | S2S bağlantısı için Önceden paylaşılan anahtar  | S2S bağlantısı için Önceden paylaşılan anahtar  |
 | **En fazla S2S bağlantısı sayısı**  | Desteklenmiyor | 20 | 20| 10|
 |**Etkin yönlendirme desteği (BGP)** | Desteklenmiyor | Desteklenmiyor | Desteklenen | Desteklenen |
 
@@ -156,7 +154,7 @@ Yerel ağ geçidine bir ad, VPN cihazının genel IP adresi verirsiniz ve şirke
 Sonraki PowerShell örneği yeni bir yerel ağ geçidi oluşturur:
 
 ```powershell
-New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 

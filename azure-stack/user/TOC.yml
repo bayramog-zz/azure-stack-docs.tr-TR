@@ -184,7 +184,7 @@
                   href: azure-stack-metrics-supported.md
                 - name: Azure izleme verilerini kullanma
                   href: azure-stack-metrics-monitor.md
-        - name: Çözüm şablonlarını kullanma
+        - name: Eklenti hizmetlerini dağıtma
           items:
             - name: Ethereum dağıtma
               href: azure-stack-ethereum.md
