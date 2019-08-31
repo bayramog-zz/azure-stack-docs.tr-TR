@@ -14,12 +14,12 @@ ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 6b6ab8ac8292f8d548b49331cf5d2e2ae100e68f
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 92e0c1a3bfd055373ffba5091d79922f1203b20b
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418457"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188035"
 ---
 # <a name="use-data-transfer-tools-in-azure-stack-storage"></a>Azure Stack depolamada veri aktarımı araçlarını kullanma
 
@@ -57,8 +57,13 @@ AzCopy, en iyi performansa sahip basit komutları kullanarak Microsoft Azure Blo
 
 ### <a name="download-and-install-azcopy"></a>AzCopy indirin ve yükleyin
 
+::: moniker range=">=azs-1811"
 * 1811 güncelleştirmesi veya daha yeni sürümler için [AzCopy ile v10 arasındaki + indirin](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+::: moniker-end
+
+::: moniker range="<azs-1811"
 * Önceki sürümler için (1802 1809 güncelleştirme), [AzCopy 7.1.0 indirin](https://aka.ms/azcopyforazurestack20170417).
+::: moniker-end
 
 ### <a name="azcopy-101-configuration-and-limits"></a>AzCopy 10,1 yapılandırma ve sınırları
 

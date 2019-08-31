@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/30/2019
 ms.author: justinha
 ms.reviewer: wamota
-ms.lastreviewed: 08/21/2019
-ms.openlocfilehash: 129033057c6bc7b98b81fde6fbb517a502282467
-ms.sourcegitcommit: 701685f0b59e5a3d1a8d39fe477b8df701a51cd2
+ms.lastreviewed: 08/30/2019
+ms.openlocfilehash: 7b8bae02fdb3f85b856f6ccdb9d90155e6bde768
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70159582"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188362"
 ---
 # <a name="azure-stack-datacenter-integration---publish-azure-stack-services"></a>Azure Stack Datacenter Integration-Azure Stack hizmetleri yayımlama
 
@@ -77,10 +77,10 @@ Azure Stack yalnızca saydam proxy sunucuları destekler. Geleneksel bir ara sun
 |Amaç|Hedef URL 'SI|Protocol|Bağlantı Noktaları|Kaynak Ağ|
 |---------|---------|---------|---------|---------|
 |Kimlik|**Azure**<br>login.windows.net<br>login.microsoftonline.com<br>Graph.Windows.NET<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com<br>**Azure Devlet Kurumları**<br>https:\//Login.microsoftonline.us/<br>https:\//Graph.Windows.net/<br>**Azure Çin 21Vianet**<br>https:\//Login.chinacloudapi.cn/<br>https:\//Graph.chinacloudapi.cn/<br>**Azure Almanya**<br>https:\//Login.microsoftonline.de/<br>https:\//Graph.cloudapi.de/|HTTP<br>HTTPS|80<br>443|Genel VIP-/27<br>Ortak altyapı ağı|
-|Market dağıtımı|**Azure**<br>https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://&#42;.azureedge.net<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>https://&#42;. blob.Core.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn/<br>http://&#42;. blob.Core.chinacloudapi.cn<br>**Azure Almanya**<br>https:\//Management.MicrosoftAzure.de/<br>http://&#42;. blob.Core.cloudapi.de/|HTTPS|443|Genel VIP-/27|
+|Market dağıtımı|**Azure**<br>https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://&#42;.azureedge.net<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>https://&#42;. blob.Core.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn/<br>http://&#42;. blob.Core.chinacloudapi.cn|HTTPS|443|Genel VIP-/27|
 |Düzeltme Eki & güncelleştirmesi|https://&#42;.azureedge.net<br>https:\//aka.MS/azurestackautomaticupdate|HTTPS|443|Genel VIP-/27|
-|Kayıt|**Azure**<br>https:\//management.azure.com<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn<br>**Azure Almanya**<br>https:\//Management.Core.cloudapi.de/|HTTPS|443|Genel VIP-/27|
-|Kullanım|**Azure**<br>https://&#42;. trafficmanager.net<br>**Azure Devlet Kurumları**<br>https://&#42;. usgovtrafficmanager.net<br>**Azure Çin 21Vianet**<br>https://&#42;. trafficmanager.cn<br>**Azure Almanya**<br>https://&#42;. azuretrafficmanager.de|HTTPS|443|Genel VIP-/27|
+|Kayıt|**Azure**<br>https:\//management.azure.com<br>**Azure Devlet Kurumları**<br>https:\//Management.usgovcloudapi.net/<br>**Azure Çin 21Vianet**<br>https:\//Management.chinacloudapi.cn|HTTPS|443|Genel VIP-/27|
+|Kullanım|**Azure**<br>https://&#42;. trafficmanager.net<br>**Azure Devlet Kurumları**<br>https://&#42;. usgovtrafficmanager.net<br>**Azure Çin 21Vianet**<br>https://&#42;. trafficmanager.cn|HTTPS|443|Genel VIP-/27|
 |Windows Defender|&#42;. wdcp.microsoft.com<br>&#42;. wdcpalt.microsoft.com<br>&#42;. wd.microsoft.com<br>&#42;. update.microsoft.com<br>&#42;. download.microsoft.com<br>https:\//www.Microsoft.com/pkiops/CRL<br>https:\//www.Microsoft.com/pkiops/certs<br>https:\//CRL.Microsoft.com/pki/CRL/Products<br>https:\//www.Microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Genel VIP-/27<br>Ortak altyapı ağı|
 |NTP|(Dağıtım için belirtilen NTP sunucusu IP 'si)|UDP|123|Genel VIP-/27|
 |DNS|(Dağıtım için belirtilen DNS sunucusu IP 'si)|TCP<br>UDP|53|Genel VIP-/27|

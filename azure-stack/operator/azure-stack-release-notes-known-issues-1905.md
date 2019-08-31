@@ -16,12 +16,13 @@ ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 619bd20b3ed9affb93bceed7b253c15bdb1e3609
-ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
+monikerRange: azs-1905
+ms.openlocfilehash: f5fdabf85e7fca25fbe341453c37c1072078b6f2
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70008767"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188278"
 ---
 # <a name="azure-stack-1905-known-issues"></a>Azure Stack 1905 bilinen sorunlar
 
@@ -184,4 +185,4 @@ Bir VM 'de önyükleme tanılamayı etkinleştirip önyükleme tanılama depolam
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Güncelleştirme etkinliği denetim listesini gözden geçir](azure-stack-release-notes-checklist.md)
-- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](azure-stack-release-notes-security-updates-1905.md)
+- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](azure-stack-release-notes-security-updates.md)

@@ -16,15 +16,15 @@ ms.date: 08/29/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/29/2019
-ms.openlocfilehash: ba0ff94a9e5db1ad898a8702cb13d605878bfc94
-ms.sourcegitcommit: 701685f0b59e5a3d1a8d39fe477b8df701a51cd2
+ms.openlocfilehash: a0829f2bc8cb45bdfd6f68ac15418a05adcc7afb
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70159526"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188330"
 ---
 # <a name="about-deployment-network-traffic"></a>Dağıtım ağ trafiği hakkında
-Başarılı bir dağıtım sağlamak için Azure Stack dağıtımı sırasında ağ trafiği akışının ne kadar önemli olduğunu anlamak. Bu makalede, ne kadar beklendiğini anlamak için dağıtım işlemi sırasında beklenen ağ trafiğine ilişkin bilgiler gösterilmektedir.
+Azure Stack dağıtımı sırasında ağ trafiğini anlamak dağıtımın başarılı olmasına yardımcı olur. Bu makalede, dağıtım işlemi sırasında ağ trafiği akışında ne beklendiğini bilmeniz için adım adım gösterilmektedir.
 
 Bu çizimde, dağıtım sürecinde yer alan tüm bileşenler ve bağlantılar gösterilmektedir:
 
@@ -42,7 +42,7 @@ Azure Stack çözüm sağlayıcıları ek yönetim VM 'Leri sağlayabilir. Bir �
 Dağıtım başlamadan önce, dağıtımın başarılı bir şekilde tamamlanmasını sağlamak için OEM tarafından doğrulanabilen bazı minimum gereksinimler vardır:
 
 -   [Sertifikalar](azure-stack-pki-certs.md)
--   [Azure Aboneliği](https://azure.microsoft.com/free/?b=17.06)
+-   [Azure aboneliği](https://azure.microsoft.com/free/?b=17.06)
 -   İnternet erişimi
 -   DNS
 -   NTP
@@ -58,8 +58,6 @@ Dağıtım sırasında DVG, aboneliğinizden bir Azure hesabı kullanarak Azure 
 Dağıtım sırasında DVı 'nin gerektirdiği internet erişimi yalnızca giden, dağıtım sırasında gelen hiçbir çağrı yapılmaz. Bunun IP 'sini kaynak olarak kullandığını ve Azure Stack proxy yapılandırmalarının desteklemediğini aklınızda bulundurun. Bu nedenle, gerekirse, internet 'e erişmek için bir saydam proxy veya NAT sağlamanız gerekir. Dağıtım sırasında bazı iç bileşenler, genel VIP 'ler kullanılarak dış ağ üzerinden İnternet 'e erişmeye başlayacaktır. Dağıtım tamamlandıktan sonra, Azure ile Azure Stack arasındaki tüm iletişimler, genel VIP 'ler kullanılarak dış ağ üzerinden yapılır.
 
 Azure Stack anahtarlarındaki ağ yapılandırması, belirli ağ kaynakları ve hedefler arasındaki trafiği kısıtlayan erişim denetim listelerini (ACL 'Ler) içerir. DVD, sınırsız erişime sahip tek bileşendir; HLH de çok kısıtlanıyor. OEM 'nizden, ağlarınızdan yönetimi ve erişimi kolaylaştırmak için özelleştirme seçenekleri isteyebilirsiniz. Bu ACL 'Ler nedeniyle, dağıtım zamanında DNS ve NTP sunucu adreslerini değiştirmekten kaçınmak önemlidir. Bunu yaparsanız, çözüme yönelik tüm anahtarları yeniden yapılandırmanız gerekir.
-
-Dağıtım tamamlandıktan sonra, belirtilen DNS ve NTP sunucusu adresleri sistemin bileşenleri tarafından doğrudan kullanılmak üzere devam edecektir. Örneğin, dağıtım tamamlandıktan sonra DNS isteklerini denetledikten sonra kaynak DVD IP 'sinden dış ağ aralığından bir adrese değişir.
 
 Dağıtım tamamlandıktan sonra, belirtilen DNS ve NTP sunucu adresleri, dış ağı kullanarak SDN aracılığıyla sistem bileşenleri tarafından çalışmaya devam edecektir. Örneğin, dağıtım tamamlandıktan sonra DNS isteklerini denetledikten sonra kaynak DVD IP 'sinden ortak bir VIP 'ye değişir.
 

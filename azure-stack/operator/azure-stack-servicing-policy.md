@@ -12,18 +12,35 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: c02cc78205b2622b4ef5bdd8b88070912af72b97
-ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
+ms.openlocfilehash: 1022ab056157ea1a9bc925d3992a99bd0b395a35
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70008594"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188086"
 ---
-# <a name="azure-stack-servicing-policy"></a>Azure Stack hizmet ilkesi
+- **OEM donanım satıcısı tarafından belirtilen güncelleştirmeler**. Azure Stack Donanım ortakları, donanımla ilgili bellenim ve sürücü güncelleştirme paketleri için uçtan uca hizmet yaşam döngüsüyle (rehberlik dahil) sorumludur. Bunlara ek olarak, Azure Stack donanım iş ortakları, donanım yaşam döngüsü konağındaki tüm yazılım ve donanımların kılavuzunu korur. OEM donanım satıcısı, bu güncelleştirme paketlerini kendi indirme sitelerinde barındırır.
+
+## <a name="update-package-release-cadence"></a>Güncelleştirme paketi sürümü temposunda
+
+Microsoft, aylık bir temposunda yazılım güncelleştirme paketlerini serbest bırakmaya bekliyor. Ancak, bir ayda birden çok veya güncelleştirme yayını olması mümkündür. OEM donanım satıcıları güncelleştirmelerini gerektiği şekilde serbest bırakabilir.
+
+Güncelleştirmelerin nasıl planlanacağı ve yönetileceği hakkında bilgi edinin ve [güncelleştirmeleri yönetme](azure-stack-updates.md)bölümünde geçerli sürümünüzü nasıl belirleyebileceğinizi öğrenin.
+
+Nasıl indirileceği dahil olmak üzere belirli bir güncelleştirme hakkında daha fazla bilgi için, bu güncelleştirme için sürüm notlarına bakın:
+
+- [Azure Stack 1908 güncelleştirmesi](azure-stack-release-notes-1908.md)
+- [Azure Stack 1907 güncelleştirmesi](azure-stack-release-notes-1907.md)
+- [Azure Stack 1906 güncelleştirmesi](azure-stack-release-notes-1906.md)
+- [Azure Stack 1905 güncelleştirmesi](azure-stack-release-notes-1905.md)
+
+## <a name="hotfixes"></a>Düzeltmeler
+
+Microsoft, bazen, genellikle koruyucu veya zamana duyarlı belirli bir sorunu gideren Azure Stack düzeltmeler sağlar.  Her bir düzeltme, sorunun, nedenin ve çözümlemenin ayrıntılarını veren ilgili bir Microsoft Bilgi Bankası makalesiyle birlikte yayımlanır.
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 

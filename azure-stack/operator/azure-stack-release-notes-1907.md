@@ -12,16 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 08/30/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/16/2019
-ms.openlocfilehash: 526343889bbd5cc784ebb87c39603e2152a98f3b
-ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
+ms.lastreviewed: 08/30/2019
+monikerRange: azs-1907
+ms.openlocfilehash: 4dc9c69479066aad3f2b4ebd08646e09da89ba3a
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70008744"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188122"
 ---
 # <a name="azure-stack-1907-update"></a>Azure Stack 1907 güncelleştirmesi
 
@@ -77,7 +78,7 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 
 ### <a name="changes"></a>Değişiklikler
 
-- Azure Stack sürüm 1907, operatörlere 1908 güncelleştirme **yapmadan önce** işletmenlerinin sistem OEM paketini 2,1 veya sonraki bir sürüme güncelleştirdiğinizden emin olan bir uyarı uyarısı içerir. Donanım sağlayıcıları, Azure Stack sürüm 1908 ile aynı zamanda OEM paketi 2,1 ' i serbest bırakır. OEM paketi 2,1 veya üzeri, Azure Stack sürüm 1908 için bir önkoşul olacaktır. OEM paketi 2,1 veya sonraki bir sürümünü indirme hakkında daha fazla bilgi için sisteminizin donanım sağlayıcısına başvurun.
+- Azure Stack sürüm 1907, operatörlere 1908 güncelleştirme yapmadan önce işletmenlerinin sistem OEM paketini 2,1 veya sonraki bir sürüme güncelleştirdiğinizden emin olan bir uyarı uyarısı içerir. Azure Stack OEM güncelleştirmelerinin nasıl uygulanacağı hakkında daha fazla bilgi için, bkz. [Azure Stack orijinal donanım üreticisi güncelleştirmesi uygulama](azure-stack-update-oem.md).
 
 - Azure Stack tanılama günlüğü toplama hizmeti için iletişimi etkinleştirmek üzere yeni bir giden kuralı (HTTPS) eklendi. Daha fazla bilgi için bkz. [Azure Stack Datacenter Integration-son nokta yayımlama](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
@@ -118,14 +119,14 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 
 ## <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Bu Azure Stack güncelleştirmesinde güvenlik güncelleştirmeleri hakkında daha fazla bilgi için bkz. [Azure Stack Security Updates](azure-stack-release-notes-security-updates-1907.md).
+Bu Azure Stack güncelleştirmesinde güvenlik güncelleştirmeleri hakkında daha fazla bilgi için bkz. [Azure Stack Security Updates](azure-stack-release-notes-security-updates.md).
 
 ## <a name="update-planning"></a>Planlamayı Güncelleştir
 
 Güncelleştirmeyi uygulamadan önce, aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
 
 - [Bilinen sorunlar](azure-stack-release-notes-known-issues-1907.md)
-- [Güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates-1907.md)
+- [Güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates.md)
 - [Güncelleştirme uygulandıktan önceki ve sonraki etkinliklerin denetim listesi](azure-stack-release-notes-checklist.md)
 
 ## <a name="download-the-update"></a>Güncelleştirmeyi indirin

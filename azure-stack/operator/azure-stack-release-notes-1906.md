@@ -16,12 +16,13 @@ ms.date: 07/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/15/2019
-ms.openlocfilehash: c646ca836728cc1963354afb66ee04ee0accf1b6
-ms.sourcegitcommit: fc7da38321736e952b2cc6d5d07f276d095dc8d1
+monikerRange: azs-1906
+ms.openlocfilehash: bf8e32d6395b3ddfc54fe586568b51b76b71dc63
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69887121"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188298"
 ---
 # <a name="azure-stack-1906-update"></a>Azure Stack 1906 güncelleştirmesi
 
@@ -116,14 +117,14 @@ Azure Stack 1906 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 
 ## <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Bu Azure Stack güncelleştirmesinde güvenlik güncelleştirmeleri hakkında daha fazla bilgi için bkz. [Azure Stack Security Updates](azure-stack-release-notes-security-updates-1906.md).
+Bu Azure Stack güncelleştirmesinde güvenlik güncelleştirmeleri hakkında daha fazla bilgi için bkz. [Azure Stack Security Updates](azure-stack-release-notes-security-updates.md).
 
 ## <a name="update-planning"></a>Planlamayı Güncelleştir
 
 Güncelleştirmeyi uygulamadan önce, aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
 
 - [Bilinen sorunlar](azure-stack-release-notes-known-issues-1906.md)
-- [Güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates-1906.md)
+- [Güvenlik güncelleştirmeleri](azure-stack-release-notes-security-updates.md)
 - [Güncelleştirme uygulandıktan önceki ve sonraki etkinliklerin denetim listesi](azure-stack-release-notes-checklist.md)
 
 ## <a name="download-the-update"></a>Güncelleştirmeyi indirin

@@ -15,12 +15,13 @@ ms.date: 07/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 07/15/2019
-ms.openlocfilehash: 7d8990616bcf5cdca628f4aad91e2aee6b95d42a
-ms.sourcegitcommit: 82d09bbae3e5398d2fce7e2f998dfebff018716c
+monikerRange: '>=azs-1803'
+ms.openlocfilehash: 5b8beccab17eaa9aedadb63327150a70a327df1f
+ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68497828"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70188162"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack gizli dizileri döndürme
 
@@ -133,7 +134,7 @@ Aşağıdaki yönergeleri kullanarak gizli bir döndürme çalıştırmak, bu uy
 > Microsoft AzureStack hazırlık denetleyicisi- [Publiccerthelper modülünde](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1) daha fazla bilgi bulunabilir
 >
 > Ayrıca, FileShare klasör yapınızın **Sertifikalar** klasörüyle başlaması de önemlidir, aksi takdirde doğrulama işlemi de başarısız olur.
-> FileShare Mount,  **\\IPAddress > \< \\PaylaşımAdı\\>gibigörünmelidirvebudosyacertificates\aadveyaCertificates\'iiçermelidir.\\ \<**   **İçinde ADFS** .
+> FileShare Mount,  **\\IPAddress > \< \\PaylaşımAdı\\>gibigörünmelidirvebudosyacertificates\aadveyaCertificates\'iiçermelidir.\\ \<**  **İçinde ADFS** .
 >
 > Örneğin:
 > - FileShare =  **\\IPAddress> \\PaylaşımAdı\\> \<\<\\**
@@ -304,7 +305,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 | `CertificatePassword` | SecureString | False  | Adlandırılır  | Yok.  | -PfXFilesPath içinde belirtilen tüm sertifikaların parolası. Dış gizlilikler döndürüldüğünde PfxFilesPath sağlanırsa gerekli değer. |
 | `Internal` | Dize | False | Adlandırılır | Yok. | İç altyapının gizli dizilerini döndürmek için bir Azure Stack işleci her zaman kullanılması gerekir. |
 | `PathAccessCredential` | PSCredential | False  | Adlandırılır  | Yok.  | Tüm dış ağ uç noktası sertifikalarını içeren **\Certificates** dizininin dosya paylaşımının PowerShell kimlik bilgileri. Yalnızca dış gizlilikler döndürme sırasında gereklidir.  |
-| `ReRun` | SwitchParameter | False  | Adlandırılır  | None  | Yeniden çalıştırma işlemi, başarısız bir denemeden sonra her zaman gizli dizi rotasyonda yeniden denenmelidir. |
+| `ReRun` | SwitchParameter | False  | Adlandırılır  | Yok.  | Yeniden çalıştırma işlemi, başarısız bir denemeden sonra her zaman gizli dizi rotasyonda yeniden denenmelidir. |
 
 ### <a name="examples"></a>Örnekler
 
