@@ -3,7 +3,7 @@ title: Azure Stack için bir özgün ekipman üreticisi (OEM) güncelleştirmesi
 description: Azure Stack için bir özgün ekipman üreticisi (OEM) güncelleştirmesi uygulamayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2019
-ms.author: mabrigg
-ms.lastreviewed: 08/23/2019
+ms.date: 09/03/2019
+ms.author: justinha
+ms.lastreviewed: 09/03/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 792790c2ae5c14e31914b64fc6e5d7eba11aacc0
-ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
+ms.openlocfilehash: 95b7d202d686edd123b552eaa95aa2b8c74c497a
+ms.sourcegitcommit: 314fd74caf356b157583d38d2b8b1dee30408b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70025925"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70234982"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack güncelleştirmeleri uygulama
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Azure Stack güncelleştirme dikey penceresini kullanarak güncelleştirmeyi uygulayabilirsiniz . Bu makalede güncelleştirme işlemini güncelleştirme, izleme ve sorun giderme adımları adım adım açıklanmaktadır. Güncelleştirme bilgilerini görüntülemek, güncelleştirmeleri yüklemek, güncelleştirme ilerlemesini izlemek, güncelleştirme geçmişini gözden geçirmek ve geçerli OEM paketi sürümünü görüntülemek için güncelleştirme dikey penceresini kullanabilirsiniz.
+Azure Stack **güncelleştirme dikey penceresini kullanarak güncelleştirmeyi uygulayabilirsiniz** . Bu makalede güncelleştirme işlemini güncelleştirme, izleme ve sorun giderme adımları adım adım açıklanmaktadır. Güncelleştirme bilgilerini görüntülemek, güncelleştirmeleri yüklemek, güncelleştirme ilerlemesini izlemek, güncelleştirme geçmişini gözden geçirmek ve geçerli OEM paketi sürümünü görüntülemek için güncelleştirme dikey penceresini kullanabilirsiniz.
 
 Güncelleştirmeleri yönetici portalından yönetebilirsiniz. Panodaki **güncelleştirmeleri** kullanarak şunları yapabilirsiniz:
 
@@ -51,9 +51,9 @@ Güncel Azure Stack sürümünü **güncelleştirmeler** dikey penceresinde gör
 
 1.  Azure Stack Yönetici portalı ' nı açın.
 
-2.  **Pano**seçeneğini belirleyin. **Güncelleştir**' i seçin.
+2.  **Pano** > **güncelleştirmesi**' ni seçin.
 
-3.  Uygulamak istediğiniz kullanılabilir güncelleştirmeyi seçin. **Kullanılabilir**olarak işaretlenmiş bir güncelleştirmeniz yoksa, [güncelleştirme paketini hazırlamanız](azure-stack-update-prepare-package.md) gerekir
+3.  Uygulamak istediğiniz kullanılabilir güncelleştirmeyi seçin. **Kullanılabilir**olarak işaretlenmiş bir güncelleştirmeniz yoksa [güncelleştirme paketini hazırlamanız](azure-stack-update-prepare-package.md)gerekir.
 
 4.  **Şimdi Güncelleştir**' i seçin.
 
@@ -63,7 +63,7 @@ Güncel Azure Stack sürümünü **güncelleştirmeler** dikey penceresinde gör
 
 6.  Tam günlükleri indirmek için güncelleştirme çalıştırması ayrıntıları dikey penceresinden **indirme Özeti** ' ni seçin.
 
-    Güncelleştirmeyi izlerken bir sorunla karşılaşırsanız, bir Azure Stack güncelleştirme çalıştırmasının ilerlemesini izlemek ve başarısız bir [](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) güncelleştirme çalıştırmasını son başarılı adımla devam etmek için Azure Stack portalı kullanılamaz hale gelmelidir. Yönergeler için bkz. [PowerShell kullanarak Azure Stack güncelleştirmeleri izleme](azure-stack-update-monitor.md).
+    Güncelleştirmeyi izlerken bir sorunla karşılaşırsanız, bir Azure Stack güncelleştirme çalıştırmasının ilerlemesini izlemek ve başarısız bir güncelleştirme çalıştırmasını son başarılı adımla devam [etmek için Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) portalı kullanılamaz hale gelmelidir. Yönergeler için bkz. [PowerShell kullanarak Azure Stack güncelleştirmeleri izleme](azure-stack-update-monitor.md).
 
     ![Azure Stack güncelleştirme çalıştırması ayrıntıları](./media/azure-stack-update-apply/image3.png)
 

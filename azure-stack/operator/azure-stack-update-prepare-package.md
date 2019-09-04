@@ -3,7 +3,7 @@ title: Azure Stack güncelleştirme paketi hazırlama | Microsoft Docs
 description: Azure Stack güncelleştirme paketini hazırlamayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2019
-ms.author: mabrigg
-ms.lastreviewed: 08/15/2019
+ms.date: 09/03/2019
+ms.author: justinha
+ms.lastreviewed: 09/03/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: ab7b764e608ed1fb8008071296d0004f6ef65e7a
-ms.sourcegitcommit: 1c45814696e70ba987dd39ce61d93ea4ef5222ea
+ms.openlocfilehash: 9b58b4911a575ef66c95594b6cb4cd1cc9e27a43
+ms.sourcegitcommit: 314fd74caf356b157583d38d2b8b1dee30408b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70029474"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70235005"
 ---
 # <a name="prepare-an-azure-stack-update-package"></a>Azure Stack güncelleştirme paketi hazırlama
 
@@ -28,14 +28,14 @@ ms.locfileid: "70029474"
 
 Bu makalede, Azure Stack ortamınızı güncelleştirmek için kullanılabilmesi için Azure Stack güncelleştirme paketlerinin hazırlanmasında bir genel bakış sunulmaktadır. Bu işlem aşağıdakilerden oluşur:
 
-- [Güncelleştirme paketi indiriliyor](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#download-the-update-package)
-- [Azure Stack Yönetici portalı aracılığıyla güncelleştirme paketini Azure Stack ortamınıza aktarma](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#import-and-install-updates)
+- [Güncelleştirme paketi indiriliyor](#download-the-update-package)
+- [Azure Stack Yönetici portalı aracılığıyla güncelleştirme paketini Azure Stack ortamınıza aktarma](#import-and-install-updates)
 
-Bu işlem, [Azure Stack otomatik güncelleştirme uç noktalarına](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages)Internet-connectivty ile sistemlerdeki Azure Stack yazılım güncelleştirmeleri ve düzeltmeleri için otomatik olarak yapılır.
+Otomatik güncelleştirme uç noktalarına bağlanabilecek sistemlerde, Azure Stack yazılım güncelleştirmeleri ve düzeltmeler otomatik olarak indirilir ve hazırlanır. Bağlantı olmayan sistemlerde ve OEM 'deki herhangi bir güncelleştirme için, güncelleştirme paketinin bu konuda anlatıldığı şekilde hazırlanması gerekir.  
 
-Aşağıdaki tablo, güncelleştirme paketlerinin el ile hazırlık gerektirdiğini ve otomatik olarak hazırlandığını gösterir:
+Aşağıdaki tablo, güncelleştirme paketlerinin el ile hazırlık gerektirdiğini ve otomatik olarak hazırlandığını gösterir.
 
-| Güncelleştirme türü | Azure Stack ortamın [Azure Stack otomatik güncelleştirme uç noktalarına](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages) bağlantısı | Eylem Gereklidir |
+| Güncelleştirme türü | Bağlantı | Eylem Gereklidir |
 | --- | --- | --- |
 | Yazılım güncelleştirmelerini Azure Stack | Bağlı | Güncelleştirme uygulandığında güncelleştirme otomatik olarak indirilir ve hazırlanır. |
 | Azure Stack düzeltmeler | Bağlı | Güncelleştirme uygulandığında güncelleştirme otomatik olarak indirilir ve hazırlanır. |
@@ -46,6 +46,9 @@ Aşağıdaki tablo, güncelleştirme paketlerinin el ile hazırlık gerektirdiğ
 
 ## <a name="download-the-update-package"></a>Güncelleştirme paketini indirin
 Azure Stack güncelleştirmeleri ve düzeltmeleri güncelleştirme paketi, bağlı sistemler için güncelleştirme dikey penceresinde kullanılabilir. Bir OEM paketini güncelleştiriyorsanız veya bağlantısı kesilen bir sistemi destekliyorsanız, paketi indirmeniz ve paketi Azure Stack örneğiniz tarafından erişilebilen bir konuma taşımanız gerekir. Ayrıca, aralıklı bağlantıyla bir sistem çalıştırıyorsa, paketi bir erişilebilir konuma indirip yüklemeniz gerekebilir.
+
+>[!NOTE]
+>Güncelleştirme paketinin kendisi ve içerikleri (ikili dosyalar, PowerShell betikleri vb.) Microsoft 'a ait sertifikalarla imzalanır. Pakete müdahale etmek imzayı geçersiz hale getirir.
 
 Paket içeriğini gözden geçirin. Bir güncelleştirme paketi genellikle aşağıdaki dosyalardan oluşur:
 
@@ -79,7 +82,7 @@ Aşağıdaki yordamda, yönetim portalı 'nda güncelleştirme paketlerinin nas�
 
 1.  Filtre kutusuna **Güncelleştir**yazın ve **updateadminaccount** depolama hesabını seçin.
 
-2.  Depolama hesabı ayrıntılarında, **Hizmetler**altında Bloblar ' ıseçin.
+2.  Depolama hesabı ayrıntılarında, **Hizmetler**altında **Bloblar**' ı seçin.
 
     ![Azure Stack Update-blob](./media/azure-stack-update-prepare-package/image2.png)
 

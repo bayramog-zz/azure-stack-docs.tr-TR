@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1908 bilinen sorunlar | Microsoft Docs
-description: Azure Stack 1907 ' de bilinen sorunlar hakkında bilgi edinin.
+description: Azure Stack 1908 ' de bilinen sorunlar hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: sethm
-ms.reviewer: hectorl
+ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
 monikerRange: azs-1908
-ms.openlocfilehash: da995bf2f24c4a9021be3dec675af0b2ae03e0cb
-ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
+ms.openlocfilehash: 317f53eb5b50fc415fc7a65e044eca7948a54e58
+ms.sourcegitcommit: 314fd74caf356b157583d38d2b8b1dee30408b7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70188936"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70234940"
 ---
 # <a name="azure-stack-1908-known-issues"></a>Azure Stack 1908 bilinen sorunlar
 
@@ -35,7 +35,7 @@ Bu makalede Azure Stack 1908 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: 1907 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur.
-- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i (sürdürülmez) tıklayarak bu soruna geçicibir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri yükleme bölümünü](azure-stack-apply-updates.md#install-updates-and-monitor-progress)izleyerek güncelleştirme paketini el Ile karşıya yüklemeniz önerilir.
+- Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i ( **sürdürülmez**) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri yükleme bölümünü](azure-stack-apply-updates.md#install-updates-and-monitor-progress)izleyerek güncelleştirme paketini el Ile karşıya yüklemeniz önerilir.
 - Oluşum Common
 
 ## <a name="portal"></a>Portal
