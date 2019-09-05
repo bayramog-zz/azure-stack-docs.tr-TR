@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 09/04/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 17f68039382453312114dff8737072d1515a583d
-ms.sourcegitcommit: b752f4e6733d9ebe56dbd171a14528dcb9a693fd
+ms.lastreviewed: 09/04/2019
+ms.openlocfilehash: 338df8d335376ebbaf14230e62d8dee9f813994f
+ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68522031"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271737"
 ---
 # <a name="overview-of-azure-stack-diagnostic-log-collection"></a>Azure Stack tanılama günlüğü koleksiyonuna genel bakış 
 
@@ -31,7 +31,7 @@ Azure Stack, birlikte çalışan ve birbirleriyle etkileşim kuran büyük bir b
 
 1907 ' den önce, tanılama deneyimi, sistem durumunu doğrulamak için [Test-AzureStack](azure-stack-diagnostic-test.md) kullanılarak ve sorun giderme amacıyla günlükleri toplamak için [ayrıcalıklı uç nokta (Pep)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) kullanılarak dahil edilmiştir. 
 
-1907 sürümünden itibaren, **Yardım ve destek** sayfası **tanılama günlüğü toplamayı**kullanarak daha basit bir deneyim ekler. 
+1907 sürümünden itibaren, **Yardım ve destek** sayfası **tanılama günlüğü toplamayı**kullanarak daha basit bir deneyim sağlar. 
 **Tanılama günlüğü koleksiyonu** , sorun giderme işlemiyle Azure Stack işlecinin deneyimini geliştirmek için devam eden bir yatırımın bir parçasıdır. Bu geliştirmelerle, operatörler Microsoft Müşteri Destek Hizmetleri (CSS) ile tanılama günlüklerini hızlıca toplayıp paylaşabilir. Günlükler, erişimin gerektiği şekilde özelleştirilebileceği Azure 'da bir blob kapsayıcısında depolanabilir.    
    
 **Tanılama günlüğü toplama** , tanılama günlüklerini iki farklı şekilde toplayabilir:

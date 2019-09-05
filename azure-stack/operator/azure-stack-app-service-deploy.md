@@ -1,6 +1,6 @@
 ---
-title: 'Uygulama hizmetlerini dağıtma: Azure Stack | Microsoft Docs'
-description: Azure Stack App Service dağıtmaya yönelik ayrıntılı kılavuz
+title: Azure Stack App Service dağıtma | Microsoft Docs
+description: Azure Stack App Service dağıtmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,18 +16,18 @@ ms.date: 08/29/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 5f28cc63e566a90196489a6e484b7272c4cb3736
-ms.sourcegitcommit: 701685f0b59e5a3d1a8d39fe477b8df701a51cd2
+ms.openlocfilehash: 7088a001fab8e3e618da4be8107f5a5f5a22373f
+ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70159610"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271769"
 ---
-# <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Azure Stack App Service kaynak sağlayıcısı ekleme
+# <a name="deploy-app-service-in-azure-stack"></a>Azure Stack App Service dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack App Service dağıtmak için bu makaledeki kılavuzu kullanın.
+Bu makalede Azure Stack App Service nasıl dağıtılacağı açıklanır.
 
 > [!IMPORTANT]
 > 1907 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya Azure App Service 1,7 ' i dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
@@ -38,7 +38,7 @@ Kullanıcılarınıza Web ve API uygulamaları oluşturma özelliği verebilirsi
 - App Service kaynak sağlayıcısı 'nı yükledikten sonra, bu sürümü tekliflerinizi ve planlarınıza dahil edebilirsiniz. Kullanıcılar daha sonra hizmeti almak ve uygulama oluşturmaya başlamak için abone olabilir.
 
 > [!IMPORTANT]
-> Kaynak sağlayıcısı yükleyicisini çalıştırmadan önce, başlamadan [önce](azure-stack-app-service-before-you-get-started.md) ' daki Kılavuzu izlediğinizden ve yeni işlevler, düzeltmeler ve bilinen sorunlar hakkında bilgi edinmek için 1,7 sürümüyle birlikte [sürüm notlarını](azure-stack-app-service-release-notes-update-seven.md)okuduğunuzdan emin olun dağıtımınızı etkileyebilecek.
+> Kaynak sağlayıcısı yükleyicisini çalıştırmadan önce, [başlamadan önce](azure-stack-app-service-before-you-get-started.md) ' de kılavuzluk ve 1,7 sürümüyle birlikte gelen [sürüm notlarını](azure-stack-app-service-release-notes-update-seven.md) okuduğunuzdan emin olun. Bu içeriği okumak, yeni işlevleri, düzeltmeleri ve dağıtımınızı etkileyebilecek bilinen sorunları öğrenmenize yardımcı olur.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service kaynak sağlayıcısı yükleyicisini çalıştırma
 
@@ -48,9 +48,6 @@ App Service kaynak sağlayıcısını yüklemek en az bir saat sürer. Gereken s
 - App Service için bir DNS bölgesi ve girişleri oluşturun.
 - App Service kaynak sağlayıcısını kaydedin.
 - App Service galeri öğelerini kaydedin.
-
-  > [!IMPORTANT]
-  > Kaynak sağlayıcısını dağıtılmadan önce, yeni işlevsellik, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için sürüm notlarını gözden geçirin.
 
 App Service kaynak sağlayıcısını dağıtmak için aşağıdaki adımları izleyin:
 
@@ -64,7 +61,7 @@ App Service kaynak sağlayıcısını dağıtmak için aşağıdaki adımları i
 
 4. Üçüncü taraf lisans koşullarını gözden geçirip kabul edin ve ardından **İleri**' yi seçin.
 
-5. App Service bulut yapılandırması bilgilerinin doğru olduğundan emin olun. Azure Stack Geliştirme Seti (ASDK) dağıtımı sırasında varsayılan ayarları kullandıysanız, varsayılan değerleri kabul edebilirsiniz. Ancak, ASDK 'yi dağıtırken veya Azure Stack tümleşik bir sisteme dağıtırken seçenekleri özelleştirdiyseniz, farkları yansıtmak için bu penceredeki değerleri düzenlemeniz gerekir.
+5. App Service bulut yapılandırması bilgilerinin doğru olduğundan emin olun. ASDK dağıtımı sırasında varsayılan ayarları kullandıysanız, varsayılan değerleri kabul edebilirsiniz. Ancak, ASDK 'yi dağıtırken veya Azure Stack tümleşik bir sisteme dağıtırken seçenekleri özelleştirdiyseniz, farkları yansıtmak için bu penceredeki değerleri düzenlemeniz gerekir.
 
    Örneğin, mycloud.com etki alanı sonekini kullanırsanız, Azure Stack kiracı Azure Resource Manager uç noktasının yönetimi olarak değiştirilmesi gerekir. &lt;Region&gt;. MyCloud.com. Bu ayarları gözden geçirin ve sonra ayarları kaydetmek için **İleri** ' yi seçin.
 
@@ -82,7 +79,7 @@ App Service kaynak sağlayıcısını dağıtmak için aşağıdaki adımları i
      > [!IMPORTANT]
      > App Service **varsayılan sağlayıcı aboneliğine**dağıtılmalıdır.
 
-   c. **Azure Stack konumlarda**, dağıtmakta olduğunuz bölgeye karşılık gelen konumu seçin. Örneğin, Azure Stack Geliştirme Seti dağıtdıysanız **Yerel** ' i seçin.
+   c. **Azure Stack konumlarda**, dağıtmakta olduğunuz bölgeye karşılık gelen konumu seçin. Örneğin, ASDK 'ye dağıtım yapıyorsanız **Yerel** ' i seçin.
 
     ![App Service yükleyicisi][3]
 
@@ -99,7 +96,7 @@ App Service kaynak sağlayıcısını dağıtmak için aşağıdaki adımları i
 
    ![App Service yükleyicisi][4]
 
-8. Dosya paylaşımınızla ilgili bilgileri girip **İleri**' yi seçin. Dosya paylaşımının adresi, tam etki alanı adını (FQDN) veya dosya sunucunuzun IP adresini kullanmalıdır. Örneğin, \\\appservicefileserver.Local.cloudapp.azurestack.external\websites veya \\\10.0.0.1\websites.  Etki alanına katılmış bir dosya sunucusu kullanıyorsanız, etki alanı dahil olmak üzere tam Kullanıcı adını sağlamanız gerekir, örneğin, Myfileserverdomain\fileshareowner.
+8. Dosya paylaşımınızın bilgilerini girin ve ardından **İleri**' yi seçin. Dosya paylaşımının adresinin tam etki alanı adını (FQDN) veya dosya sunucunuzun IP adresini kullanması gerekir. Örneğin, \\\appservicefileserver.Local.cloudapp.azurestack.external\websites veya \\\10.0.0.1\websites.  Etki alanına katılmış bir dosya sunucusu kullanıyorsanız, etki alanı dahil olmak üzere tam Kullanıcı adını sağlamanız gerekir. Örneğin, Myfileserverdomain\fileshareowner.
 
    >[!NOTE]
    >Yükleyici, devam etmeden önce dosya paylaşımıyla bağlantıyı test etmeye çalışır. Ancak, var olan bir sanal ağa dağıtım yapıyorsanız bu bağlantı testi başarısız olabilir. Bir uyarı ve devam etmek için bir istem vermiş olursunuz. Dosya paylaşma bilgileri doğruysa dağıtıma devam edin.
@@ -154,13 +151,13 @@ App Service kaynak sağlayıcısını dağıtmak için aşağıdaki adımları i
     >[!NOTE]
     >**Windows Server 2016 Core, Azure Stack üzerinde Azure App Service kullanımı için desteklenen bir platform görüntüsü değil.  Üretim dağıtımları için değerlendirme görüntülerini kullanmayın.**
 
-13. **Platform görüntüsünü seçin** kutusunda, App Service bulutu için işlem kaynak sağlayıcısı 'nda bulunan görüntülerden dağıtım Windows Server 2016 sanal makine görüntünüzü seçin. **İleri**’yi seçin.
+13. **Platform görüntüsünü seçin** kutusunda, App Service bulutu için işlem kaynak sağlayıcısında bulunan görüntülerden dağıtım Windows Server 2016 sanal MAKINESI (VM) görüntünüzü seçin. **İleri**’yi seçin.
 
 14. Sonraki App Service yükleyicisi sayfasında, aşağıdaki adımları izleyin:
 
-     a. Çalışan rolü sanal makine yöneticisi Kullanıcı adı ve parolasını girin.
+     a. Çalışan rolü VM Yöneticisi Kullanıcı adı ve parolasını girin.
 
-     b. Diğer roller sanal makine yöneticisi Kullanıcı adı ve parolasını girin.
+     b. Diğer roller VM Yönetici Kullanıcı adı ve parolasını girin.
 
      c. **İleri**’yi seçin.
 
@@ -168,7 +165,7 @@ App Service kaynak sağlayıcısını dağıtmak için aşağıdaki adımları i
 
 15. App Service Installer Özeti sayfasında, aşağıdaki adımları izleyin:
 
-    a. Yaptığınız seçimleri doğrulayın. Değişiklik yapmak için önceki düğmeleri kullanarak önceki sayfaları ziyaret edin.
+    a. Yaptığınız seçimleri doğrulayın. Değişiklik yapmak için **önceki düğmeleri kullanarak önceki sayfaları** ziyaret edin.
 
     b. Yapılandırma doğruysa onay kutusunu seçin.
 
@@ -187,13 +184,13 @@ App Service kaynak sağlayıcısını dağıtmak için aşağıdaki adımları i
 ## <a name="post-deployment-steps"></a>Dağıtım sonrası adımlar
 
 > [!IMPORTANT]
-> App Service RP 'Yi bir SQL Always on örneğiyle sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna eklemeli](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve veritabanlarını bir veritabanı durumunda herhangi bir hizmet kaybını engelleyecek şekılde eşitlemeniz gerekir yükünü.
+> App Service RP 'Yi bir SQL Always on örneğiyle birlikte sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna eklemeli](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve bir hata durumunda hizmet kaybını engellemek için veritabanlarını eşitlemeniz **gerekir** veritabanı yük devretmesi.
 
-Var olan bir sanal ağa dağıtım yapıyorsanız ve dosya sunucunuza bağlanmak için bir iç IP adresi kullanıyorsanız, bir giden güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağı ve dosya sunucusu arasında SMB trafiğine izin vermez.  Yönetim Portalı ' nda WorkersNsg, Network Security grubuna gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+Var olan bir sanal ağa dağıtım yapıyorsanız ve dosya sunucunuza bağlanmak için bir iç IP adresi kullanıyorsanız, bir giden güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağı ve dosya sunucusu arasında SMB trafiğine izin vermez. Yönetim portalında, WorkersNsg Network Security grubuna gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
 - Kaynak: Any
 - Kaynak bağlantı noktası aralığı: *
-- Hedef: IP Adresleri
+- Hedef: IP adresleri
 - Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
 - Hedef bağlantı noktası aralığı: 445
 - Protokol: TCP
@@ -249,7 +246,7 @@ Bir test Web uygulaması oluşturmak için şu adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Stack App Service için ek yönetici işlemlerine hazırlanma
+Azure Stack App Service için ek yönetici işlemlerine hazırlanın:
 
 - [Kapasite planlama](azure-stack-app-service-capacity-planning.md)
 - [Dağıtım kaynaklarını yapılandırma](azure-stack-app-service-configure-deployment-sources.md)

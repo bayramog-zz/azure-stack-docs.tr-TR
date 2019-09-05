@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 01e359b2fc92abfe2c4903b75fd52687c2246d56
-ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
+ms.openlocfilehash: e09cc9e5c77379441d7757fa1395941712ecc5ff
+ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959541"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271823"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Yüksek oranda kullanılabilir bir yapılandırmada App Service dağıtma
 
@@ -123,7 +123,7 @@ App Service yükleyicisini çalıştırmadan önce, [Azure Stack makalesinde App
 - [App Service yükleyicisini ve yardımcı betikleri indirin](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
 - [Azure Stack Market 'e en son özel betik uzantısını indirin](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
 - [Gerekli sertifikaları oluştur](azure-stack-app-service-before-you-get-started.md#get-certificates).
-- Azure Stack için seçtiğiniz kimlik sağlayıcısını temel alarak kimlik uygulamasını oluşturun. KIMLIK uygulaması, [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application) veya [Active Directory Federasyon Hizmetleri (AD FS)](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-application) IÇIN yapılabilir ve uygulama kimliğini kaydedebilir.
+- Azure Stack için seçtiğiniz kimlik sağlayıcısını temel alarak kimlik uygulamasını oluşturun. KIMLIK uygulaması, [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) veya [Active Directory Federasyon Hizmetleri (AD FS)](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) IÇIN yapılabilir ve uygulama kimliğini kaydedebilir.
 - Windows Server 2016 Datacenter görüntüsünü Azure Stack Market 'e eklemiş olduğunuzdan emin olun. Bu görüntü App Service yüklemesi için gereklidir.
 
 ### <a name="steps-for-app-service-deployment"></a>App Service dağıtım adımları
@@ -173,13 +173,13 @@ App Service kaynak sağlayıcısını dağıtmak için şu adımları izleyin:
     Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, giden bir güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağı ve dosya sunucusu arasında SMB trafiğine izin vermez. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
     - Kaynak: Any
     - Kaynak bağlantı noktası aralığı: *
-    - Hedefine IP Adresleri
+    - Hedef: IP Adresleri
     - Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
     - Hedef bağlantı noktası aralığı: 445
     - Protokol: TCP
     - Eylem: Allow
-    - Priority 700
-    - Adı: Outbound_Allow_SMB445
+    - Öncelik: 700
+    - Ad: Outbound_Allow_SMB445
 
 10. Kimlik sertifikalarına kimlik uygulama KIMLIĞINI ve yolu ve parolaları sağlayın ve **İleri**' ye tıklayın:
     - Kimlik uygulama sertifikası ( **SSO. appservice. Local. azurestack. external. pfx**biçiminde)
@@ -198,7 +198,7 @@ App Service kaynak sağlayıcısını dağıtmak için şu adımları izleyin:
 
     ![App Service bağlantı bilgilerini SQL Server](media/app-service-deploy-ha/10.png)
 
-13. App Service yüklemek için kullanılan makine, App Service veritabanlarını barındırmak için kullanılan SQL Server ile aynı VNet üzerinde bulunmadığından, adı gidereyükleyemezsiniz.  **Bu beklenen davranıştır**.<br><br>SQL Server adı ve hesap bilgileri için girilen bilgilerinizin doğru olduğundan emin olun ve App Service yüklemeye devam etmek için **Evet** ' e basın.           **İleri**'ye tıklayın.
+13. App Service yüklemek için kullanılan makine, App Service veritabanlarını barındırmak için kullanılan SQL Server ile aynı VNet üzerinde bulunmadığından, adı gidereyükleyemezsiniz.  **Bu beklenen davranıştır**.<br><br>SQL Server adı ve hesap bilgileri için girilen bilgilerinizin doğru olduğundan emin olun ve App Service yüklemeye devam etmek için **Evet** ' e basın. **İleri**'ye tıklayın.
 
     ![App Service bağlantı bilgilerini SQL Server](media/app-service-deploy-ha/11.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack App Service dağıtmadan önce | Microsoft Docs
-description: Azure Stack App Service dağıtmadan önce tamamlanacak adımlar
+title: Azure Stack App Service dağıtmaya yönelik önkoşullar | Microsoft Docs
+description: Azure Stack App Service dağıtmadan önce, tamamlanacak önkoşul adımlarını öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -16,14 +16,14 @@ ms.date: 08/29/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: f4b26701af32026ac2c83bf675fa29e3b6254cb2
-ms.sourcegitcommit: 701685f0b59e5a3d1a8d39fe477b8df701a51cd2
+ms.openlocfilehash: a12aceff00cf5be2d6ab70c4957ef04ea1c135d5
+ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70159551"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271703"
 ---
-# <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Azure Stack App Service kullanmaya başlamadan önce
+# <a name="prerequisites-for-deploying-app-service-on-azure-stack"></a>Azure Stack App Service dağıtmaya yönelik önkoşullar
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
@@ -49,13 +49,13 @@ Azure Stack Azure App Service dağıtmadan önce, bu makaledeki önkoşul adıml
 
 ## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Market 'ten özel Betik uzantısı 'nı genel olarak
 
-Azure Stack Azure App Service özel Betik uzantısı v 1.9.1 gerektirir.  Azure Stack Azure App Service dağıtımı veya yükseltmesi başlatılmadan önce uzantının [Market 'ten](azure-stack-download-azure-marketplace-item.md) dağıtılması gerekir
+Azure Stack Azure App Service özel Betik uzantısı v 1.9.1 gerektirir.  Azure Stack Azure App Service dağıtım veya yükseltme işlemine başlamadan önce uzantının [Market 'ten](azure-stack-download-azure-marketplace-item.md) dağıtılması gerekir.
 
 ## <a name="get-certificates"></a>Sertifika Al
 
 ### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure Stack için kök sertifika Azure Resource Manager
 
-Azure Stack tümleşik sistemde veya Azure Stack Geliştirme Seti konağında ayrıcalıklı uç noktaya ulaşabilmiş bir bilgisayarda yükseltilmiş bir PowerShell oturumu açın.
+Azure Stack tümleşik sistem veya ASDK ana bilgisayarında ayrıcalıklı uç noktaya ulaşabilmiş bir bilgisayarda yükseltilmiş bir PowerShell oturumu açın.
 
 Yardımcı betikleri ayıkladığınız klasörden *Get-AzureStackRootCert. ps1* betiğini çalıştırın. Betik, App Service sertifika oluşturmak için gereken komut dosyasıyla aynı klasörde bir kök sertifika oluşturur.
 
@@ -85,7 +85,7 @@ Aşağıdaki PowerShell komutunu çalıştırdığınızda, AzureStack\CloudAdmi
 
 Sertifikaları oluşturmak için aşağıdaki adımları izleyin:
 
-1. AzureStack\AzureStackAdmin hesabını kullanarak Azure Stack Geliştirme Seti konağında oturum açın.
+1. AzureStack\AzureStackAdmin hesabını kullanarak ASDK ana bilgisayarında oturum açın.
 2. Yükseltilmiş bir PowerShell oturumu açın.
 3. Yardımcı betikleri ayıkladığınız klasörden *Create-AppServiceCerts. ps1* betiğini çalıştırın. Bu betik, App Service sertifika oluşturmak için ihtiyaç duyacağı komut dosyasıyla aynı klasörde dört sertifika oluşturur.
 4. . Pfx dosyalarının güvenliğini sağlamak için bir parola girin ve bunu bir yere unutmayın. Azure Stack yükleyicideki App Service girmeniz gerekir.
@@ -149,16 +149,16 @@ Kimliğin sertifikası aşağıdaki biçimle eşleşen bir konu içermelidir.
 
 ### <a name="validate-certificates"></a>Sertifikaları doğrula
 
-App Service kaynak sağlayıcısını dağıtılmadan önce, [PowerShell Galerisi](https://aka.ms/AzsReadinessChecker)sağlanan Azure Stack hazırlık Denetleyicisi aracını kullanarak [kullanılacak sertifikaları doğrulamanız](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) gerekir. Azure Stack hazırlık Denetleyicisi Aracı, oluşturulan PKI sertifikalarının App Services dağıtımı için uygun olduğunu doğrular.
+App Service kaynak sağlayıcısını dağıtmadan önce, [PowerShell Galerisi](https://aka.ms/AzsReadinessChecker)kullanılabilir Azure Stack hazırlık Denetleyicisi aracını kullanarak [kullanılacak sertifikaları doğrulamanız](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) gerekir. Azure Stack hazırlık Denetleyicisi Aracı, oluşturulan PKI sertifikalarının App Service dağıtım için uygun olduğunu doğrular.
 
-En iyi uygulama olarak, gerekli [Azure Stack PKI sertifikalarıyla](azure-stack-pki-certs.md)çalışırken, gerektiğinde sertifikaları test etmek ve yeniden vermek için yeterli zaman bırakmayı planlamanız gerekir.
+En iyi uygulama olarak, gerekli [Azure Stack PKI sertifikalarıyla](azure-stack-pki-certs.md)çalışırken, gerektiğinde sertifikaları test etmek ve yeniden vermek için yeterli zaman planlamanız gerekir.
 
 ## <a name="virtual-network"></a>Sanal ağ
 
 > [!NOTE]
-> Azure Stack üzerindeki Azure App Service gerekli sanal ağı oluşturabileceği, ancak daha sonra Genel IP Adresleri aracılığıyla SQL ve dosya sunucusuyla iletişim kurması gereken için özel bir sanal ağın önceden oluşturulması isteğe bağlıdır.
+> Azure Stack üzerindeki Azure App Service gerekli sanal ağı oluşturabileceği, ancak daha sonra genel IP adresleri aracılığıyla SQL ve dosya sunucusuyla iletişim kurması gereken için özel bir sanal ağın daha fazla olması isteğe bağlıdır.
 
-Azure Stack Azure App Service, kaynak sağlayıcıyı mevcut bir sanal ağa dağıtmanızı sağlar veya dağıtımın bir parçası olarak bir sanal ağ oluşturmanızı sağlar. Mevcut bir sanal ağın kullanılması, Azure Stack üzerindeki Azure App Service için gereken dosya sunucusuna ve SQL Server 'a bağlanmak üzere iç IP 'lerin kullanılmasını sağlar. Azure Stack Azure App Service yüklemeden önce sanal ağın aşağıdaki adres aralığı ve alt ağlarla yapılandırılması gerekir:
+Azure Stack Azure App Service, kaynak sağlayıcıyı mevcut bir sanal ağa dağıtmanızı sağlar veya dağıtımın bir parçası olarak bir sanal ağ oluşturmanızı sağlar. Mevcut bir sanal ağın kullanılması, dosya sunucusuna bağlanmak ve Azure Stack Azure App Service gereken SQL Server için iç IP 'lerin kullanılmasını sağlar. Azure Stack Azure App Service yüklemeden önce sanal ağın aşağıdaki adres aralığı ve alt ağlarla yapılandırılması gerekir:
 
 Sanal ağ-/16
 
@@ -177,7 +177,7 @@ Azure Stack Azure App Service, bir dosya sunucusu ve SQL Server çalışmasını
 Kaynakları Azure Stack varsayılan sağlayıcı aboneliğinizde dağıtmayı seçerseniz, bu kaynaklara yönelik lisanslar (Windows Server lisansları ve SQL Server lisansları), aşağıdakilere bağlı Azure Stack Azure App Service maliyetine dahil edilir kısıtlamaları
 
 - Altyapı **varsayılan sağlayıcı aboneliğine**dağıtılır;
-- altyapı, Azure Stack kaynak sağlayıcısındaki Azure App Service tarafından özel olarak kullanılır.  Başka iş yükleri, Yönetim (örneğin, SQL-RP) veya kiracının (örneğin, bir veritabanı gerektiren Kiracı uygulamaları) bu altyapıyı kullanmasına izin verilir.
+- altyapı, Azure Stack kaynak sağlayıcısındaki Azure App Service tarafından özel olarak kullanılır.  Diğer iş yükleri, Yönetim (örneğin, diğer kaynak sağlayıcıları) yok. SQL-RP) veya kiracı (örneğin: bir veritabanı gerektiren Kiracı uygulamaları), bu altyapıyı kullanma izni verilir.
 
 ## <a name="prepare-the-file-server"></a>Dosya sunucusunu hazırlama
 
@@ -185,11 +185,11 @@ Azure App Service, bir dosya sunucusunun kullanılmasını gerektirir. Üretim d
 
 ### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>Dosya sunucusu için, ASDK üzerinde Azure App Service dağıtımları için hızlı başlangıç şablonu.
 
-Yalnızca Azure Stack Geliştirme Seti dağıtımları için, yapılandırılmış bir tek düğümlü dosya sunucusunu dağıtmak üzere [örnek Azure Resource Manager Dağıtım şablonunu](https://aka.ms/appsvconmasdkfstemplate) kullanabilirsiniz. Tek düğümlü dosya sunucusu bir çalışma grubunda olacaktır.
+Yalnızca ASDK dağıtımları için, yapılandırılmış bir tek düğümlü dosya sunucusunu dağıtmak üzere [örnek Azure Resource Manager Dağıtım şablonunu](https://aka.ms/appsvconmasdkfstemplate) kullanabilirsiniz. Tek düğümlü dosya sunucusu bir çalışma grubunda olacaktır.
 
 ### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Yüksek oranda kullanılabilir dosya sunucusu ve SQL Server hızlı başlangıç şablonu
 
-Azure üzerinde yüksek oranda kullanılabilir bir Azure App Service dağıtımını desteklemek için yapılandırılmış bir sanal ağda dosya sunucusu, SQL Server ve destekleyici Active Directory altyapısı dağıtan bir [başvuru mimarisi hızlı başlangıç şablonu](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) kullanılabilir. Yığın.
+Bir [başvuru mimarisi hızlı başlangıç şablonu](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) artık kullanılabilir ve bu, bir dosya sunucusu ve SQL Server dağıtır. Bu şablon, Azure Stack Azure App Service yüksek oranda kullanılabilir bir dağıtımını desteklemek üzere yapılandırılmış bir sanal ağda Active Directory altyapısını destekler.
 
 ### <a name="steps-to-deploy-a-custom-file-server"></a>Özel bir dosya sunucusu dağıtma adımları
 
@@ -219,8 +219,8 @@ Azure üzerinde yüksek oranda kullanılabilir bir Azure App Service dağıtım�
 
 3. Hesapları grup üyeliğine aşağıdaki şekilde ekleyin:
 
-   - Fileshareowner öğesini **Fileshareowners** grubuna ekleyin.
-   - Fileshareuser grubunu **Fileshareusers** grubuna ekleyin.
+   - **Fileshareowner** öğesini **fileshareowners** grubuna ekleyin.
+   - **Fileshareuser** grubunu **fileshareusers** grubuna ekleyin.
 
 #### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Bir çalışma grubunda gruplar ve hesaplar sağlama
 
@@ -300,15 +300,15 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ## <a name="prepare-the-sql-server-instance"></a>SQL Server örneğini hazırlama
 
 >[!NOTE]
-> Yüksek oranda kullanılabilir dosya sunucusu için hızlı başlangıç şablonunu dağıtmayı seçtiyseniz ve SQL Server şablon bir HA yapılandırmasında SQL Server dağıtır ve yapılandırdıkça bu bölümü atlayabilirsiniz.
+> Yüksek oranda kullanılabilir dosya sunucusu ve SQL Server için hızlı başlangıç şablonunu dağıtmayı seçtiyseniz, şablon bir HA yapılandırmasında SQL Server dağıtır ve yapılandırdıkça bu bölümü atlayabilirsiniz.
 
 Azure Stack barındırma ve ölçüm veritabanlarında Azure App Service için, App Service veritabanlarını tutmak üzere bir SQL Server örneği hazırlamanız gerekir.
 
-Azure Stack Geliştirme Seti dağıtımları için SQL Server Express 2014 SP2 veya üstünü kullanabilirsiniz.  SQL Server, **karma mod** kimlik doğrulamasını destekleyecek şekilde yapılandırılmalıdır, Azure Stack App Service Windows kimlik doğrulamasını desteklemez.
+ASDK dağıtımları için SQL Server Express 2014 SP2 veya sonraki bir sürümünü kullanabilirsiniz. SQL Server **,** Azure Stack App Service Windows kimlik doğrulamasını desteklemediğinden **karma mod** kimlik doğrulamasını destekleyecek şekilde yapılandırılmalıdır.
 
 Üretim ve yüksek kullanılabilirlik amaçlarıyla, SQL Server 2014 SP2 veya sonraki bir sürümünü kullanmanız, karışık mod kimlik doğrulamasını etkinleştirmeniz ve [yüksek oranda kullanılabilir bir yapılandırmada](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)dağıtmanız gerekir.
 
-Azure Stack Azure App Service için SQL Server örneğine tüm App Service rollerden erişilebilir olması gerekir. Azure Stack varsayılan sağlayıcı aboneliği içinde SQL Server dağıtabilirsiniz. Ya da kuruluşunuzda var olan altyapıyı (Azure Stack bağlantı olduğu sürece) kullanabilirsiniz. Azure Market görüntüsü kullanıyorsanız güvenlik duvarını uygun şekilde yapılandırmayı unutmayın.
+Azure Stack Azure App Service için SQL Server örneğine tüm App Service rollerden erişilebilir olması gerekir. Azure Stack varsayılan sağlayıcı aboneliği içinde SQL Server dağıtabilirsiniz. Ya da, kuruluşunuzda var olan altyapıyı (Azure Stack bağlantısı olduğu sürece) kullanabilirsiniz. Azure Market görüntüsü kullanıyorsanız güvenlik duvarını uygun şekilde yapılandırmayı unutmayın.
 
 > [!NOTE]
 > Market yönetim özelliği aracılığıyla bir dizi SQL IaaS sanal makine görüntüsü mevcuttur. Market öğesi kullanarak bir VM dağıtmadan önce SQL IaaS uzantısının en son sürümünü her zaman indirdiğinizden emin olun. SQL görüntüleri, Azure 'da kullanılabilen SQL VM 'leriyle aynıdır. Bu görüntülerden oluşturulan SQL VM 'Leri için IaaS uzantısı ve ilgili Portal geliştirmeleri, otomatik düzeltme eki uygulama ve yedekleme özellikleri gibi özellikler sağlar.
@@ -328,7 +328,7 @@ GO
 > Mevcut bir sanal ağda App Service dağıtmayı seçerseniz, SQL Server App Service ve dosya sunucusundan ayrı bir alt ağa dağıtılmalıdır.
 >
 
-## <a name="create-an-azure-active-directory-application"></a>Azure Active Directory uygulaması oluşturma
+## <a name="create-an-azure-active-directory-app"></a>Azure Active Directory uygulaması oluşturma
 
 Aşağıdaki işlemleri desteklemek için bir Azure AD hizmet sorumlusu yapılandırın:
 
@@ -373,7 +373,7 @@ Yöneticilerin SSO 'yu şu şekilde yapılandırması gerekir:
 | CertificatePassword | Gerekli | Null | Sertifika özel anahtarını korumaya yardımcı olan parola. |
 | Ortam | İsteğe Bağlı | AzureCloud | Hedef Azure Active Directory grafik hizmetinin kullanılabildiği desteklenen bulut ortamının adı.  İzin verilen değerler: ' Azurecyüksek ', ' AzureChinaCloud ', ' AzureUSGovernment ', ' AzureGermanCloud '.|
 
-## <a name="create-an-active-directory-federation-services-application"></a>Active Directory Federasyon Hizmetleri (AD FS) uygulaması oluşturma
+## <a name="create-an-active-directory-federation-services-app"></a>Active Directory Federasyon Hizmetleri (AD FS) uygulaması oluşturma
 
 AD FS tarafından güvenliği sağlanmış Azure Stack ortamlar için, aşağıdaki işlemleri desteklemek üzere bir AD FS hizmet sorumlusu yapılandırmanız gerekir:
 
