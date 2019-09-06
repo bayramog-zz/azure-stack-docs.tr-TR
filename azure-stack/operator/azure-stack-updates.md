@@ -15,12 +15,12 @@ ms.date: 09/03/2019
 ms.author: justinha
 ms.lastreviewed: 09/03/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: f34f31ac54881c5911488f5049cc75ffee85bd38
-ms.sourcegitcommit: 314fd74caf356b157583d38d2b8b1dee30408b7d
+ms.openlocfilehash: 366a183f551a2b03016c4e34e5de41a4b5727b80
+ms.sourcegitcommit: a8379358f11db1e1097709817d21ded0231503eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234924"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70377269"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack genel bakış 'da güncelleştirmeleri yönetme
 
@@ -67,7 +67,7 @@ Güncelleştirme bildirimi, Internet bağlantınız ve güncelleştirme türü g
 
     Microsoft yazılım güncelleştirmeleri ve düzeltmeleri için bir güncelleştirme uyarısı, internet 'e bağlı Azure Stack örneklerine yönelik güncelleştirme dikey penceresinde görüntülenir.
 
-    Örneğiniz bağlı değilse ve her bir düzeltme sürümü hakkında bildirim almak istiyorsanız, [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/32d322a8-acae-202d-e9a9-7371dccf381b/rss) veya [atom](https://support.microsoft.com/app/content/api/content/feeds/sap/32d322a8-acae-202d-e9a9-7371dccf381b/atom) akışına abone olun.
+    Örneğiniz bağlı değilse ve her bir düzeltme sürümü hakkında bildirim almak istiyorsanız, [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) veya [atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) akışına abone olun.
 
 - **OEM donanım satıcısı tarafından belirtilen güncelleştirmeler**
 

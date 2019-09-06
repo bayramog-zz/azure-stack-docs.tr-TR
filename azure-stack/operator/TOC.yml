@@ -445,7 +445,7 @@
                   href: azure-stack-configure-on-demand-diagnostic-log-collection.md
         - name: Azure Stack için doğrulama
           href: azure-stack-diagnostic-test.md
-        - name: Bilinen sorunlar
+        - name: Sorun giderme
           href: azure-stack-troubleshooting.md
 - name: Başvuru
   items:

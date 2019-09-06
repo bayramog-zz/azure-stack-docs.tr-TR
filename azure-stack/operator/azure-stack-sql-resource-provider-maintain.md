@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te SQL kaynak sağlayıcısı bakımını yapma | Microsoft Docs
-description: Azure Stack'te SQL kaynak sağlayıcısı hizmeti nasıl koruyabilirsiniz öğrenin.
+title: Azure Stack SQL kaynak sağlayıcısı 'nı koruma | Microsoft Docs
+description: Azure Stack üzerinde SQL kaynak sağlayıcısı hizmetini nasıl koruyabileceğinizi öğrenin.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -15,46 +15,46 @@ ms.date: 05/06/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 77b341baca92e53448065325118088ff01a59052
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: 1fa83cbbdba011646016e1e0b0fd5bef3b8d0baf
+ms.sourcegitcommit: a8379358f11db1e1097709817d21ded0231503eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617821"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70377272"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL kaynak sağlayıcısı bakım işlemleri
 
-SQL kaynak sağlayıcısı kilitli bir sanal makinede çalıştırır. Bakım işlemlerini etkinleştirmek için sanal makinenin güvenlik güncelleştirmesi gerekir. En az ayrıcalık sorumlusunu kullanarak bunu yapmak için kullanabileceğiniz [PowerShell yeterli yönetim (JEA)](https://docs.microsoft.com/powershell/jea/overview) uç nokta *DBAdapterMaintenance*. Kaynak Sağlayıcı yükleme paketi, bu işlem için bir betik içerir.
+SQL kaynak sağlayıcısı, kilitli bir sanal makinede çalışır. Bakım işlemlerini etkinleştirmek için, sanal makinenin güvenliğini güncelleştirmeniz gerekir. Bunu, en az ayrıcalık sorumlusunu kullanarak yapmak için [PowerShell 'In yeterli yönetim (JEA)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) uç noktası *Dbadaptermaintenance*komutunu kullanabilirsiniz. Kaynak sağlayıcısı yükleme paketi bu işlem için bir komut dosyası içerir.
 
 ## <a name="patching-and-updating"></a>Düzeltme eki uygulama ve güncelleştirme
 
-SQL kaynak sağlayıcısı, Azure Stack bir parçası olarak bir eklenti bileşeni olduğundan hizmet değil. Microsoft SQL kaynak sağlayıcısı gerekli güncelleştirmeler sağlar. Güncelleştirilmiş SQL bağdaştırıcıyı yayınlandığı zaman, güncelleştirmeyi uygulamak için bir betik sağlanmıştır. Bu betik yeni bir kaynak sağlayıcısı eski sağlayıcısı VM durumunu yeni VM geçişi, VM oluşturur. Daha fazla bilgi için [SQL kaynak sağlayıcısını güncelle](azure-stack-sql-resource-provider-update.md).
+SQL kaynak sağlayıcısı, bir eklenti bileşeni olduğundan Azure Stack bir parçası olarak hizmet vermez. Microsoft, gerektiğinde SQL kaynak sağlayıcısına güncelleştirmeler sağlar. Güncelleştirilmiş bir SQL bağdaştırıcısı yayınlandığında, güncelleştirmeyi uygulamak için bir komut dosyası sağlanır. Bu betik, eski sağlayıcı VM 'sinin durumunu yeni VM 'ye geçirerek yeni bir kaynak sağlayıcısı sanal makinesi oluşturur. Daha fazla bilgi için bkz. [SQL kaynak sağlayıcısını güncelleştirme](azure-stack-sql-resource-provider-update.md).
 
-### <a name="provider-virtual-machine"></a>Sağlayıcı sanal makine
+### <a name="provider-virtual-machine"></a>Sağlayıcı sanal makinesi
 
-Kaynak sağlayıcının çalıştığından bir *kullanıcı* sanal makinenin gereksinim yayınlanacak gerekli düzeltme eklerini ve güncelleştirmeleri uygulamak. VM için güncelleştirmeleri uygulamak için düzeltme ve güncelleştirme döngüsü bir parçası olarak sağlanan Windows güncelleştirme paketlerini kullanabilirsiniz.
+Kaynak sağlayıcı bir *Kullanıcı* sanal makinesinde çalıştığından, yayımlandıklarında gerekli düzeltme eklerini ve güncelleştirmeleri uygulamanız gerekir. Güncelleştirmeleri VM 'ye uygulamak için düzeltme eki ve güncelleştirme döngüsünün bir parçası olarak sunulan Windows Update paketlerini kullanabilirsiniz.
 
 ## <a name="updating-sql-credentials"></a>SQL kimlik bilgileri güncelleştiriliyor
 
-Oluşturma ve SQL Server sysadmin hesapları korumak için sorumlu olursunuz. Kaynak sağlayıcısı kullanıcıların veritabanlarını yönetmek için bu ayrıcalıklarına sahip bir hesap gerekir, ancak kullanıcıların verilere erişim gerektirmez. SQL Server sysadmin parolaları güncelleştirmeniz gerekiyorsa, depolanan bir parolayı değiştirmek için kaynak sağlayıcısının Yöneticisi arabirimini kullanabilirsiniz. Bu parolalar, Azure Stack örneğinde bir anahtar Kasası'nda depolanır.
+SQL sunucularınızda sysadmin hesaplarını oluşturmaktan ve korumadan sorumlu olursunuz. Kaynak sağlayıcısı, kullanıcıların veritabanlarına yönelik veritabanlarını yönetmek için bu ayrıcalıklara sahip bir hesap gerektirir, ancak kullanıcıların verilerine erişmesi gerekmez. SQL sunucularınızda sysadmin parolalarını güncelleştirmeniz gerekiyorsa, depolanan bir parolayı değiştirmek için kaynak sağlayıcının yönetici arabirimini kullanabilirsiniz. Bu parolalar Azure Stack örneğiniz üzerinde Key Vault depolanır.
 
-Ayarları değiştirmek için seçin **Gözat** &gt; **yönetim kaynakları** &gt; **SQL barındırma sunucuları** &gt; **SQL oturum açmaları** ve bir kullanıcı adı seçin. Değişiklik SQL örneğinde önce yapılmalıdır (ve gerekirse tüm çoğaltmalar.) Altında **ayarları**seçin **parola**.
+Ayarları değiştirmek için, **Yönetim kaynakları** &gt; **SQL barındırma sunucuları** &gt; **SQL oturum açmaları** ' **nı seçin** &gt; ve bir Kullanıcı adı seçin. Değişiklik, önce SQL örneğinde (ve gerekirse tüm çoğaltmalarda) yapılmalıdır. **Ayarlar**altında, **parola**' yı seçin.
 
 ![Yönetici parolasını güncelleştirme](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
-## <a name="secrets-rotation"></a>Gizli anahtarları döndürme
+## <a name="secrets-rotation"></a>Gizli dizileri döndürme
 
-*Bu yönergeler yalnızca Azure Stack tümleşik sistemleri için geçerlidir.*
+*Bu yönergeler yalnızca Azure Stack tümleşik sistemler için geçerlidir.*
 
-SQL ve MySQL kaynak sağlayıcılarını kullanarak Azure Stack ile tümleştirilmiş sistemlerle, bunlar süresinin sona ermediğinden emin olmak için aşağıdaki kaynak sağlayıcısı altyapı gizli dizileri döndürme için Azure Stack operatörü sorumludur:
+Azure Stack tümleşik sistemlerle SQL ve MySQL kaynak sağlayıcılarını kullanırken, Azure Stack operatörü, süreleri dolmadan emin olmak için aşağıdaki kaynak sağlayıcısı altyapı gizli dizilerini döndürmekten sorumludur:
 
-- Dış SSL sertifikası [dağıtım sırasında sağlanan](azure-stack-pki-certs.md).
-- Dağıtım sırasında sağlanan kaynak sağlayıcısı VM yerel yönetici hesabının parolası.
-- Kaynak sağlayıcısı (dbadapterdiag) Tanılama kullanıcı parolası.
+- [Dağıtım sırasında](azure-stack-pki-certs.md)dış SSL sertifikası belirtildi.
+- Dağıtım sırasında sağlanmış kaynak sağlayıcısı VM yerel yönetici hesabı parolası.
+- Kaynak sağlayıcısı Tanılama Kullanıcı (dbadapterdiag) parolası.
 
 ### <a name="powershell-examples-for-rotating-secrets"></a>Gizli dizileri döndürme için PowerShell örnekleri
 
-**Tüm gizli dizileri aynı anda değiştirin.**
+**Tüm sırları aynı anda değiştirin.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -67,7 +67,7 @@ SQL ve MySQL kaynak sağlayıcılarını kullanarak Azure Stack ile tümleştiri
     -VMLocalCredential $localCreds
 ```
 
-**Tanılama kullanıcı parolasını değiştirin.**
+**Tanılama Kullanıcı parolasını değiştirin.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -77,7 +77,7 @@ SQL ve MySQL kaynak sağlayıcılarını kullanarak Azure Stack ile tümleştiri
     -DiagnosticsUserPassword  $passwd
 ```
 
-**VM yerel yönetici hesabının parolasını değiştirin.**
+**VM yerel yönetici hesabı parolasını değiştirin.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -87,7 +87,7 @@ SQL ve MySQL kaynak sağlayıcılarını kullanarak Azure Stack ile tümleştiri
     -VMLocalCredential $localCreds
 ```
 
-**SSL sertifika parolası değiştirin.**
+**SSL sertifikası parolasını değiştirin.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -98,55 +98,55 @@ SQL ve MySQL kaynak sağlayıcılarını kullanarak Azure Stack ile tümleştiri
     -DefaultSSLCertificatePassword $certPasswd
 ```
 
-### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 parametreleri
+### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider. ps1 parametreleri
 
 |Parametre|Açıklama|
 |-----|-----|
-|AzCredential|Azure Stack Hizmet yöneticisi hesabı kimlik bilgisi.|
-|CloudAdminCredential|Azure Stack bulut yönetici etki alanı hesabı kimlik bilgisi.|
-|PrivilegedEndpoint|Get-AzureStackStampInformation erişmek için ayrıcalıklı uç noktası'ı seçin.|
-|DiagnosticsUserPassword|Tanılama kullanıcı hesabı parolası.|
-|VMLocalCredential|MySQLAdapter VM'deki yerel yönetici hesabı.|
-|DefaultSSLCertificatePassword|Varsayılan SSL sertifikası (* pfx) parola.|
-|DependencyFilesLocalPath|Bağımlılık dosyaların yerel yolu.|
+|AzCredential|Azure Stack hizmeti yönetici hesabı kimlik bilgileri.|
+|CloudAdminCredential|Azure Stack bulut Yöneticisi etki alanı hesabı kimlik bilgileri.|
+|Ayrıcalıklı Gedendpoint|Get-Azurestackstampınformation öğesine erişmek için ayrıcalıklı uç nokta.|
+|DiagnosticsUserPassword|Tanılama Kullanıcı hesabı parolası.|
+|VMLocalCredential|MySQLAdapter VM 'de yerel yönetici hesabı.|
+|DefaultSSLCertificatePassword|Varsayılan SSL sertifikası (* PFX) parolası.|
+|DependencyFilesLocalPath|Bağımlılık dosyaları yerel yolu.|
 |     |     |
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
-**Sorunu**: Gizli dizileri döndürme günlükleri.<br>
-Gizli döndürme özel betik çalıştırıldığında başarısız olursa gizli anahtarları döndürme için günlükleri otomatik olarak toplanan değildir.
+**Sorun**: Gizli dizi döndürme günlükleri.<br>
+Gizli dizi dönüşü özel betik çalıştırıldığında başarısız olursa gizli dizi için Günlükler otomatik olarak toplanmaz.
 
 **Geçici çözüm**:<br>
-İçinde C:\Logs kaydedilmiş AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log, dahil olmak üzere tüm kaynak sağlayıcısı günlükleri toplamak için Get-AzsDBAdapterLogs cmdlet'ini kullanın.
+AzureStack. DatabaseAdapter. SecretRotation. ps1 _*. log dahil tüm kaynak sağlayıcısı günlüklerini toplamak için Get-AzsDBAdapterLogs cmdlet 'ini kullanın, C:\Logs. dizinine kaydedilir.
 
-## <a name="update-the-virtual-machine-operating-system"></a>Sanal makine işletim sistemi güncelleştirme
+## <a name="update-the-virtual-machine-operating-system"></a>Sanal makine işletim sistemini Güncelleştir
 
 Sanal makine işletim sistemini güncelleştirmek için aşağıdaki yöntemlerden birini kullanın.
 
-- Şu anda Yamalı bir Windows Server 2016 Core görüntü kullanarak en son kaynak sağlayıcısı paketini yükleyin.
-- Windows güncelleştirme paketi yüklemesi sırasında yükleyebilir veya için kaynak sağlayıcısını güncelle.
+- En son düzeltme eki uygulanmış Windows Server 2016 çekirdek görüntüsünü kullanarak en son kaynak sağlayıcısı paketini yükler.
+- Kaynak sağlayıcısına yükleme veya güncelleştirme sırasında Windows Update paketini yükleme.
 
-## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Sanal makine Windows Defender tanımlarını güncelleştir
+## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Sanal makineyi güncelleştirme Windows Defender tanımları
 
-Windows Defender tanımlarına güncelleştirmek için:
+Windows Defender tanımlarını güncelleştirmek için:
 
-1. Windows Defender tanımlarına Update'ten indirme [Windows Defender tanım](https://www.microsoft.com/en-us/wdsi/definitions).
+1. Windows Defender tanımları güncelleştirmesini [Windows Defender tanımından](https://www.microsoft.com/en-us/wdsi/definitions)indirin.
 
-   Tanımlarını sayfa güncelleştirmesi, "El ile indirin ve tanımları Yükle" öğesine gidin. "Windows 10 ve Windows 8.1 için Windows Defender Antivirus" 64-bit dosyasını indirin.
+   Tanımlar güncelleştirme sayfasında, aşağı kaydırarak "tanımları El Ile indir ve Yükle" seçeneğine gidin. "Windows 10 için Windows Defender virüsten koruma ve Windows 8.1" 64-bit dosyasını indirin.
 
-   Alternatif olarak, [bu doğrudan bağlantı](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) fpam fe.exe dosya indirme/çalıştırma için.
+   Alternatif olarak, fpam-Fe. exe dosyasını indirmek/çalıştırmak için [Bu doğrudan bağlantıyı](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) kullanın.
 
-2. SQL kaynak sağlayıcısı bağdaştırıcısını sanal makinenin bakım uç noktası için bir PowerShell oturumu oluşturun.
+2. SQL kaynak sağlayıcısı bağdaştırıcısı sanal makinesinin bakım uç noktasında bir PowerShell oturumu oluşturun.
 
-3. Bakım bitiş noktası oturumu kullanarak sanal makineye tanımları güncelleştirme dosyasını kopyalayın.
+3. Tanımlamalar güncelleştirme dosyasını bakım uç noktası oturumunu kullanarak sanal makineye kopyalayın.
 
-4. Bakım PowerShell oturumunda çalıştırın *güncelleştirme DBAdapterWindowsDefenderDefinitions* komutu.
+4. Bakım PowerShell oturumunda *Update-Dbadapterwindowssavunma Derdefinitions* komutunu çalıştırın.
 
-5. Tanımları yükledikten sonra tanımları güncelleştirme dosyasını kullanarak silmenizi öneririz *Remove-ItemOnUserDrive* komutu.
+5. Tanımları yükledikten sonra, *Remove-ItemOnUserDrive* komutunu kullanarak tanımları güncelleştirme dosyasını silmenizi öneririz.
 
-**Tanımları güncelleştirmek için PowerShell Betiği örneği.**
+**Tanımları güncelleştirmek için PowerShell betiği örneği.**
 
-Düzenle ve Defender tanımları güncelleştirmek için aşağıdaki betiği çalıştırın. Betik değerleri, ortamınızdaki değerlerle değiştirin.
+Defender tanımlarını güncelleştirmek için aşağıdaki betiği düzenleyip çalıştırabilirsiniz. Betikteki değerleri ortamınızdaki değerlerle değiştirin.
 
 ```powershell
 # Set credentials for local admin on the resource provider VM.
@@ -178,30 +178,30 @@ Invoke-Command -Session $session -ScriptBlock `
 $session | Remove-PSSession
 ```
 
-## <a name="collect-diagnostic-logs"></a>Tanılama günlükleri toplama
+## <a name="collect-diagnostic-logs"></a>Tanılama günlüklerini topla
 
-Kilitli sanal makineden günlükleri toplamak için PowerShell yeterli yönetim (JEA) uç noktası kullanabilirsiniz *DBAdapterDiagnostics*. Bu uç nokta, aşağıdaki komutları sağlar:
+Kilitli sanal makineden günlükleri toplamak için PowerShell 'in yeterli yönetim (JEA) uç noktası *Dbadapterdiagnostics*'i kullanabilirsiniz. Bu uç nokta aşağıdaki komutları sağlar:
 
-- **Get-AzsDBAdapterLog**. Bu komut, kaynak sağlayıcısı tanılama günlükleri zip paketini oluşturur ve dosyayı oturumunun kullanıcı sürücüde kaydeder. Bu komut hiçbir parametre olmadan çalıştırabilirsiniz ve günlüklerin son dört saat toplanır.
-- **Remove-AzsDBAdapterLog**. Bu komut, VM kaynak sağlayıcısındaki mevcut günlük paketlerini kaldırır.
+- **Get-AzsDBAdapterLog**. Bu komut, kaynak sağlayıcısı tanılama günlüklerinin bir ZIP paketini oluşturur ve dosyayı oturumun Kullanıcı sürücüsüne kaydeder. Bu komutu herhangi bir parametre olmadan çalıştırabilirsiniz ve son dört saatlik günlük toplanmaktadır.
+- **Remove-AzsDBAdapterLog**. Bu komut, kaynak sağlayıcısı VM 'sinde var olan günlük paketlerini kaldırır.
 
 ### <a name="endpoint-requirements-and-process"></a>Uç nokta gereksinimleri ve süreci
 
-Bir kaynak sağlayıcısı yüklü veya güncelleştirildiğinde, **dbadapterdiag** kullanıcı hesabı oluşturulur. Bu hesap, tanılama günlüklerini toplamak için kullanacaksınız.
+Bir kaynak sağlayıcısı yüklendiğinde veya güncelleştirilirken **dbadapterdiag** Kullanıcı hesabı oluşturulur. Bu hesabı tanılama günlüklerini toplamak için kullanacaksınız.
 
 >[!NOTE]
->Dbadapterdiag hesap parolası sağlayıcısı dağıtım veya güncelleştirme sırasında oluşturulan sanal makinede yerel yönetici için kullanılan parola ile aynıdır.
+>Dbadapterdiag hesabı parolası, bir sağlayıcı dağıtımı veya güncelleştirmesi sırasında oluşturulan sanal makinede yerel yönetici için kullanılan parolayla aynıdır.
 
-Kullanılacak *DBAdapterDiagnostics* komutlar, kaynak sağlayıcısı sanal makineye bir uzak PowerShell oturumu oluşturmak ve çalıştırmak **Get-AzsDBAdapterLog** komutu.
+*Dbadapterdiagnostics* komutlarını kullanmak için, kaynak sağlayıcısı sanal makinesine bir uzak PowerShell oturumu oluşturun ve **Get-AzsDBAdapterLog** komutunu çalıştırın.
 
-Kullanarak günlük toplama için zaman aralığını ayarlamanıza **FromDate** ve **ToDate** parametreleri. Birini veya ikisini de bu parametre belirtmezseniz, aşağıdaki varsayılan değerler kullanılır:
+**FromDate** ve **ToDate** parametrelerini kullanarak günlük koleksiyonu için zaman aralığı ayarlarsınız. Bu parametrelerin birini veya ikisini birden belirtmezseniz, aşağıdaki varsayılanlar kullanılır:
 
-- FromDate dört saat geçerli saatten önce olur.
-- ToDate geçerli süredir.
+- FromDate, geçerli zamandan dört saat öncesine ait.
+- ToDate geçerli zaman.
 
-**Günlüklerinin toplanması için PowerShell Betiği örneği.**
+**Günlükleri toplamak için PowerShell betiği örneği.**
 
-Aşağıdaki betik, kaynak Sağlayıcısı'ndan VM tanılama günlük toplama işlemi gösterilmektedir.
+Aşağıdaki betik, kaynak sağlayıcısı VM 'sinden tanılama günlüklerinin nasıl toplanacağını göstermektedir.
 
 ```powershell
 # Create a new diagnostics endpoint session.

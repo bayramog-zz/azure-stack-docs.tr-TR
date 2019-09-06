@@ -16,12 +16,12 @@ ms.date: 08/29/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: a12aceff00cf5be2d6ab70c4957ef04ea1c135d5
-ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
+ms.openlocfilehash: 0fbb57771976b896f8f6b37b62780e34d6635d78
+ms.sourcegitcommit: e2aec63cacfdc830a20a02ee40e715e3c5dfdf22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271703"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386234"
 ---
 # <a name="prerequisites-for-deploying-app-service-on-azure-stack"></a>Azure Stack App Service dağıtmaya yönelik önkoşullar
 
@@ -47,9 +47,12 @@ Azure Stack Azure App Service dağıtmadan önce, bu makaledeki önkoşul adıml
    - Modüller klasörü
      - GraphAPI.psm1
 
-## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Market 'ten özel Betik uzantısı 'nı genel olarak
+## <a name="download-items-from-the-azure-marketplace"></a>Azure Marketi 'nden öğeleri indirin
 
-Azure Stack Azure App Service özel Betik uzantısı v 1.9.1 gerektirir.  Azure Stack Azure App Service dağıtım veya yükseltme işlemine başlamadan önce uzantının [Market 'ten](azure-stack-download-azure-marketplace-item.md) dağıtılması gerekir.
+Azure Stack Azure App Service, öğelerin [Azure Marketi 'nden indirilmesini](azure-stack-download-azure-marketplace-item.md)gerektirir ve bunları Azure Stack Market 'te kullanılabilir hale getirir. Azure Stack Azure App Service dağıtım veya yükseltme işlemine başlamadan önce bu öğeler indirilmelidir:
+
+1. Windows Server 2016 Datacenter sanal makine görüntüsünün en son sürümü.
+2. Özel Betik uzantısı v 1.9.1 veya üstü. Bu bir sanal makine uzantısıdır.
 
 ## <a name="get-certificates"></a>Sertifika Al
 

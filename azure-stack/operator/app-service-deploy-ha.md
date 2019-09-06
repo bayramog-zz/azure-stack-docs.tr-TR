@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: e09cc9e5c77379441d7757fa1395941712ecc5ff
-ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
+ms.openlocfilehash: 994291eb0a990521dc932adc63f0ad52d4430e0d
+ms.sourcegitcommit: e2aec63cacfdc830a20a02ee40e715e3c5dfdf22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271823"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386257"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Yüksek oranda kullanılabilir bir yapılandırmada App Service dağıtma
 
@@ -121,7 +121,7 @@ App Service yükleyicisini çalıştırmadan önce, [Azure Stack makalesinde App
 > Şablon dağıtımı, altyapı VM 'lerini sizin için yapılandırdığından, [App Service ile çalışmaya başlamadan önce](azure-stack-app-service-before-you-get-started.md) ' de açıklanan adımların tümü gereklidir.
 
 - [App Service yükleyicisini ve yardımcı betikleri indirin](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
-- [Azure Stack Market 'e en son özel betik uzantısını indirin](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
+- [Azure Stack marketi 'nden öğeleri indirin](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
 - [Gerekli sertifikaları oluştur](azure-stack-app-service-before-you-get-started.md#get-certificates).
 - Azure Stack için seçtiğiniz kimlik sağlayıcısını temel alarak kimlik uygulamasını oluşturun. KIMLIK uygulaması, [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) veya [Active Directory Federasyon Hizmetleri (AD FS)](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) IÇIN yapılabilir ve uygulama kimliğini kaydedebilir.
 - Windows Server 2016 Datacenter görüntüsünü Azure Stack Market 'e eklemiş olduğunuzdan emin olun. Bu görüntü App Service yüklemesi için gereklidir.

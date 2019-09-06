@@ -15,18 +15,18 @@ ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9d088cb128243b0b178e7a317ba05176a59e83c1
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: 349634e9f7bfdab3ec08630488d19947813361dd
+ms.sourcegitcommit: a8379358f11db1e1097709817d21ded0231503eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494071"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70377231"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack 'da ayrıcalıklı uç noktası kullanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack operatörü olarak, gündelik yönetim görevlerinin çoğunda yönetici portalını, PowerShell'i veya Azure Resource Manager API'lerini kullanmanız gerekir. Ancak, bazı daha az yaygın işlemler için *ayrıcalıklı uç noktayı* (Pep) kullanmanız gerekir. PEP, gerekli bir görevi gerçekleştirmenize yardımcı olmak için size yeterli yetenek sağlayan, önceden yapılandırılmış bir uzak PowerShell konsoludur. Uç nokta, yalnızca kısıtlı bir cmdlet kümesini kullanıma sunmak için [PowerShell JEA 'yı (yeterli yönetim)](https://docs.microsoft.com/powershell/jea/overview) kullanır. PEP 'ye erişmek ve kısıtlanmış cmdlet 'ler kümesini çağırmak için düşük ayrıcalıklı bir hesap kullanılır. Yönetici hesabı gerekli değildir. Ek güvenlik için komut dosyasına izin verilmez.
+Azure Stack operatörü olarak, gündelik yönetim görevlerinin çoğunda yönetici portalını, PowerShell'i veya Azure Resource Manager API'lerini kullanmanız gerekir. Ancak, bazı daha az yaygın işlemler için *ayrıcalıklı uç noktayı* (Pep) kullanmanız gerekir. PEP, gerekli bir görevi gerçekleştirmenize yardımcı olmak için size yeterli yetenek sağlayan, önceden yapılandırılmış bir uzak PowerShell konsoludur. Uç nokta, yalnızca kısıtlı bir cmdlet kümesini kullanıma sunmak için [PowerShell JEA 'yı (yeterli yönetim)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) kullanır. PEP 'ye erişmek ve kısıtlanmış cmdlet 'ler kümesini çağırmak için düşük ayrıcalıklı bir hesap kullanılır. Yönetici hesabı gerekli değildir. Ek güvenlik için komut dosyasına izin verilmez.
 
 PEP 'yi aşağıdakiler gibi görevleri gerçekleştirmek için kullanabilirsiniz:
 
@@ -109,7 +109,7 @@ Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine ve
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktayı kullanmaya yönelik ipuçları 
 
-Yukarıda belirtildiği gibi, PEP bir [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) uç noktasıdır. Güçlü bir güvenlik katmanı sağlarken, bir JEA uç noktası, komut dosyası veya sekme tamamlama gibi bazı temel PowerShell özelliklerini azaltır. Herhangi bir tür betik işlemi denerseniz, işlem **Scriptsnotallowed**hatasıyla başarısız olur. Bu beklenen bir davranıştır.
+Yukarıda belirtildiği gibi, PEP bir [PowerShell JEA](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) uç noktasıdır. Güçlü bir güvenlik katmanı sağlarken, bir JEA uç noktası, komut dosyası veya sekme tamamlama gibi bazı temel PowerShell özelliklerini azaltır. Herhangi bir tür betik işlemi denerseniz, işlem **Scriptsnotallowed**hatasıyla başarısız olur. Bu beklenen bir davranıştır.
 
 Bu nedenle, örneğin, belirli bir cmdlet 'in parametre listesini almak için aşağıdaki komutu çalıştırın:
 
