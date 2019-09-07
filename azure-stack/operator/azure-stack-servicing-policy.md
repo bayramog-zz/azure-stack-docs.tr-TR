@@ -12,17 +12,37 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 09/06/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 1022ab056157ea1a9bc925d3992a99bd0b395a35
-ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
+ms.openlocfilehash: dbfce7138d76892c7f66e2cf6f33883668e55395
+ms.sourcegitcommit: 5703255b4647ff0ebec23658a3f5c25d67f076a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70188086"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70749947"
 ---
+# <a name="azure-stack-servicing-policy"></a>Azure Stack hizmet ilkesi
+
+Bu makalede, Azure Stack tümleşik sistemlere yönelik bakım ilkesi ve sisteminizin desteklenen bir durumda tutulması için yapmanız gerekenler açıklanmaktadır.
+
+## <a name="download-update-packages-for-integrated-systems"></a>Tümleşik sistemler için güncelleştirme paketlerini indirin
+
+Microsoft, belirli sorunları gidermek için hem tam aylık güncelleştirme paketlerini hem de düzeltme paketlerini yayınlar.
+
+Aylık güncelleştirme paketleri güvenli bir Azure uç noktasında barındırılır. [Azure Stack Updates Downloader aracını](https://aka.ms/azurestackupdatedownload)kullanarak bunları el ile indirebilirsiniz. Ölçek biriminiz bağlıysa, güncelleştirme **kullanılabilir**olarak yönetici portalında otomatik olarak görünür. Tam, aylık güncelleştirme paketleri her sürümde iyi belgelenmiştir. Her sürüm hakkında daha fazla bilgi için, bu makalenin [güncelleştirme paketi sürümü temposunda](#update-package-release-cadence) bölümünde herhangi bir yayına tıklayabilirsiniz.
+
+Düzeltme güncelleştirme paketleri aynı güvenli Azure uç noktasında barındırılır. İlgili düzeltme KB makalelerinin her birinde ekli bağlantıları kullanarak bunları indirebilirsiniz; Örneğin, [1.1809.12.114 düzeltmesini Azure Stack](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Tam, aylık güncelleştirme paketlerine benzer şekilde Azure Stack işleçlerine benzer şekilde. xml,. bin ve. exe dosyalarını indirebilir ve [Azure Stack güncelleştirmeleri uygulama](azure-stack-apply-updates.md)yordamını kullanarak içeri aktarabilirsiniz. Bağlı ölçek birimlerine sahip Azure Stack işleçleri, düzeltmeler **kullanılabilir Ileti güncelleştirmesiyle**birlikte yönetici portalında otomatik olarak görünür.
+
+Ölçek biriminiz bağlı değilse ve her bir düzeltme sürümü hakkında bildirim almak istiyorsanız, her yayında belirtilen [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) veya [atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) akışına abone olun.
+
+## <a name="update-package-types"></a>Güncelleştirme paketi türleri
+
+Tümleşik sistemler için iki tür güncelleştirme paketi vardır:
+
+- **Microsoft yazılım güncelleştirmeleri**. Microsoft, Microsoft yazılım güncelleştirme paketlerinin uçtan uca hizmet yaşam döngüsüyle sorumludur. Bu paketler, en son Windows Server güvenlik güncelleştirmelerini, güvenlik dışı güncelleştirmeleri ve Azure Stack Özellik güncelleştirmelerini içerebilir. Doğrudan Microsoft 'tan ses güncelleştirme paketlerini indirebilirsiniz.
+
 - **OEM donanım satıcısı tarafından belirtilen güncelleştirmeler**. Azure Stack Donanım ortakları, donanımla ilgili bellenim ve sürücü güncelleştirme paketleri için uçtan uca hizmet yaşam döngüsüyle (rehberlik dahil) sorumludur. Bunlara ek olarak, Azure Stack donanım iş ortakları, donanım yaşam döngüsü konağındaki tüm yazılım ve donanımların kılavuzunu korur. OEM donanım satıcısı, bu güncelleştirme paketlerini kendi indirme sitelerinde barındırır.
 
 ## <a name="update-package-release-cadence"></a>Güncelleştirme paketi sürümü temposunda
@@ -40,11 +60,18 @@ Nasıl indirileceği dahil olmak üzere belirli bir güncelleştirme hakkında d
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
-Microsoft, bazen, genellikle koruyucu veya zamana duyarlı belirli bir sorunu gideren Azure Stack düzeltmeler sağlar.  Her bir düzeltme, sorunun, nedenin ve çözümlemenin ayrıntılarını veren ilgili bir Microsoft Bilgi Bankası makalesiyle birlikte yayımlanır.
-
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Bu makalede, Azure Stack tümleşik sistemlere yönelik bakım ilkesi, sisteminizi desteklenen bir durumda tutmak için yapmanız gerekenler ve nasıl destek alınacağı açıklanmaktadır.
+Microsoft, bazen, genellikle koruyucu veya zamana duyarlı belirli bir sorunu gideren Azure Stack düzeltmeler sağlar.  Her bir düzeltme, sorunun, nedenin ve çözümlemenin ayrıntılarını veren ilgili bir Microsoft Bilgi Bankası makalesiyle birlikte yayımlanır.
+
+Düzeltmeler, Azure Stack için düzenli tam güncelleştirme paketleri gibi indirilir ve yüklenir. Bununla birlikte, tüm güncelleştirmeler farklı olarak, düzeltmeler dakikalar içinde yüklenebilir. Düzeltmeler yüklenirken Azure Stack işleçleri bakım pencerelerini ayarlamanızı öneririz. Düzeltmeler, düzeltmenin uygulanmış olup olmadığını kolayca belirleyebilmeniz için Azure Stack bulutunuzun sürümünü güncelleştirir. Hala destek içinde olan her bir Azure Stack sürümü için ayrı bir düzeltme sağlanır. Belirli bir yineleme için her bir düzeltme birikimlidir ve aynı sürüme ait önceki güncelleştirmeleri içerir. İlgili Bilgi Bankası makalesinde belirli bir düzeltmenin uygulanabilirliği hakkında daha fazla bilgi edinebilirsiniz. Önceki bölümde yer alarak sürüm notları bağlantıları bölümüne bakın.
+
+Şu anda kullanılabilen düzeltmeler hakkında bilgi için, bu güncelleştirme için sürüm notlarına bakın:
+
+- [Azure Stack 1908 düzeltmesi](azure-stack-release-notes-1908.md#hotfixes)
+- [Azure Stack 1907 düzeltmesi](azure-stack-release-notes-1907.md#hotfixes)
+- [Azure Stack 1906 düzeltmesi](azure-stack-release-notes-1906.md#hotfixes)
+- [Azure Stack 1905 düzeltmesi](azure-stack-release-notes-1905.md#hotfixes)
 
 ## <a name="keep-your-system-under-support"></a>Sisteminizi destek altında tutun
 
@@ -62,4 +89,4 @@ Azure Stack, Azure ile aynı destek sürecini izler. Kurumsal müşteriler, [Azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack güncelleştirmelerini yönetme](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)
+- [Azure Stack güncelleştirmelerini yönetme](azure-stack-updates.md)

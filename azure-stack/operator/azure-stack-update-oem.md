@@ -15,12 +15,12 @@ ms.date: 08/28/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: bea83d743e7f43ff25d446a09b0e12d0c0af4232
-ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
+ms.openlocfilehash: b218a1b40953d9266ec5a8bcdd49f5d89a421146
+ms.sourcegitcommit: 5703255b4647ff0ebec23658a3f5c25d67f076a2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70188377"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70749930"
 ---
 # <a name="apply-azure-stack-original-equipment-manufacturer-oem-updates"></a>Özgün donanım üreticisi (OEM) güncelleştirmelerini Azure Stack Uygula
 
@@ -59,8 +59,9 @@ Aşağıdaki adımlarla OEM paketlerini uygulayın:
 1. Şu şekilde OEM 'nize başvurmanız gerekir:
       - OEM paketinizin güncel sürümünü saptayın.  
       - OEM paketinizi indirmek için en iyi yöntemi bulun.  
-2. [Tümleşik sistemler için güncelleştirme paketlerini indirme](azure-stack-servicing-policy.md)bölümünde ÖZETLENEN adımlarla OEM paketinizi hazırlayın.
-3. Güncelleştirmeleri [Azure Stack güncelleştirme uygulama](azure-stack-apply-updates.md)bölümünde özetlenen adımlarla uygulayın.
+2. Bir OEM paket güncelleştirmesini uygulamadan önce, sisteminizin güncel Azure Stack sürümüne sunulan en son Azure Stack düzeltmeyi her zaman uygulamanız gerekir. Düzeltmeler hakkında daha fazla bilgi için bkz. [Azure Stack düzeltmeleri](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy).
+3. [Tümleşik sistemler için güncelleştirme paketlerini indirme](azure-stack-servicing-policy.md)bölümünde ÖZETLENEN adımlarla OEM paketinizi hazırlayın.
+4. Güncelleştirmeleri [Azure Stack güncelleştirme uygulama](azure-stack-apply-updates.md)bölümünde özetlenen adımlarla uygulayın.
 
 ## <a name="configure-hardware-vendor-vm"></a>Donanım satıcısı VM 'sini yapılandırma
 
