@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te bir sanal makineye Ruby uygulamasını dağıtma | Microsoft Docs
-description: Azure Stack'te bir sanal makineye Ruby uygulaması dağıtın.
+title: Azure Stack bir sanal makineye Ruby uygulaması dağıtma | Microsoft Docs
+description: Azure Stack bir sanal makineye Ruby uygulaması dağıtın.
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
@@ -9,38 +9,38 @@ ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: f7867e963551d04336ac4092e8b1b2f033c29e94
-ms.sourcegitcommit: 05a16552569fae342896b6300514c656c1df3c4e
+ms.openlocfilehash: 07b18ea8933afc225f09bfc49a8c60d9d7d43961
+ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65838344"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808170"
 ---
-# <a name="deploy-a-ruby-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için Ruby web uygulaması dağıtma
+# <a name="deploy-a-ruby-web-app-to-a-vm-in-azure-stack"></a>Azure Stack bir sanal makineye Ruby Web uygulaması dağıtma
 
-Azure stack'teki Ruby web uygulamanızı barındırmak için bir VM oluşturabilirsiniz. Bu makalede, bir sunucu kurulumu yapmak, Ruby web uygulamanızı barındırmak için sunucuyu yapılandırmak ve sonra uygulamayı Azure Stack'e dağıtma.
+Ruby Web uygulamanızı barındırabilmeniz için bir VM oluşturabilirsiniz Azure Stack. Bu makalede, bir sunucu ayarlar, sunucuyu Ruby Web uygulamanızı barındıracak şekilde yapılandırır ve ardından uygulamayı Azure Stack dağıtmanız gerekir.
 
-Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
+Bu makalede Ruby ve bir Ruby on rayın Web çerçevesi kullanılmaktadır.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-1. Azure stack'teki VM'nizi ayarlayın. Yönergeler için [Azure Stack'te bir web uygulaması barındırmak üzere bir Linux VM dağıtmak](azure-stack-dev-start-howto-deploy-linux.md).
+1. Azure Stack ' de sanal makineyi ayarlayın. Yönergeler için bkz. [Azure Stack bir Web uygulamasını barındırmak Için LINUX VM dağıtma](azure-stack-dev-start-howto-deploy-linux.md).
 
-2. VM ağ bölmesinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
+2. VM ağı bölmesinde, aşağıdaki bağlantı noktalarına erişilebilir olduğundan emin olun:
 
     | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), Web sayfalarını sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür. |
-    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanın. |
-    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü (RDP), makinenizde bir grafik kullanıcı arabirimini kullanarak bir Uzak Masaüstü bağlantısı sağlar.   |
-    | 3000 | Özel | Ruby on Rails web çerçevesi geliştirme tarafından kullanılan bağlantı noktası. Bir üretim sunucusu için 80 ve 443 üzerinden trafiğiniz yol. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), sunuculardan Web sayfalarını teslim etmek için kullanılan protokoldür. İstemciler bir DNS adı veya IP adresi ile HTTP aracılığıyla bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), bir güvenlik sertifikası gerektiren ve şifreli bilgi iletimi sağlayan güvenli bir HTTP sürümüdür. |
+    | 22 | SSH | Secure Shell (SSH), güvenli iletişimler için şifreli bir ağ protokolüdür. Bu bağlantıyı, sanal makineyi yapılandırmak ve uygulamayı dağıtmak için bir SSH istemcisiyle birlikte kullanırsınız. |
+    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü (RDP), uzak masaüstü bağlantısının makinenizde bir grafik kullanıcı arabirimi kullanmasına izin verir.   |
+    | 3000 | Özel | Ruby on, geliştirme aşamasında Web çerçevesi tarafından kullanılan bağlantı noktası. Bir üretim sunucusu için, trafiğinizi 80 ve 443 ile yönlendirmenize sahip olursunuz. |
 
 ## <a name="install-ruby"></a>Ruby’yi yükleme
 
-1. SSH istemciniz kullanarak VM'nize bağlanın. Yönergeler için [PuTTy SSH üzerinden Bağlan](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
+1. SSH istemcinizi kullanarak sanal makinenize bağlanın. Yönergeler için bkz. [PuTTy Ile SSH aracılığıyla bağlanma](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
-1. PPA deposuna yükleyin. Sanal makinenizin üzerinde bash isteminde aşağıdaki komutları girin:
+1. PPA deposunu yükler. SANAL makinenizin Bash isteminde aşağıdaki komutları girin:
 
     ```bash  
     sudo apt -y install software-properties-common
@@ -49,14 +49,14 @@ Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
     sudo apt update
     ```
 
-2. Rails, VM'de Ruby ve Ruby yükleyin. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutları girin:
+2. VM 'nize Ruby ve Ruby on rayın. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda aşağıdaki komutları girin:
 
     ```bash  
     sudo apt install ruby
     gem install rails -v 4.2.6
     ```
 
-3. Ruby, Rails bağımlılıkları yükleyin. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutları girin:
+3. Ruby on rayın bağımlılıklarını yükler. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda aşağıdaki komutları girin:
 
     ```bash  
     sudo apt-get install make
@@ -68,23 +68,23 @@ Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
     ```
 
     > [!Note]  
-    > Ruby, Rails bağımlılıkları yüklüyorsanız, ancak sürekli olarak çalıştırmanız gerekebilir `sudo gem install bundler`. Yükleme başarısız olursa hata günlüklerini gözden geçirin ve sorunları çözün.
+    > Ruby on raya bağımlılıklarını yüklerken, tekrar tekrar çalıştırmanız `sudo gem install bundler`gerekebilir. Yükleme başarısız olursa, hata günlüklerini gözden geçirin ve sorunları çözün.
 
-4. Yüklemenizi doğrulayın. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutu girin:
+4. Yüklemenizi doğrulayın. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda, aşağıdaki komutu girin:
 
     ```bash  
         ruby -v
     ```
 
-3. [Git'i yükleyin](https://git-scm.com), yaygın olarak dağıtılmış sürüm denetimi ve kaynak kodu Yönetimi (SCM) sistemi. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutu girin:
+3. Yaygın olarak dağıtılmış bir sürüm denetimi ve kaynak kodu yönetimi (SCM) sistemi olan [Git 'ı yükler](https://git-scm.com). SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda, aşağıdaki komutu girin:
 
     ```bash  
        sudo apt-get -y install git
     ```
 
-## <a name="create-and-run-an-app"></a>Oluşturma ve uygulama çalıştırma
+## <a name="create-and-run-an-app"></a>Uygulama oluşturma ve çalıştırma
 
-1. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutları girin:
+1. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda aşağıdaki komutları girin:
 
     ```bash
         rails new myapp
@@ -92,7 +92,7 @@ Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
         rails server -b 0.0.0.0 -p 3000
     ```
 
-2. Yeni sunucunuza gidin. Çalışan web uygulamanızın görmeniz gerekir.
+2. Yeni sunucunuza gidin. Çalışan Web uygulamanızı görmeniz gerekir.
 
     ```HTTP  
        http://yourhostname.cloudapp.net:3000
@@ -100,6 +100,6 @@ Bu makalede, Ruby ve Ruby on Rails web çerçevesi kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanma hakkında daha fazla bilgi edinin [Azure Stack için geliştirme](azure-stack-dev-start.md).
-- Hakkında bilgi edinin [Iaas olarak Azure Stack için ortak dağıtımları](azure-stack-dev-start-deploy-app.md).
-- Ruby programlama dilini öğrenin ve Python için ek kaynakları bulmak için bkz: [Ruby lang.org](https://www.ruby-lang.org).
+- [Azure Stack için geliştirme](azure-stack-dev-start.md)hakkında daha fazla bilgi edinin.
+- [Azure Stack için genel dağıtımlar IaaS olarak](azure-stack-dev-start-deploy-app.md)hakkında bilgi edinin.
+- Ruby programlama dilini öğrenmek ve Ruby için ek kaynaklar bulmak için bkz. [Ruby-lang.org](https://www.ruby-lang.org).

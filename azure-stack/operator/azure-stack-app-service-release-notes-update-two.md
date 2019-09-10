@@ -1,6 +1,6 @@
 ---
-title: Azure Stack üzerinde App Service'te güncelleştirme 2 sürüm notları | Microsoft Docs
-description: Güncelleştirmede nedir hakkında iki Azure Stack üzerinde App Service'te, bilinen sorunlar ve güncelleştirmeyi yüklemek nereye öğrenin.
+title: App Service Azure Stack güncelleştirme 2 sürüm notları | Microsoft Docs
+description: Azure Stack App Service için güncelleştirme 2 ' deki geliştirmeler, düzeltmeler ve bilinen sorunlar hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -16,91 +16,88 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: b56c90d9bac8039d428b7ee06a384956924e94f5
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: c85cc176949c9f3c86cded80be14417add6c40da
+ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269043"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808167"
 ---
-# <a name="app-service-on-azure-stack-update-2-release-notes"></a>Güncelleştirme 2 sürüm notları Azure Stack üzerinde App Service'e
+# <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service Azure Stack güncelleştirme 2 sürüm notları
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bu sürüm notları, Azure App Service'te düzeltmeleri ve geliştirmeleri ve Azure Stack güncelleştirme 2 bilinen sorunlar açıklanmaktadır. Bilinen sorunlar doğrudan dağıtım, güncelleştirme işlemi ve sorunları (yükleme sonrası) yapı ile ilgili sorunlar ayrılır.
+Bu sürüm notları, Azure Stack güncelleştirme 2 ' de Azure App Service geliştirmeleri, düzeltmeleri ve bilinen sorunları anlatmaktadır. Bilinen sorunlar üç bölüme ayrılmıştır: doğrudan dağıtım, güncelleştirme işlemiyle ilgili sorunlar ve yapıyla ilgili sorunlar (yükleme sonrası).
 
 > [!IMPORTANT]
-> 1804 güncelleştirme, Azure Stack tümleşik sistemi için geçerli veya Azure App Service 1.2 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
->
->
+> 1804 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya Azure App Service 1,2 ' i dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
 
-Azure Stack güncelleştirme 2 derleme numarası üzerinde App Service, **72.0.13698.10**
+Azure Stack güncelleştirme 2 yapı numarasında App Service **72.0.13698.10**.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
 > [!IMPORTANT]
-> Azure Stack'te Azure App Service'in yeni dağıtımlar artık gerektiren bir [üç konulu bir joker sertifikası](azure-stack-app-service-before-you-get-started.md#get-certificates) iyileştirmeleri, SSO için Kudu artık Azure App Service'te işlenme nedeniyle. Yeni konu  **\*. sso.appservice.\< Bölge\>.\< DomainName\>.\< Uzantı\>**
->
->
+> Azure Stack Azure App Service yeni dağıtımları artık, kudu için SSO 'nun Azure App Service işlendiği şekilde iyileştirmeler nedeniyle [üç konuyla ilgili bir joker sertifikaya](azure-stack-app-service-before-you-get-started.md#get-certificates) gerek duyar. Yeni Konu:  **\*. SSO.\< appservice. Bölge\>.\< DomainName\>.\< uzantının\>**
 
-Başvurmak [önce Get Started belgeleri](azure-stack-app-service-before-you-get-started.md) dağıtımına başlamadan önce.
+Dağıtıma başlamadan önce [Azure Stack App Service dağıtmaya yönelik önkoşulları](azure-stack-app-service-before-you-get-started.md) inceleyin.
 
 ### <a name="new-features-and-fixes"></a>Yeni özellikler ve düzeltmeler
 
-Azure Stack güncelleştirme 2 üzerinde'Azure App Service, aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
+Azure Stack güncelleştirme 2 ' Azure App Service aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
 
-- Güncelleştirmeleri **App Service Kiracı, yönetici, İşlevler portalları ve Kudu Araçları**. Azure Stack portalı SDK sürümü ile tutarlı.
+- **Kiracı, yönetici, işlevler portalları ve kudu araçları App Service**güncelleştirmeler. Azure Stack Portal SDK sürümü ile tutarlıdır.
 
-- Güncelleştirmeleri **Azure işlevleri çalışma zamanı** için **v1.0.11612**.
+- **Azure işlevleri çalışma zamanını** **v 1.0.11612**'a güncelleştirir.
 
-- Güvenilirlik ve sık karşılaşılan sorunları daha kolay tanılanması etkinleştirme hata geliştirmek için çekirdek hizmet güncelleştirmeleri.
+- Genel sorunların daha kolay tanılanmasını sağlayan güvenilirlik ve hata iletilerini artırmak için çekirdek hizmette güncelleştirmeler.
 
-- **Aşağıdaki uygulama çerçeveleri ve araçları güncelleştirmeleri**:
-  - Eklenen .NET Framework 4.7.1
-  - Eklenen **Node.JS** sürümleri:
+- **Aşağıdaki uygulama çerçeveleri ve araçları Için güncelleştirmeler**:
+  - .NET Framework 4.7.1 eklendi
+  - **Node. js** sürümleri eklendi:
     - NodeJS 6.12.3
     - NodeJS 8.9.4
     - NodeJS 8.10.0
     - NodeJS 8.11.1
-  - Eklenen **NPM** sürümleri:
+  - **NPM** sürümleri eklendi:
     - 5.6.0
-  - Azure App Service Genel bulutta tutarlı olması için güncelleştirilmiş .NET Core bileşenleri.
-  - Güncelleştirilmiş Kudu
+  - .NET Core bileşenleri, genel buluttaki Azure App Service tutarlı olacak şekilde güncelleştirildi.
+  - Kudu güncelleştirildi
 
-- Dağıtımının otomatik takas yuvası özelliğinin etkin - [otomatik yapılandırma değiştirme](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)
+- Dağıtım yuvaları özelliğinin Otomatik takas özelliği etkin- [otomatik değiştirmeyi yapılandırma](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap).
 
-- Test üretim özelliği etkin - [üretimde test giriş](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
+- Üretim özelliği etkinken test etme- [üretimde teste giriş](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/).
 
-- Etkin - Azure işlevleri proxy'leri [iş ile Azure işlev proxy'leri](https://docs.microsoft.com/azure/azure-functions/functions-proxies)
+- Azure İşlev Proxy'leri etkin- [Azure işlev proxy'leri çalışın](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
 
-- App Service yönetim uzantısı UX desteklemek için eklendi:
+- İçin App Service Yönetici uzantısı UX desteği eklendi:
   - Gizli anahtar döndürme
   - Sertifika döndürme
-  - Sistem kimlik bilgilerini döndürme
+  - Sistem kimlik bilgisi döndürme
   - Bağlantı dizesi döndürme
 
 ### <a name="known-issues-post-installation"></a>Bilinen sorunlar (yükleme sonrası)
 
-- Çalışanları App Service, var olan bir sanal ağda dağıtılır ve dosya sunucusu yalnızca özel ağda kullanılabilir dosya sunucusuna erişemiyor.
+- Mevcut bir sanal ağda App Service dağıtıldığında ve dosya sunucusu yalnızca özel ağda kullanılabilir olduğunda çalışanlar dosya sunucusuna ulaşamamakta olur.
 
-Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
-* Kaynak: Herhangi
+Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+
+* Kaynak: Any
 * Kaynak bağlantı noktası aralığı: *
-* Hedef: IP Adresleri
-* Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
+* Hedef: IP adresleri
+* Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
 * Hedef bağlantı noktası aralığı: 445
 * Protokol: TCP
-* Eylem: İzin ver
-* Önceliği: 700
+* Eylem: Allow
+* Öncelik: 700
 * Ad: Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure Stack üzerinde Azure App Service'te çalışan bulut yöneticileri için bilinen sorunlar
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure Stack üzerinde Cloud Admins işletim Azure App Service ilgili bilinen sorunlar
 
-Belgeye başvurun [Azure Stack 1804 sürüm notları](azure-stack-update-1903.md)
+[Azure Stack 1804 sürüm notlarındaki](azure-stack-update-1903.md) belgelere bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure App Service'e genel bakış için bkz. [Azure App Service, Azure Stack genel bakış](azure-stack-app-service-overview.md).
-- Azure Stack üzerinde App Service'e dağıtmak hazırlanması hakkında daha fazla bilgi için bkz. [Azure Stack'te App Service ile çalışmaya başlamadan önce](azure-stack-app-service-before-you-get-started.md).
+- Azure App Service genel bakış için bkz. [Azure Stack genel bakış Azure App Service](azure-stack-app-service-overview.md).
+- Azure Stack App Service dağıtmaya hazırlanma hakkında daha fazla bilgi için bkz. [Azure Stack üzerinde App Service dağıtmak Için Önkoşullar](azure-stack-app-service-before-you-get-started.md).

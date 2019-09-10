@@ -1,6 +1,6 @@
 ---
-title: Azure Stack üzerinde App Service'te güncelleştirme 5 sürüm notları | Microsoft Docs
-description: Beş Azure Stack'te App Service için bilinen sorunlar ve güncelleştirme karşıdan yükleme konumu güncelleştirmesi ne olduğu hakkında öğrenin.
+title: App Service Azure Stack güncelleştirme 5 sürüm notları | Microsoft Docs
+description: Azure Stack App Service için güncelleştirme 5 ' teki geliştirmeler, düzeltmeler ve bilinen sorunlar hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -16,82 +16,79 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: e0801ecdce5ddeffd3bcae43d999121c62d3e052
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 1955689929ef3277096aab558cca57e719a59a87
+ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269163"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808194"
 ---
-# <a name="app-service-on-azure-stack-update-5-release-notes"></a>Güncelleştirme 5 sürüm notları Azure Stack üzerinde App Service'e
+# <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service Azure Stack güncelleştirme 5 sürüm notları
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bu sürüm notları, iyileştirmeler ve düzeltmeler Azure uygulama Hizmeti'nde Azure Stack güncelleştirme 5 ve tüm bilinen sorunlar açıklanmaktadır. Bilinen sorunlar doğrudan dağıtım, güncelleştirme işlemi ve sorunları (yükleme sonrası) yapı ile ilgili sorunlar ayrılır.
+Bu sürüm notları, Azure Stack güncelleştirme 5 ' teki Azure App Service geliştirmeleri, düzeltmeleri ve bilinen sorunları anlatmaktadır. Bilinen sorunlar üç bölüme ayrılmıştır: doğrudan dağıtım, güncelleştirme işlemiyle ilgili sorunlar ve yapıyla ilgili sorunlar (yükleme sonrası).
 
 > [!IMPORTANT]
-> Azure Stack tümleşik sisteminize 1901 güncelleştirmesini veya Azure App Service 1.5 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
-
+> 1901 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya Azure App Service 1,5 ' i dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
 
-Azure Stack güncelleştirme 5 derleme numarası üzerinde App Service, **80.0.2.15**
+Azure Stack güncelleştirme 5 derleme numarasında App Service **80.0.2.15**.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Başvurmak [önce Get Started belgeleri](azure-stack-app-service-before-you-get-started.md) dağıtımına başlamadan önce.
+Dağıtıma başlamadan önce [Azure Stack App Service dağıtmaya yönelik önkoşulları](azure-stack-app-service-before-you-get-started.md) inceleyin.
 
-1.5 Azure Stack'te Azure App Service'in yükseltmeye başlamadan önce:
+Azure App Service Azure Stack 1,5 sürümüne yükseltmeye başlamadan önce:
 
-- Tüm roller hazır olduğundan emin olun Azure Stack Yönetici portalı'nda Azure App Service Yönetim
+- Tüm rollerin, Azure Stack yönetim portalındaki Azure App Service yönetimi için kullanılabilir olduğundan emin olun.
 
-- App Service ve ana veritabanlarını yedekleme:
+- App Service ve ana veritabanlarını yedekleyin:
   - AppService_Hosting;
   - AppService_Metering;
   - Ana Şablon
 
-- Kiracı uygulama içerik dosya paylaşımını yedekleme
+- Kiracı uygulaması içerik dosyası payını yedekleyin.
 
-- Alanınızdaki **özel betik uzantısı** sürüm **1.9.1** marketten
+- **Özel Betik uzantısı** sürüm **1.9.1** Azure Marketi 'nden genel olarak yayımlar.
 
 ### <a name="new-features-and-fixes"></a>Yeni özellikler ve düzeltmeler
 
-Azure Stack güncelleştirme 5 üzerinde Azure App Service, aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
+Azure Stack güncelleştirme 5 ' te Azure App Service aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
 
-- Güncelleştirmeleri **App Service Kiracı, yönetici, İşlevler portalları ve Kudu Araçları**. Azure Stack portalı SDK sürümü ile tutarlı.
+- **Kiracı, yönetici, işlevler portalları ve kudu araçları App Service**güncelleştirmeler. Azure Stack Portal SDK sürümü ile tutarlıdır.
 
-- Güncelleştirmeleri **Azure işlevleri çalışma zamanı** için **v1.0.12205**.
+- **Azure işlevleri çalışma zamanını** **v 1.0.12205**'a güncelleştirir.
 
-- Güncelleştirmeleri **Kudu Araçları** işletim müşteriler için stil ve işlevselliği ile ilgili sorunları gidermek için **bağlantısı kesildi** Azure Stack. 
+- , **Bağlı** olmayan Azure Stack kullanıcılara yönelik stil oluşturma ve işlevlerle ilgili sorunları gidermek Için **kudu araçlarının** güncelleştirmeleri. 
 
-- Güvenilirlik ve sık karşılaşılan sorunları daha kolay tanılanması etkinleştirme hata geliştirmek için çekirdek hizmet güncelleştirmeleri.
+- Genel sorunların daha kolay tanılanmasını sağlayan güvenilirlik ve hata iletilerini artırmak için çekirdek hizmette güncelleştirmeler.
 
-- **Aşağıdaki uygulama çerçeveleri ve araçları güncelleştirmeleri**:
-  - Ek ASP.NET Core 2.1.6 ve 2.2.0
-  - Eklenen NodeJS 10.14.1
-  - Eklenen NPM 6.4.1
-  - Güncelleştirilmiş Kudu 79.20129.3767 için
+- **Aşağıdaki uygulama çerçeveleri ve araçları Için güncelleştirmeler**:
+  - ASP.NET Core 2.1.6 ve 2.2.0 eklendi
+  - NodeJS 10.14.1 eklendi
+  - NPM 6.4.1 eklendi
+  - Kudu 79.20129.3767 'e güncelleştirildi
   
-- **Tüm rollerin temel işletim sistemi güncelleştirmeleri**:
-  - [2019-02-x64 tabanlı sistemleri (KB4487006) için Windows Server 2016 için toplu güncelleştirme](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
+- **Tüm rollerin temeldeki işletim sisteminde güncelleştirmeler**:
+  - [2019-02 x64 tabanlı sistemler için Windows Server 2016 toplu güncelleştirmesi (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
 
 ### <a name="post-deployment-steps"></a>Dağıtım sonrası adımlar
 
 > [!IMPORTANT]  
-> Bir SQL her zaman şirket örneği ile App Service kaynak sağlayıcısı sağlamışsanız gerekir [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleme](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve kaybını önlemek için veritabanlarını eşitleme Hizmet veritabanı yük devretme durumunda.
+> App Service kaynak sağlayıcısını bir SQL Always on örneğiyle birlikte sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna eklemeli](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve veritabanlarını kullanarak hizmet kaybını önleyebilirsin bir veritabanı yük devretmesinin olayı.
 
 ### <a name="post-update-steps"></a>Güncelleştirme sonrası adımlar
 
-Azure App Service Azure Stack 1.5 güncelleştirmesi tamamlandıktan sonra Azure Stack dağıtımlarda mevcut Azure App Service'in için kapsanan veritabanı olarak geçirmek isteyen müşteriler için bu adımları uygulayın:
+Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir veritabanına geçiş isteyen müşteriler için Azure Stack 1,5 güncelleştirme tamamlandıktan Azure App Service sonra şu adımları yürütün:
 
 > [!IMPORTANT]
-> Geçiş yordamı, yaklaşık 5-10 dakika sürer.  Yordamı, mevcut veritabanı oturum açma oturumları sonlandırma içerir.  Kapalı kalma süresi geçmek ve Azure Stack geçiş sonrasında Azure App Service doğrulamak için planlayın.  Azure Stack 1.3 üzerinde Azure App Service'e güncelleştirdikten sonra aşağıdaki adımları tamamladıysanız Bu adım gerekli değildir.
->
->
+> Geçiş yordamı yaklaşık 5-10 dakika sürer. Yordam, mevcut veritabanı oturum açma oturumlarını sonlandırmasını içerir. Azure Stack geçiş sonrası Azure App Service geçirmek ve doğrulamak için kapalı kalma süresini planlayın. Azure Stack 1,3 Azure App Service güncelleştirme sonrasında bu adımları tamamladıysanız, bu adımlar gerekli değildir.
 
-1. Ekleme [bir kullanılabilirlik grubuna AppService veritabanları (appservice_hosting ve appservice_metering)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. [Appservice veritabanlarını (appservice_hosting ve appservice_metering) bir kullanılabilirlik grubuna](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)ekleyin.
 
-1. Veritabanını bulunan etkinleştir
+1. Kapsanan veritabanını etkinleştirin.
     ```sql
 
         sp_configure 'contained database authentication', 1;
@@ -100,7 +97,7 @@ Azure App Service Azure Stack 1.5 güncelleştirmesi tamamlandıktan sonra Azure
             GO
     ```
 
-1. Tüm etkin oturumlar sonlandırılan gerektiği bir veritabanı, kısmen içerdiği için dönüştürme, dönüştürme kapalı kalma süresi ödenmesini gerektirir
+1. Bir veritabanını kısmen dahil olarak dönüştürmek, tüm etkin oturumların sonlandıryüklenmesi gerektiği için dönüştürme kapalı kalma süresine neden olur.
 
     ```sql
         /******** [appservice_metering] Migration Start********/
@@ -142,7 +139,7 @@ Azure App Service Azure Stack 1.5 güncelleştirmesi tamamlandıktan sonra Azure
             /********[appservice_hosting] Migration End********/
     '''
 
-1. Migrate Logins to Contained Database Users
+1. Migrate logins to contained database users.
 
     ```sql
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
@@ -171,39 +168,40 @@ Azure App Service Azure Stack 1.5 güncelleştirmesi tamamlandıktan sonra Azure
         GO
     ```
 
-Doğrula
+**Doğrulamalısınız**
 
-1. SQL Server'ın etkin bir kapsama sahip olup olmadığını denetleyin
+1. SQL Server kapsama özelliğinin etkin olup olmadığını denetleyin.
 
     ```sql
         sp_configure  @configname='contained database authentication'
     ```
 
-1. Varolan kapsanan davranışını denetleme
+1. İçerilen mevcut davranışı denetleyin.
     ```sql
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
 ### <a name="known-issues-post-installation"></a>Bilinen sorunlar (yükleme sonrası)
 
-- Çalışanları App Service, var olan bir sanal ağda dağıtılır ve dosya sunucusu yalnızca Azure Stack dağıtım belgeleri üzerinde Azure App Service'te adlandırıldığı gibi özel ağda kullanılabilir dosya sunucusuna erişemiyor.
+- Mevcut bir sanal ağda App Service dağıtıldığında ve dosya sunucusu yalnızca özel ağda kullanılabilir olduğunda çalışanlar dosya sunucusuna ulaşamamakta olur. Bu sorun Azure Stack dağıtım belgelerindeki Azure App Service çağırılır.
 
-Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
- * Kaynak: Herhangi
+Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+
+ * Kaynak: Any
  * Kaynak bağlantı noktası aralığı: *
- * Hedef: IP Adresleri
- * Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
+ * Hedef: IP adresleri
+ * Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
  * Hedef bağlantı noktası aralığı: 445
  * Protokol: TCP
- * Eylem: İzin ver
- * Önceliği: 700
+ * Eylem: Allow
+ * Öncelik: 700
  * Ad: Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure Stack üzerinde Azure App Service'te çalışan bulut yöneticileri için bilinen sorunlar
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure Stack üzerinde Cloud Admins işletim Azure App Service ilgili bilinen sorunlar
 
-Belgeye başvurun [Azure Stack 1809 sürüm notları](azure-stack-update-1903.md)
+[Azure Stack 1809 sürüm notlarındaki](azure-stack-update-1903.md)belgelere başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure App Service'e genel bakış için bkz. [Azure App Service, Azure Stack genel bakış](azure-stack-app-service-overview.md).
-- Azure Stack üzerinde App Service'e dağıtmak hazırlanması hakkında daha fazla bilgi için bkz. [Azure Stack'te App Service ile çalışmaya başlamadan önce](azure-stack-app-service-before-you-get-started.md).
+- Azure App Service genel bakış için bkz. [Azure Stack genel bakış Azure App Service](azure-stack-app-service-overview.md).
+- Azure Stack App Service dağıtmaya hazırlanma hakkında daha fazla bilgi için bkz. [Azure Stack üzerinde App Service dağıtmak Için Önkoşullar](azure-stack-app-service-before-you-get-started.md).

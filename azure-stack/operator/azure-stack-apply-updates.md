@@ -1,6 +1,6 @@
 ---
-title: Azure Stack için OEM güncelleştirmelerini yükler | Microsoft Docs
-description: Azure Stack 'da OEM güncelleştirmelerini yüklemeyi öğrenin.
+title: Azure Stack güncelleştirmelerini yükler | Microsoft Docs
+description: Azure Stack güncelleştirmelerini yüklemeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -15,18 +15,18 @@ ms.date: 09/03/2019
 ms.author: justinha
 ms.lastreviewed: 09/03/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: a563c3ec43950122e045b0ec3168bcb3ca11fe56
-ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
+ms.openlocfilehash: 44ad2b2e3fd5b95fd832ed50c20c388c6585d17e
+ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271787"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808202"
 ---
-# <a name="install-oem-updates-in-azure-stack"></a>Azure Stack 'da OEM güncelleştirmelerini yükler
+# <a name="install-azure-stack-updates"></a>Azure Stack güncelleştirmelerini yükler
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Özgün donanım üreticisi (OEM) güncelleştirmelerini Azure Stack **güncelleştirme** dikey penceresini kullanarak yükleyebilirsiniz. Bu makalede güncelleştirme işlemini güncelleştirme, izleme ve sorun giderme adımları adım adım açıklanmaktadır. Güncelleştirme bilgilerini görüntülemek, güncelleştirmeleri yüklemek, güncelleştirme ilerlemesini izlemek, güncelleştirme geçmişini gözden geçirmek ve geçerli OEM paketi sürümünü görüntülemek için güncelleştirme dikey penceresini kullanın.
+Güncelleştirme paketlerini Azure Stack **güncelleştirme** dikey penceresini kullanarak yükleyebilirsiniz. Bu makalede güncelleştirme işlemini güncelleştirme, izleme ve sorun giderme adımları adım adım açıklanmaktadır. Güncelleştirme bilgilerini görüntülemek, güncelleştirmeleri yüklemek, güncelleştirme ilerlemesini izlemek, güncelleştirme geçmişini gözden geçirmek ve geçerli Azure Stack ile OEM paketi sürümünü görüntülemek için güncelleştirme dikey penceresini kullanın.
 
 Yönetim portalından güncelleştirmeleri yönetebilir ve panonun **güncelleştirmeler** bölümünü kullanarak şunları yapabilirsiniz:
 

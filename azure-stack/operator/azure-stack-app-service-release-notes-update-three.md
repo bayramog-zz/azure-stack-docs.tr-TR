@@ -1,6 +1,6 @@
 ---
-title: Azure Stack üzerinde App Service'te güncelleştirme 3 sürüm notları | Microsoft Docs
-description: Güncelleştirmede nedir hakkında Azure Stack'te App Service için üç, bilinen sorunlar ve güncelleştirmeyi yüklemek nereye öğrenin.
+title: App Service Azure Stack güncelleştirme 3 sürüm notları | Microsoft Docs
+description: Azure Stack App Service için güncelleştirme 3 ' teki geliştirmeler, düzeltmeler ve bilinen sorunlar hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -16,80 +16,78 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 4397fbbc570972fb7a041f583d81115e28fe70ce
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 88255a15a204f5dcb18dd83f9763e8297a1af51c
+ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269095"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70808234"
 ---
-# <a name="app-service-on-azure-stack-update-3-release-notes"></a>Güncelleştirme 3 sürüm notları Azure Stack üzerinde App Service'e
+# <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service Azure Stack güncelleştirme 3 sürüm notları
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bu sürüm notları, iyileştirmeler ve düzeltmeler Azure uygulama Hizmeti'nde Azure Stack güncelleştirme 3 ve tüm bilinen sorunlar açıklanmaktadır. Bilinen sorunlar doğrudan dağıtım, güncelleştirme işlemi ve sorunları (yükleme sonrası) yapı ile ilgili sorunlar ayrılır.
+Bu sürüm notları, Azure Stack güncelleştirme 3 ' teki Azure App Service geliştirmeleri, düzeltmeleri ve bilinen sorunları anlatmaktadır. Bilinen sorunlar üç bölüme ayrılmıştır: doğrudan dağıtım, güncelleştirme işlemiyle ilgili sorunlar ve yapıyla ilgili sorunlar (yükleme sonrası).
 
 > [!IMPORTANT]
-> Azure Stack tümleşik sisteminize 1807 güncelleştirmesini veya Azure App Service 1.3 dağıtmadan önce en son Azure Stack geliştirme Seti'ni dağıtın.
->
->
+> 1807 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya Azure App Service 1,3 ' i dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
 
-Yapı numarasını güncelleştirme 3'ü Azure Stack üzerinde App Service, **74.0.13698.31**
+Azure Stack güncelleştirme 3 derleme numarasında App Service **74.0.13698.31**.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-Başvurmak [önce Get Started belgeleri](azure-stack-app-service-before-you-get-started.md) dağıtımına başlamadan önce.
+Dağıtıma başlamadan önce [Azure Stack App Service dağıtmaya yönelik önkoşulları](azure-stack-app-service-before-you-get-started.md) inceleyin.
 
-1.3 Azure Stack'te Azure App Service'in yükseltmeye başlamadan önce tüm roller hazır olduğundan emin olun Azure Stack Yönetici portalı'nda Azure App Service Yönetim
+Azure App Service Azure Stack 1,3 sürümüne yükseltmeye başlamadan önce, Azure Stack yönetim portalındaki Azure App Service yönetimine tüm rollerin hazırlandığından emin olun.
 
 ![App Service rol durumu](media/azure-stack-app-service-release-notes-update-three/image01.png)
 
 ### <a name="new-features-and-fixes"></a>Yeni özellikler ve düzeltmeler
 
-Azure Stack güncelleştirme 3'te Azure App Service, aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
+Azure Stack güncelleştirme 3 ' Azure App Service aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
 
-- Kullanımı için SQL Server Always On Azure App Service kaynak sağlayıcısı veritabanları için destek.
+- Azure App Service kaynak sağlayıcısı veritabanları için her zaman açık SQL Server kullanımı için destek.
 
-- Yeni ortam parametresi hedefleme AAD bölgelere yardımcı olmak için oluşturma AADIdentityApp Yardımcısı komut dosyasına eklendi.
+- Farklı AAD bölgelerini hedeflemeye yardımcı olmak için Create-AADIdentityApp Helper betiğine yeni ortam parametresi eklendi.
 
-- Güncelleştirmeleri **App Service Kiracı, yönetici, İşlevler portalları ve Kudu Araçları**. Azure Stack portalı SDK sürümü ile tutarlı.
+- **Kiracı, yönetici, işlevler portalları ve kudu araçları App Service**güncelleştirmeler. Azure Stack Portal SDK sürümü ile tutarlıdır.
 
-- Güncelleştirmeleri **Azure işlevleri çalışma zamanı** için **v1.0.11820**.
+- **Azure işlevleri çalışma zamanını** **v 1.0.11820**'a güncelleştirir.
 
-- Güvenilirlik ve sık karşılaşılan sorunları daha kolay tanılanması etkinleştirme hata geliştirmek için çekirdek hizmet güncelleştirmeleri.
+- Genel sorunların daha kolay tanılanmasını sağlayan güvenilirlik ve hata iletilerini artırmak için çekirdek hizmette güncelleştirmeler.
 
-- **Aşağıdaki uygulama çerçeveleri ve araçları güncelleştirmeleri**:
-  - ASP.NET Core 2.1.2'yi eklendi
-  - Eklenen NodeJS 10.0.0
+- **Aşağıdaki uygulama çerçeveleri ve araçları Için güncelleştirmeler**:
+  - ASP.NET Core 2.1.2 'yi eklendi
+  - NodeJS 10.0.0 eklendi
   - Zulu OpenJDK 8.30.0.1 eklendi
-  - Eklenen Tomcat 8.5.31 ve 9.0.8
-  - Eklenen PHP sürümleri için:
+  - Tomcat 8.5.31 ve 9.0.8 eklendi
+  - PHP sürümleri eklendi:
     - 5.6.36
     - 7.0.30
     - 7.1.17
     - 7.2.5
-  - Eklenen Wincache 2.0.0.8
-  - Güncelleştirilmiş Git için Windows V'ye 2.17.1.2
-  - Güncelleştirilmiş Kudu 74.10611.3437 için
+  - WinCache 2.0.0.8 eklendi
+  - Windows için git, v 2.17.1.2 'ye güncelleştirildi
+  - Kudu 74.10611.3437 'e güncelleştirildi
   
-- **Tüm rollerin temel işletim sistemi güncelleştirmeleri**:
-  - [Windows Server 2016 x64 tabanlı sistemleri (KB4132216) için hizmet yığını güncelleştirmesi](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
-  - [2018-07-x64 tabanlı sistemleri (KB4338822) için Windows Server 2016 için toplu güncelleştirme](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
+- **Tüm rollerin temeldeki işletim sisteminde güncelleştirmeler**:
+  - [X64 tabanlı sistemler için Windows Server 2016 için hizmet yığını güncelleştirmesi (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
+  - [2018-07 x64 tabanlı sistemler için Windows Server 2016 toplu güncelleştirmesi (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
-### <a name="post-update-steps-optional"></a>(İsteğe bağlı) sonrası adımlar güncelleştirme
+### <a name="post-update-steps-optional"></a>Güncelleştirme sonrası adımlar (isteğe bağlı)
 
-Azure App Service Azure Stack 1.3 Güncelleştirmesi tamamlandıktan sonra Azure Stack dağıtımlarda mevcut Azure App Service'in için kapsanan veritabanı olarak geçirmek isteyen müşteriler için bu adımları uygulayın:
+Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir veritabanına geçiş isteyen müşteriler için Azure Stack 1,3 güncelleştirme tamamlandıktan Azure App Service sonra şu adımları yürütün:
 
 > [!IMPORTANT]
-> Bu yordam, yaklaşık 5-10 dakika sürer.  Bu yordam, mevcut veritabanı oturum açma oturumları sonlandırma içerir.  Kapalı kalma süresi geçmek ve Azure Stack geçiş sonrasında Azure App Service doğrulamak için planlama
+> Bu yordam yaklaşık 5-10 dakika sürer. Bu yordam, mevcut veritabanı oturum açma oturumlarını sonlandırmasını içerir. Azure Stack geçiş sonrası Azure App Service geçirmek ve doğrulamak için kapalı kalma süresini planlayın
 >
 >
 
-1. Ekleme [bir kullanılabilirlik grubuna AppService veritabanları (appservice_hosting ve appservice_metering)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. [Appservice veritabanlarını (appservice_hosting ve appservice_metering) bir kullanılabilirlik grubuna](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)ekleyin.
 
-1. Veritabanını bulunan etkinleştir
+1. Kapsanan veritabanını etkinleştirin.
     ```sql
 
         sp_configure 'contained database authentication', 1;
@@ -98,7 +96,7 @@ Azure App Service Azure Stack 1.3 Güncelleştirmesi tamamlandıktan sonra Azure
             GO
     ```
 
-1. Kısmen yer alan için bir veritabanı dönüştürülüyor.  Bu adım, tüm etkin oturumlar sonlandırılan gerektiği kapalı kalma süresi ödenmesini
+1. Bir veritabanını kısmen içerir olarak dönüştürme. Bu adım, tüm etkin oturumların sonlandıryüklenmesi gerektiği için kapalı kalma süresine neden olur.
 
     ```sql
         /******** [appservice_metering] Migration Start********/
@@ -140,7 +138,7 @@ Azure App Service Azure Stack 1.3 Güncelleştirmesi tamamlandıktan sonra Azure
             /********[appservice_hosting] Migration End********/
     '''
 
-1. Migrate Logins to Contained Database Users
+1. Migrate logins to contained database users.
 
     ```sql
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
@@ -169,39 +167,40 @@ Azure App Service Azure Stack 1.3 Güncelleştirmesi tamamlandıktan sonra Azure
         GO
     ```
 
-Doğrula
+**Doğrulamalısınız**
 
-1. SQL Server'ın etkin bir kapsama sahip olup olmadığını denetleyin
+1. SQL Server kapsama özelliğinin etkin olup olmadığını denetleyin.
 
     ```sql
         sp_configure  @configname='contained database authentication'
     ```
 
-1. Varolan kapsanan davranışını denetleme
+1. İçerilen mevcut davranışı denetleyin.
     ```sql
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
 ### <a name="known-issues-post-installation"></a>Bilinen sorunlar (yükleme sonrası)
 
-- Çalışanları App Service, var olan bir sanal ağda dağıtılır ve dosya sunucusu yalnızca özel ağda kullanılabilir dosya sunucusuna erişemiyor.  Bu da Azure Stack dağıtım belgeleri üzerinde Azure App Service'te çağırılır.
+- Mevcut bir sanal ağda App Service dağıtıldığında ve dosya sunucusu yalnızca özel ağda kullanılabilir olduğunda çalışanlar dosya sunucusuna ulaşamamakta olur. Bu sorun Azure Stack dağıtım belgelerindeki Azure App Service çağırılır.
 
-Mevcut bir sanal ağ ve dosya sunucunuza bağlanmak için bir dahili IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği etkinleştirme bir giden güvenlik kuralı eklemeniz gerekir. Bunu yapmak için Yönetim Portalı'nda WorkersNsg gidin ve aşağıdaki özelliklere sahip bir giden güvenlik kuralı ekleyin:
- * Kaynak: Herhangi
+Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+
+ * Kaynak: Any
  * Kaynak bağlantı noktası aralığı: *
- * Hedef: IP Adresleri
- * Hedef IP adresi aralığı: Dosya sunucusu için IP aralığı
+ * Hedef: IP adresleri
+ * Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
  * Hedef bağlantı noktası aralığı: 445
  * Protokol: TCP
- * Eylem: İzin ver
- * Önceliği: 700
+ * Eylem: Allow
+ * Öncelik: 700
  * Ad: Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure Stack üzerinde Azure App Service'te çalışan bulut yöneticileri için bilinen sorunlar
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure Stack üzerinde Cloud Admins işletim Azure App Service ilgili bilinen sorunlar
 
-Azure Stack 1807 sürüm notlarında belgelerine bakın.
+Azure Stack 1807 sürüm notlarındaki belgelere başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure App Service'e genel bakış için bkz. [Azure App Service, Azure Stack genel bakış](azure-stack-app-service-overview.md).
-- Azure Stack üzerinde App Service'e dağıtmak hazırlanması hakkında daha fazla bilgi için bkz. [Azure Stack'te App Service ile çalışmaya başlamadan önce](azure-stack-app-service-before-you-get-started.md).
+- Azure App Service genel bakış için bkz. [Azure Stack genel bakış Azure App Service](azure-stack-app-service-overview.md).
+- Azure Stack App Service dağıtmaya hazırlanma hakkında daha fazla bilgi için bkz. [Azure Stack üzerinde App Service dağıtmak Için Önkoşullar](azure-stack-app-service-before-you-get-started.md).
