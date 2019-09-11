@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/09/2019
 ms.author: justinha
 ms.reviewer: wamota
-ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: 7b8bae02fdb3f85b856f6ccdb9d90155e6bde768
-ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
+ms.lastreviewed: 09/09/2019
+ms.openlocfilehash: 9333cfde7985977607f7108fd90b62e376fa9462
+ms.sourcegitcommit: dc633e862d49412a963daee481226c1543287e5e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70188362"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70863017"
 ---
 # <a name="azure-stack-datacenter-integration---publish-azure-stack-services"></a>Azure Stack Datacenter Integration-Azure Stack hizmetleri yayımlama
 
@@ -72,7 +72,7 @@ Azure Stack yayımlamak için gerekli olmadıklarından iç altyapı VIP 'leri l
 Azure Stack yalnızca saydam proxy sunucuları destekler. Geleneksel bir ara sunucuya şeffaf bir ara sunucu yukarı bağlantısı olan dağıtımda, giden iletişim için aşağıdaki tablodaki bağlantı noktalarına ve URL 'Lere izin vermeniz gerekir.
 
 > [!Note]  
-> Azure Stack, aşağıdaki tabloda listelenen Azure hizmetlerine ulaşmak için ExpressRoute kullanımını desteklemez.
+> Azure Stack ExpressRoute, trafiği uç noktalara yönlendiremediği için aşağıdaki tabloda listelenen Azure hizmetlerine ulaşmak üzere ExpressRoute kullanımını desteklemez.
 
 |Amaç|Hedef URL 'SI|Protocol|Bağlantı Noktaları|Kaynak Ağ|
 |---------|---------|---------|---------|---------|
@@ -95,7 +95,7 @@ Azure Stack yalnızca saydam proxy sunucuları destekler. Geleneksel bir ara sun
 
 Giden URL 'Ler, coğrafi konuma göre mümkün olan en iyi bağlantıyı sağlamak için Azure Traffic Manager kullanılarak yük dengelenebilir. Yük dengeli URL 'lerle, Microsoft, müşterileri etkilemeden arka uç uç noktalarını güncelleştirebilir ve değiştirebilir. Microsoft, yük dengeli URL 'Ler için IP adresleri listesini paylaşmaz. IP yerine, URL 'ye göre filtrelemeyi destekleyen bir cihaz kullanmanız gerekir.
 
-Giden DNS her zaman gereklidir, bu, dış DNS sorgulama kaynağı ve ne tür kimlik tümleştirmesi seçilmiş olduğunu gösterir. Bu bir bağlı senaryolarsa, BMC ağı üzerinde bulunan DVD 'nin dağıtımı sırasında, giden erişime ve dağıtımdan sonra DNS hizmeti, sorguları ortak bir VIP aracılığıyla gönderecek bir iç bileşene taşımış olur. Bu sırada, BMC ağı üzerinden giden DNS erişimi kaldırılabilir, ancak söz konusu DNS sunucusuna genel VIP erişiminin kalması gerekir, aksi takdirde kimlik doğrulaması başarısız olur.
+Her zaman giden DNS gereklidir; , dış DNS sorgulama kaynağı ve ne tür kimlik tümleştirmesi seçilmiş olduğunu gösterir. Bağlı bir senaryo için dağıtım sırasında, BMC ağında bulunan DVı 'nin giden erişimi olması gerekir. Ancak dağıtımdan sonra DNS hizmeti, ortak bir VIP aracılığıyla sorgu gönderecek bir iç bileşene geçer. Bu sırada, BMC ağı üzerinden giden DNS erişimi kaldırılabilir, ancak bu DNS sunucusuna genel VIP erişiminin kalması gerekir, aksi takdirde kimlik doğrulaması başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

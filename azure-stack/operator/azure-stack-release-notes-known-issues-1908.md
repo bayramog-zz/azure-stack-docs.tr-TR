@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
 monikerRange: azs-1908
-ms.openlocfilehash: 317f53eb5b50fc415fc7a65e044eca7948a54e58
-ms.sourcegitcommit: 314fd74caf356b157583d38d2b8b1dee30408b7d
+ms.openlocfilehash: 86d8cea0164a9181f444066181945358122c831b
+ms.sourcegitcommit: dc633e862d49412a963daee481226c1543287e5e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234940"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70862982"
 ---
 # <a name="azure-stack-1908-known-issues"></a>Azure Stack 1908 bilinen sorunlar
 
@@ -34,7 +34,7 @@ Bu makalede Azure Stack 1908 sürümündeki bilinen sorunlar listelenmektedir. Y
 ## <a name="update-process"></a>Güncelleştirme işlemi
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1907 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur.
+- Neden: Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur.
 - Düzeltmesi Sürüm 1901 ' den başlayarak (1.1901.0.95), **Şimdi Güncelleştir** ' i ( **sürdürülmez**) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri yükleme bölümünü](azure-stack-apply-updates.md#install-updates-and-monitor-progress)izleyerek güncelleştirme paketini el Ile karşıya yüklemeniz önerilir.
 - Oluşum Common
 
@@ -99,7 +99,7 @@ Bu makalede Azure Stack 1908 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 #### <a name="local-network-gateway-deletion"></a>Yerel ağ geçidi silme
 
-- Uygunsa Bu sorun 1906 sürümü için geçerlidir.
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Kullanıcı portalında, **yerel ağ geçidini** silmek şu hata iletisini görüntüler: Etkin bir bağlantı olmasa bile, **etkin bir bağlantıyla yerel ağ geçidi**silinemez.
 - Mayı Bu sorunun düzeltilmesi 1907 ' de yayımlanacak. Bu soruna yönelik bir geçici çözüm olarak, aynı IP adresi, adres alanı ve yapılandırma ayrıntıları farklı bir adla yeni bir yerel ağ geçidi oluşturmaktır. Ortam 1907 olarak güncelleştirildikten sonra eski LNG silinebilir.
 - Oluşum Common
@@ -159,21 +159,21 @@ Bu makalede Azure Stack 1908 sürümündeki bilinen sorunlar listelenmektedir. Y
 
 ### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Sanal makine ölçek kümesi sıfırlama parolası çalışmıyor
 
-- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Ölçek kümesi Kullanıcı arabiriminde yeni bir sıfırlama parolası dikey penceresi görünür ancak Azure Stack, henüz bir ölçek kümesindeki parolanın sıfırlanmasını desteklemez.
 - Düzeltmesi Yok.
 - Oluşum Common
 
 ### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Ölçek kümesi tanılamasında Rainy bulutu
 
-- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Sanal makine ölçek kümesine genel bakış sayfası boş bir grafik gösterir. Boş grafiğe tıkladığınızda bir "Rainy Cloud" dikey penceresi açılır. Bu, CPU yüzdesi gibi ölçek kümesi tanılama bilgilerine yönelik bir grafiktir ve geçerli Azure Stack derlemesinde desteklenen bir özellik değildir.
 - Düzeltmesi Yok.
 - Oluşum Common
 
 ### <a name="virtual-machine-diagnostic-settings-blade"></a>Sanal makine Tanılama ayarları dikey penceresi
 
-- Uygunsa Bu sorun 1906 ve 1907 sürümleri için geçerlidir.    
+- Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.    
 - Neden: Sanal makine Tanılama ayarları dikey penceresinde bir **Havuz** sekmesi bulunur ve bu bir Application Insights **hesabı**ister. Bu, yeni bir dikey pencerenin sonucudur ve Azure Stack henüz desteklenmemiştir.
 - Düzeltmesi Yok.
 - Oluşum Common

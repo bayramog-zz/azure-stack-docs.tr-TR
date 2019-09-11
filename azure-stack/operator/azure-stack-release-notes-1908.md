@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/05/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
 monikerRange: azs-1908
-ms.openlocfilehash: fbf4983f6f7d2f88da70552ae182792ee316994a
-ms.sourcegitcommit: 314fd74caf356b157583d38d2b8b1dee30408b7d
+ms.openlocfilehash: 935a422aee68bb107e5bfe8b79a21d22ce1fffc8
+ms.sourcegitcommit: 305536bfd49319455ca3ca270fe3644b1796bad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70234962"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876626"
 ---
 # <a name="azure-stack-1908-update"></a>Azure Stack 1908 güncelleştirmesi
 
@@ -63,7 +63,7 @@ Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için bkz. [Azur
 
 - 1908 için, Azure Stack çalıştığı temeldeki işletim sisteminin Windows Server 2019 ' e güncelleştirildiğini unutmayın. Bu, temel temel geliştirmelerin yanı sıra, yakın gelecekte Azure Stack için ek özellikler getirme özelliğini sağlar.
 - Azure Stack altyapısının tüm bileşenleri artık FIPS 140-2 modunda çalışır.
-
+- Azure Stack işleçler artık Portal Kullanıcı verilerini kaldırabilir. Daha fazla bilgi için bkz. [Azure Stack Portal Kullanıcı verilerini temizleme](azure-stack-portal-clear.md).
 
 ### <a name="improvements"></a>Geliştirmeleri
 

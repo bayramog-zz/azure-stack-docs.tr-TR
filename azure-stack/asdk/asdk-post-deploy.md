@@ -16,12 +16,12 @@ ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 111e8e6cb72baac64229e4808003818efece54cd
-ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
+ms.openlocfilehash: f4fe915d07b81a6f99d9bd5a4b222590d1bb9a30
+ms.sourcegitcommit: 305536bfd49319455ca3ca270fe3644b1796bad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70025873"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876593"
 ---
 # <a name="post-deployment-configurations-for-asdk"></a>ASDK için dağıtım sonrası yapılandırma
 
@@ -127,7 +127,7 @@ Bir hata oluşursa, yardım almak için sorun giderme adımlarını izleyin.
 Azure AD kullanan dağıtımlar için, ASDK yüklemeniz için [çok kiracılı hale](../operator/azure-stack-enable-multitenancy.md#enable-multi-tenancy) getirmeniz gerekir.
 
 > [!NOTE]
-> Azure Stack kaydetmek için kullanılan etki alanlarından yönetici veya Kullanıcı hesapları Azure Stack portalında oturum açmak için kullanıldığında, Azure Stack kaydetmek için kullanılan etki alanı adının Portal URL 'sine eklenmesi gerekir. Örneğin, Azure Stack fabrikam.onmicrosoft.com ile kaydedilmişse ve Kullanıcı hesabı oturum açma ise admin@contoso.com, Kullanıcı portalında oturum açmak için kullanılacak URL şöyle olacaktır:. https://portal.local.azurestack.external/fabrikam.onmicrosoft.com
+> Azure Stack kaydetmek için kullanılan etki alanlarından yönetici veya Kullanıcı hesapları Azure Stack portalında oturum açmak için kullanıldığında, Azure Stack kaydetmek için kullanılan etki alanı adının Portal URL 'sine eklenmesi gerekir. Örneğin, Azure Stack fabrikam.onmicrosoft.com ile kaydedilmişse ve Kullanıcı hesabı oturum açma ise admin@contoso.com, Kullanıcı portalında oturum açmak için kullanılacak URL şöyle olacaktır: https//Portal.Local.azurestack.external/\: fabrikam.onmicrosoft.com.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
