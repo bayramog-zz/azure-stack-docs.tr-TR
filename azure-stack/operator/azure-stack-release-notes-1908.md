@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
 monikerRange: azs-1908
-ms.openlocfilehash: 935a422aee68bb107e5bfe8b79a21d22ce1fffc8
-ms.sourcegitcommit: 305536bfd49319455ca3ca270fe3644b1796bad1
+ms.openlocfilehash: ad059e09bbd544e4709a237ee0c51cafc2a734b4
+ms.sourcegitcommit: 9438b559ea314cc8c19fd710e1b2a6ceb15e50c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876626"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70912647"
 ---
 # <a name="azure-stack-1908-update"></a>Azure Stack 1908 güncelleştirmesi
 
@@ -35,7 +35,7 @@ Bu makalede 1908 güncelleştirme paketinin içeriği açıklanır. Güncelleşt
 
 ## <a name="previous-release-notes"></a>Önceki sürüm notları
 
-1908 sürümünden itibaren, sürüm notlarının önceki sürümleri, sol taraftaki içindekiler tablosunda artık görünmez. Sürüm notlarının eski sürümlerine erişmek için başka bir makale (örneğin, [Azure Stack genel bakış](azure-stack-overview.md)) seçin, ardından sol taraftaki içindekiler tablosunun en üstündeki sürüm seçicisindeki 1905, 1906, 1907 veya 1908 ' i seçin. Sürüm notlarının önceki sürümleri için [arşivlenmiş sürüm notları](#archived-release-notes) bölümüne bakın.
+1908 sürümünden itibaren, sürüm notlarının önceki sürümleri, sol taraftaki içindekiler tablosunda artık görünmez. Sürüm notlarının eski sürümlerine erişmek için, farklı bir makale (örneğin, [Azure Stack genel bakış](azure-stack-overview.md)) seçin, ardından sol taraftaki içindekiler tablosunun en üstündeki sürüm seçicisindeki 1905, 1906, 1907 veya 1908 ' i seçin. Sürüm notlarının önceki sürümleri için [arşivlenmiş sürüm notları](#archived-release-notes) bölümüne bakın.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
 

@@ -3,7 +3,7 @@ title: Azure Stack 'da ayrıcalıklı uç nokta kullanma | Microsoft Docs
 description: Azure Stack (Azure Stack işleci için) ayrıcalıklı uç noktanın (PEP) nasıl kullanılacağını gösterir.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: mabrigg
+ms.date: 09/03/2019
+ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 349634e9f7bfdab3ec08630488d19947813361dd
-ms.sourcegitcommit: a8379358f11db1e1097709817d21ded0231503eb
+ms.lastreviewed: 09/03/2019
+ms.openlocfilehash: a278a918100619953b2b7eb9b288236625968187
+ms.sourcegitcommit: 38f21e0bcf7b593242ad615c9d8ef8a1ac19c734
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70377231"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70902617"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack 'da ayrıcalıklı uç noktası kullanma
 
@@ -47,7 +47,7 @@ Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine ve
 
 
 > [!NOTE]
-> Güvenlik nedenleriyle, PEP 'yi yalnızca donanım yaşam döngüsü konağının üzerinde çalışan sağlamlaştırılmış bir sanal makineden veya [ayrıcalıklı erişim Iş istasyonu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)gibi adanmış, güvenli bir bilgisayardan bağlanmanız gerekir. Donanım yaşam döngüsü konağının özgün yapılandırması, yeni yazılım yükleme de dahil olmak üzere özgün yapılandırmasından değiştirilmemelidir, ne de PEP 'ye bağlanmak için kullanılması gerekir.
+> Güvenlik nedenleriyle, PEP 'yi yalnızca donanım yaşam döngüsü konağının üzerinde çalışan sağlamlaştırılmış bir sanal makineden veya [ayrıcalıklı erişim Iş istasyonu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)gibi adanmış, güvenli bir bilgisayardan bağlanmanız gerekir. Donanım yaşam döngüsü konağının özgün yapılandırması, yeni yazılım yükleme de dahil olmak üzere özgün yapılandırmasından değiştirilmemelidir ve PEP 'ye bağlanmak için kullanılması gerekir.
 
 1. Güveni oluşturun.
 
@@ -68,6 +68,10 @@ Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine ve
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
      `ComputerName` Parametresi, Pep 'yi barındıran sanal makinelerden birinin IP adresi ya da DNS adı olabilir. 
+
+     >[!NOTE]
+     >Azure Stack, PEP kimlik bilgisi doğrulanırken uzak bir çağrı yapmaz. Bunu yapmak için yerel olarak depolanmış bir RSA ortak anahtarını kullanır.
+     
    - ASDK çalıştırıyorsanız:
      
      ```powershell
@@ -82,7 +86,7 @@ Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine ve
      - **Parola**: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında girilen parolayı girin.
 
      > [!NOTE]
-     > ERCS uç noktasına bağlanamıyorsanız, daha önce bağlanmaya çalışmadığınız bir ERCS sanal makinesinin IP adresiyle bir veya iki kez yeniden deneyin.
+     > ERCS uç noktasına bağlanamıyorsanız, farklı bir ERCS VM IP adresi ile bir ve iki adımı yeniden deneyin.
 
 3. Bağlandıktan sonra, istem [ ***IP adresi veya ercs VM adı*] olarak değişir: PS >** **veya [AZS-ercs01]: PS,** ortama göre >. Buradan, kullanılabilir cmdlet `Get-Command` 'lerin listesini görüntülemek için öğesini çalıştırın.
 

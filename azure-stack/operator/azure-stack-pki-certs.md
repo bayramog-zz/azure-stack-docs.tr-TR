@@ -1,9 +1,9 @@
 ---
-title: Azure Stack ortak anahtar altyapısı sertifika gereksinimleri için Azure Stack tümleşik sistemleri | Microsoft Docs
-description: Azure Stack tümleşik sistemleri için Azure Stack PKI sertifika dağıtım gereksinimleri açıklanmaktadır.
+title: Azure Stack tümleşik sistemler için ortak anahtar altyapısı sertifika gereksinimleri Azure Stack | Microsoft Docs
+description: Azure Stack tümleşik sistemler için Azure Stack PKI sertifikası dağıtım gereksinimlerini açıklar.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,109 +12,112 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: mabrigg
+ms.date: 09/10/2019
+ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 3ca7624627ff02cc3ef230a510038f2db5ff5247
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.lastreviewed: 09/10/2019
+ms.openlocfilehash: 53d8e3daecba269bcdd21fc726e312758f1f6c6f
+ms.sourcegitcommit: 38f21e0bcf7b593242ad615c9d8ef8a1ac19c734
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782303"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70902712"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack ortak anahtar altyapısı sertifika gereksinimleri
 
-Azure Stack, küçük bir Azure Stack hizmetlerinin ve büyük olasılıkla Kiracı VM kümesine atanan harici olarak erişilebilen genel IP adresleri kullanan bir ortak altyapısı ağ vardır. Bu Azure Stack genel altyapı uç noktalar için uygun DNS adlarına sahip PKI sertifikaları, Azure Stack dağıtımı sırasında gereklidir. Bu makalede, hakkında bilgi sağlar:
+Azure Stack, küçük bir Azure Stack hizmetlerine ve muhtemelen Kiracı VM 'lerine atanan, dışarıdan erişilebilen genel IP adreslerini kullanan genel bir altyapı ağına sahiptir. Azure Stack dağıtımı sırasında bu Azure Stack genel altyapı uç noktaları için uygun DNS adlarıyla PKI sertifikaları gereklidir. Bu makalede hakkında bilgi verilmektedir:
 
-- Azure Stack dağıtmak için hangi sertifikaların gereklidir
-- Bu belirtimler eşleşen sertifikalarını alma işlemi
-- Hazırlama, doğrulamak ve dağıtımı sırasında bu sertifikaları kullanın
+- Dağıtım için hangi sertifikaların gerekli olduğu Azure Stack
+- Bu belirtimlerle eşleşen sertifikaları alma işlemi
+- Dağıtım sırasında bu sertifikaların hazırlanması, doğrulanması ve kullanılması
 
-> [!Note]  
-> Dağıtım sırasında sertifikalar (Azure karşı AD veya AD FS) dağıtmakta olduğunuz kimlik sağlayıcısı ile eşleşen dağıtım klasörüne kopyalamanız gerekir. Tüm uç noktalar için tek bir sertifika kullanıyorsanız, bu sertifika dosyasını aşağıdaki tabloda özetlendiği gibi her dağıtım klasörüne kopyalamanız gerekir. Klasör yapısı dağıtım sanal makinede önceden oluşturulmuş ve şurada bulunabilir: C:\CloudDeployment\Setup\Certificates. 
+> [!NOTE]
+> Azure Stack, varsayılan olarak, düğümler arasında kimlik doğrulaması için Dahili Active Directory tümleşik bir sertifika yetkilisinden (CA) verilen sertifikaları kullanır. Sertifikayı doğrulamak için tüm Azure Stack altyapı makineleri, bu sertifikayı yerel sertifika depolama alanına ekleyerek iç CA 'nın kök sertifikasına güvenir. Azure Stack 'de sertifikaların sabitleme veya beyaz listesi yoktur. Her bir sunucu sertifikasının SAN 'ı hedefin FQDN 'sine göre onaylanır. Tüm güven zinciri de, sertifika sona erme tarihi (sertifika sabitleme olmadan standart TLS sunucu kimlik doğrulaması) ile birlikte da onaylanır.
 
 ## <a name="certificate-requirements"></a>Sertifika gereksinimleri
-Aşağıdaki listede, Azure Stack dağıtmak için gerekli sertifika gereksinimleri açıklanmaktadır: 
-- Bir iç sertifika yetkilisi veya bir ortak sertifika yetkilisi sertifikalarını verilmesi gerekir. Bir ortak sertifika yetkilisi kullandıysanız, temel işletim sistemi görüntüsü Microsoft güvenilir kök yetkilisi programının bir parçası olarak eklenmelidir. Tam listesini burada bulabilirsiniz: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- Azure Stack altyapınızı, sertifika yetkilisinin sertifika iptal listesi (CRL) konumuna sertifikada yayımlanan ağ erişimi olması gerekir. Bu CRL bir http uç noktası olmalıdır
-- Sertifikaları döndürürken öncesi 1903 derlemeleri, ya da dağıtım ya da yukarıdaki tüm ortak sertifika yetkilisinden verilen sertifikaları imzalamak için kullanılan aynı iç sertifika yetkilisinden verilen sertifikaların olması gerekir. 1903 & sonraki sertifikalar için herhangi bir kuruluş veya genel bir sertifika yetkilisi tarafından verilebilir.
-- Otomatik olarak imzalanan sertifikaların kullanılması desteklenmiyor
-- Azure Stack dağıtımı ve döndürme yapabilirsiniz veya tüm ad alanları sertifikanın konu adı ve konu alternatif adı (SAN) alanlarını kapsayan tek bir sertifikayı kullanın ya da kullanabilirsiniz, aşağıdaki ad alanlarının her biri için tek tek sertifikaları kullanmak için plan hizmetleri gerektirir. Her iki yaklaşım gibi gerekli olduğu bitiş noktası için joker karakterler kullanarak gerektiren **KeyVault** ve **KeyVaultInternal**. 
-- Sertifikanın PFX şifreleme 3DES olmalıdır. 
-- Sertifika imza algoritma SHA1 olmalıdır. 
-- Ortak ve özel anahtarları Azure Stack yükleme için gerekli olduğu gibi PFX sertifika biçimi olmalıdır. Özel anahtarı yerel makine anahtar özniteliği olmalıdır.
-- PFX şifreleme 3DES (Bu bir Windows 10 istemci ya da Windows Server 2016 sertifika deposuna dışa aktarırken varsayılandır) olmalıdır.
-- Sertifika pfx dosyasını bir değer "Dijital imza" ve "KeyEncipherment", "Anahtar kullanımı" alanında olması gerekir.
-- Sertifika pfx dosyaları "Sunucu kimlik doğrulaması (1.3.6.1.5.5.7.3.1)" ve "İstemci kimlik doğrulaması (1.3.6.1.5.5.7.3.2)" değerlerini "Gelişmiş anahtar kullanımı" alanında olması gerekir.
-- Sertifikanın "verilen:" alanı aynı olmamalıdır, "tarafından verilen:" alanı.
-- Dağıtım sırasında tüm sertifika pfx dosyalarını parola aynı olmalıdır
-- Karmaşık bir parola sertifika pfx parolası vardır. Şu parola karmaşıklık gereksinimini karşılayan bir parola oluşturun. En az sekiz karakter uzunluğu. Parola en az üç birini içeriyor: büyük harf, küçük harf, sayı 0-9, özel karakterler büyük veya küçük harf alfabetik karakterle. Bu parolayı not edin. Dağıtım parametresi olarak kullanır.
-- Konu adları ve konu alternatif adı uzantısı (x509v3_config) eşleşen konu diğer adları emin olun. Konu alternatif adı alanı ek konak adları (Web siteleri, IP adresleri, yaygın olarak kullanılan adları) tek bir SSL sertifikası tarafından korunacak belirtmenize olanak sağlar.
+Aşağıdaki listede, Azure Stack dağıtmak için gereken sertifika gereksinimleri açıklanmaktadır: 
+- Sertifikalar, bir iç sertifika yetkilisinden veya bir genel sertifika yetkilisinden verilmelidir. Ortak bir sertifika yetkilisi kullanılıyorsa, Microsoft güvenilir kök yetkilisi programının bir parçası olarak temel işletim sistemi görüntüsüne dahil edilmelidir. Tam listeyi buradan bulabilirsiniz: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- Azure Stack altyapınız, sertifika yetkilisinin sertifika Iptal listesi (CRL) konumunda yayımlanan sertifika için ağ erişimine sahip olmalıdır. Bu CRL bir HTTP uç noktası olmalıdır
+- 1903 öncesi yapılarda sertifika döndürürken, sertifikaların dağıtımda veya yukarıdaki herhangi bir genel sertifika yetkilisinde verilen sertifikaları imzalamak için kullanılan dahili sertifika yetkilisinden verilmiş olması gerekir. 1903 & için daha sonraki sertifikalar, herhangi bir kurumsal veya genel sertifika yetkilisi tarafından verilebilir.
+- Otomatik olarak imzalanan sertifikaların kullanımı desteklenmez
+- Dağıtım ve döndürme için, sertifikanın konu adı ve konu alternatif adı (SAN) alanlarındaki tüm ad alanlarını kapsayan tek bir sertifika kullanabilir veya Azure Stack aşağıdaki her bir ad alanı için tek tek sertifikaları kullanabilirsiniz kullanmayı planladığınız hizmetler gerektir. Her iki yaklaşım da, gerektiğinde **Anahtar Kasası** ve **keyvaultınternal**gibi uç noktalar için joker karakterler kullanılmasını gerektirir. 
+- Sertifikanın PFX şifrelemesi 3DES olmalıdır. 
+- Sertifika imza algoritması SHA1 olmamalıdır. 
+- Azure Stack yüklemesi için hem ortak hem de özel anahtarlar gerekli olduğundan, sertifika biçiminin PFX olması gerekir. Özel anahtarın yerel makine anahtarı özniteliği ayarlanmış olmalıdır.
+- PFX şifrelemesi 3DES olmalıdır (bir Windows 10 istemcisinden veya Windows Server 2016 sertifika deposundan dışarı aktarılırken bu varsayılandır).
+- Sertifika PFX dosyalarının "anahtar kullanımı" alanında "Digital Signature" ve "KeyEncipherment" değeri olmalıdır.
+- Sertifika PFX dosyaları "Gelişmiş anahtar kullanımı" alanında "sunucu kimlik doğrulaması (1.3.6.1.5.5.7.3.1)" ve "Istemci kimlik doğrulaması (1.3.6.1.5.5.7.3.2)" değerlerine sahip olmalıdır.
+- Sertifikanın "verilen:" alanı, "Issued by:" alanıyla aynı olmamalıdır.
+- Tüm sertifika PFX dosyalarının parolaları, dağıtım sırasında aynı olmalıdır
+- Sertifika PFX parolasının parolası karmaşık bir parola olmalıdır. Aşağıdaki parola karmaşıklığı gereksinimlerini karşılayan bir parola oluşturun. En az sekiz karakter uzunluğunda. Parola şunlardan en az üçünü içerir: büyük harf, küçük harf, 0-9 arasındaki sayılar, özel karakterler, büyük harf veya küçük harf olmayan alfabetik karakter. Bu parolayı unutmayın. Bunu, bir dağıtım parametresi olarak kullanacaksınız.
+- Konu adı ve konu diğer adlarının konu alternatif adı uzantısı (x509v3_config) ile eşleştiğinden emin olun. Konu diğer adı alanı, tek bir SSL sertifikasıyla korunabilecek ek ana bilgisayar adlarını (Web siteleri, IP adresleri, ortak adlar) belirtmenize imkan tanır.
 
 > [!NOTE]  
-> Kendi kendine imza sertifikaları desteklenmez.
+> Otomatik olarak Imzalanan sertifikalar desteklenmez.
 
 > [!NOTE]  
-> Bir sertifika güven zinciri olduğu ara sertifika yetkililerini varlığını desteklenmiyor. 
+> Bir *sertifikanın güven zincirinde* ara sertifika yetkililerinin varlığı desteklenir. 
 
-## <a name="mandatory-certificates"></a>Zorunlu sertifikaları
-Bu bölümde yer alan tabloda her iki Azure AD için gerekli olan Azure Stack genel uç noktası PKI sertifikalarını açıklar ve AD FS Azure Stack dağıtımları. Sertifika gereksinimleri, alan, aynı zamanda tarafından kullanılan ad alanları gruplandırılır ve her ad alanı için gerekli olan sertifikaları. Aşağıdaki tabloda, ayrıca, çözüm sağlayıcınızın farklı sertifikaları genel bir uç nokta başına kopyalayan klasörü açıklanmıştır. 
+## <a name="mandatory-certificates"></a>Zorunlu sertifikalar
+Bu bölümdeki tabloda hem Azure AD hem de AD FS Azure Stack dağıtımları için gerekli olan genel uç nokta PKI sertifikaları Azure Stack açıklanmaktadır. Sertifika gereksinimleri alana göre gruplandırılır ve kullanılan ad alanları ve her ad alanı için gereken sertifikalar. Tablo ayrıca, çözüm sağlayıcınızın genel uç nokta başına farklı sertifikaları kopyaladığı klasörü de açıklar. 
 
-Her Azure Stack genel altyapı uç noktası için uygun DNS adlarına sahip sertifikaları gereklidir. Her uç noktasının DNS adı biçiminde ifade edilir:  *&lt;önek >.&lt; bölge >. &lt;fqdn >*. 
+Her bir Azure Stack ortak altyapı uç noktası için uygun DNS adlarına sahip sertifikalar gereklidir. Her uç noktanın DNS adı şu biçimde ifade edilir:  *&lt;ön ek >.&lt; Bölge >. FQDN&lt;>* . 
 
-Dağıtımınız, [Bölge] ve [externalfqdn] değerleri bölge ve Azure Stack sisteminiz için seçtiğiniz dış etki alanı adlarının eşleşmesi gerekir. Örneğin bölge adı varsa, *Redmond* ve dış etki alanı adı *contoso.com*, DNS adlarını biçimi gerekir *&lt;önek >. redmond.contoso.com*.  *&lt;Önek >* değerleri predesignated güvenliği sertifika ile sağlanan uç nokta tanımlamak amacıyla Microsoft tarafından. Ayrıca,  *&lt;önek >* değerler dış altyapı uç noktalarının belirli uç noktasını kullanan Azure Stack hizmeti bağlıdır. 
+Dağıtımınız için, [Region] ve [externalfqdn] değerlerinin Azure Stack sisteminiz için seçtiğiniz bölge ve dış etki alanı adlarıyla eşleşmesi gerekir. Örnek olarak, bölge adı *Redmond* ve dış etki alanı adı *contoso.com*ise DNS adlarında  *&lt;>. Redmond. contoso. com biçim öneki*olur. *&lt;Ön ek >* değerleri, sertifika tarafından güvenliği sağlanmış uç noktayı tanımlayacak şekilde Microsoft tarafından önceden belirlenir. Ayrıca,  *&lt;* dış altyapı bitiş noktalarının ön ek > değerleri, belirli uç noktayı kullanan Azure Stack hizmetine bağlıdır. 
 
-> [!note]  
-> Üretim ortamları için ayrı sertifikalar her uç nokta için oluşturulan ve karşılık gelen dizinine kopyalanır öneririz. Geliştirme ortamları için sertifika konusu ve konu alternatif adı (SAN) alanlarındaki tüm dizinlere kopyalanır tüm ad alanlarını kapsayan bir tek bir joker sertifikası olarak sağlanabilir. Tüm uç noktaları ve hizmetler kapsayan tek bir sertifikayı güvenli bir duruş salt geliştirme bu nedenle ' dir. Unutmayın, iki seçenek de joker karakterli sertifikalar için bitiş noktaları gibi kullanmanızı gerektirir **acs** ve gerekli nerede anahtar kasası. 
+Üretim ortamları için, her bir uç nokta için ayrı ayrı sertifikaların oluşturulmasını ve ilgili dizine kopyalanmasını öneririz. Geliştirme ortamları için, sertifikalar tüm dizinlere kopyalanmış konu ve konu alternatif adı (SAN) alanlarındaki tüm ad alanlarını kapsayan tek bir joker karakter sertifikası olarak sağlanabilirler. Tüm uç noktaları ve hizmetleri kapsayan tek bir sertifika, güvenli olmayan bir durure bu nedenle yalnızca geliştirme amaçlıdır. Her iki seçenek de **ACS** gibi uç noktalar ve gerektiğinde Key Vault için joker karakter sertifikaları kullanmanızı gerektirdiğini unutmayın. 
 
-| Dağıtım klasörü | Gerekli bir sertifika konusu ve konu alternatif adları (SAN) | Kapsam (bölge başına) | Alt etki alanı ad alanı |
+> [!Note]  
+> Dağıtım sırasında, sertifikayı dağıtmakta olduğunuz kimlik sağlayıcısıyla (Azure AD veya AD FS) eşleşen dağıtım klasörüne kopyalamanız gerekir. Tüm uç noktalar için tek bir sertifika kullanıyorsanız, bu sertifika dosyasını aşağıdaki tablolarda özetlenen her dağıtım klasörüne kopyalamanız gerekir. Klasör yapısı, dağıtım sanal makinesinde önceden oluşturulmuştur ve şurada bulunabilir: C:\CloudDeployment\Setup\Certificates. 
+
+
+| Dağıtım klasörü | Gerekli sertifika konusu ve konu diğer adları (SAN) | Kapsam (bölge başına) | Alt etki alanı adı |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
-| Genel kullanıma açık portala | Portalı. &lt;bölge >. &lt;fqdn > | Portallar | &lt;region>.&lt;fqdn> |
-| Yönetici portalı | adminportal. &lt;bölge >. &lt;fqdn > | Portallar | &lt;region>.&lt;fqdn> |
-| Azure Resource Manager'a genel | yönetimi. &lt;bölge >. &lt;fqdn > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
-| Azure Resource Manager Yöneticisi | adminmanagement. &lt;bölge >. &lt;fqdn > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
-| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Blob Depolama Alanı | BLOB. &lt;bölge >. &lt;fqdn > |
-| ACSTable | *.table.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Tablo Depolama | Tablo. &lt;bölge >. &lt;fqdn > |
-| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Kuyruk Depolama | queue.&lt;region>.&lt;fqdn> |
-| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) | Key Vault | vault.&lt;region>.&lt;fqdn> |
-| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(Joker SSL sertifikası) |  İç anahtar kasası |  adminvault.&lt;region>.&lt;fqdn> |
-| Yönetici uzantısı konağı | *.adminhosting. \<bölge >. \<fqdn > (joker SSL sertifikaları) | Yönetici uzantısı konağı | adminhosting. \<bölge >. \<fqdn > |
-| Genel uzantı konak | * .hosting. \<bölge >. \<fqdn > (joker SSL sertifikaları) | Genel uzantı konak | barındırma. \<bölge >. \<fqdn > |
+| Ortak Portal | Portal. &lt;bölge >. &lt;FQDN > | Portallar | &lt;region>.&lt;fqdn> |
+| Yönetici portalı | adminportal. &lt;bölge >. &lt;FQDN > | Portallar | &lt;region>.&lt;fqdn> |
+| Azure Resource Manager genel | yönetme. &lt;bölge >. &lt;FQDN > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| Yönetici Azure Resource Manager | adminmanagement. &lt;bölge >. &lt;FQDN > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Joker karakter SSL sertifikası) | Blob Depolama Alanı | Bun. &lt;bölge >. &lt;FQDN > |
+| ACSTable | *. Table. &lt;bölge >. &lt;FQDN ><br>(Joker karakter SSL sertifikası) | Tablo Depolama | tablosundan. &lt;bölge >. &lt;FQDN > |
+| ACSQueue | *. Queue. &lt;bölge >. &lt;FQDN ><br>(Joker karakter SSL sertifikası) | Kuyruk Depolama | Sıradaki. &lt;bölge >. &lt;FQDN > |
+| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Joker karakter SSL sertifikası) | Key Vault | ka. &lt;bölge >. &lt;FQDN > |
+| Keyvaultınternal | *. adminkasa. &lt;bölge >. &lt;FQDN ><br>(Joker karakter SSL sertifikası) |  İç Keykasası |  Yönetim Kasası. &lt;bölge >. &lt;FQDN > |
+| Yönetici uzantısı ana bilgisayarı | *. adminhosting. \<bölge >. \<FQDN > (joker SSL sertifikaları) | Yönetici uzantısı ana bilgisayarı | adminhosting. \<bölge >. \<FQDN > |
+| Ortak uzantı Konağı | *. barındırma. \<bölge >. \<FQDN > (joker SSL sertifikaları) | Ortak uzantı Konağı | barındırıyor. \<bölge >. \<FQDN > |
 
-Azure Stack Azure AD dağıtım modunu kullanarak dağıtırsanız, yalnızca önceki tabloda listelenen sertifika istemeniz gerekir. Ancak, Azure Stack AD FS dağıtım modunu kullanarak dağıtırsanız, aşağıdaki tabloda açıklanan sertifikaları da isteğinde gerekir:
+Azure AD Dağıtım modunu kullanarak Azure Stack dağıtırsanız, yalnızca önceki tabloda listelenen sertifikaları istemeniz gerekir. Ancak, AD FS Dağıtım modunu kullanarak Azure Stack dağıtırsanız, aşağıdaki tabloda açıklanan sertifikaları da istemeniz gerekir:
 
-|Dağıtım klasörü|Gerekli bir sertifika konusu ve konu alternatif adları (SAN)|Kapsam (bölge başına)|Alt etki alanı ad alanı|
+|Dağıtım klasörü|Gerekli sertifika konusu ve konu diğer adları (SAN)|Kapsam (bölge başına)|Alt etki alanı adı|
 |-----|-----|-----|-----|
-|ADFS|ADFS.  *&lt;bölge >.&lt; FQDN >*<br>(SSL sertifikası)|ADFS|*&lt;bölge >. &lt;fqdn >*|
-|Graf|Grafiği.  *&lt;bölge >.&lt; FQDN >*<br>(SSL sertifikası)|Graf|*&lt;bölge >. &lt;fqdn >*|
+|ADFS|FS. *Bölge >.&lt; &lt; FQDN >*<br>(SSL sertifikası)|ADFS|*&lt;Bölge >. &lt;FQDN >*|
+|Graf|Çıkarılamıyor. *Bölge >.&lt; &lt; FQDN >*<br>(SSL sertifikası)|Graf|*&lt;Bölge >. &lt;FQDN >*|
 |
 
 > [!IMPORTANT]
-> Bu bölümde listelenen tüm sertifikalar aynı parolayı olması gerekir. 
+> Bu bölümde listelenen tüm sertifikaların parolası aynı olmalıdır. 
 
 ## <a name="optional-paas-certificates"></a>İsteğe bağlı PaaS sertifikaları
-Planlıyorsanız, ek Azure Stack PaaS hizmetler (SQL, MySQL ve App Service) sonra Azure Stack dağıtmayı dağıtılan ve yapılandırıldı, PaaS Hizmetleri uç noktaları kapsayacak şekilde ek bir sertifika istemeniz gerekir. 
+Azure Stack dağıtıldıktan ve yapılandırıldıktan sonra ek Azure Stack PaaS hizmetlerini (SQL, MySQL ve App Service) dağıtmayı planlıyorsanız, PaaS hizmetlerinin uç noktalarını kapsayacak ek sertifikalar istemeniz gerekir. 
 
 > [!IMPORTANT]
-> App Service, SQL ve MySQL kaynak sağlayıcıları için kullandığınız sertifikaların genel Azure Stack uç noktaları için kullanılan aynı kök yetkilisi gerekir. 
+> App Service, SQL ve MySQL kaynak sağlayıcıları için kullandığınız sertifikaların, genel Azure Stack uç noktaları için kullanılanlarla aynı kök yetkilisiyle aynı olması gerekir. 
 
-Aşağıdaki tabloda, SQL ve MySQL bağdaştırıcısı ve App Service için gerekli sertifikalar ve uç noktaları açıklar. Bu sertifikalar Azure Stack dağıtım klasörüne kopyalamanız gerekmez. Bunun yerine, ek kaynak sağlayıcısı yüklediğinizde, bu sertifikalar sağlar. 
+Aşağıdaki tabloda, SQL ve MySQL bağdaştırıcıları ve App Service için gereken uç noktalar ve sertifikalar açıklanmaktadır. Bu sertifikaları Azure Stack dağıtım klasörüne kopyalamanız gerekmez. Bunun yerine, ek kaynak sağlayıcılarını yüklerken bu sertifikaları sağlarsınız. 
 
-|Kapsam (bölge başına)|Sertifika|Gerekli bir sertifika konusu ve konu alternatif adları (SAN)|Alt etki alanı ad alanı|
+|Kapsam (bölge başına)|Sertifika|Gerekli sertifika konusu ve konu diğer adları (San 'Lar)|Alt etki alanı adı|
 |-----|-----|-----|-----|
-|SQL, MySQL|SQL ve MySQL|&#42;.dbadapter.  *&lt;bölge >.&lt; FQDN >*<br>(Joker SSL sertifikası)|dbadapter.*&lt;region>.&lt;fqdn>*|
-|App Service|Web trafiği varsayılan SSL sertifikası|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Çoklu etki alanı joker SSL sertifikası<sup>1</sup>)|appservice.  *&lt;bölge >.&lt; FQDN >*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|API|api.appservice.  *&lt;bölge >.&lt; FQDN >*<br>(SSL sertifikası<sup>2</sup>)|appservice.  *&lt;bölge >.&lt; FQDN >*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|FTP|FTP.appservice.  *&lt;bölge >.&lt; FQDN >*<br>(SSL sertifikası<sup>2</sup>)|appservice.  *&lt;bölge >.&lt; FQDN >*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL sertifikası<sup>2</sup>)|appservice.  *&lt;bölge >.&lt; FQDN >*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|SQL, MySQL|SQL ve MySQL|&#42;. dbadapter. *Bölge >.&lt; &lt; FQDN >*<br>(Joker karakter SSL sertifikası)|dbadapter. *&lt;region>.&lt;fqdn>*|
+|App Service|Web trafiği varsayılan SSL sertifikası|&#42;appservice. *Bölge >.&lt; &lt; FQDN >*<br>&#42;. scm. appservice. *Bölge >.&lt; &lt; FQDN >*<br>&#42;. SSO. appservice. *Bölge >.&lt; &lt; FQDN >*<br>(Çok etki alanı joker karakter SSL sertifikası<sup>1</sup>)|appservice. *Bölge >.&lt; &lt; FQDN >*<br>SCM. appservice. *Bölge >.&lt; &lt; FQDN >*|
+|App Service|API|api. appservice. *Bölge >.&lt; &lt; FQDN >*<br>(SSL sertifikası<sup>2</sup>)|appservice. *Bölge >.&lt; &lt; FQDN >*<br>SCM. appservice. *Bölge >.&lt; &lt; FQDN >*|
+|App Service|FTP|FTP. appservice. *Bölge >.&lt; &lt; FQDN >*<br>(SSL sertifikası<sup>2</sup>)|appservice. *Bölge >.&lt; &lt; FQDN >*<br>SCM. appservice. *Bölge >.&lt; &lt; FQDN >*|
+|App Service|SSO|SSO. appservice. *Bölge >.&lt; &lt; FQDN >*<br>(SSL sertifikası<sup>2</sup>)|appservice. *Bölge >.&lt; &lt; FQDN >*<br>SCM. appservice. *Bölge >.&lt; &lt; FQDN >*|
 
-<sup>1</sup> birden fazla joker konu alternatif adı ile bir sertifika gerektirir. Tek bir sertifikanın birden fazla joker karakter SAN'lar tüm ortak sertifika yetkilileri tarafından desteklenmiyor olabilir 
+<sup>1</sup> birden çok joker karakter konu diğer adına sahip bir sertifika gerektirir. Tek bir sertifikada birden çok joker karakter San 'ı tüm genel sertifika yetkilileri tarafından desteklenmiyor olabilir 
 
-<sup>2</sup> A &#42;.appservice. *&lt;bölge >. &lt;fqdn >* joker karakter sertifika yerine bu üç sertifika kullanılamaz (api.appservice. *&lt;bölge >. &lt;fqdn >*, ftp.appservice. *&lt;bölge >. &lt;fqdn >* ve sso.appservice. *&lt;bölge >. &lt;fqdn >*. Appservice, açıkça Bu uç noktalar için ayrı sertifikaların kullanımını gerektirir. 
+<sup>2</sup> A &#42;. appservice. *Bölge >.&lt; &lt; FQDN >* joker karakter sertifikası, bu üç sertifika (API. appservice) yerine kullanılamaz. *&lt;bölge >. FQDN&lt;>* , FTP. appservice. *Bölge >.&lt; &lt; FQDN >* ve SSO. appservice. *Bölge >.&lt; &lt; FQDN >* . Appservice, bu uç noktalar için ayrı sertifikaların kullanılmasını açıkça gerektirir. 
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
-Bilgi edinmek için nasıl [Azure Stack dağıtımı için PKI sertifikalarını oluşturmak](azure-stack-get-pki-certs.md). 
+[Azure Stack dağıtımı IÇIN PKI sertifikaları oluşturmayı](azure-stack-get-pki-certs.md)öğrenin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Kimlik Tümleştirme](azure-stack-integrate-identity.md)
+[Kimlik tümleştirmesi](azure-stack-integrate-identity.md)
