@@ -1,6 +1,6 @@
 ---
-title: Bu makalede, Azure Stack'te teklifleri ve planları güncelleştirme konusunda bilgi edinin | Microsoft Docs
-description: Bu makalede, görüntüleyin ve mevcut Azure Stack'te teklifleri ve planları değiştirin açıklar.
+title: Bu makalede, Azure Stack tekliflerini ve planlarını güncelleştirme hakkında bilgi edinebilirsiniz | Microsoft Docs
+description: Bu makalede, mevcut Azure Stack tekliflerinin ve planların nasıl görüntüleneceği ve değiştirileceği açıklanır.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -17,67 +17,71 @@ ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
-ms.openlocfilehash: 54c6c44d6ab5d03819ba07ca1d34269e7a87ee77
-ms.sourcegitcommit: e51cdc84a09250e8fa701bb2cb09de38d7de2c07
+ms.openlocfilehash: 01e5bc6e91311a0c27acffd4079931c3ee000d29
+ms.sourcegitcommit: 8ddd70ba5ce05c591d3fa62597981859af107c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66836779"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70936123"
 ---
 # <a name="azure-stack-add-on-plans"></a>Azure Stack eklenti planları
 
-Azure Stack operatör değiştirmek için eklenti planları oluşturmak bir [temel plan](azure-stack-create-plan.md) ek hizmetleri sunmak ya da genişletmek istediğinizde *bilgisayar*, *depolama*, veya *ağ* temel plan ilk teklif ötesinde kotalar. Eklenti planı, temel plan değiştirebilir ve kullanıcıların abone olmak için seçebileceği isteğe bağlı uzantılar.
+Azure Stack operatörü olarak, ek hizmetler sunmak ya da *bilgisayar*, *depolama*veya *ağ* kotalarını temel plan ilk teklifinin ötesinde genişletmek istediğinizde bir [temel planı](azure-stack-create-plan.md) değiştirmek için eklenti planları oluşturursunuz. Eklenti planları temel planı değiştirebilir ve kullanıcıların abone olmayı seçeabileceği isteğe bağlı uzantılardır.
 
-Her şey tek bir plandaki birleştirme ne zaman uygun olduğu durumlar vardır. Bazen planlamak ve ardından eklenti planı'nı kullanarak ek hizmetler sunan bir temele sahip isteyebilirsiniz. Örneğin, eklenti planı kabul tüm PaaS Hizmetleri ile temel bir plan kapsamında Iaas Hizmetleri sunmaya karar verebilirsiniz.
+Tek bir plandaki her şeyin birleştirilmesinin en iyi durumda olduğu durumlar vardır. Diğer zamanlarda, temel bir plana sahip olmak ve daha sonra eklenti planları kullanarak ek hizmetleri sunmak isteyebilirsiniz. Örneğin, tüm PaaS hizmetlerinin eklenti planları olarak kabul edildiği bir temel planın parçası olarak IaaS hizmetleri sunmaya karar verebilirsiniz.
 
-Eklenti planı'nı kullanmak için başka bir nedeni, kaynak kullanımını izleme yardımcı olmaktır. Bunu yapmak için (bağlı olarak gereken hizmetleri) görece küçük kotalar içeren temel bir plan ile başlatabilir. Kullanıcılara kapasiteyi ulaşmanızı gibi daha sonra kullanıcılar, bunlar kendi atanan planına dayanarak kaynakların ayrılması tükettiniz uyarı. Burada, kullanıcıların ek kaynaklar sağlayan bir eklenti planı seçebilirsiniz.
+Eklenti planlarını kullanmanın başka bir nedeni de kaynak kullanımını izlemeye yardımcı olur. Bunu yapmak için görece küçük kotalar (gerekli hizmetlere bağlı olarak) içeren bir temel plana başlayabilirsiniz. Daha sonra, kullanıcılar kapasiteye ulaştığında, kendilerine atanan planına göre kaynak ayırmayı tükettiği hakkında uyarı alırlar. Buradan, kullanıcılar ek kaynakları sağlayan bir eklenti planı seçebilir.
 
 > [!NOTE]
-> Eklenti planı kota genişletmek için kullanmak istemediğinizde, seçebilirsiniz [kota yapılandırmasını Düzenle](azure-stack-quota-types.md#edit-a-quota).
+> Bir kotayı genişletmek için eklenti planı kullanmak istemiyorsanız, [kotanın orijinal yapılandırmasını düzenlemeyi](azure-stack-quota-types.md#edit-a-quota)de seçebilirsiniz.
 
-Eklenti planı için varolan bir teklif aboneliği eklediğinizde, ek kaynaklar için bir saat görünmesini kadar sürebilir.
+Mevcut bir teklif aboneliğine eklenti planı eklediğinizde, ek kaynakların görünmesi bir saate kadar sürebilir.
 
-Eklenti planları, var olan bir teklif değiştirerek oluşturulur.
+Eklenti planları, mevcut bir teklif değiştirilerek oluşturulur.
 
-## <a name="create-an-add-on-plan-1902-and-later"></a>Eklenti planı (1902 ve üzeri) oluşturma
+::: moniker range=">=azs-1902"
+## <a name="create-an-add-on-plan-1902-and-later"></a>Eklenti planı oluşturma (1902 ve üstü)
 
-1. Azure Stack Yönetici portalı'na bir bulutun Yöneticisi olarak oturum açın.
-2. İçin kullanılan aynı adımları izleyerek [yeni bir temel plan oluşturma](azure-stack-create-plan.md) değil daha önce sunulan hizmetleri sunan yeni bir plan oluşturmak için.
-3. Yönetici portalında **sunar** ve ardından bir eklenti planı ile güncelleştirilmesi teklifini seçin.
+1. Azure Stack yönetici portalında Bulut Yöneticisi olarak oturum açın.
+2. Daha önce sunulmayan yeni bir plan teklif hizmetleri oluşturmak için [Yeni bir temel plan oluşturmak](azure-stack-create-plan.md) için kullanılan adımların aynısını izleyin.
+3. Yönetici portalında, **teklifler** ' e tıklayın ve ardından bir eklenti planıyla güncelleştirileceği teklifi seçin.
 
    ![Eklenti planı oluşturma](media/create-add-on-plan/add-on1.png)
 
-4. Teklif özelliklerini sonunda seçin **eklenti planları**. **Ekle**'yi tıklatın.
+4. Teklif özelliklerinin en altında **eklenti planları**' nı seçin. **Ekle**'yi tıklatın.
 
     ![Eklenti planı oluşturma](media/create-add-on-plan/add-on2.png)
 
-5. Planı eklemek için seçin. Bu örnekte, plan çağrılır **20 storageaccounts**. Plan seçtikten sonra **seçin** plan teklife eklenecek. Plan teklife başarıyla eklendiğini bir bildirim almanız gerekir.
+5. Eklenecek planı seçin. Bu örnekte plana **20-storageaccounts**adı verilir. Planı seçtikten sonra, planı teklifine eklemek için **Seç** ' e tıklayın. Planın teklifine başarıyla eklendiğini belirten bir bildirim almanız gerekir.
 
     ![Eklenti planı oluşturma](media/create-add-on-plan/add-on3.png)
 
-6. Yeni eklenti planı listelendiğini doğrulamak için teklife dahil edilen eklenti planları listesini gözden geçirin.
+6. Yeni eklenti planının listelendiğini doğrulamak için teklifle birlikte dahil olan eklenti planlarının listesini gözden geçirin.
 
-    [![Eklenti planı oluştur](media/create-add-on-plan/add-on4.png "eklenti planı oluştur")](media/create-add-on-plan/add-on4lg.png#lightbox)
+    [![Eklenti planı oluşturma](media/create-add-on-plan/add-on4.png "Eklenti planı oluşturma")](media/create-add-on-plan/add-on4lg.png#lightbox)
+::: moniker-end
 
-## <a name="create-an-add-on-plan-1901-and-earlier"></a>(1901 ve öncesi) bir eklenti planı oluşturma
+::: moniker range="<=azs-1901"
+## <a name="create-an-add-on-plan-1901-and-earlier"></a>Eklenti planı oluşturma (1901 ve önceki sürümler)
 
-1. Azure Stack Yönetici portalı'na bir bulutun Yöneticisi olarak oturum açın.
-2. İçin kullanılan aynı adımları izleyerek [yeni bir temel plan oluşturma](azure-stack-create-plan.md) değil daha önce sunulan hizmetleri sunan yeni bir plan oluşturmak için. Bu örnekte, Key Vault (**Microsoft.KeyVault**) Hizmetleri yeni plana dahil edilir.
-3. Yönetici portalında **sunar** ve ardından bir eklenti planı ile güncelleştirilmesi teklifini seçin.
+1. Azure Stack yönetici portalında Bulut Yöneticisi olarak oturum açın.
+2. Daha önce sunulmayan yeni bir plan teklif hizmetleri oluşturmak için [Yeni bir temel plan oluşturmak](azure-stack-create-plan.md) için kullanılan adımların aynısını izleyin. Bu örnekte, yeni plana Key Vault (**Microsoft. Keykasası**) hizmetleri dahil edilecek.
+3. Yönetici portalında, **teklifler** ' e tıklayın ve ardından bir eklenti planıyla güncelleştirileceği teklifi seçin.
 
    ![Eklenti planı oluşturma](media/create-add-on-plan/1.PNG)
 
-4. Teklif özelliklerinin alt kısma kaydırın ve **eklenti planları**. **Ekle**'yi tıklatın.
+4. Teklif özelliklerinin en altına kaydırın ve **eklenti planları**' nı seçin. **Ekle**'yi tıklatın.
 
     ![Eklenti planı oluşturma](media/create-add-on-plan/2.PNG)
 
-5. Planı eklemek için seçin. Bu örnekte, plan çağrılır **anahtar kasası planı**. Plan seçtikten sonra **seçin** plan teklife eklenecek. Plan teklife başarıyla eklendiğini bir bildirim almanız gerekir.
+5. Eklenecek planı seçin. Bu örnekte plan, **Anahtar Kasası planı**olarak adlandırılır. Planı seçtikten sonra, planı teklifine eklemek için **Seç** ' e tıklayın. Planın teklifine başarıyla eklendiğini belirten bir bildirim almanız gerekir.
 
     ![Eklenti planı oluşturma](media/create-add-on-plan/3.PNG)
 
-6. Yeni eklenti planı listelendiğini doğrulamak için teklife dahil edilen eklenti planları listesini gözden geçirin.
+6. Yeni eklenti planının listelendiğini doğrulamak için teklifle birlikte dahil olan eklenti planlarının listesini gözden geçirin.
 
     ![Eklenti planı oluşturma](media/create-add-on-plan/4.PNG)
+::: moniker-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
