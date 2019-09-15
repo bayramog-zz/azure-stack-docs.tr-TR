@@ -16,12 +16,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 88255a15a204f5dcb18dd83f9763e8297a1af51c
-ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
+ms.openlocfilehash: c80a6068aa46cd182f8ec928942e7072638b143f
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70808234"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974838"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service Azure Stack güncelleştirme 3 sürüm notları
 
@@ -40,7 +40,7 @@ Azure Stack güncelleştirme 3 derleme numarasında App Service **74.0.13698.31*
 
 Dağıtıma başlamadan önce [Azure Stack App Service dağıtmaya yönelik önkoşulları](azure-stack-app-service-before-you-get-started.md) inceleyin.
 
-Azure App Service Azure Stack 1,3 sürümüne yükseltmeye başlamadan önce, Azure Stack yönetim portalındaki Azure App Service yönetimine tüm rollerin hazırlandığından emin olun.
+Azure App Service Azure Stack 1,3 sürümüne yükseltmeye başlamadan önce, Azure Stack yönetici portalındaki Azure App Service yönetimine tüm rollerin hazırlandığından emin olun.
 
 ![App Service rol durumu](media/azure-stack-app-service-release-notes-update-three/image01.png)
 
@@ -184,7 +184,7 @@ Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir verit
 
 - Mevcut bir sanal ağda App Service dağıtıldığında ve dosya sunucusu yalnızca özel ağda kullanılabilir olduğunda çalışanlar dosya sunucusuna ulaşamamakta olur. Bu sorun Azure Stack dağıtım belgelerindeki Azure App Service çağırılır.
 
-Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetici portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
  * Kaynak: Any
  * Kaynak bağlantı noktası aralığı: *

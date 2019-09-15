@@ -1,6 +1,6 @@
 ---
 title: PowerShell ile Azure Stack için yedeklemeyi etkinleştirme | Microsoft Docs
-description: Windows PowerShell ile hizmet altyapı yedeklemeyi etkinleştirin; böylelikle bir hata varsa, Azure Stack geri yüklenebilir.
+description: Bir hata oluşursa Azure Stack geri yüklenebilmesi için PowerShell ile Infrastructure Backup hizmetini nasıl etkinleştirebileceğinizi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -15,47 +15,47 @@ ms.date: 04/25/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: 08950940510d874b407448bab37c6a43f6965c7f
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 2e419c32caf78d97ee38e570ce0fa823cc94651a
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268940"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70975174"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>PowerShell ile Azure Stack için yedeklemeyi etkinleştirme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Windows PowerShell ile hizmet altyapı yedeklemeyi etkinleştir, bu nedenle düzenli yedeklemelerini alın:
- - İç kimlik hizmeti ve kök sertifikası
- - Kullanıcı planları, teklifleri ve abonelikleri
- - İşlem, depolama ve ağ kullanıcı kotaları
- - Kullanıcı Key vault gizli dizileri
- - Kullanıcı RBAC rolleri ve ilkeleri
- - Kullanıcı depolama hesapları
+Windows PowerShell ile Infrastructure Backup hizmeti 'ni, düzenli aralıklarla yedeklemeler alacak şekilde etkinleştirin:
+ - İç kimlik hizmeti ve kök sertifika.
+ - Kullanıcı planları, teklifler, abonelikler.
+ - İşlem, depolama ve ağ Kullanıcı kotaları.
+ - Kullanıcı parolaları Key Vault.
+ - Kullanıcı RBAC rolleri ve ilkeleri.
+ - Kullanıcı depolama hesapları.
 
-Yedeklemeyi etkinleştirmek için yedekleme başlatın ve işleci yönetim uç noktası aracılığıyla Yedekleme bilgileri almak için PowerShell cmdlet'lerini erişebilirsiniz.
+Yedeklemeyi etkinleştirmek, yedeklemeyi başlatmak ve işletmen yönetimi uç noktası aracılığıyla yedekleme bilgilerini almak için PowerShell cmdlet 'lerine erişebilirsiniz.
 
 ## <a name="prepare-powershell-environment"></a>PowerShell ortamını hazırlama
 
-PowerShell ortamını yapılandırma ile ilgili yönergeler için bkz: [Azure Stack için PowerShell yükleme](azure-stack-powershell-install.md). Azure Stack'e oturum açmak için bkz: [işleci ortamı yapılandırmak ve Azure Stack için oturum açma](azure-stack-powershell-configure-admin.md).
+PowerShell ortamını yapılandırma hakkında yönergeler için bkz. [Azure Stack Için PowerShell 'ı yükler](azure-stack-powershell-install.md). Azure Stack oturum açmak için bkz. [işleç ortamını yapılandırma ve Azure Stack oturum açma](azure-stack-powershell-configure-admin.md).
 
-## <a name="provide-the-backup-share-credentials-and-encryption-key-to-enable-backup"></a>Yedeklemeyi etkinleştirmek için yedek paylaşımı, kimlik bilgilerini ve şifreleme anahtarını sağlayın
+## <a name="provide-the-backup-share-credentials-and-encryption-key-to-enable-backup"></a>Yedeklemeyi etkinleştirmek için yedekleme paylaşımının, kimlik bilgilerinin ve şifreleme anahtarının sağlanması
 
-Aynı PowerShell oturumunda, değişkenleri ortamınız için ekleyerek, aşağıdaki PowerShell betiğini düzenleyin. Altyapı yedekleme hizmetine yedekleme paylaşımı, kimlik bilgilerini ve şifreleme anahtarı sağlamak için güncelleştirilmiş betiği çalıştırın.
+Aynı PowerShell oturumunda, ortamınız için değişkenleri ekleyerek aşağıdaki PowerShell betiğini düzenleyin. Infrastructure Backup hizmetine yedekleme paylaşımının, kimlik bilgilerinin ve şifreleme anahtarının sağlanması için güncelleştirilmiş betiği çalıştırın.
 
 | Değişken        | Açıklama   |
 |---              |---                                        |
-| $username       | Tür **kullanıcıadı** etki alanını ve kullanıcı adı için yeterli erişimi olan paylaşılan sürücü konumunu dosyalarını okuma ve yazma için kullanma. Örneğin, `Contoso\backupshareuser`. |
-| $password       | Tür **parola** kullanıcı. |
-| $sharepath      | Yolunu yazın **yedekleme depolama konumu**. Ayrı bir cihazda barındırılan bir dosya paylaşımı yolu için bir Evrensel Adlandırma Kuralı (UNC) dize kullanmanız gerekir. Bir UNC dize paylaşılan dosyalarını veya cihazları gibi kaynakların konumunu belirtir. Yedekleme verilerini kullanılabilirliğini sağlamak için cihazı ayrı bir konumda olmalıdır. |
-| $frequencyInHours | Saat cinsinden ne sıklıkta belirler yedekler oluşturulur. 12 varsayılan değerdir. Zamanlayıcı, en fazla 12 ve en az 4 destekler.|
-| $retentionPeriodInDays | Gün cinsinden saklama süresi, kaç güne kadar yedek bir dış konuma göre korunur belirler. Varsayılan değer 7'dir. Zamanlayıcı, en fazla 14 ve en az 2 destekler. Yedekleri saklama süresinden daha eski bir dış konumdan otomatik olarak silinir.|
-| $encryptioncertpath | 1901 ve ötesinde geçerlidir.  Azure Stack modülü sürüm 1.7 ve sonrasındaki parametresi kullanılabilir. Şifreleme sertifika yolu, dosya yolunu belirtir. Veri şifreleme için kullanılan ortak anahtarla CER dosyası. |
-| $encryptionkey | Uygulanan 1811 derleme veya önceki bir sürümü. Parametresi, Azure Stack modülü sürüm 1.6 veya önceki bir sürümü kullanılabilir. Veri şifreleme için kullanılan şifreleme anahtarı. Kullanım [yeni AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) cmdlet'i yeni bir anahtar oluşturun. |
+| `$username`       | Dosyaları okumak ve yazmak için yeterli erişimi olan paylaşılan sürücü konumunun etki alanını ve Kullanıcı adını kullanarak **Kullanıcı adını** yazın. Örneğin: `Contoso\backupshareuser`. |
+| `$password`       | Kullanıcının **parolasını** yazın. |
+| `$sharepath`      | **Yedekleme depolama konumunun**yolunu yazın. Ayrı bir cihazda barındırılan dosya paylaşımının yolu için bir evrensel adlandırma kuralı (UNC) dizesi kullanmanız gerekir. UNC dizesi, paylaşılan dosyalar veya cihazlar gibi kaynakların konumunu belirtir. Yedekleme verilerinin kullanılabilirliğini sağlamak için, cihazın ayrı bir konumda olması gerekir. |
+| `$frequencyInHours` | Saat cinsinden sıklık, yedeklemelerin oluşturulma sıklığını belirler. Varsayılan değer 12 ' dir. Zamanlayıcı en fazla 12 ve en az 4 destekler.|
+| `$retentionPeriodInDays` | Gün cinsinden saklama süresi, dış konumda kaç günlük yedeklemenin korunacağını belirler. Varsayılan değer 7 ' dir. Zamanlayıcı en fazla 14 ve en az 2 destekler. Saklama süresinden daha eski yedeklemeler, dış konumdan otomatik olarak silinir.|
+| `$encryptioncertpath` | 1901 ve üzeri için geçerlidir. Parametresi Azure Stack modülü sürüm 1,7 ve sonrasında kullanılabilir. Şifreleme sertifikası yolu, dosyasının yolunu belirtir. Veri şifreleme için kullanılan ortak anahtara sahip CER dosyası. |
+| `$encryptionkey` | Derleme 1811 veya önceki sürümler için geçerlidir. Parametre Azure Stack modülü 1,6 veya daha önceki bir sürümünde kullanılabilir. Şifreleme anahtarı veri şifreleme için kullanılır. Yeni bir anahtar oluşturmak için [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) cmdlet 'ini kullanın. |
 |     |     |
 
-### <a name="enable-backup-on-1901-and-beyond-using-certificate"></a>1901 ve sertifika kullanılarak ötesinde yedeklemeyi etkinleştirme
+### <a name="enable-backup-on-1901-and-later-using-certificate"></a>Sertifikayı kullanarak 1901 ve üzeri yedeklemeyi etkinleştir
 ```powershell
     # Example username:
     $username = "domain\backupadmin"
@@ -82,7 +82,7 @@ Aynı PowerShell oturumunda, değişkenleri ortamınız için ekleyerek, aşağ�
     # Set the backup settings with the name, password, share, and CER certificate file.
     Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
 ```
-### <a name="enable-backup-on-1811-or-earlier-using-certificate"></a>1811 ya da daha önce kullanarak bir sertifika yedeklemeyi etkinleştirme
+### <a name="enable-backup-on-1811-or-earlier-using-certificate"></a>Sertifikayı kullanarak 1811 veya önceki sürümlerde yedeklemeyi etkinleştir
 ```powershell
     # Example username:
     $username = "domain\backupadmin"
@@ -110,15 +110,15 @@ Aynı PowerShell oturumunda aşağıdaki komutları çalıştırın:
     Get-AzsBackupConfiguration | Select-Object -Property Path, UserName
    ```
 
-Sonuç, aşağıdaki örnek çıktı gibi görünmelidir:
+Sonuç aşağıdaki örnek çıktı gibi görünmelidir:
 
    ```powershell
     Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
     UserName                    : domain\backupadmin
    ```
 
-## <a name="update-backup-settings"></a>Yedekleme ayarlarını güncelleştirme
-Aynı PowerShell oturumunda saklama süresi ve yedekleme sıklığı için varsayılan değerlerle güncelleştirebilirsiniz. 
+## <a name="update-backup-settings"></a>Yedekleme ayarlarını Güncelleştir
+Aynı PowerShell oturumunda, yedeklemeler için bekletme dönemi ve sıklığı için varsayılan değerleri güncelleştirebilirsiniz. 
 
    ```powershell
     #Set the backup frequency and retention period values.
@@ -130,7 +130,7 @@ Aynı PowerShell oturumunda saklama süresi ve yedekleme sıklığı için varsa
     Get-AzsBackupConfiguration | Select-Object -Property Path, UserName, AvailableCapacity, BackupFrequencyInHours, BackupRetentionPeriodInDays
    ```
 
-Sonuç, aşağıdaki örnek çıktı gibi görünmelidir:
+Sonuç aşağıdaki örnek çıktı gibi görünmelidir:
 
    ```powershell
     Path                        : \\serverIP\AzsBackupStore\contoso.com\seattle
@@ -141,14 +141,14 @@ Sonuç, aşağıdaki örnek çıktı gibi görünmelidir:
    ```
 
 ### <a name="azure-stack-powershell"></a>Azure Stack PowerShell 
-Altyapı yedeklemeyi yapılandırmak için PowerShell cmdlet Set-AzsBackupConfiguration ' dir. Önceki sürümlerde, cmdlet kümesi AzsBackupShare oluştu. Bu cmdlet, bir sertifikanın belirtilmesi gerekir. Altyapı yedeklemesine bir şifreleme anahtarı ile yapılandırıldıysa, şifreleme anahtarını güncelleştiremezsiniz veya özelliğini görüntüleyin. Yönetici PowerShell 1.6 sürümünü kullanmanız gerekir. 
+Altyapı yedeklemesini yapılandırmak için PowerShell cmdlet 'i set-AzsBackupConfiguration ' dır. Önceki sürümlerde cmdlet, set-AzsBackupShare idi. Bu cmdlet 'in bir sertifika sağlaması gerekir. Altyapı yedeklemesi bir şifreleme anahtarıyla yapılandırıldıysa, şifreleme anahtarını güncelleştiremez veya özelliği görüntüleyemezsiniz. Yönetici PowerShell 'in 1,6 sürümünü kullanmanız gerekir.
 
-Altyapı yedekleme için 1901 güncelleştirmeden önce yapılandırıldıysa, şifreleme anahtarını görüntüleyin ve yönetici PowerShell 1.6 sürümünü kullanabilirsiniz. Sürüm 1.6 için şifreleme anahtarını güncelleştirmek için bir sertifika dosyası izin vermez.
-Başvurmak [Azure Stack PowerShell yükleme](azure-stack-powershell-install.md) Modülü doğru sürümü yükleme hakkında daha fazla bilgi. 
+Altyapı yedeklemesi 1901 sürümüne güncelleştirmeden önce yapılandırıldıysa, şifreleme anahtarını ayarlamak ve görüntülemek için yönetici PowerShell 'in 1,6 sürümünü kullanabilirsiniz. Sürüm 1,6, şifreleme anahtarından bir sertifika dosyasına güncelleştirme yapmanıza izin vermez.
+Modülün doğru sürümünü yükleme hakkında daha fazla bilgi için [Azure Stack PowerShell 'ı yükleme](azure-stack-powershell-install.md) bölümüne bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yedekleme, see çalıştırmayı öğrenin [Azure Stack yedekleme](azure-stack-backup-back-up-azure-stack.md)
+Bir yedekleme çalıştırmayı öğrenin, bkz. Yedekleme [Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 
-Yedekleme çalıştırdığını doğrulamak hakkında bilgi edinmek için bkz: [Onayla yedekleme Yönetim Portalı'nda tamamlandı](azure-stack-backup-back-up-azure-stack.md)
+Yedeğinizin çalıştığını doğrulamayı öğrenin, bkz. [yönetim portalında yedeklemeyi onaylama tamamlandı](azure-stack-backup-back-up-azure-stack.md).

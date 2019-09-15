@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 7d0e9c6914ce8748d842c9addf040355e3dc1cb1
-ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
+ms.openlocfilehash: 9e92101b6d00da397359ed25e8682f18305f5a83
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991717"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974739"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker cmdlet başvurusu
 
@@ -166,7 +166,7 @@ Start-AzsReadinessChecker
 
 ## <a name="description"></a>Açıklama
 
-**Start-AzsReadinessChecker** cmdlet 'i sertifikaları, Azure hesaplarını, Azure aboneliklerini ve Azure Active Directory 'yi doğrular. Azure Stack dağıtılmadan önce veya gizli döndürme gibi eylemlere Azure Stack önce doğrulamayı çalıştırın. Cmdlet 'i, altyapı sertifikaları için sertifika imzalama istekleri ve isteğe bağlı olarak PaaS sertifikaları oluşturmak için de kullanılabilir. Son olarak, cmdlet ortak paketleme sorunlarını düzeltmek için PFX sertifikalarını yeniden paketleyebilir.
+**Start-AzsReadinessChecker** cmdlet 'i sertifikaları, Azure hesaplarını, Azure aboneliklerini ve Azure Active Directory 'YI (AAD) doğrular. Azure Stack dağıtılmadan önce veya gizli döndürme gibi eylemlere Azure Stack önce doğrulamayı çalıştırın. Cmdlet 'i, altyapı sertifikaları için sertifika imzalama istekleri ve isteğe bağlı olarak PaaS sertifikaları oluşturmak için de kullanılabilir. Son olarak, cmdlet ortak paketleme sorunlarını düzeltmek için PFX sertifikalarını yeniden paketleyebilir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -237,7 +237,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
-Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve `Start-AzsReadinessChecker` Azure hesabının ve Azure Active Directory bir AAD dağıtımı için **azurestack.contoso.com kiracı dizin adı ile geçerli olduğunu denetler.** .
+Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve `Start-AzsReadinessChecker` Azure hesabının ve AAD 'nin **azurestack.contoso.com**kiracı dizin adına sahip bir AAD dağıtımı için geçerli olduğunu denetler.
 
 ### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Örnek: Azure kimliğini dağıtım verileriyle doğrulama (dağıtım desteği)
 
@@ -246,7 +246,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve `Start-AzsReadinessChecker` Azure hesabının ve Azure Active Directory bir AAD dağıtımı için geçerli olup olmadığını denetler; burada **azurecyüksek** ve **TenantName** okundu dağıtım için oluşturulan dağıtım verileri JSON dosyasından.
+Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve Azure hesabının ve `Start-AzsReadinessChecker` AAD 'nin bir AAD dağıtımı için geçerli olduğunu ve bu durumda **azurecı** ve **TenantName** ' in, JSON dağıtım verilerinden okunduğu denetlenir dağıtım için oluşturulan dosya.
 
 ### <a name="example-validate-azure-registration"></a>Örnek: Azure kaydını doğrulama
 
@@ -276,7 +276,7 @@ $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx
 ```
 
-Bu örnekte, güvenlik için PFX parolası gerekir. SSL. pfx dosyası yerel makine sertifika deposuna aktarılır, aynı parolayla yeniden aktarılır ve Ssl_new. pfx olarak kaydedilir. Bu yordam, sertifika doğrulaması özel bir anahtarın **yerel makine** özniteliği ayarlı olmadığı işaretlendiğinde, sertifika zinciri bozulur, hiçbir ılgısız sertifika PFX 'de bulunur veya sertifika zinciri yanlış sırada olur.
+Bu örnekte, güvenlik için PFX parolası gerekir. SSL. pfx dosyası yerel makine sertifika deposuna aktarılır, aynı parolayla yeniden aktarılır ve Ssl_new. pfx olarak kaydedilir. Bu yordam, özel bir anahtarın **yerel makine** özniteliği ayarlı olmadığı, sertifika zinciri bozuk, çok ılgısız sertifikaların PFX 'de var olduğu veya Sertifika zincirinin yanlış sırada olduğu durumlarda kullanılır.
 
 ### <a name="example-view-validation-report-deployment-and-support"></a>Örnek: doğrulama raporunu görüntüleme (dağıtım ve destek)
 
@@ -303,7 +303,7 @@ Azure Stack dağıtım bölgesi adını belirtir.
 |  |  |
 |----------------------------|--------------|
 |Şunu yazın:                       |Dize        |
-|Konum:                   |Adlandırılır         |
+|Yerine                   |Adlandırılır         |
 |Varsayılan değer:              |Yok.          |
 |İşlem hattı girişini kabul et:      |False         |
 |Joker karakterleri kabul et: |False         |
@@ -315,7 +315,7 @@ Azure Stack dağıtım bölgesi adını belirtir.
 |  |  |
 |----------------------------|--------------|
 |Şunu yazın:                       |Dize        |
-|Konum:                   |Adlandırılır         |
+|Yerine                   |Adlandırılır         |
 |Varsayılan değer:              |ExternalFQDN, ExternalDomainName |
 |İşlem hattı girişini kabul et:      |False         |
 |Joker karakterleri kabul et: |False         |
@@ -327,7 +327,7 @@ Azure Active Directory ve Active Directory Federasyon Hizmetleri için Azure Sta
 |  |  |
 |----------------------------|--------------|
 |Şunu yazın:                       |Dize        |
-|Konum:                   |Adlandırılır         |
+|Yerine                   |Adlandırılır         |
 |Varsayılan değer:              |Yok.          |
 |Geçerli değerler:               |' AAD ', ' ADFS '  |
 |İşlem hattı girişini kabul et:      |False         |
@@ -340,7 +340,7 @@ PFX Sertifika dosyalarıyla ilişkili parolayı belirtir.
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |SecureString |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -352,7 +352,7 @@ PaaS sertifikalarına yönelik yollar ve parolalar içeren Hashtable 'ı belirti
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Hashtable |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -364,7 +364,7 @@ Azure Stack dağıtım verileri JSON yapılandırma dosyasını belirtir. Bu dos
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -376,7 +376,7 @@ Bu araçtaki sertifika doğrulaması tarafından belirtildiği gibi, düzeltilme
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -388,7 +388,7 @@ Bu araçtaki sertifika doğrulaması tarafından belirtildiği gibi, düzeltilme
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -400,7 +400,7 @@ Sertifika isteği oluşturma konusunun sıralı sözlüğünü belirtir.
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |OrderedDictionary   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -415,7 +415,7 @@ Sertifika isteğinin SAN türünü belirtir. Geçerli değerler **çoğulcsr**, 
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |Geçerli değerler:               |' MultipleCSR ', ' SingleCSR ' |
 |İşlem hattı girişini kabul et:      |False    |
@@ -428,31 +428,31 @@ Sertifika istek dosyaları için hedef yolu belirtir. Dizin zaten var olmalıdı
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
 
 ### <a name="-aadserviceadministrator"></a>-AADServiceAdministrator
 
-Azure Stack dağıtımı için kullanılacak Azure Active Directory hizmet yöneticisini belirtir.
+Azure Stack dağıtımı için kullanılacak AAD hizmeti yöneticisini belirtir.
 
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |PSCredential   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
 
 ### <a name="-aaddirectorytenantname"></a>-AADDirectoryTenantName
 
-Azure Stack dağıtımında kullanılacak Azure Active Directory adını belirtir.
+Azure Stack dağıtımı için kullanılacak AAD adını belirtir.
 
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -464,7 +464,7 @@ Azure Stack dağıtım ve kayıt için kullanılacak hesapları, dizinleri ve ab
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |Geçerli değerler:               |' Azurecyüksek ', ' AzureChinaCloud ', ' AzureUSGovernment ' |
 |İşlem hattı girişini kabul et:      |False    |
@@ -477,7 +477,7 @@ Azure Stack kaydı için kullanılacak kayıt hesabını belirtir.
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -489,7 +489,7 @@ Azure Stack kaydı için kullanılacak kayıt abonelik KIMLIĞINI belirtir.
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Guid     |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Yok.     |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -501,7 +501,7 @@ Hazır olma raporunun yolunu belirtir, varsayılan olarak geçerli dizin ve vars
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Tümü      |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -512,18 +512,18 @@ Hazır olma raporunun yolunu belirtir, varsayılan olarak geçerli dizin ve vars
 
 Altında yalnızca sertifika gerekli sertifika klasörlerinin bulunduğu yolu belirtir.
 
-Azure Active Directory Identity System ile Azure Stack dağıtım için gerekli klasörler şunlardır:
+AAD kimlik sistemiyle Azure Stack dağıtım için gerekli klasörler şunlardır:
 
-ACSBlob, ACSQueue, ACSTable, Yönetici portalı, ARM Yöneticisi, ARM genel, Keykasası, Keyvaultınternal, genel Portal
+- ACSBlob, ACSQueue, ACSTable, Yönetici portalı, ARM Yöneticisi, ARM genel, Keykasası, Keyvaultınternal, genel Portal
 
-Active Directory Federasyon Hizmetleri (AD FS) kimlik sistemine sahip Azure Stack dağıtımı için gerekli klasör:
+Active Directory Federasyon Hizmetleri (AD FS) Identity System ile Azure Stack dağıtım için gerekli klasörler şunlardır:
 
-ACSBlob, ACSQueue, ACSTable, ADFS, Yönetici portalı, ARM Yöneticisi, ARM genel, Graf, Keykasası, Keyvaultınternal, genel Portal
+- ACSBlob, ACSQueue, ACSTable, ADFS, Yönetici portalı, ARM Yöneticisi, ARM genel, Graf, Keykasası, Keyvaultınternal, genel Portal
 
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |.\Certificates |
 |İşlem hattı girişini kabul et:      |False    |
 |Joker karakterleri kabul et: |False    |
@@ -535,7 +535,7 @@ PaaS hizmetleri/ana bilgisayar adlarının sertifika isteğine eklenip eklenmeye
 |  |  |
 |----------------------------|------------------|
 |Şunu yazın:                       |SwitchParameter   |
-|Konum:                   |Adlandırılır             |
+|Yerine                   |Adlandırılır             |
 |Varsayılan değer:              |False             |
 |İşlem hattı girişini kabul et:      |False             |
 |Joker karakterleri kabul et: |False             |
@@ -547,7 +547,7 @@ Rapor özetinin yalnızca gösterilip gösterilmeyeceğini belirtir, ayrıntıla
 |  |  |
 |----------------------------|---------|
 |Şunu yazın:                       |Dize   |
-|Konum:                   |Adlandırılır    |
+|Yerine                   |Adlandırılır    |
 |Varsayılan değer:              |Tümü      |
 |Geçerli değerler:               |' Certificate ', ' AzureRegistration ', ' AzureIdentity ', ' Jobs ', ' All ' |
 |İşlem hattı girişini kabul et:      |False    |
@@ -560,7 +560,7 @@ Rapor özetinin yalnızca gösterilip gösterilmeyeceğini belirtir, ayrıntıla
 |  |  |
 |----------------------------|------------------|
 |Şunu yazın:                       |SwitchParameter   |
-|Konum:                   |Adlandırılır             |
+|Yerine                   |Adlandırılır             |
 |Varsayılan değer:              |False             |
 |İşlem hattı girişini kabul et:      |False             |
 |Joker karakterleri kabul et: |False             |
@@ -573,7 +573,7 @@ Rapor özetinin yalnızca gösterilip gösterilmeyeceğini belirtir, ayrıntıla
 |----------------------------|------------------|
 |Şunu yazın:                       |SwitchParameter   |
 |Deyim                    |CF                |
-|Konum:                   |Adlandırılır             |
+|Yerine                   |Adlandırılır             |
 |Varsayılan değer:              |False             |
 |İşlem hattı girişini kabul et:      |False             |
 |Joker karakterleri kabul et: |False             |
@@ -585,7 +585,7 @@ Hazır olma JSON raporu ve ayrıntılı günlük dosyası kaydetmek için özel 
 |  |  |
 |----------------------------|------------------|
 |Şunu yazın:                       |Dize            |
-|Konum:                   |Adlandırılır             |
+|Yerine                   |Adlandırılır             |
 |Varsayılan değer:              |$ENV: TEMP\AzsReadinessChecker  |
 |İşlem hattı girişini kabul et:      |False             |
 |Joker karakterleri kabul et: |False             |
@@ -598,7 +598,7 @@ Cmdlet 'ini çalıştırmadan önce onay ister.
 |----------------------------|------------------|
 |Şunu yazın:                       |SwitchParameter   |
 |Deyim                    |CF                |
-|Konum:                   |Adlandırılır             |
+|Yerine                   |Adlandırılır             |
 |Varsayılan değer:              |False             |
 |İşlem hattı girişini kabul et:      |False             |
 |Joker karakterleri kabul et: |False             |
@@ -611,7 +611,7 @@ Cmdlet çalıştırılıyorsa ne olacağını gösterir. Cmdlet çalıştırılm
 |----------------------------|------------------|
 |Şunu yazın:                       |SwitchParameter   |
 |Deyim                    |Wi                |
-|Konum:                   |Adlandırılır             |
+|Yerine                   |Adlandırılır             |
 |Varsayılan değer:              |False             |
 |İşlem hattı girişini kabul et:      |False             |
 |Joker karakterleri kabul et: |False             |

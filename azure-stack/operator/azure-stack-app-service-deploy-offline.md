@@ -16,12 +16,12 @@ ms.date: 08/29/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 9190a8cb0b42b10710a4abc2671fe8ead3094d9a
-ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
+ms.openlocfilehash: 0147108a2e4fb45fce98460fcde141b5f2e28df5
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70808282"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70975047"
 ---
 # <a name="deploy-app-service-in-an-offline-environment-in-azure-stack"></a>Azure Stack 'de çevrimdışı bir ortamda App Service dağıtma
 
@@ -202,7 +202,7 @@ App Service kaynak sağlayıcısını çevrimdışı Azure Stack dağıtımını
 > [!IMPORTANT]
 > App Service RP 'Yi bir SQL Always on örneğiyle birlikte sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna eklemeli](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve bir hata durumunda hizmet kaybını engellemek için veritabanlarını eşitlemeniz *gerekir* veritabanı yük devretmesi.
 
-Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiğini etkinleştirerek bir giden güvenlik kuralı eklemeniz gerekir. Yönetim portalında, WorkersNsg Network Security grubuna gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiğini etkinleştirerek bir giden güvenlik kuralı eklemeniz gerekir. Yönetici portalında, WorkersNsg Network Security grubuna gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
 - Kaynak: Any
 - Kaynak bağlantı noktası aralığı: *
@@ -216,7 +216,7 @@ Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine d
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Azure Stack yüklemesinde App Service doğrulama
 
-1. Azure Stack yönetim portalında **Yönetim-App Service**' e gidin.
+1. Azure Stack yönetici portalında **Yönetim-App Service**' e gidin.
 
 2. Genel bakışta durum ' ın altında, **durumun** **tüm rolleri**görüntüleyip görüntülemediğini kontrol edin.
 
@@ -229,7 +229,7 @@ App Service kaynak sağlayıcısını dağıttıktan ve kaydettikten sonra, kull
 > [!NOTE]
 > Plan içinde Microsoft. Web ad alanı olan bir teklif oluşturmanız gerekir. Ardından, bu teklifine abone olan bir kiracı aboneliğine sahip olmanız gerekir. Daha fazla bilgi için bkz. [teklif oluşturma](azure-stack-create-offer.md) ve [plan oluşturma](azure-stack-create-plan.md).
 >
-> Azure Stack App Service kullanan uygulamalar oluşturmak için bir kiracı aboneliğiniz olması *gerekir* . Bir hizmet yöneticisinin yönetim portalı içinde tamamlayabilecek tek yetenekler App Service kaynak sağlayıcısı yönetimiyle ilgilidir. Bu yetenekler arasında kapasite ekleme, dağıtım kaynaklarını yapılandırma ve çalışan katmanları ve SKU 'Lar ekleme sayılabilir.
+> Azure Stack App Service kullanan uygulamalar oluşturmak için bir kiracı aboneliğiniz olması *gerekir* . Bir hizmet yöneticisinin Yönetici portalı içinde tamamlayabilecek tek yetenekler App Service kaynak sağlayıcısı yönetimiyle ilgilidir. Bu yetenekler arasında kapasite ekleme, dağıtım kaynaklarını yapılandırma ve çalışan katmanları ve SKU 'Lar ekleme sayılabilir.
 >
 > Üçüncü Teknik Önizleme sürümünden itibaren Web, API ve Azure Işlevleri uygulamaları oluşturmak için kiracı portalını kullanmanız ve bir kiracı aboneliğine sahip olmanız gerekir.
 

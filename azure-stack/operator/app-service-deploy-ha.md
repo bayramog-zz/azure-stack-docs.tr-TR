@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 994291eb0a990521dc932adc63f0ad52d4430e0d
-ms.sourcegitcommit: e2aec63cacfdc830a20a02ee40e715e3c5dfdf22
+ms.openlocfilehash: 77ec512f5e2996aaec53ef77c000d0334bda456a
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386257"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70975224"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Yüksek oranda kullanılabilir bir yapılandırmada App Service dağıtma
 
@@ -73,7 +73,7 @@ Bu şablonu kullanmadan önce, aşağıdaki [Azure Stack Market öğelerinin](az
 
     ![Özel dağıtım oluştur](media/app-service-deploy-ha/4.png)
 
-6. Yönetim portalında, **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnekteki**App-Service-ha** ) seçin. Tüm dağıtımların başarıyla tamamlandığından emin olmak için dağıtımın durumunu görüntüleyin.
+6. Yönetici portalında **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnekteki**App-Service-ha** ) seçin. Tüm dağıtımların başarıyla tamamlandığından emin olmak için dağıtımın durumunu görüntüleyin.
 
    > [!NOTE]
    > Şablon dağıtımının tamamlanmasını yaklaşık bir saat sürer.
@@ -95,7 +95,7 @@ Bu çıkış değerlerinin her birini kaydetmeyi sağlayın:
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. Yönetim portalında, **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnekteki**App-Service-ha** ) seçin. 
+2. Yönetici portalında **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnekteki**App-Service-ha** ) seçin. 
 
 3. **Dağıtımlar** ' a tıklayın ve **Microsoft. Template**' i seçin.
 
@@ -170,7 +170,7 @@ App Service kaynak sağlayıcısını dağıtmak için şu adımları izleyin:
 
     ![App Service için beklenen hata iletişim kutusu](media/app-service-deploy-ha/08.png)
 
-    Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, giden bir güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağı ve dosya sunucusu arasında SMB trafiğine izin vermez. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+    Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, giden bir güvenlik kuralı eklemeniz gerekir. Bu kural, çalışan alt ağı ve dosya sunucusu arasında SMB trafiğine izin vermez. Yönetici portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
     - Kaynak: Any
     - Kaynak bağlantı noktası aralığı: *
     - Hedef: IP Adresleri

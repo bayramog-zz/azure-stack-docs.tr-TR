@@ -16,12 +16,12 @@ ms.date: 09/10/2019
 ms.author: justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 3978ac3339a2bf6a9dd4df770736bca1a21cc5a3
-ms.sourcegitcommit: 38f21e0bcf7b593242ad615c9d8ef8a1ac19c734
+ms.openlocfilehash: 090c532541ffe6ae6221958d395145c5215c3112
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70902658"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974938"
 ---
 # <a name="add-public-ip-addresses"></a>Genel IP adresleri ekleme
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*  
@@ -46,7 +46,7 @@ Yapmanız gereken ilk şey, Azure Stack eklemek istediğiniz adres bloğunu elde
 
 ## <a name="add-the-ip-address-range-to-azure-stack"></a>IP adresi aralığını Azure Stack ekleyin
 
-1. Bir tarayıcıda, yönetim portalı panonuza gidin. Bu örnekte, https://adminportal.local.azurestack.external kullanacağız.
+1. Bir tarayıcıda, Yönetici portalı panonuza gidin. Bu örnekte, https://adminportal.local.azurestack.external kullanacağız.
 2. Azure Stack yönetici portalında Bulut işletmeni olarak oturum açın.
 3. Varsayılan panoda, bölge yönetimi listesini bulun ve yönetmek istediğiniz bölgeyi seçin. Bu örnekte, yerel kullanırız.
 4. Kaynak sağlayıcıları kutucuğunu bulun ve ağ kaynak sağlayıcısına tıklayın.

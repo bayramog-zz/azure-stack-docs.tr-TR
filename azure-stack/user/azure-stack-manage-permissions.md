@@ -3,7 +3,7 @@ title: Rol tabanlı erişim denetimiyle Azure Stack kaynaklara erişimi yönetme
 description: Rol tabanlı erişim denetimi (RBAC) izinlerini Azure Stack bir yönetici veya kiracı olarak yönetmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: bryanla
 manager: femila
 editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
@@ -12,26 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2019
-ms.author: patricka
+ms.date: 09/13/2019
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: a5034e92e52c6da760389d7addc77c6220d59674
-ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
+ms.openlocfilehash: a784da0d16f6ec92a105d9360430f4e8da2817ef
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68376834"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974922"
 ---
 # <a name="manage-access-to-resources-in-azure-stack-with-role-based-access-control"></a>Rol tabanlı erişim denetimiyle Azure Stack kaynaklara erişimi yönetme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack, rol tabanlı erişim denetimi (RBAC), aynı destekler [erişim yönetimi için güvenlik modeli](https://docs.microsoft.com/azure/role-based-access-control/overview) , Microsoft Azure'ı kullanır. Abonelik, kaynak ve hizmetlere Kullanıcı, Grup veya uygulama erişimini yönetmek için RBAC kullanabilirsiniz.
+Azure Stack, rol tabanlı erişim denetimi (RBAC), aynı destekler [erişim yönetimi için güvenlik modeli](/azure/role-based-access-control/overview) , Microsoft Azure'ı kullanır. Abonelik, kaynak ve hizmetlere Kullanıcı, Grup veya uygulama erişimini yönetmek için RBAC kullanabilirsiniz.
 
 ## <a name="basics-of-access-management"></a>Erişim yönetimi ile ilgili temel bilgiler
 
-Rol tabanlı erişim denetimi, ortamınızın güvenliğini sağlamak için kullanabileceğiniz ayrıntılı erişim denetimi sağlar. Belirli bir kapsamda RBAC rolü atayarak kullanıcılara ihtiyaç duydukları tam izinleri verirsiniz. Rol atama kapsamı, bir abonelik, kaynak grubu veya tek bir kaynak olabilir. Okuma [Azure portalında rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview) makalede erişim yönetimi hakkında daha ayrıntılı bilgi almak için.
+Rol tabanlı erişim denetimi (RBAC), ortamınızı güvenli hale getirmek için kullanabileceğiniz ayrıntılı erişim denetimi sağlar. Belirli bir kapsamda RBAC rolü atayarak kullanıcılara ihtiyaç duydukları tam izinleri verirsiniz. Rol atama kapsamı, bir abonelik, kaynak grubu veya tek bir kaynak olabilir. Erişim yönetimi hakkında daha ayrıntılı bilgi için, Azure portal makalesindeki [rol tabanlı Access Control](/azure/role-based-access-control/overview) bakın.
+
+> [!NOTE]
+> Azure Stack, kimlik sağlayıcısı olarak Active Directory Federasyon Hizmetleri (AD FS) kullanılarak dağıtıldığında, RBAC senaryolarında yalnızca evrensel gruplar desteklenir.
 
 ### <a name="built-in-roles"></a>Yerleşik roller
 
@@ -61,7 +64,7 @@ Bir kullanıcı için birden çok rol atayabilirsiniz ve her rol farklı bir kap
 * -1 aboneliğine TestUser-A **okuyucu** rolü atarsınız.
 * TestVM-1 ' e TestUser-A **sahip** rolü atarsınız.
 
-Azure [rol atamaları](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) makale görüntüleme, atama ve rollerin silinmesine hakkında ayrıntılı bilgi sağlar.
+Azure [rol atamaları](/azure/role-based-access-control/role-assignments-portal) makale görüntüleme, atama ve rollerin silinmesine hakkında ayrıntılı bilgi sağlar.
 
 ## <a name="set-access-permissions-for-a-user"></a>Bir kullanıcı için erişim izinlerini ayarlayın
 

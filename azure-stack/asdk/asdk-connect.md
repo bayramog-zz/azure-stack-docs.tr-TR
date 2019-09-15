@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 3f1dd0d7efa2aa9549f65ef97ebb7a589949154b
-ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
+ms.openlocfilehash: 8a9fae5324e20ecd808df1f73dc90555b4802da5
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69579145"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974598"
 ---
 # <a name="connect-to-the-asdk"></a>ASDK 'ye bağlanma
 
@@ -33,7 +33,7 @@ Kaynakları yönetmek için önce Azure Stack Geliştirme Seti (ASDK) ' e bağla
 <a name="connect-with-rdp"></a>
 ## <a name="connect-to-azure-stack-using-rdp"></a>RDP kullanarak Azure Stack bağlanma
 
-Tek bir eşzamanlı kullanıcı Azure Stack yönetici portalındaki veya Kullanıcı portalındaki kaynakları doğrudan ASDK ana bilgisayarından Uzak Masaüstü Bağlantısı aracılığıyla yönetebilir.
+Tek bir eşzamanlı kullanıcı, Azure Stack yönetici portalındaki veya Kullanıcı portalındaki kaynakları doğrudan ASDK ana bilgisayarından Uzak Masaüstü Bağlantısı aracılığıyla yönetebilir.
 
 > [!TIP]
 > Bu seçenek ayrıca, asdk ana bilgisayarında oluşturulan sanal makinelerde (VM) oturum açmak için, ASDK ana bilgisayarında oturum açarken RDP 'yi yeniden kullanmanızı da sağlar.
@@ -127,7 +127,7 @@ Kurulum başarılı olursa VPN bağlantıları listenizde **Azure Stack** görü
 
 ### <a name="test-vpn-connectivity"></a>VPN bağlantısını sına
 
-Portal bağlantısını test etmek için bir tarayıcı açın ve ardından Kullanıcı portalına (https://portal.local.azurestack.external/) veya yönetim portalı 'na (https://adminportal.local.azurestack.external/) ) gidin. 
+Portal bağlantısını test etmek için bir tarayıcı açın ve ardından Kullanıcı Portalı 'na (https://portal.local.azurestack.external/) ya da yönetici portalına (https://adminportal.local.azurestack.external/) ) gidin.
 
 Kaynakları oluşturmak ve yönetmek için uygun abonelik kimlik bilgileriyle oturum açın.  
 

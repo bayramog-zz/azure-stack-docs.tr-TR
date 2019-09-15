@@ -15,12 +15,12 @@ ms.date: 09/10/2019
 ms.author: mabriggs
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 2153a91bcf833386ef5884a9fd4e7c0fc759c01b
-ms.sourcegitcommit: dc633e862d49412a963daee481226c1543287e5e
+ms.openlocfilehash: 3d760e981f3dd298284b10ed56c4c6ace683f49b
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70863068"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974785"
 ---
 # <a name="install-azure-stack-updates"></a>Azure Stack güncelleştirmelerini yükler
 
@@ -28,7 +28,7 @@ ms.locfileid: "70863068"
 
 Güncelleştirme paketlerini Azure Stack **güncelleştirme** dikey penceresini kullanarak yükleyebilirsiniz. Bu makalede güncelleştirme işlemini güncelleştirme, izleme ve sorun giderme adımları adım adım açıklanmaktadır. Güncelleştirme bilgilerini görüntülemek, güncelleştirmeleri yüklemek, güncelleştirme ilerlemesini izlemek, güncelleştirme geçmişini gözden geçirmek ve geçerli Azure Stack ile OEM paketi sürümünü görüntülemek için güncelleştirme dikey penceresini kullanın.
 
-Yönetim portalından güncelleştirmeleri yönetebilir ve panonun **güncelleştirmeler** bölümünü kullanarak şunları yapabilirsiniz:
+Güncelleştirmeleri yönetici portalından yönetebilir ve panonun **güncelleştirmeler** bölümünü kullanarak şunları yapabilirsiniz:
 
 - Geçerli sürüm gibi önemli bilgileri görüntüleyin.
 - Güncelleştirmeleri yükler ve ilerlemeyi izleyin.
@@ -75,7 +75,7 @@ Güncel Azure Stack sürümünü **güncelleştirmeler** dikey penceresinde gör
 
 ## <a name="review-update-history"></a>Güncelleştirme geçmişini gözden geçirme
 
-1. Yönetim portalını açın.
+1. Yönetici portalını açın.
 
 2. **Pano**seçeneğini belirleyin. **Güncelleştir**' i seçin.
 

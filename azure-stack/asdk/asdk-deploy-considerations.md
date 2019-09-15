@@ -16,12 +16,12 @@ ms.date: 05/13/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 05/13/2019
-ms.openlocfilehash: 691eac0c76763dcaae60aa6946c5dcbc479486a6
-ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
+ms.openlocfilehash: 0e5a4e41e4650de8e3cebe7d33b9638890d5bd99
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69579010"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974563"
 ---
 # <a name="asdk-requirements-and-considerations"></a>ASDK gereksinimleri ve konuları
 
@@ -100,7 +100,7 @@ Ortamınız internet 'e bağlı değilse veya Azure AD 'yi kullanmak istemiyorsa
 > AD FS seçeneğini kullanarak dağıtırsanız, Azure AD 'ye geçiş yapmak için Azure Stack yeniden dağıtmanız gerekir.
 
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory hesapları
-Azure Stack bir Azure AD hesabı kullanarak dağıtmak için, dağıtım PowerShell betiğini çalıştırmadan önce bir Azure AD hesabı hazırlamanız gerekir. Bu hesap, Azure AD kiracısı için genel yönetici olur. Azure AD ve Graph API etkileşime geçen tüm Azure Stack Hizmetleri için uygulama ve hizmet sorumlularını sağlamak ve devretmek için kullanılır. Bu, varsayılan sağlayıcı Aboneliğinin sahibi olarak da kullanılır (daha sonra değiştirebilirsiniz). Bu hesabı kullanarak Azure Stack sisteminizin yönetim portalında oturum açabilirsiniz.
+Azure Stack bir Azure AD hesabı kullanarak dağıtmak için, dağıtım PowerShell betiğini çalıştırmadan önce bir Azure AD hesabı hazırlamanız gerekir. Bu hesap, Azure AD kiracısı için genel yönetici olur. Azure AD ve Graph API etkileşime geçen tüm Azure Stack Hizmetleri için uygulama ve hizmet sorumlularını sağlamak ve devretmek için kullanılır. Bu, varsayılan sağlayıcı Aboneliğinin sahibi olarak da kullanılır (daha sonra değiştirebilirsiniz). Bu hesabı kullanarak Azure Stack sisteminizin yönetici portalında oturum açabilirsiniz.
 
 1. En az bir Azure AD için Dizin Yöneticisi olan bir Azure AD hesabı oluşturun. Zaten bir hesabınız varsa bu hesabı kullanabilirsiniz. Aksi takdirde, adresinden [https://azure.microsoft.com/free/](https://azure.microsoft.com/free/) ücretsiz olarak bir tane oluşturabilirsiniz (Çin 'de, bunun yerine adresini ziyaret edin <https://go.microsoft.com/fwlink/?LinkID=717821> ). Daha sonra [Azure Stack Azure ile kaydetmeyi](asdk-register.md)planlıyorsanız, bu yeni oluşturulan hesapta da bir aboneliğiniz olması gerekir.
    

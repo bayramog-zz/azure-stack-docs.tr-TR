@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 43ee38c18e2831d1cb96958501cee6f77292edd0
-ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
+ms.openlocfilehash: b01199bfe96c39fe79aac65eca219a065f39375c
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271675"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70975020"
 ---
 # <a name="add-workers-and-infrastructure-in-app-service-on-azure-stack"></a>Azure Stack App Service çalışanları ve altyapıyı ekleme
 
@@ -75,7 +75,7 @@ Azure Stack Azure App Service, sanal makine ölçek kümeleri kullanarak tüm ro
 
 3. App Service yönetiminde yeni rol örneklerinin durumunu izleyin. Tek bir rol örneğinin durumunu denetlemek için listedeki rol türüne tıklayın.
 
-## <a name="add-additional-workers-using-the-admin-portal"></a>Yönetici portalını kullanarak ek çalışanlar ekleyin
+## <a name="add-additional-workers-using-the-administrator-portal"></a>Yönetici portalını kullanarak ek çalışanlar ekleyin
 
 1. Hizmet Yöneticisi olarak Azure Stack yönetici portalında oturum açın.
 
@@ -91,7 +91,7 @@ Azure Stack Azure App Service, sanal makine ölçek kümeleri kullanarak tüm ro
 
 5. **Ölçeklendirme**' ye tıklayın, ölçeklendirmek istediğiniz örneklerin sayısını seçin ve ardından **Kaydet**' e tıklayın.
 
-    ![Azure Stack yönetim portalındaki App Service roller olarak ölçeklendirmek için örnekler ayarlama](media/azure-stack-app-service-add-worker-roles/image03.png)
+    ![Azure Stack yönetici portalındaki App Service roller olarak ölçeklendirmek için örnekler ayarlama](media/azure-stack-app-service-add-worker-roles/image03.png)
 
 6. Azure Stack App Service artık ek VM 'Leri ekleyecek, yapılandırıp, gerekli tüm yazılımları yükleyecek ve bu işlem tamamlandığında bunları hazır olarak işaretleyecek. Bu işlem yaklaşık 80 dakika sürebilir.
 

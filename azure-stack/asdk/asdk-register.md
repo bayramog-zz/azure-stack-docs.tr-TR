@@ -15,12 +15,12 @@ ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 06/14/2019
-ms.openlocfilehash: 886271e99b10d3fec0801f977a693a01e59fc0a5
-ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
+ms.openlocfilehash: 2dea14ab5d43aab8deab2632b07277d7094e33c4
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70025857"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974613"
 ---
 # <a name="register-the-asdk-with-azure"></a>ASDK 'yi Azure ile kaydetme
 
@@ -164,7 +164,7 @@ Alternatif olarak, **Get-Content** cmdlet 'ini kullanarak kayıt belirtecinizi i
 Kayıt tamamlandığında şuna benzer bir ileti görmeniz gerekir: **Azure Stack ortamınız artık Azure 'a kayıtlı.**
 
 > [!IMPORTANT]
-> PowerShell penceresini kapatmayın.
+> PowerShell **penceresini kapatmayın.**
 
 Daha sonra başvurmak üzere kayıt belirtecini ve kayıt kaynağı adını kaydedin.
 
@@ -215,18 +215,18 @@ Etkinleştirme tamamlandığında şuna benzer bir ileti görmeniz gerekir: **Or
 
 ## <a name="verify-the-registration-was-successful"></a>Kaydın başarılı olduğunu doğrulayın
 
-Azure Stack kaydın başarılı olduğunu doğrulamak için **Bölge yönetimi** kutucuğunu kullanabilirsiniz. Bu kutucuk, yönetim portalındaki varsayılan panoda bulunur.
+Azure Stack kaydın başarılı olduğunu doğrulamak için **Bölge yönetimi** kutucuğunu kullanabilirsiniz. Bu kutucuk, yönetici portalındaki varsayılan panoda bulunur.
 
 1. [Azure Stack yönetici portalında](https://adminportal.local.azurestack.external)oturum açın.
 
 2. Panodan **Bölge yönetimi**' ni seçin.
 
-    [![Azure Stack yönetim portalı 'Nda bölge yönetimi kutucuğu](media/asdk-register/admin1sm.png "Bölge yönetimi kutucuğu")](media/asdk-register/admin1.png#lightbox)
+    [![Azure Stack yönetici portalında bölge yönetimi kutucuğu](media/asdk-register/admin1sm.png "Bölge yönetimi kutucuğu")](media/asdk-register/admin1.png#lightbox)
 
 3. Seçin **özellikleri**. Bu dikey pencere, ortamınızın durumunu ve ayrıntılarını gösterir. Durum **kaydedilebilir** veya **kaydettirilmemiş**olabilir. Kaydolduysanız, kayıt kaynak grubu ve adıyla birlikte Azure Stack kaydetmek için kullandığınız Azure abonelik KIMLIĞINI de gösterir.
 
 ## <a name="move-a-registration-resource"></a>Kayıt kaynağını taşıma
-Aynı abonelik altındaki kaynak grupları arasında bir kayıt kaynağını taşıma desteklenir . Kaynakları yeni bir kaynak grubuna taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+Aynı abonelik altındaki kaynak grupları arasında bir kayıt kaynağını **taşıma desteklenir.** Kaynakları yeni bir kaynak grubuna taşıma hakkında daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 8fec1b3702aa7c8c55f1a90167b1ac13f0ac8847
-ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
+ms.openlocfilehash: a72879303b80a1265450019d6b264085a8539387
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271768"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974984"
 ---
 # <a name="add-a-vm-image-to-azure-stack"></a>Azure Stack bir VM görüntüsü ekleme
 
@@ -66,7 +66,7 @@ Görüntülere bir BLOB depolama URI 'SI tarafından başvurulabilmelidir. Bir W
 
 ## <a name="remove-a-vm-image-through-the-portal"></a>Portal aracılığıyla VM görüntüsünü kaldırma
 
-1. Yönetim portalını adresinde [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external)açın.
+1. Üzerinde [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external)Yönetici portalını açın.
 
 2. **Market yönetimi**' ni seçin ve ardından sılmek istediğiniz VM 'yi seçin.
 

@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 891727c8e80af479e800feef9c292f7355fb208c
-ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
+ms.openlocfilehash: 3fa6d124722d45d727525820b6a99d408f0d2350
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842696"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70975161"
 ---
 # <a name="vm-update-and-management-automation-in-azure-stack"></a>Azure Stack 'de VM güncelleştirme ve yönetim Otomasyonu
 Azure Stack kullanılarak dağıtılan Windows ve Linux sanal makinelerini (VM 'Ler) yönetmek için aşağıdaki Azure Otomasyonu çözüm özelliklerini kullanın:
@@ -44,7 +44,7 @@ Azure Stack VM 'Leri güncelleştirmek ve yönetmek için bu özellikler kullan�
 Azure Stack VM 'Ler için VM'ler için Azure İzleyici, envanter, Değişiklik İzleme ve Güncelleştirme Yönetimi Azure Otomasyonu özelliklerini kullanmak için, önce bu çözümleri Azure 'da etkinleştirmeniz gerekir.
 
 > [!TIP]
-> Bu özellikleri Azure VM 'Ler için zaten etkinleştirdiyseniz, önceden var olan LogAnalytics çalışma alanı kimlik bilgilerinizi kullanabilirsiniz. Kullanmak istediğiniz bir LogAnalytics çalışma alanı kimliği ve birincil anahtarınız zaten varsa, [sonraki bölüme](./vm-update-management.md#in-the-azure-stack-admin-portal)atlayın. Aksi takdirde, yeni bir LogAnalytics çalışma alanı ve Otomasyon hesabı oluşturmak için bu bölümde devam edin.
+> Bu özellikleri Azure VM 'Ler için zaten etkinleştirdiyseniz, önceden var olan LogAnalytics çalışma alanı kimlik bilgilerinizi kullanabilirsiniz. Kullanmak istediğiniz bir LogAnalytics çalışma alanı kimliği ve birincil anahtarınız zaten varsa, [sonraki bölüme](./vm-update-management.md#in-the-azure-stack-administrator-portal)atlayın. Aksi takdirde, yeni bir LogAnalytics çalışma alanı ve Otomasyon hesabı oluşturmak için bu bölümde devam edin.
 
 Bu çözümleri etkinleştirmenin ilk adımı, Azure aboneliğinizde [bir LogAnalytics çalışma alanı oluşturmaktır](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) . Log Analytics çalışma alanı, kendi veri deposu, veri kaynakları ve çözümleri olan benzersiz bir Azure Izleyici günlükleri ortamıdır. Bir çalışma alanı oluşturduktan sonra, çalışma alanı kimliği ve anahtarı ' nı aklınızda bulabilirsiniz. Bu bilgileri görüntülemek için çalışma alanı Dikey penceresine gidin, **Gelişmiş ayarlar**' a tıklayın ve **çalışma alanı kimliğini** ve **birincil anahtar** değerlerini gözden geçirin. 
 
@@ -76,7 +76,7 @@ Bir çözüm olarak VM'ler için Azure İzleyici, şirket içinde veya başka bi
 
 Log Analytics çalışma alanı oluşturulduktan sonra, Linux ve Windows VM 'lerinde koleksiyon için çalışma alanındaki performans sayaçlarını etkinleştirin. Ardından, ServiceMap ve InfrastructureInsights çözümünü çalışma alanınıza yükleyip etkinleştirin. İşlem, [dağıtım VM'ler için Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) kılavuzunda açıklanmaktadır.
 
-### <a name="in-the-azure-stack-admin-portal"></a>Azure Stack yönetici portalında
+### <a name="in-the-azure-stack-administrator-portal"></a>Azure Stack yönetici portalında
 Azure portal Azure Otomasyonu çözümlerini etkinleştirdikten sonra, bir sonraki adımda Azure Stack yönetici portalında bir bulut Yöneticisi olarak oturum açmanız ve **Azure izleyici, güncelleştirme ve yapılandırma yönetimi** Ile **Azure izleyici, güncelleştirme ve güncelleştirmeleri indirmeniz gerekir Azure Stack marketi 'nde Linux uzantısı için yapılandırma yönetimi** .
 
    ![Azure Izleyici, güncelleştirme ve yapılandırma yönetimi uzantısı Market öğesi](media/vm-update-management/2.PNG) 

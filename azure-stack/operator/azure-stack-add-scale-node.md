@@ -16,12 +16,12 @@ ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: ab06f5d3674000733227894a5a69778d90c29d48
-ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
+ms.openlocfilehash: 9b28d6b55530de6716fd7781b4c7894cbc859288
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70118747"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974992"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Azure Stack ek ölçek birimi düğümleri ekleyin
 
@@ -60,7 +60,7 @@ Aşağıdaki adımlar, bir düğüm ekleme hakkında üst düzey bir genel bakı
 
 Yeni düğümler eklemek için Yönetici portalı veya PowerShell kullanabilirsiniz. Düğüm Ekle işlemi önce yeni ölçek birimi düğümünü kullanılabilir işlem kapasitesi olarak ekler ve ardından depolama kapasitesini otomatik olarak genişletir. *İşlem* ve *depolama* ölçeğinin birlikte Azure Stack hiper yakınsanmış bir sistem olduğundan, kapasite otomatik olarak genişletilir.
 
-### <a name="use-the-admin-portal"></a>Yönetici portalını kullanma
+### <a name="use-the-administrator-portal"></a>Yönetici portalını kullanma
 
 1. Azure Stack yönetici portalında Azure Stack işleci olarak oturum açın.
 2. **+ Kaynak** > kapasitesiölçek > **birimi düğümü**oluştur ' a gidin.
@@ -87,9 +87,9 @@ Aşağıdaki örnek PowerShell betiklerinden birini kullanmadan önce, değer *d
   ```  
 
 ## <a name="monitor-add-node-operations"></a>Düğüm ekleme işlemlerini izleme 
-Düğüm ekleme işleminin durumunu almak için yönetim portalı 'nı veya PowerShell 'i kullanın. Düğüm ekleme işlemlerinin tamamlanması birkaç saat sürebilir.
+Düğüm ekleme işleminin durumunu almak için Yönetici portalı 'nı veya PowerShell 'i kullanın. Düğüm ekleme işlemlerinin tamamlanması birkaç saat sürebilir.
 
-### <a name="use-the-admin-portal"></a>Yönetici portalını kullanma 
+### <a name="use-the-administrator-portal"></a>Yönetici portalını kullanma 
 Yeni bir düğümün eklenmesini izlemek için, yönetim portalındaki ölçek birimini veya ölçek birimi düğüm nesnelerini gözden geçirin. Bunu yapmak için **Bölge yönetimi** > **ölçek birimleri**' ne gidin. Ardından, gözden geçirmek istediğiniz ölçek birimini veya ölçek birimi düğümünü seçin. 
 
 ### <a name="use-powershell"></a>PowerShell kullanma

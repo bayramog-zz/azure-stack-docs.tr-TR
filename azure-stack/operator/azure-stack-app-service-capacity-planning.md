@@ -16,12 +16,12 @@ ms.date: 03/13/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: 45fddcb71781f11cdab600200631737d284935d9
-ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
+ms.openlocfilehash: 80dc7bae2371025fba82531b08216606580176e1
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271693"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70975195"
 ---
 # <a name="capacity-planning-for-app-service-server-roles-in-azure-stack"></a>Azure Stack App Service sunucu rolleri için kapasite planlaması
 
@@ -99,7 +99,7 @@ Kullanılacak paylaşılan Web çalışanı rollerinin sayısına karar verirken
 
 Yükseltme ve bakım sırasında Azure App Service, iş yüklerinin çalışmaya devam edebilmesini sağlamak için iş yüklerini ayrılmamış çalışanlara taşıyacaktır. Bununla birlikte, yükseltme sırasında kullanılabilir ayrılmamış çalışan yoksa, kiracı iş yükü kapalı kalma süresi de vardır. Paylaşılan çalışanlara göre, müşteriler, kiracı uygulamalarını otomatik olarak kullanılabilir çalışanlar içinde ayırabilecek şekilde müşterilerin ek çalışanlar sağlaması gerekmez. Yüksek kullanılabilirlik için, bu katmanda iki çalışan olması gereken en düşük gereksinimdir.
 
-Bulut yöneticileri, Azure Stack yönetim portalındaki App Service yönetici alanında çalışan katmanı ayırmasını izleyebilir. App Service gidin ve sol bölmedeki çalışan katmanları ' nı seçin. Çalışan katmanları tablosu, çalışan katmanı adını, boyutunu, kullanılan resmi, kullanılabilir çalışan sayısını (ayrılmamış), her katmanda toplam çalışan sayısını ve çalışan katmanının genel durumunu gösterir.
+Bulut yöneticileri, Azure Stack yönetici portalındaki App Service yönetici alanında çalışan katmanı ayırmasını izleyebilir. App Service gidin ve sol bölmedeki çalışan katmanları ' nı seçin. Çalışan katmanları tablosu, çalışan katmanı adını, boyutunu, kullanılan resmi, kullanılabilir çalışan sayısını (ayrılmamış), her katmanda toplam çalışan sayısını ve çalışan katmanının genel durumunu gösterir.
 
 ![App Service yönetimi-çalışan katmanları][1]
 

@@ -16,12 +16,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: b92fcd3f729bf068dd578893f24f1c7fa66bbcff
-ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
+ms.openlocfilehash: 9098fb61c0d4edcb534bd7b9d07b4727c953df8d
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70808138"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974900"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service Azure Stack güncelleştirme 4 sürüm notları
 
@@ -42,7 +42,7 @@ Dağıtıma başlamadan önce [Azure Stack App Service dağıtmaya yönelik önk
 
 Azure App Service Azure Stack 1,4 sürümüne yükseltmeye başlamadan önce:
 
-- Tüm rollerin, Azure Stack yönetim portalındaki Azure App Service yönetimi için kullanılabilir olduğundan emin olun.
+- Tüm rollerin Azure Stack yönetici portalındaki Azure App Service yönetimi için kullanılabilir olduğundan emin olun.
 
 - App Service ve ana veritabanlarını yedekleyin:
   - AppService_Hosting;
@@ -207,7 +207,7 @@ Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir verit
 
 - Mevcut bir sanal ağda App Service dağıtıldığında ve dosya sunucusu yalnızca özel ağda kullanılabilir olduğunda çalışanlar dosya sunucusuna ulaşamamakta olur. Bu sorun Azure Stack dağıtım belgelerindeki Azure App Service çağırılır.
 
-Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
+Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetici portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
  * Kaynak: Any
  * Kaynak bağlantı noktası aralığı: *

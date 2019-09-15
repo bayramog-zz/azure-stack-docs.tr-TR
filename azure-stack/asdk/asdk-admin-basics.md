@@ -16,12 +16,12 @@ ms.date: 02/19/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2982012901b410b9e6e3830aa24fe4c62be8aa4c
-ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
+ms.openlocfilehash: 1074f359063855ef5f80ef6f1e3807b87184a4ca
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69579052"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974876"
 ---
 # <a name="asdk-admin-basics"></a>ASDK Yönetim Temelleri
 Azure Stack Geliştirme Seti (ASDK) yönetimi için yeni başladığınızı bilmeniz gereken birkaç nokta vardır. Bu kılavuz, değerlendirme ortamında rolünüze bir Azure Stack işletmeni olarak bir genel bakış sağlar. Bu bilgiyle kendinizi alıştırarak, test kullanıcılarınızın mümkün olduğunca hızlı bir şekilde üretken hale gelmesini sağlar.
@@ -42,12 +42,12 @@ Azure Stack yönetirken dikkat etmeniz gereken birkaç hesap dikkate alınması 
 |
 
 ## <a name="what-tools-do-i-use-to-manage"></a>Yönetmek için hangi araçları kullanabilirim?
-Azure Stack yönetmek için [Azure Stack yönetim portalını](https://adminportal.local.azurestack.external) veya PowerShell 'i kullanabilirsiniz. Temel kavramları öğrenmenin en kolay yolu Portal üzerinden yapılır. PowerShell 'i kullanmak istiyorsanız, [Azure Stack Için PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) 'i yüklemeniz ve [Azure Stack araçlarını GitHub 'dan indirmeniz](asdk-post-deploy.md#download-the-azure-stack-tools)gerekir.
+Azure Stack yönetmek için [Azure Stack Yönetici portalını](https://adminportal.local.azurestack.external) veya PowerShell 'i kullanabilirsiniz. Temel kavramları öğrenmenin en kolay yolu Portal üzerinden yapılır. PowerShell 'i kullanmak istiyorsanız, [Azure Stack Için PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) 'i yüklemeniz ve [Azure Stack araçlarını GitHub 'dan indirmeniz](asdk-post-deploy.md#download-the-azure-stack-tools)gerekir.
 
 Azure Stack, temel aldığı dağıtım, yönetim ve kuruluş mekanizması olarak Azure Resource Manager kullanır. Azure Stack yönetiyoruz ve kullanıcıları desteklemeye yardımcı olmaya devam ediyorsanız, Azure Resource Manager hakkında bilgi almanız gerekir. [Azure Resource Manager Ile çalışmaya başlama teknik](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)incelemesini okuyarak daha fazla bilgi edinebilirsiniz.
 
 ## <a name="your-typical-responsibilities"></a>Tipik sorumluluklarınız
-Kullanıcılarınız hizmetleri kullanmak istiyor. Perspektifinden, ana rolünüzün bu hizmetleri kendileri için kullanılabilir hale getirmek gerekir. ASDK 'yi kullanarak hangi hizmetlerin sunduğunu ve [planlar, teklifler ve Kotalar oluşturarak](../operator/azure-stack-tutorial-tenant-vm.md)bu hizmetleri nasıl kullanılabilir hale ayarlayacağınızı öğrenebilirsiniz. Ayrıca, sanal makine (VM) görüntüleri gibi Market 'e öğe eklemeniz gerekir. En kolay yol, [Market öğelerini](../operator/azure-stack-create-and-publish-marketplace-item.md) Azure 'dan Azure Stack 'e indirmenin en kolay yoludur.
+Kullanıcılarınız hizmetleri kullanmak istiyor. Perspektifinden, ana rolünüzün bu hizmetleri kendileri için kullanılabilir hale getirmek gerekir. ASDK 'yi kullanarak hangi hizmetlerin sunduğunu ve [planlar, teklifler ve Kotalar oluşturarak](../operator/azure-stack-tutorial-tenant-vm.md)bu hizmetleri nasıl kullanılabilir hale ayarlayacağınızı öğrenebilirsiniz. Ayrıca, sanal makine (VM) görüntüleri gibi Market 'e öğe eklemeniz gerekir. En kolay yol, Market öğelerini Azure 'dan Azure Stack 'e [indirmenin](../operator/azure-stack-create-and-publish-marketplace-item.md) en kolay yoludur.
 
 > [!NOTE]
 > Planlarınızı, tekliflerinizi ve hizmetlerinizi test etmek isterseniz, [Kullanıcı portalını](https://portal.local.azurestack.external)kullanmanız gerekir; [Yönetici portalı](https://adminportal.local.azurestack.external)değildir.
@@ -62,7 +62,7 @@ Hizmetleri sağlamaya ek olarak, bir Azure Stack Işlecinin tüm olağan görevl
 ## <a name="where-to-get-support"></a>Nereden destek alınacağı
 ASDK için, [Azure Stack MSDN forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)destekle ilgili sorularınızı sorabilirsiniz.
 
-Ayrıca, yönetim portalının sağ üst köşesindeki **Yardım** (soru işareti) seçeneğine tıklayarak forumlara erişebilirsiniz. Ardından Yardım + destek ' e tıklayarak yardım + destek' i açın ve bu da forumuna bir bağlantı içerir. MSDN forumları düzenli olarak izlenir.  
+Ayrıca, yönetici portalının sağ üst köşesindeki **Yardım** (soru işareti) seçeneğine tıklayarak forumlara erişebilirsiniz. Ardından Yardım + Destek ' **e tıklayarak yardım** + destek ' i **açın ve bu**da forumuna bir bağlantı içerir. MSDN forumları düzenli olarak izlenir.  
 
 > [!IMPORTANT]
 > ASDK bir değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) ile sunulan resmi bir destek yoktur.
