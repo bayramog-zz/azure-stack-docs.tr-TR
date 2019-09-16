@@ -1,6 +1,6 @@
 ---
-title: Azure Stack yedekleme | Microsoft Docs
-description: İsteğe bağlı yedekleme yerinde yedekleme ile Azure Stack üzerinde gerçekleştirin.
+title: Yedekleme Azure Stack | Microsoft Docs
+description: Azure Stack üzerinde isteğe bağlı yedekleme yapmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,38 +16,38 @@ ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: a572275ff81918d1b8f739a99fbe7a57784d0651
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 01a4ff62b7cc340a0cf0f98298ee28425d6df892
+ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66269014"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70974745"
 ---
 # <a name="back-up-azure-stack"></a>Azure yığını yedekleme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack üzerinde talep üzerine yedekleme gerçekleştirin. PowerShell ortamını yapılandırma ile ilgili yönergeler için bkz: [Azure Stack için PowerShell yükleme](azure-stack-powershell-install.md). Azure Stack'e oturum açmak için bkz: [Yönetici portalını kullanarak Azure Stack'te](azure-stack-manage-portals.md).
+Bu makalede, Azure Stack bir isteğe bağlı yedeklemenin nasıl yapılacağı gösterilmektedir. PowerShell ortamını yapılandırma hakkında yönergeler için bkz. [Azure Stack Için PowerShell 'ı yükler](azure-stack-powershell-install.md). Azure Stack oturum açmak için, bkz. [Azure Stack 'da Yönetici portalını kullanma](azure-stack-manage-portals.md).
 
-## <a name="start-azure-stack-backup"></a>Azure Stack yedekleme Başlat
+## <a name="start-azure-stack-backup"></a>Azure Stack Yedeklemeyi Başlat
 
-### <a name="start-a-new-backup-without-job-progress-tracking"></a>Yeni bir yedekleme iş ilerleme durumunu izlemeyi başlatın
-Yeni bir yedekleme işi ilerleme izleme ile hemen başlatmak için başlangıç AzSBackup kullanın.
+### <a name="start-a-new-backup-without-job-progress-tracking"></a>İş ilerlemesi izleme olmadan yeni bir yedekleme Başlat
+İş ilerlemesi izleme olmadan hemen yeni bir yedekleme başlatmak için Start-AzSBackup komutunu kullanın.
 
 ```powershell
    Start-AzsBackup -Force
 ```
 
-### <a name="start-azure-stack-backup-with-job-progress-tracking"></a>Azure Stack yedekleme işi ilerleme durumu izleme Başlat
-Yeni bir yedekleme başlatmak için başlangıç AzSBackup kullanın **- AsJob** parametresi ve yedekleme işinin ilerleme durumunu izlemek için bir değişken olarak kaydedin.
+### <a name="start-azure-stack-backup-with-job-progress-tracking"></a>İş ilerleme durumu izleme ile Azure Stack Yedeklemeyi başlatma
+**-AsJob** parametresiyle yeni bir yedekleme başlatmak ve yedekleme işinin ilerlemesini izlemek için bir değişken olarak kaydetmek için Start-AzSBackup kullanın.
 
 > [!NOTE]
-> Yedekleme işi başarıyla görünür portalda yaklaşık 10-15 işi tamamlayacak dakika önce tamamlandı.
+> Yedekleme işiniz, portalda işlem tamamlanmadan önce 10-15 dakika boyunca başarıyla tamamlandı olarak görünür.
 >
-> Bu nedenle, gerçek durum kodu aracılığıyla daha iyi dikkate alınır.
+> Asıl durum aşağıdaki kodla daha iyi gözlemlenmiştir.
 
 > [!IMPORTANT]
-> İlk 1 milisaniyelik gecikme kod işi doğru olarak kaydetmek hızlı olduğundan ve olmadan geri gelir sunulan **PSBeginTime** ve sırayla içermeyen **durumu** iş.
+> İlk 1 milisaniyelik gecikme, kod işi doğru bir şekilde kaydetmek için çok hızlı olduğundan ve **Psbegintime** olmadan geri dönüp ve işin **durumu** olmadan geri geldiğinden ortaya çıkarılmıştır.
 
 ```powershell
     $BackupJob = Start-AzsBackup -Force -AsJob
@@ -83,10 +83,10 @@ Yeni bir yedekleme başlatmak için başlangıç AzSBackup kullanın **- AsJob**
     }
 ```
 
-## <a name="confirm-backup-has-completed"></a>Yedekleme tamamlandı onaylayın
+## <a name="confirm-backup-has-completed"></a>Yedeklemenin tamamlandığını onaylayın
 
-### <a name="confirm-backup-has-completed-using-powershell"></a>PowerShell kullanarak yedekleme gerçekleştirilene onaylayın
-Yedekleme başarıyla tamamlandığından emin olmak için aşağıdaki PowerShell komutlarını kullanın:
+### <a name="confirm-backup-has-completed-using-powershell"></a>Yedeklemenin PowerShell kullanılarak tamamlandığını onaylayın
+Yedeklemenin başarıyla tamamlandığından emin olmak için aşağıdaki PowerShell komutlarını kullanın:
 
 ```powershell
    Get-AzsBackup
@@ -111,14 +111,14 @@ Sonuç aşağıdaki çıktı gibi görünmelidir:
     Tags              : {}
 ```
 
-### <a name="confirm-backup-has-completed-in-the-administration-portal"></a>Yönetim Portalı'nda yedekleme gerçekleştirilene onaylayın
-Aşağıdaki adımları izleyerek bu Yedekleme başarıyla tamamlandığını doğrulayın için Azure Stack yönetim portalını kullanın:
+### <a name="confirm-backup-has-completed-in-the-administrator-portal"></a>Yönetici portalında yedeklemenin tamamlandığını onaylayın
+Aşağıdaki adımları izleyerek yedeklemenin başarıyla tamamlandığını doğrulamak için Azure Stack Yönetici portalını kullanın:
 
-1. Açık [Azure Stack Yönetim Portalı](azure-stack-manage-portals.md).
-2. Seçin **tüm hizmetleri**ve ardından altındaki **Yönetim** kategorisi seçin > **altyapı yedeklemesine**. Seçin **yapılandırma** içinde **altyapı yedeklemesine** dikey penceresi.
-3. Bulma **adı** ve **tamamlanma tarihi** yedeğin **kullanılabilir yedekler** listesi.
-4. Doğrulama **durumu** olduğu **başarılı**.
+1. [Azure Stack Yönetici portalı](azure-stack-manage-portals.md)' nı açın.
+2. **Tüm hizmetler**' i seçin ve ardından **yönetim** kategorisinin altında > **altyapı yedeklemesi**' ni seçin. **Altyapı yedeklemesi** dikey penceresinde **yapılandırma** ' yı seçin.
+3. **Kullanılabilir yedeklemeler** listesinde yedeklemenin **tamamlanma** **adını** ve tarihini bulun.
+4. **Durumun** **başarılı**olduğunu doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İş akışı hakkında daha fazla bilgi [bir veri kaybı olayından kurtarma](azure-stack-backup-recover-data.md).
+[Veri kaybı olayından kurtarmak](azure-stack-backup-recover-data.md)için iş akışı hakkında daha fazla bilgi edinin.
