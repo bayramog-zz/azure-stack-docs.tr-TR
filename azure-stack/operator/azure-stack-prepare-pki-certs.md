@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 09/16/2019
 ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 09/10/2019
-ms.openlocfilehash: 6b7d7a3e70d78b8ab943224babc515395319914e
-ms.sourcegitcommit: 38f21e0bcf7b593242ad615c9d8ef8a1ac19c734
+ms.lastreviewed: 09/16/2019
+ms.openlocfilehash: 38175eee8be9b8f678405e0ad1ec6f01bdba8b77
+ms.sourcegitcommit: ca5025fb04250271fe0b2b2df8ad0b3b9ed3e604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70902729"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71020858"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Azure Stack PKI sertifikalarını dağıtımda veya dönüşte kullanılmak üzere hazırlama
 
@@ -54,7 +54,7 @@ Yeni bir Azure Stack ortamı dağıtmak veya var olan bir Azure Stack ortamında
 1. İçeri aktarmayı gerçekleştirmek için son ' a tıklayın.
 
 > [!NOTE]
-> Azure Stack bir sertifikayı içeri aktardıktan sonra, sertifikanın özel anahtarı kümelenmiş depolamada PKCS 12 dosyası (. pfx) olarak depolanır.
+> Azure Stack bir sertifikayı içeri aktardıktan sonra, sertifikanın özel anahtarı kümelenmiş depolamada PKCS 12 dosyası (PFX) olarak depolanır.
 
 ### <a name="export-the-certificate"></a>Sertifikayı dışarı aktarma
 
@@ -92,7 +92,7 @@ Certificate Manager MMC konsolunu açın ve yerel makine sertifika deposuna bağ
 
 1. **İleri**’yi seçin.
 
-1. Dışarı aktarılacak pfx dosyası için bir dosya adı ve konum seçin. **İleri**’yi seçin.
+1. Dışarı aktarılacak PFX dosyası için bir dosya adı ve konum seçin. **İleri**’yi seçin.
 
 1. **Son**’u seçin.
 

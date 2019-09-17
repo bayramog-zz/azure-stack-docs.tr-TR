@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: df0bee87f512f00ea57fc11492f824730dbf9b42
-ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
+ms.openlocfilehash: 48ad7808e550fb875c8ee13caa5a429e1d77aa98
+ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991772"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010797"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack kota türleri
 
@@ -60,12 +60,12 @@ ms.locfileid: "68991772"
 
 | **Öğesi** | **Varsayılan değer** | **Açıklama** |
 | --- | --- | --- |
-| En fazla genel IP |50 |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla genel IP adresi sayısı. |
 | En fazla sanal ağ |50 |Bu konumda, bir aboneliğin oluşturabileceğiniz en fazla sanal ağ sayısı. |
 | Maksimum sanal ağ geçitleri |1\. |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla sanal ağ geçidi sayısı (VPN ağ geçidi). |
 | En yüksek ağ bağlantısı |2 |Bu konumdaki tüm sanal ağ geçitleri genelinde bir aboneliğin oluşturabileceğiniz en fazla ağ bağlantısı sayısı (noktadan noktaya veya siteden siteye). |
-| Maksimum yük dengeleyiciler |50 |Bir aboneliğin bu konumda oluşturabileceğiniz maksimum yük dengeleyici sayısı. |
+| En fazla genel IP |50 |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla genel IP adresi sayısı. |
 | En fazla NIC |100 |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla ağ arabirimi sayısı. |
+| Maksimum yük dengeleyiciler |50 |Bir aboneliğin bu konumda oluşturabileceğiniz maksimum yük dengeleyici sayısı. |
 | En yüksek ağ güvenlik grupları |50 |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla ağ güvenlik grubu sayısı. |
 
 ## <a name="view-an-existing-quota"></a>Mevcut kotayı görüntüleme

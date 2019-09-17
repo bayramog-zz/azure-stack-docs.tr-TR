@@ -14,12 +14,12 @@ ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 92e0c1a3bfd055373ffba5091d79922f1203b20b
-ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
+ms.openlocfilehash: 87e9021c6d2b085c95e186e410b009ae89753311
+ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70188035"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010803"
 ---
 # <a name="use-data-transfer-tools-in-azure-stack-storage"></a>Azure Stack depolamada veri aktarımı araçlarını kullanma
 
@@ -112,6 +112,7 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[containe
  - Dosya depolama alanı Azure Stack ' de henüz kullanılamadığından, dosya depolaması üzerinde herhangi bir AzCopy işlemi kullanılamaz.
  - İki Azure Stack blob konumu arasında veya AzCopy 10.1 kullanarak Azure Stack ile Azure depolama arasında veri aktarmak istiyorsanız, önce verileri önce yerel bir konuma indirmeniz ve sonra Azure Stack veya Azure depolama alanında hedef dizine yeniden yüklemeniz gerekir. Veya AzCopy 7,1 ' i kullanabilir ve verileri kopyalamak için **/Synccopy** seçeneğiyle birlikte aktarmayı belirtebilirsiniz.  
  - AzCopy 'in Linux sürümü yalnızca 1802 güncelleştirme veya sonraki sürümlerini destekler ve tablo hizmetini desteklemez.
+ - Azure Tablo depolama hizmetinize ve bu kaynaktan veri kopyalamak istiyorsanız, [AzCopy sürüm 7.3.0 'i yükleyebilirsiniz](https://aka.ms/azcopyforazurestack20171109)
  
 ## <a name="azure-powershell"></a>Azure PowerShell
 

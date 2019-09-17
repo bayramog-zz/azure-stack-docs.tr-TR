@@ -191,16 +191,39 @@
             - name: Bir Service Fabric kümesine dağıtma
               href: azure-stack-solution-template-service-fabric-cluster.md
             - name: Bir Kubernetes kümesi dağıtın
-              href: azure-stack-solution-template-kubernetes-deploy.md
               items:
-                - name: Azure AD 'yi kullanarak Kubernetes dağıtma
-                  href: azure-stack-solution-template-kubernetes-azuread.md
-                - name: AD FS kullanarak Kubernetes dağıtma
-                  href: azure-stack-solution-template-kubernetes-adfs.md
-                - name: Kubernetes panosunu etkinleştirme
-                  href: azure-stack-solution-template-kubernetes-dashboard.md
-                - name: Kubernetes kümesinde sorun giderme
-                  href: azure-stack-solution-template-kubernetes-trouble.md
+                - name: AKS altyapısı
+                  items:
+                    - name: Azure Stack AKS altyapısı
+                      href: azure-stack-kubernetes-aks-engine-overview.md
+                    - name: Destek ilkesi
+                      href: azure-stack-kubernetes-ask-engine-support.md
+                    - name: AKS altyapısını ayarlama
+                      href: azure-stack-kubernetes-aks-engine-set-up.md
+                    - name: Linux istemcisi oluşturma
+                      href: azure-stack-kubernetes-aks-engine-deploy-linux.md
+                    - name: Windows istemcisi oluştur
+                      href: azure-stack-kubernetes-aks-engine-deploy-windows.md
+                    - name: Küme dağıtma
+                      href: azure-stack-kubernetes-aks-engine-deploy-cluster.md
+                    - name: Kümeyi ölçeklendirme
+                      href: azure-stack-kubernetes-aks-engine-scale.md
+                    - name: Kümeyi yükseltme
+                      href: azure-stack-kubernetes-aks-engine-upgrade.md
+                    - name: AKS altyapısının sorunlarını giderme
+                      href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+                - name: Market öğesi
+                  items:
+                    - name: Bir Kubernetes kümesi dağıtın
+                      href: azure-stack-solution-template-kubernetes-deploy.md
+                    - name: Azure AD 'yi kullanarak Kubernetes dağıtma
+                      href: azure-stack-solution-template-kubernetes-azuread.md
+                    - name: AD FS kullanarak Kubernetes dağıtma
+                      href: azure-stack-solution-template-kubernetes-adfs.md
+                    - name: Kubernetes panosunu etkinleştirme
+                      href: azure-stack-solution-template-kubernetes-dashboard.md
+                    - name: Kubernetes kümesinde sorun giderme
+                      href: azure-stack-solution-template-kubernetes-trouble.md
             - name: Bilişsel hizmetler dağıtma
               href: azure-stack-solution-template-cognitive-services.md
     - name: Uygulamaları dağıtma
