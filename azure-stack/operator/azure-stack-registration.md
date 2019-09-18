@@ -16,12 +16,12 @@ ms.date: 08/01/2019
 ms.author: mabrigg
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: d36761cd7480d782ea01bc1b0d3606b5fa244ed3
-ms.sourcegitcommit: 49cfe13427f5255915d5ccbed87b36eec2caf8ca
+ms.openlocfilehash: 27dda5b79525c4a5d1c12c998077bb19cbea0079
+ms.sourcegitcommit: 9f4c6e96f60b4c229316e7a4ab6e0e5ef0a9a232
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720040"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71061184"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure ile Azure Stack kaydetme
 
@@ -135,6 +135,9 @@ Bağlı ortamlar Internet ve Azure 'a erişebilir. Bu ortamlar için Azure Stack
    | Parametre | Açıklama |  
    |-----|-----|
    | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları, **Azurecsesli**, **AzureUSGovernment**veya Çin Azure aboneliği kullanılıyorsa, **AzureChinaCloud**.  |
+
+   >[!Note]
+   > Oturumunuzun süresi dolarsa, parolanız değiştirilmiştir veya yalnızca hesapları değiştirmek istiyorsanız, Add-AzureRmAccount komutunu kullanarak oturum açmadan önce aşağıdaki cmdlet 'i çalıştırın:`Remove-AzureRmAccount-Scope Process`
 
 3. Birden çok aboneliğiniz varsa, kullanmak istediğiniz birini seçmek için aşağıdaki komutu çalıştırın:  
 

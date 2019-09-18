@@ -3,7 +3,7 @@ title: Azure Stack operatör olarak PowerShell ile bağlanma | Microsoft Docs
 description: Azure Stack operatör olarak PowerShell ile bağlanma hakkında bilgi edinin
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 07/23/2019
-ms.author: mabrigg
+ms.date: 09/17/2019
+ms.author: justinha
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: f0195ecf033454763b757f6b8edb03ee4e8e9e49
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: f18bf01938eb53a69f26f8bbcfa0320d359f0552
+ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418208"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71070234"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>PowerShell ile Azure Stack operatör bağlanma
 
@@ -38,6 +38,8 @@ Aşağıdaki önkoşulları, [geliştirme seti](../asdk/asdk-connect.md#connect-
 ## <a name="connect-with-azure-ad"></a>Azure AD'ye bağlanma
 
 PowerShell ile Azure Stack operatörü ortam yapılandırın. Aşağıdaki betiklerin birini çalıştırın: Azure Active Directory (Azure AD) tenantName ve Azure Resource Manager Endpoint değerlerini kendi ortam yapılandırmanızla değiştirin. 
+
+[!include[Remove Account](../../includes/remove-account.md)]
 
 ```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.

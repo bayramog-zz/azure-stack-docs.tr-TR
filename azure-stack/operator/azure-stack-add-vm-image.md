@@ -3,7 +3,7 @@ title: Azure Stack bir VM görüntüsü ekleme | Microsoft Docs
 description: Azure Stack için bir VM görüntüsü ekleme veya kaldırma hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: Justinha
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: mabrigg
+ms.date: 09/17/2019
+ms.author: Justinha
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: a72879303b80a1265450019d6b264085a8539387
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: fef815ec23655638bbe4df1bcdccae42aeee13e2
+ms.sourcegitcommit: 9f4c6e96f60b4c229316e7a4ab6e0e5ef0a9a232
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974984"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71061168"
 ---
 # <a name="add-a-vm-image-to-azure-stack"></a>Azure Stack bir VM görüntüsü ekleme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack, kullanıcılarınıza kullanılabilir hale getirmek için Market 'e bir sanal makine (VM) görüntüsü ekleyebilirsiniz. Görüntüler, Azure Stack için Azure Resource Manager şablonlar kullanılarak eklenir. Ayrıca, yönetim portalı veya Windows PowerShell kullanarak Azure Marketi Kullanıcı arabirimine Market öğesi olarak VM görüntüleri ekleyebilirsiniz. Küresel Azure Marketi 'nden veya kendi özel sanal makine görüntbir görüntüsünü kullanın.
+Azure Stack, Market 'e bir sanal makine (VM) görüntüsü ekleyebilir ve bu görüntüyü kullanıcılarınız için kullanılabilir hale getirebilirsiniz. Görüntüler, Azure Stack için Azure Resource Manager şablonlar kullanılarak eklenir. Ayrıca, yönetim portalı veya Windows PowerShell kullanarak Azure Marketi Kullanıcı arabirimine Market öğesi olarak VM görüntüleri ekleyebilirsiniz. Küresel Azure Marketi 'nden veya kendi özel sanal makine görüntbir görüntüsünü kullanın.
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Portal aracılığıyla VM görüntüsü ekleme
 
@@ -155,10 +155,13 @@ Görüntülere bir BLOB depolama URI 'SI tarafından başvurulabilmelidir. Bir W
 5. Bir Windows veya Linux işletim sistemi görüntüsünü VHD biçiminde hazırlayın (VHDX değil), görüntüyü depolama hesabınıza yükleyin ve VM görüntüsünün PowerShell tarafından alınabileceği URI 'yi alın.  
 
    ```powershell
-    Add-AzureRmAccount `
-      -EnvironmentName "AzureStackAdmin" `
-      -TenantId $TenantID
+   Add-AzureRmAccount 
+   -EnvironmentName "AzureStackAdmin" 
+   -TenantId $TenantID
    ```
+  
+   >[!Note]
+   > Oturumunuzun süresi dolarsa, parolanız değiştirilmiştir veya yalnızca hesapları değiştirmek istiyorsanız, Add-AzureRmAccount komutunu kullanarak oturum açmadan önce aşağıdaki cmdlet 'i çalıştırın:`Remove-AzureRmAccount-Scope Process`
 
 6. I Bir veri diski dizisini VM görüntüsünün bir parçası olarak karşıya yükleyebilirsiniz. New-DataDiskObject cmdlet 'ini kullanarak veri disklerinizi oluşturun. PowerShell 'i yükseltilmiş bir komut isteminden açın ve şunu çalıştırın:
 

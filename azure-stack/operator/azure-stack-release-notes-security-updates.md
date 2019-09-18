@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: dab57a59993ff5d874bff1cb69d46427d9b1862c
-ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
+ms.openlocfilehash: 3f0a4ef35b183d6d8f87e163b373a25a454bef9f
+ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70188958"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71070114"
 ---
 # <a name="azure-stack-security-updates"></a>Azure Stack güvenlik güncelleştirmeleri
 
@@ -186,7 +186,6 @@ Bu makalede, son dört Azure Stack güncelleştirme için tüm güvenlik güncel
 
 Windows güncelleştirmelerinin birikimli doğası nedeniyle, bu güncelleştirme önceki ayların güvenlik yüklerini de içerir. Bu liste, Haziran, Temmuz ve Ağustos 2019 güvenlik yükünü yansıtır.
 Bu güvenlik açıkları hakkında daha fazla bilgi için önceki bağlantılara tıklayın veya bkz. Microsoft Bilgi Bankası makalesi [4511553](https://support.microsoft.com/help/4511553).
-
 ::: moniker-end
 
 ::: moniker range="azs-1907"

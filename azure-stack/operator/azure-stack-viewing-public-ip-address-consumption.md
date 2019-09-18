@@ -1,5 +1,5 @@
 ---
-title: Azure Stack ağ kaynakları 'nı yönetme | Microsoft Docs
+title: Azure Stack ağ kaynaklarını yönetme | Microsoft Docs
 description: Yöneticiler, MAC adresi havuzu ve bir bölgedeki genel IP adreslerinin tüketimi dahil olmak üzere ağ kaynaklarını yönetebilir
 services: azure-stack
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 09/17/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d056cbf73e2417bd826fba7a7de263cc8e015b7d
-ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
+ms.lastreviewed: 09/17/2019
+ms.openlocfilehash: 6abf8480528aad0bff121d553172bdc8d0446e11
+ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842905"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71070185"
 ---
 # <a name="manage-network-resources"></a>Ağ kaynaklarını yönetme
 
@@ -61,7 +61,7 @@ Bölgede tüketilen genel IP adreslerinin toplam sayısını görüntülemek iç
 1. Azure Stack Yönetici portalı ' nda **tüm hizmetler**' i seçin. Ardından, **Yönetim** kategorisi altında **ağ**' ı seçin.
 1. **Ağ** bölmesi **genel bakış** bölümünde **genel IP havuzları kullanım** kutucuğunu görüntüler.
 
-![Ağ kaynak sağlayıcısı bölmesi](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
+    ![Ağ kaynak sağlayıcısı bölmesi](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-01.png)
 
 **Kullanılan** sayı, genel IP adresi havuzlarından atanan genel IP adreslerinin sayısını temsil eder. **Ücretsiz** numara, atanmamış ve hala kullanılabilir olan genel IP adresi havuzlarından gelen genel IP adresi sayısını temsil eder. **% Kullanılan** sayı, bu KONUMDAKI genel IP adresi HAVUZLARıNDAKI genel IP adreslerinin toplam sayısının yüzdesi olarak kullanılan veya atanan adreslerin sayısını temsil eder.
 
@@ -69,11 +69,11 @@ Bölgede tüketilen genel IP adreslerinin toplam sayısını görüntülemek iç
 
 **Kiracı kaynakları**altında **genel IP adresleri** ' ni seçin. Belirli bir bölgedeki kiracı abonelikleri tarafından açıkça oluşturulan genel IP adreslerinin listesini gözden geçirin.
 
-![Kiracı Genel IP adresleri](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
+![Kiracı Genel IP adresleri](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-02.png)
 
 Dinamik olarak ayrılan bazı genel IP adreslerinin listede göründüğünü fark edebilirsiniz. Ancak, henüz bir adres ilişkilendirilmemiştir. Adres kaynağı ağ kaynak sağlayıcısında oluşturulmuştur, ancak henüz ağ denetleyicisinde oluşturulmamıştır.
 
-Ağ denetleyicisi, bir arabirime, ağ arabirimi kartına (NIC), yük dengeleyicisine veya bir sanal ağ geçidine bağlaana kadar kaynağa bir adres atamaz. Genel IP adresi bir arabirime bağlandığında, ağ denetleyicisi bir IP adresi ayırır. Adres, adres alanında görüntülenir .
+Ağ denetleyicisi, bir arabirime, ağ arabirimi kartına (NIC), yük dengeleyicisine veya bir sanal ağ geçidine bağlaana kadar kaynağa bir adres atamaz. Genel IP adresi bir arabirime bağlandığında, ağ denetleyicisi bir IP adresi ayırır. Adres **, adres alanında görüntülenir** .
 
 ### <a name="view-the-public-ip-address-information-summary-table"></a>Genel IP adresi bilgileri özet tablosunu görüntüleme
 

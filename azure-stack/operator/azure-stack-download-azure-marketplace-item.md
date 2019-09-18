@@ -3,7 +3,7 @@ title: Azure 'dan Market öğelerini indirin | Microsoft Docs
 description: Bulut işletmeni, Azure 'dan Market öğelerini Azure Stack dağıtımına indirebilir.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: sethm
+ms.author: justinha
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 4c4bac9a083ca35f851acb2f2d8201742be0ed1e
-ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
+ms.openlocfilehash: 99d0c48a5e7f5fd4e58d6fdf13e0a12c4b9dfb1e
+ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991824"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71070266"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure 'dan Market öğelerini Azure Stack 'a indirin
 
@@ -100,6 +100,8 @@ Bu senaryonun iki bölümü vardır:
 1. Internet bağlantısı olan bir bilgisayarda, yönetici olarak bir PowerShell konsolu açın.
 
 2. Azure Stack kaydetmek için kullandığınız Azure hesabını ekleyin. Hesabı eklemek için, PowerShell 'de herhangi bir `Add-AzureRmAccount` parametre olmadan çalıştırın. Hesabınızın yapılandırmasına bağlı olarak, Azure hesabı kimlik bilgilerinizi girmeniz istenir ve 2 öğeli kimlik doğrulaması kullanmanız gerekebilir.
+
+   [!include[Remove Account](../../includes/remove-account.md)]
 
 3. Birden çok aboneliğiniz varsa, kayıt için kullandığınız birini seçmek üzere aşağıdaki komutu çalıştırın:  
 

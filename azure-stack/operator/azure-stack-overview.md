@@ -1,6 +1,6 @@
 ---
 title: Azure Stack nedir? | Microsoft Docs
-description: Azure Stack, veri merkezinizde Azure hizmetlerini çalıştırmak için nasıl sağladığını öğrenin.
+description: Azure Stack, veri merkezinizde Azure hizmetlerini çalıştırmanıza nasıl olanak sağladığını öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -12,134 +12,134 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/29/2019
+ms.date: 09/16/2019
 ms.author: justinha
 ms.reviewer: unknown
 ms.custom: ''
 ms.lastreviewed: 05/14/2019
-ms.openlocfilehash: 1aa6f494320843cf1debe2c1887f353bf79a7303
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: 7c84a9cb841f06887d09a650d277566fb9ff18ed
+ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268350"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71070171"
 ---
 # <a name="azure-stack-overview"></a>Azure Stack’e genel bakış
 
-Azure Stack, bir şirket içi ortamda uygulamalarını çalıştırmak ve veri merkezinizde Azure Hizmetleri sunmak için bir yol sağlayan Azure'nın bir uzantısıdır. Tutarlı bir bulut platformuyla, kuruluşların güvenle teknoloji sınırlamalar dayalı iş kararları yerine iş gereksinimlerine göre teknoloji kararları yapabilirsiniz.
+Azure Stack, bir Azure uzantısıdır ve şirket içi bir ortamda uygulama çalıştırmak ve veri merkezinizde Azure hizmetleri sunmak için bir yol sağlar. Tutarlı bir bulut platformu sayesinde kuruluşlar, teknoloji sınırlamalarına bağlı olarak iş kararları verirken iş gereksinimlerine bağlı olarak teknoloji kararları verebilir.
 
-## <a name="why-use-azure-stack"></a>Azure Stack neden kullanmalısınız?
+## <a name="why-use-azure-stack"></a>Neden Azure Stack kullanmalıyım?
 
-Azure, geliştiricilerin modern uygulamalar oluşturmak için zengin bir platform sağlar. Ancak, bazı bulut tabanlı uygulamalar gibi gecikme süresi, aralıklı bağlantı ve düzenlemeleri engellerini karşı karşıyadır. Azure ve Azure Stack, hem müşterilere yönelik hem de iç iş kolu uygulamaları için yeni hibrit bulut kullanım örnekleri kilidini açma:
+Azure, geliştiricilerin modern uygulamalar oluşturmalarına yönelik zengin bir platform sağlar. Ancak, bazı bulut tabanlı uygulamalar, gecikme süresi, aralıklı bağlantı ve düzenlemeler gibi engelleri ortaya ayırır. Azure ve Azure Stack hem müşterilere yönelik hem de dahili iş kolu uygulamaları için yeni hibrit bulut kullanım örneklerinin kilidini açın:
 
-- **Uç çözümlerinde ve bağlantısız çözümlerde**. Azure Stack'te yerel olarak veri işleme ve ardından her ikisi arasında ortak bir uygulama mantığı ile daha fazla analiz için Azure'da yeniden tarafından gecikme süresi ve bağlantı gereksinimleri adresi. Azure Stack internet bağlantısı olmadan Azure'a bağlantısı kesildi bile dağıtabilirsiniz. Fabrika katlarında düşünün, verilir ve örnekler benim Miller İyi Yolculuklar partimize.
+- **Kenar ve bağlantısı kesik çözümler**. Azure Stack, verileri yerel olarak işleyerek ve daha sonra Azure 'da daha fazla analiz için Azure 'da toplayarak, her ikisi için de genel uygulama mantığı olan adres gecikmesi ve bağlantı gereksinimleri. Hatta, Azure bağlantısı olmadan internet bağlantısı kesilen Azure Stack da dağıtabilirsiniz. Örnek olarak fabrika katlarının, CRUISE ve Mine shafts göz önünde bulundurun.
 
-- **Bulut çeşitli düzenlemelerini karşılamak uygulamalarına**. Geliştirin ve şirket içi Azure Stack, Mevzuat karşılamak için veya ilke gereksinimleri ile hiçbir kod değişikliğine ihtiyaç dağıtmak için tam esneklik, azure'daki uygulamalar dağıtın. Uygulama örnekleri, genel denetim, finansal raporlama, döviz alım-satım, çevrimiçi oyun ve harcama raporlama içerir.
+- **Değişen düzenlemeleri karşılayan bulut uygulamaları**. Kod değişikliği gerektirmeden, yasal bir şekilde veya ilke gereksinimlerini karşılamak üzere Azure Stack ile şirket içi dağıtımı yapmak için Azure 'da uygulama geliştirin ve dağıtın. Uygulama örnekleri arasında küresel denetim, finansal raporlama, yabancı Exchange ticareti, çevrimiçi oyun ve gider raporlaması bulunur.
 
-- **Bulut uygulaması modeli şirket içi**. Azure Hizmetleri, kapsayıcılar, sunucusuz ve mikro hizmet mimarileri güncelleştirmek ve mevcut uygulamalarınızı genişletin veya yenilerini oluşturmak için kullanın. Azure bulut arasında tutarlı kullanımı DevOps işler ve Azure Stack çekirdek görev açısından kritik uygulamalar için uygulama modernizasyonu hızlandırmak için şirket.
+- **Şirket Içi bulut uygulama modeli**. Mevcut uygulamaları güncelleştirmek ve genişletmek ya da yenilerini oluşturmak için Azure Hizmetleri, kapsayıcılar, sunucusuz ve mikro hizmet mimarileri kullanın. Bulutta Azure üzerinde tutarlı DevOps süreçlerini kullanın ve temel görev açısından kritik uygulamalar için uygulama modernleştirmesini hızlandırmak üzere şirket içinde Azure Stack.
 
-Azure Stack sağlayarak bu kullanım senaryolarına olanak sağlar:
+Azure Stack, bu kullanım senaryolarını şunları sağlar:
 
-- Bir duruma getirmek için tümleşik deneyiminin ve amaca yönelik olarak tasarlanan Azure Stack ile tümleştirilmiş sistemlerle güvenilen donanım iş ortaklarından. Teslimden sonra Azure Stack veri merkezinde System Center Operations Manager Yönetim Paketi veya Nagios uzantısı izleme ile kolayca tümleştirir.
+- Güvenilen donanım iş ortaklarından amaç tarafından oluşturulan Azure Stack tümleşik sistemlerle hızlıca çalışmaya başlamanıza yönelik tümleşik bir teslim deneyimi. Teslimin ardından Azure Stack, System Center Operations Manager yönetim paketi veya Nagios uzantısı aracılığıyla izleme ile kolayca veri merkezine tümleştirilir.
 
-- Azure'da ve Azure Stack'te karma ortamlar için Azure Active Directory (Azure AD) kullanarak ve Active Directory Federasyon Hizmetleri (AD FS) için yararlanarak esnek Kimlik Yönetimi, dağıtımları bağlantısı kesildi. 
+- Azure için Azure Active Directory (Azure AD) ve karma ortamları Azure Stack ve bağlantısı kesilen dağıtımlar için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanan esnek kimlik yönetimi. 
 
-- Geliştirici üretkenliğini en üst düzeye çıkarmak ve ortak DevOps etkinleştirmek için Azure ile tutarlı uygulama geliştirme ortamı, karma ortamlarda yaklaşıyor.
+- Geliştirici üretkenliğini en üst düzeye çıkarmak ve karma ortamlarda yaygın DevOps yaklaşımlarını etkinleştirmek için Azure ile tutarlı bir uygulama geliştirme ortamıdır.
 
-- Azure hizmetlerinin tesliminden hibrit bulut bilgi işlem kullanarak şirket içi. Azure ve Azure Stack'te Azure aynı yönetim deneyimleri ve araçları kullanarak Azure Iaas ve PaaS Hizmetleri dağıtmanıza ve ortak işlemsel uygulamalar benimseyin. Microsoft Azure Stack, yeni Azure Hizmetleri, mevcut hizmet ve ek Azure Market uygulamalar ve görüntüleri güncelleştirmeleri dahil olmak üzere Azure sürekli yenilik sunar.
+- Hibrit bulut bilgi işlem gücü kullanılarak şirket içi Azure hizmetleri teslimi. Azure ile aynı yönetim deneyimlerini ve araçlarını kullanarak Azure IaaS ve PaaS hizmetlerini dağıtmak ve çalıştırmak için Azure ve Azure Stack üzerinde yaygın işletimsel uygulamaları benimseyin. Microsoft, yeni Azure Hizmetleri, mevcut hizmetlere yönelik güncelleştirmeler ve ek Azure Marketi uygulamaları ve görüntüleri gibi Azure Stack için sürekli Azure yeniliklerini sunar.
 
 ## <a name="azure-stack-architecture"></a>Azure Stack mimarisi
-Azure Stack tümleşik sistemleri tarafından oluşturulan 4-16 sunucu rafları içinde oluşur, güvenilen donanım iş ortakları ve düz veri Merkezinize teslim edilir. Teslimden sonra çözümü sağlayıcısı tümleşik sistem dağıtmak ve Azure Stack çözüm iş gereksinimlerinizi karşıladığından emin olmak için sizinle birlikte çalışır. Veri merkezinizi sağlama tüm gerekli güç ve soğutma hazırlamak gerekir, kenarlık bağlantısı ve diğer gerekli veri merkezi tümleştirmesi gereksinim yerinde olduğundan. 
+Azure Stack tümleşik sistemler, güvenilen donanım iş ortakları tarafından oluşturulan ve doğrudan veri merkezinize sunulan 4-16 sunucu raflarında bulunur. Teslim ettikten sonra bir çözüm sağlayıcısı, tümleşik sistemi dağıtmak ve Azure Stack çözümünün iş gereksinimlerinizi karşıladığından emin olmak için sizinle birlikte çalışır. Tüm gerekli güç ve soğutma, sınır bağlantısı ve diğer gerekli veri merkezi tümleştirme gereksiniminin yerinde olduğundan veri merkezinizi hazırlamanız gerekir. 
 
-> Azure Stack veri merkezi tümleştirme deneyimi hakkında daha fazla bilgi için bkz. [Azure Stack'i veri merkezi tümleştirmesi](azure-stack-customer-journey.md).
+> Azure Stack veri merkezi tümleştirme deneyimi hakkında daha fazla bilgi için bkz. [Azure Stack veri merkezi tümleştirmesi](azure-stack-customer-journey.md).
 
-Azure Stack sektörde standart donanım üzerinde oluşturulmuştur ve zaten Azure Aboneliklerini yönetmek için kullandığınız aynı araçları kullanılarak yönetilir. Sonuç olarak, veya Azure'a bağlı olup olmadığını tutarlı bir DevOps süreçlerini uygulayabilir. 
+Azure Stack, sektör standardı donanımlar üzerine kurulmuştur ve Azure aboneliklerini yönetmek için kullanmakta olduğunuz araçlarla yönetilir. Sonuç olarak, Azure 'a bağlı olup olmadığına bakılmaksızın tutarlı DevOps işlemleri uygulayabilirsiniz. 
 
-Azure yığını mimarisinin, Azure hizmetlerini uçta uzak konumlardan veya internet'ten bağlantı kesildi, aralıklı bağlantı sağlamak sağlar. Azure Stack'te yerel olarak veri işleme ve sonra toplama, Azure'da ek işleme ve analiz için hibrit çözümler oluşturabilirsiniz. Son olarak, Azure Stack şirket yüklü olduğundan, herhangi bir kod değişikliği yapmadan bulut uygulaması şirket içi dağıtma esnekliğiyle özgü Mevzuat veya ilke gereksinimleri karşılayabilirsiniz. 
+Azure Stack mimarisi, internet bağlantısı kesilen uzak konumlar veya aralıklı bağlantı için Azure hizmetlerini bir kenara sağlamanıza olanak tanır. Azure Stack verileri yerel olarak işleyen Karma çözümler oluşturabilir ve ardından ek işlem ve analiz için Azure 'da toplayabilirsiniz. Son olarak, Azure Stack şirket içinde yüklü olduğundan, herhangi bir kodu değiştirmeden şirket içinde bulut uygulaması dağıtma esnekliği ile belirli yasal düzenlemeler veya ilke gereksinimlerini karşılayabilirsiniz. 
 
 ## <a name="deployment-options"></a>Dağıtım seçenekleri
 
-### <a name="production-or-evaluation-environments"></a>Üretim ya da değerlendirme ortamı
-Azure Stack, Azure Stack tümleşik sistemleri üretim kullanımı için ve Azure Stack değerlendirme için Azure Stack geliştirme Seti'ni'nı (ASDK) sizin ihtiyaçlarınızı karşılamak üzere iki dağıtım seçeneği, sunulur:
+### <a name="production-or-evaluation-environments"></a>Üretim veya değerlendirme ortamları
+Azure Stack, gereksinimlerinizi karşılamak için iki dağıtım seçeneği sunulur, üretim kullanımı için tümleşik sistemleri ve Azure Stack değerlendirmek için Azure Stack Geliştirme Seti (ASDK) Azure Stack:
 
-- **Azure Stack tümleşik sistemleri**. Azure Stack tümleşik sistemleri bir çözüm oluşturma Microsoft ve donanım iş ortakları, iş ortaklığı aracılığıyla sunulan bulut hızını sizin belirlediğiniz yenilik ve bilgi işlem yönetimi kolaylık sunar. Azure Stack bir tümleşik donanım ve yazılım sistemi sunulan olduğundan, esneklik ve buluttan yenilik olanağı yanı sıra, gereken denetim sahip. Azure Stack tümleşik sistemleri boyutu 4-16 düğümlerden aralığı ve tüm dünyada donanım iş ortağı ve Microsoft tarafından desteklenir. Yeni senaryoları oluşturabilir ve üretim iş yükleri için yeni çözümlerini dağıtmak için Azure Stack tümleşik sistemleri kullanın.
+- **Tümleşik sistemler Azure Stack**. Azure Stack tümleşik sistemler, Microsoft ve donanım iş ortaklarının bir ortaklığı aracılığıyla sunulur ve bulut kolaylığı ve bilgi işlem yönetimi basitliği sunan bir çözüm oluşturur. Azure Stack bir tümleşik donanım ve yazılım sistemi sunulan olduğundan, esneklik ve buluttan yenilik olanağı yanı sıra, gereken denetim sahip. 4-16 düğümlerden oluşan boyut olarak tümleşik sistemler Azure Stack ve donanım ortağı ve Microsoft tarafından ortaklaşa desteklenir. Yeni senaryoları oluşturabilir ve üretim iş yükleri için yeni çözümlerini dağıtmak için Azure Stack tümleşik sistemleri kullanın.
 
-- **Azure Stack geliştirme Seti'ni**. [Azure Stack geliştirme Seti'ni (ASDK)](../asdk/asdk-what-is.md) değerlendirmek ve Azure Stack hakkında bilgi edinmek için kullanabileceğiniz bir Azure Stack ücretsiz, tek düğümlü dağıtımıdır. Azure ile tutarlı olan araç ve API'leri kullanarak uygulamalar oluşturmak için ASDK bir geliştirme ortamı olarak da kullanabilirsiniz. Ancak, ASDK üretim ortamı olarak kullanılmak üzere tasarlanmamıştır ve tam tümleşik sistemleri Üretim dağıtımı karşılaştırıldığında aşağıdaki sınırlamalara sahiptir:
+- **Azure Stack geliştirme seti**. [Azure Stack geliştirme seti (ASDK)](../asdk/asdk-what-is.md) , Azure Stack hakkında değerlendirmek ve bu bilgileri öğrenmek için kullanabileceğiniz, ücretsiz ve Azure Stack tek düğümlü bir dağıtımdır. Ayrıca, Azure ile tutarlı olan API 'Leri ve araçları kullanarak uygulamalar oluşturmak için bir geliştirici ortamı olarak ASDK 'yi de kullanabilirsiniz. Ancak, ASDK, üretim ortamı olarak kullanılmak üzere tasarlanmamıştır ve tam tümleşik sistemler üretim dağıtımına kıyasla aşağıdaki sınırlamalara sahiptir:
 
-    - ASDK yalnızca bir tek Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) kimlik sağlayıcısı ile ilişkilendirilebilir.
-    - Azure Stack bileşenleri tek bir ana bilgisayarda dağıtıldığından, Kiracı kaynaklarına için sınırlı fiziksel kaynakları vardır. Bu yapılandırma, Ölçek veya performans değerlendirmesi için tasarlanmamıştır.
-    - Ağ senaryoları NIC dağıtım gereksinimleri ve tek bir konak nedeniyle sınırlıdır.
+    - ASDK yalnızca tek bir Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kimlik sağlayıcısıyla ilişkilendirilebilir.
+    - Azure Stack bileşenleri tek bir ana bilgisayarda dağıtıldığından, kiracı kaynakları için kullanılabilen sınırlı sayıda fiziksel kaynak vardır. Bu yapılandırmanın ölçeklendirilmesi veya performans değerlendirmesi için tasarlanmamıştır.
+    - Tek konak ve NIC dağıtım gereksinimleri nedeniyle ağ senaryoları sınırlıdır.
 
 ### <a name="connection-models"></a>Bağlantı modelleri
-Ya da Azure Stack dağıtmayı seçtiğiniz **bağlı** İnternet'e (ve Azure) veya **bağlantısı kesildi** almaktır. Bu seçenek (Azure AD veya AD FS) kimlik deposu ve faturalandırma modeli için hangi seçenekler kullanılabilir tanımlar (siz kullanım tabanlı ödemesi fatura veya kapasite tabanlı faturalandırma).
+İnternet 'e **bağlı** olan veya **bağlantısı kesilen** Azure Stack dağıtmayı seçebilirsiniz. Bu seçenek, kimlik deponuzda (Azure AD veya AD FS) ve fatura modelinize (kullandığınız veya kapasite tabanlı faturalandırma olarak öde) hangi seçeneklerin kullanılabileceğini tanımlar.
 
-> Daha fazla bilgi için dikkat edilecek noktalara bakın [bağlı](azure-stack-connected-deployment.md) ve [bağlantısı kesildi](azure-stack-disconnected-deployment.md) dağıtım modelleri. 
+> Daha fazla bilgi için bkz. [bağlı](azure-stack-connected-deployment.md) ve [bağlantısı kesilen](azure-stack-disconnected-deployment.md) dağıtım modelleriyle ilgili hususlar. 
 
 ### <a name="identity-provider"></a>Kimlik sağlayıcı 
-Azure Stack, kimlikleri sağlamak için Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) kullanır. Azure AD, Microsoft'un bulut tabanlı, çok kiracılı kimlik sağlayıcıdır. Karma senaryo dağıtımları İnternet'e bağlı olan Azure AD kimlik deposu olarak kullanırsınız. 
+Azure Stack kimlikleri sağlamak için Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanır. Azure AD, Microsoft 'un bulut tabanlı, çok kiracılı kimlik sağlayıcısıdır. Internet 'e bağlı dağıtımlarla en çok Karma senaryolar, kimlik deposu olarak Azure AD kullanır. 
 
-Azure Stack'i bağlantısız dağıtımları için Active Directory Federasyon Hizmetleri (AD FS) kullanmanız gerekir. Azure Stack kaynak sağlayıcıları ve diğer uygulamalar AD FS veya Azure AD ile benzer şekilde çalışır. Azure Stack, kendi Active Directory örneğine ve bir Active Directory Graph API'sini içerir.
+Azure Stack bağlantısı kesilen dağıtımlar için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanmanız gerekir. Azure Stack kaynak sağlayıcıları ve diğer uygulamalar AD FS veya Azure AD ile benzer şekilde çalışır. Azure Stack kendi Active Directory örneğini ve bir Active Directory Graph API içerir.
 
 > [!IMPORTANT]
-> Kimlik sağlayıcısı dağıtımdan sonra değiştiremezsiniz. Farklı kimlik sağlayıcısı kullanmak için Azure Stack yeniden dağıtmanız gerekir.
+> Dağıtımdan sonra kimlik sağlayıcısını değiştiremezsiniz. Farklı bir kimlik sağlayıcısı kullanmak için Azure Stack yeniden dağıtmanız gerekir.
 
-> Azure Stack kimlik konuları hakkında daha fazla bilgi [kimlik Azure Stack için genel bakış](azure-stack-identity-overview.md).
+> Azure Stack kimlik konuları hakkında daha fazla bilgi [için Azure Stack kimliğe genel bakış](azure-stack-identity-overview.md)hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="how-is-azure-stack-managed"></a>Azure Stack nasıl yönetilir?
-Yönetim Portalı, kullanıcı portalı ile Azure Stack yönetebilir veya [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). Azure Stack portalı her ayrı örnekleri, Azure Resource Manager tarafından desteklenir. Bir **Azure Stack operatörü** Azure Stack, yönetmenizi ve Kiracı sunumları oluşturma gibi işlemler yapar ve tümleşik sistem durumu ve İzleyici durumunu korumak için Yönetim Portalı'nı kullanır. (Kiracı portalı olarak da bilinir) kullanıcı portalı için sanal makineler, depolama hesapları ve web apps gibi bulut kaynaklarını kullanım bir Self Servis deneyimi sağlar. 
+Yönetim Portalı, Kullanıcı Portalı veya [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1)ile Azure Stack yönetebilirsiniz. Azure Stack portalları her biri, Azure Resource Manager ayrı örnekleri tarafından desteklenir. **Azure Stack işleci** , Azure Stack yönetmek ve kiracı teklifleri oluşturma gibi işlemleri yapmak ve tümleşik sistemin sistem durumunu ve durumunu izlemek için yönetim portalını kullanır. Kullanıcı Portalı (Kiracı portalı olarak da adlandırılır), sanal makineler, depolama hesapları ve Web uygulamaları gibi bulut kaynaklarının tüketimine yönelik bir self servis deneyimi sağlar. 
 
-> Azure Stack yönetim portalını kullanarak yönetme hakkında daha fazla bilgi için bkz [Azure Stack Yönetim Portalı hızlı başlangıcı](azure-stack-manage-portals.md).
+> Yönetim portalını kullanarak Azure Stack yönetme hakkında daha fazla bilgi için [Azure Stack yönetim portalı hızlı](azure-stack-manage-portals.md)başlangıcını kullanma bölümüne bakın.
 
-Azure Stack operatör çok çeşitli hizmetler ve uygulamalar gibi gerçekleştirebiliyor [sanal makineler](azure-stack-tutorial-tenant-vm.md), [web uygulamaları](azure-stack-app-service-overview.md), yüksek oranda kullanılabilir [SQL Server](azure-stack-tutorial-sql.md), ve [MySQL Server](azure-stack-tutorial-mysql.md) veritabanları. Ayrıca [Azure Stack hızlı başlangıç Azure Resource Manager şablonları](https://github.com/Azure/AzureStack-QuickStart-Templates) SharePoint, Exchange ve daha fazlası dağıtılacak. 
+Azure Stack operatörü olarak, [sanal makineler](azure-stack-tutorial-tenant-vm.md), [Web uygulamaları](azure-stack-app-service-overview.md), yüksek oranda kullanılabilir [SQL Server](azure-stack-tutorial-sql.md)ve [MySQL Server](azure-stack-tutorial-mysql.md) veritabanları gibi çok çeşitli hizmet ve uygulamalar sağlayabilirsiniz. SharePoint, Exchange ve daha fazlasını dağıtmak için [Azure Stack hızlı başlangıç Azure Resource Manager şablonlarını](https://github.com/Azure/AzureStack-QuickStart-Templates) da kullanabilirsiniz. 
 
-Yönetim Portalı'nı kullanarak şunları yapabilirsiniz [Hizmetleri sunmak için Azure Stack yapılandırma](azure-stack-plan-offer-quota-overview.md) planlarını, kotaları, teklifler ve abonelikler kullanarak kiracılara. Kiracı kullanıcılar için birden çok teklife abone olabilirsiniz. Bir veya daha fazla plan Teklife sahip olabilirsiniz ve bir veya daha fazla hizmet planları olabilir. İşleçler kapasitesini yönetmek ve uyarılarını yanıtlama. 
+Yönetim portalını kullanarak, planları, kotaları, teklifleri ve abonelikleri kullanarak kiracılar için [hizmet sunmaya yönelik Azure Stack yapılandırabilirsiniz](azure-stack-plan-offer-quota-overview.md) . Kiracı kullanıcıları birden çok teklife abone olabilir. Tekliflerin bir veya daha fazla planı olabilir ve planlar bir veya daha fazla hizmete sahip olabilir. İşleçler Ayrıca kapasiteyi yönetir ve uyarılara yanıt verir. 
 
-Azure Stack yapılandırıldığında, bir **Azure Stack kullanıcısı** (Kiracı olarak da bilinir) işleci sağlayan hizmetlerini kullanır. Kullanıcılar sağlama, izleme ve bunlar, web uygulamaları, depolama ve sanal makineler gibi abone olduğunuz Hizmetleri yönetin.
+Azure Stack yapılandırıldığında, bir **Azure Stack Kullanıcı** (kiracı olarak da bilinir), işlecin sunduğu hizmetleri kullanır. Kullanıcılar, abone oldukları Hizmetleri (Web Apps, depolama ve sanal makineler gibi) sağlayabilir, izleyebilir ve yönetebilir.
 
-> Ne nereye, tipik işletmen sorumlulukları kullanmak için hesapları dahil olmak üzere, Azure Stack yönetme hakkında daha fazla bilgi edinmek için kullanıcılarınıza söylemeniz gerekenler ve Yardım almak nasıl gözden [Azure Stack yönetim temel bilgileri](azure-stack-manage-basics.md).
+> ' Yi Azure Stack yönetme hakkında daha fazla bilgi edinmek için, hangi hesapların nerede, tipik operatör sorumluluklarına, kullanıcılarınıza ne söyleyeceğinizi ve yardım alma hakkında daha fazla bilgi edinmek için [Azure Stack yönetim temellerini](azure-stack-manage-basics.md)inceleyin.
 
 ## <a name="resource-providers"></a>Kaynak sağlayıcıları 
-Kaynak sağlayıcıları için tüm Azure Stack Iaas temelini web hizmetleri ve PaaS Hizmetleri altındadır. Azure Resource Manager hizmetine erişim sağlamak için farklı kaynak sağlayıcıları kullanır. Her kaynak sağlayıcısı yapılandırmanız ve ilgili kaynaklarını denetlemenize yardımcı olur. Hizmet yöneticileri, yeni özel kaynak sağlayıcılarını da ekleyebilirsiniz. 
+Kaynak sağlayıcıları tüm Azure Stack IaaS ve PaaS hizmetleri için temel oluşturan Web hizmetlerdir. Azure Resource Manager hizmetlere erişim sağlamak için farklı kaynak sağlayıcılarına bağımlıdır. Her kaynak sağlayıcı ilgili kaynaklarını yapılandırmanıza ve denetlemenize yardımcı olur. Hizmet yöneticileri, yeni özel kaynak sağlayıcıları da ekleyebilir. 
 
 ### <a name="foundational-resource-providers"></a>Temel kaynak sağlayıcıları 
-Üç temel Iaas kaynak sağlayıcıları vardır: 
+Üç temel IaaS kaynak sağlayıcısı vardır: 
 
-- **İşlem**. İşlem kaynak sağlayıcısı, Azure Stack kiracıların kendi sanal makinelerini oluşturma sağlar. İşlem kaynak sağlayıcısı sanal makineleri, hem de sanal makine uzantıları oluşturmak olanağı içerir. Sanal makine uzantısı hizmeti, Iaas özelliklerini sağlamak için Windows ve Linux sanal makineleri yardımcı olur. Örneğin, bir Linux sanal makinesi sağlama ve VM'yi yapılandırmak için dağıtım sırasında Bash betikleri çalıştırmak için işlem kaynak Sağlayıcısı'nı kullanabilirsiniz.
-- **Ağ kaynak sağlayıcısı**. Ağ kaynak sağlayıcısı, yazılım tanımlı ağ (SDN) ve ağ işlevi sanallaştırma (NFV) özelliklerini özel bulut için bir dizi sunar. Ağ kaynak sağlayıcısı, yazılım yük dengeleyici, genel IP'ler, ağ güvenlik grupları ve sanal ağlar gibi kaynakları oluşturmak için kullanabilirsiniz.
-- **Depolama kaynak sağlayıcısı**. Depolama kaynak sağlayıcısı dört tutarlı Azure depolama hizmetleri sunar: [blob](https://docs.microsoft.com/azure/storage/common/storage-introduction#blob-storage), [kuyruk](https://docs.microsoft.com/azure/storage/common/storage-introduction#queue-storage), [tablo](https://docs.microsoft.com/azure/storage/common/storage-introduction#table-storage), ve [KeyVault](https://docs.microsoft.com/azure/key-vault/) Hesap Yönetimi yönetim sağlayarak ve parolalar ve sertifikalar gibi gizli denetimi. Depolama kaynak sağlayıcısı, bulut depolama yönetim hizmeti tutarlı Azure depolama hizmetleri hizmet sağlayıcısı yönetimini kolaylaştırmak için de sunar. Azure depolama, depolama ve büyük miktarlardaki yapılandırılmamış veriler, belgeler ve medya dosyalarını Azure BLOB'ları ile gibi alma esnekliği sağlar ve Azure tabloları verilerle yapılandırılmış NoSQL tabanlı. 
+- **İşlem**. Işlem kaynak sağlayıcısı, Azure Stack kiracının kendi sanal makinelerini oluşturmalarına olanak tanır. Işlem kaynak sağlayıcısı, sanal makinelerin yanı sıra sanal makine uzantıları oluşturma özelliğini de içerir. Sanal makine uzantısı hizmeti, Windows ve Linux sanal makineleri için IaaS özellikleri sağlamaya yardımcı olur. Örnek olarak, VM 'yi yapılandırmak için bir Linux sanal makinesi sağlamak ve dağıtım sırasında Bash betiklerini çalıştırmak için Işlem Kaynak sağlayıcısını kullanabilirsiniz.
+- **Ağ kaynak sağlayıcısı**. Ağ kaynak sağlayıcısı, özel bulut için bir dizi yazılım tanımlı ağ (SDN) ve ağ Işlevi sanallaştırma (NGD) özelliği sunar. Yazılım yük dengeleyiciler, genel IP 'Ler, ağ güvenlik grupları ve sanal ağlar gibi kaynaklar oluşturmak için ağ kaynak sağlayıcısını kullanabilirsiniz.
+- **Depolama kaynak sağlayıcısı**. Depolama kaynak sağlayıcısı, Azure ile tutarlı dört depolama hizmeti sunar: [BLOB](https://docs.microsoft.com/azure/storage/common/storage-introduction#blob-storage), [kuyruk](https://docs.microsoft.com/azure/storage/common/storage-introduction#queue-storage), [tablo](https://docs.microsoft.com/azure/storage/common/storage-introduction#table-storage)ve [keykasa](https://docs.microsoft.com/azure/key-vault/) hesap yönetimi, parolalar ve sertifikalar gibi gizli dizileri yönetme ve denetleme olanağı sağlar. Depolama kaynak sağlayıcısı Ayrıca, Azure ile tutarlı depolama hizmetleri 'nin hizmet sağlayıcısı yönetimini kolaylaştırmak için bir depolama bulut yönetim hizmeti sunar. Azure depolama, Azure Blob 'larına sahip belgeler ve medya dosyaları ve Azure tabloları ile yapılandırılmış NoSQL tabanlı veriler gibi büyük miktarlarda yapılandırılmamış verileri depolama ve alma esnekliği sağlar. 
 
 ### <a name="optional-resource-providers"></a>İsteğe bağlı kaynak sağlayıcıları
-Dağıtma ve Azure Stack ile kullanmak üç isteğe bağlı PaaS kaynak sağlayıcıları vardır: 
+Azure Stack ile dağıtabileceğiniz ve kullanabileceğiniz üç isteğe bağlı PaaS kaynak sağlayıcısı vardır: 
 
-- **App Service**. [Azure Stack'te Azure App Service](azure-stack-app-service-overview.md) bir platform-bir hizmet olarak (PaaS) teklifi, Microsoft Azure, Azure Stack için kullanılabilir. Web API ve Azure işlevleri'ni oluşturmak iç veya dış müşterilere hizmet sağlar herhangi bir platform veya cihaz için uygulamalar. 
-- **SQL Server**. Kullanım [SQL Server Kaynak sağlayıcısı](azure-stack-sql-resource-provider.md) SQL veritabanları Azure Stack, hizmet olarak sunmak için. Kaynak sağlayıcısını yüklemek ve bir veya daha fazla SQL Server örneklerine bağlanabilirsiniz sonra siz ve kullanıcılarınız bulutta çalışan uygulamalar SQL kullanan Web siteleri ve SQL kullanan diğer iş yükleri için veritabanları oluşturabilirsiniz.
-- **MySQL sunucusu**. Kullanım [MySQL Server Kaynak sağlayıcısı](azure-stack-mysql-resource-provider-deploy.md) MySQL veritabanları Azure Stack hizmet olarak kullanıma sunmak için. MySQL kaynak sağlayıcısı, bir hizmet olarak Windows Server 2016 Server Core sanal makinede (VM) çalışır.
+- **App Service**. [Azure Stack Azure App Service](azure-stack-app-service-overview.md) , Azure Stack Microsoft Azure sunulan bir hizmet olarak platform (PaaS) tekliftir. Hizmet, iç veya dış müşterilerinizin herhangi bir platform veya cihaz için Web, API ve Azure Işlevleri uygulamaları oluşturmalarına olanak sağlar. 
+- **SQL Server**. SQL veritabanlarını Azure Stack bir hizmet olarak sunmak için [SQL Server kaynak sağlayıcısını](azure-stack-sql-resource-provider.md) kullanın. Kaynak sağlayıcısını yükledikten ve bir veya daha fazla SQL Server örneğine bağladığınızda, siz ve kullanıcılarınız bulutta yerel uygulamalar, SQL kullanan Web siteleri ve SQL kullanan diğer iş yükleri için veritabanları oluşturabilir.
+- **MySQL sunucusu**. MySQL veritabanlarını Azure Stack bir hizmet olarak göstermek için [MySQL Server kaynak sağlayıcısını](azure-stack-mysql-resource-provider-deploy.md) kullanın. MySQL kaynak sağlayıcısı, bir Windows Server 2016 Server Core sanal makinesi (VM) üzerinde bir hizmet olarak çalışır.
 
 ## <a name="providing-high-availability"></a>Yüksek kullanılabilirlik sağlama
-Bir çoklu VM üretim sisteminin azure'da yüksek kullanılabilirlik elde etmek için Vm'leri yerleştirilir bir [kullanılabilirlik kümesi](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) , bunları birden çok hata etki alanları ve güncelleme etki alanları arasında yayılır. Azure Stack daha küçük ölçek hata etki alanı bir kullanılabilirlik kümesinde tek bir düğüm ölçek birimi olarak tanımlanır.  
+Azure 'da çoklu VM üretim sisteminin yüksek oranda kullanılabilir olmasını sağlamak için, VM 'Ler birden çok hata etki alanına ve güncelleştirme etki alanlarına yayılan bir [kullanılabilirlik kümesine](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) yerleştirilir. Azure Stack küçük ölçekte, bir kullanılabilirlik kümesindeki bir hata etki alanı, ölçek biriminde tek bir düğüm olarak tanımlanır.  
 
-Azure Stack altyapısını zaten hatalara karşı dayanıklı olsa da, bir donanım hatası olursa (Yük Devretme Kümelemesi) temel alınan teknoloji hala bazı kapalı kalma süresi VM'ler için etkilenen bir fiziksel sunucuda artmasına neden olur. Azure Stack, Azure ile tutarlı olacak şekilde en fazla üç hata etki alanı ile bir kullanılabilirlik sahip destekler.
+Azure Stack altyapısı hatalara karşı zaten dayanıklı olsa da, temel alınan teknoloji (Yük Devretme Kümelemesi), bir donanım arızası olması durumunda etkilenen fiziksel sunucudaki VM 'Ler için bazı kesinti süreleri doğurur. Azure Stack, en fazla üç hata etki alanı içeren bir kullanılabilirlik kümesinin Azure ile tutarlı olmasını destekler.
 
-- **Hata etki alanları**. Vm'leri bir kullanılabilirlik kümesine yerleştirilir bunları mümkün olduğunca eşit olarak birden çok hata etki alanları üzerinde (Azure Stack düğüm) yayarak birbirinden fiziksel olarak izole edilmiş olur. Bir donanım hatası varsa, başarısız hata etki alanı Vm'lerden diğer hata etki alanları yeniden, ancak ayrı hata etki alanlarında aynı kullanılabilirlik kümesinde mümkünse diğer Vm'lerden tutulur. Donanım tekrar çevrimiçi olduğunda, yüksek kullanılabilirliği sürdürmek için Vm'leri yeniden Dengelenecek. 
+- **Hata etki alanları**. Bir kullanılabilirlik kümesine yerleştirilmiş VM 'Ler, birden çok hata etki alanına (Azure Stack düğümünde) olabildiğince eşit bir şekilde yayarak birbirinden fiziksel olarak yalıtılır. Bir donanım hatası varsa, başarısız olan etki alanındaki VM 'Ler diğer hata etki alanlarında yeniden başlatılır, ancak mümkünse aynı Kullanılabilirlik kümesindeki diğer VM 'lerden ayrı hata etki alanlarında tutulur. Donanım yeniden çevrimiçi olduğunda, yüksek kullanılabilirlik sağlamak için VM 'Ler yeniden dengelenebilir. 
  
-- **Güncelleme etki alanları**. Güncelleştirme etki alanlarını kullanılabilirlik kümelerinde yüksek kullanılabilirlik sağlayan başka bir Azure kavramdır. Bir güncelleme etki alanı, aynı anda bakımdan geçirilebilen temel alınan donanım mantıksal grubudur. Aynı güncelleştirme etki alanında bulunan VM'ler, planlanan bakım sırasında birlikte yeniden başlatılır. Kiracılar, bir kullanılabilirlik kümesinde VM'ler oluşturduğunuzda, Azure platformu otomatik olarak Vm'leri bunlar arasında dağıtır güncelleştirme etki alanı. Azure Stack'te kendi temel konak güncelleştirilmeden önce kümedeki çevrimiçi diğer konaklar arasında geçişi, Vm'leri Canlı. Bir konak güncelleştirme sırasında kapalı kalma süresi olmadan Kiracı olduğundan, Azure Stack'te güncelleştirme etki alanı özelliği yalnızca şablon Azure ile uyumluluk için bulunmaktadır. 
+- **Etki alanlarını güncelleştirin**. Güncelleştirme etki alanları, kullanılabilirlik kümelerinde yüksek kullanılabilirlik sağlayan başka bir Azure kavramıdır. Bir güncelleştirme etki alanı, aynı anda Bakımı düşük bir şekilde temel alınan donanımların mantıksal grubudur. Aynı güncelleştirme etki alanında bulunan VM 'Ler, planlı bakım sırasında birlikte yeniden başlatılır. Kiracılar bir kullanılabilirlik kümesi içinde VM 'Ler oluştururken, Azure platformu VM 'Leri Bu güncelleştirme etki alanlarına otomatik olarak dağıtır. Azure Stack, VM 'Ler, temel ana bilgisayar güncellenmadan önce kümedeki diğer çevrimiçi ana bilgisayarlar arasında dinamik olarak geçirilir. Bir konak güncelleştirmesi sırasında kiracı kapalı kalma süresi olmadığından, Azure Stack etki alanı güncelleştirme özelliği yalnızca Azure ile şablon uyumluluğu için vardır. Bir kullanılabilirlik kümesindeki VM 'Ler, portalda güncelleştirme etki alanı numarası olarak **0** gösterir. 
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
-Abonelik, kaynak grubu veya tek başına bir kaynak düzeyinde rolleri atayarak yetkili kullanıcılar, gruplar ve Hizmetleri için sistem erişimi vermek için rol tabanlı erişim denetimi (RBAC) kullanabilirsiniz. Her bir rol, bir kullanıcı, Grup veya hizmet Microsoft Azure Stack kaynaklara sahip erişim düzeyini tanımlar.
+Rol tabanlı erişim denetimi 'ni (RBAC), bir abonelik, kaynak grubu veya tek kaynak düzeyinde roller atayarak yetkili kullanıcılara, gruplara ve hizmetlere sistem erişimi sağlamak için kullanabilirsiniz. Her rol, bir Kullanıcı, Grup veya hizmetin Microsoft Azure Stack kaynakları üzerinde sahip olduğu erişim düzeyini tanımlar.
 
-Azure Stack RBAC, tüm kaynak türleri için geçerli olan üç temel rolüne sahiptir: Sahip, katkıda bulunan ve okuyucu. Sahip tüm kaynaklara temsilci erişimi başkalarına hakkı dahil olmak üzere tam erişimi vardır. Katkıda bulunan oluşturabilir ve tüm Azure kaynakları türlerini yönetmek, ancak diğerleri için erişim izni veremiyor. Okuyucu, mevcut kaynaklar yalnızca görüntüleyebilir. RBAC rolleri kalan belirli bir Azure kaynak yönetimi sağlar. Örneğin, sanal makine Katılımcısı rolü oluşturma ve sanal makinelerin yönetimini sağlar ancak Yönetim sanal ağ veya sanal makine bağlanan bir alt ağ izin vermiyor.
+RBAC Azure Stack tüm kaynak türleri için uygulanan üç temel role sahiptir: Sahip, katkıda bulunan ve okuyucu. Sahibinin, başkalarına erişim yetkisi verme hakkı dahil tüm kaynaklara tam erişimi vardır. Katkıda bulunan her türlü Azure kaynağı oluşturabilir ve yönetebilir, ancak diğer kullanıcılara erişim izni veremez. Okuyucu yalnızca mevcut kaynakları görüntüleyebilir. RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin, sanal makine katılımcısı rolü sanal makinelerin oluşturulmasına ve yönetilmesine izin verir, ancak sanal ağın veya sanal makinenin bağlandığı alt ağın yönetimine izin vermez.
 
-> Bkz: [Manage Role-Based erişim denetimi](azure-stack-manage-permissions.md) daha fazla bilgi için. 
+> Daha fazla bilgi için bkz. [rol tabanlı erişim denetimini yönetme](azure-stack-manage-permissions.md) . 
 
 ## <a name="reporting-usage-data"></a>Kullanım verilerini raporlama
-Azure Stack toplar ve tüm kaynak sağlayıcılarını kullanım verilerini toplayan ve bunu Azure'a işleme için Azure ticaret tarafından iletir. Azure Stack'te toplanan kullanım verileri, bir REST API aracılığıyla görüntülenebilir. Bir Azure ile tutarlı Kiracı API'si yanı sıra sağlayıcısı ve sağlayıcı API'leri temsilci tüm Kiracı aboneliklerindeki kullanım verilerini almak için yoktur. Bu veriler, bir dış aracı ya da hizmet için fatura veya geri ödeme ile tümleştirmek için kullanılabilir. Azure ticaret tarafından kullanım işlendikten sonra Azure fatura Portalı'nda görüntülenebilir.
+Azure Stack tüm kaynak sağlayıcıları genelinde kullanım verilerini toplayıp toplar ve Azure ticareti tarafından işlenmek üzere Azure 'a aktarır. Azure Stack toplanan kullanım verileri bir REST API üzerinden görüntülenebilir. Tüm kiracı aboneliklerinde kullanım verilerini almak için sağlayıcı ve sağlayıcı API 'Lerinin yanı sıra, Azure ile tutarlı bir Kiracı API 'SI de vardır. Bu veriler, faturalandırma veya geri ödeme için bir dış araçla veya hizmetle tümleştirilecek şekilde kullanılabilir. Kullanım Azure ticareti tarafından işlendikten sonra Azure Faturalandırma portalında görüntülenebilir.
 
-> Daha fazla bilgi edinin [Azure'da Azure Stack kullanım verilerini raporlama](azure-stack-usage-reporting.md).
+> [Kullanım verilerini Azure 'a raporlama Azure Stack](azure-stack-usage-reporting.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure yığını ve genel Azure karşılaştırın](compare-azure-azure-stack.md)
+[Azure Stack ve küresel Azure karşılaştırması](compare-azure-azure-stack.md)
 
-[Yönetim temel bilgileri](azure-stack-manage-basics.md)
+[Yönetim Temelleri](azure-stack-manage-basics.md)
 
-[Hızlı Başlangıç: Azure Stack yönetim portalını kullanın](azure-stack-manage-portals.md)
+[Hızlı başlangıç: Azure Stack yönetim portalını kullanma](azure-stack-manage-portals.md)

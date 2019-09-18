@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2019
+ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 06/07/2019
-ms.openlocfilehash: 9f35a2bef6e5aa3b9ae1866927be007d58532b74
-ms.sourcegitcommit: 5703255b4647ff0ebec23658a3f5c25d67f076a2
+ms.lastreviewed: 09/17/2019
+ms.openlocfilehash: 97d57605ce093684fcbabe2375deecda5e35cce2
+ms.sourcegitcommit: 9f4c6e96f60b4c229316e7a4ab6e0e5ef0a9a232
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70749957"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71061142"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Kullanım ve faturalandırma için kiracı ekleyin Azure Stack
 
@@ -55,13 +55,17 @@ Varsayılan olarak, CSP olarak, son müşterinin Azure Stack aboneliğine erişi
 
 ### <a name="update-the-registration-with-the-end-customer-subscription"></a>Son müşteri aboneliğiyle kaydı güncelleştirme
 
-Yeni müşteri aboneliğiyle kaydınızı güncelleştirin. Azure, Iş Ortağı Merkezi 'nden müşteri kimliğini kullanarak müşteri kullanımını raporlar. Bu adım, her bir müşterinin kullanımının müşterinin bireysel CSP aboneliği kapsamında raporlanmasını sağlar. Bu, Kullanıcı kullanımını ve faturalandırmayı izlemeyi kolaylaştırır.
-
-> [!NOTE]  
-> Bu adımı gerçekleştirmek için öncelikle [Azure Stack kaydetmeniz](azure-stack-registration.md)gerekir.
+Yeni müşteri aboneliğiyle kaydınızı güncelleştirin. Azure, Iş Ortağı Merkezi 'nden müşteri kimliğini kullanarak müşteri kullanımını raporlar. Bu adım, her bir müşterinin kullanımının müşterinin bireysel CSP aboneliği kapsamında raporlanmasını sağlar. Bu, izleme kullanımını ve faturalandırmayı kolaylaştırır. Bu adımı gerçekleştirmek için öncelikle [Azure Stack kaydetmeniz](azure-stack-registration.md)gerekir.
 
 1. Windows PowerShell 'i yükseltilmiş bir komut istemiyle açın ve şunu çalıştırın:  
-    `Add-AzureRmAccount`
+
+   ```powershell
+   Add-AzureRmAccount
+   ```
+
+   >[!Note]
+   > Oturumunuzun süresi dolarsa, parolanız değiştirilmiştir veya yalnızca hesapları değiştirmek istiyorsanız, Add-AzureRmAccount komutunu kullanarak oturum açmadan önce aşağıdaki cmdlet 'i çalıştırın:`Remove-AzureRmAccount-Scope Process`
+
 2. Azure kimlik bilgilerinizi yazın.
 3. PowerShell oturumunda şunu çalıştırın:
 
@@ -78,7 +82,7 @@ Aşağıdaki bölümde, **New-AzureRmResource** cmdlet 'inin parametreleri açı
 |Registrationsubscriptionıd | Azure Stack ilk kaydı için kullanılan Azure aboneliği.|
 | Customersubscriptionıd | Kaydedilecek müşteriye ait olan Azure aboneliği (Azure Stack değil). CSP teklifinde oluşturulması gerekir; pratikte bu, Iş Ortağı Merkezi aracılığıyla anlamına gelir. Bir müşterinin birden fazla Azure Active Directory kiracısı varsa, bu aboneliğin Azure Stack oturum açmak için kullanılacak kiracıda oluşturulması gerekir. Müşteri aboneliği KIMLIĞI küçük harf kullanmalıdır. |
 | resourceGroup | Azure 'da kaydınızı depoladığınız kaynak grubu. |
-| registrationName | Azure Stack kaydının adı. Azure 'da depolanan bir nesnedir. |
+| RegistrationName | Azure Stack kaydının adı. Azure 'da depolanan bir nesnedir. |
 | Özellikler | Kaynak için özellikleri belirtir. Kaynak türüne özgü özelliklerin değerlerini belirtmek için bu parametreyi kullanın.
 
 > [!NOTE]  
