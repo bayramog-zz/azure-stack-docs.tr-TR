@@ -15,12 +15,12 @@ ms.date: 09/10/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 58bfdf49492caf7f8db7f4d2a04de97a17738eac
-ms.sourcegitcommit: dc633e862d49412a963daee481226c1543287e5e
+ms.openlocfilehash: 9582c47f37bdd6ae4c306593bea094b66652c49e
+ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70863035"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101162"
 ---
 # <a name="plan-for-an-azure-stack-update"></a>Azure Stack güncelleştirme planı
 
@@ -36,9 +36,9 @@ Kullanıcılara herhangi bir bakım işlemini bilgilendirmelisiniz ve mümkünse
 
 Tüm düzeltmeleri, güvenlik düzeltme eklerini ve OEM güncelleştirmelerini uyguladığınızdan, Azure Stack örneğinizin sistem durumunun doğrulanmasını, kullanılabilir kapasiteyi denetlediğinizden ve güncelleştirme paketini gözden geçirdiğinizden emin olarak güncelleştirmeye hazırlanabilirsiniz.
 
-1. Bilinen sorunları gözden geçirin. Yönergeler için bkz. [Azure Stack bilinen sorunlar](https://docs.microsoft.com/azure-stack/operator/azure-stack-release-notes-known-issues-1907).
+1. Bilinen sorunları gözden geçirin. Yönergeler için bkz. [Azure Stack bilinen sorunlar](https://docs.microsoft.com/azure-stack/operator/release-notes.md).
 
-2. Güvenlik güncelleştirmelerini gözden geçirin. Güncelleştirmelerin listesi için bkz. [Azure Stack güvenlik güncelleştirmeleri](https://docs.microsoft.com/azure-stack/operator/azure-stack-release-notes-security-updates-1907).
+2. Güvenlik güncelleştirmelerini gözden geçirin. Güncelleştirmelerin listesi için bkz. [Azure Stack güvenlik güncelleştirmeleri](https://docs.microsoft.com/azure-stack/operator/release-notes-security-updates.md).
 
 3. Bu güncelleştirmeyi yüklemeye başlamadan önce, Azure Stack durumunu doğrulamak ve tüm uyarılar ve arızalar dahil olmak üzere bulunan işlem sorunlarını gidermek için [Test-AzureStack](https://docs.microsoft.com/azure-stack/operator/azure-stack-diagnostic-test) komutunu çalıştırın. Ayrıca etkin uyarıları gözden geçirin ve eylem gerektirenleri çözün.
 

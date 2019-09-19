@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/13/2019
+ms.date: 09/17/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9b56a55ca6fd45177daaa00a7c32bcdf5c281155
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.lastreviewed: 09/17/2019
+ms.openlocfilehash: e672ee6227e00ea6276c92c22d02874f7c8b5529
+ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70975094"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101225"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Azure Stack bir Service Fabric kümesi dağıtma
 
@@ -35,7 +35,7 @@ Azure Stack Service Fabric kümesi, Microsoft. ServiceFabric kaynak sağlayıcı
 Service Fabric kümesi dağıtmak için aşağıdakiler gereklidir:
 1. **Küme sertifikası**  
    Bu, Service Fabric dağıtımı sırasında Key Vault eklediğiniz X. 509.440 sunucu sertifikasıdır. 
-   - Bu sertifika üzerindeki **CN** , oluşturduğunuz Service Fabric kümesinin tam etki alanı adı (FQDN) ile eşleşmelidir. 
+   - Bu sertifika üzerindeki **CN** , oluşturduğunuz Service Fabric kümesinin tam etki alanı adı (FQDN) ile eşleşmelidir. FQDN hakkında daha fazla bilgi için bkz. [Azure App Service Azure Stack Üretim dağıtımı için gereken sertifikalar](../operator/azure-stack-app-service-before-you-get-started.md#certificates-required-for-azure-stack-production-deployment-of-azure-app-service).
    - Hem ortak hem de özel anahtarlar gerekli olduğundan, sertifika biçiminin PFX olması gerekir. 
      Bu sunucu tarafı sertifikası oluşturma [gereksinimlerine](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) bakın.
 

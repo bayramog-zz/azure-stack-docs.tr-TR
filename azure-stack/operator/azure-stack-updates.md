@@ -15,12 +15,12 @@ ms.date: 09/10/2019
 ms.author: mabrigg
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 2a6165d37aa813c332cd664ef905717ef7a8ffa8
-ms.sourcegitcommit: dc633e862d49412a963daee481226c1543287e5e
+ms.openlocfilehash: 64e1bd7934b1b3b8c0bc935a920a2e4e188c4bd9
+ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70863000"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101210"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack genel bakış 'da güncelleştirmeleri yönetme
 
@@ -105,4 +105,4 @@ Güncelleştirmeler yüklendikten sonra, güncelleştirme işlemi Azure Stack ç
 
 - Güncelleştirme işlemini başlatmak için [Azure Stack güncelleştirme planı](azure-stack-update-plan.md)' nda bulunan adımları izleyin.
 - Azure Stack sürümlerinin DESTEKDE olduğunu öğrenmek için, bkz. [Azure Stack hizmet ilkesi](azure-stack-servicing-policy.md).  
-- Güncel ve son güncelleştirmeler hakkında daha fazla bilgi edinmek için [Azure Stack sürüm notlarına](azure-stack-release-notes-security-updates-1907.md)bakın.
+- Güncel ve son güncelleştirmeler hakkında daha fazla bilgi edinmek için [Azure Stack sürüm notlarına](release-notes.md)bakın.

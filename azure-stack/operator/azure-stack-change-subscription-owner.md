@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Kullanıcı aboneliğinin sahibini güncelleştirme | Microsoft Docs
-description: Azure Stack Kullanıcı abonelikleri için faturalandırma sahibini değiştirin.
+title: Azure Stack Kullanıcı aboneliği için fatura sahibini değiştirme | Microsoft Docs
+description: Azure Stack Kullanıcı aboneliği için faturalandırma sahibini değiştirmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,16 +16,16 @@ ms.date: 09/17/2019
 ms.author: justinha
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
-ms.openlocfilehash: 00e55dc301102622d4771a8fd8c6ff8591263dd7
-ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
+ms.openlocfilehash: 3c4453974092fd1873e5f77b1074c82851fc1be1
+ms.sourcegitcommit: c196463492732218d2474d3a964f88e995272c80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71070150"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71094368"
 ---
-# <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Azure Stack Kullanıcı aboneliğinin sahibini değiştirme
+# <a name="change-the-billing-owner-for-an-azure-stack-user-subscription"></a>Azure Stack Kullanıcı aboneliği için fatura sahibini değiştirme
 
-Azure Stack işleçler, bir Kullanıcı aboneliğinin fatura sahibini değiştirmek için PowerShell kullanabilir. Örneğin, sahibi değiştirme nedenlerinden biri, kuruluşunuzu bırakan bir kullanıcıyı değiştirmek içindir.
+Azure Stack işleçler, kullanıcı aboneliğine ait faturalandırma sahibini değiştirmek için PowerShell kullanabilir. Örneğin, sahibi değiştirme nedenlerinden biri, kuruluşunuzu bırakan bir kullanıcıyı değiştirmek içindir.
 
 Bir aboneliğe atanan iki tür *sahip* vardır:
 

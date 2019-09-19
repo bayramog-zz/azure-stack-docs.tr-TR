@@ -1,6 +1,6 @@
 ---
-title: Azure Stack araçları Github'dan indirin. | Microsoft Docs
-description: Azure Stack ile çalışmak için gereken araçları indirme hakkında bilgi edinin.
+title: GitHub 'dan Azure Stack araçları indirin | Microsoft Docs
+description: Azure Stack ile çalışmak için gereken araçların nasıl indirileceği hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 09/18/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 722fea2777071fa78c89372a21fe52022a56f264
-ms.sourcegitcommit: 889fd09e0ab51ad0e43552a800bbe39dc9429579
+ms.lastreviewed: 09/18/2019
+ms.openlocfilehash: c6939a28b150073d08a4f8c8dbc2d15dfd153957
+ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782262"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71100934"
 ---
-# <a name="download-azure-stack-tools-from-github"></a>Github'dan Azure Stack araçları indirin
+# <a name="download-azure-stack-tools-from-github"></a>GitHub 'dan Azure Stack araçları indirin
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-**AzureStack Araçları** olduğu bir [GitHub deposu](https://github.com/Azure/AzureStack-Tools) yönetme ve dağıtma kaynakları Azure Stack için PowerShell modülleri barındırır. VPN bağlantısı kurmak planlıyorsanız, bu PowerShell modülleri Azure Stack geliştirme Seti'ni veya Windows tabanlı bir dış istemci indirebilirsiniz. Bu araçları edinmek için GitHub deposunu kopyalayın veya indirme **AzureStack Araçları** aşağıdaki betiği çalıştırarak klasörü:
+**Azurestack-Tools** , Azure Stack kaynakları yönetmek ve dağıtmak için PowerShell modüllerini barındıran bir [GitHub deposudur](https://github.com/Azure/AzureStack-Tools) . VPN bağlantısı kurmayı planlıyorsanız, bu PowerShell modüllerini Azure Stack Geliştirme Seti veya Windows tabanlı bir dış istemciye indirebilirsiniz. Bu araçları edinmek için GitHub deposunu kopyalayın veya aşağıdaki betiği çalıştırarak **Azurestack-Tools** klasörünü indirin:
 
 ```powershell
 # Change directory to the root directory. 
@@ -48,22 +48,22 @@ cd AzureStack-Tools-master
 
 ```
 
-## <a name="functionality-provided-by-the-modules"></a>Modüller tarafından sağlanan işlevselliği
+## <a name="functionality-provided-by-the-modules"></a>Modüller tarafından sunulan işlevsellik
 
-**AzureStack Araçları** deposu, aşağıdaki işlevleri desteklemek için Azure Stack PowerShell modüllerini içerir:  
+**Azurestack-Tools** deposu, Azure Stack için aşağıdaki Işlevleri destekleyen PowerShell modülleri içerir:  
 
-| İşlevi | Açıklama | Kimler bu modül kullanabilir miyim? |
+| İşlevi | Açıklama | Bu modülü kimler kullanabilir? |
 | --- | --- | --- |
-| [Bulut özellikleri](../user/azure-stack-validate-templates.md) | Bulut'u bulut özelliklerini almak için bu modülü kullanın. Örneğin, bu modül kullanılarak API sürümü ve Azure Resource Manager kaynakları gibi bulut özellikleri elde edebilirsiniz. Ayrıca VM uzantıları Azure Stack ve Azure bulut için bu modülü kullanarak alabilirsiniz. | Bulut operatörleri ve kullanıcıları |
-| [Azure Stack için Resource Manager İlkesi](../user/azure-stack-policy-module.md) | Azure Stack olarak aynı sürüm oluşturma ve hizmet kullanılabilirliği olan bir Azure aboneliği veya bir Azure kaynak grubu yapılandırmak için bu modülü kullanın. | Bulut operatörleri ve kullanıcıları |
-| [Azure ile kaydedin](azure-stack-registration.md ) | Azure ile Geliştirme Seti örneğinizin kaydetmek için bu modülü kullanın. Kaydolduktan sonra Azure Market öğelerini indirme ve bunları Azure Stack'te kullanın. | Bulut operatörleri |
-| [Azure Stack dağıtımı](../asdk/asdk-install.md) | Dağıtma ve Azure Stack sanal sabit disk (VHD) görüntüsü kullanarak yeniden dağıtmak için Azure Stack ana bilgisayarı hazırlamak için bu modülü kullanın. | Bulut operatörleri|
-| [Azure Stack'e bağlanma](azure-stack-powershell-install.md) | Azure Stack için VPN bağlantısı yapılandırmak için bu modülü kullanın. | Bulut operatörleri ve kullanıcıları |
-| [Şablon Doğrulayıcı](../user/azure-stack-validate-templates.md) | Var olan veya yeni bir şablonu Azure Stack'e yerleştirilip yerleştirilemediğini doğrulamak için bu modülü kullanın. | Bulut operatörleri ve kullanıcıları|
+| [Bulut özellikleri](../user/azure-stack-validate-templates.md) | Bir bulutun bulut yeteneklerini almak için bu modülü kullanın. Örneğin, bu modülü kullanarak, API sürümü ve Azure Resource Manager kaynakları gibi bulut özelliklerini alabilirsiniz. Ayrıca, bu modülü kullanarak Azure Stack ve Azure bulutları için VM uzantılarını da edinebilirsiniz. | Bulut İşletmenleri ve kullanıcıları |
+| [Azure Stack için Kaynak Yöneticisi ilkesi](../user/azure-stack-policy-module.md) | Aynı sürüm oluşturma ve hizmet kullanılabilirliğine sahip bir Azure aboneliği veya Azure kaynak grubunu Azure Stack olarak yapılandırmak için bu modülü kullanın. | Bulut İşletmenleri ve kullanıcıları |
+| [Azure 'a kaydolun](azure-stack-registration.md ) | Geliştirme Seti örneğinizi Azure ile kaydetmek için bu modülü kullanın. Kaydolduktan sonra Azure 'dan Market öğelerini indirebilir ve bunları Azure Stack kullanabilirsiniz. | Bulut işleçleri |
+| [Azure Stack dağıtımı](../asdk/asdk-install.md) | Bu modülü, Azure Stack sanal sabit disk (VHD) görüntüsünü kullanarak Azure Stack ana bilgisayarı dağıtmak ve yeniden dağıtmak üzere hazırlamak için kullanın. | Bulut işleçleri|
+| [Azure Stack bağlanılıyor](azure-stack-powershell-install.md) | Azure Stack için VPN bağlantısını yapılandırmak üzere bu modülü kullanın. | Bulut İşletmenleri ve kullanıcıları |
+| [Şablon doğrulayıcısı](../user/azure-stack-validate-templates.md) | Azure Stack için mevcut veya yeni bir şablon dağıtılıp dağıtılmadığını doğrulamak için bu modülü kullanın. | Bulut İşletmenleri ve kullanıcıları|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack de PowerShell ile çalışmaya başlama](../user/azure-stack-powershell-overview.md)
+- [Azure Stack 'de PowerShell 'i kullanmaya başlama](../user/azure-stack-powershell-overview.md)
 - [Azure Stack kullanıcının PowerShell ortamını yapılandırma](../user/azure-stack-powershell-configure-user.md)   
-- [Azure Stack Geliştirme Seti için bir VPN üzerinden bağlanan](../asdk/asdk-connect.md)  
+- [VPN üzerinden Azure Stack Geliştirme Seti bağlanma](../asdk/asdk-connect.md)  

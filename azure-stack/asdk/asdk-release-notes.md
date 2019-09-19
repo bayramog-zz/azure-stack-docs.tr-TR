@@ -15,12 +15,12 @@ ms.date: 08/30/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: 9d0820634a469f775c1e3b6637c604ae98681be2
-ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
+ms.openlocfilehash: 98e43cfe0226e06ca936484a78da5a61915f5797
+ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70188185"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101028"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
@@ -33,14 +33,14 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 
 ### <a name="new-features"></a>Yeni Özellikler
 
-- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1908.md#whats-new) bakın.
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1908#whats-new-1908) bakın.
 
 <!-- ### Changes -->
 
 ### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
-<!-- - For a list of Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1908.md#fixes) of the Azure Stack release notes. -->
-- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1908.md)bakın.
+<!-- - For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1908#fixes-1908) of the Azure Stack release notes. -->
+- Bilinen sorunların bir listesi için, [Bu makaleye](/azure-stack/operator/known-issues?view=azs-1908)bakın.
 - Kullanılabilir Azure Stack düzeltmelerinin ASDK 'ye uygulanmadığını unutmayın.
 ::: moniker-end
 
@@ -49,16 +49,16 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 
 ### <a name="new-features"></a>Yeni Özellikler
 
-- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1907.md#whats-in-this-update) bakın.
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1907#whats-in-this-update-1907) bakın.
 
 <!-- ### Changes -->
 
 ### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
 - Bazı Market görüntülerini kullanarak VM kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
-- Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1907.md#fixes) bakın.
-- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1907.md)bakın.
-- [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1907.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
+- Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1907#fixes-1907) bakın.
+- Bilinen sorunların bir listesi için, [Bu makaleye](/azure-stack/operator/known-issues?view=azs-1907)bakın.
+- [Kullanılabilir Azure Stack düzeltmelerinin](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-1907) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 ::: moniker-end
 
 ::: moniker range="azs-1906"
@@ -66,7 +66,7 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 
 ### <a name="new-features"></a>Yeni Özellikler
 
-- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1906.md#whats-in-this-update) bakın.
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1906#whats-in-this-update-1906) bakın.
 
 ### <a name="changes"></a>Değişiklikler
 
@@ -75,9 +75,9 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 ### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
 - Bazı Market görüntülerini kullanarak VM kaynakları oluştururken, dağıtımı tamamlayamayabilir. Geçici bir çözüm olarak, **Özet** sayfasındaki **şablon ve parametreleri Indir** bağlantısına tıklayıp **şablon** dikey penceresinde **Dağıt** düğmesine tıklayabilirsiniz.
-- Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1906.md#fixes) bakın.
-- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1906.md)bakın.
-- [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1906.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
+- Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1906#fixes-1906) bakın.
+- Bilinen sorunların bir listesi için, [Bu makaleye](/azure-stack/operator/known-issues?view=azs-1906)bakın.
+- [Kullanılabilir Azure Stack düzeltmelerinin](/azure-stack/operator/release-notes?view=azs-1906#hotfixes-1906) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 ::: moniker-end
 
 ::: moniker range="azs-1905"
@@ -87,12 +87,12 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 
 ### <a name="new-features"></a>Yeni Özellikler
 
-- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1905.md#whats-in-this-update) bakın.
+- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1905#whats-in-this-update-1905) bakın.
 
 ### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
 
 - [ASDK](asdk-register.md) 'yi başarıyla kaydetmek Için **registerwithazure. psm1** PowerShell betiğini düzenlemeniz gereken bir sorun düzeltildi.
-- Bu sürümde düzeltilen diğer Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](../operator/azure-stack-release-notes-1905.md#fixes) bakın.
-- Bilinen sorunların bir listesi için, [Bu makaleye](../operator/azure-stack-release-notes-known-issues-1905.md)bakın.
-- [Kullanılabilir Azure Stack düzeltmelerinin](../operator/azure-stack-release-notes-1905.md#hotfixes) Azure Stack asdk 'ye uygulanmadığını unutmayın.
+- Bu sürümde düzeltilen diğer Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1905#fixes-1905) bakın.
+- Bilinen sorunların bir listesi için, [Bu makaleye](/azure-stack/operator/known-issues?view=azs-1905)bakın.
+- [Kullanılabilir Azure Stack düzeltmelerinin](/azure-stack/operator/release-notes?view=azs-1905#hotfixes-1905) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 ::: moniker-end

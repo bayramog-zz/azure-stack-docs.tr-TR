@@ -1,6 +1,6 @@
 ---
-title: Müşteri faturalandırma ve Azure stack'teki geri ödeme | Microsoft Docs
-description: Azure yığını kaynak kullanım bilgilerini alma hakkında bilgi edinin.
+title: Müşteri faturalandırma ve geri ödeme Azure Stack | Microsoft Docs
+description: Azure Stack kullanıcıların kaynak kullanımı için nasıl faturalandırıldığını ve analiz ve geri ödeme için faturalandırma bilgilerine nasıl erişildiğini öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,52 +15,52 @@ ms.date: 06/21/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: 05a1e106a171df2a8948601376dbc152cb5ca70a
-ms.sourcegitcommit: 3f52cf06fb5b3208057cfdc07616cd76f11cdb38
+ms.openlocfilehash: bcdf43f7be95c76cfd4fc454d85e08ad197551a6
+ms.sourcegitcommit: c196463492732218d2474d3a964f88e995272c80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316187"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71094332"
 ---
-# <a name="usage-and-billing-in-azure-stack"></a>Kullanım ve faturalandırma Azure Stack'te
+# <a name="usage-and-billing-in-azure-stack"></a>Azure Stack kullanım ve faturalandırma
 
-Bu makalede, Azure Stack kullanıcıları için kaynak kullanımı nasıl faturalandırılır ve faturalandırma bilgileri analiz ve Ücret geri için nasıl erişilir açıklanır.
+Bu makalede, Azure Stack kullanıcıların kaynak kullanımı için nasıl faturalandırıldığını ve analiz ve geri ödeme için faturalandırma bilgilerine nasıl erişildiği açıklanmaktadır.
 
-Azure Stack toplar ve kullanılan kaynaklar için kullanım verileri daha sonra bu verileri Azure ticaret iletir. Azure ticari için Azure Stack kullanım Azure kullanımı için düzenler aynı şekilde düzenler.
+Azure Stack kullanılan kaynaklar için kullanım verilerini toplayıp gruplandırır ve bu verileri Azure ticareti 'ne iletir. Azure ticareti, Azure Stack kullanımı için sizi Azure kullanımı ile aynı şekilde faturalandırır.
 
-Ayrıca, kullanım verilerini ve kendi faturalandırma veya ücret fatura bağdaştırıcısı kullanarak sistemi yedeklemek veya Microsoft Power BI gibi bir İş Zekası aracını aktarmak dışarı aktarma da alabilirsiniz.
+Ayrıca, bir faturalandırma bağdaştırıcısı kullanarak kullanım verilerini alabilir ve kendi faturalandırma veya geri ödeme sisteminize aktarabilir ya da Microsoft Power BI gibi bir iş zekası aracına dışarı aktarabilirsiniz.
 
 ## <a name="usage-pipeline"></a>Kullanım işlem hattı
 
-Azure stack'teki her kaynak sağlayıcısı, kaynak kullanımı başına kullanım verilerini gönderir. Kullanım hizmeti düzenli aralıklarla (saatlik ve günlük) kullanım verilerini toplayan ve kullanım veritabanına depolar. Azure Stack operatörleri ve kullanıcıları saklı kullanım verilerini Azure Stack kaynak kullanımını API'leri erişebilir.
+Azure Stack içindeki her kaynak sağlayıcısı, kaynak kullanımı başına kullanım verilerini gönderir. Kullanım hizmeti düzenli aralıklarla (saatlik ve günlük) kullanım verilerini toplar ve kullanım veritabanında depolar. Azure Stack işleçler ve kullanıcılar, Azure Stack kaynak kullanımı API 'Leri aracılığıyla depolanan kullanım verilerine erişebilirler.
 
-Varsa [Azure Stack örneğinizin Azure Active Directory'ye](azure-stack-registration.md), Azure Stack, Azure ticari için kullanım verileri göndermek için yapılandırılır. Verileri Azure'a karşıya yüklendikten sonra faturalandırma portalı üzerinden ya da Azure kaynak kullanımı API'leri kullanarak erişebilirsiniz. Hangi kullanım verileri Azure'a bildirildiği hakkında daha fazla bilgi için bkz. [veri Kullanım raporlaması](azure-stack-usage-reporting.md).  
+[Azure Stack örneğinizi Azure ile kaydolduysanız](azure-stack-registration.md), Azure Stack kullanım verilerini Azure ticareti 'ne gönderecek şekilde yapılandırılır. Veriler Azure 'a yüklendikten sonra faturalandırma portalı aracılığıyla veya Azure Kaynak kullanımı API 'Leri kullanarak erişebilirsiniz. Azure 'a hangi kullanım verilerinin bildirildiği hakkında daha fazla bilgi için bkz. [kullanım verilerini raporlama](azure-stack-usage-reporting.md).  
 
-Aşağıdaki görüntüde, kullanım işlem hattında anahtar bileşenleri gösterilmektedir:
+Aşağıdaki görüntüde, kullanım ardışık düzeninde anahtar bileşenleri gösterilmektedir:
 
 ![Kullanım işlem hattı](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>Hangi kullanım bilgilerini bulabilirim ve nasıl?
 
-Azure Stack kaynak sağlayıcıları (örneğin, işlem, depolama ve ağ), her abonelik için saatlik aralıklarla kullanım verilerini oluşturur. Kullanım verileri, kaynak adı, abonelik kullanılan ve kullanılan miktarı gibi kullanılan kaynak hakkında bilgi içerir. Ölçümleri kimliği kaynaklar hakkında bilgi edinmek için [kullanım API'si SSS](azure-stack-usage-related-faq.md).
+Azure Stack kaynak sağlayıcıları (Işlem, depolama ve ağ), her abonelik için saatlik aralıklarla kullanım verileri oluşturur. Kullanım verileri, kaynak adı, kullanılan abonelik ve kullanılan miktar gibi kullanılan kaynak hakkındaki bilgileri içerir. Ölçüm KIMLIK kaynakları hakkında bilgi edinmek için bkz. [kullanım API 'SI SSS](azure-stack-usage-related-faq.md).
 
-Kullanım verilerini topladıktan sonra [Azure'a bildirilen](azure-stack-usage-reporting.md) Azure fatura portalı üzerinden görüntülenebilir bir fatura oluşturulacak.
+Kullanım verileri toplandıktan sonra, Azure Faturalandırma portalı aracılığıyla görüntülenebilen bir fatura oluşturmak için [Azure 'a bildirilir](azure-stack-usage-reporting.md) .
 
 > [!NOTE]  
-> Kullanım verilerini raporlama, Azure Stack geliştirme Seti'ni (ASDK) için ve kapasite modeli altında lisans Azure Stack tümleşik sistemi kullanıcılar için gerekli değildir. Azure Stack'te lisanslama hakkında daha fazla bilgi için bkz: [paketleme ve veri sayfası fiyatlandırma](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+> Kullanım verilerini raporlama Azure Stack Geliştirme Seti (ASDK) ve kapasite modeli kapsamında lisans veren Azure Stack tümleşik sistem kullanıcıları için gerekli değildir. Azure Stack ' de lisanslama hakkında daha fazla bilgi edinmek için [paketleme ve fiyatlandırma veri sayfasına](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)bakın.
 
-Azure faturalama portalını ücrete tabi kaynaklar için kullanım verilerini gösterir. Azure Stack, ek ücrete tabi kaynaklar, daha geniş bir REST API veya PowerShell cmdlet'leri aracılığıyla Azure Stack ortamınızdaki erişebileceğiniz kaynak kümesi için kullanım verilerini yakalar. Azure Stack operatörleri, tüm kullanıcı abonelikler için kullanım verileri elde edebilirsiniz. Bireysel kullanıcılar yalnızca kendilerine ait kullanım ayrıntılarını alabilirsiniz.
+Azure Faturalandırma portalı, Borçlandırılabilir kaynaklar için kullanım verilerini gösterir. Borçlandırılabilir kaynaklara ek olarak, Azure Stack REST API 'leri veya PowerShell cmdlet 'leri aracılığıyla Azure Stack ortamınıza erişebileceğiniz daha geniş bir kaynak kümesi için kullanım verilerini yakalar. Azure Stack işleçleri tüm Kullanıcı abonelikleri için kullanım verilerini alabilir. Bireysel kullanıcılar yalnızca kendi kullanım ayrıntılarını alabilir.
 
-## <a name="usage-reporting-for-multi-tenant-cloud-service-providers"></a>Çok kiracılı bulut hizmeti sağlayıcıları için raporlama kullanım
+## <a name="usage-reporting-for-multi-tenant-cloud-service-providers"></a>Çok kiracılı bulut hizmeti sağlayıcıları için kullanım raporlaması
 
-Sağlayıcı kullanım farklı Azure abonelikleri için ücret, böylece Azure Stack kullanarak birçok müşteri olan bir çok kiracılı bulut hizmeti sağlayıcısı (CSP) ayrı ayrı her müşteri kullanımını raporlamak isteyebilirsiniz.
+Azure Stack kullanan çok kiracılı bir bulut çözümü sağlayıcısı (CSP) her müşteri kullanımını ayrı ayrı raporlamak isteyebilir, böylece sağlayıcı farklı Azure aboneliklerine kullanım ücreti verebilir.
 
-Her müşteri kimliklerini farklı bir Azure Active Directory (Azure AD) kiracısı tarafından temsil edilen sahiptir. Azure Stack, her Azure AD kiracısı için atama bir CSP aboneliği destekler. Kiracılar ve abonelikleri için temel Azure Stack kayıt ekleyebilirsiniz. Temel kayıt, tüm Azure Stack örnekleri için gerçekleştirilir. Bir kiracı için bir aboneliğe kayıtlı değilse, kullanıcının Azure Stack kullanmaya devam edebilirsiniz ve bunların kullanımını temel kayıt için kullanılan abonelik gönderilir.
+Her müşterinin kimliği, farklı bir Azure Active Directory (Azure AD) kiracısı tarafından temsil edilir. Azure Stack, her bir Azure AD kiracısına bir CSP aboneliği atanmasını destekler. Kiracıların ve aboneliklerinin temelini temel Azure Stack kaydına ekleyebilirsiniz. Temel kayıt tüm Azure Stack örnekleri için yapılır. Bir abonelik bir kiracı için kayıtlı değilse, Kullanıcı Azure Stack kullanmaya devam edebilir ve bu kullanıcıların kullanımları temel kayıt için kullanılan aboneliğe gönderilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack ile kaydetme](azure-stack-registration.md)
+- [Azure Stack Kaydet](azure-stack-registration.md)
 - [Azure Stack kullanım verilerini Azure'a bildirme](azure-stack-usage-reporting.md)
-- [Sağlayıcı kaynak kullanım API'si](azure-stack-provider-resource-api.md)
+- [Sağlayıcı kaynağı kullanım API 'SI](azure-stack-provider-resource-api.md)
 - [Kiracı Kaynak Kullanım API’si](azure-stack-tenant-resource-usage-api.md)
 - [Kullanım ile ilgili SSS](azure-stack-usage-related-faq.md)

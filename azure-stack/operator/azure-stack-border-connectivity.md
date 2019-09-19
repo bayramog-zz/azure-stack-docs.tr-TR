@@ -1,6 +1,6 @@
 ---
-title: Kenarlık bağlantı ağ tümleştirme konuları için Azure Stack tümleşik sistemleri | Microsoft Docs
-description: Çok düğümlü Azure Stack ile veri merkezi kenarlık ağ bağlantısı planlamak için neler yapabileceğinizi öğrenin.
+title: Azure Stack tümleşik sistemler için sınır bağlantısı ve Ağ tümleştirmesi | Microsoft Docs
+description: Azure Stack tümleşik sistemlerde veri merkezi sınır ağ bağlantısını nasıl planlayacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,58 +16,58 @@ ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 85da256828d69db600bd8e5847a110ee3519568b
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.openlocfilehash: 142ea9b53d64e89157ce5c5556241b41275d430d
+ms.sourcegitcommit: c196463492732218d2474d3a964f88e995272c80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131401"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71094360"
 ---
 # <a name="border-connectivity"></a>Kenarlık bağlantısı 
-Tümleştirme ağ planlaması, başarılı Azure Stack tümleşik sistemleri dağıtımı, operasyon ve yönetimi için önemli bir önkoşuldur. Kenarlık bağlantı planlama, sınır ağ geçidi Protokolü (BGP) dinamik yönlendirme kullanılıp kullanılmayacağı seçerek başlar. Bu bir 16 bit BGP Otonom sistem numarası (genel veya özel) atama gerektirir veya statik yönlendirme kullanarak, burada statik bir varsayılan yol kenarlığı cihazlara atanır.
+Ağ tümleştirme planlaması, başarılı Azure Stack tümleşik sistemler dağıtımı, işlemi ve yönetimi için önemli bir önkoşuldur. Sınır bağlantı planlaması, Sınır Ağ Geçidi Protokolü (BGP) ile dinamik yönlendirmeyi kullanmak istiyorsanız öğesini seçerek başlar. Bu, bir 16 bit BGP otonom sistem numarası (genel veya özel) atanmasını veya statik bir varsayılan yolun kenarlık cihazlarına atandığı statik yönlendirmeyi kullanmayı gerektirir.
 
 > [!IMPORTANT]
-> Raf üstü (TOR) anahtarları üst katman 3 yukarı bağlantılar ile noktadan noktaya IP'ler gerektirir (/ 30 ağlar) fiziksel arabirimleri üzerinde yapılandırılmış. Katman 2 Yukarı bağlantılar ile Azure Stack işlemlerini destekleyen TOR anahtarlarını kullanmak için desteklenmiyor. 
+> Raf üstü (TOR) anahtarları, fiziksel arabirimlerde yapılandırılmış noktadan noktaya IP 'Ler (/30 ağ) ile katman 3 yukarı bağlantılar gerektirir. Azure Stack işlemlerini destekleyen TOR anahtarlarıyla katman 2 yukarı bağlantılar desteklenmez.
 
 ## <a name="bgp-routing"></a>BGP yönlendirme
-BGP gibi dinamik yönlendirme protokolü kullanarak sisteminizi her zaman ağ değişikliklerden haberdar olur ve yönetimini kolaylaştırır garanti eder. Gelişmiş güvenlik için bir parola TOR ve kenarlığı arasında eşleme BGP üzerinde ayarlanabilir. 
+BGP gibi dinamik bir yönlendirme protokolü kullanmak sisteminizin ağ değişikliklerinin her zaman farkında olmasını sağlar ve yönetimini kolaylaştırır. Gelişmiş güvenlik için, TOR ve kenarlık arasındaki BGP eşlemesi üzerinde bir parola ayarlanabilir.
 
-Aşağıdaki diyagramda gösterildiği gibi özel IP'si ile reklam izlerinin TOR anahtarında alan bir ön ek listesini kullanarak engellenir. Ön ek listesini özel ağ'ın Tanıtımı reddeder ve TOR kenarlığı arasındaki bağlantıyı haritada rota olarak uygulanır.
+Aşağıdaki diyagramda gösterildiği gibi, TOR anahtarındaki özel IP alanının tanıtılması bir ön ek listesi kullanılarak engellenir. Ön ek listesi, özel ağın tanıtımını reddeder ve bu, TOR ile kenarlık arasındaki bağlantıda bir yol haritası olarak uygulanır.
 
-VIP adresleri dinamik olarak tanıtabilir miyim için Azure Stack çözüm içinde çalışan yazılım yük dengeleyici (SLB) TOR cihazlara eşler.
+Azure Stack çözümünün içinde çalışan yazılım Load Balancer (SLB), sanal cihaz adreslerini dinamik bir şekilde duyurabilmesi için TOR cihazlarına eşler.
 
-Konaklar ve HSRP veya sağlayan VRRP toplama emin olmak için kullanıcı trafiğinin hemen ve şeffaf bir şekilde hata verdi kurtarır, VPC veya MLAG yapılandırılmış TOR cihazlar arasında çok kasa bağlantısı kullanımına izin verir ve yedeklilik IP ağları için ağ.
+Kullanıcı trafiğinin hatadan hemen ve şeffaf bir şekilde kurtarılmasından emin olmak için, TOR cihazları arasında yapılandırılan VPC veya MLAG 'ler, IP ağları için ağ artıklığı sağlayan ana bilgisayarlar ve HSRP veya VRRP 'ye çok kasalı bağlantı toplama kullanılmasına izin verir.
 
 ![BGP yönlendirme](media/azure-stack-border-connectivity/bgp-routing.png)
 
 ## <a name="static-routing"></a>Statik yönlendirme
-Statik yönlendirme, sınır cihazlar için ek yapılandırma gerektirir. Daha fazla el ile müdahale gerektirir ve yönetim ve bunun yanı sıra herhangi bir değişikliği ve bir yapılandırma hatası nedeniyle sorunları önce kapsamlı analiz bağlı yapılan değişiklikleri geri almak için daha fazla zaman alabilir. Önerilen yönlendirme yöntemi değildir, ancak desteklenir.
+Statik yönlendirme, sınır cihazlara ek yapılandırma gerektirir. Bu, herhangi bir değişiklikten önce daha el ile müdahale ve yönetimin yanı sıra kapsamlı analizler de gerektirir. Yapılandırma hatasından kaynaklanan sorunların, yapılan değişikliklere bağlı olarak geri alınması daha uzun sürebilir. Bu yönlendirme yöntemi önerilmez, ancak desteklenir.
 
-Azure Stack kullanarak statik yönlendirme ağ ortamınıza tümleştirmek için tüm dört fiziksel bağlantı kenarlık ve TOR cihaz arasında bağlanması gerekir ve nasıl statik yönlendirmenin çalıştığını nedeniyle yüksek kullanılabilirlik garanti edilemez.
+Statik yönlendirmeyi kullanarak ağ ortamınıza Azure Stack bütünleştirmek için, sınır ve TOR cihazı arasındaki dört fiziksel bağlantı bağlanmalıdır. Statik yönlendirmenin nasıl çalıştığı ile yüksek kullanılabilirlik garanti edilemez.
 
-Sınır cihazı hedefleyen trafiği için TOR cihazlara P2Ps işaret eden statik yollar ile yapılandırılmalıdır *dış* ağ veya ortak VIP ve *altyapı* ağ. Statik yollara gerektirecek *BMC* ve *dış* dağıtımı için ağ. İşleçleri bulunan yönetim kaynaklarına erişmek için kenarlık statik yollar bırakmayı tercih edebilir *BMC* ağ. Statik yollar ekleme *anahtar altyapı* ve *geçiş Yönetim* ağları isteğe bağlı.
+Sınır cihazı, *dış* ağa veya genel VIP 'Lere ve *altyapı* AĞıNA giden trafik için Tor cihazlarını P2Ps işaret eden statik yollarla yapılandırılmalıdır. Bu, *BMC* 'ye ve dağıtımın *dış* ağlarına statik yollar gerektirecektir. İşleçler, *BMC* ağında bulunan yönetim kaynaklarına erişmek için, kenarlıkta statik yollardan ayrılmamaya izin verebilir. *Anahtar altyapısına* ve *anahtar yönetim* ağlarına statik yollar eklemek isteğe bağlıdır.
 
-TOR cihazların tüm trafiği kenarlık cihazlara gönderme statik varsayılan bir yol ile yapılandırılmış olarak sunulur. Varsayılan kuralın tek istisnası trafiği üzerinde TOR kenarlık bağlantı için geçerli erişim denetim listesi kullanarak engellenen özel alanı içindir.
+TOR cihazları, tüm trafiği kenarlık cihazlarına gönderen statik bir varsayılan yol ile yapılandırılır. Varsayılan kural için tek trafik özel durumu özel alan içindir ve bu, TOR üzerinde bağlantı için uygulanan bir Access Control listesi kullanılarak engellenir.
 
-TOR ve kenarlık anahtarları arasında yukarı bağlantılar için yalnızca statik yönlendirme uygulanır. BGP dinamik yönlendirme, SLB ve diğer bileşenleri için önemli bir araçtır ve devre dışı ya da kaldırılmış olduğundan rafa içinde kullanılır.
+Statik yönlendirme yalnızca TOR ve Border anahtarları arasındaki yukarı bağlantılar için geçerlidir. BGP dinamik yönlendirmesi, SLB ve diğer bileşenler için gerekli bir araç olduğundan ve devre dışı bırakılacağından veya kaldırılacağından raf içinde kullanılır.
 
 ![Statik yönlendirme](media/azure-stack-border-connectivity/static-routing.png)
 
-<sup>\*</sup> BMC ağ dağıtımdan sonra isteğe bağlıdır.
+<sup>\*</sup>BMC ağı dağıtımdan sonra isteğe bağlıdır.
 
-<sup>\*\*</sup> Anahtar altyapı ağı, isteğe bağlı aynıdır tüm ağ anahtarı yönetimi ağ dahil edilebilir.
+<sup>\*\*</sup>Anahtar altyapısı ağı, tüm ağ, anahtar yönetimi ağına dahil edilebilir.
 
-<sup>\*\*\*</sup> Anahtar Yönetim ağ gereklidir ve anahtar altyapı ağ üzerinden ayrı olarak eklenebilir.
+<sup>\*\*\*</sup>Anahtar yönetimi ağı gereklidir ve anahtar altyapısı ağından ayrı olarak eklenebilir.
 
-## <a name="transparent-proxy"></a>Saydam Ara
-Veri merkezinizi bir ara sunucu kullanmak için tüm trafik gerektiriyorsa, yapılandırmalısınız bir *saydam proxy* ağınızdaki bölgeler arasındaki trafiğin ayrılması, ilkesine göre işlemek için rafa giden tüm trafiği işlemek için.
+## <a name="transparent-proxy"></a>Saydam proxy
+Veri merkeziniz tüm trafiğin bir ara sunucu kullanmasını gerektiriyorsa, bir *saydam proxy* 'yi, tüm trafiği ilkeye göre işleyecek şekilde işleyecek şekilde yapılandırmanız ve ağınızdaki bölgeler arasında trafiği ayırmaktır.
 
 > [!IMPORTANT]
-> Azure Stack çözüm normal web proxy'leri desteklemez.  
+> Azure Stack çözümü normal web proxy 'lerini desteklemez.  
 
-Saydam bir proxy (olarak da bilinen bir kesintiye, satır içi veya zorlamalı proxy), herhangi bir özel istemci yapılandırma gerektirmeden ağ katmanında normal iletişimi kesintiye uğratır. İstemci proxy varlığını değil bilmeniz gerekir.
+Saydam bir ara sunucu (kesme, satır içi veya zorlamalı ara sunucu olarak da bilinir), herhangi bir özel istemci yapılandırması gerekmeden Ağ katmanında normal iletişimi keser. İstemcilerin proxy varlığını farkında olması gerekmez.
 
-![Saydam Ara](media/azure-stack-border-connectivity/transparent-proxy.png)
+![Saydam proxy](media/azure-stack-border-connectivity/transparent-proxy.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [DNS tümleştirmesi](azure-stack-integrate-dns.md)
