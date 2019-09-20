@@ -1,6 +1,6 @@
 ---
-title: Azure Stack kapasite işlem planlama | Microsoft Docs
-description: Kapasite planlaması için Azure Stack dağıtımları hakkında bilgi edinin.
+title: Azure Stack kapasite planlama işlem | Microsoft Docs
+description: Azure Stack dağıtımları için kapasite planlaması hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: prchint
@@ -16,110 +16,110 @@ ms.date: 07/16/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
-ms.openlocfilehash: 224f5832af5d7fdc57f6b5fcb91d6308d479448b
-ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
+ms.openlocfilehash: 17136cbe86029f0ea776d8dc8860ff96c82c756e
+ms.sourcegitcommit: ae79b8bea670ea854ed00e9998d45f6b47fc8347
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68286717"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71142601"
 ---
 # <a name="azure-stack-compute"></a>Azure Stack işlem
 
-[VM boyutları](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) Azure Stack üzerinde desteklenen Azure üzerinde desteklenen bir alt kümesidir. Azure kaynak sınırları boyunca operasyonda ekstra tüketimi kaynakların (yerel ve hizmet düzeyi sunucusu) önlemek için birçok vektörleri uygular. Diğer kiracıların kaynakları overconsume, Kiracı kullanımı için bazı limitler izlenmesi olmadan Kiracı deneyimleri düşer. Sanal makineden ağ çıkışı için Azure sınırlamaları eşleşen bant genişliği sınırlaması Azure Stack'te yerinde vardır. Azure Stack'te depolama kaynakları için depolama IOPS limitleri temel kiracılar depolama erişimi için kaynakların tüketimini üzerinden kaçının.
+Azure Stack desteklenen [VM boyutları](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) , Azure 'da desteklenenlerden oluşan bir alt kümesidir. Azure, kaynakların fazla tüketimini (sunucu yerel ve hizmet düzeyi) önlemek için kaynak sınırlarını birçok vektöre uygular. Kiracı tüketimine yönelik bazı sınırlar olmadan, kiracı deneyimleri, diğer kiracıların kaynakları fazla tükettiği durumlarda zarar görür. VM 'den ağ çıkışı için, Azure sınırlamalarıyla eşleşen Azure Stack bant genişliği üst sınırı vardır. Azure Stack üzerindeki depolama kaynakları için, depolama ıOPS sınırları, depolama erişimi için kiracılara göre temel kaynak tüketimine engel olmaz.
 
 >[!IMPORTANT]
->[Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) IOPS performansı garanti etmez düşünün veya.
+>[Azure Stack CAPACITY PLANNER](https://aka.ms/azstackcapacityplanner) IOPS performansını dikkate almaz veya garanti etmez.
 
-## <a name="vm-placement"></a>VM yerleştirme
+## <a name="vm-placement"></a>VM yerleşimi
 
-Azure Stack yerleşim altyapısı Kiracı VM'ler kullanılabilir konaklar arasında yerleştirir.
+Azure Stack yerleştirme altyapısı, Kiracı VM 'lerini kullanılabilir Konaklar arasında koyar.
 
-Azure Stack, Vm'leri yerleştirirken iki önemli kullanır. Bir sanal makine türü için ana bilgisayarda yeterli bellek olduğundan. İki olan Vm'leri bir parçası bir [kullanılabilirlik kümesi](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) veya [sanal makine ölçek kümeleri](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+Azure Stack VM 'Leri yerleştirirken iki önemli noktalar kullanır. , Bu VM türü için konakta yeterli bellek vardır. İkisi, VM 'Lerin bir [kullanılabilirlik kümesinin](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) parçası veya [sanal makine ölçek kümeleri olduğunu belirler](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
 
-Azure Stack'te bir çoklu VM üretim sisteminin yüksek kullanılabilirlik elde etmek için bunları birden çok hata etki alanlarına yayılır. bir kullanılabilirlik kümesindeki Vm'leri yerleştirilir. Hata etki alanı bir kullanılabilirlik kümesinde tek bir düğüm ölçek birimi olarak tanımlanır. Azure Stack, Azure ile tutarlı olacak şekilde en fazla üç hata etki alanı ile bir kullanılabilirlik sahip destekler. Vm'leri bir kullanılabilirlik kümesine yerleştirilir bunları mümkün olduğunca eşit olarak birden çok hata etki alanları üzerinde diğer bir deyişle, Azure Stack ana yayarak birbirinden fiziksel olarak izole edilmiş olur. Bir donanım hatası varsa, başarısız hata etki alanı Vm'lerden diğer hata etki alanları yeniden, ancak, mümkün olduğunda, aynı kullanılabilirlik kümesindeki diğer vm'lerden ayrı hata etki alanlarında tutulur. Konak tekrar çevrimiçi olduğunda, yüksek kullanılabilirliği sürdürmek için Vm'leri yeniden Dengelenecek.  
+Azure Stack bir çoklu VM üretim sisteminin yüksek oranda kullanılabilir olmasını sağlamak için, VM 'Ler birden çok hata etki alanına yayılan bir kullanılabilirlik kümesine yerleştirilir. Bir kullanılabilirlik kümesindeki bir hata etki alanı, ölçek biriminde tek bir düğüm olarak tanımlanır. Azure Stack, en fazla üç hata etki alanı içeren bir kullanılabilirlik kümesinin Azure ile tutarlı olmasını destekler. Bir kullanılabilirlik kümesine yerleştirilmiş VM 'Ler, birden çok hata etki alanına, yani Azure Stack konaklara olabildiğince eşit olarak yayarak birbirleriyle fiziksel olarak yalıtılacaktır. Bir donanım hatası varsa, başarısız hata etki alanındaki VM 'Ler diğer hata etki alanlarında yeniden başlatılır, ancak mümkünse, aynı Kullanılabilirlik kümesindeki diğer VM 'lerden ayrı hata etki alanlarında tutulur. Ana bilgisayar yeniden çevrimiçi olduğunda, yüksek kullanılabilirlik sağlamak için VM 'Ler yeniden dengelenebilir.  
 
-Sanal makine ölçek kümeleri arkasındaki kullanılabilirlik kümelerini kullanın sonlandırmak ve her sanal makine ölçek kümesi örneği olduğundan emin olun, farklı hata etki alanında yerleştirilir. Bu, ayrı Azure Stack altyapısını düğüm kullandıkları anlamına gelir. Örneğin, dört düğümünde Azure Stack sistemi, olabilir bir durum burada üç örnek sanal makine ölçek kümesi oluştururken üç ayrı Azure Stack düğümde üç sanal makine ölçek kümesi örneklerine yerleştirmek için 4 düğümlü kapasite eksikliği nedeniyle başarısız olur . Ayrıca, Azure Stack düğümleri yerleştirme denemeden önce değişen düzeylerde doldurulabilir. 
+Sanal Makine Ölçek Kümeleri arka uçtaki kullanılabilirlik kümelerini kullanır ve her sanal makine ölçek kümesi örneğinin farklı bir hata etki alanına yerleştirildiğinden emin olun. Bu, ayrı Azure Stack altyapı düğümlerini kullandıkları anlamına gelir. Örneğin, dört düğümlü Azure Stack sisteminde, üç farklı Azure Stack düğümüne üç sanal makine ölçek kümesi örneği yerleştirmek için 4 düğümlü kapasitenin olmamasından dolayı, bir sanal makine ölçek kümesi 'nin oluşturma sırasında başarısız olacağı bir durum olabilir . Ayrıca, Azure Stack düğümler yerleştirme denemeden önce farklı düzeylerde doldurulabilir. 
 
-Azure Stack bellek aşırı işleme değil. Ancak, bir üst işlemesi fiziksel çekirdek sayısı için izin verilir. 
+Azure Stack belleği aşırı teslim etmez. Ancak, fiziksel çekirdek sayısının bir üzerinde yürütmeye izin verilir. 
 
-Sanal bir faktör olarak fiziksel çekirdek fazladan sağlama oranı ile var olan konumunda yerleştirme algoritmaları görünmüyor olduğundan, her konak farklı bir oran olabilir. Microsoft rehberlik üzerinde fiziksel-sanal çekirdek oranı nedeniyle iş yükleri ve hizmet düzeyi gereksinimlerini varyasyonu sunuyoruz yok. 
+Yerleştirme algoritmaları var olan sanal sunucudan fiziksel çekirdek yük sağlama oranına bir faktör olarak Bakmadıklarından, her konağın farklı bir oranı olabilir. Microsoft olarak, iş yüklerinin ve hizmet düzeyi gereksinimlerindeki değişim nedeniyle fizikselden sanal çekirdek oranına ilişkin yönergeler sağlamayız. 
 
-## <a name="consideration-for-total-number-of-vms"></a>Toplam VM sayısı için önemli noktalar 
+## <a name="consideration-for-total-number-of-vms"></a>Toplam sanal makine sayısı için göz önünde bulundurun 
 
-Doğru bir şekilde Azure Stack kapasite planlaması için yeni bir durum yoktur. 1901 güncelleştirme (ve bundan sonra her bir güncelleştirme) ile da artık sanal makinelerin oluşturulabilir toplam sayısına bir sınır yoktur. Bu sınır, çözüm kararsızlığı engellemek için geçici olması amaçlanmıştır. Kaynak konumunda VM'ler, daha yüksek sayıda kararlılık sorunun ele ancak belirli bir zaman çizelgesi düzeltme için değil henüz karar verilmemiştir. Artık bir başına 60 VM'lerin sunucu sınırı 700 toplam çözüm sınırına sahip. Örneğin, bir 8 sunucu Azure Stack VM sınırı 480 (8 * 60) olacaktır. 12-16 sunucu Azure Stack çözüm, sınır 700 olacaktır. Bu sınır, tüm işlem dayanıklılık ayrılmış ve bir işleç damgada sağlamak istediğiniz fiziksel/oranı sanal CPU gibi aklınızda kapasiteyle alakalı durumlar tutma oluşturuldu. Daha fazla bilgi için kapasite Planlayıcı'nın yeni sürümüne bakın. 
+Azure Stack kapasitesinin doğru planlanabilmesi için yeni bir göz vardır. 1901 Güncelleştirmesi (ve her güncelleştirme devam eden) ile, oluşturulabilecek sanal makinelerin toplam sayısı için bir sınır vardır. Bu sınırın çözüm kararsızlığına engel olmak için geçici olması amaçlanmıştır. Daha yüksek sayıda VM 'de kararlılık sorununun kaynağı giderilmekte, ancak düzeltme için belirli bir zaman çizelgesi henüz belirlenmemiştir. Toplam 700 olan 60 VM 'e yönelik bir sunucu başına VM sınırı vardır. Örneğin, bir 8 sunucu Azure Stack VM sınırı 480 (8 * 60) olur. 12 ile 16 arasında sunucu Azure Stack çözümü için sınır 700 olur. Bu sınır, dayanıklılık yedeği ve CPU sanal değeri gibi bir işlecin damgada korumak istediğiniz tüm işlem kapasitesi konularını göz önünde bulundurarak oluşturulmuştur. Daha fazla bilgi için bkz. kapasite planlayıcısı 'nın yeni sürümü. 
 
-Aşağıdaki hata kodları, sonuç olarak, VM ölçek sınırına ulaşıldı, olay, döndürülürdü: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
+VM Ölçek sınırına ulaşılmış olması durumunda, aşağıdaki hata kodları sonuç olarak döndürülür: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
 
 ## <a name="considerations-for-deallocation"></a>Ayırmayı kaldırma konuları
 
-Bir VM olduğunda _serbest_ durumunda, bellek kaynaklarının kullanılmaz. Bu işlem başkalarının sistemde yerleştirilecek VM'ler sağlar. 
+Bir VM _serbest bırakıldı_ durumundaysa, bellek kaynakları kullanılmaz. Bu, diğer VM 'Lerin sisteme yerleştirilmesine izin verir. 
 
-VM serbest bırakıldığında yeniden başlatılır, ayırma ve bellek kullanımı gibi sisteme yeni bir sanal makine yerleştirilir ve kullanılabilir bellek tüketilen kabul edilir. 
+Serbest bırakılmış VM daha sonra yeniden başlatılırsa, bellek kullanımı veya ayırma sisteme yerleştirilmiş yeni bir sanal makine gibi değerlendirilir ve kullanılabilir bellek kullanılır. 
 
-Kullanılabilir bellek yoksa sanal makine başlatılmaz.
+Kullanılabilir bellek yoksa, sanal makine başlatılmaz.
 
-## <a name="azure-stack-memory"></a>Azure Stack bellek 
+## <a name="azure-stack-memory"></a>Azure Stack belleği 
 
-Azure Stack, başarıyla sağlanmış çalışan Vm'leri korumak için tasarlanmıştır. Bir konağa bir donanım hatası nedeniyle çevrimdışı olduğunda, örneğin, Azure Stack başka bir ana bilgisayarda bu VM'ye yeniden başlatmaya çalışacak. İkinci örnek, düzeltme eki ve Azure Stack yazılım güncelleştirmesi ' dir. Bir fiziksel konağa yeniden başlatılmasına gerek yoksa, bir çözümdeki kullanılabilir başka bir ana bilgisayara ilgili konak üzerinde yürütülen sanal makineleri taşımak için girişimde.   
+Azure Stack, başarıyla sağlanan VM 'Leri çalıştırmaya devam etmek için tasarlanmıştır. Örneğin, bir donanım arızası nedeniyle bir konak çevrimdışıysa, Azure Stack bu VM 'yi başka bir konakta yeniden başlatmaya çalışacaktır. İkinci örnek, Azure Stack yazılımının düzeltme eki ve güncelleştirmesidir. Fiziksel bir konağın yeniden başlatılması gerekiyorsa, söz konusu ana bilgisayarda yürütülen VM 'Leri çözümdeki başka bir kullanılabilir konağa taşımak için bir girişimde bulunuldu.   
 
-Bu sanal makine Yönetimi veya taşıma için yeniden başlatma veya geçiş gerçekleşmesine izin vermek için ayrılmış bellek kapasitesi ise yalnızca gerçekleştirilebilir. Toplam ana belleğin bir kısmını, ayrılmış ve Kiracı VM yerleştirme için kullanılamaz. 
+Bu VM yönetimi veya taşıması yalnızca yeniden başlatma veya geçişin oluşmasına izin vermek için ayrılmış bellek kapasitesi varsa elde edilebilir. Toplam konak belleğinin bir bölümü, Kiracı VM yerleştirmesi için ayrılmıştır ve kullanılamaz. 
 
-Bir pasta grafiğinin yönetim portalındaki Azure Stack'te boş ve kullanılan bellek gösteren gözden geçirebilirsiniz. Aşağıdaki diyagramda bir Azure Stack ölçek birimi olarak Azure Stack fiziksel bellek kapasitesi gösterir:
+Yönetim portalında, Azure Stack boş ve kullanılan belleği gösteren bir pasta grafiği gözden geçirebilirsiniz. Aşağıdaki diyagramda, Azure Stack bir Azure Stack ölçek birimindeki fiziksel bellek kapasitesi gösterilmektedir:
 
 ![Fiziksel bellek kapasitesi](media/azure-stack-capacity-planning/physical-memory-capacity.png)
 
-Kullanılan bellek, çeşitli bileşenlerden oluşur. Aşağıdaki bileşenler pasta grafiğinin kullanım bölümündeki bellek kullan:  
+Kullanılan bellek birkaç bileşenden oluşur. Aşağıdaki bileşenler, pasta grafiğinin kullanım bölümünde bulunan belleği kullanır:  
 
- -  Konak işletim sistemi kullanımı veya yedek – işletim sistemi (OS) tarafından kullanılan bellek budur konak, sanal bellek disk belleği tabloları, konak işletim sistemi ve alanları doğrudan önbellek çalışan işlemler. Bu değer ana bilgisayarda çalışan farklı Hyper-V işlemler tarafından kullanılan bellek bağımlı olduğundan, değişim gösterebilir.
- - Altyapı Hizmetleri – Azure yığınını oluşturan sanal makineleri altyapı şunlardır. Azure Stack 1904 yayın sürümü itibarıyla, bu 242 GB alan ~ 31 Vm'leri kapsar + (4 GB x düğüm sayısı) bellek. Altyapı hizmetleri bileşeni'nın bellek kullanımı altyapı hizmetlerimizi daha ölçeklenebilir ve dayanıklı hale getirme üzerinde çalışırken farklı olabilir.
- - Dayanıklılık ayırma – Azure Stack Kiracı kullanılabilirlik için düzeltme eki ve güncelleştirme sırasında bir tek ana bilgisayar hatası betiklerinizi VM'lerin başarılı dinamik geçiş için izin vermek için izin vermek için belleğin bir kısmını ayırır.
- - Kiracı sanal makineler bu Azure Stack kullanıcıları tarafından oluşturulan sanal makineler Kiracı ücretlerdir. Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. Başka bir deyişle, "Oluşturma" veya "Başarısız" durumundaki sanal makineleri veya konuğa alanından kapatma Vm'leri bellek tüketir. Ancak, portal/powershell/CLI seçeneğinden serbest Durdur kullanarak serbest Vm'leri Azure yığından bellek tüketir değil.
- - Eklenti RPs – SQL, MySQL, App Service vb. gibi eklenti RPs için dağıtılan VM'ler.
-
-
-Portal bellek tüketimini anlamak için en iyi yolu kullanmaktır [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) çeşitli iş yükleri etkisini görmek için. Aşağıdaki hesaplaması planner tarafından kullanılan hizmet örneğiyle aynı olur.
-
-Bu hesaplama, Kiracı sanal makine yerleştirme için kullanılabilir toplam ve kullanılabilir bellek sonuçlanır. Azure Stack ölçek biriminin tamamı için bu bellek kapasitesidir. 
+ -  Konak IŞLETIM sistemi kullanımı veya Reserve – bu, konaktaki işletim sistemi (OS), sanal bellek sayfa tabloları, ana bilgisayar IŞLETIM sisteminde çalışan süreçler ve doğrudan bellek önbelleği alanları tarafından kullanılan bellektir. Bu değer, konakta çalışan farklı Hyper-V işlemlerinin kullandığı belleğe bağlı olduğundan, bu değer dalgalanmasına sahip olabilir.
+ - Altyapı Hizmetleri: Bunlar Azure Stack oluşturan altyapı VM 'lardır. Azure Stack sürümünün 1904 sürümünden itibaren, bu, belleğin 242 GB + (4 GB x # düğüm) alan ~ 31 VM 'yi gerektirir. Altyapı Hizmetleri bileşeninin bellek kullanımı, altyapı hizmetlerimizi daha ölçeklenebilir ve dayanıklı hale getirme konusunda çalışırken değişebilir.
+ - Dayanıklılık yedeği – Azure Stack, tek bir ana bilgisayar hatası sırasında kiracı kullanılabilirliğine ve VM 'lerin başarılı bir şekilde dinamik geçişine izin vermek için düzeltme eki ve güncelleştirme sırasında kiracı kullanılabilirliğine izin vermek için belleğin bir kısmını ayırır.
+ - Kiracı VM 'Leri: Bunlar Azure Stack kullanıcılar tarafından oluşturulan Kiracı VM 'lardır. VM çalıştırmanın yanı sıra, bellek, dokuda bulunan tüm VM 'Ler tarafından tüketilecektir. Yani, "oluşturma" veya "başarısız" durumundaki VM 'Lerin veya Konuk içinden sanal makinelerin kapanması, belleğin tüketilmesine neden olur. Ancak, Portal/PowerShell/CLI 'den serbest bırakıldurdur seçeneği kullanılarak serbest bırakılmış olan VM 'Ler Azure Stack belleği tüketmez.
+ - Add-on RPs – SQL, MySQL, App Service vb. gibi eklentiler için dağıtılan VM 'Ler.
 
 
-  VM yerleştirme için kullanılabilir bellek Kiracı VM'ler - Azure Stack altyapısını yükü çalıştırarak kullanılan toplam ana bilgisayar bellek - dayanıklılık ayrılan - bellek = <sup>1</sup>
+Portalda bellek tüketimini anlamanın en iyi yolu, çeşitli iş yüklerinin etkisini görmek için [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) kullanmaktır. Aşağıdaki hesaplama, planlayıcının kullandığı aynı bir hesap.
 
-  Dayanıklılık ayırma H + R = * ((N-1) * Y) + V * (N-2)
+Bu hesaplama, Kiracı VM yerleşimi için kullanılabilen toplam kullanılabilir bellek ile sonuçlanır. Bu bellek kapasitesi Azure Stack ölçek biriminden tamamen yöneliktir. 
+
+
+  VM yerleştirme için kullanılabilir bellek = toplam konak belleği-dayanıklılık yedeği-Kiracı VM 'Leri çalıştırılarak kullanılan bellek-Azure Stack altyapı ek yükü <sup>1</sup>
+
+  Dayanıklılık yedeği = H + R * ((N-1) * H) + V * (N-2)
 
 > Konumlar:
-> - H = tek sunucu bellek boyutu
-> - N = ölçek birimi, boyutu (Sunucuları sayısı)
-> - R Bu formüldeki.15 olan işletim sistemi için ayrılmış işletim sistemi ek yükü, =<sup>2</sup>
-> - V ölçek birimindeki en büyük VM =
+> - H = tek sunucu belleğinin boyutu
+> - N = ölçek biriminin boyutu (sunucu sayısı)
+> - R = .15, bu formülde<sup>2</sup> olan işletim sistemi ek yükü için ayrılmış işletim sistemi
+> - V = ölçek birimindeki en büyük VM
 
-  <sup>1</sup> azure Stack altyapısını yükü = 242 GB + (4 GB x düğüm sayısı). Azure yığını'nın altyapı barındırmak ve yaklaşık 242 GB toplam kullanmak için kullanılan yaklaşık olarak 31 Vm'leri + (4 GB düğümleri sayısı x) 146 sanal çekirdek ve bellek. Bu VM sayısı için gerekçe, güvenlik, ölçeklenebilirlik, Bakım ve düzeltme eki gereksinimlerini karşılamak için gerekli hizmet ayrımı karşılamak sağlamaktır. Bunlar geliştirilen gibi bu iç hizmet yapısı yeni altyapı hizmetleri için gelecekteki giriş sağlar. 
+  <sup>1</sup> Azure Stack altyapı ek yükü = 242 GB + (4 GB x düğüm). Azure Stack altyapısını barındırmak için yaklaşık 31 VM kullanılır ve toplam olarak bellek ve 146 sanal çekirdekleri hakkında yaklaşık 242 GB + (4 GB x düğüm) kullanın. Bu sanal makine sayısı için, güvenlik, ölçeklenebilirlik, bakım ve düzeltme eki uygulama gereksinimlerini karşılamak üzere gerekli hizmet ayrımını karşılamanız gerekir. Bu iç hizmet yapısı, yeni altyapı hizmetleri geliştirildiği için gelecekte giriş yapılmasına izin verir. 
 
-  <sup>2</sup> ek yükü için işletim sistemi ayrılmış %15 = (. 15) düğüm bellek. İşletim sistemi ayrılmış değeri, tahmini bir değerdir ve genel işletim sistemi ek yükü ve sunucu üzerinde fiziksel bellek kapasitesi göre değişiklik gösterir.
+  <sup>2</sup> işletim sistemi için ayrılan iş yükü =% 15 (. 15) düğüm belleği. İşletim sistemi ayırma değeri bir tahmindir ve sunucunun fiziksel bellek kapasitesine ve genel işletim sistemi yüküne bağlı olarak değişir.
 
 
-Değer V, Ölçek birimindeki en büyük VM dinamik olarak en büyük Kiracı VM bellek boyutunu temel alır. Örneğin, en büyük VM değeri, 7 GB veya 112 GB veya tüm diğer desteklenen sanal makine bellek boyutu Azure Stack çözümde olabilir. Azure Stack yapısı'nda büyük VM değiştirme VM'nin bellek artış yanı sıra dayanıklılık ayrılmış bir artış neden olur. 
+Ölçek biriminde bulunan V, en büyük VM değeri, en büyük Kiracı VM bellek boyutuna göre dinamik olarak belirlenir. Örneğin, en büyük VM değeri, Azure Stack çözümünde 7 GB veya 112 GB veya desteklenen başka bir VM belleği boyutu olabilir. Azure Stack dokusunda en büyük VM 'nin değiştirilmesi, VM 'nin belleğindeki artışa ek olarak dayanıklılık Reserve artışına neden olur. 
 
 ## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
-**Q**: Kiracıma yeni bir sanal makine dağıtılırsa, ne kadar yönetim portalında özelliği grafik için kalan kapasite gösterilecek sürer?
+**S**: Kiracım yeni bir VM dağıttı, yönetim portalındaki yetenek grafiğinin kalan kapasiteyi göstermesi ne kadar sürer?
 
-**A**: Kapasite dikey 15 dakikada bir, bu nedenle yeniler, lütfen dikkate alın.
+Y: Kapasite dikey penceresi 15 dakikada bir yenilenir, bu nedenle lütfen göz önüne alın.
 
-**Q**: My Azure Stack üzerinde dağıtılan sanal makinelerin sayısını değişmediğinden, ancak benim kapasite geciktirmeye. Neden?
+**S**: Azure Stack dağıtılan sanal makinelerin sayısı değişmedi, ancak kapasitem değişimde dalgalantı. Neden?
 
-**A**: VM yerleştirme için kullanılabilir bellek, konak işletim sistemi ayırma biri olan, birden çok bağlantılıdır. Bu değer bir sabit değer olmayan konak üzerinde çalışan farklı Hyper-V işlemleri tarafından kullanılan bellek bağlıdır.
+Y: VM yerleştirmesi için kullanılabilir bellek birden çok bağımlılığa sahiptir, bunlardan biri konak işletim sistemi ayrılmış. Bu değer, ana bilgisayarda çalışan, sabit bir değer olmayan farklı Hyper-V işlemlerinin kullandığı belleğe bağımlıdır.
 
-**Q**: Durum Kiracı VM bellek tüketmesine olması gerekiyor mu?
+**S**: Kiracı VM 'lerinin belleği tüketmek için hangi durumu kullanması gerekir?
 
-v: Sanal makineleri çalıştırmanın yanı sıra, bellek, dokuda Geldiniz herhangi bir VM tarafından kullanılır. Bu, "Oluşturma", "Başarısız" veya Vm'leri gelen g içinde kapatıldığından Vm'leri anlamına gelir
+Yönetim VM çalıştırmanın yanı sıra, bellek, dokuda bulunan tüm VM 'Ler tarafından tüketilecektir. Bu, "oluşturma", "başarısız" veya VM 'lerde bulunan VM 'Lerin, Portal/PowerShell/CLI tarafından serbest bırakılmasının aksine belleği tüketmesi için konuk içinden kapanması anlamına gelir.
 
-**Q**: Dört ana bilgisayar Azure Stack var. Kiracıma 56 GB RAM (D5_v2) her tüketen 3 VM var. Vm'lerden birinin 112 GB RAM (D14_v2) boyutlandırılır ve 168 GB kullanımı kapasite dikey penceresinde bir depo içinde Panoda raporlama kullanılabilir bellek ile sonuçlandı. Diğer iki D5_v2 Vm'lere D14_v2, sonraki yeniden boyutlandırma, yalnızca 56 GB RAM artış sonuçlandı. Neden bu, bu nedenle?
+**S**: Dört ana bilgisayar Azure Stack var. Kiracımda 56 GB RAM (D5_v2) kullanan 3 VM vardır. VM 'lerden biri 112 GB RAM 'e yeniden boyutlandırıldı (D14_v2) ve panoda kullanılabilir bellek raporlaması kapasite dikey penceresinde 168 GB 'lik bir kullanım ile sonuçlandı. Diğer iki D5_v2 VM 'nin D14_v2 'e sonraki yeniden boyutlandırılması, her biri yalnızca 56GB RAM ile sonuçlandı. Bunun nedeni nedir?
 
-**A**: Kullanılabilir bellek, Azure Stack tarafından tutulan dayanıklılık rezerve bir işlevdir. Dayanıklılık ayırma, Azure Stack damgası üzerinde en büyük VM boyutunun bir işlevdir. İlk başta en büyük VM damga üzerinde 56 GB bellek yoktu. VM yeniden boyutlandırılmış zaman damgası üzerinde en büyük VM yalnızca VM'nin Kiracı tarafından kullanılan bellek artar ancak dayanıklılık ayırma de artırdık 112 GB bellek hale geldi. Bu artış 56 GB (112 GB Kiracı VM bellek artışı 56 GB) + 112 GB dayanıklılık ayrılan bellek artışı içindeki sonuçlandı. Sonraki Vm'leri yeniden boyutlandırdığınızda büyük VM boyutu VM 112 GB kalır ve bu nedenle hiçbir sonuç dayanıklılık ayırma artış vardı. Yalnızca Kiracı VM bellek artışı (56 GB) bellek tüketimi artış oluştu. 
+Y: Kullanılabilir bellek, Azure Stack tarafından tutulan dayanıklılık ayırmaya yönelik bir işlevdir. Dayanıklılık yedeği, Azure Stack damgasında en büyük VM boyutunun bir işlevidir. İlk olarak, Damgadaki en büyük VM 56 GB bellektir. VM yeniden boyutlandırılırken, Damgadaki en büyük VM, yalnızca o Kiracı VM tarafından kullanılan belleği artırmayan ancak dayanıklılık Reserve 'i arttığı 112 GB bellek haline geldi. Bu, 56 GB artışı (56 GB ila 112 GB Kiracı VM belleği artışı) ve 112 GB dayanıklılık yedek bellek artışı ile sonuçlandı. Sonraki VM 'Ler yeniden boyutlandırılırken, en büyük VM boyutu 112 GB sanal makine olarak kaldığı için bir sonuç dayanıklılık artışı artmaz. Bellek tüketiminde artış yalnızca Kiracı VM belleği artışına (56 GB) sahiptir. 
 
 
 > [!NOTE]
-> Yalnızca genel VIP boyutu yapılandırılabilir olduğu gibi ağ iletişimi için kapasite planlama gereksinimleri düşüktür. Azure Stack için daha fazla genel IP adresleri ekleme hakkında daha fazla bilgi için bkz: [genel IP adresleri ekleme](azure-stack-add-ips.md).
+> Ağ için kapasite planlama gereksinimleri en az, yalnızca genel VIP 'nin boyutu yapılandırılabilir. Azure Stack daha fazla Genel IP Adresleri ekleme hakkında daha fazla bilgi için bkz. [add genel IP adresleri](azure-stack-add-ips.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Hakkında bilgi edinin [Azure Stack depolama](azure-stack-capacity-planning-storage.md)
+[Azure Stack depolama](azure-stack-capacity-planning-storage.md) hakkında bilgi edinin

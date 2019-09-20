@@ -15,12 +15,12 @@ ms.date: 09/14/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: b7057acd34625ffdea1de9ed533bf608de3059d6
-ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
+ms.openlocfilehash: 4ac3534278b2a7fe4ecb355207b5a13a7cb7bd10
+ms.sourcegitcommit: 820ec8d10ddab1fee136397d3aa609e676f8b39d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019243"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71127475"
 ---
 # <a name="install-the-aks-engine-on-windows-in-azure-stack"></a>AKS altyapısını Windows üzerinde Azure Stack
 
@@ -64,7 +64,7 @@ Kubernetes kümenizi Internet bağlantısı kesilen bir Azure Stack yönetmek i�
 
 2.  AKS altyapısı ikilisini içeren arşiv dosyasını (*. tar. gz) karşıya yüklemek için Azure Stack örneğiniz için bir depolama hesabı oluşturun. Azure Depolama Gezgini kullanımı hakkında yönergeler için, bkz. [Azure Stack Azure Depolama Gezgini](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se).
 
-3. Azure Stack bir tek bir VM oluşturun. Yönergeler için bkz [. hızlı başlangıç: Azure Stack portalını kullanarak Windows Server VM oluşturma](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
+3. Azure Stack bir Windows sanal makinesi oluşturun. Yönergeler için bkz [. hızlı başlangıç: Azure Stack portalını kullanarak Windows Server VM oluşturma](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
 
 4.  Arşiv dosyasını (*. tar. gz) karşıya yüklediğiniz Azure Stack depolama hesabı blobu URL 'sinden, dosyayı Yönetim sanal makinenize indirin. Komut isteminizden erişimi olan bir dizine Arşivi ayıklayın.
 
