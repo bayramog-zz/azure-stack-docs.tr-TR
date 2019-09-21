@@ -16,16 +16,18 @@ ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 09/13/2019
-ms.openlocfilehash: 3179416a7f8dacc5c3282372038c6761009b5b76
-ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
+ms.openlocfilehash: ba5b8358dced378f499c30f9b8d409497319fc86
+ms.sourcegitcommit: 2c37ac8e88de19430080128bac1b70e33557d354
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106434"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71164244"
 ---
 # <a name="azure-stack-known-issues"></a>Bilinen sorunları Azure Stack
 
-Bu makalede Azure Stack sürümlerindeki bilinen sorunlar listelenmektedir. Yeni sorunlar tanımlandıkları için liste güncellenir. **Farklı bir sürüme yönelik bilinen sorunlara erişmek için sol üst köşedeki sürüm seçiciyi kullanın.**
+Bu makalede Azure Stack sürümlerindeki bilinen sorunlar listelenmektedir. Yeni sorunlar tanımlandıkları için liste güncellenir.
+
+Farklı bir sürüme yönelik bilinen sorunlara erişmek için, sol taraftaki içindekiler tablosunun üzerindeki sürüm Seçicisi açılan listesini kullanın.
 
 ::: moniker range=">=azs-1905"
 > [!IMPORTANT]  
@@ -604,7 +606,7 @@ Bu makalede Azure Stack sürümlerindeki bilinen sorunlar listelenmektedir. Yeni
 - Düzeltmesi Bunun yerine **temel** yük dengeleyici seçeneklerini kullanın.
 - Oluşum Common
 
-### <a name="public-ip-address"></a>Genel IP adresi
+### <a name="public-ip-address"></a>Ortak IP adresi
 
 - Uygunsa Bu sorun desteklenen tüm yayınlar için geçerlidir.
 - Neden: Kullanıcı portalında **genel IP adresi oluştur** penceresinde **Standart** SKU oluşturma seçeneği gösterilir. **Standart** SKU Azure Stack desteklenmez.
@@ -674,7 +676,7 @@ Bir VM 'de önyükleme tanılamayı etkinleştirip önyükleme tanılama depolam
 ::: moniker range=">=azs-1905"
 ## <a name="archive"></a>Arşiv
 
-Eski bir sürüm için arşivlenmiş bilinen sorunlara erişmek için sayfanın sol üst kısmındaki sürüm seçicisini kullanın ve ilgilendiğiniz sürümü seçin. 
+Daha eski bir sürüm için arşivlenmiş bilinen sorunlara erişmek için, sol taraftaki içindekiler tablosunun üzerindeki sürüm Seçicisi açılan listesini kullanın ve görmek istediğiniz sürümü seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

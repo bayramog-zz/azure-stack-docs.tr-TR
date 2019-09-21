@@ -15,12 +15,12 @@ ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: b33c96ad10d5e4269f96741a5d4aba10d782896c
-ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
+ms.openlocfilehash: 97b253e4df3762d4579923124b7768c14f40d3de
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959508"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159677"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Azure Stack’te teklifleri yetkilendirme
 
@@ -76,7 +76,7 @@ Bu kılavuzu kullanmak için, Azure Stack operatör hesabınıza ek olarak iki A
 | Kullanıcı |Kullanıcı |
 
  > [!NOTE]
- > CSP-satıcı söz konusu olduğunda, bu sağlayıcının oluşturulması kiracı dizininde (Kullanıcı AAD) bu kullanıcıların olmasını gerektirir. Azure Stack işleci [önce](azure-stack-enable-multitenancy.md) Bu kiracı AAD 'sini içermeli ve ardından [Bu adımları](azure-stack-csp-howto-register-tenants.md)izleyerek kullanımı ve faturalandırmayı yapılandırmalıdır.
+ > CSP-satıcı söz konusu olduğunda, bu sağlayıcının oluşturulması kiracı dizininde (Kullanıcı Azure AD) bu kullanıcıları gerektirir. Azure Stack işlecinin [önce](azure-stack-enable-multitenancy.md) bu kiracıyı Azure AD 'ye eklemek ve ardından [Bu adımları](azure-stack-csp-howto-register-tenants.md)izleyerek kullanımı ve faturalandırmayı yapılandırmak gerekir.
 
 ### <a name="identify-the-delegated-provider"></a>Temsil edilen sağlayıcıyı tanımla
 
@@ -89,7 +89,7 @@ Bu kılavuzu kullanmak için, Azure Stack operatör hesabınıza ek olarak iki A
 
    b.  Bu plana dayalı [bir teklif oluşturun](azure-stack-create-offer.md) . Bu makale örnek olarak **Offertodp** adlı bir teklif kullanır.
 
-   c.  **Abonelikler**' i ve sonra **Yeni kiracı aboneliği**' ni seçip, bu teklif içinTemsilcili bir abone olarak ekleyin.
+   c.  **Abonelikler**' i ve sonra **Yeni kiracı aboneliği** **' ni seçip, bu**teklif için Temsilcili bir abone olarak ekleyin.
 
    ![Temsilci olarak verilen sağlayıcıyı abone olarak ekleyin](media/azure-stack-delegated-provider/image3.png)
 
@@ -117,7 +117,7 @@ Yönetici temsilcisi olarak Kullanıcı Portalı ' nda oturum açın ve ardında
 
 1. **+ Kaynak oluştur**' u seçin, ardından **kiracı + planlar**ve **teklif**' i seçin.
 
-    ![Yeni teklif oluşturma](media/azure-stack-delegated-provider/image5.png)
+    ![Yeni bir teklif oluştur](media/azure-stack-delegated-provider/image5.png)
 
 2. Teklifine bir ad atayın. Bu örnek, **Resellerteklifini**kullanır. Üzerine temelde atanmış teklifi seçin ve ardından **Oluştur**' u seçin.
 
@@ -130,7 +130,7 @@ Yönetici temsilcisi olarak Kullanıcı Portalı ' nda oturum açın ve ardında
 
 4. Ortak Temsilcili teklifler artık yalnızca, temsilcili Portal üzerinden görülebilir. Bu URL 'YI bulmak ve değiştirmek için:
 
-    a.  **Tüm hizmetler**' e ve ardından **genel** kategori altında, **abonelikler**' i seçin. Temsil edilen sağlayıcı aboneliğini seçin; Örneğin, **Dpsubscription**ve **Özellikler**.
+    a.  **Tüm hizmetler** **' e**ve ardından **genel** kategori altında, **abonelikler**' i seçin. Temsil edilen sağlayıcı aboneliğini seçin; Örneğin, **Dpsubscription**ve **Özellikler**.
 
     b.  Portal URL 'sini Not Defteri gibi ayrı bir konuma kopyalayın.
 

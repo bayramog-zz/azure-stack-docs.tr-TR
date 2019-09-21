@@ -16,12 +16,12 @@ ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: c616736cf9ea8cc350c2c53bb7d6994346dac990
-ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
+ms.openlocfilehash: deac15b2f1e3ebd86fdd2e171f664bd4b5917e37
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70025964"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159434"
 ---
 # <a name="install-the-asdk"></a>ASDK 'yi yükler
 [Asdk ana bilgisayar bilgisayarı hazırlandıktan](asdk-prepare-host.md)sonra, bu makaledeki aşağıdaki adımları kullanarak cloudbuilder. vhdx resmine Azure Stack geliştirme seti (asdk) dağıtılabilir.
@@ -44,7 +44,7 @@ Bu makaledeki adımlarda, **asdk-installer. ps1** PowerShell betiğini indirip �
   
     Bir Azure aboneliği kimlik sağlayıcısı seçerseniz, bir internet bağlantısı, bir Azure AD dizin kiracının *DomainName*. onmicrosoft.com biçiminde tam adı veya BIR Azure AD tarafından doğrulanan özel etki alanı adı gerekir. Ayrıca, belirtilen dizin için genel yönetici kimlik bilgilerine de ihtiyacınız vardır.
 
-    Dağıtımdan sonra, Azure Active Directory (AAD) genel yönetici izni gerekli değildir. Ancak, bazı işlemler genel yönetici kimlik bilgileri gerektirebilir. Örneğin, kaynak sağlayıcısı yükleyici betiği veya izin verilmesi gereken yeni bir özellik. Hesabın genel yönetici izinlerini geçici olarak yeniden başlatabilir ya da *varsayılan sağlayıcı aboneliğinin*sahibi olan ayrı bir genel yönetici hesabı kullanabilirsiniz.
+    Dağıtımdan sonra, Azure Active Directory (Azure AD) genel yönetici izni gerekli değildir. Ancak, bazı işlemler genel yönetici kimlik bilgileri gerektirebilir. Örneğin, kaynak sağlayıcısı yükleyici betiği veya izin verilmesi gereken yeni bir özellik. Hesabın genel yönetici izinlerini geçici olarak yeniden başlatabilir ya da *varsayılan sağlayıcı aboneliğinin*sahibi olan ayrı bir genel yönetici hesabı kullanabilirsiniz.
 
     Kimlik sağlayıcısı olarak AD FS kullanırken, varsayılan damga dizin hizmeti kullanılır. İle azurestackadmin@azurestack.localoturum açmak için kullanılan varsayılan hesap, kurulum 'un bir parçası olarak belirttiğiniz paroladır.
 
@@ -85,7 +85,7 @@ Bu makaledeki adımlarda, **asdk-installer. ps1** PowerShell betiğini indirip �
 
 Tebrikler, ASDK 'yi başarıyla yüklediniz!
 
-Dağıtım bazı nedenlerle başarısız olursa, son başarılı adımdan dağıtımı [](asdk-redeploy.md) yeniden başlatmak için sıfırdan yeniden dağıtım yapabilir veya aşağıdaki PowerShell komutlarını kullanabilirsiniz. Komutlar aynı yükseltilmiş PowerShell penceresinden kullanılabilir:
+Dağıtım bazı nedenlerle başarısız olursa, son başarılı adımdan dağıtımı yeniden başlatmak için sıfırdan yeniden dağıtım yapabilir veya aşağıdaki PowerShell [komutlarını kullanabilirsiniz.](asdk-redeploy.md) Komutlar aynı yükseltilmiş PowerShell penceresinden kullanılabilir:
 
   ```powershell
   cd C:\CloudDeployment\Setup

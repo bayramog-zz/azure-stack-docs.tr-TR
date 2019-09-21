@@ -251,7 +251,9 @@
           href: azure-stack-linux.md
         - name: Red Hat sanal makine Ekle
           href: azure-stack-redhat-create-upload-vhd.md
-        - name: Bir Kubernetes kümesi sunar.
+        - name: AKS altyapısını sunun
+          href: azure-stack-aks-engine.md
+        - name: Kubernetes Market öğesi sunma
           href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Siteden siteye VPN bağlantısı oluşturma
           href: azure-stack-create-vpn-connection-one-node.md

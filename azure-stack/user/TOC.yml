@@ -198,7 +198,7 @@
                       href: azure-stack-kubernetes-aks-engine-overview.md
                     - name: Destek ilkesi
                       href: azure-stack-kubernetes-ask-engine-support.md
-                    - name: AKS altyapısını ayarlama
+                    - name: Ön koşulları ayarlama
                       href: azure-stack-kubernetes-aks-engine-set-up.md
                     - name: Linux istemcisi oluşturma
                       href: azure-stack-kubernetes-aks-engine-deploy-linux.md

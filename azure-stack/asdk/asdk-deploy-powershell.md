@@ -17,12 +17,12 @@ ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 5b517eec23950380bf5f0fc8febe717683960b65
-ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
+ms.openlocfilehash: 0ba8723b9d0f03006b52ecd016c3713280b63dea
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69579109"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159289"
 ---
 # <a name="deploy-asdk-from-the-command-line-using-powershell"></a>PowerShell kullanarak komut satırından ASDK dağıtma
 
@@ -144,7 +144,7 @@ Ortamınızda DHCP etkin değilse, yukarıdaki seçeneklerden birine aşağıdak
 |Parametre|Gerekli/Isteğe bağlı|Açıklama|
 |-----|-----|-----|
 |AdminPassword|Gerekli|Yerel yönetici hesabını ve tüm diğer Kullanıcı hesaplarını, ASDK dağıtımının bir parçası olarak oluşturulan tüm VM 'lerde ayarlar. Bu parolanın konaktaki geçerli yerel yönetici parolasıyla eşleşmesi gerekir.|
-|InfraAzureDirectoryTenantName|Gerekli|Kiracı dizinini ayarlar. AAD hesabının birden çok dizini yönetme izinleri olduğu belirli bir dizini belirtmek için bu parametreyi kullanın. . Onmicrosoft.com biçiminde bir AAD kiracının tam adı veya bir Azure AD tarafından doğrulanan özel etki alanı adı.|
+|InfraAzureDirectoryTenantName|Gerekli|Kiracı dizinini ayarlar. Azure AD hesabının birden çok dizini yönetme iznine sahip olduğu belirli bir dizini belirtmek için bu parametreyi kullanın. . Onmicrosoft.com biçiminde bir Azure AD kiracının tam adı veya bir Azure AD tarafından doğrulanan özel etki alanı adı.|
 |TimeServer|Gerekli|Belirli bir saat sunucusunu belirtmek için bu parametreyi kullanın. Bu parametrenin geçerli bir saat sunucusu IP adresi olarak sağlanması gerekir. Sunucu adları desteklenmez.|
 |InfraAzureDirectoryTenantAdminCredential|İsteğe Bağlı|Azure Active Directory Kullanıcı adı ve parolayı ayarlar. Bu Azure kimlik bilgileri bir kuruluş KIMLIĞI olmalıdır.|
 |InfraAzureEnvironment|İsteğe Bağlı|Bu Azure Stack dağıtımını kaydetmek istediğiniz Azure ortamını seçin. Seçenekler genel Azure, Azure-Çin, Azure-US kamu ' u içerir.|
@@ -163,7 +163,7 @@ Deneme süreniz sona ermeden önce, ASDK konağının parolasının süresinin d
 **[ASDK dağıtım görevleri sonrası](asdk-post-deploy.md)**
 
 ## <a name="register-with-azure"></a>Azure 'a kaydolun
-[Azure Market öğelerini](../operator/azure-stack-create-and-publish-marketplace-item.md) Azure Stack indirebilmeniz Için Azure Stack Azure ile kaydetmeniz gerekir.
+[Azure Market öğelerini Azure Stack indirebilmeniz](../operator/azure-stack-create-and-publish-marketplace-item.md) Için Azure Stack Azure ile kaydetmeniz gerekir.
 
 **[Azure ile Azure Stack kaydetme](asdk-register.md)**
 

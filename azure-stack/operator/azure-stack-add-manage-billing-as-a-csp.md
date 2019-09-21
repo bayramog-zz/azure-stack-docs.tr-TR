@@ -1,6 +1,6 @@
 ---
-title: Bulut hizmeti sağlayıcısı olarak Azure Stack için kullanımı ve faturalandırmayı yönetme | Microsoft Docs
-description: Azure Stack bir bulut sağlayıcısı (CSP) olarak nasıl kaydedeceğinizi ve faturalandırma için müşterilerin nasıl ekleneceğini öğrenin.
+title: Bulut çözümü sağlayıcısı olarak Azure Stack için kullanımı ve faturalandırmayı yönetme | Microsoft Docs
+description: Azure Stack bir bulut çözümü sağlayıcısı (CSP) olarak kaydetmeyi ve faturalandırma için müşterilerin nasıl ekleneceğini öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 05/20/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a8ae60e9ee19f96196d1c3763a32be0842567c7a
-ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
+ms.openlocfilehash: 82aa27440a496a813e2f1fa99879005503ba8d07
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70118685"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159508"
 ---
-# <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Bulut hizmeti sağlayıcısı olarak Azure Stack için kullanımı ve faturalandırmayı yönetme
+# <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-solution-provider"></a>Bulut çözümü sağlayıcısı olarak Azure Stack için kullanımı ve faturalandırmayı yönetme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
@@ -32,7 +32,7 @@ CSP olarak, Azure Stack kullanarak farklı müşterilerle çalışırsınız. He
 
 Aşağıdaki şekilde, paylaşılan hizmetleri hesabınızı seçmek ve Azure hesabını Azure Stack hesabıyla kaydetmek için gereken adımlar gösterilmektedir. Kaydolduktan sonra, son müşterilerinizi ekleyebilirsiniz:
 
-[![Bulut hizmeti sağlayıcısı olarak kullanımı ve yönetimi etkinleştirme işlemi](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "Bulut hizmeti sağlayıcısı olarak kullanımı ve yönetimi etkinleştirme işlemi")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
+[![Bulut çözümü sağlayıcısı olarak kullanımı ve yönetimi etkinleştirme işlemi](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "Bulut çözümü sağlayıcısı olarak kullanımı ve yönetimi etkinleştirme işlemi")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
 
 ## <a name="create-a-csp-or-apss-subscription"></a>CSP veya APSS aboneliği oluşturma
 
@@ -40,7 +40,7 @@ Aşağıdaki şekilde, paylaşılan hizmetleri hesabınızı seçmek ve Azure he
 
 Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü seçin. Çok kiracılı bir Azure Stack'in kaydında kullanılabilecek abonelik türleri şunlardır:
 
-- Bulut Hizmeti Sağlayıcısı
+- Bulut Çözümü Sağlayıcısı
 - İş Ortağı Paylaşılan Hizmetler aboneliği
 
 #### <a name="azure-partner-shared-services"></a>Azure Iş ortağı paylaşılan hizmetleri

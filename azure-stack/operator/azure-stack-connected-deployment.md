@@ -16,17 +16,17 @@ ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: d06dabc32141fcf2f487151e92c5f47aa79b6149
-ms.sourcegitcommit: c196463492732218d2474d3a964f88e995272c80
+ms.openlocfilehash: fa90091f93556cd313fa8e4e21bfe0fd24011e38
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094299"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159149"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack tümleşik sistemler için Azure 'a bağlı dağıtım planlama kararları
 [Karma bulut ortamınıza Azure Stack nasıl tümleştirileceğini](azure-stack-connection-models.md)karardıktan sonra, Azure Stack dağıtım kararlarınızı son haline getirebilirsiniz.
 
-Azure 'a bağlı Azure Stack dağıtmak, kimlik deponuzda Azure Active Directory (AAD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sahip olabileceği anlamına gelir. Ayrıca faturalandırma modelinden, Kullandıkça Öde veya kapasite tabanlı seçeneklerinden birini de seçebilirsiniz. Bağlı bir dağıtım, müşterilerin, özellikle Azure ve Azure Stack içeren karma bulut senaryolarında Azure Stack en fazla değeri almasına izin verdiğinden, varsayılan seçenektir.
+Azure 'a bağlı Azure Stack dağıtmak, kimlik deponuzda Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sahip olabileceği anlamına gelir. Ayrıca faturalandırma modelinden, Kullandıkça Öde veya kapasite tabanlı seçeneklerinden birini de seçebilirsiniz. Bağlı bir dağıtım, müşterilerin, özellikle Azure ve Azure Stack içeren karma bulut senaryolarında Azure Stack en fazla değeri almasına izin verdiğinden, varsayılan seçenektir.
 
 ## <a name="choose-an-identity-store"></a>Bir kimlik deposu seçin
 Bağlı bir dağıtımla, kimlik deponuzda Azure AD veya AD FS arasında seçim yapabilirsiniz. İnternet bağlantısı olmayan, bağlantısı kesilen bir dağıtım yalnızca AD FS kullanabilir.
@@ -38,9 +38,9 @@ Kimlik deposu tercih ettiğiniz kiracı sanal makinelerinde (VM) hiç bir pul yo
 ### <a name="azure-ad-identity-store"></a>Azure AD kimlik deposu
 Kimlik deponuzda Azure AD 'nin kullanılması iki Azure AD hesabı gerektirir: genel yönetici hesabı ve faturalandırma hesabı. Bu hesaplar, aynı hesaplar veya farklı hesaplar olabilir. Aynı kullanıcı hesabının kullanılması daha basit olabilir ve sınırlı sayıda Azure hesabınız varsa, iş gereksinimleriniz iki hesap kullanılarak önerilmesi gerekebilir:
 
-1. **Genel yönetici hesabı** (yalnızca bağlı dağıtımlar için gereklidir). Bu, AAD 'de Azure Stack altyapı hizmetleri için uygulama ve hizmet sorumluları oluşturmak için kullanılan bir Azure hesabıdır. Bu hesabın, Azure Stack sisteminizin dağıtılacağı dizinde Dizin Yöneticisi izinleri olması gerekir. Azure AD kullanıcısı için "bulut operatörü" genel yöneticisi olur ve aşağıdaki görevler için kullanılır:
+1. **Genel yönetici hesabı** (yalnızca bağlı dağıtımlar için gereklidir). Bu, Azure AD 'de Azure Stack altyapı hizmetleri için uygulama ve hizmet sorumluları oluşturmak için kullanılan bir Azure hesabıdır. Bu hesabın, Azure Stack sisteminizin dağıtılacağı dizinde Dizin Yöneticisi izinleri olması gerekir. Azure AD kullanıcısı için "bulut operatörü" genel yöneticisi olur ve aşağıdaki görevler için kullanılır:
 
-    - AAD ve Graph API etkileşimde olması gereken tüm Azure Stack hizmetlere yönelik uygulamalar ve hizmet sorumlularını sağlamak ve atamak için.
+    - Azure AD ve Graph API etkileşimde olması gereken tüm Azure Stack hizmetlere yönelik uygulamalar ve hizmet sorumlularını sağlamak ve atamak için.
     - Hizmet Yöneticisi hesabı olarak. Bu hesap, varsayılan sağlayıcı aboneliğinin sahibidir (daha sonra değişiklik yapabilirsiniz). Bu hesapla Azure Stack yönetici portalında oturum açabilir ve bu hesabı teklif ve planlar oluşturmak, Kotalar ayarlamak ve Azure Stack diğer yönetim işlevlerini gerçekleştirmek için kullanabilirsiniz.
 
 2. **Faturalandırma hesabı** (hem bağlı hem de bağlantısı kesilen dağıtımlar için gereklidir). Bu Azure hesabı, Azure Stack tümleşik sisteminiz ile Azure ticari arka ucu arasında faturalandırma ilişkisi kurmak için kullanılır. Bu, Azure Stack ücretleri için faturalandırılan hesaptır. Bu hesap, Market 'te ve diğer karma senaryolarda öğe sunmak için de kullanılacaktır.
@@ -61,7 +61,7 @@ CSP aboneliğini kullanacaksanız, doğru yaklaşım CSP senaryosuna bağlı ola
 
 |Senaryo|Etki alanı ve abonelik seçenekleri|
 |-----|-----|
-|**Doğrudan BIR CSP Iş ortağıysanız** veya **dolaylı bir csp sağlayıcısıdır**, Azure Stack çalıştıracaksınız|Bir CSL (ortak hizmet katmanı) aboneliği kullanın.<br>     veya<br>Iş Ortağı Merkezi 'nde açıklayıcı bir ada sahip bir Azure AD kiracısı oluşturun. Örneğin, &lt;kuruluşunuz ile ilişkili bir Azure CSP aboneliğiyle cspadmin >.|
+|**Doğrudan BIR CSP Iş ortağıysanız** veya **dolaylı bir csp sağlayıcısıdır**, Azure Stack çalıştıracaksınız|Bir CSL (ortak hizmet katmanı) aboneliği kullanın.<br>     or<br>Iş Ortağı Merkezi 'nde açıklayıcı bir ada sahip bir Azure AD kiracısı oluşturun. Örneğin, &lt;kuruluşunuz ile ilişkili bir Azure CSP aboneliğiyle cspadmin >.|
 |Bir **dolaylı CSP satıcısı**olduğunuz için Azure Stack|Dolaylı CSP sağlayıcınızdan, Iş Ortağı Merkezi 'ni kullanarak kendisiyle ilişkili bir Azure CSP aboneliği ile kuruluşunuz için bir Azure AD kiracısı oluşturmasını isteyin.|
 
 ### <a name="capacity-based-billing"></a>Kapasite tabanlı faturalandırma

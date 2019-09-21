@@ -1,6 +1,6 @@
 ---
-title: API isteği yapmak için Azure Stack | Microsoft Docs
-description: Azure Stack için API isteği yapmak için Azure kimlik doğrulaması almak öğrenin.
+title: Azure Stack için API istekleri yap | Microsoft Docs
+description: Azure Stack için API istekleri yapmak üzere Azure 'dan kimlik doğrulaması alma hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -14,32 +14,32 @@ ms.date: 05/16/2019
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 83578f7644f7a4bfc47f854fe9974809c22bba02
-ms.sourcegitcommit: ad2f2cb4dc8d5cf0c2c37517d5125921cff44cdd
+ms.openlocfilehash: 0be1e7832d5ac32b092e44674b78c59552af351c
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67138908"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159728"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# <a name="make-api-requests-to-azure-stack"></a>API isteği yapmak için Azure Stack
+# <a name="make-api-requests-to-azure-stack"></a>Azure Stack için API istekleri yapın
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Uygulama programlama arabirimi (API), bir sanal makine (VM) Azure Stack bulutunuza ekleme gibi işlemleri otomatikleştirmek için kullanabilirsiniz.
+Azure Stack bulutuna bir sanal makine (VM) ekleme gibi işlemleri otomatik hale getirmek için uygulama programlama arabirimini (API) kullanabilirsiniz.
 
-API, Microsoft Azure oturum açma uç noktası için kimlik doğrulaması yapmak istemcinizi gerektirir. Uç nokta, Azure Stack API'ye gönderilen her istek üstbilgisindeki kullanmak için bir belirteç döndürür. Microsoft Azure, Oauth 2.0 kullanır.
+API, istemcinizin Microsoft Azure oturum açma uç noktasında kimlik doğrulamasını gerektirir. Uç noktası, Azure Stack API 'sine gönderilen her isteğin üstbilgisinde kullanılacak bir belirteç döndürür. Microsoft Azure OAuth 2,0 kullanır.
 
-Bu makalede kullanan örnekler **cURL** Azure Stack istekleri oluşturmak için yardımcı program. cURL, veri aktarmak için bir kitaplığı ile bir komut satırı aracıdır. Bu örnekler, Azure Stack API'sine erişmek için bir belirteç alma işleminde size kılavuzluk. Çoğu programlama dilinden belirtecini yenileme gibi güçlü belirteç yönetimi ve tutamacı görevleri olan Oauth 2.0 kitaplıkları sağlar.
+Bu makalede, Azure Stack istekleri oluşturmak için **kıvrımlı** yardımcı programını kullanan örnekler sağlanmaktadır. Kıvrımlı, verileri aktarmaya yönelik bir kitaplığı içeren bir komut satırı aracıdır. Bu örnekler, Azure Stack API 'sine erişmek için belirteç alma sürecini ele alır. Çoğu programlama dili, güçlü belirteç yönetimine sahip OAuth 2,0 kitaplıklarını sağlar ve belirteci yenileme gibi görevleri işler.
 
-Azure Stack REST API'si gibi genel bir REST istemcisi ile kullanarak tüm işlemi gözden **cURL**, temel alınan istekler ve yanıt yükünde bekleyebileceğiniz anlamanıza yardımcı olacak.
+Temel alınan istekleri ve yanıt yükünde neler beklediğinizi anlamanıza yardımcı olmak için, Azure Stack REST API kullanarak, bir genel REST istemcisiyle, sözgelimi bir **bütün olarak '** ı inceleyin.
 
-Bu makalede, etkileşimli oturum açma gibi belirteçleri almak veya ayrılmış uygulama kimlikleri oluşturma için kullanılabilir tüm seçenekleri keşfedin değil. Bu konular hakkında bilgi edinmek için [Azure REST API Başvurusu](https://docs.microsoft.com/rest/api/).
+Bu makalede, etkileşimli oturum açma veya adanmış uygulama kimlikleri oluşturma gibi belirteçleri almak için kullanılabilen tüm seçenekler araştırılamaz. Bu konular hakkında bilgi almak için bkz. [Azure REST API başvurusu](https://docs.microsoft.com/rest/api/).
 
-## <a name="get-a-token-from-azure"></a>Azure'dan bir belirteç Al
+## <a name="get-a-token-from-azure"></a>Azure 'dan bir belirteç alın
 
-İçerik türü x-www-form-urlencoded ile biten bir erişim belirteci almak için kullanmak biçimlendirilmiş istek gövdesi oluşturun. Azure REST kimlik doğrulama ve oturum açma uç noktası isteğinizi gönderin.
+Erişim belirteci almak için x-www-form-urlencoded içerik türünü kullanarak biçimlendirilen bir istek gövdesi oluşturun. İsteğinizi Azure REST kimlik doğrulaması ve oturum açma uç noktasına GÖNDERIN.
 
 ### <a name="uri"></a>URI
 
@@ -47,13 +47,13 @@ Bu makalede, etkileşimli oturum açma gibi belirteçleri almak veya ayrılmış
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 ```
 
-**Kiracı kimliği** ya da:
+**KIRACı kimliği** :
 
- - Kiracı etki alanınızın gibi `fabrikam.onmicrosoft.com`
- - Örneğin, Kiracı kimliği `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
- - Bağımsız Kiracı anahtarları için varsayılan değer: `common`
+ - Kiracı etki alanınız, örneğin`fabrikam.onmicrosoft.com`
+ - Kiracı KIMLIĞINIZ, örneğin`8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+ - Kiracıdan bağımsız anahtarlar için varsayılan değer:`common`
 
-### <a name="post-body"></a>POST gövdesini
+### <a name="post-body"></a>Gövde gönder
 
 ```bash  
 grant_type=password
@@ -67,10 +67,10 @@ grant_type=password
 Her bir değer için:
 
 - **grant_type**:  
-   Kimlik doğrulama düzeni kullanacaksınız türü. Bu örnekte, değerdir `password`.
+   Kullanacağınız kimlik doğrulama şemasının türü. Bu örnekte, değeri `password`.
 
-- **Kaynak**:  
-   Kaynak belirteci erişir. Azure Stack yönetim meta veri uç noktasını sorgulayarak kaynak bulabilirsiniz. Bakmak **izleyiciler** bölümü.
+- **kaynak**:  
+   Belirtecin eriştiği kaynak. Azure Stack yönetim meta veri uç noktasını sorgulayarak kaynağı bulabilirsiniz. **İzleyiciler** bölümüne bakın.
 
 - **Azure Stack yönetim uç noktası**:  
    ```
@@ -78,9 +78,9 @@ Her bir değer için:
    ```
 
   > [!NOTE]  
-  > Kiracı API'si erişmeye bir yöneticisiyseniz, Kiracı uç noktası kullandığınızdan emin olun. Örneğin, `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
+  > Kiracı API 'sine erişmeye çalışan bir yöneticsahipseniz kiracı uç noktasını kullandığınızdan emin olun. Örneğin, `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
-  Örneğin, Azure Stack geliştirme Seti'ni bir uç nokta olarak:
+  Örneğin, uç nokta olarak Azure Stack Geliştirme Seti:
 
    ```bash
    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
@@ -108,16 +108,16 @@ Her bir değer için:
 
   **client_id**
 
-  Bu değeri, sabit kodlanmış bir varsayılan değer şudur:
+  Bu değer bir varsayılan değere sabit olarak kodlanmıştır:
 
   ```
   1950a258-227b-4e31-a9cf-717495945fc2
   ```
 
-  Belirli senaryolar için diğer seçenekler kullanılabilir:
+  Belirli senaryolar için alternatif seçenekler mevcuttur:
 
   
-  | Uygulama | ApplicationId |
+  | Uygulama | Uygulama |
   | --------------------------------------- |:-------------------------------------------------------------:|
   | LegacyPowerShell | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417 |
   | PowerShell | 1950a258-227b-4e31-a9cf-717495945fc2 |
@@ -127,7 +127,7 @@ Her bir değer için:
 
   **Kullanıcı adı**
 
-  Örneğin, Azure Stack AAD hesabı:
+  Örneğin, Azure Stack Azure AD hesabı:
 
   ```
   azurestackadmin@fabrikam.onmicrosoft.com
@@ -135,7 +135,7 @@ Her bir değer için:
 
   **Parola**
 
-  Azure Stack AAD yönetici parolası.
+  Azure AD yönetici parolasını Azure Stack.
 
 ### <a name="example"></a>Örnek
 
@@ -168,7 +168,7 @@ Yanıt:
 
 ## <a name="api-queries"></a>API sorguları
 
-Erişim belirtecinizi aldıktan sonra her API isteklerinizin üst bilgi olarak ekleyin. Üst bilgi olarak eklemek için bir başlık oluşturma **yetkilendirme** değerle: `Bearer <access token>`. Örneğin:
+Erişim belirtecinizi aldıktan sonra API isteklerinizin her birine bir üst bilgi olarak ekleyin. Üst bilgi olarak eklemek için, şu değere sahip bir üst bilgi **yetkilendirmesi** oluşturun: `Bearer <access token>`. Örneğin:
 
 İstek:
 
@@ -190,30 +190,30 @@ subscriptionPolicies : @{locationPlacementId=AzureStack}
 
 ### <a name="url-structure-and-query-syntax"></a>URL yapısı ve sorgu söz dizimi
 
-Genel istek URI oluşur: `{URI-scheme} :// {URI-host} / {resource-path} ? {query-string}`
+Genel istek URI 'SI, aşağıdakilerden oluşur:`{URI-scheme} :// {URI-host} / {resource-path} ? {query-string}`
 
 - **URI şeması**:  
-URI isteği göndermek için kullanılan protokolü belirtir. Örneğin, `http` veya `https`.
+URI, isteği göndermek için kullanılan protokolü belirtir. Örneğin, `http` veya `https`.
 - **URI ana bilgisayarı**:  
-Ana bilgisayar etki alanı adı ya da REST Hizmeti uç noktası barındırıldığı, gibi sunucusunun IP adresini belirtir `graph.microsoft.com` veya `adminmanagement.local.azurestack.external`.
+Konak, veya `graph.microsoft.com` `adminmanagement.local.azurestack.external`gibi REST hizmeti uç noktasının barındırıldığı sunucunun etki alanı adını veya IP adresini belirtir.
 - **Kaynak yolu**:  
-Yol kaynak veya hizmetin kaynak seçimine belirlemede tarafından kullanılan birden fazla bölüm içerebilen kaynak koleksiyonunu belirtir. Örneğin: `beta/applications/00003f25-7e1f-4278-9488-efc7bac53c4a/owners` uygulamaları koleksiyonundaki belirli bir uygulamanın sahipleri listesinde sorgulamak için kullanılabilir.
+Yol, bu kaynakların seçimini belirlemede hizmet tarafından kullanılan birden çok parçayı içerebilen kaynak veya kaynak koleksiyonunu belirtir. Örneğin: `beta/applications/00003f25-7e1f-4278-9488-efc7bac53c4a/owners` uygulama koleksiyonu içindeki belirli bir uygulamanın sahipleri listesini sorgulamak için kullanılabilir.
 - **Sorgu dizesi**:  
-Dize, API sürümü veya kaynak seçim ölçütü gibi basit ek parametreler sunar.
+Dize, API sürümü veya kaynak seçim ölçütü gibi ek basit parametreler sağlar.
 
-## <a name="azure-stack-request-uri-construct"></a>Azure Stack istek URI yapısı
+## <a name="azure-stack-request-uri-construct"></a>Azure Stack URI yapısını iste
 
 ```
 {URI-scheme} :// {URI-host} / {subscription id} / {resource group} / {provider} / {resource-path} ? {OPTIONAL: filter-expression} {MANDATORY: api-version}
 ```
 
-### <a name="uri-syntax"></a>URI söz dizimi
+### <a name="uri-syntax"></a>URI sözdizimi
 
 ```
 https://adminmanagement.local.azurestack.external/{subscription id}/resourcegroups/{resource group}/providers/{provider}/{resource-path}?{api-version}
 ```
 
-### <a name="query-uri-example"></a>Sorgu URI örneği
+### <a name="query-uri-example"></a>Sorgu URI 'SI örneği
 
 ```
 https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8/resourcegroups/system.local/providers/microsoft.infrastructureinsights.admin/regionhealths/local/Alerts?$filter=(Properties/State eq 'Active') and (Properties/Severity eq 'Critical')&$orderby=Properties/CreatedTimestamp desc&api-version=2016-05-01"
@@ -221,4 +221,4 @@ https://adminmanagement.local.azurestack.external/subscriptions/800c4168-3eb1-40
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure RESTful uç noktaları kullanma hakkında daha fazla bilgi için bkz. [Azure REST API Başvurusu](https://docs.microsoft.com/rest/api/).
+Azure yeniden deneme uç noktalarını kullanma hakkında daha fazla bilgi için bkz. [azure REST API başvurusu](https://docs.microsoft.com/rest/api/).

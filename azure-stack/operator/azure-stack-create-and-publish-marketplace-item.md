@@ -1,6 +1,6 @@
 ---
 title: Azure Stack bir Market öğesi oluşturma ve yayımlama | Microsoft Docs
-description: Azure Stack bir Market öğesi oluşturun ve yayımlayın.
+description: Azure Stack Market öğesi oluşturma ve yayımlama hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 08/20/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: b9e1e9a1cdd0afe18a5395c99fb2eef932791667
-ms.sourcegitcommit: 1a8ebd8103608b5ee9e804d7015eefe05ef55185
+ms.openlocfilehash: 668882b1f5e0702ce51798468c8f102efe92edcd
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69643845"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159689"
 ---
-# <a name="create-and-publish-a-marketplace-item"></a>Market öğesi oluşturma ve yayımlama
+# <a name="create-and-publish-a-marketplace-item-in-azure-stack"></a>Azure Stack bir Market öğesi oluşturma ve yayımlama
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
@@ -46,7 +46,7 @@ ms.locfileid: "69643845"
     > Ürün anahtarları, parola gibi herhangi bir parolayı veya Azure Resource Manager şablonunda hiçbir müşteri tarafından tanımlanabilir bilgileri hiçbir şekilde kalıcı olarak kodlayın. Şablon JSON dosyalarına, galeride yayımlandıktan sonra kimlik doğrulamaya gerek olmadan erişilebilir. Tüm gizli dizileri [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) depolayın ve şablon içinden çağırın.
 
 4. Kaynağın başarıyla dağıtılabilmesi için Microsoft Azure Stack API 'Leriyle şablonu test edin.
-5. Şablonunuz bir sanal makine görüntüsünü kullanıyorsa, [Azure Stack bir sanal makine görüntüsü eklemek](azure-stack-add-vm-image.md)için yönergeleri izleyin.
+5. Şablonunuz bir sanal makine (VM) görüntüsünü kullanıyorsa, [Azure Stack BIR VM görüntüsü eklemek](azure-stack-add-vm-image.md)için yönergeleri izleyin.
 6. Azure Resource Manager şablonunuzu **/contoso.ToDoList/DeploymentTemplates/** klasörüne kaydedin.
 7. Market öğesi için simgeleri ve metni seçin. **Simgeler** klasörüne simgeler ekleyin ve **dizeler** klasöründeki **kaynaklar** dosyasına metin ekleyin. Simgeler için **küçük**, **Orta**, **büyük**ve **geniş** adlandırma kurallarını kullanın. Bu boyutlarda ayrıntılı bir açıklama için [Market öğesi Kullanıcı arabirimi başvurusuna](#reference-marketplace-item-ui) bakın.
 
@@ -91,9 +91,9 @@ ms.locfileid: "69643845"
 
 ## <a name="publish-a-marketplace-item"></a>Bir Market öğesi yayımlama
 
-1. Market öğesini (. azpkg) Azure Blob depolama alanına yüklemek için PowerShell veya Azure Depolama Gezgini kullanın. Yerel Azure Stack depolama alanına yükleyebilir veya Azure Storage 'a yükleyebilirsiniz; Bu, paket için geçici bir konum olur. Blobun genel olarak erişilebilir olduğundan emin olun.
-2. Microsoft Azure Stack ortamındaki istemci sanal makinesinde, PowerShell oturumunuzun Hizmet Yöneticisi kimlik bilgilerinizle ayarlandığından emin olun. PowerShell [ile bir şablon dağıtma](../user/azure-stack-deploy-template-powershell.md)Azure Stack içinde PowerShell kimlik doğrulaması hakkında yönergeler bulabilirsiniz.
-3. [PowerShell 1.3.0](azure-stack-powershell-install.md) veya üstünü kullandığınızda, market öğesini Azure Stack yayımlamak için **Add-Azsgalleryıtem** PowerShell cmdlet 'ini kullanabilirsiniz. PowerShell 1.3.0 kullanmadan önce Add- **Azurermgalleryıtem** cmdlet 'ini **Add-azsgalleryıtem**yerine kullanın. Örneğin, PowerShell 1.3.0 veya üstünü kullandığınızda:
+1. Market öğesini (. azpkg) Azure Blob depolama alanına yüklemek için PowerShell veya Azure Depolama Gezgini kullanın. Yerel Azure Stack depolama alanına yükleyebilir veya paket için geçici bir konum olan Azure Storage 'a yükleyebilirsiniz. Blobun genel olarak erişilebilir olduğundan emin olun.
+2. Microsoft Azure Stack ortamındaki istemci sanal makinesinde, PowerShell oturumunuzun hizmet yönetici kimlik bilgilerinizle ayarlandığından emin olun. PowerShell [ile bir şablon dağıtma](../user/azure-stack-deploy-template-powershell.md)Azure Stack içinde PowerShell kimlik doğrulaması hakkında yönergeler bulabilirsiniz.
+3. [PowerShell 1.3.0](azure-stack-powershell-install.md) veya üstünü kullandığınızda, market öğesini Azure Stack yayımlamak için **Add-Azsgalleryıtem** PowerShell cmdlet 'ini kullanabilirsiniz. Önceki sürümler için Add- **Azurermgalleryıtem** cmdlet 'ini **Add-azsgalleryıtem**yerine kullanın. Örneğin, PowerShell 1.3.0 veya üstünü kullandığınızda:
 
    ```powershell
    Add-AzsGalleryItem -GalleryItemUri `
@@ -142,7 +142,7 @@ ms.locfileid: "69643845"
 | Name | Gerekli | Type | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |80 karakter önerisi |Portal 80 karakterden uzunsa öğe adınızı doğru görüntülenmeyebilir. |
-| PublisherDisplayName |X |Dize |30 karakterlik öneri |Portal, 30 karakterden uzunsa Yayımcı adınızı doğru şekilde görüntülemeyebilir. |
+| PublisherDisplayName |X |Dize |30 karakterlik öneri |Portal, 30 karakterden uzun olursa Yayımcı adınızı doğru görüntülenmeyebilir. |
 | PublisherLegalName |X |Dize |En fazla 256 karakter | |
 | Özet |X |Dize |60-100 karakter | |
 | LongSummary |X |Dize |140-256 karakter |Henüz Azure Stack için geçerli değildir. |
@@ -162,7 +162,7 @@ Market aşağıdaki simgeleri kullanır:
 
 ### <a name="categories"></a>Categories
 
-Her Market öğesi, öğenin Portal Kullanıcı arabiriminde nerede göründüğünü tanımlayan bir kategori ile etiketlenmelidir. Azure Stack (**işlem**, **veri + depolama**, vb.) içindeki mevcut kategorilerden birini seçebilir veya yeni bir tane seçebilirsiniz.
+Her Market öğesi, öğenin Portal Kullanıcı arabiriminde nerede göründüğünü tanımlayan bir kategori ile etiketlenmelidir. Azure Stack (**işlem**, **veri + depolama**vb.) var olan kategorilerden birini seçebilir veya yeni bir tane seçebilirsiniz.
 
 ### <a name="links"></a>Bağlantılar
 
@@ -194,11 +194,11 @@ Azure Stack portalında görüldüğü gibi Market öğeleri için simgeler ve m
 
 ### <a name="create-blade"></a>Dikey pencere oluşturma
 
-![Dikey pencere oluşturma](media/azure-stack-create-and-publish-marketplace-item/image1.png)
+![Dikey pencere oluşturma — Market öğelerini Azure Stack](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>Market öğesi ayrıntıları dikey penceresi
 
-![Market öğesi ayrıntıları dikey penceresi](media/azure-stack-create-and-publish-marketplace-item/image3.png)
+![Azure Stack Market öğesi ayrıntıları dikey penceresi](media/azure-stack-create-and-publish-marketplace-item/image3.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

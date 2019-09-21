@@ -16,18 +16,20 @@ ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: 0091571dca5c966cb58fc7ce1533a17850558205
-ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
+ms.openlocfilehash: 896169a39f450b0a0fb26699867638afb02f20a7
+ms.sourcegitcommit: 2c37ac8e88de19430080128bac1b70e33557d354
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106478"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71164253"
 ---
-# <a name="azure-stack-updates"></a>Azure Stack güncelleştirmeleri
+# <a name="azure-stack-updates-release-notes"></a>Azure Stack güncelleştirmeler: sürüm notları
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Bu makalede Azure Stack güncelleştirme paketlerinin içerikleri açıklanır. Güncelleştirme yenilikleri ve bu Azure Stack sürümü için düzeltmeler içerir. **Farklı bir sürüme yönelik sürüm notlarına erişmek için sol üst köşedeki sürüm seçiciyi kullanın.**
+Bu makalede Azure Stack güncelleştirme paketlerinin içerikleri açıklanır. Güncelleştirme yenilikleri ve bu Azure Stack sürümü için düzeltmeler içerir.
+
+Farklı bir sürüme yönelik sürüm notlarına erişmek için, sol taraftaki içindekiler tablosunun üzerindeki sürüm Seçicisi açılan listesini kullanın.
 
 ::: moniker range=">=azs-1905"
 > [!IMPORTANT]  
@@ -506,7 +508,7 @@ Altyapı ağından internet 'e erişebilen sistemler, operatör portalındaki **
 
 ## <a name="archive"></a>Arşiv
 
-Arşivlenmiş sürüm notlarına daha eski bir sürüm için erişmek üzere sayfanın sol üst kısmındaki sürüm seçicisini kullanın ve ilgilendiğiniz sürümü seçin. 
+Daha eski bir sürüm için arşivlenmiş sürüm notlarına erişmek için, sol taraftaki içindekiler tablosunun üzerindeki sürüm Seçicisi açılan listesini kullanın ve görmek istediğiniz sürümü seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

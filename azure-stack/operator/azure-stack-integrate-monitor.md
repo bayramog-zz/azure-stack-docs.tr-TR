@@ -15,12 +15,12 @@ ms.date: 06/05/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 7b5bfb39c3ec14c23b1df54c13f2733724fcfe05
-ms.sourcegitcommit: ddb625bb01de11bfb75d9f7a1cc61d5814b3bc31
+ms.openlocfilehash: 489859720df8a2d0c20bb476b285fe9cb65b797e
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68712911"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159629"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Dış izleme çözümünü Azure Stack ile tümleştirin
 
@@ -75,7 +75,7 @@ Nagios izleme eklentisi, iş ortağı Cloudbase çözümleriyle birlikte gelişt
 
 Eklenti Python 'da yazılmıştır ve REST API sistem durumu kaynak sağlayıcısı 'ndan yararlanır. Azure Stack uyarıları almak ve kapatmak için temel işlevler sunar. System Center yönetim paketi gibi, birden çok Azure Stack dağıtımı eklemenize ve bildirim gönderebilmenizi sağlar.
 
-Sürüm 1,2 ile Azure Stack – Nagios eklentisi Microsoft ADAL kitaplığını kullanır ve gizli veya sertifikayla hizmet sorumlusu kullanarak kimlik doğrulamasını destekler. Ayrıca, yapılandırma yeni parametrelerle tek bir yapılandırma dosyası kullanılarak basitleştirilmiştir. Artık kimlik sistemi olarak ADFS & ADFS kullanarak Azure Stack dağıtımlarını desteklemektedir.
+Sürüm 1,2 ile Azure Stack – Nagios eklentisi Microsoft ADAL kitaplığını kullanır ve gizli veya sertifikayla hizmet sorumlusu kullanarak kimlik doğrulamasını destekler. Ayrıca, yapılandırma yeni parametrelerle tek bir yapılandırma dosyası kullanılarak basitleştirilmiştir. Artık kimlik sistemi olarak Azure AD & AD FS kullanan Azure Stack dağıtımlarını desteklemektedir.
 
 Eklenti Nagios 4X ve XI ile birlikte kullanılabilir. [Buradan](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)indirebilirsiniz. İndirme sitesi ayrıca yükleme ve yapılandırma ayrıntılarını içerir.
 

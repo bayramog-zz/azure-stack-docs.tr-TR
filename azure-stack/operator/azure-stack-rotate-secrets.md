@@ -16,12 +16,12 @@ ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 07/15/2019
 monikerRange: '>=azs-1803'
-ms.openlocfilehash: 5b8beccab17eaa9aedadb63327150a70a327df1f
-ms.sourcegitcommit: 71d7990a2b21576c44bb2aea13ae2026e9510c55
+ms.openlocfilehash: b79e3def3444db2228992b423ca21945d7964f26
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70188162"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159611"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack gizli dizileri döndürme
 
@@ -147,7 +147,7 @@ Dış gizli dizileri döndürmek için:
 
 1. Ön adımlarda oluşturulan yeni oluşturulan **\certificates\\\<IdentityProvider >** dizini içinde, yeni bir değiştirme dış sertifika kümesini dizin yapısına, [Azure Stack PKI sertifikası gereksinimlerinin](azure-stack-pki-certs.md#mandatory-certificates)zorunlu sertifikalar bölümü.
 
-    AAD kimlik sağlayıcısı için klasör yapısına örnek:
+    Azure AD kimlik sağlayıcısı için klasör yapısına örnek:
     ```powershell
         <ShareName>
         │   │

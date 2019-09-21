@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7e5467945db4987bdd86b7265117c486fb6f7e1b
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 091dc657153309298a1eda161b633a42050a0f57
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418335"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159352"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Hizmet olarak Azure Stack doğrulaması için iş akışı ortak parametreleri
 
@@ -62,7 +62,7 @@ Ortak test parametreleri, yapılandırma dosyalarında depolanabilecek hassas bi
 Parametre    | Açıklama
 -------------|-----------------
 Kiracı Yöneticisi Kullanıcı                            | AAD dizininde hizmet yöneticisi tarafından sağlanan Kiracı Yöneticisi Azure Active Directory. Bu Kullanıcı, kaynakları (VM 'Ler, depolama hesapları vb.) ayarlamak ve iş yüklerini yürütmek için şablon dağıtma gibi kiracı düzeyinde eylemler gerçekleştirir. Kiracı hesabını sağlama hakkında ayrıntılı bilgi için bkz. [yeni Azure Stack kiracı ekleme](../operator/azure-stack-add-new-user-aad.md).
-Hizmet Yöneticisi kullanıcısı             | Azure Stack dağıtımı sırasında belirtilen AAD Dizin kiracının Yöneticisi Azure Active Directory. ECE yapılandırma dosyasında arama yapın ve `UniqueName` öğesindeki değeri seçin. `AADTenant`
+Hizmet Yöneticisi kullanıcısı             | Azure Stack dağıtımı sırasında belirtilen Azure AD dizin kiracının Yöneticisi Azure Active Directory. ECE yapılandırma dosyasında arama yapın ve `UniqueName` öğesindeki değeri seçin. `AADTenant`
 Bulut Yöneticisi kullanıcısı               | Azure Stack etki alanı yöneticisi hesabı (örneğin, `contoso\cloudadmin`). ECE yapılandırma dosyasında arama yapın ve `UserName` öğesindeki değeri seçin. `User Role="CloudAdmin"`
 Tanılama bağlantı dizesi          | Test yürütmesi sırasında tanılama günlüklerinin kopyalanacağı bir Azure depolama hesabına yönelik SAS URL 'SI. SAS URL 'SI oluşturma yönergeleri için bkz. [Tanılama bağlantı dizesi oluşturma](#generate-the-diagnostics-connection-string). |
 

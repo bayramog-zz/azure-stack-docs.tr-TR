@@ -15,12 +15,12 @@ ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 90759186b008c41bd9b3e35bf368d4f819534823
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: fe10926fdcb3b01cef84e021300d37168c68ae0b
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70975059"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159328"
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack'e Bağlanma
 
@@ -41,7 +41,7 @@ Uzak Masaüstü Bağlantısı, tek bir eşzamanlı kullanıcı, kaynakları yön
 
 ## <a name="connect-to-azure-stack-with-vpn"></a>VPN ile Azure Stack bağlanma
 
-Bir Azure Stack Geliştirme Seti bölünmüş tünel VPN bağlantısı kurabilirsiniz. VPN bağlantısı aracılığıyla, Azure Stack kaynaklarını yönetmek için yönetici portalına, Kullanıcı portalına ve Visual Studio ve PowerShell gibi yerel olarak yüklenmiş araçlara erişebilirsiniz. VPN bağlantısı hem Azure Active Directory (AAD) hem de Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tabanlı dağıtımlarda desteklenir. VPN bağlantıları birden çok istemcinin aynı anda Azure Stack bağlanmasına izin verir. 
+Bir Azure Stack Geliştirme Seti bölünmüş tünel VPN bağlantısı kurabilirsiniz. VPN bağlantısı aracılığıyla, Azure Stack kaynaklarını yönetmek için yönetici portalına, Kullanıcı portalına ve Visual Studio ve PowerShell gibi yerel olarak yüklenmiş araçlara erişebilirsiniz. VPN bağlantısı hem Azure Active Directory (Azure AD) hem de Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tabanlı dağıtımlarda desteklenir. VPN bağlantıları birden çok istemcinin aynı anda Azure Stack bağlanmasına izin verir. 
 
 > [!NOTE] 
 > Bu VPN bağlantısı, Azure Stack altyapı VM 'lerine bağlantı sağlamaz. 

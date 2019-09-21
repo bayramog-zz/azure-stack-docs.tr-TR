@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 9e92101b6d00da397359ed25e8682f18305f5a83
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: f60ee96673b5574f0cd0393dc6a53a2d7937c04f
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974739"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159156"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker cmdlet başvurusu
 
@@ -166,7 +166,7 @@ Start-AzsReadinessChecker
 
 ## <a name="description"></a>Açıklama
 
-**Start-AzsReadinessChecker** cmdlet 'i sertifikaları, Azure hesaplarını, Azure aboneliklerini ve Azure Active Directory 'YI (AAD) doğrular. Azure Stack dağıtılmadan önce veya gizli döndürme gibi eylemlere Azure Stack önce doğrulamayı çalıştırın. Cmdlet 'i, altyapı sertifikaları için sertifika imzalama istekleri ve isteğe bağlı olarak PaaS sertifikaları oluşturmak için de kullanılabilir. Son olarak, cmdlet ortak paketleme sorunlarını düzeltmek için PFX sertifikalarını yeniden paketleyebilir.
+**Start-AzsReadinessChecker** cmdlet 'i sertifikaları, Azure hesaplarını, Azure aboneliklerini ve Azure Active Directory 'Yi (Azure AD) doğrular. Azure Stack dağıtılmadan önce veya gizli döndürme gibi eylemlere Azure Stack önce doğrulamayı çalıştırın. Cmdlet 'i, altyapı sertifikaları için sertifika imzalama istekleri ve isteğe bağlı olarak PaaS sertifikaları oluşturmak için de kullanılabilir. Son olarak, cmdlet ortak paketleme sorunlarını düzeltmek için PFX sertifikalarını yeniden paketleyebilir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -188,7 +188,7 @@ $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
 ```
 
-Bu örnekte, güvenlik için PFX parolası gereklidir ve `Start-AzsReadinessChecker` bölge adı **Doğu** ve azurestack.contoso.com dış FQDN 'sine sahip bir AAD dağıtımı için geçerli sertifikalar için göreli klasör **sertifikalarını** denetler.
+Bu örnekte, güvenlik için PFX parolası gereklidir ve `Start-AzsReadinessChecker` bölge adı **Doğu** ve dış FQDN 'si **olan bir Azure AD dağıtımı için geçerli sertifikalar için göreli klasör sertifikalarını denetler azurestack.contoso.com**.
 
 ### <a name="example-validate-certificates-with-deployment-data-deployment-and-support"></a>Örnek: dağıtım verileriyle sertifikaları doğrulama (dağıtım ve destek)
 
@@ -237,7 +237,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
-Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve `Start-AzsReadinessChecker` Azure hesabının ve AAD 'nin **azurestack.contoso.com**kiracı dizin adına sahip bir AAD dağıtımı için geçerli olduğunu denetler.
+Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve `Start-AzsReadinessChecker` Azure hesabının ve Azure AD 'nin bir Azure AD dağıtımı için **azurestack.contoso.com**kiracı dizin adı ile geçerli olduğunu denetler.
 
 ### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Örnek: Azure kimliğini dağıtım verileriyle doğrulama (dağıtım desteği)
 
@@ -246,7 +246,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve Azure hesabının ve `Start-AzsReadinessChecker` AAD 'nin bir AAD dağıtımı için geçerli olduğunu ve bu durumda **azurecı** ve **TenantName** ' in, JSON dağıtım verilerinden okunduğu denetlenir dağıtım için oluşturulan dosya.
+Bu örnekte, hizmet yöneticisi hesabı kimlik bilgileri güvenlik için gereklidir ve `Start-AzsReadinessChecker` Azure hesabının ve Azure AD 'nin bir Azure AD dağıtımı için geçerli olup olmadığını denetler; burada **azurecyüksek** ve **TenantName** dağıtımdan okunmalıdır dağıtım için veri JSON dosyası oluşturuldu.
 
 ### <a name="example-validate-azure-registration"></a>Örnek: Azure kaydını doğrulama
 
@@ -435,7 +435,7 @@ Sertifika istek dosyaları için hedef yolu belirtir. Dizin zaten var olmalıdı
 
 ### <a name="-aadserviceadministrator"></a>-AADServiceAdministrator
 
-Azure Stack dağıtımı için kullanılacak AAD hizmeti yöneticisini belirtir.
+Azure Stack dağıtımı için kullanılacak Azure AD hizmet yöneticisini belirtir.
 
 |  |  |
 |----------------------------|---------|
@@ -447,7 +447,7 @@ Azure Stack dağıtımı için kullanılacak AAD hizmeti yöneticisini belirtir.
 
 ### <a name="-aaddirectorytenantname"></a>-AADDirectoryTenantName
 
-Azure Stack dağıtımı için kullanılacak AAD adını belirtir.
+Azure Stack dağıtımı için kullanılacak Azure AD adını belirtir.
 
 |  |  |
 |----------------------------|---------|
@@ -512,7 +512,7 @@ Hazır olma raporunun yolunu belirtir, varsayılan olarak geçerli dizin ve vars
 
 Altında yalnızca sertifika gerekli sertifika klasörlerinin bulunduğu yolu belirtir.
 
-AAD kimlik sistemiyle Azure Stack dağıtım için gerekli klasörler şunlardır:
+Azure AD kimlik sistemi ile Azure Stack dağıtım için gerekli klasörler şunlardır:
 
 - ACSBlob, ACSQueue, ACSTable, Yönetici portalı, ARM Yöneticisi, ARM genel, Keykasası, Keyvaultınternal, genel Portal
 

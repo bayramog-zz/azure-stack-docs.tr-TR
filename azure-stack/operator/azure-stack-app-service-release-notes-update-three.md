@@ -16,12 +16,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: c80a6068aa46cd182f8ec928942e7072638b143f
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: d226be9bad3bd6ddf775d8415329ea1fa8099eb0
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974838"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159552"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service Azure Stack güncelleştirme 3 sürüm notları
 
@@ -50,7 +50,7 @@ Azure Stack güncelleştirme 3 ' Azure App Service aşağıdaki geliştirmeleri 
 
 - Azure App Service kaynak sağlayıcısı veritabanları için her zaman açık SQL Server kullanımı için destek.
 
-- Farklı AAD bölgelerini hedeflemeye yardımcı olmak için Create-AADIdentityApp Helper betiğine yeni ortam parametresi eklendi.
+- Farklı Azure AD bölgelerini hedeflemeye yardımcı olmak için Create-AADIdentityApp Helper betiğine yeni ortam parametresi eklendi.
 
 - **Kiracı, yönetici, işlevler portalları ve kudu araçları App Service**güncelleştirmeler. Azure Stack Portal SDK sürümü ile tutarlıdır.
 

@@ -15,12 +15,12 @@ ms.date: 06/20/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: 859d80c9782926602769664006375cb131de8637
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.openlocfilehash: 37ffb494ab6ae124c6a0eb460da4569f660cd283
+ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602943"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71159366"
 ---
 # <a name="deploy-a-staged-data-analytics-solution-to-azure-stack"></a>Azure Stack için hazırlanmış bir veri analizi çözümü dağıtın
 
@@ -49,7 +49,7 @@ Bu çözümde şu şekilde bir örnek ortam oluşturacaksınız:
 ## <a name="prerequisites-for-staged-data-analytics"></a>Hazırlanan veri analizi önkoşulları
 
   - Azure aboneliği.
-  - Azure ve Azure Stack kiracı aboneliğine yönelik izinlere sahip bir Azure Active Directory (AAD) hizmet sorumlusu. Azure Stack Azure aboneliğinizden farklı bir AAD kiracısı kullanıyorsa, iki hizmet sorumlusu oluşturmanız gerekebilir. Azure Stack için hizmet sorumlusu oluşturma hakkında bilgi edinmek için, [uygulamalara Azure Stack kaynaklarına erişim sağlamak için hizmet sorumluları oluşturun](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals)bölümüne gidin.
+  - Azure ve Azure Stack kiracı aboneliğine yönelik izinlere sahip bir Azure Active Directory (Azure AD) hizmet sorumlusu. Azure Stack Azure aboneliğinizden farklı bir AAD kiracısı kullanıyorsa, iki hizmet sorumlusu oluşturmanız gerekebilir. Azure Stack için hizmet sorumlusu oluşturma hakkında bilgi edinmek için, [uygulamalara Azure Stack kaynaklarına erişim sağlamak için hizmet sorumluları oluşturun](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals)bölümüne gidin.
       - **Her bir hizmet sorumlusunun uygulama KIMLIĞI, istemci parolası, Azure AD kiracı KIMLIĞI ve kiracı adı (xxxxx.onmicrosoft.com) gibi bir yere dikkat edin.**
   - Veri analizi için bir veri koleksiyonu sağlamanız gerekir. Örnek veriler sağlanır.
   - Yerel makinenizde yüklü [Docker for Windows](https://docs.docker.com/docker-for-windows/) .
