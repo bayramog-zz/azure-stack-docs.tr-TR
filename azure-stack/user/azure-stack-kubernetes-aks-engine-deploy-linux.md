@@ -15,12 +15,12 @@ ms.date: 09/14/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 7e2ac217ead86502513b7914a102a029f2472a40
-ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
+ms.openlocfilehash: 9c600451070373d10ee943d8e497693d89708801
+ms.sourcegitcommit: 4e48f1e5af74712a104eda97757dc5f50a591936
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019364"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71224959"
 ---
 # <a name="install-the-aks-engine-on-linux-in-azure-stack"></a>Linux 'ta AKS altyapısını Azure Stack ' de yükler
 
@@ -43,13 +43,13 @@ Kubernetes kümenizi Internet 'e bağlı bir Azure Stack yönetmek için istemci
 
 1. Azure Stack bir Linux sanal makinesi oluşturun. Yönergeler için bkz [. hızlı başlangıç: Azure Stack portalını](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal)kullanarak BIR Linux sunucu VM 'si oluşturun.
 2. Sanal makinenize bağlanın.
-3. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutunu çalıştırırken, örneğin, `--version v0.39.0`sürümünü belirtirsiniz. Sürümü belirtmezseniz, komut Market 'te kullanılamayan en son sürümü yükler.
+3. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutunu çalıştırırken sürümü `--version v0.41.0`belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
 4. Şu komutu çalıştırın:
 
     ```bash  
         curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
         chmod 700 get-akse.sh
-        ./get-akse.sh --version v0.XX.X
+        ./get-akse.sh --version v0.41.0
     ```
 
     > [!Note]  

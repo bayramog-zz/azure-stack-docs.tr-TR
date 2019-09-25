@@ -274,6 +274,8 @@
           href: azure-stack-edge-pattern-cross-cloud-scaling.md
         - name: DevOps (karma CI/CD)
           href: azure-stack-edge-pattern-hybrid-ci-cd.md
+        - name: Betfall algılama
+          href: hybrid-solution-retail-footfall-detection.md
         - name: Coğrafi olarak dağıtılmış uygulama
           href: azure-stack-edge-pattern-geo-distribution.md
 - name: Başvuru

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/23/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/04/2019
-ms.openlocfilehash: 338df8d335376ebbaf14230e62d8dee9f813994f
-ms.sourcegitcommit: e2f6205e6469b39c2395ee09424bb7632cb94c40
+ms.lastreviewed: 09/23/2019
+ms.openlocfilehash: ecaea28d3b753520c53710a4e888cf37bf508fe1
+ms.sourcegitcommit: 4e48f1e5af74712a104eda97757dc5f50a591936
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271737"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71224937"
 ---
 # <a name="overview-of-azure-stack-diagnostic-log-collection"></a>Azure Stack tanılama günlüğü koleksiyonuna genel bakış 
 
@@ -34,7 +34,7 @@ Azure Stack, birlikte çalışan ve birbirleriyle etkileşim kuran büyük bir b
 1907 sürümünden itibaren, **Yardım ve destek** sayfası **tanılama günlüğü toplamayı**kullanarak daha basit bir deneyim sağlar. 
 **Tanılama günlüğü koleksiyonu** , sorun giderme işlemiyle Azure Stack işlecinin deneyimini geliştirmek için devam eden bir yatırımın bir parçasıdır. Bu geliştirmelerle, operatörler Microsoft Müşteri Destek Hizmetleri (CSS) ile tanılama günlüklerini hızlıca toplayıp paylaşabilir. Günlükler, erişimin gerektiği şekilde özelleştirilebileceği Azure 'da bir blob kapsayıcısında depolanabilir.    
    
-**Tanılama günlüğü toplama** , tanılama günlüklerini iki farklı şekilde toplayabilir:
+**Tanılama günlüğü toplama** iki farklı şekilde çalışmaktadır:
 
 - **Otomatik koleksiyon**: Etkinleştirilirse (önerilir), günlük koleksiyonu belirli sistem durumu uyarıları tarafından otomatik olarak tetiklenir ve Azure depolama hesabınızda depolanır
 - **Günlükleri Şimdi topla**: Bu, son yedi gündeki 1-4 saatlik bir kayan pencereden günlükleri toplamayı seçebileceğiniz isteğe bağlı bir seçenektir
@@ -46,7 +46,7 @@ Azure Stack, birlikte çalışan ve birbirleriyle etkileşim kuran büyük bir b
 
 ## <a name="automatic-diagnostic-log-collection"></a>Otomatik tanılama günlüğü koleksiyonu 
 
-Otomatik tanılama günlüğü koleksiyonu, bazı kritik uyarılar ortaya çıktığında, tanılama günlüklerini CSS ile paylaşmak için gereken süreyi önemli ölçüde azaltarak Azure 'daki bir depolama blobuna Azure Stack tanılama günlüklerini etkin bir şekilde yükler.
+Belirli bir [sistem durumu uyarısı](azure-stack-configure-automatic-diagnostic-log-collection.md#automatic-diagnostic-log-collection-alerts) etkin olduğunda, otomatik tanılama günlüğü toplama işlemi başlatılır ve Azure 'daki bir depolama blobuna Azure Stack tanılama günlüklerini bir kez karşıya yükler ve tanılama günlüklerini CSS ile paylaşmak için gereken süreyi önemli ölçüde azaltır. Tanılama günlükleri yalnızca bir uyarı ortaya çıktığında toplanır.  
 
 Otomatik günlük toplama hakkında daha fazla bilgi için bkz. [otomatik Azure Stack tanılama günlüğü toplamayı yapılandırma](azure-stack-configure-automatic-diagnostic-log-collection.md).
 

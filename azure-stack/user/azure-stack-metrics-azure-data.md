@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 71855d557f26fc1eb4d86ab0d5a48bf8cf987506
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: e36f7c7f80de3cf0b822c4d145af411584ea38e4
+ms.sourcegitcommit: 4e48f1e5af74712a104eda97757dc5f50a591936
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974668"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71225001"
 ---
 # <a name="use-azure-monitor-on-azure-stack"></a>Azure Stack Azure Izleyicisini kullanın
 
@@ -41,8 +41,8 @@ Azure Izleyici, Azure kaynaklarını izlemeye yönelik tek bir kaynak sağlayan 
 **Microsoft. Insights** kaynak sağlayıcısını, aboneliğinizin teklif kaynak sağlayıcıları ayarlarına kaydedin. Kaynak sağlayıcının, aboneliğinizle ilişkili teklifiniz için kullanılabilir olduğunu doğrulayabilirsiniz:
 
 1. Azure Stack Kullanıcı portalını açın.
-2. **Teklifler**' i seçin.
-3. Abonelikle ilişkili teklifi seçin.
+2. **Abonelikler**'i seçin.
+3. Kaydetmek istediğiniz aboneliği seçin.
 4. Ayarlar altında **kaynak sağlayıcıları** ' nı seçin **.** 
 5. Listede **Microsoft. Insights** 'ı bulun ve durumun **kayıtlı**olduğunu doğrulayın.
 

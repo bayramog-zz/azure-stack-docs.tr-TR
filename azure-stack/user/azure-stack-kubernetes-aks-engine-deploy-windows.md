@@ -15,12 +15,12 @@ ms.date: 09/14/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 4ac3534278b2a7fe4ecb355207b5a13a7cb7bd10
-ms.sourcegitcommit: 820ec8d10ddab1fee136397d3aa609e676f8b39d
+ms.openlocfilehash: 87cd2031c15611173308bf23e50d07690d3930e9
+ms.sourcegitcommit: 4e48f1e5af74712a104eda97757dc5f50a591936
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71127475"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71224919"
 ---
 # <a name="install-the-aks-engine-on-windows-in-azure-stack"></a>AKS altyapısını Windows üzerinde Azure Stack
 
@@ -46,11 +46,11 @@ Kubernetes kümenizi Internet 'e bağlı bir Azure Stack yönetmek için istemci
 3. [PowerShell yönergelerini kullanarak Chocolatey 'Yi yükler.](https://chocolatey.org/install#install-with-powershellexe).. 
 
     Chocolaty Web sitesine göre: Chocolatey, Windows için bir paket yöneticisi olan apt-get veya yıum, ancak Windows için. İhtiyacınız olan uygulamaları ve araçları hızlı bir şekilde yüklemek için merkezi olmayan bir çerçeve olacak şekilde tasarlanmıştır. Bu, şu anda PowerShell kullanan NuGet altyapısına kurulmuştur. Bu, paketleri distroden kapıya, hata, bilgisayar adına teslim etmek için odaklanmaktadır.
-4. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutunu çalıştırırken, örneğin, `--version v0.39.0`sürümünü belirtirsiniz. Sürümü belirtmezseniz, komut Market 'te kullanılamayan en son sürümü yükler.
+4. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutunu çalıştırırken sürümü `--version v0.41.0`belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
 5. Yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırın ve sürüm numarasını ekleyin:
 
     ```PowerShell  
-        choco install aks-engine --version v0.0.0 -y
+        choco install aks-engine --version v0.41.0 -y
     ```
 
 > [!Note]  
