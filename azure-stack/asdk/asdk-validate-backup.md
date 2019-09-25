@@ -11,12 +11,12 @@ ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 8905a376a165776acde2fb792df1e8f35279140e
-ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
+ms.openlocfilehash: 685f2d868314610ea7c19443fe47f29182561a51
+ms.sourcegitcommit: 4e48f1e5af74712a104eda97757dc5f50a591936
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70118765"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71225025"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Azure Stack yedeklemesini doğrulamak için ASDK kullanın
 Azure Stack dağıttıktan ve kullanıcı kaynaklarını (teklifler, planlar, Kotalar ve abonelikler gibi) sağladıktan sonra, [Azure Stack altyapı yedeklemesini etkinleştirmeniz](../operator/azure-stack-backup-enable-backup-console.md)gerekir. Düzenli altyapı yedeklemeleri zamanlamak ve çalıştırmak, çok zararlı bir donanım veya hizmet hatası varsa altyapı yönetimi verilerinin kaybolmamasını sağlayacaktır.
@@ -34,7 +34,7 @@ Aşağıdaki senaryolarda, ASDK üzerindeki yedeklemelerin doğrulanması destek
 |Uçtan uca kurtarma iş akışını öğrenin.|Tüm yedekleme ve geri yükleme deneyimini doğrulamak için ASDK kullanın.|
 |     |     |
 
-Şu senaryo, asdk üzerindeki yedeklemeler doğrulanırken desteklenmez:
+Şu **senaryo,** asdk üzerindeki yedeklemeler doğrulanırken desteklenmez:
 
 |Senaryo|Amaç|
 |-----|-----|
@@ -59,7 +59,6 @@ ASDK 'nin bulut kurtarma dağıtımına başlamadan önce aşağıdaki bilgilere
 |Saat sunucusu IP 'si|Azure Stack dağıtımı için 132.163.97.2 gibi geçerli bir saat sunucusu IP 'si gereklidir.|
 |Dış sertifika parolası|Azure Stack tarafından kullanılan dış sertifika için parola. CA yedeklemesi, bu parolayla geri yüklenmesi gereken dış sertifikaları içerir.|
 |Yedekleme şifreleme anahtarı|Yedekleme ayarları ' de kullanım dışı olan bir şifreleme anahtarıyla yapılandırılmışsa gereklidir. Yükleyici, şifreleme anahtarını en az 3 sürüm için geriye dönük uyumluluk modunda destekleyecektir. Bir sertifika kullanmak için yedekleme ayarlarını güncelleştirdikten sonra, gerekli bilgiler için sonraki tabloya bakın.|
-
 |     |     | 
 
 **PowerShell yükleyicisi gereksinimleri**
@@ -89,9 +88,9 @@ $azsbackupshare = New-Item -Path $shares.FullName -Name "AzSBackups" -ItemType "
 New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\Administrator")  -Name "AzSBackups"
 ```
 
-Sonra, en son Azure Stack Yedekleme dosyalarınızı yeni oluşturulan paylaşıma kopyalayın. Paylaşımın içindeki klasör yapısı: `\\<ComputerName>\AzSBackups\MASBackup\<BackupID>\`.
+Sonra, en son Azure Stack Yedekleme dosyalarınızı yeni oluşturulan paylaşıma kopyalayın. Yedeğin alındığı zaman damgası olan `<BackupID>` klasörün üst klasörünü kopyalamadığınızdan emin olun. Paylaşımın içindeki klasör yapısı: `\\<ComputerName>\AzSBackups\MASBackup\<TimeStamp>\<BackupID>\`. 
 
-Son olarak, şifre çözme sertifikasını (. pfx) sertifika dizinine `C:\CloudDeployment\Setup\Certificates\` kopyalayın ve dosyayı olarak `BackupDecryptionCert.pfx`yeniden adlandırın.
+Son olarak, şifre çözme sertifikasını (. pfx) sertifika dizinine `C:\CloudDeployment\Setup\BackupDecryptionCert\` kopyalayın ve dosyayı olarak `BackupDecryptionCert.pfx`yeniden adlandırın.
 
 ## <a name="deploy-the-asdk-in-cloud-recovery-mode"></a>Bulut kurtarma modunda ASDK dağıtma
 
@@ -114,7 +113,7 @@ Bu bölümdeki adımlarda, **asdk-installer. ps1** PowerShell betiğini indirip 
 
     ![ASDK yükleyici betiği](media/asdk-validate-backup/1.PNG) 
 
-3. Kimlik sağlayıcısı ve kimlik bilgileri sayfasında, ASDK ana bilgisayar için Azure AD dizin bilgilerinizi (isteğe bağlı) ve yerel yönetici parolasını girin. **İleri**'ye tıklayın.
+3. Kimlik sağlayıcısı ve kimlik bilgileri sayfasında, ASDK ana bilgisayar için Azure AD dizin bilgilerinizi (isteğe bağlı) ve yerel yönetici parolasını girin. **İleri**’ye tıklayın.
 
     ![ASDK kimliği ve kimlik bilgileri sayfası](media/asdk-validate-backup/2.PNG) 
 
@@ -122,7 +121,7 @@ Bu bölümdeki adımlarda, **asdk-installer. ps1** PowerShell betiğini indirip 
 
     ![ASDK ağ bağdaştırıcısı arabirimi](media/asdk-validate-backup/3.PNG) 
 
-5. Ağ yapılandırması sayfasında, geçerli saat sunucusu ve DNS ileticisi IP adresleri sağlayın. **İleri**'ye tıklayın.
+5. Ağ yapılandırması sayfasında, geçerli saat sunucusu ve DNS ileticisi IP adresleri sağlayın. **İleri**’ye tıklayın.
 
     ![ASDK ağ yapılandırması sayfası](media/asdk-validate-backup/4.PNG) 
 
