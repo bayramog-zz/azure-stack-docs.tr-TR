@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 09/25/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 7847d79d0f2816aa56940fd7b81d25cbb1a3a7f2
-ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
+ms.lastreviewed: 09/25/2019
+ms.openlocfilehash: 70adb6abaefc81faf487bbae5c560cc67f705341
+ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019221"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279203"
 ---
 # <a name="scale-a-kubernetes-cluster-on-azure-stack"></a>Azure Stack bir Kubernetes kümesini ölçeklendirme
 
@@ -46,7 +46,8 @@ Aşağıdaki parametreler, ölçek komutu tarafından küme tanımı dosyanızı
 | istemci parolası |  | Kümeniz oluşturulurken kullanılan hizmet sorumlusu gizli anahtarı. | 
 | api modeli | Kube-RG/apimodel. JSON | Küme tanımı dosyanızın yolu (apimodel. JSON). Bu şu konumda olabilir: _Output/\<dnspredüzeltmesini >/apimodel.exe | 
 | -New-node-Count | 9 | İstenen düğüm sayısı. | 
-| -Master-FQDN |  | Ana FQDN. Ölçeği azaltma sırasında gereklidir. | 
+| -Master-FQDN |  | Ana FQDN. Ölçeği azaltma sırasında gereklidir. |
+| kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
 
 Azure Stack bir kümeyi ölçeklendirirken **– Azure-env** parametresini belirtmeniz gerekir. AKS altyapısının **Ölçek** komutunda kullanılan parametreler ve değerleri hakkında daha fazla bilgi için bkz. [Ölçek-parametreleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
 
@@ -65,6 +66,7 @@ aks-engine scale \
     --api-model <path to your apomodel.json file>
     --new-node-count <desired node count> \
     --master-FQDN <master FQDN> \
+    --identity-system adfs # required if using AD FS
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -165,6 +165,8 @@
                   href: azure-stack-update-oem.md
             - name: İzleyici güncelleştirme durumu
               href: azure-stack-update-monitor.md
+            - name: Güncelleştirme sorunlarını giderme
+              href: azure-stack-updates-troubleshoot.md
         - name: Sistem durumu ve uyarıları izleme
           href: azure-stack-monitor-health.md
         - name: Ağ kaynaklarını yönetme

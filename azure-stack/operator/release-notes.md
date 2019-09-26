@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: 896169a39f450b0a0fb26699867638afb02f20a7
-ms.sourcegitcommit: 2c37ac8e88de19430080128bac1b70e33557d354
+ms.openlocfilehash: ed613e78cb2d592d40eb762f155e9e925f68721b
+ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71164253"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279185"
 ---
 # <a name="azure-stack-updates-release-notes"></a>Azure Stack güncelleştirmeler: sürüm notları
 
@@ -39,6 +39,16 @@ Farklı bir sürüme yönelik sürüm notlarına erişmek için, sol taraftaki i
 > [!IMPORTANT]  
 > Azure Stack örneğiniz ikiden fazla güncelleştirme tarafından arkasındaysa uyumsuz olarak kabul edilir. [Destek almak için en az desteklenen sürüme güncelleştirmeniz](azure-stack-servicing-policy.md#keep-your-system-under-support)gerekir. 
 ::: moniker-end
+
+## <a name="update-planning"></a>Planlamayı Güncelleştir
+
+Güncelleştirmeyi uygulamadan önce, aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
+
+- [Bilinen sorunlar](known-issues.md)
+- [Güvenlik güncelleştirmeleri](release-notes-security-updates.md)
+- [Güncelleştirme uygulandıktan önceki ve sonraki etkinliklerin denetim listesi](release-notes-checklist.md)
+
+Güncelleştirmeler ve güncelleştirme sürecinde sorun giderme hakkında yardım için bkz. [Azure Stack için düzeltme eki ve güncelleştirme sorunlarını giderme](azure-stack-updates-troubleshoot.md).
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
@@ -93,14 +103,6 @@ Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için bkz. [Azur
 ## <a name="security-updates-1908"></a>Güvenlik güncelleştirmeleri
 
 Bu Azure Stack güncelleştirmesinde güvenlik güncelleştirmeleri hakkında daha fazla bilgi için bkz. [Azure Stack Security Updates](release-notes-security-updates.md).
-
-## <a name="update-planning-1908"></a>Planlamayı Güncelleştir
-
-Güncelleştirmeyi uygulamadan önce, aşağıdaki bilgileri gözden geçirdiğinizden emin olun:
-
-- [Bilinen sorunlar](known-issues.md)
-- [Güvenlik güncelleştirmeleri](release-notes-security-updates.md)
-- [Güncelleştirme uygulandıktan önceki ve sonraki etkinliklerin denetim listesi](release-notes-checklist.md)
 
 ## <a name="download-the-update-1908"></a>Güncelleştirmeyi indir
 

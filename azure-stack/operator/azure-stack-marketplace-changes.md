@@ -15,12 +15,12 @@ ms.date: 08/09/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 123849750cbfb343fc63cb43376651a6554ab6b4
-ms.sourcegitcommit: 6239b35370d21852529978777c0e39cfba5a4552
+ms.openlocfilehash: 878e4712cf805fec188645e92784beaf6a19d591
+ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68917544"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279128"
 ---
 # <a name="azure-stack-marketplace-changes"></a>Market değişikliklerini Azure Stack
 
@@ -30,33 +30,32 @@ Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azur
 
 ## <a name="new-marketplace-items"></a>Yeni Market öğeleri
 
-- 1/25/2019: A10 vThunder: L4-L7 uygulama teslim denetleyicisi, genel sunucu yük dengelemesi (GSLB), SSL Insight
+- 08/05/2019: BitNami Drupal
 
-- 6/14/2019: Yedekleme & çoğaltma™® veeab
+- 08/05/2019: BitNami etcd
 
-- 08/05/2019: Drupal
+- 08/05/2019: BitNami Grafana
 
-- 08/05/2019: etcd
+- 08/05/2019: BitNami Neo4j
 
-- 08/05/2019: Grafana
+- 08/05/2019: Bitnamı ayrıştırma sunucusu
 
-- 08/05/2019: Neo4j
+- 08/05/2019: Bitnamı WordPress çoklu site
 
-- 08/05/2019: Sunucuyu Ayrıştır
+- 08/05/2019: BitNami ZooKeeper
 
-- 08/05/2019: WordPress çoklu site
+- 08/05/2019: Bitnamı TensorFlow hizmeti
 
-- 08/05/2019: ZooKeeper
+- 08/05/2019: Bitnamı NAT 'LAR
 
-- 08/05/2019: TensorFlow sunma
+- 08/05/2019: Bitnamı Inceleme panosu
 
-- 08/05/2019: NAT
-
-- 08/05/2019: Review Board
-
-- 08/05/2019: Birleşik SR
+- 08/05/2019: BitNami Composr
 
 - 08/09/2019: Oracle Linux
+
+- 08/19/2019: Iguazio veri bilimi platformu
+
 
 ## <a name="deprecated-marketplace-items"></a>Kullanımdan kaldırılan Market öğeleri
 
@@ -64,13 +63,23 @@ Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azur
 - X2Engine Sales CRM
 - SugarCRM
 - Node. js yüksek kullanılabilirlik kümesi
+- A10 vThunder: L4-L7 uygulama teslim denetleyicisi, genel sunucu yük dengelemesi (GSLB), SSL Insight
+- JsonADDomain uzantısı
 
 ## <a name="updated-marketplace-items"></a>Güncelleştirilmiş Market öğeleri
 
-- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard ve Enterprise Edition) 13.2.20190410
-- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard ve Enterprise Edition) 13.2.20190410
-- 07/30/2019: SQL Server 2017 (Express, Developer, Standard ve Enterprise Edition) 14.0.20190410
-- 07/30/2019: Sqliaasextenma 1.3.20180
+- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard ve Enterprise Edition)-Version 13.2.20190410
+- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard ve Enterprise Edition)-Version 13.2.20190410
+- 07/30/2019: SQL Server 2017 (Express, Developer, Standard ve Enterprise sürümleri)-Version 14.0.20190410
+- 07/30/2019: Sqliaasextenma-Version 1.3.20180
+- 08/08/2019: Linux-sürüm 6,8 için CloudLink SecureVM uzantısı
+- 08/08/2019: Windows-sürüm 6,8 için CloudLink SecureVM uzantısı
+- 08/30/2019: Kubernetes kümesi-sürüm 0.5.1 Azure Stack
+- 09/02/2019: AKS temel görüntü-sürüm 2019.08.09 ve sürüm 2019.08.21
+- 09/12/2019: Service Fabric-sürüm 1.0.3
+- 09/24/2019: F5-Networks Big-IP Virtual Edition-Version 14.1.200000
+- 09/25/2019: Detem 8-sürüm 8.0.20190806
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

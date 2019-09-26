@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 09/25/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 280c5bf6a09670479a8497ecedb0364e6e27f949
-ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
+ms.lastreviewed: 09/25/2019
+ms.openlocfilehash: 377857019e6a4d55e6a9372296817e1776c081c9
+ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019210"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279162"
 ---
 # <a name="upgrade-a-kubernetes-cluster-on-azure-stack"></a>Azure Stack bir Kubernetes kümesini yükseltme
 
@@ -87,7 +87,7 @@ Bir üretim kümesini yükseltirken şunları göz önünde bulundurun:
     | api modeli | ./Kubernetes-azurestack.exe JSON | Küme yapılandırma dosyasının yolu veya API modeli. |
     | istemci kimliği | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hizmet sorumlusu GUID 'INI girin. Azure Stack yöneticiniz hizmet sorumlusunu oluştururken uygulama KIMLIĞI olarak tanımlanan Istemci KIMLIĞI. |
     | istemci parolası | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hizmet sorumlusu gizli anahtarını girin. Bu, hizmetinizi oluştururken ayarladığınız istemci sırrı. |
-
+    | kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
 
 4. Değerlerinizle birlikte aşağıdaki komutu çalıştırın:
 
@@ -100,7 +100,8 @@ Bir üretim kümesini yükseltirken şunları göz önünde bulundurun:
     --api-model kube-rg/apimodel.json \
     --upgrade-version 1.13.5 \
     --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --identity-system adfs # required if using AD FS
     ```
 
 5.  Yükseltme işlemi bir hatayla karşılaştığında herhangi bir nedenden dolayı, sorunu çözdükten sonra yükseltme komutunu yeniden çalıştırabilirsiniz. AKS altyapısı, işlemi önceki zamanda başarısız olduğu yerde sürdürecek.

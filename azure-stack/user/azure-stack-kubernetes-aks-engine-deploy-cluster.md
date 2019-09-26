@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 09/25/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 8891ac7a1fb4b5b5af110e800f49c0d8fa873f66
-ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
+ms.lastreviewed: 09/25/2019
+ms.openlocfilehash: 957ea4bc52e6f629ffd7fbd06a14d8dc2fb85021
+ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019331"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279174"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack"></a>Bir Kubernetes kümesini AKS altyapısı ile Azure Stack dağıtma
 
@@ -60,7 +60,7 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     aks-engine get-versions
     ```
 
-4.  Kiracı `portalURL` portalının URL 'sini bulun ve sağlayın. Örneğin: `https://portal.local.azurestack.external`.
+4.  Kiracı `portalURL` portalının URL 'sini bulun ve sağlayın. Örneğin, `https://portal.local.azurestack.external`.
 
 5.  Dizide `masterProfile`aşağıdaki alanları ayarlayın:
 
@@ -108,6 +108,7 @@ Bir kümeyi dağıtmaya devam edin:
     | Parametre | Örnek | Açıklama |
     | --- | --- | --- |
     | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack kullanacağı `AzureStackCloud`aks altyapısını göstermek için. |
+    | kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
     | location | yerel | Azure Stack için bölge adı. İçin bölge olarak `local`ayarlanır. |
     | resource-group | kuin-RG | Yeni bir kaynak grubu adını girin veya mevcut bir kaynak grubunu seçin. Kaynak adı alfasayısal ve küçük harf olması gerekir. |
     | api modeli | ./Kubernetes-azurestack.exe JSON | Küme yapılandırma dosyasının yolu veya API modeli. |
@@ -119,15 +120,16 @@ Bir kümeyi dağıtmaya devam edin:
     Örnek aşağıda verilmiştir:
 
     ```bash  
-    aks-engine deploy \\
-    --azure-env AzureStackCloud
-    --location <for asdk is local>\\
-    --resource-group kube-rg \\
-    --api-model ./kubernetes-azurestack.json \\
-    --output-directory kube-rg \\
-    --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
-    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
-    --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    aks-engine deploy \
+    --azure-env AzureStackCloud \
+    --location <for asdk is local> \
+    --resource-group kube-rg \
+    --api-model ./kubernetes-azurestack.json \
+    --output-directory kube-rg \
+    --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --identity-system adfs # required if using AD FS
     ```
 
 2.  Bir nedenden dolayı, çıkış dizini oluşturulduktan sonra yürütme başarısız olursa, sorunu düzeltebilir ve komutunu yeniden çalıştırabilirsiniz. Dağıtımı yeniden çalıştırıyorsanız ve daha önce aynı çıkış dizinini kullandıysanız, AKS altyapısı dizinin zaten var olduğunu belirten bir hata döndürür. Var olan dizinin üzerine şu bayrağı kullanarak yazabilirsiniz: `--force-overwrite`.

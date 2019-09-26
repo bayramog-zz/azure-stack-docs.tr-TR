@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: 4db6eb06216294712456b3445b27bd2ed89150e9
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: 76b870d795b79cf966dcf6742ad08f739d24a42a
+ms.sourcegitcommit: 32609bdb04a07b063c8f20f892c30769ad6903dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159647"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269505"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Kullanım ve faturalandırma için kiracı ekleyin Azure Stack
 
@@ -33,9 +33,11 @@ CSP 'Ler genellikle Azure Stack dağıtımında birden çok son müşteriye (kir
 Aşağıdaki şekilde, yeni bir son müşterinin Azure Stack kullanmasına ve müşterinin kullanım izlemesini ayarlamaya olanak tanımak için bir CSP 'nin izlenmesi gereken adımlar gösterilmektedir. Son müşteriyi ekleyerek, Azure Stack de kaynakları yönetebilirsiniz. Kaynaklarını yönetmek için iki seçeneğiniz vardır:
 
 - Son müşteriyi koruyabilir ve yerel Azure Stack aboneliğine ait kimlik bilgilerini son müşteriye sağlayabilirsiniz.  
-- Son müşteri, aboneliklerinde yerel olarak çalışabilir ve CSP 'yi sahip izinlerine sahip konuk olarak ekleyebilir.  
+- Son müşteri, aboneliklerinde yerel olarak çalışabilir ve CSP 'yi sahip izinlerine sahip konuk olarak ekleyebilir.
 
 ## <a name="add-an-end-customer"></a>Son müşteri ekleme
+
+Son müşteri eklemeden önce, kaydınızda çok kiracılı faturalandırmayı etkinleştirmeniz gerekir. Çok kiracılı faturalandırmayı etkinleştirmek için kayıt abonelik KIMLIĞINI, kaynak grubu adını ve kayıt adını ' e `azstcsp@microsoft.com`gönderin. Genellikle çoklu kiralamanın etkinleştirilmesi 1-2 iş günü sürer.
 
 Son müşteriyi aşağıdaki şekilde gösterildiği gibi eklemek için aşağıdaki adımları uygulayın:
 
