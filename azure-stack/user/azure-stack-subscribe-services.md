@@ -3,7 +3,7 @@ title: Azure Stack bir teklifiyle bir abonelik oluşturun | Microsoft Docs
 description: Azure Stack bir teklifle yeni bir abonelik oluşturmayı ve sonra teklifi bir test VM 'si ile test yapmayı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/04/2019
-ms.author: sethm
+ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 5b72ccee255aadd5d8f42aefea9e397ba310812c
-ms.sourcegitcommit: 72d45bb935db0db172d4d7c37d8e48e79e25af64
+ms.openlocfilehash: f47278fed9cd9e93024d37a0a433388594bbd124
+ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68376817"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71319164"
 ---
 # <a name="tutorial-create-and-test-a-subscription-in-azure-stack"></a>Öğretici: Azure Stack abonelik oluşturma ve test etme
 
@@ -67,7 +67,7 @@ Kullanıcı portalında oturum açana sırada, yeni abonelik yeteneklerini kulla
 
 1. Kullanıcı portalında oturum açın.
 
-2. Kullanıcı portalında, **sanal makineler**' i seçin, sonra  **Windows Server 2016 Datacenter**' u ve ardından **Oluştur**' u seçin.
+2. Kullanıcı portalında, **sanal makineler**' i seçin, sonra **Windows Server 2016 Datacenter**' u ve ardından **Oluştur**' u seçin.
 
 3. **Temel bilgiler** bölümünde bir **ad**, **Kullanıcı adı**ve **parola**yazıp bir **abonelik**seçin, bir **kaynak grubu** oluşturun (veya mevcut bir tane seçin) ve ardından **Tamam**' ı seçin.
 

@@ -12,24 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 09/26/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 7946b8339c9ff1127c0a9d9572c49527208b38f2
-ms.sourcegitcommit: e8f7fe07b32be33ef621915089344caf1fdca3fd
+ms.openlocfilehash: ab43d94c2e65032e5e525ec000e38cacb01b2980
+ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70118656"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71319098"
 ---
 # <a name="troubleshoot-the-asdk"></a>ASDK sorunlarını giderme
-Bu makalede Azure Stack Geliştirme Seti (ASDK) için genel sorun giderme bilgileri sağlanmaktadır. Belgelenmemiş bir sorun yaşıyorsanız, yardım için [Azure Stack MSDN forumunu](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) kontrol ettiğinizden emin olun.  
+Bu makalede Azure Stack Geliştirme Seti (ASDK) için genel sorun giderme bilgileri sağlanmaktadır. Azure Stack tümleşik sistemlerle ilgili yardım için bkz. [Microsoft Azure Stack sorunlarını giderme](../operator/azure-stack-troubleshooting.md). 
 
-> [!IMPORTANT]
-> ASDK bir değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) ile sunulan resmi bir destek yoktur.
+ASDK bir değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) destek sağlamaz. Belgelenmemiş bir sorun yaşıyorsanız, [Azure Stack MSDN forumundan](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)uzmanlardan yardım alabilirsiniz. 
 
-Bu bölümde açıklanan sorunları gidermeye yönelik öneriler, çeşitli kaynaklardan türetilir ve belirli bir sorunu çözemeyebilir veya gideremeyebilir. Kod örnekleri "olduğu gibi" verilmiştir ve beklenen sonuçlar garanti edilemez. Bu bölüm, ürüne yönelik iyileştirmeler uygulandıklarında sık yapılan düzenlemelere ve güncelleştirmelere tabidir.
 
 ## <a name="deployment"></a>Dağıtım
 ### <a name="deployment-failure"></a>Dağıtım hatası
@@ -47,18 +45,18 @@ Bu davranış, bir PowerShell komut penceresi seçildiğinde yalnızca varsayıl
 ### <a name="default-image-and-gallery-item"></a>Varsayılan görüntü ve galeri öğesi
 Azure Stack ' de VM 'Ler dağıtılmadan önce bir Windows Server görüntüsü ve galeri öğesi eklenmelidir.
 
-### <a name="after-restarting-my-azure-stack-host-some-vms-dont-automatically-start"></a>Azure Stack ana makinelerimi yeniden başlattıktan sonra bazı VM 'Ler otomatik olarak başlatılmaz.
+### <a name="after-restarting-my-azure-stack-host-some-vms-dont-automatically-start"></a>Azure Stack ana makinelerimi yeniden başlattıktan sonra bazı VM 'Ler otomatik olarak başlatılmaz
 Ana bilgisayarınızı yeniden başlattıktan sonra Azure Stack hizmetleri hemen kullanılabilir olmayabilir. Bunun nedeni, Azure Stack [altyapı VM](asdk-architecture.md#virtual-machine-roles) 'Lerinin ve RPS 'nin tutarlılığı denetlemek için biraz zaman sürmesine, ancak sonunda otomatik olarak başlayacak.
 
-Ayrıca, Kiracı VM 'lerinin, ASDK konağının yeniden başlatıldıktan sonra otomatik olarak başlamadığına da dikkat edebilirsiniz. Bu bilinen bir sorundur ve yalnızca çevrimiçi duruma getirmek için birkaç el ile adım gerektirir:
+Ayrıca, Kiracı VM 'lerinin, ASDK konağının yeniden başlatıldıktan sonra otomatik olarak başlamadığına da dikkat edebilirsiniz. Birkaç el ile adımları izleyerek bunları çevrimiçi duruma getirebilirsiniz:
 
 1.  ASDK ana bilgisayarında başlangıç menüsünden **Yük devretme kümesi Yöneticisi** başlatın.
 2.  **S-Cluster. azurestack. Local**kümesini seçin.
 3.  **Rolleri**seçin.
 4.  Kiracı VM 'Leri *kaydedilmiş* durumda görüntülenir. Tüm altyapı VM 'Leri çalışır olduktan sonra, Kiracı VM 'lerine sağ tıklayıp **Başlat** ' ı seçerek VM 'yi sürdürebilirsiniz.
 
-### <a name="ive-deleted-some-vms-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Bazı VM 'Leri sildim, ancak yine de diskte VHD dosyaları görüyorum. Bu davranış beklensin mi?
-Evet, bu beklenen davranıştır. Bu şekilde tasarlanmıştır çünkü:
+### <a name="ive-deleted-some-vms-but-still-see-the-vhd-files-on-disk"></a>Bazı VM 'Leri sildim, ancak yine de diskte VHD dosyaları görüyorum 
+Bu davranış tasarıma göre belirlenir:
 
 * Bir VM 'yi sildiğinizde, VHD 'ler silinmez. Diskler, kaynak grubundaki ayrı kaynaklardır.
 * Bir depolama hesabı silindiğinde, silme işlemi hemen Azure Resource Manager aracılığıyla görünür, ancak içerebileceği diskler hala çöp toplama çalışana kadar depolama alanında tutulur.

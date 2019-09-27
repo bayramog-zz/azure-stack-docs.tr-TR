@@ -3,7 +3,7 @@ title: Kotaları, planları, teklifleri ve abonelikleri silme | Microsoft Docs
 description: Azure Stack kotaları, planları, teklifleri ve abonelikleri silmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: sethm
+ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 04/25/2019
-ms.openlocfilehash: fca26723c062dd9f5155030fb11c8e1d695bf5f1
-ms.sourcegitcommit: aefcf9c61bd8089a0aaa569af7643e5e15f4947c
+ms.openlocfilehash: e89fcb3c218ab8b7228b63211b9f94c7e03d9865
+ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991819"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71319123"
 ---
 # <a name="delete-quotas-plans-offers-and-subscriptions"></a>Kotaları, planları, teklifleri ve abonelikleri silme
 
@@ -32,7 +32,7 @@ Abonelikler bu genel prensibi özel durumdur: kaynakları içeren abonelikleri s
 
 Bu nedenle, bir kotayı silmek istiyorsanız, bu kotayı kullanan tüm planlar ve teklifler aracılığıyla geri çalışmanız gerekir: tekliflerle başlayarak, abonelikleri olmadığından, her bir teklifi sildiğinizden, sonra kotayı kullanan planları silebilmeniz ve bu şekilde devam etmeniz gerekir.
 
-## <a name="delete-a-subscription"></a>Aboneliği sil
+## <a name="delete-a-subscription"></a>Abonelik silme
 
 Bir aboneliği silmek için, **tüm hizmetler**' i ve ardından **Kullanıcı abonelikleri**' ni seçerek sistemdeki tüm Aboneliklerin listesini görüntüleyin. Bir teklif üzerinde çalışıyorsanız, **abonelikleri** buradan da seçebilirsiniz.
 

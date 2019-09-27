@@ -1,6 +1,6 @@
 ---
-title: Azure Kubernetes Hizmetleri (AKS) altyapısını Azure Stack marketi 'ne ekleyin | Microsoft Docs
-description: Azure Stack marketi 'ne AKS altyapısını nasıl ekleyeceğinizi öğrenin.
+title: Azure Kubernetes Hizmetleri (AKS) altyapısı önkoşullarını Azure Stack Market 'e ekleyin | Microsoft Docs
+description: Azure Stack Market 'e AKS altyapısı önkoşulları eklemeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,18 +11,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/18/2019
-ms.openlocfilehash: 948d2a00b021b701990b5d8e3192e053e1277a3e
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.lastreviewed: 09/25/2019
+ms.openlocfilehash: bcb9dab55d00c48e5b77e7184fae0567ff1f620e
+ms.sourcegitcommit: 5e53eb5d43d28ab07b4f84891dd269bbfcf65622
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71160248"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71311281"
 ---
-# <a name="add-the-azure-kubernetes-services-aks-engine-to-the-azure-stack-marketplace"></a>Azure Kubernetes Hizmetleri (AKS) altyapısını Azure Stack Market 'e ekleme
+# <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-marketplace"></a>Azure Kubernetes Hizmetleri (AKS) altyapısı önkoşullarını Azure Stack Market 'e ekleme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 

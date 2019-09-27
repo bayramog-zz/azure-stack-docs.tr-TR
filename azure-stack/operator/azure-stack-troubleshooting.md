@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/26/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/04/2019
-ms.openlocfilehash: a9d62640b2baabfd3283099656719a880dd0a41b
-ms.sourcegitcommit: a8379358f11db1e1097709817d21ded0231503eb
+ms.lastreviewed: 09/26/2019
+ms.openlocfilehash: 865592d476eadaa847c4b46ff2a802f5fa0cc63e
+ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70377241"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71319084"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
-Bu belge Azure Stack için sorun giderme bilgileri sağlar. 
+Bu belge Azure Stack tümleşik ortamlar için sorun giderme bilgileri sağlar. Azure Stack Geliştirme Seti yardım için bkz. [asdk sorun giderme](../asdk/asdk-troubleshooting.md) veya [Azure Stack MSDN forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)uzmanlardan yardım alın. 
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
@@ -36,10 +36,6 @@ Bu bölümler, Microsoft Müşteri Destek Hizmetleri 'ne (CSS) gönderilen genel
 
 * [Nasıl satın alınır?](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)
 * [Azure Stack genel bakış](azure-stack-overview.md)
-
-### <a name="azure-stack-development-kit-asdk"></a>Azure Stack Geliştirme Seti (ASDK)
-
-[Azure Stack geliştirme seti](../asdk/asdk-what-is.md)yardım IÇIN [Azure Stack MSDN forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)uzmanlara ulaşın. ASDK, CSS aracılığıyla destek olmadan bir değerlendirme ortamı olarak sunulur. ASDK için açılan destek taleplerine MSDN forumuna başvurulur.
 
 ### <a name="updates-and-diagnostics"></a>Güncelleştirmeler ve Tanılamalar
 
@@ -64,7 +60,7 @@ Azure Stack'te kullanılabilir toplam bellek kapasitesini artırmak için bellek
 
 #### <a name="retention-period"></a>Elde tutma süresi
 
-Saklama süresi ayarı bulut operatörünün silinen hesaplar için olası kurtarma süresi olarak gün cinsinden bir süre (0 ile 9999 gün arası) belirtmesine olanak tanır. Varsayılan saklama süresi 0 güne ayarlanmıştır. Değerin "0" olarak ayarlanması, silinen hesapların hemen saklama dışında tutulacağı ve düzenli atık toplama için işaretleneceği anlamına gelir.
+Saklama süresi ayarı bulut operatörünün silinen hesaplar için olası kurtarma süresi olarak gün cinsinden bir süre (0 ile 9999 gün arası) belirtmesine olanak tanır. Varsayılan saklama süresi **0** gün olarak ayarlanır. Değerin **0** olarak ayarlanması, silinen her hesabın hemen bekletme dışı ve düzenli çöp toplama için işaretlenme anlamına gelir.
 
 * [Saklama süresini ayarlama](azure-stack-manage-storage-accounts.md#set-the-retention-period)
 
@@ -95,9 +91,6 @@ Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü
 ### <a name="general-deployment-failure"></a>Genel dağıtım hatası
 Yükleme sırasında bir hata yaşarsanız dağıtım betiğinin-yeniden çalıştır seçeneğini kullanarak dağıtımı başarısız adımdan yeniden başlatabilirsiniz.  
 
-### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>ASDK dağıtımının sonunda, PowerShell oturumu hala açıktır ve herhangi bir çıktı göstermez.
-Bu davranış büyük olasılıkla yalnızca bir PowerShell komut penceresinin varsayılan davranışının, seçildiği zaman bir sonucudur. Geliştirme Seti dağıtımı başarılı oldu ancak pencere seçilirken betik duraklatıldı. Komut penceresinin başlık çubuğunda "Seç" sözcüğünü arayarak kurulumun tamamlandığını doğrulayabilirsiniz. Bu seçeneğin seçimini kaldırmak için ESC tuşuna basın ve sonra tamamlanma iletisi gösterilmelidir.
-
 ### <a name="deployment-fails-due-to-lack-of-external-access"></a>Dış erişim olmaması nedeniyle dağıtım başarısız oluyor
 Dış erişimin gerekli olduğu aşamalardan dağıtım başarısız olduğunda, aşağıdaki örnek gibi bir özel durum döndürülür:
 
@@ -108,9 +101,9 @@ An error occurred while trying to test identity provider endpoints: System.Net.W
 ```
 Bu hata oluşursa, [dağıtım ağ trafiği belgelerini](deployment-networking.md)inceleyerek en düşük ağ gereksinimlerinin karşılandığından emin olun. İş ortağı araç setinin bir parçası olarak iş ortakları için de bir ağ denetleyicisi aracı vardır.
 
-Yukarıdaki özel durum ile dağıtım hataları genellikle Internet üzerindeki kaynaklara bağlanma sorunlarından kaynaklanır.
+Diğer dağıtım hataları genellikle Internet üzerindeki kaynaklara bağlanma sorunlarından kaynaklanır.
 
-Bu sorun olduğunu doğrulamak için aşağıdaki adımları gerçekleştirebilirsiniz:
+Internet 'teki kaynakların bağlantısını doğrulamak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
 1. PowerShell 'i aç
 2. WAS01 veya ERCs VM 'lerinden herhangi birine-PSSession girin
@@ -122,18 +115,9 @@ Bu komut başarısız olursa, TOR anahtarını ve diğer tüm ağ aygıtlarını
 ### <a name="default-image-and-gallery-item"></a>Varsayılan görüntü ve galeri öğesi
 Azure Stack ' de VM 'Ler dağıtılmadan önce bir Windows Server görüntüsü ve galeri öğesi eklenmelidir.
 
-### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Azure Stack ana makinelerimi yeniden başlattıktan sonra bazı sanal makineler otomatik olarak başlatılamayabilir.
-Ana bilgisayarınızı yeniden başlattıktan sonra, Azure Stack hizmetleri hemen kullanılabilir olmayabilir.  Bunun nedeni, Azure Stack [altyapı VM](../asdk/asdk-architecture.md#virtual-machine-roles ) 'lerinin ve kaynak sağlayıcılarının tutarlılığı denetlemek için biraz zaman sürmesine, ancak sonunda otomatik olarak başlayacak.
 
-Ayrıca, Azure Stack Development Kit konağının yeniden başlatıldıktan sonra Kiracı VM 'lerinin otomatik olarak başlamadığına da dikkat edebilirsiniz. Bu bilinen bir sorundur ve yalnızca çevrimiçi duruma getirmek için birkaç el ile adım gerektirir:
-
-1.  Azure Stack Development Kit konağında, Başlat menüsünden **Yük devretme kümesi Yöneticisi** başlatın.
-2.  **S-Cluster. azurestack. Local**kümesini seçin.
-3.  **Rolleri**seçin.
-4.  Kiracı VM 'Leri *kaydedilmiş* durumda görüntülenir. Tüm altyapı VM 'Leri çalışır olduktan sonra Kiracı VM 'lerine sağ tıklayıp çalışmaya başlamak için **Başlat** ' ı seçin.
-
-### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk-is-this-behavior-expected"></a>Bazı sanal makineleri sildim, ancak yine de VHD dosyalarını diskte görüyorum. Bu davranış beklensin mi?
-Evet, bu beklenen davranıştır. Bu şekilde tasarlanmıştı çünkü:
+### <a name="i-have-deleted-some-virtual-machines-but-still-see-the-vhd-files-on-disk"></a>Bazı sanal makineleri sildim, ancak yine de diskte VHD dosyaları görüyorum
+Bu davranış tasarıma göre belirlenir:
 
 * Bir VM 'yi sildiğinizde, VHD 'ler silinmez. Diskler, kaynak grubundaki ayrı kaynaklardır.
 * Bir depolama hesabı silindiğinde, silme işlemi hemen Azure Resource Manager aracılığıyla görünür, ancak içerebileceği diskler hala çöp toplama çalışana kadar depolama alanında tutulur.

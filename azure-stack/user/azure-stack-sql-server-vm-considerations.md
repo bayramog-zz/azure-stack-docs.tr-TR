@@ -16,12 +16,12 @@ ms.date: 04/02/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d054f4ad45f27994c7ef6fc5e52f07eb1fa7f761
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: eca886314388f404e7a26a22f7a3b03294ff0577
+ms.sourcegitcommit: 5e53eb5d43d28ab07b4f84891dd269bbfcf65622
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974645"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71311303"
 ---
 # <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>Azure Stack performansını iyileştirmek için SQL Server en iyi uygulamaları
 
@@ -98,12 +98,12 @@ Her veri diski, veri diski başına en fazla 2.300 ıOPS sağladığından TempD
 
 ### <a name="data-disks"></a>Veri diskleri
 
-- **Veri ve günlük dosyaları için veri disklerini kullanın.** Disk şeritleme kullanmıyorsanız, Premium depolamayı destekleyen bir VM 'den iki veri diski kullanın; burada bir disk, günlük dosyalarını ve diğeri ise veri ve TempDB dosyalarını içerir. Her veri diski, [Azure Stack sürümünde desteklenen VM boyutları](azure-stack-vm-sizes.md)bölümünde açıklandığı gıbı, VM ailesine bağlı olarak BIR dizi IOPS ve bant GENIŞLIĞI (MB/s) sağlar. Depolama alanları gibi bir disk şeridi tekniği kullanıyorsanız, tüm verileri ve günlük dosyalarını aynı sürücüye (TempDB dahil) yerleştirin. Bu yapılandırma, belirli bir zamanda hangi dosyayı kullanması gerektiğine bakılmaksızın SQL Server için kullanılabilir maksimum ıOPS sayısını sağlar.
+- **Veri ve günlük dosyaları için veri disklerini kullanın.** Disk şeritleme kullanmıyorsanız, Premium depolamayı destekleyen bir VM 'den iki veri diski kullanın; burada bir disk, günlük dosyalarını ve diğeri ise veri ve TempDB dosyalarını içerir. Her veri diski, [Azure Stack sürümünde desteklenen VM boyutları](azure-stack-vm-sizes.md)bölümünde açıklandığı gıbı, VM ailesine bağlı olarak BIR dizi IOPS sağlar. Depolama alanları gibi bir disk şeridi tekniği kullanıyorsanız, tüm verileri ve günlük dosyalarını aynı sürücüye (TempDB dahil) yerleştirin. Bu yapılandırma, belirli bir zamanda hangi dosyayı kullanması gerektiğine bakılmaksızın SQL Server için kullanılabilir maksimum ıOPS sayısını sağlar.
 
 > [!NOTE]  
 > Portalda bir SQL Server VM sağladığınızda, depolama yapılandırmanızı Düzenle seçeneğiniz vardır. Yapılandırmanıza bağlı olarak, Azure Stack bir veya daha fazla disk yapılandırır. Birden çok disk tek bir depolama havuzunda birleştirilir. Hem veri hem de günlük dosyaları, bu yapılandırmada birlikte bulunur.
 
-- **Disk şeridi:** Daha fazla verimlilik için, ek veri diskleri ekleyebilir ve disk şeritleme kullanabilirsiniz. İhtiyacınız olan veri disklerinin sayısını öğrenmek için, günlük dosyalarınız ve verileriniz ile TempDB dosyalarınız için gereken ıOPS ve bant genişliği sayısını çözümleyin. IOPS limitlerinin VM 'nin boyutuna bağlı olarak değil, VM Serisi ailesini temel alan veri diski başına olduğuna dikkat edin. Ancak ağ bant genişliği sınırları, VM boyutunu temel alır. Daha fazla ayrıntı için [Azure Stack sanal makine boyutlarında](azure-stack-vm-sizes.md) bulunan tablolara bakın. Aşağıdaki yönergeleri kullanın:
+- **Disk şeridi:** Daha fazla verimlilik için, ek veri diskleri ekleyebilir ve disk şeritleme kullanabilirsiniz. İhtiyacınız olan veri disklerinin sayısını öğrenmek için, günlük dosyalarınız ve verileriniz ile TempDB dosyalarınız için gereken ıOPS sayısını çözümleyin. IOPS limitlerinin VM 'nin boyutuna bağlı olarak değil, VM Serisi ailesini temel alan veri diski başına olduğuna dikkat edin. Ancak ağ bant genişliği sınırları, VM boyutunu temel alır. Daha fazla ayrıntı için [Azure Stack sanal makine boyutlarında](azure-stack-vm-sizes.md) bulunan tablolara bakın. Aşağıdaki yönergeleri kullanın:
 
   - Windows Server 2012 veya üzeri için, [depolama alanlarını](https://technet.microsoft.com/library/hh831739.aspx) aşağıdaki yönergelerle kullanın:
 
