@@ -1,6 +1,6 @@
 ---
 title: Azure Stack ' de kullanım izleme için kiracılar Kaydet | Microsoft Docs
-description: Kiracı kayıtlarını yönetmek için kullanılan işlemler ve Azure Stack ' de kiracı kullanımının nasıl izlendiği hakkında ayrıntılar.
+description: Kiracıların nasıl kaydettirildiğini ve Azure Stack ' de kiracı kullanımının nasıl izleneceğini öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,14 +15,14 @@ ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 619bfc89e5def3406d719abfb589193c76c3db6b
-ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
+ms.openlocfilehash: a9e0dd05195d7ece62689aa8b5971cf72a6e3713
+ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71070079"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71342826"
 ---
-# <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack kiracı kaydını yönetme
+# <a name="register-tenants-for-usage-tracking-in-azure-stack"></a>Azure Stack ' de kullanım izleme için kiracılar Kaydet
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
@@ -50,7 +50,7 @@ Azure Stack ve API profilleri hakkında daha fazla bilgi için bkz. [Azure Stack
 | Parametre                  | Açıklama |
 |---                         | --- |
 | Registrationsubscriptionıd | İlk kayıt için kullanılan Azure aboneliği. |
-| Customersubscriptionıd     | Kaydedilecek müşteriye ait olan Azure aboneliği (Azure Stack değil). , Iş Ortağı Merkezi aracılığıyla bulut hizmeti sağlayıcısı (CSP) teklifinde oluşturulmalıdır. Bir müşterinin birden fazla kiracısı varsa, kiracının Azure Stack oturum açması için bir abonelik oluşturun. |
+| Customersubscriptionıd     | Kaydedilecek müşteriye ait olan Azure aboneliği (Azure Stack değil). , Iş Ortağı Merkezi aracılığıyla bulut çözümü sağlayıcısı (CSP) teklifinde oluşturulmalıdır. Bir müşterinin birden fazla kiracısı varsa, kiracı için Azure Stack oturum açması için bir abonelik oluşturun. |
 | resourceGroup              | Azure 'da kaydınızı depoladığınız kaynak grubu. |
 | RegistrationName           | Azure Stack kaydının adı. Azure 'da depolanan bir nesnedir. Ad genellikle **azurestack-Cloudıd**biçimindedir, burada **cloudıd** Azure Stack dağıtımınızın bulut kimliğidir. |
 
