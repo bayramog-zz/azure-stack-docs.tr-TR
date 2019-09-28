@@ -1,6 +1,6 @@
 ---
-title: Bulut hizmeti sağlayıcıları için Azure Stack için raporlama altyapınızın kullanım | Microsoft Docs
-description: Azure Stack oluşur ve Azure'a iletir gibi bir bulut hizmeti sağlayıcısı (CSP) tarafından hizmet verilen kiracılar için kullanımını izlemek için gereken altyapıyı içerir.
+title: Azure Stack için bulut çözümü sağlayıcıları için kullanım raporlama altyapısı | Microsoft Docs
+description: Bir bulut çözümü sağlayıcısı (CSP) tarafından hizmet veren kiracılar için kullanımı izlemek üzere kullanılan kullanım raporlama altyapısı hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,41 +15,41 @@ ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 0b4ff1e6c76bedc4618bfa527b0045d7bfce41af
-ms.sourcegitcommit: bcaad8b7db2ea596018d973cb29283d8c6daebfb
+ms.openlocfilehash: 1a3c59ab7650c9cd2337e8256556f8a449feacec
+ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67419484"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71342814"
 ---
-# <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Bulut hizmeti sağlayıcıları için raporlama altyapınızın kullanımı
+# <a name="usage-reporting-infrastructure-for-cloud-solution-providers"></a>Bulut çözümü sağlayıcıları için kullanım raporlama altyapısı
 
-Azure Stack gerçekleşir ve Azure'a iletir kullanımını izlemek için gereken altyapıyı içerir. Azure'da, Azure ticaret kullanım verileri işler ve uygun Azure abonelikleri için kullanım ücretlerini. Kullanımı izleme, Azure genel bulutunda izlenen aynı şekilde bu gerçekleşir.
+Azure Stack, kullanım sırasında kullanımı izlemek ve Azure 'a iletmek için gereken altyapıyı içerir. Azure ticareti, Azure 'da kullanım verilerini ve kullanım ücretlerini uygun Azure aboneliklerine göre işler. Bu işlem, genel Azure bulutundaki kullanım izlemeyle aynı şekilde çalışmaktadır.
 
-Bazı genel Azure ve Azure Stack arasında tutarlı kavramlardır. Azure Stack benzer bir rol bir Azure aboneliğine karşılamak yerel abonelikler var. Yerel abonelikler yalnızca yerel olarak geçerlidir. Kullanım Azure'a iletildiğinde yerel abonelikler Azure aboneliklerine eşlenir.
+Bazı kavramlar küresel Azure ve Azure Stack arasında tutarlıdır. Azure Stack, Azure aboneliğine benzer bir rol karşılayan yerel aboneliklerdir. Yerel abonelikler yalnızca yerel olarak geçerlidir. Kullanım Azure 'a iletildiğinde yerel abonelikler Azure abonelikleriyle eşlenir.
 
-Azure Stack yerel kullanım ölçümleri sahiptir. Yerel kullanım ölçümleri Azure ticaret kullanılan eşleştirilir. Ancak, ölçüm kimlikleri farklıdır. Daha fazla ölçümleri bir faturalandırma için Microsoft'un kullandığı daha yerel olarak kullanılabilir.
+Azure Stack yerel kullanım ölçümleri vardır. Yerel kullanım, Azure ticareti 'nde kullanılan ölçümler ile eşleştirilir. Ancak, ölçüm kimlikleri farklıdır. Microsoft 'un faturalandırma için kullandığı bir günden daha yerel olarak daha fazla ölçüm mevcuttur.
 
-Azure Stack ve Azure hizmetleri nasıl fiyatlandırılır arasındaki bazı farklar vardır. Örneğin, Azure Stack'te Vm'leri için ücretlendirme yalnızca sanal çekirdek/saat ile aynı fiyat aksine Azure, tüm VM serisi için temel alır. Genel Azure'da farklı donanım farklı fiyatlara yansıtılmıştır nedenidir. Farklı VM sınıflar için farklı ücretler kaydedilecek neden olduğundan Azure Stack'te donanım, müşteri sağlar.
+Hizmetlerin Azure Stack ve Azure 'da fiyatlandırıldıkları bazı farklılıklar vardır. Örneğin, Azure Stack, VM 'Lerin ücreti, Azure 'dan farklı olarak tüm VM dizileri için aynı fiyata sahip sanal çekirdek/saat tabanlıdır. Bu nedenle, küresel Azure 'da farklı fiyatlar farklı donanımları yansıtmaktadır. Azure Stack, müşteri donanımı sağlar, bu nedenle farklı VM sınıfları için farklı ücretler ücretlendirirken bir neden yoktur.
 
-Ticaret ve iş ortağı Merkezi, kullanıcıların fiyatları Azure hizmetlerinde olduğu gibi aynı şekilde kullanılan Azure Stack ölçümleri hakkında bilgi edinebilirsiniz:
+Ticaret ve Iş Ortağı Merkezi fiyatlarına göre kullanılan Azure Stack ölçümleri hakkında bilgi edinebilirsiniz. İşlem, Azure hizmetleri için olduğu gibidir:
 
-1. İş ortağı Merkezi'nde Git **Panosu menüsünden**, ardından **satmak**, ardından **fiyatlandırma ve teklifler**.
-2. Altında **kullanım tabanlı Hizmetleri**seçin **geçerli**.
-3. Açık **genel CSP fiyat Listesi'nde Azure'da** elektronik tablo.
-4. Filtre **bölge Azure Stack =** .
+1. Iş Ortağı Merkezi ' nde, **Pano menüsüne**gidin ve **Satış**' ı seçin, ardından **fiyatlandırma ve teklifler**' i seçin.
+2. **Kullanım tabanlı hizmetler**altında **geçerli**' i seçin.
+3. **Azure genel CSP fiyat listesi** elektronik tablosu ' nu açın.
+4. **Region = Azure Stack**üzerinde filtrele.
 
-## <a name="terms-used-for-billing-and-usage"></a>Faturalama ve kullanım için kullanılan terimler
+## <a name="terms-used-for-billing-and-usage"></a>Faturalandırma ve kullanım için kullanılan terimler
 
-Aşağıdaki terimler ve kavramlar kullanımı için kullanılan ve Azure stack'teki faturalandırma şunlardır:
+Aşağıdaki hüküm ve kavramlar Azure Stack ' de kullanım ve faturalandırma için kullanılır:
 
 | Terim | Tanım |
 | --- | --- |
-| Doğrudan bir CSP iş ortağı | Doğrudan bir bulut hizmeti sağlayıcısı (CSP) iş ortağı fatura doğrudan Azure ve Azure Stack kullanım ve fatura müşterilerin Microsoft'tan doğrudan alır. |
-| Dolaylı CSP | Dolaylı satıcıları dolaylı sağlayıcısı (dağıtıcı olarak da bilinir) ile çalışır. Satıcılar, son müşteriler kazanmak; Dolaylı sağlayıcısı olan Microsoft faturalama ilişkiyi tutar, müşteri faturalandırma yönetir ve ürün desteği gibi ek hizmetler sağlar. |
-| Son Müşteri | Son müşterilerin uygulamaları ve Azure Stack üzerinde çalıştırılan diğer iş yükleri kendi devlet kurumları ve işletmelerin önerilir. |
+| Doğrudan CSP iş ortağı | Doğrudan bulut çözümü sağlayıcısı (CSP) iş ortağı doğrudan Microsoft 'tan Azure ve Azure Stack kullanımı için bir fatura alır ve müşterileri doğrudan faturalar. |
+| Dolaylı CSP | Dolaylı satıcılar dolaylı bir sağlayıcıyla (dağıtımcı olarak da bilinir) çalışır. Satıcılar, son müşterileri işe alabilir; dolaylı sağlayıcı Microsoft ile faturalandırma ilişkisini tutar, müşteri faturalandırmasını yönetir ve ürün desteği gibi ek hizmetler sağlar. |
+| Son müşteri | Son müşteriler, Azure Stack çalışan uygulamalara ve diğer iş yüklerine sahip olan işletmeler ve kamu kurumlardır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- CSP programı hakkında daha fazla bilgi için bkz: [bulut çözümleri](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
-- Azure yığını kaynak kullanım bilgilerini alma hakkında daha fazla bilgi için bkz: [kullanım ve faturalandırma Azure Stack'te](azure-stack-billing-and-chargeback.md).
+- CSP programı hakkında daha fazla bilgi edinmek için bkz. [bulut çözümleri](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
+- Kaynak kullanım bilgilerini Azure Stack alma hakkında daha fazla bilgi için, bkz. [Azure Stack ' de kullanım ve faturalandırma](azure-stack-billing-and-chargeback.md).

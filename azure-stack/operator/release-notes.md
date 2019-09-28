@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/27/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: ed613e78cb2d592d40eb762f155e9e925f68721b
-ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
+ms.openlocfilehash: 62440c61ee637a0092b1e956b08ba0a9c94d8bab
+ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279185"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71342925"
 ---
 # <a name="azure-stack-updates-release-notes"></a>Azure Stack güncelleştirmeler: sürüm notları
 
@@ -56,7 +56,7 @@ Güncelleştirmeler ve güncelleştirme sürecinde sorun giderme hakkında yard�
 ::: moniker range="azs-1908"
 ## <a name="1908-build-reference"></a>1908 derleme başvurusu
 
-Azure Stack 1908 güncelleştirme yapı numarası **1.1908.0.20**.
+Azure Stack 1908 güncelleştirme yapı numarası **1.1908.4.33**.
 
 ### <a name="update-type-1908"></a>Güncelleştirme türü
 
@@ -119,7 +119,7 @@ Azure Stack düzeltmeler yalnızca Azure Stack tümleşik sistemler için geçer
 Azure Stack 1908 sürümü aşağıdaki düzeltmelere sahip 1907 sürümüne uygulanmalıdır:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hotfix 1.1907.12.44](https://support.microsoft.com/help/4517473)
+- [Azure Stack Hotfix 1.1907.17.54](https://support.microsoft.com/help/4523826)
 
 Azure Stack 1908 güncelleştirmesi, sisteminizin donanım sağlayıcısından **Azure Stack OEM sürüm 2,1 veya üstünü** gerektirir. OEM güncelleştirmeleri, Azure Stack sistem Donanımınıza yönelik sürücü ve bellenim güncelleştirmelerini içerir. OEM güncelleştirmelerini uygulama hakkında daha fazla bilgi için bkz. [Apply Azure Stack özgün ekipman üreticisi güncelleştirmeleri](azure-stack-update-oem.md)
 
@@ -250,7 +250,7 @@ Azure Stack 1907 sürümü aşağıdaki düzeltmelere sahip 1906 sürümüne uyg
 Bu güncelleştirmenin yüklenmesinden sonra, geçerli düzeltmeleri yükleme. Daha fazla bilgi için bkz. [hizmet ilkeniz](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hotfix 1.1907.15.50](https://support.microsoft.com/help/4520315)
+- [Azure Stack Hotfix 1.1907.17.54](https://support.microsoft.com/help/4523826)
 ::: moniker-end
 
 ::: moniker range="azs-1906"

@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 201af19756ef3958e943549482610ee32e208f01
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.openlocfilehash: 4bf1334f2b4e83223bb2eb1dfbb187dc860ed360
+ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68603075"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71342970"
 ---
 # <a name="deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Azure ve Azure Stack bir karma bulut çözümü dağıtın
 
@@ -52,7 +52,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > 
 > [Karma uygulamalar Için tasarım konuları](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
 
-### <a name="assumptions"></a>Çoğu
+### <a name="assumptions"></a>Varsayımlar
 
 Bu öğreticide, küresel Azure ve Azure Stack temel bir bilginiz olduğunu varsaymaktadır. Öğreticiyi başlatmadan önce daha fazla bilgi edinmek istiyorsanız, şu makaleleri gözden geçirin:
 
@@ -86,11 +86,11 @@ Bu çözüme başlamadan önce, aşağıdaki gereksinimleri karşıladığınız
 
     ![Azure Stack Market](media/azure-stack-solution-hybrid-cloud/image1.png)
 
-3. **Market**' te **işlem**' i seçin ve **daha sonra diğer**' i seçin. **Daha fazla bilgi**için **ücretsiz SQL Server lisansını seçin: Windows Server** görüntüsünde 2017 SQL Server geliştirici.
+3. **Market**' te **işlem**' i seçin ve **daha sonra diğer**' i seçin. **Daha fazla** **ücretsiz SQL Server lisansını seçin: Windows Server @ no__t-0 görüntüsünde 2017 SQL Server geliştirici.
 
     ![Bir sanal makine görüntüsü seçin](media/azure-stack-solution-hybrid-cloud/image2.png)
 
-4. **Ücretsiz SQL Server Lisansı: Windows Server**'da 2017 SQL Server Geliştirici, **Oluştur**' u seçin.
+4. @No__t-0Ücretsiz SQL Server Lisansı: Windows Server @ no__t-0 üzerinde 2017 geliştirici SQL Server **Oluştur**' u seçin.
 
 5. **Temel ayarları yapılandırma > temel bilgiler**, sanal makıne (VM) Için bir **ad** , SQL Server SA için BIR **Kullanıcı adı** ve SA için bir **parola** sağlayın.  **Abonelik** açılan listesinden, dağıtmakta olduğunuz aboneliği seçin. **Kaynak grubu**için **var olanı seç** ' i kullanın ve sanal makineyi Azure Stack Web uygulamanızla aynı kaynak grubuna yerleştirin.
 
@@ -148,7 +148,7 @@ Azure App Service, bir Web uygulamasını çalıştırmayı ve yönetmeyi basitl
 
 Azure Stack üzerindeki App Service, kullanıcıların uygulamanıza erişmesine izin vermek için genel İnternet 'ten yönlendirilebilir olmalıdır. Azure Stack internet 'ten erişilebiliyorsa, Azure Stack Web uygulaması için genel kullanıma yönelik IP adresini veya URL 'YI bir yere göz önüne alın.
 
-Bir ASDK kullanıyorsanız, sanal ortam dışında App Service göstermek için [statik BIR NAT eşlemesi yapılandırabilirsiniz](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal) .
+Bir ASDK kullanıyorsanız, sanal ortam dışında App Service göstermek için [statik BIR NAT eşlemesi yapılandırabilirsiniz](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-vm-on-each-asdk-for-gateway-traversal) .
 
 ### <a name="connect-a-web-app-in-azure-to-a-hybrid-network"></a>Azure 'da bir Web uygulamasını karma ağa bağlama
 
@@ -247,7 +247,7 @@ Azure 'a SSL eklemek için:
 
 1. Aldığınız SSL sertifikasının oluşturduğunuz alt etki alanı için geçerli olduğundan emin olun. (Joker karakter sertifikaları kullanmak normaldir.)
 
-2. Azure 'da, **Web uygulamanızı hazırlama** **ve** [var olan özel bir SSL sertifikasını Azure 'a](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) bağlama bölümündeki yönergeleri izleyin Web Apps makalesine gidin. **SSL türü**olarak **SNı tabanlı SSL** ' yi seçin.
+2. Azure 'da, **Web uygulamanızı hazırlama** ve [var olan özel bir SSL sertifikasını Azure 'a](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) **bağlama bölümündeki** yönergeleri izleyin Web Apps makalesine gidin. **SSL türü**olarak **SNı tabanlı SSL** ' yi seçin.
 
 3. Tüm trafiği HTTPS bağlantı noktasına yönlendir. [Var olan bir özel SSL sertifikası 'nı Web Apps Azure 'A bağlama](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) makalesindeki **https 'yi zorla** bölümünde bulunan yönergeleri izleyin.
 
@@ -259,7 +259,7 @@ Azure Stack SSL eklemek için:
 
 Uygulama kodunu Telemetriyi doğru Application Insights örneğine rapor verecek şekilde yapılandıracaksınız ve Web uygulamalarını doğru bağlantı dizelerine yapılandıracaksınız. Application Insights hakkında daha fazla bilgi edinmek için bkz. [Application Insights nedir?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
 
-### <a name="add-application-insights"></a>Application Insights Ekleme
+### <a name="add-application-insights"></a>Application Insights Ekle
 
 1. Web uygulamanızı Microsoft Visual Studio açın.
 
@@ -296,7 +296,7 @@ App Service ortam değişkenlerini, uygulamanın her örneğine farklı bir bağ
 
 1. Azure ve Azure Stack için bağlantı dizeleri oluşturun. Dizeler, kullanılan IP adresleri dışında, aynı olmalıdır.
 
-2. Azure ve Azure Stack ' de, ad içinde ön ek olarak kullanarak `SQLCONNSTR\_` , Web uygulamasında uygun bağlantı dizesini [uygulama ayarı olarak](https://docs.microsoft.com/azure/app-service/web-sites-configure) ekleyin.
+2. Azure ve Azure Stack ' de, ad içinde ön ek olarak `SQLCONNSTR\_` ' i kullanarak, uygun bağlantı dizesini Web uygulamasına [bir uygulama ayarı olarak](https://docs.microsoft.com/azure/app-service/web-sites-configure) ekleyin.
 
 3. Web uygulaması ayarlarını **kaydedin** ve uygulamayı yeniden başlatın.
 
@@ -317,7 +317,7 @@ Web uygulamanızı bir App Service ortamında oluşturduğunuzda, tek bir örnek
 
     ![Otomatik ölçeklendirmeyi etkinleştir](media/azure-stack-solution-hybrid-cloud/image17.png)
 
-3. **Otomatik ölçeklendirme ayarı adı**için bir ad girin. **Varsayılan** otomatik ölçeklendirme kuralı için, **ölçüm temelinde ölçek**' i seçin. **Örnek sınırlarını** en az olarak **ayarlayın: 1** ,**en fazla: 10** ve**varsayılan: 1**.
+3. **Otomatik ölçeklendirme ayarı adı**için bir ad girin. **Varsayılan** otomatik ölçeklendirme kuralı için, **ölçüm temelinde ölçek**' i seçin. **Örnek sınırlarını** **En düşük değer olarak ayarlayın: 1 @ no__t-0, **Maksimum: 10 @ no__t-0 ve ** varsayılan: 1 @ no__t-0.
 
     ![Otomatik ölçeklendirmeyi Yapılandır](media/azure-stack-solution-hybrid-cloud/image18.png)
 
@@ -365,7 +365,7 @@ Trafik azaldıkça Azure Web uygulaması, maliyetleri azaltmak için etkin örne
 
 2. **Ölçüm adı**altında **CPU yüzdesi**' ni seçin.
 
-3. **İşleç**altında küçüktür ' **i seçin.**
+3. **İşleç** **altında küçüktür ' i seçin.**
 
    - **Eşiği** **30**olarak ayarlayın.
    - **Süreyi** **10**olarak ayarlayın.
@@ -461,7 +461,7 @@ Bu görünümü, bir ölçek genişletme uyarısı ve uyarı ölçeğini oluştu
 
    - **Ad**Için **Azure buluta veri bloğu**girin.
    - **Açıklama** isteğe bağlıdır.
-   - **Kaynak** > **uyarısı**' nın altında, **ölçümler**' i seçin.
+   - **Kaynak** > **uyarısı**' nın altında **ölçümler**' i seçin.
    - **Ölçüt**altında, aboneliğinizi, Traffic Manager profilinizin kaynak grubunu ve kaynak için Traffic Manager profilinin adını seçin.
 
 4. **Ölçüm**Için **istek hızı**' nı seçin.
@@ -482,11 +482,11 @@ Bu görünümü, bir ölçek genişletme uyarısı ve uyarı ölçeğini oluştu
 
    - **Ad**Için **Azure Stack ölçeği geri ' ye**girin.
    - **Açıklama** isteğe bağlıdır.
-   - **Kaynak** > **uyarısı**' nın altında, **ölçümler**' i seçin.
+   - **Kaynak** > **uyarısı**' nın altında **ölçümler**' i seçin.
    - **Ölçüt**altında, aboneliğinizi, Traffic Manager profilinizin kaynak grubunu ve kaynak için Traffic Manager profilinin adını seçin.
 
 4. **Ölçüm**Için **istek hızı**' nı seçin.
-5. **Koşul**için küçüktür ' **i seçin.**
+5. **Koşul** **için küçüktür ' i seçin.**
 6. **Eşik**için **2**girin.
 7. **Süre**için **son 5 dakikayı**seçin.
 8. **Bildirim**altında:

@@ -1,6 +1,6 @@
 ---
-title: Farklı Azure Stack Geliştirme Seti ortamlarındaki iki sanal ağ arasında siteden siteye VPN bağlantısı oluşturma | Microsoft Docs
-description: Bir bulut yöneticisinin iki tek düğümlü Azure Stack Geliştirme Seti ortamları arasında siteden siteye VPN bağlantısı oluşturmak için kullandığı adım adım yordam.
+title: Farklı ASDK ortamlarındaki iki sanal ağ arasında siteden siteye VPN bağlantısı oluşturma | Microsoft Docs
+description: İki tek düğümlü Azure Stack Geliştirme Seti (ASDK) ortamları arasında siteden siteye VPN bağlantısı oluşturmak için bulut işleçleri öğreticisi.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -17,14 +17,14 @@ ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: f34ed3459ad8346860872a4b63a25e214501a2dd
-ms.sourcegitcommit: 4139b507d6da98a086929da48e3b4661b70bc4f3
+ms.openlocfilehash: 2ae267d470d9862e262f26ea11d2ba4b07bfb299
+ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68299474"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71342918"
 ---
-# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Farklı Azure Stack Geliştirme Seti ortamlarındaki iki sanal ağ arasında siteden siteye VPN bağlantısı oluşturma
+# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-asdk-environments"></a>Farklı ASDK ortamlarındaki iki sanal ağ arasında siteden siteye VPN bağlantısı oluşturma
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -41,7 +41,7 @@ Aşağıdaki şekilde, bağlantı yapılandırmasının bitirdiğinizde nasıl g
 Bağlantı yapılandırmasını gerçekleştirmek için, başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
 * Hızlı Başlangıç bölümünde [açıklandığı gibi, asdk donanım gereksinimlerini karşılayan iki sunucu ve diğer Önkoşullar: Azure Stack Geliştirme Seti](../asdk/asdk-download.md)değerlendirin.
-* [Azure Stack geliştirme seti](https://azure.microsoft.com/overview/azure-stack/try/) dağıtım paketi.
+* [Asdk](https://azure.microsoft.com/overview/azure-stack/try/) dağıtım paketi.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Azure Stack Geliştirme Seti ortamlarını dağıtma
 
@@ -52,7 +52,7 @@ Bağlantı yapılandırmasını gerçekleştirmek için iki adet ASDK ortamı da
 
 ## <a name="prepare-an-offer-on-poc1-and-poc2"></a>POC1 ve POC2 üzerinde teklif hazırlama
 
-Hem POC1 hem de POC2 ' de bir teklif hazırlayın, bir Kullanıcı teklife abone olabilir ve sanal makineleri dağıtabilir. Teklif oluşturma hakkında daha fazla bilgi için bkz. [sanal makineleri Azure Stack kullanıcılarınız için kullanılabilir hale getirme](azure-stack-tutorial-tenant-vm.md).
+Hem POC1 hem de POC2 'de, bir kullanıcının teklife abone olabilmesi ve sanal makineleri (VM 'Ler) dağıtmak için bir teklif hazırlayın. Teklif oluşturma hakkında daha fazla bilgi için bkz. [VM 'leri Azure Stack kullanıcılarınız için kullanılabilir hale getirme](azure-stack-tutorial-tenant-vm.md).
 
 ## <a name="review-and-complete-the-network-configuration-table"></a>Ağ yapılandırma tablosunu gözden geçirin ve doldurun
 
@@ -143,9 +143,9 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 
 Bu Azure Stack değerlendirme dağıtımındaki *yerel ağ geçidi* uygulaması, gerçek bir Azure dağıtımındaki uygulamadan biraz farklıdır.
 
-Bir Azure dağıtımında, yerel ağ geçidi, Azure 'daki bir sanal ağ geçidine bağlanmak için kullandığınız şirket içi (kiracı) fiziksel cihazını temsil eder. Bu Azure Stack değerlendirme dağıtımında, bağlantının her iki ucu da sanal ağ geçitleri ' dir.
+Bir Azure dağıtımında, yerel ağ geçidi, Azure 'da bir sanal ağ geçidine bağlanmak için kullandığınız şirket içi (kiracıya) fiziksel cihazı temsil eder. Bu Azure Stack değerlendirme dağıtımında, bağlantının her iki ucu da sanal ağ geçitleri ' dir.
 
-Bu konuda daha ayrıntılı bir şekilde düşünmek için, yerel ağ geçidi kaynağının bağlantının diğer ucundaki uzak ağ geçidini her zaman gösterdiği bir yoldur. Azure Stack Geliştirme Seti tasarlandığından, yerel ağ geçidinin genel IP adresi olarak diğer ASDK 'nin ağ adresi çevirisi (NAT) VM 'sinde dış ağ bağdaştırıcısının IP adresini sağlamanız gerekir. Daha sonra her iki ucunun de düzgün bağlandığından emin olmak için NAT sanal makinesinde NAT eşlemeleri oluşturursunuz.
+Bu konuda daha ayrıntılı bir şekilde düşünmek için, yerel ağ geçidi kaynağının bağlantının diğer ucundaki uzak ağ geçidini her zaman gösterdiği bir yoldur. ASDK 'nin tasarlanma biçimi nedeniyle, yerel ağ geçidinin genel IP adresi olarak diğer ASDK 'nin ağ adresi çevirisi (NAT) VM 'sinde dış ağ bağdaştırıcısının IP adresini sağlamanız gerekir. Daha sonra her iki ucunun de düzgün bağlandığından emin olmak için NAT sanal makinesinde NAT eşlemeleri oluşturursunuz.
 
 ### <a name="create-the-local-network-gateway-resource"></a>Yerel ağ geçidi kaynağı oluşturma
 
@@ -171,17 +171,17 @@ Bu konuda daha ayrıntılı bir şekilde düşünmek için, yerel ağ geçidi ka
 9. **Paylaşılan anahtar (PSK)** alanına **12345**yazın ve ardından **Tamam**' ı seçin.
 10. **Özet** dikey penceresinde **Tamam**' ı seçin.
 
-### <a name="create-a-vm"></a>VM oluşturma
+### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-VPN bağlantısı üzerinden taşınan verileri doğrulamak için, sanal makinelerin her bir Azure Stack Geliştirme Seti veri alıp alabilmesi gerekir. POC1 ' de şu anda bir sanal makine oluşturun ve sonra sanal ağınızda VM alt ağına yerleştirin:
+VPN bağlantısı üzerinden taşınan verileri doğrulamak için VM 'Lerin her bir ASDK 'de veri alıp alabilmesi gerekir. POC1 ' de şu anda bir VM oluşturun ve ardından sanal ağınızda VM alt ağına yerleştirin:
 
 1. Azure portal **+ kaynak oluştur**' u seçin.
 2. **Market**' e gidin ve ardından **işlem**' ı seçin.
-3. Sanal makine görüntüleri listesinde, **Windows Server 2016 Datacenter eval** görüntüsünü seçin.
+3. VM görüntüleri listesinde, **Windows Server 2016 Datacenter eval** görüntüsünü seçin.
 4. **Temel bilgiler** dikey penceresinde **ad**alanına **VM01**girin.
 5. Geçerli bir Kullanıcı adı ve parola girin. Bu hesabı, oluşturulduktan sonra VM 'de oturum açmak için kullanırsınız.
 6. Bir **abonelik**, **kaynak grubu**ve **konum**sağlayın ve **Tamam**' ı seçin.
-7. **Boyut** dikey penceresinde, bu örnek için bir sanal makine boyutu seçin ve ardından **Seç**' i seçin.
+7. **Boyut** dikey penceresinde bu örnek IÇIN bir VM boyutu seçin ve ardından **Seç**' i seçin.
 8. **Ayarlar** dikey penceresinde varsayılan değerleri kabul edin. **VNET-01** sanal ağının seçili olduğundan emin olun. Alt ağın **10.0.10.0/24**olarak ayarlandığını doğrulayın. Sonra **Tamam**’ı seçin.
 9. **Özet** dikey penceresinde ayarları gözden geçirin ve ardından **Tamam**' ı seçin.
 
@@ -215,7 +215,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 5. **Adres aralığı** alanında, adresin **10.0.21.0/24**olduğunu doğrulayın.
 6. Ağ geçidi alt ağını oluşturmak için **Tamam ' ı** seçin.
 
-### <a name="create-virtual-network-gateway"></a>Sanal ağ geçidi oluştur
+### <a name="create-virtual-network-gateway"></a>Sanal ağ geçidi oluşturma
 
 1. Azure portal **+ kaynak oluştur**' u seçin.  
 2. **Market**' e gidin ve ardından **ağ**' ı seçin.
@@ -237,7 +237,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 6. **Adres alanı**' nda, POC1 adresinden **VNET-01** **10.0.10.0/23** adres alanını girin.
 7. **Aboneliğinizin**, **kaynak grubunuzun**ve **konumun** doğru olduğundan emin olun ve ardından **Oluştur**' u seçin.
 
-## <a name="create-connection"></a>Bağlantı oluşturma
+## <a name="create-connection"></a>Bağlantı oluştur
 
 1. Kullanıcı portalında **+ kaynak oluştur**' u seçin.
 2. **Market**' e gidin ve ardından **ağ**' ı seçin.
@@ -252,40 +252,40 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-Şimdi POC2 içinde bir sanal makine oluşturun ve sanal ağınızdaki VM alt ağına yerleştirin:
+Şimdi POC2 içinde bir VM oluşturun ve sanal ağınızdaki VM alt ağına yerleştirin:
 
 1. Azure portal **+ kaynak oluştur**' u seçin.
 2. **Market**' e gidin ve ardından **işlem**' ı seçin.
-3. Sanal makine görüntüleri listesinde, **Windows Server 2016 Datacenter eval** görüntüsünü seçin.
+3. VM görüntüleri listesinde, **Windows Server 2016 Datacenter eval** görüntüsünü seçin.
 4. **Temel bilgiler** dikey penceresinde, **ad**için **VM02**girin.
-5. Geçerli bir Kullanıcı adı ve parola girin. Bu hesabı, oluşturulduktan sonra sanal makinede oturum açmak için kullanırsınız.
+5. Geçerli bir Kullanıcı adı ve parola girin. Bu hesabı, oluşturulduktan sonra VM 'de oturum açmak için kullanırsınız.
 6. Bir **abonelik**, **kaynak grubu**ve **konum**sağlayın ve **Tamam**' ı seçin.
-7. **Boyut** dikey penceresinde bu örnek için bir sanal makine boyutu seçin ve ardından **Seç**' i seçin.
+7. **Boyut** dikey penceresinde bu örnek IÇIN bir VM boyutu seçin ve ardından **Seç**' i seçin.
 8. **Ayarlar** dikey penceresinde varsayılan değerleri kabul edebilirsiniz. **VNET-02** sanal ağının seçili olduğundan emin olun ve alt ağın **10.0.20.0/24**olarak ayarlandığını doğrulayın. **Tamam**’ı seçin.
 9. **Özet** dikey penceresinde ayarları gözden geçirin ve ardından **Tamam**' ı seçin.
 
-## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>Her Azure Stack Geliştirme Seti ağ geçidi geçişi için NAT sanal makinesini yapılandırın
+## <a name="configure-the-nat-vm-on-each-asdk-for-gateway-traversal"></a>Her bir ASDK üzerinde NAT sanal makinesini ağ geçidi çapraz geçişi için yapılandırma
 
 ASDK, fiziksel konağın dağıtıldığı ağdan bağımsız ve yalıtılmış olduğundan, ağ geçitlerinin bağlı olduğu *dış* VIP ağı aslında dış değildir. Bunun yerine, VIP ağı ağ adresi çevirisini gerçekleştiren bir yönlendiricinin arkasında gizlenir.
 
-Yönlendirici, ASDK altyapısında yönlendirme ve uzaktan erişim Hizmetleri (RRAS) rolünü çalıştıran **AZS-bgpnat01**adlı bir Windows Server sanal makinedir. Site-Site VPN bağlantısının her iki uçta da bağlanmasına izin vermek için AzS-bgpnat01 sanal makinesinde NAT 'yi yapılandırmanız gerekir.
+Yönlendirici, ASDK altyapısında yönlendirme ve uzaktan erişim Hizmetleri (RRAS) rolünü çalıştıran **AZS-bgpnat01**adlı bir WINDOWS Server VM 'dir. Site-Site VPN bağlantısının her iki uçta da bağlanmasına izin vermek için AzS-bgpnat01 VM üzerinde NAT 'yi yapılandırmanız gerekir.
 
-VPN bağlantısını yapılandırmak için, BGPNAT sanal makinesindeki dış arabirimi kenar ağ geçidi havuzunun VIP 'sine eşleyen bir statik NAT eşleme yolu oluşturmanız gerekir. Bir VPN bağlantısındaki her bağlantı noktası için statik bir NAT eşleme yolu gereklidir.
+VPN bağlantısını yapılandırmak için, BGPNAT sanal makinesi üzerindeki dış arabirimi kenar ağ geçidi havuzunun VIP 'sine eşleyen bir statik NAT eşleme yolu oluşturmanız gerekir. Bir VPN bağlantısındaki her bağlantı noktası için statik bir NAT eşleme yolu gereklidir.
 
 > [!NOTE]
-> Bu yapılandırma yalnızca Azure Stack Geliştirme Seti ortamları için gereklidir.
+> Bu yapılandırma yalnızca ASDK ortamları için gereklidir.
 
 ### <a name="configure-the-nat"></a>NAT 'yi yapılandırma
 
 > [!IMPORTANT]
 > Bu yordamı hem ASDK ortamları için gerçekleştirmeniz gerekir.
 
-1. Aşağıdaki PowerShell betiğinden kullanılacak **Iç IP adresini** saptayın. Sanal ağ geçidi ' ni (GW1 ve GW2) açın ve **genel bakış** dikey penceresinde, daha sonra kullanmak üzere **genel IP adresi** için değeri kaydedin.
+1. Aşağıdaki PowerShell betiğinden kullanılacak **Iç IP adresini** saptayın. Sanal ağ geçidini açın (GW1 ve GW2). **Genel bakış** dikey penceresinde, daha sonra kullanmak üzere **genel IP adresinin** değerini kaydedin.
 
-   ![İç IP adresi](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
+   ![İç IP Adresi](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
 
 2. POC1 için Azure Stack fiziksel makinesinde oturum açın.
-3. Aşağıdaki PowerShell betiğini kopyalayın ve düzenleyin. Her bir Azure Stack Geliştirme Seti NAT yapılandırmak için betiği yükseltilmiş bir Windows PowerShell ISE çalıştırın. Betikte, `External BGPNAT address` ve `Internal IP address` yer tutuculara değerler ekleyin:
+3. Aşağıdaki PowerShell betiğini kopyalayın ve düzenleyin. Her bir ASDK üzerinde NAT yapılandırmak için betiği yükseltilmiş bir Windows PowerShell ISE çalıştırın. Betikte, `External BGPNAT address` ve `Internal IP address` yer tutuculara değerler ekleyin:
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
@@ -331,9 +331,9 @@ VPN bağlantısını yapılandırmak için, BGPNAT sanal makinesindeki dış ara
 
 ## <a name="test-the-connection"></a>Bağlantıyı sınama
 
-Siteden siteye bağlantı kuruldığına göre, bundan sonra trafiği akışa alabildiğinizi doğrulamanız gerekir. Doğrulamak için, herhangi bir ASDK ortamında oluşturduğunuz sanal makinelerden birinde oturum açın. Daha sonra, diğer ortamda oluşturduğunuz sanal makineye ping gönderin.
+Siteden siteye bağlantı kuruldığına göre, bundan sonra trafiği akışa alabildiğinizi doğrulamanız gerekir. Doğrulamak için, herhangi bir ASDK ortamında oluşturduğunuz VM 'lerden birinde oturum açın. Daha sonra, diğer ortamda oluşturduğunuz VM 'ye ping gönderin.
 
-Trafiği siteden siteye bağlantı üzerinden gönderdiğinizden emin olmak için, VIP değil, uzak alt ağdaki sanal makinenin doğrudan IP (DIP) adresine ping atatığınızdan emin olun. Bunu yapmak için bağlantının diğer ucundaki DIP adresini bulun. Daha sonra kullanmak üzere adresi kaydedin.
+Trafiği siteden siteye bağlantı aracılığıyla gönderdiğinizden emin olmak için, sanal makinenin doğrudan IP (DIP) adresini VIP değil, uzak alt ağda ping işlemi yapın. Bunu yapmak için bağlantının diğer ucundaki DIP adresini bulun. Daha sonra kullanmak üzere adresi kaydedin.
 
 ### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>POC1 içinde Kiracı VM 'de oturum açma
 
@@ -344,11 +344,11 @@ Trafiği siteden siteye bağlantı üzerinden gönderdiğinizden emin olmak içi
 
      ![Bağlan düğmesi](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
 
-5. Sanal makineyi oluştururken yapılandırdığınız hesapla oturum açın.
+5. VM oluştururken yapılandırdığınız hesapla oturum açın.
 6. Yükseltilmiş bir **Windows PowerShell** penceresi açın.
 7. **İpconfig/all**yazın.
-8. Çıktıda, **IPv4 adresini**bulun ve daha sonra kullanmak üzere adresi kaydedin. Bu, POC2 adresinden ping yapılacak adrestir. Örnek ortamda adres **10.0.10.4** şeklindedir, ancak sizin ortamınızda farklı olabilir. Daha önce oluşturduğunuz **10.0.10.0/24** alt ağı içinde yer almalıdır.
-9. Sanal makinenin ping komutuna yanıt vermesini sağlayan bir güvenlik duvarı kuralı oluşturmak için aşağıdaki PowerShell komutunu çalıştırın:
+8. Çıktıda, **IPv4 adresini**bulun ve daha sonra kullanmak üzere adresi kaydedin. Bu, POC2 adresinden ping işlemi yaptığınız adrestir. Örnek ortamda adres **10.0.10.4** şeklindedir, ancak sizin ortamınızda farklı olabilir. Daha önce oluşturduğunuz **10.0.10.0/24** alt ağı içinde yer almalıdır.
+9. VM 'nin ping komutuna yanıt vermesini sağlayan bir güvenlik duvarı kuralı oluşturmak için aşağıdaki PowerShell komutunu çalıştırın:
 
    ```powershell
    New-NetFirewallRule `
@@ -360,13 +360,13 @@ Trafiği siteden siteye bağlantı üzerinden gönderdiğinizden emin olmak içi
 
 1. POC2 için Azure Stack fiziksel makinesinde oturum açın ve ardından Kullanıcı portalında oturum açmak için bir kiracı hesabı kullanın.
 2. Sol gezinti çubuğunda, **işlem**' e tıklayın.
-3. Sanal makineler listesinden daha önce oluşturduğunuz **VM02** bulun ve ardından seçin.
-4. Sanal makine için dikey pencere üzerinde **Bağlan**’a tıklayın.
-5. Sanal makineyi oluştururken yapılandırdığınız hesapla oturum açın.
+3. VM 'Ler listesinden daha önce oluşturduğunuz **VM02** bulun ve ardından seçin.
+4. VM 'nin dikey penceresinde **Bağlan**' a tıklayın.
+5. VM oluştururken yapılandırdığınız hesapla oturum açın.
 6. Yükseltilmiş bir **Windows PowerShell** penceresi açın.
 7. **İpconfig/all**yazın.
 8. **10.0.20.0/24**içinde kalan bir IPv4 adresi görüntülenir. Örnek ortamda, adres **10.0.20.4**olur, ancak adresiniz farklı olabilir.
-9. Sanal makinenin ping komutuna yanıt vermesini sağlayan bir güvenlik duvarı kuralı oluşturmak için aşağıdaki PowerShell komutunu çalıştırın:
+9. VM 'nin ping komutuna yanıt vermesini sağlayan bir güvenlik duvarı kuralı oluşturmak için aşağıdaki PowerShell komutunu çalıştırın:
 
    ```powershell
    New-NetFirewallRule `
@@ -374,16 +374,16 @@ Trafiği siteden siteye bağlantı üzerinden gönderdiğinizden emin olmak içi
     -Protocol ICMPv4
    ```
 
-10. POC2 üzerindeki sanal makineden, tünel üzerinden POC1 üzerindeki sanal makineye ping gönderin. Bunu yapmak için, VM01 adresinden kaydettiğiniz DIP 'e ping atayın. Örnek ortamda, bu **10.0.10.4**'dir, ancak laboratuvarınızda not ettiğiniz adrese ping atadığınızdan emin olun. Aşağıdaki örnekteki gibi görünen bir sonuç görmeniz gerekir:
+10. POC2 üzerindeki VM 'den, tünel üzerinden POC1 üzerindeki VM 'ye ping gönderin. Bunu yapmak için, VM01 adresinden kaydettiğiniz DIP 'e ping atayın. Örnek ortamda, bu **10.0.10.4**'dir, ancak laboratuvarınızda not ettiğiniz adrese ping atadığınızdan emin olun. Aşağıdaki örnekteki gibi görünen bir sonuç görmeniz gerekir:
 
     ![Başarılı ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-11. Uzak sanal makineden alınan bir yanıt, başarılı bir test olduğunu gösterir. Sanal makine penceresini kapatabilirsiniz. Bağlantınızı test etmek için, bir dosya kopyası gibi diğer veri aktarımı türlerini deneyebilirsiniz.
+11. Uzak VM 'den bir yanıt, başarılı bir test olduğunu gösterir. VM penceresini kapatabilirsiniz. Bağlantınızı test etmek için, bir dosya kopyası gibi diğer veri aktarımı türlerini deneyebilirsiniz.
 
 ### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Ağ geçidi bağlantısı üzerinden veri aktarımı istatistiklerini görüntüleme
 
 Siteden siteye bağlantınızın ne kadar veri geçireceğini öğrenmek isterseniz, bu bilgiler **bağlantı** dikey penceresinde kullanılabilir. Bu test, az önce gönderdiğiniz ping 'un VPN bağlantısı üzerinden gittiğini doğrulamak için de başka bir yoldur.
 
-1. POC2 ' de kiracı sanal makinesinde oturum açtığınızdan, Kullanıcı portalında oturum açmak için kiracı hesabınızı kullanın.
+1. POC2 ' de Kiracı VM 'de oturum açtığınızda, Kullanıcı portalında oturum açmak için kiracı hesabınızı kullanın.
 2. **Tüm kaynaklara**gidin ve **POC2-POC1** bağlantısını seçin. **Bağlantılar** görüntülenir.
 3. **Bağlantı** penceresinde, **içindeki verilerin** istatistikleri ve **veri çıkışı** görüntülenir. Aşağıdaki ekran görüntüsünde, büyük sayılar ek dosya aktarımına atanır. Burada sıfır dışında bir değer görmeniz gerekir.
 

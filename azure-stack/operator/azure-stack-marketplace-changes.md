@@ -15,12 +15,12 @@ ms.date: 08/09/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 878e4712cf805fec188645e92784beaf6a19d591
-ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
+ms.openlocfilehash: c93b4535189830ee8e84acb882f85a9a51d5f443
+ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279128"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71342733"
 ---
 # <a name="azure-stack-marketplace-changes"></a>Market değişikliklerini Azure Stack
 
@@ -29,6 +29,26 @@ Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azur
 [Azure Stack Market öğeleri](azure-stack-marketplace-azure-items.md) makalesi her zaman kullanılabilir Azure Stack Market öğelerinin en güncel listesini içerir.
 
 ## <a name="new-marketplace-items"></a>Yeni Market öğeleri
+
+- 06/27/2019:   SIOS Dataman küme sürümü
+
+- 06/27/2019:   Veeab yedekleme & çoğaltması
+
+- 06/27/2019: Windows Server 2019 Datacenter Server Core Ile kapsayıcılar Kullandıkça öde
+
+- 06/27/2019: Kapsayıcılar Ile Windows Server 2019 Datacenter Server Core KLG
+
+- 06/27/2019:   Windows Server 2019 Datacenter Kullandıkça öde
+
+- 06/27/2019:   Windows Server 2019 Datacenter KLG
+
+- 06/27/2019: Windows Server 2019 Datacenter Server Core Kullandıkça öde
+
+- 06/27/2019: Windows Server 2019 Datacenter Server Core KLG
+
+- 06/27/2019:   Kapsayıcılar Ile Windows Server 2019 Datacenter kullanım Kullandıkça öde
+
+- 06/27/2019:   Kapsayıcılar Ile Windows Server 2019 Datacenter KLG
 
 - 08/05/2019: BitNami Drupal
 
@@ -59,15 +79,26 @@ Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azur
 
 ## <a name="deprecated-marketplace-items"></a>Kullanımdan kaldırılan Market öğeleri
 
-- Codiad
-- X2Engine Sales CRM
-- SugarCRM
-- Node. js yüksek kullanılabilirlik kümesi
+- BitNami Codiad
+- BitNami X2Engine Sales CRM
+- BitNami SugarCRM
+- Bitnamı Node. js yüksek kullanılabilirlik kümesi
 - A10 vThunder: L4-L7 uygulama teslim denetleyicisi, genel sunucu yük dengelemesi (GSLB), SSL Insight
 - JsonADDomain uzantısı
 
 ## <a name="updated-marketplace-items"></a>Güncelleştirilmiş Market öğeleri
 
+- 07/11/2019:   Thales CipherTrust bulut Anahtar Yöneticisi-sürüm 1.0.7
+- 07/16/2019:   Windows Server 2016 Datacenter Server Core KLG-Version 2016.127.20190522
+- 07/16/2019:   Windows Server 2016 Datacenter Server Core Kullandıkça Öde-sürüm 2016.127.20190522
+- 07/16/2019:   Kapsayıcılar Ile Windows Server 2016 Datacenter KLG-Version 2016.127.20190522
+- 07/16/2019:   Kapsayıcılar Ile Windows Server 2016 Datacenter-Kullandıkça Öde-Version 2016.127.20190522
+- 07/16/2019:   Windows Server 2016 Datacenter KLG-Version 2016.127.20190522
+- 07/16/2019:   Windows Server 2016 Datacenter Kullandıkça Öde-sürüm 2016.127.20190522
+- 07/16/2019:   Windows Server 2008 R2 KLG-sürüm 2.127.20190522
+- 07/16/2019:   Windows Server 2008 R2 Kullandıkça Öde-sürüm 2.127.20190522
+- 07/16/2019:   Windows Server 2012 R2 Datacenter KLG-Version 4.127.20190522
+- 07/16/2019:   Windows Server 2012 R2 Datacenter Kullandıkça Öde-sürüm 4.127.20190522
 - 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard ve Enterprise Edition)-Version 13.2.20190410
 - 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard ve Enterprise Edition)-Version 13.2.20190410
 - 07/30/2019: SQL Server 2017 (Express, Developer, Standard ve Enterprise sürümleri)-Version 14.0.20190410

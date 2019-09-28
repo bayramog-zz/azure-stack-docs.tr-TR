@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: b2671446594377833609032e27ff02b7c53c763c
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: fd7c1ede611f9505ed48c8efc3caa5311c285cd3
+ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974686"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71342857"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Geri dönülemez veri kaybından kurtarma
 
@@ -68,7 +68,7 @@ Azure Stack, bulut kurtarma modu adlı bir dağıtım türünü destekler. Bu mo
  - İç sertifika yetkilisi tarafından kullanılan kök sertifikalar.
  - Abonelikler, planlar, teklifler, depolama kotaları, ağ kotaları ve işlem kaynakları gibi yapılandırma kullanıcı verilerini Azure Resource Manager.
  - Key Vault gizli dizileri ve kasaları.
- - RBAC ilke atamaları ve rol atamaları =.
+ - RBAC ilke atamaları ve rol atamaları.
 
 Hizmet olarak Kullanıcı altyapısının (IaaS) veya hizmet olarak platform (PaaS) kaynaklarının hiçbiri dağıtım sırasında kurtarılır. Bu kayıplar IaaS VM 'Leri, depolama hesapları, Bloblar, tablolar, ağ yapılandırması vb. içerir. Bulut kurtarma amacı, operatörlerinizin ve kullanıcılarınızın dağıtım tamamlandıktan sonra portalda yeniden oturum açabilmesini sağlamaktır. Oturum açan kullanıcılar, kaynaklarından hiçbirini görmez. Kullanıcıların abonelikleri, yönetici tarafından tanımlanan orijinal planlar, teklifler ve ilkelerle birlikte geri yüklenir. Sisteme yeniden oturum açan kullanıcılar, olağanüstü durumdan önce özgün çözüm tarafından uygulanan kısıtlamalar altında çalışır. Bulut kurtarması tamamlandıktan sonra, işleç değer ekleme ve üçüncü taraf RPs 'Leri ve ilişkili verileri el ile geri yükleyebilir.
 
