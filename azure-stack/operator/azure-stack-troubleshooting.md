@@ -12,21 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 09/30/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/26/2019
-ms.openlocfilehash: 865592d476eadaa847c4b46ff2a802f5fa0cc63e
-ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
+ms.lastreviewed: 09/30/2019
+ms.openlocfilehash: 0fb46cd1b92c1b811ba1c72a91188201a7d2af96
+ms.sourcegitcommit: 79ead51be63c372b23b7fca6ffeaf95fd44de786
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71319084"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687964"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
 Bu belge Azure Stack tümleşik ortamlar için sorun giderme bilgileri sağlar. Azure Stack Geliştirme Seti yardım için bkz. [asdk sorun giderme](../asdk/asdk-troubleshooting.md) veya [Azure Stack MSDN forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)uzmanlardan yardım alın. 
-
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
@@ -91,6 +90,15 @@ Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü
 ### <a name="general-deployment-failure"></a>Genel dağıtım hatası
 Yükleme sırasında bir hata yaşarsanız dağıtım betiğinin-yeniden çalıştır seçeneğini kullanarak dağıtımı başarısız adımdan yeniden başlatabilirsiniz.  
 
+### <a name="template-validation-error-parameter-osprofile-is-not-allowed"></a>Şablon doğrulama hatası parametre osProfile izin verilmiyor
+
+Şablon doğrulaması sırasında ' osProfile ' parametresine izin verilmediğinden bir hata mesajı alırsanız, bu bileşenler için API 'lerin doğru sürümlerini kullandığınızdan emin olun:
+
+- [İşlem](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
+- [Ağ](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+
+Azure 'dan Azure Stack bir VHD 'yi kopyalamak için [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)kullanın. Görüntüyle birlikte çalışarak görüntünün kendisiyle ilgili sorunları giderin. Azure Stack için Walınuxagent gereksinimleri hakkında daha fazla bilgi için bkz. [Azure Linux Aracısı](azure-stack-linux.md#azure-linux-agent).
+
 ### <a name="deployment-fails-due-to-lack-of-external-access"></a>Dış erişim olmaması nedeniyle dağıtım başarısız oluyor
 Dış erişimin gerekli olduğu aşamalardan dağıtım başarısız olduğunda, aşağıdaki örnek gibi bir özel durum döndürülür:
 
@@ -99,15 +107,18 @@ An error occurred while trying to test identity provider endpoints: System.Net.W
    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
 ```
-Bu hata oluşursa, [dağıtım ağ trafiği belgelerini](deployment-networking.md)inceleyerek en düşük ağ gereksinimlerinin karşılandığından emin olun. İş ortağı araç setinin bir parçası olarak iş ortakları için de bir ağ denetleyicisi aracı vardır.
+Bu hata oluşursa, [dağıtım ağ trafiği belgelerini](deployment-networking.md)inceleyerek tüm en düşük ağ gereksinimlerinin karşılandığından emin olun. İş ortağı araç setinin bir parçası olarak iş ortakları için de bir ağ denetleyicisi aracı vardır.
 
 Diğer dağıtım hataları genellikle Internet üzerindeki kaynaklara bağlanma sorunlarından kaynaklanır.
 
 Internet 'teki kaynakların bağlantısını doğrulamak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
-1. PowerShell 'i aç
-2. WAS01 veya ERCs VM 'lerinden herhangi birine-PSSession girin
-3. Commandlet 'i çalıştırın: Test-NetConnection login.windows.net-bağlantı noktası 443
+1. PowerShell’i açın.
+2. WAS01 veya ERCs VM 'lerinden herhangi birine-PSSession yazın.
+3. Aşağıdaki cmdlet'i çalıştırın: 
+   ```powershell
+   Test-NetConnection login.windows.net -port 443
+   ```
 
 Bu komut başarısız olursa, TOR anahtarını ve diğer tüm ağ aygıtlarını [ağ trafiğine izin verecek](azure-stack-network.md)şekilde yapılandırıldığını doğrulayın.
 
@@ -129,4 +140,9 @@ Bu davranış tasarıma göre belirlenir:
 ## <a name="troubleshoot-storage"></a>Depolama sorunlarını giderme
 ### <a name="storage-reclamation"></a>Depolama geri kazanma
 Geri kazanılabilir kapasitenin portalda gösterilmesi 14 saate kadar sürebilir. Space geri kazanma, Blok Blobu deposundaki iç kapsayıcı dosyalarının kullanım yüzdesi gibi çeşitli faktörlere bağlıdır. Bu nedenle, ne kadar veri silindiğine bağlı olarak, çöp toplayıcı çalıştırıldığında geri kazanılabilecek alan miktarı garantisi yoktur.
+
+## <a name="troubleshooting-app-service"></a>Sorun giderme App Service
+### <a name="create-aadidentityappps1-script-fails"></a>Create-AADIdentityApp. ps1 betiği başarısız oluyor
+
+App Service için gerekli olan Create-AADIdentityApp. ps1 betiği başarısız olursa, betiği çalıştırırken gerekli-AzureStackAdminCredential parametresini eklediğinizden emin olun. Daha fazla bilgi için, [Azure Stack App Service dağıtmaya yönelik önkoşullar](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app)bölümüne bakın.
 

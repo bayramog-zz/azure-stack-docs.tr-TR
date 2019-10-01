@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
-ms.openlocfilehash: 957ea4bc52e6f629ffd7fbd06a14d8dc2fb85021
-ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
+ms.lastreviewed: 09/27/2019
+ms.openlocfilehash: 0cccd93ca24f2e93717bfbbd6ec05137d91f5bd0
+ms.sourcegitcommit: 036d4b22a8076ca9ba5c667a451c544d88f8bb94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279174"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71681827"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack"></a>Bir Kubernetes kümesini AKS altyapısı ile Azure Stack dağıtma
 
@@ -60,9 +60,23 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     aks-engine get-versions
     ```
 
-4.  Kiracı `portalURL` portalının URL 'sini bulun ve sağlayın. Örneğin, `https://portal.local.azurestack.external`.
+4.  Kiracı `customCloudProfile` portalının URL 'sini bulun ve sağlayın. Örneğin, `https://portal.local.azurestack.external`. 
 
-5.  Dizide `masterProfile`aşağıdaki alanları ayarlayın:
+5. AD FS kullanıyorsanız, @no__t ekleyin-0. Örneğin,
+
+    ```JSON  
+        "customCloudProfile": {
+            "portalURL": "https://portal.local.azurestack.external",
+            "identitySystem": "adfs"
+        },
+    ```
+
+    > [!Note]  
+    > Kimlik sisteminiz için Azure AD kullanıyorsanız, **ıdentitysystem** alanını eklemeniz gerekmez.
+
+6. Kiracı `portalURL` portalının URL 'sini bulun ve sağlayın. Örneğin, `https://portal.local.azurestack.external`.
+
+7.  Dizide `masterProfile`aşağıdaki alanları ayarlayın:
 
     | Alan | Açıklama |
     | --- | --- |
@@ -71,7 +85,7 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     | vmSize |  Azure Stack, örnek `Standard_D2_v2` [tarafından desteklenen bir boyut](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)girin. |
     | distro | `aks-ubuntu-16.04` yazın. |
 
-6.  Dizi `agentPoolProfiles` güncelleştirmesinde:
+8.  Dizi `agentPoolProfiles` güncelleştirmesinde:
 
     | Alan | Açıklama |
     | --- | --- |
@@ -79,7 +93,7 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     | vmSize | Azure Stack, örnek `Standard_D2_v2` [tarafından desteklenen bir boyut](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)girin. |
     | distro | `aks-ubuntu-16.04` yazın. |
 
-7.  Dizi `linuxProfile` güncelleştirmesinde:
+9.  Dizi `linuxProfile` güncelleştirmesinde:
 
     | Alan | Açıklama |
     | --- | --- |
