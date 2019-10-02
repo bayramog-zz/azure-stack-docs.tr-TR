@@ -1,6 +1,6 @@
 ---
-title: Azure Stack anahtar Kasası'nda hizmet sorumlusu kimlik bilgileri Store | Microsoft Docs
-description: Key Vault hizmet sorumlusu kimlik bilgileri Azure Stack üzerinde nasıl depoladı öğrenin
+title: Hizmet sorumlusu kimlik bilgilerini Azure Stack Key Vault depolama | Microsoft Docs
+description: Key Vault hizmet sorumlusu kimlik bilgilerini Azure Stack nasıl depolayacağınızı öğrenin
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -11,95 +11,95 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: efa8dda8061ce81d751e9cce47c5e81a3917f2bf
-ms.sourcegitcommit: ad2f2cb4dc8d5cf0c2c37517d5125921cff44cdd
+ms.openlocfilehash: 9d86f7e68b2e96eb4a22f9896ff65a4ed6b96f92
+ms.sourcegitcommit: bbf3edbfc07603d2c23de44240933c07976ea550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67138851"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71714733"
 ---
-# <a name="store-service-principal-credentials-in-azure-stack-key-vault"></a>Azure Stack anahtar Kasası'nda hizmet sorumlusu kimlik bilgileri Store
+# <a name="store-service-principal-credentials-in-azure-stack-key-vault"></a>Hizmet sorumlusu kimlik bilgilerini Azure Stack Key Vault depolama
 
-Uygulamaları Azure Stack'te genellikle geliştirme, hizmet sorumlusu oluşturma ve dağıtmadan önce kimliğini doğrulamak için bu kimlik bilgilerini kullanarak gerektirir. Ancak, bazen, hizmet sorumlusu için depolanan kimlik bilgileri kaybedersiniz. Bu makalede, bir hizmet sorumlusu oluşturma ve değerleri daha sonra alma işlemi için Azure Key Vault'ta depolamak açıklar.
+Azure Stack uygulamaların geliştirilmesi, genellikle bir hizmet sorumlusu oluşturulmasını ve dağıtımdan önce kimlik doğrulaması yapmak için bu kimlik bilgilerini kullanmayı gerektirir. Ancak, bazen hizmet sorumlusu için depolanan kimlik bilgilerini kaybedebilirsiniz. Bu makalede, bir hizmet sorumlusu oluşturma ve daha sonra alımı için Azure Key Vault değerleri depolama işlemlerinin nasıl yapılacağı açıklanır.
 
-Key Vault hakkında daha fazla bilgi için bkz. [bu makalede](azure-stack-key-vault-intro.md).
+Key Vault hakkında daha fazla bilgi için bkz. [Azure Stack Key Vault giriş](azure-stack-key-vault-intro.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure Key Vault hizmeti içeren bir teklif aboneliği.
-- PowerShell, Azure Stack ile kullanmak için yapılandırılır.
+- Azure Key Vault hizmetini içeren bir teklifin aboneliği.
+- PowerShell, Azure Stack ile kullanım için yüklendi ve yapılandırıldı.
 
-## <a name="key-vault-in-azure-stack"></a>Azure Stack'te anahtar kasası
+## <a name="key-vault-in-azure-stack"></a>Azure Stack Key Vault
 
-Şifreleme anahtarlarını korumak için Azure Stack Key Vault'ta yardımcı olur ve bulut uygulamaları ve Hizmetleri gizli dizileri kullanabilirsiniz. Anahtar Kasası'nı kullanarak anahtarları ve gizli anahtarları şifreleyebilirsiniz.
+Azure Stack Key Vault, bulut uygulamalarının ve hizmetlerinin kullandığı şifreleme anahtarlarını ve gizli dizileri korumanıza yardımcı olur. Key Vault kullanarak anahtarları ve gizli dizileri şifreleyebilirsiniz.
 
-Bir anahtar kasası oluşturmak için aşağıdaki adımları izleyin:
+Bir Anahtar Kasası oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure Stack portalında oturum açın.
 
-2. Panoda **+ kaynak Oluştur**, ardından **güvenlik + kimlik**, ardından **anahtar kasası.**
+2. Panodan **+ kaynak oluştur**' u seçin ve **güvenlik ve kimlik**sonra Key Vault ' yi seçin **.**
 
-   ![Anahtar kasası oluşturma](media/azure-stack-key-vault-store-credentials/create-key-vault.png)
+   ![Anahtar kasası oluştur](media/azure-stack-key-vault-store-credentials/create-key-vault.png)
 
-3. İçinde **Key Vault Oluştur** bölmesinde atamak bir **adı** kasanız için. Kasa adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir. Bunlar, bir sayı ile başlayamaz olmamalıdır.
+3. **Key Vault oluştur** bölmesinde, kasanıza bir **ad** atayın. Kasa adları yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir. Bunlar bir sayıyla başlamamalıdır.
 
 4. Kullanılabilir abonelikler listesinden bir abonelik seçin.
 
-5. Mevcut bir kaynak grubunu seçin veya yeni bir tane oluşturun.
+5. Var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun.
 
 6. Fiyatlandırma katmanını seçin.
 
-7. Var olan erişim ilkelerinden birini seçin veya yeni bir tane oluşturun. Bir erişim ilkesi, bir kullanıcı, uygulama veya bir güvenlik grubu bu kasayla işlemleri gerçekleştirmek izinler sağlar.
+7. Mevcut erişim ilkelerinden birini seçin veya yeni bir tane oluşturun. Bir erişim ilkesi, bu kasada işlem gerçekleştirmek üzere bir Kullanıcı, uygulama veya güvenlik grubu için izin vermenizi sağlar.
 
-8. İsteğe bağlı olarak, özelliklere erişimi etkinleştirmek için bir Gelişmiş erişim ilkesini seçin.
+8. İsteğe bağlı olarak, özelliklere erişimi etkinleştirmek için gelişmiş bir erişim ilkesi seçin.
 
-9. Ayarları yapılandırdıktan sonra seçin **Tamam**ve ardından **Oluştur**. Anahtar kasası dağıtım başlar.
+9. Ayarları yapılandırdıktan sonra **Tamam**' ı seçin ve ardından **Oluştur**' u seçin. Anahtar Kasası dağıtımı başlar.
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-1. Azure portalı üzerinden Azure hesabınızda oturum açın.
+1. Azure portal aracılığıyla Azure hesabınızda oturum açın.
 
-2. Seçin **Azure Active Directory**, ardından **uygulama kayıtları**, ardından **Ekle**.
+2. **Azure Active Directory**seçin, sonra **uygulama kayıtları** **ekleyin**.
 
-3. Uygulama için bir ad ve URL belirtin. Şunlardan birini seçin **Web uygulaması / API** veya **yerel** oluşturmak istediğiniz uygulama türü. Değerleri ayarladıktan sonra seçin **Oluştur**.
+3. Uygulama için bir ad ve URL belirtin. Oluşturmak istediğiniz uygulama türü için **Web uygulaması/API** ya da **Yerel** ' i seçin. Değerleri ayarladıktan sonra **Oluştur**' u seçin.
 
-4. Seçin **Active Directory**, ardından **uygulama kayıtları**ve uygulamanızı seçin.
+4. **Active Directory**ve ardından **uygulama kayıtları**' nı seçin ve uygulamanızı seçin.
 
-5. Kopyalama **uygulama kimliği** ve uygulama kodunuzda depolayın. Örnek uygulamalar kullanımı **istemci kimliği** söz konusu olduğunda **uygulama kimliği**.
+5. **Uygulama kimliğini** kopyalayın ve uygulama kodunuzda depolayın. Örnek uygulamalar, **uygulama kimliğine**başvururken **istemci kimliğini** kullanır.
 
 6. Kimlik doğrulama anahtarını oluşturmak için **Anahtarlar**'ı seçin.
 
-7. Anahtarın süresi ve açıklama sağlayın.
+7. Anahtar için bir açıklama ve süre belirtin.
 
 8. **Kaydet**’i seçin.
 
-9. Kopyalama **anahtarı** , kullanılabilir tıkladığınız sonra **Kaydet**.
+9. **Kaydet**' i tıklatmanızdan sonra kullanılabilir hale gelen **anahtarı** kopyalayın.
 
-## <a name="store-the-service-principal-inside-key-vault"></a>Hizmet sorumlusu Key Vault içinde Store
+## <a name="store-the-service-principal-inside-key-vault"></a>Hizmet sorumlusunu Key Vault içinde depola
 
-1. Kullanıcı portalında oturum için Azure Stack, ardından daha önce oluşturduğunuz anahtar kasasını seçin ve ardından **gizli** Döşe.
+1. Azure Stack için Kullanıcı portalında oturum açın, ardından daha önce oluşturduğunuz anahtar kasasını seçip **gizli** kutucuğunu seçin.
 
-2. İçinde **gizli** bölmesinde **Oluştur/içeri aktarma**.
+2. **Gizli** bölmesinde **Oluştur/içeri aktar**' ı seçin.
 
-3. İçinde **gizli dizi oluşturma** bölmesinde **el ile** seçeneklerini listeden. Sertifikalarını kullanarak hizmet sorumlusu oluşturduysanız sertifikaları aşağı açılan listeden seçin ve ardından dosyayı karşıya yükleyin.
+3. Gizli dizi **Oluştur** bölmesinde, seçenekler listesinden **el ile** ' yi seçin. Hizmet sorumlusunu sertifikaları kullanarak oluşturduysanız, açılan listeden sertifikaları seçin ve ardından dosyayı karşıya yükleyin.
 
-4. Girin **uygulama Kimliğini** anahtarınızı adı olarak hizmet sorumlusundan kopyalanır. Anahtar adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir.
+4. Anahtarın adı olarak hizmet sorumlusu 'ndan kopyalanmış **uygulama kimliğini** girin. Anahtar adı yalnızca alfasayısal karakterler ve kısa çizgi (-) karakterini içerebilir.
 
-5. Hizmet sorumlusu içine anahtarınızdan değerini yapıştırın **değer** sekmesi.
+5. Hizmet sorumlusunun anahtar değerini **değer** sekmesine yapıştırın.
 
-6. Seçin **hizmet sorumlusu** için **içerik türü**.
+6. **İçerik türü**Için **hizmet sorumlusu** ' nı seçin.
 
-7. Ayarlama **etkinleştirme tarihi** ve **sona erme tarihi** anahtarınız için değerler.
+7. Anahtarınız için **etkinleştirme tarihi** ve **sona erme tarihi** değerlerini ayarlayın.
 
-8. Seçin **Oluştur** dağıtımı başlatmak için.
+8. Dağıtımı başlatmak için **Oluştur** ' u seçin.
 
-Gizli dizi başarıyla oluşturulduktan sonra hizmet sorumlusu bilgileri burada depolanır. Altında herhangi bir zamanda seçin **gizli dizileri** görüntüleyebilir veya özellikleri değiştirin. Özellikler bölümü, dış uygulama bu gizli dizi erişmek için bir Tekdüzen Kaynak Tanımlayıcısı (URI) olan gizli tanımlayıcısını içerir.
+Gizli anahtar başarıyla oluşturulduktan sonra, hizmet sorumlusu bilgileri burada depolanır. **Gizli**dizileri istediğiniz zaman seçebilir ve özelliklerini görüntüleyebilir veya değiştirebilirsiniz. **Özellikler** bölümü, dış uygulamaların bu gizliliğe erişmek için kullandığı bir Tekdüzen Kaynak tanımlayıcısı (URI) olan gizli dizi tanımlayıcısını içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hizmet sorumlularını kullanma](azure-stack-create-service-principals.md)
-- [Anahtar Kasası'nda Azure Stack portal ile yönetme](azure-stack-key-vault-manage-portal.md)  
-- [Anahtar Kasası'nda Azure Stack PowerShell kullanarak yönetme](azure-stack-key-vault-manage-powershell.md)
+- [Portal tarafından Azure Stack Key Vault yönetme](azure-stack-key-vault-manage-portal.md)  
+- [PowerShell kullanarak Azure Stack Key Vault yönetme](azure-stack-key-vault-manage-powershell.md)

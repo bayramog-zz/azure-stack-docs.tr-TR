@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 059e7961cae5c6d6faa8d79d05dbc08a05a13893
-ms.sourcegitcommit: b3dac698f2e1834491c2f9af56a80e95654f11f3
+ms.openlocfilehash: 0f1450ff7ce6d7e4cffee3d31f80b046f07f9ac1
+ms.sourcegitcommit: bbf3edbfc07603d2c23de44240933c07976ea550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68658559"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71714778"
 ---
 # <a name="develop-for-azure-stack"></a>Azure Stack için geliştirme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bir Azure Stack ortamına erişiminiz olmasa bile, bugün uygulama geliştirmeye başlamanızı sağlayabilirsiniz. Azure Stack, veri merkezinizde çalışan Microsoft Azure hizmetleri sunar. Bu, Azure Stack geliştirmek için aynı Azure araçlarını ve süreçlerini kullanabileceğiniz anlamına gelir.
+Azure Stack ortamına erişiminiz olmasa bile, bugün uygulama geliştirmeye başlamanızı sağlayabilirsiniz. Azure Stack, veri merkezinizde çalışan Microsoft Azure hizmetleri sunar. Bu, Azure Stack geliştirmek için aynı Azure araçlarını ve süreçlerini kullanabileceğiniz anlamına gelir.
 
 ## <a name="development-considerations"></a>Geliştirme konuları
 

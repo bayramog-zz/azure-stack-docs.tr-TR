@@ -73,16 +73,19 @@
               href: azure-stack-develop-templates.md
             - name: Azure 'da Şablonlar geliştirme
               href: azure-stack-developer.md
-            - name: Şablonları denetleme
+            - name: Şablon dağıtma
               href: azure-stack-validate-templates.md
-            - name: Portal ile dağıtma
-              href: azure-stack-deploy-template-portal.md
-            - name: PowerShell ile dağıtma
-              href: azure-stack-deploy-template-powershell.md
-            - name: CLı ile dağıtma
-              href: azure-stack-deploy-template-command-line.md
-            - name: Visual Studio ile dağıtma
-              href: azure-stack-deploy-template-visual-studio.md
+              items:
+                - name: Portal ile dağıtma
+                  href: azure-stack-deploy-template-portal.md
+                - name: PowerShell ile dağıtma
+                  href: azure-stack-deploy-template-powershell.md
+                - name: CLı ile dağıtma
+                  href: azure-stack-deploy-template-command-line.md
+                - name: Visual Studio Code ile dağıtma
+                  href: azure-stack-resource-manager-deploy-template-vscode.md
+                - name: Visual Studio ile dağıtma
+                  href: azure-stack-deploy-template-visual-studio.md
         - name: API sürüm profillerini kullanma
           items:
             - name: Genel Bakış

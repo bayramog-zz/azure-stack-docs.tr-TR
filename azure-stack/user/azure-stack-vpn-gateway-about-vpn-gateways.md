@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 980d601dd5830d653787fe4cc31f57be3b3f8d00
-ms.sourcegitcommit: b3dac698f2e1834491c2f9af56a80e95654f11f3
+ms.openlocfilehash: a66057ea2490f4510d28db8b07d03e4ed17ba3ad
+ms.sourcegitcommit: bbf3edbfc07603d2c23de44240933c07976ea550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68658666"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71714764"
 ---
 # <a name="create-vpn-gateways-for-azure-stack"></a>Azure Stack için VPN ağ geçitleri oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure sanal ağınız ile şirket içi siteniz arasında ağ trafiği göndermek için önce sanal ağınız için sanal ağ geçidi oluşturmanız gerekir.
+Azure sanal ağınız ile şirket içi siteniz arasında ağ trafiği gönderebilmeniz için önce sanal ağınız için bir sanal ağ (VPN) ağ geçidi oluşturmanız gerekir.
 
 VPN ağ geçidi bir ortak bağlantı üzerinde şifrelenmiş trafik gönderen sanal ağ geçidi türüdür. Azure'da güvenli bir şekilde Azure Stack'te bir sanal ağ ve sanal ağ arasında trafik göndermek için VPN ağ geçidi'ni kullanabilirsiniz. Ayrıca, trafiği bir sanal ağ ve VPN cihazına bağlı başka bir ağ arasında güvenli bir şekilde gönderebilirsiniz.
 
@@ -42,7 +42,7 @@ Azure Stack için VPN ağ geçitleri oluşturup yapılandırmadan önce, Azure S
 > Örneğin:
 >
 > * Azure 'da, temel VPN ağ geçidi SKU 'SU yaklaşık 100 Mbps toplu işleme uyum sağlayabilir. Bu VPN ağ geçidine iki bağlantı oluşturursanız ve bir bağlantı 50 Mbps bant genişliği kullanıyorsa, diğer bağlantıda 50 Mbps kullanılabilir.
-> * Azure Stack, temel VPN ağ geçidi SKU 'suna yönelik **her bağlantı** , 100 Mbps 'lik aktarım hızını alır.
+> * Azure Stack, temel VPN ağ geçidi SKU 'suna her bağlantı için 100 Mbps aktarım hızı ayrılır.
 
 ## <a name="configuring-a-vpn-gateway"></a>VPN ağ geçidini yapılandırma
 
@@ -75,11 +75,11 @@ Diyagramları ve açıklamaları aşağıdaki bölümlerde, gereksinimlerinize u
 
 ### <a name="site-to-site"></a>Siteden siteye
 
-*Siteden siteye* (S2S) VPN Ağ Geçidi bağlantısı, ıPSEC/Ike (ıKEV2) VPN tüneli üzerinden kurulan bir bağlantıdır. Bu tür bir bağlantı, şirket içinde bulunan ve genel bir IP adresi atanmış bir VPN cihazı gerektirir. Bu cihazı bir NAT'nin arkasında olamaz S2S bağlantıları, şirket içi ve dışı yapılandırmalar ile birlikte karma yapılandırmalar için kullanılabilir.
+*Siteden siteye* (S2S) VPN Ağ Geçidi bağlantısı, ıPSEC/Ike (ıKEV2) VPN tüneli üzerinden kurulan bir bağlantıdır. Bu tür bir bağlantı, şirket içinde bulunan ve genel bir IP adresi atanmış bir VPN cihazı gerektirir. Bu cihaz bir NAT 'ın arkasında bulunamıyor. S2S bağlantıları, şirket içi ve dışı yapılandırmalar ile birlikte karma yapılandırmalar için kullanılabilir.
 
 ![Siteden siteye VPN bağlantısı yapılandırma örneği](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a>Çoklu site
+### <a name="multi-site"></a>Çok siteli
 
 *Çok* siteli bağlantı, siteden siteye bağlantı çeşitçeşididir. Sanal ağ geçidinizden genellikle birden fazla şirket içi siteye bağlanan birden fazla VPN bağlantısı oluşturursunuz. Birden çok bağlantıyla çalışırken, rota tabanlı VPN türü (klasik VNET 'ler ile çalışırken dinamik ağ geçidi olarak bilinir) kullanmanız gerekir. Her sanal ağın yalnızca bir VPN ağ geçidi olabileceğinden, ağ geçidi boyunca tüm bağlantılar mevcut bant genişliğini paylaşır.
 
@@ -100,12 +100,12 @@ Azure Stack, yalnızca Express Route ile kullanılan ultra performans ağ geçid
 SKU 'YU seçtiğinizde aşağıdakileri göz önünde bulundurun:
 
 * Azure Stack, ilke tabanlı ağ geçitlerini desteklemez.
-* Sınır Ağ Geçidi Protokolü (BGP) temel SKU 'da desteklenmez.
-* ExpressRoute-VPN Gateway birlikte var olan Yapılandırma Azure Stack desteklenmez.
+* Sınır Ağ Geçidi Protokolü (BGP) temel SKU'da desteklenmiyor.
+* ExpressRoute-VPN Gateway birlikte mevcut konfigürasyonları Azure Stack desteklenmez.
 
 ## <a name="gateway-availability"></a>Ağ Geçidi kullanılabilirliği
 
-Yüksek kullanılabilirlik senaryoları yalnızca **yüksek performanslı ağ geçidi** bağlantı SKU 'sunda yapılandırılabilir. Hem etkin/etkin hem de etkin/Pasif yapılandırmalar aracılığıyla kullanılabilirlik sağlayan Azure 'un aksine, Azure Stack yalnızca etkin/Pasif yapılandırmayı destekler. 
+Yüksek kullanılabilirlik senaryoları yalnızca **yüksek performanslı ağ geçidi** bağlantı SKU 'sunda yapılandırılabilir. Hem etkin/etkin hem de etkin/Pasif yapılandırmalar aracılığıyla kullanılabilirlik sağlayan Azure 'un aksine, Azure Stack yalnızca etkin/Pasif yapılandırmayı destekler.
 
 ### <a name="failover"></a>Yük devret
 
@@ -115,20 +115,20 @@ Azure Stack içinde üç adet çok kiracılı ağ geçidi altyapısı VM vardır
 
 Aşağıdaki tabloda ağ geçidi türleri ve ağ geçidi SKU 'SU tarafından tahmini toplam aktarım hızı gösterilmektedir:
 
-|| VPN Gateway işlemesi *(1)* | VPN Gateway maks. IPSec tünelleri *(2)* |
+|| VPN Gateway işlemesi (1) | VPN Gateway maks. IPSec tünelleri (2) |
 |-------|-------|-------|
-|**Temel SKU** ***(3)*** | 100 Mbps | 20 |
+|**Temel SKU** **(3)** | 100 Mbps | 20 |
 |**Standart SKU** | 100 Mbps | 20 |
 |**Yüksek performanslı SKU** | 200 Mbps | 10 |
 
-**Tablo Notlar:**
+### <a name="table-notes"></a>Tablo notları
 
-*Note (1)* -VPN işleme, internet üzerinden şirket içi bağlantılar için garantili bir aktarım hızı değildir. Mümkün olan en yüksek verimlilik ölçümüdür.  
-*Note (2)* -en fazla tünel, tüm abonelikler için Azure Stack dağıtımı başına toplam değildir.  
-*Not (3)* -BGP yönlendirme temel SKU için desteklenmiyor.
+**(1)** -VPN işleme, internet üzerinden şirket içi bağlantılar için garantili bir verimlilik değildir. Mümkün olan en yüksek verimlilik ölçümüdür.  
+**(2)** -en fazla tünel, tüm abonelikler için Azure Stack dağıtımı başına toplam değildir.  
+**(3)** -BGP YÖNLENDIRMESI temel SKU için desteklenmez.
 
 >[!NOTE]
->İki Azure Stack dağıtımı arasında yalnızca bir siteden siteye VPN bağlantısı oluşturulabilir. Bunun nedeni, platformda yalnızca aynı IP adresine tek bir VPN bağlantısının yapılmasına izin veren bir kısıtlamadır. Azure Stack, Azure Stack sistemindeki tüm VPN ağ geçitleri için tek bir genel IP kullanan çok kiracılı bir ağ geçidi kullandığından, iki Azure Stack sistem arasında yalnızca bir VPN bağlantısı olabilir. Bu sınırlama aynı zamanda tek bir IP adresi kullanan herhangi bir VPN ağ geçidine birden çok siteden siteye VPN bağlantısı bağlamayı de uygular. Azure Stack, aynı IP adresi kullanılarak birden fazla yerel ağ geçidi kaynağı oluşturulmasını izin vermez.
+>İki Azure Stack dağıtımı arasında yalnızca bir siteden siteye VPN bağlantısı oluşturulabilir. Bunun nedeni, platformda yalnızca aynı IP adresine tek bir VPN bağlantısının yapılmasına izin veren bir kısıtlamadır. Azure Stack, Azure Stack sistemindeki tüm VPN ağ geçitleri için tek bir genel IP kullanan çok kiracılı bir ağ geçidi kullandığından, iki Azure Stack sistem arasında yalnızca bir VPN bağlantısı olabilir. Bu sınırlama aynı zamanda tek bir IP adresi kullanan herhangi bir VPN ağ geçidine birden çok siteden siteye VPN bağlantısı bağlamayı de uygular. Azure Stack, aynı IP adresi kullanılarak birden fazla yerel ağ geçidi kaynağının oluşturulmasını izin vermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

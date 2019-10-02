@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/01/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: e87baeba1b961c134fc5754fda8c9f1688f3fe90
-ms.sourcegitcommit: f38903cb925276e96dd62ebe8ffe92df8bf6e5c8
+ms.openlocfilehash: 32533b063d4c42b740825923e9e2b5692ec03728
+ms.sourcegitcommit: bbf3edbfc07603d2c23de44240933c07976ea550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256539"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71714639"
 ---
 # <a name="footfall-detection-solution"></a>Betfall algılama çözümü
 
@@ -92,6 +92,6 @@ Bu çözüm, müşteri görüntülerini yakalar ve güvenlik için bir parametre
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu çözüm tarafından kullanılan ilgili desenler hakkında daha fazla bilgi edinmek için [katmanlı veri deseni](azure-stack-solution-staged-data.md)' ne bakın. 
-
-Özel vizyonu kullanma hakkında daha fazla bilgi için bkz. [AI Dev Kit özel görüntü işleme](https://azure.github.io/Vision-AI-DevKit-Pages/). 
+- Bu çözüm tarafından kullanılan ilgili desenler hakkında daha fazla bilgi edinmek için [katmanlı veri deseni](azure-stack-solution-staged-data.md)' ne bakın. 
+- Özel vizyonu kullanma hakkında daha fazla bilgi için bkz. [AI Dev Kit özel görüntü işleme](https://azure.github.io/Vision-AI-DevKit-Pages/). 
+- [Betfall çözümünün örnek bir uygulamasını](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/footfall-analysis)indirin ve dağıtın. Azure, Azure Stack ve Özel Görüntü İşleme AI Dev Kit kullanarak gerçek dünya eylemlerine yönelik Öngörüler oluşturmayı öğreneceksiniz.   

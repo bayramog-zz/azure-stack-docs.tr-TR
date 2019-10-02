@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: bedc4c3971c5d4a177f4d8ac804878babebaa9b6
-ms.sourcegitcommit: b3dac698f2e1834491c2f9af56a80e95654f11f3
+ms.openlocfilehash: 5cd8e87613d1d4aa4adc8dedac7dcac4fa57eae2
+ms.sourcegitcommit: bbf3edbfc07603d2c23de44240933c07976ea550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68658658"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71714725"
 ---
 # <a name="develop-templates-for-azure-stack-with-azure-resource-manager"></a>Azure Resource Manager Azure Stack için Şablonlar geliştirme
 
@@ -31,11 +31,11 @@ Uygulamanızı geliştirirken, Azure ile Azure Stack arasında şablon taşınab
 
 ## <a name="resource-provider-availability"></a>Kaynak sağlayıcısı kullanılabilirliği
 
-Dağıtmayı planladığınız şablon yalnızca, Azure Stack ' de zaten mevcut olan veya Önizlemedeki Microsoft Azure hizmetleri kullanmalıdır.
+Dağıtmayı planladığınız şablon, Azure Stack ' de zaten kullanılabilir olan veya Önizlemedeki Microsoft Azure hizmetleri kullanmalıdır.
 
 ## <a name="public-namespaces"></a>Ortak ad alanları
 
-Azure Stack veri merkezinizde barındırıldığından Azure genel bulutinden farklı hizmet uç noktası ad alanları vardır. Sonuç olarak, Azure Resource Manager şablonlarda sabit kodlanmış ortak uç noktalar, Azure Stack dağıtmaya çalıştığınızda başarısız olur. Dağıtım sırasında kaynak sağlayıcıdan değerleri almak için `reference` ve `concatenate` işlevlerini kullanarak hizmet uç noktalarını dinamik olarak oluşturabilirsiniz. Örneğin, şablonunuzda sabit kodlama `blob.core.windows.net` yerine, *OSDisk. URI* uç noktasını dinamik olarak ayarlamak için en düşük olan yenizsel [. blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) ' u alın:
+Azure Stack veri merkezinizde barındırıldığından Azure genel bulutinden farklı hizmet uç noktası ad alanları vardır. Sonuç olarak, Azure Resource Manager şablonlarda sabit kodlanmış ortak uç noktalar, Azure Stack dağıtmaya çalıştığınızda başarısız olur. Dağıtım sırasında kaynak sağlayıcıdan değerleri almak için `reference` ve `concatenate` işlevlerini kullanarak, hizmet uç noktalarını dinamik olarak oluşturabilirsiniz. Örneğin, şablonunuzda `blob.core.windows.net` ' ı sabit kodlamak yerine, *OSDisk. URI* uç noktasını dinamik olarak ayarlamak için [ınbıd. blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) ' u alın:
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -47,7 +47,7 @@ Azure Stack veri merkezinizde barındırıldığından Azure genel bulutinden fa
 
 Azure hizmet sürümleri, Azure ile Azure Stack arasında farklılık gösterebilir. Her kaynak için sunulan özellikleri tanımlayan **Apiversion** özniteliği gerekir. Azure Stack ' de API sürümü uyumluluğunu sağlamak için, aşağıdaki API sürümleri her kaynak sağlayıcısı için geçerlidir:
 
-| Kaynak Sağlayıcısı | apiVersion |
+| Kaynak Sağlayıcı | apiVersion |
 | --- | --- |
 | İşlem |**2015-06-15** |
 | Ağ |**2015-06-15**, **2015-05-01-önizleme** |
@@ -66,11 +66,11 @@ Azure Resource Manager [işlevler](/azure/azure-resource-manager/resource-group-
 Bu işlevler Azure Stack kullanılamaz:
 
 * Atla
-* Almanız
+* almanız
 
 ## <a name="resource-location"></a>Kaynak konumu
 
-Azure Resource Manager şablonlar, dağıtım `location` sırasında kaynakları yerleştirmek için bir özniteliği kullanır. Azure 'da konumlar, Batı ABD veya Güney Amerika gibi bir bölgeye başvurur. Azure Stack, veri merkezinizde Azure Stack olduğundan konumlar farklıdır. Şablonların Azure ile Azure Stack arasında aktarılabilir olmasını sağlamak için, tek tek kaynakları dağıtırken kaynak grubu konumuna başvurmanız gerekir. Tüm kaynakların kaynak grubu konumunu `[resourceGroup().Location]` devralmasını sağlamak için bunu kullanarak yapabilirsiniz. Aşağıdaki kod, bir depolama hesabı dağıtıldığında bu işlevi kullanmanın bir örneğidir:
+Azure Resource Manager şablonlar, dağıtım sırasında kaynakları yerleştirmek için `location` özniteliğini kullanır. Azure 'da konumlar, Batı ABD veya Güney Amerika gibi bir bölgeye başvurur. Azure Stack, veri merkezinizde Azure Stack olduğundan konumlar farklıdır. Şablonların Azure ile Azure Stack arasında aktarılabilir olmasını sağlamak için, tek tek kaynakları dağıtırken kaynak grubu konumuna başvurmanız gerekir. Tüm kaynakların kaynak grubu konumunu devralmasını sağlamak için bunu `[resourceGroup().Location]` kullanarak yapabilirsiniz. Aşağıdaki kod, bir depolama hesabı dağıtıldığında bu işlevi kullanmanın bir örneğidir:
 
 ```json
 "resources": [

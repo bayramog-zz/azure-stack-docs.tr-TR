@@ -16,12 +16,12 @@ ms.date: 08/29/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 0147108a2e4fb45fce98460fcde141b5f2e28df5
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: 25cb846b8e3a2200636dff0f2acfc25244a5e3d4
+ms.sourcegitcommit: e8aa26b078a9bab09c8fafd888a96785cc7abb4d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70975047"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709015"
 ---
 # <a name="deploy-app-service-in-an-offline-environment-in-azure-stack"></a>Azure Stack 'de çevrimdışı bir ortamda App Service dağıtma
 
@@ -32,11 +32,11 @@ ms.locfileid: "70975047"
 
 Bu makaledeki yönergeleri izleyerek [App Service kaynak sağlayıcısını](azure-stack-app-service-overview.md) aşağıdaki bir Azure Stack ortamına dağıtabilirsiniz:
 
-- Internet 'e bağlı değil
+- İnternet 'e bağlı değil.
 - Active Directory Federasyon Hizmetleri (AD FS) tarafından güvenli hale getirilir (AD FS).
 
 > [!IMPORTANT]
-> Kaynak sağlayıcısı yükleyicisini çalıştırmadan önce [Azure Stack App Service dağıtmaya yönelik önkoşullar](azure-stack-app-service-before-you-get-started.md)bölümündeki adımları tamamladığınızdan emin olun. Ayrıca, yeni işlevleri, düzeltmeleri ve dağıtımınızı etkileyebilecek bilinen sorunları öğrenmek için 1,7 sürümüne eşlik eden [sürüm notlarını](azure-stack-app-service-release-notes-update-seven.md) da okumalısınız.
+> Kaynak sağlayıcısı yükleyicisini çalıştırmadan önce [Azure Stack App Service dağıtmaya yönelik önkoşullar](azure-stack-app-service-before-you-get-started.md)bölümündeki adımları tamamladığınızdan emin olun. Ayrıca, yeni işlevsellik, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için 1,7 sürümüne eşlik eden [sürüm notlarını](azure-stack-app-service-release-notes-update-seven.md) da okumalısınız.
 
 App Service kaynak sağlayıcısını çevrimdışı Azure Stack dağıtımınıza eklemek için, bu en üst düzey görevleri gerçekleştirmeniz gerekir:
 
@@ -47,15 +47,15 @@ App Service kaynak sağlayıcısını çevrimdışı Azure Stack dağıtımını
 
 ## <a name="create-an-offline-installation-package"></a>Çevrimdışı yükleme paketi oluşturma
 
-Çevrimdışı bir ortamda App Service dağıtmak için, önce internet 'e bağlı bir makinede bir çevrimdışı yükleme paketi oluşturmanız gerekir.
+App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağlı bir makinede çevrimdışı yükleme paketi oluşturun.
 
 1. AppService. exe yükleyicisini Internet 'e bağlı bir makinede çalıştırın.
 
-2. **Gelişmiş** > **çevrimdışı yükleme paketi oluştur**' a tıklayın.
+2. **Gelişmiş**@no__t seçin-1**çevrimdışı yükleme paketi oluşturun**.
 
     ![App Service yükleyicisinde çevrimdışı paket oluşturma][1]
 
-3. App Service yükleyicisi bir çevrimdışı yükleme paketi oluşturur ve bu paketin yolunu görüntüler. Dosya Gezgini 'nde klasörü açmak için **klasörü aç** ' a tıklayabilirsiniz.
+3. App Service yükleyicisi bir çevrimdışı yükleme paketi oluşturur ve bu paketin yolunu görüntüler. Dosya Gezgini 'nde klasörü açmak için **klasörü aç** ' ı seçebilirsiniz.
 
     ![App Service yükleyicisinde çevrimdışı yükleme paketi başarıyla oluşturuldu](media/azure-stack-app-service-deploy-offline/image02.png)
 
@@ -65,66 +65,65 @@ App Service kaynak sağlayıcısını çevrimdışı Azure Stack dağıtımını
 
 1. Appservice. exe ' yi Azure Stack Yöneticisi Azure Kaynak Yönetimi uç noktasına ulaşabilme bir bilgisayardan yönetici olarak çalıştırın.
 
-2. **Gelişmiş** > **çevrimdışı yükleme**' ye tıklayın.
+1. **Gelişmiş** >  ' i seçin,**çevrimdışı yükleme tamamlanmıştır**.
 
     ![App Service yükleyici 'de çevrimdışı yükleme 'yi doldurun][2]
 
-3. Daha önce oluşturduğunuz çevrimdışı yükleme paketinin konumuna gidin ve ardından **İleri**' ye tıklayın.
+1. Daha önce oluşturduğunuz çevrimdışı yükleme paketinin konumuna gidin ve ardından **İleri**' yi seçin.
 
     ![Çevrimdışı yükleme paketi yolu anlık ileti App Service yükleyiciyi belirtin](media/azure-stack-app-service-deploy-offline/image04.png)
 
-4. Microsoft yazılımı lisans koşulları 'nı gözden geçirip kabul edin ve ardından **İleri**' ye tıklayın.
+1. Microsoft yazılımı lisans koşulları 'nı gözden geçirip kabul edin ve ardından **İleri**' yi seçin.
 
-5. Üçüncü taraf lisans koşullarını gözden geçirip kabul edin ve ardından **İleri**' ye tıklayın.
+1. Üçüncü taraf lisans koşullarını gözden geçirip kabul edin ve ardından **İleri**' yi seçin.
 
-6. App Service bulut yapılandırması bilgilerinin doğru olduğundan emin olun. ASDK dağıtımı sırasında varsayılan ayarları kullandıysanız, varsayılan değerleri burada kabul edebilirsiniz. Ancak, Azure Stack dağıttığınız veya tümleşik bir sisteme dağıtırken seçenekleri özelleştirdiyseniz, Bu penceredeki değerleri, bunu yansıtacak şekilde düzenlemeniz gerekir. Örneğin, mycloud.com etki alanı sonekini kullanırsanız, Azure Stack kiracı Azure Resource Manager uç noktasının olarak `management.<region>.mycloud.com`değiştirilmesi gerekir. Bilgilerinizi doğruladıktan sonra **İleri**' ye tıklayın.
+1. App Service bulut yapılandırması bilgilerinin doğru olduğundan emin olun. ASDK dağıtımı sırasında varsayılan ayarları kullandıysanız, varsayılan değerleri burada kabul edebilirsiniz. Ancak, Azure Stack dağıttığınız veya tümleşik bir sisteme dağıtırken seçenekleri özelleştirdiyseniz, Bu penceredeki değerleri bu değişiklikleri yansıtacak şekilde düzenlemeniz gerekir. Örneğin, mycloud.com etki alanı sonekini kullanırsanız, Azure Stack kiracı Azure Resource Manager uç noktasının olarak `management.<region>.mycloud.com`değiştirilmesi gerekir. Bilgilerinizi doğruladıktan sonra **İleri**' yi seçin.
 
     ![App Service yükleyicisinde Azure App Service bulutu yapılandırma][3]
 
-7. Sonraki sayfada:
+1. Sonraki sayfada:
 
-   1. **Azure Stack abonelikler** kutusunun yanındaki **Bağlan** düğmesine tıklayın. 
+   a. **Azure Stack abonelikler** kutusunun yanındaki **Bağlan** düğmesini seçin. 
 
-   2. Yönetici hesabınızı girin. Örneğin: cloudadmin@azurestack.local. Parolanızı girip **oturum aç**' a tıklayın.
+   b. Yönetici hesabınızı girin. Örneğin: cloudadmin@azurestack.local. Parolanızı girip **oturum aç '** ı seçin.
 
-   3. **Azure Stack abonelikler** kutusunda **varsayılan sağlayıcı aboneliğini**seçin.
+   c. **Azure Stack abonelikler** kutusunda **varsayılan sağlayıcı aboneliği**' ni seçin.
+   > [!NOTE]
+   > App Service, yalnızca **varsayılan sağlayıcı aboneliğine**dağıtılabilir.
 
-      > [!NOTE]
-      > App Service, yalnızca **varsayılan sağlayıcı aboneliğine**dağıtılabilir.
+   d. **Azure Stack konumları** kutusunda, dağıtmakta olduğunuz bölgeye karşılık gelen konumu seçin. Örneğin, ASDK 'ye dağıtıyorsanız **Yerel**' i seçin.
 
-   4. **Azure Stack konumları** kutusunda, dağıtmakta olduğunuz bölgeye karşılık gelen konumu seçin. Örneğin, ASDK 'ye dağıtım yapıyorsanız **Yerel** ' i seçin.
-
-   5. **İleri**'ye tıklayın.
+   e. **İleri**’yi seçin.
 
       ![App Service yükleyicisindeki abonelikleri ve konumları Azure Stack][4]
 
-8. [Buradaki](azure-stack-app-service-before-you-get-started.md#virtual-network)adımlar aracılığıyla yapılandırılan mevcut bir sanal ağa dağıtabilirsiniz veya App Service yükleyicisinin sanal ağ ve ilişkili alt ağlar oluşturmasına izin verebilirsiniz.
-   - **Varsayılan ayarlarla VNET oluştur**' u seçin, Varsayılanları kabul edin ve ardından **İleri**' ye tıklayın veya;
-   - **Mevcut VNET ve alt ağları kullan ' ı**seçin.
-       1. Sanal ağınızı içeren **kaynak grubunu** seçin;
-       2. Dağıtmak istediğiniz doğru **sanal ağ** adını seçin;
-       3. Gerekli rol alt ağlarının her biri için doğru **alt ağ** değerlerini seçin;
-       4. **İleri**'ye tıklayın.
+1. App Service yükleyicisinin bir sanal ağ ve ilişkili alt ağlar oluşturmasına izin verebilirsiniz. Ya da, [Bu adımlar](azure-stack-app-service-before-you-get-started.md#virtual-network)aracılığıyla yapılandırıldığı gibi var olan bir sanal ağa dağıtabilirsiniz.
+   - App Service Installer metodunu kullanmak için **varsayılan ayarlarla VNET oluştur**' u seçin, Varsayılanları kabul edin ve ardından **İleri**' yi seçin.
+   - Mevcut bir ağa dağıtmak için, **mevcut VNET ve alt ağları kullan**' ı seçin ve ardından:
+       1. Sanal ağınızı içeren **kaynak grubu** seçeneğini belirleyin.
+       2. Dağıtmak istediğiniz **sanal ağ** adını seçin.
+       3. Gerekli rol alt ağlarının her biri için doğru **alt ağ** değerlerini seçin.
+       4. **İleri**’yi seçin.
 
       ![App Service yükleyicisinde sanal ağ ve alt ağ bilgileri][5]
 
-9. Dosya paylaşımınızın bilgilerini girin ve ardından **İleri**' ye tıklayın. Dosya paylaşımının adresi, dosya sunucunuzun tam etki alanı adını (FQDN) veya IP adresini kullanmalıdır. Örneğin, \\\appservicefileserver.Local.cloudapp.azurestack.external\websites veya \\\10.0.0.1\websites.  Etki alanına katılmış bir dosya sunucusu kullanıyorsanız, etki alanı dahil olmak üzere tam Kullanıcı adını sağlamanız gerekir. Örneğin, Myfileserverdomain\fileshareowner.
+1. Dosya paylaşımınızın bilgilerini girin ve ardından **İleri**' yi seçin. Dosya paylaşımının adresi, dosya sunucunuzun tam etki alanı adını (FQDN) veya IP adresini kullanmalıdır. Örneğin: \\ \ appservicedosyasunucusu. Local. cloudapp. azurestack. external\websiteleri veya \\ \ 10.0.0.1 \ Web siteleri.  Etki alanına katılmış bir dosya sunucusu kullanıyorsanız, etki alanı dahil olmak üzere tam Kullanıcı adını sağlamanız gerekir. Örneğin: `<myfileserverdomain>\<FileShareOwner>`.
 
     > [!NOTE]
-    > Yükleyici devam etmeden önce FileShare 'e bağlantıyı test girişiminde bulunur. Ancak, var olan bir sanal ağda dağıtmayı seçerseniz, yükleyici FileShare 'e bağlanamaz ve devam etmek isteyip istemediğinizi soran bir uyarı görüntüler. FileShare bilgilerini doğrulayın ve doğruysa devam edin.
+    > Yükleyici, devam etmeden önce dosya paylaşımıyla bağlantıyı test etmeye çalışır. Ancak, var olan bir sanal ağa dağıtmayı seçerseniz, yükleyici dosya paylaşımıyla bağlantı kuramıyor ve devam etmek isteyip istemediğinizi soran bir uyarı görüntülüyor olabilir. Dosya paylaşma bilgilerini doğrulayın ve doğruysa devam edin.
 
    ![App Service yükleyicisinde dosya paylaşma bilgileri][8]
 
-10. Sonraki sayfada:
+1. Sonraki sayfada:
     1. **Kimlik uygulama kimliği** kutusunda kimlik için KULLANDıĞıNıZ uygulamanın GUID 'sini girin (Azure AD 'den).
-    2. **Kimlik uygulama sertifikası dosyası** kutusunda, sertifika dosyasının konumunu girin (veya konumuna gidin).
-    3. **Kimlik uygulama sertifikası parolası** kutusuna sertifika için parolayı girin. Bu parola, sertifikaları oluşturmak için betiği kullandığınız zaman ' i unutmayın.
-    4. **Azure Resource Manager kök sertifika dosyası** kutusunda, sertifika dosyasının konumunu girin (veya konumuna gidin).
-    5. **İleri**'ye tıklayın.
+    1. **Kimlik uygulama sertifikası dosyası** kutusunda, sertifika dosyasının konumunu girin (veya konumuna gidin).
+    1. **Kimlik uygulama sertifikası parolası** kutusuna sertifika için parolayı girin. Bu parola, sertifikaları oluşturmak için betiği kullandığınız zaman ' i unutmayın.
+    1. **Azure Resource Manager kök sertifika dosyası** kutusunda, sertifika dosyasının konumunu girin (veya konumuna gidin).
+    1. **İleri**’yi seçin.
 
     ![App Service yükleyicisinde uygulama KIMLIĞI ve sertifika bilgilerini girin][10]
 
-11. Üç sertifika dosyası kutusunun her biri için, **Araştır** ' a tıklayın ve ardından uygun sertifika dosyasına gidin. Her sertifika için parola sağlamalısınız. Bu sertifikalar, [gerekli sertifikaları oluştur adımında](azure-stack-app-service-before-you-get-started.md#get-certificates)oluşturduğunuz olanlardır. Tüm bilgileri girdikten sonra **İleri** ' ye tıklayın.
+1. Üç sertifika dosyası kutusunun her biri için, **Araştır**' ı seçin ve ardından uygun sertifika dosyasına gidin. Her sertifika için parola sağlamalısınız. Bu sertifikalar, [gerekli sertifikaları oluştur adımında](azure-stack-app-service-before-you-get-started.md#get-certificates)oluşturduğunuz olanlardır. Tüm bilgileri girdikten sonra **İleri ' yi** seçin.
 
     | Box | Sertifika dosyası adı örneği |
     | --- | --- |
@@ -136,12 +135,12 @@ App Service kaynak sağlayıcısını çevrimdışı Azure Stack dağıtımını
 
     ![App Service yükleyicisinde SSL sertifikası bilgilerini girin][11]
 
-12. App Service kaynak sağlayıcısı veritabanlarını barındırmak için kullanılan sunucu örneğinin SQL Server ayrıntılarını girin ve ardından **İleri**' ye tıklayın. Yükleyici SQL bağlantı özelliklerini doğrular. SQL Server adı için iç IP veya FQDN girmeniz **gerekir** .
+1. App Service kaynak sağlayıcısı veritabanlarını barındırmak için kullanılan sunucu örneğinin SQL Server ayrıntılarını girin ve ardından **İleri**' yi seçin. Yükleyici SQL bağlantı özelliklerini doğrular. SQL Server adı için iç IP veya FQDN girmeniz **gerekir** .
 
     > [!NOTE]
-    > Yükleyici devam etmeden önce SQL Server bağlantıyı test girişiminde bulunur. Ancak, var olan bir sanal ağda dağıtmayı seçerseniz, yükleyici SQL Server bağlanamaz ve devam etmek isteyip istemediğiniz bir uyarı görüntüler. SQL Server bilgilerini doğrulayın ve doğruysa devam edin.
+    > Yükleyici devam etmeden önce SQL Server çalıştıran bilgisayarla bağlantıyı test etmeye çalışır. Ancak, var olan bir sanal ağa dağıtmayı seçerseniz, yükleyici SQL Server çalıştıran bilgisayara bağlanamamalı ve devam etmek isteyip istemediğinizi soran bir uyarı görüntülüyor olabilir. SQL Server bilgilerini doğrulayın ve doğruysa devam edin.
     >
-    > Azure Stack 1,3 ve sonraki sürümlerde Azure App Service, yükleyici SQL Server SQL Server düzeyinde veritabanı içerme özelliği etkinleştirilmiş olduğunu denetler. Aksi takdirde, aşağıdaki özel durum istenir:
+    > Azure Stack 1,3 ile ilgili Azure App Service, yükleyici, SQL Server çalıştıran bilgisayarın SQL Server düzeyinde veritabanı içerme özelliği etkinleştirilmiş olduğunu denetler. Aksi takdirde, aşağıdaki özel durum istenir:
     > ```sql
     >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
     >    ***********************************************************
@@ -151,11 +150,11 @@ App Service kaynak sağlayıcısını çevrimdışı Azure Stack dağıtımını
     >    GO
     >    ***********************************************************
     > ```
-    > Daha fazla bilgi için [Azure Stack 1,3 Azure App Service için sürüm notlarına](azure-stack-app-service-release-notes-update-three.md) bakın.
+    > Daha fazla ayrıntı için, [Azure Stack 1,3 Azure App Service sürüm notlarına](azure-stack-app-service-release-notes-update-three.md)bakın.
 
     ![App Service yükleyicide SQL Server bilgileri girin][12]
 
-13. Rol örneği ve SKU seçeneklerini gözden geçirin. Varsayılanlar, bir ASDK dağıtımındaki her rol için minimum örnek sayısı ve minimum SKU ile doldurulur. Dağıtımınızı planlamaya yardımcı olmak için vCPU ve bellek gereksinimlerinin bir özeti verilmiştir. Seçimlerinizi yaptıktan sonra **İleri**' ye tıklayın.
+1. Rol örneği ve SKU seçeneklerini gözden geçirin. Varsayılanlar, bir ASDK dağıtımındaki her rol için minimum örnek sayısı ve minimum SKU ile doldurulur. Dağıtımınızı planlamaya yardımcı olmak için vCPU ve bellek gereksinimlerinin bir özeti verilmiştir. Seçimlerinizi yaptıktan sonra **İleri**' yi seçin.
 
      > [!NOTE]
      > Üretim dağıtımları için, [Azure Stack Azure App Service sunucu rolleri Için kapasite planlaması](azure-stack-app-service-capacity-planning.md)bölümündeki yönergeleri izleyin.
@@ -167,40 +166,40 @@ App Service kaynak sağlayıcısını çevrimdışı Azure Stack dağıtımını
     | Denetleyici | 1\. | Standard_A2-(2 vCPU, 3584 MB) | App Service bulutu durumunu yönetir ve bakımını yapar. |
     | Yönetim | 1\. | Standard_A2-(2 vCPU, 3584 MB) | App Service Azure Resource Manager ve API uç noktalarını, Portal uzantılarını (yönetici, kiracı, Işlevler portalı) ve veri hizmetini yönetir. Yük devretmeyi desteklemek için önerilen örnekleri 2 ' ye yükseltin. |
     | Yayımcı | 1\. | Standard_A1-(1 vCPU, 1792 MB) | FTP ve Web dağıtımı aracılığıyla içerik yayımlar. |
-    | FrontEnd | 1\. | Standard_A1-(1 vCPU, 1792 MB) | İstekleri App Service uygulamalara yönlendirir. |
+    | Ön Uç | 1\. | Standard_A1-(1 vCPU, 1792 MB) | İstekleri App Service uygulamalara yönlendirir. |
     | Paylaşılan çalışan | 1\. | Standard_A1-(1 vCPU, 1792 MB) | Web veya API uygulamalarını ve Azure Işlevleri uygulamalarını barındırır. Daha fazla örnek eklemek isteyebilirsiniz. Bir operatör olarak, teklifinizi tanımlayabilir ve herhangi bir SKU katmanını seçebilirsiniz. Katmanların en az bir vCPU olması gerekir. |
 
     ![App Service yükleyicisinde rol katmanlarını ve SKU seçeneklerini ayarlama][14]
 
     > [!NOTE]
-    > Windows Server 2016 Core, Azure Stack üzerinde Azure App Service kullanımı için desteklenen bir platform görüntüsü *değil* .  Üretim dağıtımları için değerlendirme görüntülerini kullanmayın. Azure Stack Azure App Service, dağıtım için kullanılan görüntüde Microsoft.NET 3.5.1 SP1 'in etkinleştirilmesini gerektirir.  Market dağıtılmış Windows Server 2016 görüntülerinde bu özellik etkin değildir, bu nedenle bu önceden etkinleştirilmiş bir Windows Server 2016 görüntüsü oluşturmanız ve kullanmanız gerekir.
+    > Windows Server 2016 Core, Azure Stack üzerinde Azure App Service kullanımı için desteklenen bir platform görüntüsü *değil* .  Üretim dağıtımları için değerlendirme görüntülerini kullanmayın. Azure Stack Azure App Service, dağıtım için kullanılan görüntüde Microsoft .NET 3.5.1 SP1 'in etkinleştirilmesini gerektirir. Market-dağıtılmış Windows Server 2016 görüntülerinde bu özellik etkin değildir. Bu nedenle, bu özellikle önceden etkinleştirilmiş bir Windows Server 2016 görüntüsü oluşturmanız ve kullanmanız gerekir.
 
-14. **Platform görüntüsünü seçin** kutusunda, App Service bulutu için işlem kaynak sağlayıcısında bulunan görüntülerden dağıtım Windows Server 2016 sanal MAKINESI (VM) görüntünüzü seçin. **İleri**’yi seçin.
+1. **Platform görüntüsünü seçin** kutusunda, App Service bulutu için işlem kaynak sağlayıcısında bulunan görüntülerden dağıtım Windows Server 2016 sanal MAKINESI (VM) görüntünüzü seçin. **İleri**’yi seçin.
 
-15. Sonraki sayfada:
+1. Sonraki sayfada:
      1. Çalışan rolü VM Yöneticisi Kullanıcı adı ve parolasını girin.
      2. Diğer roller VM Yönetici Kullanıcı adı ve parolasını girin.
-     3. **İleri**'ye tıklayın.
+     3. **İleri**’yi seçin.
 
     ![App Service yükleyici 'de rol VM yöneticileri girin][16]
 
-16. Özet sayfasında:
+1. Özet sayfasında:
     1. Yaptığınız seçimleri doğrulayın. Değişiklik yapmak için **önceki düğmeleri kullanarak önceki sayfaları** ziyaret edin.
     2. Yapılandırma doğruysa onay kutusunu seçin.
-    3. Dağıtımı başlatmak için **İleri**' ye tıklayın.
+    3. Dağıtımı başlatmak için **İleri**' yi seçin.
 
     ![App Service yükleyicisinde yapılan seçimlerin Özeti][17]
 
-17. Sonraki sayfada:
+1. Sonraki sayfada:
     1. Yükleme ilerlemesini izleyin. Azure Stack App Service, varsayılan seçimlere göre dağıtımı 60 dakika sürer.
-    2. Yükleyici başarıyla tamamlandıktan sonra **Çıkış**' a tıklayın.
+    2. Yükleyici çalışmayı tamamladıktan sonra **Çıkış**' ı seçin.
 
     ![App Service yükleyicisinde yükleme işlemini izleme][18]
 
 ## <a name="post-deployment-steps"></a>Dağıtım sonrası adımlar
 
 > [!IMPORTANT]
-> App Service RP 'Yi bir SQL Always on örneğiyle birlikte sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna eklemeli](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve bir hata durumunda hizmet kaybını engellemek için veritabanlarını eşitlemeniz *gerekir* veritabanı yük devretmesi.
+> App Service RP 'yi bir SQL Always on örneğiyle sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna eklemeniz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) *gerekir* . Veritabanı yük devretmesi durumunda herhangi bir hizmet kaybını engellemek için de veritabanlarını eşitlemeniz gerekir.
 
 Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiğini etkinleştirerek bir giden güvenlik kuralı eklemeniz gerekir. Yönetici portalında, WorkersNsg Network Security grubuna gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
@@ -218,7 +217,7 @@ Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine d
 
 1. Azure Stack yönetici portalında **Yönetim-App Service**' e gidin.
 
-2. Genel bakışta durum ' ın altında, **durumun** **tüm rolleri**görüntüleyip görüntülemediğini kontrol edin.
+1. Genel bakışta durum ' ın altında, **durumun** **tüm rolleri**görüntüleyip görüntülemediğini kontrol edin.
 
     ![App Service yönetimine genel bakış](media/azure-stack-app-service-deploy/image12.png)
 
@@ -233,35 +232,35 @@ App Service kaynak sağlayıcısını dağıttıktan ve kaydettikten sonra, kull
 >
 > Üçüncü Teknik Önizleme sürümünden itibaren Web, API ve Azure Işlevleri uygulamaları oluşturmak için kiracı portalını kullanmanız ve bir kiracı aboneliğine sahip olmanız gerekir.
 
-1. Azure Stack kiracı portalında **+ kaynak** > oluştur**Web ve mobil** > **Web uygulaması**' na tıklayın.
+1. Azure Stack kiracı portalında **+ kaynak oluştur** > **Web ve mobil** > **Web uygulaması**' nı seçin.
 
-2. **Web uygulaması** dikey penceresinde, **Web uygulaması** kutusuna bir ad yazın.
+1. **Web uygulaması** dikey penceresinde, **Web uygulaması** kutusuna bir ad yazın.
 
-3. **Kaynak grubu**altında **Yeni**' ye tıklayın. **Kaynak grubu** kutusuna bir ad yazın.
+1. **Kaynak grubu**altında **Yeni**' yi seçin. **Kaynak grubu** kutusuna bir ad yazın.
 
-4. **App Service planı/Konum** > **Yeni Oluştur**'a tıklayın.
+1. **App Service planı/konumu** > **Yeni oluştur**' u seçin.
 
-5. **App Service planı** dikey penceresinde, **App Service planı** kutusuna bir ad yazın.
+1. **App Service planı** dikey penceresinde, **App Service planı** kutusuna bir ad yazın.
 
-6. **Fiyatlandırma katmanı** > **serbest paylaşılan** veya **paylaşılan-paylaşılan** > **Seç** > TamamOluştur > ' a tıklayın.
+1. **Fiyatlandırma katmanını** > **serbest paylaşılan** veya **paylaşılan-paylaşılan** > **Seç** > TamamOluştur > ' u seçin.
 
-7. Bir dakika içinde, panoda yeni Web uygulaması için bir kutucuk görünür. Kutucuğa tıklayın.
+1. Bir dakikadan kısa bir sürede, panoda yeni Web uygulaması için bir kutucuk görünür. Kutucuğu seçin.
 
-8. **Web uygulaması** dikey penceresinde, bu uygulamanın varsayılan Web sitesini görüntülemek Için, **Araştır** ' a tıklayın.
+1. **Web uygulaması** dikey penceresinde, bu uygulamanın varsayılan Web sitesini görüntülemek Için, **Araştır** ' ı seçin.
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>WordPress, DNN veya Docgo Web sitesi dağıtma (isteğe bağlı)
 
-1. Azure Stack kiracı portalında, Azure Marketi ' **+** ne gidin, bir docgo Web sitesi dağıtın ve başarılı bir şekilde tamamlanmasını bekleyin. Docgo web platformu, dosya sistemi tabanlı bir veritabanı kullanır. SQL veya MySQL gibi ek kaynak sağlayıcıları gerektirmez.
+1. Azure Stack kiracı portalında **+** ' i seçin, Azure Marketi ' ne gidin, bir Docgo Web sitesi dağıtın ve başarılı bir şekilde tamamlanmasını bekleyin. Docgo web platformu, dosya sistemi tabanlı bir veritabanı kullanır. SQL veya MySQL gibi ek kaynak sağlayıcıları gerektirmez.
 
-2. Ayrıca bir MySQL kaynak sağlayıcısı dağıttıysanız Market 'ten bir WordPress web sitesi dağıtabilirsiniz. Veritabanı parametreleri istendiğinde, tercih ettiğiniz Kullanıcı adı ve sunucu adı ile Kullanıcı *adını\@Kullanıcı1 Sunucu1*olarak girin.
+1. Ayrıca bir MySQL kaynak sağlayıcısı dağıttıysanız, Azure Marketi 'nden bir WordPress web sitesi dağıtabilirsiniz. Veritabanı parametreleri istendiğinde, tercih ettiğiniz Kullanıcı adı ve sunucu adı ile Kullanıcı *adını\@Kullanıcı1 Sunucu1*olarak girin.
 
-3. Ayrıca bir SQL Server kaynak sağlayıcısı dağıttıysanız Market 'ten bir DNN Web sitesi dağıtabilirsiniz. Veritabanı parametreleri istendiğinde, kaynak sağlayıcınıza bağlı SQL Server çalıştıran bilgisayardaki bir veritabanını seçin.
+1. Ayrıca bir SQL Server kaynak sağlayıcısı dağıttıysanız, Azure Marketi 'nden bir DNN Web sitesi dağıtabilirsiniz. Veritabanı parametreleri sorulduğunda, kaynak sağlayıcınıza bağlı SQL Server çalıştıran bilgisayardaki bir veritabanını seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Stack App Service için ek yönetici işlemlerine hazırlanın:
 
-- [Kapasite planlama](azure-stack-app-service-capacity-planning.md)
+- [Kapasite planlaması](azure-stack-app-service-capacity-planning.md)
 - [Dağıtım kaynaklarını yapılandırma](azure-stack-app-service-configure-deployment-sources.md)
 
 <!--Image references-->

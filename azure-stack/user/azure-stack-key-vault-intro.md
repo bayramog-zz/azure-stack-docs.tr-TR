@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: fc68f80688f6b8cbe0376d332d706c9dc7b6dd92
-ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
+ms.openlocfilehash: 2ad70754a63660a2ad374a324e8778c405446d29
+ms.sourcegitcommit: bbf3edbfc07603d2c23de44240933c07976ea550
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842900"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71714677"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Azure Stack Key Vault giriş
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Key Vault hizmetini içeren bir teklife abone olun.  
-* [PowerShell, Azure Stack birlikte kullanılmak üzere yapılandırıldı](azure-stack-powershell-configure-user.md).
+* PowerShell, [Azure Stack ile kullanım için](azure-stack-powershell-configure-user.md)yüklendi ve yapılandırıldı.
 
 ## <a name="key-vault-basics"></a>Key Vault temel bilgiler
 
@@ -58,21 +58,21 @@ Aşağıdaki senaryolarda, Key Vault geliştiricilerin ve güvenlik yöneticiler
 
 ### <a name="developer-for-an-azure-stack-app"></a>Azure Stack uygulaması için geliştirici
 
-**Gidermek** İmzalama ve şifreleme için anahtarları kullanan Azure Stack bir uygulama yazmak istiyorum. Çözümün coğrafi olarak dağıtılan bir uygulamaya uygun olması için bu anahtarların uygulamamın dışında olmasını istiyorum.
+**Sorun:** İmzalama ve şifreleme için anahtarları kullanan Azure Stack bir uygulama yazmak istiyorum. Çözümün coğrafi olarak dağıtılan bir uygulamaya uygun olması için bu anahtarların uygulamamın dışında olmasını istiyorum.
 
 **Ekstre** Anahtarlar bir kasada depolanır ve gerektiğinde bir URI tarafından çağırılır.
 
 ### <a name="developer-for-software-as-a-service-saas"></a>Hizmet olarak yazılım (SaaS) geliştiricisi
 
-**Gidermek** Müşterinin anahtarları ve gizli dizilerimin sorumluluğunu veya olası borcumu istemiyorum. Müşterilerin, temel yazılım özelliklerini sağlayan en iyi ne yaptığına odaklanabilmesi için kendi anahtarlarını sahip olmasını ve yönetmesini istiyorum.
+**Sorun:** Müşterinin anahtarları ve gizli dizilerimin sorumluluğunu veya olası borcumu istemiyorum. Müşterilerin, temel yazılım özelliklerini sağlayan en iyi ne yaptığına odaklanabilmesi için kendi anahtarlarını sahip olmasını ve yönetmesini istiyorum.
 
 **Ekstre** Müşteriler, Azure Stack içinde kendi anahtarlarını içeri aktarabilir ve yönetebilir.
 
 ### <a name="chief-security-officer-cso"></a>Güvenlik Müdürü (CSO)
 
-**Gidermek** Kuruluşumun anahtar yaşam döngüsü denetimine sahip olduğundan ve anahtar kullanımını izleyebildiğinden emin olmak istiyorum.
+**Sorun:** Kuruluşumun anahtar yaşam döngüsü denetimine sahip olduğundan ve anahtar kullanımını izleyebildiğinden emin olmak istiyorum.
 
-**Ekstre** Key Vault, Microsoft 'un anahtarlarınızı görmemesi veya ayıklanmaması için tasarlanmıştır. Bir uygulamanın, müşteri anahtarlarını kullanarak şifreleme işlemleri gerçekleştirmesi gerektiğinde, Key Vault anahtarları uygulama adına kullanır. Uygulama, müşteri anahtarlarını görmez. Birden çok Azure Stack hizmet ve kaynak kullandığımızda, anahtarları Azure Stack tek bir konumdan yönetebilirsiniz. Kasa, Azure Stack kaç kasasının olduğunu, destekledikleri bölgeleri ve hangi uygulamaların bunları kullandığını bağımsız olarak tek bir arabirim sağlar.
+**Ekstre** Key Vault, Microsoft'un anahtarlarınızı göremeyeceği ve ayıklayamayacağı şekilde tasarlanmıştır. Bir uygulamanın, müşteri anahtarlarını kullanarak şifreleme işlemleri gerçekleştirmesi gerektiğinde, Key Vault anahtarları uygulama adına kullanır. Uygulama, müşteri anahtarlarını görmez. Birden çok Azure Stack hizmet ve kaynak kullandığımızda, anahtarları Azure Stack tek bir konumdan yönetebilirsiniz. Kasa, Azure Stack kaç kasasının olduğunu, destekledikleri bölgeleri ve hangi uygulamaların bunları kullandığını bağımsız olarak tek bir arabirim sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
