@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: ecaea28d3b753520c53710a4e888cf37bf508fe1
-ms.sourcegitcommit: 4e48f1e5af74712a104eda97757dc5f50a591936
+ms.openlocfilehash: cd65f51867a4626e8f9b288c5113909bfa32b1c2
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224937"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829205"
 ---
 # <a name="overview-of-azure-stack-diagnostic-log-collection"></a>Azure Stack tanılama günlüğü koleksiyonuna genel bakış 
 
@@ -29,7 +29,7 @@ ms.locfileid: "71224937"
 
 Azure Stack, birlikte çalışan ve birbirleriyle etkileşim kuran büyük bir bileşen koleksiyonudur. Tüm bu bileşenler kendi benzersiz günlüklerini oluşturur. Bu durum, özellikle birden çok, etkileşim Azure Stack bileşenlerinden gelen hatalar için, özellikle de zorlayıcı bir görev için sorunları tanılamayı kolaylaştırabilir. Bu zorluğu ele almak için bir tanılama günlüğü toplama deneyimi tasarlıyoruz. 
 
-1907 ' den önce, tanılama deneyimi, sistem durumunu doğrulamak için [Test-AzureStack](azure-stack-diagnostic-test.md) kullanılarak ve sorun giderme amacıyla günlükleri toplamak için [ayrıcalıklı uç nokta (Pep)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) kullanılarak dahil edilmiştir. 
+1907 ' den önce, tanılama deneyimi, sistem durumunu doğrulamak için [Test-AzureStack](azure-stack-diagnostic-test.md) kullanılarak ve sorun giderme amacıyla günlükleri toplamak için [ayrıcalıklı uç nokta (Pep)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs) kullanılarak dahil edilmiştir. 
 
 1907 sürümünden itibaren, **Yardım ve destek** sayfası **tanılama günlüğü toplamayı**kullanarak daha basit bir deneyim sağlar. 
 **Tanılama günlüğü koleksiyonu** , sorun giderme işlemiyle Azure Stack işlecinin deneyimini geliştirmek için devam eden bir yatırımın bir parçasıdır. Bu geliştirmelerle, operatörler Microsoft Müşteri Destek Hizmetleri (CSS) ile tanılama günlüklerini hızlıca toplayıp paylaşabilir. Günlükler, erişimin gerektiği şekilde özelleştirilebileceği Azure 'da bir blob kapsayıcısında depolanabilir.    
@@ -42,7 +42,7 @@ Azure Stack, birlikte çalışan ve birbirleriyle etkileşim kuran büyük bir b
 ![Tanılama günlüğü toplama seçeneklerinin ekran görüntüsü](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
 **Tanılama günlüğü koleksiyonu** kolay bir kullanıcı arabirimine sahiptir ve PowerShell gerektirmez. Altyapı Hizmetleri çalışmıyor olsa bile Günlükler güvenilir bir şekilde toplanır.
-İlkeniz tanılama günlüklerinin CSS ile paylaşılmasına izin veriyorsa, **tanılama günlüğü koleksiyonu** 1907 sürümünden itibaren önerilen koleksiyon yöntemidir. Yardım ve destek ' de **tanılama günlüğü koleksiyonu** kullanılamıyorsa günlükleri toplamak için yalnızca [Pep](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) 'yi kullanmanız gerekir.
+İlkeniz tanılama günlüklerinin CSS ile paylaşılmasına izin veriyorsa, **tanılama günlüğü koleksiyonu** 1907 sürümünden itibaren önerilen koleksiyon yöntemidir. Yardım ve destek ' de **tanılama günlüğü koleksiyonu** kullanılamıyorsa günlükleri toplamak için yalnızca [Pep](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs) 'yi kullanmanız gerekir.
 
 ## <a name="automatic-diagnostic-log-collection"></a>Otomatik tanılama günlüğü koleksiyonu 
 

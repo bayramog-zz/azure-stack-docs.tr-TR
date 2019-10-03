@@ -1,6 +1,6 @@
 ---
 title: Azure Stack SQL kaynak sağlayıcısı 1.1.30.0 sürüm notları | Microsoft Docs
-description: Tüm bilinen sorunlar da dahil olmak üzere en son Azure Stack SQL kaynak sağlayıcısı güncelleştirmede nedir ve indirmek üzere nerede hakkında bilgi edinin.
+description: Bilinen sorunlar ve nereye indirileceği dahil olmak üzere en son Azure Stack SQL kaynak sağlayıcısı güncelleştirmesinde neler olduğunu öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,86 +12,86 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 22525fc9109bd2c03e28c4ca34b60c7a1f2585fe
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.openlocfilehash: f17c2ba41097d5b9bda903ae5d95c62e0ac9f53a
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65618060"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829350"
 ---
 # <a name="sql-resource-provider-11300-release-notes"></a>SQL kaynak sağlayıcısı 1.1.30.0 sürüm notları
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bu sürüm notları, yenilikleri ve bilinen sorunların SQL kaynak sağlayıcısı sürüm 1.1.30.0 açıklar.
+Bu sürüm notları SQL kaynak sağlayıcısı sürüm 1.1.30.0 geliştirmeleri ve bilinen sorunları anlatmaktadır.
 
 ## <a name="build-reference"></a>Yapı Başvurusu
-İkili SQL kaynak Sağlayıcısı'nı indirin ve geçici bir dizine içeriğini ayıklamak için ayıklayıcısı çalıştırın. Kaynak sağlayıcısı bir minimum karşılık gelen Azure yapı yığınına sahiptir. SQL kaynak Sağlayıcısı'nın bu sürümü yüklemek için gereken en düşük Azure Stack sürümü aşağıda verilmiştir:
+SQL kaynak sağlayıcısı ikilisini indirin ve ardından içeriği geçici bir dizine çıkarmak için kendi kendine ayıklayıcısı 'nı çalıştırın. Kaynak sağlayıcının en düşük karşılık gelen Azure Stack derlemesi vardır. SQL kaynak sağlayıcısı 'nın bu sürümünü yüklemek için gereken en düşük Azure Stack yayın sürümü aşağıda listelenmiştir:
 
-> |Azure Stack en düşük sürüm|SQL kaynak sağlayıcısı sürümü|
+> |En düşük Azure Stack sürümü|SQL kaynak sağlayıcısı sürümü|
 > |-----|-----|
 > |Sürüm 1808 (1.1808.0.97)|[1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
 > |     |     |
 
 > [!IMPORTANT]
-> En düşük desteklenen Azure Stack güncelleştirme, Azure Stack tümleşik sistemi için geçerli veya SQL kaynak sağlayıcısı en son sürümünü dağıtmadan önce en son Azure Stack geliştirme Seti'ni (ASDK) dağıtın.
+> Desteklenen en düşük Azure Stack güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya SQL kaynak sağlayıcısı 'nın en son sürümünü dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
 
 ## <a name="new-features-and-fixes"></a>Yeni özellikler ve düzeltmeler
-Azure Stack SQL kaynak Sağlayıcısı'nın bu sürümü, aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
+Azure Stack SQL kaynak sağlayıcısı 'nın bu sürümü aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
 
-- **SQL kaynak sağlayıcısı dağıtımları için etkin telemetri**. SQL kaynak sağlayıcısı dağıtımları için telemetri toplama etkinleştirildi. Kaynak sağlayıcısı dağıtım toplanan telemetri içerir, Başlat ve kez durdurmak, durumu, çıkış iletileri ve hata ayrıntıları (varsa) çıkın.
+- **SQL kaynak sağlayıcısı dağıtımları Için telemetri etkinleştirildi**. Telemetri koleksiyonu SQL kaynak sağlayıcısı dağıtımları için etkinleştirildi. Toplanan telemetri, kaynak sağlayıcısı dağıtımı, başlatma ve durdurma zamanları, çıkış durumu, çıkış iletileri ve hata ayrıntılardır (varsa).
 
-- **TLS 1.2 şifrelemeyi güncelleştirme**. Azure Stack iç bileşenleri ile kaynak sağlayıcısı iletişim için etkinleştirilmiş TLS 1.2 yalnızca destekler. 
+- **TLS 1,2 şifreleme güncelleştirmesi**. Etkin TLS 1,2-yalnızca dahili Azure Stack bileşenleriyle kaynak sağlayıcısı iletişimi için destek. 
 
 ### <a name="fixes"></a>Düzeltmeleri
 
-- **SQL kaynak sağlayıcısı Azure Stack PowerShell Uyumluluk**. SQL kaynak sağlayıcısı, AzureRM 1.3.0 uyum sağlamak için Azure Stack 2018-03-01-karma PowerShell profili ile çalışma ve daha sonra güncelleştirildi.
+- **SQL kaynak sağlayıcısı PowerShell uyumluluğunu Azure Stack**. SQL kaynak sağlayıcısı, Azure Stack 2018-03-01-hibrit PowerShell profiliyle çalışacak ve Azurerd 1.3.0 ve üzeri sürümlerle uyumluluk sağlayacak şekilde güncelleştirilmiştir.
 
-- **SQL oturum açma değişiklik parola dikey**. Burada parola değişikliği parola dikey pencerede değiştirilemez bir sorun düzeltildi. Parola kaldırılan bağlantılardan değişiklik bildirimleri.
+- **SQL oturum açma parolasını değiştir dikey**penceresi. Parola Değiştir dikey penceresinde parolanın değiştirilebileceği bir sorun düzeltildi. Parola değişikliği bildirimlerinin bağlantıları kaldırıldı.
 
-- **SQL Server ayarları dikey penceresinde güncelleştirme barındırma**. Ayarlar dikey penceresinde "Parola" yanlış yere başlığı bir sorun düzeltildi.
+- **SQL barındırma sunucusu ayarları dikey penceresi güncelleştirmesi**. Ayarlar dikey penceresinin yanlış "parola" olarak gösterildiği bir sorun düzeltildi.
 
 ## <a name="known-issues"></a>Bilinen sorunlar 
 
-- **SQL SKU'ları alabilir saate portalda görünür olmasını**. Bu yeni bir saate yeni SQL veritabanı oluşturma sırasında kullanım için görünür olmasını oluşturulan SKU'ları kadar sürebilir. 
+- **SQL SKU 'larının portalda görünür olması bir saate kadar sürebilir**. Yeni oluşturulan SKU 'Ların yeni SQL veritabanları oluşturulurken kullanılmak üzere görünür olması bir saate kadar sürebilir. 
 
     **Geçici çözüm**: Yok.
 
-- **SQL oturum açmaları yeniden**. Yeni bir SQL oluşturulmaya çalışılırken oturum açma ile aynı abonelik altında var olan bir oturum olarak aynı kullanıcı adı aynı oturum açma ve mevcut parolayı yeniden kullanma neden olur. 
+- **SQL oturum açmaları yeniden kullanılır**. Aynı abonelikte var olan bir oturum açma işlemiyle aynı kullanıcı adıyla yeni bir SQL oturumu oluşturmaya çalışmak, aynı oturumun ve mevcut parolanın yeniden kullanılmaya neden olur. 
 
-    **Geçici çözüm**: Farklı kullanıcı adları aynı abonelik altında yeni bir oturum açmalar oluşturulurken kullanın veya farklı bir abonelik altında aynı kullanıcı adı ile oturum açma bilgileri oluşturun.
+    **Geçici çözüm**: Aynı abonelik altında yeni oturumlar oluştururken farklı Kullanıcı adları kullanın veya farklı Abonelikler altında aynı kullanıcı adıyla oturum açmaları oluşturun.
 
-- **Paylaşılan SQL oturum açmaları veri tutarsızlığına neden**. Bir SQL oturum açma için aynı abonelik altında birden çok SQL veritabanlarını paylaşılıyorsa, oturum açma parolasını değiştirme veri tutarsızlığına neden olur.
+- **PAYLAŞıLAN SQL oturum açmaları veri tutarsızlığına neden olur**. Aynı abonelik kapsamında birden çok SQL veritabanı için bir SQL oturumu paylaşılmışsa, oturum açma parolasının değiştirilmesi veri tutarsızlığına neden olur.
 
-    **Geçici çözüm**: Her zaman aynı abonelik altında farklı veritabanları için farklı kimlik bilgileri kullanın.
+    **Geçici çözüm**: Aynı abonelikte farklı veritabanları için her zaman farklı oturumlar kullanın.
 
-- **TLS 1.2 desteği gereksinim**. Dağıtma veya TLS 1.2 etkin olduğu bir bilgisayardan SQL kaynak sağlayıcısını güncelle denerseniz işlem başarısız olabilir. TLS 1.2 desteklenen verdiğini doğrulamak için kaynak sağlayıcısını güncelle veya dağıtmak için kullanılan bilgisayarda aşağıdaki PowerShell komutunu çalıştırın:
+- **TLS 1,2 destek gereksinimi**. SQL kaynak sağlayıcısı 'nı TLS 1,2 'nin etkinleştirilmediği bir bilgisayardan dağıtmayı veya güncelleştirmeyi denerseniz, işlem başarısız olabilir. TLS 1,2 ' nin desteklendiği şekilde döndürüldüğünü doğrulamak için, kaynak sağlayıcısını dağıtmak veya güncelleştirmek üzere kullanılan bilgisayarda aşağıdaki PowerShell komutunu çalıştırın:
 
   ```powershell
   [System.Net.ServicePointManager]::SecurityProtocol
   ```
 
-  Varsa **Tls12** olan komut çıktısında dahil değil, TLS 1.2 bilgisayarda etkin değil.
+  **Tls12** , komutun çıkışına dahil edilmediğinde bilgisayarda TLS 1,2 etkin değildir.
 
-    **Geçici çözüm**: TLS 1.2 etkinleştirip sonra kaynak sağlayıcısı dağıtımı başlatın veya aynı PowerShell oturumunda komut dosyasını güncelleştirmek için aşağıdaki PowerShell komutunu çalıştırın:
+    **Geçici çözüm**: TLS 1,2 ' i etkinleştirmek için aşağıdaki PowerShell komutunu çalıştırın ve ardından aynı PowerShell oturumundan kaynak sağlayıcısı dağıtımını veya güncelleştirme betiğini başlatın:
 
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
-- **SQL kaynak sağlayıcısı başarısız SQL Server Always On dinleyici eklemek**. SQL kaynak sağlayıcısı VM, SQL Server Always On dinleyicisi dinleyici IP adresi kullanılırken dinleyicinin konak adı çözümlenemiyor.
+- **SQL kaynak sağlayıcısı SQL Server her zaman dinleyici ekleme işlemi yapamıyor**. SQL Server her zaman dinleyicinin dinleyici IP adresi kullanılırken SQL kaynak sağlayıcısı VM, dinleyicinin ana bilgisayar adını çözümleyemiyor.
 
-    **Geçici çözüm**: DNS düzgün dinleyici ana bilgisayar adı için bir dinleyici IP çözmek için çalıştığından emin olun.
+    **Geçici çözüm**: DNS 'in dinleyici IP 'si ile dinleyici ana bilgisayar adına çözümlenmesi için doğru çalıştığından emin olun.
     
-### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Çalışan Azure Stack bulut yöneticileri için bilinen sorunlar
-Belgeye başvurun [Azure Stack sürüm notları](azure-stack-servicing-policy.md).
+### <a name="known-issues-for-cloud-admins-operating-azure-stack"></a>Cloud Admins işletim Azure Stack için bilinen sorunlar
+[Azure Stack sürüm notlarındaki](azure-stack-servicing-policy.md)belgelere başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[SQL kaynak sağlayıcısı hakkında daha fazla bilgi](azure-stack-sql-resource-provider.md).
+[SQL kaynak sağlayıcısı hakkında daha fazla bilgi edinin](azure-stack-sql-resource-provider.md).
 
-[SQL kaynak sağlayıcısı dağıtmaya hazırlanma](azure-stack-sql-resource-provider-deploy.md#prerequisites).
+[SQL kaynak sağlayıcısı 'nı dağıtmaya hazırlanın](azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
-[SQL kaynak sağlayıcısı önceki bir sürümden yükseltme](azure-stack-sql-resource-provider-update.md). 
+[SQL kaynak sağlayıcısını önceki bir sürümden yükseltin](azure-stack-sql-resource-provider-update.md). 

@@ -16,12 +16,12 @@ ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: chengwei
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 3e46007c07856df9ecc6b4edca4c595525b3b8ba
-ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
+ms.openlocfilehash: 31fa9bcdf60b27b2eb2e8396be1d2a0e89f31b70
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71342782"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829181"
 ---
 # <a name="azure-stack-log-and-customer-data-handling"></a>Azure Stack günlüğü ve müşteri verileri işleme 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*  
@@ -31,7 +31,7 @@ Microsoft 'un Azure Stack ile bağlantılı olarak kişisel verilerin bir işlem
 - "Kişisel verileri Işleme; [Çevrimiçi hizmet koşulları](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)'Nın "veri koruma koşulları" bölümünde "GDPR" sağlayın.
 - Avrupa Birliği, [çevrimiçi hizmet koşullarının](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)ek 4 ' te yer aldığı terimleri genel veri koruma yönetmeliği.
 
-Azure Stack müşteri veri merkezlerinde bulunduğu için, Microsoft, yalnızca [Tanılama](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep), [telemetri](azure-stack-telemetry.md)ve [faturalandırma](azure-stack-usage-reporting.md)aracılığıyla Microsoft ile paylaşılan verilerden oluşan veri denetleyicisidir.  
+Azure Stack müşteri veri merkezlerinde bulunduğu için, Microsoft, yalnızca [Tanılama](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs), [telemetri](azure-stack-telemetry.md)ve [faturalandırma](azure-stack-usage-reporting.md)aracılığıyla Microsoft ile paylaşılan verilerden oluşan veri denetleyicisidir.  
 
 ## <a name="data-access-controls"></a>Veri erişim denetimleri 
 Belirli bir destek durumunu araştırmak için atanan Microsoft çalışanlarına, şifrelenmiş verilere salt okuma erişimi verilecektir. Microsoft çalışanları, gerekirse verileri silmek için kullanılan araçlara de erişebilir. Müşteri verilerine tüm erişim denetlenir ve günlüğe kaydedilir.  
@@ -51,7 +51,7 @@ Otomatik veri silme eylemi için (büyük/küçük bir süre sonra 90 gün sonra
 İsteğe bağlı veri silme eylemi için, Microsoft Destek mühendislerinin istek üzerine verileri silmesine izin veren araca erişimi vardır. Müşteriler tamamlandığında müşteriyle ilgili onay sunabilir.
 
 ## <a name="diagnostic-data"></a>Tanılama verileri
-Destek sürecinin bir parçası olarak Azure Stack Işleçler, sorun gidermeye yardımcı olmak için Azure Stack destek ve mühendislik ekipleriyle [tanılama günlüklerini paylaşabilir](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) .
+Destek sürecinin bir parçası olarak Azure Stack Işleçler, sorun gidermeye yardımcı olmak için Azure Stack destek ve mühendislik ekipleriyle [tanılama günlüklerini paylaşabilir](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs) .
 
 Microsoft, müşterilerin istenen tanılama günlük dosyalarını toplayıp yüklemesi için bir araç ve betik sağlar. Toplandıktan sonra, günlük dosyaları HTTPS ile korunan şifreli bir bağlantı üzerinden Microsoft 'a aktarılır. HTTPS, kablo üzerinden şifrelemeyi sağladığından, aktarım sırasında şifreleme için gereken parola yok. Bunlar alındıktan sonra, destek durumu kapatıldıktan sonraki 90 gün sonra otomatik olarak silinene kadar Günlükler şifrelenir ve depolanır.
 

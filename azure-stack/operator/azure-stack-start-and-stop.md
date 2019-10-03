@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 993c0c668a8894c82eddbf79e93b1722d3a3d8f4
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: 5072c40f4e8eba787e0a18c7c73a51111d0c847b
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494012"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829260"
 ---
 # <a name="start-and-stop-azure-stack"></a>Azure Stack başlatıp
 Azure Stack hizmetlerini doğru şekilde kapatmak ve yeniden başlatmak için bu makaledeki yordamları izlemeniz gerekir. Kapatma, tüm Azure Stack ortamını fiziksel olarak kapatır. Tüm altyapı rollerinde üsler başlatın ve kiracı kaynaklarını kapanmadan önce içinde oldukları güç durumuna geri döndürür.
@@ -91,4 +91,4 @@ Altyapı ve kiracı Hizmetleri, Azure Stack ortamınızda güç kullandıktan 2 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-[Azure Stack tanılama araçları](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) hakkında daha fazla bilgi edinin
+[Azure Stack tanılama araçları](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs) hakkında daha fazla bilgi edinin

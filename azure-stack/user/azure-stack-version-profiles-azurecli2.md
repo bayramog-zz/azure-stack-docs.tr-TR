@@ -3,23 +3,23 @@ title: Azure CLı ile Azure Stack yönetme | Microsoft Docs
 description: Azure Stack, kaynakları yönetmek ve dağıtmak için platformlar arası komut satırı arabirimini (CLı) nasıl kullanacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/16/2019
-ms.author: sethm
+ms.date: 10/02/2019
+ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 05/08/2019
-ms.openlocfilehash: 18644d3d331a5c093d0a78da435d6f79e03cb531
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: a0218652e2dace72356a32fe99ac5f6ac450cc94
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974656"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71824785"
 ---
 # <a name="manage-and-deploy-resources-to-azure-stack-with-azure-cli"></a>Azure CLı ile Azure Stack kaynakları yönetme ve dağıtma
 
@@ -126,7 +126,7 @@ Azure Stack CA kök sertifikasına güvenmek için, Azure CLı ile yüklenen Pyt
     .\python -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu bir yere getirin. Örneğin: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Belirli yolunuz, işletim sistemi ve CLı yüklemenize bağlıdır.
+    Sertifika konumunu bir yere getirin. Örneğin, `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Belirli yolunuz, işletim sistemi ve CLı yüklemenize bağlıdır.
 
 2. Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin.
 
@@ -175,10 +175,10 @@ Azure Stack CA kök sertifikasına güvenmek için, Azure CLı ile yüklenen Pyt
     | Value | Örnek | Açıklama |
     | --- | --- | --- |
     | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/` tümleşik sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işleçle iletişim kurun. |
     | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
     | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
-    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belge URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
@@ -246,7 +246,7 @@ ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gere
       python -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu bir yere getirin. Örneğin: `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sistemine ve yüklediğiniz Python sürümüne bağlıdır.
+    Sertifika konumunu bir yere getirin. Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sistemine ve yüklediğiniz Python sürümüne bağlıdır.
 
 2. Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin.
 
@@ -295,10 +295,10 @@ ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gere
     | Value | Örnek | Açıklama |
     | --- | --- | --- |
     | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/` tümleşik sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işleçle iletişim kurun. |
     | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
     | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
-    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belge URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
@@ -379,7 +379,7 @@ Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek gü
     python3 -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu bir yere getirin. Örneğin: `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
+    Sertifika konumunu bir yere getirin. Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
 
 2. Aşağıdaki Bash komutunu sertifikanızın yoluyla çalıştırın.
 
@@ -411,10 +411,10 @@ Azure Stack bağlanmak için aşağıdaki adımları kullanın:
     | Value | Örnek | Açıklama |
     | --- | --- | --- |
     | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/` tümleşik sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işleçle iletişim kurun. |
     | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
     | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
-    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belge URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
@@ -490,7 +490,7 @@ Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek gü
     python3 -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika konumunu bir yere getirin. Örneğin: `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
+    Sertifika konumunu bir yere getirin. Örneğin, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Belirli yolunuz, işletim sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
 
 2. Aşağıdaki Bash komutunu sertifikanızın yoluyla çalıştırın.
 
@@ -522,10 +522,10 @@ Azure Stack bağlanmak için aşağıdaki adımları kullanın:
     | Value | Örnek | Açıklama |
     | --- | --- | --- |
     | Ortam adı | AzureStackUser | Kullanıcı `AzureStackUser` ortamı için kullanın. Operatörünüz varsa, öğesini belirtin `AzureStackAdmin`. |
-    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/`Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`Tümleşik Sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işletmeniyle iletişim kurun. |
+    | Resource Manager uç noktası | https://management.local.azurestack.external | ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<region>.<fqdn>/` tümleşik sistem uç noktasıyla ilgili bir sorunuz varsa, bulut işleçle iletişim kurun. |
     | Depolama uç noktası | Local. azurestack. External | `local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
     | Keykasası son eki | .vault.local.azurestack.external | `.vault.local.azurestack.external`, ASDK içindir. Tümleşik bir sistem için, sisteminiz için bir uç nokta kullanın.  |
-    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belgenin URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM görüntüsü diğer adı belge uç noktası- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | VM görüntüsü diğer adlarını içeren belge URI 'SI. Daha fazla bilgi için bkz. [VM diğer adları uç noktasını ayarlama](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>

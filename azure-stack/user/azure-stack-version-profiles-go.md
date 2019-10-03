@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/26/2019
-ms.openlocfilehash: dac2eeaf3499068812d9c9a66348b0c44ea07b7d
-ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
+ms.openlocfilehash: 0636f3069db80613f02e979b5a102a471f12efad
+ms.sourcegitcommit: 3d14ae30ce3ee44729e5419728cce14b3000e968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842703"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71814475"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Go ile API sürüm profillerini kullanın Azure Stack
 
@@ -32,17 +32,17 @@ Profil, farklı hizmetlerden farklı sürümlere sahip farklı kaynak türlerini
 - Belirli API sürümlerine kilitleyerek uygulamanızın kararlılığı.
 - Azure Stack ve bölgesel Azure veri merkezleriyle uygulamanız için uyumluluk.
 
-Git SDK 'da profiller, profiller yolu altında bulunur. Sürüm numaraları **yyyy-aa-gg** biçiminde etiketlidir. En son Azure Stack API profili sürümü, damga sürümleri 1904 veya üzeri için **2019-03-01** . Bir profilden belirli bir hizmeti içeri aktarmak için ilgili modülün profilini içeri aktarın. Örneğin, **2019-03-01** profilinden **işlem** hizmetini içeri aktarmak için aşağıdaki kodu kullanın:
+Git SDK 'da profiller, profiller yolu altında bulunur. Profil sürüm numaraları **yyyy-aa-gg** biçiminde etiketlenir. En son Azure Stack API profili sürümü 1904 veya üzeri Azure Stack sürümleri için **2019-03-01** . Bir profilden belirli bir hizmeti içeri aktarmak için ilgili modülün profilini içeri aktarın. Örneğin, **2019-03-01** profilinden **işlem** hizmetini içeri aktarmak için aşağıdaki kodu kullanın:
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compute"
 ```
 
-## <a name="install-azure-sdk-for-go"></a>Go için Azure SDK yüklensin
+## <a name="install-the-azure-sdk-for-go"></a>Go için Azure SDK’yı yükleme
 
 1. Git'i yükleyin. Yönergeler için [Git'i yükledikten Başlarken -](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 2. [Go programlama dilini](https://golang.org/dl)yükler. Azure için API profilleri, go sürüm 1,9 veya daha yeni bir sürümü gerektirir.
-3. Aşağıdaki Bash komutunu çalıştırarak go Azure SDK 'sını ve bağımlılıklarını yükler:
+3. Aşağıdaki Bash komutunu çalıştırarak Azure go SDK 'sını ve bağımlılıklarını yükler:
 
    ```bash
    go get -u -d github.com/Azure/azure-sdk-for-go/...
@@ -50,7 +50,7 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compu
 
 ### <a name="the-go-sdk"></a>Go SDK 'Sı
 
-Aşağıdaki bağlantılarda Azure GO SDK hakkında daha fazla bilgi edinebilirsiniz:
+Aşağıdaki bağlantılarda Azure go SDK hakkında daha fazla bilgi edinebilirsiniz:
 
 - [Go için Azure SDK yüklenirken](/go/azure/azure-sdk-go-install)Azure go SDK 'sı.
 - Azure go SDK, [Azure-SDK-for-go](https://github.com/Azure/azure-sdk-for-go) deposunda GitHub 'da herkese açık bir şekilde sunulmaktadır.
@@ -63,13 +63,13 @@ Go SDK 'Sı, REST isteklerini Azure Resource Manager uç noktalarına göndermek
 
 Azure Stack bir go kodu örneği çalıştırmak için aşağıdaki adımları izleyin:
 
-1. Go için Azure SDK ve bağımlılıklarını yükler. Yönergeler için bkz. önceki bölüm, [Go için Azure SDK yüklemesi](#install-azure-sdk-for-go).
+1. Go için Azure SDK ve bağımlılıklarını yükler. Yönergeler için bkz. önceki bölüm, [Go için Azure SDK yüklemesi](#install-the-azure-sdk-for-go).
 2. Kaynak Yöneticisi uç noktasından meta veri bilgilerini alın. Uç nokta, go kodunuzu çalıştırmak için gereken bilgileri içeren bir JSON dosyası döndürür.
 
    > [!NOTE]  
    > **ResourceManagerUrl** olan Azure Stack geliştirme Seti'ni (ASDK): `https://management.local.azurestack.external/`  
-   > Tümleşik sistemlerdeki **Resourcemanagerurl 'si** :`https://management.<region>.<fqdn>/`  
-   > Gerekli meta verileri almak için:`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+   > Tümleşik sistemlerdeki **Resourcemanagerurl** : `https://management.<region>.<fqdn>/`  
+   > Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
    Örnek JSON dosyası:
 
@@ -86,9 +86,9 @@ Azure Stack bir go kodu örneği çalıştırmak için aşağıdaki adımları i
 
 3. Yoksa, bir abonelik oluşturur ve daha sonra kullanılmak üzere abonelik Kimliğini kaydedin. Abonelik oluşturma hakkında bilgi için, bkz. [Azure Stack tekliflere abonelik oluşturma](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-4. **Abonelik** kapsamı ve **sahip** rolü ile bir istemci gizli anahtarı kullanan bir hizmet sorumlusu oluşturun. Hizmet sorumlusu KIMLIĞINI ve gizli anahtarı kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında bilgi için bkz. [bir uygulama kimliğini kullanarak kaynaklara erişme](../operator/azure-stack-create-service-principals.md). <br>Azure Stack ortamınız artık ayarlandı.
+4. **Abonelik** kapsamı ve **sahip** rolü ile bir istemci gizli anahtarı kullanan bir hizmet sorumlusu oluşturun. Hizmet sorumlusu KIMLIĞINI ve gizli anahtarı kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında bilgi için bkz. [bir uygulama kimliğini kullanarak kaynaklara erişme](../operator/azure-stack-create-service-principals.md). Azure Stack ortamınız artık ayarlandı.
 
-5. Kodunuzda go SDK profilinden bir hizmet modülünü içeri aktarın. Azure Stack profilinin geçerli sürümü **2019-03-01**' dir. Örneğin, **2019-03-01** profil türünden ağ modülünü içeri aktarmak için aşağıdaki kodu kullanın:
+5. Kodunuzda go SDK profilinden bir hizmet modülünü içeri aktarın. Azure Stack profilinin geçerli sürümü **2019-03-01**' dir. Örneğin, **2019-03-01** profil türünden bir ağ modülünü içeri aktarmak için aşağıdaki kodu kullanın:
 
    ```go
    package main
@@ -107,9 +107,9 @@ Azure Stack bir go kodu örneği çalıştırmak için aşağıdaki adımları i
       vnetClient.Authorizer = autorest.NewBearerAuthorizer(token)
    ```
 
-   2 `<baseURI>` . adımda kullanılan **resourcemanagerurl** değerine ayarlanır. 3 `<subscriptionID>` . adımda kaydedilen **SubscriptionID** değerine ayarlanır.
+   @No__t-0 ' yı adım 2 ' de kullanılan **Resourcemanagerurl** değerine ayarlayın. @No__t-0 ' yı 3. adımda kaydedilen **SubscriptionID** değerine ayarlayın.
 
-   Belirteci oluşturmak için aşağıdaki bölüme bakın.  
+   Belirteci oluşturmak için bir sonraki bölüme bakın.  
 
 7. Önceki adımda oluşturduğunuz istemciyi kullanarak API yöntemlerini çağırın. Örneğin, önceki adımdan istemcisini kullanarak bir sanal ağ oluşturmak için aşağıdaki örneğe bakın:
 
@@ -134,7 +134,7 @@ Yetkilendirici, kaynak istemcisi için yetkilendirici olarak ayarlanmalıdır. A
 
 1. Abonelik üzerinde sahip rolüne sahip bir hizmet sorumlusu varsa, bu adımı atlayın. Aksi takdirde, bir istemci gizli dizisi kullanan hizmet sorumlusu oluşturma hakkında yönergeler için bkz. [bir uygulama kimliği kullanma](../operator/azure-stack-create-service-principals.md) ve aboneliğinize kapsamlı bir "sahip" rolü atama hakkında yardım için. Hizmet sorumlusu uygulama KIMLIĞI ve gizli anahtarını yakaladığınızdan emin olun.
 
-2. Kodunuzda, go-oto Rest öğesinden **adal** paketini içeri aktarın.
+2. Kodunuzda, **Go-oto Rest** öğesinden **adal** paketini içeri aktarın.
 
    ```go
    package main
@@ -154,9 +154,9 @@ Yetkilendirici, kaynak istemcisi için yetkilendirici olarak ayarlanmalıdır. A
    }
    ```
 
-   Bu `<activeDirectoryEndpoint>` belgenin önceki bölümünde alınan `ResourceManagerUrl` meta `loginEndpoint` verilerden özelliğin değerine ayarlanır. `<tenantID>` Değeri Azure Stack kiracı kimliğiniz olarak ayarlayın.
+   Bu belgenin önceki bölümünde alınan `ResourceManagerUrl` meta verilerinden `loginEndpoint` özelliğinin değerine `<activeDirectoryEndpoint>` değerini ayarlayın. @No__t-0 değerini Azure Stack kiracı KIMLIĞINIZ olarak ayarlayın.
 
-4. Son olarak, `NewServicePrincipalToken` **adal** modülünden yöntemi kullanarak bir hizmet sorumlusu belirteci oluşturun:
+4. Son olarak, **adal** modülünden `NewServicePrincipalToken` yöntemini kullanarak bir hizmet sorumlusu belirteci oluşturun:
 
    ```go
    package main
@@ -174,9 +174,9 @@ Yetkilendirici, kaynak istemcisi için yetkilendirici olarak ayarlanmalıdır. A
        return token, err
    ```
 
-    Bu `<activeDirectoryResourceID>` makalenin önceki bölümünde alınan **resourcemanagerurl** meta verilerindeki "hedef kitle" listesindeki değerlerden birine ayarlayın.
-    Hizmet `<clientID>` sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama kimliğine ayarlanır.
-    Hizmet `<clientSecret>` sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı olarak ayarlanır.
+    Bu makalenin önceki bölümünde alınan **Resourcemanagerurl** meta verilerinden, `<activeDirectoryResourceID>` ' i "hedef kitle" listesindeki değerlerden birine ayarlayın.
+    Bu makalenin önceki bölümünde hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞINE `<clientID>` olarak ayarlayın.
+    Bu makalenin önceki bölümünde hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarını `<clientSecret>` olarak ayarlayın.
 
 ## <a name="example"></a>Örnek
 
@@ -231,7 +231,7 @@ Bu örnek, Azure Stack üzerinde bir sanal ağ oluşturan go kodunun bir örneğ
    }
    ```
 
-4. `main` Yöntemini ekleyin. `main` Yöntemi ilk olarak, önceki adımda tanımlanan yöntemi kullanarak bir belirteç alır. Daha sonra, profilinden bir ağ modülü kullanarak bir istemci oluşturur. Son olarak, bir sanal ağ oluşturur.
+4. `main` Yöntemini ekleyin. @No__t-0 yöntemi ilk olarak, önceki adımda tanımlanan yöntemi kullanarak bir belirteç alır. Daha sonra, profilinden bir ağ modülü kullanarak bir istemci oluşturur. Son olarak, bir sanal ağ oluşturur.
 
    ```go
    package main
@@ -299,11 +299,14 @@ Bu örnek, Azure Stack üzerinde bir sanal ağ oluşturan go kodunun bir örneğ
       }
    }
    ```
-Go SDK kullanarak Azure Stack için kullanılabilir kod örneklerinden bazıları şunlardır:
+
+Go SDK kullanılarak Azure Stack için kullanılabilir kod örneklerinden bazıları şunlardır:
+
 - [Sanal makine oluştur](https://github.com/Azure-Samples/Hybrid-Compute-Go-Create-VM)
 - [Depolama veri düzlemi](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane)
-- [Yönetilen diskleri kullanma](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (Azure Stack tarafından desteklenen en son API sürümlerini hedefleyen 2019-03-01 profili kullanan bir örnek)
+- [Yönetilen diskleri](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (Azure Stack tarafından desteklenen en son API sürümlerini hedefleyen 2019-03-01 profili kullanan bir örnek) kullanın
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md)
-- [Azure Stack kullanıcının PowerShell ortamını yapılandırma](azure-stack-powershell-configure-user.md)  
+- [Azure Stack kullanıcının PowerShell ortamını yapılandırma](azure-stack-powershell-configure-user.md)

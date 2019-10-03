@@ -1,6 +1,6 @@
 ---
-title: Azure Stack doğrulama aracını kullanma | Microsoft Docs
-description: Azure Stack ' de Tanılama için günlük dosyalarını toplama.
+title: Sistem durumunu doğrulamak için Azure Stack doğrulama aracını kullanma | Microsoft Docs
+description: Sistem durumunu doğrulamak için Azure Stack doğrulama aracının nasıl kullanılacağını öğrenin.
 services: azure-stack
 author: justinha
 manager: femila
@@ -14,49 +14,49 @@ ms.date: 06/26/2019
 ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: da89c973637042b18410db9dc3dc618bfbde12d5
-ms.sourcegitcommit: d96adbb821175167f6a4c8f3aba305981d7e7c3e
+ms.openlocfilehash: 194af241480cce42273ff81d91213a63b1b9fd59
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68685516"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829161"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack sistem durumunu doğrula
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack operatörü olarak isteğe bağlı olarak sisteminizin durumunu saptayabilmeniz çok önemlidir. Azure Stack doğrulama aracı (**Test-AzureStack**), sisteminizde bulunan hataların belirlenmesi için sisteminizde bir dizi test çalıştırmanızı sağlayan bir PowerShell cmdlet 'i. Bir sorunla ilgili olarak Microsoft Müşteri Hizmetleri Desteği'ne (CSS) başvurduğunuzda normalde [ayrıcalıklı uç nokta (PEP)](azure-stack-privileged-endpoint.md) üzerinden bu aracı çalıştırmanız istenir. Sistem genelinde durum bilgileri elinizde olduğunda CSS ayrıntılı günlükleri toplayabilir ve analiz edebilir, hatanın oluştuğu alana odaklanabilir ve sizinle birlikte çalışarak sorunu çözebilir.
+Azure Stack operatörü olarak, sisteminizin sistem durumunu ve durumunu isteğe bağlı olarak belirleyebilmekte ve gereklidir. Azure Stack doğrulama aracı (**Test-AzureStack**), sisteminizde bulunan hataların belirlenmesi için sisteminizde bir dizi test çalıştırmanızı sağlayan bir PowerShell cmdlet 'i. Genellikle, Microsoft Müşteri Hizmetleri desteği (CSS) ile bir sorunla iletişime geçerek bu aracı [ayrıcalıklı uç noktası (PEP)](azure-stack-privileged-endpoint.md) üzerinden çalıştırmanız istenir. Aynı anda sistem genelinde sistem durumu ve durum bilgileri ile CSS, ayrıntılı günlükleri toplayıp çözümleyebilir, hatanın gerçekleştiği alana odaklanabilir ve sorunu gidermek için sizinle birlikte çalışabilir.
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>Doğrulama aracını çalıştırma ve sonuçlara erişme
 
-Daha önce belirtildiği gibi, doğrulama aracı PEP aracılığıyla çalıştırılır. Her test, PowerShell penceresinde bir **geçiş/başarısızlık** durumu döndürür. Uçtan uca doğrulama test sürecinin ana hattı aşağıda verilmiştir: 
+Yukarıda belirtildiği gibi, doğrulama aracı PEP aracılığıyla çalıştırılır. Her test, PowerShell penceresinde bir **geçiş/başarısızlık** durumu döndürür. Uçtan uca doğrulama test sürecinin ana hattı aşağıda verilmiştir:
 
-1. Ayrıcalıklı uç noktaya (PEP) erişin. Bir PEP oturumu oluşturmak için aşağıdaki komutları çalıştırın:
+1. PEP 'ye erişin. Bir PEP oturumu oluşturmak için aşağıdaki komutları çalıştırın:
 
    ```powershell
    Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
    ```
 
    > [!TIP]
-   > Bir ASDK ana bilgisayarındaki PEP 'ye erişmek için AzS-ERCS01 for-ComputerName kullanın.
+   > Bir Azure Stack Geliştirme Seti (ASDK) ana bilgisayarındaki PEP 'ye erişmek için AzS-ERCS01 for-ComputerName kullanın.
 
-2. PEP 'de olduktan sonra şunu çalıştırın: 
+2. PEP ' de olduktan sonra şunu çalıştırın:
 
    ```powershell
    Test-AzureStack
    ```
 
-   Daha fazla bilgi için [parametre konularına](azure-stack-diagnostic-test.md#parameter-considerations) ve [kullanım örneği örnekleri](azure-stack-diagnostic-test.md#use-case-examples) bölümlerine bakın.
+   Daha fazla bilgi için bkz. [parametre konuları](azure-stack-diagnostic-test.md#parameter-considerations) ve [kullanım örneği örnekleri](azure-stack-diagnostic-test.md#use-case-examples).
 
-3. Herhangi bir test raporu **başarısız**olursa, `Get-AzureStackLog`öğesini çalıştırın. Tümleşik bir sistemle ilgili yönergeler için bkz. [Get-azurestacklog Azure Stack tümleşik sistemlerde](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems)veya asdk 'de çalıştırmak için, bkz. [bir Azure Stack geliştirme seti (asdk) sisteminde Get-azurestacklog çalıştırma](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
+3. Herhangi bir test raporu **başarısız**olursa, `Get-AzureStackLog` ' i çalıştırın. Tümleşik bir sistemle ilgili yönergeler için bkz. [Get-azurestacklog Azure Stack tümleşik sistemlerde](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems)veya asdk 'de çalıştırmak için, bkz. [bir asdk sisteminde Get-azurestacklog çalıştırma](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
 
-   Cmdlet 'i test-AzureStack tarafından oluşturulan günlükleri toplar. Günlükler toplamamalıdır veya testler raporu uyarsa CSS 'ye başvurmalısınız.
+   Cmdlet 'i test-AzureStack tarafından oluşturulan günlükleri toplar. Testler **rapor**uyarımız durumunda günlükleri toplamayın ve CSS 'ye başvurmamanızı öneririz.
 
 4. Doğrulama aracını CSS tarafından çalıştırmanız istenirse, CSS temsilcisi sorununuzu gidermeye devam etmek için topladığınız günlükleri ister.
 
 ## <a name="tests-available"></a>Kullanılabilir testler
 
-Doğrulama Aracı, size geçerli durum hakkında öngörü sağlayan ve sisteminizdeki sorunları belirleyebilmenizi sağlayan bir dizi sistem düzeyi testi ve temel bulut senaryosunu çalıştırmanızı sağlar.
+Doğrulama Aracı, size geçerli durum hakkında bilgi sağlayan ve sisteminizdeki sorunları düzeltmenize olanak tanıyan bir dizi sistem düzeyi testi ve temel bulut senaryosunu çalıştırmanızı sağlar.
 
 ### <a name="cloud-infrastructure-tests"></a>Bulut altyapısı testleri
 
@@ -93,26 +93,26 @@ Bu düşük etkili testler bir altyapı düzeyinde çalışır ve çeşitli sist
 
 ### <a name="cloud-scenario-tests"></a>Bulut senaryosu testleri
 
-Yukarıdaki altyapı testlerine ek olarak, altyapı bileşenleri genelinde işlevselliği denetlemek için bulut senaryosu testlerini de çalıştırabilirsiniz. Bulut Yöneticisi kimlik bilgileri, kaynak dağıtımını içeren bu testlerin çalıştırılması için gereklidir.
+Yukarıdaki altyapı testlerine ek olarak, altyapı bileşenlerinde işlevselliği denetlemek için bulut senaryosu testlerini de çalıştırabilirsiniz. Bulut Yöneticisi kimlik bilgileri, kaynak dağıtımını içerdiğinden bu testlerin çalıştırılması için gereklidir.
 
 > [!NOTE]
-> Şu anda Active Directory Federasyon Hizmetleri (AD FS) kimlik bilgilerini kullanarak bulut senaryosu testlerini çalıştıramazsınız. 
+> Şu anda Active Directory Federasyon Hizmetleri (AD FS) kimlik bilgilerini kullanarak bulut senaryosu testlerini çalıştıramazsınız.
 
 Aşağıdaki bulut senaryoları doğrulama aracı tarafından test edilmiştir:
-- Kaynak grubu oluşturma   
-- Planı oluşturma              
-- Teklif oluşturma            
-- Depolama hesabı oluşturma   
-- Sanal makine oluşturma 
-- BLOB depolama işlemi   
-- Kuyruk depolama işlemi  
-- Tablo depolama işlemi  
+- Kaynak grubu oluşturma
+- Planı oluşturma
+- Teklif oluşturma
+- Depolama hesabı oluşturma
+- Sanal makine oluşturma (VM)
+- BLOB depolama işlemi
+- Kuyruk depolama işlemi
+- Tablo depolama işlemi
 
 ## <a name="parameter-considerations"></a>Parametre konuları
 
 - Parametre **listesi** , tüm kullanılabilir test kategorilerini göstermek için kullanılabilir.
 
-- **Include** ve **Ignore** parametreleri, test kategorilerini dahil etmek veya hariç tutmak için kullanılabilir. Bu bağımsız değişkenlerle kullanılacak bilgiler hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
+- **Include** ve **Ignore** parametreleri, test kategorilerini dahil etmek veya hariç tutmak için kullanılabilir. Bu bağımsız değişkenler hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
 
   ```powershell
   Test-AzureStack -Include AzsSFRoleSummary, AzsInfraCapacity
@@ -122,7 +122,7 @@ Aşağıdaki bulut senaryoları doğrulama aracı tarafından test edilmiştir:
   Test-AzureStack -Ignore AzsInfraPerformance
   ```
 
-- Bir Kiracı VM 'si, bulut senaryosu testlerinin bir parçası olarak dağıtılır. Bunu devre dışı bırakmak için **Donotdeploytenantvm** kullanabilirsiniz.
+- Bir Kiracı VM 'si, bulut senaryosu testlerinin bir parçası olarak dağıtılır. Bu VM dağıtımını devre dışı bırakmak için **Donotdeploytenantvm** ' i kullanabilirsiniz.
 
 - Bulut senaryosu testlerini [kullanım örneği örnekleri](azure-stack-diagnostic-test.md#use-case-examples) bölümünde açıklandığı gibi çalıştırmak Için **serviceadmincredential** parametresini sağlamanız gerekir.
 
@@ -160,14 +160,14 @@ Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName Pri
 Test-AzureStack -ServiceAdminCredential "<Cloud administrator user name>" -Include AzsScenarios   
 ```
 
-Bulut Yöneticisi Kullanıcı adının UPN biçiminde yazılması gerekir: serviceadmin@contoso.onmicrosoft.com(Azure AD). İstendiğinde, bulut Yöneticisi hesabının parolasını yazın.
+Bulut Yöneticisi Kullanıcı adının UPN biçiminde yazılması gerekir: serviceadmin@contoso.onmicrosoft.com (Azure AD). İstendiğinde, bulut Yöneticisi hesabının parolasını yazın.
 
 ### <a name="groups"></a>Gruplar
 
-İşleç deneyimini geliştirmek için, bir **Grup** parametresi birden çok test kategorisini aynı anda çalıştıracak şekilde etkinleştirildi. Şu anda tanımlanmış 3 grup vardır: **Varsayılan**, **updatereadsürekliliği** ve **secretrotationreadiness**.
+İşleç deneyimini geliştirmek için, bir **Grup** parametresi birden çok test kategorisini aynı anda çalıştıracak şekilde etkinleştirildi. Şu anda, tanımlı üç grup vardır: **Varsayılan**, **updatereadsürekliliği**ve **secretrotationreadiness**.
 
 - **Varsayılan**: **Test-AzureStack**'in standart çalıştırması olarak kabul edilir. Bu grup, başka bir grup seçilmezse varsayılan olarak çalıştırılır.
-- **Updatereadsürekliliği**: Damgasının güncelleştirilip güncelleştirilmediğini görmek için bir denetim. **Updaterekurban** grubu çalıştırıldığında, uyarılar konsol çıkışında hata olarak görüntülenir ve güncelleştirme için engelleyiciler olarak değerlendirilmelidir. Aşağıdaki kategoriler, **Updatereadılmi** grubunun bir parçasıdır:
+- **Updatereadsürekliliği**: Azure Stack örneğinin güncelleştirilip güncelleştirilmediğini görmek için bir denetim. **Updaterekurban** grubu çalıştırıldığında, uyarılar konsol çıkışında hata olarak görüntülenir ve güncelleştirme için engelleyiciler olarak değerlendirilmelidir. Aşağıdaki kategoriler, **Updatereadılmi** grubunun bir parçasıdır:
 
   - **AzsAcsSummary**
   - **Azssavunma Dersummary**
@@ -178,7 +178,7 @@ Bulut Yöneticisi Kullanıcı adının UPN biçiminde yazılması gerekir: servi
   - **Azssfrotasummary**
   - **AzsStoreSummary**
 
-- **Secretrotationreadiness**: Damgasının, gizli döndürme 'nin çalıştırılabileceği bir içinde olup olmadığını denetleyin. **Secretrotationreadiness** grubu çalıştırıldığında, uyarılar konsol çıkışında hata olarak görüntülenir ve gizli bir döndürme için engelleyiciler olarak düşünülmelidir. Aşağıdaki kategoriler, SecretRotationReadiness grubunun bir parçasıdır:
+- **Secretrotationreadiness**: Azure Stack örneğinin gizli döndürmenin çalıştırılabileceği bir durumda olup olmadığını denetleyin. **Secretrotationreadiness** grubu çalıştırıldığında, uyarılar konsol çıkışında hata olarak görüntülenir ve gizli bir döndürme için engelleyiciler olarak değerlendirilmelidir. Aşağıdaki kategoriler, SecretRotationReadiness grubunun bir parçasıdır:
 
   - **AzsAcsSummary**
   - **Azssavunma Dersummary**
@@ -192,13 +192,13 @@ Bulut Yöneticisi Kullanıcı adının UPN biçiminde yazılması gerekir: servi
 
 #### <a name="group-parameter-example"></a>Grup parametresi örneği
 
-Aşağıdaki örnek, **Grup**kullanarak bir güncelleştirmeyi veya düzeltmeyi yüklemeden önce sistemin hazır olduğunu sınamak için **Test-azurestack** ' i çalıştırır. Bir güncelleştirmeyi veya düzeltmeyi yüklemeye başlamadan önce, Azure Stack durumunu denetlemek için **Test-AzureStack** komutunu çalıştırmanız gerekir:
+Aşağıdaki örnek, **Grup**kullanarak bir güncelleştirmeyi veya düzeltmeyi yüklemeden önce sistemin hazır olduğunu sınamak için **Test-azurestack** ' i çalıştırır. Bir güncelleştirmeyi veya düzeltmeyi yüklemeye başlamadan önce, Azure Stack durumunu denetlemek için **Test-AzureStack** komutunu çalıştırın:
 
 ```powershell
 Test-AzureStack -Group UpdateReadiness
 ```
 
-Ancak Azure Stack, 1811 altında bir sürüm çalıştırıyorsa, **Test-AzureStack**çalıştırmak Için aşağıdaki PowerShell komutlarını kullanın:
+Azure Stack 1811 öncesi bir sürüm çalıştırıyorsa, **Test-AzureStack**çalıştırmak Için aşağıdaki PowerShell komutlarını kullanın:
 
 ```powershell
 New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
@@ -207,7 +207,7 @@ Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSum
 
 ### <a name="run-validation-tool-to-test-infrastructure-backup-settings"></a>Altyapı yedekleme ayarlarını test etmek için doğrulama aracını çalıştırma
 
-Altyapı yedeklemesini yapılandırmadan *önce* , **Azsbackupshareaccessibility** testini kullanarak yedekleme paylaşım yolunu ve kimlik bilgilerini test edebilirsiniz: 
+Altyapı yedeklemesini yapılandırmadan *önce* , **Azsbackupshareaccessibility** testini kullanarak yedekleme paylaşım yolunu ve kimlik bilgilerini test edebilirsiniz:
 
   ```powershell
   Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
@@ -228,20 +228,18 @@ Yapılandırılan yedekleme paylaşımıyla yeni kimlik bilgilerini test etmek i
   Test-AzureStack -Include AzsBackupShareAccessibility -BackupShareCredential "<PSCredential for backup share>"
   ```
 
-### <a name="run-validation-tool-to-test-network-infrastructure"></a>Ağ altyapısını sınamak için doğrulama aracını çalıştırma 
+### <a name="run-validation-tool-to-test-network-infrastructure"></a>Ağ altyapısını sınamak için doğrulama aracını çalıştırma
 
-Bu test, Azure Stack yazılım tanımlı ağ (SDN) atlayarak ağ altyapısının bağlantısını denetler. Ortak bir VIP 'den yapılandırılmış DNS ileticilerine, NTP sunucularına ve kimlik doğrulama uç noktalarına olan bağlantıyı gösterir. Bu, kimlik sağlayıcısı olarak ADFS kullanılırken kimlik sağlayıcısı olarak Azure AD veya federasyon sunucusu kullanılırken Azure bağlantısı içerir. 
+Bu test, Azure Stack yazılım tanımlı ağ (SDN) atlayarak ağ altyapısının bağlantısını denetler. Ortak bir VIP 'den yapılandırılmış DNS ileticilerine, NTP sunucularına ve kimlik doğrulama uç noktalarına olan bağlantıyı gösterir. Bu, kimlik sağlayıcısı olarak AD FS kullanırken Azure AD 'yi kimlik sağlayıcısı veya federasyon sunucusu olarak kullanırken Azure 'a bağlantı içerir.
 
 Komutun ayrıntılı bir çıkışını almak için hata ayıklama parametresini ekleyin:
 
-```powershell 
+```powershell
 Test-AzureStack -Include AzsNetworkInfra -Debug
 ```
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Stack tanılama araçları ve sorun günlüğü hakkında daha fazla bilgi edinmek için bkz. [Azure Stack tanılama araçları](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
+Azure Stack tanılama araçları ve sorun günlüğü hakkında daha fazla bilgi edinmek için bkz. [Azure Stack tanılama araçları](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).
 
 Sorun giderme hakkında daha fazla bilgi için bkz. [Microsoft Azure Stack sorun giderme](azure-stack-troubleshooting.md).

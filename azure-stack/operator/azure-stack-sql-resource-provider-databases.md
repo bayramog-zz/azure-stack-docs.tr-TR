@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te SQL bağdaştırıcısı kaynak sağlayıcısı tarafından sağlanan veritabanları kullanılarak | Microsoft Docs
-description: Nasıl SQL bağdaştırıcısı kaynak sağlayıcısı kullanılarak sağlanan SQL veritabanlarını oluşturma ve yönetme
+title: Azure Stack | SQL bağdaştırıcısı kaynak sağlayıcısı tarafından sunulan veritabanlarını kullanma | Microsoft Docs
+description: SQL bağdaştırıcısı kaynak sağlayıcısı kullanılarak sağlanan SQL veritabanlarını oluşturma ve yönetme
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -11,72 +11,72 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: a8ebc50be9b1c3e1eaae491b6d8f8916f900e500
-ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
+ms.openlocfilehash: dfa8e778b21826ff1f589efbf2b49097d5ee3685
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67308474"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829335"
 ---
 # <a name="create-sql-databases"></a>SQL veritabanı oluşturma
 
-Oluşturun ve Kullanıcı Portalı'nda, Self Servis veritabanlarını yönetme. Azure Stack kullanıcı SQL veritabanı hizmeti içeren bir teklif olan bir abonelik gerekir.
+Kullanıcı portalında self servis veritabanlarını oluşturabilir ve yönetebilirsiniz. Azure Stack kullanıcının SQL veritabanı hizmetini içeren bir teklifiyle bir aboneliğe ihtiyacı vardır.
 
-1. Oturum [Azure Stack](azure-stack-overview.md) Kullanıcı Portalı.
+1. [Azure Stack](azure-stack-overview.md) Kullanıcı portalında oturum açın.
 
-2. Seçin **+ yeni** &gt; **veri + depolama** &gt; **SQL Server veritabanı** &gt; **ekleme**.
+2. **+ Yeni** &gt;**veri + depolama** &gt; **SQL Server veritabanı** &gt; **Ekle**' yi seçin.
 
-3. Altında **Create Database**, gerekli bilgileri girin **veritabanı adı** ve **MB cinsinden en büyük boyutu**.
-
-   >[!NOTE]
-   >Veritabanı boyutu en az 64 hangi artırabilir miyim MB olmalıdır veritabanını dağıttıktan sonra.
-
-   Ortamınız için gerektiği gibi diğer ayarları yapılandırın.
-
-4. Altında **Create Database**seçin **SKU**. Altında **bir SKU seçin**, veritabanınız için SKU'ları seçin.
-
-   ![Veritabanı oluşturma](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+3. **Veritabanı oluştur**' un altında, **veritabanı adı** ve **en büyük boyut olarak MB cinsinden**gerekli bilgileri girin.
 
    >[!NOTE]
-   >Azure Stack için barındırma sunucuları eklendikçe, bir SKU atanmış oldukları. Bir SKU sunucuları bulundurma havuzdaki veritabanları oluşturulur.
+   >Veritabanı boyutunun en az 64 MB olması gerekir, bu da veritabanını dağıttıktan sonra artırılabilir.
 
-5. Seçin **oturum açma**.
-6. Altında **bir oturum açma seçin**, var olan bir oturum seçin ya da seçin **+ yeni bir oturum açma Oluştur**.
-7. Altında **yeni oturum açma**, için bir ad girin **veritabanı oturum açma** ve **parola**.
+   Ortamınız için gereken diğer ayarları yapılandırın.
+
+4. **Veritabanı oluştur**altında **SKU**' yı seçin. **SKU seçin**altında veritabanınız için SKU 'yu seçin.
+
+   ![Veritabanı Oluştur](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
-   >Bu ayarlar, erişim yalnızca bu veritabanı için oluşturulan SQL kimlik doğrulaması kimlik bilgisi yöneliktir. Oturum açma kullanıcı adı genel olarak benzersiz olmalıdır. Oturum açma ayarları aynı SKU kullanan diğer veritabanları için yeniden kullanabilirsiniz.
+   >Barındırma sunucuları Azure Stack eklendikçe, bunlara bir SKU atanır. Veritabanları, bir SKU 'daki barındırma sunucuları havuzunda oluşturulur.
+
+5. **Oturum aç**' ı seçin.
+6. **Oturum aç**' ın altında, mevcut bir oturum açma veya **+ Yeni bir oturum oluştur**' u seçin.
+7. **Yeni oturum açma**altında, **veritabanı oturum açma** ve **parola**için bir ad girin.
+
+   >[!NOTE]
+   >Bu ayarlar, yalnızca bu veritabanına erişim için oluşturulan SQL kimlik doğrulama kimlik bilgileridir. Oturum açma Kullanıcı adı genel olarak benzersiz olmalıdır. Aynı SKU 'YU kullanan diğer veritabanları için oturum açma ayarlarını yeniden kullanabilirsiniz.
 
    ![Yeni bir veritabanı oturumu oluştur](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
-8. Seçin **Tamam** veritabanı dağıtmayı tamamlamak için.
+8. Veritabanını dağıtmaya son vermek için **Tamam ' ı** seçin.
 
-Altında **Essentials**veritabanı dağıtıldıktan sonra gösterilen, Not **bağlantı dizesi**. Bu dize SQL Server veritabanına erişmek için gereken herhangi bir uygulamada kullanabilirsiniz.
+Veritabanı dağıtıldıktan sonra gösterilen **temel parçalar**altında **bağlantı dizesini**de göz önünde edin. Bu dizeyi, SQL Server veritabanına erişmesi gereken herhangi bir uygulamada kullanabilirsiniz.
 
 ![Bağlantı dizesi alma](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
-## <a name="sql-always-on-databases"></a>SQL Always On veritabanları
+## <a name="sql-always-on-databases"></a>SQL Always on veritabanları
 
-Tasarım gereği, veritabanları, Always On farklı değerinden bir tek başına sunucu ortamında işlenir. Daha fazla bilgi için [Karşınızda SQL Server Always On kullanılabilirlik grupları'Azure sanal makinelerinde](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
+Tasarım, her zaman tek başına sunucu ortamından farklı şekilde işlenir. Daha fazla bilgi için bkz. [Azure sanal makinelerinde Always on kullanılabilirlik grupları SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview).
 
-### <a name="verify-sql-always-on-databases"></a>SQL Always On veritabanları doğrulayın
+### <a name="verify-sql-always-on-databases"></a>SQL Always on veritabanlarını doğrulama
 
-Aşağıdaki ekran görüntüsü yakalamayı SQL Always On veritabanı durumunu görmek için SQL Server Management Studio nasıl kullanabileceğinizi gösterir.
+Aşağıdaki ekran yakalama, SQL her zaman açık ' de veritabanı durumuna bakmak için SQL Server Management Studio nasıl kullanabileceğinizi gösterir.
 
 ![AlwaysOn veritabanı durumu](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
 
-Always On veritabanları ve kullanılabilir tüm SQL örneklerinde Synchronızed olarak göster ve kullanılabilirlik gruplarının gerekir. Önceki ekran görüntüsünde newdb1 veritabanı örnektir ve durumunun **newdb1 (eşzamanlı)** .
+Her zaman açık veritabanları, tüm SQL örneklerinde eşitlenmiş ve kullanılabilir olarak gösterilmelidir ve kullanılabilirlik gruplarında görünürler. Önceki ekran yakalamada, veritabanı örneği newdb1 ve durumu **newdb1 (eşitlenmiş)** olur.
 
 ### <a name="delete-an-alwayson-database"></a>AlwaysOn veritabanını silme
 
-Kaynak Sağlayıcısı'ndan bir SQL AlwaysOn veritabanı sildiğinizde, SQL veritabanı birincil çoğaltmadan ve kullanılabilirlik grubundan siler.
+Kaynak sağlayıcıdan bir SQL AlwaysOn veritabanını sildiğinizde, SQL veritabanını birincil çoğaltmadan ve kullanılabilirlik grubundan siler.
 
-SQL veritabanı geri yükleme durumuna başka çoğaltmalarda koyar ve veritabanını tetiklenen sürece bırakma değil. Veritabanı kaldırılmadıysa, ikincil çoğaltmalar bir Not Synchronızıng durumuna gidin.
+Ardından, SQL veritabanını diğer çoğaltmalarda geri yükleme durumuna geçirir ve tetiklenmediği takdirde veritabanını bırakmaz. Veritabanı bırakılmazsa, ikincil çoğaltmalar eşitleme olmayan bir duruma geçer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[SQL Server Kaynak sağlayıcısı koru](azure-stack-sql-resource-provider-maintain.md)
+[SQL Server kaynak sağlayıcısını koruyun](azure-stack-sql-resource-provider-maintain.md)

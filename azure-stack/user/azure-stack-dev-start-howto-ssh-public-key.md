@@ -1,54 +1,54 @@
 ---
-title: Azure Stack ile bir SSH ortak anahtarı kullanmayı | Microsoft Docs
-description: SSH ortak anahtarı kullanma
+title: Azure Stack ile SSH ortak anahtarını kullanma | Microsoft Docs
+description: SSH ortak anahtarını kullanma
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: c0b55579c5103c7bb1073546243dbfcc0b700b4a
-ms.sourcegitcommit: 05a16552569fae342896b6300514c656c1df3c4e
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 3d2854511415421b69a6972cd807132639300f96
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65838383"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71824500"
 ---
 # <a name="use-an-ssh-public-key"></a>SSH ortak anahtarı kullanma
 
-Barındıran bir SSH bağlantısı açma, geliştirme makinenizde Azure Stack Örneğinizdeki VM sunucusu kullanmak için web uygulamanızı bir güvenli Kabuk (SSH) ortak ve özel anahtar çifti oluşturmak ihtiyacınız olabilecek. 
+Geliştirme makinenizden Web uygulamanızı barındıran Azure Stack örneğindeki sunucu VM 'sine açık bir SSH bağlantısı kullanmak için, bir Secure Shell (SSH) ortak ve özel anahtar çifti oluşturmanız gerekebilir. 
 
-Bu makalede, anahtarlarınızı oluşturup sunucunuza bağlanmak için kullanabilirsiniz. Linux sunucusu üzerinde bir bash istemi almak veya dosyaları için ve sunucudan taşımak için bir güvenli FTP (SFTP) istemci için bir SSH İstemcisi'ni kullanabilirsiniz.
+Bu makalede, anahtarlarınızı oluşturup sunucunuza bağlanmak için kullanacaksınız. Linux sunucusunda bir bash istemi almak için bir SSH istemcisi kullanabilir veya bir güvenli FTP (SFTP) istemcisini kullanarak dosyaları sunucuya ve sunucudan taşıyabilirsiniz.
 
-## <a name="create-an-ssh-public-key-on-windows"></a>Windows üzerinde SSH ortak anahtarı oluşturma
+## <a name="create-an-ssh-public-key-on-windows"></a>Windows 'da SSH ortak anahtarı oluşturma
 
-Bu bölümde, bir ortak SSH anahtarının ve Azure Stack Örneğinizde Linux makineleri güvenli bir bağlantı oluşturduğunuzda kullanılacak özel anahtar çifti oluşturmak için PuTTY anahtar Oluşturucu kullanın. PuTTY SSH ve Telnet aracılığıyla bir sunucuya bağlanmasına izin verebilirsiniz ücretsiz bir terminal öykünücü ' dir.
+Bu bölümde, Azure Stack örneğinizdeki Linux makinelere güvenli bir bağlantı oluştururken kullanılacak ortak bir SSH anahtarı ve özel anahtar çifti oluşturmak için PuTTY anahtar oluşturucuyu kullanırsınız. PuTTY, SSH ve Telnet aracılığıyla bir sunucuya bağlanmanıza izin veren ücretsiz bir Terminal öykünücüdür.
 
-1. [Putty'yi indirin ve makinenize için yükleyin.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+1. [Makinenize PuTTY indirin ve yükleyin.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-1. PuTTY anahtar Oluşturucu açın.
+1. PuTTY anahtar oluşturucuyu açın.
 
-    ![PuTTY anahtar Oluşturucu boş bir anahtar kutusu](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
+    ![Boş anahtar kutusuyla PuTTY anahtar Oluşturucu](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
 
-1. Altında **parametreleri**seçin **RSA**.
+1. **Parametreler**altında **RSA**' yı seçin.
 
-1. İçinde **oluşturulan anahtarı bit sayısı** kutusuna **2048**.  
+1. **Oluşturulan bir anahtardaki bit sayısı** kutusuna **2048**girin.  
 
-1. Seçin **oluşturmak**.
+1. **Oluştur**' u seçin.
 
-1. İçinde **anahtarı** alanı boş alanın üzerine imleci hareket ettirerek bazı rastgele karakterler oluşturur.
+1. **Anahtar** alanında, imleci boş alanın üzerine taşıyarak rastgele karakterler oluşturun.
 
-    ![PuTTY anahtar Oluşturucu doldurulmuş bir anahtar kutusu](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-key-gen-result.png)
+    ![Doldurulmuş anahtar kutusuyla PuTTY anahtar Oluşturucu](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-key-gen-result.png)
 
-1. Girin bir **anahtarı parola** ve içinde onaylayın **parolayı onayla** kutusu. Daha sonra kullanmak için parolayı not edin.
+1. Bir **anahtar parolası** girin ve parolayı **Onayla** kutusunda onaylayın. Daha sonra kullanmak üzere parolanızı aklınızda edin.
 
-1. Seçin **ortak anahtarı Kaydet**, erişebileceğiniz da bir konuma kaydedin.
+1. **Ortak anahtarı kaydet**' i seçin ve bunu erişebileceğiniz bir konuma kaydedin.
 
-1. Seçin **özel anahtarı Kaydet**, erişebileceğiniz da bir konuma kaydedin. Ortak anahtar ile ait olduğunu unutmayın.
+1. **Özel anahtarı kaydet**' i seçin ve bunu erişebileceğiniz bir konuma kaydedin. Ortak anahtara ait olduğunu unutmayın.
 
-Ortak anahtarınızı kaydettiğiniz metin dosyasında depolanır. Metin aşağıdakine benzer olacaktır:
+Ortak anahtarınız, kaydettiğiniz metin dosyasında depolanır. Metin aşağıdakine benzer:
 
 ```text  
 ---- BEGIN SSH2 PUBLIC KEY ----
@@ -62,69 +62,69 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 ---- END SSH2 PUBLIC KEY ----
 ```
 
-Bir uygulama anahtarı istediğinde kopyalayın ve tüm içeriğini metin dosyasına yapıştırın.
+Bir uygulama anahtarı istediğinde, metin dosyasının tüm içeriğini kopyalayıp yapıştırın.
 
 ## <a name="connect-with-ssh-by-using-putty"></a>PuTTY kullanarak SSH ile bağlanma
 
-PuTTY yüklediğinizde, hem PuTTY anahtar oluşturucu ve bir SSH istemcisi vardır. Bu bölümde, SSH istemcisi açın, PuTTY, bağlantı değerlerinin ve SSH anahtarı ve yapılandırma. Azure Stack örneğinizin aynı ağ üzerinde kullanıyorsanız, sanal Makinenize bağlanın.
+PuTTY 'yi yüklediğinizde, hem PuTTY anahtar Oluşturucu hem de bir SSH istemcisidir. Bu bölümde, SSH istemcisini, PuTTY 'ı açar ve bağlantı değerlerinizi ve SSH anahtarınızı yapılandırırsınız. Azure Stack örneğiniz ile aynı ağ üzerinde çalışıyorsanız, sanal makinenize bağlanırsınız.
 
-Bağlanmadan önce ihtiyacınız olacak:
+Bağlanmadan önce şunları yapmanız gerekir:
 - PuTTY
-- Linux makine Örneğinizde SSH ortak anahtarı kimlik doğrulaması türü olarak kullanan Azure Stack için kullanıcı adı ve IP adresi.
-- Bağlantı noktası 22 makine için açık olması.
-- Makineyi oluştururken kullandığınız genel SSH anahtarı.
-- Azure Stack örneğinizin aynı ağ üzerinde olması için PuTTY çalıştıran istemci makine.
+- Kimlik doğrulama türü olarak SSH ortak anahtarını kullanan Azure Stack örneğindeki Linux makinenin IP adresi ve Kullanıcı adı.
+- Makine için 22 numaralı bağlantı noktası açık.
+- Makineyi oluştururken kullandığınız ortak SSH anahtarı.
+- PuTTY çalıştıran istemci makine, Azure Stack örneğiniz ile aynı ağda olmalıdır.
 
 1. PuTTY’yi açın.
 
     ![PuTTY yapılandırma bölmesi](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-connect.png)
 
-2. İçinde **ana bilgisayar adı (veya IP adresi)** kutusunda, kullanıcı adı ve makinenin genel IP adresi girin (örneğin, **username@192.XXX.XXX.XX**). 
-3. Doğrulamak **bağlantı noktası** olduğu **22** ve **bağlantı türü** olduğu **SSH**.
-4. İçinde **kategori** ağacında, genişletme **SSH** ve **Auth**.
+2. **Ana bilgisayar adı (veya IP adresi)** kutusuna makinenin Kullanıcı adını ve genel IP adresini girin (örneğin, **username@192.XXX.XXX.XX** ). 
+3. **Bağlantı noktasının** **22** olduğunu ve **bağlantı türünün** **SSH**olduğunu doğrulayın.
+4. **Kategori** ağacında **SSH** ve **AUTH**' ı genişletin.
 
-    ![PuTTY yapılandırma bölmesinde - SSH özel anahtarı](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-set-private-key.png)
+    ![PuTTY yapılandırma bölmesi-SSH özel anahtarı](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-set-private-key.png)
 
-5. Yanındaki **kimlik doğrulaması için özel anahtar dosyası** kutusunda **Gözat**ve sonra özel anahtar dosyası için arama yapın (*\<filename > .ppk*), genel ve özel anahtar çifti.
-6. İçinde **kategori** seçim ağacında **oturumu**.
+5. **Kimlik doğrulaması Için özel anahtar dosyası** ' nın yanındaki **Git ' i seçin ve**ardından ortak ve özel anahtar çiftiniz için özel anahtar dosyasını ( *\<filename >. PPK*) arayın.
+6. **Kategori** ağacında **oturum**' yi seçin.
 
-    ![PuTTY yapılandırma bölmesinde "Kayıtlı oturumlar" kutusu](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
+    ![PuTTY yapılandırma bölmesi "kayıtlı oturumlar" kutusu](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
 
-7. Altında **kayıtlı oturumlar**oturumu için bir ad girin ve ardından **Kaydet**.
-8. İçinde **kayıtlı oturumlar** listesinde, oturumunuz adını seçin ve ardından **yük**.
+7. **Kaydedilen oturumlar**' ın altında, oturum için bir ad girin ve ardından **Kaydet**' i seçin.
+8. **Kaydedilen oturumlar** listesinde, oturumunuzun adını seçin ve ardından **Yükle**' yi seçin.
 9. **Aç**'ı seçin. SSH oturumu açılır.
 
-## <a name="connect-with-sftp-with-filezilla"></a>SFTP FileZilla ile bağlantı kurun
+## <a name="connect-with-sftp-with-filezilla"></a>FileZilla ile SFTP ile bağlanma
 
-Linux makinenize gelen ve giden dosyaları taşımak için FileZilla, güvenli FTP (SFTP) destekleyen bir FTP istemcisi kullanabilirsiniz. Windows 10, Linux ve Macos'ta FileZilla çalıştırır. FileZilla istemci, FTP, SFTP ve TLS (FTPS) üzerinden FTP destekler. Dağıtılan açık kaynak yazılım olan ücretsiz olarak GNU Genel Kamu Lisansı Koşulları altında.
+Linux makinenize dosya taşımak için güvenli FTP 'yi (SFTP) destekleyen bir FTP istemcisi olan FileZilla kullanabilirsiniz. FileZilla, Windows 10, Linux ve macOS üzerinde çalışır. FileZilla istemcisi FTP, TLS üzerinden FTP (FTPS) ve SFTP 'yi destekler. GNU Genel genel lisansı koşullarına göre ücretsiz olarak dağıtılan açık kaynaklı bir yazılımdır.
 
-### <a name="set-your-connection"></a>Bağlantınızı ayarlayın
+### <a name="set-your-connection"></a>Bağlantınızı ayarlama
 
-1. [FileZilla yükleyip](https://filezilla-project.org/download.php).
-1. Open FileZilla.
-1. Seçin **dosya** > **Site Yöneticisi**.
+1. [FileZilla indirin ve yükleyin](https://filezilla-project.org/download.php).
+1. FileZilla 'i açın.
+1. @No__t-1**Site Manager** **dosyasını**seçin.
 
-    ![FileZilla Site Yöneticisi bölmesi](media/azure-stack-dev-start-howto-ssh-public-key/005-filezilla-file-manager.png)
+    ![FileZilla Site Manager bölmesi](media/azure-stack-dev-start-howto-ssh-public-key/005-filezilla-file-manager.png)
 
-1. İçinde **Protokolü** aşağı açılan listesinden **SFTP - SSH Dosya Aktarım Protokolü**.
-1. İçinde **konak** kutusuna, makineniz için genel IP adresini girin.
-1. İçinde **oturum açma türü** kutusunda **Normal**.
-1. Kullanıcı adı ve parola girin.
+1. **Protokol** aşağı açılan listesinde **SFTP-SSH dosya aktarım protokolü**öğesini seçin.
+1. **Ana bilgisayar** kutusuna MAKINENIZIN genel IP adresini girin.
+1. **Oturum açma türü** kutusunda **normal**' i seçin.
+1. Kullanıcı adınızı ve parolanızı girin.
 1. **Tamam**’ı seçin.
-1. Seçin **Düzenle** > **ayarları**.
+1. @No__t-1**ayarlarını** **Düzenle**' yi seçin.
 
-    ![FileZilla ayarları bölmesi](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
+    ![FileZilla ayarlar bölmesi](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
 
-1. İçinde **seçin sayfasında** ağacında, genişletme **bağlantı**ve ardından **SFTP**.
-1. Seçin **Ekle anahtar dosyası**, özel anahtar dosyanıza girin (örneğin,  *\<filename > .ppk*).
+1. **Sayfa seç** ağacında, **bağlantı**' yı genişletin ve ardından **SFTP**' yi seçin.
+1. **Anahtar dosyası Ekle**' yi seçin ve ardından özel anahtar dosyanızı (örneğin, *\<filename >. PPK*) girin.
 1. **Tamam**’ı seçin.
 
 ### <a name="open-your-connection"></a>Bağlantınızı açın
 
-1. Open FileZilla.
-1. Seçin **dosya** > **Site Yöneticisi**.
-1. Sitenizin adını seçin ve ardından **Connect**.
+1. FileZilla 'i açın.
+1. @No__t-1**Site Manager** **dosyasını**seçin.
+1. Sitenizin adını seçin ve ardından **Bağlan**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi edinmek için nasıl [Azure Stack geliştirme ortamında ayarlama](azure-stack-dev-start.md).
+[Azure Stack bir geliştirme ortamı ayarlamayı](azure-stack-dev-start.md)öğrenin.

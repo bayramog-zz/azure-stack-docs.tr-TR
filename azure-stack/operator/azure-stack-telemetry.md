@@ -1,6 +1,6 @@
 ---
-title: Azure Stack telemetrisini | Microsoft Docs
-description: PowerShell kullanarak Azure Stack telemetrisini ayarlarının nasıl yapılandırılacağı açıklanır.
+title: Azure Stack telemetri | Microsoft Docs
+description: PowerShell kullanarak Azure Stack telemetri ayarlarının nasıl yapılandırılacağını açıklar.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,105 +12,105 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: comartin
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 136dee8980860bb463da14fda0dcd9aff84d3803
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.openlocfilehash: 439a058ea4153e0b6f74932a0ad027a0f5f8a42b
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131418"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829246"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack telemetri
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack telemetrisini sistem verilerini bağlı kullanıcı deneyimi üzerinden Microsoft'a otomatik olarak yükler. Microsoft teams, müşteri deneyimlerini geliştirmek için Azure Stack telemetri toplayan verileri kullanın. Bu veriler, güvenlik, sistem durumu, kalite ve performans analizi için de kullanılır.
+Azure Stack telemetri, bağlı kullanıcı deneyimi aracılığıyla sistem verilerini Microsoft 'a otomatik olarak yükler. Microsoft ekipleri, müşteri deneyimlerini geliştirmek için telemetri topladığı Azure Stack verileri kullanır. Bu veriler güvenlik, sistem durumu, kalite ve performans analizi için de kullanılır.
 
-Azure Stack operatör için telemetri Kurumsal dağıtımlar değerli Öngörüler sağlayabilir ve Azure yığını'nın gelecek sürümlerini şekli yardımcı olan bir sesli sağlar.
+Azure Stack bir operatör için telemetri kurumsal dağıtımlara değerli içgörüler sunabilir ve size Azure Stack gelecek sürümlerini şekillendirmeye yardımcı olan bir ses sağlar.
 
 > [!NOTE]
-> Azure Stack, kullanım bilgilerini faturalandırması Azure'a iletmek için de yapılandırabilirsiniz. Bu,-,-Kullandıkça Ödeme seçen çok düğümlü Azure Stack müşterileri için gereklidir. Kullanım raporlama alınan telemetri bağımsız olarak denetlenir ve kapasite modeli istemeyen çok düğümlü müşterilere veya Azure Stack geliştirme Seti'ni kullanıcılar gerekli değildir. Bu senaryolar için kullanım raporlama kapatılabilir [kayıt betiği kullanarak](azure-stack-usage-reporting.md).
+> Ayrıca, kullanım bilgilerini faturalandırma için Azure 'a iletmek üzere Azure Stack de yapılandırabilirsiniz. Bu, Kullandıkça Öde faturalandırması 'nı seçen çok düğümlü Azure Stack müşteriler için gereklidir. Kullanım raporlaması telemetriden bağımsız olarak denetlenir ve kapasite modelini veya Azure Stack Geliştirme Seti kullanıcıları seçen çok düğümlü müşteriler için gerekli değildir. Bu senaryolar için, kullanım raporlaması [kayıt betiği kullanılarak](azure-stack-usage-reporting.md)kapatılabilir.
 
-Azure Stack telemetri kullanan Windows Server 2016 bağlı kullanıcı deneyimi ve Telemetri bileşeni, temel [olay izleme için Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging teknoloji toplamak ve olayları ve verileri depolamak için. Azure Stack bileşenleri, olayları ve olay günlüğünü genel işletim sistemi ve API'leri izleme kullanarak topladığınız verileri yayımlamak için aynı teknolojiyi kullanın. Bu sağlayıcıları bu Azure Stack bileşenlerin örnekleridir: Ağ kaynağı, depolama kaynağı, kaynak izleme ve kaynak güncelleştirin. Bağlı kullanıcı deneyimi ve Telemetri bileşeni, SSL kullanarak verileri şifreler ve sertifika sabitleme Microsoft Veri Yönetimi hizmetine HTTPS üzerinden veri iletmek için kullanır.
+Azure Stack telemetri, olay ve veri toplamak ve depolamak üzere [Windows Için olay izleme (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging teknolojisini kullanan windows Server 2016 bağlantılı Kullanıcı deneyimi ve telemetri bileşenini temel alır. Azure Stack bileşenleri, genel işletim sistemi olay günlüğü ve izleme API 'Leri kullanılarak toplanan olayları ve verileri yayımlamak için aynı teknolojiyi kullanır. Bu Azure Stack bileşenlerinin örnekleri şunlardır: Ağ kaynağı, depolama kaynağı, Izleme kaynağı ve kaynak güncelleştirme. Bağlı kullanıcı deneyimi ve telemetri bileşeni, SSL kullanarak verileri şifreler ve HTTPS üzerinden Microsoft Veri Yönetimi hizmetine veri aktarmak için sertifika sabitleme kullanır.
 
 > [!IMPORTANT]
-> Telemetri veri akışı etkinleştirmek için bağlantı noktası 443 (HTTPS), ağınızdaki açık olması gerekir. Microsoft Veri Yönetimi hizmetine bağlı kullanıcı deneyimi ve Telemetri bileşen bağlandığı https://v10.vortex-win.data.microsoft.com. Bağlı kullanıcı deneyimi ve Telemetri bileşeni de bağlandığı https://settings-win.data.microsoft.com yapılandırma bilgilerini indirilemedi.
+> Telemetri veri akışını etkinleştirmek için, ağınızda bağlantı noktası 443 (HTTPS) açık olmalıdır. Bağlı kullanıcı deneyimi ve telemetri bileşeni, https://v10.vortex-win.data.microsoft.com ' da Microsoft Veri Yönetimi hizmetine bağlanır. Bağlı kullanıcı deneyimi ve telemetri bileşeni Ayrıca yapılandırma bilgilerini indirmek için https://settings-win.data.microsoft.com ' a bağlanır.
 
 ## <a name="privacy-considerations"></a>Gizlilik konuları
 
-ETW hizmeti, geri korumalı bulut depolama alanına telemetri verilerini yönlendirir. En az ayrıcalık sorumlusu erişim telemetri verilerini gösterir. Yalnızca geçerli bir iş gereksinimi olan Microsoft personeli, telemetri verileri için erişim verilir. Microsoft olmayan paylaşabilirsiniz kişisel müşteri verilerini üçüncü taraflarla dışında müşterinin takdirine bağlı olarak veya açıklanan sınırlı amacıyla [Microsoft gizlilik bildirimi](https://privacy.microsoft.com/PrivacyStatement). OEM'ler ve iş ortakları ile paylaşılan iş raporlar, toplu, anonimleştirilmiş veriler içerir. Veri paylaşımı kararlar, gizlilik, hukuk ve veri yönetim proje katılımcıları da dahil olmak üzere bir iç Microsoft ekibi tarafından yapılır.
+ETW hizmeti, telemetri verilerini korumalı bulut depolamaya geri yönlendirir. En az ayrıcalık, telemetri verilerine erişimi kılavuzluk eder. Yalnızca geçerli bir iş gerektiren Microsoft personeline telemetri verilerine erişim verilir. Microsoft, müşterinin veya [Microsoft gizlilik bildiriminde](https://privacy.microsoft.com/PrivacyStatement)açıklanan sınırlı amaçlar dışında kişisel müşteri verilerini üçüncü taraflarla paylaşmaz. OEM 'Ler ve iş ortakları ile paylaşılan iş raporları, toplanmış, anonimleştirilmiş verileri içerir. Veri paylaşımı kararları, gizlilik, yasal ve veri yönetimi katılımcıları dahil olmak üzere dahili bir Microsoft ekibi tarafından yapılır.
 
-Microsoft olarak düşündüğü ve bilgi küçültme yöntemler. Yalnızca gerekli değil ve bunun için yalnızca olduğu sürece bir hizmet sağlamak için gereken veya analiz için Depolama bilgileri toplamak için elimizden. Azure Stack sistemi ve Azure hizmetleri nasıl çalıştığını ilgili bilgilerin çoğunu altı ay içinde silinir. Özetlenen veya daha uzun bir süre için toplanan veriler korunur.
+Microsoft, ve uygulama bilgilerinin en az düzeyde olduğunu düşündüğü. Yalnızca gereken bilgileri toplamak ve yalnızca bir hizmet sağlamak ya da analiz için gereken sürece depolamak için çaba duyuyoruz. Azure Stack sistemi ve Azure hizmetlerinin nasıl çalıştığı hakkında bilgilerin çoğu altı ay içinde silinir. Özetlenen veya toplanmış veriler, daha uzun bir süre için saklanacaktır.
 
-Müşteri bilgileri, güvenlik ve gizlilik olduğunu önemli biliyoruz.  Microsoft, müşteri gizliliğini ve Azure stack'teki Müşteri verilerinin korunmasında Düşünceli ve kapsamlı bir yaklaşım alır. BT yöneticileri, herhangi bir zamanda özellikleri ve gizlilik ayarlarını özelleştirmek için denetimleri içerir. Saydamlık ve güven bağlılığımız açıktır:
+Müşteri bilgilerinin gizliliği ve güvenliğinin önemli olduğunu anladık.  Microsoft, müşteri gizliliği ve Azure Stack içindeki müşteri verilerinin korunması için bir düşünceli ve kapsamlı bir yaklaşım alır. BT yöneticileri, özellikleri ve gizlilik ayarlarını dilediğiniz zaman özelleştirmek için denetimlere sahiptir. Saydamlıkla ve güvenimize yönelik taahhüdizin açık:
 
-- Biz toplamak veri türleri hakkında daha fazla müşterilerle açık duyuyoruz.
-- Biz kurumsal müşterilere denetimine koyabilir; kullanıcılar, kendi gizlilik ayarlarını özelleştirebilirsiniz.
-- Size müşteri gizliliği ve güvenliği başa koyun.
-- Telemetri verileri nasıl kullanılır hakkında saydam duyuyoruz.
-- Telemetri verilerinin müşteri deneyimlerini geliştirmek için kullanırız.
+- Topladığımız veri türleri hakkında müşterilerle birlikte çalışıyoruz.
+- Kurumsal müşterileri denetime yerleştiririz, kendi gizlilik ayarlarını özelleştirebilir.
+- Önce Müşteri Gizlilik ve güvenlik yerleştiririz.
+- Telemetri verilerinin nasıl kullanıldığı hakkında saydamız.
+- Müşteri deneyimlerini geliştirmek için telemetri verilerini kullanıyoruz.
 
-Microsoft, kredi kartı numaraları, kullanıcı adları ve parolalar, e-posta adresleri veya benzer hassas bilgiler gibi hassas verileri toplamak istediğiniz değil. Hassas bilgilerin yanlışlıkla alındı karar verirseniz, sileceğiz.
+Microsoft, kredi kartı numaraları, Kullanıcı adları ve parolalar, e-posta adresleri veya benzer gizli bilgiler gibi hassas veriler toplamaya yönelik değildir. Gizli bilgilerin yanlışlıkla alındığını belirlediğimiz takdirde, bu bilgileri sileriz.
 
-## <a name="examples-of-how-microsoft-uses-the-telemetry-data"></a>Microsoft, telemetri verilerini kullanma örnekleri
+## <a name="examples-of-how-microsoft-uses-the-telemetry-data"></a>Microsoft 'un telemetri verilerini nasıl kullandığı hakkında örnekler
 
-Telemetri hızla belirleyip müşteri dağıtımları ve yapılandırmalar kritik güvenilirlik sorunları düzeltmek için yardımcı olacak önemli bir rol oynar. Insights telemetri verileri, hizmetleri veya donanım yapılandırmaları ile ilgili sorunları belirlemenize yardımcı olabilir. Microsoft'un bu veriler müşteriler ve sürücü geliştirmeleri ekosistemine alın olanağı tümleşik Azure Stack çözümleri kalitesi çubuğu oluşturur.
+Telemetri, müşteri dağıtımlarında ve yapılandırmalarında kritik güvenilirlik sorunlarını hızla tanımlayıp gidermeye yardımcı olan önemli bir rol oynar. Telemetri verilerinden Öngörüler, hizmetlerle veya donanım yapılandırmalarında sorunları belirlemenize yardımcı olabilir. Microsoft 'un bu verileri müşterilerinden alma ve ekosisteme yönelik iyileştirmeler geliştirme özelliği, tümleşik Azure Stack çözümlerinin kalitesi için bir çubuk yükseltir.
 
-Telemetri ayrıca Microsoft daha iyi müşteriler bileşenlerini nasıl dağıtacağınızı anlamanıza, özelliklerini kullanmak ve iş hedeflerine ulaşması için kullanmanıza yardımcı olur. Bu Öngörüler, müşteri deneyimlerini ve iş yüklerini doğrudan etkileyebilir alanlarda mühendislik yatırımlarına öncelik tanımamıza yardımcı olur.
+Telemetri ayrıca Microsoft 'un müşterilerin bileşenleri nasıl dağıtdığını, özellikleri nasıl kullandığını ve iş hedeflerine ulaşmak için Hizmetleri nasıl kullandığını daha iyi anlamasına yardımcı olur. Bu Öngörüler, müşteri deneyimlerini ve iş yüklerini doğrudan etkileyebilecek alanlardaki mühendislik yatırımlarının önceliklerini belirlemeye yardımcı olur.
 
-Müşteri kullanımını kapsayıcıları, depolama ve Azure Stack rolleri ile ilişkilendirilmiş ağ yapılandırmaları buna örnek verilebilir. Sürücü geliştirmeleri ve Azure Stack yönetim ve izleme çözümleri zekasından öngörüleri de kullanırız. Bu geliştirmeler, sorunların tanılanması faydalanılan müşteriler kolaylaştırmak ve daha az destek yaparak tasarruf Microsoft'a çağırır.
+Bazı örneklerde, Azure Stack rolleriyle ilişkili kapsayıcılar, depolama ve ağ yapılandırmalarının müşteri kullanımı sayılabilir. Ayrıca, geliştirmeleri ve zeka Azure Stack yönetimi ve izleme çözümlerini sağlamak için öngörüleri kullanırız. Bu geliştirmeler, müşterilerin sorunları tanılamasını ve Microsoft 'a daha az destek çağrısı yaparak para tasarrufu yapmalarını kolaylaştırır.
 
-## <a name="manage-telemetry-collection"></a>Telemetri toplama yönetme
+## <a name="manage-telemetry-collection"></a>Telemetri toplamayı Yönet
 
-Biz, kuruluşunuzdaki telemetri için önerilen kapatma yok. Ancak, bazı senaryolarda bu gerekli olabilir.
+Kuruluşunuzda telemetri kapatmayı önermedik. Ancak bazı senaryolarda bu gerekli olabilir.
 
-Bu senaryolarda, Azure Stack dağıtmadan önce kayıt defteri ayarlarını kullanarak veya Azure Stack dağıttıktan sonra Telemetri uç noktaları kullanarak Microsoft'a gönderilecek telemetri düzeyini yapılandırabilirsiniz.
+Bu senaryolarda, Azure Stack dağıtmadan önce kayıt defteri ayarlarını kullanarak veya Azure Stack dağıttıktan sonra telemetri uç noktalarını kullanarak Microsoft 'a gönderilen telemetri düzeyini yapılandırabilirsiniz.
 
 ### <a name="telemetry-levels-and-data-collection"></a>Telemetri düzeyleri ve veri toplama
 
-Telemetri ayarlarını değiştirmeden önce telemetri düzeyleri ve her düzeyde hangi verilerin toplandığını anlamanız gerekir.
+Telemetri ayarlarını değiştirmeden önce telemetri düzeylerini ve her düzeyde hangi verilerin toplandığını anlamanız gerekir.
 
-Telemetri ayarlarını, toplu ve aşağıdaki gibi kategorilere ayrılmış dört düzeyleri (0-3) içinde gruplandırılır:
+Telemetri ayarları, aşağıdaki şekilde birikimli ve kategorilere ayrılmış dört düzeyde (0-3) gruplandırılır:
 
 **0 (güvenlik)**</br>
-Yalnızca güvenlik verileri. İşletim sisteminin güvenliğini sağlamak için gereken bilgileri. Bu, bağlı kullanıcı deneyimi ve Telemetri bileşen ayarları ve Windows Defender hakkında veri içerir. Azure Stack'e özel telemetri yok, bu düzeyde yayınlanır.
+Yalnızca güvenlik verileri. İşletim sistemini güvenli tutmak için gereken bilgiler. Bu, bağlı kullanıcı deneyimi ve telemetri bileşen ayarları ve Windows Defender hakkındaki verileri içerir. Azure Stack özgü telemetri bu düzeyde yayılır.
 
-**1 (Temel)**</br>
-Güvenlik verilerinin ve temel sistem durumu ve kalitesi veri. Temel cihaz bilgileri dahil olmak üzere: kalite ilgili veriler, uygulama uyumluluğu, uygulama kullanımı verilerini, verileri ve **güvenlik** düzeyi. Telemetri düzeyinizi temel etkinleştirir Azure Stack telemetri ayarlanıyor. Bu düzeyde toplanan verileri içerir:
+**1 (temel)**</br>
+Güvenlik verileri ve temel sistem durumu ve kalite verileri. Kalite ile ilgili veriler, uygulama uyumluluğu, uygulama kullanımı verileri ve **güvenlik** düzeyinden alınan veriler dahil olmak üzere temel cihaz bilgileri. Telemetri düzeyinizi temel olarak ayarlamak Azure Stack telemetri sağlar. Bu düzeyde toplanan veriler şunları içerir:
 
-- *Temel cihaz bilgilerini* türleri ve yerel ve sanal Windows Server 2016 örneklerin ekosistemindeki yapılandırmalarına hakkında bir anlayış sağlar. Buna aşağıdakiler dahildir:
+- Ekosistemde yerel ve sanal Windows Server 2016 örneklerinin türleri ve konfigürasyonları hakkında bilgi sahibi olan *temel cihaz bilgileri* . Buna aşağıdakiler dahildir:
 
   - OEM ve model gibi makine öznitelikleri.
-  - Ağ bağdaştırıcılarının sayısını ve hızını gibi ağ öznitelikleri.
-  - İşlemci ve bellek gibi özniteliklerini çekirdek sayısı ve yüklü bellek miktarı.
-  - Sürücü sayısı, türü sürücü ve disk boyutu gibi depolama öznitelikleri.
+  - Ağ bağdaştırıcılarının sayısı ve hızı gibi ağ öznitelikleri.
+  - İşlemci ve bellek öznitelikleri (çekirdek sayısı ve yüklü bellek miktarı).
+  - Sürücü sayısı, sürücü türü ve sürücü boyutu gibi depolama öznitelikleri.
 
-- *Telemetri işlevselliği*, karşıya yüklenen olayları, bırakılan olayları ve en son verileri yüzdesi de dahil olmak üzere karşıya yükleme zamanı.
-- *Kalite ilgili bilgiler* Microsoft, Azure Stack performansıyla ilgili temel bilgilere geliştirmenize yardımcı olur. Örneğin, belirli donanım yapılandırmasını kritik uyarı sayısı.
-- *Uyumluluk verileri* yardımcı ilgili kaynak sağlayıcıları yüklü bir sistem ve bir sanal makine üzerinde bir anlayış sağlayın. Bu, olası uyumluluk sorunları tanımlar.
+- Karşıya yüklenen olayların yüzdesi, bırakılan olaylar ve son veri yükleme zamanı dahil *telemetri işlevselliği*.
+- Microsoft 'un Azure Stack nasıl gerçekleştirileceği hakkında temel bir bilgi sahibi geliştirmenize yardımcı olan, *kaliteyle ilgili bilgiler* . Örneğin, belirli bir donanım yapılandırmasındaki kritik uyarı sayısı.
+- Bir sistemde ve bir sanal makinede hangi kaynak sağlayıcılarının yüklü olduğunu anlamak için yardım veren *Uyumluluk verileri* . Bu, olası uyumluluk sorunlarını belirler.
 
 **2 (Gelişmiş)**</br>
-Dahil olmak üzere ek Öngörüler: işletim sistemi ve Azure Stack hizmetlerinin nasıl kullanıldığı, bu hizmetleri nasıl gerçekleştirmek, Gelişmiş güvenilirlik verileri ve verilerden **güvenlik** ve **temel** düzeyleri.
+İşletim sistemi ve Azure Stack hizmetlerinin nasıl kullanıldığı, bu hizmetlerin nasıl gerçekleştirdiği, gelişmiş güvenilirlik verilerinin ve **güvenlik** ve **temel** düzeylerdeki verilerin nasıl gerçekleştirileceği hakkında ek Öngörüler.
 
 > [!NOTE]
-> Telemetri varsayılan ayar budur.
+> Bu, varsayılan telemetri ayarıdır.
 
 **3 (tam)**</br>
-Tüm belirlemek ve sorunları gidermeye yardımcı olmak gereken verileri, artı verilerden **güvenlik**, **temel**, ve **geliştirilmiş** düzeyleri.
+Sorunları belirlemek ve gidermek için gereken tüm veriler, ayrıca **güvenlik**, **temel**ve **Gelişmiş** düzeylerdeki veriler.
 
 > [!IMPORTANT]
-> Bu telemetri düzeyleri, yalnızca Microsoft Azure Stack bileşenleri için geçerlidir. Microsoft olmayan yazılım bileşenlerini ve Azure Stack donanım iş ortaklarından donanım yaşam döngüsü konakta çalışan hizmetleri bu telemetri düzeyleri dışında bulut Hizmetleri ile iletişim kurabilir. Telemetri ilkesini ve nasıl kabul et veya geri çevirmek anlamak için Azure Stack donanım çözümü sağlayıcınız ile çalışması gerekir.
+> Bu telemetri düzeyleri yalnızca Microsoft Azure Stack bileşenleri için geçerlidir. Azure Stack Hardware iş ortaklarından donanım yaşam döngüsü ana bilgisayarında çalışan Microsoft dışı yazılım bileşenleri ve Hizmetleri, bu telemetri düzeyleri dışında bulut hizmetleriyle iletişim kurabilir. Telemetri ilkesini anlamak için Azure Stack donanım çözümü sağlayıcınızla birlikte çalışmanız ve bunları nasıl kabul edebilir veya geri çevirebilirsiniz.
 
-Windows ve Azure Stack telemetriyi kapatma SQL telemetri de devre dışı bırakır. Windows Server telemetri ayarlarını etkileri hakkında daha fazla bilgi için bkz. [Windows Telemetri teknik incelemesi](https://aka.ms/winservtelemetry).
+Windows ve Azure Stack telemetrinin kapatılması SQL telemetrisini de devre dışı bırakır. Windows Server telemetri ayarlarının etkileri hakkında daha fazla bilgi için bkz. [Windows telemetri teknik incelemesi](https://aka.ms/winservtelemetry).
 
-### <a name="asdk-set-the-telemetry-level-in-the-windows-registry"></a>ASDK: Windows kayıt defterinde telemetri düzeyi
+### <a name="asdk-set-the-telemetry-level-in-the-windows-registry"></a>ASDK: Windows kayıt defterinde telemetri düzeyini ayarlama
 
-Azure Stack dağıtmadan önce fiziksel ana bilgisayarda el ile telemetri düzeyini ayarlamak için Windows Kayıt Defteri Düzenleyicisi'ni kullanabilirsiniz. Yönetim ilkesi, Grup İlkesi gibi zaten varsa şu kayıt defteri ayarını geçersiz kılar.
+Azure Stack dağıtmadan önce, fiziksel ana bilgisayar bilgisayarındaki telemetri düzeyini el ile ayarlamak için Windows kayıt defteri düzenleyicisini kullanabilirsiniz. Grup ilkesi gibi bir yönetim ilkesi zaten varsa, bu kayıt defteri ayarını geçersiz kılar.
 
-Azure Stack Geliştirme Seti konakta dağıtma önce CloudBuilder.vhdx önyükleme ve yükseltilmiş bir PowerShell penceresinde aşağıdaki betiği çalıştırın:
+Geliştirme seti ana bilgisayarında Azure Stack dağıtılmadan önce CloudBuilder. vhdx ' i önyükleyin ve yükseltilmiş bir PowerShell penceresinde aşağıdaki betiği çalıştırın:
 
 ```powershell
 ### Get current AllowTelemetry value on DVM Host
@@ -123,18 +123,18 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 -Name AllowTelemetry).AllowTelemetry
 ```
 
-### <a name="asdk-and-multi-node-enable-or-disable-telemetry-after-deployment"></a>ASDK ve çok düğümlü: etkinleştirin veya dağıtımdan sonra telemetri devre dışı bırak
+### <a name="asdk-and-multi-node-enable-or-disable-telemetry-after-deployment"></a>ASDK ve çok düğümlü: dağıtımdan sonra Telemetriyi etkinleştirme veya devre dışı bırakma
 
-Etkinleştirmek veya dağıtımdan sonra telemetri devre dışı bırakmak için erişim için ayrıcalıklı uç noktasına (ERCS Vm'lerde ifşa eden CESARETLENDİRİCİ) olması gerekir.
+Dağıtımdan sonra Telemetriyi etkinleştirmek veya devre dışı bırakmak için, ERCS VM 'lerde kullanıma sunulan ayrıcalıklı uç noktaya (PEP) erişiminizin olması gerekir.
 
 1. Etkinleştirmek için: `Set-Telemetry -Enable`
 2. Devre dışı bırakmak için: `Set-Telemetry -Disable`
 
 PARAMETRE ayrıntıları:
-> . PARAMETRE Enable - açma telemetri verilerini karşıya yükleme</br>
-> . PARAMETRE devre dışı bırak - telemetri verilerini karşıya yükleme devre dışı bırak  
+> . PARAMETRE etkinleştirme-telemetri verilerini karşıya yüklemeyi aç</br>
+> . PARAMETRE devre dışı-telemetri verilerini karşıya yüklemeyi devre dışı bırakma  
 
-**Telemetri etkinleştirmek için komut dosyası:**
+**Telemetriyi etkinleştirmek için betik:**
 
 ```powershell
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
@@ -148,7 +148,7 @@ if($psSession)
 }
 ```
 
-**Telemetri devre dışı bırakmak için betiği:**
+**Telemetriyi devre dışı bırakma betiği:**
 
 ```powershell
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.

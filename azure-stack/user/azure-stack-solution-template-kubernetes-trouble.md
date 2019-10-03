@@ -14,12 +14,12 @@ ms.author: mabrigg
 ms.date: 06/18/2019
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 135bffd37c98ce53de4b7ec58ddca1d65f4c9495
-ms.sourcegitcommit: f6ea6daddb92cbf458f9824cd2f8e7e1bda9688e
+ms.openlocfilehash: 8d6730135e2a7055fc50f5c69918d1f0b2dbe5af
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493822"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71823882"
 ---
 # <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Azure Stack için Kubernetes dağıtımıyla ilgili sorunları giderme
 
@@ -48,16 +48,16 @@ Aşağıdaki diyagramda, kümeyi dağıtmaya yönelik genel işlem gösterilmekt
     -  **Kullanıcı adı**: Kubernetes kümesinin ve DVD 'nin parçası olan Linux sanal makinelerinin (VM 'Ler) Kullanıcı adı.
     -  **SSH ortak anahtarı**: Kubernetes kümesi ve DVD 'nin bir parçası olarak oluşturulan tüm Linux makinelerin yetkilendirmesi için kullanılan anahtar.
     -  **Hizmet sorumlusu**: Kubernetes Azure bulut sağlayıcısı tarafından kullanılan KIMLIK. Hizmet sorumlunuzu oluştururken uygulama KIMLIĞI olarak tanımlanan istemci KIMLIĞI. 
-    -  **İstemci parolası**: Hizmet sorumlunuzu oluştururken oluşturduğunuz anahtar.
+    -  **İstemci gizli anahtarı**: Hizmet sorumlunuzu oluştururken oluşturduğunuz anahtar.
 
 2. Dağıtım sanal makinesi ve özel Betik uzantısı oluşturun.
     -  Market Linux Image **Ubuntu Server 16,04-LTS**kullanarak DAĞıTıM Linux VM 'sini oluşturun.
-    -  Özel Betik uzantısı 'nı Market 'ten indirip çalıştırın. Betik, **Linux 2,0 Için özel**bir betiktir.
+    -  Özel Betik uzantısı 'nı Market 'ten indirip çalıştırın. Betik, **Linux 2,0 Için özel bir betiktir**.
     -  DVA özel betiğini çalıştırın. Komut dosyası aşağıdaki görevleri yapar:
         1. Azure Resource Manager meta veri uç noktasından Galeri uç noktasını alır.
         2. Azure Resource Manager meta veri uç noktasından Active Directory kaynak KIMLIĞINI alır.
         3. AKS altyapısının API modelini yükler.
-        4. AKS altyapısını Kubernetes kümesine dağıtır ve Azure Stack bulut profilini öğesine `/etc/kubernetes/azurestackcloud.json`kaydeder.
+        4. AKS altyapısını Kubernetes kümesine dağıtır ve Azure Stack bulut profilini `/etc/kubernetes/azurestackcloud.json` ' a kaydeder.
 3. Ana VM 'Leri oluşturun.
 
 4. Özel Betik uzantılarını indirip çalıştırın.
@@ -94,7 +94,7 @@ Kubernetes kümenizi destekleyen VM 'lerde dağıtım günlüklerini toplayıp g
 4.  VM **Tamam**Ise, DVD 'yi değerlendirin. DVD 'nin bir hata iletisi varsa:
 
     - Ortak anahtar geçersiz olabilir. Oluşturduğunuz anahtarı gözden geçirin.  
-    - Ayrıcalıklı uç noktaları kullanarak Azure Stack günlüklerini almak için Azure Stack yöneticinize başvurun. Daha fazla bilgi için bkz. [Azure Stack tanılama araçları](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
+    - Ayrıcalıklı uç noktaları kullanarak Azure Stack günlüklerini almak için Azure Stack yöneticinize başvurun. Daha fazla bilgi için bkz. [Azure Stack tanılama araçları](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).
 5. Dağıtımınız hakkında sorularınız varsa, bunu gönderebilir veya birisinin [Azure Stack forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)soruyu zaten cevaplamış olup olmadığını görebilirsiniz. 
 
 ## <a name="review-deployment-status"></a>Dağıtım durumunu gözden geçir
@@ -131,7 +131,7 @@ Azure Stack yönetmek için kullandığınız makinede bir bash istemi gerekir. 
 
 Küme günlüklerini toplamak ve indirmek için şu adımları izleyin:
 
-1. Bash istemi açın. Bir Windows makinesinden _Git Bash_ ' i açın veya şunu çalıştırın `C:\Program Files\Git\git-bash.exe`:.
+1. Bash istemi açın. Bir Windows makinesinden _Git Bash_ ' i açın veya şunu çalıştırın: `C:\Program Files\Git\git-bash.exe`.
 
 2. Bash isteminizdeki aşağıdaki komutları çalıştırarak günlük Toplayıcı betiğini indirin:
 
@@ -146,10 +146,10 @@ Küme günlüklerini toplamak ve indirmek için şu adımları izleyin:
 
     | Parametre           | Açıklama                                                                                                      | Örnek                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d,--VMD-konak      | DVD 'nin genel IP veya tam etki alanı adı (FQDN). VM adı ile `vmd-`başlar. | IP: 192.168.102.38<br>DNS: VMD-myk8s. Local. cloudapp. azurestack. External |
+    | -d,--VMD-konak      | DVD 'nin genel IP veya tam etki alanı adı (FQDN). VM adı `vmd-` ile başlar. | IP 192.168.102.38<br>DNS: VMD-myk8s. Local. cloudapp. azurestack. External |
     | -h,--yardım  | Komut kullanımını yazdır. | |
     | -i,--Identity-File | Kubernetes kümesi oluşturulurken Market öğesine geçirilen RSA özel anahtar dosyasının yolu. İle Kubernetes düğümlerine uzak için gereklidir. | C:\data\ıd_rsa.exe (PuTTY)<br>~/nssh/id_rsa (SSH)
-    | -a,--ana-konak   | Bir Kubernetes ana düğümünün genel IP veya tam etki alanı adı (FQDN). VM adı ile `k8s-master-`başlar. | IP: 192.168.102.37<br>FQDN: k8s-12345. Local. cloudapp. azurestack. External      |
+    | -a,--ana-konak   | Bir Kubernetes ana düğümünün genel IP veya tam etki alanı adı (FQDN). VM adı `k8s-master-` ile başlar. | IP 192.168.102.37<br>FQDN: k8s-12345. Local. cloudapp. azurestack. External      |
     | -u,--Kullanıcı          | Kubernetes kümesi oluşturulurken Market öğesine geçirilen Kullanıcı adı. İle Kubernetes düğümlerine uzak için gereklidir. | azureuser (varsayılan değer) |
 
 
@@ -159,7 +159,7 @@ Küme günlüklerini toplamak ve indirmek için şu adımları izleyin:
     ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-4. Birkaç dakika sonra, komut dosyası toplanan günlükleri adlı `KubernetesLogs_{{time-stamp}}`bir dizine çıktı. Kümeye ait olan her VM için bir dizin bulacaksınız.
+4. Birkaç dakika sonra, komut dosyası toplanan günlükleri `KubernetesLogs_{{time-stamp}}` adlı bir dizine çıktı olarak kaydeder. Kümeye ait olan her VM için bir dizin bulacaksınız.
 
     Günlük Toplayıcı betiği, günlük dosyalarındaki hataları da arar ve bilinen bir sorunu bulursa sorun giderme adımlarını dahil eder. Bilinen sorunları bulma olasılığınızı artırmak için betiğin en son sürümünü çalıştırdığınızdan emin olun.
 

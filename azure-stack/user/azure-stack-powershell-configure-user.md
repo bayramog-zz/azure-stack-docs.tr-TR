@@ -1,6 +1,6 @@
 ---
 title: Bir kullanıcı olarak PowerShell ile Azure stack'e bağlanma | Microsoft Docs
-description: Azure Stack PowerShell ile bağlanma hakkında bilgi edinin.
+description: PowerShell ile Azure Stack nasıl bağlanacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,32 +11,32 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: c9ef9c1e936c71a8b0a2a0eb636da1eac5bf69da
-ms.sourcegitcommit: be5382f715a9c1c18c660b630d8fcd823f13aae3
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 6a75eb788afd84b6619326293ae2399d8ed5b0e1
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66197318"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71824218"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>PowerShell ile Azure Stack için kullanıcı olarak bağlanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack kaynaklarınızı yönetmek için PowerShell ile Azure Stack bağlanabilirsiniz. Örneğin, tekliflere abone, sanal makineler (VM) oluşturun ve Azure Resource Manager şablonlarını dağıtmak için PowerShell kullanabilirsiniz.
+Azure Stack kaynaklarını yönetmek için PowerShell ile Azure Stack bağlanabilirsiniz. Örneğin, tekliflere abone olmak, sanal makineler (VM 'Ler) oluşturmak ve Azure Resource Manager şablonları dağıtmak için PowerShell 'i kullanabilirsiniz.
 
-Kurulum almak için:
+Kurulumu almak için:
   - Gereksinimlerine sahip olduğunuzdan emin olun.
   - Azure'la Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS). 
   - Kaynak sağlayıcılarını kaydedin.
   - Bağlantınızı test edin.
 
-## <a name="prerequisites-to-connecting-with-powershell"></a>PowerShell ile bağlama önkoşulları
+## <a name="prerequisites-to-connecting-with-powershell"></a>PowerShell ile bağlantı kurma önkoşulları
 
-Bu önkoşulları yapılandırma [Geliştirme Seti](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), veya size bir istemciden Windows tabanlı dış [VPN üzerinden bağlı](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
+Bu önkoşulları [geliştirme seti](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)'NDEN veya [VPN üzerinden bağlıysanız](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)Windows tabanlı bir dış istemciden yapılandırın:
 
 * Yükleme [Azure Stack ile uyumlu Azure PowerShell modüllerini](../operator/azure-stack-powershell-install.md).
 * İndirme [Azure Stack ile çalışması için gereken araçları](../operator/azure-stack-powershell-download.md).
@@ -44,11 +44,11 @@ Bu önkoşulları yapılandırma [Geliştirme Seti](../asdk/asdk-connect.md#conn
 Aşağıdaki komut dosyası değişkenleri, Azure Stack yapılandırmasından değerlerle değiştirin emin olun:
 
 - **Azure AD Kiracı adı**  
-  Azure Stack yönetmek için kullanılan Azure AD kiracınızın adıdır. Örneğin, yourdirectory.onmicrosoft.com.
+  Azure Stack yönetmek için kullanılan Azure AD kiracınızın adı. Örneğin, yourdirectory.onmicrosoft.com.
 - **Azure Resource Manager uç noktası**  
   Azure Stack Geliştirme Seti için bu değeri ayarlamak https://management.local.azurestack.external. Azure Stack tümleşik sistemleri için bu değeri almak için hizmet sağlayıcınıza başvurun.
 
-## <a name="connect-to-azure-stack-with-azure-ad"></a>Azure AD ile Azure stack'e bağlanma
+## <a name="connect-to-azure-stack-with-azure-ad"></a>Azure AD ile Azure Stack bağlanma
 
 ```powershell  
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
@@ -62,7 +62,7 @@ Aşağıdaki komut dosyası değişkenleri, Azure Stack yapılandırmasından de
     Add-AzureRmAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 
-## <a name="connect-to-azure-stack-with-ad-fs"></a>AD FS ile Azure stack'e bağlanma
+## <a name="connect-to-azure-stack-with-ad-fs"></a>AD FS Azure Stack bağlanma
 
   ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance
@@ -74,7 +74,7 @@ Aşağıdaki komut dosyası değişkenleri, Azure Stack yapılandırmasından de
 
 ## <a name="register-resource-providers"></a>Kaynak sağlayıcılarını kaydetme
 
-Kaynak sağlayıcıları için portal üzerinden dağıtılan herhangi bir kaynağa sahip olmayan yeni kullanıcı aboneliklerini otomatik olarak kayıtlı değil. Aşağıdaki betiği çalıştırarak, bir kaynak sağlayıcısı açıkça kaydedebilirsiniz:
+Kaynak sağlayıcıları, Portal aracılığıyla dağıtılan bir kaynağı olmayan yeni Kullanıcı abonelikleri için otomatik olarak kayıtlı değildir. Aşağıdaki betiği çalıştırarak, bir kaynak sağlayıcısı açıkça kaydedebilirsiniz:
 
 ```powershell  
 foreach($s in (Get-AzureRmSubscription)) {
@@ -86,7 +86,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
 
 ## <a name="test-the-connectivity"></a>Bağlantısını test etme
 
-Süreyi bulduğunuzda, her şeyi Kurulum, Azure Stack'te kaynakları oluşturmak için PowerShell kullanarak test bağlantısı. Bir test olarak bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu çalıştırın:
+Her şeyin kurulumunu yaptıktan sonra, Azure Stack ' de kaynak oluşturmak için PowerShell kullanarak bağlantıyı test edin. Test olarak, bir uygulama için bir kaynak grubu oluşturun ve bir VM ekleyin. "MyResourceGroup" adlı bir kaynak grubu oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
@@ -96,5 +96,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Şablonları Azure Stack için geliştirme](azure-stack-develop-templates.md)
 - [Şablonları PowerShell ile dağıtma](azure-stack-deploy-template-powershell.md)
-- [Azure Stack PowerShell modülü başvurusu](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
+- [PowerShell modülü başvurusunu Azure Stack](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
 - PowerShell'i bulut işleci ortamı ayarlamak istiyorsanız, başvurmak [Azure Stack işlecin PowerShell ortamını yapılandırma](../operator/azure-stack-powershell-configure-admin.md) makalesi.

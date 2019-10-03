@@ -1,44 +1,44 @@
 ---
-title: Azure Stack'te bir sanal makineye bir Go web uygulaması dağıtma | Microsoft Docs
-description: Azure Stack'te bir VM için bir Go web uygulaması dağıtma
+title: Azure Stack bir sanal makineye go Web uygulaması dağıtma | Microsoft Docs
+description: Azure Stack 'de bir sanal makineye go Web uygulaması dağıtma
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: 8b1f207929e018b27bb3f20db8d2b7d5abe46088
-ms.sourcegitcommit: 05a16552569fae342896b6300514c656c1df3c4e
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: b3db83ca42c25503be4ddd2053a011a85ffd7034
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65838355"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71824441"
 ---
-# <a name="deploy-a-go-web-app-to-a-vm-in-azure-stack"></a>Azure Stack'te bir VM için bir Go web uygulaması dağıtma
+# <a name="deploy-a-go-web-app-to-a-vm-in-azure-stack"></a>Azure Stack bir sanal makineye go Web uygulaması dağıtma
 
-Bir sanal makine (VM) Azure Stack'te bir Go web uygulaması barındırmak için oluşturabilirsiniz. Bu makalede, bir sunucu kurulumu yapmak, Go web uygulamanızı barındırmak için sunucuyu yapılandırmak ve sonra uygulamayı Azure Stack'e dağıtma.
+Azure Stack ' de bir go Web uygulaması barındırmak için bir sanal makine (VM) oluşturabilirsiniz. Bu makalede, bir sunucu ayarlar, sunucuyu go Web uygulamanızı barındıracak şekilde yapılandırır ve ardından uygulamayı Azure Stack dağıtmanız gerekir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-1. ' Ndaki yönergeleri takip ederek, Azure Stack sanal ayarlama [Azure Stack'te bir web uygulaması barındırmak üzere bir Linux VM dağıtmak](azure-stack-dev-start-howto-deploy-linux.md).
+1. [Azure Stack ' de bir Web uygulaması barındırmak için bir Linux sanal makinesi dağıtma](azure-stack-dev-start-howto-deploy-linux.md)bölümündeki yönergeleri izleyerek sanal makineyi Azure Stack ' de ayarlayın.
 
-2. VM ağ bölmesinde, aşağıdaki bağlantı noktalarının erişilebilir olduğundan emin olun:
+2. VM ağı bölmesinde, aşağıdaki bağlantı noktalarına erişilebilir olduğundan emin olun:
 
     | Port | Protocol | Açıklama |
     | --- | --- | --- |
-    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), Web sayfalarını sunuculardan sunmak için kullanılan protokolüdür. İstemciler HTTP üzerinden bir DNS adı veya IP adresi ile bağlanır. |
-    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS) bir güvenlik sertifikası gerektirir ve şifrelenmiş bilgi aktarımını için sağlayan HTTP güvenli bir sürümüdür. |
-    | 22 | SSH | Güvenli Kabuk (SSH), güvenli iletişim için kullanılan bir şifreli ağ protokolüdür. VM yapılandırma ve uygulamayı dağıtmak için bir SSH istemcisi ile bu bağlantıyı kullanın. |
-    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü (RDP), makinenizde bir grafik kullanıcı arabirimini kullanarak bir Uzak Masaüstü bağlantısı sağlar.   |
-    | 3000 | Özel | Bağlantı noktası 3000 geliştirme Go web çerçevesi tarafından kullanılır. Bir üretim sunucusu için 80 ve 443 üzerinden trafiğiniz yol. |
+    | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), sunuculardan Web sayfalarını teslim etmek için kullanılan protokoldür. İstemciler bir DNS adı veya IP adresi ile HTTP aracılığıyla bağlanır. |
+    | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), bir güvenlik sertifikası gerektiren ve şifreli bilgi iletimi sağlayan güvenli bir HTTP sürümüdür. |
+    | 22 | SSH | Secure Shell (SSH), güvenli iletişimler için şifreli bir ağ protokolüdür. Bu bağlantıyı, sanal makineyi yapılandırmak ve uygulamayı dağıtmak için bir SSH istemcisiyle birlikte kullanırsınız. |
+    | 3389 | RDP | İsteğe bağlı. Uzak Masaüstü Protokolü (RDP), uzak masaüstü bağlantısının makinenizde bir grafik kullanıcı arabirimi kullanmasına izin verir.   |
+    | 3000 | Özel | 3000 numaralı bağlantı noktası, geliştirme sırasında go Web çerçevesi tarafından kullanılır. Bir üretim sunucusu için, trafiğinizi 80 ve 443 ile yönlendirmenize sahip olursunuz. |
 
-## <a name="install-go"></a>Git'i yükleyin
+## <a name="install-go"></a>Yüklemeyi git
 
-1. SSH istemciniz kullanarak VM'nize bağlanın. Yönergeler için [PuTTY SSH üzerinden Bağlan ](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
+1. SSH istemcinizi kullanarak sanal makinenize bağlanın. Yönergeler için bkz. [PuTTY Ile SSH aracılığıyla bağlanma ](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
-1. Sanal makinenizin üzerinde bash isteminde aşağıdaki komutları girin:
+1. SANAL makinenizin Bash isteminde aşağıdaki komutları girin:
 
     ```bash  
     wget https://dl.google.com/go/go1.10.linux-amd64.tar.gz
@@ -46,7 +46,7 @@ Bir sanal makine (VM) Azure Stack'te bir Go web uygulaması barındırmak için 
     sudo mv go /usr/local
     ```
 
-2. Vm'nizde Git ortamı ayarlayın. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutları girin:
+2. VM 'niz üzerinde go ortamını ayarlayın. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda aşağıdaki komutları girin:
 
     ```bash  
     export GOROOT=/usr/local/go
@@ -56,13 +56,13 @@ Bir sanal makine (VM) Azure Stack'te bir Go web uygulaması barındırmak için 
     vi ~/.profile
     ```
 
-3. Yüklemenizi doğrulayın. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutu girin:
+3. Yüklemenizi doğrulayın. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda, aşağıdaki komutu girin:
 
     ```bash  
         go version
     ```
 
-3. [Git'i yükleyin](https://git-scm.com), yaygın olarak dağıtılmış sürüm denetimi ve kaynak kodu Yönetimi (SCM) sistemi. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutu girin:
+3. Yaygın olarak dağıtılmış bir sürüm denetimi ve kaynak kodu yönetimi (SCM) sistemi olan [Git 'ı yükler](https://git-scm.com). SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda, aşağıdaki komutu girin:
 
     ```bash  
        sudo apt-get -y install git
@@ -70,7 +70,7 @@ Bir sanal makine (VM) Azure Stack'te bir Go web uygulaması barındırmak için 
 
 ## <a name="deploy-and-run-the-app"></a>Uygulamayı dağıtma ve çalıştırma
 
-1. Git deponuzu VM üzerinde ayarlayın. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutları girin:
+1. VM 'de git deponuzu ayarlayın. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda aşağıdaki komutları girin:
 
     ```bash  
        git clone https://github.com/appleboy/go-hello
@@ -79,13 +79,13 @@ Bir sanal makine (VM) Azure Stack'te bir Go web uygulaması barındırmak için 
        go get -d
     ```
 
-2. Uygulamayı başlatın. SSH oturumunuzda, sanal makinenizde hala bağlıyken aşağıdaki komutu girin:
+2. Uygulamayı başlatın. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda, aşağıdaki komutu girin:
 
     ```bash  
        go run hello-world.go
     ```
 
-3. Yeni sunucunuza gidin. Çalışan web uygulamanızın görmeniz gerekir.
+3. Yeni sunucunuza gidin. Çalışan Web uygulamanızı görmeniz gerekir.
 
     ```HTTP  
        http://yourhostname.cloudapp.net:3000
@@ -93,6 +93,6 @@ Bir sanal makine (VM) Azure Stack'te bir Go web uygulaması barındırmak için 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanma hakkında daha fazla bilgi edinin [Azure Stack için geliştirme](azure-stack-dev-start.md).
-- Hakkında bilgi edinin [Iaas olarak Azure Stack için ortak dağıtımları](azure-stack-dev-start-deploy-app.md).
-- Go için ek kaynaklar bulma ve Go programlama dili öğrenmek için bkz: [Golang.org](https://golang.org).
+- [Azure Stack için geliştirme](azure-stack-dev-start.md)hakkında daha fazla bilgi edinin.
+- [Azure Stack için genel dağıtımlar IaaS olarak](azure-stack-dev-start-deploy-app.md)hakkında bilgi edinin.
+- Go programlama dilini öğrenmek ve go için ek kaynaklar bulmak için bkz. [Golang.org](https://golang.org).

@@ -1,34 +1,34 @@
 ---
 title: Azure Stack için uygulama dağıtma | Microsoft Docs
-description: Bir uygulama için Azure Stack dağıtma.
+description: Azure Stack için bir uygulama dağıtın.
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
-ms.openlocfilehash: b139ad30c663d57330ab6b4f404d803c0ace1df3
-ms.sourcegitcommit: 2a4321a9cf7bef2955610230f7e057e0163de779
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 4d8dbc22a69c204b8d6a755d2a8402ba7185d03e
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65617654"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71824748"
 ---
-# <a name="common-deployments-for-azure-stack"></a>Azure Stack için ortak dağıtımları
+# <a name="common-deployments-for-azure-stack"></a>Azure Stack için ortak dağıtımlar
 
-Her iki olarak altyapı (ıaas) ve platform (PaaS) hizmet olarak Azure Stack destekler. Bu makalede, bir sanal makine (VM) ve ardından Azure Stack'e dağıtma için kaynakları listeler.
+Azure Stack, hizmet olarak altyapı (IaaS) ve hizmet olarak platform (PaaS) destekler. Bu makalede, bir sanal makineyi (VM) ayarlamaya ve sonra Azure Stack dağıtmaya yönelik kaynaklar listelenir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure Stack için bir uygulama dağıtmaya başlamadan önce geliştirme makinenize ayarlayın. Bir geliştirici olarak Azure Stack ile çalışmaya hazır alma ile ilgili yönergeler için bkz: [Azure Stack geliştirme ortamında ayarlama](azure-stack-dev-start.md).
+Azure Stack bir uygulamayı dağıtmaya başlamadan önce, geliştirme makinenizi ayarlayın. Geliştirici olarak Azure Stack ile çalışmaya hazırlanma hakkında yönergeler için, bkz. [Azure Stack bir geliştirme ortamı ayarlama](azure-stack-dev-start.md).
 
-## <a name="deploy-an-app-to-a-vm"></a>Uygulama için bir VM dağıtma
+## <a name="deploy-an-app-to-a-vm"></a>VM 'ye uygulama dağıtma
 
-Aşağıdaki nasıl yapılır makaleleri de Azure Stack'te bir sanal makine (VM) ayarlayın ve ardından uygulamanızı geliştirme istasyonunuzdan Azure Stack'e dağıtma.
+Aşağıdaki nasıl yapılır makalelerinde Azure Stack ' de bir sanal makine (VM) ayarlarsınız ve ardından uygulamanızı geliştirme iş istasyonunuzdan Azure Stack için dağıtabilirsiniz.
 
-- [.NET core (C#)](azure-stack-dev-start-howto-vm-dotnet.md)
+- [.NET Core (C#)](azure-stack-dev-start-howto-vm-dotnet.md)
 - [Java](azure-stack-dev-start-howto-vm-java.md)
 - [Go](azure-stack-dev-start-howto-vm-go.md)
 - [Ruby](azure-stack-dev-start-howto-vm-ruby.md)
@@ -37,5 +37,5 @@ Aşağıdaki nasıl yapılır makaleleri de Azure Stack'te bir sanal makine (VM)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ayarlanmış bir [Azure Stack geliştirme ortamında](azure-stack-dev-start.md).
-- Ayarlanmış bir [sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattı Azure Stack'te](azure-stack-solution-pipeline.md).
+- [Azure Stack bir geliştirme ortamı](azure-stack-dev-start.md)ayarlayın.
+- [Azure Stack içinde sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattı](azure-stack-solution-pipeline.md)ayarlayın.

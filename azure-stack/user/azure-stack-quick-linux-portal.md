@@ -1,133 +1,133 @@
 ---
-title: Azure Stack kullanarak bir Linux sunucusu VM'si oluşturma | Microsoft Docs
-description: Azure Stack kullanarak bir Linux sunucusu VM'si oluşturma.
+title: Azure Stack kullanarak bir Linux Server VM oluşturun | Microsoft Docs
+description: Azure Stack kullanarak bir Linux sunucu VM 'si oluşturun.
 services: azure-stack
 cloud: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 05/16/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: ce06ffbe48848a30de98025c42711e25ca9a312a
-ms.sourcegitcommit: 2ee75ded704e8cfb900d9ac302d269c54a5dd9a3
+ms.openlocfilehash: 7bfb56ef9fcb2795a579321bfa58ded872ed3485
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394448"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71824371"
 ---
-# <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portalını kullanarak bir Linux sunucusu VM'si oluşturma
+# <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portalını kullanarak bir Linux Server VM oluşturma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack portalını kullanarak bir Ubuntu Server 16.04 LTS sanal makinesi (VM) oluşturabilirsiniz. Bu makalede, oluşturun ve bir sanal makine kullanın. Bu makalede ayrıca gösterilmektedir için:
+Azure Stack portalını kullanarak Ubuntu Server 16,04 LTS sanal makinesi (VM) oluşturabilirsiniz. Bu makalede, bir sanal makine oluşturup kullanacaksınız. Bu makalede ayrıca nasıl yapılacağı gösterilmektedir:
 
-* Bir uzak istemci ile VM'ye bağlanın.
-* Bir NGINX web sunucusunu yükleyin.
-* Kaynaklarınızı temizleme.
+* Uzak bir istemciyle VM 'ye bağlanın.
+* Bir NGıNX Web sunucusu yükler.
+* Kaynaklarınızı temizleyin.
 
 > [!NOTE]  
-> Bu makalede görüntüleri, Azure Stack sürüm 1808 sürümünde yapılan değişikliklerle eşleştirmek için güncelleştirilir. Sürüm 1808 kullanma desteği ekler *yönetilen diskler* yönetilmeyen diskler yanı sıra. Önceki bir sürümü kullanıyorsanız, görüntüler, disk seçimi gibi bazı görevler için kullanıcı Arabiriminde görüntülenen öğesinden farklı.  
+> Bu makaledeki görüntüler Azure Stack sürüm 1808 ' de tanıtılan değişikliklerle eşleşecek şekilde güncelleştirilir. Sürüm 1808, yönetilmeyen disklere ek olarak *yönetilen disklerin* kullanılmasına yönelik destek ekler. Daha önceki bir sürümünü kullanıyorsanız, disk seçimi gibi bazı görevler için görüntüler, Kullanıcı arabiriminizdeki görüntülendiklerden farklıdır.  
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Stack Marketini içindeki bir Linux görüntüsü
+* Azure Stack Market 'teki bir Linux görüntüsü
 
-   Azure Stack Marketini varsayılan olarak, bir Linux görüntüsü yok. İhtiyacınız Ubuntu Server 16.04 LTS görüntüsüne sağlayan Azure Stack operatörü vardır. İşleç'ndaki yönergeleri kullanabilirsiniz [Azure Stack için Azure Market indirme öğeleri](../operator/azure-stack-download-azure-marketplace-item.md).
+   Azure Stack marketi 'nin varsayılan olarak bir Linux görüntüsü yoktur. Azure Stack işlecine ihtiyacınız olan Ubuntu Server 16,04 LTS görüntüsünü sağlayın. İşleci, [Azure 'Dan Market öğelerini indirme bölümündeki yönergeleri Azure Stack için](../operator/azure-stack-download-azure-marketplace-item.md)kullanabilir.
 
-* Bir SSH istemcisi erişim
+* SSH istemcisine erişim
 
-   Azure Stack geliştirme Seti'ni (ASDK) kullanıyorsanız, bir Secure Shell (SSH) istemcisi erişimi olmayabilir. Bir istemci gerekiyorsa, çeşitli paketler bir SSH istemcisi içerir. Örneğin, bir SSH istemcisi ve SSH anahtar Oluşturucu (puttygen.exe) PuTTY içerir. Kullanılabilir paketler hakkında daha fazla bilgi için bkz: [SSH ortak anahtarı kullanmayı](azure-stack-dev-start-howto-ssh-public-key.md).
+   Azure Stack Geliştirme Seti (ASDK) kullanıyorsanız, bir Secure Shell (SSH) istemcisine erişiminiz olmayabilir. Bir istemciye ihtiyacınız varsa, birkaç paket SSH istemcisi içerir. Örneğin, PuTTY bir SSH istemcisi ve SSH anahtar Oluşturucusu (PuTTYgen. exe) içerir. Kullanılabilir paketler hakkında daha fazla bilgi için bkz. [SSH ortak anahtarı kullanma](azure-stack-dev-start-howto-ssh-public-key.md).
 
-* Bu hızlı başlangıçta, PuTTY SSH anahtarları oluşturun ve Linux sunucusu VM'sine bağlanmak için kullanılır. [PuTTY'yi indirin ve yükleyin](https://www.putty.org).
+* Bu hızlı başlangıç, SSH anahtarlarını oluşturmak ve Linux sunucu VM 'sine bağlanmak için PuTTY kullanır. [PuTTY'yi indirin ve yükleyin](https://www.putty.org).
 
 ## <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 
-Bu makaledeki tüm adımları tamamlamak için bir SSH anahtar çifti gerekir. Bir SSH anahtar çiftiniz varsa bu adımı atlayabilirsiniz.
+Bu makaledeki tüm adımları tamamlaması için bir SSH anahtar çifti gerekir. Bir SSH anahtar çiftiniz varsa bu adımı atlayabilirsiniz.
 
-SSH anahtar çifti oluşturmak için:
+Bir SSH anahtar çifti oluşturmak için:
 
-1. PuTTY yükleme klasörüne gidin (varsayılan konum *C:\Program Files\PuTTY*) ve çalıştırın:
+1. PuTTY yükleme klasörüne gidin (varsayılan konum *C:\Program Files\PuTTY*) ve şunu çalıştırın:
 
     `puttygen.exe`
 
-1. İçinde **PuTTY anahtar Oluşturucu** penceresinde **oluşturulacak anahtar türü** için **RSA**, ayarlayıp **oluşturulan anahtarı bit sayısı** için**2048**.
+1. **Putty anahtar Oluşturucu** penceresinde, oluşturulacak **anahtar türünü** **RSA**olarak ayarlayın ve **oluşturulan bir anahtardaki bit sayısını** **2048**olarak ayarlayın.
 
    ![PuTTY anahtar Oluşturucu yapılandırması](media/azure-stack-quick-linux-portal/Putty01.PNG)
 
-1. Seçin **oluşturmak**.
+1. **Oluştur**' u seçin.
 
-1. Bir anahtar oluşturmak için **anahtar** kutusunda, rastgele işaretçiyi.
+1. Anahtar oluşturmak için, **anahtar** kutusunda işaretçiyi rastgele taşıyın.
 
-1. Anahtar oluşturma tamamlandığında, seçin **ortak anahtarı Kaydet**ve ardından **özel anahtarı Kaydet** anahtarlarınızı dosyaları kaydetmek için.
+1. Anahtar üretimi tamamlandığında, **ortak anahtarı kaydet**' i seçin ve ardından anahtarlarınızı dosyalarınıza kaydetmek için **özel anahtarı kaydet** ' i seçin.
 
    ![PuTTY anahtar Oluşturucu sonuçları](media/azure-stack-quick-linux-portal/Putty02.PNG)
 
 ## <a name="sign-in-to-the-azure-stack-portal"></a>Azure Stack portalında oturum açın
 
-Azure Stack portal'ın adresi, Azure Stack ürünlere ilişkin bağlanmakta olduğunuz bağlıdır:
+Azure Stack portalının adresi, bağlandığınız Azure Stack ürüne bağlıdır:
 
-* ASDK için Git https://portal.local.azurestack.external.
+* ASDK için https://portal.local.azurestack.external ' a gidin.
 
-* Bir Azure Stack tümleşik sistemi için Azure Stack operatörü sağlanan URL'sine gidin.
+* Azure Stack tümleşik bir sistem için Azure Stack işletmenizin verdiğiniz URL 'ye gidin.
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-1. Azure Stack portal'ın sol üst köşedeki seçin **kaynak Oluştur**.
+1. Azure Stack portalının sol üst köşesinde **kaynak oluştur**' u seçin.
 
 1. **İşlem**'i ve ardından **Ubuntu Server 16.04 LTS**'yi seçin.
    
-   ![Linux sunucusu seçin](media/azure-stack-quick-linux-portal/select.png)
+   ![Linux sunucusunu seçin](media/azure-stack-quick-linux-portal/select.png)
 
 1. **Oluştur**’u seçin.
 
-1. Sanal makine bilgileri yazın. İçin **kimlik doğrulama türü**seçin **SSH ortak anahtarı**, SSH ortak anahtarı, kayıtlı ve ardından Yapıştır **Tamam**.
+1. VM bilgilerini yazın. **Kimlik doğrulama türü**için **SSH ortak anahtarı**' nı seçin, kaydettiğiniz SSH ortak anahtarını yapıştırın ve **Tamam**' ı seçin.
 
    > [!NOTE]
-   > Tüm başında veya sonunda boşluk anahtarının kaldırdığınızdan emin olun.
+   > Anahtar için baştaki veya sondaki boşlukları kaldırdığınızdan emin olun.
 
-   ![Temel paneli - VM yapılandırma](media/azure-stack-quick-linux-portal/linux-01.PNG)
+   ![Temel bilgiler paneli-VM 'yi yapılandırma](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
-1. Seçin **D1** VM için.
+1. VM için **D1** öğesini seçin.
 
-   ![Bölmesi boyutu - bir VM boyutu seçme](media/azure-stack-quick-linux-portal/linux-02.PNG)
+   ![Boyut bölmesi-VM boyutunu seçin](media/azure-stack-quick-linux-portal/linux-02.PNG)
 
-1. Üzerinde **ayarları** sayfasında, varsayılan ayarlara değişiklikleri yapın.
+1. **Ayarlar** sayfasında, varsayılanlar üzerinde değişiklikler yapın.
    
-   Yapılandırabileceğiniz 1808 Azure Stack sürümünden başlayarak **depolama** ve kullanmayı *yönetilen diskler*. 1808 daha önceki sürümlerde, yalnızca yönetilmeyen diskler kullanılabilir.
+   Azure Stack sürüm 1808 ' den başlayarak, **depolamayı** yapılandırabilir ve *yönetilen diskleri*kullanmayı seçebilirsiniz. 1808 ' den önceki sürümlerde yalnızca yönetilmeyen diskler kullanılabilir.
 
-   ![Yönetilen diskler için depolama alanını yapılandırma](media/azure-stack-quick-linux-portal/linux-03.PNG)
+   ![Yönetilen diskler için depolamayı yapılandırma](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
-   Yapılandırmalarınızı hazır olduğunuzda seçin **Tamam** devam etmek için.
+   Yapılandırmalarınız hazırlandığınızda, devam etmek için **Tamam** ' ı seçin.
 
-1. Üzerinde **özeti** sayfasında **Tamam** sanal makine dağıtımını başlatın.  
+1. **Özet** SAYFASıNDA, VM dağıtımını başlatmak için **Tamam** ' ı seçin.  
 
    ![Dağıtma](media/azure-stack-quick-linux-portal/deploy.png)
 
 ## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-1. Seçin **Connect** VM sayfasında. VM'ye bağlanmak için SSH bağlantı dizesi bulabilirsiniz. 
+1. VM sayfasında **Bağlan** ' ı seçin. SANAL makineye bağlanmak için gereken SSH bağlantı dizesini bulabilirsiniz. 
 
-1. Üzerinde **PuTTY Yapılandırması** sayfasında **kategori** bölmesinde aşağı kaydırın ve genişletin **SSH**ve ardından **Auth**. 
+1. **Putty yapılandırma** sayfasında, **Kategori** bölmesinde, öğesine gidip **SSH**' ı genişletin ve ardından **kimlik doğrulaması**' nı seçin. 
 
-   ![VM'ye bağlanın](media/azure-stack-quick-linux-portal/putty03.PNG)
+   ![VM 'yi bağlama](media/azure-stack-quick-linux-portal/putty03.PNG)
 
-1. Seçin **Gözat**ve ardından kaydedilen özel anahtar dosyası seçin.
+1. **Araştır**' ı seçin ve ardından kaydettiğiniz özel anahtar dosyasını seçin.
 
-1. İçinde **kategori** bölmesinde kadar kaydırın ve **oturumu**.
+1. **Kategori** bölmesinde, yukarı kaydırarak **oturum**' ı seçin.
 
-1. İçinde **ana bilgisayar adı (veya IP adresi)** kutusuna, Azure Stack portalında gösterilen bağlantı dizesini yapıştırın. Bu örnekte, dizedir *asadmin@192.168.102.34* .
+1. **Ana bilgisayar adı (veya IP adresi)** kutusunda, Azure Stack portalında gösterilen bağlantı dizesini yapıştırın. Bu örnekte, dize *asadmin@192.168.102.34* ' dir.
 
-1. Seçin **açın** VM için bir oturum açın.
+1. VM için bir oturum açmak üzere **Aç** ' ı seçin.
 
    ![Linux oturumu](media/azure-stack-quick-linux-portal/Putty05.PNG)
 
-## <a name="install-the-nginx-web-server"></a>NGINX web sunucusunu yükleme
+## <a name="install-the-nginx-web-server"></a>NGıNX Web sunucusunu yükler
 
-Paket kaynaklarını güncelleştirmek ve sanal makinede en son NGINX paketini yüklemek için aşağıdaki bash komutları girin:
+Paket kaynaklarını güncelleştirmek ve VM 'ye en son NGıNX paketini yüklemek için aşağıdaki Bash komutlarını girin:
 
 ```bash
 #!/bin/bash
@@ -139,38 +139,38 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-NGINX yükleme işiniz bittiğinde, SSH oturumunu kapatın ve VM'yi açma **genel bakış** Azure Stack portalında sayfası.
+NGıNX yüklemesini bitirdiğinizde SSH oturumunu kapatın ve Azure Stack portalında VM **genel bakış** sayfasını açın.
 
 ## <a name="open-port-80-for-web-traffic"></a>Web trafiği için 80 numaralı bağlantı noktasını açın
 
-Bir ağ güvenlik grubu (NSG), gelen ve giden trafiğin güvenliğini sağlar. Azure Stack portalında bir VM oluşturulduğunda, SSH bağlantıları için 22 numaralı bağlantı noktasında bir gelen kuralı oluşturulur. Barındıran bir web sunucusu bu VM için bir NSG kuralı 80 numaralı bağlantı noktasını web trafiğine izin verecek şekilde oluşturulması gerekir.
+Ağ güvenlik grubu (NSG) gelen ve giden trafiğin güvenliğini sağlar. Azure Stack portalında bir VM oluşturulduğunda, SSH bağlantıları için 22 numaralı bağlantı noktasında bir gelen kuralı oluşturulur. Bu VM bir Web sunucusu barındırdığından, 80 numaralı bağlantı noktasında Web trafiğine izin vermek için bir NSG kuralının oluşturulması gerekir.
 
-1. VM'de **genel bakış** sayfasını, adını seçin **kaynak grubu**.
+1. VM **'ye genel bakış** sayfasında, **kaynak grubunun**adını seçin.
 
-1. Seçin **ağ güvenlik grubu** VM için. NSG kullanarak tanımlayabilirsiniz **türü** sütun.
+1. VM için **ağ güvenlik grubunu** seçin. **Tür** sütununu kullanarak NSG 'yi tanımlayabilirsiniz.
 
-1. Sol bölmede altında **ayarları**seçin **gelen güvenlik kuralları**.
+1. Sol bölmede, **Ayarlar**altında **gelen güvenlik kuralları**' nı seçin.
 
 1. **Add (Ekle)** seçeneğini belirleyin.
 
-1. İçinde **adı** kutusuna **http**. 
+1. **Ad** kutusuna **http**yazın. 
 
-1. Emin olun **bağlantı noktası aralığı** değerinin 80'e ayarlanır ve **eylem** ayarlanır **izin**.
+1. **Bağlantı noktası aralığının** 80 olarak ayarlandığından ve **eylemin** **izin ver**olarak ayarlandığından emin olun.
 
 1. **Tamam**’ı seçin.
 
-## <a name="view-the-welcome-to-nginx-page"></a>Hoş Geldiniz ngınx sayfasında görüntüleyin
+## <a name="view-the-welcome-to-nginx-page"></a>NGINX sayfasına hoş geldiniz sayfasını görüntüleyin
 
-NGINX yüklendiğine ve VM'NİZDE açık 80 numaralı bağlantı noktası ile web sunucusu sanal makinenin genel IP adresini kullanarak erişebilirsiniz. (Genel IP adresi, VM'nin üzerinde gösterilen **genel bakış** sayfası.)
+NGıNX yüklü ve bağlantı noktası 80, VM 'niz üzerinde açık olduğunda, VM 'nin genel IP adresini kullanarak Web sunucusuna erişebilirsiniz. (Genel IP adresi, VM 'nin **genel bakış** sayfasında gösterilir.)
 
-Bir web tarayıcısı açın ve gidin *http://\<genel IP adresi >* .
+Bir Web tarayıcısı açın ve *http://\<Genel IP adresi >* sayfasına gidin.
 
-![NGINX web sunucusu Karşılama sayfası](media/azure-stack-quick-linux-portal/linux-05.PNG)
+![NGıNX Web sunucusu karşılama sayfası](media/azure-stack-quick-linux-portal/linux-05.PNG)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyacınız olmayan kaynakları temizleyin. VM ve kaynaklarını silmek için VM sayfasında kaynak grubunu seçin ve ardından **Sil**.
+Daha uzun bir süre gerekmeyen kaynakları temizleyin. VM 'yi ve kaynaklarını silmek için VM sayfasında kaynak grubunu seçin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir web sunucusu ile temel bir Linux sunucusu VM dağıtılır. Azure Stack sanal makineleri hakkında daha fazla bilgi için devam [Azure Stack'te Vm'lerde dikkate alınacak noktalar](azure-stack-vm-considerations.md).
+Bu hızlı başlangıçta, bir Web sunucusuyla temel bir Linux sunucu VM 'si dağıttınız. Azure Stack VM 'Ler hakkında daha fazla bilgi edinmek için [Azure Stack VM 'lerle Ilgili noktalara](azure-stack-vm-considerations.md)devam edin.

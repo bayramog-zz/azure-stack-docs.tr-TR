@@ -1,6 +1,6 @@
 ---
-title: Azure Stack tanılama günlüklerini şimdi toplayın | Microsoft Docs
-description: Azure Stack yardım + destek içinde isteğe bağlı tanılama günlüğü koleksiyonunu yapılandırma.
+title: İsteğe bağlı Azure Stack tanılama günlüklerini toplayın | Microsoft Docs
+description: Yardım ve destek veya ayrıcalıklı uç nokta (PEP) kullanarak Azure Stack isteğe bağlı tanılama günlüklerini nasıl toplayacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,20 +16,20 @@ ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 007703facf882eccd594dfb6f78941570c9cfb02
-ms.sourcegitcommit: 8de4c18b25bd1047fc270812a795f24e8f1e9244
+ms.openlocfilehash: 9d8510c121c424c3c66fd179639256e8834e932e
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68865898"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829070"
 ---
-# <a name="collect-azure-stack-diagnostic-logs-now-on-demand"></a>Azure Stack tanılama günlüklerini şimdi toplayın (isteğe bağlı)
+# <a name="collect-azure-stack-diagnostic-logs-on-demand"></a>İsteğe bağlı Azure Stack tanılama günlüklerini toplayın
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
 Sorun giderme kapsamında, Microsoft Müşteri Destek Hizmetleri (CSS) tanılama günlüklerini analiz etmeniz gerekebilir. Azure Stack işleçleri, 1907 sürümünden itibaren, **Yardım ve destek**kullanarak Azure 'daki bir blob kapsayıcısına isteğe bağlı tanılama günlüklerini karşıya yükleyebilir. Portal kullanılamıyorsa alternatif olarak, işleçler ayrıcalıklı uç nokta (PEP) aracılığıyla get-AzureStackLog komutunu kullanarak günlük toplayabilirler. Bu konu, istek üzerine tanılama günlükleri toplamanın her iki yolunu da içerir.
 
-## <a name="using-help-and-support"></a>Yardım ve destek kullanma
+## <a name="use-help-and-support-to-collect-diagnostic-logs"></a>Tanılama günlüklerini toplamak için yardım ve destek kullanın
 
 Bir sorunu gidermek için CSS, önceki haftadan belirli bir zaman penceresi için isteğe bağlı olarak tanılama günlüklerini toplamak üzere bir Azure Stack işleci isteyebilir. Bu durumda, CSS koleksiyonu karşıya yüklemek için bir SAS URL 'SI ile işleci sağlar. CSS 'den SAS URL 'sini kullanarak isteğe bağlı günlük toplamayı yapılandırmak için aşağıdaki adımları kullanın:
 
@@ -43,17 +43,17 @@ Bir sorunu gidermek için CSS, önceki haftadan belirli bir zaman penceresi içi
 >[!NOTE]
 >Otomatik tanılama günlüğü koleksiyonu etkinleştirilirse, günlük toplama işlemi devam ederken **Yardım ve destek** görüntülenir. Otomatik günlük toplama işlemi devam ederken belirli bir zamandan günlükleri toplamak için **günlükleri topla** ' ya tıklarsanız, otomatik günlük toplama tamamlandıktan sonra isteğe bağlı koleksiyon başlar. 
 
-## <a name="using-pep"></a>PEP kullanma
+## <a name="using-pep-to-collect-diagnostic-logs"></a>Tanılama günlüklerini toplamak için PEP kullanma
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
 Azure Stack tanılama araçları, günlük toplamayı kolay ve verimli hale getirmenize yardımcı olur. Aşağıdaki diyagramda, tanılama araçlarının nasıl çalıştığı gösterilmektedir:
 
-![Azure Stack tanılama araçları](media/azure-stack-diagnostics/get-azslogs.png)
+![Azure Stack tanılama araçları iş akışı diyagramı](media/azure-stack-diagnostics/get-azslogs.png)
 
 ### <a name="trace-collector"></a>İzleme Toplayıcısı
 
-İzleme Toplayıcısı varsayılan olarak etkindir ve Azure Stack bileşen hizmetlerinden Windows için olay Izleme (ETW) günlüklerini toplamak üzere arka planda sürekli olarak çalışır. ETW günlükleri, beş günlük yaş sınırına sahip ortak bir yerel paylaşımda depolanır. Bu sınıra ulaşıldığında, yeni olanlar oluşturulmuşdan en eski dosyalar silinir. Her dosya için izin verilen varsayılan en büyük boyut 200 MB 'tır. Boyut denetimi her 2 dakikada bir gerçekleşir ve geçerli dosya > = 200 MB ise, kaydedilir ve yeni bir dosya oluşturulur. Ayrıca, olay oturumu başına oluşturulan toplam dosya boyutu için 8 GB bir sınır vardır.
+İzleme Toplayıcısı varsayılan olarak etkindir ve Azure Stack bileşen hizmetlerinden Windows için olay Izleme (ETW) günlüklerini toplamak üzere arka planda sürekli olarak çalışır. ETW günlükleri, beş günlük bir yaş sınırı ile ortak bir yerel paylaşımda depolanır. Bu sınıra ulaşıldığında, yeni olanlar oluşturulmuşdan en eski dosyalar silinir. Her dosya için izin verilen varsayılan en büyük boyut 200 MB 'tır. Her 2 dakikada bir boyut denetimi gerçekleşir ve geçerli dosya > = 200 MB ise, kaydedilir ve yeni bir dosya oluşturulur. Ayrıca, olay oturumu başına oluşturulan toplam dosya boyutu için 8 GB bir sınır vardır.
 
 ### <a name="get-azurestacklog"></a>Get-AzureStackLog
 
@@ -144,16 +144,16 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
   ```
 
   > [!NOTE]
-  > Bu yordam, günlükleri karşıya yüklemek için yararlıdır. Erişilebilir bir SMB paylaşımınız veya internet erişimi olmasa bile, günlükleri aktarmak için Azure Stack bir BLOB depolama hesabı oluşturabilir ve ardından bu günlükleri almak için istemcinizi kullanabilirsiniz.  
+  > Bu yordam, günlükleri karşıya yüklemek için yararlıdır. Erişimli bir SMB paylaşımınız veya internet erişimi olmasa bile, günlükleri aktarmak için Azure Stack bir BLOB depolama hesabı oluşturabilir ve ardından bu günlükleri almak için istemcinizi kullanabilirsiniz.  
 
   Depolama hesabı için SAS belirtecini oluşturmak üzere aşağıdaki izinler gereklidir:
 
-  * BLOB depolama hizmetine erişim
-  * Kapsayıcı kaynak türüne erişim
+  * BLOB depolama hizmetine erişim.
+  * Kapsayıcı kaynak türüne erişim.
 
-  `-OutputSasUri` Parametresi için kullanılmak üzere bir SAS URI değeri oluşturmak için aşağıdaki adımları uygulayın:
+  @No__t-0 parametresi için kullanılacak SAS URI değeri oluşturmak için aşağıdaki adımları izleyin:
 
-  1. [Bu makaledeki](/azure/storage/common/storage-quickstart-create-account)adımları Izleyerek bir depolama hesabı oluşturun.
+  1. [Bu makaledeki](/azure/storage/common/storage-quickstart-create-account)adımları izleyerek bir depolama hesabı oluşturun.
   2. Azure Depolama Gezgini bir örneğini açın.
   3. Adım 1 ' de oluşturulan depolama hesabına bağlanın.
   4. **Depolama Hizmetleri**'Nde **BLOB kapsayıcıları** ' na gidin.
@@ -162,7 +162,7 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
   7. Gereksinimlerinize bağlı olarak geçerli bir **Başlangıç saati** ve **bitiş saati**seçin.
   8. Gerekli izinler için **Oku**, **yaz**ve **Listele**' yi seçin.
   9. **Oluştur**’u seçin.
-  10. Paylaşılan erişim Imzası alacaksınız. URL bölümünü kopyalayın ve `-OutputSasUri` parametresine girin.
+  10. Paylaşılan erişim Imzası alacaksınız. URL bölümünü kopyalayın ve `-OutputSasUri` parametresine sağlayın.
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Hem ASDK hem de tümleşik sistemler için parametre konuları
 
@@ -188,7 +188,7 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
 
   |   |   |   |    |     |
   | - | - | - | -  |  -  |
-  |ACS                   |CA                             |HRP                            |OboService                |VirtualMachines|
+  |ACS                   |Sertifika Yetkilisi (CA)                             |HRP                            |OboService                |VirtualMachines|
   |ACSBlob               |CacheService                   |IBC                            |OEM                       |BULUNAMADI            |
   |ACSDownloadService    |İşlem                        |InfraServiceController         |OnboardRP                 |WASPUBLIK|
   |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE                       |         |
@@ -209,11 +209,11 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
   |BRP                   |HintingServiceV2               |NRP                            |UsageBridge               |         |
   |   |   |   |    |     | 
 
-### <a name="additional-considerations"></a>Diğer konular
+### <a name="additional-considerations-on-diagnostic-logs"></a>Tanılama günlükleri hakkında ek konular
 
 * Komutun hangi rol (ler) topladıkları role göre çalıştırılması biraz zaman alır. Ayrıca, katkıda bulunan faktörler günlük toplama için belirtilen süre ve Azure Stack ortamındaki düğümlerin sayısı da dahil değildir.
 * Günlük koleksiyonu çalışırken, komutta belirtilen **Outputsharepath** parametresinde oluşturulan yeni klasörü kontrol edin.
-* Her rolün günlüğü ayrı ZIP dosyaları içinde vardır. Toplanan günlüklerin boyutuna bağlı olarak, bir rolün günlükleri birden çok ZIP dosyasına bölünmüş olabilir. Bu tür bir rol için, tüm günlük dosyalarını tek bir klasöre geri yüklemek istiyorsanız, toplu olarak sıkıştırılmış bir araç kullanın. Rolün tüm daraltılmış dosyalarını seçin ve **buradan Ayıkla**' yı seçin. Bu, tek bir birleştirilmiş klasörde söz konusu rolün tüm günlük dosyalarını kaldırır.
+* Her rolün günlüğü ayrı ZIP dosyaları içinde vardır. Toplanan günlüklerin boyutuna bağlı olarak, bir rolün günlükleri birden çok ZIP dosyasına bölünmüş olabilir. Bu tür bir rol için, tüm günlük dosyalarını tek bir klasöre sıkıştırdıysanız, toplu olarak sıkıştırılmış bir araç kullanın. Rolün tüm daraltılmış dosyalarını seçin ve **buradan Ayıkla**' yı seçin. Bu rolün tüm günlük dosyaları, tek bir birleştirilmiş klasöre sıkıştırilmez.
 * **Get-AzureStackLog_Output. log** adlı bir dosya, daraltılmış günlük dosyalarını içeren klasörde da oluşturulur. Bu dosya, günlük toplama sırasında sorun giderme için kullanılabilen komut çıkışının bir günlüğü. Günlük toplama çalıştıktan sonra beklenen `PS>TerminatingError` günlük dosyaları eksik olmadığı takdirde, günlük dosyası bazen güvenle yoksayılabilir olan girişleri içerir.
 * Belirli bir sorunu araştırmak için, birden fazla bileşenden günlük gerekebilir.
 
@@ -223,11 +223,11 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
   * ACS günlükleri **depolama** ve **ACS** rollerinde toplanır.
 
 > [!NOTE]
-> Boyut ve yaş sınırları, depolama alanınızı, Günlükler ile taşmadığından emin olmak için verimli bir şekilde kullanımının güvence altına almak açısından, toplanan günlüklerde zorlanır. Ancak, bir sorunu tanılarken bazen bu limitlerin nedeniyle mevcut olmayan günlüklere ihtiyacınız olabilir. Bu nedenle, günlüklerinizi her 8-12 saate kadar bir harici depolama alanına (Azure 'daki bir depolama hesabı, şirket içi depolama cihazı vb.) boşaltmasını ve bunları, gereksinimlerinize bağlı olarak 1-3 ay süreyle saklamanızı öneririz. Ayrıca, bu depolama konumunun şifrelendiğinden emin olun.
+> Boyut ve yaş sınırları, depolama alanınızı verimli bir şekilde kullanma ve günlüklerle taşmayı önlemek için gerekli olduğu için toplanan günlüklerde zorlanır. Ancak, bir sorunu tanılarken, bazı durumlarda bu limitlerin nedeniyle artık mevcut olmayan günlüklere ihtiyacınız vardır. Bu nedenle, günlüklerinizi her 8-12 saate kadar bir harici depolama alanı (Azure 'daki bir depolama hesabı, şirket içi depolama cihazı vb.) için boşaltmasını ve gereksinimlerinize bağlı olarak 1-3 ay boyunca **saklamanızı öneririz.** Ayrıca, bu depolama konumunun şifrelendiğinden emin olmalısınız.
 
 ### <a name="invoke-azurestackondemandlog"></a>Invoke-Azurestackonisteğgünlüğü
 
-Belirli roller için isteğe bağlı Günlükler oluşturmak üzere **Invoke-Azurestackondıonlog** cmdlet 'ini kullanabilirsiniz (Bu bölümün sonundaki listeye bakın). Bu cmdlet tarafından oluşturulan Günlükler, **Get-AzureStackLog** cmdlet 'ini çalıştırdığınızda aldığınız günlük grubundaki varsayılan olarak mevcut değildir. Ayrıca, bu günlükleri yalnızca Microsoft destek ekibi tarafından istenerek toplamanız önerilir.
+Belirli roller için isteğe bağlı Günlükler oluşturmak üzere **Invoke-Azurestackondıonlog** cmdlet 'ini kullanabilirsiniz (Bu bölümün sonundaki listeye bakın). Bu cmdlet tarafından oluşturulan Günlükler, **Get-AzureStackLog** cmdlet 'ini çalıştırdığınızda aldığınız günlük grubundaki varsayılan olarak yoktur. Ayrıca, bu günlükleri yalnızca Microsoft destek ekibi tarafından istenerek toplamanız önerilir.
 
 Şu anda, aşağıdaki rollere sahip `-FilterByRole` günlük toplamayı filtrelemek için parametresini kullanabilirsiniz:
 
@@ -236,7 +236,7 @@ Belirli roller için isteğe bağlı Günlükler oluşturmak üzere **Invoke-Azu
 * SLB
 * Ağ geçidi
 
-#### <a name="example-of-collecting-on-demand-logs"></a>İsteğe bağlı günlükleri toplama örneği
+#### <a name="example-of-collecting-on-demand-diagnostic-logs"></a>İsteğe bağlı tanılama günlüklerini toplama örneği
 
 ```powershell
 $ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.

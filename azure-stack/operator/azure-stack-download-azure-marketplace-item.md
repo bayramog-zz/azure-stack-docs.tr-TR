@@ -1,6 +1,6 @@
 ---
-title: Azure 'dan Market öğelerini indirin | Microsoft Docs
-description: Bulut işletmeni, Azure 'dan Market öğelerini Azure Stack dağıtımına indirebilir.
+title: Azure 'dan Market öğelerini indirin ve Azure Stack yayımlayın | Microsoft Docs
+description: Azure 'dan Market öğelerini indirme ve Azure Stack yayımlama hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,25 +16,25 @@ ms.date: 08/13/2019
 ms.author: justinha
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 99d0c48a5e7f5fd4e58d6fdf13e0a12c4b9dfb1e
-ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
+ms.openlocfilehash: f4ffb166d4ae45ca8d7ef335d81e51e2775eb985
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71070266"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71829124"
 ---
-# <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure 'dan Market öğelerini Azure Stack 'a indirin
+# <a name="download-marketplace-items-from-azure-and-publish-to-azure-stack"></a>Azure 'dan Market öğelerini indirin ve Azure Stack yayımlayın
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 Bulut operatörü olarak, Azure Marketi 'nden öğeleri indirebilir ve Azure Stack ' de kullanılabilir hale getirebilirsiniz. Seçebileceğiniz öğeler, önceden test edilmiş ve Azure Stack ile çalışmak üzere desteklenen Azure Marketi öğelerinin seçkin bir listesidir. Ek öğeler genellikle bu listeye eklendiyse, bu nedenle yeni içerik için yeniden kullanıma devam edin.
 
-Azure Market'e bağlanmak için iki senaryo vardır:
+Azure Market 'e bağlanmak için iki senaryo vardır:
 
 - **Bağlı senaryo** -Azure Stack ortamının internet 'e bağlanmasını gerektirir. Öğeleri bulmak ve indirmek için Azure Stack portalını kullanın.
-- **Bağlantısı kesilmiş veya kısmen bağlı senaryo** -Market öğelerini Indirmek için Market dağıtım aracını kullanarak Internet 'e erişmenizi gerektirir. Ardından, indirilenlerinizi bağlantısı kesilen Azure Stack yüklemenize aktarırsınız. Bu senaryo PowerShell kullanır.
+- **Bağlantısı kesilmiş veya kısmen bağlı senaryo** -Market öğelerini Indirmek için Market dağıtım aracını kullanarak İnternet 'e erişmenizi gerektirir. Ardından, indirilenlerinizi bağlantısı kesilen Azure Stack yüklemenize aktarırsınız. Bu senaryo PowerShell kullanır.
 
-İndirebileceğiniz Market öğelerinin tüm listesi için bkz. [Azure Marketi öğeleri Azure Stack](azure-stack-marketplace-azure-items.md) . Azure Stack Market 'Teki son ekleme, silme ve güncelleştirmelerin listesi için [Market değişiklikleri Azure Stack](azure-stack-marketplace-changes.md) makalesine bakın.
+İndirebileceğiniz Market öğelerinin tüm listesi için bkz. [Azure Marketi öğeleri Azure Stack](azure-stack-marketplace-azure-items.md) . Azure Stack Market 'Teki son ekleme, silme ve güncelleştirme işlemlerinin bir listesi için [Azure Stack Market Changes](azure-stack-marketplace-changes.md) makalesine bakın.
 
 ## <a name="connected-scenario"></a>Bağlantılı senaryo
 
@@ -50,36 +50,36 @@ Azure Stack dağıtımınız Internet bağlantısına sahip olmalı ve [Azure 'a
 
 2. Market öğelerini indirmeden önce kullanılabilir depolama alanını gözden geçirin. Daha sonra, indirmek üzere öğeler ' i seçtiğinizde, indirme boyutunu kullanılabilir depolama kapasiteniz ile karşılaştırabilirsiniz. Kapasite sınırlıysa, [kullanılabilir alanı yönetmeye](azure-stack-manage-storage-shares.md#manage-available-space)yönelik seçenekleri göz önünde bulundurun.
 
-    Kullanılabilir alanı gözden geçirmek için, **Bölge yönetimi** ' nde, araştırmak istediğiniz bölgeyi seçin ve ardından **kaynak sağlayıcıları** > **depolama alanına**gidin:
+    Kullanılabilir alanı gözden geçirmek için: **Bölge yönetimi**'nde, araştırmak istediğiniz bölgeyi seçin ve ardından **kaynak sağlayıcıları** > **depolama**alanına gidin:
 
-    ![Depolama alanını gözden geçir](media/azure-stack-download-azure-marketplace-item/storage.png)
+    ![Azure Stack yönetici portalındaki depolama alanını gözden geçirme](media/azure-stack-download-azure-marketplace-item/storage.png)
 
 3. Azure Stack marketi 'ni açın ve Azure 'a bağlanın. Bunu yapmak için **Market yönetimi** hizmetini seçin, **Market öğeleri**' ni seçin ve ardından **Azure 'dan Ekle**' yi seçin:
 
-    ![Azure 'dan Ekle](media/azure-stack-download-azure-marketplace-item/marketplace.png)
+    ![Azure 'dan Market öğeleri ekleme](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-    Portal, Azure Marketi 'nden yüklenebilecek öğelerin listesini görüntüler. Ürünleri ada, yayımcıya ve/veya ürün türüne göre filtreleyebilirsiniz. Ayrıca, açıklamasını ve yükleme boyutu da dahil olmak üzere ek bilgileri görüntülemek için her bir öğeye de tıklayabilirsiniz:
+    Portal, Azure Marketi 'nden yüklenebilecek öğelerin listesini görüntüler. Ürünleri ada, yayımcıya ve/veya ürün türüne göre filtreleyebilirsiniz. Ayrıca, açıklamasını ve yükleme boyutu dahil ek bilgileri görüntülemek için her bir öğeyi de seçebilirsiniz:
 
-    ![Market listesi](media/azure-stack-download-azure-marketplace-item/image03.PNG)
+    ![Azure Market öğeleri listesi ](media/azure-stack-download-azure-marketplace-item/image03.PNG)
 
 4. İstediğiniz öğeyi seçin ve ardından **İndir**' i seçin. İndirme süreleri farklılık gösterir.
 
-    ![İletiyi indir](media/azure-stack-download-azure-marketplace-item/image04.png)
+    ![Azure Marketi öğesi indiriliyor](media/azure-stack-download-azure-marketplace-item/image04.png)
 
-    Yükleme tamamlandıktan sonra yeni Market öğesini bir Azure Stack işleci veya Kullanıcı olarak dağıtabilirsiniz.
+    Yükleme tamamlandıktan sonra, yeni Market öğesini bir Azure Stack işleci veya bir kullanıcı olarak dağıtabilirsiniz.
 
-5. İndirilen öğeyi dağıtmak için **+ kaynak oluştur**' u seçin ve ardından yeni Market öğesiyle ilgili kategoriler arasında arama yapın. Sonra dağıtım işlemine başlamak için öğeyi seçin. İşlem, farklı Market öğeleri için farklılık gösterir.
+5. İndirilen öğeyi dağıtmak için **+ kaynak oluştur**' u seçin ve ardından yeni Market öğesiyle ilgili kategoriler arasında arama yapın. Sonra, dağıtım işlemine başlamak için öğeyi seçin. İşlem, farklı Market öğeleri için farklılık gösterir.
 
 ## <a name="disconnected-or-a-partially-connected-scenario"></a>Bağlantısı kesik veya kısmen bağlı bir senaryo
 
-Azure Stack bağlantısı kesik bir moddadır ve internet bağlantısı olmadan, Market öğelerini internet bağlantısı olan bir makineye indirmek için PowerShell ve *Market dağıtım aracı* 'nı kullanırsınız. Daha sonra öğeleri Azure Stack ortamınıza aktarabilirsiniz. Bağlantısı kesilmiş bir ortamda, Market öğelerini Azure Stack portalını kullanarak indiremezsiniz.
+Azure Stack bağlantısı kesik bir modundaysanız, Market öğelerini internet bağlantısı olan bir makineye indirmek için PowerShell ve *Market dağıtım aracı* 'nı kullanırsınız. Daha sonra öğeleri Azure Stack ortamınıza aktarabilirsiniz. Bağlantısı kesilmiş bir ortamda, Azure Stack portalını kullanarak Market öğelerini indiremez.
 
 Market dağıtım aracı, bağlı bir senaryoda da kullanılabilir.
 
 Bu senaryonun iki bölümü vardır:
 
 - **1. Bölüm:** Azure Marketi 'nden indirin. İnternet erişimi olan bilgisayarda PowerShell 'i yapılandırın, dağıtım aracını indirin ve ardından Azure Marketi 'nden öğeleri indirin.  
-- **Bölüm 2:** Azure Stack marketi ' ne yükleyin ve yayımlayın. İndirdiğiniz dosyaları Azure Stack ortamınıza taşıyın, Azure Stack içeri aktarıp Azure Stack Market 'Te yayımlayabilirsiniz.  
+- **Bölüm 2:** Azure Stack Market 'e yükleyin ve yayımlayın. İndirdiğiniz dosyaları Azure Stack ortamınıza taşıyın, Azure Stack içeri aktarıp Azure Stack Market 'Te yayımlayabilirsiniz.  
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -89,7 +89,7 @@ Bu senaryonun iki bölümü vardır:
 
 - İndirilen bir market öğesinin içeri aktarımını etkinleştirmek için [Azure Stack Işlecinin PowerShell ortamının](azure-stack-powershell-configure-admin.md) yapılandırılması gerekir.  
 
-- Genel olarak erişilebilen bir kapsayıcıya (Depolama Blobu) sahip Azure Stack bir [depolama hesabınız](azure-stack-manage-storage-accounts.md) olması gerekir. Kapsayıcıyı Market öğeleri Galeri dosyaları için geçici depolama alanı olarak kullanırsınız. Depolama hesapları ve kapsayıcıları hakkında bilginiz yoksa bkz. Azure belgelerindeki [Bloblarla çalışma-Azure Portal](/azure/storage/blobs/storage-quickstart-blobs-portal) .
+- Genel olarak erişilebilen bir kapsayıcıya (Depolama Blobu) sahip Azure Stack bir [depolama hesabınız](azure-stack-manage-storage-accounts.md) olması gerekir. Kapsayıcıyı Market öğeleri Galeri dosyaları için geçici depolama alanı olarak kullanırsınız. Depolama hesapları ve kapsayıcıları hakkında bilgi sahibi değilseniz bkz. Azure belgelerindeki [Bloblarla çalışma-Azure Portal](/azure/storage/blobs/storage-quickstart-blobs-portal) .
 
 - Market dağıtım aracı ilk yordam sırasında indirilir.
 
@@ -97,13 +97,13 @@ Bu senaryonun iki bölümü vardır:
 
 ### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>Market öğelerini indirmek için Market dağıtım aracını kullanma
 
-1. Internet bağlantısı olan bir bilgisayarda, yönetici olarak bir PowerShell konsolu açın.
+1. İnternet bağlantısı olan bir bilgisayarda, yönetici olarak bir PowerShell konsolu açın.
 
-2. Azure Stack kaydetmek için kullandığınız Azure hesabını ekleyin. Hesabı eklemek için, PowerShell 'de herhangi bir `Add-AzureRmAccount` parametre olmadan çalıştırın. Hesabınızın yapılandırmasına bağlı olarak, Azure hesabı kimlik bilgilerinizi girmeniz istenir ve 2 öğeli kimlik doğrulaması kullanmanız gerekebilir.
+2. Azure Stack kaydetmek için kullandığınız Azure hesabını ekleyin. Hesabı eklemek için, PowerShell 'de herhangi bir `Add-AzureRmAccount` parametre olmadan çalıştırın. Hesabınızın yapılandırmasına bağlı olarak, Azure hesabı kimlik bilgilerinizi girmeniz istenir ve iki öğeli kimlik doğrulaması kullanmanız gerekebilir.
 
    [!include[Remove Account](../../includes/remove-account.md)]
 
-3. Birden çok aboneliğiniz varsa, kayıt için kullandığınız birini seçmek üzere aşağıdaki komutu çalıştırın:  
+3. Birden çok aboneliğiniz varsa, kayıt için kullanmış olduğunuz birini seçmek için aşağıdaki komutu çalıştırın:  
 
    ```powershell  
    Get-AzureRmSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzureRmSubscription
@@ -128,7 +128,7 @@ Bu senaryonun iki bölümü vardır:
 
    ```
 
-5. Dağıtım modülünü içeri aktarın ve ardından aşağıdaki komutları çalıştırarak aracı başlatın. Azure `Destination folder path` marketi 'nden yüklediğiniz dosyaları depolamak için bir konumla değiştirin.
+5. Dağıtım modülünü içeri aktarın ve ardından aşağıdaki komutları çalıştırarak aracı başlatın. @No__t-0 ' yı, Azure Marketi 'nden yüklediğiniz dosyaları depolamak için bir konumla değiştirin.
 
    ```powershell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
@@ -148,9 +148,9 @@ Bu senaryonun iki bölümü vardır:
 
 8. **Tamam**' ı seçin ve yasal koşulları gözden geçirin ve kabul edin.
 
-9. İndirmenin aldığı zaman öğenin boyutuna bağlıdır. İndirme tamamlandıktan sonra öğe, betikte belirttiğiniz klasörde kullanılabilir. İndirme, bir VHD dosyası (sanal makineler için) veya bir. zip dosyası (sanal makine uzantıları için) içerir. Tek bir. zip dosyası olan *. azpkg* biçiminde bir galeri paketi de içerebilir.
+9. İndirme süresi öğenin boyutuna bağlıdır. İndirme tamamlandıktan sonra öğe, betikte belirttiğiniz klasörde kullanılabilir. İndirme, bir VHD dosyası (sanal makineler için) veya bir. zip dosyası (sanal makine uzantıları için) içerir. Tek bir. zip dosyası olan *. azpkg* biçiminde bir galeri paketi de içerebilir.
 
-10. İndirme başarısız olursa, aşağıdaki PowerShell cmdlet 'ini yeniden çalıştırarak yeniden deneyebilirsiniz:
+10. İndirme başarısız olursa, aşağıdaki PowerShell cmdlet 'ini yeniden çalıştırarak tekrar deneyebilirsiniz:
 
     ```powershell
     Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
@@ -160,9 +160,9 @@ Bu senaryonun iki bölümü vardır:
 
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace-1811-and-higher"></a>Azure Stack marketi 'ne (1811 ve üzeri) indirme ve yayımlamayı içeri aktarma
 
-1. [Daha önce](#use-the-marketplace-syndication-tool-to-download-marketplace-items) yerel olarak indirdiğiniz dosyaları Azure Stack ortamınızda kullanılabilir olmaları için taşımanız gerekir. İçeri aktarma işlemini gerçekleştirmek için aracı kullanmanız gerektiğinden, Market dağıtım aracı Azure Stack ortamınız için de kullanılabilir olmalıdır.
+1. [Daha önce](#use-the-marketplace-syndication-tool-to-download-marketplace-items) yerel olarak indirdiğiniz dosyaları Azure Stack ortamınızda kullanılabilir olacak şekilde taşımanız gerekir. İçeri aktarma işlemini gerçekleştirmek için aracı kullanmanız gerektiğinden, Market dağıtım aracı Azure Stack ortamınız için de kullanılabilir olmalıdır.
 
-   Aşağıdaki görüntüde bir klasör yapısı örneği gösterilmektedir. `D:\downloadfolder`indirilen tüm Market öğelerini içerir. Her alt klasör, ürün kimliği tarafından adlandırılan bir market öğesidir ( `microsoft.custom-script-linux-arm-2.0.3`Örneğin,). Her alt klasörün içinde Market öğesinin indirilen içeriği vardır.
+   Aşağıdaki görüntüde bir klasör yapısı örneği gösterilmektedir. `D:\downloadfolder`indirilen tüm Market öğelerini içerir. Her alt klasör, ürün KIMLIĞI tarafından adlandırılan bir market öğesidir (örneğin, `microsoft.custom-script-linux-arm-2.0.3`). Her alt klasörün içinde Market öğesinin indirilen içeriği vardır.
 
    [![Market indirme dizin yapısı](media/azure-stack-download-azure-marketplace-item/mp1sm.png "Market indirme dizin yapısı")](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
 
@@ -175,9 +175,9 @@ Bu senaryonun iki bölümü vardır:
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
 
-   Parametresi, indirilen tüm ürünleri içeren en üst düzey klasörü belirtir; Örneğin, `"D:\downloadfolder"`. `-origin`
+   @No__t-0 parametresi, indirilen tüm ürünleri içeren en üst düzey klasörü belirtir; Örneğin, `"D:\downloadfolder"`.
 
-   `-AzsCredential` Parametresi isteğe bağlıdır. Süresi dolmuşsa, erişim belirtecini yenilemek için kullanılır. `-AzsCredential` Parametresi belirtilmemişse ve belirtecin süresi dolarsa, işleç kimlik bilgilerini girmek için bir istem alırsınız.
+   `-AzsCredential` Parametresi isteğe bağlıdır. Süresi dolmuşsa, erişim belirtecini yenilemek için kullanılır. @No__t-0 parametresi belirtilmemişse ve belirtecin süresi dolarsa, işleç kimlik bilgilerini girmek için bir istem alırsınız.
 
     > [!NOTE]  
     > AD FS yalnızca Kullanıcı kimlikleriyle etkileşimli kimlik doğrulamasını destekler. Bir kimlik bilgisi nesnesi gerekliyse, bir hizmet sorumlusu (SPN) kullanmanız gerekir. Azure Stack ve AD FS kimlik yönetimi hizmetiniz olarak bir hizmet sorumlusu ayarlama hakkında daha fazla bilgi için bkz. [AD FS hizmet sorumlusunu yönetme](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
@@ -194,17 +194,17 @@ Bu senaryonun iki bölümü vardır:
    1. Azure Stack Yönetici portalı ' nda **tüm hizmetler** ' e gidin ve ardından **veri + depolama** kategorisi altında **depolama hesapları**' nı seçin.  
 
    2. Aboneliğinizden bir depolama hesabı seçin ve ardından **BLOB hizmeti**altında **kapsayıcılar**' ı seçin.  
-      [![BLOB hizmeti](media/azure-stack-download-azure-marketplace-item/blob-service.png "BLOB hizmeti")](media/azure-stack-download-azure-marketplace-item/blob-service.png#lightbox)  
+      [![Depolama hesabı ve BLOB hizmeti](media/azure-stack-download-azure-marketplace-item/blob-service.png "BLOB hizmeti") seçin](media/azure-stack-download-azure-marketplace-item/blob-service.png#lightbox)  
 
    3. Kullanmak istediğiniz kapsayıcıyı seçin ve ardından **karşıya** Yükle ' yi seçerek **BLOB yükle** bölmesini açın.  
-      [![Kapsayıcı](media/azure-stack-download-azure-marketplace-item/container.png "Kapsayıcı")](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
+      [![Kapsayıcı seçin ve BLOB kapsayıcısını karşıya yükleyin](media/azure-stack-download-azure-marketplace-item/container.png "")](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
 
-   4. Blobu karşıya yükle bölmesinde, depolama alanına yüklemek için paket ve disk dosyalarına gidip **karşıya yükle**' yi seçin: [![Karşıya yükle](media/azure-stack-download-azure-marketplace-item/uploadsm.png "Karşıya yükle")](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
+   4. Blobu karşıya yükle bölmesinde, depolama alanına yüklemek için paket ve disk dosyalarına gidip **karşıya yükle**' yi seçin: [![Karşıya yükleme blobu bölmesini](media/azure-stack-download-azure-marketplace-item/uploadsm.png "karşıya yükle")](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
    5. Karşıya yüklediğiniz dosyalar kapsayıcı bölmesinde görünür. Bir dosya seçin ve sonra **BLOB özellikleri** bölmesinden URL 'yi kopyalayın. Market öğesini Azure Stack aktardığınızda bir sonraki adımda bu URL 'YI kullanacaksınız.  Aşağıdaki görüntüde kapsayıcı **BLOB-test-Storage** , dosya ise **Microsoft. WindowsServer2016DatacenterServerCore-ARM. 1.0.801. azpkg**olur. Dosya URL 'SI **https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg** .  
       [![BLOB özellikleri](media/azure-stack-download-azure-marketplace-item/blob-storagesm.png "BLOB özellikleri")](media/azure-stack-download-azure-marketplace-item/blob-storage.png#lightbox)  
 
-3. **Add-Azsplatformımage** cmdlet 'INI kullanarak VHD görüntüsünü Azure Stack içeri aktarın. Bu cmdlet 'i kullandığınızda,, ve diğer `publisher`parametre `offer`değerlerini, içeri aktardığınız görüntünün değerleriyle değiştirin.
+3. **Add-Azsplatformımage** cmdlet 'INI kullanarak VHD görüntüsünü Azure Stack içeri aktarın. Bu cmdlet 'i kullandığınızda `publisher`, `offer` ve diğer parametre değerlerini, içeri aktardığınız görüntünün değerleriyle değiştirin.
 
    . Azpkg dosyasıyla `publisher`indirilen `offer`metin dosyasından `sku` görüntünün, ve değerlerini alabilirsiniz. Metin dosyası hedef konumda depolanır. `version` Değer, önceki yordamda Azure 'dan öğe indirilirken belirtilen sürümdür.
 

@@ -10,32 +10,36 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 <!-- dev: viananth -->
-ms.openlocfilehash: 35ce331c29e89af3a81396a9658cf8a0f29018d3
-ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
+ms.openlocfilehash: bf44716c160948f3deafdc8afb87b9b6d49f9eb5
+ms.sourcegitcommit: 3d14ae30ce3ee44729e5419728cce14b3000e968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959428"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71814445"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack 'de Python ile API sürüm profillerini kullanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
+Python SDK, Azure Stack ve küresel Azure gibi farklı bulut platformlarını hedeflemek için API sürüm profillerini destekler. Karma bulut için çözümler oluştururken API profillerini kullanın.
+
+Bu makaledeki yönergelerde Microsoft Azure abonelik gerekir. Bir hesabınız yoksa, [ücretsiz bir deneme hesabı](https://go.microsoft.com/fwlink/?LinkId=330212)edinebilirsiniz.
+
 ## <a name="python-and-api-version-profiles"></a>Python ve API sürüm profilleri
 
-Python SDK, Azure Stack ve küresel Azure gibi farklı bulut platformlarını hedeflemek için API sürüm profillerini destekler. Karma bulut için çözümler oluştururken API profillerini kullanın. Python SDK aşağıdaki API profillerini destekler:
+Python SDK aşağıdaki API profillerini destekler:
 
 - **sürümü**  
     Bu profil, Azure platformunda tüm hizmet sağlayıcıları için en son API sürümlerini hedefler.
 - **2019-03-01-karma**  
-    Bu profil, 1904 veya üzeri damga sürümleri için Azure Stack platformunda tüm kaynak sağlayıcılarının en son API sürümlerini hedefler.
+    Bu profil, 1904 veya üzeri sürümler için Azure Stack platformundaki tüm kaynak sağlayıcılarının en son API sürümlerini hedefler.
 - **2018-03-01-karma**  
-    Bu profil, Azure Stack platformunda tüm kaynak sağlayıcıları için en uyumlu API sürümlerini hedefler.
+    Bu profil, Azure Stack platformundaki tüm kaynak sağlayıcıları için en uyumlu API sürümlerini hedefler.
 - **2017-03-09-profil**  
     Bu profil, Azure Stack tarafından desteklenen kaynak sağlayıcılarının en uyumlu API sürümlerini hedefler.
 
@@ -51,35 +55,35 @@ Python SDK, Azure Stack ve küresel Azure gibi farklı bulut platformlarını he
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Python Azure SDK 'sını Azure Stack ile kullanmak için, aşağıdaki değerleri sağlamanız ve sonra değerleri ortam değişkenleriyle ayarlamanız gerekir. Ortam değişkenlerini ayarlamak için, belirli işletim sisteminize ait tabloyu izleyen yönergelere bakın.
+Python Azure SDK 'sını Azure Stack ile kullanmak için, aşağıdaki değerleri sağlamanız ve sonra değerleri ortam değişkenleriyle ayarlamanız gerekir. Ortam değişkenlerini ayarlamak için, belirli işletim sisteminiz için aşağıdaki tablodan sonraki yönergelere bakın.
 
 | Value | Ortam değişkenleri | Açıklama |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Kiracı Kimliği | `AZURE_TENANT_ID` | Azure Stack [KIRACı kimliğinizin](../operator/azure-stack-identity-overview.md)değeri. |
+| Kiracı Kimliği | `AZURE_TENANT_ID` | Azure Stack [KIRACı kimliğiniz](../operator/azure-stack-identity-overview.md). |
 | İstemci Kimliği | `AZURE_CLIENT_ID` | Hizmet sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI. |
-| Abonelik Kimliği | `AZURE_SUBSCRIPTION_ID` | [ABONELIK kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) , Azure Stack tekliflere nasıl erişirsiniz. |
-| İstemci Gizli Anahtarı | `AZURE_CLIENT_SECRET` | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
-| Resource Manager uç noktası | `ARM_ENDPOINT` | [Azure Stack Kaynak Yöneticisi uç noktasına](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)bakın. |
-| Kaynak Konumu | `AZURE_RESOURCE_LOCATION` | Azure Stack ortamınızın kaynak konumu.
+| Abonelik Kimliği | `AZURE_SUBSCRIPTION_ID` | Azure Stack tekliflere erişmek için [ABONELIK kimliğini](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) kullanırsınız. |
+| Gizli anahtar | `AZURE_CLIENT_SECRET` | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
+| Resource Manager uç noktası | `ARM_ENDPOINT` | [Azure Stack Kaynak Yöneticisi uç noktası](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) makalesine bakın. |
+| Kaynak konumu | `AZURE_RESOURCE_LOCATION` | Azure Stack ortamınızın kaynak konumu.
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasına güven
 
-ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gerekir. Tümleşik sistemlerle CA kök sertifikasına güvenmeniz gerekmez.
+ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına açık bir şekilde güvenmeniz gerekir. Azure Stack tümleşik sistemlerle CA kök sertifikasına güvenmeniz gerekmez.
 
 #### <a name="windows"></a>Windows
 
-1. Makinenizde Python sertifika deposu konumunu bulun. Konum, Python 'u yüklediğiniz yere göre farklılık gösterebilir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
+1. Makinenizde Python sertifika deposu konumunu bulun. Konum, Python 'u yüklediğiniz yere bağlı olarak farklılık gösterebilir. Bir komut istemi veya yükseltilmiş bir PowerShell istemi açın ve aşağıdaki komutu yazın:
 
     ```PowerShell  
       python -c "import certifi; print(certifi.where())"
     ```
 
-    Sertifika deposu konumunu bir yere getirin. Örneğin, *~/lib/python3.5/site-packages/certifi/CAcert.pem*. Belirli yolunuz, işletim sistemine ve yüklediğiniz Python sürümüne bağlıdır.
+    Sertifika deposu konumunu bir yere getirin; Örneğin, **~/lib/python3.5/site-packages/certifi/CAcert.pem**. Belirli yolunuz, işletim sisteminize ve yüklediğiniz Python sürümüne bağlıdır.
 
-2. Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin.
+2. Azure Stack CA kök sertifikasına, var olan Python sertifikasına ekleyerek güvenin:
 
     ```powershell
-    $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
+    $pemFile = "<Fully qualified path to the PEM certificate; for ex: C:\Users\user1\Downloads\root.pem>"
 
     $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $root.Import($pemFile)
@@ -105,13 +109,10 @@ ASDK kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gere
     Add-Content "${env:ProgramFiles(x86)}\Python35\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
     Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
-
     ```
 
 > [!NOTE]  
-> Aşağıda belirtildiği gibi Python SDK ile geliştirme için virtualenv kullanıyorsanız, yukarıdaki sertifikayı sanal ortamınızın sertifika deposuna eklemeniz gerekir. Yol şuna benzer görünebilir: ".. \Mytestenv\lib\site-packages\certifi\cacert.exe "
-
-
+> Aşağıdaki [Python örneği](#run-the-python-sample) bölümünde belirtildiği gıbı Python SDK ile geliştirme için **virtualenv** kullanıyorsanız, önceki sertifikayı sanal ortam sertifika deponuza eklemeniz gerekir. Yol şuna benzer görünebilir: `..\mytestenv\Lib\site-packages\certifi\cacert.pem`.
 
 ## <a name="python-samples-for-azure-stack"></a>Azure Stack için Python örnekleri
 
@@ -119,14 +120,14 @@ Python SDK kullanılarak Azure Stack için kullanılabilir kod örneklerinden ba
 
 - [Kaynakları ve kaynak gruplarını yönetme](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
 - [Depolama hesabını Yönet](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [Sanal makineleri yönetme](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/) (Bu örnek, Azure Stack tarafından desteklenen en son API sürümlerini hedefleyen 2019-03-01-karma kullanır)
+- [Sanal makineleri yönetme](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/): Bu örnek, Azure Stack tarafından desteklenen en son API sürümlerini hedefleyen **2019-03-01 karma** profilini kullanır.
 
-## <a name="python-manage-virtual-machine-sample"></a>Python sanal makine örneğini Yönet
+## <a name="manage-virtual-machine-sample"></a>Sanal makine örneğini Yönet
 
-Azure Stack sanal makineler (VM) için ortak yönetim görevlerini gerçekleştirmek üzere aşağıdaki kod örneğini kullanın. Kod örneği şunları gösterir:
+Azure Stack sanal makineler (VM) için ortak yönetim görevlerini gerçekleştirmek üzere aşağıdaki Python kod örneğini kullanın. Kod örneği şunları gösterir:
 
 - VM oluşturma:
-  - Linux VM'i oluşturma
+  - Linux VM oluşturma
   - Bir Windows Sanal Makinesi oluşturun
 - VM 'yi güncelleştirme:
   - Sürücüyü Genişlet
@@ -140,7 +141,7 @@ Azure Stack sanal makineler (VM) için ortak yönetim görevlerini gerçekleşti
 - VM'leri listele
 - VM silme
 
-Bu işlemleri gerçekleştiren kodu gözden geçirmek için GitHub deposu **run_example ()** işlevine GitHub deposu [karma-COMPUTE-Python-Manage-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM)' de bakın.
+Bu işlemleri gerçekleştiren kodu gözden geçirmek için GitHub deposu **run_example ()** işlevine GitHub deposu [karma-COMPUTE-Python-Manage-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM) **' de bakın** .
 
 Her işlem, bir açıklama ve bir yazdırma işleviyle açıkça etiketlenir. Örneklerin bu listede gösterilen sırada olması gerekmez.
 
@@ -148,9 +149,9 @@ Her işlem, bir açıklama ve bir yazdırma işleviyle açıkça etiketlenir. Ö
 
 1. Henüz yüklenmemişse [Python 'ı yükleme](https://www.python.org/downloads/) . Bu örnek (ve SDK), Python 2,7, 3,4, 3,5 ve 3,6 ile uyumludur.
 
-2. Python geliştirmenin genel önerisi sanal bir ortam kullanmaktır. Daha fazla bilgi için bkz. [Python belgeleri](https://docs.python.org/3/tutorial/venv.html).
+2. Python geliştirmenin genel bir önerisi sanal bir ortam kullanmaktır. Daha fazla bilgi için bkz. [Python belgeleri](https://docs.python.org/3/tutorial/venv.html).
 
-3. Python 3 ' te "venv" modülü ile sanal ortamı yükleyip başlatın (Python 2,7 için [virtualalenv](https://pypi.python.org/pypi/virtualenv) ' yi yüklemelisiniz):
+3. Python 3 ' te **venv** modülü ile sanal ortamı yükleyip başlatın (Python 2,7 için [virtualalenv](https://pypi.python.org/pypi/virtualenv) ' yi yüklemelisiniz):
 
     ```bash
     python -m venv mytestenv # Might be "python3" or "py -3.6" depending on your Python installation
@@ -166,14 +167,14 @@ Her işlem, bir açıklama ve bir yazdırma işleviyle açıkça etiketlenir. Ö
     git clone https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM.git
     ```
 
-5. PIP kullanarak bağımlılıkları yükler:
+5. **PIP**kullanarak bağımlılıkları yükler:
 
     ```bash
     cd Hybrid-Compute-Python-Manage-VM
     pip install -r requirements.txt
     ```
 
-6. Azure Stack çalışmak için bir [hizmet sorumlusu](../operator/azure-stack-create-service-principals.md) oluşturun. Hizmet sorumlunun aboneliğinizde katkıda bulunan [/Owner rolüne](../operator/azure-stack-create-service-principals.md#assign-a-role) sahip olduğundan emin olun.
+6. Azure Stack çalışmak için bir [hizmet sorumlusu](../operator/azure-stack-create-service-principals.md) oluşturun. Hizmet sorumlunun aboneliğinizde [katkıda bulunan/Owner rolüne](../operator/azure-stack-create-service-principals.md#assign-a-role) sahip olduğundan emin olun.
 
 7. Aşağıdaki değişkenleri ayarlayın ve bu ortam değişkenlerini geçerli kabuğınızdan dışarı aktarın:
 
@@ -194,11 +195,8 @@ Her işlem, bir açıklama ve bir yazdırma işleviyle açıkça etiketlenir. Ö
     python example.py
     ```
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Python geliştirme merkezi](https://azure.microsoft.com/develop/python/)
 - [Azure sanal makineler belgeleri](https://azure.microsoft.com/services/virtual-machines/)
 - [Sanal makineler için öğrenme yolu](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
-
-Microsoft Azure aboneliğiniz yoksa [buradan](https://go.microsoft.com/fwlink/?LinkId=330212)ücretsiz bir deneme hesabı edinebilirsiniz.

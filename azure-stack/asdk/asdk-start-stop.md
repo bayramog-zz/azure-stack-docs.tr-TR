@@ -16,12 +16,12 @@ ms.date: 07/18/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 5232b1087414d6e7149157063a253b18a6b6e13a
-ms.sourcegitcommit: 7968f9f0946138867323793be9966ee2ef99dcf4
+ms.openlocfilehash: b33ae5ce88cf05fb73e2519f7f697fca90f7f8bc
+ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70025803"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71824765"
 ---
 # <a name="start-and-stop-the-asdk"></a>ASDK 'yi başlatma ve durdurma
 Yalnızca ASDK ana bilgisayar bilgisayarı yeniden başlatmanız önerilmez. Bunun yerine, bu makaledeki yordamları izleyerek, ASDK hizmetlerini doğru şekilde kapatıp yeniden başlatın.
@@ -66,7 +66,7 @@ ASDK 'nin nasıl kapatıldığına bakılmaksızın, tüm Azure Stack hizmetleri
 Azure Stack hizmetlerini düzgün bir şekilde kapatmak ve yeniden başlatmak için Önerilen yordamlar hakkında daha fazla bilgi edinmek için bkz. [Azure Stack başlatma ve durdurma](../operator/azure-stack-start-and-stop.md).
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>Başlatma ve kapatmadan ilgili sorunları giderme 
-Azure Stack Hizmetleri, ASDK ana bilgisayar bilgisayarınızı etkinleştirdikten sonra iki saat içinde başarıyla başlamazsa, bu adımları gerçekleştirin:
+Azure Stack Hizmetleri, ASDK ana bilgisayar bilgisayarınızı etkinleştirdikten sonra iki saat içinde başarıyla başlamazsa, şu adımları izleyin:
 
 1. ASDK ana bilgisayarında AzureStack\AzureStackAdmin olarak oturum açın.
 2. PowerShell 'i yönetici olarak açın (PowerShell ıSE).
@@ -90,4 +90,4 @@ Azure Stack Hizmetleri, ASDK ana bilgisayar bilgisayarınızı etkinleştirdikte
 **Start-AzureStack** çalıştırmak bir hata ile sonuçlanırsa, asdk sorun giderme desteğini almak için [Azure Stack destek forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) ziyaret edin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-Azure Stack Tanılama aracı ve sorun günlüğü hakkında daha fazla bilgi edinin, bkz. [Azure Stack tanılama araçları](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
+Azure Stack Tanılama aracı ve sorun günlüğü hakkında daha fazla bilgi edinin, bkz. [Azure Stack tanılama araçları](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).

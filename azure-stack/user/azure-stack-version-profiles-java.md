@@ -12,24 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 755a4b373bcf305d7eb589acebca18f4ee4aafb8
-ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
+ms.openlocfilehash: f5cbf333494eb8d04ccbc974f95cda8be5d62284
+ms.sourcegitcommit: 3d14ae30ce3ee44729e5419728cce14b3000e968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959418"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71814490"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Azure Stack 'de Java ile API sürüm profillerini kullanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack Kaynak Yöneticisi için Java SDK, altyapınızı oluşturmanıza ve yönetmenize yardımcı olacak araçlar sağlar. SDK 'daki kaynak sağlayıcıları Işlem, ağ, depolama, uygulama hizmetleri ve [Key Vault](/azure/key-vault/key-vault-whatis)içerir. 
+Azure Stack Kaynak Yöneticisi için Java SDK, altyapınızı oluşturmanıza ve yönetmenize yardımcı olacak araçlar sağlar. SDK 'daki kaynak sağlayıcıları Işlem, ağ, depolama, uygulama hizmetleri ve [Key Vault](/azure/key-vault/key-vault-whatis)içerir.
 
-Java SDK 'sı, *. Java* dosyasına doğru modülleri yükleyen *Pod. xml* dosyasına bağımlılıklar ekleyerek API profillerini içerir. Ancak, Azure profili olarak **2019-03-01 karma**veya **en son**gibi birden çok profil ekleyebilirsiniz. Bu bağımlılıkların kullanılması doğru modülü yükler, böylece kaynak türü oluşturduğunuzda, kullanmak istediğiniz profillerden hangi API sürümünü seçebilirsiniz. Bu, Azure Stack için en güncel API sürümleriyle geliştirme yaparken Azure 'da en son sürümleri kullanmanıza olanak sağlar. 
+Java SDK 'sı, **. Java** dosyasına doğru modülleri yükleyen **Pod. xml** dosyasına bağımlılıklar ekleyerek API profillerini içerir. Ancak, Azure profili olarak **2019-03-01 karma**veya **en son**gibi birden çok profil ekleyebilirsiniz. Bu bağımlılıkların kullanılması doğru modülü yükler, böylece kaynak türü oluşturduğunuzda, kullanmak istediğiniz profillerden hangi API sürümünü seçebilirsiniz. Bu, Azure Stack için en güncel API sürümleriyle geliştirme yaparken Azure 'da en son sürümleri kullanmanıza olanak sağlar.
 
 Java SDK 'sını kullanmak, doğru bir karma bulut geliştirici deneyimine izin vermez. Java SDK 'daki API profilleri, Azure Stack Genel Azure kaynakları ve kaynakları arasında geçiş yapmanıza yardımcı olarak karma bulut geliştirmesini sağlar.
 
@@ -41,9 +41,9 @@ Bir API profili, kaynak sağlayıcıları ve API sürümlerini birleşimidir. Bi
 
   - En son profili kullanmak için, bağımlılık **com. Microsoft. Azure**' tır.
 
-  - Azure Stack ' de bulunan en son desteklenen hizmetleri kullanmak için **com. Microsoft.\_Azure. Profile 2019\_\_03 01\_karma** profilini kullanın.
+  - Azure Stack ' de bulunan en son desteklenen hizmetleri kullanmak için **com. Microsoft. Azure. Profile @ no__t-12019 @ no__t-203 @ no__t-301 @ no__t-4hibrit** profilini kullanın.
 
-    - Bu, açılan listeden doğru sınıfı seçerseniz (.NET ile yaptığınız gibi), bir bağımlılık olarak *Pod. xml* dosyasında belirtilir.
+    - Profil, açılan listeden sağ sınıfı seçerseniz (.NET ile yaptığınız gibi), bir bağımlılık olarak **Pod. xml** dosyasında belirtilir.
 
   - Bağımlılıklar şu şekilde görünür:
 
@@ -61,13 +61,13 @@ Aynı uygulamadaki tüm seçenekleri birleştirebilirsiniz.
 
 ## <a name="install-the-azure-java-sdk"></a>Azure Java SDK 'sını yükler
 
-Java SDK 'sını yüklemek için aşağıdaki adımları kullanın:
+Java SDK 'sını yüklemek için şu adımları izleyin:
 
-1. Git 'i yüklemek için resmi yönergeleri izleyin. Yönergeler için [Git'i yükledikten Başlarken -](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+1. Git 'i yüklemek için resmi yönergeleri izleyin. Bkz. Başlarken [-Git yükleme](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2. [Java SDK 'sını](https://zulu.org/download/) ve [Maven](https://maven.apache.org/)'yi yüklemek için yönergeleri izleyin. Doğru sürüm, Java geliştirici seti 'nin 8. sürümüdür. Doğru Apache Maven sürümü 3,0 veya üzeri bir sürüm. Hızlı başlangıcı tamamlayabilmeniz için ortamdeğişkeni,JavaDevelopmentKit'inInstallkonumunaayarlanmalıdır.`JAVA_HOME` Daha fazla bilgi için bkz. [Java ve Maven ile ilk işlevinizi oluşturma](/azure/azure-functions/functions-create-first-java-maven).
+2. [Java SDK 'sını](https://zulu.org/download/) ve [Maven](https://maven.apache.org/)'yi yüklemek için yönergeleri izleyin. Doğru sürüm, Java geliştirici seti 'nin 8. sürümüdür. Apache Maven 'nin doğru sürümü 3,0 veya üzeri bir sürümdür. Hızlı başlangıcı tamamlayabilmeniz için, `JAVA_HOME` ortam değişkeni, Java Development Kit 'in yükleneceği konum olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [Java ve Maven ile ilk işlevinizi oluşturma](/azure/azure-functions/functions-create-first-java-maven).
 
-3. Doğru bağımlılık paketlerini yüklemek için, Java uygulamanızda *Pod. xml* dosyasını açın. Aşağıdaki kodda gösterildiği gibi bir bağımlılık ekleyin:
+3. Doğru bağımlılık paketlerini yüklemek için, Java uygulamanızda **Pod. xml** dosyasını açın. Aşağıdaki kodda gösterildiği gibi bir bağımlılık ekleyin:
 
    ```xml  
    <dependency>
@@ -79,7 +79,7 @@ Java SDK 'sını yüklemek için aşağıdaki adımları kullanın:
 
 4. Yüklenmesi gereken paket kümesi, kullanmak istediğiniz profil sürümüne bağlıdır. Profil sürümleri için paket adları şunlardır:
 
-   - **com. Microsoft. Azure. Profile\_2019\_03\_01\_karma**
+   - **com. Microsoft. Azure. Profile @ no__t-12019 @ no__t-203 @ no__t-301 @ no__t-4hibrit**
    - **com.microsoft.azure**
      - **sürümü**
 
@@ -95,14 +95,14 @@ Azure Stack ile Azure Java SDK 'sını kullanmak için aşağıdaki değerleri b
 
 | Değer                     | Ortam değişkenleri | Açıklama                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kiracı Kimliği                 | `AZURE_TENANT_ID`            | Azure Stack [KIRACı kimliğinizin](../operator/azure-stack-identity-overview.md)değeri.                                                          |
+| Kiracı Kimliği                 | `AZURE_TENANT_ID`            | Azure Stack [KIRACı kimliğiniz](../operator/azure-stack-identity-overview.md).                                                          |
 | İstemci Kimliği                 | `AZURE_CLIENT_ID`             | Hizmet sorumlusu önceki bölümde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI.                                                                                              |
-| Abonelik Kimliği           | `AZURE_SUBSCRIPTION_ID`      | [ABONELIK kimliği](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) , Azure Stack tekliflere nasıl erişirsiniz.                |
+| Abonelik Kimliği           | `AZURE_SUBSCRIPTION_ID`      | Azure Stack tekliflere erişmek için [ABONELIK kimliğini](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) kullanırsınız.                |
 | İstemci Gizli Anahtarı             | `AZURE_CLIENT_SECRET`        | Hizmet sorumlusu oluşturulurken kaydedilen hizmet sorumlusu uygulama gizli anahtarı.                                                                                                                                   |
-| Resource Manager uç noktası | `ARM_ENDPOINT`              | [Azure Stack Kaynak Yöneticisi uç noktasına](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)bakın. |
+| Resource Manager uç noktası | `ARM_ENDPOINT`              | [Azure Stack Kaynak Yöneticisi uç noktası](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) makalesine bakın. |
 | Location                  | `RESOURCE_LOCATION`    | Azure Stack için **Yerel** .                                                                                                                                                                                                |
 
-Azure Stack kiracı KIMLIĞINI bulmak için [buradaki](../operator/azure-stack-csp-ref-operations.md)yönergelere bakın. Ortam değişkenlerinizi ayarlamak için şu yordamları kullanın:
+Azure Stack kiracı KIMLIĞINI bulmak için [buradaki](../operator/azure-stack-csp-ref-operations.md)yönergelere bakın. Ortam değişkenlerinizi ayarlamak için aşağıdaki bölümlerde bulunan yordamları kullanın:
 
 ### <a name="microsoft-windows"></a>Microsoft Windows
 
@@ -122,13 +122,13 @@ Export AZURE_TENANT_ID=<Your_Tenant_ID>
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasına güven
 
-Azure Stack Geliştirme Seti (ASDK) kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gerekir. Tümleşik sistemlerle CA kök sertifikasına güvenmeniz gerekmez.
+Azure Stack Geliştirme Seti (ASDK) kullanıyorsanız, uzak makinenizde CA kök sertifikasına güvenmeniz gerekir. Azure Stack tümleşik sistemlerle CA kök sertifikasına güvenmeniz gerekmez.
 
 #### <a name="windows"></a>Windows
 
 1. Azure Stack kendinden imzalı sertifikayı masaüstünüze dışarı aktarın.
 
-1. Bir komut isteminde dizinini olarak `%JAVA_HOME%\bin`değiştirin.
+1. Bir komut isteminde dizinini `%JAVA_HOME%\bin` olarak değiştirin.
 
 1. Şu komutu çalıştırın:
 
@@ -138,13 +138,13 @@ Azure Stack Geliştirme Seti (ASDK) kullanıyorsanız, uzak makinenizde CA kök 
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack Kaynak Yöneticisi uç noktası
 
-Microsoft Azure Kaynak Yöneticisi, yöneticilerin Azure kaynaklarını dağıtmaları, yönetmesi ve izlemesine olanak tanıyan bir yönetim çerçevesidir. Azure Resource Manager, bir grup olarak yerine tek tek bir işlemde bu görevleri işleyebilir.
+Azure Resource Manager, yöneticilerin Azure kaynaklarını dağıtmaları, yönetmesi ve izlemesine olanak tanıyan bir yönetim çerçevesidir. Azure Resource Manager, bir grup olarak yerine tek tek bir işlemde bu görevleri işleyebilir.
 
 Meta veri bilgilerini Kaynak Yöneticisi uç noktasından alabilirsiniz. Uç nokta, kodunuzu çalıştırmak için gereken bilgileri içeren bir JSON dosyası döndürür.
 
 Aşağıdaki konuları göz önünde bulundurun:
 
-- ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/`.
+- ASDK 'deki **Resourcemanagerurl** : `https://management.local.azurestack.external/` ' dir.
 
 - Tümleşik sistemlerdeki **Resourcemanagerurl 'si** : `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`.
 
@@ -167,9 +167,9 @@ Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-
 
 ## <a name="existing-api-profiles"></a>Mevcut API profilleri
 
-- **com. Microsoft. Azure. Profile\_2019\_03\_01\_karma**: Azure Stack için derlenmiş en son profil. Bu profili, 1904 damgasında veya daha fazla olduğunuz sürece Azure Stack en uyumlu olacak şekilde kullanın.
+- **com. Microsoft. Azure. Profile @ no__t-12019 @ no__t-203 @ no__t-301 @ no__t-4hibrit**: Azure Stack için derlenmiş en son profil. Bu profili, 1904 veya sonraki bir sürümde yaptığınız sürece Azure Stack en uyumlu olacak şekilde kullanın.
 
-- **com. Microsoft. Azure. Profile\_2018\_03\_01\_karma**: Azure Stack için oluşturulan profil. Damga 1808 veya sonraki bir sürümü ile Azure Stack uyumlu olmak için hizmetler için bu profili kullanın.
+- **com. Microsoft. Azure. Profile @ no__t-12018 @ no__t-203 @ no__t-301 @ no__t-4hibrit**: Azure Stack için oluşturulan profil. Hizmetler için bu profili, Azure Stack sürümleri 1808 veya sonraki bir sürümüyle uyumlu olacak şekilde kullanın.
 
 - **com. Microsoft. Azure**: Tüm hizmetlerin en son sürümlerinden oluşan profil. Tüm hizmetler en son sürümlerini kullanın.
 
@@ -211,7 +211,7 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
             });
 ```
 
-Yukarıdaki `getActiveDirectorySettings` koddaki çağrı, meta veri uç noktalarından uç noktaları alır. Oluşturulan çağrıdan ortam değişkenlerini belirtir:
+Önceki koddaki `getActiveDirectorySettings` çağrısı, meta veri uç noktalarından uç noktaları alır. Oluşturulan çağrıdan ortam değişkenlerini belirtir:
 
 ```java
 public static HashMap<String, String> getActiveDirectorySettings(String armEndpoint) {
@@ -231,12 +231,12 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
         // Execute request and catch response
         HttpResponse response = httpClient.execute(getRequest);
-        
+
         // Check for HTTP response code: 200 = success
         if (response.getStatusLine().getStatusCode() != 200) {
             throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
         }
-        
+
         String responseStr = EntityUtils.toString(response.getEntity());
         JSONObject responseJson = new JSONObject(responseStr);
         adSettings.put("galleryEndpoint", responseJson.getString("galleryEndpoint"));
@@ -265,17 +265,19 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 - [Depolama hesaplarını yönetme](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-- [Bir sanal makineyi yönetme](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (2019-03-01-karma profille güncellenir).
+- [Bir sanal makineyi yönetme](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (2019-03-01-karma profille güncelleştirildi)
 
 ### <a name="sample-unit-test-project"></a>Örnek birim testi projesi
 
 1. Aşağıdaki komutu kullanarak depoyu kopyalayın:
 
-   `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
+   ```shell
+   git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
+   ```
 
 2. Bir Azure hizmet sorumlusu oluşturma ve aboneliğe erişmek için bir rol atayın. Bir hizmet sorumlusu oluşturma hakkında yönergeler için bkz: [bir sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanarak](../operator/azure-stack-create-service-principals.md).
 
-3. Aşağıdaki gerekli ortam değişkeni değerlerini alın:
+3. Aşağıdaki gerekli ortam değişkenlerini alın:
 
    - `AZURE_TENANT_ID`
    - `AZURE_CLIENT_ID`
@@ -295,14 +297,14 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
    Windows içinde kullanmak **ayarlamak** yerine **dışarı**.
 
-5. Azure Resource Manager meta veri uç noktalarını almak için işlevinikullanın.`getActiveDirectorySettings`
+5. Azure Resource Manager meta veri uç noktalarını almak için `getActiveDirectorySettings` işlevini kullanın.
 
     ```java
     // Get Azure Stack cloud endpoints
     final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
     ```
 
-6. *Poz. xml* dosyasında, Azure Stack için **2019-03-01 karma** profilini kullanmak üzere aşağıdaki bağımlılığı ekleyin. Bu bağımlılık, Işlem, ağ, depolama, Key Vault ve uygulama Hizmetleri kaynak sağlayıcıları için bu profille ilişkili modülleri yüklüyor:
+6. **Poz. xml** dosyasında, Azure Stack için **2019-03-01 karma** profilini kullanmak üzere aşağıdaki bağımlılığı ekleyin. Bu bağımlılık, Işlem, ağ, depolama, Key Vault ve uygulama Hizmetleri kaynak sağlayıcıları için bu profille ilişkili modülleri yüklüyor:
 
    ```xml
    <dependency>
