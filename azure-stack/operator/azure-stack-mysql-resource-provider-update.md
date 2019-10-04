@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 533a56e9dcfe4b3fbdc857a042a3e90d91d8090c
-ms.sourcegitcommit: 94669fe8a55fadd3103e80be307e9e8c823bf746
+ms.openlocfilehash: 4e482be6cc47ce79b299d77592436b70420978ea
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68940263"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71908973"
 ---
 # <a name="update-the-mysql-resource-provider"></a>MySQL kaynak sağlayıcısını güncelleştirme 
 
@@ -55,7 +55,7 @@ Betik, DeployMySqlProvider. ps1 betiği için tanımlanan aynı bağımsız değ
 | **VMLocalCredential** |SQL kaynak sağlayıcısı VM 'sinin yerel yönetici hesabının kimlik bilgileri. | _Gerekli_ | 
 | **PrivilegedEndpoint** | Ayrıcalıklı uç noktanın IP adresi veya DNS adı. |  _Gerekli_ | 
 | **AzureEnvironment** | Azure Stack dağıtmak için kullandığınız hizmet yönetici hesabının Azure ortamı. Yalnızca Azure AD dağıtımları için gereklidir. Desteklenen ortam adları **Azurecsesli**, **AzureUSGovernment**veya Çin Azure AD, **AzureChinaCloud**kullanıyorsa. | AzureCloud |
-| **DependencyFilesLocalPath** | Certificate. pfx dosyanızın da bu dizine yerleştirilmesi gerekir. | _Isteğe bağlı_ (çok düğümlü için _ ) | 
+| **DependencyFilesLocalPath** | Certificate. pfx dosyanızın da bu dizine yerleştirilmesi gerekir. | _Isteğe bağlı_ (çok düğümlü için_zorunlu_ ) | 
 | **DefaultSSLCertificatePassword** | . Pfx sertifikası için parola. | _Gerekli_ | 
 | **MaxRetryCount** | Bir hata oluşursa her işlemi yeniden denemek istediğiniz zaman sayısı.| 2 | 
 | **RetryDuration** | Yeniden denemeler arasındaki zaman aşımı aralığı (saniye cinsinden). | 120 | 

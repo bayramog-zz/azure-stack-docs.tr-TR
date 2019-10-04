@@ -1,57 +1,57 @@
 ---
-title: Azure Stack için uzantısı konağı için hazırlama | Microsoft Docs
-description: Gelecekteki bir Azure Stack güncelleştirme paketi otomatik olarak etkinleştirilir, uzantısı konağı hazırlamak öğrenin.
+title: Azure Stack için uzantı konağına hazırlanma | Microsoft Docs
+description: Uzantı konağına hazırlanmaya, gelecekteki bir Azure Stack güncelleştirme paketiyle otomatik olarak etkinleştirilme hakkında bilgi edinin.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: ab508956ddcc57baa04c74710ea485c07cc20416
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.openlocfilehash: d64e0e3ce0dd499304bebfe2f78aebca11ff6668
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131152"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71909090"
 ---
-# <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack için uzantısı konağı için hazırlama
+# <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack için uzantı konağına hazırlanma
 
-Azure Stack gerekli TCP/IP bağlantı noktası sayısını azaltarak uzantısı konağı güvenliğini sağlar. Bu makalede, Azure Stack Azure Stack güncelleştirme paketi 1808 güncelleştirmesinden sonra otomatik olarak etkinleştirilir uzantısı konağı hazırlama sırasında ele alınmaktadır. Bu makale, Azure Stack güncelleştirmeleri 1808 1809 ve 1811 geçerlidir.
+Uzantı ana bilgisayarı, gerekli TCP/IP bağlantı noktalarının sayısını azaltarak Azure Stack güvenliğini sağlar. Bu makale, 1808 güncelleştirmesinden sonra otomatik olarak bir Azure Stack güncelleştirme paketi aracılığıyla etkinleştirilen uzantı ana bilgisayarı için Azure Stack hazırlamaya bakar. Bu makale 1808, 1809 ve 1811 Azure Stack güncelleştirmeleri için geçerlidir.
 
 ## <a name="certificate-requirements"></a>Sertifika gereksinimleri
 
-Her bir portal uzantısı için benzersiz bir ana bilgisayar girişleri güvence altına almak için iki yeni etki alanı ad alanı uzantısı konağı uygular. Yeni etki alanı ad alanları, güvenli iletişim sağlamak için iki ek joker kart sertifikaları gerektirir.
+Uzantı ana bilgisayarı, her Portal uzantısı için benzersiz konak girdilerinin garanti etmek üzere iki yeni etki alanı ad alanı uygular. Yeni etki alanı ad alanları, güvenli iletişim sağlamak için iki ek joker kart sertifikası gerektirir.
 
-Yeni ad alanları ve ilişkili sertifikaları tabloda gösterilmiştir:
+Tablo, yeni ad alanlarını ve ilişkili sertifikaları gösterir:
 
-| Dağıtım klasörü | Gerekli bir sertifika konusu ve konu alternatif adları (SAN) | Kapsam (bölge başına) | Alt etki alanı ad alanı |
+| Dağıtım klasörü | Gerekli sertifika konusu ve konu diğer adları (SAN) | Kapsam (bölge başına) | Alt etki alanı adı |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
-| Yönetici uzantısı konağı | *.adminhosting. \<bölge >. \<fqdn > (joker SSL sertifikaları) | Yönetici uzantısı konağı | adminhosting. \<bölge >. \<fqdn > |
-| Genel uzantı konak | \* .hosting. \<bölge >. \<fqdn > (joker SSL sertifikaları) | Genel uzantı konak | barındırma. \<bölge >. \<fqdn > |
+| Yönetici uzantısı ana bilgisayarı | *. adminhosting. \<bölge >. \<FQDN > (joker SSL sertifikaları) | Yönetici uzantısı ana bilgisayarı | adminhosting. \<bölge >. \<FQDN > |
+| Ortak uzantı Konağı | *. barındırma. \<bölge >. \<FQDN > (joker SSL sertifikaları) | Ortak uzantı Konağı | barındırıyor. \<bölge >. \<FQDN > |
 
-Ayrıntılı sertifika gereksinimleri bulunabilir [Azure Stack ortak anahtar altyapısı sertifika gereksinimleri](azure-stack-pki-certs.md) makalesi.
+Ayrıntılı sertifika gereksinimleri [Azure Stack ortak anahtar altyapısı sertifika gereksinimleri](azure-stack-pki-certs.md) makalesinde bulunabilir.
 
-## <a name="create-certificate-signing-request"></a>Sertifika imzalama isteği oluşturma
+## <a name="create-certificate-signing-request"></a>Sertifika imzalama isteği oluştur
 
-Azure Stack hazırlık Denetleyicisi Aracı'nı sertifika imzalama isteği için iki yeni, gerekli SSL sertifikaları oluşturma olanağı sağlar. Bu makaledeki adımları [Azure Stack sertifika imzalama isteği oluşturma](azure-stack-get-pki-certs.md).
+Azure Stack hazırlık Denetleyicisi Aracı, iki yeni, gerekli SSL sertifikası için bir sertifika imzalama isteği oluşturma olanağı sağlar. [Sertifika imzalama isteği oluşturma Azure Stack](azure-stack-get-pki-certs.md)makalesindeki adımları izleyin.
 
 > [!Note]  
-> SSL sertifikalarınızı istediğiniz nasıl bağlı olarak bu adımı atlayabilirsiniz.
+> SSL sertifikalarınızı nasıl istemiş olduğunuza bağlı olarak bu adımı atlayabilirsiniz.
 
-## <a name="validate-new-certificates"></a>Yeni sertifika doğrulama
+## <a name="validate-new-certificates"></a>Yeni sertifikaları doğrulama
 
-1. Yükseltilmiş izin donanım yaşam döngüsü konağında veya Azure Stack yönetim iş istasyonu ile PowerShell'i açın.
-2. Azure Stack hazırlık Denetleyicisi aracı yüklemek için aşağıdaki cmdlet'i çalıştırın.
+1. PowerShell 'i, donanım yaşam döngüsü konağında veya Azure Stack yönetim iş istasyonunda yükseltilmiş izinle açın.
+2. Azure Stack hazırlık Denetleyicisi aracını yüklemek için aşağıdaki cmdlet 'i çalıştırın.
 
     ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
-3. Gerekli bir klasör yapısını oluşturmak için aşağıdaki betiği çalıştırın:
+3. Gerekli klasör yapısını oluşturmak için aşağıdaki betiği çalıştırın:
 
     ```powershell  
     New-Item C:\Certificates -ItemType Directory
@@ -64,10 +64,10 @@ Azure Stack hazırlık Denetleyicisi Aracı'nı sertifika imzalama isteği için
     ```
 
     > [!Note]  
-    > Azure Active Directory Federasyon Hizmetleri ile (AD FS) dağıtırsanız, aşağıdaki dizinlerin eklenmelidir **$directories** betikteki: `ADFS`, `Graph`.
+    > Azure Active Directory Federasyon Hizmetleri (AD FS) ile dağıtırsanız, şu dizinlerin betiğe **$Directories** eklenmesi gerekir: `ADFS`, `Graph`.
 
-4. Azure Stack'te kullanmakta olduğunuz, mevcut sertifikaları uygun dizinleri yerleştirin. Örneğin, **yönetici ARM** içindeki sertifika `Arm Admin` klasör. Ve ardından yeni oluşturulan barındırma sertifikaları koymak `Admin extension host` ve `Public extension host` dizinleri.
-5. Sertifika denetimi başlatmak için aşağıdaki cmdlet'i çalıştırın:
+4. Azure Stack ' de kullanmakta olduğunuz mevcut sertifikaları uygun dizinlerde yerleştirin. Örneğin, **yönetıcı ARM** sertifikasını `Arm Admin` klasörüne yerleştirin. Ve sonra yeni oluşturulan barındırma sertifikalarını `Admin extension host` ve `Public extension host` dizinlerine yerleştirin.
+5. Sertifika denetimini başlatmak için aşağıdaki cmdlet 'i çalıştırın:
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -75,16 +75,16 @@ Azure Stack hazırlık Denetleyicisi Aracı'nı sertifika imzalama isteği için
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
 
-6. Çıktı ve tüm sertifikaları geçirmek tüm testleri denetleyin.
+6. Çıktıyı denetleyin ve tüm sertifikalar tüm testleri iletir.
 
 
-## <a name="import-extension-host-certificates"></a>Uzantı ana bilgisayar sertifikaları içeri aktarma
+## <a name="import-extension-host-certificates"></a>Uzantı konak sertifikalarını içeri aktar
 
-Sonraki adımlar için Azure Stack ayrıcalıklı uç noktasına bağlanabilir bir bilgisayar kullanın. Yeni sertifika dosyaları için bu bilgisayara erişimi olduğundan emin olun.
+Sonraki adımlar için Azure Stack ayrıcalıklı uç noktaya bağlanabilecek bir bilgisayar kullanın. Bu bilgisayardan yeni sertifika dosyalarına erişiminizin olduğundan emin olun.
 
-1. Sonraki adımlar için Azure Stack ayrıcalıklı uç noktasına bağlanabilir bir bilgisayar kullanın. Yeni sertifika dosyaları için bu bilgisayara erişmek emin olun.
-2. Sonraki komut dosyası blokları yürütmek için PowerShell ISE'yi açın
-3. Uç noktayı barındıran yönetim sertifikası alın.
+1. Sonraki adımlar için Azure Stack ayrıcalıklı uç noktaya bağlanabilecek bir bilgisayar kullanın. Bu bilgisayardan yeni sertifika dosyalarına erişiminizin olduğundan emin olun.
+2. Sonraki betik bloklarını yürütmek için PowerShell ıSE 'yi açın
+3. Yönetici barındırma uç noktası için sertifikayı içeri aktarın.
 
     ```powershell  
 
@@ -103,7 +103,7 @@ Sonraki adımlar için Azure Stack ayrıcalıklı uç noktasına bağlanabilir b
             Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
     }
     ```
-4. Barındırma uç noktası için sertifika alın.
+4. Barındırma uç noktası için sertifikayı içeri aktarın.
     ```powershell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
@@ -121,26 +121,26 @@ Sonraki adımlar için Azure Stack ayrıcalıklı uç noktasına bağlanabilir b
     }
     ```
 
-### <a name="update-dns-configuration"></a>DNS yapılandırmasını güncelleştirme
+### <a name="update-dns-configuration"></a>DNS yapılandırmasını Güncelleştir
 
 > [!Note]  
-> DNS tümleştirme için DNS bölgesini temsilci olarak seçme kullandıysanız, bu adım gerekli değildir.
-Azure Stack uç noktalarını yayımlama için ayrı ayrı konak A kaydı yapılandırıldıysa, iki ek konak A kaydı oluşturmanız gerekir:
+> DNS tümleştirmesi için DNS bölge temsilcisini kullandıysanız, bu adım gerekli değildir.
+Bireysel ana bilgisayar bir kayıt Azure Stack bitiş noktaları yayımlamak üzere yapılandırılmışsa, iki ek ana bilgisayar A kaydı oluşturmanız gerekir:
 
-| IP | Ana Bilgisayar Adı | Tür |
+| IP | Konak Adı | Type |
 |----|------------------------------|------|
-| \<IP &GT; | *. Adminhosting. \<Bölge >. \<FQDN > | A |
-| \<IP &GT; | *. Barındırma. \<Bölge >. \<FQDN > | A |
+| \<IP > | *. Adminhosting. \<Region >. \<FQDN > | A |
+| \<IP > | *. Barındırma. \<Region >. \<FQDN > | A |
 
-Ayrılmış IP'leri kullanan ayrıcalıklı uç noktasını cmdlet çalıştırılarak alınabilir **Get-AzureStackStampInformation**.
+Ayrılan IP 'Ler, **Get-Azurestackstampınformation**cmdlet 'ini çalıştırarak ayrıcalıklı uç nokta kullanılarak alınabilir.
 
 ### <a name="ports-and-protocols"></a>Bağlantı noktaları ve protokoller
 
-Makale [Azure Stack'i veri merkezi tümleştirmesi - uç noktalarını yayımlama](azure-stack-integrate-endpoints.md), gelen iletişim istekleri uzantısı konak dağıtımı önce Azure Stack yayımlamak için gerekli protokoller ve bağlantı noktalarını kapsar.
+[Veri merkezi tümleştirmesi-yayımlama uç noktaları Azure Stack](azure-stack-integrate-endpoints.md)makale, uzantı ana bilgisayar dağıtımı öncesinde Azure Stack yayımlamak üzere gelen iletişim gerektiren bağlantı noktalarını ve protokolleri içerir.
 
-### <a name="publish-new-endpoints"></a>Yeni uç noktalarını yayımlama
+### <a name="publish-new-endpoints"></a>Yeni uç noktaları Yayımla
 
-Duvarınızda yayımlanması için gereken iki yeni uç nokta vardır. Ayrılmış IP'ler genel VIP havuzundan Azure yığınınızı çalıştırmalısınız aşağıdaki kodu kullanarak alınabilir [ayrıcalıklı uç nokta ortamdaki](azure-stack-privileged-endpoint.md).
+Güvenlik duvarınız aracılığıyla yayımlanması gereken iki yeni uç nokta vardır. Ortak VIP havuzundan ayrılan IP 'Ler, Azure Stack [ortamınızın ayrıcalıklı uç noktasından](azure-stack-privileged-endpoint.md)çalıştırılması gereken aşağıdaki kod kullanılarak alınabilir.
 
 ```powershell
 # Create a PEP Session
@@ -171,7 +171,7 @@ Else {
 Remove-PSSession -Session $PEPSession
 ```
 
-#### <a name="sample-output"></a>Örnek çıktı
+#### <a name="sample-output"></a>Örnek çıkış
 
 ```powershell
 Can access AZS DNS
@@ -182,31 +182,31 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 ```
 
 > [!Note]  
-> Uzantısı konağı etkinleştirmeden önce bu değişikliği yapın. Bu, Azure Stack portalı sürekli olarak erişebilmesini sağlar.
+> Uzantı konağını etkinleştirmeden önce bu değişikliği yapın. Bu, Azure Stack portallarının sürekli olarak erişilebilir olmasını sağlar.
 
 | Uç nokta (VIP) | Protocol | Bağlantı Noktaları |
 |----------------|----------|-------|
 | Yönetici barındırma | HTTPS | 443 |
 | Barındırma | HTTPS | 443 |
 
-### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>Varolan Yayımlama Kuralları (Post etkinleştirme uzantısı konağının) güncelleştirme
+### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>Var olan yayımlama kurallarını güncelleştir (uzantı ana bilgisayarını etkinleştirme)
 
 > [!Note]  
-> Azure Stack güncelleştirme paketi 1808 mu **değil** uzantısı konağı henüz etkinleştirin. Uzantı ana bilgisayar için gerekli sertifikaları içeri aktararak hazırlamak için sağlar. Uzantısı konağı 1808 güncelleştirmesinden sonra otomatik olarak bir Azure Stack güncelleştirme paketi etkinleştirilmeden önce herhangi bir bağlantı noktası kapatmayın.
+> 1808 Azure Stack güncelleştirme paketi henüz uzantı **konağını etkinleştirmez.** Gerekli sertifikaları içeri aktararak uzantı konağına hazırlanmasına izin verir. Uzantı ana bilgisayarı, 1808 güncelleştirmesinden sonra bir Azure Stack güncelleştirme paketiyle otomatik olarak etkinleştirilmeden önce herhangi bir bağlantı noktasını kapatmayın.
 
-Aşağıdaki mevcut uç nokta bağlantı noktası, mevcut güvenlik duvarı kurallarında kapatılmalıdır.
+Mevcut güvenlik duvarı kurallarınız için aşağıdaki mevcut uç nokta bağlantı noktalarının kapalı olması gerekir.
 
 > [!Note]  
-> Doğrulama başarılı olduktan sonra bu bağlantı noktalarını kapatmanız önerilir.
+> Başarılı doğrulamadan sonra bu bağlantı noktalarını kapatmanız önerilir.
 
 | Uç nokta (VIP) | Protocol | Bağlantı Noktaları |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Portal (Yönetici) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
-| Portal (kullanıcı) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |
-| Azure Resource Manager (Yönetici) | HTTPS | 30024 |
-| Azure Resource Manager (kullanıcı) | HTTPS | 30024 |
+| Portal (yönetici) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
+| Portal (Kullanıcı) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |
+| Azure Resource Manager (yönetici) | HTTPS | 30024 |
+| Azure Resource Manager (Kullanıcı) | HTTPS | 30024 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hakkında bilgi edinin [güvenlik duvarı tümleştirmesi](azure-stack-firewall.md).
-- Hakkında bilgi edinin [Azure Stack sertifika imzalama isteği oluşturma](azure-stack-get-pki-certs.md)
+- [Güvenlik Duvarı tümleştirmesi](azure-stack-firewall.md)hakkında bilgi edinin.
+- [Azure Stack sertifikaları imzalama isteği oluşturma](azure-stack-get-pki-certs.md) hakkında bilgi edinin

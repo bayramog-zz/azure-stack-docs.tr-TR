@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: ce89ffdee0e0de2db8109102418f4513ce1cb99a
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 24271bf3f4155433980972df19e541dbb77fa908
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418156"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71909478"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL kaynak sağlayıcısı için barındırma sunucuları ekleme
 
@@ -62,10 +62,10 @@ SQL VM 'Leri dağıtmak için [Azure Stack hızlı başlangıç galerisindeki](h
 
 SQL sysadmin 'ten daha düşük ayrıcalıklara sahip bir yönetici kullanıcı oluşturabilirsiniz. Kullanıcı yalnızca aşağıdaki işlemler için izinlere ihtiyaç duyuyor:
 
-* Veritabanı: Kapsama Ile oluşturma, değiştirme (yalnızca açık için), bırakma, yedekleme
+* Veritabanınızı Kapsama Ile oluşturma, değiştirme (yalnızca açık için), bırakma, yedekleme
 * Kullanılabilirlik grubu: Veritabanını Değiştir, Birleştir, Ekle/Kaldır
-* Oturum aç: Oluşturma, seçme, değiştirme, bırakma, Iptal etme
-* İşlemler: \[ana\]öğesini seçin\[ . sys\].\[ availability_group_listeners\] (AlwaysOn), sys. availability_replicas (AlwaysOn), sys. databases, \[Master\].\[ sys\].\[ dm_os_sys_memory\], ServerProperty, \[Master\].\[ sys\].\[ availability_groups\] (AlwaysOn), sys. master_files
+* LOGIN Oluşturma, seçme, değiştirme, bırakma, Iptal etme
+* Işlemleri seçin: \[master @ no__t-1. \[sys @ no__t-3. \[kullanılabilirliği bility_group_listeners @ no__t-5 (AlwaysOn), sys. availability_replicas (AlwaysOn), sys. databases, \[master @ no__t-7. \[sys @ no__t-9. \]0dm_os_ sys_memory @ no__t-11, SERVERPROPERTY, 2master @ no__t-13. 4sys @ no__t-15. 6kullanılabilirliği bility_groups @ no__t-17 (AlwaysOn), sys. master_files
 
 ### <a name="additional-security-information"></a>Ek güvenlik bilgileri
 
@@ -100,7 +100,7 @@ Zaten ayarlanmış bir tek başına barındırma sunucusu eklemek için aşağı
     İsteğe bağlı olarak, bir örnek adı sağlayın ve örnek varsayılan 1433 bağlantı noktasına atanmamışsa bir bağlantı noktası numarası belirtin.
 
    > [!NOTE]
-   > SQL örneğine Kullanıcı ve yönetici Azure Resource Manager tarafından erişilebileceği sürece, kaynak sağlayıcının denetimi altına yerleştirilebilir. SQL örneği,  kaynak sağlayıcısına özel olarak ayrılmalıdır.
+   > SQL örneğine Kullanıcı ve yönetici Azure Resource Manager tarafından erişilebileceği sürece, kaynak sağlayıcının denetimi altına yerleştirilebilir. SQL örneği, kaynak sağlayıcısına özel olarak ayrılmalıdır.
 
 4. Sunucu eklerken, bunları mevcut bir SKU 'ya atamanız veya yeni bir SKU oluşturmanız gerekir. **Barındırma sunucusu Ekle**altında **SKU 'lar**' ı seçin.
 
@@ -158,7 +158,7 @@ Her örnek için kapsanan veritabanı kimlik doğrulama sunucusu seçeneğini ay
 
 1. Azure Stack yönetim portalında hizmet yöneticisi olarak oturum açın.
 
-2. &gt; **Yönetim kaynaklarına**  &gt;   gözatıp SQL barındırma sunucuları + Ekle ' yi seçin. &gt;
+2. &gt; **Yönetim kaynaklarına** &gt; gözatıp SQL barındırma sunucuları + Ekle ' yi seçin. &gt;
 
    **SQL barındırma sunucuları**altında, SQL Server kaynak sağlayıcısını kaynak sağlayıcının arka ucu olarak görev yapan gerçek SQL Server örneklerine bağlayabilirsiniz.
 
@@ -166,7 +166,7 @@ Her örnek için kapsanan veritabanı kimlik doğrulama sunucusu seçeneğini ay
 
 4. SQL Always on kullanılabilirlik grubu örnekleri desteğini etkinleştirmek için Always on kullanılabilirlik grubu kutusunu işaretleyin.
 
-   ![Her zaman açık etkinleştir](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+   ![AlwaysOn’u etkinleştirme](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
 5. SQL Always on örneğini bir SKU 'ya ekleyin.
 

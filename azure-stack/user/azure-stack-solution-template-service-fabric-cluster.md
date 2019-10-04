@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: e672ee6227e00ea6276c92c22d02874f7c8b5529
-ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
+ms.openlocfilehash: 8a323bf5d767db288cd2d876f38119b61f577afa
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101225"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71909684"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Azure Stack bir Service Fabric kümesi dağıtma
 
@@ -188,7 +188,7 @@ Service Fabric kümesine Service Fabric Explorer veya Service Fabric PowerShell 
 
     a. Service Fabric kümeniz ile ilişkili kaynak grubuna gidin ve *genel IP adresi* kaynağını bulun. Genel IP *adresi* dikey penceresini açmak IÇIN genel IP adresiyle ilişkili nesneyi seçin.  
 
-      ![Genel IP adresi](media/azure-stack-solution-template-service-fabric-cluster/image10.png)   
+      ![Ortak IP adresi](media/azure-stack-solution-template-service-fabric-cluster/image10.png)   
 
     b. Genel IP adresi dikey penceresinde FQDN, *DNS adı*olarak görüntülenir.  
 

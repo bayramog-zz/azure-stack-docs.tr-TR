@@ -1,6 +1,6 @@
 ---
-title: Azure Stack güvenlik duvarı Azure Stack için planlama tümleşik sistemleri | Microsoft Docs
-description: Azure Stack Azure bağlı çok düğümlü dağıtımlar için Azure Stack güvenlik duvarı konuları açıklanmaktadır.
+title: Azure Stack tümleşik sistemler için güvenlik duvarı planlamasını Azure Stack | Microsoft Docs
+description: Çok düğümlü Azure Stack Azure 'a bağlı dağıtımlar için Azure Stack güvenlik duvarı konularını açıklar.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,57 +12,57 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: abca6560e8644b201483001258542121fefb6b08
-ms.sourcegitcommit: b79a6ec12641d258b9f199da0a35365898ae55ff
+ms.openlocfilehash: ec8d45add2b2d0312d82d2a7e2d71fbd2a2b41d6
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67131532"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71909203"
 ---
-# <a name="azure-stack-firewall-integration"></a>Azure Stack güvenlik duvarı tümleştirmesi
-Güvenli Azure yığını için bir güvenlik duvarı cihaz kullanmanız önerilir. Güvenlik duvarları, içerik denetleme dağıtılmış--hizmet reddi (DDOS) saldırıları ve izinsiz giriş algılama gibi şeyler karşı korumanıza yardımcı olur. Ancak, bunlar da bloblar, tablolar ve Kuyruklar gibi Azure depolama hizmetleri için bir aktarım hızı performans sorunu haline gelebilir.
+# <a name="azure-stack-firewall-integration"></a>Azure Stack Güvenlik Duvarı tümleştirmesi
+Azure Stack güvenli hale getirmek için bir güvenlik duvarı cihazı kullanmanız önerilir. Güvenlik duvarları, dağıtılmış hizmet reddi (DDOS) saldırıları, yetkisiz giriş algılama ve içerik incelemesi gibi şeylere karşı savunmasına yardımcı olabilir. Ancak, blob 'lar, tablolar ve kuyruklar gibi Azure depolama hizmetleri için bir verimlilik sorunu da olabilirler.
 
- Bağlantısı kesilmiş dağıtım modu kullandıysanız, AD FS uç noktasına yayımlamanız gerekir. Daha fazla bilgi için [veri merkezi tümleştirmesi kimlik makale](azure-stack-integrate-identity.md).
+ Bağlantısı kesilen bir dağıtım modu kullanılırsa AD FS uç noktasını yayımlamanız gerekir. Daha fazla bilgi için bkz. [veri merkezi tümleştirme kimliği makalesi](azure-stack-integrate-identity.md).
 
-Azure Resource Manager (Yönetici), Yönetici portalı ve anahtar Kasası'nı (Yönetici) uç noktalar dış yayımlama mutlaka gerektirmez. Örneğin, bir hizmet sağlayıcısı olarak, ağınızdaki ve internet'ten Azure yığını yalnızca yöneterek saldırı yüzeyini sınırlayabilir.
+Azure Resource Manager (yönetici), Yönetici portalı ve Key Vault (yönetici) uç noktaları için dış yayımlama gerekmez. Örneğin, bir hizmet sağlayıcısı olarak, saldırı yüzeyini internet 'ten değil yalnızca ağınızın içinden Azure Stack yöneterek sınırlayabilirsiniz.
 
-Büyük kuruluşlar için var olan kurumsal ağ ve dış ağa olabilir. Bu senaryoda, Azure Stack ve şirket ağından çalışılacak uç noktaları yayımlamanız gerekir.
+Kurumsal kuruluşlar için dış ağ, mevcut şirket ağı olabilir. Bu senaryoda, kurumsal ağdan Azure Stack çalıştırmak için uç noktaları yayımlamanız gerekir.
 
-### <a name="network-address-translation"></a>Ağ adresi çevirisi
-Ağ adresi çevirisi (NAT) dağıtım sanal makine (dış kaynaklara erişmeyi DVM) ve dağıtım sırasında internet yanı sıra Acil Durum Kurtarma Konsolu (ERCS) Vm'leri ya da ayrıcalıklı uç noktasına (CESARETLENDİRİCİ) sırasında izin vermek için önerilen yöntemdir kayıt ve sorun giderme.
+### <a name="network-address-translation"></a>Ağ Adresi Çevirisi
+Ağ adresi çevirisi (NAT), dağıtım sanal makinesinin (DVM), dağıtım sırasında dış kaynaklara ve internet 'e ve acil durum kurtarma konsolu (ERCS) VM 'lerine veya ayrıcalıklı uç noktaya (PEP) erişmesine izin vermek için önerilen yöntemdir. kayıt ve sorun giderme.
 
-NAT dış ağdaki veya genel VIP genel IP adresleri için bir alternatif de olabilir. Ancak, Kiracı Kullanıcı deneyimini sınırlar ve karmaşıklık artar çünkü bunu yapmanız önerilmez. Bire bir NAT IP havuzu kullanıcı başına bir genel IP gerektiren bir seçenek olacaktır. Bir kullanıcı için tüm bağlantı VIP kullanıcı başına bir NAT kuralı gerektiren bir NAT için birçok başka bir seçenektir.
+NAT, dış ağdaki veya genel VIP 'lerde genel IP adresleri için de bir alternatif olabilir. Bununla birlikte, Kiracı Kullanıcı deneyimini sınırlayan ve karmaşıklığı arttığı için bunu yapmanız önerilmez. Tek bir seçenek, havuzda her Kullanıcı IP 'si için bir genel IP gerektiren tek bir NAT olabilir. Başka bir seçenek de bir kullanıcının kullanabileceği tüm bağlantı noktaları için Kullanıcı VIP başına NAT kuralı gerektiren bir NAT ' dır.
 
-Bazı genel VIP için NAT kullanmanın olumsuzlukları şunlardır:
-- NAT, kullanıcıların kendi uç noktaları ve yazılım tanımlı ağ (SDN) yığınında kendi yayımlama kuralları denetlemek için güvenlik duvarı kuralları yönetirken yükü ekler. Kullanıcıların yayımlanan kendi VIP'ler almak ve bağlantı noktası listesini güncelleştirmek için Azure Stack operatörü başvurmanız gerekir.
-- NAT kullanımı, kullanıcı deneyimini sınırlar olsa da, tam denetim işlecine yayımlama istekleri üzerinden verir.
-- Azure ile karma bulut senaryoları için Azure VPN tüneli NAT'ı kullanarak bir uç noktaya ayarlamayı desteklemiyor göz önünde bulundurun.
+Genel VIP için NAT kullanmanın bazı altlarından bazıları şunlardır:
+- Kullanıcılar kendi uç noktalarını ve yazılım tanımlı ağ (SDN) yığınında kendi yayımlama kurallarını denetlemediğinden, NAT güvenlik duvarı kurallarını yönetirken ek yük ekler. Kullanıcıların VIP 'lerini yayınlamalarını sağlamak ve bağlantı noktası listesini güncelleştirmek için Azure Stack işleçle iletişim kurabilmesi gerekir.
+- NAT kullanımı Kullanıcı deneyimini sınırlarken, yayımlama istekleri üzerinden operatör üzerinde tam denetim sağlar.
+- Azure ile hibrit bulut senaryoları için, Azure 'un NAT kullanarak bir uç noktaya VPN tüneli ayarlamayı desteklemediğini göz önünde bulundurun.
 
 ### <a name="ssl-decryption"></a>SSL şifre çözme
-Şu anda, tüm Azure Stack trafiği üzerinde SSL şifre çözme devre dışı bırakmak için önerilir. Gelecekteki güncelleştirmelerinde destekleniyorsa, Azure Stack için SSL şifre çözme etkinleştirme hakkında yönergeler sağlanır.
+Tüm Azure Stack trafiğinden SSL şifre çözme devre dışı bırakılması önerilir. Gelecekteki güncelleştirmelerde destekleniyorsa, Azure Stack için SSL şifre çözmeyi etkinleştirme hakkında rehberlik sağlanacaktır.
 
-## <a name="edge-firewall-scenario"></a>Kenar güvenlik duvarı senaryosu
-Bir edge dağıtımı, Azure Stack doğrudan sınır yönlendiricisi veya güvenlik duvarı arkasında dağıtılır. Bu senaryolarda, burada hem aktif-aktif veya Aktif-Pasif güvenlik duvarı yapılandırmaları veya (2. Senaryo) kenarlık cihaz olarak burada etkin-etkin güvenlik duvarı yalnızca destekler acting destekler kenarlık (Senaryo 1) olacak şekilde güvenlik duvarı için desteklenir üzerinde eşit maliyet çoklu yol (ECMP) BGP ya da yük devretme için statik yönlendirme ile bağlı olan yapılandırma.
+## <a name="edge-firewall-scenario"></a>Edge güvenlik duvarı senaryosu
+Bir Edge dağıtımında, Azure Stack doğrudan sınır yönlendiricisinin veya güvenlik duvarının arkasında dağıtılır. Bu senaryolarda, güvenlik duvarının (Senaryo 1) hem etkin-etkin ve etkin-Pasif güvenlik duvarı yapılandırmalarının desteklediği ya da yalnızca etkin-etkin güvenlik duvarını desteklediği sınır aygıtı (Senaryo 2) olarak davrandığı kenarlığın üzerinde olması desteklenir yapılandırma, yük devretme için BGP veya statik yönlendirme ile eşit maliyetli çoklu yola (ECMP) bağlı.
 
-Genel olarak yönlendirilebilir IP adresleri için dış ağ genel VIP havuzundan dağıtım sırasında belirtilir. Bir edge senaryosunda, genel olarak yönlendirilebilir IP'leri herhangi bir ağ üzerindeki güvenlik amacıyla kullanmak için önerilmez. Bu senaryo Azure gibi genel bulut olduğu gibi tam Self denetimli bulut deneyimi deneyimi sağlar.  
+Ortak yönlendirilebilir IP adresleri, dış ağdan dağıtım zamanında genel VIP havuzu için belirtilir. Bir Edge senaryosunda, güvenlik amacıyla diğer bir ağ üzerinde genel yönlendirilebilir IP 'Lerin kullanılması önerilmez. Bu senaryo, bir kullanıcının Azure gibi genel bir bulutta olduğu gibi tam kendi kendine denetlenen bulut deneyimini deneyimini sağlar.  
 
-![Azure Stack kenar güvenlik duvarı örneği](./media/azure-stack-firewall/firewallScenarios.png)
+![Azure Stack Edge güvenlik duvarı örneği](./media/azure-stack-firewall/firewallScenarios.png)
 
-## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Kurumsal intranet veya çevre ağ güvenlik duvarı senaryoları
-Bir Kurumsal intranet veya çevre dağıtımında, Azure Stack çoklu bölgesinin bir güvenlik duvarı veya sınır güvenlik duvarı ve dahili, kurumsal ağ güvenlik duvarı arasında dağıtılır. Trafik, ardından güvenli, çevre ağındaki (veya DMZ arasında) dağıtılır ve olarak güvenli olmayan bölgeler aşağıda açıklanan:
+## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Kurumsal intranet veya çevre ağı güvenlik duvarı senaryosu
+Kurumsal intranet veya çevre dağıtımında Azure Stack, çok bölgeli bir güvenlik duvarında veya uç güvenlik duvarı ile dahili, şirket ağı güvenlik duvarı arasında dağıtılır. Bundan sonra trafiği güvenli, çevre ağı (veya DMZ) ve güvenli olmayan bölgeler arasında aşağıda açıklandığı gibi dağıtılır:
 
-- **Güvenli Bölge**: Bu iç ya da şirket yönlendirilebilir IP adresleri kullanan iç ağdır. Güvenli ağ ayrılabilir, güvenlik duvarında giden internet erişimi NAT aracılığıyla sahip ve genellikle iç ağ aracılığıyla veri merkezi içinde her yerden erişilebilir. Tüm Azure Stack ağlar, genel VIP havuzunu dış ağın dışında güvenli bölgede bulunmalıdır.
-- **Çevre bölge**. Çevre ağ dış veya internet'e yönelik Web sunucuları genellikle dağıtılır gibi uygulamalar olabilir. Genellikle, DDoS ve sağlarken hala belirtilen gelen trafiği internet'ten (deşifre etme) yetkisiz erişim gibi saldırıları önlemek için bir güvenlik duvarı tarafından izlenir. Yalnızca dış ağ genel VIP havuzunu Azure Stack DMZ bölgede bulunmalıdır.
-- **Güvenli olmayan bölge**. Dış ağ, internet budur. Bunu **değil** güvensiz bölgedeki Azure Stack dağıtmanız önerilir.
+- **Güvenli bölge**: Bu, iç veya şirket tarafından yönlendirilebilir IP adresleri kullanan iç bir ağ. Güvenli ağ ayrılabilir, güvenlik duvarında NAT üzerinden İnternet giden erişimine sahip olur ve genellikle iç ağ aracılığıyla veri merkezinizin içinden herhangi bir yerden erişilebilir. Tüm Azure Stack ağları, dış ağın genel VIP havuzu hariç güvenli bölgede bulunmalıdır.
+- **Çevre bölgesi**. Çevre ağı, Web sunucuları gibi dış veya internet 'e yönelik uygulamaların genellikle dağıtıldığı yerdir. Genellikle, internet 'ten gelen trafiğe izin verirken DDoS ve yetkisiz erişim (korsan) gibi saldırıları önlemek için bir güvenlik duvarı tarafından izlenir. Yalnızca dış ağ genel VIP havuzu Azure Stack DMZ bölgesinde bulunmalıdır.
+- **Güvenli olmayan bölge**. Bu, internet 'in dış ağı. Güvenli **olmayan bölgede Azure Stack dağıtılması önerilmez.**
 
 ![Azure Stack çevre ağı örneği](./media/azure-stack-firewall/perimeter-network-scenario.png)
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
-Daha fazla bilgi edinin [bağlantı noktaları ve Azure Stack uç noktaları tarafından kullanılan protokoller](azure-stack-integrate-endpoints.md).
+[Azure Stack uç noktaları tarafından kullanılan bağlantı noktaları ve protokoller](azure-stack-integrate-endpoints.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure Stack PKI gereksinimleri](azure-stack-pki-certs.md)

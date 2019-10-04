@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 4f9e9c4f79a06e0f1f74db8152047beb3af07b75
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: a7bd45b8eefe201a8c3767f31f7de138e37bb01d
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68417536"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71909265"
 ---
 # <a name="manage-azure-stack-storage-accounts"></a>Azure Stack depolama hesaplarını yönetme
 
@@ -93,7 +93,7 @@ Azure Stack, bunu yapmanın basit bir yolu vardır:
   Silinen hesap zaten atık olarak toplanmışsa hesabınız hesap listesinde görüntülenmeyebilir. Bu durumda, kurtarılamaz. Bu makaledeki [kapasiteyi geri](#reclaim) alma bölümüne bakın.
 
 ## <a name="set-the-retention-period"></a>Saklama süresini ayarlama
-Bekletme dönemi ayarı, bir bulut işlecinin, silinen hesabın büyük olasılıkla kurtarılabileceği gün (0 ve 9999 gün arasında) cinsinden bir süre belirtmesini sağlar. Varsayılan saklama süresi 0 gün olarak ayarlanır. Değerin "0" olarak ayarlanması, silinen her hesabın hemen bekletme dışı ve düzenli çöp toplama için işaretlenme anlamına gelir.
+Saklama süresi ayarı bulut operatörünün silinen hesaplar için olası kurtarma süresi olarak gün cinsinden bir süre (0 ile 9999 gün arası) belirtmesine olanak tanır. Varsayılan saklama süresi 0 güne ayarlanmıştır. Değerin "0" olarak ayarlanması, silinen hesapların hemen saklama dışında tutulacağı ve düzenli atık toplama için işaretleneceği anlamına gelir.
 
 **Saklama süresini değiştirmek için:**
 

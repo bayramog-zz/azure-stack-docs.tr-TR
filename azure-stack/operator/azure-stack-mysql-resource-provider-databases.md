@@ -1,6 +1,6 @@
 ---
-title: AzureStack üzerinde MySQL bağdaştırıcısı RP tarafından sağlanan veritabanları kullanılarak | Microsoft Docs
-description: Nasıl MySQL bağdaştırıcısı kaynak Sağlayıcısı'nı kullanarak sağlanan MySQL veritabanı oluşturma ve yönetme
+title: Azure Stack MySQL bağdaştırıcısı RP tarafından belirtilen veritabanlarını kullanma | Microsoft Docs
+description: MySQL bağdaştırıcısı kaynak sağlayıcısı kullanılarak sağlanan MySQL veritabanları oluşturma ve yönetme
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -11,56 +11,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 4f2e7a77af14c71c2b3231436d723c6e721ceca9
-ms.sourcegitcommit: 104ccafcb72a16ae7e91b154116f3f312321cff7
+ms.openlocfilehash: 6a933f812edeede1802c35e3d25915ce09b6f01b
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67308631"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71909224"
 ---
-# <a name="create-mysql-databases"></a>MySQL veritabanı oluşturma
-MySQL veritabanı hizmeti içeren bir teklife abone bir Azure Stack kullanıcı oluşturabilir ve Kullanıcı Portalı'nda, Self Servis MySQL veritabanları yönetebilirsiniz.
+# <a name="create-mysql-databases"></a>MySQL veritabanları oluşturma
+MySQL veritabanı hizmetini içeren bir teklifle abone olan Azure Stack Kullanıcı, Kullanıcı portalında self servis MySQL veritabanlarını oluşturup yönetebilir.
 
 ## <a name="create-a-mysql-database"></a>MySQL veritabanı oluşturma
 
-1. Azure Stack kullanıcı portalında oturum açın.
-2. Seçin **+ kaynak Oluştur** > **veri + depolama** > **MySQL veritabanı** > **Ekle**.
-3. Altında **MySQL veritabanı oluşturma**, veritabanı adını girin ve ortamınız için gerektiği gibi diğer ayarları yapılandırın.
+1. Azure Stack Kullanıcı portalında oturum açın.
+2. **+ Kaynak oluştur** > **veri + depolama** > **MySQL veritabanı** > **Ekle**' yi seçin.
+3. **MySQL veritabanı oluştur**altında, veritabanı adını girin ve ortamınız için gereken diğer ayarları yapılandırın.
 
     ![Test MySQL veritabanı oluşturma](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
 
-4. Altında **Create Database**seçin **SKU**. Altında **MySQL SKU seçin**, veritabanınız için SKU seçin.
+4. **Veritabanı oluştur**altında **SKU**' yı seçin. **MySQL SKU 'Su seçin**altında VERITABANıNıZ için SKU 'yu seçin.
 
-    ![Bir MySQL SKU'ları seçin](./media/azure-stack-mysql-rp-deploy/mysql-select-sku.png)
+    ![MySQL SKU 'SU seçin](./media/azure-stack-mysql-rp-deploy/mysql-select-sku.png)
 
     >[!Note]
-    >Azure Stack için barındırma sunucuları eklendikçe, bir SKU atanmış oldukları. Bir SKU sunucuları bulundurma havuzdaki veritabanları oluşturulur.
+    >Barındırma sunucuları Azure Stack eklendikçe, bunlara bir SKU atanır. Veritabanları, bir SKU 'daki barındırma sunucuları havuzunda oluşturulur.
 
-5. Altında **oturum açma**seçin ***gerekli ayarları Yapılandır***.
-6. Altında **bir oturum açma seçin**, var olan bir oturum seçin ya da seçin **+ yeni bir oturum açma Oluştur** yeni bir oturum açma ayarlamak için.  Girin bir **veritabanı oturum açma** adı ve **parola**ve ardından **Tamam**.
+5. **Oturum aç**altında, ***gerekli ayarları Yapılandır***' ı seçin.
+6. **Oturum aç**' ın altında, mevcut bir oturum açma veya + yeni bir oturum açma **Oluştur** ' u seçerek yeni bir oturum açmayı seçebilirsiniz.  Bir **veritabanı oturum açma** adı ve **parolası**girip **Tamam**' ı seçin.
 
     ![Yeni bir veritabanı oturumu oluştur](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
 
     >[!NOTE]
-    >Veritabanı oturum açma adının MySQL 5.7 32 karakter uzunluğunda olabilir. Önceki sürümlerinde, 16 karakterden uzun olamaz.
+    >Veritabanı oturum açma adının uzunluğu MySQL 5,7 ' de 32 karakteri aşamaz. Önceki sürümlerde, 16 karakterden uzun olamaz.
 
-7. Seçin **Oluştur** veritabanı ayarlama işlemini sonlandırmak için.
+7. Veritabanının kurulumunu yapmak için **Oluştur** ' u seçin.
 
-Veritabanı dağıtıldıktan sonra Not **bağlantı dizesi** altında **Essentials**. Bu dize MySQL veritabanına erişmesi gereken herhangi bir uygulamada kullanabilirsiniz.
+Veritabanı dağıtıldıktan sonra, **temel parçalar**altındaki **bağlantı dizesini** göz önünde atın. Bu dizeyi, MySQL veritabanına erişmesi gereken herhangi bir uygulamada kullanabilirsiniz.
 
-![MySQL veritabanı için bağlantı dizesini alın](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+![MySQL veritabanı için bağlantı dizesini al](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
 
 ## <a name="update-the-administrative-password"></a>Yönetici parolasını güncelleştirme
 
-Parola MySQL server örneğinde değiştirerek değiştirebilirsiniz.
+Parolayı MySQL Server örneğinde değiştirerek değiştirebilirsiniz.
 
-1. Seçin **yönetim kaynakları** > **MySQL barındırma sunucuları**. Barındırma sunucusu seçin.
-2. Altında **ayarları**seçin **parola**.
-3. Altında **parola**, yeni bir parola girin ve ardından **Kaydet**.
+1. @No__t-1**MySQL barındırma sunucuları** **Yönetim kaynakları**' nı seçin. Barındırma sunucusunu seçin.
+2. **Ayarlar**altında, **parola**' yı seçin.
+3. **Parola**alanına yeni parolayı girin ve ardından **Kaydet**' i seçin.
 
 ![Yönetici parolasını güncelleştirme](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 

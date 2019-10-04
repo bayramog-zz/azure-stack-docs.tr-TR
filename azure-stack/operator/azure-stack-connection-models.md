@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
-ms.openlocfilehash: de9051ceee89244182c1d6d9d5724fa80a594ae6
-ms.sourcegitcommit: c196463492732218d2474d3a964f88e995272c80
+ms.openlocfilehash: 8646e9d1936c865482368d176194c095c9dd0483
+ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094379"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71909409"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack tümleşik sistemler bağlantı modelleri
 Azure Stack tümleşik bir sistem satın almak istiyorsanız, sistemin veri merkezinize nasıl uyadığını belirleyebilmek için Azure Stack dağıtımı için [çeşitli veri merkezi tümleştirme konularını](azure-stack-datacenter-integration.md) anlamanız gerekir. Ayrıca, Azure Stack karma bulut ortamınıza nasıl tümleştirmenize karar vermeniz gerekir. Bu makalede, Azure bağlantı modelleri, kimlik deposu seçenekleri ve faturalandırma modeli seçenekleri de dahil olmak üzere bu önemli kararlar hakkında genel bir bakış sunulmaktadır.
