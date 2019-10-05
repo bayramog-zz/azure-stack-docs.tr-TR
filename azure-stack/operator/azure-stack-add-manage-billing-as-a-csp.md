@@ -11,28 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/02/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 82aa27440a496a813e2f1fa99879005503ba8d07
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: e14c57cb5d0444c68619e6be5db688d7b1542e93
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159508"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961883"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-solution-provider"></a>Bulut çözümü sağlayıcısı olarak Azure Stack için kullanımı ve faturalandırmayı yönetme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
 
-Bu makalede, Azure Stack bir bulut hizmeti sağlayıcısı (CSP) olarak nasıl kaydedileceği ve müşterilerin nasıl ekleneceği açıklanmaktadır.
+Bu makalede, Azure Stack bir bulut çözümü sağlayıcısı (CSP) olarak nasıl kaydedileceği ve müşterilerin nasıl ekleneceği açıklanmaktadır.
 
 CSP olarak, Azure Stack kullanarak farklı müşterilerle çalışırsınız. Her müşterinin Azure 'da bir CSP aboneliği vardır. Azure Stack kullanımı her kullanıcı aboneliğine yönlendirmelidir.
 
 Aşağıdaki şekilde, paylaşılan hizmetleri hesabınızı seçmek ve Azure hesabını Azure Stack hesabıyla kaydetmek için gereken adımlar gösterilmektedir. Kaydolduktan sonra, son müşterilerinizi ekleyebilirsiniz:
 
-[![Bulut çözümü sağlayıcısı olarak kullanımı ve yönetimi etkinleştirme işlemi](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "Bulut çözümü sağlayıcısı olarak kullanımı ve yönetimi etkinleştirme işlemi")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
+[(media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "Bulut çözümü sağlayıcısı olarak kullanımı ve yönetimi etkinleştirmek için") ![bir bulut çözümü sağlayıcısı işlemi olarak kullanımı ve yönetimi etkinleştirme işlemi]](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
 
 ## <a name="create-a-csp-or-apss-subscription"></a>CSP veya APSS aboneliği oluşturma
 
@@ -47,7 +47,7 @@ Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü
 
 Azure Iş ortağı paylaşılan hizmetleri (APSS) abonelikleri, doğrudan CSP veya CSP dağıtıcısı Azure Stack çalıştığında kayıt için tercih edilen seçenektir.
 
-APSS abonelikleri, paylaşılan hizmetler kiracısı ile ilişkilendirilir. Azure Stack kaydettiğinizde, aboneliğin sahibi olan bir hesabın kimlik bilgilerini sağlarsınız. Azure Stack kaydetmek için kullandığınız hesap, dağıtım için kullandığınız yönetici hesabından farklı olabilir. Ayrıca, iki hesabın aynı etki alanına ait olması gerekmez; zaten kullandığınız kiracıyı kullanarak dağıtım yapabilirsiniz. Örneğin, öğesini kullanabilir `ContosoCSP.onmicrosoft.com`, sonra farklı bir kiracı kullanarak kaydolabilirsiniz; Örneğin,. `IURContosoCSP.onmicrosoft.com` Günlük Azure Stack yönetimi gerçekleştirirken oturum açmayı `ContosoCSP.onmicrosoft.com` unutmamanız gerekir. Kayıt işlemleri gerçekleştirmeniz gerektiğinde Azure `IURContosoCSP.onmicrosoft.com` 'da oturum açın.
+APSS abonelikleri, paylaşılan hizmetler kiracısı ile ilişkilendirilir. Azure Stack kaydettiğinizde, aboneliğin sahibi olan bir hesabın kimlik bilgilerini sağlarsınız. Azure Stack kaydetmek için kullandığınız hesap, dağıtım için kullandığınız yönetici hesabından farklı olabilir. Ayrıca, iki hesabın aynı etki alanına ait olması gerekmez; zaten kullandığınız kiracıyı kullanarak dağıtım yapabilirsiniz. Örneğin, `ContosoCSP.onmicrosoft.com` ' ı kullanabilir, sonra farklı bir kiracı kullanarak kaydolabilirsiniz; Örneğin, `IURContosoCSP.onmicrosoft.com`. Günlük Azure Stack yönetimi gerçekleştirirken `ContosoCSP.onmicrosoft.com` kullanarak oturum açmanız gerektiğini unutmayın. Kayıt işlemleri gerçekleştirmeniz gerektiğinde `IURContosoCSP.onmicrosoft.com` kullanarak Azure 'da oturum açın.
 
 APSS aboneliklerinin açıklaması ve bunların nasıl oluşturulacağı hakkında bilgi için bkz. [Azure Iş ortağı paylaşılan hizmetleri ekleme](/partner-center/shared-services).
 
@@ -61,7 +61,7 @@ Azure Stack Azure ile kaydetmek için önceki bölümde bulunan bilgiler kullan�
 
 ## <a name="add-end-customer"></a>Son müşteri Ekle
 
-Yeni bir kiracı kaynakları kullandığında, kullanımları CSP aboneliğine bildirildiği için Azure Stack yapılandırmak için, bkz. [kullanım ve faturalandırma için kiracı ekleme ve Azure Stack](azure-stack-csp-howto-register-tenants.md).
+Yeni bir kiracının kaynak kullanımının CSP aboneliğine bildirildiği şekilde Azure Stack yapılandırmak için, bkz. [kullanım ve faturalandırma için kiracı ekleme Azure Stack](azure-stack-csp-howto-register-tenants.md).
 
 ## <a name="charge-the-right-subscriptions"></a>Doğru abonelikleri ücretlendirin
 
@@ -76,9 +76,9 @@ Her Azure Stack için bir varsayılan abonelik ve birçok kiracı aboneliği var
 
 Ardından kayıt, Azure Stack kullanan her kiracı için bir Azure aboneliğiyle güncelleştirilir. Kiracı aboneliklerinin CSP türünde olması gerekir ve varsayılan aboneliğin sahibi olan iş ortağına toplaması gerekir. Başka birinin müşterilerini kaydedemezsiniz.
 
-Azure Stack kullanım bilgilerini küresel Azure 'a ilettiğinde, Azure 'daki bir hizmet kaydı yönlendirir ve her kiracının kullanımını uygun kiracı aboneliğine eşler. Bir kiracı kayıtlı değilse, bu kullanım kaynaklandığı Azure Stack örneği için varsayılan aboneliğe gider.
+Azure Stack kullanım bilgilerini küresel Azure 'a ilettiğinde, Azure 'daki bir hizmet kaydı yönlendirir ve her kiracının kullanımını uygun kiracı aboneliğine eşler. Bir kiracı kaydedilmemişse, bu kullanım kaynaklandığı Azure Stack örneği için varsayılan aboneliğe gider.
 
-Kiracı abonelikleri CSP abonelikleri olduğundan, faturanız CSP iş ortağına gönderilir ve kullanım bilgileri son müşteri tarafından görülemez.
+Kiracı abonelikleri CSP abonelikleri olduğundan, faturanız CSP iş ortağına gönderilir ve kullanım bilgileri son müşteriye görünmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

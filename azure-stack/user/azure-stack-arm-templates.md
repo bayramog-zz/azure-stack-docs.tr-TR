@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te Azure Resource Manager şablonlarını kullanma | Microsoft Docs
-description: Azure Resource Manager şablonları Azure Stack'te sağlama kaynakları kullanmayı öğrenin.
+title: Azure Stack Azure Resource Manager şablonları kullanma | Microsoft Docs
+description: Kaynakları sağlamak için Azure Stack Azure Resource Manager şablonlarını nasıl kullanacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,72 +12,72 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 10/04/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
-ms.openlocfilehash: fde2936f3b57fdf9fc6ddeda1786b9ffd5aa9fe0
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: 0b9aedb4a6b046755192b84e18e8c75a8d015c8f
+ms.sourcegitcommit: f91979c1613ea1aa0e223c818fc208d902b81299
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691527"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71974065"
 ---
-# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Stack'te Azure Resource Manager şablonlarını kullanma
+# <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Stack Azure Resource Manager şablonları kullanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
 
-Azure Resource Manager şablonları, dağıtmak ve tek ve eşgüdümlü bir işlemle uygulamanıza yönelik tüm kaynakları sağlamak için kullanabilirsiniz. Ayrıca, bir kaynak grubundaki kaynaklar için değişiklik yapmak için şablonları yeniden dağıtabilirsiniz.
+Uygulamanıza yönelik tüm kaynakları tek ve eşgüdümlü bir işlemle dağıtmak ve sağlamak için Azure Resource Manager şablonlarını kullanabilirsiniz. Ayrıca, bir kaynak grubundaki kaynaklarda değişiklik yapmak için şablonları yeniden dağıtabilirsiniz.
 
-Bu şablonlar, Microsoft Azure Stack portal, PowerShell, komut satırı ve Visual Studio ile dağıtılabilir.
+Bu Şablonlar Microsoft Azure Stack portalı, PowerShell, komut satırı ve Visual Studio ile dağıtılabilir.
 
-Aşağıdaki Hızlı Başlangıç şablonları [github'da](https://aka.ms/azurestackgithub):
+[GitHub 'da](https://aka.ms/azurestackgithub)aşağıdaki hızlı başlangıç şablonları mevcuttur:
 
-## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>SharePoint Server (yüksek kullanılabilirlik dağıtımı) dağıtın
+## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>SharePoint Server 'ı dağıtma (yüksek kullanılabilirliğe sahip olmayan dağıtım)
 
-PowerShell'i [Desired State Configuration](/powershell/dsc/overview/overview) (DSC) uzantısı [bir SharePoint Server 2013'ü grubu oluşturma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) , aşağıdaki kaynakları içermektedir:
+Aşağıdaki kaynakları içeren [bir SharePoint Server 2013 grubu oluşturmak](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) Için PowerShell [istenen durum yapılandırması](/powershell/dsc/overview/overview) (DSC) uzantısını kullanın:
 
 * Bir sanal ağ
-* Üç depolama hesapları
-* İki dış yük Dengeleyiciler
-* Tek tek bir etki alanı ile yeni bir orman için etki alanı denetleyicisi olarak yapılandırılan sanal makineye (VM)
-* SQL Server 2014 tek başına sunucu yapılandırılmış bir VM
-* Bir makine SharePoint Server 2013'ü grubu yapılandırılmış bir VM
+* Üç depolama hesabı
+* İki dış yük dengeleyiciler
+* Tek bir etki alanı ile yeni bir orman için etki alanı denetleyicisi olarak yapılandırılmış bir sanal makine (VM)
+* SQL Server 2014 tek başına sunucu olarak yapılandırılmış bir VM
+* Tek makineli SharePoint Server 2013 grubu olarak yapılandırılmış bir VM
 
-## <a name="deploy-ad-non-high-availability-deployment"></a>AD (olmayan yüksek-kullanılabilirlik-dağıtımı) dağıtın
+## <a name="deploy-ad-non-high-availability-deployment"></a>AD dağıtma (yüksek kullanılabilirlik olmayan dağıtım)
 
-Kullanmak için PowerShell DSC uzantısı [bir AD etki alanı denetleyicisi sunucusuna oluşturma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha) , aşağıdaki kaynakları içermektedir:
+PowerShell DSC uzantısını kullanarak aşağıdaki kaynakları içeren [BIR ad etki alanı denetleyicisi sunucusu oluşturun](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha) :
 
 * Bir sanal ağ
 * Bir depolama hesabı
 * Bir dış yük dengeleyici
-* Tek tek bir etki alanı ile yeni bir orman için etki alanı denetleyicisi olarak yapılandırılan sanal makineye (VM)
+* Tek bir etki alanı ile yeni bir orman için etki alanı denetleyicisi olarak yapılandırılmış bir sanal makine (VM)
 
-## <a name="deploy-adsql-non-high-availability-deployment"></a>AD/SQL (olmayan yüksek-kullanılabilirlik-dağıtımı) dağıtın
+## <a name="deploy-adsql-non-high-availability-deployment"></a>AD/SQL dağıtma (yüksek kullanılabilirliğe sahip olmayan dağıtım)
 
-Kullanmak için PowerShell DSC uzantısı [SQL Server 2014 tek başına bir sunucu oluşturma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha) , aşağıdaki kaynakları içermektedir:
+PowerShell DSC uzantısını kullanarak aşağıdaki kaynakları içeren [SQL Server 2014 tek başına sunucu oluşturun](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha) :
 
 * Bir sanal ağ
 * İki depolama hesabı
 * Bir dış yük dengeleyici
-* Tek tek bir etki alanı ile yeni bir orman için etki alanı denetleyicisi olarak yapılandırılan sanal makineye (VM)
-* SQL Server 2014 tek başına sunucu yapılandırılmış bir VM
+* Tek bir etki alanı ile yeni bir orman için etki alanı denetleyicisi olarak yapılandırılmış bir sanal makine (VM)
+* SQL Server 2014 tek başına sunucu olarak yapılandırılmış bir VM
 
-## <a name="vm-dsc-extension-azure-automation-pull-server"></a>VM-DSC-Extension-Azure-Automation-Pull-Server
+## <a name="vm-dsc-extension-azure-automation-pull-server"></a>VM-DSC-uzantı-Azure-Automation-çekme-sunucu
 
-PowerShell DSC uzantısı, var olan bir sanal makine yerel Configuration Manager'ı (LCM) yapılandırma ve bir Azure Otomasyon hesabı DSC çekme sunucusuna kaydetmek için kullanın.
+Mevcut bir sanal makine yerel Configuration Manager (LCM) yapılandırmak ve Azure Otomasyonu hesabı DSC çekme sunucusuna kaydetmek için PowerShell DSC uzantısını kullanın.
 
-## <a name="create-a-virtual-machine-from-a-user-image"></a>Bir kullanıcı görüntüsünden sanal makine oluşturma
+## <a name="create-a-virtual-machine-from-a-user-image"></a>Kullanıcı görüntüsünden sanal makine oluşturma
 
-[Özel kullanıcı görüntüsünden sanal makine oluşturma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-create-from-customimage). Bu şablonu ayrıca bir sanal ağla (DNS), genel IP adresi ve bir ağ arabirimi dağıtır.
+[Özel bir Kullanıcı görüntüsünden sanal makine oluşturun](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-create-from-customimage). Bu şablon Ayrıca bir sanal ağ (DNS ile), genel IP adresi ve ağ arabirimi dağıtır.
 
 ## <a name="basic-virtual-machine"></a>Temel sanal makine
 
-[Windows VM dağıtma](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) (DNS ile) bir sanal ağ, genel IP adresi ve bir ağ arabirimi içerir.
+Sanal ağ (DNS ile), genel IP adresi ve ağ arabirimi içeren [bir Windows sanal makinesi dağıtın](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) .
 
-## <a name="cancel-a-running-template-deployment"></a>Çalışan bir şablon dağıtımı iptal et
+## <a name="cancel-a-running-template-deployment"></a>Çalışan bir şablon dağıtımını iptal etme
 
-Çalışan bir şablon dağıtımı iptal etmek için kullanın [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet'i](/powershell/developer/cmdlet/cmdlet-overview).
+Çalışan bir şablon dağıtımını iptal etmek için, [stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet 'ini](/powershell/developer/cmdlet/cmdlet-overview)kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

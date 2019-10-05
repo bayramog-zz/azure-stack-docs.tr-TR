@@ -15,12 +15,12 @@ ms.date: 08/09/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: c93b4535189830ee8e84acb882f85a9a51d5f443
-ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
+ms.openlocfilehash: c5b0472921c25379f894be5e0b799b7abcb8a43b
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71342733"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961808"
 ---
 # <a name="azure-stack-marketplace-changes"></a>Market değişikliklerini Azure Stack
 
@@ -84,7 +84,7 @@ Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azur
 - BitNami SugarCRM
 - Bitnamı Node. js yüksek kullanılabilirlik kümesi
 - A10 vThunder: L4-L7 uygulama teslim denetleyicisi, genel sunucu yük dengelemesi (GSLB), SSL Insight
-- JsonADDomain uzantısı
+
 
 ## <a name="updated-marketplace-items"></a>Güncelleştirilmiş Market öğeleri
 
@@ -110,6 +110,7 @@ Bu makalede, son 3 ayda yaklaşık olarak [Azure Stack Market öğelerinin](azur
 - 09/12/2019: Service Fabric-sürüm 1.0.3
 - 09/24/2019: F5-Networks Big-IP Virtual Edition-Version 14.1.200000
 - 09/25/2019: Detem 8-sürüm 8.0.20190806
+- 10/1/2019:  Microsoft JsonADDomain uzantısı-sürüm 1.3.4
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

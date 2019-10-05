@@ -1,6 +1,6 @@
 ---
-title: Azure Stack abonelik yönetmek bulut hizmet sağlayıcınız izin | Microsoft Docs
-description: İzin, bulut hizmet sağlayıcısı (Azure Stack aboneliğinizi yönetmek CSP) hakkında bilgi edinin.
+title: Bulut çözümü sağlayıcınızda Azure Stack aboneliğinizi yönetmesine izin verin | Microsoft Docs
+description: Bulut çözümü sağlayıcınızın (CSP) sizin için Azure Stack aboneliğinizi yönetmesine nasıl izin vereceğinizi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -11,47 +11,48 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
-ms.openlocfilehash: 0dc162dd1d4021323f1bf80ad4f89fc721e575a9
-ms.sourcegitcommit: 7f39bdc83717c27de54fe67eb23eb55dbab258a9
+ms.openlocfilehash: a11846feb852a44a5ae526e9c060ca1626bbe245
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66691982"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961624"
 ---
-# <a name="let-your-cloud-service-provider-manage-your-azure-stack-subscription"></a>Bulut hizmet sağlayıcınız Azure Stack abonelik yönetmek istiyorum
+# <a name="let-your-cloud-solution-provider-manage-your-azure-stack-subscription"></a>Bulut çözümü sağlayıcınızda Azure Stack aboneliğinizi yönetmesine izin verin
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri*
+*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
 
-Bir bulut hizmeti sağlayıcısı (CSP) ile Azure Stack kullanırsanız, azure'da ve Azure Stack kaynaklara erişmek için kendi aboneliğinizi yönetmek seçin. Ayrıca, aboneliğinizi yönetmek sağlayıcısı sağlayabilirsiniz. Bu makalede gösterilmektedir için:
+Bir bulut çözümü sağlayıcısı (CSP) ile Azure Stack kullanıyorsanız, Azure 'daki ve Azure Stack kaynaklara erişmek için kendi aboneliğinizi yönetmeyi tercih edebilirsiniz. Ayrıca, sağlayıcının aboneliğinizi sizin yerinize yönetmesine de izin verebilirsiniz. Bu makalede nasıl yapılacağı gösterilmektedir:
 
-* Hizmet sağlayıcısı erişiminizi aboneliğinize verin.
-* Hizmet sağlayıcısı hizmetinizi yönetebilmeniz için emin olun.
+* Hizmet sağlayıcınıza aboneliğinize erişim izni verin.
+* Hizmet sağlayıcısının hizmetinizi yönetebileceğini doğrulayın.
 
 > [!NOTE]
-> CSP hesabınızı yönetme değil ve aşağıdaki adımları atlayın, CSP sizin için Azure Stack aboneliğine yönetemez.
+> CSP hesabınızı yönetmez ve aşağıdaki adımları atlarsanız, CSP Azure Stack aboneliğinizi sizin için yönetemez.
 
-## <a name="manage-your-subscription-with-a-cloud-service-provider"></a>Bir bulut hizmeti sağlayıcısına aboneliğinizi yönetin
+## <a name="manage-your-subscription-with-a-csp"></a>Bir CSP ile aboneliğinizi yönetme
 
-CSP olarak ekleme **kullanıcı** aboneliğinize.
+CSP 'yi aboneliğinize **Kullanıcı** olarak ekleyin.
 
-1. CSP ile Konuk kullanıcı ekleme **kullanıcı** Kiracı dizininize rol. Bir kullanıcı ekleme konusunda daha fazla yardım için bkz: [Azure Active Directory'ye yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory).
+1. CSP 'nizi kiracı dizininize **Kullanıcı** rolüne sahip konuk kullanıcı olarak ekleyin. Kullanıcı ekleme konusunda yardım için bkz. [Azure Active Directory yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory).
 
-2. CSP, yerel Azure Stack aboneliğine sizin için oluşturur. Azure Stack kullanmaya başlamak hazırsınız demektir.
-3. CSP, bunlar Ayrıca, kaynakları yönetebilir doğrulamak için aboneliğinizde bir kaynak oluşturmanız gerekir. Örneğin, yapabilirler [Azure Stack portal ile bir Windows sanal makinesi oluşturma](azure-stack-quick-windows-portal.md).
+2. CSP, sizin için yerel Azure Stack aboneliği oluşturur. Azure Stack kullanmaya başlamaya hazırlanıyor.
 
-## <a name="let-the-cloud-service-provider-manage-your-subscription-using-rbac-rights"></a>Bulut hizmeti sağlayıcısı RBAC haklarını kullanarak aboneliğinizi yönetmek istiyorum
+3. CSP 'nizin da kaynaklarınızı yönetebildiğini doğrulamak için aboneliğinizde bir kaynak oluşturmanız gerekir. Örneğin, [Azure Stack portalı ile bir Windows sanal makinesi oluşturamazlar](azure-stack-quick-windows-portal.md).
 
-CSP olarak ekleme **sahibi** aboneliğinize.
+## <a name="let-the-csp-manage-your-subscription-using-rbac-rights"></a>CSP 'nin RBAC haklarını kullanarak aboneliğinizi yönetmesine izin verin
 
-1. CSP, Kiracı dizinine Konuk kullanıcı olarak ekleyin. Bir kullanıcı ekleme konusunda daha fazla yardım için bkz: [Azure Active Directory'ye yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory).
+CSP 'yi aboneliğinize **sahip** olarak ekleyin.
 
-2. Ekleme **sahibi** CSP Konuk kullanıcıya rol. Aboneliğinize bir CSP kullanıcı ekleme konusunda daha fazla yardım için bkz: [Use Role-Based erişim denetimi, Azure abonelik kaynaklarınıza erişimi yönetmek için](/azure/role-based-access-control/role-assignments-portal). CSP, yerel Azure Stack aboneliğine sizin için oluşturur. Azure Stack kullanmaya başlamak hazırsınız demektir.
-3. CSP kaynaklarınızı yönetebildiğini doğrulamak için aboneliğinizde bir kaynak oluşturmanız gerekir.
+1. CSP 'nizi kiracı dizininize Konuk Kullanıcı olarak ekleyin. Kullanıcı ekleme hakkında daha fazla bilgi için bkz. [Azure Active Directory yeni kullanıcı ekleme](/azure/active-directory/add-users-azure-active-directory).
+
+2. CSP Konuk kullanıcısına **sahip** rolünü ekleyin. Aboneliğinize bir CSP kullanıcısı ekleme hakkında daha fazla bilgi için, bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek Için rol tabanlı Access Control kullanma](/azure/role-based-access-control/role-assignments-portal). CSP, sizin için yerel Azure Stack aboneliği oluşturur. Azure Stack kullanmaya başlamaya hazırlanıyor.
+3. Kendi kaynaklarınızı yönetebildiğini doğrulamak için CSP 'nizin aboneliğinizde bir kaynak oluşturması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure yığını kaynak kullanım bilgilerini alma hakkında daha fazla bilgi için bkz: [kullanım ve faturalandırma Azure Stack'te](../operator/azure-stack-billing-and-chargeback.md).
+* Kaynak kullanım bilgilerini Azure Stack alma hakkında daha fazla bilgi için, bkz. [Azure Stack ' de kullanım ve faturalandırma](../operator/azure-stack-billing-and-chargeback.md).

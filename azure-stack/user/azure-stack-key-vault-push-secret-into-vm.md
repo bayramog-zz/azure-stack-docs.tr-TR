@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te güvenli şekilde depolanan bir sertifika ile VM dağıtma | Microsoft Docs
-description: Bir sanal makine dağıtma ve Azure Stack'te bir anahtar kasası kullanarak bir sertifika üzerine gönderme hakkında bilgi edinin
+title: Azure Stack sunucuda güvenli bir şekilde depolanan sertifikayla VM dağıtma | Microsoft Docs
+description: Bir sanal makineyi dağıtmayı ve Azure Stack bir Anahtar Kasası kullanarak bu sertifikaya nasıl sertifika göndereceğinizi öğrenin
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,53 +12,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 9403931d91756e744dcdb6c34adb26e8281f6d28
-ms.sourcegitcommit: eccbd0098ef652919f357ef6dba62b68abde1090
+ms.openlocfilehash: 8741d63dbbcefde950fc10c0917d87bc4e9718f7
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67492377"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961531"
 ---
-# <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack"></a>Azure Stack'te güvenli şekilde depolanan bir sertifika ile VM dağıtma 
+# <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack"></a>Azure Stack üzerinde güvenli bir şekilde depolanan sertifikayla VM dağıtma 
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
 
-Bu makalede, Azure Stack sanal makine'de (VM) dağıtmak nasıl bir anahtar kasası sertifikası ile açıklanır.
+Bu makalede, bir Key Vault sertifikası yüklü Azure Stack sanal makinenin (VM) nasıl dağıtılacağı açıklanır.
 
 ## <a name="overview"></a>Genel Bakış
 
-Active Directory kimlik doğrulaması veya web trafiği şifreleme gibi birçok senaryoda sertifikalar kullanılır. Azure Stack anahtar kasasındaki gizli diziler olarak sertifikaları güvenli bir şekilde depolayabilirsiniz. Azure Stack anahtar kasası kullanmanın avantajları şunlardır:
+Sertifikalar, Active Directory kimlik doğrulaması veya Web trafiğini şifreleme gibi birçok senaryoda kullanılır. Sertifikaları bir Azure Stack anahtar kasasında gizli dizi olarak güvenli bir şekilde depolayabilirsiniz. Azure Stack Key Vault kullanmanın avantajları şunlardır:
 
-* Sertifikalar, bir komut dosyası, komut satırı geçmişinde veya şablonda kullanıma sunulmaz.
-* Sertifika yönetimi işlemini kolaylaştırılmış hale getirilir.
-* Sertifikalara erişen anahtarları denetiminizde var.
+* Sertifikalar bir betikte, komut satırı geçmişinde veya şablonda gösterilmez.
+* Sertifika Yönetimi işlemi basitleştirilmiştir.
+* Sertifikalara erişim sağlayan anahtarların denetimine sahipsiniz.
 
 ## <a name="process-description"></a>İşlem açıklaması
 
-Aşağıdaki adımlar, VM'ye sertifika göndermek için gerekli işlemi açıklanmaktadır:
+Aşağıdaki adımlarda, VM 'ye bir sertifika göndermek için gereken işlem açıklanır:
 
-1. Anahtar kasası gizli dizi oluşturma.
-2. Güncelleştirme **azuredeploy.parameters.json** dosya.
+1. Anahtar Kasası gizli dizisi oluşturun.
+2. **Azuredeploy. Parameters. JSON** dosyasını güncelleştirin.
 3. Şablonu dağıtın.
 
 > [!NOTE]
-> VPN bağlı değilseniz, Azure Stack geliştirme Seti'ni (ASDK) öğesinden veya bir dış istemcisinden aşağıdaki adımları kullanabilirsiniz.
+> Bu adımları Azure Stack Geliştirme Seti (ASDK) veya VPN üzerinden bağlıysanız bir dış istemciden kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Key Vault hizmetini içeren bir teklife abone olması gerekir.
-* [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md).
-* [Azure Stack kullanıcının PowerShell ortamını yapılandırmak](azure-stack-powershell-configure-user.md).
+* Key Vault hizmetini içeren bir teklife abone olmanız gerekir.
+* [Azure Stack Için PowerShell 'ı yükler](../operator/azure-stack-powershell-install.md).
+* [Azure Stack kullanıcının PowerShell ortamını yapılandırın](azure-stack-powershell-configure-user.md).
 
-## <a name="create-a-key-vault-secret"></a>Anahtar kasası gizli dizi oluşturma
+## <a name="create-a-key-vault-secret"></a>Anahtar Kasası gizli dizisi oluşturma
 
-Aşağıdaki betiği .pfx biçiminde bir sertifika oluşturur, bir anahtar kasası oluşturulur ve sertifika anahtar kasasında gizli dizi olarak depolar.
+Aşağıdaki betik. pfx biçiminde bir sertifika oluşturur, bir Anahtar Kasası oluşturur ve sertifikayı anahtar kasasında gizli dizi olarak depolar.
 
 > [!IMPORTANT]
-> Kullanmalısınız `-EnabledForDeployment` anahtar kasası oluşturma sırasında parametre. Bu parametre, anahtar kasası Azure Resource Manager şablonlarından başvurulabilir sağlar.
+> Anahtar kasasını oluştururken `-EnabledForDeployment` parametresini kullanmanız gerekir. Bu parametre, anahtar kasasının Azure Resource Manager şablonlarından başvurulabilmesini sağlar.
 
 ```powershell
 # Create a certificate in the .pfx format
@@ -119,13 +119,13 @@ Set-AzureKeyVaultSecret `
    -SecretValue $secret
 ```
 
-Bu komut dosyasını çalıştırdığınızda, çıktı gizli anahtar URI'sini içerir. İçinde başvurmalıdır bir not alın; çünkü bu URI [Windows Resource Manager şablonu için anında iletme sertifikası](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate). İndirme [anında iletme sertifikası windows vm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) geliştirme bilgisayarınıza şablon klasörü. Bu klasörde **azuredeploy.json** ve **azuredeploy.parameters.json** dosyaları, aşağıdaki adımları gerekir.
+Bu betiği çalıştırdığınızda, çıktı gizli URI 'yi içerir. Bu URI 'yi, [gönderme sertifikası Windows Kaynak Yöneticisi şablonuna](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate)başvurmanız gerektiği için bir yere unutmayın. [VM-Push-Certificate-Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) şablon klasörünü geliştirme bilgisayarınıza indirin. Bu klasör, aşağıdaki adımlarda ihtiyacınız olan **azuredeploy. JSON** ve **azuredeploy. Parameters. JSON** dosyalarını içerir.
 
-Değiştirme **azuredeploy.parameters.json** ortam değerlerinize göre dosya. Önemli parametreleri, kasa adını, kasa kaynak grubu ve gizli dizi (önceki betiği tarafından oluşturulan gibi) URI ' dir. Aşağıdaki bölümde, bir parametre dosyası örneği gösterilmektedir.
+**Azuredeploy. Parameters. JSON** dosyasını ortam değerlerinize göre değiştirin. Önemli parametreler, kasa adı, kasa kaynak grubu ve gizli URI (önceki komut dosyası tarafından oluşturulan). Aşağıdaki bölümde bir parametre dosyası örneği gösterilmektedir.
 
-## <a name="update-the-azuredeployparametersjson-file"></a>Azuredeploy.parameters.json dosyasını güncelleştirme
+## <a name="update-the-azuredeployparametersjson-file"></a>Azuredeploy. Parameters. json dosyasını güncelleştirme
 
-Güncelleştirme **azuredeploy.parameters.json** ile dosya `vaultName`, gizli URI `VmName`ve diğer parametreleri ortamınız göre. Şablon parametreleri dosyası örneği aşağıdaki JSON dosyası gösterir:
+**Azuredeploy. Parameters. JSON** dosyasını `vaultName`, gizli urı, `VmName` ve diğer parametrelerle ortamınıza göre güncelleştirin. Aşağıdaki JSON dosyası, şablon parametreleri dosyasına bir örnek gösterir:
 
 ```json
 {
@@ -165,7 +165,7 @@ Güncelleştirme **azuredeploy.parameters.json** ile dosya `vaultName`, gizli UR
 Aşağıdaki PowerShell betiğini kullanarak şablonu dağıtın:
 
 ```powershell
-# Deploy a Resource Manager template to create a VM and push the secret onto it
+# Deploy a Resource Manager template to create a VM and push the secret to it
 New-AzureRmResourceGroupDeployment `
   -Name KVDeployment `
   -ResourceGroupName $resourceGroup `
@@ -173,20 +173,20 @@ New-AzureRmResourceGroupDeployment `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
 
-Şablon başarıyla dağıtıldıktan sonra aşağıdaki çıktı sonuçları:
+Şablon başarıyla dağıtıldığında, aşağıdaki çıktıyı görüntüler:
 
-![Şablon dağıtım sonuçları](media/azure-stack-key-vault-push-secret-into-vm/deployment-output.png)
+![Şablon dağıtımı sonuçları](media/azure-stack-key-vault-push-secret-into-vm/deployment-output.png)
 
-Azure Stack sertifika VM dağıtımı sırasında iter. Sertifika konumu VM'nin işletim sistemine bağlıdır:
+Azure Stack, dağıtım sırasında sertifikayı VM 'ye iter. Sertifika konumu, sanal makinenin işletim sistemine bağlıdır:
 
-* Sertifika eklenir Windows içinde **LocalMachine** sertifika konumu, kullanıcı tarafından sağlanan sertifika deposuna sahip.
-* Linux sertifika altına yerleştirilir **/var/lib/waagent** dizin dosya adıyla **UppercaseThumbprint.crt** X509 için sertifika dosyası ve **UppercaseThumbprint.prv**  özel anahtar için.
+* Windows 'da, sertifika, kullanıcının sağladığımız sertifika deposuyla, **LocalMachine** sertifika konumuna eklenir.
+* Linux 'ta, sertifika **/var/lib/waagent** dizinine yerleştirilir ve bu, x509 sertifika dosyası için en üst **öğe adı ve özel anahtar Için üst** öğe **parmak izi. prv** .
 
-## <a name="retire-certificates"></a>Sertifikaları devre dışı bırakma
+## <a name="retire-certificates"></a>Sertifikaları devre dışı bırak
 
-Sertifikaları devre dışı bırakma sertifika yönetimi işleminin parçasıdır. Bir sertifika daha eski sürümünü silinemez, ancak kullanarak devre dışı bırakabilirsiniz `Set-AzureKeyVaultSecretAttribute` cmdlet'i.
+Sertifikaları devre dışı bırakma, sertifika yönetimi sürecinin bir parçasıdır. Bir sertifikanın eski sürümünü silemezsiniz, ancak `Set-AzureKeyVaultSecretAttribute` cmdlet 'ini kullanarak devre dışı bırakabilirsiniz.
 
-Aşağıdaki örnek, bir sertifika devre dışı bırakmak gösterilmektedir. İçin kendi değerlerinizi kullanın `VaultName`, `Name`, ve `Version` parametreleri.
+Aşağıdaki örnek, bir sertifikanın nasıl devre dışı bırakılacağını gösterir. @No__t-0, `Name` ve `Version` parametreleri için kendi değerlerinizi kullanın.
 
 ```powershell
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0
@@ -195,4 +195,4 @@ Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Vers
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Anahtar Kasası parolası ile VM dağıtma](azure-stack-key-vault-deploy-vm-with-secret.md)
-* [Key Vault'a erişmesi uygulamaya izin ver](azure-stack-key-vault-sample-app.md)
+* [Uygulamanın Key Vault erişmesine izin ver](azure-stack-key-vault-sample-app.md)

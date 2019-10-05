@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: 1a3c59ab7650c9cd2337e8256556f8a449feacec
-ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
+ms.openlocfilehash: c170e450739609e0ef0be353f2354a17e39a28b1
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71342814"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961853"
 ---
 # <a name="usage-reporting-infrastructure-for-cloud-solution-providers"></a>Bulut çözümü sağlayıcıları için kullanım raporlama altyapısı
 
@@ -45,7 +45,7 @@ Aşağıdaki hüküm ve kavramlar Azure Stack ' de kullanım ve faturalandırma 
 
 | Terim | Tanım |
 | --- | --- |
-| Doğrudan CSP iş ortağı | Doğrudan bulut çözümü sağlayıcısı (CSP) iş ortağı doğrudan Microsoft 'tan Azure ve Azure Stack kullanımı için bir fatura alır ve müşterileri doğrudan faturalar. |
+| Doğrudan CSP iş ortağı | Doğrudan CSP iş ortağı doğrudan Microsoft 'tan Azure ve Azure Stack kullanımı için bir fatura alır ve müşterileri doğrudan faturalar. |
 | Dolaylı CSP | Dolaylı satıcılar dolaylı bir sağlayıcıyla (dağıtımcı olarak da bilinir) çalışır. Satıcılar, son müşterileri işe alabilir; dolaylı sağlayıcı Microsoft ile faturalandırma ilişkisini tutar, müşteri faturalandırmasını yönetir ve ürün desteği gibi ek hizmetler sağlar. |
 | Son müşteri | Son müşteriler, Azure Stack çalışan uygulamalara ve diğer iş yüklerine sahip olan işletmeler ve kamu kurumlardır. |
 

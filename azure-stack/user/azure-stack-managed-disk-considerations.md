@@ -1,5 +1,5 @@
 ---
-title: Yönetilen disk&#58; farklılıkları ve değerlendirmeleri Azure Stack | Microsoft Docs
+title: Yönetilen diskleri Azure Stack; farklar ve konular | Microsoft Docs
 description: Azure Stack yönetilen disklerle ve yönetilen görüntülerle çalışırken farklılıklar ve dikkat edilmesi gerekenler hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 10/04/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 69f427bd825bdc74501256d47e61bbae95f4d64b
-ms.sourcegitcommit: 79ead51be63c372b23b7fca6ffeaf95fd44de786
+ms.openlocfilehash: 97684f2a0ef9960854b192ca15f972bc15ff5b62
+ms.sourcegitcommit: f91979c1613ea1aa0e223c818fc208d902b81299
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687991"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71974056"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack yönetilen diskler: farklar ve konular
 
@@ -30,24 +30,24 @@ Bu makalede, [Azure 'da Azure Stack ve yönetilen disklerde](/azure/virtual-mach
 Yönetilen diskler, VM diskleriyle ilişkili [depolama hesaplarını](../operator/azure-stack-manage-storage-accounts.md) yöneterek IaaS sanal makineleri (VM 'ler) için disk yönetimini basitleştirir.
 
 > [!NOTE]  
-> Azure Stack yönetilen diskler 1808 güncelleştirmesiyle başlayarak kullanılabilir. 1811 güncelleştirmesiyle başlayarak, Azure Stack Portalı kullanılarak sanal makine oluşturulurken varsayılan olarak etkinleştirilir.
+> Azure Stack yönetilen diskler 1808 güncelleştirmesiyle başlayarak kullanılabilir. 1811 güncelleştirmesiyle başlayarak, özellik, Azure Stack Portalı kullanılarak sanal makine oluşturulurken varsayılan olarak etkinleştirilir.
   
 ## <a name="cheat-sheet-managed-disk-differences"></a>Tek sayfa: yönetilen disk farklılıkları
 
 | Özellik | Azure (genel) | Azure Stack |
 | --- | --- | --- |
-|Bekleyen verilerin şifrelenmesi |Azure Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE)     |BitLocker 128 bit AES şifrelemesi      |
+|Bekleyen verilerin şifrelenmesi |Azure Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE).     |BitLocker 128 bit AES şifrelemesi      |
 |Image          | Yönetilen özel görüntü |Desteklenen|
 |Yedekleme seçenekleri | Azure Backup hizmeti |Henüz desteklenmiyor |
 |Olağanüstü durum kurtarma seçenekleri | Azure Site Recovery |Henüz desteklenmiyor|
-|Disk türleri     |Premium SSD, Standart SSD ve Standart HDD |Premium SSD, Standart HDD |
-|Premium diskler  |Tam olarak destekleniyor |Sağlanabilir, ancak performans sınırı veya garanti yoktur  |
-|Premium diskler IOPS 'si  |Disk boyutuna bağlıdır  |disk başına 2300 IOPS |
-|Premium diskler işleme |Disk boyutuna bağlıdır |disk başına 145 MB/saniye |
+|Disk türleri     |Premium SSD, Standart SSD ve Standart HDD. |Premium SSD, Standart HDD |
+|Premium diskler  |Tam olarak desteklenir. |Sağlanabilir, ancak performans sınırı veya garanti yoktur  |
+|Premium diskler IOPS 'si  |Disk boyutuna bağlıdır.  |disk başına 2300 IOPS |
+|Premium diskler işleme |Disk boyutuna bağlıdır. |disk başına 145 MB/saniye |
 |Disk boyutu  |Azure Premium disk: P4 (32 GiB) ile P80 (32 TiB)<br>Azure Standart SSD diski: E10 (128 GiB) ile E80 (32 TiB)<br>Azure Standart HDD diski: S4 (32 GiB)-S80 (32 TiB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1023 GiB |
-|Diskler anlık görüntü kopyası|Desteklenen, çalışan bir VM 'ye bağlı Azure tarafından yönetilen diskleri anlık görüntüleme|Henüz desteklenmiyor |
-|Diskler performans analizi |Toplam ölçümler ve disk başına ölçümler desteklenir |Henüz desteklenmiyor |
-|Geçiş      |VM 'yi yeniden oluşturmaya gerek kalmadan mevcut yönetilmeyen Azure Resource Manager sanal makinelerinden geçiş yapmak için araç sağlayın  |Henüz desteklenmiyor |
+|Diskler anlık görüntü kopyası|Desteklenen, çalışan bir VM 'ye bağlı Azure tarafından yönetilen disklerin anlık görüntüsünü alın.|Henüz desteklenmiyor |
+|Diskler performans analizi |Toplam ölçümler ve disk başına ölçümler desteklenir. |Henüz desteklenmiyor |
+|Geçiş      |VM 'yi yeniden oluşturmaya gerek kalmadan mevcut yönetilmeyen Azure Resource Manager sanal makinelerinden geçiş yapmak için araç sağlayın.  |Henüz desteklenmiyor |
 
 > [!NOTE]  
 > Azure Stack yönetilen diskler IOPS ve aktarım hızı, sağlanan numara yerine bir büyük sayıdır ve bu, Azure Stack çalışan donanım ve iş yüklerinden etkilenebilir.
@@ -228,7 +228,7 @@ Ayrıca, yönetilen görüntüden bir VM oluşturmak için portalını kullanabi
 - 1808 güncelleştirmesinden önce bir abonelik oluşturulduysa, aboneliği güncelleştirmek için aşağıdaki adımları izleyin. Aksi halde, VM 'Leri bu abonelikte dağıtmak "Disk Yöneticisi 'nde Iç hata" hata iletisiyle başarısız olabilir.
    1. Kullanıcı portalında Azure Stack **abonelikler** ' e gidin ve aboneliği bulun. Tıklayın **kaynak sağlayıcıları**, ardından **Microsoft.Compute**ve ardından **yeniden kaydettirin**.
    2. Aynı abonelikte **Access Control (IAM)** bölümüne gidin ve **Azure Stack yönetilen diskin** listelendiğini doğrulayın.
-- Çok kiracılı bir ortam kullanıyorsanız, [Bu makaledeki](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)adımları izleyerek Konuk dizinlerinizin her birini yeniden yapılandırmak için Bulut işletmenize (kendi kuruluşunuzda veya hizmet sağlayıcısından) sorun. Aksi takdirde, VM 'Leri bu konuk diziniyle ilişkili bir abonelikte dağıtmak, "Disk Yöneticisi 'nde Iç hata" hata iletisiyle başarısız olabilir.
+- Çok kiracılı bir ortam kullanıyorsanız, [Bu makaledeki](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)adımları izleyerek Konuk dizinlerinizin her birini yeniden yapılandırmak için Bulut işletmenize (kendi kuruluşunuzda veya hizmet sağlayıcısından) sorun. Aksi takdirde, VM 'Leri bu konuk diziniyle ilişkili bir abonelikte dağıtmak "Disk Yöneticisi 'nde Iç hata" hata iletisiyle başarısız olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

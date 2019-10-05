@@ -10,20 +10,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: d7fa69b632ec6d205eff0ed0c388c1f9ec9b9c41
-ms.sourcegitcommit: c196463492732218d2474d3a964f88e995272c80
+ms.openlocfilehash: 4d9331f5167a0ce9d305a76225987d8b1d3f3dcc
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094396"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961568"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Azure ExpressRoute kullanarak Azure 'a Azure Stack bağlama
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
 
 Bu makalede, [Microsoft Azure ExpressRoute](/azure/expressroute/) doğrudan bağlantı kullanarak bir Azure Stack sanal ağın Azure sanal ağına nasıl bağlanacağı açıklanır.
 
@@ -51,7 +51,7 @@ ExpressRoute kullanarak Azure Stack ve Azure 'a bağlanmak için aşağıdaki ge
 * Azure 'da bir ExpressRoute bağlantı hattı ve sanal ağlar oluşturmak için bir Azure aboneliği.
 * Şunları yapmak zorunda olan bir yönlendirici:
   * , LAN arabirimi ve çok kiracılı ağ geçidi Azure Stack siteden siteye VPN bağlantılarını destekler.
-  * Azure Stack dağıtımınızda birden fazla kiracı varsa birden çok VRFs (sanal Yönlendirme ve Iletme) oluşturmayı destekler.
+  * Azure Stack dağıtımınızda birden fazla kiracı varsa, birden çok VRFs oluşturma desteği (sanal Yönlendirme ve Iletme).
 * Şu olan bir yönlendirici:
   * ExpressRoute devresine bağlanmış bir WAN bağlantı noktası.
   * Azure Stack çok kiracılı ağ geçidine bağlı bir LAN bağlantı noktası.
@@ -113,7 +113,7 @@ Bir kiracının Azure Stack gereken ağ kaynaklarını oluşturmak için aşağ�
 
     * **Kaynak grubu**altında yeni **Oluştur** ' u seçerek yeni bir kaynak grubu oluşturun veya zaten bir tane varsa **var olanı kullan**' ı seçin.
     * Varsayılan **konumu**doğrulayın.
-    * **Oluştur**'a tıklayın.
+    * **Oluştur**’a tıklayın.
     * Seçim **Panoya sabitle**' ye tıklayın.
 
 #### <a name="create-the-gateway-subnet"></a>Ağ geçidi alt ağını oluşturma
@@ -136,7 +136,7 @@ Bir kiracının Azure Stack gereken ağ kaynaklarını oluşturmak için aşağ�
 1. **Genel IP adresi**' ni seçin, sonra **genel IP adresi**' ni seçin ve **Yeni oluştur**' a tıklayın.
 1. **Ad** alanına **GW1-PIP**yazın ve ardından **Tamam**' a tıklayın.
 1. **VPN türü** için varsayılan olarak **yol tabanlı** seçili olmalıdır. Bu ayarı tutun.
-1. **Abonelik** ve **Konum** seçeneklerinin doğruluğunu onaylayın. **Oluştur**'a tıklayın.
+1. **Abonelik** ve **Konum** seçeneklerinin doğruluğunu onaylayın. **Oluştur**’a tıklayın.
 
 #### <a name="create-the-local-network-gateway"></a>Yerel ağ geçidini oluşturma
 
@@ -219,7 +219,7 @@ Kiracı 2 ' yi örnek olarak kullanıyorsanız, örtüşmelere engel olmak için
 > [!IMPORTANT]
 > Bu bölüm yalnızca ASDK dağıtımları içindir. NAT, çok düğümlü dağıtımlar için gerekli değildir.
 
-ASDK, kendi içinde bulunur ve fiziksel konağın dağıtıldığı ağdan yalıtılmıştır. Ağ geçitlerinin bağlandığı VIP ağı dış değil; Ağ adresi çevirisi (NAT) gerçekleştiren bir yönlendiricinin arkasında gizlenir.
+ASDK, kendi içinde bulunur ve fiziksel konağın dağıtıldığı ağdan yalıtılmıştır. Ağ geçitlerinin bağlı olduğu VIP ağı dış değil; Ağ adresi çevirisi (NAT) gerçekleştiren bir yönlendiricinin arkasında gizlenir.
 
 Yönlendirici, Yönlendirme ve uzaktan erişim Hizmetleri (RRAS) rolünü çalıştıran ASDK ana bilgisayarı. Siteden siteye VPN bağlantısının her iki uçta da bağlanmasını sağlamak için, ASDK konağında NAT yapılandırmanız gerekir.
 
@@ -232,7 +232,7 @@ Yönlendirici, Yönlendirme ve uzaktan erişim Hizmetleri (RRAS) rolünü çalı
    Get-NetNatExternalAddress
    ```
 
-1. NAT 'yi yapılandırmak için aşağıdaki PowerShell betiğini kopyalayın ve düzenleyin. `External BGPNAT address` Ve`Internal IP address` değerlerini aşağıdaki örnek değerlerle değiştirecek şekilde betiği düzenleyin:
+1. NAT 'yi yapılandırmak için aşağıdaki PowerShell betiğini kopyalayın ve düzenleyin. @No__t-0 ve `Internal IP address` değerlerini aşağıdaki örnek değerlerle değiştirecek şekilde betiği düzenleyin:
 
    * *Dış BGPNAT adresi* için 10.10.0.62 kullanın
    * *Iç IP adresi* için 192.168.102.1 kullanın
@@ -560,7 +560,7 @@ route-map VNET-ONLY permit 10
 !
 ```
 
-## <a name="test-the-connection"></a>Bağlantıyı test et
+## <a name="test-the-connection"></a>Bağlantıyı sınama
 
 Siteden siteye bağlantı kurup ExpressRoute devresini oluşturduktan sonra bağlantınızı test edin.
 
@@ -570,7 +570,7 @@ Aşağıdaki ping testlerini gerçekleştirin:
 * Azure Stack oluşturduğunuz VM 'lerden birinde oturum açın ve Azure VNet 'te oluşturduğunuz sanal makineye ping gönderin.
 
 >[!NOTE]
->Siteden siteye ve ExpressRoute bağlantıları üzerinden trafik gönderdiğinizden emin olmak için VM 'nin ayrılmış IP (DIP) adresini VM 'nin VIP adresini değil, her iki uçta da ping yapmanız gerekir.
+>Siteden siteye ve ExpressRoute bağlantıları üzerinden trafik göndermekte olduğunuzdan emin olmak için VM 'nin ayrılmış IP (DIP) adresini VM 'nin VIP adresini değil, her iki uçta da ping yapmanız gerekir.
 
 ### <a name="allow-icmp-in-through-the-firewall"></a>Güvenlik duvarında ıCMP 'ye izin ver
 
@@ -604,7 +604,7 @@ Bağlantınız üzerinden ne kadar trafik geçtiğini öğrenmek istiyorsanız, 
 1. Azure Stack Kullanıcı portalında oturum açın ve **tüm kaynaklar**' ı seçin.
 1. VPN Gateway için kaynak grubuna gidin ve **bağlantı** nesnesi türünü seçin.
 1. Listeden **Connecttoazure** bağlantısını seçin.
-1. Bağlantılara > **genel bakış**' ın altında, **içindeki verilerin** istatistiklerini ve **verileri dışarı**görebilirsiniz. Sıfır olmayan bazı değerler görmeniz gerekir.
+1. @No__t **-** 1 '**e genel bakış**' ın altında, veri **içinde** ve **veri çıkışı**istatistiklerini görebilirsiniz. Sıfır olmayan bazı değerler görmeniz gerekir.
 
    ![Içindeki veriler ve veriler](media/azure-stack-connect-expressroute/DataInDataOut.png)
 

@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 8bfe15ad19e4aaec45492aa98cfb2ef02294742a
-ms.sourcegitcommit: b3dac698f2e1834491c2f9af56a80e95654f11f3
+ms.openlocfilehash: 5600dd6537df35e703e0ac7a08ad4a61f976e489
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68658485"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961474"
 ---
 # <a name="use-dns-in-azure-stack"></a>Azure Stack 'de DNS kullanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
 
 Azure Stack aşağıdaki Azure DNS özelliklerini destekler:
 
@@ -49,7 +49,7 @@ Aşağıdaki ekran görüntüsünde, portalı kullanarak genel IP adresi oluştu
 
 Bir Web uygulamasından bir yük dengeleyici işleme istekleriniz var. Yük dengeleyicinin arkasında bir veya daha fazla sanal makinede çalışan bir Web sitesi vardır. Yük dengeli Web sitesine bir IP adresi yerine bir DNS adı kullanarak erişebilirsiniz.
 
-## <a name="create-and-manage-dns-zones-and-records-using-the-api"></a>API kullanarak DNS bölgeleri ve kayıtları oluşturma ve yönetme
+## <a name="create-and-manage-dns-zones-and-records-using-the-apis"></a>API 'Leri kullanarak DNS bölgeleri ve kayıtları oluşturma ve yönetme
 
 Azure Stack, DNS bölgeleri ve kayıtları oluşturabilir ve yönetebilirsiniz.
 
@@ -83,7 +83,7 @@ Kayıt kümesi etiketlerinin bir alternatifi olarak Azure Stack DNS, *meta veril
 
 Azure Stack DNS, aynı kaynakta yapılan eşzamanlı değişiklikleri güvenle işlemek için *ETags* kullanır. ETags Azure Resource Manager *etiketlerden*farklıdır. Her DNS kaynağına (bölge veya kayıt kümesi) ilişkili bir ETag öğesi vardır. Bir kaynak alındığında ETag de alınır. Bir kaynağı güncelleştirdiğinizde, DNS Azure Stack sunucudaki ETag 'in eşleştirdiğini doğrulayabilmesi için ETag 'i geri geçirmeye seçebilirsiniz. Bir kaynaktaki her güncelleştirme ETag 'in yeniden üretildiğinden dolayı bir ETag uyumsuzluğu, eşzamanlı bir değişikliğin gerçekleştiğini gösterir. Kaynak zaten mevcut olmadığından emin olmak için yeni bir kaynak oluşturduğunuzda ETags de kullanılabilir.
 
-Varsayılan olarak, Azure Stack DNS PowerShell cmdlet 'leri bölge ve kayıt kümelerinde eşzamanlı değişiklikleri engellemek için ETags kullanır. ETag denetimlerini gizlemek için isteğe `-Overwrite` bağlı anahtarı kullanabilirsiniz. Hiçbir ETag denetimi olmadan, gerçekleşen tüm eşzamanlı değişiklikler üzerine yazılır.
+Varsayılan olarak, Azure Stack DNS PowerShell cmdlet 'leri bölge ve kayıt kümelerinde eşzamanlı değişiklikleri engellemek için ETags kullanır. ETag denetimlerini gizlemek için isteğe bağlı `-Overwrite` anahtarını kullanabilirsiniz. Hiçbir ETag denetimi olmadan, gerçekleşen tüm eşzamanlı değişiklikler üzerine yazılır.
 
 Azure Stack DNS REST API düzeyinde ETags, HTTP üst bilgileri kullanılarak belirtilir. Davranışları aşağıdaki tabloda açıklanmıştır:
 
@@ -98,7 +98,7 @@ Azure Stack DNS REST API düzeyinde ETags, HTTP üst bilgileri kullanılarak bel
 
 Azure Stack DNS kullanılırken aşağıdaki varsayılan sınırlar geçerlidir:
 
-| Resource| Varsayılan limit|
+| Resource| Varsayılan sınır|
 |---------|--------------|
 | Abonelik başına bölge| 100|
 | Her bölge için kayıt kümesi| 5000|

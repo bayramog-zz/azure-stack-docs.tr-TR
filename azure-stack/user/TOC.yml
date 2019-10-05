@@ -31,7 +31,7 @@
       items:
         - name: Bir teklife abone olma
           href: azure-stack-subscribe-services.md
-        - name: Bulut hizmeti sağlayıcısı etkinleştir
+        - name: Bulut çözüm sağlayıcısını etkinleştirme
           href: azure-stack-csp-enable-billing-usage-tracking.md
         - name: Azure Stack Portal’ı kullanma
           href: azure-stack-use-portal.md
@@ -267,6 +267,14 @@
           href: azure-stack-solution-mongodb-ha.md
         - name: Yüksek kullanılabilirlik SQL Server dağıtım 2016
           href: azure-stack-solution-sql-ha.md
+    - name: Temel desenleri dağıtma
+      items:
+        - name: VPN 'yi şirket içi olarak ayarlama
+          href: azure-stack-network-howto-vnet-to-onprem.md
+        - name: VNET 'ten VNET 'e bağlantı
+          href: azure-stack-network-howto-vnet-to-vnet-stacks.md
+        - name: VNET eşlemesi
+          href: azure-stack-network-howto-vnet-to-vnet.md
 - name: Kavramlar
   items:
     - name: Hibrit bulut desenleri

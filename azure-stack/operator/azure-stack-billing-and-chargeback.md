@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 10/04/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
-ms.openlocfilehash: bcdf43f7be95c76cfd4fc454d85e08ad197551a6
-ms.sourcegitcommit: c196463492732218d2474d3a964f88e995272c80
+ms.openlocfilehash: d3eacfa8ab4b071d44ebd3bd2ad52351b72e7f00
+ms.sourcegitcommit: f91979c1613ea1aa0e223c818fc208d902b81299
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094332"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71974033"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Azure Stack kullanım ve faturalandırma
 
@@ -51,11 +51,11 @@ Kullanım verileri toplandıktan sonra, Azure Faturalandırma portalı aracılı
 
 Azure Faturalandırma portalı, Borçlandırılabilir kaynaklar için kullanım verilerini gösterir. Borçlandırılabilir kaynaklara ek olarak, Azure Stack REST API 'leri veya PowerShell cmdlet 'leri aracılığıyla Azure Stack ortamınıza erişebileceğiniz daha geniş bir kaynak kümesi için kullanım verilerini yakalar. Azure Stack işleçleri tüm Kullanıcı abonelikleri için kullanım verilerini alabilir. Bireysel kullanıcılar yalnızca kendi kullanım ayrıntılarını alabilir.
 
-## <a name="usage-reporting-for-multi-tenant-cloud-service-providers"></a>Çok kiracılı bulut hizmeti sağlayıcıları için kullanım raporlaması
+## <a name="usage-reporting-for-multi-tenant-cloud-solution-providers"></a>Çok kiracılı bulut çözümü sağlayıcıları için kullanım raporlaması
 
 Azure Stack kullanan çok kiracılı bir bulut çözümü sağlayıcısı (CSP) her müşteri kullanımını ayrı ayrı raporlamak isteyebilir, böylece sağlayıcı farklı Azure aboneliklerine kullanım ücreti verebilir.
 
-Her müşterinin kimliği, farklı bir Azure Active Directory (Azure AD) kiracısı tarafından temsil edilir. Azure Stack, her bir Azure AD kiracısına bir CSP aboneliği atanmasını destekler. Kiracıların ve aboneliklerinin temelini temel Azure Stack kaydına ekleyebilirsiniz. Temel kayıt tüm Azure Stack örnekleri için yapılır. Bir abonelik bir kiracı için kayıtlı değilse, Kullanıcı Azure Stack kullanmaya devam edebilir ve bu kullanıcıların kullanımları temel kayıt için kullanılan aboneliğe gönderilir.
+Her müşterinin kimliği, farklı bir Azure Active Directory (Azure AD) kiracısı tarafından temsil edilir. Azure Stack, her bir Azure AD kiracısına bir CSP aboneliği atanmasını destekler. Kiracıların ve aboneliklerinin temelini temel Azure Stack kaydına ekleyebilirsiniz. Temel kayıt tüm Azure Stack örnekleri için yapılır. Bir abonelik kiracı için kayıtlı değilse, Kullanıcı Azure Stack kullanmaya devam edebilir ve kullanımları temel kayıt için kullanılan aboneliğe gönderilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/23/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 9c4ddec0606556290e55850a9081c6665f2524d1
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: c959a2553d6b298ef4a815890de6f717838361de
+ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159581"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71961872"
 ---
 # <a name="validate-azure-registration"></a>Azure kaydı doğrula
 
-Azure aboneliğinizin Azure Stack kullanmaya hazır olduğunu doğrulamak için Azure Stack hazırlık Denetleyicisi aracı 'nı (**Azsreadinesschecker**) kullanın. Azure Stack dağıtımına başlamadan önce kayıt işlemini doğrulayın. Hazırlık denetleyicisi şunları doğrular:
+Azure Stack dağıtımına başlamadan önce Azure aboneliğinizin Azure Stack kullanmaya hazır olduğunu doğrulamak için Azure Stack hazırlık Denetleyicisi aracı 'nı (**Azsreadinesschecker**) kullanın. Hazırlık denetleyicisi şunları doğrular:
 
-- Kullandığınız Azure aboneliği desteklenen bir türdür. Abonelikler bir bulut hizmeti sağlayıcısı (CSP) veya Kurumsal Anlaşma (EA) olmalıdır.
+- Kullandığınız Azure aboneliği desteklenen bir türdür. Abonelikler bir bulut çözümü sağlayıcısı (CSP) veya Kurumsal Anlaşma (EA) olmalıdır.
 - Aboneliğinizi Azure 'a kaydetmek için kullandığınız hesap Azure 'da oturum açabilir ve bir abonelik sahibidir.
 
 Azure Stack kaydı hakkında daha fazla bilgi için bkz. [Azure Ile kayıt Azure Stack](azure-stack-registration.md).
@@ -50,7 +50,7 @@ Aşağıdaki Önkoşullar gereklidir:
   ```
 
 - [Azure Stack için yapılandırılmış PowerShell](azure-stack-powershell-install.md).
-- [Microsoft Azure Stack hazırlık denetleyicisi](https://aka.ms/AzsReadinessChecker)'nin en son sürümü.  
+- [Microsoft Azure Stack hazırlık denetleyicisi](https://aka.ms/AzsReadinessChecker) aracının en son sürümü.  
 
 ### <a name="azure-active-directory-environment"></a>Azure Active Directory ortamı
 
@@ -58,7 +58,7 @@ Aşağıdaki Önkoşullar gereklidir:
 - Kullanacağınız Azure aboneliğinin abonelik KIMLIĞINI belirler.
 - Kullanacağınız **AzureEnvironment** öğesini belirler. Kullandığınız Azure aboneliğine bağlı olarak, ortam adı parametresi için desteklenen değerler **Azurecsesli**, **AzureChinaCloud**veya **AzureUSGovernment**' dir.
 
-## <a name="steps-to-validate-azure-registration"></a>Azure kaydını doğrulama adımları
+## <a name="steps-to-validate-the-azure-registration"></a>Azure kaydını doğrulama adımları
 
 1. Önkoşulları karşılayan bir bilgisayarda, yükseltilmiş bir PowerShell istemi açın ve ardından **Azsreadinesscontroller**' ı yüklemek için şu komutu çalıştırın:
 
@@ -66,16 +66,16 @@ Aşağıdaki Önkoşullar gereklidir:
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
    ```
 
-2. PowerShell komut isteminde, abonelik sahibi olan hesap olarak ayarlamak `$registrationCredential` için aşağıdaki komutu çalıştırın. Hesap `subscriptionowner@contoso.onmicrosoft.com` ve kiracı adınızla değiştirin:
+2. PowerShell komut isteminde, abonelik sahibi olan hesap olarak `$registrationCredential` ' ı ayarlamak için aşağıdaki komutu çalıştırın. @No__t-0 değerini hesabınızla ve kiracı adınızla değiştirin:
 
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
 
    > [!NOTE]
-   > CSP olarak, paylaşılan hizmetler veya ıUR aboneliği kullanılırken, ilgili Azure AD 'den bir kullanıcının kimlik bilgilerini sağlamanız gerekir. Genellikle bu şuna benzer `subscriptionowner@iurcontoso.onmicrosoft.com`olacaktır. Bu kullanıcının, önceki adımda açıklandığı gibi uygun kimlik bilgilerine sahip olması gerekir.
+   > CSP olarak, paylaşılan hizmetler veya ıUR aboneliği kullanılırken, ilgili Azure AD 'den bir kullanıcının kimlik bilgilerini sağlamanız gerekir. Genellikle bu `subscriptionowner@iurcontoso.onmicrosoft.com` ' a benzerdir. Bu kullanıcının, önceki adımda açıklandığı gibi uygun kimlik bilgilerine sahip olması gerekir.
 
-3. PowerShell komut isteminde, kullanılacak Azure aboneliği olarak ayarlamak `$subscriptionID` için aşağıdakileri çalıştırın. Kendi `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` abonelik Kimliğinizle değiştirin:
+3. PowerShell komut isteminde aşağıdaki komutu çalıştırarak kullanılacak Azure aboneliği olarak `$subscriptionID` ' ı ayarlayın. @No__t-0 değerini kendi abonelik KIMLIĞINIZLE değiştirin:
 
    ```powershell
    $subscriptionID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -83,12 +83,12 @@ Aşağıdaki Önkoşullar gereklidir:
 
 4. Aboneliğinizi doğrulamaya başlamak için PowerShell komut isteminde aşağıdaki komutu çalıştırın:
 
-   - **Azurecyüksek**, `AzureEnvironment` **AzureGermanCloud**veya **AzureChinaCloud**olarak değerini belirtin.  
+   - @No__t-0 olarak **Azurecyüksek**, **AzureGermanCloud**veya **AzureChinaCloud**olarak belirtin.  
    - Azure Active Directory yöneticinize ve Azure Active Directory kiracı adınızı sağlayın.
 
-   ```powershell
-   Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID
-   ```
+      ```powershell
+      Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID
+      ```
 
 5. Araç çalıştıktan sonra çıktıyı gözden geçirin. Durumun hem oturum açma hem de kayıt gereksinimleri için doğru olduğunu onaylayın. Başarılı doğrulama çıktısı aşağıdaki örneğe benzer şekilde görünür:
 
@@ -108,8 +108,8 @@ Bu dosyalar, Azure Stack dağıtmadan veya doğrulama sorunlarını araştırmad
 
 Varsayılan olarak, her iki dosya da **C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.JSON**yazılır.  
 
-- Farklı bir rapor konumu belirtmek için komut satırını Çalıştır ' ın sonundaki **-OutputPath**  ***&lt;&gt; yol*** parametresini kullanın.
-- **AzsReadinessCheckerReport. JSON**' dan aracın önceki çalıştırmaları hakkındaki bilgileri temizlemek için Çalıştır komutunun sonundaki **-cleanreport** parametresini kullanın.
+- Farklı bir rapor konumu belirtmek için komut satırını Çalıştır ' ın sonundaki `-OutputPath <path>` parametresini kullanın.
+- **AzsReadinessCheckerReport. JSON**' dan aracın önceki çalıştırmaları hakkındaki bilgileri temizlemek için Run komutunun sonundaki `-CleanReport` parametresini kullanın.
 
 Daha fazla bilgi için bkz. [Azure Stack doğrulama raporu](azure-stack-validation-report.md).
 
@@ -117,7 +117,7 @@ Daha fazla bilgi için bkz. [Azure Stack doğrulama raporu](azure-stack-validati
 
 Doğrulama denetimi başarısız olursa, PowerShell penceresinde hata hakkındaki ayrıntılar görüntülenir. Araç ayrıca bilgileri **Azsreadinesschecker. log** dosyasına kaydeder.
 
-Aşağıdaki örnekler, yaygın doğrulama hatalarıyla ilgili rehberlik sağlar:
+Aşağıdaki örneklerde, yaygın doğrulama hatalarıyla ilgili daha fazla bilgi sağlanmaktadır.
 
 ### <a name="user-must-be-an-owner-of-the-subscription"></a>Kullanıcının aboneliğin sahibi olması gerekir
 

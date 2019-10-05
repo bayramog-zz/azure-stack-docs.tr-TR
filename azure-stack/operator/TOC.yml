@@ -261,6 +261,8 @@
           href: azure-stack-create-vpn-connection-one-node.md
     - name: Hizmet sunma
       href: azure-stack-offer-services-overview.md
+    - name: Ağ çözümleri sunma
+      href: azure-stack-network-solutions-enable.md
     - name: PaaS olarak SQL teklifi
       href: azure-stack-sql-resource-provider.md
       items:
