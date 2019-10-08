@@ -1,6 +1,6 @@
 ---
 title: Azure Stack için kimlik mimarisi | Microsoft Docs
-description: Azure Stack ile kullanabileceğiniz kimlik mimarisi hakkında bilgi edinin.
+description: Azure Stack için kimlik mimarisi ve Azure AD ile AD FS arasındaki farklar hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -16,87 +16,94 @@ ms.date: 05/09/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
-ms.openlocfilehash: e09451c1bf49a2de075388f555cb7b80e70db63f
-ms.sourcegitcommit: 426380a3a27954cd609ba52d1066d9d69f5267fe
+ms.openlocfilehash: 364028183445df7e74828605439bfd7b3784f01f
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65532307"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019411"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack için kimlik mimarisi
 
-Azure Stack ile kullanmak için bir kimlik sağlayıcısı seçerken önemli farkları seçenekler Azure Active Directory (Azure AD) ve Active Directory Federasyon Hizmetleri (AD FS) anlamanız gerekir.
+Azure Stack ile kullanmak üzere bir kimlik sağlayıcısı seçerken, Azure Active Directory (Azure AD) ve Active Directory Federasyon Hizmetleri (AD FS) (AD FS) seçenekleri arasındaki önemli farklılıkları anlamalısınız.
 
-## <a name="capabilities-and-limitations"></a>Özellikler ve sınırlamalar 
-Seçtiğiniz kimlik sağlayıcısı, çok kiracılı desteği dahil olmak üzere seçeneklerinizi sınırlayabilirsiniz. 
+## <a name="capabilities-and-limitations"></a>Yetenekler ve sınırlamalar
 
-  
+Seçtiğiniz kimlik sağlayıcısı, çok kiracılı destek dahil olmak üzere seçeneklerinizi sınırlayabilir.
 
-|Özellik veya senaryo        |Azure AD  |AD FS  |
+|Yetenek veya senaryo        |Azure AD  |AD FS  |
 |------------------------------|----------|-------|
-|İnternet'e bağlı     |Evet       |İsteğe bağlı|
-|Çok kiracılı desteği     |Evet       |Hayır      |
-|Market'te öğeler sunar |Evet       |Evet. Kullanılmasını gerektirir [çevrimdışı Market dağıtım](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) aracı.|
-|Active Directory kimlik doğrulama kitaplığı (ADAL) desteği |Evet |Evet|
-|Azure CLI, Visual Studio ve PowerShell gibi araçlar desteği  |Evet |Evet|
-|Azure Portalı aracılığıyla hizmet sorumlusu oluşturma     |Evet |Hayır|
-|Sertifikalar ile hizmet sorumlusu oluşturma      |Evet |Evet|
-|Gizli anahtarları (anahtarlar) ile hizmet sorumlusu oluşturma    |Evet |Evet|
-|Graf hizmeti uygulamaları kullanabilir           |Evet |Hayır|
-|Uygulamaları, kimlik sağlayıcısı oturum açmak için kullanabilir |Evet |Evet. Şirket içi ile federasyona eklemek için uygulamalar oluşturabilmek için AD FS örneği. |
+|İnternet 'e bağlı     |Evet       |İsteğe Bağlı|
+|Çoklu kiracı desteği     |Evet       |Hayır      |
+|Market 'te teklif öğeleri |Evet       |Evet ( [çevrimdışı Market dağıtım](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) aracı 'nın kullanılması gerekir)|
+|Active Directory Authentication Library için destek (ADAL) |Evet |Evet|
+|Azure CLı, Visual Studio ve PowerShell gibi araçlar için destek  |Evet |Evet|
+|Azure portal aracılığıyla hizmet sorumluları oluşturma     |Evet |Hayır|
+|Sertifikalarla hizmet sorumluları oluşturma      |Evet |Evet|
+|Gizli dizileri olan hizmet sorumluları oluşturma (anahtarlar)    |Evet |Evet|
+|Uygulamalar Graph hizmetini kullanabilir           |Evet |Hayır|
+|Uygulamalar, oturum açma için kimlik sağlayıcısını kullanabilir |Evet |Evet (uygulamalar Şirket içi AD FS örnekleri ile federasyona eklemek için gereklidir) |
 
-## <a name="topologies"></a>Topolojileri
-Aşağıdaki bölümlerde, kullanabileceğiniz çeşitli kimlik topolojileri açıklanmaktadır.
+## <a name="topologies"></a>Topolojiler
 
-### <a name="azure-ad-single-tenant-topology"></a>Azure AD: tek kiracılı topolojisi 
-Azure yığını'nı yükleme ve Azure AD, varsayılan olarak, Azure Stack tek kiracılı topolojisi kullanır. 
+Aşağıdaki bölümlerde kullanabileceğiniz farklı kimlik topolojileri ele alınmaktadır.
 
-Tek kiracılı topolojisi durumlarda yararlı olur:
-- Tüm kullanıcıların aynı kiracıda bir parçasıdır.
-- Bir hizmet sağlayıcısı, bir kuruluş için Azure Stack örneği barındırır. 
+### <a name="azure-ad-single-tenant-topology"></a>Azure AD: tek kiracılı topoloji
 
-![Azure AD ile Azure Stack tek kiracılı topolojisi](media/azure-stack-identity-architecture/single-tenant.png)
+Varsayılan olarak, Azure Stack yükleyip Azure AD kullandığınızda, Azure Stack tek kiracılı topoloji kullanır.
 
-Bu topoloji, aşağıdaki özelliklere sahiptir:
-- Tüm uygulamaları Azure Stack kaydeder ve Dizin Hizmetleri aynı Azure ad Kiracı. 
-- Azure Stack kullanıcıları ve belirteçleri de dahil olmak üzere bu dizine, uygulamalardan yalnızca kimliğini doğrular. 
-- Yöneticiler (bulut operatörlerinin) ve Kiracı kullanıcılar aynı dizin kiracısında Kimlikleridir. 
-- Bu Azure Stack ortamınıza erişmek bir kullanıcı başka bir dizinden etkinleştirmek için şunları yapmanız gerekir [kullanıcıyı konuk olarak davet](azure-stack-identity-overview.md#guest-users) Kiracı dizinine. 
+Tek kiracılı topoloji şu durumlarda yararlı olur:
+- Tüm kullanıcılar aynı kiracının bir parçasıdır.
+- Bir hizmet sağlayıcısı, bir kuruluş için Azure Stack örneğini barındırır.
 
-### <a name="azure-ad-multi-tenant-topology"></a>Azure AD: çok kiracılı topolojisi
-Bulut operatörleri, Azure Stack, bir veya daha fazla kuruluşlardan erişim kiracılar tarafından uygulamalara izin verecek şekilde yapılandırabilirsiniz. Kullanıcıların, uygulamaların Kullanıcı Portalı ile erişirsiniz. Bu yapılandırmada, Yönetim Portalı (bulut işleci tarafından kullanılır) kullanıcılar için tek bir dizinden sınırlıdır. 
+![Azure AD ile tek kiracılı topoloji Azure Stack](media/azure-stack-identity-architecture/single-tenant.png)
 
-Çok kiracılı topolojisi durumlarda yararlı olur:
-- Bir hizmet sağlayıcısı, birden çok kuruluşlardan kullanıcıların Azure Stack erişmesine izin vermek istiyor.
+Bu topoloji aşağıdaki özellikleri sunar:
 
-![Azure AD ile Azure Stack çok kiracılı topolojisi](media/azure-stack-identity-architecture/multi-tenant.png)
+- Azure Stack tüm uygulama ve hizmetleri aynı Azure AD kiracı dizinine kaydeder.
+- Azure Stack, belirteçler de dahil olmak üzere yalnızca bu dizindeki kullanıcıların ve uygulamaların kimliğini doğrular.
+- Yöneticiler (bulut İşletmenleri) ve kiracı kullanıcıları için kimlikler aynı dizin kiracısıdır.
+- Bir kullanıcının başka bir dizinden bu Azure Stack ortamına erişmesini sağlamak için kullanıcıyı kiracı dizinine [Konuk olarak davet](azure-stack-identity-overview.md#guest-users) etmeniz gerekir.
 
-Bu topoloji, aşağıdaki özelliklere sahiptir:
-- Bir kuruluş başına temelinde kaynaklarına erişimi olmalıdır. 
-- Bir kuruluşun kullanıcıları kuruluş kullanıcılar kaynaklara erişimi vermek olmalıdır. 
-- Yöneticiler (bulut operatörlerinin) için kimlikleri, kullanıcıların kimliklerini bir ayrı dizin kiracısı olabilir. Bu ayrım kimlik sağlayıcısı düzeyinde hesabı yalıtım sağlar. 
+### <a name="azure-ad-multi-tenant-topology"></a>Azure AD: çok kiracılı topoloji
+
+Bulut işleçleri, bir veya daha fazla buluttan kiracılar tarafından uygulamalara erişime izin vermek için Azure Stack yapılandırabilir. Kullanıcılar Azure Stack Kullanıcı Portalı aracılığıyla uygulamalara erişir. Bu yapılandırmada, Yönetici portalı (bulut operatörü tarafından kullanılır), tek bir dizindeki kullanıcılarla sınırlıdır.
+
+Çok kiracılı topoloji şu durumlarda yararlı olur:
+
+- Bir hizmet sağlayıcısı, birden çok kuruluşun kullanıcılarının Azure Stack erişmesine izin vermek istiyor.
+
+![Azure AD ile çok kiracılı topoloji Azure Stack](media/azure-stack-identity-architecture/multi-tenant.png)
+
+Bu topoloji aşağıdaki özellikleri sunar:
+
+- Kaynaklara erişim, kuruluş başına temelinde olmalıdır.
+- Bir kuruluştan gelen kullanıcılar, kendi kuruluşu dışındaki kullanıcılara kaynaklara erişim izni veremez.
+- Yöneticiler için kimlikler (bulut İşletmenleri), kullanıcılar için kimliklerden ayrı bir dizin kiracısında bulunabilir. Bu ayrım, kimlik sağlayıcısı düzeyinde hesap yalıtımı sağlar.
  
-### <a name="ad-fs"></a>AD FS  
-AD FS topoloji gereklidir aşağıdaki koşullardan biri doğruysa:
-- Azure Stack, internet'e bağlanmaz.
-- Azure Stack, internet'e bağlanabilir, ancak kimlik sağlayıcınız için AD FS kullanmak üzere seçin.
+### <a name="ad-fs"></a>AD FS
+
+Aşağıdaki koşullardan biri doğru olduğunda AD FS topolojisi gereklidir:
+
+- Azure Stack internet 'e bağlanmıyor.
+- Azure Stack internet 'e bağlanabilir ancak kimlik sağlayıcınız için AD FS kullanmayı tercih edebilirsiniz.
   
-![AD FS kullanarak azure Stack topolojisi](media/azure-stack-identity-architecture/adfs.png)
+![AD FS kullanarak topoloji Azure Stack](media/azure-stack-identity-architecture/adfs.png)
 
-Bu topoloji, aşağıdaki özelliklere sahiptir:
-- Üretim ortamında bu topoloji kullanımını desteklemek için yerleşik bir Azure Stack AD FS örneği bir federasyon güveni üzerinden Active Directory tarafından desteklenen mevcut AD FS örneği ile tümleştirmeniz gerekir. 
-- Azure stack'teki graf hizmeti mevcut Active Directory örneğinizle tümleştirebilirsiniz. Azure AD Graph API ile tutarlı API'lerini destekleyen OData tabanlı Graph API hizmetini de kullanabilirsiniz. 
+Bu topoloji aşağıdaki özellikleri sunar:
 
-  Active Directory örneğinizle etkileşim kurmak için salt okunur izinlere sahip kullanıcı kimlik bilgileri, Active Directory örneğinden Graph API'sini gerektirir. 
-  - Yerleşik AD FS örneği, Windows Server 2016'da temel alır. 
-  - AD FS ve Active Directory örneklerinizi, Windows Server 2012 veya sonraki sürümlerde temel alması gerekir. 
+- Üretimde bu topolojinin kullanımını desteklemek için, yerleşik Azure Stack AD FS örneğini, bir federasyon güveni aracılığıyla Active Directory tarafından desteklenen mevcut bir AD FS örneğiyle tümleştirmeniz gerekir.
+- Grafik hizmetini Azure Stack mevcut Active Directory örneğiniz ile tümleştirebilirsiniz. Azure AD Graph API ile tutarlı API 'Leri destekleyen OData tabanlı Graph API hizmetini de kullanabilirsiniz.
+
+  Active Directory örneğiniz ile etkileşim kurmak için Graph API, salt okuma izinlerine sahip Active Directory örneğinizin Kullanıcı kimlik bilgilerini gerektirir.
+  - Yerleşik AD FS örneği Windows Server 2016 ' i temel alır.
+  - AD FS ve Active Directory örneklerinizin Windows Server 2012 veya sonraki bir sürümü temel almalıdır.
   
-  Active Directory örneğinizi ve yerleşik bir AD FS örneği arasında etkileşimler Openıd Connect için sınırlı değildir ve bunlar birbirini destekleyen herhangi bir protokolünü kullanabilirsiniz. 
-  - Kullanıcı hesapları oluşturulur ve şirket içi Active Directory Örneğinizde yönetilir.
-  - Hizmet sorumluları ve uygulamalar için kayıtları yerleşik Active Directory örneğinde yönetilir.
-
-
+  Active Directory örneğiniz ve yerleşik AD FS örneği arasında, etkileşimler OpenID Connect ile sınırlandırılmadı ve karşılıklı olarak desteklenen herhangi bir protokolü kullanabilirler.
+  - Kullanıcı hesapları şirket içi Active Directory örneğiniz tarafından oluşturulup yönetilir.
+  - Hizmet sorumluları ve uygulamalar için kayıtlar yerleşik Active Directory örneğinde yönetilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Kimliğe genel bakış](azure-stack-identity-overview.md)   
-- [Veri Merkezi tümleştirmesi - kimlik](azure-stack-integrate-identity.md)
+
+- [Kimliğe genel bakış](azure-stack-identity-overview.md)
+- [Veri merkezi tümleştirmesi-kimlik](azure-stack-integrate-identity.md)

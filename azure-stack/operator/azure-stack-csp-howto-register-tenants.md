@@ -15,16 +15,16 @@ ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: 76b870d795b79cf966dcf6742ad08f739d24a42a
-ms.sourcegitcommit: 32609bdb04a07b063c8f20f892c30769ad6903dd
+ms.openlocfilehash: 3b728bb08d41c234ccffb94005be740bea0766b6
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269505"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019289"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Kullanım ve faturalandırma için kiracı ekleyin Azure Stack
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
 
 Bu makalede, bir bulut çözümü sağlayıcısı (CSP) tarafından yönetilen bir Azure Stack dağıtımına kiracı ekleme gösterilmektedir. Yeni kiracı kaynakları kullandığında, CSP aboneliklerinde kullanım raporları Azure Stack.
 
@@ -37,11 +37,11 @@ Aşağıdaki şekilde, yeni bir son müşterinin Azure Stack kullanmasına ve m�
 
 ## <a name="add-an-end-customer"></a>Son müşteri ekleme
 
-Son müşteri eklemeden önce, kaydınızda çok kiracılı faturalandırmayı etkinleştirmeniz gerekir. Çok kiracılı faturalandırmayı etkinleştirmek için kayıt abonelik KIMLIĞINI, kaynak grubu adını ve kayıt adını ' e `azstcsp@microsoft.com`gönderin. Genellikle çoklu kiralamanın etkinleştirilmesi 1-2 iş günü sürer.
+Son müşteri eklemeden önce, kaydınızda çok kiracılı faturalandırmayı etkinleştirmeniz gerekir. Çok kiracılı faturalandırmayı etkinleştirmek için kayıt abonelik KIMLIĞINI, kaynak grubu adını ve kayıt adını `azstcsp@microsoft.com` ' a gönderin. Genellikle çoklu kiralamanın etkinleştirilmesi 1-2 iş günü sürer.
 
 Son müşteriyi aşağıdaki şekilde gösterildiği gibi eklemek için aşağıdaki adımları uygulayın:
 
-![Bulut hizmeti sağlayıcısını kullanım izleme için ayarlama ve son müşteri hesabını yönetme](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
+![Bulut çözümü sağlayıcısı 'nı kullanım izleme için ayarlama ve son müşteri hesabını yönetme](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ### <a name="create-a-new-customer-in-partner-center"></a>Iş Ortağı Merkezi 'nde yeni bir müşteri oluşturun
 
@@ -66,7 +66,7 @@ Yeni müşteri aboneliğiyle kaydınızı güncelleştirin. Azure, Iş Ortağı 
    ```
 
    >[!Note]
-   > Oturumunuzun süresi dolarsa, parolanız değiştirilmiştir veya yalnızca hesapları değiştirmek istiyorsanız, Add-AzureRmAccount komutunu kullanarak oturum açmadan önce aşağıdaki cmdlet 'i çalıştırın:`Remove-AzureRmAccount-Scope Process`
+   > Oturumunuzun süresi dolarsa, parolanız değiştirilmiştir veya yalnızca hesapları değiştirmek istiyorsanız, Add-AzureRmAccount: `Remove-AzureRmAccount-Scope Process` kullanarak oturum açmadan önce aşağıdaki cmdlet 'i çalıştırın.
 
 2. Azure kimlik bilgilerinizi yazın.
 3. PowerShell oturumunda şunu çalıştırın:
@@ -84,7 +84,7 @@ Aşağıdaki bölümde, **New-AzureRmResource** cmdlet 'inin parametreleri açı
 |Registrationsubscriptionıd | Azure Stack ilk kaydı için kullanılan Azure aboneliği.|
 | Customersubscriptionıd | Kaydedilecek müşteriye ait olan Azure aboneliği (Azure Stack değil). CSP teklifinde oluşturulması gerekir. Pratikte bu, Iş Ortağı Merkezi aracılığıyla anlamına gelir. Bir müşterinin birden fazla Azure Active Directory kiracısı varsa, bu aboneliğin Azure Stack oturum açmak için kullanılacak kiracıda oluşturulması gerekir. Müşteri aboneliği KIMLIĞI küçük harf kullanmalıdır. |
 | resourceGroup | Azure 'da kaydınızı depoladığınız kaynak grubu. |
-| RegistrationName | Azure Stack kaydının adı. Azure 'da depolanan bir nesnedir. |
+| registrationName | Azure Stack kaydının adı. Azure 'da depolanan bir nesnedir. |
 | properties | Kaynak için özellikleri belirtir. Kaynak türüne özgü özelliklerin değerlerini belirtmek için bu parametreyi kullanın.
 
 > [!NOTE]  
@@ -102,4 +102,4 @@ Azure Stack yeni müşteriyi eklediğinizde veya son müşteri kiracısı, Konuk
 
 - Kayıt sürecinizdeki tetiklendiklerinde hata iletilerini gözden geçirmek için bkz. [kiracı kayıt hata iletileri](azure-stack-registration-errors.md).
 - Kaynak kullanım bilgilerini Azure Stack alma hakkında daha fazla bilgi için, bkz. [Azure Stack ' de kullanım ve faturalandırma](azure-stack-billing-and-chargeback.md).
-- Bir son müşterinin sizi, Azure Stack kiracının Yöneticisi olarak nasıl ekleyebileceğini gözden geçirmek için, bkz. [Azure Stack aboneliğinizi yönetmek için bir bulut hizmeti sağlayıcısını etkinleştirme](../user/azure-stack-csp-enable-billing-usage-tracking.md).
+- Bir son müşterinin sizi, Azure Stack kiracının Yöneticisi olarak nasıl ekleyebileceğini gözden geçirmek için, bkz. [Azure Stack aboneliğinizi yönetmek için bir bulut çözümü sağlayıcısı 'Nı etkinleştirme](../user/azure-stack-csp-enable-billing-usage-tracking.md).

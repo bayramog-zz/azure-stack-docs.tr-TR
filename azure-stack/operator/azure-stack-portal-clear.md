@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
 monikerRange: azs-1802
-ms.openlocfilehash: a341ff38b0a2540fbf8e1070d9c98bdd9ec4df5f
-ms.sourcegitcommit: 305536bfd49319455ca3ca270fe3644b1796bad1
+ms.openlocfilehash: 2dd88656491a474e4082ff4e8321af836776b1f0
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70878770"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019124"
 ---
 # <a name="clear-portal-user-data-from-azure-stack"></a>Azure Stack Portal Kullanıcı verilerini temizle
 
@@ -86,7 +86,7 @@ Bu yordam için Azure Stack Yönetim Kaynak Yöneticisi uç noktasıyla iletişi
 
 ## <a name="clear-portal-user-data-in-guest-directory"></a>Konuk dizinindeki Portal Kullanıcı verilerini temizle
 
-Bu senaryoda Azure Stack işlecinin, kullanıcının bulunduğu Konuk dizine erişimi yoktur. Bu, bir bulut hizmeti sağlayıcısı (CSP) olduğunuzda yaygın bir senaryodur.
+Bu senaryoda Azure Stack işlecinin, kullanıcının bulunduğu Konuk dizine erişimi yoktur. Bu, bir bulut çözümü sağlayıcısı (CSP) olduğunuzda yaygın bir senaryodur.
 
 Portal Kullanıcı verilerini kaldırmak için bir Azure Stack işleci için, en azından Kullanıcı nesne KIMLIĞI gereklidir.
 

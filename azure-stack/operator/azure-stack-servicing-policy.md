@@ -16,12 +16,12 @@ ms.date: 09/06/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 9ca13d62c69c84f29e3038899ff224d7d9cdc6d3
-ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
+ms.openlocfilehash: 083d30e07d924e38f682785866b0739e4cdb36e6
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101186"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019472"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack hizmet ilkesi
 
@@ -60,7 +60,7 @@ Nasıl indirileceği dahil olmak üzere belirli bir güncelleştirme hakkında d
 
 ## <a name="hotfixes"></a>Düzeltmeler
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
 
 Microsoft, bazen, genellikle koruyucu veya zamana duyarlı belirli bir sorunu gideren Azure Stack düzeltmeler sağlar.  Her bir düzeltme, sorunun, nedenin ve çözümlemenin ayrıntılarını veren ilgili bir Microsoft Bilgi Bankası makalesiyle birlikte yayımlanır.
 
@@ -85,7 +85,7 @@ Microsoft yazılım güncelleştirme paketleri toplu değildir ve önceki günce
 
 ## <a name="get-support"></a>Destek alın
 
-Azure Stack, Azure ile aynı destek sürecini izler. Kurumsal müşteriler, [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bölümünde açıklanan işlemi izleyebilir. Bir bulut hizmeti sağlayıcısı (CSP) müşterisiyseniz, destek için CSP 'nize başvurun. Daha fazla bilgi için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Azure Stack, Azure ile aynı destek sürecini izler. Kurumsal müşteriler, [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bölümünde açıklanan işlemi izleyebilir. Bir bulut çözümü sağlayıcısı (CSP) müşterisiyseniz, destek için CSP 'nize başvurun. Daha fazla bilgi için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

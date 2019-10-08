@@ -15,16 +15,16 @@ ms.date: 09/10/2019
 ms.author: mabrigg
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 70fe7c8cdb43f55c8e013dcca27dcde870b1cc9a
-ms.sourcegitcommit: dc633e862d49412a963daee481226c1543287e5e
+ms.openlocfilehash: 4794ad098e83677d712af611fc74395e0e5f4e20
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862973"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019460"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack hizmet ilkesi
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
 
 Bu makalede, Azure Stack tümleşik sistemlere yönelik bakım ilkesi, sisteminizi desteklenen bir durumda tutmak için yapmanız gerekenler ve nasıl destek alınacağı açıklanmaktadır.
 
@@ -42,8 +42,8 @@ Microsoft yazılım güncelleştirme paketleri toplu değildir ve önceki günce
 
 ## <a name="get-support"></a>Destek alın
 
-Azure Stack, Azure ile aynı destek sürecini izler. Kurumsal müşteriler, [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bölümünde açıklanan işlemi izleyebilir. Bir bulut hizmeti sağlayıcısı (CSP) müşterisiyseniz, destek için CSP 'nize başvurun. Daha fazla bilgi için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Azure Stack, Azure ile aynı destek sürecini izler. Kurumsal müşteriler, [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bölümünde açıklanan işlemi izleyebilir. Bir bulut çözümü sağlayıcısı (CSP) müşterisiyseniz, destek için CSP 'nize başvurun. Daha fazla bilgi için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
-# <a name="next-steps"></a>Sonraki adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure Stack güncelleştirmelerini yönetme](azure-stack-updates.md)

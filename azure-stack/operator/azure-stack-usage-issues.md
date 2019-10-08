@@ -15,12 +15,12 @@ ms.date: 10/04/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: 81ba613ec6a816d1ae6161d078452eea63ce1164
-ms.sourcegitcommit: f91979c1613ea1aa0e223c818fc208d902b81299
+ms.openlocfilehash: 265645b69e909c7c9762cd03e4f49035baa2872b
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71974030"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019417"
 ---
 # <a name="usage-connectivity-errors"></a>Kullanım bağlantısı hataları
 
@@ -61,4 +61,4 @@ Ayrıca, [Bu adımları](azure-stack-configure-on-demand-diagnostic-log-collecti
 
 - [Kullanım verilerini Azure 'a raporlama Azure Stack](azure-stack-usage-reporting.md)hakkında daha fazla bilgi edinin.
 - Kayıt sürecinizdeki tetiklendiklerinde hata iletilerini gözden geçirmek için bkz. [kiracı kayıt hata iletileri](azure-stack-registration-errors.md).
-- [Bulut hizmeti sağlayıcıları Için kullanım raporlama altyapısı](azure-stack-csp-ref-infrastructure.md)hakkında daha fazla bilgi edinin.
+- [Bulut çözümü sağlayıcıları Için kullanım raporlama altyapısı](azure-stack-csp-ref-infrastructure.md)hakkında daha fazla bilgi edinin.

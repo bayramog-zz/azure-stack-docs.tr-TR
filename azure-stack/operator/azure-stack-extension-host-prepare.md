@@ -1,6 +1,6 @@
 ---
-title: Azure Stack için uzantı konağına hazırlanma | Microsoft Docs
-description: Uzantı konağına hazırlanmaya, gelecekteki bir Azure Stack güncelleştirme paketiyle otomatik olarak etkinleştirilme hakkında bilgi edinin.
+title: Azure Stack 'de uzantı konağı için hazırlanma | Microsoft Docs
+description: Sürüm 1808 ' den sonra otomatik olarak bir Azure Stack güncelleştirme paketiyle etkinleştirilen Azure Stack uzantı konağına nasıl hazırlanacağınızı öğrenin.
 services: azure-stack
 keywords: ''
 author: mattbriggs
@@ -11,33 +11,33 @@ ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: d64e0e3ce0dd499304bebfe2f78aebca11ff6668
-ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
+ms.openlocfilehash: 75070550f1863457c3a2aaf9ab5915536372d55b
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71909090"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019263"
 ---
-# <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack için uzantı konağına hazırlanma
+# <a name="prepare-for-extension-host-in-azure-stack"></a>Azure Stack uzantı konağı için hazırlanma
 
 Uzantı ana bilgisayarı, gerekli TCP/IP bağlantı noktalarının sayısını azaltarak Azure Stack güvenliğini sağlar. Bu makale, 1808 güncelleştirmesinden sonra otomatik olarak bir Azure Stack güncelleştirme paketi aracılığıyla etkinleştirilen uzantı ana bilgisayarı için Azure Stack hazırlamaya bakar. Bu makale 1808, 1809 ve 1811 Azure Stack güncelleştirmeleri için geçerlidir.
 
 ## <a name="certificate-requirements"></a>Sertifika gereksinimleri
 
-Uzantı ana bilgisayarı, her Portal uzantısı için benzersiz konak girdilerinin garanti etmek üzere iki yeni etki alanı ad alanı uygular. Yeni etki alanı ad alanları, güvenli iletişim sağlamak için iki ek joker kart sertifikası gerektirir.
+Uzantı ana bilgisayarı, her Portal uzantısı için benzersiz konak girdilerinin garanti etmek üzere iki yeni etki alanı ad alanı uygular. Yeni etki alanı ad alanları, güvenli iletişim sağlamak için iki ek joker sertifika gerektirir.
 
 Tablo, yeni ad alanlarını ve ilişkili sertifikaları gösterir:
 
 | Dağıtım klasörü | Gerekli sertifika konusu ve konu diğer adları (SAN) | Kapsam (bölge başına) | Alt etki alanı adı |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
-| Yönetici uzantısı ana bilgisayarı | *. adminhosting. \<bölge >. \<FQDN > (joker SSL sertifikaları) | Yönetici uzantısı ana bilgisayarı | adminhosting. \<bölge >. \<FQDN > |
-| Ortak uzantı Konağı | *. barındırma. \<bölge >. \<FQDN > (joker SSL sertifikaları) | Ortak uzantı Konağı | barındırıyor. \<bölge >. \<FQDN > |
+| Yönetici uzantısı ana bilgisayarı | *. adminhosting. \<region >. \<fqdn > (joker karakter SSL sertifikaları) | Yönetici uzantısı ana bilgisayarı | adminhosting. \<region >. \<fqdn > |
+| Ortak uzantı Konağı | *. Hosting. \<region >. \<fqdn > (joker karakter SSL sertifikaları) | Ortak uzantı Konağı | barındırma. \<region >. \<fqdn > |
 
-Ayrıntılı sertifika gereksinimleri [Azure Stack ortak anahtar altyapısı sertifika gereksinimleri](azure-stack-pki-certs.md) makalesinde bulunabilir.
+Ayrıntılı sertifika gereksinimleri için bkz. [Azure Stack ortak anahtar altyapısı sertifika gereksinimleri](azure-stack-pki-certs.md).
 
 ## <a name="create-certificate-signing-request"></a>Sertifika imzalama isteği oluştur
 
-Azure Stack hazırlık Denetleyicisi Aracı, iki yeni, gerekli SSL sertifikası için bir sertifika imzalama isteği oluşturma olanağı sağlar. [Sertifika imzalama isteği oluşturma Azure Stack](azure-stack-get-pki-certs.md)makalesindeki adımları izleyin.
+Azure Stack hazırlık Denetleyicisi Aracı, iki yeni ve gerekli SSL sertifikası için bir sertifika imzalama isteği oluşturmanızı sağlar. [Sertifika imzalama isteği oluşturma Azure Stack](azure-stack-get-pki-certs.md)makalesindeki adımları izleyin.
 
 > [!Note]  
 > SSL sertifikalarınızı nasıl istemiş olduğunuza bağlı olarak bu adımı atlayabilirsiniz.
@@ -45,7 +45,7 @@ Azure Stack hazırlık Denetleyicisi Aracı, iki yeni, gerekli SSL sertifikası 
 ## <a name="validate-new-certificates"></a>Yeni sertifikaları doğrulama
 
 1. PowerShell 'i, donanım yaşam döngüsü konağında veya Azure Stack yönetim iş istasyonunda yükseltilmiş izinle açın.
-2. Azure Stack hazırlık Denetleyicisi aracını yüklemek için aşağıdaki cmdlet 'i çalıştırın.
+2. Azure Stack hazırlık Denetleyicisi aracını yüklemek için aşağıdaki cmdlet 'i çalıştırın:
 
     ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
@@ -66,7 +66,7 @@ Azure Stack hazırlık Denetleyicisi Aracı, iki yeni, gerekli SSL sertifikası 
     > [!Note]  
     > Azure Active Directory Federasyon Hizmetleri (AD FS) ile dağıtırsanız, şu dizinlerin betiğe **$Directories** eklenmesi gerekir: `ADFS`, `Graph`.
 
-4. Azure Stack ' de kullanmakta olduğunuz mevcut sertifikaları uygun dizinlerde yerleştirin. Örneğin, **yönetıcı ARM** sertifikasını `Arm Admin` klasörüne yerleştirin. Ve sonra yeni oluşturulan barındırma sertifikalarını `Admin extension host` ve `Public extension host` dizinlerine yerleştirin.
+4. Azure Stack, kullanmakta olduğunuz mevcut sertifikaları uygun dizinlerde yerleştirin. Örneğin, **yönetıcı ARM** sertifikasını `Arm Admin` klasörüne yerleştirin. Ve sonra yeni oluşturulan barındırma sertifikalarını `Admin extension host` ve `Public extension host` dizinlerine yerleştirin.
 5. Sertifika denetimini başlatmak için aşağıdaki cmdlet 'i çalıştırın:
 
     ```powershell  
@@ -75,7 +75,7 @@ Azure Stack hazırlık Denetleyicisi Aracı, iki yeni, gerekli SSL sertifikası 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
 
-6. Çıktıyı denetleyin ve tüm sertifikalar tüm testleri iletir.
+6. Çıktıyı denetleyin ve tüm sertifikalar tüm testleri geçer.
 
 
 ## <a name="import-extension-host-certificates"></a>Uzantı konak sertifikalarını içeri aktar
@@ -83,7 +83,7 @@ Azure Stack hazırlık Denetleyicisi Aracı, iki yeni, gerekli SSL sertifikası 
 Sonraki adımlar için Azure Stack ayrıcalıklı uç noktaya bağlanabilecek bir bilgisayar kullanın. Bu bilgisayardan yeni sertifika dosyalarına erişiminizin olduğundan emin olun.
 
 1. Sonraki adımlar için Azure Stack ayrıcalıklı uç noktaya bağlanabilecek bir bilgisayar kullanın. Bu bilgisayardan yeni sertifika dosyalarına erişiminizin olduğundan emin olun.
-2. Sonraki betik bloklarını yürütmek için PowerShell ıSE 'yi açın
+2. Sonraki betik bloklarını yürütmek için PowerShell ıSE 'yi açın.
 3. Yönetici barındırma uç noktası için sertifikayı içeri aktarın.
 
     ```powershell  
@@ -136,7 +136,7 @@ Ayrılan IP 'Ler, **Get-Azurestackstampınformation**cmdlet 'ini çalıştırara
 
 ### <a name="ports-and-protocols"></a>Bağlantı noktaları ve protokoller
 
-[Veri merkezi tümleştirmesi-yayımlama uç noktaları Azure Stack](azure-stack-integrate-endpoints.md)makale, uzantı ana bilgisayar dağıtımı öncesinde Azure Stack yayımlamak üzere gelen iletişim gerektiren bağlantı noktalarını ve protokolleri içerir.
+[Veri merkezi tümleştirme-yayımlama uç noktaları Azure Stack](azure-stack-integrate-endpoints.md) makale, uzantı ana bilgisayar dağıtımı öncesinde Azure Stack yayımlamak üzere gelen iletişim gerektiren bağlantı noktalarını ve protokolleri ele alır.
 
 ### <a name="publish-new-endpoints"></a>Yeni uç noktaları Yayımla
 
@@ -148,7 +148,7 @@ winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
 $PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
 
-# Obtain DNS Servers and Extension Host information from Azure Stack Stamp Information and find the IPs for the Host Extension Endpoints
+# Obtain DNS Servers and extension host information from Azure Stack Stamp Information and find the IPs for the Host Extension Endpoints
 $StampInformation = Invoke-Command $PEPSession {Get-AzureStackStampInformation} | Select-Object -Property ExternalDNSIPAddress01, ExternalDNSIPAddress02, @{n="TenantHosting";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://*.","testdnsentry"-replace "/"}},  @{n="AdminHosting";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://*.","testdnsentry"-replace "/"}},@{n="TenantHostingDNS";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://",""-replace "/"}},  @{n="AdminHostingDNS";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://",""-replace "/"}}
 If (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress01 -Name $StampInformation.TenantHosting -ErrorAction SilentlyContinue) {
     Write-Host "Can access AZS DNS" -ForegroundColor Green
@@ -192,12 +192,12 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 ### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>Var olan yayımlama kurallarını güncelleştir (uzantı ana bilgisayarını etkinleştirme)
 
 > [!Note]  
-> 1808 Azure Stack güncelleştirme paketi henüz uzantı **konağını etkinleştirmez.** Gerekli sertifikaları içeri aktararak uzantı konağına hazırlanmasına izin verir. Uzantı ana bilgisayarı, 1808 güncelleştirmesinden sonra bir Azure Stack güncelleştirme paketiyle otomatik olarak etkinleştirilmeden önce herhangi bir bağlantı noktasını kapatmayın.
+> 1808 Azure Stack güncelleştirme paketi henüz uzantı **konağını etkinleştirmez.** Gerekli sertifikaları içeri aktararak uzantı konağına hazırlanmanıza imkan tanır. Uzantı ana bilgisayarı, 1808 güncelleştirmesinden sonra bir Azure Stack güncelleştirme paketiyle otomatik olarak etkinleştirilmeden önce herhangi bir bağlantı noktasını kapatmayın.
 
 Mevcut güvenlik duvarı kurallarınız için aşağıdaki mevcut uç nokta bağlantı noktalarının kapalı olması gerekir.
 
 > [!Note]  
-> Başarılı doğrulamadan sonra bu bağlantı noktalarını kapatmanız önerilir.
+> Doğrulama başarılı olduktan sonra bu bağlantı noktalarını kapatmanız önerilir.
 
 | Uç nokta (VIP) | Protocol | Bağlantı Noktaları |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -209,4 +209,4 @@ Mevcut güvenlik duvarı kurallarınız için aşağıdaki mevcut uç nokta bağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Güvenlik Duvarı tümleştirmesi](azure-stack-firewall.md)hakkında bilgi edinin.
-- [Azure Stack sertifikaları imzalama isteği oluşturma](azure-stack-get-pki-certs.md) hakkında bilgi edinin
+- [Azure Stack sertifikaları imzalayan istek oluşturma](azure-stack-get-pki-certs.md)hakkında bilgi edinin.

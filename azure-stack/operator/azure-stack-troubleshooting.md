@@ -16,12 +16,12 @@ ms.date: 09/30/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: 0fb46cd1b92c1b811ba1c72a91188201a7d2af96
-ms.sourcegitcommit: 79ead51be63c372b23b7fca6ffeaf95fd44de786
+ms.openlocfilehash: 7e2f13fa20c9aafd90abe34277c907a4d12b4d81
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687964"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019449"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
@@ -57,7 +57,7 @@ Bu bölümler, Microsoft Müşteri Destek Hizmetleri 'ne (CSS) gönderilen genel
 
 Azure Stack'te kullanılabilir toplam bellek kapasitesini artırmak için bellek ekleyebilirsiniz. Azure Stack'te fiziksel sunucunuz ölçek birimi düğümü olarak da adlandırılır. Tek bir ölçek biriminin üyesi olan tüm ölçek birimi düğümlerinin [bellek miktarı aynı olmalıdır](azure-stack-manage-storage-physical-memory-capacity.md).
 
-#### <a name="retention-period"></a>Elde tutma süresi
+#### <a name="retention-period"></a>Bekletme süresi
 
 Saklama süresi ayarı bulut operatörünün silinen hesaplar için olası kurtarma süresi olarak gün cinsinden bir süre (0 ile 9999 gün arası) belirtmesine olanak tanır. Varsayılan saklama süresi **0** gün olarak ayarlanır. Değerin **0** olarak ayarlanması, silinen her hesabın hemen bekletme dışı ve düzenli çöp toplama için işaretlenme anlamına gelir.
 
@@ -82,7 +82,7 @@ Azure kaynaklarına yönelik yerleşik roller kuruluşunuzun ihtiyaçlarını ka
 
 Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü seçin. Çok kiracılı bir Azure Stack'in kaydında kullanılabilecek abonelik türleri şunlardır:
 
-* Bulut Hizmeti Sağlayıcısı
+* Bulut Çözümü Sağlayıcısı
 * İş Ortağı Paylaşılan Hizmetler aboneliği
 
 

@@ -15,12 +15,12 @@ ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: d63d4876674c66fcccab942cd856dce958e62644
-ms.sourcegitcommit: 32609bdb04a07b063c8f20f892c30769ad6903dd
+ms.openlocfilehash: b4780077f015c060c63abc3abd33bd3e71c63e15
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269474"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019328"
 ---
 # <a name="frequently-asked-questions-about-azure-stack-usage"></a>Azure Stack kullanımı hakkında sık sorulan sorular
 
@@ -46,22 +46,22 @@ Aşağıdaki kaynak sağlayıcıları için kullanım bildirilir:
   
 **Ölçüm kimliği**: B4438D5D-453B-4EE1-B42A-DC72E377F1E4  
 **Ölçüm adı**: TableCapacity  
-**Birim**: GB\*saat  
+**Birim**: GB @ no__t-0saat  
 **Notlar**: Tablolar tarafından tüketilen toplam kapasite.  
   
 **Ölçüm kimliği**: B5C15376-6C94-4FDD-B655-1A69D138ACA3  
 **Ölçüm adı**: PageBlobCapacity  
-**Birim**: GB\*saat  
+**Birim**: GB @ no__t-0saat  
 **Notlar**: Sayfa Blobları tarafından tüketilen toplam kapasite.  
   
 **Ölçüm kimliği**: B03C6AE7-B080-4BFA-84A3-22C800F315C6  
 **Ölçüm adı**: QueueCapacity  
-**Birim**: GB\*saat  
+**Birim**: GB @ no__t-0saat  
 **Notlar**: Sıra tarafından tüketilen toplam kapasite.  
   
 **Ölçüm kimliği**: 09F8879E-87E9-4305-A572-4B7BE209F857  
 **Ölçüm adı**: Blok Blobkapasitesi  
-**Birim**: GB\*saat  
+**Birim**: GB @ no__t-0saat  
 **Notlar**: Blok Blobları tarafından tüketilen toplam kapasite.  
   
 **Ölçüm kimliği**: B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
@@ -130,180 +130,180 @@ Aşağıdaki kaynak sağlayıcıları için kullanım bildirilir:
 
 **Ölçüm kimliği**: 380874f9-300C-48e0-95a0-d2d9a21ade8f   
 **Ölçüm adı**: S4   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Standart yönetilen disk-32 GB 
 
 **Ölçüm kimliği**: 1b77d90f-427b-4435-b4f1-d78adec53222   
 **Ölçüm adı**: S6   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Standart yönetilen disk-64 GB 
 
 **Ölçüm kimliği**: d5f7731b-f639-404A-89d0-e46186e22c8d   
 **Ölçüm adı**: S10   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Standart yönetilen disk-128 GB 
 
 **Ölçüm kimliği**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
 **Ölçüm adı**: S15   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Standart yönetilen disk-256 GB 
 
 **Ölçüm kimliği**: 88ea9228-457A-4091-adc9-ad5194f30b6e   
 **Ölçüm adı**: S20   
-**Birim**: Disk\*ayı sayısı      
+**Birim**: Disk sayısı @ no__t-0month      
 **Notlar**: Standart yönetilen disk-512 GB 
 
 **Ölçüm kimliği**: 5b1db88a-8596-4002-8052-347947c26940   
 **Ölçüm adı**: S30   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Standart yönetilen disk-1024 GB 
 
 **Ölçüm kimliği**: 7660b45b-b29d-49cb-b816-59f30fbe011   
 **Ölçüm adı**: P4   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Premium yönetilen disk-32 GB 
 
 **Ölçüm kimliği**: 817007fd-a077-477f-BC01-b876f27205fd   
 **Ölçüm adı**: P6   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Premium yönetilen disk-64 GB 
 
 **Ölçüm kimliği**: e554b6bc-96cd-4938-a5b5-0dad990278519   
 **Ölçüm adı**: P10   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Premium yönetilen disk-128 GB  
 
 **Ölçüm kimliği**: cdc0f53a-62a9-4472-a06c-e99a23b02907   
 **Ölçüm adı**: P15  
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Premium yönetilen disk-256 GB 
 
 **Ölçüm kimliği**: b9cb2d1a-84C2-4275-aa8b-70d2145d59aa   
 **Ölçüm adı**: P20   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Premium yönetilen disk-512 GB 
 
 **Ölçüm kimliği**: 06bde724-9f94-43c0-84c3-d0fc54538369   
 **Ölçüm adı**: P30   
-**Birim**: Disk\*ayı sayısı   
+**Birim**: Disk sayısı @ no__t-0month   
 **Notlar**: Premium yönetilen disk-1024 GB 
 
 **Ölçüm kimliği**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
 **Ölçüm adı**: ActualStandardDiskSize   
-**Birim**: GB\*ay      
+**Birim**: GB @ no__t-0AY      
 **Notlar**: Standart yönetilen diskin disk üzerindeki gerçek boyut  
 
 **Ölçüm kimliği**: daef389a-06e5-4684-A7F7-8813d9f792d5  
 **Ölçüm adı**: ActualPremiumDiskSize   
-**Birim**: GB\*ay      
+**Birim**: GB @ no__t-0AY      
 **Notlar**: Premium yönetilen disk diskteki gerçek boyut 
 
 **Ölçüm kimliği**: 108fa95b-be0d-4cd9-96e8-5b0d59505df1  
 **Ölçüm adı**: ActualStandardSnapshotSize   
-**Birim**: GB\*ay   
+**Birim**: GB @ no__t-0AY   
 **Notlar**: Yönetilen standart anlık görüntünün disk üzerindeki gerçek boyut.  
 
 **Ölçüm kimliği**: 578ae51d-4ef9-42f9-85ae-42b52d3d83ac   
 **Ölçüm adı**: ActualPremiumSnapshotSize   
-**Birim**: GB\*ay   
+**Birim**: GB @ no__t-0AY   
 **Notlar**: Yönetilen Premium anlık görüntüsünün disk üzerindeki gerçek boyut.   
 
 **Ölçüm kimliği**: 5g76e09f-4567-452A-94cc-7d1f097761f0   
 **Ölçüm adı**: S4   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Standart yönetilen disk-32 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: dc9fc6a9-0782-432a-b8dc-978130457494   
 **Ölçüm adı**: S6   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Standart yönetilen disk-64 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: e5572fce-9f58-49d7-840c-b168c0f01fff   
 **Ölçüm adı**: S10   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Standart yönetilen disk-128 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
 **Ölçüm adı**: S15   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Standart yönetilen disk-256 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 5938f8dav-0ecd-4c48-8d5a-c7c6c23546be   
 **Ölçüm adı**: S20   
-**Birim**: Disk\*saati sayısı      
+**Birim**: Disk sayısı @ no__t-0saat      
 **Notlar**: Standart yönetilen disk-512 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
 **Ölçüm adı**: S30   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Standart yönetilen disk-1024 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
 **Ölçüm adı**: P4   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Premium yönetilen disk-32 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 518b412b-1927-4f25-985F-4aea24e55c4f   
 **Ölçüm adı**: P6   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Premium yönetilen disk-64 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 5cfb1fed-0902-49e3-8217-9add946fd624   
 **Ölçüm adı**: P10   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Premium yönetilen disk-128 GB (kullanım dışı)  
 
 **Ölçüm kimliği**: 8de91c94-F740-4d9a-b665-bd5974fa08d4   
 **Ölçüm adı**: P15  
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Premium yönetilen disk-256 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: c7e7839c-293B-4761-ae4c-848eda91130b   
 **Ölçüm adı**: P20   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Premium yönetilen disk-512 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 9f502103-adf4-4488-b494-456c95d23a9f   
 **Ölçüm adı**: P30   
-**Birim**: Disk\*saati sayısı   
+**Birim**: Disk sayısı @ no__t-0saat   
 **Notlar**: Premium yönetilen disk-1024 GB (kullanım dışı) 
 
 **Ölçüm kimliği**: 8a409390-1913-40ae-917b-08d0f16f3c38   
 **Ölçüm adı**: ActualStandardDiskSize   
-**Birim**: Bayt\*saatleri      
+**Birim**: Byte @ no__t-0saat      
 **Notlar**: Standart yönetilen diskin disk üzerindeki gerçek boyut (kullanım dışı)  
 
 **Ölçüm kimliği**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
 **Ölçüm adı**: ActualPremiumDiskSize   
-**Birim**: Bayt\*saatleri      
+**Birim**: Byte @ no__t-0saat      
 **Notlar**: Premium yönetilen disk diskteki gerçek boyut (kullanım dışı) 
 
 **Ölçüm kimliği**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
 **Ölçüm adı**: ActualStandardSnapshotSize   
-**Birim**: Bayt\*saatleri   
+**Birim**: Byte @ no__t-0saat   
 **Notlar**: Yönetilen standart anlık görüntünün disk üzerindeki gerçek boyut (kullanım dışı) 
 
 **Ölçüm kimliği**: 95b0c03f-8A82-4524-8961-ccfbf575f536   
 **Ölçüm adı**: ActualPremiumSnapshotSize   
-**Birim**: Bayt\*saatleri   
+**Birim**: Byte @ no__t-0saat   
 **Notlar**: Yönetilen Premium anlık görüntüsünün disk üzerindeki gerçek boyut (kullanım dışı) 
 
-**Ölçüm kimliği**: 75d4b707-1027-4403-9986-6ec7c05579c8 **ölçüm adı**: ActualStandardSnapshotSize **birimi**: GB\*ay **notları**: Yönetilen standart anlık görüntünün disk üzerindeki gerçek boyut (kullanım dışı)  
+**Ölçüm kimliği**: 75d4b707-1027-4403-9986-6ec7c05579c8 **ölçüm adı**: ActualStandardSnapshotSize **birimi**: GB @ no__t-0AY **notları**: Yönetilen standart anlık görüntünün disk üzerindeki gerçek boyut (kullanım dışı)  
 
-**Ölçüm kimliği**: 5ca1cbb9-6f14-4E76-8be8-1ca91547965e **ölçer adı**: ActualPremiumSnapshotSize **birimi**: GB\*ay **notları**: Yönetilen Premium anlık görüntüsünün disk üzerindeki gerçek boyut (kullanım dışı)  
+**Ölçüm kimliği**: 5ca1cbb9-6f14-4E76-8be8-1ca91547965e **ölçer adı**: ActualPremiumSnapshotSize **birimi**: GB @ no__t-0AY **notları**: Yönetilen Premium anlık görüntüsünün disk üzerindeki gerçek boyut (kullanım dışı)  
 
 ### <a name="sql-rp"></a>SQL RP
   
 **Ölçüm kimliği**: CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
 **Ölçüm adı**: DatabaseSizeHourSqlMeter  
-**Birim**: MB\*saat  
+**Birim**: MB @ no__t-0saat  
 **Notlar**: Oluşturma sırasında toplam DB kapasitesi. Kullanım API 'sini günlük bir ayrıntı düzeyi ile çağırırsanız, ölçüm MB değerini saat sayısıyla çarpılır.  
   
 ### <a name="mysql-rp"></a>MySql RP   
   
 **Ölçüm kimliği**: E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
 **Ölçüm adı**: DatabaseSizeHourMySqlMeter  
-**Birim**: MB\*saat  
+**Birim**: MB @ no__t-0saat  
 **Notlar**: Oluşturma sırasında toplam DB kapasitesi. Kullanım API 'sini günlük bir ayrıntı düzeyi ile çağırırsanız, ölçüm MB değerini saat sayısıyla çarpılır.    
 ### <a name="key-vault"></a>Key Vault   
   
@@ -322,7 +322,7 @@ Aşağıdaki kaynak sağlayıcıları için kullanım bildirilir:
 **Ölçüm kimliği**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **Ölçüm adı**: App Service  
 **Birim**: Sanal çekirdek saatleri  
-**Notlar**: App Service 'i çalıştırmak için kullanılan sanal çekirdek sayısı. Not: Microsoft, Azure Stack App Service ücretlendirmesi için bu ölçümü kullanır. Bulut hizmeti sağlayıcıları, kiracılarının kullanımını hesaplamak için diğer App Service ölçüleri (aşağıda) kullanabilir.  
+**Notlar**: App Service 'i çalıştırmak için kullanılan sanal çekirdek sayısı. Not: Microsoft, Azure Stack App Service ücretlendirmesi için bu ölçümü kullanır. Bulut çözümü sağlayıcıları, kiracılarının kullanımını hesaplamak için diğer App Service ölçüleri (aşağıda) kullanabilir.  
   
 **Ölçüm kimliği**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
 **Ölçüm adı**: İşlev Istekleri  

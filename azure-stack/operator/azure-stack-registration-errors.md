@@ -15,12 +15,12 @@ ms.date: 10/04/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
-ms.openlocfilehash: b06892e5e4c9d388756a2197f2054c1bac9f013c
-ms.sourcegitcommit: f91979c1613ea1aa0e223c818fc208d902b81299
+ms.openlocfilehash: e660b5024e9aa2b582fd3e8d2f6f51d7d20a5130
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71974007"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019497"
 ---
 # <a name="usage-and-billing-registration-error-codes"></a>Kullanım ve faturalandırma kayıt hata kodları
 
@@ -41,6 +41,6 @@ CSP kullanıyorsanız, müşterinin Azure abonelik KIMLIĞINE karşı raporlama 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bulut hizmeti sağlayıcıları Için kullanım raporlama altyapısı](azure-stack-csp-ref-infrastructure.md)hakkında daha fazla bilgi edinin.
+- [Bulut çözümü sağlayıcıları Için kullanım raporlama altyapısı](azure-stack-csp-ref-infrastructure.md)hakkında daha fazla bilgi edinin.
 - CSP programı hakkında daha fazla bilgi edinmek için bkz. [bulut çözümleri](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
 - Kaynak kullanım bilgilerini Azure Stack alma hakkında daha fazla bilgi için, bkz. [Azure Stack ' de kullanım ve faturalandırma](azure-stack-billing-and-chargeback.md).

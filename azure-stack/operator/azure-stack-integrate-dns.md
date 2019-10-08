@@ -1,6 +1,6 @@
 ---
-title: Azure Stack veri merkezi tümleştirmesi-DNS
-description: Azure Stack DNS 'yi veri merkezi DNS ile tümleştirmeyi öğrenin
+title: Azure Stack Datacenter DNS tümleştirmesi | Microsoft Docs
+description: Azure Stack DNS 'yi veri merkezi DNS ile tümleştirmeyi öğrenin.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,14 +11,14 @@ ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 08/21/2019
 keywords: ''
-ms.openlocfilehash: 9e60a8f9ebda573141e2f97a9182087e90741652
-ms.sourcegitcommit: 250689d6d09acc677bf59de76510d5d5f1c6190e
+ms.openlocfilehash: 4949ed2533ed550f61efd2cc4e0dfed7de3a1d7e
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896350"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019241"
 ---
-# <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack veri merkezi tümleştirmesi-DNS
+# <a name="azure-stack-datacenter-dns-integration"></a>Azure Stack Datacenter DNS tümleştirmesi
 
 **Portal**, **adminportal**, **yönetim**ve **adminmanagement** gibi Azure Stack uç noktalarına Azure Stack dışından erişebilmek IÇIN, Azure Stack DNS hizmetlerini DNS bölgelerini barındıran DNS sunucularıyla tümleştirmeniz gerekir Azure Stack ' de kullanmak istiyorsunuz.
 
@@ -31,9 +31,9 @@ Azure Stack dağıtırken DNS ile ilgili bazı önemli bilgileri sağlamanız ge
 |---------|---------|---------|
 |Bölge|Azure Stack dağıtımınızın coğrafi konumu.|`east`|
 |Dış etki alanı adı|Azure Stack dağıtımınız için kullanmak istediğiniz bölgenin adı.|`cloud.fabrikam.com`|
-|İç etki alanı adı|Azure Stack içinde altyapı hizmetleri için kullanılan iç bölgenin adı.  Dizin hizmeti ile tümleşik ve özel (Azure Stack dağıtımının dışından ulaşılamaz).|`azurestack.local`|
+|İç etki alanı adı|Azure Stack içindeki altyapı hizmetleri için kullanılan iç bölgenin adı. Bu dizin hizmeti, tümleşik ve özel (Azure Stack dağıtımının dışından ulaşılamaz).|`azurestack.local`|
 |DNS Ileticileri|Şirket intranetinde veya genel İnternet 'te Azure Stack dışında barındırılan DNS sorguları, DNS bölgeleri ve kayıtları iletmek için kullanılan DNS sunucuları. Bir DNS ileticisini değiştirirseniz, IP adresinin güncelleştirilmesi gerekir. |`10.57.175.34`<br>`8.8.8.8`|
-|Adlandırma ön eki (Isteğe bağlı)|Azure Stack altyapı rolü örneği makine adlarınızın sahip olmasını istediğiniz adlandırma ön eki.  Sağlanmazsa, varsayılan olur `azs`.|`azs`|
+|Adlandırma ön eki (Isteğe bağlı)|Azure Stack altyapı rolü örneği makine adlarınızın sahip olmasını istediğiniz adlandırma ön eki.  Sağlanmazsa, varsayılan değer `azs` ' dır.|`azs`|
 
 Azure Stack dağıtımınızın ve uç noktalarınızın tam etki alanı adı (FQDN), Region parametresinin ve dış etki alanı adı parametresinin birleşimidir. Önceki tablodaki örneklerden değerler kullanılarak bu Azure Stack dağıtımı için FQDN aşağıdaki ad olacaktır:
 
@@ -47,15 +47,15 @@ Bu nedenle, bu dağıtımın bazı uç noktaları örnekleri aşağıdaki URL 'L
 
 Azure Stack dağıtımı için bu örnek DNS ad alanını kullanmak için aşağıdaki koşullar gereklidir:
 
-- Bölge `fabrikam.com` , ad çözümleme gereksinimlerinize bağlı olarak bir etki alanı kaydedicisi, dahili bir kurumsal DNS sunucusu veya her ikisiyle kaydedilir.
-- Alt etki alanı `cloud.fabrikam.com` bölge `fabrikam.com`altında bulunur.
-- Bölgeleri `fabrikam.com` barındıran DNS sunucularına ve `cloud.fabrikam.com` Azure Stack dağıtımından erişilebilir.
+- @No__t-0 bölgesi, ad çözümleme gereksinimlerinize bağlı olarak bir etki alanı kaydedicisi, dahili bir kurumsal DNS sunucusu veya her ikisiyle kaydedilir.
+- @No__t-0 alt etki alanı `fabrikam.com` bölgesi altında bulunuyor.
+- @No__t-0 ve `cloud.fabrikam.com` bölgelerini barındıran DNS sunucularına Azure Stack dağıtımından ulaşılabilir.
 
 Azure Stack dışından Azure Stack uç noktaları ve örneklerin DNS adlarını çözümleyebilmek için, Azure Stack için dış DNS bölgesini barındıran DNS sunucularını kullanmak istediğiniz üst bölgeyi barındıran DNS sunucularıyla tümleştirmeniz gerekir.
 
 ### <a name="dns-name-labels"></a>DNS adı etiketleri
 
-Azure Stack, genel IP adresleri için ad çözümlemesine izin vermek üzere genel IP adresine bir DNS ad etiketi eklenmesini destekler. Bu, kullanıcıların ada göre Azure Stack ' de barındırılan uygulama ve hizmetlere ulaşabilmesi için kullanışlı bir yoldur. DNS ad etiketi altyapı uç noktalarından biraz farklı bir ad alanı kullanır. Önceki örnek ad alanından sonra DNS adı etiketlerinin ad alanı şu şekilde görünür:
+Azure Stack, genel IP adresleri için ad çözümlemesine izin vermek üzere genel IP adresine bir DNS ad etiketi eklenmesini destekler. DNS etiketleri, kullanıcıların ada göre Azure Stack bölümünde barındırılan uygulama ve hizmetlere ulaşabilmesi için kullanışlı bir yoldur. DNS ad etiketi altyapı uç noktalarından biraz farklı bir ad alanı kullanır. Önceki örnek ad alanından sonra DNS adı etiketlerinin ad alanı şu şekilde görünür:
 
 `*.east.cloudapp.cloud.fabrikam.com`
 
@@ -74,13 +74,13 @@ DNS adı etiketinin nasıl çalıştığı hakkında daha fazla bilgi için bkz.
 - Yetkili bir DNS sunucusu DNS bölgelerini barındırır. Bu sunucu, yalnızca bu bölgelerdeki kayıtlar için DNS sorgularını yanıtlar.
 - Özyinelemeli bir DNS sunucusu DNS bölgelerini barındırmaz. Bu sunucu, tüm DNS sorgularını yanıtlamak için yetkili DNS sunucularını çağırarak ihtiyacı olan verileri toplar.
 
-Azure Stack hem yetkili hem de özyinelemeli DNS sunucularını içerir. Özyinelemeli sunucular, iç özel bölge ve bu Azure Stack dağıtımı için dış genel DNS bölgesi dışındaki her şeyin adını çözümlemek için kullanılır. 
+Azure Stack hem yetkili hem de özyinelemeli DNS sunucularını içerir. Özyinelemeli sunucular, iç özel bölge ve bu Azure Stack dağıtımı için dış genel DNS bölgesi dışındaki her şeyin adını çözümlemek için kullanılır.
 
 ![Azure Stack DNS mimarisi](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
 
 ## <a name="resolving-external-dns-names-from-azure-stack"></a>Azure Stack dış DNS adlarını çözümleme
 
-Azure Stack dışındaki uç noktalar için DNS adlarını çözümlemek için (örneğin: www\.Bing.com), Azure Stack Azure Stack yetkili olmadığı DNS isteklerini iletmek için kullanabileceği DNS sunucuları sağlamanız gerekir. Dağıtım için, istekleri ileten DNS Azure Stack sunucuları dağıtım çalışma sayfasında (DNS Ileticisi alanında) gereklidir. Bu alanda hata toleransı için en az iki sunucu sağlayın. Bu değerler olmadan Azure Stack dağıtım başarısız olur. DNS ileticileri değiştirildiyse, IP adreslerini güncelleştirin. 
+Azure Stack dışındaki uç noktaların DNS adlarını çözümlemek için (örneğin: www\.bing.com), Azure Stack Azure Stack yetkili olmayan DNS isteklerini iletmek için kullanabileceği DNS sunucuları sağlamanız gerekir. Dağıtım için, istekleri ileten DNS Azure Stack sunucuları dağıtım çalışma sayfasında (DNS Ileticisi alanında) gereklidir. Bu alanda hata toleransı için en az iki sunucu sağlayın. Bu değerler olmadan Azure Stack dağıtım başarısız olur. DNS ileticileri değiştirildiyse, IP adreslerini güncelleştirin.
 
 ### <a name="configure-conditional-dns-forwarding"></a>Koşullu DNS iletmeyi yapılandırma
 
@@ -129,7 +129,7 @@ Azure Stack DNS sunucuları için FQDN 'Ler aşağıdaki biçimdedir:
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-Bu bilgiler, adlı `AzureStackStampInformation.json`bir dosyadaki tüm Azure Stack dağıtımlarının sonunda da oluşturulur. Bu dosya, dağıtım sanal makinesinin `C:\CloudDeployment\logs` klasöründe bulunur. Azure Stack dağıtımınız için hangi değerlerin kullanıldığından emin değilseniz, değerleri buradan edinebilirsiniz.
+Bu bilgiler ayrıca, `AzureStackStampInformation.json` adlı bir dosyadaki tüm Azure Stack dağıtımlarının sonunda oluşturulur. Bu dosya, dağıtım sanal makinesinin `C:\CloudDeployment\logs` klasöründe bulunur. Azure Stack dağıtımınız için hangi değerlerin kullanıldığından emin değilseniz, değerleri buradan edinebilirsiniz.
 
 Dağıtım sanal makinesi artık kullanılabilir değilse veya erişilebilir durumda değilse, ayrıcalıklı uç noktaya bağlanarak ve `Get-AzureStackStampInformation` PowerShell cmdlet 'ini çalıştırarak değerleri elde edebilirsiniz. Daha fazla bilgi için bkz. [ayrıcalıklı uç nokta](azure-stack-privileged-endpoint.md).
 
@@ -143,8 +143,8 @@ Dış Azure Stack DNS bölgenizin şirket etki alanı adınızın alt etki alan�
 
 Örnek:
 
-- Şirket DNS etki alanı adı:`contoso.com`
-- Azure Stack dış DNS etki alanı adı:`azurestack.contoso.com`
+- Şirket DNS etki alanı adı: `contoso.com`
+- Azure Stack dış DNS etki alanı adı: `azurestack.contoso.com`
 
 ## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>Dış DNS bölgesinin yetkisini Azure Stack
 

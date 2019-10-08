@@ -15,12 +15,12 @@ ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 3aeae5c1a0106a0c13c9b6bbe2eb4ba07de14dd4
-ms.sourcegitcommit: 58c28c0c4086b4d769e9d8c5a8249a76c0f09e57
+ms.openlocfilehash: 5fecdbe7bcc85ea01e1502afcfc1c67d3b830c3e
+ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68959450"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72019396"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Kullanım verilerini Azure 'a rapor Azure Stack
 
@@ -58,7 +58,7 @@ Kullanım verilerini raporlama 'yı ayarlamak için [Azure Stack örneğinizi Az
 
 Azure Stack CSP aboneliği kullanarak kaydolduysanız, kullanımınızı ve ücretlerinizi Azure 'un tüketimini görüntülediğiniz şekilde görüntüleyebilirsiniz. Azure Stack kullanımı, [Iş Ortağı Merkezi](https://partnercenter.microsoft.com/partner/home)aracılığıyla faturanızda ve mutabakat dosyasında bulunur. Mutabakat dosyası aylık olarak güncelleştirilir. Son Azure Stack kullanım bilgilerine erişmeniz gerekiyorsa, Iş Ortağı Merkezi API 'Lerini kullanabilirsiniz.
 
-![İş Ortağı Merkezi](media/azure-stack-usage-reporting/partner-center.png)
+![iş ortağı merkezi](media/azure-stack-usage-reporting/partner-center.png)
 
 ## <a name="view-usage---enterprise-agreement-subscriptions"></a>Kullanım-Kurumsal Anlaşma aboneliklerini görüntüleme
 
@@ -96,7 +96,7 @@ Azure Stack çok düğümlü, Kurumsal Anlaşma (EA) ve CSP abonelikleri destekl
 
 ## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>Kullanım verilerini raporlama, bağımsız bulutlarda çalışıyor mu?
 
-Kullanım verilerini raporlama Azure Stack Geliştirme Seti, genel Azure sisteminde oluşturulan abonelikleri gerektirir. Bağımsız bulutlardan birinde oluşturulan abonelikler (Azure Kamu, Azure Almanya ve Azure Çin bulutları) Azure 'a kaydedilemez, bu nedenle kullanım verilerini raporlamayı desteklemezler.
+Kullanım verilerini raporlama Azure Stack Geliştirme Seti, genel Azure sisteminde oluşturulan abonelikleri gerektirir. Sogeign bulutlarından birinde oluşturulan abonelikler (Azure Kamu, Azure Almanya ve Azure Çin 21Vianet bulutları) Azure 'a kaydedilemez, bu nedenle kullanım verilerini raporlamayı desteklemezler.
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Azure Stack içinde bildirilen kullanım, Azure Hesap Merkezi oluşturulan raporla eşleşmiyor mu?
 
@@ -107,4 +107,4 @@ Azure Stack kullanım API 'Leri tarafından raporlanan kullanım verileri ve Azu
 - [Sağlayıcı kullanım API’si](azure-stack-provider-resource-api.md)  
 - [Kiracı kullanım API’si](azure-stack-tenant-resource-usage-api.md)
 - [Kullanım Hakkında SSS](azure-stack-usage-related-faq.md)
-- [Kullanım ve faturalandırma hizmetini bir bulut hizmeti sağlayıcısı olarak yönetme](azure-stack-add-manage-billing-as-a-csp.md)
+- [Kullanım ve faturalandırma 'yi bir bulut çözümü sağlayıcısı olarak yönetme](azure-stack-add-manage-billing-as-a-csp.md)
