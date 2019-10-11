@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 10/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/25/2019
-ms.openlocfilehash: 4d6bc431b292fc7a124aa2b8051d0a927d736eee
-ms.sourcegitcommit: 4e48f1e5af74712a104eda97757dc5f50a591936
+ms.lastreviewed: 10/08/2019
+ms.openlocfilehash: e9ee5d3b8ad67c7955fa4da7b64d2c0962f21a15
+ms.sourcegitcommit: 534117888d9b7d6d363ebe906a10dcf0acf8b685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224945"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173071"
 ---
 # <a name="configure-automatic-azure-stack-diagnostic-log-collection"></a>Otomatik Azure Stack tanılama günlüğü toplamayı yapılandırma
 
@@ -41,16 +41,16 @@ Otomatik günlük toplama depolama hesabı için parametreleri seçme hakkında 
 
 ### <a name="create-a-blob-storage-account"></a>BLOB depolama hesabı oluşturma
  
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Depolama hesapları** > **Ekle**' ye tıklayın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. @No__t-1**Add** **depolama hesapları**' na tıklayın. 
 1. Şu ayarlarla bir blob kapsayıcısı oluşturun:
-   - **Abonelik**: Azure aboneliğinizi seçme
-   - **Kaynak grubu**: Bir kaynak grubu belirtin
-   - **Depolama hesabı adı**: Benzersiz bir depolama hesabı adı belirtin
+   - **Abonelik**: Azure aboneliğinizi seçin
+   - **Kaynak grubu**: bir kaynak grubu belirtin
+   - **Depolama hesabı adı**: benzersiz bir depolama hesabı adı belirtin
    - **Konum**: Şirket ilkenize uygun olarak bir veri merkezi seçin
    - **Performans**: Standart seçin
    - **Hesap türü** StorageV2 seçin (genel amaçlı v2) 
-   - **Çoğaltma**: Yerel olarak yedekli depolama (LRS) seçin
+   - **Çoğaltma**: yerel olarak yedekli depolama (LRS) seçeneğini belirleyin
    - **Erişim katmanı**: Cool seçin
 
    ![Blob kapsayıcı özelliklerini gösteren ekran görüntüsü](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
@@ -70,10 +70,10 @@ Otomatik günlük toplama depolama hesabı için parametreleri seçme hakkında 
    ![Blob kapsayıcısının paylaşılan erişim imzasını almayı gösteren ekran görüntüsü](media/azure-stack-automatic-log-collection/get-sas.png)
 
 1. Şu özellikleri seçin:
-   - Başlangıç Zamanı: İsteğe bağlı olarak başlangıç saatini geri taşıyabilirsiniz 
-   - Süre sonu: İki yıl
+   - Başlangıç Zamanı: isteğe bağlı olarak başlangıç saatini geri taşıyabilirsiniz 
+   - Sona erme zamanı: Iki yıl
    - Saat dilimi: UTC
-   - İzinleri Okuma, yazma ve listeleme
+   - İzinler: okuma, yazma ve listeleme
 
    ![Paylaşılan erişim imzası özelliklerini gösteren ekran görüntüsü](media/azure-stack-automatic-log-collection/sas-properties.png) 
 
@@ -104,9 +104,9 @@ SAS URL 'sini günlük koleksiyonu Kullanıcı arabirimine eklemek için aşağ�
 
 Azure Stack toplanan günlüklerin geçmişi, yardım ve Destek bölümündeki **günlük koleksiyonu** sayfasında aşağıdaki tarih ve saatlerle görüntülenir:
 
-- **Toplama zamanı**: Günlük toplama işlemi başladığında 
-- **Kimden tarihi**: Toplamak istediğiniz zaman döneminin başlangıcı
-- Bitiş **tarihi**: Zaman döneminin sonu
+- **Toplama zamanı**: günlük toplama işlemi başladığında 
+- Başlangıç **tarihi**: toplamak istediğiniz zaman döneminin başlangıcı
+- Son **Tarih**: zaman döneminin sonu
 
 ![Ekran görüntüsü günlük koleksiyonlarını gösterir](media/azure-stack-automatic-log-collection/azure-stack-log-collection.png)
 
@@ -118,7 +118,9 @@ Tanılama günlüğü koleksiyonu başarısız olursa SAS URL 'sinin geçerli ol
 
 ## <a name="automatic-diagnostic-log-collection-alerts"></a>Otomatik tanılama günlüğü toplama uyarıları 
 
-Etkinleştirilirse, otomatik tanılama günlüğü toplama yalnızca gerekli olduğunda gerçekleşir. Yalnızca aşağıdaki uyarılar tetiklenir. 
+Etkinleştirilirse, otomatik tanılama günlüğü toplama yalnızca gerekli olduğunda gerçekleşir. Yalnızca aşağıdaki tablo tetikleyicisi koleksiyonundaki uyarılar. 
+
+Örneğin, **güncelleştirme başarısız** , otomatik tanılama günlük toplamayı tetikleyen bir uyarıdır. Otomatik koleksiyon etkinse, CSS 'nin sorunu gidermelerine yardımcı olmak için bir güncelleştirme hatası sırasında tanılama günlükleri önceden yakalanacaktır. Tanılama günlükleri yalnızca **güncelleştirme uyarısı başarısız** olduğunda toplanır. 
 
 |Uyarı başlığı  | Faultıdtype|    
 |-------------|------------|

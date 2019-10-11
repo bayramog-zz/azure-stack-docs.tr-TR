@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 10/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
-ms.openlocfilehash: bcb9dab55d00c48e5b77e7184fae0567ff1f620e
-ms.sourcegitcommit: 5e53eb5d43d28ab07b4f84891dd269bbfcf65622
+ms.lastreviewed: 10/09/2019
+ms.openlocfilehash: 6695af1e27a2182321a468b853a4650f42146a15
+ms.sourcegitcommit: 12034a1190d52ca2c7d3f05c8c096416120d8392
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71311281"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037913"
 ---
 # <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-marketplace"></a>Azure Kubernetes Hizmetleri (AKS) altyapısı önkoşullarını Azure Stack Market 'e ekleme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
 
 Kullanıcılarınıza, bu makalede açıklanan öğeleri Azure Stack ekleyerek Azure Kubernetes Hizmetleri (AKS) altyapısını ayarlama olanağı sağlayabilirsiniz. Kullanıcılarınız daha sonra tek ve eşgüdümlü bir işlemde bir Kubernetes kümesi dağıtabilir. Bu makalede, AKS altyapısını hem bağlı hem de bağlantısı kesik ortamlarda kullanıcılarınız için kullanılabilir hale getirmek için gereken adımlarda adım adım gösterilmektedir. AKS altyapısı, bir hizmet asıl kimliğine ve Market 'te özel bir betik uzantısına ve AKS temel görüntüsüne bağlıdır.
 
@@ -69,10 +69,9 @@ Market 'e aşağıdaki öğeyi ekleyin:
 1. AKS altyapısının sürümüyle eşleşen görüntü sürümünü seçin. AKS temel görüntüsünün listesini, [desteklenen Kubernetes sürümlerindeki](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions)aks altyapısı sürümüne bulabilirsiniz. 
 
     Listede şunları seçin:
-    - **Yayımcı**: Microsoft-aks
+    - **Yayımcı**: Azure Kubernetes Service
     - **Teklif**: aks
-    - **Sürüm**: 2019.07.30 (veya AKS altyapısına eşlenen sürüm)
-    - **SKU**: aks-Ubuntu-1604-201907
+    - **Sürüm**: AKS Base Image 16,04-LTS Image, 2019 Eylül (2019.09.19 veya AKS altyapısıyla eşlenen sürüm)
 
 1. Indir ' i seçin **.**
 

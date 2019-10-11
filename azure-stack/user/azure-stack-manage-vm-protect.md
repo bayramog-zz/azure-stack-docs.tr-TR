@@ -16,19 +16,19 @@ ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
-ms.openlocfilehash: f633f000968fcf4f373fc502898fa18084f93f80
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: b9a7416bc73c0e36ab9986b1a280597c2d6d93a9
+ms.sourcegitcommit: 0866555e0ed240a65595052899ef1b836dd07fbc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71824299"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72257757"
 ---
 # <a name="protect-vms-deployed-on-azure-stack"></a>Azure Stack dağıtılan VM 'Leri koruma
 
 Kullanıcılarınızın Azure Stack dağıtıldığı sanal makinelerin (VM 'Ler) korunması için bir plan geliştirmeye yönelik bir kılavuz olarak bu makaleyi kullanın.
 
 
-Veri kaybına ve planlanmamış kapalı kalma süresine karşı korunmak için, kullanıcı uygulamaları ve bunların verileri için bir yedekleme kurtarma veya olağanüstü durum kurtarma planı uygulamanız gerekir. Bu plan her uygulama için benzersiz olabilir, ancak kuruluşunuzun kapsamlı iş sürekliliği ve olağanüstü durum kurtarma (BC/DR) stratejisine göre belirlenen bir çerçeveyi takip edebilir. İyi bir başlangıç noktası [Azure Stack: İş sürekliliği ve olağanüstü durum kurtarma için önemli noktalar @ no__t-0.
+Veri kaybına ve planlanmamış kapalı kalma süresine karşı korunmak için, kullanıcı uygulamaları ve bunların verileri için bir yedekleme kurtarma veya olağanüstü durum kurtarma planı uygulamanız gerekir. Bu plan her uygulama için benzersiz olabilir, ancak kuruluşunuzun kapsamlı iş sürekliliği ve olağanüstü durum kurtarma (BC/DR) stratejisine göre belirlenen bir çerçeveyi takip edebilir. İyi bir başlangıç noktası [Azure Stack: iş sürekliliği ve olağanüstü durum kurtarma Için önemli noktalar](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="azure-stack-infrastructure-recovery"></a>Azure Stack altyapı kurtarma
 
@@ -81,9 +81,9 @@ VM tabanlı uygulamalar için en yaygın koruma şeması, yedekleme yazılımın
 
 Uygulamayı kurtarmak için bir veya daha fazla VM 'nin aynı buluta veya yeni bir buluta geri yüklenmesi gerekir. Veri merkezinizde veya genel bulutta bir bulutu hedefleyebilirsiniz. Seçtiğiniz bulut tamamen denetiminizin içindedir ve veri gizliliğine ve bağımsız gereksinimlerinize göre yapılır.
 
- - RTO Saat cinsinden ölçülen kapalı kalma süresi
- - RPO Değişken veri kaybı (yedekleme sıklığına bağlı olarak)
- - Dağıtım topolojisi: Etkin/Pasif
+ - RTO: Saat cinsinden ölçülen kapalı kalma süresi
+ - RPO: değişken veri kaybı (yedekleme sıklığına bağlı olarak)
+ - Dağıtım topolojisi: etkin/Pasif
 
 #### <a name="planning-your-backup-strategy"></a>Yedekleme stratejinizi planlama
 
@@ -94,11 +94,11 @@ Azure Stack VM 'Leri yedeklemeye yönelik önemli noktalar:
  - **Kategoriye**
     - Kullanıcıların VM yedeklemesini kabul ettiği bir model düşünün.
     - Uygulamaların önceliğine veya işletmenin etkilerine bağlı olarak bir kurtarma hizmet düzeyi anlaşması (SLA) tanımlayın.
- - **Ölçeklendirme**
+ - **Ölçek**
     - Çok sayıda yeni VM oluştururken (yedekleme gerekliyse) aşamalı yedeklemeleri göz önünde bulundurun.
     - Çözümdeki kaynak içeriğini en aza indirmek için yedekleme verilerini etkili bir şekilde yakalayıp iletebilen yedekleme ürünlerini değerlendirin.
     - Ortamdaki tüm VM 'lerde tam yedeklemeler gereksinimini en aza indirmek için artımlı veya değişiklik yedeklemeleri kullanarak yedekleme verilerini verimli bir şekilde depolayan yedekleme ürünlerini değerlendirin.
- - **Geri yükleme**
+ - **Yükleyebilmek**
     - Yedekleme ürünleri sanal diskleri, var olan bir VM 'deki uygulama verilerini veya tüm VM kaynağını ve ilişkili sanal diskleri geri yükleyebilir. Gerekli geri yükleme düzeni, uygulamayı nasıl geri yüklemeyi planladığınıza bağlıdır. Örneğin, SQL Server 'ı bir şablondan yeniden dağıtmak ve ardından VM 'lerin tamamını veya VM kümesini geri yüklemek yerine veritabanlarını geri yüklemek daha kolay olabilir.
 
 ### <a name="replicationmanual-failover"></a>Çoğaltma/el ile yük devretme
@@ -109,9 +109,9 @@ Bu yaklaşımla, uygulama bir bulutta dağıtılır ve sanal makinesi diğer bul
 
 ![Çoğaltma-el ile yük devretme](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
- - RTO Dakikalar içinde ölçülen kapalı kalma süresi
- - RPO Değişken veri kaybı (çoğaltma sıklığına bağlı olarak)
- - Dağıtım topolojisi: Etkin/Pasif tek
+ - RTO: dakika cinsinden ölçülen kapalı kalma süresi
+ - RPO: değişken veri kaybı (çoğaltma sıklığına bağlı olarak)
+ - Dağıtım topolojisi: etkin/Pasif tek
  
 ### <a name="high-availabilityautomatic-failover"></a>Yüksek kullanılabilirlik/otomatik yük devretme
 
@@ -121,9 +121,9 @@ Bu yaklaşımla, uygulama bir bulutta dağıtılır ve sanal makinesi diğer bul
 
 Bu yaklaşımı kullanarak, uygulama yalnızca bir bulutta etkindir, ancak yazılım birden fazla buluta dağıtılır. Diğer bulutlar, yük devretme tetiklendiğinde uygulamayı başlatmaya hazırlanarak tek başına modundadır.
 
- - RTO Saniyeler içinde ölçülen kapalı kalma süresi
- - RPO En az veri kaybı
- - Dağıtım topolojisi: Etkin/etkin tek başına
+ - RTO: saniye cinsinden ölçülen kapalı kalma süresi
+ - RPO: en az veri kaybı
+ - Dağıtım topolojisi: etkin/etkin tek başına
 
 ### <a name="fault-tolerance"></a>Hataya dayanıklılık
 
@@ -133,16 +133,16 @@ Azure Stack fiziksel artıklığı ve altyapı hizmeti kullanılabilirliği yaln
 
 Her Azure Stack bulutun birbirinden bağımsız olduğunu unutmayın, bu nedenle bulutlar her zaman bir altyapı perspektifinden etkin kabul edilir. Bu durumda, uygulamanın birden çok etkin örneği bir veya daha fazla etkin bulutla dağıtılır.
 
- - RTO Kesinti yok
- - RPO Veri kaybı yok
- - Dağıtım topolojisi: Etkin/etkin
+ - RTO: kapalı kalma süresi yok
+ - RPO: veri kaybı yok
+ - Dağıtım topolojisi: etkin/etkin
 
 ### <a name="no-recovery"></a>Kurtarma yok
 
 Ortamınızdaki bazı uygulamaların planlanmamış kapalı kalma süresi veya veri kaybına karşı korunması gerekebilir. Örneğin, geliştirme ve test için kullanılan VM 'Lerin genellikle kurtarılması gerekmez. Bu, bir uygulama veya belirli bir VM için koruma olmadan yapmanız karardır. Azure Stack, temel altyapıdan VM 'lerin yedeklemesini veya çoğaltılmasını sunmaz. Azure 'a benzer şekilde, aboneliklerinizin her birinde her bir VM için korumayı kabul etmeniz gerekir.
 
- - RTO Ilamayabilir
- - RPO Veri kaybını Tamam
+ - RTO: kurtarılamaz
+ - RPO: veri kaybını tamamen doldurun
 
 ## <a name="recommended-topologies"></a>Önerilen topolojiler
 
@@ -156,14 +156,22 @@ Azure Stack dağıtımınız için önemli noktalar:
 | VM 'Leri ayrı bir Azure Stack örneğine çoğaltma/yük devretme | Önerilen | Yük devretme durumunda, genişletilmiş uygulama kapalı kalma süresini ortadan kaldırmak için ikinci bir Azure Stack buluta tam işlem yapmanız gerekir. |
 | VM 'Leri doğrudan Azure 'a veya güvenilir bir hizmet sağlayıcısına çoğaltma/yük devretme | Önerilen | Veri gizliliği ve yasal gereksinimlerinizi karşılayabilmeniz koşuluyla verilerinizi Global Azure 'a veya güvenilir bir hizmet sağlayıcısına çoğaltabilirsiniz. İdeal olarak, hizmet sağlayıcının yük devretmeden sonra işlemsel deneyimle tutarlı olması için Azure Stack da çalışmaktadır. |
 | Uygulama verilerinize sahip aynı Azure Stack buluta yedekleme hedefi dağıtın | Önerilmez | Yedeklemeleri aynı Azure Stack bulutu içinde saklamaktan kaçının. Bulutun planlanmamış kapalı kalma süresi, birincil verilerinize ve yedekleme verilerinize sahip olabilir. Bir yedekleme hedefini Sanal Gereç olarak dağıtmayı tercih ederseniz (yedekleme ve geri yükleme için en iyi duruma getirme amacıyla), tüm verilerin sürekli olarak bir dış yedekleme konumuna kopyalandığından emin olmanız gerekir. |
-| Fiziksel yedekleme gereçini Azure Stack çözümünün yüklendiği rafa dağıtın | Desteklenmiyor | Şu anda, diğer herhangi bir cihazı özgün çözümün parçası olmayan raf anahtarlarının en üstüne bağlanamazsınız. |
+| Fiziksel yedekleme gereçini Azure Stack çözümünün yüklendiği rafa dağıtın | Desteklenmez | Şu anda, diğer herhangi bir cihazı özgün çözümün parçası olmayan raf anahtarlarının en üstüne bağlanamazsınız. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, Azure Stack üzerinde dağıtılan Kullanıcı sanal makinelerini korumaya yönelik genel yönergeler sunulmaktadır. Kullanıcı sanal makinelerini korumak için Azure hizmetlerini kullanma hakkında daha fazla bilgi için bkz:
 
+- [İş sürekliliği ve olağanüstü durum kurtarma konuları](http://aka.ms/azurestackbcdrconsiderationswp)
+
+### <a name="azure-backup-server"></a>Azure Backup Sunucusu
  - [Azure Stack üzerinde dosya ve uygulamaları yedeklemek için Azure Backup kullanın](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
  - [Azure Stack için Azure Backup Sunucusu desteği](https://docs.microsoft.com/azure/backup/ ) 
+ 
+ ### <a name="azure-site-recovery"></a>Azure Site Recovery
  - [Azure Stack için Azure Site Recovery desteği](https://docs.microsoft.com/azure/site-recovery/)  
+ 
+ ### <a name="partner-products"></a>İş ortağı ürünleri
+ - [Azure Stack Datacenter Integration partner ekosistem veri sayfası](http://aka.ms/azurestackbcdrpartners)
 
 Azure Stack üzerinde VM koruması sunan iş ortağı ürünleri hakkında daha fazla bilgi edinmek için [Azure Stack uygulamaları ve verileri koruma](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)bölümüne bakın.

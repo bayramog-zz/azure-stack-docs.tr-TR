@@ -12,22 +12,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 10/07/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: b2b53edaba6a6cb180ae617740fd4695b1a86187
-ms.sourcegitcommit: 637018771ac016b7d428174e88d4dcb131b54959
+ms.openlocfilehash: dca5d863a046ec225b4d34c8cf5917153a3a5785
+ms.sourcegitcommit: 12034a1190d52ca2c7d3f05c8c096416120d8392
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842717"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037978"
 ---
 # <a name="network-connectivity"></a>Ağ bağlantısı
 Bu makalede, Azure Stack mevcut ağ ortamınıza en iyi şekilde tümleştirme konusunda karar vermenize yardımcı olacak Azure Stack ağ altyapısı bilgileri sağlanmaktadır. 
 
 > [!NOTE]
-> Dış DNS adlarını Azure Stack (örneğin, www\.Bing.com) çözümlemek için DNS isteklerini iletmek üzere DNS sunucuları sağlamanız gerekir. Azure Stack DNS gereksinimleri hakkında daha fazla bilgi için bkz. [Azure Stack veri merkezi tümleştirmesi-DNS](azure-stack-integrate-dns.md).
+> Dış DNS adlarını Azure Stack çözümlemek için (örneğin, www\.bing.com), DNS isteklerini iletmek için DNS sunucuları sağlamanız gerekir. Azure Stack DNS gereksinimleri hakkında daha fazla bilgi için bkz. [Azure Stack veri merkezi tümleştirmesi-DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Fiziksel ağ tasarımı
 Azure Stack çözümünün çalışmasını ve hizmetlerini desteklemek için dayanıklı ve yüksek kullanılabilirliğe sahip bir fiziksel altyapı gerekir. ToR 'dan kenarlık anahtarlarına olan bağlantılar, SFP + veya SFP28 medya, 1 GB, 10 GB veya 25 GB hızında sınırlandırılmıştır. Kullanılabilirlik için özgün ekipman üreticisi (OEM) donanım satıcınıza başvurun. Aşağıdaki diyagramda önerilen tasarım sunulmaktadır:
@@ -55,7 +55,7 @@ Azure Stack ağ altyapısı, anahtarlar üzerinde yapılandırılmış çeşitli
 ![Mantıksal ağ diyagramı ve anahtar bağlantıları](media/azure-stack-network/NetworkDiagram.png)
 
 ### <a name="bmc-network"></a>BMC ağı
-Bu ağ, tüm temel kart yönetim denetleyicilerini (hizmet işlemcileri olarak da bilinir) (örneğin, Idrac, ILO, iBMC vb.) yönetim ağına bağlamak için ayrılmıştır. Varsa, donanım yaşam döngüsü Konağı (HLH) bu ağda bulunur ve donanım bakımı veya izleme için OEM 'e özgü yazılım sağlayabilir. 
+Bu ağ, tüm temel kart yönetim denetleyicilerini (hizmet işlemcileri olarak da bilinir) (örneğin, Idrac, ILO, iBMC vb.) yönetim ağına bağlamak için ayrılmıştır. Herhangi bir BMC düğümüyle iletişim kurmak için yalnızca bir BMC hesabı kullanılır. Varsa, donanım yaşam döngüsü Konağı (HLH) bu ağda bulunur ve donanım bakımı veya izleme için OEM 'e özgü yazılım sağlayabilir. 
 
 HLH Ayrıca dağıtım sanal makinesini (DVD) barındırır. DVD Azure Stack dağıtım sırasında kullanılır ve dağıtım tamamlandığında kaldırılır. DVı 'nin birden çok bileşeni test etmek, doğrulamak ve erişmek için bağlı dağıtım senaryolarında internet erişimi olması gerekir. Bu bileşenler, şirket ağınızın içinde ve dışında olabilir; Örneğin, NTP, DNS ve Azure. Bağlantı gereksinimleri hakkında daha fazla bilgi için, [Azure Stack güvenlik duvarı tümleştirmesinde NAT bölümüne](azure-stack-firewall.md#network-address-translation)bakın. 
 

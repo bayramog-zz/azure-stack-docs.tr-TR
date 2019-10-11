@@ -123,6 +123,8 @@
       items:
         - name: Yönetim temel bilgileri
           href: azure-stack-manage-basics.md
+        - name: İşlemler denetim listesi
+          href: azure-stack-operations-checklist.md
         - name: Portaldan Kullanıcı verilerini temizle
           href: azure-stack-portal-clear.md
         - name: Telemetri koleksiyonunu yapılandırma
@@ -314,7 +316,7 @@
           href: app-service-billing-faq.md
         - name: Başlamadan önce
           href: azure-stack-app-service-before-you-get-started.md
-        - name: App Service Dağıtma
+        - name: App Service dağıt
           href: azure-stack-app-service-deploy.md
         - name: Yüksek kullanılabilirlik için App Service dağıtma
           href: app-service-deploy-ha.md

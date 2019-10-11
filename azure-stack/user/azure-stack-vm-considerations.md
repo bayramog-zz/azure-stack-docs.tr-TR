@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/16/2019
+ms.date: 10/09/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 07/16/2019
-ms.openlocfilehash: b0ced01686247953e3cb1849305d664d844da949
-ms.sourcegitcommit: c2690b2dd36918ff3e47e359cac926128bb83101
+ms.lastreviewed: 10/09/2019
+ms.openlocfilehash: ea117df9b763d33fee59b6a7f8f951b8d81cc6e7
+ms.sourcegitcommit: 03f5932da0147f78e986dcc3da610db54f195bd7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68544109"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72252497"
 ---
 # <a name="azure-stack-vm-features"></a>Azure Stack VM özellikleri
 
@@ -41,10 +41,10 @@ Azure Stack sanal makineler (VM 'Ler) isteğe bağlı, ölçeklenebilir bilgi i�
 | Sanal makine disk performansı | Disk türüne ve boyutuna bağlıdır. | , Disklerin eklendiği VM 'nin VM boyutuna bağlıdır. Daha fazla bilgi için [Azure Stack makalesinde desteklenen VM boyutlarına](azure-stack-vm-sizes.md) bakın.
 | API sürümleri | Azure her zaman tüm VM özellikleri için en son API sürümlerine sahiptir. | Azure Stack, bu hizmetlere yönelik belirli Azure hizmetlerini ve belirli API sürümlerini destekler. Desteklenen API sürümlerinin listesini görüntülemek için, bu makalenin [API sürümleri](#api-versions) bölümüne bakın. |
 | Azure Instance Metadata Service | Azure Instance Metadata Service, VM 'nizi yönetmek ve ayarlamak için kullanılabilen sanal makine örnekleri hakkında bilgi sağlar.  | Azure Instance Metadata Service Azure Stack desteklenmez. |
-| Sanal makine kullanılabilirlik kümeleri|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Birden çok güncelleştirme etki alanı.|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Güncelleştirme sırasında iş yüklerini korumak için dinamik geçiş ile tek bir güncelleştirme etki alanı. Şablon uyumluluğu için desteklenen 20 güncelleştirme etki alanı|
-| Sanal makine ölçek kümeleri|Otomatik ölçeklendirme destekleniyor.|Otomatik ölçeklendirme desteklenmiyor.<br><br>Portal, Kaynak Yöneticisi şablonları veya PowerShell 'i kullanarak bir ölçek kümesine daha fazla örnek ekleyin. |
+| Sanal makine kullanılabilirlik kümeleri|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Birden çok güncelleştirme etki alanı.|Birden çok hata etki alanı (bölge başına 2 veya 3).<br>Güncelleştirme sırasında iş yüklerini korumak için dinamik geçiş ile tek bir güncelleştirme etki alanı. Şablon uyumluluğu için desteklenen 20 güncelleştirme etki alanı.<br>VM ve kullanılabilirlik kümesi aynı konum ve kaynak grubunda olmalıdır.|
+| Sanal Makine Ölçek Kümeleri|Otomatik ölçeklendirme destekleniyor.|Otomatik ölçeklendirme desteklenmiyor.<br><br>Portal, Kaynak Yöneticisi şablonları veya PowerShell 'i kullanarak bir ölçek kümesine daha fazla örnek ekleyin. |
 | Bulut tanığı | Azure Stack bulunan depolama hesabı özelliklerindeki uç noktaları seçin. | [Bulut tanığı](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) , küme çekirdeği üzerinde oy sağlamak için Microsoft Azure kullanan bir yük devretme kümesi çekirdek tanığı türüdür.<br>Genel Azure 'daki Azure Stack ile karşılaştırıldığında uç noktalar şu şekilde görünebilir:<br>Küresel Azure için:<br>`https://mywitness.blob.core.windows.net/`<br>Azure Stack için:<br>`https://mywitness.blob.<region>.<FQDN>/`|
-| Sanal makine tanılama | Linux VM tanılaması desteklenir. | Linux VM tanılaması Azure Stack desteklenmez. VM tanılaması etkin bir Linux sanal makinesi dağıttığınızda, dağıtım başarısız olur. Tanılama ayarları aracılığıyla Linux VM temel ölçümleri etkinleştirirseniz, ayrıca dağıtım başarısız olur. |
+| Sanal makine tanılama | Linux VM tanılaması desteklenir. | Linux VM tanılaması Azure Stack desteklenmez. VM tanılama etkin olan bir Linux VM dağıtırken dağıtım başarısız olur. Ayrıca, Tanılama ayarları aracılığıyla Linux VM temel ölçümlerini etkinleştirirseniz dağıtım da başarısız olur. |
 
 ## <a name="vm-sizes"></a>VM boyutları
 
@@ -56,22 +56,22 @@ Azure Stack kaynakların (sunucu yerel ve hizmet düzeyi) kullanımını önleme
 
 Aşağıdaki tabloda, Azure Stack üzerinde desteklenen VM 'Ler, yapılandırmasıyla birlikte listelenmektedir:
 
-| Type            | Size          | Desteklenen boyut aralığı |
+| Tür            | Boyut          | Desteklenen boyut aralığı |
 | ----------------| ------------- | ------------------------ |
 |Genel amaçlı  |Temel A        |[A0-A4](azure-stack-vm-sizes.md#basic-a)                   |
 |Genel amaçlı  |Standart A     |[A0-A7](azure-stack-vm-sizes.md#standard-a)              |
-|Genel amaçlı  |Av2 Serisi     |[A1_v2 - A8m_v2](azure-stack-vm-sizes.md#av2-series)     |
-|Genel amaçlı  |D Serisi       |[D1-D4](azure-stack-vm-sizes.md#d-series)              |
-|Genel amaçlı  |Dv2 Serisi     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
+|Genel amaçlı  |AV2 serisi     |[A1_v2 - A8m_v2](azure-stack-vm-sizes.md#av2-series)     |
+|Genel amaçlı  |D serisi       |[D1-D4](azure-stack-vm-sizes.md#d-series)              |
+|Genel amaçlı  |Dv2 serisi     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
 |Genel amaçlı  |DS serisi      |[DS1-DS4](azure-stack-vm-sizes.md#dv2-series)            |
 |Genel amaçlı  |DSv2 serisi    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
-|Bellek için iyileştirilmiş |D Serisi       |[D11-D14](azure-stack-vm-sizes.md#mo-d)            |
+|Bellek için iyileştirilmiş |D serisi       |[D11-D14](azure-stack-vm-sizes.md#mo-d)            |
 |Bellek için iyileştirilmiş |DS serisi      |[DS11-DS14](azure-stack-vm-sizes.md#mo-ds)|
-|Bellek için iyileştirilmiş |Dv2 Serisi     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
+|Bellek için iyileştirilmiş |Dv2 serisi     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Bellek için iyileştirilmiş |DSv2 serisi    |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
-|İşlem için iyileştirilmiş|F Serisi       |[F1-F16](azure-stack-vm-sizes.md#f-series)    |
-|İşlem için iyileştirilmiş|Fs serisi      |[F1s-F16s](azure-stack-vm-sizes.md#fs-series)    |
-|İşlem için iyileştirilmiş|Fsv2-serisi    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#fsv2-series)    |
+|İşlem için iyileştirilmiş|F serisi       |[F1-F16](azure-stack-vm-sizes.md#f-series)    |
+|İşlem için iyileştirilmiş|FS Serisi      |[F1s-F16s](azure-stack-vm-sizes.md#fs-series)    |
+|İşlem için iyileştirilmiş|Fsv2 serisi    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#fsv2-series)    |
 
 VM boyutları ve ilişkili kaynak miktarları Azure Stack ile Azure arasında tutarlıdır. Bu tutarlılık bellek miktarını, çekirdek sayısını ve oluşturulabilecek veri disklerinin sayısını/boyutunu içerir. Ancak, aynı boyuta sahip sanal makinelerin performansı, belirli bir Azure Stack ortamının temel özelliklerine bağlıdır.
 

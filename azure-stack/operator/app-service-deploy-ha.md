@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 10/07/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 77ec512f5e2996aaec53ef77c000d0334bda456a
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: 0bf89b0f80557f99c83fb5ad6afd0c4a5dcd3849
+ms.sourcegitcommit: dfaf0126bc9975ca1643d55f06c71df9e32ea976
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70975224"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165018"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Yüksek oranda kullanılabilir bir yapılandırmada App Service dağıtma
 
@@ -56,16 +56,16 @@ Bu şablonu kullanmadan önce, aşağıdaki [Azure Stack Market öğelerinin](az
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. Kaynak **\+** oluşturÖzel'iseçinveardındanşablondağıtımı. > 
+2. **@No__t-1** ' i seçin  > **özel** **oluştur**' u ve ardından **şablon dağıtımı**.
 
    ![Özel şablon dağıtımı](media/app-service-deploy-ha/1.png)
 
 
-3. **Özel dağıtım** dikey penceresinde, **şablon** > **hızlı başlangıç şablonu** Düzenle ' yi seçin ve ardından, kullanılabilir özel şablonların açılan listesini kullanarak **appservice-FileShare-SqlServer-ha** şablonunu seçin. **Tamam**' a ve ardından **Kaydet**' e tıklayın.
+3. **Özel dağıtım** dikey penceresinde, **Şablonu Düzenle** > **hızlı başlangıç şablonu** ' nu seçin ve ardından, kullanılabilir özel şablonların açılan listesini kullanarak **appservice-FileShare-SqlServer-ha** şablonunu seçin. **Tamam**' a ve ardından **Kaydet**' e tıklayın.
 
    ![Appservice-FileShare-SqlServer-ha hızlı başlangıç şablonunu seçin](media/app-service-deploy-ha/2.png)
 
-4. **Özel dağıtım** dikey penceresinde **parametreleri Düzenle** ' yi seçin ve varsayılan şablon değerlerini gözden geçirmek için aşağı kaydırın. Tüm gerekli parametre bilgilerini sağlamak için bu değerleri gereken şekilde değiştirin ve ardından **Tamam**' a tıklayın.<br><br> En azından,,, ve `ADMINPASSWORD` `FILESHAREUSERPASSWORD` `SQLSERVERSERVICEACCOUNTPASSWORD` `FILESHAREOWNERPASSWORD`parametreleriiçinkarmaşık parolalarsağlayın`SQLLOGINPASSWORD` .
+4. **Özel dağıtım** dikey penceresinde **parametreleri Düzenle** ' yi seçin ve varsayılan şablon değerlerini gözden geçirmek için aşağı kaydırın. Tüm gerekli parametre bilgilerini sağlamak için bu değerleri gereken şekilde değiştirin ve ardından **Tamam**' a tıklayın.<br><br> En azından, `ADMINPASSWORD`, `FILESHAREOWNERPASSWORD`, `FILESHAREUSERPASSWORD`, `SQLSERVERSERVICEACCOUNTPASSWORD` ve `SQLLOGINPASSWORD` parametreleri için karmaşık parolalar sağlayın.
     
    ![Özel dağıtım parametrelerini Düzenle](media/app-service-deploy-ha/3.png)
 
@@ -198,7 +198,7 @@ App Service kaynak sağlayıcısını dağıtmak için şu adımları izleyin:
 
     ![App Service bağlantı bilgilerini SQL Server](media/app-service-deploy-ha/10.png)
 
-13. App Service yüklemek için kullanılan makine, App Service veritabanlarını barındırmak için kullanılan SQL Server ile aynı VNet üzerinde bulunmadığından, adı gidereyükleyemezsiniz.  **Bu beklenen davranıştır**.<br><br>SQL Server adı ve hesap bilgileri için girilen bilgilerinizin doğru olduğundan emin olun ve App Service yüklemeye devam etmek için **Evet** ' e basın. **İleri**'ye tıklayın.
+13. App Service yüklemek için kullanılan makine, App Service veritabanlarını barındırmak için kullanılan SQL Server ile aynı VNet üzerinde bulunmadığından, adı gidereyükleyemezsiniz.  **Bu beklenen davranıştır**.<br><br>SQL Server adı ve hesap bilgileri için girilen bilgilerinizin doğru olduğundan emin olun ve App Service yüklemeye devam etmek için **Evet** ' e basın. **İleri**’ye tıklayın.
 
     ![App Service bağlantı bilgilerini SQL Server](media/app-service-deploy-ha/11.png)
 
@@ -207,9 +207,9 @@ App Service kaynak sağlayıcısını dağıtmak için şu adımları izleyin:
     |Role|Varsayılan|Yüksek oranda kullanılabilir öneri|
     |-----|-----|-----|
     |Denetleyici rolü|2|2|
-    |Yönetim Rolü|1\.|3|
+    |Yönetim rolü|1\.|3|
     |Yayımcı rolü|1\.|3|
-    |FrontEnd Rolü|1\.|3|
+    |Ön uç rolü|1\.|3|
     |Paylaşılan çalışan rolü|1\.|10|
     |     |     |     |
 
@@ -236,7 +236,7 @@ App Service kaynak sağlayıcısını dağıtmak için şu adımları izleyin:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir SQL Always on örneğiyle App Service kaynak sağlayıcısı sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleyin](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) . Veritabanı yük devretmesi durumunda herhangi bir hizmet kaybını engellemek için veritabanlarını eşitler.
+Bir SQL Always on örneğiyle App Service kaynak sağlayıcısı sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna ekleyin](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) . Veritabanı yük devretmesi durumunda herhangi bir hizmet kaybını engellemek için veritabanlarını eşitler. Ayrıca, özgün birincil sunucudan bir yük devretme sunucusuna AppServices oturumlarını içeri aktarmak için bir [komut dosyası](https://blog.sqlauthority.com/2017/11/30/sql-server-alwayson-availability-groups-script-sync-logins-replicas/) çalıştırabilirsiniz.
 
 [Ölçeği genişletme App Service](azure-stack-app-service-add-worker-roles.md). Ortamınızdaki beklenen uygulama taleplerini karşılamak için ek App Service altyapı rolü çalışanları eklemeniz gerekebilir. Varsayılan olarak, Azure Stack App Service ücretsiz ve paylaşılan çalışan katmanlarını destekler. Diğer çalışan katmanlarını eklemek için daha fazla çalışan rolü eklemeniz gerekir.
 

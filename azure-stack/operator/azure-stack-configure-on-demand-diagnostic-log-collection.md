@@ -12,24 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 10/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/31/2019
-ms.openlocfilehash: 9d8510c121c424c3c66fd179639256e8834e932e
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.lastreviewed: 10/08/2019
+ms.openlocfilehash: fd56e7aa7805614829985a2e083d228d1960b402
+ms.sourcegitcommit: 534117888d9b7d6d363ebe906a10dcf0acf8b685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829070"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173059"
 ---
 # <a name="collect-azure-stack-diagnostic-logs-on-demand"></a>İsteğe bağlı Azure Stack tanılama günlüklerini toplayın
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Sorun giderme kapsamında, Microsoft Müşteri Destek Hizmetleri (CSS) tanılama günlüklerini analiz etmeniz gerekebilir. Azure Stack işleçleri, 1907 sürümünden itibaren, **Yardım ve destek**kullanarak Azure 'daki bir blob kapsayıcısına isteğe bağlı tanılama günlüklerini karşıya yükleyebilir. Portal kullanılamıyorsa alternatif olarak, işleçler ayrıcalıklı uç nokta (PEP) aracılığıyla get-AzureStackLog komutunu kullanarak günlük toplayabilirler. Bu konu, istek üzerine tanılama günlükleri toplamanın her iki yolunu da içerir.
+Sorun giderme kapsamında, Microsoft Müşteri Destek Hizmetleri (CSS) tanılama günlüklerini analiz etmeniz gerekebilir. Azure Stack işleçleri, 1907 sürümünden itibaren, **Yardım ve destek**kullanarak Azure 'daki bir blob kapsayıcısına isteğe bağlı tanılama günlüklerini karşıya yükleyebilir. Portal kullanılamıyorsa, işleçler ayrıcalıklı uç nokta (PEP) aracılığıyla get-AzureStackLog kullanarak günlükleri toplayabilir. Bu konu, istek üzerine tanılama günlükleri toplamanın her iki yolunu da içerir.
 
-## <a name="use-help-and-support-to-collect-diagnostic-logs"></a>Tanılama günlüklerini toplamak için yardım ve destek kullanın
+>[!Note]
+>Günlükleri isteğe bağlı olarak toplamaya alternatif olarak, [otomatik tanılama günlük toplamayı](azure-stack-configure-automatic-diagnostic-log-collection.md)etkinleştirerek sorun giderme sürecini kolaylaştırabilirsiniz. Sistem durumu koşullarının araştırılması gerekiyorsa, Günlükler CSS tarafından analiz edilmek üzere otomatik olarak yüklenir. 
+
+## <a name="use-help-and-support-to-collect-diagnostic-logs-on-demand"></a>İsteğe bağlı tanılama günlüklerini toplamak için yardım ve destek kullanın
 
 Bir sorunu gidermek için CSS, önceki haftadan belirli bir zaman penceresi için isteğe bağlı olarak tanılama günlüklerini toplamak üzere bir Azure Stack işleci isteyebilir. Bu durumda, CSS koleksiyonu karşıya yüklemek için bir SAS URL 'SI ile işleci sağlar. CSS 'den SAS URL 'sini kullanarak isteğe bağlı günlük toplamayı yapılandırmak için aşağıdaki adımları kullanın:
 
@@ -99,7 +102,7 @@ if ($session) {
 
 #### <a name="run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Azure Stack Geliştirme Seti (ASDK) sisteminde Get-AzureStackLog komutunu çalıştırma
 
-Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adımları kullanın.
+Bir ASDK ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adımları kullanın.
 
 1. ASDK ana bilgisayarında **AzureStack\CloudAdmin** olarak oturum açın.
 2. Yönetici olarak yeni bir PowerShell penceresi açın.
@@ -137,7 +140,7 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
   Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
   ```
 
-  Örneğin:
+  Örnek:
 
   ```powershell
   Get-AzureStackLog -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS token>"
@@ -161,7 +164,7 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
   6. Yeni kapsayıcıyı sağ tıklatın ve ardından **paylaşılan erişim Imzasını al**' ı tıklatın.
   7. Gereksinimlerinize bağlı olarak geçerli bir **Başlangıç saati** ve **bitiş saati**seçin.
   8. Gerekli izinler için **Oku**, **yaz**ve **Listele**' yi seçin.
-  9. **Oluştur**’u seçin.
+  9. **Oluştur**'u seçin.
   10. Paylaşılan erişim Imzası alacaksınız. URL bölümünü kopyalayın ve `-OutputSasUri` parametresine sağlayın.
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Hem ASDK hem de tümleşik sistemler için parametre konuları
@@ -170,13 +173,13 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
 
 * **FromDate** ve **ToDate** parametreleri belirli bir zaman aralığı için günlükleri toplamak üzere kullanılabilir. Bu parametreler belirtilmezse, günlükler varsayılan olarak son dört saat için toplanır.
 
-* Günlükleri bilgisayar adına göre filtrelemek için **FilterByNode** parametresini kullanın. Örneğin:
+* Günlükleri bilgisayar adına göre filtrelemek için **FilterByNode** parametresini kullanın. Örnek:
 
     ```powershell
     Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByNode azs-xrp01
     ```
 
-* Günlükleri türe göre filtrelemek için **FilterByLogType** parametresini kullanın. Dosya, paylaşma veya WindowsEvent göre filtrelemeyi seçebilirsiniz. Örneğin:
+* Günlükleri türe göre filtrelemek için **FilterByLogType** parametresini kullanın. Dosya, paylaşma veya WindowsEvent göre filtrelemeyi seçebilirsiniz. Örnek:
 
     ```powershell
     Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByLogType File
@@ -188,23 +191,23 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
 
   |   |   |   |    |     |
   | - | - | - | -  |  -  |
-  |ACS                   |Sertifika Yetkilisi (CA)                             |HRP                            |OboService                |VirtualMachines|
-  |ACSBlob               |CacheService                   |IBC                            |OEM                       |BULUNAMADI            |
+  |ACS                   |CA                             |HRP                            |OboService                |VirtualMachines|
+  |ACSBlob               |CacheService                   |IBC                            |$                       |BULUNAMADı            |
   |ACSDownloadService    |İşlem                        |InfraServiceController         |OnboardRP                 |WASPUBLIK|
   |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE                       |         |
-  |ACSFrontEnd           |CRP                            |Keyvaultcontroldüzlemi           |QueryServiceCoordinator   |         | 
+  |Acsön uç           |CRP                            |Keyvaultcontroldüzlemi           |QueryServiceCoordinator   |         | 
   |Acsölçümler            |DeploymentMachine              |Keyvaultdatadüzlemi              |QueryServiceWorker        |         |
   |ACSMigrationService   |DiskRP                         |Keyvaultınternalcontroldüzlemi   |SeedRing                  |         |
-  |ACSMonitoringService  |Etki Alanı                         |Keyvaultınternaldatadüzlemi      |SeedRingServices          |         |
+  |ACSMonitoringService  |Domain                         |Keyvaultınternaldatadüzlemi      |SeedRingServices          |         |
   |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB                       |         |
   |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL                       |         |
-  |ACSTableServer        |EventRP                        |MetricsAdminRP                 |'DE                       |         |
+  |ACSTableServer        |EventRP                        |MetricsAdminRP                 |'De                       |         |
   |ACSWac                |ExternalDNS                    |MetricsRP                      |Depolama                   |         |
   |ADFS                  |FabricRing                     |MetricsServer                  |StorageController         |         |
   |ApplicationController |FabricRingServices             |MetricsStoreService            |URP                       |         |
   |Aşama Ppgateway          |FirstTierAggregationService    |MonAdminRP                     |Supportköprücontroller   |         |
   |AzureBridge           |FRP                            |MonRP                          |Destektring               |         |
-  |AzureMonitor          |Ağ geçidi                        |KSK                             |SupportRingServices       |         |
+  |AzureMonitor          |Ağ Geçidi                        |KSK                             |SupportRingServices       |         |
   |BareMetal             |'De               |NonPrivilegedAppGateway        |SupportBridgeRP           |         |
   |BRP                   |HintingServiceV2               |NRP                            |UsageBridge               |         |
   |   |   |   |    |     | 
@@ -214,7 +217,7 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
 * Komutun hangi rol (ler) topladıkları role göre çalıştırılması biraz zaman alır. Ayrıca, katkıda bulunan faktörler günlük toplama için belirtilen süre ve Azure Stack ortamındaki düğümlerin sayısı da dahil değildir.
 * Günlük koleksiyonu çalışırken, komutta belirtilen **Outputsharepath** parametresinde oluşturulan yeni klasörü kontrol edin.
 * Her rolün günlüğü ayrı ZIP dosyaları içinde vardır. Toplanan günlüklerin boyutuna bağlı olarak, bir rolün günlükleri birden çok ZIP dosyasına bölünmüş olabilir. Bu tür bir rol için, tüm günlük dosyalarını tek bir klasöre sıkıştırdıysanız, toplu olarak sıkıştırılmış bir araç kullanın. Rolün tüm daraltılmış dosyalarını seçin ve **buradan Ayıkla**' yı seçin. Bu rolün tüm günlük dosyaları, tek bir birleştirilmiş klasöre sıkıştırilmez.
-* **Get-AzureStackLog_Output. log** adlı bir dosya, daraltılmış günlük dosyalarını içeren klasörde da oluşturulur. Bu dosya, günlük toplama sırasında sorun giderme için kullanılabilen komut çıkışının bir günlüğü. Günlük toplama çalıştıktan sonra beklenen `PS>TerminatingError` günlük dosyaları eksik olmadığı takdirde, günlük dosyası bazen güvenle yoksayılabilir olan girişleri içerir.
+* **Get-AzureStackLog_Output. log** adlı bir dosya, daraltılmış günlük dosyalarını içeren klasörde da oluşturulur. Bu dosya, günlük toplama sırasında sorun giderme için kullanılabilen komut çıkışının bir günlüğü. Bazen günlük dosyası, günlük toplama çalıştırıldıktan sonra beklenen günlük dosyaları eksik olmadığı takdirde, güvenli bir şekilde Yoksayılmış `PS>TerminatingError` girdilerini içerir.
 * Belirli bir sorunu araştırmak için, birden fazla bileşenden günlük gerekebilir.
 
   * Tüm altyapı VM 'Leri için sistem ve olay günlükleri **Virtualmachines** rolünde toplanır.
@@ -229,12 +232,12 @@ Bir asdk ana bilgisayarında `Get-AzureStackLog` çalıştırmak için bu adıml
 
 Belirli roller için isteğe bağlı Günlükler oluşturmak üzere **Invoke-Azurestackondıonlog** cmdlet 'ini kullanabilirsiniz (Bu bölümün sonundaki listeye bakın). Bu cmdlet tarafından oluşturulan Günlükler, **Get-AzureStackLog** cmdlet 'ini çalıştırdığınızda aldığınız günlük grubundaki varsayılan olarak yoktur. Ayrıca, bu günlükleri yalnızca Microsoft destek ekibi tarafından istenerek toplamanız önerilir.
 
-Şu anda, aşağıdaki rollere sahip `-FilterByRole` günlük toplamayı filtrelemek için parametresini kullanabilirsiniz:
+Şu anda, aşağıdaki rollere göre günlük toplamayı filtrelemek için `-FilterByRole` parametresini kullanabilirsiniz:
 
-* OEM
+* $
 * KSK
 * SLB
-* Ağ geçidi
+* Ağ Geçidi
 
 #### <a name="example-of-collecting-on-demand-diagnostic-logs"></a>İsteğe bağlı tanılama günlüklerini toplama örneği
 

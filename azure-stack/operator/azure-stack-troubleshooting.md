@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 10/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/30/2019
-ms.openlocfilehash: 7e2f13fa20c9aafd90abe34277c907a4d12b4d81
-ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
+ms.lastreviewed: 10/08/2019
+ms.openlocfilehash: b3540727b1868c700e43e2865848a71635e8003d
+ms.sourcegitcommit: 534117888d9b7d6d363ebe906a10dcf0acf8b685
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72019449"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173112"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
@@ -47,17 +47,17 @@ Bu bölümler, Microsoft Müşteri Destek Hizmetleri 'ne (CSS) gönderilen genel
 * [Azure Stack üzerinde desteklenen konuk işletim sistemleri](azure-stack-supported-os.md)
 * [Azure Stack desteklenen VM boyutları](../user/azure-stack-vm-sizes.md)
 
-### <a name="azure-marketplace"></a>Azure Market
+### <a name="azure-marketplace"></a>Azure Marketi
 
 * [Azure Stack için kullanılabilen Azure Market öğeleri](azure-stack-marketplace-azure-items.md)
 
 ### <a name="manage-capacity"></a>Kapasiteyi yönetme
 
-#### <a name="memory"></a>Bellek
+#### <a name="memory"></a>Hafıza
 
 Azure Stack'te kullanılabilir toplam bellek kapasitesini artırmak için bellek ekleyebilirsiniz. Azure Stack'te fiziksel sunucunuz ölçek birimi düğümü olarak da adlandırılır. Tek bir ölçek biriminin üyesi olan tüm ölçek birimi düğümlerinin [bellek miktarı aynı olmalıdır](azure-stack-manage-storage-physical-memory-capacity.md).
 
-#### <a name="retention-period"></a>Bekletme süresi
+#### <a name="retention-period"></a>Bekletme dönemi
 
 Saklama süresi ayarı bulut operatörünün silinen hesaplar için olası kurtarma süresi olarak gün cinsinden bir süre (0 ile 9999 gün arası) belirtmesine olanak tanır. Varsayılan saklama süresi **0** gün olarak ayarlanır. Değerin **0** olarak ayarlanması, silinen her hesabın hemen bekletme dışı ve düzenli çöp toplama için işaretlenme anlamına gelir.
 
@@ -73,9 +73,9 @@ Azure Stack'teki kullanıcılar her abonelik, kaynak grubu veya hizmet örneği 
 
 Azure kaynaklarına yönelik yerleşik roller kuruluşunuzun ihtiyaçlarını karşılamıyorsa kendi özel rollerinizi oluşturabilirsiniz. Bu öğretici için Azure PowerShell'i kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız.
 
-* [Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel rol oluşturma](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell)
+* [Öğretici: Azure PowerShell kullanarak Azure kaynakları için özel bir rol oluşturma](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell)
 
-### <a name="manage-usage-and-billing-as-a-csp"></a>Kullanımını yönetmenize ve CSP olarak faturalama
+### <a name="manage-usage-and-billing-as-a-csp"></a>CSP olarak kullanım ve faturalamayı yönetme
 
 * [CSP olarak kullanım ve faturalamayı yönetme](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
 * [CSP veya APSS aboneliği oluşturma](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
@@ -85,6 +85,17 @@ Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü
 * Bulut Çözümü Sağlayıcısı
 * İş Ortağı Paylaşılan Hizmetler aboneliği
 
+## <a name="get-scale-unit-metrics"></a>Ölçek birimi ölçümlerini al
+
+PowerShell 'i kullanarak damga kullanım bilgilerini CSS 'den yardım etmeden alabilirsiniz. Damga kullanımını almak için: 
+
+1. PEP oturumu oluşturma
+2. Test-azurestack Çalıştır
+3. PEP oturumundan çık
+4. Invoke komutu çağrısı kullanarak Get-azurestacklog-filterbyrole seedring komutunu çalıştırın
+5. Seedring. zip dosyasını ayıklayın ve test-azurestack komutunu çalıştırdığınız ERCS klasöründen doğrulama raporunu elde edebilirsiniz
+
+Daha fazla bilgi için bkz. [tanılama Azure Stack](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems).
 
 ## <a name="troubleshoot-deployment"></a>Dağıtım sorunlarını giderme 
 ### <a name="general-deployment-failure"></a>Genel dağıtım hatası

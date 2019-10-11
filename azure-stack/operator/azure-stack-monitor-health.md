@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 10/2/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 00f4a9c0aaaf52ed08706e9024059d7b24268290
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: 1747be1c97a706aae5d49889949fd0b0f9a70da3
+ms.sourcegitcommit: dfaf0126bc9975ca1643d55f06c71df9e32ea976
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829467"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72164956"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack durumu ve Uyarıları izleme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
 
 Azure Stack, bir Azure Stack bölgesinin sistem durumunu ve uyarılarını görüntülemenize yardımcı olan altyapı izleme özelliklerini içerir. Varsayılan sağlayıcı aboneliği için yönetici portalında varsayılan olarak sabitlenmiş **Bölge yönetimi** kutucuğu, Azure Stack dağıtılan tüm bölgeleri listeler. Kutucuk, her bölge için etkin kritik ve uyarı uyarılarının sayısını gösterir. Kutucuk, giriş noktanğunuz Azure Stack sistem durumu ve uyarı işlevselliğine sahiptir.
 
@@ -67,6 +67,9 @@ Her bir Azure Stack bölgesi için etkin uyarıların listesi doğrudan **Bölge
 **Uyarılar** kutucuğunun üst kısmını seçerek bölge için tüm etkin uyarıların listesine gidebilirsiniz. Kutucuğun içinde **kritik** veya **Uyarı** satırı öğesini seçerseniz filtrelenmiş bir uyarı listesine (kritik veya uyarı) gidebilirsiniz. 
 
 **Uyarılar** dikey penceresi hem durum durumunda (etkin veya kapalı) hem de önem derecesine (kritik veya uyarı) göre filtreleme özelliğini destekler. Varsayılan görünüm tüm etkin uyarıları görüntüler. Tüm kapatılan uyarılar, yedi gün sonra sistemden kaldırılır.
+
+>[!Note]
+>Bir uyarı etkin kalırsa ancak bir gün içinde güncelleştirilmemiş ise, [Test-AzureStack](azure-stack-diagnostic-test.md) ' i çalıştırabilir ve herhangi bir sorun bildirilmemişse uyarıyı kapatabilirsiniz.
 
 ![Kritik veya uyarı durumuna göre filtrelemek için filtre bölmesi](media/azure-stack-monitor-health/alert-view.png)
 

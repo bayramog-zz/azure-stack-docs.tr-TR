@@ -17,12 +17,12 @@ ms.date: 06/04/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: f47278fed9cd9e93024d37a0a433388594bbd124
-ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
+ms.openlocfilehash: e6e09dffa6682a615c01e6fee841a5d736054546
+ms.sourcegitcommit: dfaf0126bc9975ca1643d55f06c71df9e32ea976
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71319164"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72164990"
 ---
 # <a name="tutorial-create-and-test-a-subscription-in-azure-stack"></a>Öğretici: Azure Stack abonelik oluşturma ve test etme
 
@@ -45,7 +45,7 @@ Bir teklife Kullanıcı olarak abone olmak için, Azure Stack işleci tarafında
 
 1. Kullanıcı portalında oturum açın ve **abonelik al**' ı seçin.
 
-   ![Abonelik edinin](media/azure-stack-subscribe-services/get-subscription.png)
+   ![Abonelik al](media/azure-stack-subscribe-services/get-subscription.png)
 
 2. **Görünen Ad** alanına aboneliğiniz için bir ad yazın. Teklif **Seç** bölümünde mevcut tekliflerden birini seçmek için **teklif** ' i seçin. Ardından **Oluştur**’u seçin.
 
@@ -60,14 +60,14 @@ Bir teklife Kullanıcı olarak abone olmak için, Azure Stack işleci tarafında
 
 ## <a name="test-the-offer"></a>Teklifi test etme
 
-Kullanıcı portalında oturum açana sırada, yeni abonelik yeteneklerini kullanarak bir (VM) sağlayarak teklifi test edin.
+Kullanıcı portalında oturum açana sırada, yeni abonelik yeteneklerini kullanarak bir VM sağlayarak teklifi test edin.
 
 > [!NOTE]
 > Bu test, öncelikle Azure Stack Market 'e bir Windows Server 2016 Datacenter VM 'nin eklenmesini gerektirir.
 
 1. Kullanıcı portalında oturum açın.
 
-2. Kullanıcı portalında, **sanal makineler**' i seçin, sonra **Windows Server 2016 Datacenter**' u ve ardından **Oluştur**' u seçin.
+2. Kullanıcı portalında, **sanal makineler**' i seçin, sonra **Windows Server 2016 Datacenter** **' u**ve ardından **Oluştur**' u seçin.
 
 3. **Temel bilgiler** bölümünde bir **ad**, **Kullanıcı adı**ve **parola**yazıp bir **abonelik**seçin, bir **kaynak grubu** oluşturun (veya mevcut bir tane seçin) ve ardından **Tamam**' ı seçin.
 
