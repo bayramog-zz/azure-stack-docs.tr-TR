@@ -11,16 +11,16 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 06/20/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: 37ffb494ab6ae124c6a0eb460da4569f660cd283
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: 187fe88ad304804462cc4461b24eb10a7af7a299
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159366"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277740"
 ---
 # <a name="deploy-a-staged-data-analytics-solution-to-azure-stack"></a>Azure Stack için hazırlanmış bir veri analizi çözümü dağıtın
 
@@ -37,8 +37,8 @@ Bu çözümde şu şekilde bir örnek ortam oluşturacaksınız:
 > - Kuyruğa tetiklenen işlevi test edin.
 
 > [!Tip]  
-> ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
+> @no__t -0hybrid-pil,. png @ no__t-1  
+> Microsoft Azure Stack bir Azure uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
 > 
 > [Karma uygulamalar Için tasarım konuları](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
 
@@ -48,7 +48,7 @@ Bu çözümde şu şekilde bir örnek ortam oluşturacaksınız:
 
 ## <a name="prerequisites-for-staged-data-analytics"></a>Hazırlanan veri analizi önkoşulları
 
-  - Azure aboneliği.
+  - Bir Azure aboneliği.
   - Azure ve Azure Stack kiracı aboneliğine yönelik izinlere sahip bir Azure Active Directory (Azure AD) hizmet sorumlusu. Azure Stack Azure aboneliğinizden farklı bir AAD kiracısı kullanıyorsa, iki hizmet sorumlusu oluşturmanız gerekebilir. Azure Stack için hizmet sorumlusu oluşturma hakkında bilgi edinmek için, [uygulamalara Azure Stack kaynaklarına erişim sağlamak için hizmet sorumluları oluşturun](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals)bölümüne gidin.
       - **Her bir hizmet sorumlusunun uygulama KIMLIĞI, istemci parolası, Azure AD kiracı KIMLIĞI ve kiracı adı (xxxxx.onmicrosoft.com) gibi bir yere dikkat edin.**
   - Veri analizi için bir veri koleksiyonu sağlamanız gerekir. Örnek veriler sağlanır.
@@ -105,7 +105,7 @@ Her dağıtım için Docker görüntüleri farklı Azure PowerShell sürümleri 
 
 4.  Azure 'a veya Azure Stack dağıtılan Web uygulamalarına giderek işlenmekte olan verilere bakın.
 
-### <a name="azure-web-app"></a>Azure Web Uygulaması
+### <a name="azure-web-app"></a>Azure Web uygulaması
  
 ![hazırlanan veri analizi çözümü](media/azure-stack-solution-staged-data/image2.png)
  

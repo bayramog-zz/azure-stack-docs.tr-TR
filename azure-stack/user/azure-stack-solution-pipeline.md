@@ -1,5 +1,5 @@
 ---
-title: Azure ve Azure Stack’e uygulama dağıtma
+title: Uygulamaları Azure 'a dağıtma ve Azure Stack
 description: Azure 'a uygulama dağıtmayı ve karma CI/CD işlem hattı ile Azure Stack öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 5357fcf548971e0962bec41ad9238bf88290531c
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.openlocfilehash: eb9ed23437d5fd708d3f98d5a5b601f3ed1a02a0
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68603110"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283731"
 ---
-# <a name="deploy-apps-to-azure-and-azure-stack"></a>Azure ve Azure Stack’e uygulama dağıtma
+# <a name="deploy-apps-to-azure-and-azure-stack"></a>Uygulamaları Azure 'a dağıtma ve Azure Stack
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
@@ -54,17 +54,17 @@ Uygulama dağıtımı sürekliliği, güvenlik ve güvenilirlik, kuruluşunuz ve
 - Azure 'da veya Azure Stack dağıtılan uygulamalar ve hizmetler birbirinin yerini alabilir ve aynı kod her iki konumda da çalıştırılabilir. Şirket içi ve genel bulut özelliklerinden ve özelliklerinden faydalanabilirsiniz.
 
 > [!TIP]
-> ![karma pillars.png](./media/azure-stack-solution-pipeline/hybrid-pillars.png)  
+> @no__t -0hybrid-pil,. png @ no__t-1  
 > [Azure Stack Için hibrit bulut tasarım desenleri](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesi ile ilgili olarak gözden geçirir. Kalite ölçütleri yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik içerir. Bu tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure ve Azure Stack temel bilgileri. Bu çözümü dağıtmaya başlamadan daha fazla bilgi edinmek için aşağıdaki makaleleri okuyun:
   
-  - [Azure'a giriş](https://azure.microsoft.com/overview/what-is-azure/)
+  - [Azure 'a giriş](https://azure.microsoft.com/overview/what-is-azure/)
   - [Azure Stack genel bakış](../operator/azure-stack-overview.md)
   
-- Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Bir Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
   
 - Azure 'da oluşturulan bir Web uygulaması. Bir [Azure Resource Manager şablonu](https://azure.microsoft.com/resources/templates/) kullanarak hem şirket içinde hem de genel buluta dağıtabileceğiniz bir Web uygulaması oluşturun. Daha sonra kullanmak için uygulama URI 'sini bir yere unutmayın. 
   
@@ -97,7 +97,7 @@ Uygulama dağıtımı sürekliliği, güvenlik ve güvenilirlik, kuruluşunuz ve
      
   1. [Azure App Service](../operator/azure-stack-app-service-deploy.md) PaaS hizmetlerini Azure Stack olarak dağıtın.
      
-  1. Azure Stack bir [plan ve teklif](../operator/azure-stack-plan-offer-quota-overview.md) oluşturun.
+  1. Azure Stack bir [plan ve teklif](../operator/service-plan-offer-subscription-overview.md) oluşturun.
      
   1. Azure Stack ' de teklifine bir [Kiracı aboneliği](../operator/azure-stack-subscribe-plan-provision-vm.md) oluşturun. 
      
@@ -135,17 +135,17 @@ Bir hizmet sorumlusu ve uç noktaları oluşturmak için [bir PowerShell betiği
    1. Web uygulamanızın adını girin.
    1. Desteklenen bir hesap türü seçin. 
    1. **Yeniden yönlendirme URI 'si**altında, oluşturmak istediğiniz uygulama türü için **Web** ' i seçin ve Web uygulamanızın URI 'sini girin. 
-   1. **Kaydol**’u seçin.
+   1. **Kaydol**' u seçin.
       
       ![Uygulamanızı kaydedin](./media/azure-stack-solution-pipeline/create-app.png) 
 
 ### <a name="assign-the-app-to-a-role"></a>Uygulamayı bir role atama
 
-Aboneliğinizdeki kaynaklara erişebilmesi için uygulamanızı bir role atamanız gerekir. Azure RBAC, kullanıcıların işlerini yapması için ihtiyaç duyduğu erişim düzeyini denetlemenizi sağlar. RBAC hakkında daha fazla bilgi için bkz. [Azure abonelik kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json). Kullanılabilir roller hakkında daha fazla bilgi edinmek için [bkz. RBAC: Yerleşik roller](/azure/role-based-access-control/built-in-roles).
+Aboneliğinizdeki kaynaklara erişebilmesi için uygulamanızı bir role atamanız gerekir. Azure RBAC, kullanıcıların işlerini yapması için ihtiyaç duyduğu erişim düzeyini denetlemenizi sağlar. RBAC hakkında daha fazla bilgi için bkz. [Azure abonelik kaynaklarına erişimi yönetme](/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json). Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](/azure/role-based-access-control/built-in-roles).
 
 Azure Pipelines, bir Azure Stack aboneliğinde kaynak sağlayabilmek için **katkıda** bulunan rolüne sahip olmalıdır. 
 
-Rol kapsamını abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. Daha düşük düzeyde kapsam için izinler devralınmıştır. Örneğin, bir kaynak grubu için **okuyucu** rolüne bir uygulama eklemek, uygulamanın kaynak grubunu ve kaynaklarından herhangi birini okuyabileceği anlamına gelir.
+Rol kapsamını abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için **okuyucu** rolüne bir uygulama eklemek, uygulamanın kaynak grubunu ve kaynaklarından herhangi birini okuyabileceği anlamına gelir.
 
 Uygulamanızı **katkıda bulunan** rolüne atamak için:
 
@@ -163,7 +163,7 @@ Uygulamanızı **katkıda bulunan** rolüne atamak için:
    
    ![Rolü ve uygulamayı seçin](./media/azure-stack-solution-pipeline/select-role.png)
    
-1. Seçin **Kaydet** rol atama tamamlanması. Uygulamanızı bu kapsam için bir role atanan kullanıcılar listesinde görebilirsiniz.
+1. Rolü atamaya son vermek için **Kaydet** ' i seçin. Uygulamanızı bu kapsam için bir role atanan kullanıcılar listesinde görebilirsiniz.
 
 Hizmet sorumlusu ayarlanır. Sonraki bölümde, Azure Pipelines programlı olarak oturum açması için gereken değerlerin nasıl alınacağı gösterilmektedir.
 
@@ -171,7 +171,7 @@ Hizmet sorumlusu ayarlanır. Sonraki bölümde, Azure Pipelines programlı olara
 
 Azure Pipelines için uç noktalar oluştururken, kiracı KIMLIĞINI ve uygulama KIMLIĞINI girmeniz gerekir. Bu değerleri almak için:
 
-1. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1. Azure portal **Azure Active Directory**' ni seçin.
    
 1. Sol gezinti bölmesinde **uygulama kayıtları**' yi seçin ve ardından uygulamanızı seçin.
    
@@ -187,7 +187,7 @@ Yeni bir sertifika oluşturmak ve yüklemek için [Sertifikalar ve gizli](/azure
 
 Ya da yeni bir uygulama parolası oluşturmak için:
 
-1. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+1. Azure portal **Azure Active Directory**' ni seçin.
    
 1. Sol gezinti bölmesinde **uygulama kayıtları**' yi seçin ve ardından uygulamanızı seçin.
    
@@ -221,7 +221,7 @@ Uç nokta oluşturma izinlerini ayarladıktan sonra Azure AD veya AD FS için u�
    
 1. Kullanıcı **ve Grup Ekle**' de, listeden Kullanıcı adları ' nı seçin ve ardından **Değişiklikleri Kaydet**' i seçin.
    
-   ![Üye ekle](./media/azure-stack-solution-pipeline/endpoint-permissions.png)
+   ![Üye ekleme](./media/azure-stack-solution-pipeline/endpoint-permissions.png)
    
 1. **Azure DevOps grupları** listesinde **Endpoint Creators**' ı seçin ve **uç nokta oluşturucuları** grubuna kullanıcı eklemek için önceki adımları tekrarlayın. 
 
@@ -233,19 +233,19 @@ Formu doldururken aşağıdaki değerleri kullanın:
 
 - **Bağlantı adı**: Bu hizmet bağlantısına başvururken kullanılacak kullanıcı dostu bir ad girin.
   
-- **Ortam**: **Azurecyüksek** veya **azurestack**gibi ortam adını seçin. Açılan listede AzureStack ' i görmüyorsanız bkz. [Connect Azure Stack](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops#connect-to-azure-stack).
+- **Ortam**: **azurecyüksek** veya **azurestack**gibi ortam adını seçin. Açılan listede AzureStack ' i görmüyorsanız bkz. [Connect Azure Stack](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops#connect-to-azure-stack).
   
-- **Ortam URL 'si**: **Azurecyüksek**seçeneğini seçmediyseniz, ortam URL 'nizi (örneğin, *\/https:/Management.Local.azurestack.external*) girin.
+- **Ortam URL 'si**: **azurecyüksek**SEÇENEĞINI seçmediyseniz, ortam URL 'nizi (örneğin, *https: \//Management. Local. azurestack. external*) girin.
   
-- **Kapsam düzeyi**: **Abonelik**gibi, ihtiyacınız olan kapsam düzeyini seçin. 
+- **Kapsam düzeyi**: **abonelik**gibi, ihtiyacınız olan kapsam düzeyini seçin. 
   
-- **ABONELIK kimliği**: Abonelik KIMLIĞINIZI girin.
+- **ABONELIK kimliği**: abonelik kimliğinizi girin.
   
-- **Abonelik adı**: Azure Stack ' dan Kullanıcı adınızı girin.
+- **Abonelik adı**: Azure Stack Kullanıcı adınızı girin.
   
-- **Hizmet sorumlusu ISTEMCI kimliği**: Daha önce kaydettiğiniz **uygulama (istemci) kimliğini** girin. 
+- **Hizmet sorumlusu ISTEMCI kimliği**: daha önce kaydettiğiniz **uygulama (istemci) kimliğini** girin. 
   
-- **Hizmet sorumlusu anahtarı** veya **sertifikası**: Bir veya diğer seçeneği belirleyin. 
+- **Hizmet sorumlusu anahtarı** veya **sertifikası**: bir veya diğer seçeneği belirleyin. 
   
   > [!NOTE]
   > AD FS uç noktası oluşturmak için kimlik doğrulaması için bir sertifika kullanmanız gerekir. 
@@ -254,11 +254,11 @@ Formu doldururken aşağıdaki değerleri kullanın:
   - **Sertifika**' yı seçerseniz, *. ped* sertifika dosyasının hem sertifika hem de özel anahtar bölümlerinin içeriğini girin. 
     
     > [!NOTE]
-    > Bir *. pfx* dosyasını *. pek* sertifika dosyasına dönüştürmek için öğesini çalıştırın `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
+    > Bir *. pfx* dosyasını *. pek* sertifika dosyasına dönüştürmek için `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` ' yi çalıştırın.
   
-- **KIRACı kimliği**: Daha önce kaydettiğiniz **Dizin (kiracı) kimliğini** girin.
+- **KIRACı kimliği**: daha önce kaydettiğiniz **Dizin (kiracı) kimliğini** girin.
   
-- **Bağlanma Doğrulanmadı**: Hizmet sorumlusu için bağlantı ayarlarınızı doğrulamak üzere **bağlantıyı doğrula** ' yı seçin.
+- **Bağlantı: doğrulanmadı**: hizmet sorumlusu için bağlantı ayarlarınızı doğrulamak üzere **bağlantıyı doğrula** ' yı seçin.
   
   > [!NOTE]
   > Azure Resource Manager uç noktanız Internet 'e açık değilse, bağlantı doğrulaması başarısız olur. Bu beklenen bir işlemdir ve basit bir görevle bir yayın işlem hattı oluşturarak bağlantınızı doğrulayabilirsiniz.
@@ -303,7 +303,7 @@ Azure DevOps 'da Azure Stack için kullanmak üzere bir kişisel erişim belirte
 
 Uç noktasını oluşturup Azure Pipelines yapı aracısını derleme sunucusuna yükleolduğunuza göre, Azure Stack bağlantı Azure Pipelines kullanıma hazırdır. Azure Stack içindeki yapı Aracısı Azure Pipelines yönergeleri alır ve aracı Azure Stack ile iletişim için uç nokta bilgilerini alır.
 
-Her aracıyı ayrı ayrı yönetmek yerine aracıları *Aracı havuzlarıyla*düzenleyebilirsiniz. Bir aracı havuzu paylaşım sınırı, havuzdaki tüm aracılar için tanımlar. Aracı havuzları, Azure DevOps kuruluşunun kapsamına alınır ve bu, projeler genelinde bir aracı havuzunu paylaşabileceğiniz anlamına gelir. Aracı havuzları hakkında daha fazla bilgi için bkz. [Aracı havuzları ve kuyruklar oluşturma](/azure/devops/pipelines/agents/pools-queues).
+Her aracıyı ayrı ayrı yönetmek yerine aracıları *Aracı havuzlarıyla*düzenleyebilirsiniz. Bir aracı havuzu, bu havuzdaki tüm aracıların paylaşım sınırını tanımlar. Aracı havuzları, Azure DevOps kuruluşunun kapsamına alınır ve bu, projeler genelinde bir aracı havuzunu paylaşabileceğiniz anlamına gelir. Aracı havuzları hakkında daha fazla bilgi için bkz. [Aracı havuzları ve kuyruklar oluşturma](/azure/devops/pipelines/agents/pools-queues).
 
 ## <a name="create-build-and-release-pipelines"></a>Derleme ve yayın işlem hatları oluşturma 
 
@@ -321,7 +321,7 @@ Karma CI/CD, hem uygulama kodu hem de altyapı kodu için uygulanabilir. Azure W
 
 1. Visual Studio **Takım Gezgini**' de **Bağlan** simgesini seçin ve Azure DevOps kuruluşunuzda oturum açın. 
    
-1. Bağlantıları > Yönet ' i seçin**bir projeye bağlanın**. 
+1. @No__t **Bağlantıları Yönet**' i seçin-1**bir projeye bağlanın**. 
    
    ![Takım Gezgini bir projeye bağlanma](media/azure-stack-solution-pipeline/connecttoprojectteamexp.png)
 
@@ -331,7 +331,7 @@ Karma CI/CD, hem uygulama kodu hem de altyapı kodu için uygulanabilir. Azure W
 
 ### <a name="create-a-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Her iki bulutta da uygulama hizmetleri için kendi kendine içerilen bir Web uygulaması dağıtımı oluşturun
 
-1. Visual Studio **Çözüm Gezgini**' de, *WebApplication. csproj* dosyanızı açın ve ekleyin `<RuntimeIdentifier>win10-x64</RuntimeIdentifier>`. Bu adımla ilgili daha fazla bilgi için, bkz. [kendi içinde dağıtım](/dotnet/core/deploying/#self-contained-deployments-scd).
+1. Visual Studio **Çözüm Gezgini**' de, *WebApplication. csproj* dosyanızı açın ve @no__t ekleyin. Bu adımla ilgili daha fazla bilgi için, bkz. [kendi içinde dağıtım](/dotnet/core/deploying/#self-contained-deployments-scd).
    
    ![Runtimeıdentifier 'ı yapılandırma](media/azure-stack-solution-pipeline/runtimeidentifier.png)
    
@@ -347,7 +347,7 @@ Karma CI/CD, hem uygulama kodu hem de altyapı kodu için uygulanabilir. Azure W
    
 1. Yapılandırma sayfasında, sol bölmede **Yayımla** ' yı seçin.
    
-1. Sağ bölmedeki **bağımsız değişkenler**altında, yapılandırmaya ekleyin `-r win10-x64` . 
+1. Sağ bölmedeki **bağımsız değişkenler**altında, yapılandırmaya `-r win10-x64` ekleyin. 
    
    ![Derleme ardışık düzen bağımsız değişkeni Ekle](media/azure-stack-solution-pipeline/buildargument.png)
    
@@ -361,7 +361,7 @@ Karma CI/CD, hem uygulama kodu hem de altyapı kodu için uygulanabilir. Azure W
 
 Yayın işlem hattı oluşturmak, karma CI/CD yapılandırma işleminizin son adımıdır. Yayın işlem hattını kullanarak bir yayın oluşturur ve yapınızı dağıtabilirsiniz.
 
-1. Azure DevOps projenizde, sol gezinti bölmesinde işlem hattı**yayınları** ' **nı seçin** > ve ardından yeni işlem **hattı**' nı seçin. 
+1. Azure DevOps projenizde, sol gezinti bölmesinde işlem **hatları** > **yayınlar** ' ı seçin ve ardından yeni işlem **hattı**' nı seçin. 
    
 1. **Şablon seçin** sayfasında, **Azure App Service dağıtım**' ı seçin ve ardından **Uygula**' yı seçin.
    
@@ -369,7 +369,7 @@ Yayın işlem hattı oluşturmak, karma CI/CD yapılandırma işleminizin son ad
    
 1. **Ardışık düzen** sekmesinde, sol bölmedeki **yapıt Ekle** ' yi seçin. Sağ bölmede, **kaynak (derleme işlem hattı)** açılan menüsünden Yeni oluşturduğunuz Web uygulaması derlemesini seçin ve **Ekle**' yi seçin.
    
-   ![Bir derleme yapıtı Ekle](media/azure-stack-solution-pipeline/addartifact.png)
+   ![Derleme yapıtı ekleme](media/azure-stack-solution-pipeline/addartifact.png)
    
 1. İşlem **hattı** sekmesinde, **aşamalar**' ın altında, **aşama görevlerini görüntülemek**için **1. aşama** ' daki köprüyü seçin.
    
@@ -393,9 +393,9 @@ Yayın işlem hattı oluşturmak, karma CI/CD yapılandırma işleminizin son ad
    
 1. **Yeni yayın ardışık düzeni** sayfasında sağ üst köşedeki **Kaydet** ' i seçin.
    
-   ![Değişiklikleri kaydet](media/azure-stack-solution-pipeline/save-devops-icon.png)
+   ![Değişiklikleri Kaydet](media/azure-stack-solution-pipeline/save-devops-icon.png)
    
-1. İşlem **hattı** sekmesinde **yapıt Ekle**' yi seçin. Projenizi seçin ve **kaynak (derleme işlem hattı)** açılır menüsünden Azure Stack yapınızı seçin. **Add (Ekle)** seçeneğini belirleyin. 
+1. İşlem **hattı** sekmesinde **yapıt Ekle**' yi seçin. Projenizi seçin ve **kaynak (derleme işlem hattı)** açılır menüsünden Azure Stack yapınızı seçin. **Ekle**' yi seçin. 
    
 1. İşlem **hattı** sekmesinde, **aşamalar**altında **Ekle**' yi seçin.
    
@@ -447,7 +447,7 @@ Bir sürüm oluşturup dağıtmak için:
    
 1. El ile yayını dağıtmak için **Azure** aşamasını seçin, **Dağıt**' ı seçin ve ardından Aşama iletişim kutusunda **Dağıt** ' ı seçin. 
    
-1. Dağıtım başarıyla tamamlandığında, dağıtılan uygulamayı tarayıcınızda açın. Örneğin, Azure App Services Web sitesi için URL 'YI `https://<your-app-name>.azurewebsites.net`açın.
+1. Dağıtım başarıyla tamamlandığında, dağıtılan uygulamayı tarayıcınızda açın. Örneğin, Azure App Services Web sitesi için URL 'YI `https://<your-app-name>.azurewebsites.net` ' ı açın.
 
 ### <a name="monitor-and-track-releases"></a>İzleme ve izleme yayınları
 
@@ -461,7 +461,7 @@ Yöneticinin, yayınların ilerlemesini izlemek ve hangi sürümlerin onay bekle
 
 Tüm dağıtımlarınızdan yayın günlüklerini görebilirsiniz: 
 
-1. Azure DevOps projenizde, sol taraftaki işlem **hattı** > **yayınları** ' nı seçin ve ardından bir sürüm seçin. 
+1. Azure DevOps projenizde, sol taraftaki işlem **hatları** **@no__t 1 '** i seçin ve ardından bir sürüm seçin. 
    
 1. Yayın Özeti sayfasında, üzerine gelin veya bir aşama seçin ve ardından **Günlükler**' i seçin. 
    
@@ -477,4 +477,4 @@ Bireysel adımlarla ilgili günlükleri görmek, genel dağıtımın parçaları
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bulut desenleri hakkında daha fazla bilgi için bkz: [bulut tasarımı desenleri](/azure/architecture/patterns).
+Azure bulut desenleri hakkında daha fazla bilgi edinmek için bkz. [bulut tasarım desenleri](/azure/architecture/patterns).

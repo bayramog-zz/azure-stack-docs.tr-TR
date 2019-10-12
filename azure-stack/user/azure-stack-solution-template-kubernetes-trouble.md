@@ -11,15 +11,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 06/18/2019
+ms.date: 10/10/2019
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 8d6730135e2a7055fc50f5c69918d1f0b2dbe5af
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: 14a32696a3e46782b8990ba57f9510976200f7d3
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71823882"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277559"
 ---
 # <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Azure Stack için Kubernetes dağıtımıyla ilgili sorunları giderme
 
@@ -45,10 +45,10 @@ Aşağıdaki diyagramda, kümeyi dağıtmaya yönelik genel işlem gösterilmekt
 1. Market öğesinden giriş parametrelerini toplayın.
 
     Kubernetes kümesini ayarlamak için gereken değerleri girin, örneğin:
-    -  **Kullanıcı adı**: Kubernetes kümesinin ve DVD 'nin parçası olan Linux sanal makinelerinin (VM 'Ler) Kullanıcı adı.
+    -  **Kullanıcı adı**: Kubernetes kümesinin ve DVD 'nin parçası olan Linux sanal makinelerinin (VM 'ler) Kullanıcı adı.
     -  **SSH ortak anahtarı**: Kubernetes kümesi ve DVD 'nin bir parçası olarak oluşturulan tüm Linux makinelerin yetkilendirmesi için kullanılan anahtar.
-    -  **Hizmet sorumlusu**: Kubernetes Azure bulut sağlayıcısı tarafından kullanılan KIMLIK. Hizmet sorumlunuzu oluştururken uygulama KIMLIĞI olarak tanımlanan istemci KIMLIĞI. 
-    -  **İstemci gizli anahtarı**: Hizmet sorumlunuzu oluştururken oluşturduğunuz anahtar.
+    -  **Hizmet sorumlusu**: Kubernetes Azure bulut sağlayıcısı tarafından kullanılan kimlik. Hizmet sorumlunuzu oluştururken uygulama KIMLIĞI olarak tanımlanan istemci KIMLIĞI. 
+    -  **İstemci gizli**dizisi: hizmet sorumlunuzu oluştururken oluşturduğunuz anahtar.
 
 2. Dağıtım sanal makinesi ve özel Betik uzantısı oluşturun.
     -  Market Linux Image **Ubuntu Server 16,04-LTS**kullanarak DAĞıTıM Linux VM 'sini oluşturun.
@@ -101,7 +101,7 @@ Kubernetes kümenizi destekleyen VM 'lerde dağıtım günlüklerini toplayıp g
 
 Kubernetes kümenizi dağıtırken, herhangi bir sorunu denetlemek için dağıtım durumunu gözden geçirebilirsiniz.
 
-1. Açık [Azure Stack portalı](https://portal.local.azurestack.external).
+1. [Azure Stack portalını](https://portal.local.azurestack.external)açın.
 2. **Kaynak grupları**' nı seçin ve Kubernetes kümesini dağıttığınızda kullandığınız kaynak grubunun adını seçin.
 3. **Dağıtımlar**' ı seçin ve ardından **dağıtım adını**seçin.
 
@@ -111,10 +111,10 @@ Kubernetes kümenizi dağıtırken, herhangi bir sorunu denetlemek için dağıt
     
     | Özellik | Açıklama |
     | ----     | ----        |
-    | Resource | Kaynak adı. |
-    | Type | Kaynak sağlayıcısı ve kaynak türü. |
+    | Kaynak | Kaynağın adı. |
+    | Tür | Kaynak sağlayıcısı ve kaynak türü. |
     | Durum | Öğenin durumu. |
-    | Zaman Damgası | Zamanın UTC zaman damgası. |
+    | Ilişkin | Zamanın UTC zaman damgası. |
     | İşlem ayrıntıları | İşlem ayrıntıları, işleme dahil olan kaynak sağlayıcısı, kaynak uç noktası ve kaynağın adı. |
 
     Her öğenin bir yeşil veya kırmızı durum simgesi vardır.
@@ -123,7 +123,7 @@ Kubernetes kümenizi dağıtırken, herhangi bir sorunu denetlemek için dağıt
 
 Azure Stack portalı bir dağıtım hatasını gidermek veya bir dağıtım başarısızlığından kaçınmak için yeterli bilgi sağlamıyorsa, sonraki adım küme günlüklerini inceleyin. Dağıtım günlüklerini el ile almak için, genellikle kümenin ana VM 'lerinden birine bağlanmanız gerekir. Daha basit bir alternatif yaklaşım, Azure Stack ekibi tarafından sunulan aşağıdaki [Bash betiğini](https://aka.ms/AzsK8sLogCollectorScript) indirmek ve çalıştırmak olacaktır. Bu betik, DVı ve kümenin VM 'lerine bağlanır, ilgili sistem ve küme günlüklerini toplar ve bunları iş istasyonunuza geri yükler.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Prerequisites
 
 Azure Stack yönetmek için kullandığınız makinede bir bash istemi gerekir. Windows makinesinde, [Windows Için git](https://git-scm.com/downloads)'i yükleyerek bir bash istemi alabilirsiniz. Yüklendikten sonra başlangıç menünüzde _Git Bash_ ' i arayın.
 
@@ -146,10 +146,10 @@ Küme günlüklerini toplamak ve indirmek için şu adımları izleyin:
 
     | Parametre           | Açıklama                                                                                                      | Örnek                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d,--VMD-konak      | DVD 'nin genel IP veya tam etki alanı adı (FQDN). VM adı `vmd-` ile başlar. | IP 192.168.102.38<br>DNS: VMD-myk8s. Local. cloudapp. azurestack. External |
+    | -d,--VMD-konak      | DVD 'nin genel IP veya tam etki alanı adı (FQDN). VM adı `vmd-` ile başlar. | IP: 192.168.102.38<br>DNS: VMD-myk8s. Local. cloudapp. azurestack. External |
     | -h,--yardım  | Komut kullanımını yazdır. | |
     | -i,--Identity-File | Kubernetes kümesi oluşturulurken Market öğesine geçirilen RSA özel anahtar dosyasının yolu. İle Kubernetes düğümlerine uzak için gereklidir. | C:\data\ıd_rsa.exe (PuTTY)<br>~/nssh/id_rsa (SSH)
-    | -a,--ana-konak   | Bir Kubernetes ana düğümünün genel IP veya tam etki alanı adı (FQDN). VM adı `k8s-master-` ile başlar. | IP 192.168.102.37<br>FQDN: k8s-12345. Local. cloudapp. azurestack. External      |
+    | -a,--ana-konak   | Bir Kubernetes ana düğümünün genel IP veya tam etki alanı adı (FQDN). VM adı `k8s-master-` ile başlar. | IP: 192.168.102.37<br>FQDN: k8s-12345. Local. cloudapp. azurestack. External      |
     | -u,--Kullanıcı          | Kubernetes kümesi oluşturulurken Market öğesine geçirilen Kullanıcı adı. İle Kubernetes düğümlerine uzak için gereklidir. | azureuser (varsayılan değer) |
 
 

@@ -14,12 +14,12 @@ ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 36ed1b7ef7225f848aa3e5869b8c46f911be7e19
-ms.sourcegitcommit: 0866555e0ed240a65595052899ef1b836dd07fbc
+ms.openlocfilehash: 2fee81a79b58294a9c43f8d550f139157cb64a9b
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72257784"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283578"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Azure ExpressRoute kullanarak Azure 'a Azure Stack bağlama
 
@@ -84,7 +84,7 @@ Bu makaledeki adımlarda, Azure Stack ' de iki farklı kiracıdan iki sanal ağ 
 Azure Stack yapılandırmaya başlamadan önce şunları yapmanız gerekir:
 
 * Azure Stack tümleşik bir sistem dağıtımı veya Azure Stack Geliştirme Seti (ASDK) dağıtımı. ASDK dağıtma hakkında daha fazla bilgi için [Azure Stack geliştirme seti dağıtım hızlı](../asdk/asdk-download.md)başlangıcı ' na bakın.
-* Kullanıcılarınızın abone olabileceği Azure Stack bir teklif. Daha fazla bilgi için bkz. [planlar, teklifler ve abonelikler](azure-stack-plan-offer-quota-overview.md).
+* Kullanıcılarınızın abone olabileceği Azure Stack bir teklif. Daha fazla bilgi için bkz. [hizmet, plan, teklif, aboneliğe genel bakış](service-plan-offer-subscription-overview.md).
 
 ### <a name="create-network-resources-in-azure-stack"></a>Azure Stack ağ kaynakları oluşturma
 

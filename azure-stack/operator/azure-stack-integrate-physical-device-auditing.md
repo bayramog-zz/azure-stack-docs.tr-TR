@@ -1,6 +1,6 @@
 ---
-title: Azure Stack fiziksel cihaz denetimi
-description: Fiziksel cihaz Azure Stack'te erişim denetim tümleştirmeyi öğrenin
+title: Fiziksel cihaz denetimini Azure Stack veri merkezinizle tümleştirin | Microsoft Docs
+description: Fiziksel cihaz erişim denetimini Azure Stack veri merkezinizle tümleştirmeyi öğrenin.
 services: azure-stack
 author: PatAltimore
 manager: femila
@@ -11,33 +11,31 @@ ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 06/10/2019
 keywords: ''
-ms.openlocfilehash: 5ded88064fa91222ca061073f72c9f3b539c374c
-ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
+ms.openlocfilehash: b5fa17b3913db7ebec210fc3bf986bac6414368e
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66828291"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277232"
 ---
-# <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Azure Stack veri merkezi tümleştirmesi - fiziksel cihazı denetleme
+# <a name="integrate-physical-device-auditing-with-your-azure-stack-datacenter"></a>Fiziksel cihaz denetimini Azure Stack veri merkezinizle tümleştirme
 
-Azure stack'teki temel kart yönetim denetleyicileri (Bmc'ler) ve ağ anahtarları gibi tüm fiziksel cihazlar, Denetim günlükleri gösterin. Genel Denetim çözümünüze denetim günlüklerini tümleştirebilirsiniz. Cihazların farklı Azure Stack OEM donanım satıcıları arasında değişir olduğundan, tümleştirme denetim belgeleri için satıcınıza başvurun.
-Aşağıdaki bölümlerde, Azure yığını ' fiziksel cihaz denetimi için bazı genel bilgileri sağlayın.  
+Temel kart yönetim denetleyicileri (BMC 'ler) ve ağ anahtarları gibi Azure Stack içindeki tüm fiziksel cihazlar denetim günlüklerini yayar. Denetim günlüklerini genel denetim çözümünüz ile tümleştirebilirsiniz. Cihazlar farklı Azure Stack OEM donanım satıcıları genelinde farklılık gösterdiğinden, tümleştirme denetimi hakkındaki belgeler için satıcınıza başvurun. Aşağıdaki bölümler Azure Stack ' de fiziksel cihaz denetimi için bazı genel bilgiler sağlar.  
 
-## <a name="physical-device-access-auditing"></a>Fiziksel cihaz erişimini denetleme
+## <a name="physical-device-access-auditing"></a>Fiziksel cihaz erişimi denetimi
 
-Azure stack'teki tüm fiziksel cihazlar TACACS veya RADIUS kullanımını destekler. Temel Kart Yönetim denetleyicisine (BMC) ve ağ anahtarları erişimi destekler.
+Azure Stack tüm fiziksel cihazlar, TACACS veya YARıÇAP kullanımını destekler. Destek, temel kart yönetim denetleyicisi (BMC) ve ağ anahtarlarına erişimi içerir.
 
-Azure Stack çözümleri, RADIUS veya TACACS yerleşik olarak bulunmaz. Ancak, çözümler piyasadaki mevcut RADIUS veya TACACS çözüm kullanımını desteklemek üzere doğrulandı.
+Azure Stack çözümler, RADIUS veya TACACS yerleşik olarak gelmez. Ancak çözümler, pazara sunulan mevcut YARıÇAP veya TACACS çözümlerinin kullanımını destekleyecek şekilde onaylanır.
 
-RADIUS için yalnızca MSCHAPv2 doğrulandı. Bu, RADIUS kullanan en güvenli uygulamasını temsil eder.
-Azure Stack çözümünüzle birlikte dahil edilen cihazlar TACAS veya RADIUS etkinleştirmek için OEM donanım satıcınıza başvurun.
+Yalnızca YARıÇAP için, MSCHAPv2 doğrulanmadı. Bu, RADIUS kullanarak en güvenli uygulamayı temsil eder. Azure Stack çözümünüze dahil edilen cihazlarda TACAS veya RADIUS sağlamak için OEM donanım satıcınıza başvurun.
 
-## <a name="syslog-forwarding-for-network-devices"></a>Ağ aygıtları için Syslog iletmeyi
+## <a name="syslog-forwarding-for-network-devices"></a>Ağ cihazları için Syslog iletimi
 
-Azure stack'teki tüm fiziksel ağ cihazları, syslog iletileri destekler. Syslog sunucusu ile Azure Stack çözümleri bulunmaz. Ancak, cihazlar piyasadaki mevcut syslog çözümleri iletileri gönderme desteklemek üzere doğrulandı.
+' Deki tüm fiziksel ağ aygıtları syslog iletilerini destekler Azure Stack. Azure Stack çözümleri Syslog sunucusuyla birlikte gelmez. Ancak, cihazlarda bulunan mevcut Syslog çözümlerine ileti gönderilmesini desteklemek için cihazlar onaylanmıştır.
 
-İsteğe bağlı parametresi dağıtım için toplanan syslog hedef adresidir ancak dağıtım sonrası da eklenebilir. Ağ cihazlarınızda iletme syslog'u yapılandırmak için OEM donanım satıcınıza başvurun.
+Syslog hedef adresi dağıtım için toplanan isteğe bağlı bir parametredir, ancak dağıtım sonrası da eklenebilir. Ağ cihazlarınızda Syslog iletmeyi yapılandırmak için OEM donanım satıcınıza başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hizmet İlkesi](azure-stack-servicing-policy.md)
+[Bakım ilkesi](azure-stack-servicing-policy.md)

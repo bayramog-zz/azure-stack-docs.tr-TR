@@ -1,6 +1,6 @@
 ---
-title: Azure Stack'te (Hizmet Yöneticisi ve Kiracı) kullanıcı başına kaynaklarıyla ilgili izinleri yönetme | Microsoft Docs
-description: Hizmet Yöneticisi veya Kiracı olarak RBAC izinlerinin yönetmeyi öğrenin.
+title: Rol tabanlı erişim denetimi kullanarak erişim izinlerini ayarlama | Microsoft Docs
+description: Azure Stack ' de rol tabanlı erişim denetimi (RBAC) kullanarak erişim izinleri ayarlamayı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -15,40 +15,40 @@ ms.date: 05/16/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9fc4e6bb48c8cdd7508a1a85d193a22761c62e99
-ms.sourcegitcommit: 797dbacd1c6b8479d8c9189a939a13709228d816
+ms.openlocfilehash: fa4e836a2c7cd5b59a6234a05efcc1cface12620
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66268594"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277059"
 ---
-# <a name="manage-role-based-access-control"></a>Rol tabanlı erişim denetimini yönetme
+# <a name="set-access-permissions-using-role-based-access-control"></a>Rol tabanlı erişim denetimi kullanarak erişim izinlerini ayarlama
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack'te bir kullanıcı, okuyucu, sahibi veya katkıda bulunan her bir aboneliğe, kaynak grubuna ya da hizmet örneği için olabilir. Örneğin, bir kullanıcı abonelik bir okuyucu izinlere sahip, ancak yedi sanal makine için sahip izinleriniz.
+Azure Stack bir Kullanıcı, bir abonelik, kaynak grubu veya hizmetin her örneği için bir okuyucu, sahip veya katkıda bulunan olabilir. Örneğin, A kullanıcısının bir abonelik aboneliği için okuyucu izinleri olabilir, ancak sanal makine yedi için sahip izinlerine sahip olabilir.
 
- - Okuyucu: Kullanıcı, her şeyi görüntüleyebilir ancak değişiklik yapamazsınız.
+ - Okuyucu: Kullanıcı her şeyi görüntüleyebilir, ancak herhangi bir değişiklik yapamaz.
  - Katkıda bulunan: Kullanıcı, kaynaklara erişim dışında her şeyi yönetebilir.
- - Sahibi: Kullanıcı, kaynaklara erişim dahil her şeyi yönetebilir.
+ - Sahip: Kullanıcı, kaynaklara erişim dahil her şeyi yönetebilir.
 
-## <a name="set-access-permissions-for-a-user"></a>Bir kullanıcı için erişim izinlerini ayarlayın
+## <a name="set-access-permissions-for-a-user"></a>Bir kullanıcı için erişim izinlerini ayarlama
 
-1. Yönetmek istediğiniz kaynağa sahip izinlerine sahip bir hesapla oturum açın.
-2. Kaynak dikey penceresinde **erişim** simgesi ![](media/azure-stack-manage-permissions/image1.png).
-3. İçinde **kullanıcılar** dikey penceresinde tıklayın **rolleri**.
-4. İçinde **rolleri** dikey penceresinde tıklayın **Ekle** kullanıcı izinlerini eklemek için.
+1. Yönetmek istediğiniz kaynak için sahip izinlerine sahip bir hesapla oturum açın.
+2. Kaynak dikey penceresinde **erişim** simgesine ![](media/azure-stack-manage-permissions/image1.png) ' e tıklayın.
+3. **Kullanıcılar** dikey penceresinde **Roller**' e tıklayın.
+4. Kullanıcı izinleri eklemek için **Roller** dikey penceresinde **Ekle** ' ye tıklayın.
 
-## <a name="set-access-permissions-for-a-universal-group"></a>Bir evrensel grubu için erişim izinlerini ayarlayın 
+## <a name="set-access-permissions-for-a-universal-group"></a>Evrensel grup için erişim izinlerini ayarlama 
 
 > [!Note]
-> Active Directory yalnızca şunlara Hizmetleri (AD FS) federe.
+> Yalnızca Active Directory Federasyon Hizmetleri (AD FS) için geçerlidir.
 
-1. Yönetmek istediğiniz kaynağa sahip izinlerine sahip bir hesapla oturum açın.
-2. Kaynak dikey penceresinde **erişim** simgesi ![](media/azure-stack-manage-permissions/image1.png).
-3. İçinde **kullanıcılar** dikey penceresinde tıklayın **rolleri**.
-4. İçinde **rolleri** dikey penceresinde tıklayın **Ekle** evrensel grup, Active Directory grup için izinler eklemek için.
+1. Yönetmek istediğiniz kaynak için sahip izinlerine sahip bir hesapla oturum açın.
+2. Kaynak dikey penceresinde **erişim** simgesine ![](media/azure-stack-manage-permissions/image1.png) ' e tıklayın.
+3. **Kullanıcılar** dikey penceresinde **Roller**' e tıklayın.
+4. Evrensel grup Active Directory grubuna izinler eklemek için **Roller** dikey penceresinde **Ekle** ' ye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack kiracısı ekleme](azure-stack-add-new-user-aad.md)
+[Azure Stack kiracı ekleme](azure-stack-add-new-user-aad.md)

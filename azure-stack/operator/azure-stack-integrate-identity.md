@@ -1,6 +1,6 @@
 ---
-title: Azure Stack veri merkezi tümleştirmesi-kimlik
-description: Azure Stack AD FS veri merkezinizle nasıl tümleştirileceğini öğrenin AD FS
+title: AD FS kimliğini Azure Stack veri merkezinizle tümleştirin | Microsoft Docs
+description: Azure Stack AD FS kimlik sağlayıcısını veri merkezinizle AD FS tümleştirme hakkında bilgi edinin.
 services: azure-stack
 author: PatAltimore
 manager: femila
@@ -10,16 +10,16 @@ ms.date: 05/10/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: f51b0bdd4e433dd3083701e8cc967b3105d23ed6
-ms.sourcegitcommit: 820ec8d10ddab1fee136397d3aa609e676f8b39d
+ms.openlocfilehash: c7d0396f01970366696309445efb911e2e189162
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71127511"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277191"
 ---
-# <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack veri merkezi tümleştirmesi-kimlik
+# <a name="integrate-ad-fs-identity-with-your-azure-stack-datacenter"></a>AD FS kimliğini Azure Stack veri merkezinizle tümleştirin
 
-Azure Stack, kimlik sağlayıcıları olarak Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanarak dağıtabilirsiniz. Azure Stack dağıtmadan önce seçimi yapmalısınız. Bağlı bir senaryoda Azure AD ' yi veya AD FS seçebilirsiniz. Bağlantısı kesik bir senaryo için yalnızca AD FS desteklenir.
+Azure Stack, kimlik sağlayıcısı olarak Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanarak dağıtabilirsiniz. Azure Stack dağıtmadan önce seçimi yapmalısınız. Bağlı bir senaryoda Azure AD ' yi veya AD FS seçebilirsiniz. Bağlantısı kesik bir senaryo için yalnızca AD FS desteklenir. Bu makalede, Azure Stack AD FS veri merkezinizle AD FS tümleştirme gösterilmektedir.
 
 > [!IMPORTANT]
 > Tüm Azure Stack çözümünü yeniden dağıtmaya gerek kalmadan kimlik sağlayıcısını değiştiremezsiniz.
@@ -28,13 +28,13 @@ Azure Stack, kimlik sağlayıcıları olarak Azure Active Directory (Azure AD) v
 
 AD FS ile dağıtmak, mevcut bir Active Directory ormanındaki kimliklerin Azure Stack kaynaklarla kimlik doğrulaması yapmasına olanak sağlar. Bu mevcut Active Directory ormanı, bir AD FS Federasyon güveni oluşturulmasına izin vermek için AD FS dağıtımı gerektirir.
 
-Kimlik doğrulaması, kimliğin bir parçasıdır. Rol tabanlı Access Control (RBAC) Azure Stack yönetmek için Graph bileşeninin yapılandırılması gerekir. Bir kaynağa erişim atandığında, Graph bileşeni LDAP protokolünü kullanarak mevcut Active Directory ormanında Kullanıcı hesabını arar.
+Kimlik doğrulaması, kimliğin bir parçasıdır. Rol tabanlı erişim denetimi 'ni (RBAC) Azure Stack içinde yönetmek için Graph bileşeninin yapılandırılması gerekir. Bir kaynağa erişim atandığında, Graph bileşeni LDAP protokolünü kullanarak mevcut Active Directory ormanında Kullanıcı hesabını arar.
 
 ![Azure Stack AD FS mimarisi](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
 
 Mevcut AD FS, talepleri Azure Stack AD FS (kaynak STS) Gönderen hesap güvenlik belirteci hizmetidir (STS). Azure Stack, otomasyon, mevcut AD FS için meta veri uç noktasıyla talep sağlayıcı güveni oluşturur.
 
-Mevcut AD FS, bağlı olan taraf güveninin yapılandırılması gerekir. Bu adım Otomasyon tarafından yapılmaz ve işleç tarafından yapılandırılmalıdır. AD FS için Azure Stack VIP uç noktası, model `https://adfs.<Region>.<ExternalFQDN>/`kullanılarak oluşturulabilir.
+Mevcut AD FS, bağlı olan taraf güveninin yapılandırılması gerekir. Bu adım Otomasyon tarafından yapılmaz ve işleç tarafından yapılandırılması gerekir. AD FS için Azure Stack VIP uç noktası `https://adfs.<Region>.<ExternalFQDN>/` ' ya kadar model kullanılarak oluşturulabilir.
 
 Bağlı olan taraf güveni yapılandırması, Microsoft tarafından sunulan talep dönüştürme kurallarını yapılandırmanızı de gerektirir.
 
@@ -42,11 +42,11 @@ Grafik yapılandırması için, var olan Active Directory okuma iznine sahip bir
 
 Son adım için, varsayılan sağlayıcı aboneliği için yeni bir sahip yapılandırılır. Bu hesabın Azure Stack yönetici portalında oturum açarken tüm kaynaklara tam erişimi vardır.
 
-Gereksinimler:
+Gereklilik
 
 |Bileşen|Gereksinim|
 |---------|---------|
-|Graf|Microsoft Active Directory 2012/2012 R2/2016|
+|Çıkarılamıyor|Microsoft Active Directory 2012/2012 R2/2016|
 |AD FS|Windows Server 2012/2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>Grafik tümleştirmeyi ayarlama
@@ -57,27 +57,27 @@ Aşağıdaki bilgiler Otomasyon parametrelerinin girişleri olarak gereklidir:
 
 |Parametre|Dağıtım çalışma sayfası parametresi|Açıklama|Örnek|
 |---------|---------|---------|---------|
-|`CustomADGlobalCatalog`|AD FS orman FQDN 'SI|Hedef Active Directory ormanın FQDN 'SI<br>ile tümleştirmek istediğiniz|Contoso.com|
+|`CustomADGlobalCatalog`|AD FS orman FQDN 'SI|Tümleştirmek istediğiniz hedef Active Directory ormanın FQDN 'SI|Contoso.com|
 |`CustomADAdminCredentials`| |LDAP okuma izni olan bir Kullanıcı|YOURDOMAIN\graphservice|
 
 ### <a name="configure-active-directory-sites"></a>Active Directory siteleri yapılandırma
 
 Birden çok siteye sahip Active Directory dağıtımları için en yakın Active Directory sitesini Azure Stack dağıtımınıza yapılandırın. Yapılandırma Azure Stack Graph hizmetinin uzak bir siteden küresel katalog sunucusu kullanarak sorguları çözümlamalarını engeller.
 
-Azure Stack [genel VIP ağ](azure-stack-network.md#public-vip-network) alt ağını Azure Stack en yakın Active Directory sitesine ekleyin. Örneğin, Active Directory Seattle sitesinde dağıtılan Azure Stack iki sitede Seattle ve Redmond, Seattle için Active Directory sitesine Azure Stack genel VIP ağ alt ağını eklersiniz.
+Azure Stack [genel VIP ağ](azure-stack-network.md#public-vip-network) alt ağını Azure Stack en yakın Active Directory sitesine ekleyin. Örneğin, Active Directory iki sitelim olduğunu varsayalım: Seattle ve Redmond. Azure Stack Seattle sitesinde dağıtılırsa, Seattle için Active Directory sitesine Azure Stack genel VIP ağ alt ağını eklersiniz.
 
 Active Directory siteleri hakkında daha fazla bilgi için bkz. [site topolojisini tasarlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 
 > [!Note]  
-> Active Directory tek bir siteden oluşur, bu adımı atlayabilirsiniz. Bir catch-all alt ağının yapılandırılmış olması durumunda, Azure Stack genel VIP ağ alt ağının bunun bir parçası olduğunu doğrulayın.
+> Active Directory tek bir siteden oluşur, bu adımı atlayabilirsiniz. Yapılandırılmış bir catch-all alt ağına sahipseniz, Azure Stack genel VIP ağ alt ağının bunun bir parçası olmadığını doğrulayın.
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Mevcut Active Directory Kullanıcı hesabı oluştur (isteğe bağlı)
 
-İsteğe bağlı olarak, mevcut Active Directory grafik hizmeti için bir hesap oluşturabilirsiniz. Kullanmak istediğiniz bir hesabınız yoksa bu adımı gerçekleştirin.
+İsteğe bağlı olarak, mevcut Active Directory grafik hizmeti için bir hesap oluşturabilirsiniz. Kullanmak istediğiniz bir hesabınız yoksa bu adımı kullanın.
 
 1. Mevcut Active Directory, aşağıdaki kullanıcı hesabını (öneri) oluşturun:
    - **Kullanıcı adı**: graphservice
-   - **Parola**: güçlü bir parola kullanın<br>Parolayı süresiz olarak yapılandırın.
+   - **Parola**: güçlü bir parola kullanın ve parolayı süresiz olarak yapılandırın.
 
    Özel izin veya üyelik gerekmez.
 
@@ -103,7 +103,7 @@ Bu yordamda, veri merkezi ağınızda Azure Stack ayrıcalıklı uç noktayla il
    > [!IMPORTANT]
    > Kimlik bilgileri açılır penceresi için bekleyin (ayrıcalıklı uç noktada kimlik bilgisi al desteklenmez) ve Graph Service hesabı kimlik bilgilerini girin.
 
-3. **Register-DirectoryService** cmdlet 'i, mevcut Active Directory doğrulamanın başarısız olduğu belirli senaryolarda kullanabileceğiniz isteğe bağlı parametrelere sahiptir. Bu cmdlet yürütüldüğünde, belirtilen etki alanının kök etki alanı olduğunu, bir genel katalog sunucusuna ulaşılmadığını ve belirtilen hesabın okuma erişimi verdiğini doğrular.
+3. **Register-DirectoryService** cmdlet 'i, mevcut Active Directory doğrulamanın başarısız olduğu belirli senaryolarda kullanabileceğiniz isteğe bağlı parametrelere sahiptir. Bu cmdlet yürütüldüğünde, sağlanan etki alanının kök etki alanı olduğunu, bir genel katalog sunucusuna ulaşılmadığını ve sağlanan hesaba okuma erişimi verildiğini doğrular.
 
    |Parametre|Açıklama|
    |---------|---------|
@@ -116,7 +116,7 @@ Azure Stack grafik hizmeti, hedef Active Directory ormanında oturum açma istek
 
 Azure Stack grafik hizmeti, hedef Active Directory iletişim kurmak için aşağıdaki protokolleri ve bağlantı noktalarını kullanır:
 
-|Type|Port|Protocol|
+|Tür|Bağlantı Noktası|Protokol|
 |---------|---------|---------|
 |LDAP|389|TCP & UDP|
 |LDAP SSL|636|TCP|
@@ -130,8 +130,8 @@ Aşağıdaki bilgiler Otomasyon parametrelerinin girişi olarak gereklidir:
 |Parametre|Dağıtım çalışma sayfası parametresi|Açıklama|Örnek|
 |---------|---------|---------|---------|
 |Customadfname|AD FS sağlayıcı adı|Talep sağlayıcısının adı.<br>AD FS giriş sayfasında bu şekilde görünür.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|AD FS meta veri URI 'SI|Federasyon meta veri bağlantısı| https:\//AD01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
-|SigningCertificateRevocationCheck|NA|CRL denetimini atlamak için isteğe bağlı parametre|Yok.|
+|CustomAD<br>FSFederationMetadataEndpointUri|AD FS meta veri URI 'SI|Federasyon meta veri bağlantısı.| https: \//AD01. contoso. com/federationmetadata/2007-06/federationmetadata. xml |
+|SigningCertificateRevocationCheck|Yok|CRL denetimini atlamak için isteğe bağlı parametre.|Yok.|
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Azure Stack 'da talep sağlayıcı güveni yapılandırmak için Otomasyonu tetikleme
@@ -170,11 +170,11 @@ Aşağıdaki bilgiler Otomasyon parametrelerinin girişi olarak gereklidir:
 |Parametre|Açıklama|Örnek|
 |---------|---------|---------|
 |Customadfname|Talep sağlayıcısının adı. AD FS giriş sayfasında bu şekilde görünür.|Contoso|
-|Customadffederationmetadatafilecontent|Meta veri içeriği|$using:federationMetadataFileContent|
+|Customadffederationmetadatafilecontent|Meta veri içeriği.|$using: federationMetadataFileContent|
 
 ### <a name="create-federation-metadata-file"></a>Federasyon meta veri dosyası oluştur
 
-Aşağıdaki yordam için, mevcut AD FS dağıtımına ağ bağlantısı olan bir bilgisayar kullanmanız gerekir. Bu, hesap STS 'si haline gelir. Ayrıca, gerekli sertifikaların yüklenmesi gerekir.
+Aşağıdaki yordam için, mevcut AD FS dağıtımına ağ bağlantısı olan bir bilgisayar kullanmanız gerekir. Bu, hesap STS 'si haline gelir. Gerekli sertifikaların de yüklenmesi gerekir.
 
 1. Yükseltilmiş bir Windows PowerShell oturumu açın ve ortamınız için uygun parametreleri kullanarak aşağıdaki komutu çalıştırın:
 
@@ -206,14 +206,14 @@ Bu yordamda, Azure Stack ayrıcalıklı uç noktayla iletişim kurabilen ve önc
     Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
     ```
 
-3. Ortamınız için uygun parametreleri kullanarak varsayılan sağlayıcı aboneliğinin sahibini güncelleştirmek için aşağıdaki komutu çalıştırın:
+3. Varsayılan sağlayıcı aboneliğinin sahibini güncelleştirmek için aşağıdaki komutu çalıştırın. Ortamınız için uygun parametreleri kullanın.
 
    ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
    > [!Note]  
-   > Sertifikayı mevcut AD FS (Account STS) üzerinde döndürdüğünüzde AD FS tümleştirmesini yeniden ayarlamanız gerekir. Meta veri uç noktası ulaşılabilir olsa veya meta veri dosyası sağlanarak yapılandırıldıysa bile tümleştirmeyi ayarlamanız gerekir.
+   > Sertifikayı mevcut AD FS (Account STS) üzerinde döndürdüğünüzde, AD FS tümleştirmesini yeniden ayarlamanız gerekir. Meta veri uç noktası ulaşılabilir olsa veya meta veri dosyası sağlanarak yapılandırıldıysa bile tümleştirmeyi ayarlamanız gerekir.
 
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Mevcut AD FS dağıtımında bağlı olan tarafı yapılandırma (hesap STS)
 
@@ -256,14 +256,14 @@ Komutları el ile çalıştırmaya karar verirseniz, aşağıdaki adımları izl
    => issue(claim = c);
    ```
 
-2. Extranet ve intranet için Windows Forms tabanlı kimlik doğrulamasının etkinleştirildiğini doğrulayın. İlk olarak, aşağıdaki cmdlet 'i çalıştırarak zaten etkinleştirilmiş olduğunu doğrulayın:
+2. Extranet ve intranet için Windows Forms tabanlı kimlik doğrulamasının etkinleştirildiğini doğrulayın. Aşağıdaki cmdlet 'i çalıştırarak zaten etkin olup olmadığını kontrol edebilirsiniz:
 
    ```powershell  
    Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
 
     > [!Note]  
-    > Windows tümleşik kimlik doğrulaması (WIA) desteklenen Kullanıcı Aracısı dizeleri güncel olmayabilir AD FS dağıtım, en son istemcileri destekleyecek şekilde güncelleştirilmeleri gerekebilir. WIA destekli Kullanıcı Aracısı dizelerini güncelleştirme hakkında daha fazla bilgi edinmek [için, WIA desteklemeyen cihazlar için intranet Forms tabanlı kimlik doğrulaması yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)makalesinde bulabilirsiniz.<br>Form tabanlı kimlik doğrulama ilkesini etkinleştirme adımları makalede, [kimlik doğrulama Ilkelerini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies)bölümünde belgelenmiştir.
+    > AD FS dağıtımınız için desteklenen Windows tümleşik kimlik doğrulaması (WIA) Kullanıcı Aracısı dizeleri güncel olmayabilir ve en son istemcileri desteklemek için bir güncelleştirme gerekebilir. WIA destekli Kullanıcı Aracısı dizelerini güncelleştirme hakkında daha fazla bilgi edinmek [için, WIA desteklemeyen cihazlar için intranet Forms tabanlı kimlik doğrulaması yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)makalesinde bulabilirsiniz.<br><br>Form tabanlı kimlik doğrulama ilkesini etkinleştirme adımları için bkz. [kimlik doğrulama Ilkelerini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies).
 
 3. Bağlı olan taraf güvenini eklemek için, aşağıdaki Windows PowerShell komutunu AD FS örneğiniz veya bir grup üyesi üzerinde çalıştırın. AD FS uç noktasını güncelleştirdiğinizden emin olun ve adım 1 ' de oluşturulan dosyanın üzerine gelin.
 
@@ -285,7 +285,7 @@ Komutları el ile çalıştırmaya karar verirseniz, aşağıdaki adımları izl
 4. Azure Stack erişmek için Internet Explorer veya Microsoft Edge tarayıcısı kullandığınızda, belirteç bağlamalarını göz ardı etmeniz gerekir. Aksi takdirde, oturum açma girişimleri başarısız olur. AD FS örneğiniz veya bir grup üyesi üzerinde aşağıdaki komutu çalıştırın:
 
    > [!note]  
-   > Windows Server 2012 veya 2012 R2 AD FS kullanılırken bu adım geçerli değildir. Bu komutu atlamak ve tümleştirmeyle devam etmek güvenlidir.
+   > Windows Server 2012 veya 2012 R2 AD FS kullanılırken bu adım geçerli değildir. Bu durumda, bu komutu atlamak ve tümleştirmeyle devam etmek güvenlidir.
 
    ```powershell  
    Set-AdfsProperties -IgnoreTokenBinding $true
@@ -295,14 +295,14 @@ Komutları el ile çalıştırmaya karar verirseniz, aşağıdaki adımları izl
 
 Kimlik doğrulaması için bir hizmet asıl adı (SPN) kullanılması gereken birçok senaryo vardır. Aşağıda bazı örnekler verilmiştir:
 
-- Azure Stack AD FS dağıtımıyla CLı kullanımı
-- AD FS ile dağıtıldığında Azure Stack için System Center yönetim paketi
-- AD FS ile dağıtıldığında Azure Stack kaynak sağlayıcıları
-- Çeşitli uygulamalar
-- Etkileşimli olmayan bir oturum açma gerekir
+- Azure Stack AD FS dağıtımıyla CLı kullanımı.
+- AD FS ile dağıtıldığında Azure Stack için System Center yönetim paketi.
+- AD FS ile dağıtıldığında Azure Stack içindeki kaynak sağlayıcıları.
+- Çeşitli uygulamalar.
+- Etkileşimli olmayan bir oturum açma gerekir.
 
 > [!Important]  
-> AD FS yalnızca etkileşimli oturum açma oturumlarını destekler. Otomatik senaryo için etkileşimli olmayan bir oturum açma gerekiyorsa, SPN kullanmanız gerekir.
+> AD FS yalnızca etkileşimli oturum açma oturumlarını destekler. Otomatik senaryo için etkileşimli olmayan bir oturum açma gerekliyse, SPN kullanmanız gerekir.
 
 SPN oluşturma hakkında daha fazla bilgi için bkz. [AD FS için hizmet sorumlusu oluşturma](azure-stack-create-service-principals.md).
 
@@ -329,7 +329,7 @@ Daha önce kimlik doğrulayabileceğiniz bir durumda ortamı atan bir hata oluş
    Geri alma eylemini çalıştırdıktan sonra tüm yapılandırma değişiklikleri geri alınır. Yalnızca yerleşik **CloudAdmin** kullanıcısı ile kimlik doğrulaması mümkündür.
 
    > [!IMPORTANT]
-   > Varsayılan sağlayıcı aboneliğinin orijinal sahibini yapılandırmanız gerekir
+   > Varsayılan sağlayıcı aboneliğinin orijinal sahibini yapılandırmanız gerekir.
 
    ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
@@ -337,7 +337,7 @@ Daha önce kimlik doğrulayabileceğiniz bir durumda ortamı atan bir hata oluş
 
 ### <a name="collecting-additional-logs"></a>Ek Günlükler toplanıyor
 
-Cmdlet 'lerden herhangi biri başarısız olursa `Get-Azurestacklogs` cmdlet 'ini kullanarak ek Günlükler toplayabilirsiniz.
+Cmdlet 'lerden herhangi biri başarısız olursa, `Get-Azurestacklogs` cmdlet 'ini kullanarak ek Günlükler toplayabilirsiniz.
 
 1. Yükseltilmiş bir Windows PowerShell oturumu açın ve aşağıdaki komutları çalıştırın:
 
@@ -346,11 +346,12 @@ Cmdlet 'lerden herhangi biri başarısız olursa `Get-Azurestacklogs` cmdlet 'in
    Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-2. Ardından, aşağıdaki cmdlet 'i çalıştırın:
+2. Ardından aşağıdaki cmdlet 'i çalıştırın:
 
    ```powershell  
    Get-AzureStackLog -OutputPath \\myworkstation\AzureStackLogs -FilterByRole ECE
    ```
 
+## <a name="next-steps"></a>Sonraki adımlar
 
 [Dış izleme çözümlerini tümleştirme](azure-stack-integrate-monitor.md)

@@ -1,39 +1,34 @@
 ---
-title: Azure Stack bir teklife abone olma | Microsoft Docs
+title: Azure Stack bir teklife abone olma
 description: Azure Stack teklifler için abonelikler oluşturma
 services: azure-stack
 documentationcenter: ''
 author: bryanla
 manager: femila
-editor: ''
-ms.assetid: 7f3f8683-ef09-4838-92ed-41f2fddbbbed
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/05/2019
 ms.author: bryanla
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: a35f8fe34cedbeb1a2ef068c666bc6a75effe111
-ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
+ms.openlocfilehash: c69c8a4be93cc392ca1eaf4edb70fb7fb4fc8676
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71319148"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283376"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Azure Stack tekliflere abonelik oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Kullanıcıların [oluşturduğunuz teklifi](azure-stack-create-offer.md) kullanabilmeleri için bir aboneliğe ihtiyaçları vardır. Kullanıcılar iki yolla teklife abone olabilir:
+[Bir teklif](azure-stack-create-offer.md)oluşturduktan sonra kullanıcıların kullanabilmesi için önce bu teklif için bir abonelik gerekir. Kullanıcıların bir teklifine abone olmanın iki yolu vardır:
 
-- Bulut operatörü olarak yönetim portalının içinden kullanıcı için abonelik oluşturabilirsiniz Oluşturduğunuz abonelikler hem genel hem de özel teklifler için olabilir.
-- Kiracı kullanıcısı olarak, kullanıcı portalını kullanırken bir genel teklife abone olabilirsiniz.  
+- Bir bulut operatörü olarak, bir kullanıcı için Yönetici portalı içinden bir abonelik oluşturabilirsiniz. Oluşturduğunuz abonelikler hem genel hem de özel teklifler için olabilir.
+- Kiracı kullanıcısı olarak, Kullanıcı portalını kullandığınızda bir genel teklife abone olabilirsiniz.  
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>Bulut işletmeni olarak abonelik oluşturma
 
-Bulut işleçleri, bir kullanıcı için bir teklif aboneliği oluşturmak üzere Yönetici portalını kullanabilir. Kendi dizin kiracınızın üyeleri için abonelikler oluşturabilirsiniz. [Birden çok kiracının](azure-stack-enable-multitenancy.md) etkin olduğu durumlarda, ek Dizin kiracılarında kullanıcılar için de abonelikler oluşturabilirsiniz.
+Bulut işleçleri, bir kullanıcı için bir teklif aboneliği oluşturmak üzere Yönetici portalını kullanır. Abonelikler, kendi dizin kiracınızın üyeleri için oluşturulabilir. [Birden çok kiracının](azure-stack-enable-multitenancy.md) etkin olduğu durumlarda, ek Dizin kiracılarında kullanıcılar için de abonelikler oluşturabilirsiniz.
 
 Kiracılarınızın kendi aboneliklerini oluşturmasını istemiyorsanız, tekliflerinizi özel yapın ve ardından kiracılar için abonelikler oluşturun. Bu yaklaşım, Azure Stack dış faturalandırma veya hizmet kataloğu sistemleriyle tümleştirilirken yaygındır.
 
@@ -42,7 +37,7 @@ Bir kullanıcı için abonelik oluşturduktan sonra, Kullanıcı portalında otu
 ### <a name="to-create-a-subscription-for-a-user"></a>Bir kullanıcı için abonelik oluşturmak için
 
 1. Yönetim portalında, **Kullanıcı abonelikleri** ' ne gidin.
-2. **Add (Ekle)** seçeneğini belirleyin. **Yeni Kullanıcı aboneliği**altında aşağıdaki bilgileri girin:  
+2. **Ekle**' yi seçin. **Yeni Kullanıcı aboneliği**altında aşağıdaki bilgileri girin:  
 
    - **Görünen ad** - *Kullanıcı abonelik adı*olarak görünen aboneliği belirlemek için kolay bir ad.
    - **Kullanıcı** -bu abonelik için kullanılabilir bir dizin kiracısından Kullanıcı belirtin. Kullanıcı adı, *sahip*olarak görünür.  Kullanıcı adının biçimi kimlik çözümünüze bağlıdır. Örneğin:
@@ -78,7 +73,7 @@ Kullanıcı olarak, Dizin kiracınız (kuruluş) için genel teklifleri ve eklen
 
 1. [Azure Stack Kullanıcı portalında](https://portal.local.azurestack.external) [oturum açın](../asdk/asdk-connect.md) ve **abonelik al**' ı seçin.
 
-   ![Abonelik edinin](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![Abonelik al](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
 2. **Abonelik al**' ın altında, **görünen ad**' de aboneliğin kolay adını girin. **Teklif** ' i seçin ve **teklif Seç**' in altında bir teklif seçin. Aboneliği oluşturmak için **Oluştur** ' u seçin.
 
@@ -88,11 +83,11 @@ Kullanıcı olarak, Dizin kiracınız (kuruluş) için genel teklifleri ve eklen
 
 4. Oluşturduğunuz aboneliği görmek için **tüm hizmetler** ' i seçin ve ardından **genel** kategori altında **abonelikler**' i seçin. Abonelik ayrıntılarını görmek için aboneliği seçin.  
 
-### <a name="to-subscribe-to-an-add-on-plan"></a>Bir eklenti planına abone olmak için
+### <a name="to-enable-an-add-on-plan-in-your-subscription"></a>Aboneliğinizde bir eklenti planını etkinleştirmek için
 
-Bir teklifin eklenti planı varsa, istediğiniz zaman bu planı aboneliğinize ekleyebilirsiniz.  
+Abone olduğunuz teklifin bir eklenti planı varsa, bu planı aboneliğinize dilediğiniz zaman ekleyebilirsiniz.  
 
-1. Kullanıcı portalında, **tüm hizmetler**' i seçin. Sonra, **genel** kategori altında, **abonelikler**' i seçin ve ardından değiştirmek istediğiniz aboneliği seçin. Kullanılabilir herhangi bir eklenti planı varsa **+ plan Ekle** etkindir ve **eklenti planları**için bir kutucuk vardır.
+1. Kullanıcı portalında, **tüm hizmetler**' i seçin. Sonra, **genel** kategori altında, **abonelikler**' i seçin ve ardından değiştirmek istediğiniz aboneliği seçin. Kullanılabilir eklenti planları varsa **+ plan Ekle** etkindir ve **eklenti planları**için bir kutucuk gösterir.
 
    Eğer ve **ekleme planı** etkin değilse, bu abonelikle ilişkili teklif için eklenti planı yoktur.
 
@@ -100,4 +95,6 @@ Bir teklifin eklenti planı varsa, istediğiniz zaman bu planı aboneliğinize e
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sanal makine sağlama](../user/azure-stack-create-vm-template.md)
+Bir kullanıcının bu kaynakları aboneliklerinde nasıl dağıtabilirim hakkında daha fazla bilgi edinin: 
+  - [Birçok kullanıcı hızlı başlangıç](../user/azure-stack-quick-windows-portal.md) , PowerShell, Azure CLI ve Kullanıcı Portalı kullanarak Windows ve Linux sanal makinelerinin nasıl sağlanacağını gösterir. 
+  - [Azure Resource Manager şablonu kullanan bir öğretici,](../user/azure-stack-create-vm-template.md) kubenetes kümesini yönetmek için Minikube çalıştıran bir Ubuntu 16,04 sanal makinesinin nasıl dağıtılacağını göstermektedir. 

@@ -17,14 +17,14 @@ ms.author: justinha
 ms.reviewer: unknown
 ms.custom: ''
 ms.lastreviewed: 05/14/2019
-ms.openlocfilehash: 7c84a9cb841f06887d09a650d277566fb9ff18ed
-ms.sourcegitcommit: 95f30e32e5441599790d39542ff02ba90e70f9d6
+ms.openlocfilehash: 060258b07e3eef385298600794a6dd8154a461fc
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71070171"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283411"
 ---
-# <a name="azure-stack-overview"></a>Azure Stack’e genel bakış
+# <a name="azure-stack-overview"></a>Azure Stack genel bakış
 
 Azure Stack, bir Azure uzantısıdır ve şirket içi bir ortamda uygulama çalıştırmak ve veri merkezinizde Azure hizmetleri sunmak için bir yol sağlar. Tutarlı bir bulut platformu sayesinde kuruluşlar, teknoloji sınırlamalarına bağlı olarak iş kararları verirken iş gereksinimlerine bağlı olarak teknoloji kararları verebilir.
 
@@ -62,7 +62,7 @@ Azure Stack mimarisi, internet bağlantısı kesilen uzak konumlar veya aralıkl
 ### <a name="production-or-evaluation-environments"></a>Üretim veya değerlendirme ortamları
 Azure Stack, gereksinimlerinizi karşılamak için iki dağıtım seçeneği sunulur, üretim kullanımı için tümleşik sistemleri ve Azure Stack değerlendirmek için Azure Stack Geliştirme Seti (ASDK) Azure Stack:
 
-- **Tümleşik sistemler Azure Stack**. Azure Stack tümleşik sistemler, Microsoft ve donanım iş ortaklarının bir ortaklığı aracılığıyla sunulur ve bulut kolaylığı ve bilgi işlem yönetimi basitliği sunan bir çözüm oluşturur. Azure Stack bir tümleşik donanım ve yazılım sistemi sunulan olduğundan, esneklik ve buluttan yenilik olanağı yanı sıra, gereken denetim sahip. 4-16 düğümlerden oluşan boyut olarak tümleşik sistemler Azure Stack ve donanım ortağı ve Microsoft tarafından ortaklaşa desteklenir. Yeni senaryoları oluşturabilir ve üretim iş yükleri için yeni çözümlerini dağıtmak için Azure Stack tümleşik sistemleri kullanın.
+- **Tümleşik sistemler Azure Stack**. Azure Stack tümleşik sistemler, Microsoft ve donanım iş ortaklarının bir ortaklığı aracılığıyla sunulur ve bulut kolaylığı ve bilgi işlem yönetimi basitliği sunan bir çözüm oluşturur. Azure Stack tümleşik bir donanım ve yazılım sistemi olarak sunulduğundan, ihtiyacınız olan esneklik ve denetim, buluttan yenilik yapın özelliği ile birlikte sağlanır. 4-16 düğümlerden oluşan boyut olarak tümleşik sistemler Azure Stack ve donanım ortağı ve Microsoft tarafından ortaklaşa desteklenir. Yeni senaryolar oluşturmak ve üretim iş yükleriniz için yeni çözümler dağıtmak üzere Azure Stack tümleşik sistemleri kullanın.
 
 - **Azure Stack geliştirme seti**. [Azure Stack geliştirme seti (ASDK)](../asdk/asdk-what-is.md) , Azure Stack hakkında değerlendirmek ve bu bilgileri öğrenmek için kullanabileceğiniz, ücretsiz ve Azure Stack tek düğümlü bir dağıtımdır. Ayrıca, Azure ile tutarlı olan API 'Leri ve araçları kullanarak uygulamalar oluşturmak için bir geliştirici ortamı olarak ASDK 'yi de kullanabilirsiniz. Ancak, ASDK, üretim ortamı olarak kullanılmak üzere tasarlanmamıştır ve tam tümleşik sistemler üretim dağıtımına kıyasla aşağıdaki sınırlamalara sahiptir:
 
@@ -75,7 +75,7 @@ Azure Stack, gereksinimlerinizi karşılamak için iki dağıtım seçeneği sun
 
 > Daha fazla bilgi için bkz. [bağlı](azure-stack-connected-deployment.md) ve [bağlantısı kesilen](azure-stack-disconnected-deployment.md) dağıtım modelleriyle ilgili hususlar. 
 
-### <a name="identity-provider"></a>Kimlik sağlayıcı 
+### <a name="identity-provider"></a>Kimlik sağlayıcısı 
 Azure Stack kimlikleri sağlamak için Azure Active Directory (Azure AD) veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanır. Azure AD, Microsoft 'un bulut tabanlı, çok kiracılı kimlik sağlayıcısıdır. Internet 'e bağlı dağıtımlarla en çok Karma senaryolar, kimlik deposu olarak Azure AD kullanır. 
 
 Azure Stack bağlantısı kesilen dağıtımlar için Active Directory Federasyon Hizmetleri (AD FS) (AD FS) kullanmanız gerekir. Azure Stack kaynak sağlayıcıları ve diğer uygulamalar AD FS veya Azure AD ile benzer şekilde çalışır. Azure Stack kendi Active Directory örneğini ve bir Active Directory Graph API içerir.
@@ -92,7 +92,7 @@ Yönetim Portalı, Kullanıcı Portalı veya [PowerShell](https://docs.microsoft
 
 Azure Stack operatörü olarak, [sanal makineler](azure-stack-tutorial-tenant-vm.md), [Web uygulamaları](azure-stack-app-service-overview.md), yüksek oranda kullanılabilir [SQL Server](azure-stack-tutorial-sql.md)ve [MySQL Server](azure-stack-tutorial-mysql.md) veritabanları gibi çok çeşitli hizmet ve uygulamalar sağlayabilirsiniz. SharePoint, Exchange ve daha fazlasını dağıtmak için [Azure Stack hızlı başlangıç Azure Resource Manager şablonlarını](https://github.com/Azure/AzureStack-QuickStart-Templates) da kullanabilirsiniz. 
 
-Yönetim portalını kullanarak, planları, kotaları, teklifleri ve abonelikleri kullanarak kiracılar için [hizmet sunmaya yönelik Azure Stack yapılandırabilirsiniz](azure-stack-plan-offer-quota-overview.md) . Kiracı kullanıcıları birden çok teklife abone olabilir. Tekliflerin bir veya daha fazla planı olabilir ve planlar bir veya daha fazla hizmete sahip olabilir. İşleçler Ayrıca kapasiteyi yönetir ve uyarılara yanıt verir. 
+Yönetim portalını kullanarak, planları, kotaları, teklifleri ve abonelikleri kullanarak kiracılar için [hizmet sunmaya yönelik Azure Stack yapılandırabilirsiniz](service-plan-offer-subscription-overview.md) . Kiracı kullanıcıları birden çok teklife abone olabilir. Tekliflerin bir veya daha fazla planı olabilir ve planlar bir veya daha fazla hizmete sahip olabilir. İşleçler Ayrıca kapasiteyi yönetir ve uyarılara yanıt verir. 
 
 Azure Stack yapılandırıldığında, bir **Azure Stack Kullanıcı** (kiracı olarak da bilinir), işlecin sunduğu hizmetleri kullanır. Kullanıcılar, abone oldukları Hizmetleri (Web Apps, depolama ve sanal makineler gibi) sağlayabilir, izleyebilir ve yönetebilir.
 
@@ -127,7 +127,7 @@ Azure Stack altyapısı hatalara karşı zaten dayanıklı olsa da, temel alına
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 Rol tabanlı erişim denetimi 'ni (RBAC), bir abonelik, kaynak grubu veya tek kaynak düzeyinde roller atayarak yetkili kullanıcılara, gruplara ve hizmetlere sistem erişimi sağlamak için kullanabilirsiniz. Her rol, bir Kullanıcı, Grup veya hizmetin Microsoft Azure Stack kaynakları üzerinde sahip olduğu erişim düzeyini tanımlar.
 
-RBAC Azure Stack tüm kaynak türleri için uygulanan üç temel role sahiptir: Sahip, katkıda bulunan ve okuyucu. Sahibinin, başkalarına erişim yetkisi verme hakkı dahil tüm kaynaklara tam erişimi vardır. Katkıda bulunan her türlü Azure kaynağı oluşturabilir ve yönetebilir, ancak diğer kullanıcılara erişim izni veremez. Okuyucu yalnızca mevcut kaynakları görüntüleyebilir. RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin, sanal makine katılımcısı rolü sanal makinelerin oluşturulmasına ve yönetilmesine izin verir, ancak sanal ağın veya sanal makinenin bağlandığı alt ağın yönetimine izin vermez.
+RBAC Azure Stack tüm kaynak türleri için uygulanan üç temel role sahiptir: sahip, katkıda bulunan ve okuyucu. Sahibinin, başkalarına erişim yetkisi verme hakkı dahil tüm kaynaklara tam erişimi vardır. Katkıda bulunan her türlü Azure kaynağı oluşturabilir ve yönetebilir, ancak diğer kullanıcılara erişim izni veremez. Okuyucu yalnızca mevcut kaynakları görüntüleyebilir. RBAC rollerinin geri kalanı belirli Azure kaynaklarının yönetimine izin verir. Örneğin, sanal makine katılımcısı rolü sanal makinelerin oluşturulmasına ve yönetilmesine izin verir, ancak sanal ağın veya sanal makinenin bağlandığı alt ağın yönetimine izin vermez.
 
 > Daha fazla bilgi için bkz. [rol tabanlı erişim denetimini yönetme](azure-stack-manage-permissions.md) . 
 

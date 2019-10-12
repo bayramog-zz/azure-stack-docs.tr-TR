@@ -2,15 +2,15 @@
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: include
-ms.date: 06/13/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
-ms.openlocfilehash: 2a2d8425d1d50b7e0774eb009a5575962c31ecbf
-ms.sourcegitcommit: ca46bef5d5f824d22bdbc00605eb881410b1ffd0
+ms.openlocfilehash: 593eafb8924a7195f4739a7a3b293b29c6ab8846
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133386"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283311"
 ---
 Kullanıcı portalında oturum açın:
-    - Çözümünüzün bölge ve dış etki alanı adını bir tümleşik sistemi dağıtımı için bir portal adresi göre değişir. Biçiminde olacaktır https://portal.&lt; *Bölge*&gt;.&lt; *FQDN*&gt;.
-    - Azure Stack geliştirme Seti'ni (ASDK) kullanıyorsanız, portalı adresidir [ https://portal.local.azurestack.external ](https://portal.local.azurestack.external).
+    - Tümleşik bir sistem dağıtımı için Portal adresi çözümünüzün bölgesine ve dış etki alanı adına göre değişir. @No__t biçiminde olacaktır-0; *bölge*&gt;. &lt;*FQDN*&gt;.
+    - Azure Stack Geliştirme Seti (ASDK) kullanıyorsanız, Portal adresi [https://portal.local.azurestack.external](https://portal.local.azurestack.external)' dir.

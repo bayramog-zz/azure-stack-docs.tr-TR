@@ -1,6 +1,6 @@
 ---
-title: Azure Stack ile akıllı uç DevOps desenini | Microsoft Docs
-description: Azure Stack ile akıllı uç DevOps desenini hakkında bilgi edinin.
+title: Azure Stack ile akıllı kenar için DevOps stili | Microsoft Docs
+description: Azure Stack ile akıllı kenar için DevOps kalıbı hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,79 +11,79 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
-ms.openlocfilehash: 07e0c3f0ca52c7079b879050ab36bf6a5f166f92
-ms.sourcegitcommit: 51ec68b5e6dbf437aaca19a9f35ba07d2c402892
+ms.openlocfilehash: deab520045d50acefb03691b9b127f99676061a0
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856370"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277723"
 ---
-# <a name="geo-distributed-pattern"></a>Coğrafi olarak dağıtılmış deseni
+# <a name="geo-distributed-pattern"></a>Coğrafi olarak dağıtılmış desenler
 
-Uygulama uç noktaları, birden çok bölgede sağlar. Konum ve uyumluluk ihtiyaçlarını temel alarak kullanıcı trafiği yönlendirme.
+Birden çok bölge arasında uygulama uç noktaları sağlayın. Kullanıcı trafiğini konum ve uyumluluk ihtiyaçlarına göre yönlendirin.
 
 ## <a name="context-and-problem"></a>Bağlam ve sorun
 
-Geniş ulaşmasını kuruluşlarla coğrafyalar çaba güvenli bir şekilde ve doğru bir şekilde dağıtın ve Kenarlıklar arasında gerekli düzeyi güvenlik, uyumluluk ve kullanıcı, konum ve cihaz başına performans sağlarken verilere erişimi etkinleştirmek.
+Geniş erişime sahip kuruluşlar, her Kullanıcı, konum ve bir cihaz için gerekli güvenlik, uyumluluk ve performans düzeylerini sağlarken verilere erişimi güvenle ve doğru bir şekilde dağıtabilir ve etkinleştirir.
 
 ## <a name="solution"></a>Çözüm
 
-Azure Stack coğrafi trafik yönlendirme desen veya Geo-Distributed uygulamaları, çeşitli ölçümlere göre belirli Uç noktalara yönlendirilmesi trafiğine izin verir. Traffic Manager yapılandırması rotalar coğrafi tabanlı Yönlendirme ve uç noktası ile oluşturma trafiği uç noktalarına bölgesel gereksinimleri, kurumsal ve uluslararası düzenleme ve veri gereksinimlerine göre.
+Azure Stack coğrafi trafik yönlendirme deseninin veya coğrafi olarak Dağıtılmış uygulamaların, trafiğin çeşitli ölçümlere göre belirli uç noktalara yönlendirilmesine izin verir. Coğrafi tabanlı Yönlendirme ve uç nokta yapılandırması ile Traffic Manager oluşturmak, bölgesel gereksinimlere, şirkete ve uluslararası yönetmelere ve veri ihtiyaçlarına göre trafiği uç noktalara yönlendirir.
 
-![Coğrafi olarak dağıtılmış deseni](media/azure-stack-edge-pattern-geo-distribution/geo-distribution.png)
+![Coğrafi olarak dağıtılmış desenler](media/azure-stack-edge-pattern-geo-distribution/geo-distribution.png)
 
 **Traffic Manager**  
-Diyagramda bu genel bulut dışında bulunur, ancak yerel veri merkezinde hem de genel bulut trafiği koordine etmek izinlere gerekir. Dengeleyici coğrafi konumlara trafiği yönlendirir.
+Diyagramda bu, genel bulutun dışında bulunur, ancak hem yerel veri merkezinde hem de genel bulutta trafiği koordine edebilmelidir. Dengeleyici trafiği coğrafi konumlara yönlendirir.
 
-**Domain Name System (DNS)**  
-DNS veya etki alanı adı sistemi çevirmek için sorumludur (veya çözümleme) IP adresini bir Web sitesi veya hizmet adı.
+**Etki alanı adı sistemi (DNS)**  
+Etki alanı adı sistemi veya DNS, IP adresine bir Web sitesi veya hizmet adı çevirmekten (veya çözümlemeden) sorumludur.
 
 ### <a name="public-cloud"></a>Genel bulut
 
 **Bulut uç noktası**  
-Genel IP adresleri, genel bulut uygulama kaynakları uç noktaya gelen trafik traffic manager aracılığıyla yönlendirmek için kullanılır.  
+Genel IP adresleri, Trafik Yöneticisi üzerinden gelen trafiği genel bulut uygulama kaynakları uç noktasına yönlendirmek için kullanılır.  
 
-### <a name="local-clouds"></a>Yerel bulut
+### <a name="local-clouds"></a>Yerel bulutlar
 
-**Yerel uç noktası**  
-Genel IP adresleri, genel bulut uygulama kaynakları uç noktaya gelen trafik traffic manager aracılığıyla yönlendirmek için kullanılır.
+**Yerel uç nokta**  
+Genel IP adresleri, Trafik Yöneticisi üzerinden gelen trafiği genel bulut uygulama kaynakları uç noktasına yönlendirmek için kullanılır.
 
-## <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
+## <a name="issues-and-considerations"></a>Sorunlar ve konular
 
-Bu düzeni nasıl uygulayacağınıza karar verirken aşağıdaki noktaları dikkate almalısınız:
+Bu düzenin nasıl uygulanacağını saptarken aşağıdaki noktaları göz önünde bulundurmanız gerekir:
 
-### <a name="scalability-considerations"></a>Ölçeklenebilirlik konusunda dikkat edilmesi gerekenler
+### <a name="scalability-considerations"></a>Ölçeklenebilirlik konuları
 
-Desen, trafik artışlarını karşılamak için ölçekleme yerine yönlendirme coğrafi trafiğini işler. Ancak, bu düzen diğer Azure ve şirket içi çözümler ile birleştirebilirsiniz. Örneğin, bu düzen, Bulutlar arası ölçeklendirme desen ile kullanılabilir.
+Bu model, trafiğin artışlarını karşılamak için ölçeklendirilmesi yerine coğrafi trafik yönlendirmeyi işler. Ancak, bu stili diğer Azure ve şirket içi çözümlerle birleştirebilirsiniz. Örneğin, bu model, platformlar arası ölçeklendirme düzeniyle birlikte kullanılabilir.
 
-### <a name="availability-considerations"></a>Kullanılabilirlik konusunda dikkat edilmesi gerekenler
+### <a name="availability-considerations"></a>Kullanılabilirlik konuları
 
-Yerel olarak dağıtılan uygulamaları, şirket içi donanım yapılandırması ve yazılım dağıtımı aracılığıyla yüksek kullanılabilirlik için yapılandırıldığından emin olun.
+Yerel olarak dağıtılan uygulamaların şirket içi donanım yapılandırması ve yazılım dağıtımı aracılığıyla yüksek kullanılabilirlik için yapılandırıldığından emin olun.
 
-### <a name="manageability-considerations"></a>Yönetilebilirlik konusunda dikkat edilmesi gerekenler
+### <a name="manageability-considerations"></a>Yönetilebilirlik konuları
 
-Desen, sorunsuz yönetimi ve ortamlar arasında tanıdık arabirimi sağlar.
+Bu model, ortamlar arasında sorunsuz yönetim ve tanıdık arabirim sağlar.
 
-## <a name="when-to-use-this-pattern"></a>Bu düzenin kullanılacağı durumlar
+## <a name="when-to-use-this-pattern"></a>Bu düzenin ne zaman kullanılacağı
 
--   Kuruluşumun özel bölgesel güvenlik ve dağıtım ilkeleri gerektiren uluslararası dalları var.
+-   Kuruluşumun özel bölgesel güvenlik ve dağıtım ilkeleri gerektiren Uluslararası dalları vardır.
 
--   Her kuruluşumun ofislerde çalışan, iş ve etkinlik başına yerel düzenlemeleri ve zaman dilimi raporlama gerektiren, tesis veri çeker.
+-   Kuruluş ofislerimin her biri, her yerel yönetmeliğe ve saat dilimine göre raporlama etkinliği gerektiren çalışan, iş ve tesis verilerini çeker.
 
--   Yüksek ölçek gereksinimlerine uygulamalarına göz aşırı yük gereksinimlerini karşılamak için tek bir bölgede yanı sıra bölgeler genelinde yapılan birden çok uygulama dağıtımları ile yatay ölçeklendirme tarafından karşılanabilir.
+-   Yüksek ölçekli gereksinimler, tek bir bölgede birden fazla uygulama dağıtımı ve bölgeler arasında, çok fazla yük gereksinimini işlemek üzere, uygulamalar arasında yatay olarak ölçeklendirerek karşılanacak.
 
--   Uygulamaları, yüksek kullanılabilirliğe sahip ve tek bir bölgede kesinti olması durumunda bile istemci isteklerine hızlı yanıt veren olması gerekir.
+-   Uygulamalar, tek bir bölgede kesinti olması durumunda bile yüksek oranda kullanılabilir ve istemci isteklerine yanıt vermelidir.
 
 ## <a name="example"></a>Örnek
 
-Trafiği coğrafi olarak dağıtılmış uygulamaları desenini kullanarak, çeşitli ölçümlere göre belirli Uç noktalara yönlendirmek öğrenin. Traffic Manager'ı oluşturma, coğrafi tabanlı Yönlendirme ve uç nokta yapılandırma profili bilgileri bölgesel gereksinimleri, kurumsal ve uluslararası düzenleme ve verileri gereksinimlerinize göre Uç noktalara yönlendirilir sağlar.
+Coğrafi olarak dağıtılmış uygulamalar modelini kullanarak çeşitli ölçümleri temel alarak trafiğin belirli uç noktalara nasıl yönlendirileceğini öğrenin. Coğrafi tabanlı Yönlendirme ve uç nokta yapılandırmasıyla Traffic Manager profili oluşturma, bilgilerin bölgesel gereksinimlere, şirkete ve uluslararası yönetmelere ve veri gereksinimlerinize göre uç noktalara yönlendirilmesini sağlar.
 
-[Azure ve Azure Stack ile coğrafi olarak dağıtılmış bir uygulama çözümü oluşturma](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-geo-distributed)
+[Azure ve Azure Stack coğrafi olarak dağıtılmış bir uygulama çözümü oluşturma](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-geo-distributed)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [Azure Stack için hibrit bulut tasarımı desenleri](azure-stack-edge-pattern-overview.md)
+[Azure Stack Için karma bulut tasarım desenleri](azure-stack-edge-pattern-overview.md) hakkında bilgi edinin

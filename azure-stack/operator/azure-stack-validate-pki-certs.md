@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 8d929a3b1fd67f3ec73137b2e1a87f594ea5b544
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 3823aa73d58af48c662690aa0d8e8a21180b4ed6
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68417833"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283226"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI sertifikalarını doğrulama
 
@@ -52,7 +52,7 @@ Hazırlık Denetleyicisi aracı aşağıdaki sertifika doğrulamaları gerçekle
 > [!IMPORTANT]  
 > PKI sertifikası bir PFX dosyasıdır ve parola, hassas bilgiler olarak değerlendirilmelidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Bir Azure Stack dağıtımı için PKI sertifikalarını doğrulamadan önce sisteminizin aşağıdaki önkoşulları karşılaması gerekir:
 
@@ -71,7 +71,7 @@ Dağıtım ve gizli anahtar döndürme için Azure Stack PKI sertifikalarını d
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ```
 
-2. Sertifika dizin yapısını oluşturun. Aşağıdaki örnekte, tercih ettiğiniz yeni bir dizin `<c:\certificates>` yoluna geçiş yapabilirsiniz.
+2. Sertifika dizin yapısını oluşturun. Aşağıdaki örnekte, `<c:\certificates>` ' ı istediğiniz yeni bir dizin yolu ile değiştirebilirsiniz.
     ```powershell  
     New-Item C:\Certificates -ItemType Directory
     
@@ -150,9 +150,9 @@ Invoke-AzsCertificateValidation Completed
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
-**Belirti**: Testler atlandı
+**Belirti**: testler atlandı
 
-**Neden**: AzsReadinessChecker bir bağımlılık karşılanmazsa belirli testleri atlar:
+**Neden**: azsreadinesschecker bir bağımlılık karşılanmazsa belirli testleri atlar:
 
  - Sertifika zinciri başarısız olursa diğer sertifikalar atlanır.
 
@@ -177,7 +177,7 @@ Invoke-AzsCertificateValidation Completed
     Invoke-AzsCertificateValidation Completed
     ```
 
-**Çözüm**: Her sertifika için her bir test kümesi altındaki Ayrıntılar bölümünde bulunan araç kılavuzunu izleyin.
+**Çözüm**: her sertifika için her bir test kümesi altındaki Ayrıntılar bölümünde bulunan araç kılavuzunu izleyin.
 
 ## <a name="perform-platform-as-a-service-certificate-validation"></a>Hizmet sertifikası doğrulaması olarak platform gerçekleştirme
 
@@ -252,27 +252,27 @@ SQL/MySQL veya App Services dağıtımları planlansa, hizmet olarak platform (P
 
 ## <a name="certificates"></a>Sertifikalar
 
-| Dizin | Sertifika |
+| Dizinden | Sertifika |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\<Region > _\<externalfqdn > |
-| ACSQueue  |  wildcard_queue_\<Region > _\<externalfqdn > |
-| ACSTable  |  wildcard_table_\<Region > _\<externalfqdn > |
-| Yönetici uzantısı ana bilgisayarı  |  wildcard_adminhosting_\<Region > _\<externalfqdn > |
-| Yönetici portalı  |  adminportal_\<Region > _\<externalfqdn > |
-| ARM Yöneticisi  |  adminmanagement_\<Region > _\<externalfqdn > |
-| ARM genel  |  management_\<Region > _\<externalfqdn > |
-| KeyVault  |  wildcard_vault_\<Region > _\<externalfqdn > |
-| Keyvaultınternal  |  wildcard_adminvault_\<Region > _\<externalfqdn > |
-| Ortak uzantı Konağı  |  wildcard_hosting_\<Region > _\<externalfqdn > |
-| Ortak Portal  |  portal_\<Region > _\<externalfqdn > |
+| acsBlob | wildcard_blob_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| ACSQueue  |  wildcard_queue_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| ACSTable  |  wildcard_table_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| Yönetici uzantısı ana bilgisayarı  |  wildcard_adminhosting_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| Yönetici portalı  |  adminportal_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| ARM Yöneticisi  |  adminmanagement_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| ARM genel  |  management_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| KeyVault  |  wildcard_vault_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| Keyvaultınternal  |  wildcard_adminvault_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| Ortak uzantı Konağı  |  wildcard_hosting_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| Ortak Portal  |  portal_ @ no__t-0region > _ @ no__t-1externalFQDN > |
 
 ## <a name="using-validated-certificates"></a>Doğrulanan sertifikaları kullanma
 
-Sertifikalarınız AzsReadinessChecker tarafından doğrulandıktan sonra bunları Azure Stack dağıtımınızda veya Azure Stack gizli dizi dönüştürme için kullanmaya hazır olursunuz. 
+Sertifikalarınız Azsreadinesscontroller tarafından doğrulandıktan sonra, bunları Azure Stack dağıtımınızda kullanmaya veya Azure Stack gizli döndürmenize hazırsınızdır. 
 
  - Dağıtım için sertifikalarınızı, [Azure Stack PKI gereksinimleri belgelerinde](azure-stack-pki-certs.md)belirtilen şekilde dağıtım konağına kopyalayabilmeleri için dağıtım Mühendisinize güvenli bir şekilde aktarın.
  - Gizli anahtar döndürmesi için, [Azure Stack gizli döndürme belgelerini](azure-stack-rotate-secrets.md)izleyerek Azure Stack ortamınızın ortak altyapı uç noktaları için eski sertifikaları güncelleştirmek üzere sertifikaları kullanabilirsiniz.
- - PaaS hizmetleri için, [Azure Stack belgelerindeki hizmetleri sunma genel görünümünü](azure-stack-offer-services-overview.md)IZLEYEREK Azure Stack SQL, MySQL ve App Services kaynak sağlayıcılarını yüklemek için sertifikaları kullanabilirsiniz.
+ - PaaS hizmetleri için, [Azure Stack belgelerindeki hizmetleri sunma genel görünümünü](service-plan-offer-subscription-overview.md)IZLEYEREK Azure Stack SQL, MySQL ve App Services kaynak sağlayıcılarını yüklemek için sertifikaları kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

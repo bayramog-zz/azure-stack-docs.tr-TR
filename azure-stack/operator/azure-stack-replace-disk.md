@@ -12,29 +12,29 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: 5d0c3bdff2684c90f118e26ac62b8219802fa25b
-ms.sourcegitcommit: b8260ef3e43f3703dd0df16fb752610ec8a86942
+ms.openlocfilehash: 5da479853487dfd93467bd1413159d6e602b93c6
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70008669"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277661"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Azure Stack bir fiziksel diski değiştirme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Bu makalede, Azure Stack bir fiziksel diskin yerini alacak genel işlem açıklanır. Fiziksel disk arıza yaptığında bu diski en kısa zamanda değiştirmeniz gerekir.
+Bu makalede, Azure Stack bir fiziksel diskin yerini alacak genel işlem açıklanır. Fiziksel bir disk başarısız olursa, bunu en kısa sürede değiştirmelisiniz.
 
 Bu yordamı tümleşik sistemler ve dinamik olarak değiştirilebilen diskler içeren geliştirme seti dağıtımları için kullanabilirsiniz.
 
-Fiili disk değiştirme adımları özgün donanım üreticinizin (OEM) donanım satıcısına göre değişir. Sisteminize özgü ayrıntılı adımlar için satıcınızın alanı değiştirilebilir birim (FRU) belgelerine bakın.
+Gerçek disk değiştirme adımları, özgün ekipman üreticisi (OEM) donanım satıcınıza göre değişir. Sisteminize özgü ayrıntılı adımlar için satıcınızın alan değiştirilebilir birimi (FRU) belgelerine bakın.
 
 ## <a name="review-disk-alert-information"></a>Disk uyarı bilgilerini gözden geçirme
-Disk arıza yaptığında, fiziksel diskle bağlantının kesildiğini bildiren bir uyarı alırsınız.
+Bir disk başarısız olduğunda, bağlantının fiziksel diske kaybolduğunu bildiren bir uyarı alırsınız.
 
 ![Fiziksel diske bağlantı kaybı gösteren uyarı](media/azure-stack-replace-disk/DiskAlert.png)
 
@@ -42,7 +42,7 @@ Uyarıyı açarsanız, uyarı açıklaması, değiştirmeniz gereken disk için 
 
 ## <a name="replace-the-disk"></a>Diski değiştirme
 
-Fiili disk değiştirme işlemi için OEM donanım satıcınızın FRU yönergelerini izleyin.
+Gerçek disk değişikliği için OEM Donanım satıcınızın FRU yönergelerini izleyin.
 
 > [!note]
 > Tek seferde bir ölçek birimi düğümü için diskleri değiştirin. Sonraki ölçek birimi düğümüne geçmeden önce sanal disk onarım işlerinin tamamlanmasını bekleyin

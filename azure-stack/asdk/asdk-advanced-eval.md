@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 36c4dae72f7fcf91438880f07231c94c8d286253
-ms.sourcegitcommit: 4eb1766c7a9d1ccb1f1362ae1211ec748a7d708c
+ms.openlocfilehash: a47bae619b2525534797158cf2660d5bc77192c9
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69579082"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72282618"
 ---
 # <a name="advanced-asdk-evaluation-tasks"></a>Gelişmiş ASDK değerlendirme görevleri
 Temel Azure Stack Geliştirme Seti (ASDK) hizmet özellikleri ve özellikleriyle benzerlik kazandıktan sonra, daha gelişmiş senaryolar sunarak Azure Stack daha fazla bilgi sahibi olabilirsiniz. Bu daha gelişmiş değerlendirme görevleri, Azure Stack Işleci belgelerinde tam olarak belgelenmiştir.
@@ -29,7 +29,7 @@ Temel Azure Stack Geliştirme Seti (ASDK) hizmet özellikleri ve özellikleriyle
 > [!NOTE]
 > Hem ASDK hem de üretim ve çok düğümlü Azure Stack dağıtımları için birçok işleç görevi desteklenirken, tüm kullanım senaryoları ASDK dağıtımları için desteklenmez. Daha fazla bilgi için bkz. [asdk ve çok düğümlü Azure Stack farkları](asdk-what-is.md#asdk-and-multi-node-azure-stack-differences).
 
-## <a name="delegate-offers-in-azure-stack"></a>Azure Stack’te teklifleri yetkilendirme
+## <a name="delegate-offers-in-azure-stack"></a>Azure Stack teklifleri temsilci seçme
 Azure Stack operatörü olarak genellikle diğer kişileri teklif oluşturma ve Kullanıcı imzalama ücretine koymak istersiniz. Örneğin, bir hizmet sağlayıcısıysanız, satıcıların müşterilere kaydolmasını ve bunları sizin adınıza yönetmesini isteyebilirsiniz. Ya da bir kuruluştaki merkezi bir BT grubunun parçasıysa, bağlı kuruluşlarının kullanıcıları müdahale etmeden imzalamasını isteyebilirsiniz.
 
 [Azure Stack teklifleri temsilci seçme](../operator/azure-stack-delegated-provider.md) , doğrudan sizin tarafınızdan daha fazla kullanıcıyı daha fazla kullanıcıya ulaşarak bu görevlerde size yardımcı olur.
@@ -46,4 +46,4 @@ Azure Stack operatörü olarak, kullanıcılarınızın (kiracılar) Azure Işle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Stack tümleşik sistemlerle hizmet sunma hakkında daha fazla bilgi edinin](../operator/azure-stack-offer-services-overview.md)
+[Azure Stack tümleşik sistemlerle hizmet sunma hakkında daha fazla bilgi edinin](../operator/service-plan-offer-subscription-overview.md)

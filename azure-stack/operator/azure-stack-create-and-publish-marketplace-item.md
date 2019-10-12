@@ -11,115 +11,200 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/10/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 668882b1f5e0702ce51798468c8f102efe92edcd
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: 3202b138dbc1b01c1438ee8988400e2845a58775
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159689"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283620"
 ---
-# <a name="create-and-publish-a-marketplace-item-in-azure-stack"></a>Azure Stack bir Market öğesi oluşturma ve yayımlama
+# <a name="create-and-publish-a-custom-azure-stack-marketplace-item"></a>Özel bir Azure Stack Market öğesi oluşturma ve yayımlama
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-## <a name="create-a-marketplace-item"></a>Bir Market öğesi oluşturma
+Azure Stack marketi 'Nde yayımlanan her öğe Azure Galeri paketi (. azpkg) biçimini kullanır. *Azure Gallery Packager* Aracı, daha sonra kullanıcılar tarafından indirilebilen Azure Stack Market 'e yükleyebileceğiniz özel bir Azure Galeri paketi oluşturmanıza olanak sağlar. Dağıtım işlemi bir Azure Resource Manager şablonu kullanır.
 
-1. [Azure Gallery Packager aracını](https://www.aka.ms/azurestackmarketplaceitem) ve örnek Azure Stack Market öğesini indirin.
-2. Örnek Market öğesini açın ve **Simplevmtemplate** klasörünü yeniden adlandırın. Market öğesiyle aynı adı kullanın; Örneğin, **contoso. ToDoList**. Bu klasör şunları içerir:
+## <a name="marketplace-items"></a>Market öğeleri
 
-   ```shell
-   /Contoso.TodoList/
-   /Contoso.TodoList/Manifest.json
-   /Contoso.TodoList/UIDefinition.json
-   /Contoso.TodoList/Icons/
-   /Contoso.TodoList/Strings/
-   /Contoso.TodoList/DeploymentTemplates/
-   ```
+Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi teklifinin nasıl oluşturulacağı gösterilmektedir.
 
-3. [Bir Azure Resource Manager şablonu oluşturun](/azure/azure-resource-manager/resource-group-authoring-templates) veya GitHub 'dan bir şablon seçin. Market öğesi bu şablonu kullanarak bir kaynak oluşturur.
+## <a name="create-a-marketplace-item"></a>Market öğesi oluştur
 
-    > [!NOTE]  
-    > Ürün anahtarları, parola gibi herhangi bir parolayı veya Azure Resource Manager şablonunda hiçbir müşteri tarafından tanımlanabilir bilgileri hiçbir şekilde kalıcı olarak kodlayın. Şablon JSON dosyalarına, galeride yayımlandıktan sonra kimlik doğrulamaya gerek olmadan erişilebilir. Tüm gizli dizileri [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) depolayın ve şablon içinden çağırın.
+> [!IMPORTANT]
+> VM marketi öğesini oluşturmadan önce, [Azure Stack BIR VM görüntüsü ekleme](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal)bölümündeki yönergeleri izleyerek Azure Stack PORTALıNA özel VM görüntüsünü yükleyin. Ardından, bu makaledeki yönergeleri izleyerek görüntüyü paketleyin (bir. azpkg oluşturun) ve Azure Stack Market 'e yükleyin.
 
-4. Kaynağın başarıyla dağıtılabilmesi için Microsoft Azure Stack API 'Leriyle şablonu test edin.
-5. Şablonunuz bir sanal makine (VM) görüntüsünü kullanıyorsa, [Azure Stack BIR VM görüntüsü eklemek](azure-stack-add-vm-image.md)için yönergeleri izleyin.
-6. Azure Resource Manager şablonunuzu **/contoso.ToDoList/DeploymentTemplates/** klasörüne kaydedin.
-7. Market öğesi için simgeleri ve metni seçin. **Simgeler** klasörüne simgeler ekleyin ve **dizeler** klasöründeki **kaynaklar** dosyasına metin ekleyin. Simgeler için **küçük**, **Orta**, **büyük**ve **geniş** adlandırma kurallarını kullanın. Bu boyutlarda ayrıntılı bir açıklama için [Market öğesi Kullanıcı arabirimi başvurusuna](#reference-marketplace-item-ui) bakın.
+Özel bir Market öğesi oluşturmak için aşağıdakileri yapın:
 
-   > [!NOTE]
-   > Market öğesini doğru bir şekilde oluşturmak için dört, orta, büyük, geniş) tüm dört simge boyutu gereklidir.
-   >
-   >
+1. [Azure Gallery Packager aracını](https://www.aka.ms/azurestackmarketplaceitem) ve örnek Azure Stack Galerisi paketini indirin. Bu indirme, özel VM şablonlarını içerir. . Zip dosyasını ayıklayın ve **Simplevmtemplate** klasörünü Azure Stack portalınızdaki bir öğe adıyla yeniden adlandırın.
 
-8. **Manifest. JSON** dosyasında **ad** ' ı Market öğesinin adıyla değiştirin. Ayrıca, **yayımcıyı** adınız veya şirketiniz olarak değiştirin. Görüntüyü yayımlamadan önce, manifest. json dosyasını güncelleştirin ve şu satırı güncelleştirin: "ad": "xxx". Her görüntü sürümü için farklı bir ad kullandığınızdan emin olun.
-9. **Yapıtlar**bölümünde **adı** ve **yolu** , eklediğiniz Azure Resource Manager şablonu için doğru bilgiler olarak değiştirin:
+2. Windows/Linux için bir Azure Resource Manager şablonu oluşturun veya örnek şablonlarımızı kullanın. Bu örnek şablonlar, 1. adımda indirdiğiniz Paketleyici aracı. zip dosyasında verilmiştir. Şablonu kullanabilir ve metin alanlarını değiştirebilir ya da önceden yapılandırılmış bir şablonu GitHub 'dan indirebilirsiniz. Azure Resource Manager şablonları hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları](/azure/azure-resource-manager/resource-group-authoring-templates).
 
-   ```json
-   "artifacts": [
-      {
-          "name": "Your template name",
-          "type": "Template",
-          "path": "DeploymentTemplates\\your path",
-          "isDefault": true
-      }
-   ```
+3. Galeri paketi aşağıdaki yapıyı içermelidir:
 
-10. Market **öğelerinizi** , Market öğelerinizin görünmesi gereken kategorilerin bir listesiyle değiştirin:
+   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png" alt-text="Galeri paketi":::
+
+   Dağıtım şablonları dosya yapısı aşağıdaki gibi görünür:
+
+   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png" alt-text="Galeri paketi":::
+
+4. Manifest. JSON şablonundaki aşağıdaki vurgulanan değerleri (sayılarla), [özel görüntünüzü karşıya yüklerken](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal)belirttiğiniz değerle değiştirin.
+
+   > [!NOTE]  
+   > Ürün anahtarları, parola gibi herhangi bir parolayı veya Azure Resource Manager şablonunda hiçbir müşteri tarafından tanımlanabilir bilgileri hiçbir şekilde kalıcı olarak kodlayın. Şablon JSON dosyalarına, galeride yayımlandıktan sonra kimlik doğrulamaya gerek olmadan erişilebilir. Tüm gizli dizileri [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) depolayın ve şablon içinden çağırın.
+
+   Aşağıdaki şablon manifest. json dosyasının bir örneğidir:
 
     ```json
-    "categories":[
-    "My Marketplace Items"
-    ],
+    {
+       "$schema": "https://gallery.azure.com/schemas/2015-10-01/manifest.json#",
+       "name": "Test", (1)
+       "publisher": "<Publisher name>", (2)
+       "version": "<Version number>", (3)
+       "displayName": "ms-resource:displayName", (4)
+       "publisherDisplayName": "ms-resource:publisherDisplayName", (5)
+       "publisherLegalName": "ms-resource:publisherDisplayName", (6)
+       "summary": "ms-resource:summary",
+       "longSummary": "ms-resource:longSummary",
+       "description": "ms-resource:description",
+       "longDescription": "ms-resource:description",
+       "uiDefinition": {
+          "path": "UIDefinition.json" (7)
+          },
+       "links": [
+        { "displayName": "ms-resource:documentationLink", "uri": "http://go.microsoft.com/fwlink/?LinkId=532898" }
+        ],
+       "artifacts": [
+          {
+             "name": "<Template name>",
+             "type": "Template",
+             "path": "DeploymentTemplates\\<Template name>.json", (8)
+             "isDefault": true
+          }
+       ],
+       "categories":[ (9)
+          "Custom",
+          "<Template name>"
+          ],
+       "images": [{
+          "context": "ibiza",
+          "items": [{
+             "id": "small",
+             "path": "icons\\Small.png", (10)
+             "type": "icon"
+             },
+             {
+                "id": "medium",
+                "path": "icons\\Medium.png",
+                "type": "icon"
+             },
+             {
+                "id": "large",
+                "path": "icons\\Large.png",
+                "type": "icon"
+             },
+             {
+                "id": "wide",
+                "path": "icons\\Wide.png",
+                "type": "icon"
+             }]
+        }]
+    }
     ```
 
-11. Manifest. JSON hakkında daha fazla düzenleme için, [başvuruya bakın: Market öğe bildirimi. JSON](#reference-marketplace-item-manifestjson).
+    Aşağıdaki listede örnek şablonda önceki numaralandırılmış değerler açıklanmaktadır:
 
-12. Klasörleri bir. azpkg dosyasına paketlemek için, bir komut istemi açın ve aşağıdaki komutu çalıştırın:
+    - (1) – teklifin adı.
+    - (2) – bir boşluk olmadan yayımcının adı.
+    - (3) – bir boşluk olmadan şablonunuzun sürümü.
+    - (4) – müşterilerin göreceği ad.
+    - (5) – müşterilerin göreceği yayımcı adı.
+    - (6) – yayımcının yasal adı.
+    - (7): **Uıdefinition. JSON** dosyanızın depolandığı yol.  
+    - (8): JSON ana şablon dosyanızın yolu ve adı.
+    - (9) – bu şablonun görüntülendiği kategorilerin adları.
+    - (10) – her simgenin yolu ve adı.
+
+5. **MS-Resource**' a başvuran tüm alanlar için **dizeler/kaynaklar. JSON** dosyası içinde uygun değerleri değiştirmeniz gerekir:
+
+    ```json
+    {
+    "displayName": "<OfferName.PublisherName.Version>",
+    "publisherDisplayName": "<Publisher name>",
+    "summary": "Create a simple VM",
+    "longSummary": "Create a simple VM and use it",
+    "description": "<p>This is just a sample of the type of description you could create for your gallery item!</p><p>This is a second paragraph.</p>",
+    "documentationLink": "Documentation"
+    }
+    ```
+
+    ![Package görüntü @ no__t-1 ![Package Display @ no__t-3
+
+6. Kaynağın başarıyla dağıtılabilmesi için [Azure Stack API 'leriyle](../user/azure-stack-profiles-azure-resource-manager-versions.md)şablonu test edin.
+
+7. Şablonunuz bir sanal makine (VM) görüntüsünü kullanıyorsa, [Azure Stack BIR VM görüntüsü eklemek](azure-stack-add-vm-image.md)için yönergeleri izleyin.
+
+8. Azure Resource Manager şablonunuzu **/contoso.ToDoList/DeploymentTemplates/** klasörüne kaydedin.
+
+9. Market öğesi için simgeleri ve metni seçin. **Simgeler** klasörüne simgeler ekleyin ve **dizeler** klasöründeki **kaynaklar** dosyasına metin ekleyin. Simgeler için **küçük**, **Orta**, **büyük**ve **geniş** adlandırma kurallarını kullanın. Bu boyutlarda ayrıntılı bir açıklama için [Market öğesi Kullanıcı arabirimi başvurusuna](#reference-marketplace-item-ui) bakın.
+
+    > [!NOTE]
+    > Market öğesini doğru bir şekilde oluşturmak için dört, orta, büyük, geniş) tüm dört simge boyutu gereklidir.
+
+10. Manifest. JSON hakkında daha fazla düzenleme için bkz. [Başvuru: market öğe bildirimi. JSON](#reference-marketplace-item-manifestjson).
+
+11. Dosyalarınızı değiştirmeyi bitirdiğinizde bir. azpkg dosyasına dönüştürün. Dönüştürme işlemini **Azuregallerypackager. exe** aracını ve daha önce indirdiğiniz örnek Galeri paketini kullanarak gerçekleştirirsiniz. Şu komutu çalıştırın:
 
     ```shell
-    AzureGalleryPackager.exe package -m <absolute path to manifest.json> -o <output location for the package>
+    .\AzureGalleryPackager.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
     ```
 
     > [!NOTE]
-    > Manifest. json dosyasının yanı sıra çıkış paketinin da tam yolu var olmalıdır. Örneğin, çıkış yolu C:\marketplaceıtem\yourpackage.exe. azpkg ise, **C:\marketplaceitem** klasörü mevcut olmalıdır.
+    > Çıkış yolu, seçtiğiniz herhangi bir yol olabilir ve C: sürücüsü altında olması gerekmez. Ancak, hem manifest. json dosyasının hem de çıkış paketinin tam yolu var olmalıdır. Örneğin, çıkış yolu `C:\<path>\galleryPackageName.azpkg` ise, `C:\<path>` klasörü var olmalıdır.
     >
     >
 
-## <a name="publish-a-marketplace-item"></a>Bir Market öğesi yayımlama
+## <a name="publish-a-marketplace-item"></a>Market öğesi yayımlama
 
 1. Market öğesini (. azpkg) Azure Blob depolama alanına yüklemek için PowerShell veya Azure Depolama Gezgini kullanın. Yerel Azure Stack depolama alanına yükleyebilir veya paket için geçici bir konum olan Azure Storage 'a yükleyebilirsiniz. Blobun genel olarak erişilebilir olduğundan emin olun.
-2. Microsoft Azure Stack ortamındaki istemci sanal makinesinde, PowerShell oturumunuzun hizmet yönetici kimlik bilgilerinizle ayarlandığından emin olun. PowerShell [ile bir şablon dağıtma](../user/azure-stack-deploy-template-powershell.md)Azure Stack içinde PowerShell kimlik doğrulaması hakkında yönergeler bulabilirsiniz.
-3. [PowerShell 1.3.0](azure-stack-powershell-install.md) veya üstünü kullandığınızda, market öğesini Azure Stack yayımlamak için **Add-Azsgalleryıtem** PowerShell cmdlet 'ini kullanabilirsiniz. Önceki sürümler için Add- **Azurermgalleryıtem** cmdlet 'ini **Add-azsgalleryıtem**yerine kullanın. Örneğin, PowerShell 1.3.0 veya üstünü kullandığınızda:
 
-   ```powershell
-   Add-AzsGalleryItem -GalleryItemUri `
-   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg -Verbose
-   ```
+2. Galeri paketini Azure Stack içine aktarmak için ilk adım, yeni oluşturduğunuz dosyayı Azure Stack kopyalamak amacıyla istemci sanal makinesine uzaktan bağlanmamalıdır.
 
-   | Parametre | Açıklama |
-   | --- | --- |
-   | SubscriptionID |Yönetici abonelik KIMLIĞI. PowerShell 'i kullanarak alabilirsiniz. Portal 'da almayı tercih ediyorsanız, sağlayıcı aboneliğine gidin ve abonelik KIMLIĞINI kopyalayın. |
-   | Gallerıtemuri |Zaten depolamaya yüklenmiş olan Galeri paketiniz için blob URI 'SI. |
-   | Apiversion |**2015-04-01**olarak ayarlayın. |
+3. Bağlam ekleyin:
 
-4. Portala gidin. Artık Portal 'daki Market öğesini bir operatör veya Kullanıcı olarak görebilirsiniz. Paketin görüntülenmesi birkaç dakika sürebilir.
+    ```powershell
+    $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
+    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
+    ```
 
-5. Market aboneliğiniz artık Azure Stack Market 'e kaydedildi. BLOB depolama konumunuzda silmeyi seçebilirsiniz.
+4. Kaynağı galerinize aktarmak için aşağıdaki betiği çalıştırın:
 
-    > [!CAUTION]  
-    > Tüm varsayılan Galeri yapıtlarına ve özel galeri yapılarınıza artık aşağıdaki URL 'Ler altında kimlik doğrulaması yapılmadan erişilebilir:  
-`https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
-`https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
-`https://systemgallery.blob.[Region].[external FQDN]/dev20161101-microsoft-windowsazure-gallery/[Template Name]/UiDefinition.json`
+    ```powershell
+    Add-AzsGalleryItem -GalleryItemUri `
+    https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg –Verbose
+    ```
+
+5. Öğesini depolamak için kullanılabilir geçerli bir depolama hesabınız olduğunu doğrulayın. Azure Stack yönetici portalından `GalleryItemURI` değerini alabilirsiniz. **Depolama hesabı-> blob özellikleri-** . azpkg UZANTıSıYLA > URL 'yi seçin. Depolama hesabı, Market 'te yayımlamak için yalnızca geçici kullanım içindir.
+
+   Galeri paketinizi tamamladıktan ve **Add-Azsgalleritem**kullanarak karşıya yükledikten sonra, özel VM 'Niz artık Market 'te ve **kaynak oluştur** görünümünde yer almalıdır. Özel Galeri paketinin **Market yönetimi**'nde görülemeyeceğini unutmayın.
+
+   [![Özel Market öğesi karşıya yüklendi](media/azure-stack-create-and-publish-marketplace-item/pkg6sm.png "özel Market öğesi karşıya yüklendi")](media/azure-stack-create-and-publish-marketplace-item/pkg6.png#lightbox)
+
+6. Öğe Market 'e başarıyla yayımlandıktan sonra, içeriği depolama hesabından silebilirsiniz.
+
+   > [!CAUTION]  
+   > Tüm varsayılan Galeri yapıtlarına ve özel galeri yapılarınıza artık aşağıdaki URL 'Ler altında kimlik doğrulaması yapılmadan erişilebilir:  
+   `https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
+   `https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
 
 6. **Remove-AzureRMGalleryItem** cmdlet 'Ini kullanarak Market öğesini kaldırabilirsiniz. Örneğin:
 
    ```powershell
-   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  -Verbose
+   Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
    ```
 
    > [!NOTE]
@@ -127,26 +212,26 @@ ms.locfileid: "71159689"
    >
    >
 
-## <a name="reference-marketplace-item-manifestjson"></a>Referans: Market öğe bildirimi. JSON
+## <a name="reference-marketplace-item-manifestjson"></a>Başvuru: market öğe bildirimi. JSON
 
 ### <a name="identity-information"></a>Kimlik bilgileri
 
-| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
-| Name |X |Dize |[A-Za-z0-9]+ | |
-| Yayımcı |X |Dize |[A-Za-z0-9]+ | |
+| Name |X |Dize |[A-Za-z0-9] + | |
+| Publisher |X |Dize |[A-Za-z0-9] + | |
 | Version |X |Dize |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Meta Veriler
 
-| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |80 karakter önerisi |Portal 80 karakterden uzunsa öğe adınızı doğru görüntülenmeyebilir. |
 | PublisherDisplayName |X |Dize |30 karakterlik öneri |Portal, 30 karakterden uzun olursa Yayımcı adınızı doğru görüntülenmeyebilir. |
 | PublisherLegalName |X |Dize |En fazla 256 karakter | |
 | Özet |X |Dize |60-100 karakter | |
 | LongSummary |X |Dize |140-256 karakter |Henüz Azure Stack için geçerli değildir. |
-| Açıklama |X |[HTML](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500-5.000 karakter | |
+| Açıklama |X |['SI](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500-5.000 karakter | |
 
 ### <a name="images"></a>Görüntüler
 
@@ -154,13 +239,13 @@ Market aşağıdaki simgeleri kullanır:
 
 | Name | Genişlik | Yükseklik | Notlar |
 | --- | --- | --- | --- |
-| Geniş |255 px |115 piksel |Her zaman gerekli |
-| Büyük |115 piksel |115 piksel |Her zaman gerekli |
+| Geniş |255 piksel |115 piksel |Her zaman gerekli |
+| Miktarda |115 piksel |115 piksel |Her zaman gerekli |
 | Orta |90 piksel |90 piksel |Her zaman gerekli |
 | Küçük |40 piksel |40 piksel |Her zaman gerekli |
-| Ekran Görüntüsü |533 piksel |324 piksel |Her zaman gerekli |
+| Yakala |533 piksel |324 piksel |Her zaman gerekli |
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Kategoriler
 
 Her Market öğesi, öğenin Portal Kullanıcı arabiriminde nerede göründüğünü tanımlayan bir kategori ile etiketlenmelidir. Azure Stack (**işlem**, **veri + depolama**vb.) var olan kategorilerden birini seçebilir veya yeni bir tane seçebilirsiniz.
 
@@ -168,19 +253,19 @@ Her Market öğesi, öğenin Portal Kullanıcı arabiriminde nerede göründüğ
 
 Her Market öğesi, ek içeriğe yönelik çeşitli bağlantılar içerebilir. Bağlantılar adların ve URI 'lerin listesi olarak belirtilir:
 
-| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |En fazla 64 karakter. | |
-| Uri |X |URI | | |
+| Kullanılmamışsa |X |URI | | |
 
 ### <a name="additional-properties"></a>Ek özellikler
 
 Market yazarları, önceki meta verilere ek olarak aşağıdaki biçimde özel anahtar/değer çifti verileri sağlayabilir:
 
-| Name | Gerekli | Type | Kısıtlamalar | Açıklama |
+| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |En fazla 25 karakter. | |
-| Value |X |Dize |En fazla 30 karakter. | |
+| Değer |X |Dize |En fazla 30 karakter. | |
 
 ### <a name="html-sanitization"></a>HTML temizleme
 
@@ -188,11 +273,11 @@ HTML 'ye izin veren herhangi bir alan için aşağıdaki [öğelere ve özniteli
 
 `h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i`
 
-## <a name="reference-marketplace-item-ui"></a>Referans: Market öğesi Kullanıcı arabirimi
+## <a name="reference-marketplace-item-ui"></a>Başvuru: market öğe kullanıcı arabirimi
 
 Azure Stack portalında görüldüğü gibi Market öğeleri için simgeler ve metin aşağıdaki gibidir.
 
-### <a name="create-blade"></a>Dikey pencere oluşturma
+### <a name="create-blade"></a>Dikey pencere oluştur
 
 ![Dikey pencere oluşturma — Market öğelerini Azure Stack](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
@@ -202,5 +287,6 @@ Azure Stack portalında görüldüğü gibi Market öğeleri için simgeler ve m
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stack Market 'e genel bakış](azure-stack-marketplace.md)
-* [Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)
+- [Azure Stack Market 'e genel bakış](azure-stack-marketplace.md)
+- [Market öğelerini indirme](azure-stack-download-azure-marketplace-item.md)
+- [Azure Resource Manager şablonlarının biçimi ve yapısı](/azure/azure-resource-manager/resource-group-authoring-templates)

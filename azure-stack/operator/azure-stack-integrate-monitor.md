@@ -15,12 +15,12 @@ ms.date: 06/05/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
-ms.openlocfilehash: 489859720df8a2d0c20bb476b285fe9cb65b797e
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: aa9b20b9ee80cfdb17dba3020c03718085d8b625
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159629"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277169"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Dış izleme çözümünü Azure Stack ile tümleştirin
 
@@ -30,7 +30,7 @@ Azure Stack altyapısının dış izlemesi için Azure Stack yazılımını, fiz
 - Fiziksel bilgisayarlar, temel kart yönetim denetleyicileri (BMC 'ler) aracılığıyla sistem durumu ve uyarı bilgilerini kullanılabilir hale getirir.
 - Fiziksel ağ cihazları, SNMP protokolü aracılığıyla sistem durumu ve uyarı bilgilerini kullanabilir hale getirir.
 
-Her bir Azure Stack çözümü bir donanım yaşam döngüsü konağından gelir. Bu konak, fiziksel sunucular ve ağ cihazları için özgün ekipman üreticisi (OEM) donanım satıcısının izleme yazılımını çalıştırır. İzleme çözümleri, veri merkezinizdeki mevcut izleme çözümleriyle tümleştirilebilen lütfen OEM sağlayıcınıza danışın.
+Her bir Azure Stack çözümü bir donanım yaşam döngüsü konağından gelir. Bu konak, fiziksel sunucular ve ağ cihazları için özgün ekipman üreticisi (OEM) donanım satıcısının izleme yazılımını çalıştırır. İzleme çözümleri, veri merkezinizdeki mevcut izleme çözümleriyle tümleştirilebilen OEM sağlayıcınıza danışın.
 
 > [!IMPORTANT]
 > Kullandığınız dış izleme çözümü aracısız olmalıdır. Üçüncü taraf aracıları Azure Stack bileşenleri içine yükleyemezsiniz.
@@ -40,7 +40,7 @@ Aşağıdaki diyagramda Azure Stack tümleşik bir sistem, donanım yaşam döng
 ![Azure Stack, izleme ve bilet oluşturma çözümü arasındaki trafiği gösteren diyagram.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
 > [!NOTE]
-> Fiziksel sunucularla doğrudan dış Izleme tümleştirmesine izin verilmez ve Access Control listeleri (ACL 'Ler) tarafından etkin bir şekilde engellenir.  Fiziksel ağ cihazlarıyla doğrudan dış Izleme tümleştirmesi desteklenir, lütfen bu özelliğin nasıl etkinleştirileceği ile ilgili olarak OEM sağlayıcınıza danışın.
+> Fiziksel sunucularla doğrudan dış izleme tümleştirmesine izin verilmez ve Access Control listeleri (ACL 'Ler) tarafından etkin bir şekilde engellenir. Fiziksel ağ cihazlarıyla doğrudan dış izleme tümleştirmesi desteklenir. Bu özelliğin nasıl etkinleştirileceği için OEM sağlayıcınıza danışın.
 
 Bu makalede, Azure Stack System Center Operations Manager ve Nagios gibi dış izleme çözümleriyle nasıl tümleştirileceği açıklanmaktadır. Ayrıca, PowerShell kullanarak veya REST API çağrıları aracılığıyla uyarılarla programlama yoluyla nasıl çalışacağınızı da içerir.
 
@@ -50,18 +50,18 @@ Azure Stack dış izleme için Operations Manager kullanabilirsiniz. Microsoft A
 
 Azure Stack için yönetim paketi aşağıdaki özellikleri sağlar:
 
-- Birden çok Azure Stack dağıtımı yönetebilirsiniz
-- Azure Active Directory (Azure AD) ve Active Directory Federasyon Hizmetleri (AD FS) (AD FS) için destek
-- Uyarıları alabilir ve kapatabilirsiniz
-- Bir sistem durumu ve kapasite panosu var
-- Düzeltme Eki ve güncelleştirme (P & U) devam ederken otomatik bakım modu algılamayı içerir
-- Dağıtım ve bölge için güncelleştirme görevlerini zorla içerir
-- Bir bölgeye özel bilgi ekleyebilirsiniz
-- Bildirim ve raporlamayı destekler
+- Birden çok Azure Stack dağıtımı yönetebilirsiniz.
+- Azure Active Directory (Azure AD) ve Active Directory Federasyon Hizmetleri (AD FS) (AD FS) için destek vardır.
+- Uyarıları alabilir ve kapatabilirsiniz.
+- Bir sistem durumu ve kapasite panosu vardır.
+- Düzeltme Eki ve güncelleştirme (P & U) devam ederken otomatik bakım modu algılamayı içerir.
+- Dağıtım ve bölge için güncelleştirme görevlerini zorla içerir.
+- Bir bölgeye özel bilgiler ekleyebilirsiniz.
+- Bildirim ve raporlamayı destekler.
 
-Microsoft Azure Stack ve ilişkili [Kullanıcı Kılavuzu](https://www.microsoft.com/en-us/download/details.aspx?id=55184)Için System Center yönetim paketini indirebilir veya doğrudan Operations Manager.
+System Center yönetim paketini ve ilişkili kullanıcı kılavuzunu indirmek için bkz. [Microsoft Azure Stack Için System Center yönetim paketini indirme](https://www.microsoft.com/en-us/download/details.aspx?id=55184). Ayrıca, doğrudan Operations Manager de indirebilirsiniz.
 
-Anahtar oluşturma çözümü için Operations Manager System Center Service Manager tümleştirebilirsiniz. Tümleşik ürün bağlayıcısı, Service Manager bir hizmet isteğini çözdükten sonra Azure Stack ve Operations Manager bir uyarıyı kapatmanıza olanak tanıyan iki yönlü iletişim sağlar.
+Anahtar oluşturma çözümü için Operations Manager System Center Service Manager tümleştirebilirsiniz. Tümleşik ürün bağlayıcısı, Service Manager bir hizmet isteğini çözdükten sonra Azure Stack ve Operations Manager bir uyarıyı kapatmanızı sağlayan çift yönlü iletişim sağlar.
 
 Aşağıdaki diyagramda, mevcut bir System Center dağıtımıyla Azure Stack tümleştirmesi gösterilmektedir. Azure Stack işlemleri çalıştırmak için System Center Orchestrator veya Service Management Automation (SMA) ile Service Manager daha da otomatikleştirebilirsiniz.
 
@@ -71,19 +71,19 @@ Aşağıdaki diyagramda, mevcut bir System Center dağıtımıyla Azure Stack t�
 
 Microsoft Azure Stack için Nagios eklentisini ayarlayabilir ve yapılandırabilirsiniz.
 
-Nagios izleme eklentisi, iş ortağı Cloudbase çözümleriyle birlikte geliştirilmiştir ve bu, izin veren ücretsiz yazılım lisansı-MıT (Massachusetts Technology of Technology) altında mevcuttur.
+Nagios izleme eklentisi, izin veren ücretsiz yazılım lisansı-MıT (Massachusetts Institute of Technology) altında sunulan iş ortağı Cloudbase çözümleriyle birlikte geliştirilmiştir.
 
 Eklenti Python 'da yazılmıştır ve REST API sistem durumu kaynak sağlayıcısı 'ndan yararlanır. Azure Stack uyarıları almak ve kapatmak için temel işlevler sunar. System Center yönetim paketi gibi, birden çok Azure Stack dağıtımı eklemenize ve bildirim gönderebilmenizi sağlar.
 
-Sürüm 1,2 ile Azure Stack – Nagios eklentisi Microsoft ADAL kitaplığını kullanır ve gizli veya sertifikayla hizmet sorumlusu kullanarak kimlik doğrulamasını destekler. Ayrıca, yapılandırma yeni parametrelerle tek bir yapılandırma dosyası kullanılarak basitleştirilmiştir. Artık kimlik sistemi olarak Azure AD & AD FS kullanan Azure Stack dağıtımlarını desteklemektedir.
+Sürüm 1,2 ile Azure Stack – Nagios eklentisi Microsoft ADAL kitaplığını kullanır ve gizli veya sertifikayla hizmet sorumlusu kullanarak kimlik doğrulamasını destekler. Ayrıca, yapılandırma yeni parametrelerle tek bir yapılandırma dosyası kullanılarak basitleştirilmiştir. Artık Azure AD 'yi kullanarak Azure Stack dağıtımlarını ve kimlik sistemi olarak AD FS destekler.
 
-Eklenti Nagios 4X ve XI ile birlikte kullanılabilir. [Buradan](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)indirebilirsiniz. İndirme sitesi ayrıca yükleme ve yapılandırma ayrıntılarını içerir.
+Eklenti Nagios 4X ve XI ile birlikte kullanılabilir. Eklentiyi indirmek için bkz. [izleme Azure Stack uyarıları](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). İndirme sitesi ayrıca yükleme ve yapılandırma ayrıntılarını içerir.
 
 ### <a name="requirements-for-nagios"></a>Nagios gereksinimleri
 
 1.  En düşük Nagios sürümü 4. x
 
-2.  Python Kitaplığı Microsoft Azure Active Directory. Bu, Python PıP kullanılarak yüklenebilir.
+2.  Python Kitaplığı Microsoft Azure Active Directory. Bu kitaplık, Python PıP kullanılarak yüklenebilir.
 
     ```bash  
     sudo pip install adal pyyaml six
@@ -105,11 +105,11 @@ samples/etc/azurestack_hosts.cfg
 samples/etc/azurestack_services.cfg
 ```
 
-1.  Eklentiyi `azurestack_plugin.py` aşağıdaki dizine `/usr/local/nagios/libexec`kopyalayın.
+1.  @No__t-0 eklentisini şu dizine kopyalayın: `/usr/local/nagios/libexec`.
 
-2.  İşleyiciyi `azurestack_handler.sh` aşağıdaki dizine `/usr/local/nagios/libexec/eventhandlers`kopyalayın.
+2.  @No__t-0 işleyicisini şu dizine kopyalayın: `/usr/local/nagios/libexec/eventhandlers`.
 
-3.  Eklenti dosyasını yürütülebilir olarak ayarlanmış hale getirme
+3.  Eklenti dosyasının yürütülebilir olarak ayarlandığından emin olun:
 
     ```bash
     sudo cp azurestack_plugin.py <PLUGINS_DIR>
@@ -118,23 +118,23 @@ samples/etc/azurestack_services.cfg
 
 ### <a name="configure-plugin"></a>Eklentiyi Yapılandır
 
-Aşağıdaki parametreler azurestack. cfg dosyasında yapılandırılabilir. Kalın ' daki parametrelerin, seçtiğiniz kimlik doğrulama modelinden bağımsız olarak yapılandırılması gerekir.
+Aşağıdaki parametreler azurestack. cfg dosyasında yapılandırılabilir. Kalın yazı tipi parametrelerinin seçtiğiniz kimlik doğrulama modelinden bağımsız olarak yapılandırılması gerekir.
 
-SPN oluşturma hakkında ayrıntılı bilgi [burada](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals)belgelenmiştir.
+SPN oluşturma hakkında daha fazla bilgi için bkz. [kaynaklara erişmek için uygulama kimliği kullanma](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals).
 
-| Parametre | Açıklama | Authentication |
+| Parametre | Açıklama | Kimlik doğrulaması |
 | --- | --- | --- |
 | **External_domain_fqdn ** | Dış etki alanı FQDN 'SI |    |
-| \* * bölge: * * | Bölge Adı |    |
-| **tenant_id: ** | Kiracı KIMLIĞI\* |    |
-| client_id: | İstemci Kimliği | Gizli anahtar içeren SPN |
+| \* * bölge: * * | Bölge adı |    |
+| **tenant_id: ** | Kiracı KIMLIĞI @ no__t-0 |    |
+| client_id: | İstemci KIMLIĞI | Gizli anahtar içeren SPN |
 | client_secret: | İstemci parolası | Gizli anahtar içeren SPN |
-| client_cert\*:\* | Sertifika yolu | Sertifika ile SPN |
-| client_cert_thumbprint\*:\* | Sertifika Parmak İzi | Sertifika ile SPN |
+| client_cert @ no__t-0 @ no__t-1: | Sertifika yolu | Sertifika ile SPN |
+| client_cert_thumbprint @ no__t-0 @ no__t-1: | Sertifika parmak Izi | Sertifika ile SPN |
 
-\*ADFS ile Azure Stack dağıtımları için kiracı KIMLIĞI gerekli değil.
+AD FS ile Azure Stack dağıtımları için \*Tenant ID gerekli değildir.
 
-\*\*İstemci parolası ve istemci sertifikası birbirini dışlıyor.
+\* @ no__t-1 Istemci parolası ve istemci sertifikası birbirini dışlıyor.
 
 Diğer yapılandırma dosyaları, Nagios 'da yapılandırılabilecek şekilde isteğe bağlı yapılandırma ayarları içerir.
 
@@ -143,28 +143,28 @@ Diğer yapılandırma dosyaları, Nagios 'da yapılandırılabilecek şekilde is
 
 | Yapılandırma | Açıklama |
 | --- | --- |
-| azurestack_commands.cfg | İşleyici yapılandırmasında değişiklik yok gereksinimi |
-| azurestack_contacts. cfg | Bildirim Ayarları |
+| azurestack_commands. cfg | İşleyici yapılandırmasında değişiklik yok gereksinimi |
+| azurestack_contacts. cfg | Bildirim ayarları |
 | azurestack_hosts. cfg | Azure Stack dağıtım adlandırma |
 | azurestack_services. cfg | Hizmetin yapılandırması |
 
 ### <a name="setup-steps"></a>Kurulum adımları
 
-1.  Yapılandırma dosyasını değiştirme
+1.  Yapılandırma dosyasını değiştirin.
 
-2.  Değiştirilen yapılandırma dosyalarını aşağıdaki klasöre `/usr/local/nagios/etc/objects`kopyalayın.
+2.  Değiştirilen yapılandırma dosyalarını şu klasöre kopyalayın: `/usr/local/nagios/etc/objects`.
 
 ### <a name="update-nagios-configuration"></a>Nagios yapılandırmasını güncelleştirme
 
 Azure Stack – Nagios eklentisinin yüklü olduğundan emin olmak için Nagios yapılandırmasının güncelleştirilmesi gerekir.
 
-1.  Aşağıdaki dosyayı açın
+1.  Aşağıdaki dosyayı açın:
 
 ```bash  
 /usr/local/nagios/etc/nagios.cfg
 ```
 
-2.  Aşağıdaki girişi ekleyin
+2.  Aşağıdaki girişi ekleyin:
 
 ```bash  
 # Load the Azure Stack Plugin Configuration
@@ -174,7 +174,7 @@ cfg_file=/usr/local/Nagios/etc/objects/azurestack_hosts.cfg
 cfg_file=/usr/local/Nagios/etc/objects/azurestack_services.cfg
 ```
 
-3.  Nagios 'ı yeniden yükleme
+3.  Nagios 'ı yeniden yükleyin.
 
 ```bash  
 sudo service nagios reload
@@ -196,7 +196,7 @@ Bir uyarı, aşağıdaki komutla bir Terminal kullanılarak da kapatılabilir:
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-Eklentinin sorunlarını giderme, bir terminalde eklentiyi el ile çağırma işlemi gerçekleştirebilir. Aşağıdaki yöntemi kullanın:
+Eklentiyi bir terminalde elle çağırarak eklenti sorunlarını giderme işlemi yapılır. Aşağıdaki yöntemi kullanın:
 
 ```bash
 /usr/local/nagios/libexec/azurestack_plugin.py --config-file /usr/local/nagios/etc/objects/azurestack.cfg --action Monitor
@@ -206,7 +206,7 @@ Eklentinin sorunlarını giderme, bir terminalde eklentiyi el ile çağırma iş
 
 Operations Manager, Nagios veya Nagios tabanlı bir çözüm kullanmıyorsanız, Azure Stack ile tümleştirilecek çok çeşitli izleme çözümlerini etkinleştirmek için PowerShell kullanabilirsiniz.
 
-1. PowerShell 'i kullanmak için [PowerShell 'in yüklü olduğundan ve](azure-stack-powershell-install.md) bir Azure Stack operatör ortamı için yapılandırıldığından emin olun. PowerShell 'i Kaynak Yöneticisi (yönetici) uç noktasına (https://adminmanagement. [ Bölge]. [External_FQDN]).
+1. PowerShell 'i kullanmak için [PowerShell 'in yüklü olduğundan ve](azure-stack-powershell-install.md) bir Azure Stack operatör ortamı için yapılandırıldığından emin olun. PowerShell 'i Kaynak Yöneticisi (yönetici) uç noktasına (https://adminmanagement ) ulaşabilme yerel bir bilgisayara yükler. [ Bölge]. [External_FQDN]).
 
 2. Azure Stack ortamına Azure Stack operatörü olarak bağlanmak için aşağıdaki komutları çalıştırın:
 

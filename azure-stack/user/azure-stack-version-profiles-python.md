@@ -15,12 +15,12 @@ ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 <!-- dev: viananth -->
-ms.openlocfilehash: bf44716c160948f3deafdc8afb87b9b6d49f9eb5
-ms.sourcegitcommit: 3d14ae30ce3ee44729e5419728cce14b3000e968
+ms.openlocfilehash: d0bec72b86fc2cfc729514343a3749a7907ae04c
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71814445"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72282832"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack 'de Python ile API sürüm profillerini kullanma
 
@@ -50,20 +50,20 @@ Python SDK aşağıdaki API profillerini destekler:
 1. [Resmi siteden](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)git 'i yükler.
 2. Python SDK 'nın nasıl yükleneceğine ilişkin yönergeler için bkz. [Python geliştiricileri Için Azure](/python/azure/python-sdk-azure-install?view=azure-python).
 3. Kullanılabilir değilse, bir abonelik oluşturun ve abonelik KIMLIĞINI daha sonra kullanmak üzere kaydedin. Abonelik oluşturma yönergeleri için, bkz. [Azure Stack tekliflere abonelik oluşturma](../operator/azure-stack-subscribe-plan-provision-vm.md).
-4. Bir hizmet sorumlusu oluşturun ve KIMLIĞINI ve parolasını kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında yönergeler için bkz: [uygulamalar erişim sağlamak için Azure Stack](../operator/azure-stack-create-service-principals.md).
-5. Hizmet sorumlunuzu aboneliğinizde katkıda bulunan/sahip rolü olduğundan emin olun. Hizmet sorumlusuna rol atama hakkında yönergeler için bkz. [Azure Stack uygulamalarına erişim sağlama](../operator/azure-stack-create-service-principals.md).
+4. Bir hizmet sorumlusu oluşturun ve KIMLIĞINI ve parolasını kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında yönergeler için bkz. [uygulamalar için Azure Stack erişimi sağlama](../operator/azure-stack-create-service-principals.md).
+5. Hizmet sorumlunun aboneliğinizde katkıda bulunan/Owner rolüne sahip olduğundan emin olun. Hizmet sorumlusuna rol atama hakkında yönergeler için bkz. [Azure Stack uygulamalarına erişim sağlama](../operator/azure-stack-create-service-principals.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Python Azure SDK 'sını Azure Stack ile kullanmak için, aşağıdaki değerleri sağlamanız ve sonra değerleri ortam değişkenleriyle ayarlamanız gerekir. Ortam değişkenlerini ayarlamak için, belirli işletim sisteminiz için aşağıdaki tablodan sonraki yönergelere bakın.
 
-| Value | Ortam değişkenleri | Açıklama |
+| Değer | Ortam değişkenleri | Açıklama |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Kiracı Kimliği | `AZURE_TENANT_ID` | Azure Stack [KIRACı kimliğiniz](../operator/azure-stack-identity-overview.md). |
-| İstemci Kimliği | `AZURE_CLIENT_ID` | Hizmet sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI. |
-| Abonelik Kimliği | `AZURE_SUBSCRIPTION_ID` | Azure Stack tekliflere erişmek için [ABONELIK kimliğini](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) kullanırsınız. |
-| Gizli anahtar | `AZURE_CLIENT_SECRET` | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
-| Resource Manager uç noktası | `ARM_ENDPOINT` | [Azure Stack Kaynak Yöneticisi uç noktası](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) makalesine bakın. |
+| Kiracı KIMLIĞI | `AZURE_TENANT_ID` | Azure Stack [KIRACı kimliğiniz](../operator/azure-stack-identity-overview.md). |
+| İstemci KIMLIĞI | `AZURE_CLIENT_ID` | Hizmet sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI. |
+| Abonelik Kimliği | `AZURE_SUBSCRIPTION_ID` | Azure Stack tekliflere erişmek için [ABONELIK kimliğini](../operator/service-plan-offer-subscription-overview.md#subscriptions) kullanırsınız. |
+| İstemci parolası | `AZURE_CLIENT_SECRET` | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
+| Kaynak Yöneticisi uç noktası | `ARM_ENDPOINT` | [Azure Stack Kaynak Yöneticisi uç noktası](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) makalesine bakın. |
 | Kaynak konumu | `AZURE_RESOURCE_LOCATION` | Azure Stack ortamınızın kaynak konumu.
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack CA kök sertifikasına güven
@@ -128,17 +128,17 @@ Azure Stack sanal makineler (VM) için ortak yönetim görevlerini gerçekleşti
 
 - VM oluşturma:
   - Linux VM oluşturma
-  - Bir Windows Sanal Makinesi oluşturun
+  - Windows VM oluşturma
 - VM 'yi güncelleştirme:
   - Sürücüyü Genişlet
-  - Bir VM’yi etiketleme
+  - VM etiketleme
   - Veri disklerini iliştirme
-  - Veri diskini çıkarma
+  - Veri disklerini ayır
 - VM çalıştırma:
   - VM başlatma
-  - VM durdurma
-  - Bir VM’yi yeniden başlatma
-- VM'leri listele
+  - VM 'yi durdurma
+  - VM 'yi yeniden başlatma
+- VM 'Leri listeleme
 - VM silme
 
 Bu işlemleri gerçekleştiren kodu gözden geçirmek için GitHub deposu **run_example ()** işlevine GitHub deposu [karma-COMPUTE-Python-Manage-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM) **' de bakın** .

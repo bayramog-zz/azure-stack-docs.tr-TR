@@ -15,16 +15,16 @@ ms.date: 10/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 6695af1e27a2182321a468b853a4650f42146a15
-ms.sourcegitcommit: 12034a1190d52ca2c7d3f05c8c096416120d8392
+ms.openlocfilehash: 1e1e72cea27bf036f662cfaa64a84a57fe9bc964
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037913"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283067"
 ---
 # <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-marketplace"></a>Azure Kubernetes Hizmetleri (AKS) altyapısı önkoşullarını Azure Stack Market 'e ekleme
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 Kullanıcılarınıza, bu makalede açıklanan öğeleri Azure Stack ekleyerek Azure Kubernetes Hizmetleri (AKS) altyapısını ayarlama olanağı sağlayabilirsiniz. Kullanıcılarınız daha sonra tek ve eşgüdümlü bir işlemde bir Kubernetes kümesi dağıtabilir. Bu makalede, AKS altyapısını hem bağlı hem de bağlantısı kesik ortamlarda kullanıcılarınız için kullanılabilir hale getirmek için gereken adımlarda adım adım gösterilmektedir. AKS altyapısı, bir hizmet asıl kimliğine ve Market 'te özel bir betik uzantısına ve AKS temel görüntüsüne bağlıdır.
 
@@ -32,13 +32,13 @@ Kullanıcılarınıza, bu makalede açıklanan öğeleri Azure Stack ekleyerek A
 
 > [!IMPORTANT]
 > AKS altyapısı şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="check-your-users-service-offering"></a>Kullanıcılarınızın hizmet sunumunu denetleyin
 
 Kullanıcılarınızın yeterli alana sahip Azure Stack bir plana, teklifine ve aboneliğe ihtiyacı olacak. Kullanıcılar genellikle en fazla altı sanal makineye sahip olmak üzere üç ana ve üç çalışan düğümünden oluşan kümeler dağıtmak ister. Yeterli sayıda kotasına sahip olduklarından emin olmak isteyeceksiniz.
 
-Bir hizmet teklifi planlama ve ayarlama hakkında daha fazla bilgiye ihtiyacınız varsa, bkz. [Azure Stack hizmetleri sunma genel bakış](azure-stack-offer-services-overview.md)
+Bir hizmet teklifi planlama ve ayarlama hakkında daha fazla bilgiye ihtiyacınız varsa, bkz. [Azure Stack hizmetleri sunma genel bakış](service-plan-offer-subscription-overview.md)
 
 ## <a name="create-a-service-principal-and-credentials"></a>Hizmet sorumlusu ve kimlik bilgileri oluşturma
 
@@ -58,20 +58,20 @@ Azure 'dan öğeyi alarak AKS temel görüntüsünü Market 'e ekleyebilirsiniz.
 
 Market 'e aşağıdaki öğeyi ekleyin:
 
-1. Oturum [Yönetim Portalı](https://adminportal.local.azurestack.external).
+1. [Yönetim portalında](https://adminportal.local.azurestack.external)oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından **Yönetim** kategorisi altında **Market yönetimi**' ni seçin.
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. `AKS Base Image` yazın.
+1. @No__t girin-0.
 
 1. AKS altyapısının sürümüyle eşleşen görüntü sürümünü seçin. AKS temel görüntüsünün listesini, [desteklenen Kubernetes sürümlerindeki](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions)aks altyapısı sürümüne bulabilirsiniz. 
 
     Listede şunları seçin:
-    - **Yayımcı**: Azure Kubernetes Service
+    - **Yayımcı**: Azure Kubernetes hizmeti
     - **Teklif**: aks
-    - **Sürüm**: AKS Base Image 16,04-LTS Image, 2019 Eylül (2019.09.19 veya AKS altyapısıyla eşlenen sürüm)
+    - **Sürüm**: aks Base Image 16,04-LTS ımage, 2019 Eylül (2019.09.19 veya aks altyapısıyla eşlenen sürüm)
 
 1. Indir ' i seçin **.**
 
@@ -85,10 +85,10 @@ Market 'e aşağıdaki öğeyi ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. `Custom Script for Linux` yazın.
+1. @No__t girin-0.
 
 1. Aşağıdaki profille betiği seçin:
-   - **Teklif**: Linux 2,0 için özel betik
+   - **Teklif**: Linux 2,0 Için özel betik
    - **Sürüm**: 2.0.6 (veya en son sürüm)
    - **Yayımcı**: Microsoft Corp
 
@@ -101,4 +101,4 @@ Market 'e aşağıdaki öğeyi ekleyin:
 
 [Azure Stack AKS Altyapısı nedir?](../user/azure-stack-kubernetes-aks-engine-overview.md)
 
-[Azure Stack hizmetleri sunma hakkında genel bakış](azure-stack-offer-services-overview.md)
+[Azure Stack hizmetleri sunma hakkında genel bakış](service-plan-offer-subscription-overview.md)

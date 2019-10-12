@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: 841b2b3d525380d927b9d4b121b7e832c99b7147
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.openlocfilehash: afb295d775eb9e8d35878c4d9c69106c558ffec0
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602920"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277746"
 ---
 # <a name="deploy-a-sql-server-2016-availability-group-to-azure-and-azure-stack"></a>Azure 'da SQL Server 2016 kullanılabilirlik grubu dağıtın ve Azure Stack
 
@@ -34,8 +34,8 @@ Bu çözümde, aşağıdakileri yapmak için bir örnek ortam oluşturacaksını
 > - Olağanüstü durum kurtarma sitesiyle temel yüksek düzeyde kullanılabilir SQL Server 2016 kurumsal kümesi dağıtma
 
 > [!Tip]  
-> ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
+> @no__t -0hybrid-pil,. png @ no__t-1  
+> Microsoft Azure Stack bir Azure uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
 > 
 > [Karma uygulamalar Için tasarım konuları](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
 
@@ -97,7 +97,7 @@ Her dağıtım için Docker görüntüleri farklı Azure PowerShell sürümleri 
       -AzureStackSubscriptionId_DR "drSubscriptionId"
       ```
 
-4.  NuGet `Y` sağlayıcısı 'nın yüklenmesine izin vermek için yazın ve bu, yüklenecek "2018-03-01-karma" modüllerinin API profilini başlatabilir.
+4.  NuGet sağlayıcısının yüklenmesine izin vermek için `Y` yazın ve bu, yüklenecek "2018-03-01-hibrit" modülleriyle başlatılır.
 
 5.  Kaynak dağıtımının tamamlanmasını bekleyin.
 

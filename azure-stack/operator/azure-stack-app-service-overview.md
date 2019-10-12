@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: mabrigg
+ms.author: BryanLa
 ms.reviewer: anwestg
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 698d38e971d37457d50637cb2e7e2ffe88890c20
-ms.sourcegitcommit: 7d7a4c8c46613b6104caf23763bfd2275f6a826b
+ms.openlocfilehash: 14c37e894d87d7a19ff6edc91b9c827ce53c08e8
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70808230"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72282643"
 ---
-# <a name="app-service-on-azure-stack-overview"></a>Azure Stack’te App Service’e genel bakış
+# <a name="app-service-on-azure-stack-overview"></a>Azure Stack genel bakış App Service
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
@@ -32,13 +32,13 @@ Azure App Service, iş süreçlerini otomatikleştirmenizi ve bulut API 'Lerini 
 
 ## <a name="why-offer-azure-app-service-on-azure-stack"></a>Neden Azure Stack Azure App Service sundunuz?
 
-App Service’in temel özelliklerinden bazıları şunlardır:
+App Service bazı temel özellikler ve yetenekler aşağıda verilmiştir:
 
-- **Birden çok dil ve çerçeve**: App Service, ASP.NET, Node. js, Java, PHP ve Python için birinci sınıf desteğe sahiptir. Ayrıca, App Service VM 'lerde Windows PowerShell ve diğer betikleri veya yürütülebilir dosyaları da çalıştırabilirsiniz.
-- **DevOps iyileştirmesi**: GitHub, Local git veya BitBucket ile sürekli tümleştirme ve dağıtım ayarlayın. Azure PowerShell veya platformlar arası komut satırı arabirimi (CLı) kullanarak güncelleştirmeleri test ve hazırlama ortamları aracılığıyla yükselterek App Service uygulamalarınızı yönetin.
+- **Birden çok dil ve çerçeve**: App Service ASP.net, Node. js, Java, php ve Python için birinci sınıf desteğe sahiptir. Ayrıca, App Service VM 'lerde Windows PowerShell ve diğer betikleri veya yürütülebilir dosyaları da çalıştırabilirsiniz.
+- **DevOps iyileştirmesi**: GitHub, Local git veya Bitbucket ile sürekli tümleştirme ve dağıtım ayarlayın. Azure PowerShell veya platformlar arası komut satırı arabirimi (CLı) kullanarak güncelleştirmeleri test ve hazırlama ortamları aracılığıyla yükselterek App Service uygulamalarınızı yönetin.
 - **Visual Studio tümleştirmesi**: Visual Studio 'da adanmış araçlar, uygulama oluşturma ve dağıtma işini kolaylaştırır.
 
-## <a name="app-types-in-app-service"></a>App Service’deki uygulama türleri
+## <a name="app-types-in-app-service"></a>App Service içindeki uygulama türleri
 
 App Service, her biri belirli bir iş yükünü barındırmak amaçlanan birkaç uygulama türü sunar:
 
@@ -51,9 +51,9 @@ Word *uygulaması* , bir iş yükünü çalıştırmaya ayrılmış barındırma
 Uygulamanız farklı türlerdeki birden çok App Service uygulamadan oluşabilir. Örneğin, uygulamanız bir Web ön ucu ve bir REST API arka ucu içeriyorsa şunları yapabilirsiniz:
 
 - Her ikisini de (ön uç ve API) tek bir Web uygulamasına dağıtma
-- Ön uç kodunuzu bir web uygulamasına, arka uç kodunuzu bir API uygulamasına dağıtma.
+- Ön uç kodunuzu bir Web uygulamasına ve arka uç kodunuza bir API uygulamasına dağıtın.
 
-   [![İzleme verileriyle ilgili App Service genel bakış](media/azure-stack-app-service-overview/image01.png "İzleme verileriyle ilgili App Service genel bakış")](media/azure-stack-app-service-overview/image01.png#lightbox)
+   [İzleme verileriyle(media/azure-stack-app-service-overview/image01.png "App Service") ![izleme verileriyle ilgili App Service Genel]bakış](media/azure-stack-app-service-overview/image01.png#lightbox)
 
 ## <a name="what-is-an-app-service-plan"></a>App Service planı nedir?
 
@@ -70,4 +70,4 @@ Azure Stack App Service Azure App Service kullandığı kullanıcı arabirimini 
 - [Azure Stack App Service dağıtmaya yönelik önkoşullar](azure-stack-app-service-before-you-get-started.md)
 - [App Service kaynak sağlayıcısını yükler](azure-stack-app-service-deploy.md)
 
-Ayrıca, [SQL Server kaynak sağlayıcısı](azure-stack-sql-resource-provider-deploy.md) ve [MySQL kaynak sağlayıcısı](azure-stack-mysql-resource-provider-deploy.md)gibi başka [bir hizmet olarak platform (PaaS) hizmeti](azure-stack-offer-services-overview.md)de deneyebilirsiniz.
+Ayrıca, [SQL Server kaynak sağlayıcısı](azure-stack-sql-resource-provider-deploy.md) ve [MySQL kaynak sağlayıcısı](azure-stack-mysql-resource-provider-deploy.md)gibi başka [bir hizmet olarak platform (PaaS) hizmeti](service-plan-offer-subscription-overview.md)de deneyebilirsiniz.

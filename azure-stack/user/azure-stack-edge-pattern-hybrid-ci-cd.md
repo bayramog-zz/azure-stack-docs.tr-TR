@@ -1,6 +1,6 @@
 ---
-title: Azure Stack ile akıllı uç DevOps desenini | Microsoft Docs
-description: Azure Stack ile akıllı uç DevOps desenini hakkında bilgi edinin
+title: Azure Stack ile akıllı kenar için DevOps deseninin | Microsoft Docs
+description: Azure Stack ile akıllı kenar için DevOps kalıbı hakkında bilgi edinin
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,101 +11,101 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
-ms.openlocfilehash: 76437cd37733984d3230d4c40ccc82c7e6ede2b9
-ms.sourcegitcommit: 51ec68b5e6dbf437aaca19a9f35ba07d2c402892
+ms.openlocfilehash: 04eff0f095f14d88443fc4b221799e63f523c82c
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856392"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72276998"
 ---
-# <a name="devops-pattern"></a>DevOps düzeni
+# <a name="devops-pattern"></a>DevOps kalıbı
 
-Tek bir konumdan kod ve geliştirme, test ve üretim ortamlarında yerel veri merkezinizde, özel bulutlara veya genel bulut olabilir. birden çok hedefe dağıtın.
+Tek bir konumdan kodlayın ve yerel veri merkezinizde, özel bulutlarınızda veya genel bulutta olabilecek geliştirme, test ve üretim ortamlarında birden çok hedefe dağıtın.
 
 ## <a name="context-and-problem"></a>Bağlam ve sorun
 
-Uygulama dağıtım sürekliliği, güvenlik ve güvenilirlik, kuruluşların önemli ve geliştirme takımları için kritik.
+Uygulama dağıtımı sürekliliği, güvenlik ve güvenilirlik, kuruluşlar ve geliştirme ekipleri için önemli öneme sahiptir.
 
-Uygulamalar genellikle her bir hedef ortamda çalıştırmak için UIMap'e yeniden işlenmiş kod gerektirir. Başka bir deyişle, bir uygulama tamamen taşınabilir değildir. Güncelleştirilmiş, test ve gerekir her ortamı üzerinden hareket ettikçe doğrulandı. Örneğin, bir geliştirme ortamında yazılan kod gerekir ardından bir test ortamında çalışması için yazılan ve son olarak bir üretim ortamında gölünüzdeki olduğunda yazılan. Bu kod Ayrıca, özellikle ana bilgisayara bağlanır. Bu maliyet uygulamanızı kullanmanın ve karmaşıklığını artırır. Her sürüm uygulamanın her ortama bağlı olur. Artan karmaşıklık ve çoğaltma güvenlik ve kod kalitesini riskini artırır. Ayrıca, geri yükleme başarısız oldu konakları kaldırın ya da isteğe bağlı artışlar işlemek için ek Konaklara dağıtma kod kolayca dağıtılamaz.
+Uygulamalar genellikle yeniden düzenlenmiş kodunun her bir hedef ortamda çalıştırılmasını gerektirir. Bu, bir uygulamanın tamamen taşınmadığı anlamına gelir. Her bir ortamda gezindiğinden, güncelleştirilmeleri, test edilmiş ve doğrulanması gerekir. Örneğin, bir geliştirme ortamında yazılan kodun daha sonra bir test ortamında çalışması için yeniden yazılması ve son olarak bir üretim ortamına eklerken yeniden yazılması gerekir. Ayrıca, bu kod özellikle konağa bağlanır. Bu, uygulamanızı korumanın maliyetini ve karmaşıklığını artırır. Uygulamanın her bir sürümü her bir ortama bağlıdır. Artan karmaşıklık ve yineleme, güvenlik ve kod kalitesi riskini artırır. Ayrıca, geri yükleme başarısız Konakları kaldırdığınızda veya daha sonra artan artışları işlemek için ek konaklar dağıtırken kod kolayca dağıtılamaz.
 
 ## <a name="solution"></a>Çözüm
 
-DevOps desen, derleme, test etme ve birden çok bulut üzerinde çalışan bir uygulama dağıtmak sağlar. Bu düzen, sürekli tümleştirme ve sürekli teslim uygulaması sahip. Sürekli Tümleştirme ile kod oluşturulan ve bir takım üyesi bir değişikliği sürüm denetimine işlenen her değişiklikten test. Sürekli teslim, her bir derleme adımından üretim ortamına otomatikleştirir. Birlikte, bu işlemlerin farklı ortamlarda dağıtımı destekleyen bir sürüm işlemi oluşturun. Bu desen ile kodunuzu taslak ve bir şirket içi ortamı, farklı özel Bulutlar ve genel Bulutlar için aynı kodu dağıtabilirsiniz. Ortamındaki farklılıklar bir yapılandırma dosyası değişiklik yerine kodunda değişiklik yapılmasını gerektirir.
+DevOps stili, birden çok bulutta çalışan bir uygulama oluşturmanıza, test etmenize ve dağıtmanıza olanak sağlar. Bu model sürekli tümleştirme ve sürekli teslim işlemlerini tek bir şekilde depolar. Sürekli tümleştirme sayesinde, bir takım üyesi sürüm denetimine bir değişiklik yaptığı her seferinde kod oluşturulur ve test edilir. Sürekli teslim, bir derlemeden bir üretim ortamına her adımı otomatikleştirir. Birlikte, bu işlemler, farklı ortamlarda dağıtımı destekleyen bir yayın işlemi oluşturur. Bu Düzenle, kodunuzun taslağını oluşturabilir ve ardından aynı kodu bir şirket içi ortama, farklı özel bulutlara ve genel bulutlara dağıtabilirsiniz. Ortamdaki farklılıklar, koddaki değişiklikler yerine yapılandırma dosyasında değişiklik yapılmasını gerektirir.
 
-![DevOps düzeni](media/azure-stack-edge-pattern-hybrid-ci-cd/hybrid-ci-cd.png)
+![DevOps kalıbı](media/azure-stack-edge-pattern-hybrid-ci-cd/hybrid-ci-cd.png)
 
-Geliştirme araçları şirket içi, özel Bulut ve genel bulut ortamları arasında tutarlı bir dizi ile sürekli tümleştirme ve sürekli teslim, bir yöntem uygulayabilirsiniz. Uygulamalar ve hizmetler DevOps deseni kullanılarak dağıtılan birbirinin yerine kullanılabilir ve şirket içinde ve genel bulut özellikleri ve yetenekleri yararlanarak, bu konumlardan herhangi birinde çalıştırılabilir.
+Şirket içi, özel bulut ve genel bulut ortamlarında tutarlı bir geliştirme araçları kümesiyle sürekli tümleştirme ve sürekli teslim için bir yöntem uygulayabilirsiniz. DevOps model kullanılarak dağıtılan uygulamalar ve hizmetler, şirket içi ve genel bulut özelliklerinden ve özelliklerinden faydalanarak bu konumların herhangi birinde değiştirilebilir ve çalıştırılabilir.
 
-Bir DevOps kullanarak yayın ardışık düzeni, yardımcı olur:
+DevOps yayın işlem hattının kullanılması şunları yapmanıza yardımcı olur:
 
--   Tek bir depoda kod tamamlama dayalı yeni bir derleme başlatır.
+-   Tek bir depoya kod işleme tabanlı yeni bir derleme başlatın.
 
--   Otomatik olarak yeni oluşturulan kodunuzu kullanıcı kabul testi için genel buluta dağıtın.
+-   Yeni oluşturulan kodunuzu kullanıcı kabul testi için genel buluta otomatik olarak dağıtın.
 
--   Kodunuzu test geçtikten sonra otomatik olarak bir özel buluta dağıtın.
+-   Kodunuz testi geçtikten sonra özel buluta otomatik olarak dağıtın.
 
-## <a name="issues-and-considerations"></a>Sorunlar ve dikkat edilmesi gerekenler
+## <a name="issues-and-considerations"></a>Sorunlar ve konular
 
-DevOps düzeni, hedef ortam bağımsız olarak dağıtımlar arasında tutarlılık sağlamak için tasarlanmıştır. Ancak, Bulut ve şirket içi ortamlar genelinde özellikleri değişir. Aşağıdaki topluluklara bir göz atın:
+DevOps deseninin, hedef ortamdan bağımsız olarak dağıtımlar arasında tutarlılık sağlamaya yöneliktir. Ancak, yetenekler bulutta ve şirket içi ortamlarda farklılık gösterir. Aşağıdakileri göz önünde bulundurun:
 
--   İşlevler, uç noktaları, hizmetleri ve diğer kaynaklar, dağıtımınızdaki hedef dağıtım konumlarda kullanılabilir?
+-   Dağıtımınızdaki işlevler, uç noktalar, hizmetler ve diğer kaynaklar hedef dağıtım konumlarında kullanılabilir mi?
 
--   Yapılandırma yapıtları bulutlarda erişilebilir bir konumda depolanır?
+-   Yapılandırma yapıtları bulutlar genelinde erişilebilen konumlarda depolanıyor mu?
 
--   Dağıtım parametreleri, tüm hedef ortamlarında çalışacak mı?
+-   Dağıtım parametreleri tüm hedef ortamlarda çalışacak mı?
 
--   Kaynağa özgü özellikleri tüm hedef bulutlarda kullanılabilir mi?
+-   Kaynağa özgü özellikler tüm hedef bulutlarda kullanılabilir mi?
 
-Daha fazla bilgi için [bulut tutarlılık için geliştirme Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-resource-manager/templates-cloud-consistency).
+Daha fazla bilgi için bkz. [bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](https://docs.microsoft.com/azure/azure-resource-manager/templates-cloud-consistency).
 
-Ayrıca, bu düzeni nasıl uygulayacağınıza karar verirken aşağıdaki noktaları dikkate alın:
+Ayrıca, bu düzenin nasıl uygulanacağını saptarken aşağıdaki noktaları göz önünde bulundurun:
 
-### <a name="scalability-considerations"></a>Ölçeklenebilirlik konusunda dikkat edilmesi gerekenler
+### <a name="scalability-considerations"></a>Ölçeklenebilirlik konuları
 
-DevOps desenleri anahtar denetim noktası dağıtım Otomasyon sistemleridir. Uygulamalar farklılık gösterebilir. Doğru sunucu boyutunun seçimi, beklenen iş yükünün boyutuna bağlıdır. Vm'leri ölçek kapsayıcılara göre daha pahalı olabilir. Ancak, ölçeklendirme amacıyla kapsayıcıları kullanabilmek için derleme sürecinizin kapsayıcılar ile çalışması gerekir.
+Dağıtım Otomasyonu sistemleri, DevOps desenlerindeki anahtar denetim noktasıdır. Uygulamalar farklılık gösterebilir. Doğru sunucu boyutunun seçimi, beklenen iş yükünün boyutuna bağlıdır. VM 'Ler kapsayıcılardan ölçeğe daha fazla maliyet sağlar. Ancak, ölçeklendirme için kapsayıcıları kullanmak üzere derleme işleminizin kapsayıcılarla çalışması gerekir.
 
-### <a name="availability-considerations"></a>Kullanılabilirlik konusunda dikkat edilmesi gerekenler
+### <a name="availability-considerations"></a>Kullanılabilirlik konuları
 
-DevPattern bağlamında kullanılabilirlik, test sonuçları, kod bağımlılıkları veya diğer yapıtlar gibi iş akışınızla ilişkili herhangi bir durum bilgisini geri yükleme anlamına gelir. Kullanılabilirlik gereksinimlerinizi değerlendirirken yaygın kullanılan iki ölçümü göz önünde bulundurun:
+Devmodel bağlamında kullanılabilirlik, test sonuçları, kod bağımlılıkları veya diğer yapıtlar gibi iş akışınız ile ilişkili tüm durum bilgilerini kurtarabilmekte olduğu anlamına gelir. Kullanılabilirlik gereksinimlerinizi değerlendirmek için, iki ortak ölçümü göz önünde bulundurun:
 
--   Kurtarma süresi hedefi (RTO) sistemi olmadan gidebilirsiniz süreyi belirtir.
+-   Kurtarma süresi hedefi (RTO), sistem olmadan ne kadar gidebilmeniz gerektiğini belirtir.
 
--   Kurtarma noktası hedefi (RPO), sistem veri miktarını, bir kesintisinden etkilenirse hizmet kaybetmeyi göze alabileceğinizi belirtir.
+-   Kurtarma noktası hedefi (RPO), hizmette bir kesinti sistemi etkiliyorsa ne kadar veri kaybedeceğinizi gösterir.
 
-Uygulama, RTO ve RPO yedeklilik ve yedeklemeye işaret eder. Küresel Azure Bulutu üzerinde kullanılabilirlik donanım Kurtarma bir soru değildir — Azure parçası olan — ancak DevOps sistemlerinizi durumunu korumak yerine sağlama. Azure Stack üzerinde önemli bir unsur donanım kurtarma olabilir.
+Uygulamada, RTO ve RPO, artıklık ve yedekleme anlamına gelmez. Küresel Azure bulutu 'nda kullanılabilirlik, Azure 'un bir parçası olan, ancak DevOps sistemlerinizin durumunu sürdürmenize gerek kalmadan, donanım kurtarmaya yönelik bir soru değildir. Azure Stack, donanım kurtarma göz önünde olabilir.
 
-Dağıtım Otomasyon için kullanılan sistemi tasarladığınız sırada başka bir önemli erişim denetimi ve bulut ortamlarına Hizmetleri dağıtmak için gereken hakları doğru yönetimini noktadır. Oluşturma, silme veya dağıtımları değiştirmek için hangi hakları gerekir? Örneğin, bir hak kümesi, genellikle Azure ve başka bir kaynak grubundaki Hizmetleri dağıtmak için bir kaynak grubu oluşturmak için gereklidir.
+Dağıtım Otomasyonu için kullanılan sistemin tasarlanmasıyla ilgili bir diğer önemli nokta, erişim denetimi ve hizmetleri bulut ortamlarına dağıtmak için gereken hakların uygun yönetimi. Dağıtımları oluşturmak, silmek veya değiştirmek için hangi haklar gerekir? Örneğin, genellikle Azure 'da bir kaynak grubu oluşturmak için bir haklar kümesi gerekir ve kaynak grubunda hizmetleri dağıtmak için başka bir haklar vardır.
 
-### <a name="manageability-considerations"></a>Yönetilebilirlik konusunda dikkat edilmesi gerekenler
+### <a name="manageability-considerations"></a>Yönetilebilirlik konuları
 
-DevOps deseni temel alınarak tüm sistemin tasarımını, otomasyon, günlüğe kaydetme ve her hizmet için Portföyünden uyarı dikkate almanız gerekir. Paylaşılan hizmetler, bir uygulama ekipleri veya her ikisini de ve güvenlik ilkeleri ve idare de izleyin.
+DevOps düzenine dayalı herhangi bir sistemin tasarımı, portföyde her bir hizmet için Otomasyon, günlüğe kaydetme ve uyarı vermeyi göz önünde bulundurmalıdır. Paylaşılan Hizmetleri, bir uygulama ekibini veya her ikisini birden kullanın, güvenlik ilkelerini ve idare 'yi de izleyin.
 
-Üretim ortamlarını ve geliştirme/test ortamlarını ayrı kaynak gruplarında Azure'da veya Azure Stack'te dağıtın. Ardından her bir ortamın kaynaklarını izleyebilir ve fatura maliyetlerini kaynak grubuna göre topla. Ayrıca, test dağıtımları için yararlı olan bir küme olarak kaynakları da silebilirsiniz.
+Üretim ortamlarını ve geliştirme/test ortamlarını Azure veya Azure Stack ayrı kaynak gruplarında dağıtın. Ardından, her bir ortamın kaynaklarını izleyebilir ve kaynak grubuna göre faturalandırma maliyetlerini oluşturabilirsiniz. Kaynakları, test dağıtımları için yararlı olan bir küme olarak da silebilirsiniz.
 
-## <a name="when-to-use-this-pattern"></a>Bu düzenin kullanılacağı durumlar
+## <a name="when-to-use-this-pattern"></a>Bu düzenin ne zaman kullanılacağı
 
-Bu düzeni kullanarak:
+Bu kalıbı kullanın:
 
--   Kod Geliştiricileriniz ihtiyaçlarını karşılayan bir ortamda geliştirme ve burada yeni kod geliştirmek zor olabilir çözümünüzü belirli bir ortama dağıtın.
+-   Geliştiricilerinizin ihtiyaçlarını karşılayan bir ortamda kod geliştirebilir ve yeni kod geliştirmek zor olabilecek çözümünüze özel bir ortama dağıtım yapabilirsiniz.
 
--   Kodu ve sürekli tümleştirme ve sürekli teslim işlem DevOps deseninde uygulayabilmek için oldukları sürece Geliştiricileriniz bize istediğiniz araçları kullanabilirsiniz.
+-   DevOps deseninin sürekli tümleştirme ve sürekli teslim sürecini izleyebilecekleri sürece, geliştiricilerinizin istediğiniz kod ve araçları kullanabilirsiniz.
 
-Bu düzenin şunlar için kullanılması önerilmez:
+Bu kalıp önerilmez:
 
--   Kaynakları, yapılandırma, kimlik ve güvenlik görevlerini sağlama altyapı, otomatik hale getiremezsiniz durumunda.
+-   Altyapı, sağlama kaynakları, yapılandırma, kimlik ve güvenlik görevlerini otomatikleştiremezsiniz.
 
--   Takımlar bir sürekli tümleştirme/sürekli geliştirme (CI/CD) yaklaşımı uygulamak için hibrit bulut kaynaklarına erişimi yoksa.
+-   Ekiplerin sürekli tümleştirme/sürekli geliştirme (CI/CD) yaklaşımı uygulamak için karma bulut kaynaklarına erişimleri yoksa.
 
 ## <a name="example"></a>Örnek
 
-Bir uygulamayı Azure ve Azure Stack kullanarak karma sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattı dağıtmayı öğrenin.
+Bir uygulamayı Azure 'a dağıtmayı ve karma bir sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattı kullanarak Azure Stack öğrenin.
 
-[Azure ve Azure uygulama dağıtma yığını](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline)
+[Uygulamaları Azure 'a dağıtma ve Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [Azure Stack için hibrit bulut tasarımı desenleri](azure-stack-edge-pattern-overview.md)
+[Azure Stack Için karma bulut tasarım desenleri](azure-stack-edge-pattern-overview.md) hakkında bilgi edinin

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 10/11/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: ec07277043068835d1d1d5a41285ee5df5ee7691
-ms.sourcegitcommit: 701685f0b59e5a3d1a8d39fe477b8df701a51cd2
+ms.openlocfilehash: 77fb9772f027d25b0d8c0d8355e3a868c2142d6c
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165345"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72282610"
 ---
 # <a name="app-service-on-azure-stack-update-7-release-notes"></a>App Service Azure Stack güncelleştirme 7 sürüm notları
 
@@ -32,11 +32,11 @@ Bu sürüm notlarında, Azure App Service Azure Stack güncelleştirme 7 ve bili
 > 1907 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya en son Azure Stack geliştirme setini Azure App Service 1,7 ' i dağıtmadan önce dağıtın.
 
 
-## <a name="build-reference"></a>Yapı Başvurusu
+## <a name="build-reference"></a>Derleme başvurusu
 
 Azure Stack güncelleştirme 7 derleme numarasında App Service **84.0.2.10**
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Prerequisites
 
 Dağıtıma başlamadan önce, başlamadan [önce belgelerini](azure-stack-app-service-before-you-get-started.md) inceleyin.
 
@@ -47,7 +47,7 @@ Azure App Service Azure Stack 1,7 sürümüne yükseltmeye başlamadan önce:
 - App Service ve ana veritabanlarını yedekleyin:
   - AppService_Hosting;
   - AppService_Metering;
-  - Ana Şablon
+  - Şablonu
 
 - Kiracı uygulaması içerik dosyası payını yedekleme
 
@@ -56,6 +56,8 @@ Azure App Service Azure Stack 1,7 sürümüne yükseltmeye başlamadan önce:
 ### <a name="new-features-and-fixes"></a>Yeni özellikler ve düzeltmeler
 
 Azure Stack güncelleştirme 7 ' Azure App Service aşağıdaki geliştirmeleri ve düzeltmeleri içerir:
+
+- [CVE-2019-1372](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1372) uzaktan kod yürütme güvenlik açığı için çözüm
 
 - **Kiracı, yönetici, işlevler portalları ve kudu araçları App Service**güncelleştirmeler. Azure Stack Portal SDK sürümü ile tutarlıdır.
 
@@ -77,14 +79,14 @@ Azure Stack güncelleştirme 7 ' Azure App Service aşağıdaki geliştirmeleri 
   - [2019-08 x64 tabanlı sistemler için Windows Server 2016 toplu güncelleştirmesi (KB4512495)](https://support.microsoft.com/help/4512495)
 
 - **Erişim kısıtlamaları artık Kullanıcı portalında etkinleştirilmiştir**:
-  - Bu sürümden itibaren kullanıcılar Web/API/Işlevleri uygulamalarına yönelik erişim kısıtlamalarını yayınlanan [Azure App Service erişim kısıtlamalarına](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)göre yapılandırabilir. Azure Stack Azure App Service hizmet uç noktalarını desteklemez.
+  - Bu sürümden itibaren, kullanıcılar Web/API/Işlevleri uygulamalarına yönelik erişim kısıtlamalarını yayınlanan [Azure App Service erişim kısıtlamalarına](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)göre yapılandırabilir, **not**: Azure Stack Azure App Service desteklemez Hizmet uç noktaları.
 
 - **Dağıtım seçenekleri (klasik) Işlevleri geri yüklendi**:
   - Kullanıcılar, uygulamasının GitHub, Bitbucket, Dropbox, OneDrive, yerel ve dış depolardan dağıtımını yapılandırmak ve uygulamalarına ait dağıtım kimlik bilgilerini ayarlamak için dağıtım seçenekleri 'ni (klasik) yeniden kullanabilir.
 
 - **Azure Işlev izleme** doğru şekilde yapılandırıldı.
 
-- **Windows Update davranışı**: Müşteri geri bildirimlerine bağlı olarak, Windows Update güncelleştirme 7 ' den App Service rollerde yapılandırılan şekilde değiştirilmiştir:
+- **Windows Update davranış**: müşteri geri bildirimlerine bağlı olarak, güncelleştirme 7 ' deki App Service rollerde Windows Update yapılandırma biçimini değiştirdik:
   - Üç mod:
     - **Devre dışı** -Windows Update hizmeti devre dışı bırakıldı, Windows Azure Stack sürümlerde Azure App Service bırlıkte gelen KB ile güncelleştirilir;
     - **Otomatik** Windows Update hizmeti etkin ve Windows Update nasıl ve ne zaman güncelleyeceğini tespit eder;
@@ -104,13 +106,13 @@ Azure Stack güncelleştirme 7 ' Azure App Service aşağıdaki geliştirmeleri 
 - App Service var olan bir sanal ağda dağıtıldığında ve dosya sunucusu yalnızca özel ağda kullanılabilir olduğunda, Azure Stack dağıtım belgelerindeki Azure App Service olarak çağrıldığında, çalışan dosya sunucusuna ulaşamamaktadır.
 
 Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiğini etkinleştirerek bir giden güvenlik kuralı eklemeniz gerekir. Yönetim portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
- * Kaynak: Any
+ * Kaynak: any
  * Kaynak bağlantı noktası aralığı: *
- * Hedef: IP Adresleri
- * Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
+ * Hedef: IP adresleri
+ * Hedef IP adresi aralığı: dosya sunucunuz için IP aralığı
  * Hedef bağlantı noktası aralığı: 445
  * Protokol: TCP
- * Eylem: Allow
+ * Eylem: Izin ver
  * Öncelik: 700
  * Ad: Outbound_Allow_SMB445
 

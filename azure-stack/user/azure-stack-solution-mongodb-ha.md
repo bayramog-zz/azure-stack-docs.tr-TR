@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: 25be3914f58abad44b64870f9da94610a7498d52
-ms.sourcegitcommit: 35b13ea6dc0221a15cd0840be796f4af5370ddaf
+ms.openlocfilehash: e31a71098cda4f769fbce4e55bec6ec72a5a651b
+ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68603043"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72277768"
 ---
 # <a name="deploy-a-highly-available-mongodb-solution-to-azure-and-azure-stack"></a>Yüksek oranda kullanılabilir bir MongoDB çözümünü Azure 'a ve Azure Stack dağıtma
 
@@ -35,8 +35,8 @@ Bu çözümde şu şekilde bir örnek ortam oluşturacaksınız:
 
 
 > [!Tip]  
-> ![karma pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack, Azure'nın bir uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
+> @no__t -0hybrid-pil,. png @ no__t-1  
+> Microsoft Azure Stack bir Azure uzantısıdır. Azure Stack, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza getirerek, karma uygulamaları her yerde oluşturup dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
 > 
 > [Karma uygulamalar Için tasarım konuları](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
 
@@ -97,7 +97,7 @@ docker pull intelligentedge/mongodb-hadr:1.0.0
     -AzureStackSubscriptionId_DR "drSubscriptionId"
     ```
 
-4.  NuGet `Y` sağlayıcısı 'nın yüklenmesine izin vermek için yazın ve bu, yüklenecek "2018-03-01-karma" modüllerinin API profilini başlatabilir.
+4.  NuGet sağlayıcısının yüklenmesine izin vermek için `Y` yazın ve bu, yüklenecek "2018-03-01-hibrit" modülleriyle başlatılır.
 
 5.  HA kaynakları ilk olarak dağıtılır. Dağıtımı izleyin ve tamamlanmasını bekleyin. HA dağıtımının tamamlandığını belirten iletiyi aldıktan sonra, dağıtılan kaynakları görmek için HA Azure Stack portalını kontrol edebilirsiniz. 
 

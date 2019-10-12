@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 501040273eca6ce80972ae2a69eca2018f9f8d2d
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: 4fcfb0c8ef509ab827c15321cff5fc945230d69e
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159610"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283440"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Azure Stack marketi 'ne Kubernetes ekleme
 
@@ -48,17 +48,17 @@ Kubernetes Market öğesi için bir plan, teklif ve abonelik oluşturun. Ayrıca
 
 1. **Durumu Değiştir**' i seçin. **Ortak**seçeneğini belirleyin.
 
-1. Abonelik oluşturmak için **+ kaynak** > **teklifleri ve planlar** > **aboneliği** oluştur ' u seçin.
+1. Abonelik oluşturmak için @no__t **+ kaynak oluştur**' u seçin-1**teklifler ve planlar** > **aboneliği** .
 
     a. Bir **görünen ad**girin.
 
     b. Bir **Kullanıcı**girin. Kiracınızla ilişkili Azure AD hesabını kullanın.
 
-    c. **Sağlayıcı açıklaması**
+    ,. **Sağlayıcı açıklaması**
 
-    d. Azure Stack için **Dizin kiracısını** Azure AD kiracısı olarak ayarlayın. 
+    TID. Azure Stack için **Dizin kiracısını** Azure AD kiracısı olarak ayarlayın. 
 
-    e. **Teklif**' i seçin. Oluşturduğunuz teklifin adını seçin. Abonelik KIMLIĞINI bir yere getirin.
+    A. **Teklif**' i seçin. Oluşturduğunuz teklifin adını seçin. Abonelik KIMLIĞINI bir yere getirin.
 
 ## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>AD FS bir hizmet sorumlusu ve kimlik bilgileri oluşturma
 
@@ -68,19 +68,19 @@ Kimlik yönetimi hizmetiniz için Active Directory Federasyon Hizmetleri (AD FS)
 
 Aşağıdaki Ubuntu Server görüntüsünü Market 'e ekleyin:
 
-1. Oturum [Yönetim Portalı](https://adminportal.local.azurestack.external).
+1. [Yönetim portalında](https://adminportal.local.azurestack.external)oturum açın.
 
 1. **Tüm hizmetler**' i seçin ve ardından **Yönetim** kategorisi altında **Market yönetimi**' ni seçin.
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. `Ubuntu Server` yazın.
+1. @No__t girin-0.
 
 1. Sunucunun en yeni sürümünü seçin. Tam sürümü denetleyin ve en yeni sürüme sahip olduğunuzdan emin olun:
-    - **Yayımcı**: Canonical
-    - **Teklif**: UbuntuServer
+    - **Yayımcı**: kurallı
+    - **Teklif**: ubuntuserver
     - **Sürüm**: 16.04.201806120 (veya en son sürüm)
-    - **SKU**: 16.04-LTS
+    - **SKU**: 16,04-LTS
 
 1. Indir ' i seçin **.**
 
@@ -94,10 +94,10 @@ Market 'ten Kubernetes ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. `Custom Script for Linux` yazın.
+1. @No__t girin-0.
 
 1. Aşağıdaki profille betiği seçin:
-   - **Teklif**: Linux 2,0 için özel betik
+   - **Teklif**: Linux 2,0 Için özel betik
    - **Sürüm**: 2.0.6 (veya en son sürüm)
    - **Yayımcı**: Microsoft Corp
 
@@ -115,9 +115,9 @@ Market 'ten Kubernetes ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. `Kubernetes` yazın.
+1. @No__t girin-0.
 
-1. `Kubernetes Cluster` öğesini seçin.
+1. @No__t-0 ' ı seçin.
 
 1. Indir ' i seçin **.**
 
@@ -140,7 +140,7 @@ Kubernetes öğesini kaldırmak için:
     Get-AzsGalleryItem | Select Name
     ```
     
-3. Geçerli öğenin adı, örneğin`Microsoft.AzureStackKubernetesCluster.0.3.0`
+3. Geçerli öğenin adı, örneğin `Microsoft.AzureStackKubernetesCluster.0.3.0`
 
 4. Öğeyi kaldırmak için aşağıdaki PowerShell cmdlet 'ini kullanın:
 
@@ -154,4 +154,4 @@ Kubernetes öğesini kaldırmak için:
 
 [Azure Stack için Kubernetes dağıtma](../user/azure-stack-solution-template-kubernetes-deploy.md)
 
-[Azure Stack hizmetleri sunma hakkında genel bakış](azure-stack-offer-services-overview.md)
+[Azure Stack hizmetleri sunma hakkında genel bakış](service-plan-offer-subscription-overview.md)

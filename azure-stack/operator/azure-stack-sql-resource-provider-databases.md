@@ -15,14 +15,14 @@ ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: dfa8e778b21826ff1f589efbf2b49097d5ee3685
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: ceeca4f42f728bdcd9496b735704bfef6d98f25c
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829335"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283380"
 ---
-# <a name="create-sql-databases"></a>SQL veritabanı oluşturma
+# <a name="create-sql-databases"></a>SQL veritabanları oluşturma
 
 Kullanıcı portalında self servis veritabanlarını oluşturabilir ve yönetebilirsiniz. Azure Stack kullanıcının SQL veritabanı hizmetini içeren bir teklifiyle bir aboneliğe ihtiyacı vardır.
 
@@ -39,7 +39,7 @@ Kullanıcı portalında self servis veritabanlarını oluşturabilir ve yöneteb
 
 4. **Veritabanı oluştur**altında **SKU**' yı seçin. **SKU seçin**altında veritabanınız için SKU 'yu seçin.
 
-   ![Veritabanı Oluştur](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+   ![Veritabanı oluştur](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
    >Barındırma sunucuları Azure Stack eklendikçe, bunlara bir SKU atanır. Veritabanları, bir SKU 'daki barındırma sunucuları havuzunda oluşturulur.
@@ -57,7 +57,7 @@ Kullanıcı portalında self servis veritabanlarını oluşturabilir ve yöneteb
 
 Veritabanı dağıtıldıktan sonra gösterilen **temel parçalar**altında **bağlantı dizesini**de göz önünde edin. Bu dizeyi, SQL Server veritabanına erişmesi gereken herhangi bir uygulamada kullanabilirsiniz.
 
-![Bağlantı dizesi alma](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+![Bağlantı dizesini alma](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
 ## <a name="sql-always-on-databases"></a>SQL Always on veritabanları
 
@@ -79,4 +79,4 @@ Ardından, SQL veritabanını diğer çoğaltmalarda geri yükleme durumuna geç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[SQL Server kaynak sağlayıcısını koruyun](azure-stack-sql-resource-provider-maintain.md)
+[Yüksek oranda KULLANILABILIR SQL veritabanları sunmayı](azure-stack-tutorial-sql.md) öğrenin

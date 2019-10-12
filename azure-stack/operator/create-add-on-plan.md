@@ -13,20 +13,20 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 06/11/2019
+ms.date: 10/05/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
-ms.openlocfilehash: d34b57a76f654e4d1825124f0f13ca26049332e5
-ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
+ms.openlocfilehash: 4b3fed8ee02739cf82b1446cc8c0a9b807763d49
+ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71319174"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72283280"
 ---
 # <a name="azure-stack-add-on-plans"></a>Azure Stack eklenti planları
 
-Azure Stack operatörü olarak, ek hizmetler sunmak ya da *bilgisayar*, *depolama*veya *ağ* kotalarını temel plan ilk teklifinin ötesinde genişletmek istediğinizde bir [temel planı](azure-stack-create-plan.md) değiştirmek için eklenti planları oluşturursunuz. Eklenti planları temel planı değiştirebilir ve kullanıcıların abone olmayı seçeabileceği isteğe bağlı uzantılardır.
+Azure Stack operatörü olarak, ek hizmetler sunmak ya da *bilgisayar*, *depolama*veya *ağ* kotalarını temel plan ilk teklifinin ötesinde genişletmek istediğinizde bir [temel planı](azure-stack-create-plan.md) değiştirmek için eklenti planları oluşturursunuz. Eklenti planları temel planı değiştirir ve kullanıcıların aboneliklerinde etkinleştirmeyi seçebilmeleri için isteğe bağlı uzantılardır.
 
 Tek bir plandaki her şeyin birleştirilmesinin en iyi durumda olduğu durumlar vardır. Diğer zamanlarda, temel bir plana sahip olmak ve daha sonra eklenti planları kullanarak ek hizmetleri sunmak isteyebilirsiniz. Örneğin, tüm PaaS hizmetlerinin eklenti planları olarak kabul edildiği bir temel planın parçası olarak IaaS hizmetleri sunmaya karar verebilirsiniz.
 
@@ -35,9 +35,7 @@ Eklenti planlarını kullanmanın başka bir nedeni de kaynak kullanımını izl
 > [!NOTE]
 > Bir kotayı genişletmek için eklenti planı kullanmak istemiyorsanız, [kotanın orijinal yapılandırmasını düzenlemeyi](azure-stack-quota-types.md#edit-a-quota)de seçebilirsiniz.
 
-Mevcut bir teklif aboneliğine eklenti planı eklediğinizde, ek kaynakların görünmesi bir saate kadar sürebilir.
-
-Eklenti planları, mevcut bir teklif değiştirilerek oluşturulur.
+Eklenti planları, temel planla [aynı şekilde oluşturulur](azure-stack-create-plan.md) . İki arasındaki fark, plan bir teklifine eklendiğinde belirlenir. Temel bir plan veya eklenti planı olarak belirtilir. Mevcut bir teklifine eklenti planı eklediğinizde, ek kaynakların abonelikte görünmesi bir saate kadar sürebilir.
 
 ::: moniker range=">=azs-1902"
 ## <a name="create-an-add-on-plan-1902-and-later"></a>Eklenti planı oluşturma (1902 ve üstü)
@@ -58,7 +56,7 @@ Eklenti planları, mevcut bir teklif değiştirilerek oluşturulur.
 
 6. Yeni eklenti planının listelendiğini doğrulamak için teklifle birlikte dahil olan eklenti planlarının listesini gözden geçirin.
 
-    [![Eklenti planı oluşturma](media/create-add-on-plan/add-on4.png "Eklenti planı oluşturma")](media/create-add-on-plan/add-on4lg.png#lightbox)
+    [![Eklenti planı]oluşturma(media/create-add-on-plan/add-on4.png "eklenti planı") oluşturma](media/create-add-on-plan/add-on4lg.png#lightbox)
 ::: moniker-end
 
 ::: moniker range="<=azs-1901"
