@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 10/14/2019
 ms.author: mabrigg
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 27dda5b79525c4a5d1c12c998077bb19cbea0079
-ms.sourcegitcommit: 9f4c6e96f60b4c229316e7a4ab6e0e5ef0a9a232
+ms.openlocfilehash: e972c7799b8cac37d1cd75cda9dc4e94a7ae73e2
+ms.sourcegitcommit: 5eae057cb815f151e6b8af07e3ccaca4d8e4490e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71061184"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72310558"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure ile Azure Stack kaydetme
 
@@ -46,7 +46,7 @@ Kaydolmadan önce aşağıdaki önkoşulların yerine getirmeniz gerekir:
 
 Azure ile Azure Stack kaydolmadan önce, şunları yapmanız gerekir:
 
-- Bir Azure aboneliğinin abonelik KIMLIĞI. Kayıt için yalnızca EA, CSP veya CSP paylaşılan hizmetleri abonelikleri desteklenir. CSP 'Lerin [BIR CSP veya APSS aboneliği](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)kullanıp kullanmayacağınızı karar vermesini gerekir.<br><br>KIMLIĞI almak için Azure 'da oturum açın, **tüm hizmetler**' e tıklayın. Ardından, **genel** kategori altında, **abonelikler**' i seçin, kullanmak Istediğiniz aboneliğe tıklayın ve **temel parçalar** altında abonelik kimliğini bulabilirsiniz.
+- Bir Azure aboneliğinin abonelik KIMLIĞI. Kayıt için yalnızca EA, CSP veya CSP paylaşılan hizmetleri abonelikleri desteklenir. CSP 'Lerin [BIR CSP veya APSS aboneliği](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)kullanıp kullanmayacağınızı karar vermesini gerekir.<br><br>KIMLIĞI almak için Azure 'da oturum açın, **tüm hizmetler**' e tıklayın. Ardından, **genel** kategori altında, **abonelikler**' i seçin, kullanmak Istediğiniz aboneliğe tıklayın ve **temel parçalar** altında abonelik kimliğini bulabilirsiniz. En iyi uygulama olarak, üretim ve geliştirme veya test ortamları için ayrı abonelikler kullanın. 
 
   > [!Note]  
   > Almanya bulut abonelikleri şu anda desteklenmemektedir.
@@ -137,7 +137,7 @@ Bağlı ortamlar Internet ve Azure 'a erişebilir. Bu ortamlar için Azure Stack
    | EnvironmentName | Azure bulut aboneliği ortam adı. Desteklenen ortam adları, **Azurecsesli**, **AzureUSGovernment**veya Çin Azure aboneliği kullanılıyorsa, **AzureChinaCloud**.  |
 
    >[!Note]
-   > Oturumunuzun süresi dolarsa, parolanız değiştirilmiştir veya yalnızca hesapları değiştirmek istiyorsanız, Add-AzureRmAccount komutunu kullanarak oturum açmadan önce aşağıdaki cmdlet 'i çalıştırın:`Remove-AzureRmAccount-Scope Process`
+   > Oturumunuzun süresi dolarsa, parolanız değiştirilmiştir veya yalnızca hesapları değiştirmek istiyorsanız, Add-AzureRmAccount: `Remove-AzureRmAccount-Scope Process` kullanarak oturum açmadan önce aşağıdaki cmdlet 'i çalıştırın.
 
 3. Birden çok aboneliğiniz varsa, kullanmak istediğiniz birini seçmek için aşağıdaki komutu çalıştırın:  
 
@@ -336,14 +336,14 @@ Azure Stack kaydın başarılı olduğunu doğrulamak için **Bölge yönetimi**
 
 2. Panodan **Bölge yönetimi**' ni seçin.
 
-3. Seçin **özellikleri**. Bu dikey pencere, ortamınızın durumunu ve ayrıntılarını gösterir. Durum **kaydedilebilir**, **kaydettirilmemiş**veya **geçerliliği zaman aşımına**eklenebilir.
+3. **Özellikler**’i seçin. Bu dikey pencere, ortamınızın durumunu ve ayrıntılarını gösterir. Durum **kaydedilebilir**, **kaydettirilmemiş**veya **geçerliliği zaman aşımına**eklenebilir.
 
-    [![Bölge yönetimi kutucuğu](media/azure-stack-registration/admin1sm.png "Bölge yönetimi kutucuğu")](media/azure-stack-registration/admin1.png#lightbox)
+    [![Bölge yönetimi kutucuk](media/azure-stack-registration/admin1sm.png "bölgesi yönetim kutucuğu")](media/azure-stack-registration/admin1.png#lightbox)
 
     Kaydedilmişse, özellikler şunları içerir:
     
-    - **Kayıt ABONELIK kimliği**: Azure Stack kayıtlı ve ilişkili Azure abonelik KIMLIĞI
-    - **Kayıt kaynak grubu**: Azure Stack kaynaklarını içeren ilişkili abonelikte Azure Kaynak grubu.
+    - **Kayıt ABONELIĞI kimliği**: kayıtlı ve Azure Stack ilişkili Azure abonelik kimliği
+    - **Kayıt kaynak grubu**: Azure Stack kaynaklarını içeren Ilişkili abonelikte Azure Kaynak grubu.
 
 4. Azure Stack kayıt kaynaklarını görüntülemek için Azure portal kullanabilir ve sonra kaydın başarılı olduğunu doğrulayabilirsiniz. Azure Stack kaydettirmek için kullandığınız abonelikle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin, **gizli türleri göster** onay kutusunu etkinleştirin ve kayıt adını seçin.
 5. Kayıt başarılı olmadıysa, sorunu çözmek için [buradaki adımları](#change-the-subscription-you-use) izleyerek yeniden kaydolmanız gerekir.  
@@ -365,7 +365,7 @@ Aşağıdaki koşullarda kaydınızı güncelleştirmeniz veya yenilemeniz gerek
 
 #### <a name="change-the-subscription-you-use"></a>Kullandığınız aboneliği değiştirme
 
-Kullandığınız aboneliği değiştirmek istiyorsanız, önce **Remove-azsregistration** cmdlet 'ini çalıştırmanız, ardından doğru Azure PowerShell bağlamında oturum açtığınızdan emin olmanız ve son olarak, değiştirilen parametrelerle **set-azsregistration** komutunu çalıştırmanız gerekir Aşağıdakiler `<billing model>`dahil:
+Kullandığınız aboneliği değiştirmek istiyorsanız, önce **Remove-azsregistration** cmdlet 'ini çalıştırmanız, ardından doğru Azure PowerShell bağlamında oturum açtığınızdan emin olmanız ve son olarak, değiştirilen parametrelerle **set-azsregistration** komutunu çalıştırmanız gerekir `<billing model>` dahil:
 
   ```powershell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -RegistrationName $RegistrationName
@@ -475,18 +475,18 @@ Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedE
     <String>] [<CommonParameters>]
 ```
 
-| Parametre | Type | Açıklama |
+| Parametre | Tür | Açıklama |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PrivilegedEndpointCredential | PSCredential | [Ayrıcalıklı uç noktaya erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)için kullanılan kimlik bilgileri. Kullanıcı adı **AzureStackDomain\CloudAdmin**biçimindedir. |
 | Ayrıcalıklı Gedendpoint | Dize | Size günlük toplama ve diğer dağıtım sonrası görevleri gibi yetenekler sağlayan, önceden yapılandırılmış bir uzak PowerShell konsolu. Daha fazla bilgi edinmek için [ayrıcalıklı uç noktayı kullanma](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) makalesini inceleyin. |
 | AzureContext | PSObject |  |
 | ResourceGroupName | Dize |  |
 | ResourceGroupLocation | Dize |  |
-| BillingModel | Dize | Aboneliğinizin kullandığı faturalandırma modeli. Bu parametre için izin verilen değerler şunlardır: Kapasite, Payasyoukullanım ve geliştirme. |
-| Pazar Placesyndicationenabled | True/False | Market yönetim özelliğinin portalda kullanılabilir olup olmadığını belirler. İnternet bağlantısına kaydolurken doğru olarak ayarlayın. Bağlantısı kesilen ortamlara kaydolmak için false olarak ayarlayın. Bağlantısı kesilen kayıtlar için, Market öğelerini indirmek üzere [çevrimdışı dağıtım aracı](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) kullanılabilir. |
-| UsageReportingEnabled | True/False | Azure Stack kullanım ölçümlerini varsayılan olarak raporlar. Kapasite kullanımları veya bağlantısı kesilmiş bir ortamı destekleyen operatörler, kullanım raporlamayı devre dışı bırakır. Bu parametre için izin verilen değerler şunlardır: True, false. |
+| BillingModel | Dize | Aboneliğinizin kullandığı faturalandırma modeli. Bu parametre için izin verilen değerler: kapasite, PayAsYouUse ve geliştirme. |
+| Pazar Placesyndicationenabled | Doğru/yanlış | Market yönetim özelliğinin portalda kullanılabilir olup olmadığını belirler. İnternet bağlantısına kaydolurken doğru olarak ayarlayın. Bağlantısı kesilen ortamlara kaydolmak için false olarak ayarlayın. Bağlantısı kesilen kayıtlar için, Market öğelerini indirmek üzere [çevrimdışı dağıtım aracı](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) kullanılabilir. |
+| UsageReportingEnabled | Doğru/yanlış | Azure Stack kullanım ölçümlerini varsayılan olarak raporlar. Kapasite kullanımları veya bağlantısı kesilmiş bir ortamı destekleyen operatörler, kullanım raporlamayı devre dışı bırakır. Bu parametre için izin verilen değerler: true, false. |
 | AgreementNumber | Dize |  |
-| RegistrationName | Dize | Kayıt betiğini aynı Azure abonelik KIMLIĞINI kullanarak Azure Stack birden fazla örneğinden çalıştırıyorsanız, kayıt için benzersiz bir ad ayarlayın. Parametrenin varsayılan bir **Azurestackregistration**değeri vardır. Ancak, birden fazla Azure Stack örneğinde aynı adı kullanırsanız, komut dosyası başarısız olur. |
+| registrationName | Dize | Kayıt betiğini aynı Azure abonelik KIMLIĞINI kullanarak Azure Stack birden fazla örneğinden çalıştırıyorsanız, kayıt için benzersiz bir ad ayarlayın. Parametrenin varsayılan bir **Azurestackregistration**değeri vardır. Ancak, birden fazla Azure Stack örneğinde aynı adı kullanırsanız, komut dosyası başarısız olur. |
 
 ### <a name="get-azsregistrationtoken"></a>Get-AzsRegistrationToken
 
@@ -497,16 +497,16 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
     [-BillingModel] <String> [[-TokenOutputFilePath] <String>] [-UsageReportingEnabled] [[-AgreementNumber] <String>]
     [<CommonParameters>]
 ```
-| Parametre | Type | Açıklama |
+| Parametre | Tür | Açıklama |
 |-------------------------------|--------------|-------------|
 | PrivilegedEndpointCredential | PSCredential | [Ayrıcalıklı uç noktaya erişmek](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)için kullanılan kimlik bilgileri. Kullanıcı adı **AzureStackDomain\CloudAdmin**biçimindedir. |
 | Ayrıcalıklı Gedendpoint | Dize |  Size günlük toplama ve diğer dağıtım sonrası görevleri gibi yetenekler sağlayan, önceden yapılandırılmış bir uzak PowerShell konsolu. Daha fazla bilgi edinmek için [ayrıcalıklı uç noktayı kullanma](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) makalesini inceleyin. |
 | AzureContext | PSObject |  |
 | ResourceGroupName | Dize |  |
 | ResourceGroupLocation | Dize |  |
-| BillingModel | Dize | Aboneliğinizin kullandığı faturalandırma modeli. Bu parametre için izin verilen değerler şunlardır: Kapasite, Payasyoukullanım ve geliştirme. |
-| Pazar Placesyndicationenabled | True/False |  |
-| UsageReportingEnabled | True/False | Azure Stack kullanım ölçümlerini varsayılan olarak raporlar. Kapasite kullanımları veya bağlantısı kesilmiş bir ortamı destekleyen operatörler, kullanım raporlamayı devre dışı bırakır. Bu parametre için izin verilen değerler şunlardır: True, false. |
+| BillingModel | Dize | Aboneliğinizin kullandığı faturalandırma modeli. Bu parametre için izin verilen değerler: kapasite, PayAsYouUse ve geliştirme. |
+| Pazar Placesyndicationenabled | Doğru/yanlış |  |
+| UsageReportingEnabled | Doğru/yanlış | Azure Stack kullanım ölçümlerini varsayılan olarak raporlar. Kapasite kullanımları veya bağlantısı kesilmiş bir ortamı destekleyen operatörler, kullanım raporlamayı devre dışı bırakır. Bu parametre için izin verilen değerler: true, false. |
 | AgreementNumber | Dize |  |
 
 ## <a name="registration-failures"></a>Kayıt hataları

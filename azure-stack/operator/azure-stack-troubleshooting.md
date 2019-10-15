@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 10/09/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 10/08/2019
-ms.openlocfilehash: b3540727b1868c700e43e2865848a71635e8003d
-ms.sourcegitcommit: 534117888d9b7d6d363ebe906a10dcf0acf8b685
+ms.lastreviewed: 10/09/2019
+ms.openlocfilehash: 45600ee6e35c7e80a1dd74c6c6d456b3bf68ed3f
+ms.sourcegitcommit: 5eae057cb815f151e6b8af07e3ccaca4d8e4490e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173112"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72310529"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
@@ -85,7 +85,7 @@ Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü
 * Bulut Çözümü Sağlayıcısı
 * İş Ortağı Paylaşılan Hizmetler aboneliği
 
-## <a name="get-scale-unit-metrics"></a>Ölçek birimi ölçümlerini al
+### <a name="get-scale-unit-metrics"></a>Ölçek birimi ölçümlerini al
 
 PowerShell 'i kullanarak damga kullanım bilgilerini CSS 'den yardım etmeden alabilirsiniz. Damga kullanımını almak için: 
 

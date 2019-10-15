@@ -1,5 +1,5 @@
 ---
-title: Uygulamaları Azure 'a dağıtma ve Azure Stack
+title: Azure ve Azure Stack’e uygulama dağıtma
 description: Azure 'a uygulama dağıtmayı ve karma CI/CD işlem hattı ile Azure Stack öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -10,19 +10,19 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/23/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: eb9ed23437d5fd708d3f98d5a5b601f3ed1a02a0
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: c821f35928df5da4c34455a0b541699b0a84d490
+ms.sourcegitcommit: 5eae057cb815f151e6b8af07e3ccaca4d8e4490e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283731"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72310628"
 ---
-# <a name="deploy-apps-to-azure-and-azure-stack"></a>Uygulamaları Azure 'a dağıtma ve Azure Stack
+# <a name="deploy-apps-to-azure-and-azure-stack"></a>Azure ve Azure Stack’e uygulama dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
@@ -57,14 +57,14 @@ Uygulama dağıtımı sürekliliği, güvenlik ve güvenilirlik, kuruluşunuz ve
 > @no__t -0hybrid-pil,. png @ no__t-1  
 > [Azure Stack Için hibrit bulut tasarım desenleri](azure-stack-edge-pattern-overview.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesi ile ilgili olarak gözden geçirir. Kalite ölçütleri yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik içerir. Bu tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure ve Azure Stack temel bilgileri. Bu çözümü dağıtmaya başlamadan daha fazla bilgi edinmek için aşağıdaki makaleleri okuyun:
   
   - [Azure 'a giriş](https://azure.microsoft.com/overview/what-is-azure/)
   - [Azure Stack genel bakış](../operator/azure-stack-overview.md)
   
-- Bir Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+- Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
   
 - Azure 'da oluşturulan bir Web uygulaması. Bir [Azure Resource Manager şablonu](https://azure.microsoft.com/resources/templates/) kullanarak hem şirket içinde hem de genel buluta dağıtabileceğiniz bir Web uygulaması oluşturun. Daha sonra kullanmak için uygulama URI 'sini bir yere unutmayın. 
   
@@ -81,7 +81,7 @@ Uygulama dağıtımı sürekliliği, güvenlik ve güvenilirlik, kuruluşunuz ve
   
   Azure AD veya Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yönetici kimlik bilgilerine sahip herhangi bir Kullanıcı, ASDK 'yi dağıtabilir. Bir Azure OEM/donanım ortağı, bir üretim Azure Stack dağıtabilir. Aşağıdaki Azure Stack yapılandırma görevlerini yapmak için bir Azure Stack işleci olmanız gerekir: 
   
-  - Azure App Service dağıt
+  - Azure App Service'i dağıtma
   - Planlar ve teklifler oluşturma
   - Kiracı aboneliği oluşturma
   - Windows Server 2016 görüntüsü uygulama
@@ -122,7 +122,7 @@ Uygulamanızın kimlik doğrulamasını yapılandırmak için Azure portal kulla
 Bir hizmet sorumlusu ve uç noktaları oluşturmak için [bir PowerShell betiği de kullanabilirsiniz](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) . [Mevcut hizmet sorumlusu ile Azure Resource Manager hizmet bağlantısı oluşturma](/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) makalesi bu işlemi açıklar.
 
  > [!Note]  
- > PowerShell betiğini Azure Stack Azure Resource Manager uç noktası oluşturmak için kullanırsanız **-azurestackmanagementurl** parametresini ve **-environmentname** parametresini geçirmeniz gerekir. Örneğin:  
+ > PowerShell betiğini Azure Stack Azure Resource Manager uç noktası oluşturmak için kullanırsanız **-azurestackmanagementurl** parametresini ve **-environmentname** parametresini geçirmeniz gerekir. Örnek:  
  > `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
 ### <a name="register-your-app-in-azure-ad"></a>Uygulamanızı Azure AD 'ye kaydetme 
@@ -135,9 +135,9 @@ Bir hizmet sorumlusu ve uç noktaları oluşturmak için [bir PowerShell betiği
    1. Web uygulamanızın adını girin.
    1. Desteklenen bir hesap türü seçin. 
    1. **Yeniden yönlendirme URI 'si**altında, oluşturmak istediğiniz uygulama türü için **Web** ' i seçin ve Web uygulamanızın URI 'sini girin. 
-   1. **Kaydol**' u seçin.
+   1. **Kaydol**’u seçin.
       
-      ![Uygulamanızı kaydedin](./media/azure-stack-solution-pipeline/create-app.png) 
+      ![Uygulamanızı kaydetme](./media/azure-stack-solution-pipeline/create-app.png) 
 
 ### <a name="assign-the-app-to-a-role"></a>Uygulamayı bir role atama
 
@@ -171,7 +171,7 @@ Hizmet sorumlusu ayarlanır. Sonraki bölümde, Azure Pipelines programlı olara
 
 Azure Pipelines için uç noktalar oluştururken, kiracı KIMLIĞINI ve uygulama KIMLIĞINI girmeniz gerekir. Bu değerleri almak için:
 
-1. Azure portal **Azure Active Directory**' ni seçin.
+1. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
    
 1. Sol gezinti bölmesinde **uygulama kayıtları**' yi seçin ve ardından uygulamanızı seçin.
    
@@ -187,7 +187,7 @@ Yeni bir sertifika oluşturmak ve yüklemek için [Sertifikalar ve gizli](/azure
 
 Ya da yeni bir uygulama parolası oluşturmak için:
 
-1. Azure portal **Azure Active Directory**' ni seçin.
+1. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
    
 1. Sol gezinti bölmesinde **uygulama kayıtları**' yi seçin ve ardından uygulamanızı seçin.
    
@@ -342,20 +342,62 @@ Karma CI/CD, hem uygulama kodu hem de altyapı kodu için uygulanabilir. Azure W
 1. Web tarayıcınızda, Azure DevOps kuruluşunuzu ve projenizi açın.
    
 1. Sol gezinti bölmesinde işlem **hatları** > **derlemeleri** seçin ve ardından yeni işlem **hattı**' nı seçin. 
+
+1. Kod deponuzu seçin. Azure Pipelines projenizi ASP.NET Core olarak analiz eder ve tanımlar ve varsayılan ASP.NET Core *Azure-Pipelines. yıml* derleme şablonunu açar. 
    
-1. **Şablon seç**' in altında **ASP.NET Core** şablonunu seçin ve ardından **Uygula**' yı seçin. 
+   ![ASP.NET Core Azure-Pipelines. yıml dosyası](media/azure-stack-solution-pipeline/buildargument.png)
    
-1. Yapılandırma sayfasında, sol bölmede **Yayımla** ' yı seçin.
+1. İşlem hattı kodunu doğrudan düzenleyebilir veya görev ve adım eklemenize yardımcı olacak bir **Görevler** bölmesi açmak Için **yardımcıyı göster** ' i seçebilirsiniz. 
    
-1. Sağ bölmedeki **bağımsız değişkenler**altında, yapılandırmaya `-r win10-x64` ekleyin. 
+   **Yardımcıyı göster**' i seçerseniz, **Görevler** bölmesinde **.NET Core** ' u seçin. **.NET Core** formunda:
+   - **Komut**altında, açılır ve **Yayımla**' yı seçin. 
+   - **Bağımsız değişkenler**altında *-r win10-x64*yazın.
+   - **Web projelerinin Yayımla** ' nın seçili olduğundan emin olun.
+   - **Add (Ekle)** seçeneğini belirleyin.
    
-   ![Derleme ardışık düzen bağımsız değişkeni Ekle](media/azure-stack-solution-pipeline/buildargument.png)
+   Yardımcı kullanmak yerine, aşağıdaki kodu doğrudan *Azure-Pipelines. yml* dosyasına düzenleyebilir ve ekleyebilirsiniz:
    
-1. Sayfanın üst kısmında **& kuyruğu kaydet** ' i seçin.
+   - @No__t-0 altında, `vmImage` ' i `ubuntu-latest` ' den `vs2017-win2016` ' e değiştirin.
+     
+   - @No__t-0 ' ın altında [Dotnetcorecli](/azure/devops/pipelines/tasks/build/dotnet-core-cli) görevini, komutunu ve bağımsız değişkenlerini ekleyin: 
+     
+     ```yaml
+     - task: DotNetCoreCLI@2
+       inputs:
+         command: 'publish'
+         publishWebProjects: true
+         arguments: '-r win10-x64'
+     ```
+   *Azure-Pipelines. yml* dosyanız artık aşağıdaki koda sahip olmalıdır: 
    
-1. İşlem hattını **Çalıştır** Iletişim kutusunda **Kaydet ve Çalıştır**' ı seçin. 
+   ```yaml
+   # ASP.NET Core
+   # Build and test ASP.NET Core projects targeting .NET Core.
+   # Add steps that run tests, create a NuGet package, deploy, and more:
+   # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
    
-[Kendi içinde çalışan dağıtım derlemesi](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) hem Azure 'da hem de Azure Stack çalışabilen yapıtları yayımlar.
+   trigger:
+   - master
+   
+   pool:
+     vmImage: 'vs2017-win2016'
+   
+   variables:
+     buildConfiguration: 'Release'
+
+   steps:
+   - script: dotnet build --configuration $(buildConfiguration)
+     displayName: 'dotnet build $(buildConfiguration)'
+   
+   - task: DotNetCoreCLI@2
+     inputs:
+       command: 'publish'
+       publishWebProjects: true
+       arguments: '-r win10-x64'
+   ```
+1. **Kaydet ve Çalıştır**' ı seçin, bir COMMIT iletisi ve isteğe bağlı açıklama ekleyin ve Kaydet ' i seçin **ve yeniden çalıştırın** . 
+   
+[Kendi içinde çalışan dağıtım derlemesi](/dotnet/core/deploying/#self-contained-deployments-scd) hem Azure 'da hem de Azure Stack çalışabilen yapıtları yayımlar.
 
 ### <a name="create-a-release-pipeline"></a>Yayın işlem hattı oluşturma
 
@@ -381,25 +423,25 @@ Yayın işlem hattı oluşturmak, karma CI/CD yapılandırma işleminizin son ad
    
    ![Abonelik ' ı seçin ve App Service adı girin](media/azure-stack-solution-pipeline/stage1.png)
    
-1. Sol bölmede, **aracıda Çalıştır**' ı seçin. Sağ bölmede, zaten seçili değilse, **Aracı havuzu** açılır LISTESINDEN **barındırılan VS2017** öğesini seçin.
+1. Sol bölmede, **aracıda Çalıştır**' ı seçin. Sağ bölmede, **Aracı havuzu** açılır listesinden **Azure Pipelines** ' yi seçin ve ardından **Aracı belirtimi** açılan listesinden **vs2017-win2016** öğesini seçin.
    
    ![Barındırılan aracıyı seçin](media/azure-stack-solution-pipeline/agentjob.png)
    
-1. Sol bölmede **Azure App Service dağıt**' ı seçin ve sağ bölmedeki Azure Web uygulaması derlemeniz için **pakete veya klasöre** gidin.
+1. Sol bölmede **Azure App Service dağıt**' ı seçin. Sağ bölmede aşağı kaydırın ve **paket veya klasör**' ın yanındaki üç nokta **...** simgesini seçin.
    
    ![Paket veya klasör seçin](media/azure-stack-solution-pipeline/packageorfolder.png)
    
-1. **Dosya veya klasör seçin** Iletişim kutusunda **Tamam**' ı seçin.
+1. **Bir dosya veya klasör seçin** iletişim kutusunda, Azure Web App Build sitenizin konumuna gidin ve **Tamam**' ı seçin.
    
-1. **Yeni yayın ardışık düzeni** sayfasında sağ üst köşedeki **Kaydet** ' i seçin.
+1. **Yeni yayın ardışık düzeni** sayfasında sağ üst köşedeki **Kaydet** ' i seçin. 
    
-   ![Değişiklikleri Kaydet](media/azure-stack-solution-pipeline/save-devops-icon.png)
+1. İşlem **hattı** sekmesinde **yapıt Ekle**' yi seçin. Projenizi seçin ve ardından **kaynak (derleme işlem hattı)** açılır menüsünden Azure Stack yapınızı seçin. **Add (Ekle)** seçeneğini belirleyin. 
    
-1. İşlem **hattı** sekmesinde **yapıt Ekle**' yi seçin. Projenizi seçin ve **kaynak (derleme işlem hattı)** açılır menüsünden Azure Stack yapınızı seçin. **Ekle**' yi seçin. 
+1. **Aşamalar**' ın altında, **+** görünene kadar **Azure** aşamasının üzerine gelin ve ardından **Ekle**' yi seçin.
    
-1. İşlem **hattı** sekmesinde, **aşamalar**altında **Ekle**' yi seçin.
+1. **Şablon**altında **boş iş**' ı seçin. 
    
-1. Yeni aşamada, **aşama görevlerini görüntülemek**için köprüyü seçin. Aşama adı olarak *Azure Stack* girin. 
+1. **Aşama** iletişim kutusunda *Azure Stack* aşama adı olarak girin. 
    
    ![Yeni aşamayı görüntüle](media/azure-stack-solution-pipeline/newstage.png)
    
@@ -430,7 +472,7 @@ Yayın işlem hattı oluşturmak, karma CI/CD yapılandırma işleminizin son ad
 
 Artık bir yayın işlem hattına sahip olduğunuza göre, bir yayın oluşturmak ve uygulamanızı dağıtmak için kullanabilirsiniz. 
 
-Yayın işlem hattınızda sürekli dağıtım tetikleyicisi ayarlandığından, kaynak kodu değiştirmek yeni bir derleme başlatır ve otomatik olarak yeni bir yayın oluşturur. Bununla birlikte, bu yeni yayını oluşturup el ile çalıştıracaksınız.
+Yayın işlem hattınızda sürekli dağıtım tetikleyicisi ayarlandığından, kaynak kodu değiştirmek yeni bir derleme başlatır ve otomatik olarak yeni bir yayın oluşturur. Ancak, bu kez yeni bir yayını oluşturup el ile çalıştıracaksınız.
 
 Bir sürüm oluşturup dağıtmak için:
 

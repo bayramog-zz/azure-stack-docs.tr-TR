@@ -3,7 +3,7 @@ title: Azure Stack için şablonlar geliştir | Microsoft Docs
 description: Azure ile Azure Stack arasında uygulama taşınabilirliği için Azure Resource Manager şablonları geliştirmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 ms.assetid: 8a5bc713-6f51-49c8-aeed-6ced0145e07b
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
-ms.author: sethm
+ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 5cd8e87613d1d4aa4adc8dedac7dcac4fa57eae2
-ms.sourcegitcommit: bbf3edbfc07603d2c23de44240933c07976ea550
+ms.openlocfilehash: 96e43607809c192b9498c092b4a2584cec40a515
+ms.sourcegitcommit: 7226979ece29d9619c959b11352be601562b41d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71714725"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72304107"
 ---
 # <a name="develop-templates-for-azure-stack-with-azure-resource-manager"></a>Azure Resource Manager Azure Stack için Şablonlar geliştirme
 
@@ -47,7 +47,7 @@ Azure Stack veri merkezinizde barındırıldığından Azure genel bulutinden fa
 
 Azure hizmet sürümleri, Azure ile Azure Stack arasında farklılık gösterebilir. Her kaynak için sunulan özellikleri tanımlayan **Apiversion** özniteliği gerekir. Azure Stack ' de API sürümü uyumluluğunu sağlamak için, aşağıdaki API sürümleri her kaynak sağlayıcısı için geçerlidir:
 
-| Kaynak Sağlayıcı | apiVersion |
+| Kaynak sağlayıcısı | apiVersion |
 | --- | --- |
 | İşlem |**2015-06-15** |
 | Ağ |**2015-06-15**, **2015-05-01-önizleme** |
@@ -66,7 +66,7 @@ Azure Resource Manager [işlevler](/azure/azure-resource-manager/resource-group-
 Bu işlevler Azure Stack kullanılamaz:
 
 * Atla
-* almanız
+* Almanız
 
 ## <a name="resource-location"></a>Kaynak konumu
 

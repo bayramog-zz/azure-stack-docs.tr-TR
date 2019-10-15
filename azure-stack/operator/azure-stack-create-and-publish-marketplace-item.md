@@ -15,12 +15,12 @@ ms.date: 10/10/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 3202b138dbc1b01c1438ee8988400e2845a58775
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: 4a8f24c11f8e72c4b3e2b99ae6b2a417e3bd0cba
+ms.sourcegitcommit: 5eae057cb815f151e6b8af07e3ccaca4d8e4490e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283620"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72310592"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-marketplace-item"></a>Özel bir Azure Stack Market öğesi oluşturma ve yayımlama
 
@@ -32,14 +32,14 @@ Azure Stack marketi 'Nde yayımlanan her öğe Azure Galeri paketi (. azpkg) bi�
 
 Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi teklifinin nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="create-a-marketplace-item"></a>Market öğesi oluştur
+## <a name="create-a-marketplace-item"></a>Bir Market öğesi oluşturma
 
 > [!IMPORTANT]
 > VM marketi öğesini oluşturmadan önce, [Azure Stack BIR VM görüntüsü ekleme](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal)bölümündeki yönergeleri izleyerek Azure Stack PORTALıNA özel VM görüntüsünü yükleyin. Ardından, bu makaledeki yönergeleri izleyerek görüntüyü paketleyin (bir. azpkg oluşturun) ve Azure Stack Market 'e yükleyin.
 
 Özel bir Market öğesi oluşturmak için aşağıdakileri yapın:
 
-1. [Azure Gallery Packager aracını](https://www.aka.ms/azurestackmarketplaceitem) ve örnek Azure Stack Galerisi paketini indirin. Bu indirme, özel VM şablonlarını içerir. . Zip dosyasını ayıklayın ve **Simplevmtemplate** klasörünü Azure Stack portalınızdaki bir öğe adıyla yeniden adlandırın.
+1. [Azure Gallery Packager aracını](https://aka.ms/azsmarketplaceitem) ve örnek Azure Stack Galerisi paketini indirin. Bu indirme, özel VM şablonlarını içerir. . Zip dosyasını ayıklayın ve **Simplevmtemplate** klasörünü Azure Stack portalınızdaki bir öğe adıyla yeniden adlandırın.
 
 2. Windows/Linux için bir Azure Resource Manager şablonu oluşturun veya örnek şablonlarımızı kullanın. Bu örnek şablonlar, 1. adımda indirdiğiniz Paketleyici aracı. zip dosyasında verilmiştir. Şablonu kullanabilir ve metin alanlarını değiştirebilir ya da önceden yapılandırılmış bir şablonu GitHub 'dan indirebilirsiniz. Azure Resource Manager şablonları hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları](/azure/azure-resource-manager/resource-group-authoring-templates).
 
@@ -167,7 +167,7 @@ Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi tekli
     >
     >
 
-## <a name="publish-a-marketplace-item"></a>Market öğesi yayımlama
+## <a name="publish-a-marketplace-item"></a>Bir Market öğesi yayımlama
 
 1. Market öğesini (. azpkg) Azure Blob depolama alanına yüklemek için PowerShell veya Azure Depolama Gezgini kullanın. Yerel Azure Stack depolama alanına yükleyebilir veya paket için geçici bir konum olan Azure Storage 'a yükleyebilirsiniz. Blobun genel olarak erişilebilir olduğundan emin olun.
 
@@ -201,7 +201,7 @@ Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi tekli
    `https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
    `https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
 
-6. **Remove-AzureRMGalleryItem** cmdlet 'Ini kullanarak Market öğesini kaldırabilirsiniz. Örneğin:
+6. **Remove-AzureRMGalleryItem** cmdlet 'Ini kullanarak Market öğesini kaldırabilirsiniz. Örnek:
 
    ```powershell
    Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
@@ -216,31 +216,31 @@ Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi tekli
 
 ### <a name="identity-information"></a>Kimlik bilgileri
 
-| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
+| Adı | Gereklidir | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
-| Name |X |Dize |[A-Za-z0-9] + | |
-| Publisher |X |Dize |[A-Za-z0-9] + | |
-| Version |X |Dize |[SemVer v2](https://semver.org/) | |
+| Adı |X |Dize |[A-Za-z0-9] + | |
+| Yayımcı |X |Dize |[A-Za-z0-9] + | |
+| Sürüm |X |Dize |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Meta Veriler
 
-| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
+| Adı | Gereklidir | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |80 karakter önerisi |Portal 80 karakterden uzunsa öğe adınızı doğru görüntülenmeyebilir. |
 | PublisherDisplayName |X |Dize |30 karakterlik öneri |Portal, 30 karakterden uzun olursa Yayımcı adınızı doğru görüntülenmeyebilir. |
 | PublisherLegalName |X |Dize |En fazla 256 karakter | |
 | Özet |X |Dize |60-100 karakter | |
 | LongSummary |X |Dize |140-256 karakter |Henüz Azure Stack için geçerli değildir. |
-| Açıklama |X |['SI](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500-5.000 karakter | |
+| Açıklama |X |[HTML](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500-5.000 karakter | |
 
-### <a name="images"></a>Görüntüler
+### <a name="images"></a>Resimler
 
 Market aşağıdaki simgeleri kullanır:
 
-| Name | Genişlik | Yükseklik | Notlar |
+| Adı | Genişlik | Yükseklik | Notlar |
 | --- | --- | --- | --- |
 | Geniş |255 piksel |115 piksel |Her zaman gerekli |
-| Miktarda |115 piksel |115 piksel |Her zaman gerekli |
+| Büyük |115 piksel |115 piksel |Her zaman gerekli |
 | Orta |90 piksel |90 piksel |Her zaman gerekli |
 | Küçük |40 piksel |40 piksel |Her zaman gerekli |
 | Yakala |533 piksel |324 piksel |Her zaman gerekli |
@@ -253,16 +253,16 @@ Her Market öğesi, öğenin Portal Kullanıcı arabiriminde nerede göründüğ
 
 Her Market öğesi, ek içeriğe yönelik çeşitli bağlantılar içerebilir. Bağlantılar adların ve URI 'lerin listesi olarak belirtilir:
 
-| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
+| Adı | Gereklidir | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |En fazla 64 karakter. | |
-| Kullanılmamışsa |X |URI | | |
+| Kullanılmamışsa |X |KULLANıLMAMıŞSA | | |
 
 ### <a name="additional-properties"></a>Ek özellikler
 
 Market yazarları, önceki meta verilere ek olarak aşağıdaki biçimde özel anahtar/değer çifti verileri sağlayabilir:
 
-| Name | Gerekli | Tür | Kısıtlamalar | Açıklama |
+| Adı | Gereklidir | Tür | Kısıtlamalar | Açıklama |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |Dize |En fazla 25 karakter. | |
 | Değer |X |Dize |En fazla 30 karakter. | |
@@ -277,7 +277,7 @@ HTML 'ye izin veren herhangi bir alan için aşağıdaki [öğelere ve özniteli
 
 Azure Stack portalında görüldüğü gibi Market öğeleri için simgeler ve metin aşağıdaki gibidir.
 
-### <a name="create-blade"></a>Dikey pencere oluştur
+### <a name="create-blade"></a>Dikey pencere oluşturma
 
 ![Dikey pencere oluşturma — Market öğelerini Azure Stack](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
