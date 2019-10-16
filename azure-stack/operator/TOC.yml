@@ -277,35 +277,53 @@
           href: azure-stack-quota-types.md
     - name: Ağ çözümleri sunma
       href: azure-stack-network-solutions-enable.md
-    - name: PaaS olarak SQL sunun
+    - name: Eklenti hizmeti kaynak sağlayıcılarını Yönet
       items:
-        - name: Azure Stack SQL veritabanları sunun
+        - name: Azure Stack App Service
           items:
             - name: Genel Bakış
-              href: azure-stack-sql-resource-provider.md
-            - name: SQL Server kaynak sağlayıcısını dağıtma
-              href: azure-stack-sql-resource-provider-deploy.md
-            - name: SQL barındırma sunucuları ekleme
-              href: azure-stack-sql-resource-provider-hosting-servers.md
-            - name: SQL veritabanları oluşturma
-              href: azure-stack-sql-resource-provider-databases.md
-        - name: Yüksek oranda kullanılabilir SQL veritabanları sunun
-          href: azure-stack-tutorial-sql.md
-        - name: SQL Server kaynak sağlayıcısını güncelleştirme
-          href: azure-stack-sql-resource-provider-update.md
-        - name: SQL Server kaynak sağlayıcısını koruyun
-          href: azure-stack-sql-resource-provider-maintain.md
-        - name: SQL Server kaynak sağlayıcısını kaldır
-          href: azure-stack-sql-resource-provider-remove.md
-        - name: SQL kaynak sağlayıcısı sürüm notları
-          items:
-            - name: SQL kaynak sağlayıcısı 1.1.30.0 sürüm notları
-              href: azure-stack-sql-resource-provider-11300.md
-            - name: SQL kaynak sağlayıcısı 1.1.33.0 sürüm notları
-              href: azure-stack-sql-resource-provider-11330.md
-    - name: MySQL as PaaS olarak sunun
-      items:
-        - name: Azure Stack MySQL veritabanları sunun
+              href: azure-stack-app-service-overview.md
+            - name: App Service kapasite planlaması
+              href: azure-stack-app-service-capacity-planning.md
+            - name: Başlamadan önce
+              href: azure-stack-app-service-before-you-get-started.md
+            - name: App Service dağıt
+              href: azure-stack-app-service-deploy.md
+            - name: Yüksek kullanılabilirlik için App Service dağıtma
+              href: app-service-deploy-ha.md
+            - name: Çevrimdışı App Service dağıtma
+              href: azure-stack-app-service-deploy-offline.md
+            - name: Güncelleştirme App Service
+              href: azure-stack-app-service-update.md
+            - name: App Service çevrimdışı güncelleştirme
+              href: azure-stack-app-service-update-offline.md
+            - name: App Service altyapı rolleri ekleme
+              href: azure-stack-app-service-add-worker-roles.md
+            - name: Dağıtım kaynaklarını yapılandırma
+              href: azure-stack-app-service-configure-deployment-sources.md
+            - name: Yedekleme App Service
+              href: app-service-back-up.md
+            - name: App Service Kurtar
+              href: app-service-recover.md
+            - name: App Service faturalandırma hakkında SSS
+              href: app-service-billing-faq.md
+            - name: Azure Stack sürüm notlarında App Service
+              items:
+                - name: App Service Azure Stack güncelleştirme 1 sürüm notları
+                  href: azure-stack-app-service-release-notes-update-one.md
+                - name: App Service Azure Stack güncelleştirme 2 sürüm notları
+                  href: azure-stack-app-service-release-notes-update-two.md
+                - name: App Service Azure Stack güncelleştirme 3 sürüm notları
+                  href: azure-stack-app-service-release-notes-update-three.md
+                - name: App Service Azure Stack güncelleştirme 4 sürüm notları
+                  href: azure-stack-app-service-release-notes-update-four.md
+                - name: App Service Azure Stack güncelleştirme 5 sürüm notları
+                  href: azure-stack-app-service-release-notes-update-five.md
+                - name: App Service Azure Stack güncelleştirme 6 sürüm notları
+                  href: azure-stack-app-service-release-notes-update-six.md
+                - name: App Service Azure Stack güncelleştirme 7 sürüm notları
+                  href: azure-stack-app-service-release-notes-update-seven.md
+        - name: Azure Stack üzerinde MySQL
           items:
             - name: Genel Bakış
               href: azure-stack-mysql-resource-provider.md
@@ -315,63 +333,44 @@
               href: azure-stack-mysql-resource-provider-hosting-servers.md
             - name: MySQL veritabanları oluşturma
               href: azure-stack-mysql-resource-provider-databases.md
-        - name: Yüksek oranda kullanılabilir MySQL veritabanları sunun
-          href: azure-stack-tutorial-mysql.md
-        - name: MySQL Server kaynak sağlayıcısını güncelleştirme
-          href: azure-stack-mysql-resource-provider-update.md
-        - name: MySQL Server kaynak sağlayıcısını koru
-          href: azure-stack-mysql-resource-provider-maintain.md
-        - name: MySQL Server kaynak sağlayıcısını kaldır
-          href: azure-stack-mysql-resource-provider-remove.md
-        - name: MySQL kaynak sağlayıcısı sürüm notları
+            - name: Yüksek oranda kullanılabilir MySQL veritabanlarını dağıtma
+              href: azure-stack-tutorial-mysql.md
+            - name: MySQL Server kaynak sağlayıcısını güncelleştirme
+              href: azure-stack-mysql-resource-provider-update.md
+            - name: MySQL Server kaynak sağlayıcısını koru
+              href: azure-stack-mysql-resource-provider-maintain.md
+            - name: MySQL Server kaynak sağlayıcısını kaldır
+              href: azure-stack-mysql-resource-provider-remove.md
+            - name: MySQL kaynak sağlayıcısı sürüm notları
+              items:
+                - name: MySQL kaynak sağlayıcısı 1.1.30.0 sürüm notları
+                  href: azure-stack-mysql-resource-provider-11300.md
+                - name: MySQL kaynak sağlayıcısı 1.1.33.0 sürüm notları
+                  href: azure-stack-mysql-resource-provider-11330.md
+        - name: Azure Stack üzerinde SQL
           items:
-            - name: MySQL kaynak sağlayıcısı 1.1.30.0 sürüm notları
-              href: azure-stack-mysql-resource-provider-11300.md
-            - name: MySQL kaynak sağlayıcısı 1.1.33.0 sürüm notları
-              href: azure-stack-mysql-resource-provider-11330.md
-    - name: PaaS olarak App Service teklifi
-      href: azure-stack-app-service-overview.md
-      items:
-        - name: App Service kapasite planlaması
-          href: azure-stack-app-service-capacity-planning.md
-        - name: App Service faturalandırma hakkında SSS
-          href: app-service-billing-faq.md
-        - name: Başlamadan önce
-          href: azure-stack-app-service-before-you-get-started.md
-        - name: App Service dağıt
-          href: azure-stack-app-service-deploy.md
-        - name: Yüksek kullanılabilirlik için App Service dağıtma
-          href: app-service-deploy-ha.md
-        - name: Çevrimdışı App Service dağıtma
-          href: azure-stack-app-service-deploy-offline.md
-        - name: Güncelleştirme App Service
-          href: azure-stack-app-service-update.md
-        - name: App Service çevrimdışı güncelleştirme
-          href: azure-stack-app-service-update-offline.md
-        - name: App Service altyapı rolleri ekleme
-          href: azure-stack-app-service-add-worker-roles.md
-        - name: Dağıtım kaynaklarını yapılandırma
-          href: azure-stack-app-service-configure-deployment-sources.md
-        - name: Yedekleme App Service
-          href: app-service-back-up.md
-        - name: App Service Kurtar
-          href: app-service-recover.md
-        - name: Azure Stack sürüm notlarında App Service
-          items:
-            - name: App Service Azure Stack güncelleştirme 1 sürüm notları
-              href: azure-stack-app-service-release-notes-update-one.md
-            - name: App Service Azure Stack güncelleştirme 2 sürüm notları
-              href: azure-stack-app-service-release-notes-update-two.md
-            - name: App Service Azure Stack güncelleştirme 3 sürüm notları
-              href: azure-stack-app-service-release-notes-update-three.md
-            - name: App Service Azure Stack güncelleştirme 4 sürüm notları
-              href: azure-stack-app-service-release-notes-update-four.md
-            - name: App Service Azure Stack güncelleştirme 5 sürüm notları
-              href: azure-stack-app-service-release-notes-update-five.md
-            - name: App Service Azure Stack güncelleştirme 6 sürüm notları
-              href: azure-stack-app-service-release-notes-update-six.md
-            - name: App Service Azure Stack güncelleştirme 7 sürüm notları
-              href: azure-stack-app-service-release-notes-update-seven.md
+            - name: Genel Bakış
+              href: azure-stack-sql-resource-provider.md
+            - name: SQL Server kaynak sağlayıcısını dağıtma
+              href: azure-stack-sql-resource-provider-deploy.md
+            - name: SQL barındırma sunucuları ekleme
+              href: azure-stack-sql-resource-provider-hosting-servers.md
+            - name: SQL veritabanları oluşturma
+              href: azure-stack-sql-resource-provider-databases.md
+            - name: Yüksek oranda kullanılabilir SQL veritabanlarını dağıtma
+              href: azure-stack-tutorial-sql.md
+            - name: SQL Server kaynak sağlayıcısını güncelleştirme
+              href: azure-stack-sql-resource-provider-update.md
+            - name: SQL Server kaynak sağlayıcısını koruyun
+              href: azure-stack-sql-resource-provider-maintain.md
+            - name: SQL Server kaynak sağlayıcısını kaldır
+              href: azure-stack-sql-resource-provider-remove.md
+            - name: SQL kaynak sağlayıcısı sürüm notları
+              items:
+                - name: SQL kaynak sağlayıcısı 1.1.30.0 sürüm notları
+                  href: azure-stack-sql-resource-provider-11300.md
+                - name: SQL kaynak sağlayıcısı 1.1.33.0 sürüm notları
+                  href: azure-stack-sql-resource-provider-11330.md
     - name: Kullanım ve faturalandırma
       href: azure-stack-billing-and-chargeback.md
       items:

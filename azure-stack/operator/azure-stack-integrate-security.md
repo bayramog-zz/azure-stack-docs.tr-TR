@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/23/2019
 keywords: ''
-ms.openlocfilehash: f28eda4a54ae95b1d5f3cc9c694344f8aec46f33
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: bb5ece23c0e484dbc2fec7881ce3ef2e29ed2d4a
+ms.sourcegitcommit: 70147e858956443bc66b3541ec278c102bb45c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277267"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72381409"
 ---
 # <a name="integrate-azure-stack-with-monitoring-solutions-using-syslog-forwarding"></a>Syslog iletme kullanarak Azure Stack izleme çözümleriyle tümleştirme
 
@@ -61,15 +61,15 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 *Set-SyslogServer* cmdlet parametreleri:
 
-| Parametre | Açıklama | Tür | Gerekli |
+| Parametre | Açıklama | Tür | Gereklidir |
 |---------|---------|---------|---------|
-|*ServerName* | Syslog sunucusunun FQDN 'SI veya IP adresi. | Dize | Yes|
-|*Sunucu bağlantı noktası* | Syslog sunucusunun dinlediği bağlantı noktası numarası. | Dize | Yes|
-|*NoEncryption*| İstemciye syslog iletilerini şifresiz metin olarak göndermesini zorunlu kılın. | bayrağıyla | eşleşen|
-|*SkipCertificateCheck*| İlk TLS el sıkışması sırasında Syslog sunucusu tarafından belirtilen sertifikanın doğrulanmasını atlayın. | bayrağıyla | eşleşen|
-|*SkipCNCheck*| İlk TLS el sıkışması sırasında Syslog sunucusu tarafından belirtilen sertifikanın ortak ad değerinin doğrulanmasını atlayın. | bayrağıyla | eşleşen|
-|*UseUDP*| UDP as Aktarım Protokolü ile Syslog kullanın. |bayrağıyla | eşleşen|
-|*Kaldır*| Sunucu yapılandırmasını istemciden kaldırın ve Syslog iletmeyi durdurun.| bayrağıyla | eşleşen|
+|*ServerName* | Syslog sunucusunun FQDN 'SI veya IP adresi. | Dize | evet|
+|*Sunucu bağlantı noktası* | Syslog sunucusunun dinlediği bağlantı noktası numarası. | Dize | evet|
+|*NoEncryption*| İstemciye syslog iletilerini şifresiz metin olarak göndermesini zorunlu kılın. | bayrağıyla | hayır|
+|*SkipCertificateCheck*| İlk TLS el sıkışması sırasında Syslog sunucusu tarafından belirtilen sertifikanın doğrulanmasını atlayın. | bayrağıyla | hayır|
+|*SkipCNCheck*| İlk TLS el sıkışması sırasında Syslog sunucusu tarafından belirtilen sertifikanın ortak ad değerinin doğrulanmasını atlayın. | bayrağıyla | hayır|
+|*UseUDP*| UDP as Aktarım Protokolü ile Syslog kullanın. |bayrağıyla | hayır|
+|*Temizlenmesine*| Sunucu yapılandırmasını istemciden kaldırın ve Syslog iletmeyi durdurun.| bayrağıyla | hayır|
 
 *Set-SyslogClient* cmdlet parametreleri:
 
@@ -255,17 +255,18 @@ Ayrıcalıklı uç nokta için olay tablosu:
 |SetCloudAdminUserPassword |1008|SetCloudAdminUserPasswordEvent|5|
 |GetCloudAdminPasswordRecoveryToken |1009|GetCloudAdminPasswordRecoveryTokenEvent|10|
 |ResetCloudAdminPassword |1010|ResetCloudAdminPasswordEvent|10|
+|Privilegedendpointsessiontimepr |1017|PrivilegedEndpointSessionTimedOutEvent|5|
 
 PEP önem derecesi tablosu:
 
 | Önem Derecesi | Düzey | Sayısal değer |
 |----------|-------| ----------------|
-|0|Tanımlayan|Değer: 0. Tüm düzeylerde günlükleri gösterir|
+|0|Undefined|Değer: 0. Tüm düzeylerde günlükleri gösterir|
 |10|Kritik|Değer: 1. Kritik uyarı için günlükleri belirtir|
 |8|Hata| Değer: 2. Bir hata için günlükleri gösterir|
 |5|Uyarı|Değer: 3. Uyarı için günlükleri belirtir|
-|2|Bilgiler|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
-|0|Ayrıntılı|Değer: 5. Tüm düzeylerde günlükleri gösterir|
+|2|Bilgi|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
+|0|Seçeneini|Değer: 5. Tüm düzeylerde günlükleri gösterir|
 
 ### <a name="cef-mapping-for-recovery-endpoint-events"></a>Kurtarma uç noktası olayları için CEF eşleme
 
@@ -291,12 +292,12 @@ REP önem derecesi tablosu:
 
 | Önem Derecesi | Düzey | Sayısal değer |
 |----------|-------| ----------------|
-|0|Tanımlayan|Değer: 0. Tüm düzeylerde günlükleri gösterir|
+|0|Undefined|Değer: 0. Tüm düzeylerde günlükleri gösterir|
 |10|Kritik|Değer: 1. Kritik uyarı için günlükleri belirtir|
 |8|Hata| Değer: 2. Bir hata için günlükleri gösterir|
 |5|Uyarı|Değer: 3. Uyarı için günlükleri belirtir|
-|2|Bilgiler|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
-|0|Ayrıntılı|Değer: 5. Tüm düzeylerde günlükleri gösterir|
+|2|Bilgi|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
+|0|Seçeneini|Değer: 5. Tüm düzeylerde günlükleri gösterir|
 
 ### <a name="cef-mapping-for-windows-events"></a>Windows olayları için CEF eşleme
 
@@ -311,12 +312,12 @@ Windows olayları için önem tablosu:
 
 | CEF önem derecesi değeri | Windows olay düzeyi | Sayısal değer |
 |--------------------|---------------------| ----------------|
-|0|Tanımlayan|Değer: 0. Tüm düzeylerde günlükleri gösterir|
+|0|Undefined|Değer: 0. Tüm düzeylerde günlükleri gösterir|
 |10|Kritik|Değer: 1. Kritik uyarı için günlükleri belirtir|
 |8|Hata| Değer: 2. Bir hata için günlükleri gösterir|
 |5|Uyarı|Değer: 3. Uyarı için günlükleri belirtir|
-|2|Bilgiler|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
-|0|Ayrıntılı|Değer: 5. Tüm düzeylerde günlükleri gösterir|
+|2|Bilgi|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
+|0|Seçeneini|Değer: 5. Tüm düzeylerde günlükleri gösterir|
 
 Azure Stack Windows olayları için özel uzantı tablosu:
 
@@ -335,7 +336,7 @@ Azure Stack Windows olayları için özel uzantı tablosu:
 |MasKeywords |0x8000000000000000|
 |MasKeywordName |Denetim başarılı|
 |MasLevel |4|
-|MasOpcode |1\.|
+|MasOpcode |1|
 |Masopkod adı |Bilgisine|
 |MasProviderEventSourceName ||
 |MasProviderGuid |AEA1B4FA-97D1-45F2-A64C-4D69FFFD92C9|
@@ -359,7 +360,7 @@ Uyarılar önem derecesi tablosu:
 
 | Önem Derecesi | Düzey |
 |----------|-------|
-|0|Tanımlayan|
+|0|Undefined|
 |10|Kritik|
 |5|Uyarı|
 

@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/27/2019
-ms.openlocfilehash: 0cccd93ca24f2e93717bfbbd6ec05137d91f5bd0
-ms.sourcegitcommit: 036d4b22a8076ca9ba5c667a451c544d88f8bb94
+ms.lastreviewed: 10/10/2019
+ms.openlocfilehash: 7ca248ace5020546fe9d25b9e1e731f7e70275d6
+ms.sourcegitcommit: 70147e858956443bc66b3541ec278c102bb45c07
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71681827"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72381386"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack"></a>Bir Kubernetes kümesini AKS altyapısı ile Azure Stack dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-AKS altyapısını çalıştıran bir istemci VM 'sinden Azure Stack bir Kubernetes kümesi dağıtabilirsiniz. Bu makalede, bir küme belirtimi yazma, `apimodel.json` dosyayla birlikte bir küme dağıtma ve Held ile MySQL dağıtarak kümenizi denetleme konusuna baktık.
+AKS altyapısını çalıştıran bir istemci VM 'sinden Azure Stack bir Kubernetes kümesi dağıtabilirsiniz. Bu makalede, bir küme belirtimi yazma, `apimodel.json` dosyası ile küme dağıtma ve Held ile MySQL dağıtarak kümenizi denetleme konusuna baktık.
 
 ## <a name="define-a-cluster-specification"></a>Küme belirtimi tanımlama
 
@@ -52,15 +52,15 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     ```
 
     > [!Note]  
-    > Nano yüklü değilse, Ubuntu: `sudo apt-get install nano`öğesine nano yükleme gerçekleştirebilirsiniz.
+    > Nano yüklü değilse, Ubuntu: `sudo apt-get install nano` ' a Nano yükleme yapabilirsiniz.
 
-3.  Kubernetes-azurestack. json dosyasında bulun `orchestratorRelease`. Desteklenen Kubernetes sürümlerinden birini seçin. Örneğin, 1,11, 1,12, 1,13, 1,14. Sürümler genellikle güncelleştirmelerdir. X. xx. x yerine x. xx olarak sürümü belirtin. Geçerli sürümlerin bir listesi için bkz. [desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). Aşağıdaki AKS motoru komutunu çalıştırarak desteklenen sürümü bulabilirsiniz:
+3.  Kubernetes-azurestack. json dosyasında @no__t bulun-0. Desteklenen Kubernetes sürümlerinden birini seçin. Örneğin, 1,11, 1,12, 1,13, 1,14. Sürümler genellikle güncelleştirmelerdir. X. xx. x yerine x. xx olarak sürümü belirtin. Geçerli sürümlerin bir listesi için bkz. [desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). Aşağıdaki AKS motoru komutunu çalıştırarak desteklenen sürümü bulabilirsiniz:
 
     ```bash
     aks-engine get-versions
     ```
 
-4.  Kiracı `customCloudProfile` portalının URL 'sini bulun ve sağlayın. Örneğin, `https://portal.local.azurestack.external`. 
+4.  @No__t-0 bulun ve kiracı portalına URL 'YI sağlayın. Örneğin, `https://portal.local.azurestack.external`. 
 
 5. AD FS kullanıyorsanız, @no__t ekleyin-0. Örneğin,
 
@@ -74,26 +74,26 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     > [!Note]  
     > Kimlik sisteminiz için Azure AD kullanıyorsanız, **ıdentitysystem** alanını eklemeniz gerekmez.
 
-6. Kiracı `portalURL` portalının URL 'sini bulun ve sağlayın. Örneğin, `https://portal.local.azurestack.external`.
+6. @No__t-0 bulun ve kiracı portalına URL 'YI sağlayın. Örneğin, `https://portal.local.azurestack.external`.
 
-7.  Dizide `masterProfile`aşağıdaki alanları ayarlayın:
+7.  @No__t-0 dizisinde aşağıdaki alanları ayarlayın:
 
     | Alan | Açıklama |
     | --- | --- |
     | dnsPrefix | VM 'lerin ana bilgisayar adını belirlemek için kullanılacak benzersiz bir dize girin. Örneğin, kaynak grubu adını temel alan bir ad. |
     | count |  Dağıtımınız için istediğiniz ana öğe sayısını girin. Bir HA dağıtımı için en az 3, ancak HA olmayan dağıtımlar için 1 öğesine izin verilir. |
-    | vmSize |  Azure Stack, örnek `Standard_D2_v2` [tarafından desteklenen bir boyut](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)girin. |
+    | vmSize |  [Azure Stack tarafından desteklenen bir boyut](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)girin, örnek `Standard_D2_v2`. |
     | distro | `aks-ubuntu-16.04` yazın. |
 
-8.  Dizi `agentPoolProfiles` güncelleştirmesinde:
+8.  Dizi `agentPoolProfiles` güncelleştirmesi:
 
     | Alan | Açıklama |
     | --- | --- |
     | count | Dağıtımınız için istediğiniz aracıların sayısını girin. |
-    | vmSize | Azure Stack, örnek `Standard_D2_v2` [tarafından desteklenen bir boyut](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)girin. |
+    | vmSize | [Azure Stack tarafından desteklenen bir boyut](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)girin, örnek `Standard_D2_v2`. |
     | distro | `aks-ubuntu-16.04` yazın. |
 
-9.  Dizi `linuxProfile` güncelleştirmesinde:
+9.  Dizi `linuxProfile` güncelleştirmesi:
 
     | Alan | Açıklama |
     | --- | --- |
@@ -111,7 +111,7 @@ API modelinizde gerekli tüm değerleri topladıktan sonra kümenizi oluşturabi
 
 Azure Stack operatörünüzden şunları yapın:
 
-- Sistemin sistem durumunu doğrulayın, çalıştırmayı `Test-AzureStack` ve OEM satıcınızın donanım izleme aracını önerin.
+- Sistemin sistem durumunu doğrulayın, `Test-AzureStack` ve OEM satıcınızın donanım izleme aracını çalıştırmayı önerin.
 - Bellek, depolama ve genel IP 'Ler gibi kaynaklar dahil sistem kapasitesini doğrulayın.
 - Kullanmayı planladığınız VM sayısı için hala yeterli alan olduğunu doğrulayabilmeniz için aboneliğinizle ilişkili kotanın ayrıntılarını sağlayın.
 
@@ -121,12 +121,12 @@ Bir kümeyi dağıtmaya devam edin:
 
     | Parametre | Örnek | Açıklama |
     | --- | --- | --- |
-    | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack kullanacağı `AzureStackCloud`aks altyapısını göstermek için. |
+    | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack `AzureStackCloud` ' ın kullanacağı AKS motoruna göstermek için. |
     | kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
-    | location | yerel | Azure Stack için bölge adı. İçin bölge olarak `local`ayarlanır. |
-    | resource-group | kuin-RG | Yeni bir kaynak grubu adını girin veya mevcut bir kaynak grubunu seçin. Kaynak adı alfasayısal ve küçük harf olması gerekir. |
+    | location | Yerel | Azure Stack için bölge adı. ASDK için bölge `local` olarak ayarlanır. |
+    | resource-group | kuin-RG | Yeni bir kaynak grubunun adını girin veya var olan bir kaynak grubunu seçin. Kaynak adının alfasayısal ve küçük harf olması gerekir. |
     | api modeli | ./Kubernetes-azurestack.exe JSON | Küme yapılandırma dosyasının yolu veya API modeli. |
-    | çıkış dizini | kuin-RG | Çıkış dosyasının `apimodel.json` yanı sıra diğer oluşturulan dosyaları da içerecek şekilde dizin adını girin. |
+    | çıkış dizini | kuin-RG | @No__t-0 çıkış dosyasını ve diğer oluşturulan dosyaları içerecek şekilde dizin adını girin. |
     | istemci kimliği | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hizmet sorumlusu GUID 'INI girin. Azure Stack yöneticiniz hizmet sorumlusunu oluştururken uygulama KIMLIĞI olarak tanımlanan Istemci KIMLIĞI. |
     | istemci parolası | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hizmet sorumlusu gizli anahtarını girin. Bu, hizmetinizi oluştururken ayarladığınız istemci sırrı. |
     | abonelik kimliği | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Abonelik KIMLIĞINIZI girin. Daha fazla bilgi için bkz. [teklife abone olma](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
@@ -150,9 +150,9 @@ Bir kümeyi dağıtmaya devam edin:
 
 3.  AKS motoru küme yapılandırmasını güvenli, şifrelenmiş bir konuma kaydedin.
 
-    Dosyayı `apimodel.json`bulun. Güvenli bir konuma kaydedin. Bu dosya, diğer tüm AKS motoru işlemlerinizin içinde girdi olarak kullanılacaktır.
+    @No__t-0 dosyasını bulun. Güvenli bir konuma kaydedin. Bu dosya, diğer tüm AKS motoru işlemlerinizin içinde girdi olarak kullanılacaktır.
 
-    Oluşturulan `apimodel.json` , giriş API modelinde kullandığınız hizmet sorumlusu, gizli anahtar ve SSH ortak anahtarını içerir. Ayrıca, diğer tüm işlemleri gerçekleştirmek için AKS altyapısının gerek duyduğu tüm diğer meta verilere sahiptir. Kaybederseniz, AKS motoru kümeyi yapılandıramaz.
+    Oluşturulan `apimodel.json`, giriş API modelinde kullandığınız hizmet sorumlusu, gizli anahtar ve SSH ortak anahtarını içerir. Ayrıca, diğer tüm işlemleri gerçekleştirmek için AKS altyapısının gerek duyduğu tüm diğer meta verilere sahiptir. Kaybederseniz, AKS motoru kümeyi yapılandıramaz.
 
     Gizlilikler **şifrelenmemiş**. Dosyayı şifreli, güvenli bir yerde tutun. 
 
@@ -170,19 +170,14 @@ Kümenizi denetlemek için Held ile MySQL dağıtarak kümenizi doğrulayın.
 
     ```bash
     sudo snap install helm –classic
+    kubectl -n kube-system create serviceaccount tiller
+    kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+    helm init --service-account=tiller
     helm repo update
     helm install stable/mysql
     ```
 
-5. Çalıştırmayı `install stable/mysql` denemeden sonra gibi `Error: incompatible versions client[v2.XX.X] server[v2.YY.Y]`bir hata alırsınız. Aşağıdaki komutları çalıştırın:
-
-    ```bash 
-    helm init --force-upgrade
-    and retry:
-    helm install stable/mysql
-    ```
-
-6.  Testi temizlemek için MySQL dağıtımı için kullanılan adı bulun. Aşağıdaki örnekte, adı ' dir `wintering-rodent`. Sonra silin. 
+5.  Testi temizlemek için MySQL dağıtımı için kullanılan adı bulun. Aşağıdaki örnekte ad `wintering-rodent` ' dır. Sonra silin. 
 
     Aşağıdaki komutları çalıştırın:
 
