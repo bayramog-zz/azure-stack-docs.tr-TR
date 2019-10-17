@@ -14,12 +14,12 @@ ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: ebee962bbf53cad48df11bd21653830410f04d9d
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 454fe5b07dc5576cecdb11b59e5424e3c5ccbb72
+ms.sourcegitcommit: df20662e77a6ed0a7eba03f79eb53e8cd4471206
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68417562"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72445385"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Depolama Gezginini bir Azure Stack aboneliğine veya depolama hesabına bağlama
 
@@ -38,16 +38,16 @@ Bir Azure Stack aboneliğine veya depolama hesabına bağlandıktan sonra, Azure
 
 Azure Stack aboneliğine erişebilmek Depolama Gezgini için Azure Stack veya VPN bağlantısına doğrudan erişmeniz gerekir. Azure Stack ile VPN bağlantısı kurma hakkında bilgi edinmek için bkz. [VPN ile Azure Stack’e Bağlanma](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
 
-Azure Stack Geliştirme Seti (ASDK) için, Azure Stack yetkilisi kök sertifikasını dışarı aktarmanız gerekir.
-
 > [!Note]  
-> ASDK için, VPN aracılığıyla ASDK 'ye bağlanıyorsanız, VPN kurulum işlemi sırasında oluşturulan kök sertifikayı (CA. cer) kullanmayın.  Bu, DER ile kodlanmış bir sertifikadır ve Depolama Gezgini Azure Stack aboneliklerinizi almasına izin vermez. Depolama Gezgini ile kullanmak üzere Base-64 kodlu bir sertifikayı dışarı aktarmak için aşağıdaki adımları izleyin.
+> ASDK için, VPN aracılığıyla ASDK 'ye bağlanıyorsanız, VPN kurulum işlemi sırasında oluşturulan kök sertifikayı (CA. cer) kullanmayın.  Bu, DER ile kodlanmış bir sertifikadır ve Depolama Gezgini Azure Stack aboneliklerinizi almasına izin vermez. Depolama Gezgini ile kullanmak üzere Base-64 kodlu bir sertifikayı dışarı aktarmak için aşağıdaki adımları kullanın.
+
+Bağlantısı kesilen tümleşik sistemler ve ASDK için, kök sertifikayı temel 64 biçiminde dışarı aktarmak ve ardından Azure Depolama Gezgini içine aktarmak için dahili bir kurumsal sertifika yetkilisi kullanılması önerilir.  
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Azure Stack sertifikayı dışa ve ardından içeri aktarma
 
-Azure Stack sertifikayı dışa aktarın ve ardından, ASDK için içeri aktarın. Tümleşik sistemler için, sertifika genel olarak imzalanır ve bu adım gerekli değildir.
+Bağlantısı kesilmiş tümleşik sistemler ve ASDK için Azure Stack sertifikayı dışa aktarın ve içeri aktarın. Bağlı tümleşik sistemler için, sertifika genel olarak imzalanır ve bu adım gerekli değildir.
 
-1. Azure Stack `mmc.exe` bir konak makinesinde veya Azure Stack VPN bağlantısı olan yerel bir makinede açın. 
+1. @No__t-0 ' ı bir Azure Stack konak makinesinde veya Azure Stack VPN bağlantısı olan yerel bir makineye açın. 
 
 2. **Dosya**' da, **ek bileşen Ekle/Kaldır**' ı seçin. Kullanılabilir ek bileşenlerde **Sertifikalar** ' ı seçin. 
 
@@ -57,7 +57,7 @@ Azure Stack sertifikayı dışa aktarın ve ardından, ASDK için içeri aktarı
 
     ![mmc.exe dosyası ile Azure Stack kök sertifikasını yükleme](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
-5. Sertifikaya sağ tıklayın, **Tüm görevler** > **dışarı aktar**' ı seçin ve ardından, sertifikayı dışarı aktarmak için yönergeleri izleyin **Base-64 kodlamalı X. 509.440 (. CER)** .
+5. Sertifikaya sağ tıklayın, **Tüm görevler** > **dışarı aktar**' ı seçin ve ardından sertifikayı, **Base-64 kodlamalı X. 509.440 (. CER)** .
 
     Dışarı aktarılan sertifika sonraki adımda kullanılır.
 

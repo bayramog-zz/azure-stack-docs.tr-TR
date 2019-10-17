@@ -5,21 +5,21 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 10/16/2019
 ms.reviewer: shriramnat
-ms.lastreviewed: 10/06/2019
-ms.openlocfilehash: dc35f5249a9fb71722d51f2a47afc516a8d51379
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.lastreviewed: 10/16/2019
+ms.openlocfilehash: 87542483f2a35fba315258e9ba66b1792739033b
+ms.sourcegitcommit: df20662e77a6ed0a7eba03f79eb53e8cd4471206
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72287086"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72445345"
 ---
 # <a name="tutorial-offer-a-service-to-users"></a>Öğretici: kullanıcılara hizmet sunma
 
 Bu öğreticide, bir teklifin nasıl oluşturulacağı bir operatör gösterilmektedir. Bir teklif, Hizmetleri bir abonelik temelinde kullanıcılara sunar. Bir teklifine abone olduktan sonra, Kullanıcı teklif tarafından belirtilen hizmetlerde kaynak oluşturup dağıtmaya hak kazanır.
 
-Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Teklif oluşturma
@@ -27,9 +27,9 @@ Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
 > * Plana hizmet ve Kotalar atama
 > * Bir teklifin planını atama
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
-Bir teklif bir veya daha fazla plandan oluşur. Bir plan, ilgili kaynak sağlayıcısını ve kotayı belirterek bir veya daha fazla hizmete erişim sahibine. Planlar, temel plan olarak bir teklifine eklenebilir veya teklifi bir eklenti planı olarak genişletebilir. Daha fazla bilgi edinmek için bkz. [hizmet, plan, teklif, aboneliğe genel bakış](service-plan-offer-subscription-overview.md).
+Bir teklif bir veya daha fazla plandan oluşur. Bir plan, her bir hizmetin karşılık gelen kaynak sağlayıcısını ve kotayı belirterek bir veya daha fazla hizmete erişim sahibine. Planlar, temel plan olarak bir teklifine eklenebilir veya teklifi bir eklenti planı olarak genişletebilir. Daha fazla bilgi edinmek için bkz. [hizmet, plan, teklif, aboneliğe genel bakış](service-plan-offer-subscription-overview.md).
 
 ![Abonelikler, teklifler ve planlar](media/azure-stack-key-features/image4.png)
 
@@ -48,17 +48,17 @@ Temel hizmetler, Azure Stack her yüklemesiyle yerel olarak kullanılabilen aşa
 
 | Kaynak sağlayıcısı | Örnek kaynaklar |
 | ----------------- | ------------------|
-| Microsoft. COMPUTE | Sanal makineler, diskler, sanal makine ölçek kümeleri |
+| Microsoft.Compute | Sanal makineler, diskler, sanal makine ölçek kümeleri |
 | Microsoft. Keykasası | Anahtar kasaları, gizlilikler |
-| Microsoft. Network | Sanal ağlar, genel IP adresleri, yük dengeleyiciler |
-| Microsoft. Storage | Depolama hesapları, blob 'lar, kuyruklar, tablolar |
+| Microsoft.Network | Sanal ağlar, genel IP adresleri, yük dengeleyiciler |
+| Microsoft.Storage | Depolama hesapları, blob 'lar, kuyruklar, tablolar |
 
 ### <a name="add-on-services"></a>Eklenti Hizmetleri
 
 >[!NOTE]
 > Bir eklenti hizmeti sunmak için, önce karşılık gelen kaynak sağlayıcısının Azure Stack Market 'te yüklü olması gerekir. Yüklendikten sonra, kaynakları temel hizmetlerle aynı şekilde kullanıcılara sunulur. Eklenti hizmeti tekliflerini destekleyen geçerli kaynak sağlayıcıları kümesi için lütfen TOC 'nin **nasıl yapılır Kılavuzu** bölümüne bakın.
 
-Eklenti Hizmetleri, Azure Stack dağıtıldıktan sonra yüklenen kaynak sağlayıcıları tarafından desteklenir. Örnekler:
+Eklenti Hizmetleri, Azure Stack dağıtıldıktan sonra yüklenen kaynak sağlayıcıları tarafından desteklenir. Örneğin:
 
 | Kaynak sağlayıcısı | Örnek kaynaklar |
 | ----------------- | ------------------------- |
@@ -100,7 +100,7 @@ Teklif oluşturma işlemi sırasında hem teklif hem de bir plan oluşturursunuz
 
    ![İşlem kotası oluştur](media/tutorial-offer-services/6-create-new-plan-quotas.png)
 
-1. **Gözden geçir + oluştur** sekmesini seçin. En üstte yeşil bir "doğrulama geçildi" başlığı görmeniz gerekir ve bu, yeni temel planın oluşturulması için hazırlandığını gösterir. **Oluştur**' u seçin. Ayrıca planın oluşturulduğunu belirten bir bildirim görmeniz gerekir.
+1. **Gözden geçir + oluştur** sekmesini seçin. En üstte yeşil bir "doğrulama geçildi" başlığı görmeniz gerekir ve bu, yeni temel planın oluşturulması için hazırlandığını gösterir. **Oluştur**'u seçin. Ayrıca planın oluşturulduğunu belirten bir bildirim görmeniz gerekir.
 
    ![Yeni plan oluştur](media/tutorial-offer-services/7-create-new-plan-review-create.png)
 
@@ -110,7 +110,7 @@ Teklif oluşturma işlemi sırasında hem teklif hem de bir plan oluşturursunuz
 
 1. **Gözden geçir + oluştur** sekmelerinde, üstteki yeşil "doğrulama geçildi" başlığını görmeniz gerekir. "Temel" ve "temel planlar" bilgilerini gözden geçirin ve hazırsanız **Oluştur** ' u seçin. 
 
-   ![Yeni teklif oluştur](media/tutorial-offer-services/9-create-new-offer-review-create.png)
+   ![Yeni teklif oluşturma](media/tutorial-offer-services/9-create-new-offer-review-create.png)
 
 1. "Dağıtımınız devam eder" sayfasında, teklif dağıtıldıktan sonra "dağıtımınız tamamlanmıştır" şeklinde görüntülenir. **Kaynak** sütununun altında, teklifin adına tıklayın.
 
@@ -183,7 +183,7 @@ Teklif oluşturma işlemi sırasında hem teklif hem de bir plan oluşturursunuz
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şunları nasıl yapılacağını öğrendiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Teklif oluşturma

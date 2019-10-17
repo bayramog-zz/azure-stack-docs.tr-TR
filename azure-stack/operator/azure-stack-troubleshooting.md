@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 10/16/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 45600ee6e35c7e80a1dd74c6c6d456b3bf68ed3f
-ms.sourcegitcommit: 5eae057cb815f151e6b8af07e3ccaca4d8e4490e
+ms.lastreviewed: 10/16/2019
+ms.openlocfilehash: 3c0b1ce32399b4739796b2718e97c69d96291dc6
+ms.sourcegitcommit: df20662e77a6ed0a7eba03f79eb53e8cd4471206
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72310529"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72445272"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
@@ -151,6 +151,11 @@ Bu davranış tasarıma göre belirlenir:
 ## <a name="troubleshoot-storage"></a>Depolama sorunlarını giderme
 ### <a name="storage-reclamation"></a>Depolama geri kazanma
 Geri kazanılabilir kapasitenin portalda gösterilmesi 14 saate kadar sürebilir. Space geri kazanma, Blok Blobu deposundaki iç kapsayıcı dosyalarının kullanım yüzdesi gibi çeşitli faktörlere bağlıdır. Bu nedenle, ne kadar veri silindiğine bağlı olarak, çöp toplayıcı çalıştırıldığında geri kazanılabilecek alan miktarı garantisi yoktur.
+
+### <a name="azure-storage-explorer-not-working-with-azure-stack"></a>Azure Depolama Gezgini Azure Stack çalışmıyor 
+ 
+Bağlantısı kesik bir senaryoda tümleşik bir sistem kullanıyorsanız, bir kurumsal sertifika yetkilisi (CA) kullanmanız önerilir. Kök sertifikayı bir Base-64 biçiminde dışa aktarıp Azure Depolama Gezgini içeri aktarın. Sondaki eğik çizgiyi ('/') ARM uç noktasından kaldırdığınızdan emin olun. Daha fazla bilgi için bkz. [Azure Stack bağlanmaya hazırlanma](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se#prepare-for-connecting-to-azure-stack).
+ 
 
 ## <a name="troubleshooting-app-service"></a>Sorun giderme App Service
 ### <a name="create-aadidentityappps1-script-fails"></a>Create-AADIdentityApp. ps1 betiği başarısız oluyor

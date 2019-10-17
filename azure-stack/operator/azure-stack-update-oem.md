@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2019
+ms.date: 10/15/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: b218a1b40953d9266ec5a8bcdd49f5d89a421146
-ms.sourcegitcommit: 5703255b4647ff0ebec23658a3f5c25d67f076a2
+ms.openlocfilehash: efa10feb63f01166cf93b1835d8e38f99b9191db
+ms.sourcegitcommit: df20662e77a6ed0a7eba03f79eb53e8cd4471206
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70749930"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72445169"
 ---
 # <a name="apply-azure-stack-original-equipment-manufacturer-oem-updates"></a>Özgün donanım üreticisi (OEM) güncelleştirmelerini Azure Stack Uygula
 
@@ -44,9 +44,9 @@ Bu bölüm, OEM iletişim bilgilerini ve OEM Azure Stack başvuru malzemelerinde
 
 | Donanım Iş ortağı | Bölge | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | Tümü | [Cisco Azure Stack destek/bellenim güncelleştirmeleri-otomatik bildirim (hesap/oturum açma gereklidir)](https://software.cisco.com/download/redirect?i=!y&mdfid=283862063&softwareid=286320368&release=1.0(0)&os=)<br><br>[Microsoft Azure Stack için Cisco Tümleşik sistemi sürüm notları](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Cisco | Tümü | [Microsoft Azure Stack Işlemler Kılavuzu için Cisco Tümleşik Sistem](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_01000.html)<br><br>[UCS C Serisi raf bağlama UCS-yönetilen sunucu yazılımı](https://software.cisco.com/download/home/283862063/type/286320368/release/2.0(0)) |
 | Dell EMC | Tümü | [Microsoft Azure Stack 14G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Microsoft Azure Stack 13G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| Fujitsu | JAPONYA | [Fujitsu yönetilen hizmet destek masası (hesap ve oturum açma gereklidir)](https://eservice.fujitsu.com/supportdesk-web/) |
+| Fujitsu | Japonya | [Fujitsu yönetilen hizmet destek masası (hesap ve oturum açma gereklidir)](https://eservice.fujitsu.com/supportdesk-web/) |
 |  | EMEA & US | [Fujitsu BT ürünlerini ve sistemlerini destekler](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
 | HPE | Tümü | [Microsoft Azure Stack için HPE ProLiant](http://www.hpe.com/info/MASupdates) |
 | Lenovo | Tümü | [Ölçülü Kagile SXD En Iyi Tarifler](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
@@ -65,7 +65,7 @@ Aşağıdaki adımlarla OEM paketlerini uygulayın:
 
 ## <a name="configure-hardware-vendor-vm"></a>Donanım satıcısı VM 'sini yapılandırma
 
-Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. **Set-oemexternalvm** cmdlet 'ini çalıştırırken ve için hangi kimlik bilgilerinin `ProxyVM` kullanılması `HardwareManager` gerektiği ve için **-vmtype** gerekliyse, bu VM 'leri oluşturmak ve belgelemek için donanım satıcınız sorumlu olacaktır.  **Kimlik bilgileri**. VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** ile yapılandırın.
+Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. **Set-OEMExternalVM** cmdlet 'ini çalıştırırken **ve kimlik bilgileri için hangi**kimlik bilgilerinin kullanılması gerektiğini ve @no__t-- **---** -----------------------------1 @no__t VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** ile yapılandırın.
 
 Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azure Stack ayrıcalıklı uç noktasını kullanma](azure-stack-privileged-endpoint.md).
 
@@ -77,7 +77,7 @@ Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azu
     -ConfigurationName PrivilegedEndpoint -Credential $cred
     ```
 
-2. **Set-OEMExternalVM** cmdlet 'ini kullanarak donanım satıcısı VM 'sini yapılandırın. Cmdlet 'i **-vmtype** `ProxyVM`için IP adresini ve kimlik bilgilerini doğrular. For **-vmtype** `HardwareManager` cmdlet 'i girişi doğrulamaz. **Set-OEMExternalVM** için belirtilen **-Credential** parametresi, donanım satıcısı belgelerinin açıkça belgelendiği bir sağlayıcıdır.  Ayrıcalıklı uç noktayla veya diğer mevcut Azure Stack kimlik bilgileriyle kullanılan CloudAdmin kimlik bilgisi DEĞILDIR.
+2. **Set-OEMExternalVM** cmdlet 'ini kullanarak donanım satıcısı VM 'sini yapılandırın. Cmdlet 'i **-vmtype** `ProxyVM` için IP adresini ve kimlik bilgilerini doğrular. **-Vmtype** `HardwareManager` cmdlet girişi doğrulamaz. **Set-OEMExternalVM** için belirtilen **-Credential** parametresi, donanım satıcısı belgelerinin açıkça belgelendiği bir sağlayıcıdır.  Ayrıcalıklı uç noktayla veya diğer mevcut Azure Stack kimlik bilgileriyle kullanılan CloudAdmin kimlik bilgisi DEĞILDIR.
 
     ```powershell  
     $VmCred = Get-Credential
