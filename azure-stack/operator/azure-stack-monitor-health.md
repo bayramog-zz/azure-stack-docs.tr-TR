@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 10/2/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 1747be1c97a706aae5d49889949fd0b0f9a70da3
-ms.sourcegitcommit: dfaf0126bc9975ca1643d55f06c71df9e32ea976
+ms.openlocfilehash: 5d7074997a42da9ca19006e3b597d2ba02613b28
+ms.sourcegitcommit: b5eb024d170f12e51cc852aa2c72eabf26792d8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72164956"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72534130"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack durumu ve Uyarıları izleme
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack, bir Azure Stack bölgesinin sistem durumunu ve uyarılarını görüntülemenize yardımcı olan altyapı izleme özelliklerini içerir. Varsayılan sağlayıcı aboneliği için yönetici portalında varsayılan olarak sabitlenmiş **Bölge yönetimi** kutucuğu, Azure Stack dağıtılan tüm bölgeleri listeler. Kutucuk, her bölge için etkin kritik ve uyarı uyarılarının sayısını gösterir. Kutucuk, giriş noktanğunuz Azure Stack sistem durumu ve uyarı işlevselliğine sahiptir.
+Azure Stack, bir Azure Stack bölgesinin sistem durumunu ve uyarılarını görüntülemenize yardımcı olan altyapı izleme özelliklerini içerir. **Bölge yönetimi** kutucuğu Azure Stack dağıtılan tüm bölgeleri listeler. Varsayılan sağlayıcı aboneliği için yönetici portalında varsayılan olarak sabitlenmiştir. Kutucuk, her bölge için etkin kritik ve uyarı uyarılarının sayısını gösterir. Kutucuk, giriş noktanğunuz Azure Stack sistem durumu ve uyarı işlevselliğine sahiptir.
 
-![Bölge yönetimi kutucuğu](media/azure-stack-monitor-health/image1.png)
+![Azure Stack Yönetici portalı 'nda bölge yönetimi kutucuğu](media/azure-stack-monitor-health/image1.png)
 
 ## <a name="understand-health-in-azure-stack"></a>Azure Stack durumunu anlama
 
@@ -37,11 +37,11 @@ Sistem durumu kaynak sağlayıcısı, sistem durumunu ve uyarıları yönetir. A
 
 Azure Stack, uyarıları yalnızca iki önem derecesi ile başlatır: **Uyarı** ve **kritik**.
 
-- **Uyarı**  
+- **Warning**  
   Bir işleç, uyarı uyarısını zamanlanan bir şekilde ele alabilir. Uyarı genellikle kullanıcı iş yüklerini etkilemez.
 
 - **Başlatma**  
-  Bir operatör önemli uyarıyı acille adreslemelidir. Bunlar, şu anda Azure Stack kullanıcıları etkileyen veya yakında etkileyecek olan sorunlardır.
+  Bir operatör önemli uyarıyı acille adreslemelidir. Bu uyarılar Şu anda Azure Stack kullanıcıları etkileyen veya yakında etkileyecek sorunları gösterir.
 
 
 ## <a name="view-and-manage-component-health-state"></a>Bileşen sistem durumunu görüntüleyin ve yönetin
@@ -55,29 +55,29 @@ Portalda sistem durumunu görüntülemek için **Bölge yönetimi** kutucuğunda
 Daha ayrıntılı bilgi görüntülemek için bir kaynak sağlayıcısına veya altyapı rolüne tıklayabilirsiniz.
 
 > [!WARNING]  
-> Bir altyapı rolüne tıklayıp rol örneğine tıklarsanız, **başlatma**, **yeniden başlatma**veya **kapanmaya**yönelik seçenekler vardır. Tümleşik bir sisteme güncelleştirmeler uyguladığınızda bu eylemleri kullanmayın. Ayrıca, bu seçenekleri bir Azure Stack Geliştirme Seti **ortamında kullanmayın.** Bu seçenekler yalnızca, altyapı rolü başına birden fazla rol örneği olduğu tümleşik sistemler ortamı için tasarlanmıştır. Geliştirme setinde bir rol örneğini yeniden başlatma (özellikle AzS-Xrp01) sistem kararsızlığına neden olur. Sorun giderme yardımı için sorununuzu [Azure Stack forumuna](https://aka.ms/azurestackforum)gönderin.
+> Bir altyapı rolüne tıklayıp rol örneğine tıklarsanız, **başlatma**, **yeniden başlatma**veya **kapanmaya**yönelik seçenekler vardır. Tümleşik bir sisteme güncelleştirmeler uyguladığınızda bu eylemleri kullanmayın. Ayrıca, bu seçenekleri bir Azure Stack Geliştirme Seti (ASDK) **ortamında kullanmayın.** Bu seçenekler yalnızca, altyapı rolü başına birden fazla rol örneği olduğu tümleşik sistemler ortamı için tasarlanmıştır. ASDK içindeki bir rol örneğini yeniden başlatmak sistem kararsızlığına neden olur. Sorun giderme yardımı için sorununuzu [Azure Stack forumuna](https://aka.ms/azurestackforum)gönderin.
 >
 
 ## <a name="view-alerts"></a>Uyarıları görüntüleme
 
 Her bir Azure Stack bölgesi için etkin uyarıların listesi doğrudan **Bölge yönetimi** dikey penceresinden kullanılabilir. Varsayılan yapılandırmadaki ilk kutucuk, bölge için kritik ve uyarı uyarılarının özetini görüntüleyen **Uyarılar** kutucuğudur. Uyarı kutucuğunu, bu dikey penceredeki diğer tüm kutucuklar gibi hızlı erişim panosuna sabitleyebilirsiniz.
 
-![Uyarı gösteren uyarılar kutucuğu](media/azure-stack-monitor-health/image3.png)
+![Azure Stack yönetici portalında bir uyarı gösteren uyarılar kutucuğu](media/azure-stack-monitor-health/image3.png)
 
-**Uyarılar** kutucuğunun üst kısmını seçerek bölge için tüm etkin uyarıların listesine gidebilirsiniz. Kutucuğun içinde **kritik** veya **Uyarı** satırı öğesini seçerseniz filtrelenmiş bir uyarı listesine (kritik veya uyarı) gidebilirsiniz. 
+ Bölge için tüm etkin uyarıların bir listesini görüntülemek için, **Uyarılar** kutucuğunun en üstteki kısmını seçin. Filtrelenmiş bir uyarı listesini (kritik veya uyarı) görüntülemek için, kutucuğun içindeki **kritik** veya **Uyarı** satırı öğesini seçin.
 
 **Uyarılar** dikey penceresi hem durum durumunda (etkin veya kapalı) hem de önem derecesine (kritik veya uyarı) göre filtreleme özelliğini destekler. Varsayılan görünüm tüm etkin uyarıları görüntüler. Tüm kapatılan uyarılar, yedi gün sonra sistemden kaldırılır.
 
 >[!Note]
 >Bir uyarı etkin kalırsa ancak bir gün içinde güncelleştirilmemiş ise, [Test-AzureStack](azure-stack-diagnostic-test.md) ' i çalıştırabilir ve herhangi bir sorun bildirilmemişse uyarıyı kapatabilirsiniz.
 
-![Kritik veya uyarı durumuna göre filtrelemek için filtre bölmesi](media/azure-stack-monitor-health/alert-view.png)
+![Azure Stack yönetici portalında kritik veya uyarı durumuna göre filtrelemek için filtre bölmesi](media/azure-stack-monitor-health/alert-view.png)
 
 **API görüntüle** eylemi, liste görünümünü oluşturmak için kullanılan REST API görüntüler. Bu eylem, uyarıları sorgulamak için kullanabileceğiniz REST API söz dizimini tanımak için hızlı bir yol sağlar. Bu API 'YI Otomasyon veya mevcut veri merkezi izleme, raporlama ve bilet oluşturma çözümleriyle tümleştirme için kullanabilirsiniz.
 
-Uyarı ayrıntılarını görüntülemek için belirli bir uyarıya tıklayabilirsiniz. Uyarı ayrıntıları, uyarıyla ilişkili tüm alanları gösterir ve etkilenen bileşene ve uyarının kaynağına hızlı gezinmeyi etkinleştirir. Örneğin, altyapı rol örneklerinden biri çevrimdışı kalırsa veya erişilebilir durumda değilse, aşağıdaki uyarı oluşur.  
+Uyarı ayrıntılarını görüntülemek için belirli bir uyarıya tıklayabilirsiniz. Uyarı ayrıntıları, uyarıyla ilişkili tüm alanları gösterir ve etkilenen bileşene ve uyarının kaynağına hızlı gezinmeyi etkinleştirir. Örneğin, altyapı rolü örneklerinden biri çevrimdışı veya erişilebilir değilse aşağıdaki uyarı oluşur.  
 
-![Uyarı ayrıntıları dikey penceresi](media/azure-stack-monitor-health/alert-detail.png)
+![Azure Stack yönetici portalındaki Uyarı ayrıntıları dikey penceresi](media/azure-stack-monitor-health/alert-detail.png)
 
 ## <a name="repair-alerts"></a>Uyarıları onarma
 
@@ -85,13 +85,13 @@ Bazı uyarılarda **Onar** ' ı seçebilirsiniz.
 
 Seçildiğinde, **onarım** eylemi sorunu çözmeye çalışmak için uyarıya özgü adımları gerçekleştirir. Seçildiğinde, **onarım** eyleminin durumu bir portal bildirimi olarak kullanılabilir.
 
-![Onarım devam ediyor](media/azure-stack-monitor-health/repair-in-progress.png)
+![Onarma uyarısı eylemi devam ediyor](media/azure-stack-monitor-health/repair-in-progress.png)
 
 **Onarım** eylemi, aynı portal bildirim dikey penceresinde eylemi tamamlamak için başarılı tamamlamayı veya başarısız olduğunu bildirir.  Bir uyarı için onarım eylemi başarısız olursa, uyarı ayrıntısından **onarma** eylemini yeniden çalıştırabilirsiniz. Onarma eylemi başarıyla tamamlanırsa, **onarım** eylemini **yeniden çalıştırmayın** .
 
-![Onarım başarıyla tamamlandı](media/azure-stack-monitor-health/repair-completed.png)
+![Onarma eylemi başarıyla tamamlandı](media/azure-stack-monitor-health/repair-completed.png)
 
-Altyapı rolü örneği yeniden çevrimiçi olduktan sonra, bu uyarı otomatik olarak kapanır. Her uyarının çoğu, temel alınan sorun çözüldüğünde otomatik olarak kapanır. Azure Stack sorunu giderirse, bir onarım eylemi düğmesi sağlayan uyarılar otomatik olarak kapanır.  Diğer tüm uyarılar için düzeltme adımlarını gerçekleştirdikten sonra **uyarıyı kapat** ' ı seçin. Sorun devam ederse, Azure Stack yeni bir uyarı oluşturur. Sorunu çözemezseniz, uyarı kapalı kalır ve daha fazla adım gerektirmez.
+Altyapı rolü örneği yeniden çevrimiçi olduktan sonra, bu uyarı otomatik olarak kapanır. Her uyarı için pek çok, temel alınan sorun çözüldüğünde otomatik olarak kapat. Azure Stack sorunu giderirse, bir onarım eylemi düğmesi sağlayan uyarılar otomatik olarak kapanır. Diğer tüm uyarılar için düzeltme adımlarını gerçekleştirdikten sonra **uyarıyı kapat** ' ı seçin. Sorun devam ederse, Azure Stack yeni bir uyarı oluşturur. Sorunu çözemezseniz, uyarı kapalı kalır ve daha fazla adım gerektirmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

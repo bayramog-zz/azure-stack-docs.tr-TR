@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 10/17/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 60515f257dc8ab04e351d1353919a749e9cf4224
-ms.sourcegitcommit: 79ead51be63c372b23b7fca6ffeaf95fd44de786
+ms.openlocfilehash: 44eca76e3b9e969681f4540093088785ad06f97c
+ms.sourcegitcommit: b5eb024d170f12e51cc852aa2c72eabf26792d8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687952"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72534012"
 ---
 # <a name="plan-for-an-azure-stack-update"></a>Azure Stack güncelleştirme planı
 
@@ -55,6 +55,8 @@ Tüm düzeltmeleri, güvenlik düzeltme eklerini ve OEM güncelleştirmelerini u
 6. OEM paketinizin, güncelleştirdiğiniz Azure Stack sürümle uyumlu olduğundan emin olun. OEM paketiniz, güncelleştirdiğiniz Azure Stack sürümle uyumlu değilse, bir Azure Stack güncelleştirmesini çalıştırmadan önce bir OEM paketi güncelleştirmesi gerçekleştirmeniz gerekecektir. Yönergeler için, bkz. özgün donanım üreticisi (OEM) güncelleştirmelerini Azure Stack uygulama. " OEM paketi güncelleştirmesini uyguladıktan sonra 3 ve 4. adımları yineleyin.
 
 7. Kapasite planlayıcısı aracını çalıştırın. Aracı kullanma hakkında genel bakış ve yönergeler için bkz. [Azure Stack kapasite planlamasına genel bakış](https://docs.microsoft.com/azure-stack/operator/azure-stack-capacity-planning-overview).
+
+8. İsteğe bağlı olarak, **güncelleştirme başarısız**gibi bir uyarı görürseniz müşteri desteği analizinde günlükleri önceden toplamak için [otomatik tanılama günlüğü toplamayı etkinleştirebilirsiniz](azure-stack-configure-automatic-diagnostic-log-collection.md) . 
 
 8. Güncelleştirme paketini gözden geçirin. Bakım pencereniz için planlama yaparken, Microsoft 'tan yayınlanan ve sürüm notlarında çağrılan şekilde yayımlanan belirli güncelleştirme paketi türünü gözden geçirmeniz önemlidir.
 

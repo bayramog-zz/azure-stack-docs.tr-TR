@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 10/16/2019
 ms.author: Justinha
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 9dc5039a2c8b74b14da59573758a4cf8d1a3657a
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: 91fdd5c0068638f3e597f72ce5aee50fe04b324c
+ms.sourcegitcommit: b5eb024d170f12e51cc852aa2c72eabf26792d8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72282648"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72534046"
 ---
 # <a name="add-a-custom-vm-to-azure-stack"></a>Azure Stack için özel VM ekleme
 
@@ -40,11 +40,11 @@ VHD Azure 'dan ise, Azure Stack 'e aktarmadan önce, [Sysprep kullanarak kaynak 
 
 VHD, Azure dışından ise, VHD 'yi genelleştirmek için ilgili yönergeleri izleyin:
 
-- [CentOS tabanlı dağıtımlar](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Linux 'u kaldırma](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS Tabanlı Dağıtımlar](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
 - [SLES veya openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu sunucusu](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 VHD Azure 'dan ise, VHD 'yi genelleştirmek için aşağıdaki yönergeleri izleyin:
 
@@ -57,6 +57,8 @@ VHD Azure 'dan ise, VHD 'yi genelleştirmek için aşağıdaki yönergeleri izle
    ```
 
 2. VM 'yi kapatın ve VHD 'YI indirin. VHD 'nizi Azure 'dan getiriyoruz, [Azure 'Dan WINDOWS VHD 'Yi indirme](/azure/virtual-machines/windows/download-vhd)bölümünde gösterildiği gibi, bu işlemi disk dışarı aktarma kullanarak yapabilirsiniz.
+
+[Burada belgelendiği gibi](azure-stack-linux.md#azure-linux-agent)Azure Stack birlikte çalışan Azure Linux Aracısı sürümlerini aklınızda bulundurun. Sysprep uygulanmış görüntünün Azure Stack ile uyumlu bir Azure Linux Aracısı sürümüne sahip olduğundan emin olun.
 
 ### <a name="common-steps-for-both-windows-and-linux"></a>Hem Windows hem de Linux için ortak adımlar
 
@@ -80,7 +82,7 @@ Görüntüyü karşıya yüklemeden önce, aşağıdakileri göz önünde bulund
 
    - [WINDOWS VM görüntüsünü](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)karşıya yüklediğinizde, [Azure Stack Işlecinin PowerShell ortamını yapılandırma](azure-stack-powershell-configure-admin.md) adımını kullanarak **oturum açma adımını Azure 'a** geçdiğinizden emin olun.  
 
-3. Görüntüyü karşıya yüklediğiniz BLOB depolama URI 'sini bir yere getirin. BLOB depolama URI 'SI şu biçimdedir: *&lt;storageAccount @ no__t-2 @ no__t-3 @ no__t-4blobContainer @ no__t-5 @ no__t-6 @ no__t-7targetVHDName @ no__t-8*. vhd.
+3. Görüntüyü karşıya yüklediğiniz BLOB depolama URI 'sini bir yere getirin. BLOB depolama URI 'SI şu biçimdedir: *&lt;storageAccount &gt; / &lt;blobContainer &gt;* / &lt;targetVHDName &gt;. vhd.
 
 4. Blobu anonim olarak erişilebilir hale getirmek için VM görüntüsü VHD 'sinin karşıya yüklendiği depolama hesabı blob kapsayıcısına gidin. **BLOB**' u ve ardından **erişim ilkesi**' ni seçin. İsteğe bağlı olarak, kapsayıcı için bir paylaşılan erişim imzası oluşturabilir ve bunu blob URI 'sinin bir parçası olarak dahil edebilirsiniz. Bu adım, Blobun kullanılabilir olduğundan emin olur. Blob anonim olarak erişilebilir değilse, VM görüntüsü başarısız bir durumda oluşturulur.
 
@@ -106,7 +108,7 @@ Görüntüyü karşıya yüklemeden önce, aşağıdakileri göz önünde bulund
 
 3. VM görüntüsünün ilişkili bir Market öğesi yoksa, **tüm hizmetler > işlem > VM görüntüleri**' ne gidin ve ardından VM görüntüsünün yanındaki üç nokta ( **...** ) simgesini seçin.
 
-4. **Sil**' i seçin.
+4. **Sil**’i seçin.
 
 ## <a name="add-a-vm-image-as-an-azure-stack-operator-using-powershell"></a>PowerShell kullanarak bir Azure Stack işleci olarak VM görüntüsü ekleme
 
@@ -127,23 +129,23 @@ Görüntüyü karşıya yüklemeden önce, aşağıdakileri göz önünde bulund
 
    **Add-Azsplatformımage** cmdlet 'i, Azure Resource Manager ŞABLONLARı tarafından VM görüntüsüne başvurmak için kullanılan değerleri belirtir. Değerler şunlardır:
    - **'ın**  
-     Örneğin: `Canonical`.  
+     Örneğin, `Canonical`  
      Kullanıcıların görüntüyü dağıtırken kullandıkları VM görüntüsünün **Yayımcı** adı segmenti. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
    - **sunar**  
-     Örneğin: `UbuntuServer`.  
+     Örneğin, `UbuntuServer`  
      Kullanıcıların VM görüntüsünü dağıtırken kullandıkları VM görüntüsünün **teklif** adı segmenti. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
    - **isteyin**  
-     Örneğin: `14.04.3-LTS`.  
+     Örneğin, `14.04.3-LTS`  
      Kullanıcıların VM görüntüsünü dağıtırken kullandıkları VM görüntüsünün **SKU** ad segmenti. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
-   - **version**  
-     Örneğin: `1.0.0`.  
+   - **Sürüm**  
+     Örneğin, `1.0.0`  
      Kullanıcıların VM görüntüsünü dağıtırken kullandıkları VM görüntüsünün sürümü. Bu sürüm *\#. \#. \#* biçimindedir. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
    - **osType**  
-     Örneğin: `Linux`.  
+     Örneğin, `Linux`  
      Görüntünün **OSType öğesi** **Windows** ya da **Linux**olmalıdır.  
    - **Osurı**  
-     Örneğin: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`.  
-     @No__t için bir BLOB depolama URI 'SI belirtebilirsiniz.  
+     Örneğin, `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+     Bir `osDisk` için bir BLOB depolama URI 'SI belirtebilirsiniz.  
 
      Daha fazla bilgi için bkz. [Add-Azsplatformımage](/powershell/module/azs.compute.admin/add-azsplatformimage) ve [New-DataDiskObject](/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet 'leri için PowerShell Başvurusu.
 
@@ -167,16 +169,16 @@ Karşıya yüklediğiniz VM görüntüsüne artık ihtiyacınız kalmadığında
 
    **Remove-Azsplatformımage** cmdlet 'i, Azure Resource Manager ŞABLONLARı tarafından VM görüntüsüne başvurmak için kullanılan değerleri belirtir. Değerler şunlardır:
    - **'ın**  
-     Örneğin: `Canonical`.  
+     Örneğin, `Canonical`  
      Kullanıcıların görüntüyü dağıtırken kullandıkları VM görüntüsünün **Yayımcı** adı segmenti. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
    - **sunar**  
-     Örneğin: `UbuntuServer`.  
+     Örneğin, `UbuntuServer`  
      Kullanıcıların VM görüntüsünü dağıtırken kullandıkları VM görüntüsünün **teklif** adı segmenti. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
    - **isteyin**  
-     Örneğin: `14.04.3-LTS`.  
+     Örneğin, `14.04.3-LTS`  
      Kullanıcıların VM görüntüsünü dağıtırken kullandıkları VM görüntüsünün **SKU** ad segmenti. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
-   - **version**  
-     Örneğin: `1.0.0`.  
+   - **Sürüm**  
+     Örneğin, `1.0.0`  
      Kullanıcıların VM görüntüsünü dağıtırken kullandıkları VM görüntüsünün sürümü. Bu sürüm *\#. \#. \#* biçimindedir. Bu alana boşluk veya diğer özel karakterler eklemeyin.  
 
      **Remove-Azsplatformımage** cmdlet 'i hakkında daha fazla bilgi için bkz. Microsoft PowerShell [Azure Stack operatör modülü belgeleri](/powershell/module/).

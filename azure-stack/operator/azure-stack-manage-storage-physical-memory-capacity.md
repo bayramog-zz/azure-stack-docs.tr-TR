@@ -1,6 +1,6 @@
 ---
-title: Azure Stack için fiziksel bellek kapasitesini yönetme | Microsoft Docs
-description: Azure Stack için kullanılabilir depolama alanını izleyin ve yönetin.
+title: Azure Stack 'de fiziksel bellek kapasitesini yönetme | Microsoft Docs
+description: Azure Stack ' de fiziksel belleği ve kapasiteyi izlemeyi ve yönetmeyi öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,31 +16,31 @@ ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 147bfb6ba35115f44fe24f388f36814db766c7f2
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: f72ad1b86bf8ef84e64f79603c27d14571b00838
+ms.sourcegitcommit: b5eb024d170f12e51cc852aa2c72eabf26792d8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829456"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72534158"
 ---
-# <a name="manage-physical-memory-capacity-for-azure-stack"></a>Azure Stack için fiziksel bellek kapasitesini yönetme
+# <a name="manage-physical-memory-capacity-in-azure-stack"></a>Azure Stack fiziksel bellek kapasitesini yönetme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler*
 
-Azure Stack'te kullanılabilir toplam bellek kapasitesini artırmak için bellek ekleyebilirsiniz. Azure Stack, fiziksel sunucunuz da *ölçek birimi düğümü*olarak adlandırılır. Tek bir ölçek biriminin üyesi olan tüm ölçek birim düğümleri aynı miktarda belleğe sahip olmalıdır.
+Azure Stack toplam kullanılabilir bellek kapasitesini artırmak için daha fazla bellek ekleyebilirsiniz. Azure Stack, fiziksel sunucunuz da *ölçek birimi düğümü*olarak adlandırılır. Tek bir ölçek biriminin üyesi olan tüm ölçek birim düğümleri aynı miktarda belleğe sahip olmalıdır.
 
 > [!note]  
-> Devam etmeden önce, üreticinizin fiziksel bellek yükseltmesini destekleyip desteklemediğini öğrenmek için donanım üreticinizin belgelerine başvurun. OEM donanım satıcısı destek sözleşmeniz, satıcının fiziksel sunucu raf yerleşimini ve cihaz üretici yazılımı güncelleştirmesini gerçekleştirmesini gerektirebilir.
+> Devam etmeden önce, üreticinizin bir fiziksel bellek yükseltmesini destekleyip desteklemediğini öğrenmek için donanım üreticinizin belgelerine başvurun. OEM donanım satıcısı destek sözleşmeniz, satıcının fiziksel sunucu raf yerleşimini ve cihaz üretici yazılımı güncelleştirmesini gerçekleştirmesini gerektirebilir.
 
 Aşağıdaki akış diyagramı, her bir ölçek birimi düğümüne bellek eklemek için genel işlemi gösterir.
 
-![Her ölçek birimi düğümüne bellek ekleyin](media/azure-stack-manage-storage-physical-capacity/process-to-add-memory-to-scale-unit.png)
+![Her ölçek birimi düğümüne bellek ekleme işlemi](media/azure-stack-manage-storage-physical-capacity/process-to-add-memory-to-scale-unit.png)
 
 ## <a name="add-memory-to-an-existing-node"></a>Mevcut bir düğüme bellek ekleme
-Aşağıdaki adımlarda bellek ekleme işlemi için üst düzey bir genel bakış sağlanmaktadır. 
+Aşağıdaki adımlar, bellek ekleme işlemine yüksek düzeyde bir genel bakış sağlar.
 
 > [!Warning]
-> OEM tarafından sağlanmış belgelerinize başvurulmadan bu adımları takip edin.
+> OEM tarafından sağlanmış belgelerinize başvurmadan bu adımları takip etmeyin.
 > 
 > [!Warning]
 > Bir sıralı bellek yükseltmesi desteklenmediğinden ölçek biriminin tamamının kapatılması gerekir.
@@ -51,5 +51,5 @@ Aşağıdaki adımlarda bellek ekleme işlemi için üst düzey bir genel bakı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- - Azure Stack ' de depolama hesaplarını yönetmeyi öğrenmek için, iş ihtiyaçlarına göre depolama kapasitesini bulmak, kurtarmak ve geri kazanmak için, bkz. [Azure Stack depolama hesaplarını yönetme](azure-stack-manage-storage-accounts.md).
- - Azure Stack bulut operatörü Azure Stack dağıtımının depolama kapasitesini izleyip yönettiğini öğrenmek için bkz. [Azure Stack için depolama kapasitesini yönetme](azure-stack-manage-storage-shares.md). 
+ - Azure Stack ' de depolama hesaplarını yönetme hakkında bilgi edinmek için bkz. [Azure Stack depolama hesaplarını yönetme](azure-stack-manage-storage-accounts.md).
+ - Azure Stack dağıtımınızın depolama kapasitesini izleme ve yönetme hakkında bilgi edinmek için bkz. [Azure Stack depolama kapasitesini yönetme](azure-stack-manage-storage-shares.md).

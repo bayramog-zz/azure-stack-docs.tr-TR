@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: 722cd99a53a0c08e7b981a571726b378e54cd288
-ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
+ms.openlocfilehash: c11d5ad563ff673cfaf9e28cea7373bbc6e551aa
+ms.sourcegitcommit: b72729305234e13c65de3771cb08678d46ba1348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71962380"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72543811"
 ---
 # <a name="setup-vpn-gateway-for-azure-stack-using-fortigate-nva"></a>FortiGate NVA kullanarak Azure Stack için VPN Gateway kurma
 
@@ -44,7 +44,7 @@ Bu makalede, Azure Stack bir VPN bağlantısının nasıl oluşturulacağı aç�
 
 Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler özetlenmektedir.
 
-| Parametre | Value |
+| Parametre | Değer |
 |-----------------------------------|---------------------------|
 | FortiGate örnek adı | forti1 |
 | KLG Lisansı/sürümü | 6.0.3 |
@@ -57,11 +57,11 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 | İç VNET alt ağ adı | forti1-ınsidesubnet |
 | İç VNET alt ağ öneki | 172.16.1.0/24 * |
 | FortiGate NVA 'nın VM boyutu | Standart F2s_v2 |
-| Ortak IP adresi adı | forti1-publicip1 |
+| Genel IP adresi adı | forti1-publicip1 |
 | Genel IP adresi türü | Statik |
 
 > [!Note]
-> `172.16.0.0/16` , şirket içi ağ veya Azure Stack VIP havuzuyla çakışırsa, farklı bir adres alanı ve alt ağ ön ekleri seçin.
+> \*, şirket içi ağ veya Azure Stack VIP havuzuyla çakışıyorsa `172.16.0.0/16` farklı bir adres alanı ve alt ağ ön ekleri seçin.
 
 ## <a name="deploy-the-fortigate-ngfw-marketplace-items"></a>FortiGate NGFW Market öğelerini dağıtma
 
@@ -69,7 +69,7 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
-1. **Kaynak oluştur** ' u seçin ve `FortiGate` ' i arayın.
+1. **Kaynak oluştur** ' u seçin ve `FortiGate` arayın.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
 
@@ -84,7 +84,7 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 2. [Dağıtım parametreleri](#deployment-parameters) tablosunu kullanarak sanal ağ, alt ağ ve VM boyutu ayrıntılarını sağlayın.
 
     > [!Warning] 
-    > Şirket içi ağ `172.16.0.0/16` IP aralığıyla çakışırsa, farklı bir ağ aralığı ve alt ağları seçmeniz ve ayarlamanız gerekir. [Dağıtım parametreleri](#deployment-parameters) tablosundan farklı adlar ve aralıklar kullanmak istiyorsanız, şirket içi **ağla çakışmayan parametreleri** kullanın. VNET 'in içindeki VNET IP aralığını ve alt ağ aralıklarını ayarlarken dikkatli olmanız. Aralığın, şirket içi ağınızda bulunan IP aralıklarıyla örtüşmesini istemezsiniz.
+    > Şirket içi ağ `172.16.0.0/16` IP aralığı ile çakışıyorsa, farklı bir ağ aralığı ve alt ağları seçmeniz ve ayarlamanız gerekir. [Dağıtım parametreleri](#deployment-parameters) tablosundan farklı adlar ve aralıklar kullanmak istiyorsanız, şirket içi **ağla çakışmayan parametreleri** kullanın. VNET 'in içindeki VNET IP aralığını ve alt ağ aralıklarını ayarlarken dikkatli olmanız. Aralığın, şirket içi ağınızda bulunan IP aralıklarıyla örtüşmesini istemezsiniz.
 
 3. **Tamam**’ı seçin.
 
@@ -94,7 +94,7 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 
 5. **Tamam**’ı seçin. Sonrasında **Tamam**’ı seçin.
 
-6. **Oluştur**’u seçin.
+6. **Oluştur**'u seçin.
 
     Dağıtım yaklaşık 10 dakika sürer.
 
@@ -120,7 +120,7 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 
 6. Yeni bir yol eklemek için **Ekle** ' yi seçin.
 
-7. @No__t-0 yolunu adlandırın.
+7. Yolu `to-onprem` adlandırın.
 
 8. VPN 'in bağlanacağı şirket içi ağın ağ aralığını tanımlayan IP ağ aralığını girin.
 
@@ -152,19 +152,19 @@ NVA 'lar etkinleştirildikten sonra, NVA üzerinde bir IPSec VPN tüneli oluştu
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image14.png)
 
-6. **System** > **üretici yazılımını**seçin.
+6. **System**  > **bellenimi**seçin.
 
-7. En son üretici yazılımını gösteren kutuyu seçin (örneğin, `FortiOS v6.2.0 build0866`).
+7. En son üretici yazılımını gösteren kutuyu seçin; örneğin, `FortiOS v6.2.0 build0866`.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image15.png)
 
-8. **Yedekleme yapılandırması ve yükseltme** > **devam et**' i seçin.
+8. **Yedekleme yapılandırması ve yükseltme**  > **devam et**' i seçin.
 
 9. NVA, bellenimini en son yapıya güncelleştirir ve yeniden başlatır. İşlem yaklaşık beş dakika sürer. FortiGate web konsoluna tekrar oturum açın.
 
-10. **VPN** > **IPSec Sihirbazı**' na tıklayın.
+10. **VPN**  > **IPSec Sihirbazı**' na tıklayın.
 
-11. VPN **oluşturma SIHIRBAZıNDA**VPN için bir ad girin (örneğin, `conn1`).
+11. VPN için bir ad girin, örneğin, **VPN oluşturma Sihirbazı**'nda `conn1`.
 
 12. **Bu sıtenın NAT 'nin arkasında olduğunu**seçin.
 
@@ -188,8 +188,8 @@ NVA 'lar etkinleştirildikten sonra, NVA üzerinde bir IPSec VPN tüneli oluştu
 18. **Yerel arabirim**için **PORT2** öğesini seçin.
 
 19. Yerel alt ağ aralığını girin:
-    - forti1: 172.16.0.0/16
-    - forti2: 172.17.0.0/16
+    - forti1:172.16.0.0/16
+    - forti2:172.17.0.0/16
 
     Farklı bir IP aralığı kullanıyorsanız, IP aralığınızı kullanın.
 
@@ -199,7 +199,7 @@ NVA 'lar etkinleştirildikten sonra, NVA üzerinde bir IPSec VPN tüneli oluştu
 
 21. **Oluştur**’u seçin
 
-22. **Ağ** > **arabirimleri**' ni seçin.
+22. **Ağ**  > **arabirimlerini**seçin.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image19.png)
 
@@ -213,15 +213,15 @@ NVA 'lar etkinleştirildikten sonra, NVA üzerinde bir IPSec VPN tüneli oluştu
 
 Şirket içi VPN cihazı, IPSec VPN tüneli oluşturulacak şekilde yapılandırılmalıdır. Aşağıdaki tabloda, şirket içi VPN cihazını ayarlamanız için gereken parametreler sağlanmıştır. Şirket içi VPN cihazını yapılandırma hakkında daha fazla bilgi için, cihazınızın belgelerine bakın.
 
-| Parametre | Value |
+| Parametre | Değer |
 | --- | --- |
 | Uzak ağ geçidi IP 'si | Forti1 öğesine atanan genel IP adresi – bkz. [FortiGate NVA 'Yı etkinleştirme](#activate-the-fortigate-nva). |
 | Uzak IP ağı | 172.16.0.0/16 (sanal ağ için Bu yönergelerde IP aralığı kullanılıyorsa). |
-| 'U. Yöntem = önceden paylaşılmış anahtar (PSK) | Adım 16.
-| IKE Sürümü | 1\. |
+| Auth. Method = önceden paylaşılmış anahtar (PSK) | Adım 16.
+| IKE Sürümü | 1 |
 | IKE modu | Main (KIMLIK koruması) |
 | 1\. aşama teklif algoritmaları | AES128-SHA256, AES256-SHA256, AES128-SHA1, AES256-SHA1 |
-| Diffe-Hellman grupları | 14, 5 |
+| Diffie-Hellman grupları | 14, 5 |
 
 ## <a name="create-the-vpn-tunnel"></a>VPN tüneli oluşturma
 
@@ -229,11 +229,11 @@ NVA 'lar etkinleştirildikten sonra, NVA üzerinde bir IPSec VPN tüneli oluştu
 
 FortiGate NVA 'dan:
 
-1. Forti1 FortiGate Web konsolunda **izleyici** > **IPSec İzleyicisi**' ne gidin.
+1. Forti1 FortiGate Web konsolunda **izleyici**  > **IPSec İzleyicisi**' ne gidin.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image20.png)
 
-2. **Conn1** vurgulayın **ve @no__t 2.** aşama 2 ' nin**Tüm 2 seçicilerini**seçin.
+2. **Conn1** vurgulayın ve**tüm aşama 2** >  **getir** ' i seçin.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image21.png)
 
@@ -243,13 +243,13 @@ FortiGate NVA 'dan:
 
 Bağlantıyı doğrulamak için:
 
-1. Azure Stack VNET 'lerde ve şirket içi ağ üzerindeki bir sistemde bir VM oluşturun. @No__t-0Hızlı başlangıç konumunda VM oluşturma yönergelerini izleyebilirsiniz: Azure Stack portalı @ no__t-0 ile bir Windows Server VM 'si oluşturun.
+1. Azure Stack VNET 'lerde ve şirket içi ağ üzerindeki bir sistemde bir VM oluşturun. [Hızlı başlangıç: Azure Stack portalı ile bir Windows Server VM](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)oluşturma yönergelerini izleyerek sanal makine oluşturma yönergelerini uygulayabilirsiniz.
 
 2. Azure Stack sanal makinesini oluştururken ve şirket içi sistemi hazırlarken şunu denetleyin:
 
 -  Azure Stack VM, sanal **ağın ınsidesubnet** 'ine yerleştirilir.
 
--  Şirket içi sistem, IPSec yapılandırmasında tanımlandığı şekilde, tanımlanan IP aralığı içinde şirket içi ağa yerleştirilir. Ayrıca, şirket içi VPN cihazının yerel arabirim IP adresinin şirket içi sisteme Azure Stack VNET ağına ulaşabilme yolu olarak sağlandığından emin olun; Örneğin, `172.16.0.0/16`.
+-  Şirket içi sistem, IPSec yapılandırmasında tanımlandığı şekilde, tanımlanan IP aralığı içinde şirket içi ağa yerleştirilir. Ayrıca, şirket içi VPN cihazının yerel arabirim IP adresinin şirket içi sisteme Azure Stack VNET ağına ulaşabilme yolu olarak sağlandığından emin olun. Örneğin, `172.16.0.0/16`.
 
 -  Oluşturma sırasında Azure Stack VM 'ye hiçbir NSG **uygulamayın.** VM 'nin portaldan oluşturulması durumunda varsayılan olarak eklenen NSG 'yi kaldırmanız gerekebilir.
 

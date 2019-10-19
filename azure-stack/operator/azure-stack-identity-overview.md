@@ -16,12 +16,12 @@ ms.date: 06/03/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 8b05b2cc9fdde7987efd78c5beb0123b035e03ea
-ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
+ms.openlocfilehash: 94a7dc11c4711bcdf39215ccaab69e95ea5c57f3
+ms.sourcegitcommit: b72729305234e13c65de3771cb08678d46ba1348
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72019362"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72543853"
 ---
 # <a name="overview-of-identity-providers-for-azure-stack"></a>Azure Stack için kimlik sağlayıcılarına genel bakış
 
@@ -34,8 +34,8 @@ Azure AD veya AD FS seçiminiz, Azure Stack dağıttığınız moda göre belirl
 
 Azure Stack ortamınıza bağlı olan seçenekleriniz hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- Azure Stack dağıtım seti: [Kimlik konuları](azure-stack-datacenter-integration.md#identity-considerations).
-- Azure Stack tümleşik sistemler: [Azure Stack tümleşik sistemler Için dağıtım planlama kararları](azure-stack-connection-models.md).
+- Azure Stack Deployment Kit: [kimlik konuları](azure-stack-datacenter-integration.md#identity-considerations).
+- Tümleşik sistemler Azure Stack: [Azure Stack tümleşik sistemler Için dağıtım planlama kararları](azure-stack-connection-models.md).
 
 ## <a name="common-concepts-for-identity-providers"></a>Kimlik sağlayıcıları için ortak kavramlar
 
@@ -60,12 +60,12 @@ Kullanıcıları ve grupları oluşturma ve yönetme, kullandığınız kimlik �
 
 Azure Stack, Kullanıcı hesapları:
 
-- , *Kullanıcı adı @ no__t-1etkialanı* biçiminde oluşturulur. AD FS, Kullanıcı hesaplarını Active Directory bir örneğe eşler, ancak AD FS *\\ @ no__t-2etki alanı > \\ @ no__t-4alias >* biçiminin kullanımını desteklemez.
+- , *Kullanıcı adı \@domain* biçiminde oluşturulur. AD FS, Kullanıcı hesaplarını Active Directory bir örneğe eşler, ancak AD FS *\\ \<domain* > \\ \<alias > biçiminin kullanımını desteklemez.
 - Multi-Factor Authentication kullanmak üzere ayarlanabilir.
 - , Kuruluşun dizini olan, ilk kaydoldukları dizinle kısıtlıdır.
 - , Şirket içi dizininizden içeri aktarılabilir. Daha fazla bilgi için bkz. Şirket [içi dizinlerinizi Azure Active Directory tümleştirme](/azure/active-directory/connect/active-directory-aadconnect).
 
-Kuruluşunuzun kiracı portalında oturum açtığınızda, *https: \//Portal. Local. azurestack. external* URL 'sini kullanırsınız. Azure Stack kaydettirmek için kullanılandan farklı etki alanlarından Azure Stack portalında oturum açarken, Azure Stack kaydetmek için kullanılan etki alanı adının Portal URL 'sine eklenmesi gerekir. Örneğin, Azure Stack fabrikam.onmicrosoft.com ile kaydedilmişse ve oturum açan kullanıcı hesabı admin@contoso.com ise, Kullanıcı portalında oturum açmak için kullanılacak URL şöyle olacaktır: https: \//Portal. Local. azurestack. external/fabrikam. onmicrosoft. com.
+Kuruluşunuzun kiracı portalında oturum açtığınızda, *https: \//Portal.Local.azurestack.external* URL 'sini kullanırsınız. Azure Stack kaydettirmek için kullanılandan farklı etki alanlarından Azure Stack portalında oturum açarken, Azure Stack kaydetmek için kullanılan etki alanı adının Portal URL 'sine eklenmesi gerekir. Örneğin, Azure Stack fabrikam.onmicrosoft.com ile kaydedilmişse ve Kullanıcı hesabı oturum açma admin@contoso.com, Kullanıcı portalında oturum açmak için kullanılacak URL şöyle olacaktır: https: \//Portal.Local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### <a name="guest-users"></a>Konuk kullanıcılar
 
@@ -73,7 +73,7 @@ Konuk kullanıcılar, diğer dizin kiracılarından, dizininizdeki kaynaklara er
 
 Konuk kullanıcıları davet etmek için, bulut İşletmenleri ve kullanıcılar [Azure AD B2B işbirliğini](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)kullanabilir. Davet edilen kullanıcılar, dizininizdeki belgelere, kaynaklara ve uygulamalara erişim sağlar ve kendi kaynaklarınız ve verileriniz üzerinde denetim sahibi olursunuz.
 
-Konuk Kullanıcı olarak, başka bir kuruluşun Dizin kiracısında oturum açabilirsiniz. Bunu yapmak için, söz konusu kuruluşun dizin adını Portal URL 'sine ekleyin. Örneğin, contoso kuruluşuna aitseniz ve Fabrikam dizininde oturum açmak istiyorsanız https: \//Portal. Local. azurestack. external/fabrikam. onmicrosoft. com kullanın.
+Konuk Kullanıcı olarak, başka bir kuruluşun Dizin kiracısında oturum açabilirsiniz. Bunu yapmak için, söz konusu kuruluşun dizin adını Portal URL 'sine ekleyin. Örneğin, contoso kuruluşuna aitseniz ve Fabrikam dizininde oturum açmak istiyorsanız HTTPS kullanın: \//Portal.Local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### <a name="apps"></a>Uygulamalar
 
@@ -81,17 +81,17 @@ Uygulamaları Azure AD 'ye veya AD FS kaydedebilir ve sonra uygulamaları kurulu
 
 Uygulamalar şunlardır:
 
-- **Web uygulamaları**: Azure portal ve Azure Resource Manager örnekleri bulunur. Web API çağrılarını destekler.
-- **Yerel istemci**: Örnek olarak Azure PowerShell, Visual Studio ve Azure CLı sayılabilir.
+- **Web Apps**: örnek Azure portal ve Azure Resource Manager içerir. Web API çağrılarını destekler.
+- **Yerel istemci**: Örnekler Azure PowerShell, Visual Studio ve Azure CLI içerir.
 
 Uygulamalar iki tür kiracı destekleyebilir:
 
-- **Tek kiracılı**: Yalnızca uygulamanın kaydedildiği dizinden kullanıcıları ve hizmetleri destekler.
+- **Tek kiracılı**: yalnızca uygulamanın kaydedildiği dizindeki kullanıcıları ve hizmetleri destekler.
 
   > [!NOTE]
   > AD FS yalnızca tek bir dizini desteklediğinden, bir AD FS topolojide oluşturduğunuz uygulamalar tasarım, tek kiracılı uygulamalar ile yapılır.
 
-- **Çok kiracılı**: , Hem uygulamanın kaydedildiği dizindeki hem de ek kiracı dizinlerinin kullanıcıları ve Hizmetleri tarafından kullanılmasını destekler. Çok kiracılı uygulamalarla, başka bir kiracı dizininin kullanıcıları (başka bir Azure AD kiracısı) uygulamanızda oturum açabilir.
+- **Çok kiracılı**: uygulamanın kaydedildiği ve ek kiracı dizinlerinin her ikisi de kullanıcıların ve hizmetlerin kullanımını destekler. Çok kiracılı uygulamalarla, başka bir kiracı dizininin kullanıcıları (başka bir Azure AD kiracısı) uygulamanızda oturum açabilir.
 
   Çoklu kiracı hakkında daha fazla bilgi için bkz. [Çoklu kirayı etkinleştirme](azure-stack-enable-multitenancy.md).
 
@@ -99,9 +99,9 @@ Uygulamalar iki tür kiracı destekleyebilir:
 
 Bir uygulamayı kaydettiğinizde iki nesne oluşturursunuz:
 
-- **Uygulama nesnesi**: Tüm kiracılar genelinde uygulamanın genel temsili. Bu ilişki, yazılım uygulamasıyla bire bir ve yalnızca uygulamanın ilk kaydedildiği dizinde bulunur.
+- **Uygulama nesnesi**: tüm kiracılar genelinde uygulamanın genel temsili. Bu ilişki, yazılım uygulamasıyla bire bir ve yalnızca uygulamanın ilk kaydedildiği dizinde bulunur.
 
-- **Hizmet sorumlusu nesnesi**: Uygulamanın ilk kaydedildiği dizindeki bir uygulama için oluşturulan kimlik bilgileri. Bir hizmet sorumlusu, uygulamanın kullanıldığı her Ek kiracının dizininde de oluşturulur. Bu ilişki, yazılım uygulaması ile bire çok olabilir.
+- **Hizmet sorumlusu nesnesi**: uygulamanın ilk kaydedildiği dizindeki bir uygulama için oluşturulan kimlik bilgileri. Bir hizmet sorumlusu, uygulamanın kullanıldığı her Ek kiracının dizininde de oluşturulur. Bu ilişki, yazılım uygulaması ile bire çok olabilir.
 
 Uygulama ve hizmet sorumlusu nesneleri hakkında daha fazla bilgi edinmek için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](/azure/active-directory/develop/active-directory-application-objects)bölümüne bakın.
 
@@ -143,7 +143,7 @@ Azure AD 'yi çok kiracılı bir şekilde ayarlarsanız, bazı uygulamalar yeni 
 
 Uygulamalar ve kullanıcılar için Azure Stack mimarisi dört katmanda açıklanmıştır. Bu katmanların her biri arasındaki etkileşimler farklı kimlik doğrulama türlerini kullanabilir.
 
-|Katman    |Katmanlar arasında kimlik doğrulaması  |
+|Katmanı    |Katmanlar arasında kimlik doğrulaması  |
 |---------|---------|
 |Yönetici portalı gibi araçlar ve istemciler     | Azure Stack bir kaynağa erişmek veya bu kaynaklara erişmek için araçlar ve istemciler Azure Resource Manager çağrısı koymak için [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) kullanır. <br>Azure Resource Manager, JSON Web Token doğrular ve Kullanıcı veya hizmet sorumlusunun Azure Stack sahip olduğu yetkilendirme düzeyini tahmin etmek için verilen belirteçteki *taleplere* bakar. |
 |Azure Resource Manager ve Çekirdek Hizmetleri     |Azure Resource Manager, kullanıcılardan iletişim aktarmaya yönelik kaynak sağlayıcılarla iletişim kurar. <br> Aktarımlar *doğrudan* zorunlu çağrılar veya [Azure Resource Manager şablonlar](/azure-stack/user/azure-stack-arm-templates)aracılığıyla *bildirime dayalı* çağrılar kullanır.|
@@ -156,10 +156,10 @@ Uygulamalar ve kullanıcılar için Azure Stack mimarisi dört katmanda açıkla
 
 Kimlik sağlayıcısıyla kimlik doğrulaması yapmak ve bir JSON Web Token almak için aşağıdaki bilgilere sahip olmanız gerekir:
 
-1. **Kimlik sistemi (Authority) URL 'si**: Kimlik sağlayıcınızda erişilebileceği URL. Örneğin, *https: \//Login. Windows. net*.
-2. **Azure Resource Manager Için uygulama kimliği URI 'si**: Kimlik sağlayıcınızda kayıtlı Azure Resource Manager için benzersiz tanımlayıcı. Her Azure Stack yüklemesi için de benzersizdir.
-3. **Kimlik bilgileri**: Kimlik sağlayıcısı ile kimlik doğrulamak için kullandığınız kimlik bilgileri.
-4. **Azure Resource Manager URL 'si**: URL, Azure Resource Manager hizmetinin konumudur. Örneğin, *https: \//Management. Azure. com* veya *https: \//Management. Local. azurestack. external*.
+1. **Kimlik sistemi (Authority) URL 'si**: kimlik sağlayıcınızda erişilebileceği URL. Örneğin, *https: \//Login.Windows.net*.
+2. **Azure Resource Manager Için uygulama kimliği URI 'si**: kimlik sağlayıcınızda kayıtlı Azure Resource Manager için benzersiz tanımlayıcı. Her Azure Stack yüklemesi için de benzersizdir.
+3. **Kimlik bilgileri**: kimlik sağlayıcısı ile kimlik doğrulamak için kullandığınız kimlik bilgileri.
+4. **Azure Resource Manager URL 'si**: url, Azure Resource Manager hizmetinin konumudur. Örneğin, *https: \//Management.Azure.com* veya *https: \//Management.Local.azurestack.external*.
 
 Bir asıl (istemci, uygulama veya Kullanıcı) bir kaynağa erişmek için kimlik doğrulama isteği yaptığında, istek şunları içermelidir:
 
@@ -175,7 +175,7 @@ Belirtecin daha sonra Azure Resource Manager için bir isteğin üstbilgisine ge
 - JSON Web Token, OpenID aracılığıyla yapılandırılan ve Azure Resource Manager bilinen bir sertifikayla imzalandığını doğrular.
 - Belirtecin etkin olduğunu ve kabul edilebilir olduğunu onaylamak için *çıkarılan* (iat) ve *süre sonu* (Exp) taleplerini gözden geçirin.
 
-Tüm doğrulamalar tamamlandığında, Azure Resource Manager,, birincil kaynağın erişebileceği kaynakların bir listesini oluşturmak için *objected* (OID) ve *gruplar* taleplerini kullanır.
+Tüm doğrulamalar tamamlandığında, Azure Resource Manager, *nesne kimliği* (OID) ve *gruplar* taleplerini, sorumlunun erişebileceği kaynakların bir listesini oluşturmak için kullanır.
 
 ![Belirteç değişim protokolünün diyagramı](media/azure-stack-identity-overview/token-exchange.png)
 
