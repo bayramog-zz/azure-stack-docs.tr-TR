@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2019
+ms.date: 10/21/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: 6e7f4785603dc6a0523186ee31af5ef9b51bec46
-ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
+ms.openlocfilehash: 34422c5d868b26be599065c33ef0cfe20d790a2f
+ms.sourcegitcommit: a23b80b57668615c341c370b70d0a106a37a02da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71909515"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72682128"
 ---
 # <a name="azure-stack-updates-release-notes"></a>Azure Stack güncelleştirmeler: sürüm notları
 
@@ -33,7 +33,7 @@ Farklı bir sürüme yönelik sürüm notlarına erişmek için, sol taraftaki i
 
 ::: moniker range=">=azs-1905"
 > [!IMPORTANT]  
-> Yalnızca Azure Stack tümleşik sistemleri için bu güncelleştirme paketidir. Bu güncelleştirme paketi için Azure Stack geliştirme Seti'ni geçerli değildir.
+> Bu güncelleştirme paketi yalnızca Azure Stack tümleşik sistemler içindir. Bu güncelleştirme paketini Azure Stack Geliştirme Seti uygulamayın.
 ::: moniker-end
 ::: moniker range="<azs-1905"
 > [!IMPORTANT]  
@@ -62,7 +62,7 @@ Azure Stack 1908 güncelleştirme yapı numarası **1.1908.4.33**.
 
 1908 için, Azure Stack çalıştığı temel işletim sistemi Windows Server 2019 ' e güncelleştirilmiştir. Bu, temel temel geliştirmelerin yanı sıra, yakın gelecekte Azure Stack için ek özellikler getirme özelliğini sağlar.
 
-Azure Stack 1908 güncelleştirme yapı türü **dolu**. Sonuç olarak, 1908 güncelleştirmesinin 1906 ve 1907 gibi hızlı güncelleştirmelerden daha uzun bir çalışma zamanı vardır. Tam güncelleştirmeler için tam çalışma zamanları genellikle Azure Stack örneğinizin içerdiği düğüm sayısına, kiracı iş yükleri tarafından sisteminizde kullanılan kapasiteye, sisteminizin ağ bağlantısına (internet 'e bağlıysa) ve sistem donanımınıza bağlıdır yapılandırmada. 1908 güncelleştirmesinde, iç sınamamız içinde aşağıdaki beklenen çalışma zamanları vardı: 4 düğüm-42 saat, 8 düğüm-50 saat, 12 düğüm-60 saat, 16 düğüm-70 saat. Bu beklenen değerlerin daha uzun süre içinde güncelleştirilmesi, güncelleştirme başarısız olmadığı için Azure Stack işleçlere göre işlem gerektirmemektedir.
+Azure Stack 1908 güncelleştirme yapı türü **dolu**. Sonuç olarak, 1908 güncelleştirmesinin 1906 ve 1907 gibi hızlı güncelleştirmelerden daha uzun bir çalışma zamanı vardır. Tam güncelleştirmeler için tam çalışma zamanları genellikle Azure Stack örneğinizin içerdiği düğüm sayısına, kiracı iş yükleri tarafından sisteminizde kullanılan kapasiteye, sisteminizin ağ bağlantısına (internet 'e bağlıysa) ve sistem donanımınıza bağlıdır yapılandırmada. 1908 güncelleştirmesi, iç sınamamız içinde şu beklenen çalışma zamanlarını içeriyordu: 4 düğüm-42 saat, 8 düğüm-50 saat, 12 düğüm-60 saat, 16 düğüm-70 saat. Bu beklenen değerlerin daha uzun süre içinde güncelleştirilmesi, güncelleştirme başarısız olmadığı için Azure Stack işleçlere göre işlem gerektirmemektedir.
 
 Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için bkz. [Azure Stack güncelleştirmeleri yönetme](azure-stack-updates.md).
 
@@ -128,7 +128,7 @@ Azure Stack 1908 güncelleştirmesi, sisteminizin donanım sağlayıcısından *
 Bu güncelleştirmenin yüklenmesinden sonra, geçerli düzeltmeleri yükleme. Daha fazla bilgi için bkz. [hizmet ilkeniz](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- 1908 için kullanılabilir düzeltme yok.
+- [Azure Stack Hotfix 1.1908.6.37](https://support.microsoft.com/help/4527372)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
@@ -164,7 +164,7 @@ Azure Stack 1907 güncelleştirme yapı türü **Express**'dir. Güncelleştirme
 
 - Azure Stack güncelleştirme dikey penceresinde artık etkin güncelleştirmeler için **son adım tamamlanmış** bir zaman görüntülenir. Bu, güncelleştirme dikey penceresine gidip çalışan bir güncelleştirmeye tıklanarak görülebilir. **Son adım tamamlandığında** **güncelleştirme çalıştırması ayrıntıları** bölümünde kullanılabilir.
 
-- **Start-AzureStack** ve **stop-azurestack** işleç eylemlerine yönelik iyileştirmeler. Azure Stack başlama zamanı, ortalama% 50 oranında azaltılmıştır. Azure Stack kapatma süresi, ortalama% 30 oranında azaltılmıştır. Ortalama başlatma ve kapatılma süreleri, bir ölçek birimindeki düğümlerin sayısı arttıkça aynı kalır.
+- **Start-AzureStack** ve **stop-azurestack** işleç eylemlerine yönelik iyileştirmeler. Azure Stack başlama zamanı, ortalama %50 oranında azaltılmıştır. Azure Stack kapatma süresi, ortalama %30 oranında azaltılmıştır. Ortalama başlatma ve kapatılma süreleri, bir ölçek birimindeki düğümlerin sayısı arttıkça aynı kalır.
 
 - Bağlantısı kesilen Market aracı için geliştirilmiş hata işleme. **Export-AzSOfflineMarketplaceItem**kullanılırken bir indirme başarısız olursa veya kısmen başarılı olursa, hata ve risk azaltma adımları hakkında daha fazla ayrıntı içeren ayrıntılı bir hata iletisi görüntülenir.
 
@@ -380,7 +380,7 @@ Azure Stack 1905 güncelleştirme yapı numarası **1.1905.0.40**.
 
 ### <a name="update-type-1905"></a>Güncelleştirme türü
 
-Azure Stack 1905 güncelleştirme yapı türü **dolu**. Sonuç olarak, 1905 güncelleştirmesinin 1903 ve 1904 gibi hızlı güncelleştirmelerden daha uzun bir çalışma zamanı vardır. Tam güncelleştirmeler için tam çalışma zamanları genellikle Azure Stack örneğinizin içerdiği düğüm sayısına, kiracı iş yükleri tarafından sisteminizde kullanılan kapasiteye, sisteminizin ağ bağlantısına (internet 'e bağlıysa) ve sistem donanımınıza bağlıdır yapılandırmada. 1905 güncelleştirmesinde, iç sınamamız içinde aşağıdaki beklenen çalışma zamanları vardı: 4 düğüm-35 saat, 8 düğüm-45 saat, 12 düğüm-55 saat, 16 düğüm-70 saat. 1905 çalışma zamanı, bu beklenen değerlerden daha uzun bir süre daha seyrek değildir ve güncelleştirme başarısız olmazsa Azure Stack işleçlere göre eylem gerektirmez. Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için bkz. [Azure Stack güncelleştirmeleri yönetme](azure-stack-updates.md).
+Azure Stack 1905 güncelleştirme yapı türü **dolu**. Sonuç olarak, 1905 güncelleştirmesinin 1903 ve 1904 gibi hızlı güncelleştirmelerden daha uzun bir çalışma zamanı vardır. Tam güncelleştirmeler için tam çalışma zamanları genellikle Azure Stack örneğinizin içerdiği düğüm sayısına, kiracı iş yükleri tarafından sisteminizde kullanılan kapasiteye, sisteminizin ağ bağlantısına (internet 'e bağlıysa) ve sistem donanımınıza bağlıdır yapılandırmada. 1905 güncelleştirmesi, iç sınamamız içinde şu beklenen çalışma zamanlarını içeriyordu: 4 düğüm-35 saat, 8 düğüm-45 saat, 12 düğüm-55 saat, 16 düğüm-70 saat. 1905 çalışma zamanı, bu beklenen değerlerden daha uzun bir süre daha seyrek değildir ve güncelleştirme başarısız olmazsa Azure Stack işleçlere göre eylem gerektirmez. Güncelleştirme oluşturma türleri hakkında daha fazla bilgi için bkz. [Azure Stack güncelleştirmeleri yönetme](azure-stack-updates.md).
 
 ## <a name="whats-in-this-update-1905"></a>Bu güncelleştirmede neler vardır
 
@@ -404,7 +404,7 @@ Bu güncelleştirmeyle, Windows Server 2019 artık 2016 ana bilgisayarında baş
   - Microsoft. ıaasdiagnostics-1.12.2.2
   - Microsoft. antimalware-Windows-ARM-1.5.5.9
   - Microsoft. DSC-ARM-2.77.0.0
-  - microsoft.vmaccessforlinux-1.5.2
+  - Microsoft. vmaccessforlinux-1.5.2 planlama
 
   Daha sonraki bir sürümde TLS 1,2 zorlandığında, uzantının yeni dağıtımlarının başarısız olması için lütfen uzantıların bu sürümlerini hemen indirin. Uzantılara yönelik alt sürüm güncelleştirmelerinin (örneğin, 1,8-1,9) otomatik olarak gerçekleştirilmesi için her zaman **otomatik yükseltme MinorVersion = true** olarak ayarlayın.
 
@@ -422,8 +422,8 @@ Bu güncelleştirmeyle, Windows Server 2019 artık 2016 ana bilgisayarında baş
 
 - 1905 Azure Stack güncelleştirmesi platform güvenilirliğini ve desteklenebilirliğini artırmak için iki yeni altyapı rolü ekler:
 
-  - **Altyapı halkası**: Daha sonra altyapı halkası, mevcut altyapı rollerinin Kapsayıcılı sürümlerini (örneğin, şu anda kendi belirlenmiş altyapı VM 'lerini) barındıracaktır. Bu, platform güvenilirliğini artırır ve Azure Stack gereken altyapı VM 'lerinin sayısını azaltır. Bu, daha sonra Azure Stack altyapı rollerinin genel kaynak tüketimini azaltır.
-  - **Destek halkası**: Gelecekte, destek halkası müşterilere yönelik gelişmiş destek senaryolarını işlemek için kullanılacaktır.  
+  - **Altyapı halkası**: gelecekte altyapı halkası, mevcut altyapı rollerinin Kapsayıcılı sürümlerini (örneğin, şu anda kendi belirlenmiş altyapı VM 'lerini) barındıracaktır. Bu, platform güvenilirliğini artırır ve Azure Stack gereken altyapı VM 'lerinin sayısını azaltır. Bu, daha sonra Azure Stack altyapı rollerinin genel kaynak tüketimini azaltır.
+  - **Destek halkası**: gelecekte, destek halkası müşterilere yönelik gelişmiş destek senaryolarını işlemek için kullanılacaktır.  
 
   Ayrıca, bu rolün daha iyi kullanılabilirliği için etki alanı denetleyicisi VM 'sinin ek bir örneğini ekledik.
 
@@ -514,10 +514,10 @@ Daha eski bir sürüm için arşivlenmiş sürüm notlarına erişmek için, sol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Stack'te güncelleştirme yönetimi genel bakış için bkz. [Azure Stack genel bakış güncelleştirmeleri yönetme](azure-stack-updates.md).  
-- Azure Stack güncelleştirmeleriyle uygulama hakkında daha fazla bilgi için bkz. [güncelleştirmelerini Azure Stack'te](azure-stack-apply-updates.md).
-- Azure Stack tümleşik sistemleri ve desteklenen bir duruma sisteminizi tutmak için yapmanız gerekenlere bakım ilkeyi gözden geçirmek için bkz: [Azure Stack hizmet İlkesi](azure-stack-servicing-policy.md).  
-- Ayrıcalıklı uç noktasına (CESARETLENDİRİCİ) izlemek ve güncelleştirmelerini sürdürmek üzere kullanmak için bkz [izleme ayrıcalıklı uç noktayı kullanarak Azure stack'teki güncelleştirmeleri](azure-stack-monitor-update.md).
+- Azure Stack 'de güncelleştirme yönetimine genel bakış için bkz. [Azure Stack genel bakış 'da güncelleştirmeleri yönetme](azure-stack-updates.md).  
+- Azure Stack güncelleştirmeleri uygulama hakkında daha fazla bilgi için bkz. [Azure Stack güncelleştirmeleri uygulama](azure-stack-apply-updates.md).
+- Azure Stack tümleşik sistemlere yönelik bakım ilkesini gözden geçirmek ve sisteminizin desteklenen bir durumda tutulması için yapmanız gerekenler için, bkz. [Azure Stack hizmet ilkesi](azure-stack-servicing-policy.md).  
+- Güncelleştirmeleri izlemek ve sürdürmeyi sağlamak üzere ayrıcalıklı uç noktasını (PEP) kullanmak için bkz. [ayrıcalıklı uç noktayı kullanarak Azure Stack güncelleştirmeleri izleme](azure-stack-monitor-update.md).
 ::: moniker-end
 
 <!------------------------------------------------------------>

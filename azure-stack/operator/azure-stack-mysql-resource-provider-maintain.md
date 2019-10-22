@@ -1,6 +1,6 @@
 ---
-title: Azure Stack MySQL kaynak sağlayıcısı 'nı koruma | Microsoft Docs
-description: Azure Stack MySQL kaynak sağlayıcısı hizmetini nasıl koruyabileceğinizi öğrenin.
+title: Azure Stack | MySQL kaynak sağlayıcısı bakım işlemleri | Microsoft Docs
+description: Azure Stack ' de MySQL kaynak sağlayıcısı hizmetini nasıl koruyacağınızı öğrenin.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -15,27 +15,27 @@ ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 6667fd3db21cd6138e756c16eb8e68b8ecd1b3e9
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: 9dc2de86828e188aa82b44d376e693be887717d8
+ms.sourcegitcommit: a23b80b57668615c341c370b70d0a106a37a02da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829423"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72682186"
 ---
-# <a name="mysql-resource-provider-maintenance-operations"></a>MySQL kaynak sağlayıcısı bakım işlemleri
+# <a name="mysql-resource-provider-maintenance-operations-in-azure-stack"></a>Azure Stack MySQL kaynak sağlayıcısı bakım işlemleri
 
-MySQL kaynak sağlayıcısı, kilitli bir sanal makinede çalışır. Bakım işlemlerini etkinleştirmek için, sanal makinenin güvenliğini güncelleştirmeniz gerekir. Bunu, en az ayrıcalık ilkesini kullanarak yapmak için PowerShell 'in yeterli yönetim (JEA) uç noktası DBAdapterMaintenance komutunu kullanabilirsiniz. Kaynak sağlayıcısı yükleme paketi bu işlem için bir komut dosyası içerir.
+MySQL kaynak sağlayıcısı, kilitli bir sanal makinede (VM) çalışır. Bakım işlemlerini etkinleştirmek için VM 'nin güvenliğini güncelleştirmeniz gerekir. Bunu, en az ayrıcalık (POLP) ilkesini kullanarak yapmak için PowerShell 'i yalnızca yeterli yönetim (JEA) uç noktası DBAdapterMaintenance kullanabilirsiniz. Kaynak sağlayıcısı yükleme paketi bu işlem için bir komut dosyası içerir.
 
-## <a name="update-the-virtual-machine-operating-system"></a>Sanal makine işletim sistemini Güncelleştir
+## <a name="update-the-vm-operating-system"></a>VM işletim sistemini güncelleştirme
 
-Kaynak sağlayıcı bir *Kullanıcı* sanal makinesinde çalıştığından, yayımlandıklarında gerekli düzeltme eklerini ve güncelleştirmeleri uygulamanız gerekir. Güncelleştirmeleri VM 'ye uygulamak için düzeltme eki ve güncelleştirme döngüsünün bir parçası olarak sunulan Windows Update paketlerini kullanabilirsiniz.
+Kaynak sağlayıcı bir *Kullanıcı* VM 'sinde çalıştığı için gerekli düzeltme eklerini ve güncelleştirmeleri yayımlandıklarında uygulamanız gerekir. Güncelleştirmeleri VM 'ye uygulamak için düzeltme eki ve güncelleştirme döngüsünün bir parçası olarak sunulan Windows Update paketlerini kullanabilirsiniz.
 
-Aşağıdaki yöntemlerden birini kullanarak sağlayıcı sanal makinesini güncelleştirin:
+Aşağıdaki yöntemlerden birini kullanarak sağlayıcı VM 'sini güncelleştirin:
 
 - En son düzeltme eki uygulanmış Windows Server 2016 çekirdek görüntüsünü kullanarak en son kaynak sağlayıcısı paketini yükler.
-- Yüklemesi sırasında bir Windows Update paketi yükleme veya kaynak sağlayıcısına güncelleştirme.
+- Kaynak sağlayıcısı yükleme veya güncelleştirme sırasında bir Windows Update paketi yükleme.
 
-## <a name="update-the-virtual-machine-windows-defender-definitions"></a>Sanal makineyi güncelleştirme Windows Defender tanımları
+## <a name="update-the-vm-windows-defender-definitions"></a>VM Windows Defender tanımlarını güncelleştirme
 
 Defender tanımlarını güncelleştirmek için şu adımları izleyin:
 
@@ -45,7 +45,7 @@ Defender tanımlarını güncelleştirmek için şu adımları izleyin:
 
     Alternatif olarak, fpam-Fe. exe dosyasını indirmek/çalıştırmak için [Bu doğrudan bağlantıyı](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) kullanın.
 
-2. MySQL kaynak sağlayıcısı bağdaştırıcısı sanal makinesinin bakım uç noktasında bir PowerShell oturumu açın.
+2. MySQL kaynak sağlayıcısı bağdaştırıcı VM 'sinin bakım uç noktasında bir PowerShell oturumu açın.
 
 3. Tanımlar güncelleştirme dosyasını bakım uç noktası oturumunu kullanarak kaynak sağlayıcısı bağdaştırıcısı VM 'sine kopyalayın.
 
@@ -76,7 +76,7 @@ Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64'
 $session = New-PSSession -ComputerName $databaseRPMachine `
     -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance
 
-# Copy the defender update file to the adapter virtual machine.
+# Copy the defender update file to the adapter VM.
 Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
      -Destination "User:\"
 
@@ -103,7 +103,7 @@ Azure Stack tümleşik sistemlerle SQL ve MySQL kaynak sağlayıcılarını kull
 
 ### <a name="powershell-examples-for-rotating-secrets"></a>Gizli dizileri döndürme için PowerShell örnekleri
 
-**Tüm sırları aynı anda değiştirin.**
+**Tüm gizli dizileri aynı anda değiştirin:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -117,7 +117,7 @@ Azure Stack tümleşik sistemlerle SQL ve MySQL kaynak sağlayıcılarını kull
 
 ```
 
-**Tanılama Kullanıcı parolasını değiştirin.**
+**Tanılama Kullanıcı parolasını değiştirin:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -128,7 +128,7 @@ Azure Stack tümleşik sistemlerle SQL ve MySQL kaynak sağlayıcılarını kull
 
 ```
 
-**VM yerel yönetici hesabı parolasını değiştirin.**
+**VM yerel yönetici hesabı parolasını değiştirin:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -139,7 +139,7 @@ Azure Stack tümleşik sistemlerle SQL ve MySQL kaynak sağlayıcılarını kull
 
 ```
 
-**SSL sertifikası parolasını değiştirin.**
+**SSL sertifikası parolasını değiştirin:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -174,7 +174,7 @@ AzureStack. DatabaseAdapter. SecretRotation. ps1 _*. log de dahil olmak üzere, 
 
 ## <a name="collect-diagnostic-logs"></a>Tanılama günlüklerini topla
 
-Kilitli sanal makineden günlükleri toplamak için PowerShell 'in yeterli yönetim (JEA) uç noktası DBAdapterDiagnostics 'i kullanabilirsiniz. Bu uç nokta aşağıdaki komutları sağlar:
+Kilitli VM 'den günlükleri toplamak için PowerShell 'i yeterli yönetim (JEA) uç noktası DBAdapterDiagnostics ' i kullanın. Bu uç nokta aşağıdaki komutları sağlar:
 
 - **Get-AzsDBAdapterLog**. Bu komut, kaynak sağlayıcısı tanılama günlüklerinin bir ZIP paketini oluşturur ve dosyayı oturumun Kullanıcı sürücüsüne kaydeder. Bu komutu herhangi bir parametre olmadan çalıştırabilirsiniz ve son dört saatlik günlük toplanmaktadır.
 
@@ -185,7 +185,7 @@ Kilitli sanal makineden günlükleri toplamak için PowerShell 'in yeterli yöne
 Bir kaynak sağlayıcısı yüklendiğinde veya güncelleştirilirken dbadapterdiag Kullanıcı hesabı oluşturulur. Bu hesabı tanılama günlüklerini toplamak için kullanacaksınız.
 
 >[!NOTE]
->Dbadapterdiag hesabı parolası, bir sağlayıcı dağıtımı veya güncelleştirmesi sırasında oluşturulan sanal makinede yerel yönetici için kullanılan parolayla aynıdır.
+>Dbadapterdiag hesabı parolası, bir sağlayıcı dağıtımı veya güncelleştirmesi sırasında oluşturulan VM 'de yerel yönetici için kullanılan parolayla aynıdır.
 
 _Dbadapterdiagnostics_ komutlarını kullanmak için, kaynak sağlayıcısı sanal makinesine bir uzak PowerShell oturumu oluşturun ve **Get-AzsDBAdapterLog** komutunu çalıştırın.
 
@@ -194,7 +194,7 @@ _Dbadapterdiagnostics_ komutlarını kullanmak için, kaynak sağlayıcısı san
 * FromDate, geçerli zamandan dört saat öncesine ait.
 * ToDate geçerli zaman.
 
-**Günlükleri toplamak için PowerShell betiği örneği.**
+**Günlükleri toplamak için PowerShell betiği örneği:**
 
 Aşağıdaki betik, kaynak sağlayıcısı VM 'sinden tanılama günlüklerinin nasıl toplanacağını göstermektedir.
 

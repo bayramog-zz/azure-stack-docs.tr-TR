@@ -1,6 +1,6 @@
 ---
-title: Azure Stack MySQL kaynak sağlayıcısı kaldırılıyor | Microsoft Docs
-description: Azure Stack dağıtımınızdan MySQL kaynak sağlayıcısını nasıl kaldırabileceğinizi öğrenin.
+title: Azure Stack MySQL kaynak sağlayıcısını kaldır | Microsoft Docs
+description: Azure Stack dağıtımınızdan MySQL kaynak sağlayıcısını kaldırmayı öğrenin.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -15,14 +15,14 @@ ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: 3a48ded6a9a21650bae488e0a858086a3575235e
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: a2b55707bc05aecf8681cb866c58b0ed34fb87cd
+ms.sourcegitcommit: a23b80b57668615c341c370b70d0a106a37a02da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829397"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72682171"
 ---
-# <a name="remove-the-mysql-resource-provider"></a>MySQL kaynak sağlayıcısını kaldır
+# <a name="remove-the-mysql-resource-provider-in-azure-stack"></a>Azure Stack MySQL kaynak sağlayıcısını kaldır
 
 MySQL kaynak sağlayıcısını kaldırmadan önce tüm sağlayıcı bağımlılıklarını kaldırmanız gerekir. Ayrıca, kaynak sağlayıcısını yüklemek için kullanılan dağıtım paketinin bir kopyasına ihtiyacınız olacaktır.
 
@@ -50,12 +50,12 @@ Azure Stack Işleci aşağıdaki Temizleme görevlerinden sorumludur:
 2. MySQL kaynak sağlayıcısı yükleme paketinin bir kopyasını alın ve ardından içeriği geçici bir dizine ayıklamak için Self-Extractor ' i çalıştırın.
 3. Yeni bir yükseltilmiş PowerShell konsol penceresi açın ve MySQL kaynak sağlayıcısı yükleme dosyalarını ayıkladığınız dizine geçin.
 4. Aşağıdaki parametreleri kullanarak DeployMySqlProvider. ps1 betiğini çalıştırın:
-    - **Uygulamasını kaldırın**. Kaynak sağlayıcıyı ve tüm ilişkili kaynakları kaldırır.
-    - **Privilegedendpoint**. Ayrıcalıklı uç noktanın IP adresi veya DNS adı.
-    - **AzureEnvironment**. Azure Stack dağıtmak için kullanılan Azure ortamı. Yalnızca Azure AD dağıtımları için gereklidir.
-    - **Cloudadmincredential**. Ayrıcalıklı uç noktaya erişmek için gerekli olan bulut yöneticisinin kimlik bilgileri.
+    - **Kaldır**: kaynak sağlayıcıyı ve tüm ilişkili kaynakları kaldırır.
+    - **Privilegedendpoint**: ayrıcalıklı uç noktanın IP adresı veya DNS adı.
+    - **AzureEnvironment**: Azure Stack dağıtmak Için kullanılan Azure ortamı. Yalnızca Azure AD dağıtımları için gereklidir.
+    - **Cloudadmincredential**: ayrıcalıklı uç noktaya erişmek için gerekli olan bulut yöneticisinin kimlik bilgileri.
     - **Directorytenantıd**
-    - **Azcredential**. Azure Stack hizmeti yönetici hesabının kimlik bilgileri. Azure Stack dağıtmak için kullandığınız kimlik bilgilerini kullanın.
+    - **Azcredential**: Azure Stack hizmeti yönetici hesabının kimlik bilgileri. Azure Stack dağıtmak için kullandığınız kimlik bilgilerini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Stack MySQL kaynak sağlayıcısı 1.1.30.0 sürüm notları | Microsoft Docs
-description: Bilinen sorunlar da dahil olmak üzere en son Azure Stack MySQL kaynak sağlayıcısı güncelleştirmesinde neler olduğunu ve nereden indirileceği hakkında bilgi edinin.
+description: Azure Stack MySQL Resource Provider 1.1.30.0 Update 'teki yenilikleri görmek için sürüm notlarını görüntüleyin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,20 +16,20 @@ ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 7679589090022f6f07c5e1fddb9c768716628865
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: fa21bb641589bb6da143696e0c925a0bfe51c1d0
+ms.sourcegitcommit: a23b80b57668615c341c370b70d0a106a37a02da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829435"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72682196"
 ---
-# <a name="mysql-resource-provider-11300--release-notes"></a>MySQL kaynak sağlayıcısı 1.1.30.0 sürüm notları
+# <a name="mysql-resource-provider-11300-release-notes"></a>MySQL kaynak sağlayıcısı 1.1.30.0 sürüm notları
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 Bu sürüm notlarında, MySQL kaynak sağlayıcısı sürüm 1.1.30.0 ' deki iyileştirmeler ve bilinen sorunlar açıklanır.
 
-## <a name="build-reference"></a>Yapı Başvurusu
+## <a name="build-reference"></a>Derleme başvurusu
 MySQL kaynak sağlayıcısı ikilisini indirin ve ardından içeriği geçici bir dizine çıkarmak için Self-Extractor ' i çalıştırın. Kaynak sağlayıcının en düşük karşılık gelen Azure Stack derlemesi vardır. MySQL kaynak sağlayıcısı 'nın bu sürümünü yüklemek için gereken en düşük Azure Stack yayın sürümü aşağıda listelenmiştir:
 
 > |En düşük Azure Stack sürümü|MySQL kaynak sağlayıcısı sürümü|
@@ -47,21 +47,21 @@ Azure Stack MySQL kaynak sağlayıcısının bu sürümü aşağıdaki geliştir
 
 - **TLS 1,2 şifreleme güncelleştirmesi**. Etkin TLS 1,2-yalnızca dahili Azure Stack bileşenleriyle kaynak sağlayıcısı iletişimi için destek. 
 
-### <a name="fixes"></a>Düzeltmeleri
+### <a name="fixes"></a>Düzeltilen
 
 - **MySQL kaynak sağlayıcısı PowerShell uyumluluğunu Azure Stack**. MySQL kaynak sağlayıcısı, Azure Stack 2018-03-01-hibrit PowerShell profiliyle çalışacak ve Azurerd 1.3.0 ve üzeri sürümlerle uyumluluk sağlayacak şekilde güncelleştirilmiştir.
 
 - **MySQL oturum açma parolasını değiştir dikey**penceresi. Parola Değiştir dikey penceresinde parolanın değiştirilebileceği bir sorun düzeltildi. Parola değişikliği bildirimlerinin bağlantıları kaldırıldı.
 
-## <a name="known-issues"></a>Bilinen sorunlar 
+## <a name="known-issues"></a>Bilinen sorunlar
 
-- **MySQL SKU 'larının portalda görünür olması bir saate kadar sürebilir**. Yeni oluşturulan SKU 'Ların yeni MySQL veritabanları oluştururken kullanılması için bir saate kadar zaman alabilir. 
+- **MySQL SKU 'larının portalda görünür olması bir saate kadar sürebilir**. Yeni oluşturulan SKU 'Ların yeni MySQL veritabanları oluştururken kullanılması için bir saate kadar zaman alabilir.
 
-    **Geçici çözüm**: Yok.
+    **Geçici çözüm**: yok.
 
-- **MySQL oturum açmaları yeniden kullanılır**. Aynı abonelikte var olan bir oturum açma işlemiyle aynı kullanıcı adıyla yeni bir MySQL oturumu oluşturmaya çalışmak, aynı oturumun ve mevcut parolanın yeniden kullanılmaya neden olur. 
+- **MySQL oturum açmaları yeniden kullanılır**. Aynı abonelikte var olan bir oturum açma işlemiyle aynı kullanıcı adıyla yeni bir MySQL oturumu oluşturmaya çalışmak, aynı oturumun ve mevcut parolanın yeniden kullanılmaya neden olur.
 
-    **Geçici çözüm**: Aynı abonelik altında yeni oturumlar oluştururken farklı Kullanıcı adları kullanın veya farklı Abonelikler altında aynı kullanıcı adıyla oturum açmaları oluşturun.
+    **Geçici çözüm**: aynı abonelik altında yeni oturumlar oluştururken farklı Kullanıcı adları kullanın veya farklı Abonelikler altında aynı kullanıcı adıyla oturum açmaları oluşturun.
 
 - **TLS 1,2 destek gereksinimi**. MySQL kaynak sağlayıcısını TLS 1,2 'nin etkinleştirilmediği bir bilgisayardan dağıtmayı veya güncelleştirmeyi denerseniz, işlem başarısız olabilir. TLS 1,2 ' nin desteklendiği şekilde döndürüldüğünü doğrulamak için, kaynak sağlayıcısını dağıtmak veya güncelleştirmek üzere kullanılan bilgisayarda aşağıdaki PowerShell komutunu çalıştırın:
 
@@ -69,9 +69,9 @@ Azure Stack MySQL kaynak sağlayıcısının bu sürümü aşağıdaki geliştir
   [System.Net.ServicePointManager]::SecurityProtocol
   ```
 
-  **Tls12** , komutun çıkışına dahil edilmediğinde bilgisayarda TLS 1,2 etkin değildir.
+  **Tls12** komutunun çıktısına dahil EDILMEMIŞSE, TLS 1,2 bilgisayarda etkin değildir.
 
-    **Geçici çözüm**: TLS 1,2 ' i etkinleştirmek için aşağıdaki PowerShell komutunu çalıştırın ve ardından aynı PowerShell oturumundan kaynak sağlayıcısı dağıtımını veya güncelleştirme betiğini başlatın:
+    **Geçici çözüm**: TLS 1,2 ' i etkinleştirmek Için aşağıdaki PowerShell komutunu çalıştırın ve ardından aynı PowerShell oturumundan kaynak sağlayıcısı dağıtımını veya güncelleştirme betiğini başlatın:
 
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
