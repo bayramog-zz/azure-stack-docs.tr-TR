@@ -11,12 +11,12 @@ ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 08/21/2019
 keywords: ''
-ms.openlocfilehash: 4949ed2533ed550f61efd2cc4e0dfed7de3a1d7e
-ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
+ms.openlocfilehash: 1f84eeffffae3c103c33b366a5c503a907cf6715
+ms.sourcegitcommit: 4a2318ad395b2a931833ccba4430d8d04cdd8819
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72019241"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72780484"
 ---
 # <a name="azure-stack-datacenter-dns-integration"></a>Azure Stack Datacenter DNS tümleştirmesi
 
@@ -32,8 +32,8 @@ Azure Stack dağıtırken DNS ile ilgili bazı önemli bilgileri sağlamanız ge
 |Bölge|Azure Stack dağıtımınızın coğrafi konumu.|`east`|
 |Dış etki alanı adı|Azure Stack dağıtımınız için kullanmak istediğiniz bölgenin adı.|`cloud.fabrikam.com`|
 |İç etki alanı adı|Azure Stack içindeki altyapı hizmetleri için kullanılan iç bölgenin adı. Bu dizin hizmeti, tümleşik ve özel (Azure Stack dağıtımının dışından ulaşılamaz).|`azurestack.local`|
-|DNS Ileticileri|Şirket intranetinde veya genel İnternet 'te Azure Stack dışında barındırılan DNS sorguları, DNS bölgeleri ve kayıtları iletmek için kullanılan DNS sunucuları. Bir DNS ileticisini değiştirirseniz, IP adresinin güncelleştirilmesi gerekir. |`10.57.175.34`<br>`8.8.8.8`|
-|Adlandırma ön eki (Isteğe bağlı)|Azure Stack altyapı rolü örneği makine adlarınızın sahip olmasını istediğiniz adlandırma ön eki.  Sağlanmazsa, varsayılan değer `azs` ' dır.|`azs`|
+|DNS Ileticileri|Şirket intranetinde veya genel İnternet 'te Azure Stack dışında barındırılan DNS sorguları, DNS bölgeleri ve kayıtları iletmek için kullanılan DNS sunucuları. Dağıtımdan sonra [ **set-AzSDnsForwarder** CMDLET 'ı](#editing-dns-forwarder-ips) ile DNS ileticisi değerini düzenleyebilirsiniz. 
+|Adlandırma ön eki (Isteğe bağlı)|Azure Stack altyapı rolü örneği makine adlarınızın sahip olmasını istediğiniz adlandırma ön eki.  Sağlanmazsa, varsayılan değer `azs`.|`azs`|
 
 Azure Stack dağıtımınızın ve uç noktalarınızın tam etki alanı adı (FQDN), Region parametresinin ve dış etki alanı adı parametresinin birleşimidir. Önceki tablodaki örneklerden değerler kullanılarak bu Azure Stack dağıtımı için FQDN aşağıdaki ad olacaktır:
 
@@ -47,9 +47,9 @@ Bu nedenle, bu dağıtımın bazı uç noktaları örnekleri aşağıdaki URL 'L
 
 Azure Stack dağıtımı için bu örnek DNS ad alanını kullanmak için aşağıdaki koşullar gereklidir:
 
-- @No__t-0 bölgesi, ad çözümleme gereksinimlerinize bağlı olarak bir etki alanı kaydedicisi, dahili bir kurumsal DNS sunucusu veya her ikisiyle kaydedilir.
-- @No__t-0 alt etki alanı `fabrikam.com` bölgesi altında bulunuyor.
-- @No__t-0 ve `cloud.fabrikam.com` bölgelerini barındıran DNS sunucularına Azure Stack dağıtımından ulaşılabilir.
+- Bölge `fabrikam.com`, ad çözümleme gereksinimlerinize bağlı olarak, bir etki alanı kaydedicisi, dahili bir kurumsal DNS sunucusu veya her ikisiyle kaydedilir.
+- Alt etki alanı `cloud.fabrikam.com`, bölge `fabrikam.com` altında bulunur.
+- @No__t_0 ve `cloud.fabrikam.com` bölgelerini barındıran DNS sunucularına Azure Stack dağıtımından erişilebilir.
 
 Azure Stack dışından Azure Stack uç noktaları ve örneklerin DNS adlarını çözümleyebilmek için, Azure Stack için dış DNS bölgesini barındıran DNS sunucularını kullanmak istediğiniz üst bölgeyi barındıran DNS sunucularıyla tümleştirmeniz gerekir.
 
@@ -80,7 +80,9 @@ Azure Stack hem yetkili hem de özyinelemeli DNS sunucularını içerir. Özyine
 
 ## <a name="resolving-external-dns-names-from-azure-stack"></a>Azure Stack dış DNS adlarını çözümleme
 
-Azure Stack dışındaki uç noktaların DNS adlarını çözümlemek için (örneğin: www\.bing.com), Azure Stack Azure Stack yetkili olmayan DNS isteklerini iletmek için kullanabileceği DNS sunucuları sağlamanız gerekir. Dağıtım için, istekleri ileten DNS Azure Stack sunucuları dağıtım çalışma sayfasında (DNS Ileticisi alanında) gereklidir. Bu alanda hata toleransı için en az iki sunucu sağlayın. Bu değerler olmadan Azure Stack dağıtım başarısız olur. DNS ileticileri değiştirildiyse, IP adreslerini güncelleştirin.
+Azure Stack dışındaki uç noktalar için DNS adlarını çözümlemek için (örneğin: www \.bing. com), Azure Stack Azure Stack yetkili olmayan DNS isteklerini iletmek için kullanabileceği DNS sunucuları sağlamanız gerekir. Dağıtım için, istekleri ileten DNS Azure Stack sunucuları dağıtım çalışma sayfasında (DNS Ileticisi alanında) gereklidir. Bu alanda hata toleransı için en az iki sunucu sağlayın. Bu değerler olmadan Azure Stack dağıtım başarısız olur. Dağıtımdan sonra [ **set-AzSDnsForwarder** CMDLET 'ı](#editing-dns-forwarder-ips) ile DNS ileticisi değerlerini düzenleyebilirsiniz. 
+
+
 
 ### <a name="configure-conditional-dns-forwarding"></a>Koşullu DNS iletmeyi yapılandırma
 
@@ -137,14 +139,18 @@ Dağıtım sanal makinesi artık kullanılabilir değilse veya erişilebilir dur
 
 DNS altyapınızla Azure Stack tümleştirme yapmanın en kolay ve en güvenli yolu, bölgenin üst bölgeyi barındıran sunucudan koşullu olarak iletilmesidir. Azure Stack dış DNS ad alanınız için üst bölgeyi barındıran DNS sunucuları üzerinde doğrudan denetiminiz varsa bu yaklaşım önerilir.
 
-DNS ile koşullu iletme yapma hakkında bilgi sahibi değilseniz, aşağıdaki TechNet makalesine bakın: [Bir etki alanı adı veya DNS çözümünüze özgü belgeler için bir koşullu Iletici atayın](https://technet.microsoft.com/library/cc794735).
+DNS ile koşullu iletme yapma konusunda bilgi sahibi değilseniz, aşağıdaki TechNet makalesine bakın: etki alanı adı veya DNS çözümünüze özgü belgeler [Için koşullu Iletici atama](https://technet.microsoft.com/library/cc794735).
 
 Dış Azure Stack DNS bölgenizin şirket etki alanı adınızın alt etki alanı gibi görünmesini istediğiniz senaryolarda koşullu iletme kullanılamaz. DNS temsilcisinin yapılandırılması gerekir.
 
 Örnek:
 
 - Şirket DNS etki alanı adı: `contoso.com`
-- Azure Stack dış DNS etki alanı adı: `azurestack.contoso.com`
+- Dış DNS etki alanı adı Azure Stack: `azurestack.contoso.com`
+
+## <a name="editing-dns-forwarder-ips"></a>DNS Ileticisi IP 'Leri düzenleniyor
+
+DNS Ileticisi IP 'Leri Azure Stack dağıtımı sırasında ayarlanır. Ancak, Ileticinin IP 'Leri herhangi bir nedenden dolayı güncelleştirilmeleri gerekiyorsa, ayrıcalıklı uç noktaya bağlanarak ve `Get-AzSDnsForwarder` ve `Set-AzSDnsForwarder [[-IPAddress] <IPAddress[]>]` PowerShell cmdlet 'lerini çalıştırarak değerleri düzenleyebilirsiniz. Daha fazla bilgi için bkz. [ayrıcalıklı uç nokta](azure-stack-privileged-endpoint.md).
 
 ## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>Dış DNS bölgesinin yetkisini Azure Stack
 
