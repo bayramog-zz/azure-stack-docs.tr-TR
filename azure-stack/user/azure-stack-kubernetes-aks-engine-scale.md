@@ -15,22 +15,22 @@ ms.date: 09/25/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/25/2019
-ms.openlocfilehash: 70adb6abaefc81faf487bbae5c560cc67f705341
-ms.sourcegitcommit: d967cf8cae320fa09f1e97eeb888e3db5b6e7972
+ms.openlocfilehash: b7d20327410ace5b5ad12d34a24ff474c1a384b0
+ms.sourcegitcommit: 4a2318ad395b2a931833ccba4430d8d04cdd8819
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279203"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72780470"
 ---
 # <a name="scale-a-kubernetes-cluster-on-azure-stack"></a>Azure Stack bir Kubernetes kümesini ölçeklendirme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-**Ölçek** komutunu kullanarak kümenizi aks altyapısıyla ölçeklendirebilirsiniz. **Scale** komutu, yeni bir Azure Resource Manager dağıtımı için giriş`apimodel.json`olarak çıktı dizini içindeki küme yapılandırma dosyanızı () yeniden kullanır. Motor, belirtilen aracı havuzunda ölçeklendirme işlemini yürütür. Ölçeklendirme işlemi tamamlandığında, altyapı güncelleştirilmiş, geçerli küme yapılandırmasını yansıtmak için aynı `apimodel.json` dosyadaki küme tanımını yeni düğüm sayısını yansıtacak şekilde güncelleştirir.
+**Ölçek** komutunu kullanarak kümenizi aks altyapısıyla ölçeklendirebilirsiniz. **Scale** komutu, çıkış dizini içindeki küme yapılandırma dosyanızı (`apimodel.json`) yeni bir Azure Resource Manager dağıtımına giriş olarak yeniden kullanır. Motor, belirtilen aracı havuzunda ölçeklendirme işlemini yürütür. Ölçeklendirme işlemi tamamlandığında, altyapı güncelleştirilmiş, geçerli küme yapılandırmasını yansıtmak için aynı `apimodel.json` dosyadaki küme tanımını yeni düğüm sayısını yansıtacak şekilde güncelleştirir.
 
 ## <a name="scale-a-cluster"></a>Kümeyi ölçeklendirme
 
-Komut, bir `aks-engine` Kubernetes kümesindeki mevcut bir aracı havuzundaki düğüm sayısını artırabilir veya azaltabilir. `aks-engine scale` Düğümler, aracı havuzunun sonuna her zaman eklenir veya kaldırılır. Düğümler, silinmeden önce bir daha erişilebilir ve drenapacaktır.
+`aks-engine scale` komutu, bir `aks-engine` Kubernetes kümesindeki mevcut bir aracı havuzundaki düğümlerin sayısını artırabilir veya azaltabilir. Düğümler, aracı havuzunun sonuna her zaman eklenir veya kaldırılır. Düğümler, silinmeden önce bir daha erişilebilir ve drenapacaktır.
 
 ### <a name="values-for-the-scale-command"></a>Scale komutu için değerler
 
@@ -38,18 +38,18 @@ Aşağıdaki parametreler, ölçek komutu tarafından küme tanımı dosyanızı
 
 | Parametre | Örnek | Açıklama |
 | --- | --- | --- | 
-| Azure-env | AzureStackCloud | Azure Stack kullanırken, ortam adlarının olarak `AzureStackCloud`ayarlanması gerekir. | 
-| location | yerel | Bu, Azure Stack örneğinizin bölgesidir. Bir ASDK için bölge olarak `local`ayarlanır.  | 
+| Azure-env | AzureStackCloud | Azure Stack kullanırken, ortam adlarının `AzureStackCloud`olarak ayarlanması gerekir. | 
+| location | Yerel | Bu, Azure Stack örneğinizin bölgesidir. Bir ASDK için bölge `local`olarak ayarlanır.  | 
 | resource-group | kuin-RG | Kümenizi içeren kaynak grubunun adı. | 
 | abonelik kimliği |  | Kümeniz tarafından kullanılan kaynakları içeren aboneliğin GUID 'SI. Aboneliğinizi ölçeklendirmek için yeterli kotayı kullandığınızdan emin olun. | 
 | istemci kimliği |  | AKS altyapısından kümenizi oluştururken kullanılan hizmet sorumlusunun istemci KIMLIĞI. | 
 | istemci parolası |  | Kümeniz oluşturulurken kullanılan hizmet sorumlusu gizli anahtarı. | 
-| api modeli | Kube-RG/apimodel. JSON | Küme tanımı dosyanızın yolu (apimodel. JSON). Bu şu konumda olabilir: _Output/\<dnspredüzeltmesini >/apimodel.exe | 
+| api modeli | Kube-RG/apimodel. JSON | Küme tanımı dosyanızın yolu (apimodel. JSON). Bu şu konumda olabilir: _Output/\<Dnspredüzeltmesini >/apimodel.exe JSON | 
 | -New-node-Count | 9 | İstenen düğüm sayısı. | 
 | -Master-FQDN |  | Ana FQDN. Ölçeği azaltma sırasında gereklidir. |
 | kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
 
-Azure Stack bir kümeyi ölçeklendirirken **– Azure-env** parametresini belirtmeniz gerekir. AKS altyapısının **Ölçek** komutunda kullanılan parametreler ve değerleri hakkında daha fazla bilgi için bkz. [Ölçek-parametreleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
+Azure Stack bir kümeyi ölçeklendirirken **--Azure-env** parametresini belirtmeniz gerekir. AKS altyapısının **Ölçek** komutunda kullanılan parametreler ve değerleri hakkında daha fazla bilgi için bkz. [Ölçek-parametreleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
 
 ### <a name="command-to-scale-your-cluster"></a>Kümenizi ölçeklendirmeye yönelik komut
 

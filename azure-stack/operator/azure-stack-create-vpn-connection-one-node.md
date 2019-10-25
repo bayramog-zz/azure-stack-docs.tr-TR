@@ -3,7 +3,7 @@ title: Farklı ASDK ortamlarındaki iki sanal ağ arasında siteden siteye VPN b
 description: İki tek düğümlü Azure Stack Geliştirme Seti (ASDK) ortamları arasında siteden siteye VPN bağlantısı oluşturmak için bulut işleçleri öğreticisi.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: justinha
 manager: femila
 editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2019
-ms.author: sethm
-ms.reviewer: scottnap
+ms.author: justinha
+ms.reviewer: tbd
 ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2ae267d470d9862e262f26ea11d2ba4b07bfb299
-ms.sourcegitcommit: c2ea4ffb42563c26faaf2993ba7b484bcb6d5cb7
+ms.openlocfilehash: ef0fd3aef095dc0ee2865e7f1fb2a8821d378e70
+ms.sourcegitcommit: 4a2318ad395b2a931833ccba4430d8d04cdd8819
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71342918"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72780515"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-asdk-environments"></a>Farklı ASDK ortamlarındaki iki sanal ağ arasında siteden siteye VPN bağlantısı oluşturma
 
@@ -40,7 +40,7 @@ Aşağıdaki şekilde, bağlantı yapılandırmasının bitirdiğinizde nasıl g
 
 Bağlantı yapılandırmasını gerçekleştirmek için, başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
-* Hızlı Başlangıç bölümünde [açıklandığı gibi, asdk donanım gereksinimlerini karşılayan iki sunucu ve diğer Önkoşullar: Azure Stack Geliştirme Seti](../asdk/asdk-download.md)değerlendirin.
+* [Hızlı başlangıç: Azure Stack geliştirme seti değerlendirme](../asdk/asdk-download.md)bölümünde açıklandığı gıbı, asdk donanım gereksinimlerini karşılayan iki sunucu ve diğer Önkoşullar.
 * [Asdk](https://azure.microsoft.com/overview/azure-stack/try/) dağıtım paketi.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Azure Stack Geliştirme Seti ortamlarını dağıtma
@@ -113,7 +113,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 7. **Kaynak grubu**için, bir kaynak grubu oluşturabilir veya zaten bir tane varsa **var olanı kullan**' ı seçin.
 8. Varsayılan konumu doğrulayın.
 9. **Panoya sabitle**’yi seçin.
-10. **Oluştur**’u seçin.
+10. **Oluştur**'u seçin.
 
 ### <a name="create-the-gateway-subnet"></a>Ağ geçidi alt ağını oluşturma
 
@@ -137,7 +137,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 6. **Genel IP adresi** menü öğesini seçin. **Ortak IP adresi Seç** penceresi açıldığında **Yeni oluştur**' u seçin.
 7. **Ad**alanına **GW1-PIP**girin ve **Tamam**' ı seçin.
 8. Varsayılan olarak, **VPN türü**için **Rota tabanlı** seçilidir. **Rota tabanlı** VPN türünü saklayın.
-9. **Abonelik** ve **Konum** seçeneklerinin doğruluğunu onaylayın. Kaynağı panoya sabitleyebilir. **Oluştur**’u seçin.
+9. **Abonelik** ve **Konum** seçeneklerinin doğruluğunu onaylayın. Kaynağı panoya sabitleyebilir. **Oluştur**'u seçin.
 
 ### <a name="create-the-local-network-gateway"></a>Yerel ağ geçidini oluşturma
 
@@ -171,7 +171,7 @@ Bu konuda daha ayrıntılı bir şekilde düşünmek için, yerel ağ geçidi ka
 9. **Paylaşılan anahtar (PSK)** alanına **12345**yazın ve ardından **Tamam**' ı seçin.
 10. **Özet** dikey penceresinde **Tamam**' ı seçin.
 
-### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+### <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
 VPN bağlantısı üzerinden taşınan verileri doğrulamak için VM 'Lerin her bir ASDK 'de veri alıp alabilmesi gerekir. POC1 ' de şu anda bir VM oluşturun ve ardından sanal ağınızda VM alt ağına yerleştirin:
 
@@ -204,7 +204,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 7. **Kaynak grubu**için yeni bir kaynak grubu oluşturun veya zaten bir tane varsa, **var olanı kullan**' ı seçin.
 8. Varsayılan **konumu**doğrulayın.
 9. **Panoya sabitle**’yi seçin.
-10. **Oluştur**’u seçin.
+10. **Oluştur**'u seçin.
 
 ### <a name="create-gateway-subnet"></a>Ağ geçidi alt ağı oluştur
 
@@ -215,7 +215,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 5. **Adres aralığı** alanında, adresin **10.0.21.0/24**olduğunu doğrulayın.
 6. Ağ geçidi alt ağını oluşturmak için **Tamam ' ı** seçin.
 
-### <a name="create-virtual-network-gateway"></a>Sanal ağ geçidi oluşturma
+### <a name="create-virtual-network-gateway"></a>Sanal ağ geçidi oluştur
 
 1. Azure portal **+ kaynak oluştur**' u seçin.  
 2. **Market**' e gidin ve ardından **ağ**' ı seçin.
@@ -225,7 +225,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 6. **Genel IP adresi**'ni seçin. **Ortak IP adresi Seç** dikey penceresi açıldığında **Yeni oluştur**' u seçin.
 7. **Ad**alanına **GW2-PIP**girin ve **Tamam**' ı seçin.
 8. Varsayılan olarak, **VPN türü**için **Rota tabanlı** seçilidir. **Rota tabanlı** VPN türünü saklayın.
-9. **Abonelik** ve **Konum** seçeneklerinin doğruluğunu onaylayın. Kaynağı panoya sabitleyebilir. **Oluştur**’u seçin.
+9. **Abonelik** ve **Konum** seçeneklerinin doğruluğunu onaylayın. Kaynağı panoya sabitleyebilir. **Oluştur**'u seçin.
 
 ### <a name="create-local-network-gateway-resource"></a>Yerel ağ geçidi kaynağı oluştur
 
@@ -237,7 +237,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 6. **Adres alanı**' nda, POC1 adresinden **VNET-01** **10.0.10.0/23** adres alanını girin.
 7. **Aboneliğinizin**, **kaynak grubunuzun**ve **konumun** doğru olduğundan emin olun ve ardından **Oluştur**' u seçin.
 
-## <a name="create-connection"></a>Bağlantı oluştur
+## <a name="create-connection"></a>Bağlantı oluşturma
 
 1. Kullanıcı portalında **+ kaynak oluştur**' u seçin.
 2. **Market**' e gidin ve ardından **ağ**' ı seçin.
@@ -250,7 +250,7 @@ Hizmet Yöneticisi, kiracılarının kullanabileceği planları, teklifleri ve a
 9. **Paylaşılan anahtar (PSK)** alanına **12345**yazın. Farklı bir değer seçerseniz, POC1 üzerinde oluşturduğunuz paylaşılan anahtarın değeriyle eşleşmesi gerektiğini unutmayın. **Tamam**’ı seçin.
 10. **Özet** dikey penceresini gözden geçirin ve ardından **Tamam**' ı seçin.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
 Şimdi POC2 içinde bir VM oluşturun ve sanal ağınızdaki VM alt ağına yerleştirin:
 
@@ -282,10 +282,10 @@ VPN bağlantısını yapılandırmak için, BGPNAT sanal makinesi üzerindeki d�
 
 1. Aşağıdaki PowerShell betiğinden kullanılacak **Iç IP adresini** saptayın. Sanal ağ geçidini açın (GW1 ve GW2). **Genel bakış** dikey penceresinde, daha sonra kullanmak üzere **genel IP adresinin** değerini kaydedin.
 
-   ![İç IP Adresi](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
+   ![İç IP adresi](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
 
 2. POC1 için Azure Stack fiziksel makinesinde oturum açın.
-3. Aşağıdaki PowerShell betiğini kopyalayın ve düzenleyin. Her bir ASDK üzerinde NAT yapılandırmak için betiği yükseltilmiş bir Windows PowerShell ISE çalıştırın. Betikte, `External BGPNAT address` ve `Internal IP address` yer tutuculara değerler ekleyin:
+3. Aşağıdaki PowerShell betiğini kopyalayın ve düzenleyin. Her bir ASDK üzerinde NAT yapılandırmak için betiği yükseltilmiş bir Windows PowerShell ISE çalıştırın. Betikte, `External BGPNAT address` ve `Internal IP address` yer tutucuları için değerler ekleyin:
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
