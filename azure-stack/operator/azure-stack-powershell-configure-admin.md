@@ -1,6 +1,6 @@
 ---
-title: Azure Stack operatör olarak PowerShell ile bağlanma | Microsoft Docs
-description: Azure Stack operatör olarak PowerShell ile bağlanma hakkında bilgi edinin
+title: PowerShell ile Azure Stack bağlanma | Microsoft Docs
+description: PowerShell ile Azure Stack nasıl bağlanacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,29 +15,29 @@ ms.date: 09/18/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 09/18/2019
-ms.openlocfilehash: 84799fa50411b753ae5983efbc743f07282a512b
-ms.sourcegitcommit: c46d913ebfa4cb6c775c5117ac5c9e87d032a271
+ms.openlocfilehash: da07fc0fe67c00f017a547a861d8ea4eb856864b
+ms.sourcegitcommit: acebda8a42ac8ecdeba490fc1738e9041479dab0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101158"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72814036"
 ---
-# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>PowerShell ile Azure Stack operatör bağlanma
+# <a name="connect-to-azure-stack-with-powershell"></a>PowerShell ile Azure Stack bağlanma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-Azure Stack tekliflerini, planları, kotalar ve Uyarılar oluşturmak gibi kaynakları yönetmek için PowerShell kullanmak için yapılandırabilirsiniz. Bu konuda işleci ortam yapılandırmanıza yardımcı olur.
+Teklif, plan, kota ve uyarı oluşturma gibi kaynakları yönetmek için PowerShell 'i kullanmak üzere Azure Stack yapılandırabilirsiniz. Bu konu, işleç ortamını yapılandırmanıza yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Aşağıdaki önkoşulları, [geliştirme seti](../asdk/asdk-connect.md#connect-with-rdp) 'Nden veya Windows tabanlı bir dış istemciden, [ASDK ile VPN üzerinden bağlıysanız](../asdk/asdk-connect.md#connect-with-vpn)çalıştırın. 
+[VPN aracılığıyla asdk 'ye bağlıysanız](../asdk/asdk-connect.md#connect-with-vpn), [Azure Stack geliştirme seti (asdk)](../asdk/asdk-connect.md#connect-with-rdp) veya Windows tabanlı bir dış istemciden aşağıdaki önkoşulları çalıştırın.
 
- - Yükleme [Azure Stack ile uyumlu Azure PowerShell modüllerini](azure-stack-powershell-install.md).  
- - İndirme [Azure Stack ile çalışması için gereken araçları](azure-stack-powershell-download.md).  
+- [Azure Stack uyumlu Azure PowerShell modülleri](azure-stack-powershell-install.md)'ni yükler.  
+- [Azure Stack çalışmak için gereken araçları](azure-stack-powershell-download.md)indirin.  
 
-## <a name="connect-with-azure-ad"></a>Azure AD'ye bağlanma
+## <a name="connect-with-azure-ad"></a>Azure AD 'ye bağlanma
 
-PowerShell ile Azure Stack operatörü ortam yapılandırın. Aşağıdaki betiklerin birini çalıştırın: Azure Active Directory (Azure AD) tenantName ve Azure Resource Manager Endpoint değerlerini kendi ortam yapılandırmanızla değiştirin. 
+PowerShell ile Azure Stack operatör ortamını yapılandırmak için aşağıdaki komut dosyalarından birini çalıştırın. Azure Active Directory (Azure AD) tenantName ve Azure Resource Manager Endpoint değerlerini kendi ortam yapılandırmanızla değiştirin.
 
 [!include[Remove Account](../../includes/remove-account.md)]
 
@@ -47,7 +47,7 @@ PowerShell ile Azure Stack operatörü ortam yapılandırın. Aşağıdaki betik
       -AzureKeyVaultDnsSuffix adminvault.local.azurestack.external `
       -AzureKeyVaultServiceEndpointResourceId https://adminvault.local.azurestack.external
 
-    # Set your tenant name
+    # Set your tenant name.
     $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"
     $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
@@ -57,10 +57,9 @@ PowerShell ile Azure Stack operatörü ortam yapılandırın. Aşağıdaki betik
     Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
 ```
 
-## <a name="connect-with-ad-fs"></a>AD FS ile bağlanma
+## <a name="connect-with-ad-fs"></a>AD FS bağlanma
 
-PowerShell ile Azure Active Directory Federasyon Hizmetleri (Azure AD FS) ile Azure Stack operatörü ortama bağlanın. Azure Stack Geliştirme Seti için bu Azure Resource Manager uç nokta kümesine `https://adminmanagement.local.azurestack.external`. Azure Stack tümleşik sistemleri için Azure Resource Manager uç noktası almak için hizmet sağlayıcınıza başvurun.
-
+Azure Active Directory Federasyon Hizmetleri (Azure AD FS) ile PowerShell ile Azure Stack operatör ortamına bağlanın. Bu Azure Resource Manager uç noktası, ASDK için `https://adminmanagement.local.azurestack.external`olarak ayarlanır. Azure Stack tümleşik sistemler için Azure Resource Manager uç noktası almak üzere hizmet sağlayıcınıza başvurun.
 
   ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
@@ -68,16 +67,16 @@ PowerShell ile Azure Active Directory Federasyon Hizmetleri (Azure AD FS) ile Az
       -AzureKeyVaultDnsSuffix adminvault.local.azurestack.external `
       -AzureKeyVaultServiceEndpointResourceId https://adminvault.local.azurestack.external
 
-  # Sign in to your environment
+  # Sign in to your environment.
   Login-AzureRmAccount -EnvironmentName "AzureStackAdmin"
   ```
 
 > [!Note]  
 > AD FS yalnızca Kullanıcı kimlikleriyle etkileşimli kimlik doğrulamasını destekler. Bir kimlik bilgisi nesnesi gerekliyse, bir hizmet sorumlusu (SPN) kullanmanız gerekir. Azure Stack ve AD FS kimlik yönetimi hizmetiniz olarak bir hizmet sorumlusu ayarlama hakkında daha fazla bilgi için bkz. [AD FS hizmet sorumlusunu yönetme](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
 
-## <a name="test-the-connectivity"></a>Bağlantısını test etme
+## <a name="test-the-connectivity"></a>Bağlantıyı test etme
 
-Artık her şeyi kendinizi, Kurulum, Azure Stack içindeki kaynakları oluşturmak için PowerShell kullanın. Örneğin, bir uygulama için bir kaynak grubu oluşturun ve bir sanal makine ekleyin. Adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın **MyResourceGroup**.
+Her şeyin hazır olduğuna göre, Azure Stack içinde kaynak oluşturmak için PowerShell 'i kullanın. Örneğin, bir uygulama için bir kaynak grubu oluşturabilir ve sanal makine ekleyebilirsiniz. **Myresourcegroup**adlı bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın.
 
 ```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
@@ -85,6 +84,6 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şablonları Azure Stack için geliştirme](../user/azure-stack-develop-templates.md)
-- [Şablonları PowerShell ile dağıtma](../user/azure-stack-deploy-template-powershell.md)
-  - [Azure Stack modülü başvurusu](https://docs.microsoft.com/powershell/azure/azure-stack/overview)  
+- [Azure Stack için şablonlar geliştirin](../user/azure-stack-develop-templates.md).
+- [Şablonları PowerShell Ile dağıtın](../user/azure-stack-deploy-template-powershell.md).
+  - [Modül başvurusunu Azure Stack](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
