@@ -16,14 +16,14 @@ ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 583b23f8b70856e39f5d6f53204fd3234cb92a4e
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: d6e4aa25b558d12cfb437155c453d3d093ea7e00
+ms.sourcegitcommit: ef7efcde76d1d7875ca1c882afebfd6a27f1c686
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829118"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72888056"
 ---
-# <a name="border-connectivity"></a>Kenarlık bağlantısı 
+# <a name="border-connectivity"></a>Sınır bağlantısı 
 Ağ tümleştirme planlaması, başarılı Azure Stack tümleşik sistemler dağıtımı, işlemi ve yönetimi için önemli bir önkoşuldur. Sınır bağlantı planlaması, Sınır Ağ Geçidi Protokolü (BGP) ile dinamik yönlendirmeyi kullanmak istiyorsanız öğesini seçerek başlar. Bu, bir 16 bit BGP otonom sistem numarası (genel veya özel) atanmasını veya statik bir varsayılan yolun kenarlık cihazlarına atandığı statik yönlendirmeyi kullanmayı gerektirir.
 
 > [!IMPORTANT]
@@ -45,7 +45,7 @@ Statik yönlendirme, sınır cihazlara ek yapılandırma gerektirir. Bu, herhang
 
 Statik yönlendirmeyi kullanarak ağ ortamınıza Azure Stack bütünleştirmek için, sınır ve TOR cihazı arasındaki dört fiziksel bağlantı bağlanmalıdır. Statik yönlendirmenin nasıl çalıştığı ile yüksek kullanılabilirlik garanti edilemez.
 
-Sınır cihazı, *dış* ağa veya genel VIP 'Lere ve *altyapı* AĞıNA giden trafik için Tor cihazlarını P2Ps işaret eden statik yollarla yapılandırılmalıdır. Bu, *BMC* 'ye ve dağıtımın *dış* ağlarına statik yollar gerektirecektir. İşleçler, *BMC* ağında bulunan yönetim kaynaklarına erişmek için, kenarlıkta statik yollardan ayrılmamaya izin verebilir. *Anahtar altyapısına* ve *anahtar yönetim* ağlarına statik yollar eklemek isteğe bağlıdır.
+Sınır cihazı, ' ın Azure Stack içindeki herhangi bir ağa giden trafik için Ise ve sınır kenarlığı arasındaki her birine işaret eden statik yollarla yapılandırılmalıdır, ancak işlem için yalnızca *dış* veya genel VIP ağı gereklidir. İlk dağıtım için *BMC* 'ye ve *dış* ağlara yönelik statik yollar gereklidir. İşleçler, *BMC* ve *altyapı* ağı üzerinde bulunan yönetim kaynaklarına erişmek için, kenarlıkta statik yollardan ayrılmamaya izin verebilir. *Anahtar altyapısına* ve *anahtar yönetim* ağlarına statik yollar eklemek isteğe bağlıdır.
 
 TOR cihazları, tüm trafiği kenarlık cihazlarına gönderen statik bir varsayılan yol ile yapılandırılır. Varsayılan kural için tek trafik özel durumu özel alan içindir ve bu, TOR üzerinde bağlantı için uygulanan bir Access Control listesi kullanılarak engellenir.
 
@@ -53,11 +53,11 @@ Statik yönlendirme yalnızca TOR ve Border anahtarları arasındaki yukarı ba�
 
 ![Statik yönlendirme](media/azure-stack-border-connectivity/static-routing.png)
 
-<sup>\*</sup>BMC ağı dağıtımdan sonra isteğe bağlıdır.
+<sup>\*</sup> BMC ağı dağıtımdan sonra isteğe bağlıdır.
 
-<sup>\*\*</sup>Anahtar altyapısı ağı, tüm ağ, anahtar yönetimi ağına dahil edilebilir.
+<sup>\*\*</sup> Anahtar altyapısı ağı, tüm ağ, anahtar yönetimi ağına dahil edilebilir.
 
-<sup>\*\*\*</sup>Anahtar yönetimi ağı gereklidir ve anahtar altyapısı ağından ayrı olarak eklenebilir.
+<sup>\*\*\*</sup> Anahtar yönetimi ağı gereklidir ve anahtar altyapısı ağından ayrı olarak eklenebilir.
 
 ## <a name="transparent-proxy"></a>Saydam proxy
 Veri merkeziniz tüm trafiğin bir ara sunucu kullanmasını gerektiriyorsa, bir *saydam proxy* 'yi, tüm trafiği ilkeye göre işleyecek şekilde işleyecek şekilde yapılandırmanız ve ağınızdaki bölgeler arasında trafiği ayırmaktır.

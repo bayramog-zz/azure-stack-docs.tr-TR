@@ -16,12 +16,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 9098fb61c0d4edcb534bd7b9d07b4727c953df8d
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: e42ad185373eeb59b6fdfa5d1c769a5843774537
+ms.sourcegitcommit: 64c18637cafcc38044d139bf35b16422ada8160c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974900"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72889863"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service Azure Stack güncelleştirme 4 sürüm notları
 
@@ -32,7 +32,7 @@ Bu sürüm notları, Azure Stack güncelleştirme 4 ' te Azure App Service geli�
 > [!IMPORTANT]
 > 1809 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya Azure App Service 1,4 ' i dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
 
-## <a name="build-reference"></a>Yapı Başvurusu
+## <a name="build-reference"></a>Derleme başvurusu
 
 Azure Stack güncelleştirme 4 derleme numarasında App Service **78.0.13698.5**
 
@@ -47,7 +47,7 @@ Azure App Service Azure Stack 1,4 sürümüne yükseltmeye başlamadan önce:
 - App Service ve ana veritabanlarını yedekleyin:
   - AppService_Hosting;
   - AppService_Metering;
-  - Ana Şablon
+  - Master
 
 - Kiracı uygulaması içerik dosyası payını yedekleyin.
 
@@ -159,9 +159,9 @@ Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir verit
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
-1. Migrate logins to contained database users.
+1. Oturum açma işlemlerini kapsanan veritabanı kullanıcılarına geçirin.
 
     ```sql
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
@@ -209,13 +209,13 @@ Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir verit
 
 Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetici portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
- * Kaynak: Any
+ * Kaynak: any
  * Kaynak bağlantı noktası aralığı: *
  * Hedef: IP adresleri
- * Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
+ * Hedef IP adresi aralığı: dosya sunucunuz için IP aralığı
  * Hedef bağlantı noktası aralığı: 445
  * Protokol: TCP
- * Eylem: Allow
+ * Eylem: Izin ver
  * Öncelik: 700
  * Ad: Outbound_Allow_SMB445
 
