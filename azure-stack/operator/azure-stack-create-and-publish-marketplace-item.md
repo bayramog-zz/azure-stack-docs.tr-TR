@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/25/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 4a8f24c11f8e72c4b3e2b99ae6b2a417e3bd0cba
-ms.sourcegitcommit: 5eae057cb815f151e6b8af07e3ccaca4d8e4490e
+ms.openlocfilehash: 5481cdc7e4ad8dc2b3b3cbbb56a403335ff97524
+ms.sourcegitcommit: 35de1a6e0fb6fe9f938d613f161dc378b3452541
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72310592"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72915210"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-marketplace-item"></a>Özel bir Azure Stack Market öğesi oluşturma ve yayımlama
 
@@ -141,7 +141,7 @@ Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi tekli
     }
     ```
 
-    ![Package görüntü @ no__t-1 ![Package Display @ no__t-3
+    ![paket görüntüleme](media/azure-stack-create-and-publish-marketplace-item/pkg1.png) ![paket görüntüleme](media/azure-stack-create-and-publish-marketplace-item/pkg2.png)
 
 6. Kaynağın başarıyla dağıtılabilmesi için [Azure Stack API 'leriyle](../user/azure-stack-profiles-azure-resource-manager-versions.md)şablonu test edin.
 
@@ -156,10 +156,10 @@ Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi tekli
 
 10. Manifest. JSON hakkında daha fazla düzenleme için bkz. [Başvuru: market öğe bildirimi. JSON](#reference-marketplace-item-manifestjson).
 
-11. Dosyalarınızı değiştirmeyi bitirdiğinizde bir. azpkg dosyasına dönüştürün. Dönüştürme işlemini **Azuregallerypackager. exe** aracını ve daha önce indirdiğiniz örnek Galeri paketini kullanarak gerçekleştirirsiniz. Şu komutu çalıştırın:
+11. Dosyalarınızı değiştirmeyi bitirdiğinizde bir. azpkg dosyasına dönüştürün. Dönüştürme işlemini **Azuregallery. exe** aracını ve daha önce indirdiğiniz örnek Galeri paketini kullanarak gerçekleştirirsiniz. Şu komutu çalıştırın:
 
     ```shell
-    .\AzureGalleryPackager.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
+    .\AzureGallery.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
     ```
 
     > [!NOTE]
@@ -192,7 +192,7 @@ Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi tekli
 
    Galeri paketinizi tamamladıktan ve **Add-Azsgalleritem**kullanarak karşıya yükledikten sonra, özel VM 'Niz artık Market 'te ve **kaynak oluştur** görünümünde yer almalıdır. Özel Galeri paketinin **Market yönetimi**'nde görülemeyeceğini unutmayın.
 
-   [![Özel Market öğesi karşıya yüklendi](media/azure-stack-create-and-publish-marketplace-item/pkg6sm.png "özel Market öğesi karşıya yüklendi")](media/azure-stack-create-and-publish-marketplace-item/pkg6.png#lightbox)
+   [![Özel Market öğesi karşıya yüklendi](media/azure-stack-create-and-publish-marketplace-item/pkg6sm.png "Özel Market öğesi karşıya yüklendi")](media/azure-stack-create-and-publish-marketplace-item/pkg6.png#lightbox)
 
 6. Öğe Market 'e başarıyla yayımlandıktan sonra, içeriği depolama hesabından silebilirsiniz.
 
