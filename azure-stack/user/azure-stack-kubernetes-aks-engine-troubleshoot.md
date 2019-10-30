@@ -1,26 +1,26 @@
 ---
 title: Azure Stack 'de AKS altyapısının sorunlarını giderme | Microsoft Docs
-description: Bu konu, Azure Stack üzerindeki AKS altyapısına ilişkin sorun giderme adımlarını içerir.
+description: Bu makale Azure Stack üzerindeki AKS altyapısına ilişkin sorun giderme adımlarını içerir.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
-manager: femila
+manager: femilav
 editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: eb8a46c5b226d1be40d922a78c6ecdcdda5e45ad
-ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
+ms.lastreviewed: 10/28/2019
+ms.openlocfilehash: 49684cb1821a5014e984a8e177f881be13123829
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019199"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047137"
 ---
 # <a name="troubleshoot-the-aks-engine-on-azure-stack"></a>Azure Stack üzerindeki AKS altyapısının sorunlarını giderme
 
@@ -84,7 +84,7 @@ Daha fazla bilgi için bkz. **Azure/aks-Engine** GitHub deposu 'Ndaki [sorun gid
 
 ## <a name="collect-aks-engine-logs"></a>AKS motoru günlüklerini topla
 
-AKS altyapısı tarafından oluşturulan gözden geçirme bilgilerine erişebilirsiniz. AKS altyapısı durumu ve uygulamanın çalıştırıldığı şekilde hataları raporlar. Çıktıyı bir metin dosyasına boru yapabilir veya doğrudan komut satırı konsolundan kopyalayabilirsiniz.
+AKS altyapısı tarafından oluşturulan gözden geçirme bilgilerine erişebilirsiniz. AKS altyapısı durumu ve uygulamanın çalıştırıldığı şekilde hataları raporlar. Çıktıyı bir metin dosyasına boru yapabilir veya doğrudan komut satırı konsolundan kopyalayabilirsiniz. [Özel Betik uzantısı hata kodlarını gözden geçirme](#review-custom-script-extension-error-codes)sırasında aks altyapısının tetiklediği hata kodlarının listesine bakın.
 
 1.  AKS motoru komut satırı aracında görünen bilgilerden standart çıkış ve hata toplayın.
 
@@ -111,14 +111,14 @@ Bu betik aşağıdaki günlükleri toplama işlemini otomatikleştirir:
  - Galeri öğesinin DVZ günlükleri
  - kuin-sistem anlık görüntüsü
 
-Bu komut dosyası olmadan kümedeki her düğüme bağlanmanız gerekir ve günlükleri elle indirin. Ayrıca, komut dosyası isteğe bağlı olarak, toplanan günlükleri günlükleri başkalarıyla paylaşmak için kullanabileceğiniz bir depolama hesabına yükleyebilirsiniz.
+Bu komut dosyası olmadan, kümedeki her düğüme bağlanmanız gerekir ve günlükleri elle indirin. Ayrıca, komut dosyası isteğe bağlı olarak, toplanan günlükleri günlükleri başkalarıyla paylaşmak için kullanabileceğiniz bir depolama hesabına yükleyebilirsiniz.
 
 Gereksinimler:
 
  - Bir Linux VM, git bash veya Windows üzerinde Bash.
  - [Azure CLI](azure-stack-version-profiles-azurecli2.md) , betiğinin çalıştırılacağı makineye yüklendi.
  - Azure Stack için bir Azure CLı oturumunda oturum açan hizmet sorumlusu kimliği. Betik, çalışmasını sağlamak için ARM kaynaklarını bulma ve oluşturma yeteneğine sahip olduğundan, Azure CLı ve hizmet sorumlusu kimliği gereklidir.
- - Kubernetes kümesinin ortamda zaten seçildiği Kullanıcı hesabı (abonelik). 
+ - Ortamda Kubernetes kümesinin zaten seçildiği Kullanıcı hesabı (abonelik). 
 1. Betik bataklık dosyasının en son sürümünü istemci sanal makinenize, Kubernetes kümenize erişimi olan bir makineye veya AKS altyapısı ile kümenizi dağıtmak için kullandığınız makineye indirin.
 
     Aşağıdaki komutları çalıştırın:
@@ -130,15 +130,15 @@ Gereksinimler:
     tar xvzf diagnosis.tar.gz -C ./
     ```
 
-2. `getkuberneteslogs.sh` Betiği için gereken parametreleri arayın. Betik aşağıdaki parametreleri kullanacaktır:
+2. `getkuberneteslogs.sh` betiği için gereken parametreleri arayın. Betik aşağıdaki parametreleri kullanacaktır:
 
-    | Parametre | Açıklama | Gerekli | Örnek |
+    | Parametre | Açıklama | Gereklidir | Örnek |
     | --- | --- | --- | --- |
     | -h,--yardım | Komut kullanımını yazdır. | hayır | 
     -u,--Kullanıcı | Küme VM 'Leri için Yönetici Kullanıcı adı | evet | azureuser<br>(varsayılan değer) |
-    | -i,--Identity-File | RSA özel anahtarı Kubernetes kümesini oluşturmak için kullanılan ortak anahtara bağlı (bazen ' id_rsa ' olarak adlandırılır)  | evet | `./rsa.pem`Putty<br>`~/.ssh/id_rsa`SSH |
+    | -i,--Identity-File | RSA özel anahtarı Kubernetes kümesini oluşturmak için kullanılan ortak anahtara bağlı (bazen ' id_rsa ' olarak adlandırılır)  | evet | `./rsa.pem` (PuTTY)<br>`~/.ssh/id_rsa` (SSH) |
     |   -g,--Resource-Group    | Kubernetes kümesi kaynak grubu | evet | k8sresourcegroup |
-    |   -n,--Kullanıcı-ad alanı               | Belirtilen ad alanlarındaki kapsayıcılardan günlükleri topla (Kuto-sistem günlükleri her zaman toplanır) | hayır |   izleme |
+    |   -n,--Kullanıcı-ad alanı               | Belirtilen ad alanlarındaki kapsayıcılardan günlükleri topla (Kuto-sistem günlükleri her zaman toplanır) | hayır |   izlemesinin |
     |       --api-model                    | Azure Stack Storage hesabında apimodel. json dosyasını devam ettirir. Apimodel. json dosyasını depolama hesabına yükle,--upload-logs parametresi de sağlandığında gerçekleşir. | hayır | `./apimodel.json` |
     | --tümü-ad alanları               | Tüm ad alanlarındaki kapsayıcılardan günlükleri toplayın. Geçersiz kılmalar--Kullanıcı-ad alanı | hayır | |
     | --karşıya yükleme-Günlükler                  | Azure Stack depolama hesabındaki Günlükler alındı. Günlükler, KubernetesLogs kaynak grubunda bulunabilir | hayır | |
@@ -158,17 +158,29 @@ Gereksinimler:
 
 Kümenizi çalıştırırken özel Betik uzantısı (CSE) tarafından oluşturulan hata kodlarının listesine başvurabilirsiniz. CSE hatası, sorunun kök nedenini tanılamak için yararlı olabilir. Kubernetes Kümenizde kullanılan Ubuntu sunucusu için CSE, AKS altyapı işlemlerinin çoğunu destekler. CSE çıkış kodları hakkında daha fazla bilgi için bkz. [cse_helpers. sh](https://github.com/Azure/aks-engine/blob/master/parts/k8s/cloud-init/artifacts/cse_helpers.sh).
 
+### <a name="providing-kubernetes-logs-to-a-microsoft-support-engineer"></a>Microsoft destek mühendisine Kubernetes günlükleri sağlama
+
+Günlükleri toplayıp inceledikten sonra sorununuzu çözemezse, bir destek bileti oluşturma işlemini başlatmak ve `--upload-logs` parametresi kümesiyle `getkuberneteslogs.sh` çalıştırarak topladığınız günlükleri sağlamak isteyebilirsiniz. 
+
+Azure Stack işleçle iletişim kurun. Operatörünüz, destek durumunu oluşturmak için günlüklerinizi testten olarak kullanır.
+
+Herhangi bir destek sorununu giderme işlemi sırasında, Microsoft Destek Mühendisi Azure Stack operatörünüzün Azure Stack sistem günlüklerini toplamasını isteyebilir. `getkuberneteslogs.sh`çalıştırarak Kubernetes günlüklerini karşıya yüklediğiniz depolama hesabı bilgileri ile operatörüzü sağlamanız gerekebilir.
+
+Operatörünüz **Get-AzureStackLog** PowerShell cmdlet 'ini çalıştırabilir. Bu komut, Kubernetes günlüklerini depoladığınız depolama hesabını belirten bir parametre (`-InputSaSUri`) kullanır.
+
+İşletmenğiniz, Microsoft Destek ile ilgili diğer sistem günlüklerinin gerek duyduğu ve Microsoft tarafından kullanılabilmesini sağlamak için oluşturduğunuz günlükleri birleştirebilir.
+
 ## <a name="open-github-issues"></a>GitHub sorunlarını açma
 
 Dağıtım hatayı çözemezse bir GitHub sorunu açabilirsiniz. 
 
 1. AKS altyapısı deposunda bir [GitHub sorunu](https://github.com/Azure/aks-engine/issues/new) açın.
-2. Aşağıdaki biçimi kullanarak bir başlık ekleyin: C`SE error: exit code <INSERT_YOUR_EXIT_CODE>`.
+2. Şu biçimi kullanarak bir başlık ekleyin: C`SE error: exit code <INSERT_YOUR_EXIT_CODE>`.
 3. Soruna aşağıdaki bilgileri ekleyin:
 
-    - Kümeyi dağıtmak için kullanılan küme `apimodel json`yapılandırma dosyası. GitHub 'da nakletmeden önce tüm gizli dizileri ve anahtarları kaldırın.  
-     - Aşağıdaki **kubectl** komutunun `get nodes`çıktısı.  
-     - `/var/log/azure/cluster-provision.log` Ve içeriği`/var/log/cloud-init-output.log`
+    - Kümeyi dağıtmak için kullanılan küme yapılandırma dosyası `apimodel json`. GitHub 'da nakletmeden önce tüm gizli dizileri ve anahtarları kaldırın.  
+     - Aşağıdaki **kubectl** komutunun çıktısı `get nodes`.  
+     - `/var/log/azure/cluster-provision.log` ve `/var/log/cloud-init-output.log` içeriği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
