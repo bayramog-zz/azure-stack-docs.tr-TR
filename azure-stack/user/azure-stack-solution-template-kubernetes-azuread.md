@@ -15,23 +15,23 @@ ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: e625ba27e683dc11cd8a825441ef73ef37d00f0a
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: 902645ffcb6fda4afad76a1a258b55f0ace2b189
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277700"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047253"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Azure Stack Azure Active Directory kullanarak Kubernetes dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 > [!Note]  
-> Azure Stack Kubernetes önizleme aşamasındadır. Azure Stack bağlantısı kesik bir senaryo şu anda önizleme tarafından desteklenmiyor. Yalnızca geliştirme ve test senaryoları için Market öğesini kullanın.
+> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-kubernetes-aks-engine-overview.md)kullanın.
 
 Bu makaledeki adımları izleyerek, kimlik yönetimi hizmetiniz olarak Azure Active Directory (Azure AD) kullandığınızda, tek ve eşgüdümlü bir işlemde Kubernetes için kaynakları dağıtmak ve ayarlamak üzere bu makaledeki adımları uygulayabilirsiniz.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için doğru izinlere sahip olduğunuzdan ve Azure Stack uygun olduğundan emin olun.
 
@@ -63,11 +63,11 @@ Azure 'da bir hizmet sorumlusu ayarlayın. Hizmet sorumlusu, uygulamanızın Azu
 
     a. [Azure Portal](https://portal.azure.com)aracılığıyla Azure hesabınızda oturum açın.  
     b. **Azure Active Directory** >  ' i seçin**uygulama kayıtları** > **Yeni kayıt**.  
-    ,. Uygulama için bir ad ve URL belirtin.  
-    TID. **Desteklenen hesap türlerini**seçin.  
-    A.  Uygulamanın URI 'SI için `http://localhost` ekleyin. Oluşturmak istediğiniz uygulama türü için **Web** ' i seçin. Değerleri ayarladıktan sonra **Kaydet**' i seçin.
+    c. Uygulama için bir ad ve URL sağlayın.  
+    d. **Desteklenen hesap türlerini**seçin.  
+    e.  Uygulamanın URI 'SI için `http://localhost` ekleyin. Oluşturmak istediğiniz uygulama türü için **Web** ' i seçin. Değerleri ayarladıktan sonra **Kaydet**' i seçin.
 
-1. **Uygulama kimliğini**bir yere getirin. Kümeyi oluştururken KIMLIĞE ihtiyacınız olacak. KIMLIĞE **hizmet sorumlusu ISTEMCI kimliği**olarak başvurulur.
+1. **Uygulama Kimliği**’ni not alın. Kümeyi oluştururken KIMLIĞE ihtiyacınız olacak. KIMLIĞE **hizmet sorumlusu ISTEMCI kimliği**olarak başvurulur.
 
 1. Hizmet ilkesinin dikey penceresinde **yeni istemci parolası**' nı seçin. **Ayarlar** > **anahtarlar**. Hizmet ilkesi için bir kimlik doğrulama anahtarı oluşturmanız gerekir.
 
@@ -75,7 +75,7 @@ Azure 'da bir hizmet sorumlusu ayarlayın. Hizmet sorumlusu, uygulamanızın Azu
 
     b. **Süre sonu** **için süresiz** seçeneğini belirleyin.
 
-    ,. **Ekle**' yi seçin. Anahtar dizesini aklınızda yapın. Kümeyi oluştururken anahtar dizesine ihtiyaç duyarsınız. Anahtara **hizmet sorumlusu Istemci parolası**olarak başvurulur.
+    c. **Add (Ekle)** seçeneğini belirleyin. Anahtar dizesini aklınızda yapın. Kümeyi oluştururken anahtar dizesine ihtiyaç duyarsınız. Anahtara **hizmet sorumlusu Istemci parolası**olarak başvurulur.
 
 ## <a name="give-the-service-principal-access"></a>Hizmet sorumlusu erişimi verme
 
@@ -93,13 +93,13 @@ Sorumlunun kaynak oluşturabilmesi için aboneliğinize hizmet sorumlusu erişim
 
 1. Hizmet sorumlusu için oluşturulan uygulama adını seçin. Arama kutusuna adı yazmanız gerekebilir.
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 ## <a name="deploy-kubernetes"></a>Kubernetes dağıtma
 
 1. [Azure Stack portalını](https://portal.local.azurestack.external)açın.
 
-1. **+ @No__t kaynak oluştur**' u seçin-3**Kubernetes kümesi** **@no__t.** **Oluştur**'u tıklatın.
+1. **Kubernetes kümesi** > **Işlem** > **kaynak oluştur** ' u seçin. **Oluştur**’a tıklayın.
 
     ![Çözüm şablonu dağıtma](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 

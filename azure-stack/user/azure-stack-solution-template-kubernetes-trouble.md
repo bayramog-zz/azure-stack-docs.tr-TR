@@ -14,19 +14,19 @@ ms.author: mabrigg
 ms.date: 10/10/2019
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 14a32696a3e46782b8990ba57f9510976200f7d3
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: 1070608db881426d6cb7ca78d0b19444bdba77ce
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277559"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047213"
 ---
 # <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Azure Stack için Kubernetes dağıtımıyla ilgili sorunları giderme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 > [!Note]  
-> Azure Stack Kubernetes önizleme aşamasındadır. Azure Stack bağlantısı kesik bir senaryo şu anda önizleme tarafından desteklenmiyor. Yalnızca geliştirme ve test senaryoları için Market öğesini kullanın.
+> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-kubernetes-aks-engine-overview.md)kullanın.
 
 Bu makalede Kubernetes kümenizde nasıl sorun giderileceği incelenemez. Sorun gidermeye başlamak için, dağıtım için gereken öğeleri gözden geçirin. Kubernetes 'i barındıran Azure Stack veya Linux VM 'lerinden dağıtım günlüklerini toplamanız gerekebilir. Yönetim uç noktasından günlükleri almak için Azure Stack yöneticinize başvurun.
 
@@ -123,7 +123,7 @@ Kubernetes kümenizi dağıtırken, herhangi bir sorunu denetlemek için dağıt
 
 Azure Stack portalı bir dağıtım hatasını gidermek veya bir dağıtım başarısızlığından kaçınmak için yeterli bilgi sağlamıyorsa, sonraki adım küme günlüklerini inceleyin. Dağıtım günlüklerini el ile almak için, genellikle kümenin ana VM 'lerinden birine bağlanmanız gerekir. Daha basit bir alternatif yaklaşım, Azure Stack ekibi tarafından sunulan aşağıdaki [Bash betiğini](https://aka.ms/AzsK8sLogCollectorScript) indirmek ve çalıştırmak olacaktır. Bu betik, DVı ve kümenin VM 'lerine bağlanır, ilgili sistem ve küme günlüklerini toplar ve bunları iş istasyonunuza geri yükler.
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack yönetmek için kullandığınız makinede bir bash istemi gerekir. Windows makinesinde, [Windows Için git](https://git-scm.com/downloads)'i yükleyerek bir bash istemi alabilirsiniz. Yüklendikten sonra başlangıç menünüzde _Git Bash_ ' i arayın.
 
@@ -159,7 +159,7 @@ Küme günlüklerini toplamak ve indirmek için şu adımları izleyin:
     ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-4. Birkaç dakika sonra, komut dosyası toplanan günlükleri `KubernetesLogs_{{time-stamp}}` adlı bir dizine çıktı olarak kaydeder. Kümeye ait olan her VM için bir dizin bulacaksınız.
+4. Birkaç dakika sonra, komut dosyası toplanan günlükleri `KubernetesLogs_{{time-stamp}}`adlı bir dizine çıktı. Kümeye ait olan her VM için bir dizin bulacaksınız.
 
     Günlük Toplayıcı betiği, günlük dosyalarındaki hataları da arar ve bilinen bir sorunu bulursa sorun giderme adımlarını dahil eder. Bilinen sorunları bulma olasılığınızı artırmak için betiğin en son sürümünü çalıştırdığınızdan emin olun.
 

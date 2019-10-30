@@ -23,13 +23,13 @@
       href: azure-stack-quick-create-vm-linux-cli.md
 - name: Öğreticiler
   items:
-    - name: Bir şablondan VM oluşturma
+    - name: Şablondan VM oluşturma
       href: azure-stack-create-vm-template.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Hibrit bulut için çözüm oluşturmaya başlayın
       items:
-        - name: Bir teklife abone olma
+        - name: Teklife abone olma
           href: azure-stack-subscribe-services.md
         - name: Bulut çözüm sağlayıcısını etkinleştirme
           href: azure-stack-csp-enable-billing-usage-tracking.md
@@ -48,12 +48,12 @@
                   maintainContext: true
                 - name: PowerShell ile bağlanma
                   href: azure-stack-powershell-configure-user.md
-                - name: Azure Stack araçlarını indirin
+                - name: Azure Stack araçlarını indir
                   href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
                   maintainContext: true
                 - name: PowerShell çalıştırmak için Docker kullanma
                   href: azure-stack-powershell-user-docker.md
-                - name: Azure Stack ilke modülü kullanma
+                - name: Azure Stack Ilkesi modülünü kullanma
                   href: azure-stack-policy-module.md
             - name: Azure CLı 'yı Azure Stack ile kullanma
               href: azure-stack-version-profiles-azurecli2.md
@@ -69,7 +69,7 @@
           items:
             - name: Şablona genel bakış
               href: azure-stack-arm-templates.md
-            - name: Şablonu konuları
+            - name: Şablon konuları
               href: azure-stack-develop-templates.md
             - name: Azure 'da Şablonlar geliştirme
               href: azure-stack-developer.md
@@ -94,7 +94,7 @@
               href: azure-stack-version-profiles-net.md
             - name: Java
               href: azure-stack-version-profiles-java.md
-            - name: Git
+            - name: Go
               href: azure-stack-version-profiles-go.md
             - name: Ruby
               href: azure-stack-version-profiles-ruby.md
@@ -102,7 +102,7 @@
               href: azure-stack-version-profiles-python.md
             - name: NodeJS
               href: azure-stack-version-profile-nodejs.md
-            - name: Kaynak sağlayıcısı profilleri tarafından desteklenen API'ler
+            - name: Profiller tarafından desteklenen kaynak sağlayıcısı API 'Leri
               href: azure-stack-profiles-azure-resource-manager-versions.md
     - name: Kaynak sağlayıcılarını kullanma
       items:
@@ -128,7 +128,7 @@
                   href: azure-stack-managed-disk-considerations.md
                 - name: VM’leri koruma
                   href: azure-stack-manage-vm-protect.md
-                - name: VM güncelleştirme ve yönetim
+                - name: VM güncelleştirmesi ve yönetimi
                   href: vm-update-management.md
                 - name: SQL Server VM konuları
                   href: azure-stack-sql-server-vm-considerations.md
@@ -154,11 +154,11 @@
                   items:
                     - name: VPN kullanarak bağlanma
                       href: azure-stack-connect-vpn.md
-                    - name: VPN gateway hakkında
+                    - name: VPN Gateway hakkında
                       href: azure-stack-vpn-gateway-about-vpn-gateways.md
                     - name: IPSec/ıKE bağlantı ilkelerini yapılandırma
                       href: azure-stack-vpn-s2s.md
-                    - name: VPN gateway ayarları
+                    - name: VPN Ağ Geçidi ayarları
                       href: azure-stack-vpn-gateway-settings.md
                 - name: Azure Stack için iDNS
                   href: azure-stack-understanding-dns.md
@@ -191,7 +191,7 @@
           items:
             - name: Ethereum dağıtma
               href: azure-stack-ethereum.md
-            - name: Bir Service Fabric kümesine dağıtma
+            - name: Service Fabric kümesi dağıtma
               href: azure-stack-solution-template-service-fabric-cluster.md
             - name: Bir Kubernetes kümesi dağıtın
               items:
@@ -200,8 +200,8 @@
                     - name: Azure Stack AKS altyapısı
                       href: azure-stack-kubernetes-aks-engine-overview.md
                     - name: Destek ilkesi
-                      href: azure-stack-kubernetes-ask-engine-support.md
-                    - name: Ön koşulları ayarlama
+                      href: azure-stack-kubernetes-aks-engine-support.md
+                    - name: Önkoşulları ayarlama
                       href: azure-stack-kubernetes-aks-engine-set-up.md
                     - name: Linux istemcisi oluşturma
                       href: azure-stack-kubernetes-aks-engine-deploy-linux.md
@@ -225,7 +225,7 @@
                       href: azure-stack-solution-template-kubernetes-adfs.md
                     - name: Kubernetes panosunu etkinleştirme
                       href: azure-stack-solution-template-kubernetes-dashboard.md
-                    - name: Kubernetes kümesinde sorun giderme
+                    - name: Kubernetes kümesi sorunlarını giderme
                       href: azure-stack-solution-template-kubernetes-trouble.md
             - name: Bilişsel hizmetler dağıtma
               href: azure-stack-solution-template-cognitive-services.md
@@ -251,15 +251,15 @@
       items:
         - name: Azure ve Azure Stack’e uygulama dağıtma
           href: azure-stack-solution-pipeline.md
-        - name: Hibrit bulut kimliği yapılandırma
+        - name: Karma bulut kimliğini yapılandırma
           href: azure-stack-solution-hybrid-identity.md
-        - name: Hibrit bulut bağlantısı yapılandırma
+        - name: Karma bulut bağlantısını yapılandırma
           href: azure-stack-solution-hybrid-connectivity.md
-        - name: Azure ile Bulutlar arası ölçeklendirme çözümleri oluşturun
+        - name: Azure ile platformlar arası ölçeklendirme çözümleri oluşturun
           href: azure-stack-solution-cloud-burst.md
-        - name: Coğrafi olarak dağıtılmış bir uygulama çözümü oluşturun
+        - name: Coğrafi olarak dağıtılmış uygulama çözümü oluşturma
           href: azure-stack-solution-geo-distributed.md
-        - name: Karma bulut çözümü dağıtma
+        - name: Karma bulut çözümünü dağıtma
           href: azure-stack-solution-hybrid-cloud.md
         - name: Hazırlanan veri analizlerini dağıtma
           href: azure-stack-solution-staged-data.md
@@ -275,9 +275,11 @@
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
         - name: VNET eşlemesi
           href: azure-stack-network-howto-vnet-to-vnet.md
+        - name: Iscsı depolama 'ya bağlanma
+          href: azure-stack-network-howto-iscsi-storage.md
 - name: Kavramlar
   items:
-    - name: Hibrit bulut desenleri
+    - name: Karma bulut desenleri
       items:
         - name: Karma bulut desenlerine genel bakış
           href: azure-stack-edge-pattern-overview.md
@@ -309,7 +311,7 @@
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
     - name: Azure Stack MSDN Forumu
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Azure Stack belgeleri geri bildirim
+    - name: Azure Stack belge geri bildirimi
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Fiyatlandırma bilgileri
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

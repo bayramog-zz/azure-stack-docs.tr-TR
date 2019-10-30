@@ -11,23 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 4fcfb0c8ef509ab827c15321cff5fc945230d69e
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.lastreviewed: 10/28/2019
+ms.openlocfilehash: fc83c8c68402622d721864f24a3ef9c5bab10479
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283440"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047176"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Azure Stack marketi 'ne Kubernetes ekleme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 > [!note]  
-> Azure Stack Kubernetes önizleme aşamasındadır. Azure Stack bağlantısı kesik bir senaryo şu anda önizleme tarafından desteklenmiyor. Yalnızca geliştirme ve test senaryoları için Market öğesini kullanın.
+> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-aks-engine.md)kullanın.
+
 Kullanıcılarınıza Market öğesi olarak Kubernetes sunabilirsiniz. Kullanıcılarınız, Kubernetes 'i tek ve eşgüdümlü bir işlemde dağıtabilir.
 
 Aşağıdaki makalede, tek başına bir Kubernetes kümesine yönelik kaynakları dağıtmak ve sağlamak için bir Azure Resource Manager şablonu kullanma bölümüne bakın. Başlamadan önce Azure Stack ve genel Azure kiracı ayarlarınızı denetleyin. Azure Stack hakkında gerekli bilgileri toplayın. Kiracınıza ve Azure Stack Market 'e gerekli kaynakları ekleyin. Küme, bir Ubuntu sunucusuna, özel bir betiğe ve Kubernetes kümesi Market öğesini Market 'te olacak şekilde değişir.
@@ -48,17 +49,17 @@ Kubernetes Market öğesi için bir plan, teklif ve abonelik oluşturun. Ayrıca
 
 1. **Durumu Değiştir**' i seçin. **Ortak**seçeneğini belirleyin.
 
-1. Abonelik oluşturmak için @no__t **+ kaynak oluştur**' u seçin-1**teklifler ve planlar** > **aboneliği** .
+1. Abonelik oluşturmak için > **abonelik** > **teklifler ve planlar** **Oluştur** ' u seçin.
 
     a. Bir **görünen ad**girin.
 
     b. Bir **Kullanıcı**girin. Kiracınızla ilişkili Azure AD hesabını kullanın.
 
-    ,. **Sağlayıcı açıklaması**
+    c. **Sağlayıcı açıklaması**
 
-    TID. Azure Stack için **Dizin kiracısını** Azure AD kiracısı olarak ayarlayın. 
+    d. Azure Stack için **Dizin kiracısını** Azure AD kiracısı olarak ayarlayın. 
 
-    A. **Teklif**' i seçin. Oluşturduğunuz teklifin adını seçin. Abonelik KIMLIĞINI bir yere getirin.
+    e. **Teklif**' i seçin. Oluşturduğunuz teklifin adını seçin. Abonelik KIMLIĞINI bir yere getirin.
 
 ## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>AD FS bir hizmet sorumlusu ve kimlik bilgileri oluşturma
 
@@ -74,7 +75,7 @@ Aşağıdaki Ubuntu Server görüntüsünü Market 'e ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. @No__t girin-0.
+1. `Ubuntu Server` yazın.
 
 1. Sunucunun en yeni sürümünü seçin. Tam sürümü denetleyin ve en yeni sürüme sahip olduğunuzdan emin olun:
     - **Yayımcı**: kurallı
@@ -94,7 +95,7 @@ Market 'ten Kubernetes ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. @No__t girin-0.
+1. `Custom Script for Linux` yazın.
 
 1. Aşağıdaki profille betiği seçin:
    - **Teklif**: Linux 2,0 Için özel betik
@@ -115,9 +116,9 @@ Market 'ten Kubernetes ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. @No__t girin-0.
+1. `Kubernetes` yazın.
 
-1. @No__t-0 ' ı seçin.
+1. `Kubernetes Cluster` öğesini seçin.
 
 1. Indir ' i seçin **.**
 

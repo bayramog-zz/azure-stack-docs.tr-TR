@@ -15,12 +15,12 @@ ms.date: 09/14/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 0b1c28369fb1865778c68040894d100af9ea7fd6
-ms.sourcegitcommit: 09d14eb77a43fd585e7e6be93c32fa427770adb6
+ms.openlocfilehash: 93a835b6d3eff233ccbd421930f9618325126ea4
+ms.sourcegitcommit: 58e1911a54ba249a82fa048c7798dadedb95462b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019188"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73057768"
 ---
 # <a name="what-is-the-aks-engine-on-azure-stack"></a>Azure Stack AKS Altyapısı nedir?
 
@@ -50,7 +50,7 @@ Aşağıdaki senaryolar Azure Stack destek ekibi tarafından desteklenir:
 2.  AKS altyapısı, kümeyi mevcut bir VNET üzerinde dağıtır. Daha fazla bilgi için bkz. [AKS altyapısı ile özel bir sanal ağ kullanma](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/custom-vnet.md).
 3.  [Yükseltme](azure-stack-kubernetes-aks-engine-upgrade.md) ve [ölçeklendirme](azure-stack-kubernetes-aks-engine-scale.md) işlemleri.
 
-AKS altyapısı ve Azure Stack hakkında daha fazla bilgi için bkz. [Azure Stack aks motoru Için destek ilkeleri](azure-stack-kubernetes-ask-engine-support.md).
+AKS altyapısı ve Azure Stack hakkında daha fazla bilgi için bkz. [Azure Stack aks motoru Için destek ilkeleri](azure-stack-kubernetes-aks-engine-support.md).
 
 ## <a name="install-the-aks-engine-and-deploy-a-kubernetes-cluster"></a>AKS altyapısını yükleyip bir Kubernetes kümesi dağıtma
 

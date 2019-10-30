@@ -15,18 +15,18 @@ ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 2c1a762f002e5058e11857117b4210ad0b59e564
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: fdda72e215590c7bbd7d739e2eb46b085fc55405
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277554"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047201"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Azure Stack Kubernetes panosuna erişin 
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti* 
 > [!Note]   
-> Azure Stack Kubernetes önizleme aşamasındadır. Azure Stack bağlantısı kesik bir senaryo şu anda önizleme tarafından desteklenmiyor. Yalnızca geliştirme ve test senaryoları için Market öğesini kullanın.
+> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-kubernetes-aks-engine-overview.md)kullanın.
 
 Kubernetes, temel yönetim işlemleri için kullanabileceğiniz bir Web panosu içerir. Bu pano uygulamalarınızın temel sistem durumunu ve ölçümlerini görüntülemenize, hizmetler oluşturmanıza ve dağıtmanıza ve mevcut uygulamaları düzenlemenize olanak tanır. Bu makalede, Azure Stack üzerinde Kubernetes panosunu ayarlama gösterilmektedir.
 
@@ -102,7 +102,7 @@ Panonun URL 'sini kümenizdeki ana düğümden alabilirsiniz.
     - özel gizli dizi
     - **SFTP-SSH dosya aktarım protokolü** kullanma
 
-2. @No__t-0 ve `/etc/kubernetes/certs/ca.crt` Azure Stack yönetim makinenize kopyalayın.
+2. `/etc/kubernetes/certs/client.pfx` ve `/etc/kubernetes/certs/ca.crt` Azure Stack yönetim makinenize kopyalayın.
 
 3. Dosya konumlarını unutmayın. Betiği konumlarla güncelleştirin ve ardından PowerShell 'i yükseltilmiş bir istem ile açın. Güncelleştirilmiş betiği çalıştırın:  
 

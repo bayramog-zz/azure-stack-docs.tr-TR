@@ -15,23 +15,23 @@ ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: d1ac66074f88ed131623888d8f1aa6ba044686b3
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: a57d1d1520eb09e52e651d65c92314723c3aee4f
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277689"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047231"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Azure Stack Active Directory Federasyon Hizmetleri kullanarak Kubernetes dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 > [!Note]  
-> Azure Stack Kubernetes önizleme aşamasındadır. Azure Stack bağlantısı kesik bir senaryo şu anda önizleme tarafından desteklenmiyor. Yalnızca geliştirme ve test senaryoları için Market öğesini kullanın.
+> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-kubernetes-aks-engine-overview.md)kullanın.
 
 Kubernetes kaynaklarını dağıtmak ve ayarlamak için bu makaledeki adımları izleyebilirsiniz. Active Directory Federasyon Hizmetleri (AD FS) kimlik yönetimi hizmetiniz olduğunda bu adımları kullanın.
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Başlamak için doğru izinlere sahip olduğunuzdan ve Azure Stack uygun olduğundan emin olun.
 
@@ -67,7 +67,7 @@ Kimlik çözümünüz olarak AD FS kullanırken hizmet sorumlunuzu ayarlamak iç
 
 1. [Azure Stack portalını](https://portal.local.azurestack.external)açın.
 
-1. **+ @No__t kaynak oluştur**' u seçin-3**Kubernetes kümesi** **@no__t.** **Oluştur**' u seçin.
+1. **Kubernetes kümesi** > **Işlem** > **kaynak oluştur** ' u seçin. **Oluştur**'u seçin.
 
     ![Çözüm şablonu dağıtma](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 

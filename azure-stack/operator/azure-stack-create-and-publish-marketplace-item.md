@@ -15,12 +15,12 @@ ms.date: 10/25/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-ms.openlocfilehash: 5481cdc7e4ad8dc2b3b3cbbb56a403335ff97524
-ms.sourcegitcommit: 35de1a6e0fb6fe9f938d613f161dc378b3452541
+ms.openlocfilehash: d03049fd6dea5f5d7a10a61a25639cb1de3d67ad
+ms.sourcegitcommit: 58e1911a54ba249a82fa048c7798dadedb95462b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72915210"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73057789"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-marketplace-item"></a>Özel bir Azure Stack Market öğesi oluşturma ve yayımlama
 
@@ -45,11 +45,11 @@ Bu makaledeki örneklerde, Windows veya Linux türünde tek bir VM marketi tekli
 
 3. Galeri paketi aşağıdaki yapıyı içermelidir:
 
-   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png" alt-text="Galeri paketi":::
+   ![Galeri paket yapısının ekran görüntüsü](media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png)
 
    Dağıtım şablonları dosya yapısı aşağıdaki gibi görünür:
 
-   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png" alt-text="Galeri paketi":::
+   ![Dağıtım şablonları yapısının ekran görüntüsü](media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png)
 
 4. Manifest. JSON şablonundaki aşağıdaki vurgulanan değerleri (sayılarla), [özel görüntünüzü karşıya yüklerken](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal)belirttiğiniz değerle değiştirin.
 

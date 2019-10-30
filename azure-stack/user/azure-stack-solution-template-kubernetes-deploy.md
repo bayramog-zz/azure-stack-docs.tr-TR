@@ -15,19 +15,19 @@ ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 74cad0b1f41c5c764bef361f3f521162eec59198
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: 0fc45ae0413fb7e269d8d7347e2279895c234950
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277645"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047157"
 ---
 # <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>Azure Stack ile kapsayıcıları kullanmak için Kubernetes dağıtma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 > [!Note]  
-> Azure Stack Kubernetes önizleme aşamasındadır. Azure Stack bağlantısı kesik bir senaryo şu anda önizleme tarafından desteklenmiyor. Yalnızca geliştirme ve test senaryoları için Market öğesini kullanın.
+> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-kubernetes-aks-engine-overview.md)kullanın.
 
 Kubernetes kaynaklarını tek ve eşgüdümlü bir işlemde dağıtmak ve ayarlamak için bu makaledeki adımları izleyebilirsiniz. Adımlarda Azure Resource Manager çözüm şablonu kullanılır. Azure Stack yüklemeniz hakkında gerekli bilgileri toplamanız, şablonu oluşturmanız ve ardından buluta dağıtmanız gerekir. Azure Stack şablonu, genel Azure 'da sunulan aynı yönetilen AKS hizmetini kullanmaz.
 

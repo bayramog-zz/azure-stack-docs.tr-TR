@@ -16,12 +16,12 @@ ms.date: 10/21/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: 4dd8bd48cfd9c842556cae7c359a805e88754ab0
-ms.sourcegitcommit: 64c18637cafcc38044d139bf35b16422ada8160c
+ms.openlocfilehash: 1e15358f88e7aece62425042536d775b707f567f
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72889834"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047123"
 ---
 # <a name="azure-stack-updates-release-notes"></a>Azure Stack güncelleştirmeler: sürüm notları
 
@@ -119,7 +119,7 @@ Azure Stack düzeltmeler yalnızca Azure Stack tümleşik sistemler için geçer
 Azure Stack 1908 sürümü aşağıdaki düzeltmelere sahip 1907 sürümüne uygulanmalıdır:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hotfix 1.1907.17.54](https://support.microsoft.com/help/4523826)
+- [Azure Stack Hotfix 1.1907.18.56](https://support.microsoft.com/help/4528552)
 
 Azure Stack 1908 güncelleştirmesi, sisteminizin donanım sağlayıcısından **Azure Stack OEM sürüm 2,1 veya üstünü** gerektirir. OEM güncelleştirmeleri, Azure Stack sistem Donanımınıza yönelik sürücü ve bellenim güncelleştirmelerini içerir. OEM güncelleştirmelerini uygulama hakkında daha fazla bilgi için bkz. [Apply Azure Stack özgün ekipman üreticisi güncelleştirmeleri](azure-stack-update-oem.md)
 
@@ -250,7 +250,7 @@ Azure Stack 1907 sürümü aşağıdaki düzeltmelere sahip 1906 sürümüne uyg
 Bu güncelleştirmenin yüklenmesinden sonra, geçerli düzeltmeleri yükleme. Daha fazla bilgi için bkz. [hizmet ilkeniz](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hotfix 1.1907.17.54](https://support.microsoft.com/help/4523826)
+- [Azure Stack Hotfix 1.1907.18.56](https://support.microsoft.com/help/4528552)
 ::: moniker-end
 
 ::: moniker range="azs-1906"

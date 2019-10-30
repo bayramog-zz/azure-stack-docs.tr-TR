@@ -1,5 +1,5 @@
 ---
-title: Azure Stack kullanarak bir Linux Server VM oluşturun | Microsoft Docs
+title: Azure Stack kullanarak bir Linux VM oluşturma | Microsoft Docs
 description: Azure Stack kullanarak bir Linux sunucu VM 'si oluşturun.
 services: azure-stack
 cloud: azure-stack
@@ -12,14 +12,14 @@ ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 7bfb56ef9fcb2795a579321bfa58ded872ed3485
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: 5c3b8d85f5dca0eeb439ca475d4396848d316366
+ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71824371"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73047260"
 ---
-# <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portalını kullanarak bir Linux Server VM oluşturma
+# <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-stack-portal"></a>Hızlı başlangıç: Azure Stack portalını kullanarak bir Linux Server VM oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
@@ -70,7 +70,7 @@ Bir SSH anahtar çifti oluşturmak için:
 
 Azure Stack portalının adresi, bağlandığınız Azure Stack ürüne bağlıdır:
 
-* ASDK için https://portal.local.azurestack.external ' a gidin.
+* ASDK için https://portal.local.azurestack.external gidin.
 
 * Azure Stack tümleşik bir sistem için Azure Stack işletmenizin verdiğiniz URL 'ye gidin.
 
@@ -82,7 +82,7 @@ Azure Stack portalının adresi, bağlandığınız Azure Stack ürüne bağlıd
    
    ![Linux sunucusunu seçin](media/azure-stack-quick-linux-portal/select.png)
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. VM bilgilerini yazın. **Kimlik doğrulama türü**için **SSH ortak anahtarı**' nı seçin, kaydettiğiniz SSH ortak anahtarını yapıştırın ve **Tamam**' ı seçin.
 
@@ -105,7 +105,7 @@ Azure Stack portalının adresi, bağlandığınız Azure Stack ürüne bağlıd
 
 1. **Özet** SAYFASıNDA, VM dağıtımını başlatmak için **Tamam** ' ı seçin.  
 
-   ![Dağıtma](media/azure-stack-quick-linux-portal/deploy.png)
+   ![Kurulum](media/azure-stack-quick-linux-portal/deploy.png)
 
 ## <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
@@ -119,7 +119,7 @@ Azure Stack portalının adresi, bağlandığınız Azure Stack ürüne bağlıd
 
 1. **Kategori** bölmesinde, yukarı kaydırarak **oturum**' ı seçin.
 
-1. **Ana bilgisayar adı (veya IP adresi)** kutusunda, Azure Stack portalında gösterilen bağlantı dizesini yapıştırın. Bu örnekte, dize *asadmin@192.168.102.34* ' dir.
+1. **Ana bilgisayar adı (veya IP adresi)** kutusunda, Azure Stack portalında gösterilen bağlantı dizesini yapıştırın. Bu örnekte, dize *asadmin@192.168.102.34* .
 
 1. VM için bir oturum açmak üzere **Aç** ' ı seçin.
 
@@ -163,7 +163,7 @@ Ağ güvenlik grubu (NSG) gelen ve giden trafiğin güvenliğini sağlar. Azure 
 
 NGıNX yüklü ve bağlantı noktası 80, VM 'niz üzerinde açık olduğunda, VM 'nin genel IP adresini kullanarak Web sunucusuna erişebilirsiniz. (Genel IP adresi, VM 'nin **genel bakış** sayfasında gösterilir.)
 
-Bir Web tarayıcısı açın ve *http://\<Genel IP adresi >* sayfasına gidin.
+Bir Web tarayıcısı açın ve *http://\<genel IP adresi >* sayfasına gidin.
 
 ![NGıNX Web sunucusu karşılama sayfası](media/azure-stack-quick-linux-portal/linux-05.PNG)
 
