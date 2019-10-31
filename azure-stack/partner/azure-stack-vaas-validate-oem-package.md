@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 69bb9c89793789280debe13a142f4c96470f7c31
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 20d5d2d962fbe85db5d4725c864defe84c2c152c
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418320"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167352"
 ---
 # <a name="validate-oem-packages"></a>OEM paketlerini doğrula
 
@@ -37,7 +37,7 @@ Tamamlanmış bir çözüm doğrulamasının belleniminde veya sürücülerinde 
 
 Paketi doğrulamak için **paket doğrulama** iş akışını kullanırken bir **Azure Storage blob 'una**URL sağlamanız gerekir. Bu blob, güncelleştirme sürecinin bir parçası olarak yüklenecek test imzalı OEM paketidir. Kurulum sırasında oluşturduğunuz Azure Depolama hesabını kullanarak blobu oluşturun (bkz. [doğrulamanız hizmet kaynakları olarak ayarlama](azure-stack-vaas-set-up-resources.md)).
 
-### <a name="prerequisite-provision-a-storage-container"></a>Koşul Depolama kapsayıcısı sağlama
+### <a name="prerequisite-provision-a-storage-container"></a>Önkoşul: depolama kapsayıcısı sağlama
 
 Paket Blobları için depolama hesabınızda bir kapsayıcı oluşturun. Bu kapsayıcı, tüm paket doğrulama çalışmalarınız için kullanılabilir.
 
@@ -51,10 +51,10 @@ Paket Blobları için depolama hesabınızda bir kapsayıcı oluşturun. Bu kaps
 
 ### <a name="upload-package-to-storage-account"></a>Paketi depolama hesabına yükle
 
-1. Doğrulamak istediğiniz paketi hazırlayın. Bu, içeriği `.zip` [bir OEM paketi oluşturma](azure-stack-vaas-create-oem-package.md)bölümünde açıklanan yapıyla eşleşmesi gereken bir dosyadır.
+1. Doğrulamak istediğiniz paketi hazırlayın. Bu, içeriği [BIR OEM paketi oluşturma](azure-stack-vaas-create-oem-package.md)bölümünde açıklanan yapıyla eşleşmesi gereken bir `.zip` dosyasıdır.
 
     > [!NOTE]
-    > Lütfen `.zip` içeriğin `.zip` dosyanın köküne yerleştirildiğinden emin olun. Pakette hiçbir alt klasör olmaması gerekir.
+    > Lütfen `.zip` içeriğinin `.zip` dosyasının köküne yerleştirildiğinden emin olun. Pakette hiçbir alt klasör olmaması gerekir.
 
 1. [Azure Portal](https://portal.azure.com), paket kapsayıcısını seçin ve menü çubuğunda **karşıya yükle** ' yi seçerek paketi yükleyin.
 
@@ -78,26 +78,26 @@ VaaS için gereken en düşük erişim düzeyi, bir paket doğrulama iş akış�
 
 Paketlerinize erişim verme seçenekleri, en az erişim için en az erişime göre sıralanır.
 
-#### <a name="option-1-generate-a-blob-sas-url"></a>Seçenek 1: Blob SAS URL 'SI oluştur
+#### <a name="option-1-generate-a-blob-sas-url"></a>Seçenek 1: blob SAS URL 'SI oluşturma
 
 Depolama kapsayıcının erişim düzeyi **Private**olarak ayarlandıysa, kapsayıcının kapsayıcıya veya bloblarına genel okuma erişimini etkinleştirmediğinden bu seçeneği kullanın.
 
 > [!NOTE]
-> Bu yöntem, *etkileşimli* testler için çalışmayacaktır. Bkz [. seçenek 2: Kapsayıcı SAS URL 'SI](#option-2-construct-a-container-sas-url)oluşturun.
+> Bu yöntem, *etkileşimli* testler için çalışmayacaktır. Bkz. [2. seçenek: KAPSAYıCı SAS URL 'si oluşturma](#option-2-construct-a-container-sas-url).
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınıza gidin ve paketinizi içeren. zip sayfasına gidin.
 
 2. Bağlam menüsünden **SAS oluştur** ' u seçin.
 
-3. Izinlerle **Oku** öğesini seçin.
+3. Izinlerle **Oku** öğesiniseçin.
 
 4. **Başlangıç** saatini geçerli saate ve **bitiş zamanı** ' nı **başlangıç zamanından**en az 48 saat olacak şekilde ayarlayın. Aynı pakete sahip başka iş akışları oluşturuyorsanız, test ettiğiniz sürenin uzunluğu için **bitiş saatini** artırmayı düşünün.
 
-5. Seçin **blob SAS belirteci ve URL üretmek**.
+5. **BLOB SAS belirteci oluştur ve URL 'yi**seçin.
 
 Portala paket blobu URL 'Leri sağlarken **BLOB SAS URL 'sini** kullanın.
 
-#### <a name="option-2-construct-a-container-sas-url"></a>Seçenek 2: Kapsayıcı SAS URL 'SI oluşturun
+#### <a name="option-2-construct-a-container-sas-url"></a>2\. seçenek: kapsayıcı SAS URL 'SI oluşturun
 
 Depolama kapsayıcının erişim düzeyi **özel** olarak ayarlandıysa ve *etkileşimli* teste bir paket blobu URL 'si sağlamanız gerekiyorsa bu seçeneği kullanın. Bu URL, iş akışı düzeyinde de kullanılabilir.
 
@@ -112,9 +112,9 @@ Depolama kapsayıcının erişim düzeyi **özel** olarak ayarlandıysa ve *etki
 1. Başlangıç zamanından itibaren geçerli saat ve **bitiş zamanı** için en az 14 gün olarak **Başlangıç saati** **seçin.** Aynı paketle diğer testleri çalıştırıyorsanız, test süresinin uzunluğu için **bitiş saatini** artırmayı düşünün. **Bitiş zamanından** sonra Vaas aracılığıyla zamanlanan tüm testler başarısız olur ve yenı bir SAS oluşturulması gerekir.
 
 1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    Biçim aşağıdaki gibi görünmelidir:`https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
+    Biçim aşağıdaki gibi görünmelidir: `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
 
-1. Oluşturulan SAS URL 'sini, paket kapsayıcısını, `{containername}`ve paket `{mypackage.zip}`Blobun adını aşağıdaki şekilde içerecek şekilde değiştirin:`https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
+1. Oluşturulan SAS URL 'sini, paket kapsayıcısını, `{containername}`ve paket Blobun adını (`{mypackage.zip}`) içerecek şekilde değiştirin: `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
 
     Portala paket blobu URL 'Leri sağlarken bu değeri kullanın.
 
@@ -148,24 +148,30 @@ Kimliği doğrulanmamış istemcilerin tek tek bloblara erişmesine izin vermek 
 
 5. Microsoft 'tan imza gerektiren test imzalı OEM paketine Azure Depolama Blobu URL 'sini girin. Yönergeler için bkz. [VaaS için paket blobu URL 'Si oluşturma](#generate-package-blob-url-for-vaas).
 
-6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+6. AzureStack güncelleştirme paketi klasörünü DVD üzerindeki yerel bir dizine kopyalayın. ' AzureStack güncelleştirme paketi klasör yolu ' için üst dizin yolunu girin
 
-7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+7. Yukarıda oluşturulan OEM paketi klasörünü DVD üzerindeki yerel bir dizine kopyalayın. ' OEM güncelleştirme paketi klasör yolu ' için üst dizin yolunu girin
+
+    > [!NOTE]
+    > AzureStack Update ve OEM Update 'i **2 ayrı** üst dizine kopyalayın.
+
+8. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
     > Ortam parametreleri, iş akışı oluşturulduktan sonra değiştirilemez.
 
-8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+9. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
 
-9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+10. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     Testler özet sayfasına yönlendirilirsiniz.
 
 ## <a name="required-tests"></a>Gerekli testler
 
-OEM paket doğrulaması için aşağıdaki testler gereklidir:
+Aşağıdaki testlerin, OEM paketi doğrulaması için belirtilen sırayla çalıştırılması gerekir:
 
-- OEM Uzantı paketi doğrulaması
-- Bulut benzetimi altyapısı
+- 1\. adım-aylık AzureStack güncelleştirme doğrulaması
+- Adım 2-OEM Uzantı paketi doğrulaması
+- 3\. adım-OEM-Cloud simülasyon altyapısı
 
 ## <a name="run-package-validation-tests"></a>Paket doğrulama testlerini Çalıştır
 
@@ -177,42 +183,22 @@ OEM paket doğrulaması için aşağıdaki testler gereklidir:
     > Mevcut bir örnek üzerinde bir doğrulama testinin zamanlanması, portalda eski örnek yerine yeni bir örnek oluşturur. Eski örnek için Günlükler korunur, ancak portaldan erişilebilir olmayacaktır.  
     > Bir sınama başarıyla tamamlandıktan sonra, **zamanlama** eylemi devre dışı bırakılır.
 
-2. Testi çalıştıracak aracıyı seçin. Yerel test yürütme aracıları ekleme hakkında daha fazla bilgi için bkz. [Yerel aracıyı dağıtma](azure-stack-vaas-local-agent.md).
+2. Paket doğrulaması için, **gerekli testleri**listelenen sırayla çalıştırırsınız.
 
-3. OEM Uzantı paketi doğrulamasını gerçekleştirmek için, bağlam menüsünden **zamanla** ' yı seçerek test örneğini zamanlamaya yönelik bir istem açın.
+    > [!CAUTION]
+    > VaaS, testleri zamanlandığı sırada çalıştırır. Testlerin belirtilen sırada zamanlanmaları gerekir.
 
-4. Test parametrelerini gözden geçirin ve ardından **Gönder** ' i seçerek OEM Uzantı paketi doğrulamasını yürütme için zamanlayın.
+3. Testi çalıştıracak aracıyı seçin. Yerel test yürütme aracıları ekleme hakkında daha fazla bilgi için bkz. [Yerel aracıyı dağıtma](azure-stack-vaas-local-agent.md).
 
-    OEM Uzantı paketi doğrulaması iki el ile iki adıma ayrılır: Azure Stack Update ve OEM Update.
+4. Test çalıştırmasını zamanlamak için, bağlam menüsünden **zamanlama** ' yı seçerek test örneğini zamanlamaya yönelik bir istem açın.
 
-   1. **Seç** Ön denetim betiğini yürütmek için Kullanıcı arabiriminde "Çalıştır". Bu, yaklaşık 5 dakika süren ve eylem gerektirmeyen otomatikleştirilmiş bir sınamadır.
+5. Testi zamanlamak için test parametrelerini gözden geçirin ve ardından **Gönder** ' i seçin.
 
-   1. Ön denetim betiği tamamlandıktan sonra, el ile adımı gerçekleştirin: Azure Stack portalını kullanarak en son kullanılabilir Azure Stack güncelleştirmesini **yükler** .
+6. Bir sonraki testi planlamadan önce testin tamamlanmasını beklemeniz gerekmez. Tüm **gerekli** testleri yukarıda belirtilen sırayla zamanlayın.
 
-   1. **Çalıştır** Damgada test-AzureStack. Herhangi bir başarısızlık oluşursa, teste ve ilgili kişiyle [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com)devam etmez.
+7. **Gerekli** testlerin sonuçlarını gözden geçirin.
 
-       Test-AzureStack komutunu çalıştırma hakkında daha fazla bilgi için bkz. [Azure Stack sistem durumunu doğrulama](../operator/azure-stack-diagnostic-test.md).
-
-   1. **Seç** "İleri", postcheck betiğini yürütmek için. Bu otomatikleştirilmiş bir sınamadır ve Azure Stack güncelleştirme işleminin sonunu işaretler.
-
-   1. **Seç** "Çalıştır" komutu, OEM güncelleştirmesi için önceden denetim betiğini yürütmek üzere.
-
-   1. Ön denetim tamamlandığında, el ile adımı gerçekleştirin: Portal aracılığıyla OEM uzantısı paketini **yükler** .
-
-   1. **Çalıştır** Damgada test-AzureStack.
-
-      > [!NOTE]
-      > Daha önce olduğu gibi, teste devam etmez ve başarısız olursa [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) test ve iletişim kurun. Bu adım, sizin için bir yeniden dağıtım kaydedileceği için önemlidir.
-
-   1. **Seç** "İleri", postcheck betiğini yürütmek için. Bu, OEM güncelleştirme adımının sonunu işaretler.
-
-   1. Testin sonunda kalan tüm soruları yanıtlayın ve "Gönder" **seçeneğini belirleyin** .
-
-   1. Bu, etkileşimli testin sonunu işaretler.
-
-5. OEM Uzantı paketi doğrulaması sonucunu gözden geçirin. Sınama başarılı olduktan sonra, bulut benzetimi altyapısını yürütme için zamanlayın.
-
-Bir paket imzalama isteği göndermek için, bu [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) çalıştırmadan ilişkili çözüm adını ve paket doğrulama adını gönderin.
+Bir paket imzalama isteği göndermek için, bu çalıştırma ile ilişkili çözüm adı ve paket doğrulama adı [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

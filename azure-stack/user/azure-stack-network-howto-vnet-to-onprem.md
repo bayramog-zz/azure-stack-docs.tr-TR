@@ -9,14 +9,16 @@ ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: c11d5ad563ff673cfaf9e28cea7373bbc6e551aa
-ms.sourcegitcommit: b72729305234e13c65de3771cb08678d46ba1348
+ms.openlocfilehash: 340f9d868c854560019899f9a4d38a484c973f7f
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72543811"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167283"
 ---
 # <a name="setup-vpn-gateway-for-azure-stack-using-fortigate-nva"></a>FortiGate NVA kullanarak Azure Stack için VPN Gateway kurma
+
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 Bu makalede, Azure Stack bir VPN bağlantısının nasıl oluşturulacağı açıklanır. VPN ağ geçidi, Azure Stack ve uzak VPN ağ geçidinde sanal ağınız arasında şifrelenmiş trafik gönderen bir sanal ağ geçidi türüdür. Aşağıdaki yordam, bir kaynak grubu içinde bir ağ sanal gereci olan FortiGate NVA ile bir VNET dağıtır. Ayrıca, FortiGate NVA 'da IPSec VPN ayarlama adımlarını da sağlar.
 
@@ -88,7 +90,7 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 
 3. **Tamam**’ı seçin.
 
-4. Fortigate NVA için genel IP 'yi yapılandırın:
+4. FortiGate NVA için genel IP 'yi yapılandırın:
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image8.png)
 
@@ -116,7 +118,7 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image11.png)
 
-5. *Evet*' i seçin.
+5. *Evet*’i seçin.
 
 6. Yeni bir yol eklemek için **Ekle** ' yi seçin.
 

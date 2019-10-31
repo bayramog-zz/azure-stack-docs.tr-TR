@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b1a658b428d13cdd12c16b767430f87a80e89fdc
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: cc2299f32f02c4a825424309943d3f27d0fab6fb
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418375"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167197"
 ---
 # <a name="deploy-the-local-agent"></a>Yerel aracıyı dağıtma
 
@@ -33,8 +33,8 @@ Doğrulama testlerini çalıştırmak için hizmet olarak doğrulama (VaaS) yere
 
 Yerel aracıyı dağıtmak için:
 
-1. Yerel aracıyı yükler.
-2. Sağlamlık denetimleri yapın.
+1. Yerel aracıyı indirip yükleyin.
+2. Testleri başlatmadan önce sağlamlık denetimleri yapın.
 3. Yerel aracıyı çalıştırın.
 
 ## <a name="download-and-start-the-local-agent"></a>Yerel aracıyı indir ve Başlat
@@ -52,76 +52,93 @@ Makinenizin aşağıdaki ölçütleri karşıladığından emin olun:
 - Minimum 200 GB disk alanı
 - İnternet 'e yönelik kararlı ağ bağlantısı
 
-### <a name="download-and-install-the-agent"></a>Aracısını indirme ve yükleme
+### <a name="download-and-install-the-local-agent"></a>Yerel aracıyı indirme ve yükleme
 
 1. Testleri çalıştırmak için kullanacağınız makinede, yükseltilmiş bir istemde Windows PowerShell 'i açın.
-2. Yerel aracıyı indirmek için aşağıdaki komutu çalıştırın:
+2. Yerel Aracı bağımlılıklarını indirip yüklemek ve ortak görüntü deposu (PIR) görüntülerini (OS VHD) Azure Stack ortamınıza kopyalamak için aşağıdaki komutu çalıştırın.
 
     ```powershell
-    Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "OnPremAgent.zip"
-    Expand-Archive -Path ".\OnPremAgent.zip" -DestinationPath VaaSOnPremAgent -Force
-    Set-Location VaaSOnPremAgent\lib\net46
-    ```
+    # Review and update the following five parameters
+    $RootFolder = "c:\VaaS"
+    $CloudAdmindUserName = "<Cloud admin user name>"
+    $CloudAdminPassword = "<Cloud admin password>"
+    $AadServiceAdminUserName = "<AAD service admin user name>"
+    $AadServiceAdminPassword = "<AAD service admin password>"
 
-3. Yerel Aracı bağımlılıklarını yüklemek için aşağıdaki komutu çalıştırın:
+    if (-not(Test-Path($RootFolder))) {
+        mkdir $RootFolder
+    }
+    Set-Location $RootFolder
+    Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "$rootFolder\OnPremAgent.zip"
+    Expand-Archive -Path "$rootFolder\OnPremAgent.zip" -DestinationPath "$rootFolder\VaaSOnPremAgent" -Force
+    Set-Location "$rootFolder\VaaSOnPremAgent\lib\net46"
 
-    ```powershell
-    $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
+    $cloudAdminCredential = New-Object System.Management.Automation.PSCredential($cloudAdmindUserName, (ConvertTo-SecureString $cloudAdminPassword -AsPlainText -Force))
+    $getStampInfoUri = "https://ASAppGateway:4443/ServiceTypeId/4dde37cc-6ee0-4d75-9444-7061e156507f/CloudDefinition/GetStampInformation" 
+    $stampInfo = Invoke-RestMethod -Method Get -Uri $getStampInfoUri -Credential $cloudAdminCredential -ErrorAction Stop
+    $serviceAdminCreds = New-Object System.Management.Automation.PSCredential $aadServiceAdminUserName, (ConvertTo-SecureString $aadServiceAdminPassword -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
-    Install-VaaSPrerequisites -AadTenantId $AadTenantId `
-                              -ServiceAdminCreds $ServiceAdminCreds `
-                              -ArmEndpoint https://adminmanagement.$ExternalFqdn `
-                              -Region $Region
+    Install-VaaSPrerequisites -AadTenantId $stampInfo.AADTenantID `
+                            -ServiceAdminCreds $serviceAdminCreds `
+                            -ArmEndpoint $stampInfo.AdminExternalEndpoints.AdminResourceManager `
+                            -Region $stampInfo.RegionName
     ```
 
-    **Parametreler**
+> [!Note]  
+> Install-Vaaspyeniden yönlendirme cmdlet 'i büyük VM görüntü dosyalarını indirir. Yavaş ağ hızına karşılaşıyorsanız, dosyaları yerel dosya sunucunuza indirebilir ve test environemnt 'nize el ile sanal makine görüntüleri ekleyebilirsiniz. Daha fazla bilgi için bkz. [yavaş ağ bağlantısını işleme](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity) .
 
-    | Parametre | Açıklama |
-    | --- | --- |
-    | aadServiceAdminUser | Azure AD kiracınız için genel yönetici kullanıcı. Örneğin, vaasadmin@contoso.onmicrosoft.comolabilir. |
-    | aadServiceAdminPassword | Genel yönetici kullanıcısının parolası. |
-    | AadTenantId | Hizmet olarak doğrulamaya kayıtlı Azure hesabı için Azure AD kiracı KIMLIĞI. |
-    | ExternalFqdn | Yapılandırma dosyasından tam etki alanı adını alabilirsiniz. Yönergeler için bkz. [hizmet olarak Azure Stack doğrulamasında Iş akışı ortak parametreleri](azure-stack-vaas-parameters.md). |
-    | Bölge | Azure AD kiracınızın bölgesi. |
+**Parametreler**
 
-Komutu ortak görüntü deposu (PIR) görüntüsünü indirir ve bir Azure Blob depolama alanından Azure Stack depolama alanına kopyalar.
+| Parametre | Açıklama |
+| --- | --- |
+| AadServiceAdminUser | Azure AD kiracınız için genel yönetici kullanıcı. Örneğin, vaasadmin@contoso.onmicrosoft.comolabilir. |
+| AadServiceAdminPassword | Genel yönetici kullanıcısının parolası. |
+| CloudAdminUserName | Ayrıcalıklı uç nokta dahilinde izin verilen komutlara erişebilen ve çalıştıran bulut Yöneticisi Kullanıcı. Örneğin, AzusreStack\CloudAdmin. olabilir Daha fazla bilgi için [buraya](azure-stack-vaas-parameters.md) bakın. |
+| CloudAdminPassword | Bulut Yöneticisi hesabı için parola.|
 
-![Önkoşulları indir](media/installingprereqs.png)
+![Önkoşulları indir](media/installing-prereqs.png)
 
-> [!Note]
-> Bu görüntüleri indirirken yavaş ağ hızına karşılaşıyorsanız, bunları yerel bir paylaşıma ayrı olarak indirin ve **-LocalPackagePath** *fileshareorlocalpath*parametresini belirtin. [Bir hizmet olarak doğrulama sorunlarını gidermek](azure-stack-vaas-troubleshoot.md)için [yavaş ağ bağlantısını işleme](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity) bölümünde PIR indirilebilirliğinizi daha fazla rehberlik bulabilirsiniz.
-
-## <a name="checks-before-starting-the-tests"></a>Testleri başlatmadan önce denetimler
+## <a name="perform-sanity-checks-before-starting-the-tests"></a>Testleri başlatmadan önce sağlamlık denetimleri gerçekleştirme
 
 Testler uzak işlemleri çalıştırır. Testleri çalıştıran makinenin Azure Stack uç noktalarına erişimi olması gerekir, aksi takdirde testler çalışmaz. VaaS yerel aracısını kullanıyorsanız, aracının çalıştırılacağı makineyi kullanın. Aşağıdaki denetimleri çalıştırarak makinenizin Azure Stack uç noktalara erişimi olup olmadığını kontrol edebilirsiniz:
 
-1. Taban URI 'sine ulaşılabildiğini denetleyin. Bir komut istemi veya bash kabuğu açın ve aşağıdaki komutu çalıştırarak ortamınızın dış FQDN 'si `<EXTERNALFQDN>` ile değiştirin:
+1. Taban URI 'sine ulaşılabildiğini denetleyin. Bir komut istemi veya bash kabuğu açın ve aşağıdaki komutu çalıştırarak `<EXTERNALFQDN>`, ortamınızın dış FQDN 'siyle değiştirin:
 
     ```bash
     nslookup adminmanagement.<EXTERNALFQDN>
     ```
 
-2. Bir Web tarayıcısı açın ve bu portala `https://adminportal.<EXTERNALFQDN>` gidip gelmediğini denetlemek için adresine gidin.
+2. Bir Web tarayıcısı açın ve ma portalına ulaşılmadığını denetlemek için `https://adminportal.<EXTERNALFQDN>` gidin.
 
 3. Test geçişi oluştururken belirtilen Azure AD hizmet yöneticisi adı ve parola değerlerini kullanarak oturum açın.
 
 4. [Azure Stack için doğrulama testi çalıştırma](../operator/azure-stack-diagnostic-test.md)bölümünde açıklandığı gibi **Test-azurestack** PowerShell cmdlet 'ini çalıştırarak sistemin sistem durumunu kontrol edin. Herhangi bir testi başlatmadan önce tüm uyarıları ve hataları düzeltin.
 
-## <a name="run-the-agent"></a>Aracıyı çalıştırma
+## <a name="run-the-local-agent"></a>Yerel aracıyı Çalıştır
 
 1. Windows PowerShell 'i yükseltilmiş bir istemde açın.
 
 2. Şu komutu çalıştırın:
 
     ```powershell
-    .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
+   # Review and update the following five parameters
+    $RootFolder = "c:\VAAS"
+    $CloudAdmindUserName = "<Cloud admin user name>"
+    $CloudAdminPassword = "<Cloud admin password>"
+    $VaaSUserId = "<VaaS user ID>"
+    $VaaSTenantId = "<VaaS tenant ID>"
+
+    Set-Location "$rootFolder\VaaSOnPremAgent\lib\net46"
+    .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u $VaaSUserId -t $VaaSTenantId -x $CloudAdmindUserName -y $CloudAdminPassword
     ```
 
       **Parametreler**  
 
     | Parametre | Açıklama |
     | --- | --- |
-    | Vaasuserıd | Vaas portalında oturum açmak için kullanılan Kullanıcı kimliği (örneğin, Kullanıcı adı\@contoso.com) |
+    | CloudAdminUserName | Ayrıcalıklı uç nokta dahilinde izin verilen komutlara erişebilen ve çalıştıran bulut Yöneticisi Kullanıcı. Örneğin, AzusreStack\CloudAdmin. olabilir Daha fazla bilgi için [buraya](azure-stack-vaas-parameters.md) bakın. |
+    | CloudAdminPassword | Bulut Yöneticisi hesabı için parola.|
+    | Vaasuserıd | VaaS portalında oturum açmak için kullanılan Kullanıcı KIMLIĞI (örneğin, Kullanıcı adı\@Contoso.com) |
     | VaaSTenantId | Hizmet olarak doğrulamaya kayıtlı Azure hesabı için Azure AD kiracı KIMLIĞI. |
 
     > [!Note]  
@@ -129,9 +146,9 @@ Testler uzak işlemleri çalıştırır. Testleri çalıştıran makinenin Azure
 
 Bildirilen bir hata görmüyorsanız, yerel aracı başarılı olmuştur. Aşağıdaki örnek metin konsol penceresinde görünür.
 
-`Heartbeat Callback at 11/8/2016 4:45:38 PM`
+`Heartbeat was sent successfully.`
 
-![Aracı başlatıldı](media/startedagent.png)
+![Aracı başlatıldı](media/started-agent.png)
 
 Bir aracı adıyla benzersiz olarak tanımlanır. Varsayılan olarak, başlatıldığı yerden makinenin tam etki alanı adı (FQDN) adını kullanır. Odağı değiştirmek diğer tüm işlemleri durakladıkça pencerede yanlışlıkla seçim yapmadan kaçınmak için pencereyi en aza indirmiş olmanız gerekir.
 
@@ -139,4 +156,4 @@ Bir aracı adıyla benzersiz olarak tanımlanır. Varsayılan olarak, başlatıl
 
 - [Hizmet olarak doğrulama sorunlarını giderme](azure-stack-vaas-troubleshoot.md)
 - [Hizmet anahtar kavramları olarak doğrulama](azure-stack-vaas-key-concepts.md)
-- [Hızlı Başlangıç: İlk testinizi zamanlamak için bir hizmet portalı olarak doğrulamayı kullanın](azure-stack-vaas-schedule-test-pass.md)
+- [Hızlı başlangıç: ilk testinizi zamanlamak için bir hizmet portalı olarak doğrulamayı kullanın](azure-stack-vaas-schedule-test-pass.md)

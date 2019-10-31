@@ -257,6 +257,8 @@
           href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Siteden siteye VPN bağlantısı oluşturma
           href: azure-stack-create-vpn-connection-one-node.md
+        - name: Commkasası Market öğesi teklifi
+          href: azure-stack-network-offer-backup-commvault.md
     - name: Hizmet sunma
       items:
         - name: 'Hizmet, plan, teklif, aboneliğe genel bakış'

@@ -215,6 +215,8 @@
                       href: azure-stack-kubernetes-aks-engine-upgrade.md
                     - name: AKS altyapısının sorunlarını giderme
                       href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+                    - name: AKS altyapısını Market öğesinden taşıma
+                      href: azure-stack-kubernetes-aks-engine-dvm.md
                 - name: Market öğesi
                   items:
                     - name: Bir Kubernetes kümesi dağıtın
@@ -275,8 +277,8 @@
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
         - name: VNET eşlemesi
           href: azure-stack-network-howto-vnet-to-vnet.md
-        - name: Iscsı depolama 'ya bağlanma
-          href: azure-stack-network-howto-iscsi-storage.md
+        - name: Abonelik kaynaklarını Kopyala
+          href: azure-stack-network-howto-backup-replicator.md
 - name: Kavramlar
   items:
     - name: Karma bulut desenleri

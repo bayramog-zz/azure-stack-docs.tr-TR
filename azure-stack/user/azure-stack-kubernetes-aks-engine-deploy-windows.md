@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 10/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 9c19047629d95ba1ffe7c0fe6ab2da5c745576a0
-ms.sourcegitcommit: 12034a1190d52ca2c7d3f05c8c096416120d8392
+ms.lastreviewed: 10/30/2019
+ms.openlocfilehash: c646f8229b5360aed12c9cd8070a00bf38ca3e01
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037933"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167313"
 ---
 # <a name="install-the-aks-engine-on-windows-in-azure-stack"></a>AKS altyapısını Windows üzerinde Azure Stack
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 Bir Kubernetes kümesini dağıtmak ve yönetmek üzere AKS altyapısını barındırmak için Azure Stack bir Windows makinesini kullanabilirsiniz. Bu makalede, hem bağlı hem de bağlantısı kesilen Azure Stack örnekleri için, istemci sanal makinesini hazırlama, yüklemeyi denetleme ve istemci sanal makinesini ASDK üzerinde ayarlama hakkında inceliyoruz.
 
@@ -41,16 +41,16 @@ AKS motoru, Kubernetes kümenizi dağıtmak ve yönetmek için kullanılan bir k
 
 Kubernetes kümenizi Internet 'e bağlı bir Azure Stack yönetmek için istemci sanal makinesini yükleyebilirsiniz.
 
-1. Azure Stack bir Windows sanal makinesi oluşturun. Yönergeler için bkz. [Hızlı başlangıç: Azure Stack portalını kullanarak bir Windows Server VM oluşturun @ no__t-0.
+1. Azure Stack bir Windows sanal makinesi oluşturun. Yönergeler için bkz. [hızlı başlangıç: Azure Stack portalını kullanarak Windows Server VM oluşturma](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal).
 2. Sanal makinenize bağlanın.
 3. [PowerShell yönergelerini kullanarak Chocolatey 'Yi yükler.](https://chocolatey.org/install#install-with-powershellexe).. 
 
-    Chocolaty Web sitesine göre: Chocolatey, Windows için bir paket yöneticisi olan apt-get veya yıum, ancak Windows için. İhtiyacınız olan uygulamaları ve araçları hızlı bir şekilde yüklemek için merkezi olmayan bir çerçeve olacak şekilde tasarlanmıştır. Bu, şu anda PowerShell kullanan NuGet altyapısına kurulmuştur. Bu, paketleri distroden kapıya, hata, bilgisayar adına teslim etmek için odaklanmaktadır.
-4. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutu çalıştırırken, `--version v0.41.2` sürümünü belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
+    Chocolaty Web sitesine göre: Chocolatey, Windows için bir paket yöneticisi olan apt-get veya yum gibi, ancak Windows için. İhtiyacınız olan uygulamaları ve araçları hızlı bir şekilde yüklemek için merkezi olmayan bir çerçeve olacak şekilde tasarlanmıştır. Bu, şu anda PowerShell kullanan NuGet altyapısına kurulmuştur. Bu, paketleri distroden kapıya, hata, bilgisayar adına teslim etmek için odaklanmaktadır.
+4. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutu çalıştırırken `--version v0.41.2`sürümünü belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
 5. Yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırın ve sürüm numarasını ekleyin:
 
     ```PowerShell  
-        choco install aks-engine --version v0.41.2 -y
+        choco install aks-engine --version 0.41.2 -y
     ```
 
 > [!Note]  
@@ -60,11 +60,11 @@ Kubernetes kümenizi Internet 'e bağlı bir Azure Stack yönetmek için istemci
 
 Kubernetes kümenizi Internet bağlantısı kesilen bir Azure Stack yönetmek için istemci sanal makinesini yükleyebilirsiniz.
 
-1.  Internet erişimi olan bir makineden GitHub [Azure/aks-Engine](https://github.com/Azure/aks-engine/releases/latest)sayfasına gidin. Bir Windows makinesi için Arşiv (*. tar. gz) indirin, örneğin, `aks-engine-v0.38.8-windows-amd64.tar.gz`.
+1.  Internet erişimi olan bir makineden GitHub [Azure/aks-Engine](https://github.com/Azure/aks-engine/releases/latest)sayfasına gidin. Windows makinesi için bir arşivi (*. tar. gz) (örneğin, `aks-engine-v0.38.8-windows-amd64.tar.gz`) indirin.
 
 2.  AKS altyapısı ikilisini içeren arşiv dosyasını (*. tar. gz) karşıya yüklemek için Azure Stack örneğiniz için bir depolama hesabı oluşturun. Azure Depolama Gezgini kullanımı hakkında yönergeler için, bkz. [Azure Stack Azure Depolama Gezgini](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se).
 
-3. Azure Stack bir Windows sanal makinesi oluşturun. Yönergeler için bkz. [Hızlı başlangıç: Azure Stack portalını kullanarak bir Windows Server VM oluşturma @ no__t-0
+3. Azure Stack bir Windows sanal makinesi oluşturun. Yönergeler için bkz [. hızlı başlangıç: Azure Stack portalını kullanarak Windows Server VM oluşturma](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
 
 4.  Arşiv dosyasını (*. tar. gz) karşıya yüklediğiniz Azure Stack depolama hesabı blobu URL 'sinden, dosyayı Yönetim sanal makinenize indirin. Komut isteminizden erişimi olan bir dizine Arşivi ayıklayın.
 

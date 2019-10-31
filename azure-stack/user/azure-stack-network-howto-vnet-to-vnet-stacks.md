@@ -9,14 +9,16 @@ ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: b68b0119e30d39b126aa43c2c8ed4c859073663e
-ms.sourcegitcommit: b2d19e12a50195bb8925879ee75c186c9604f313
+ms.openlocfilehash: cf9239f57423b54f6cd7f093779f5c7afa7745b1
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71962193"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167242"
 ---
 # <a name="how-to-establish-a-vnet-to-vnet-connection-in-azure-stack-with-fortinet-fortigate-nva"></a>Fortinet FortiGate NVA ile Azure Stack 'da VNET 'e VNet bağlantısı kurma
+
+*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 Bu makalede, bir ağ sanal gereci olan Fortinet FortiGate NVA kullanarak bir Azure Stack sanal ağı başka bir Azure Stack VNET 'e bağlayacaksınız.
 
@@ -41,9 +43,9 @@ Bu makalede, kiracıların iki ortamda yalnızca bir VPN bağlantısı kurma ola
 
 Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler özetlenmektedir:
 
-### <a name="deployment-one-forti1"></a>Dağıtım bir: Forti1
+### <a name="deployment-one-forti1"></a>Dağıtım One: Forti1
 
-| FortiGate örnek adı | Forti1 |
+| FortiGate örnek adı | forti1 |
 |-----------------------------------|---------------------------|
 | KLG Lisansı/sürümü | 6.0.3 |
 | FortiGate Yönetici Kullanıcı adı | fortiadmin |
@@ -55,7 +57,7 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 | İç VNET alt ağ adı | forti1-ınsidesubnet |
 | İç VNET alt ağ öneki | 172.16.1.0/24 * |
 | FortiGate NVA 'nın VM boyutu | Standart F2s_v2 |
-| Ortak IP adresi adı | forti1-publicip1 |
+| Genel IP adresi adı | forti1-publicip1 |
 | Genel IP adresi türü | Statik |
 
 ### <a name="deployment-two-forti2"></a>Dağıtım iki: Forti2
@@ -72,11 +74,11 @@ Aşağıdaki tabloda, bu dağıtımlarda başvuru için kullanılan parametreler
 | İç VNET alt ağ adı | Forti2-ınsidesubnet |
 | İç VNET alt ağ öneki | 172.17.1.0/24 * |
 | FortiGate NVA 'nın VM boyutu | Standart F2s_v2 |
-| Ortak IP adresi adı | Forti2-publicip1 |
+| Genel IP adresi adı | Forti2-publicip1 |
 | Genel IP adresi türü | Statik |
 
 > [!Note]
-> \*, yukarıdaki Azure Stack VIP havuzu dahil olmak üzere şirket içi ağ ortamıyla herhangi bir şekilde çakışırsa, farklı bir adres alanları ve alt ağ ön ekleri kümesi seçin. Ayrıca, adres aralıklarının birbiriyle çakışmadığından emin olun. * *
+> \*, yukarıdaki bir Azure Stack VIP havuzu dahil olmak üzere şirket içi ağ ortamıyla herhangi bir şekilde çakışırsa, farklı bir adres alanları ve alt ağ ön ekleri kümesi seçin. Ayrıca, adres aralıklarının birbiriyle çakışmadığından emin olun. * *
 
 ## <a name="deploy-the-fortigate-ngfw-marketplace-items"></a>FortiGate NGFW Market öğelerini dağıtma
 
@@ -86,7 +88,7 @@ Azure Stack ortamları için bu adımları yineleyin.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image5.png)
 
-1. **Kaynak oluştur** ' u seçin ve `FortiGate` ' i arayın.
+1. **Kaynak oluştur** ' u seçin ve `FortiGate` arayın.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image6.png)
 
@@ -112,7 +114,7 @@ Azure Stack ortamları için bu adımları yineleyin.
 
 8. **Tamam** ' ı ve ardından **Tamam**' ı seçin.
 
-9. **Oluştur**’u seçin.
+9. **Oluştur**'u seçin.
 
 Dağıtım yaklaşık 10 dakika sürer. Artık diğer Azure Stack ortamında diğer FortiGate NVA ve VNET dağıtımını oluşturmak için adımları yineleyebilirsiniz.
 
@@ -134,11 +136,11 @@ Her iki dağıtım için de, forti1-RG1 ve forti2-RG1 için bu adımları gerçe
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image11.png)
 
-5. **Evet**' i seçin.
+5. **Evet**’i seçin.
 
 6. **Add (Ekle)** seçeneğini belirleyin.
 
-7. @No__t-1 veya `to-forti2` **yolunu** adlandırın. Farklı bir IP aralığı kullanıyorsanız, IP aralığınızı kullanın.
+7. **Yolu** `to-forti1` veya `to-forti2`olarak adlandırın. Farklı bir IP aralığı kullanıyorsanız, IP aralığınızı kullanın.
 
 8. Girmesini
     - forti1: `172.17.0.0/16`  
@@ -180,9 +182,9 @@ Hem forti1 NVA hem de forti2 NVA için aşağıdaki adımları takip edin:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image14.png)
 
-5.  **System** > **üretici yazılımını**seçin.
+5.  **System**  > **bellenimi**seçin.
 
-6.  En son üretici yazılımını gösteren kutuyu seçin (örneğin, `FortiOS v6.2.0 build0866`).
+6.  En son üretici yazılımını gösteren kutuyu seçin; örneğin, `FortiOS v6.2.0 build0866`.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image15.png)
 
@@ -190,9 +192,9 @@ Hem forti1 NVA hem de forti2 NVA için aşağıdaki adımları takip edin:
 
 8.  NVA, bellenimini en son yapıya güncelleştirir ve yeniden başlatır. İşlem yaklaşık beş dakika sürer. FortiGate web konsoluna tekrar oturum açın.
 
-10.  **VPN** > **IPSec Sihirbazı**' na tıklayın.
+10.  **VPN**  > **IPSec Sihirbazı**' na tıklayın.
 
-11. VPN **oluşturma SIHIRBAZıNDA**VPN için bir ad girin (örneğin, `conn1`).
+11. VPN için bir ad girin, örneğin, **VPN oluşturma Sihirbazı**'nda `conn1`.
 
 12. **Bu sıtenın NAT 'nin arkasında olduğunu**seçin.
 
@@ -216,14 +218,14 @@ Hem forti1 NVA hem de forti2 NVA için aşağıdaki adımları takip edin:
 18. **Yerel arabirim**için **PORT2** öğesini seçin.
 
 19. Yerel alt ağ aralığını girin:
-    - forti1: 172.16.0.0/16
-    - forti2: 172.17.0.0/16
+    - forti1:172.16.0.0/16
+    - forti2:172.17.0.0/16
 
     Farklı bir IP aralığı kullanıyorsanız, IP aralığınızı kullanın.
 
 20. Şirket içi VPN cihazından Bağlanılacak olan şirket içi ağı temsil eden uygun uzak alt ağ (lar) ı girin.
-    - forti1: 172.16.0.0/16
-    - forti2: 172.17.0.0/16
+    - forti1:172.16.0.0/16
+    - forti2:172.17.0.0/16
 
     Farklı bir IP aralığı kullanıyorsanız, IP aralığınızı kullanın.
 
@@ -231,7 +233,7 @@ Hem forti1 NVA hem de forti2 NVA için aşağıdaki adımları takip edin:
 
 21. **Oluştur**’u seçin
 
-22. **Ağ** > **arabirimleri**' ni seçin.
+22. **Ağ**  > **arabirimlerini**seçin.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image19.png)
 
@@ -248,11 +250,11 @@ Diğer NVA için adımları tekrarlayın.
 
 Yukarıdaki **her ikisi için de** NVA 'lar:
 
-1.  Forti2 FortiGate Web konsolunda,  > **IPSec Izleyicisini** **izlemeyi**seçin. 
+1.  Forti2 FortiGate Web konsolunda, > **IPSec Izleyicisini** **izlemeyi** seçin. 
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image20.png)
 
-2.  @No__t-0 ' ı vurgulayın ve **getir**@no__t 2.**aşama 2**' yi seçin.
+2.  `conn1` vurgulayın ve tüm 2 **.** aşama > **seçicilerini**seçin.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image21.png)
 

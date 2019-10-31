@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: d42b1f161d1b74633c4e9924e45677a57b3493e1
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.lastreviewed: 10/28/2019
+ms.openlocfilehash: 0ac21cc388b55be6548f9fdba6c8985dd2316c4e
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277813"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167142"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Hizmet olarak doğrulama için sürüm notları
 
@@ -66,7 +66,7 @@ Azure Stack aylık güncelleştirme doğrulama iş akışını çalıştırıyor
 
 - VaaS önkoşulları
 
-    `Install-VaaSPrerequisites` artık bulut Yöneticisi kimlik bilgileri gerektirmez. Bu cmdlet 'in en son sürümünü çalıştırıyorsanız, önkoşulları yüklemek için gözden geçirilmiş komutlar için [aracıyı indirme ve yükleme](azure-stack-vaas-local-agent.md#download-and-install-the-agent) bölümüne bakın. Komutlar şunlardır:
+    `Install-VaaSPrerequisites` artık bulut Yöneticisi kimlik bilgileri gerektirmez. Bu cmdlet 'in en son sürümünü çalıştırıyorsanız, önkoşulları yüklemeye yönelik düzeltilen komutlar için bkz. [Yerel aracıyı indirme ve yükleme](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) . Komutlar şunlardır:
 
     ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -83,7 +83,7 @@ Azure Stack aylık güncelleştirme doğrulama iş akışını çalıştırıyor
 
 - VaaS önkoşulları ve VHD güncelleştirmeleri
 
-    `Install-VaaSPrerequisites` artık paket doğrulaması sırasında bir sorunu gidermek için bulut Yöneticisi kimlik bilgileri gerektirir. [Aracıyı indirme ve yükleme](azure-stack-vaas-local-agent.md#download-and-install-the-agent) belgelerindeki belgeler, aşağıdakiler ile güncelleştirilmiştir:
+    `Install-VaaSPrerequisites` artık paket doğrulaması sırasında bir sorunu gidermek için bulut Yöneticisi kimlik bilgileri gerektirir. [Yerel aracıyı indirme ve yükleme](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) belgelerindeki belgeler, aşağıdakiler ile güncelleştirilmiştir:
 
     ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -100,11 +100,11 @@ Azure Stack aylık güncelleştirme doğrulama iş akışını çalıştırıyor
 
 - Yerel Aracı güncelleştirmesi
 
-    Yerel aracının önceki sürümü hizmetin geçerli 4.0.0 sürümüyle uyumlu değil. Tüm kullanıcılar kendi yerel aracılarını güncelleştirmelidir. En Yeni aracıyı yükleme yönergeleri için bkz. [aracıyı indirme ve yükleme](azure-stack-vaas-local-agent.md#download-and-install-the-agent) .
+    Yerel aracının önceki sürümü hizmetin geçerli 4.0.0 sürümüyle uyumlu değil. Tüm kullanıcılar kendi yerel aracılarını güncelleştirmelidir. En Yeni aracıyı yükleme hakkında yönergeler için bkz. [Yerel aracıyı indirme ve yükleme](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) .
 
 - PowerShell Otomasyonu güncelleştirmesi
 
-    @No__t-0 PowerShell betiklerine yapılan ve komut dosyası paketlerinin en son sürümünü gerektiren değişiklikler yapıldı. Betik paketinin en son sürümünü yükleme yönergeleri için bkz. [test geçiş iş akışını başlatma](azure-stack-vaas-automate-with-powershell.md#launch-the-test-pass-workflow) .
+    Komut dosyası paketlerinin en son sürümünü gerektiren `LaunchVaaSTests` PowerShell betiklerine yapılan değişiklikler yapılmıştır. Betik paketinin en son sürümünü yükleme yönergeleri için bkz. [test geçiş iş akışını başlatma](azure-stack-vaas-automate-with-powershell.md#launch-the-test-pass-workflow) .
 
 - Hizmet portalı olarak doğrulama
 
@@ -118,7 +118,7 @@ Azure Stack aylık güncelleştirme doğrulama iş akışını çalıştırıyor
 
   - Etkileşimli Özellik doğrulaması
 
-    Belirli özellikler için odaklanmış geri bildirim sağlama özelliği artık test geçiş iş akışında kullanılabilir. @No__t-0 testi, belirli güncelleştirmelerin doğru şekilde uygulanmış olup olmadığını denetler ve ardından geri bildirim toplar.
+    Belirli özellikler için odaklanmış geri bildirim sağlama özelliği artık test geçiş iş akışında kullanılabilir. `OEM Update on Azure Stack 1806 RC Validation 5.1.4.0` test, belirli güncelleştirmelerin doğru şekilde uygulanmış olup olmadığını denetler ve ardından geri bildirim toplar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

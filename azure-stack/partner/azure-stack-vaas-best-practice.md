@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 10/28/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6b4e74cce10522fc241c7662ed381793bd264093
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 930a8ea40fde7a021a893e5289d16fa73398300f
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418572"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167275"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>Hizmet olarak doğrulama için en iyi uygulamalar
 
@@ -48,9 +48,9 @@ Aynı donanım SKU 'sunda iş akışlarını çalıştırırken aynı VaaS çöz
 
 Tüm VaaS iş akışı çalıştırmaları için tutarlı bir adlandırma kuralı kullanın. Örneğin, aşağıdaki yapı özelliklerinden aşağıda gösterildiği gibi bir iş akışı adı oluşturun:
 
-|Yapı numarası (birincil) | Date | Çözüm boyutu | İş Akışı Adı
+|Yapı numarası (birincil) | Tarih | Çözüm boyutu | İş akışı adı
 |---|---|---| ---|
-1808 | 081518 | 4 DÜĞÜM | 1808_081518_4NODE
+1808 | 081518 | 4 düğüm | 1808_081518_4NODE
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

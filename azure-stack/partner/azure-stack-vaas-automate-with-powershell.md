@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 10/28/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5a49685da010fd7188fd04514a17b91dff7404f7
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 7c6da84700c73e0976214bd999dfb3ca4ba0ee47
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418439"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167334"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>PowerShell ile Azure Stack doğrulamayı otomatikleştirme
 
@@ -32,7 +32,7 @@ Hizmet olarak doğrulama (VaaS), **Launchvaastests. ps1** betiğini kullanarak t
 Bu betik şu şekilde kullanılabilir:
 
 > [!div class="checklist"]
-> * Ön koşulları yükle
+> * Ön koşulları yükleme
 > * Yerel aracıyı yükleyip başlatma
 > * *Tümleştirme*, *işlev*, *güvenilirlik* gibi bir test kategorisi başlatın
 > * Test sonuçlarını raporla
@@ -77,7 +77,7 @@ Bu betik şu şekilde kullanılabilir:
     | Vaasaccounttenantıd | VaaS kiracı GUID 'niz. |
     | VaaSSolutionName | Test geçişinin çalıştırılacağı VaaS çözümünün adı. |
     | VaaSTestPassName | Oluşturulacak VaaS testi geçiş iş akışının adı. |
-    | VaaSTestCategories | `Integration`, `Functional`, veya. `Reliability`. Birden çok değer kullanırsanız, her değeri virgülle ayırın.  |
+    | VaaSTestCategories | `Integration`, `Functional`veya. `Reliability`. Birden çok değer kullanırsanız, her değeri virgülle ayırın.  |
     | ServiceAdminUserName | Azure Stack hizmeti yönetici hesabınız.  |
     | ServiceAdminPassword | Azure Stack hizmeti parolanız.  |
     | TenantAdminUserName | Birincil kiracının Yöneticisi.  |

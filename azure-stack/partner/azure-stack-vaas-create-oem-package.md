@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 10/28/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7e866187c81b488cc90f7ddaa443db4868ba4d9
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 2ee5a873a6281ed5d71db05b05abd15986043676
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68417755"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167377"
 ---
 # <a name="create-an-oem-package"></a>OEM paketi oluşturma
 
@@ -34,11 +34,11 @@ Oluşturulduktan ve doğrulandıktan sonra, OEM uzantısı paketi VaaS 'de kulla
 
 1. Paket için aşağıdaki içeriği tanımla:
     - Paket içeriğini içeren bir ZIP dosyası
-    - Paket içeriğinin kökündeki Metadata `oemMetadata.xml`. xml dosyasının içeriğiyle aynı olması gereken adlı bir bildirim dosyası.
+    - Paket içeriğinin kökündeki Metadata. xml dosyasının içeriğiyle aynı olması gereken `oemMetadata.xml`adlı bir bildirim dosyası.
 
 2. İçerik dosyalarını seçin ve içeriklerden bir ZIP dosyası oluşturun:
 
-    ![ZIP dosya içerikleri](media/vaas-create-oem-package-1.png) ![öğe içeriğini sıkıştır](media/vaas-create-oem-package-2.png)
+    ![ZIP dosya içerikleri](media/vaas-create-oem-package-1.png) ![öğe içeriklerini sıkıştır](media/vaas-create-oem-package-2.png)
 
 3. Elde edilen dosyayı, tanımlamak için yeterince açıklayıcı olacak şekilde yeniden adlandırın.
 

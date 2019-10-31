@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 10/28/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1ffb66bb1abe9f2ffb64162f834c682df2aaa609
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: a79b6e6f34c8293febf30a9cb48ddbfae9c99816
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418405"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167316"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Hizmet anahtar kavramları olarak doğrulama
 
@@ -37,7 +37,7 @@ Bir VaaS çözümü, belirli bir donanım ürün reçetesinden (BoM) Azure Stack
 3. Çözüm için bir ad girin. Adlandırma önerileri için bkz. [VaaS çözümleri Için adlandırma kuralı](azure-stack-vaas-best-practice.md#naming-convention-for-vaas-solutions).
 4. Çözümü oluşturmak için **Kaydet** ' i seçin.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>İş akışları
 
 Bir VaaS iş akışı, VaaS çözümünün bağlamı içinde çalışır. Azure Stack dağıtımının işlevlerini gerçekleştiren bir test paketi kümesini temsil eder. Bir Azure Stack çözümünün her dağıtım veya yazılım güncelleştirmesi için bir iş akışı oluşturulmalıdır.
 
@@ -46,7 +46,7 @@ Bir VaaS iş akışı, VaaS çözümünün bağlamı içinde çalışır. Azure 
 ![VaaS iş akışı kutucukları](media/tile_all-workflows.png)
 
 > [!NOTE]
-> **Paket doğrulama** iş akışı şu anda iki senaryoyu desteklemektedir: [OEM paketlerini doğrulayın](azure-stack-vaas-validate-oem-package.md) ve [Microsoft 'Tan yazılım güncelleştirmelerini doğrulayın](azure-stack-vaas-validate-microsoft-updates.md).
+> **Paket doğrulama** iş akışı şu anda iki senaryoyu DESTEKLEMEKTEDIR: [OEM paketlerini doğrulama](azure-stack-vaas-validate-oem-package.md) ve [Microsoft 'tan yazılım güncelleştirmelerini doğrulama](azure-stack-vaas-validate-microsoft-updates.md).
 
 İş akışı türleri hakkında daha fazla bilgi için bkz. [Azure Stack Için hizmet olarak doğrulama nedir?](azure-stack-vaas-overview.md).
 
@@ -54,8 +54,8 @@ Bir VaaS iş akışı, VaaS çözümünün bağlamı içinde çalışır. Azure 
 
 1. Çözümler panosunda yeni bir çözüm oluşturun veya var olan bir çözümü seçin. Bu, iş akışı kutucuklarını yeniler ve etkinleştirir.
 2. Yeni bir iş akışı oluşturmak için herhangi bir kutucukta **Başlat** ' ı seçin. Her iş akışına özgü bilgiler için aşağıdaki makalelere bakın:
-    - Test geçişi: [Hızlı Başlangıç: İlk testinizi zamanlamak için bir hizmet portalı olarak doğrulamayı kullanın](azure-stack-vaas-schedule-test-pass.md)
-    - Çözüm doğrulaması: [Yeni Azure Stack çözümünü doğrulama](azure-stack-vaas-validate-solution-new.md)
+    - Test geçişi: [hızlı başlangıç: ilk testinizi zamanlamak için bir hizmet portalı olarak doğrulamayı kullanın](azure-stack-vaas-schedule-test-pass.md)
+    - Çözüm doğrulaması: [Yeni bir Azure Stack çözümü doğrulama](azure-stack-vaas-validate-solution-new.md)
     - Paket doğrulaması (aylık güncelleştirme): [Microsoft 'tan yazılım güncelleştirmelerini doğrulama](azure-stack-vaas-validate-microsoft-updates.md)
     - Paket doğrulaması (paket imzalama): [OEM paketlerini doğrula](azure-stack-vaas-validate-oem-package.md)
 

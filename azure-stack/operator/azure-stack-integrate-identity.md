@@ -10,12 +10,12 @@ ms.date: 05/10/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: c7d0396f01970366696309445efb911e2e189162
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: 4d4ece9946d257bce5cf19876b940cf4d828872d
+ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277191"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73167177"
 ---
 # <a name="integrate-ad-fs-identity-with-your-azure-stack-datacenter"></a>AD FS kimliğini Azure Stack veri merkezinizle tümleştirin
 
@@ -42,11 +42,11 @@ Grafik yapılandırması için, var olan Active Directory okuma iznine sahip bir
 
 Son adım için, varsayılan sağlayıcı aboneliği için yeni bir sahip yapılandırılır. Bu hesabın Azure Stack yönetici portalında oturum açarken tüm kaynaklara tam erişimi vardır.
 
-Gereklilik
+Gereksinimler:
 
 |Bileşen|Gereksinim|
 |---------|---------|
-|Çıkarılamıyor|Microsoft Active Directory 2012/2012 R2/2016|
+|Graph|Microsoft Active Directory 2012/2012 R2/2016|
 |AD FS|Windows Server 2012/2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>Grafik tümleştirmeyi ayarlama
@@ -116,7 +116,7 @@ Azure Stack grafik hizmeti, hedef Active Directory ormanında oturum açma istek
 
 Azure Stack grafik hizmeti, hedef Active Directory iletişim kurmak için aşağıdaki protokolleri ve bağlantı noktalarını kullanır:
 
-|Tür|Bağlantı Noktası|Protokol|
+|Tür|Bağlantı noktası|Protokol|
 |---------|---------|---------|
 |LDAP|389|TCP & UDP|
 |LDAP SSL|636|TCP|
@@ -131,7 +131,7 @@ Aşağıdaki bilgiler Otomasyon parametrelerinin girişi olarak gereklidir:
 |---------|---------|---------|---------|
 |Customadfname|AD FS sağlayıcı adı|Talep sağlayıcısının adı.<br>AD FS giriş sayfasında bu şekilde görünür.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|AD FS meta veri URI 'SI|Federasyon meta veri bağlantısı.| https: \//AD01. contoso. com/federationmetadata/2007-06/federationmetadata. xml |
-|SigningCertificateRevocationCheck|Yok|CRL denetimini atlamak için isteğe bağlı parametre.|Yok.|
+|SigningCertificateRevocationCheck|Yok|CRL denetimini atlamak için isteğe bağlı parametre.|Hiçbiri|
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Azure Stack 'da talep sağlayıcı güveni yapılandırmak için Otomasyonu tetikleme
@@ -263,7 +263,7 @@ Komutları el ile çalıştırmaya karar verirseniz, aşağıdaki adımları izl
    ```
 
     > [!Note]  
-    > AD FS dağıtımınız için desteklenen Windows tümleşik kimlik doğrulaması (WIA) Kullanıcı Aracısı dizeleri güncel olmayabilir ve en son istemcileri desteklemek için bir güncelleştirme gerekebilir. WIA destekli Kullanıcı Aracısı dizelerini güncelleştirme hakkında daha fazla bilgi edinmek [için, WIA desteklemeyen cihazlar için intranet Forms tabanlı kimlik doğrulaması yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)makalesinde bulabilirsiniz.<br><br>Form tabanlı kimlik doğrulama ilkesini etkinleştirme adımları için bkz. [kimlik doğrulama Ilkelerini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies).
+    > Windows tümleşik kimlik doğrulaması (WIA) desteklenen Kullanıcı Aracısı dizeleri AD FS dağıtımınız için güncel olmayabilir ve en son istemcileri desteklemek için bir güncelleştirme gerekebilir. WIA destekli Kullanıcı Aracısı dizelerini güncelleştirme hakkında daha fazla bilgi edinmek [için, WIA desteklemeyen cihazlar için intranet Forms tabanlı kimlik doğrulaması yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia)makalesinde bulabilirsiniz.<br><br>Form tabanlı kimlik doğrulama ilkesini etkinleştirme adımları için bkz. [kimlik doğrulama Ilkelerini yapılandırma](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies).
 
 3. Bağlı olan taraf güvenini eklemek için, aşağıdaki Windows PowerShell komutunu AD FS örneğiniz veya bir grup üyesi üzerinde çalıştırın. AD FS uç noktasını güncelleştirdiğinizden emin olun ve adım 1 ' de oluşturulan dosyanın üzerine gelin.
 
