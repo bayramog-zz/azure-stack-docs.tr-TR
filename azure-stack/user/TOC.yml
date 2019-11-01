@@ -215,8 +215,6 @@
                       href: azure-stack-kubernetes-aks-engine-upgrade.md
                     - name: AKS altyapısının sorunlarını giderme
                       href: azure-stack-kubernetes-aks-engine-troubleshoot.md
-                    - name: AKS altyapısını Market öğesinden taşıma
-                      href: azure-stack-kubernetes-aks-engine-dvm.md
                 - name: Market öğesi
                   items:
                     - name: Bir Kubernetes kümesi dağıtın
@@ -227,6 +225,8 @@
                       href: azure-stack-solution-template-kubernetes-adfs.md
                     - name: Kubernetes panosunu etkinleştirme
                       href: azure-stack-solution-template-kubernetes-dashboard.md
+                    - name: AKS altyapısını Market öğesinden taşıma
+                      href: azure-stack-kubernetes-aks-engine-dvm.md
                     - name: Kubernetes kümesi sorunlarını giderme
                       href: azure-stack-solution-template-kubernetes-trouble.md
             - name: Bilişsel hizmetler dağıtma
@@ -271,14 +271,36 @@
           href: azure-stack-solution-sql-ha.md
     - name: Temel desenleri dağıtma
       items:
+        - name: VNET eşlemesi
+          items:
+            - name: FortiGate ile VNet eşlemesi
+              href: azure-stack-network-howto-vnet-to-vnet.md
+            - name: VM 'Ler ile VNet eşlemesi
+              href: azure-stack-network-howto-vnet-peering.md
         - name: VPN 'yi şirket içi olarak ayarlama
           href: azure-stack-network-howto-vnet-to-onprem.md
         - name: VNET 'ten VNET 'e bağlantı
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
-        - name: VNET eşlemesi
-          href: azure-stack-network-howto-vnet-to-vnet.md
-        - name: Abonelik kaynaklarını Kopyala
-          href: azure-stack-network-howto-backup-replicator.md
+        - name: Veri merkezini genişletme
+          href: azure-stack-network-howto-extend-datacenter.md
+        - name: Iscsı depolama 'ya bağlanma
+          href: azure-stack-network-howto-iscsi-storage.md
+        - name: Tünelleri ayarlama
+          items:
+            - name: Birden çok siteden siteye VPN ayarlama
+              href: network-howto-vpn-tunnel.md
+            - name: VPN tüneli oluşturma (GRE)
+              href: network-howto-vpn-tunnel-gre.md
+            - name: VPN tüneli oluşturma (ıPSEC)
+              href: network-howto-vpn-tunnel-ipsec.md
+        - name: Yedekleme ve kurtarma
+          items:
+            - name: Sanal makineyi Commkasasıyla Azure Stack yedekleme
+              href: azure-stack-network-howto-backup-commvault.md
+            - name: Depolama hesaplarınızı Azure Stack yedekleme
+              href: azure-stack-network-howto-backup-storage.md
+            - name: Abonelik kaynaklarını Kopyala
+              href: azure-stack-network-howto-backup-replicator.md
 - name: Kavramlar
   items:
     - name: Karma bulut desenleri

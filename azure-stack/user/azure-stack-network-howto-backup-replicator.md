@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/29/2019
-ms.openlocfilehash: 97d8b417869faa84423df78bde4029b8d18f0741
-ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
+ms.openlocfilehash: 5ef02dbe7683b4c7364811452af59013476687fd
+ms.sourcegitcommit: cc5c965b13bc3dae9a4f46a899e602f41dc66f78
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73167558"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73236252"
 ---
 # <a name="how-to-back-up-resources-using-the-azure-stack-subscription-replicator"></a>Azure Stack abonelik çoğaltıcısından yararlanarak kaynakları yedekleme
 
@@ -186,9 +186,9 @@ Aracı, kaynak türü olarak **Tümü** ile çalıştırılırken, çoğaltma ve
             -Ağ arabirimi özel IP adresi  
             -Ağ güvenlik grubu yapılandırması  
             -Kullanılabilirlik kümesi yapılandırması  
-
-            > ![Note]  
-            > Only creates managed disks for OS disk and data disks, no support for using storage accounts currently
+ 
+> [!Note]  
+> Yalnızca işletim sistemi diski ve veri diskleri için yönetilen diskler oluşturur. Şu anda depolama hesaplarının kullanılmasına yönelik destek yoktur. 
 
 ### <a name="limitations"></a>Sınırlamalar
 

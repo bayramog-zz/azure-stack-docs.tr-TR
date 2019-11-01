@@ -19,7 +19,7 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Yönetim portalını kullanma
+    - name: Yönetici portalını kullanma
       href: azure-stack-manage-portals.md
 - name: Öğreticiler
   items:
