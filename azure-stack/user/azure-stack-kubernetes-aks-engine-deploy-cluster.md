@@ -15,12 +15,12 @@ ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/10/2019
-ms.openlocfilehash: 933a2a0bc37be4c5a1b5c92fd334917668761879
-ms.sourcegitcommit: 4a2318ad395b2a931833ccba4430d8d04cdd8819
+ms.openlocfilehash: e4f10cb3e5d96942e5fe32b0d8fe3a04cf921521
+ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72780446"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73595192"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack"></a>Bir Kubernetes kümesini AKS altyapısı ile Azure Stack dağıtma
 
@@ -52,15 +52,15 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     ```
 
     > [!Note]  
-    > Nano yüklü değilse, Ubuntu: `sudo apt-get install nano` ' a Nano yükleme yapabilirsiniz.
+    > Nano yüklü değilse, Ubuntu: `sudo apt-get install nano`'e nano yükleme yapabilirsiniz.
 
-3.  Kubernetes-azurestack. json dosyasında `orchestratorRelease` bulun. Desteklenen Kubernetes sürümlerinden birini seçin. Örneğin, 1,11, 1,12, 1,13, 1,14. Sürümler genellikle güncelleştirmelerdir. X. xx. x yerine x. xx olarak sürümü belirtin. Geçerli sürümlerin bir listesi için bkz. [desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). Aşağıdaki AKS motoru komutunu çalıştırarak desteklenen sürümü bulabilirsiniz:
+3.  Kubernetes-azurestack. json dosyasında `orchestratorRelease`bulun. Desteklenen Kubernetes sürümlerinden birini seçin. Örneğin, 1,14, 1,15. Sürümler genellikle güncelleştirmelerdir. X. xx. x yerine x. xx olarak sürümü belirtin. Geçerli sürümlerin bir listesi için bkz. [desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). Aşağıdaki AKS motoru komutunu çalıştırarak desteklenen sürümü bulabilirsiniz:
 
     ```bash
     aks-engine get-versions
     ```
 
-4.  @No__t_0 bulun ve kiracı portalının URL 'sini sağlayın. Örneğin, `https://portal.local.azurestack.external`. 
+4.  `customCloudProfile` bulun ve kiracı portalının URL 'sini sağlayın. Örneğin, `https://portal.local.azurestack.external`. 
 
 5. AD FS kullanıyorsanız `"identitySystem":"adfs"` ekleyin. Örneğin,
 
@@ -74,7 +74,7 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     > [!Note]  
     > Kimlik sisteminiz için Azure AD kullanıyorsanız, **ıdentitysystem** alanını eklemeniz gerekmez.
 
-6. @No__t_0 bulun ve kiracı portalının URL 'sini sağlayın. Örneğin, `https://portal.local.azurestack.external`.
+6. `portalURL` bulun ve kiracı portalının URL 'sini sağlayın. Örneğin, `https://portal.local.azurestack.external`.
 
 7.  Dizi `masterProfile`, aşağıdaki alanları ayarlayın:
 
@@ -111,7 +111,7 @@ API modelinizde gerekli tüm değerleri topladıktan sonra kümenizi oluşturabi
 
 Azure Stack operatörünüzden şunları yapın:
 
-- Sistemin sistem durumunu doğrulayın, `Test-AzureStack` ve OEM satıcınızın donanım izleme aracını çalıştırmayı önerin.
+- Sistemin sistem durumunu doğrulayın, `Test-AzureStack` çalıştırmayı ve OEM satıcınızın donanım izleme aracını önerin.
 - Bellek, depolama ve genel IP 'Ler gibi kaynaklar dahil sistem kapasitesini doğrulayın.
 - Kullanmayı planladığınız VM sayısı için hala yeterli alan olduğunu doğrulayabilmeniz için aboneliğinizle ilişkili kotanın ayrıntılarını sağlayın.
 
@@ -121,9 +121,9 @@ Bir kümeyi dağıtmaya devam edin:
 
     | Parametre | Örnek | Açıklama |
     | --- | --- | --- |
-    | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack `AzureStackCloud` ' ın kullanacağı AKS motoruna göstermek için. |
+    | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack `AzureStackCloud`kullanılacak AKS altyapısını göstermek için. |
     | kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
-    | location | Yerel | Azure Stack için bölge adı. ASDK için bölge `local` olarak ayarlanır. |
+    | location | Yerel | Azure Stack için bölge adı. ASDK için bölge `local`olarak ayarlanır. |
     | resource-group | kuin-RG | Yeni bir kaynak grubunun adını girin veya var olan bir kaynak grubunu seçin. Kaynak adının alfasayısal ve küçük harf olması gerekir. |
     | api modeli | ./Kubernetes-azurestack.exe JSON | Küme yapılandırma dosyasının yolu veya API modeli. |
     | çıkış dizini | kuin-RG | Çıkış dosyası `apimodel.json` ve diğer oluşturulan dosyaları içerecek şekilde dizin adını girin. |
@@ -146,11 +146,11 @@ Bir kümeyi dağıtmaya devam edin:
     --identity-system adfs # required if using AD FS
     ```
 
-2.  Bir nedenden dolayı, çıkış dizini oluşturulduktan sonra yürütme başarısız olursa, sorunu düzeltebilir ve komutunu yeniden çalıştırabilirsiniz. Dağıtımı yeniden çalıştırıyorsanız ve daha önce aynı çıkış dizinini kullandıysanız, AKS altyapısı dizinin zaten var olduğunu belirten bir hata döndürür. Var olan dizinin üzerine şu bayrağı kullanarak yazabilirsiniz: `--force-overwrite`.
+2.  Bir nedenden dolayı, çıkış dizini oluşturulduktan sonra yürütme başarısız olursa, sorunu düzeltebilir ve komutunu yeniden çalıştırabilirsiniz. Dağıtımı yeniden çalıştırıyorsanız ve daha önce aynı çıkış dizinini kullandıysanız, AKS altyapısı dizinin zaten var olduğunu belirten bir hata döndürür. Şu bayrağı kullanarak var olan dizinin üzerine yazabilirsiniz: `--force-overwrite`.
 
 3.  AKS motoru küme yapılandırmasını güvenli, şifrelenmiş bir konuma kaydedin.
 
-    @No__t_0 dosyasını bulun. Güvenli bir konuma kaydedin. Bu dosya, diğer tüm AKS motoru işlemlerinizin içinde girdi olarak kullanılacaktır.
+    `apimodel.json`dosyasını bulun. Güvenli bir konuma kaydedin. Bu dosya, diğer tüm AKS motoru işlemlerinizin içinde girdi olarak kullanılacaktır.
 
     Oluşturulan `apimodel.json`, giriş API modelinde kullandığınız hizmet sorumlusu, gizli anahtar ve SSH ortak anahtarını içerir. Ayrıca, diğer tüm işlemleri gerçekleştirmek için AKS altyapısının gerek duyduğu tüm diğer meta verilere sahiptir. Kaybederseniz, AKS motoru kümeyi yapılandıramaz.
 
@@ -177,7 +177,7 @@ Kümenizi denetlemek için Held ile MySQL dağıtarak kümenizi doğrulayın.
     helm install stable/mysql
     ```
 
-5.  Testi temizlemek için MySQL dağıtımı için kullanılan adı bulun. Aşağıdaki örnekte ad `wintering-rodent` ' dır. Sonra silin. 
+5.  Testi temizlemek için MySQL dağıtımı için kullanılan adı bulun. Aşağıdaki örnekte ad `wintering-rodent`. Sonra silin. 
 
     Aşağıdaki komutları çalıştırın:
 

@@ -15,12 +15,12 @@ ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/28/2019
-ms.openlocfilehash: 49684cb1821a5014e984a8e177f881be13123829
-ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
+ms.openlocfilehash: 7c2dfd33db3847f386136922716b0ee35c61ce75
+ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73047137"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73595280"
 ---
 # <a name="troubleshoot-the-aks-engine-on-azure-stack"></a>Azure Stack üzerindeki AKS altyapısının sorunlarını giderme
 
@@ -36,7 +36,7 @@ Azure Stack üzerinde AKS altyapısını dağıtma veya bunlarla çalışırken 
 
 ### <a name="try-gofish"></a>Gofsi kullanmayı deneyin
 
-Yükleme adımları başarısız olursa, Gofsi paket yöneticisini kullanarak yüklemeyi deneyin. [Gofsi](https://gofi.sh) , kendisini platformlar arası Homebrew olarak açıklar.
+Önceki yükleme adımlarınız başarısız olduysa, AKS altyapısını, Gofsi paket yöneticisini kullanarak yükleyebilirsiniz. [Gofsi](https://gofi.sh) , kendisini platformlar arası Homebrew olarak açıklar.
 
 #### <a name="install-the-aks-engine-with-gofish-on-linux"></a>Linux 'ta Gofsi ile AKS altyapısını yükler
 
@@ -62,7 +62,7 @@ Yükleme adımları başarısız olursa, Gofsi paket yöneticisini kullanarak y�
 
     ```PowerShell
     Set-ExecutionPolicy Bypass -Scope Process -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
+    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
     ```
 
 2.  AKS altyapısını Gofsi ile yüklemek için aynı oturumda aşağıdaki komutu çalıştırın:
@@ -126,13 +126,13 @@ Gereksinimler:
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.tar.gz
-    tar xvzf diagnosis.tar.gz -C ./
+    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.1/diagnosis-v0.1.1.tar.gz
+    tar xvf diagnosis-v0.1.1.tar.gz -C ./
     ```
 
 2. `getkuberneteslogs.sh` betiği için gereken parametreleri arayın. Betik aşağıdaki parametreleri kullanacaktır:
 
-    | Parametre | Açıklama | Gereklidir | Örnek |
+    | Parametre | Açıklama | Gerekli | Örnek |
     | --- | --- | --- | --- |
     | -h,--yardım | Komut kullanımını yazdır. | hayır | 
     -u,--Kullanıcı | Küme VM 'Leri için Yönetici Kullanıcı adı | evet | azureuser<br>(varsayılan değer) |

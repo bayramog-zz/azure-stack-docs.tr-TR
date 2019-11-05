@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack iş ortağı belgeleri
+title: Azure Stack hub iş ortağı belgeleri
 metadata:
   document_id: null
-  title: 'Azure Stack iş ortağı D\documentation - öğreticiler, API R\reference'
-  description: Azure Stack ana bilgisayar için donanım doğrulama öğrenin. Doğrulama bir hizmet olarak Azure Stack'te teklifleri Microsoft ile ortak mühendislik çözüm iş ortakları tarafından kullanılmak üzere tasarlanmış yerel bir Azure hizmeti var.
+  title: 'Azure Stack hub iş ortağı D\belgeleri-öğreticiler, API R\reference'
+  description: 'Azure Stack barındırmak için donanımınızı nasıl doğrulayacağınızı öğrenin. Hizmet olarak doğrulama, Microsoft ile birlikte Mühendislik Azure Stack merkezi tekliflerinden oluşan çözüm ortakları tarafından kullanılmak üzere tasarlanan yerel bir Azure hizmetidir.'
   services: azure-stack
   author: mattbriggs
   manager: femila
@@ -16,26 +16,26 @@ metadata:
   ms.author: mabrigg
   ms.reviewer: johnhas
 abstract:
-  description: 'Doğrulama, Azure Stack ile kullanmak için donanım denetlemek için bir hizmet olarak kullanabilirsiniz. Hizmet, Azure Stack''te teklifleri Microsoft ile ortak mühendislik çözüm iş ortakları tarafından kullanılmak üzere tasarlanmış yerel bir Azure hizmetidir.'
+  description: 'Azure Stack ile kullanmak üzere donanımınızı denetlemek için bir hizmet olarak doğrulama kullanabilirsiniz. Hizmet, Microsoft ile birlikte Mühendislik Azure Stack hub teklifleri olan çözüm iş ortakları tarafından kullanılmak üzere tasarlanan yerel bir Azure hizmetidir.'
 sections:
   - title: 5 Dakikalık Hızlı Başlangıç
     items:
       - type: paragraph
-        text: Doğrulama testleri donanımınıza zamanlamak için bir servis portalı kullanmayı öğrenin.
+        text: Donanımınızın testlerini zamanlamak için bir hizmet portalı olarak doğrulamayı nasıl kullanacağınızı öğrenin.
       - type: list
         style: icon48
         items:
           - image:
               src: media/i_account-management.svg
-            text: 'Doğrulama, ilk test zamanlamak için bir servis portalı kullanın.'
+            text: İlk testinizi zamanlamak için bir hizmet portalı olarak doğrulamayı kullanın
             href: azure-stack-vaas-schedule-test-pass.md
   - title: Adım adım öğreticiler
     items:
       - type: paragraph
-        text: Azure Stack donanımı doğrulama öğrenin.
+        text: Azure Stack hub donanımınızın nasıl doğrulanacağı hakkında bilgi edinin.
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-solution-new">Yeni Azure Stack çözümünü doğrulama</a>
-          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-oem-package">OEM paketleri doğrula</a>
-          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">Microsoft yazılım güncelleştirmeleri doğrulayın</a>
+          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-solution-new">Yeni bir Azure Stack hub çözümünü doğrulama</a>
+          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-oem-package">OEM paketlerini doğrula</a>
+          - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">Microsoft 'tan yazılım güncelleştirmelerini doğrulama</a>

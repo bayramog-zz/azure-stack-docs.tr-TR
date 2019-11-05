@@ -1,34 +1,34 @@
-- name: Azure Stack iş ortağı belgeleri
+- name: Azure Stack hub Iş ortağı belgeleri
   href: index.yml
 - name: Genel Bakış
   href: index.yml
   expanded: true
   items:
-    - name: Azure Stack için hizmet olarak doğrulama
+    - name: Azure Stack hub 'ı için hizmet olarak doğrulama
       href: azure-stack-vaas-overview.md
     - name: Sürüm notları
       href: azure-stack-vaas-release-notes.md
 - name: Öğretici
   items:
-    - name: Kaynaklarınızı ayarlayın
+    - name: Kaynaklarınızı ayarlama
       href: azure-stack-vaas-set-up-resources.md
-    - name: PowerShell ile Azure Stack doğrulamayı otomatikleştirin
+    - name: PowerShell ile Azure Stack hub doğrulamasını otomatikleştirme
       href: azure-stack-vaas-automate-with-powershell.md
-- name: Nasıl Kılavuzu
+- name: Nasıl yapılır Kılavuzu
   items:
-    - name: Yerel aracı dağıtma
+    - name: Yerel aracıyı dağıtma
       href: azure-stack-vaas-local-agent.md
-    - name: Testinizi zamanlama
+    - name: Testinizi zamanlayın
       href: azure-stack-vaas-schedule-test-pass.md
     - name: OEM paketi oluşturma
       href: azure-stack-vaas-create-oem-package.md
-    - name: OEM paketleri doğrula
+    - name: OEM paketlerini doğrula
       href: azure-stack-vaas-validate-oem-package.md
-    - name: Yeni bir Azure Stack çözüm doğrula
+    - name: Yeni bir Azure Stack hub çözümünü doğrulama
       href: azure-stack-vaas-validate-solution-new.md
-    - name: Microsoft yazılım güncelleştirmeleri doğrulayın
+    - name: Microsoft 'tan yazılım güncelleştirmelerini doğrulama
       href: azure-stack-vaas-validate-microsoft-updates.md
-    - name: Etkileşimli özellik doğrulama testi
+    - name: Etkileşimli Özellik doğrulama testi
       href: azure-stack-vaas-interactive-feature-verification.md
 - name: Kavramlar
   items:
@@ -36,7 +36,7 @@
       href: azure-stack-vaas-key-concepts.md
     - name: En iyi uygulamalar
       href: azure-stack-vaas-best-practice.md
-    - name: İzleme ve testleri VaaS portalında yönetme
+    - name: VaaS portalındaki testleri izleme ve yönetme
       href: azure-stack-vaas-monitor-test.md
     - name: İş akışı ortak parametreleri
       href: azure-stack-vaas-parameters.md
@@ -44,7 +44,7 @@
       href: azure-stack-vaas-troubleshoot.md
 - name: İlgili
   items:
-    - name: Azure Stack Belgeleri
+    - name: Azure Stack hub işleci belgeleri
       href: /azure-stack/operator
     - name: Azure Active Directory
       href: /azure/active-directory/
@@ -54,7 +54,7 @@
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
     - name: Azure Stack MSDN Forumu
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureStack'
-    - name: Azure Stack belgeleri geri bildirim
+    - name: Azure Stack belge geri bildirimi
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Fiyatlandırma bilgileri
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

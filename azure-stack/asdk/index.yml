@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack Geliştirme Seti Belgeleri
+title: Azure Stack hub Development Kit belgeleri
 metadata:
   document_id: null
-  title: 'Azure Stack Geliştirme Seti Belgeleri - öğreticiler, API Başvurusu'
-  description: Dağıtma ve Azure Stack geliştirme Seti'ni kullanma hakkında bilgi edinin.
+  title: 'Azure Stack hub Development Kit belgeleri-öğreticiler, API başvurusu'
+  description: Azure Stack hub geliştirme setini dağıtmayı ve kullanmayı öğrenin.
   services: azure-stack
   author: mattbriggs
   manager: femila
@@ -15,7 +15,7 @@ metadata:
   ms.date: 04/13/2018
   ms.author: mabrigg
 abstract:
-  description: 'Azure Stack geliştirme Seti''ni (ASDK) indirin ve ücretsiz olarak kullanmaya Azure Stack, tek düğümlü dağıtımıdır. ASDK Azure Stack''i değerlendirin ve bir üretim dışı ortamda Azure ile tutarlı araç ve API''leri kullanarak modern uygulamalar geliştirin, bir ortam sağlamak üzere tasarlanmıştır. <br/><br/>Tümleşik sistemler altyapıyı yöneten ve hizmetleri sunan Azure Stack operatörü kullanıyorsanız bkz bizim <a href="/azure-stack/operator">operatör belgeleri</a>.<br/><br/>Hizmetleri kullanan veya Azure Stack için uygulamalar oluşturur bir Azure Stack kullanıcısı değilseniz, bkz. bizim <a href="/azure-stack/user">kullanıcı belgeleri</a>.'
+  description: 'Azure Stack hub Development Kit (ASDK), indirebileceğiniz ve ücretsiz olarak kullanabileceğiniz Azure Stack tek düğümlü bir dağıtımdır. ASDK, Azure Stack değerlendirebileceğiniz ve Azure ile bir üretim dışı ortamda Azure ile tutarlı araçlar kullanarak modern uygulamalar geliştirebileceğiniz bir ortam sağlamaktır. <br/><br/>Tümleşik sistemler altyapısını yöneten ve hizmet sunan bir Azure Stack işletmeni kullanıyorsanız, bkz. <a href="/azure-stack/operator">operatör belgeleri</a>.<br/><br/>Azure Stack için hizmetler veya uygulamalar derleme kullanan Azure Stack bir kullanıcılarınız varsa, <a href="/azure-stack/user">Kullanıcı belgelerimize</a>bakın.'
 sections:
   - title: Adım Adım Öğreticiler
     items:
@@ -24,12 +24,12 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure-stack/asdk/asdk-install">ASDK dağıtma</a>
-          - html: <a href="/azure-stack/operator/azure-stack-create-and-publish-marketplace-item">Bir Azure Stack Market öğesi Ekle</a>
-          - html: <a href="/azure-stack/operator/azure-stack-tutorial-tenant-vm">Iaas hizmetleri sunar</a>
+          - html: <a href="/azure-stack/asdk/asdk-install">ASDK 'yi dağıtma</a>
+          - html: <a href="/azure-stack/operator/azure-stack-create-and-publish-marketplace-item">Azure Stack Market öğesi ekleme</a>
+          - html: <a href="/azure-stack/operator/azure-stack-tutorial-tenant-vm">IaaS hizmetleri sunma</a>
           - html: <a href="/azure-stack/user/azure-stack-subscribe-services">Bir teklife abone olma</a>
-          - html: <a href="/azure-stack/operator/create-add-on-plan">Güncelleştirme teklifler ve planlar</a>
-          - html: <a href="/azure-stack/user/azure-stack-create-vm-template">Bir şablondan bir sanal makine oluşturun</a>
+          - html: <a href="/azure-stack/operator/create-add-on-plan">Teklifleri ve planları güncelleştirme</a>
+          - html: <a href="/azure-stack/user/azure-stack-create-vm-template">Şablondan sanal makine oluşturma</a>
   - title: Başvuru
     items:
       - type: list
@@ -37,4 +37,4 @@ sections:
         className: cardsD
         items:
           - title: Komut Satırı
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Azure Stack CLI</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Azure Stack CLı</a></p>

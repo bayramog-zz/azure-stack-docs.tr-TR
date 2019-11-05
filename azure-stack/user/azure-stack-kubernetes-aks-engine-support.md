@@ -15,12 +15,12 @@ ms.date: 09/14/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 6a9ce8551975ccc98bb6e47bfa07b703dfdd341c
-ms.sourcegitcommit: 58e1911a54ba249a82fa048c7798dadedb95462b
+ms.openlocfilehash: 8c83e0b006904482634e50bdf217ec5d236e4e5c
+ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064762"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73594966"
 ---
 # <a name="support-policies-for-aks-engine-on-azure-stack"></a>Azure Stack AKS altyapısı için destek ilkeleri
 

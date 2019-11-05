@@ -1,8 +1,8 @@
-- name: Azure Stack Operatör Belgeleri
+- name: Azure Stack hub Işleci belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Stack nedir?
+    - name: Azure Stack hub nedir?
       href: azure-stack-overview.md
     - name: Azure Stack HCı nedir?
       href: azure-stack-hci-overview.md
@@ -199,7 +199,7 @@
               href: azure-stack-replace-component.md
     - name: 'Güvenlik, uyumluluk ve kimlik'
       items:
-        - name: Güvenlik genel bilgileri
+        - name: Güvenliğe genel bakış
           href: azure-stack-security-foundations.md
         - name: Güvenliği yapılandırma
           href: azure-stack-security-configuration.md
@@ -393,7 +393,7 @@
               href: azure-stack-provider-resource-api.md
             - name: Kiracı kullanım API’si
               href: azure-stack-tenant-resource-usage-api.md
-            - name: Kullanım SSS
+            - name: Kullanım Hakkında SSS
               href: azure-stack-usage-related-faq.md
             - name: Kullanım sorunlarını giderme
               items:
@@ -448,7 +448,7 @@
       href: /powershell/azure/azure-stack/overview
 - name: İlgili
   items:
-    - name: Azure Stack Kullanıcı belgeleri
+    - name: Azure Stack hub Kullanıcı belgeleri
       href: /azure-stack/user/
     - name: ASDK belgeleri
       href: /azure-stack/asdk/

@@ -1,4 +1,4 @@
-- name: Azure Stack Geliştirme Seti Belgeleri
+- name: Azure Stack hub Development Kit belgeleri
   href: index.yml
 - name: Genel Bakış
   expanded: true
@@ -13,35 +13,35 @@
       href: asdk-deploy-considerations.md
     - name: Geliştirme Seti mimarisi
       href: asdk-architecture.md
-    - name: ASDK yönetim temel bilgileri
+    - name: ASDK Yönetim Temelleri
       href: asdk-admin-basics.md
     - name: Gelişmiş değerlendirme görevleri
       href: asdk-advanced-eval.md
-- name: Nasıl yapılır
+- name: Nasıl yapılır?
   items:
-    - name: ASDK ayarlayın
+    - name: ASDK 'yi ayarlama
       items:
-        - name: İndirmeyi ve ayıklamayı Geliştirme Seti
+        - name: Geliştirme Seti 'ni indirme ve ayıklama
           href: asdk-download.md
-        - name: ASDK ana bilgisayarını hazırlayın
+        - name: ASDK ana bilgisayarını hazırlama
           href: asdk-prepare-host.md
-        - name: Yükleyici - ASDK dağıtma
+        - name: ASDK-yükleyici dağıtma
           href: asdk-install.md
-        - name: PowerShell - ASDK dağıtma
+        - name: ASDK-PowerShell dağıtma
           href: asdk-deploy-powershell.md
         - name: Dağıtım sonrası yapılandırma
           href: asdk-post-deploy.md
-        - name: ASDK yeniden dağıtma
+        - name: ASDK 'yi yeniden dağıtın
           href: asdk-redeploy.md
-    - name: ASDK kaydetme
+    - name: ASDK 'yi kaydetme
       href: asdk-register.md
-    - name: Azure Stack telemetri ayarlarını yapılandırma
+    - name: Azure Stack hub telemetri ayarlarını yapılandırma
       href: asdk-telemetry.md
-    - name: Başlatma ve durdurma ASDK
+    - name: ASDK 'yi başlatma ve durdurma
       href: asdk-start-stop.md
-    - name: Azure Stack yedekleme doğrula
+    - name: Azure Stack hub yedeklemesini doğrulama
       href: asdk-validate-backup.md
-    - name: İçin ASDK bağlanma
+    - name: ASDK 'ye bağlanma
       href: asdk-connect.md
     - name: Sorun giderme
       href: asdk-troubleshooting.md
@@ -49,13 +49,13 @@
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
-    - name: Azure Stack CLI
+    - name: CLI
       href: /cli/azure/?view=azure-cli-2017-03-09-profile
 - name: İlgili
   items:
-    - name: Azure Stack Operatör Belgeleri
+    - name: Azure Stack hub Işleci belgeleri
       href: /azure-stack/operator
-    - name: Azure Stack Kullanıcı Belgeleri
+    - name: Azure Stack hub Kullanıcı belgeleri
       href: /azure-stack/user/
 - name: Kaynaklar
   items:
@@ -63,7 +63,7 @@
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
     - name: Azure Stack MSDN Forumu
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Azure Stack belgeleri geri bildirim
+    - name: Azure Stack belge geri bildirimi
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Fiyatlandırma bilgileri
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

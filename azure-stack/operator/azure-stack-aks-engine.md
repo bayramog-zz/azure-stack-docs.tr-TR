@@ -15,12 +15,12 @@ ms.date: 10/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 1e1e72cea27bf036f662cfaa64a84a57fe9bc964
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: 3b6d1b9e91acfdb7a54cf3b7fbc70399bf635c09
+ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283067"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73595244"
 ---
 # <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-marketplace"></a>Azure Kubernetes Hizmetleri (AKS) altyapısı önkoşullarını Azure Stack Market 'e ekleme
 
@@ -32,7 +32,7 @@ Kullanıcılarınıza, bu makalede açıklanan öğeleri Azure Stack ekleyerek A
 
 > [!IMPORTANT]
 > AKS altyapısı şu anda genel önizlemededir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="check-your-users-service-offering"></a>Kullanıcılarınızın hizmet sunumunu denetleyin
 
@@ -64,7 +64,7 @@ Market 'e aşağıdaki öğeyi ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. @No__t girin-0.
+1. `AKS Base Image` yazın.
 
 1. AKS altyapısının sürümüyle eşleşen görüntü sürümünü seçin. AKS temel görüntüsünün listesini, [desteklenen Kubernetes sürümlerindeki](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions)aks altyapısı sürümüne bulabilirsiniz. 
 
@@ -85,7 +85,7 @@ Market 'e aşağıdaki öğeyi ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. @No__t girin-0.
+1. `Custom Script for Linux` yazın.
 
 1. Aşağıdaki profille betiği seçin:
    - **Teklif**: Linux 2,0 Için özel betik

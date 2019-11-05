@@ -15,12 +15,12 @@ ms.date: 10/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 3720781dc2545fefaff0b2cd703d7c3880c4b97b
-ms.sourcegitcommit: 83cef2c4ec6e1b2fd3f997c91675c1058a850e2f
+ms.openlocfilehash: 39eebfbc4d60d4cd68bb33d6efcf35cc12ffe313
+ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "72999891"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73594884"
 ---
 # <a name="upgrade-a-kubernetes-cluster-on-azure-stack"></a>Azure Stack bir Kubernetes kümesini yükseltme
 
@@ -86,7 +86,7 @@ Aşağıdaki yönergeler yükseltmeyi gerçekleştirmek için gereken en düşü
 
     | Parametre | Örnek | Açıklama |
     | --- | --- | --- |
-    | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack `AzureStackCloud` ' ın kullanacağı AKS motoruna göstermek için. |
+    | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack `AzureStackCloud`kullanılacak AKS altyapısını göstermek için. |
     | location | Yerel | Azure Stack için bölge adı. ASDK için bölge `local`olarak ayarlanır. |
     | resource-group | kuin-RG | Yeni bir kaynak grubunun adını girin veya var olan bir kaynak grubunu seçin. Kaynak adının alfasayısal ve küçük harf olması gerekir. |
     | abonelik kimliği | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Abonelik KIMLIĞINIZI girin. Daha fazla bilgi için bkz. [teklife abone olma](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |

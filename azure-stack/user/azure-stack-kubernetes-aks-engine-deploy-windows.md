@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: c646f8229b5360aed12c9cd8070a00bf38ca3e01
-ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
+ms.openlocfilehash: b9dd45b6ea7fdfaab1b1e7418800dcd2031dc151
+ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73167313"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73595178"
 ---
 # <a name="install-the-aks-engine-on-windows-in-azure-stack"></a>AKS altyapısını Windows üzerinde Azure Stack
 
@@ -46,11 +46,11 @@ Kubernetes kümenizi Internet 'e bağlı bir Azure Stack yönetmek için istemci
 3. [PowerShell yönergelerini kullanarak Chocolatey 'Yi yükler.](https://chocolatey.org/install#install-with-powershellexe).. 
 
     Chocolaty Web sitesine göre: Chocolatey, Windows için bir paket yöneticisi olan apt-get veya yum gibi, ancak Windows için. İhtiyacınız olan uygulamaları ve araçları hızlı bir şekilde yüklemek için merkezi olmayan bir çerçeve olacak şekilde tasarlanmıştır. Bu, şu anda PowerShell kullanan NuGet altyapısına kurulmuştur. Bu, paketleri distroden kapıya, hata, bilgisayar adına teslim etmek için odaklanmaktadır.
-4. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutu çalıştırırken `--version v0.41.2`sürümünü belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
+4. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutu çalıştırırken, `--version v0.43.0` sürümünü belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
 5. Yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırın ve sürüm numarasını ekleyin:
 
     ```PowerShell  
-        choco install aks-engine --version 0.41.2 -y
+        choco install aks-engine --version 0.43.0 -y
     ```
 
 > [!Note]  
@@ -60,7 +60,7 @@ Kubernetes kümenizi Internet 'e bağlı bir Azure Stack yönetmek için istemci
 
 Kubernetes kümenizi Internet bağlantısı kesilen bir Azure Stack yönetmek için istemci sanal makinesini yükleyebilirsiniz.
 
-1.  Internet erişimi olan bir makineden GitHub [Azure/aks-Engine](https://github.com/Azure/aks-engine/releases/latest)sayfasına gidin. Windows makinesi için bir arşivi (*. tar. gz) (örneğin, `aks-engine-v0.38.8-windows-amd64.tar.gz`) indirin.
+1.  Internet erişimi olan bir makineden GitHub [Azure/aks-Engine](https://github.com/Azure/aks-engine/releases/latest)sayfasına gidin. Bir Windows makinesi için Arşiv (*. tar. gz) indirin, örneğin, `aks-engine-v0.38.8-windows-amd64.tar.gz`.
 
 2.  AKS altyapısı ikilisini içeren arşiv dosyasını (*. tar. gz) karşıya yüklemek için Azure Stack örneğiniz için bir depolama hesabı oluşturun. Azure Depolama Gezgini kullanımı hakkında yönergeler için, bkz. [Azure Stack Azure Depolama Gezgini](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se).
 
@@ -75,7 +75,7 @@ Kubernetes kümenizi Internet bağlantısı kesilen bir Azure Stack yönetmek i�
 7.  Yükseltilmiş bir komut isteminden aşağıdaki komutu çalıştırın. Doğru sürüm numarasını ekleyin:
 
     ```PowerShell  
-        choco install aks-engine --version v0.41.2 -y
+        choco install aks-engine --version 0.43.0 -y
     ```
 
 ## <a name="verify-the-installation"></a>Yüklemeyi doğrulama

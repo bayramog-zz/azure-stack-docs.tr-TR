@@ -1,28 +1,28 @@
 ---
-title: Azure Stack abonelik çoğaltıcısından yararlanarak kaynakları yedekleme | Microsoft Docs
-description: Azure Stack abonelik çoğaltıcısından yararlanarak kaynakları nasıl yedekleyeceğinizi öğrenin.
+title: Birden çok Azure Stack aboneliği arasında kaynakları çoğaltma | Microsoft Docs
+description: Azure Stack abonelik çoğaltıcı betik kümesini kullanarak kaynakları çoğaltmayı öğrenin.
 services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/29/2019
-ms.openlocfilehash: 5ef02dbe7683b4c7364811452af59013476687fd
-ms.sourcegitcommit: cc5c965b13bc3dae9a4f46a899e602f41dc66f78
+ms.lastreviewed: 10/30/2019
+ms.openlocfilehash: f468d28ae1642235735f4e1472a8aa84859dc6e6
+ms.sourcegitcommit: 8a74a5572e24bfc42f71e18e181318c82c8b4f24
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73236252"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73567774"
 ---
-# <a name="how-to-back-up-resources-using-the-azure-stack-subscription-replicator"></a>Azure Stack abonelik çoğaltıcısından yararlanarak kaynakları yedekleme
+# <a name="how-to-replicate-resources-using-the-azure-stack-subscription-replicator"></a>Azure Stack abonelik çoğaltıcısını kullanarak kaynakları çoğaltma
 
-Kaynakları Azure Stack abonelikleri arasında kopyalamak için Azure Stack abonelik çoğaltıcı PowerShell betiğini kullanabilirsiniz. Replicator betiği, farklı Azure ve Azure Stack aboneliklerinden Azure Resource Manager kaynaklarını okur ve yeniden oluşturur. Bu makalede betiğin nasıl çalıştığı, komut dosyasını nasıl kullanabileceğiniz ve betikteki işlemler için bir başvuru sunan gösterilmektedir.
+Kaynakları Azure Stack abonelikleri arasında, Azure Stack damgalar arasında veya Azure Stack ile Azure arasında kopyalamak için Azure Stack abonelik çoğaltıcı PowerShell betiğini kullanabilirsiniz. Replicator betiği, farklı Azure ve Azure Stack aboneliklerinden Azure Resource Manager kaynaklarını okur ve yeniden oluşturur. Bu makalede betiğin nasıl çalıştığı, komut dosyasını nasıl kullanabileceğiniz ve betik işlemlerine yönelik bir başvuru sunan gösterilmektedir.
 
 ## <a name="subscription-replicator-overview"></a>Abonelik çoğaltıcısından genel bakış
 
-Azure abonelik Çoğaltıcısı (v3) modüler olacak şekilde tasarlandı. Bu araç, kaynak çoğaltmasını düzenleyen bir çekirdek işlemci kullanır. Ayrıca araç, farklı türlerde kaynakları kopyalamak için şablon görevi gören özelleştirilebilir işlemcileri destekler. 
+Azure abonelik Çoğaltıcısı modüler olacak şekilde tasarlandı. Bu araç, kaynak çoğaltmasını düzenleyen bir çekirdek işlemci kullanır. Ayrıca araç, farklı türlerde kaynakları kopyalamak için şablon görevi gören özelleştirilebilir işlemcileri destekler. 
 
 Çekirdek işlemci aşağıdaki üç komut dosyasından oluşur:
 
@@ -70,18 +70,18 @@ Ancak, hedef aboneliğin kaynak sağlayıcısı API sürümünün kaynak aboneli
 
 Araç **paralel**adlı bir parametre gerektiriyor. Bu parametre, alınan kaynakların paralel olarak dağıtılıp dağıtılmayacağını belirten bir Boole değeri alır. Değer true olarak ayarlanırsa **,** **New-AzureRmResourceGroupDeployment** öğesine yapılan her çağrı için, **-AsJob** bayrağı ve kod blokları, kaynağa göre kaynak dağıtımı kümeleri arasına eklenir türü. Bir sonraki kaynak türü dağıtılmadan önce, bir türdeki tüm kaynakların dağıtılmasından emin olmanızı sağlar. **Paralel** parametre değeri **false**olarak ayarlandıysa, kaynakların hepsi seri olarak dağıtılır.
 
-## <a name="adding-additional-resource-types"></a>Ek kaynak türleri ekleme
+## <a name="add-additional-resource-types"></a>Ek kaynak türleri ekleme
 
 Yeni kaynak türleri eklemek basittir. Geliştiricinin özelleştirilmiş bir işlemci ve bir Azure Resource Manager şablonu ya da bir Azure Resource Manager şablon Oluşturucusu oluşturması gerekir. Bu tamamlandıktan sonra geliştirici, kaynak türünü **$ResourceType** parametresi Için validateset 'e ve resource_retriever. ps1 içindeki **$resourceTypes** dizisine eklemesi gerekir. Kaynak türü * * $resourceTypes * * dizisine eklenirken, doğru sırada eklenmelidir. Dizinin sırası, kaynakların dağıtılacağı sırayı belirler, bu nedenle bağımlılıkları göz önünde bulundurun. Son olarak, özelleştirilmiş işlemci bir Azure Resource Manager şablon Oluşturucu kullanıyorsa, **post_process. ps1**içindeki **$customTypes** dizisine kaynak türü adı eklemesi gerekir.
 
-## <a name="running-azure-subscription-replicator"></a>Azure abonelik çoğaltıcısını çalıştırma
+## <a name="run-azure-subscription-replicator"></a>Azure abonelik çoğaltıcısından Çalıştır
 
 Azure abonelik çoğaltıcı (v3) aracını çalıştırmak için, tüm parametreleri sağlamak için resource_retriever. ps1 öğesini açmanız gerekir. **ResourceType** parametresi, bir kaynak türü yerine **Tümünü** seçmek için bir seçenek vardır. **All** seçilirse, resource_retriever. ps1 tüm kaynakları bir sırada işler, böylece dağıtım çalıştırıldığında bağımlı kaynaklar önce dağıtılır. Örneğin sanal makineler sanal makineler tarafından, sanal makinelerin düzgün dağıtılabilmesi için bir VNet 'in yerinde olmasını gerektirdiğinden sanal makinelerden önce dağıtılır.
 
 Betik yürütmeyi bitirdiğinde üç yeni klasör olacaktır, **Deployment_Files**, **Parameter_Files**ve **Custom_ARM_Templates**.
 
  > [!Note]  
- > Oluşturulan betiklerin hiçbirini çalıştırmadan önce, doğru ortamı ayarlamanız ve hedef abonelikte oturum açmanız (örn. yeni Azure Stack) ve çalışma dizinini **Deployment_Files** klasörüne ayarlamanız gerekir.
+ > Oluşturulan betiklerin hiçbirini çalıştırmadan önce, doğru ortamı ayarlamanız ve hedef abonelikte (yeni Azure Stack EX) oturum açmanız ve çalışma dizinini **Deployment_Files** klasörüne ayarlamanız gerekir.
 
 Deployment_Files, **Deployresourcegroups. ps1** ve **deployresources. ps1**iki dosya tutacak. DeployResourceGroups. ps1 yürütülmesi kaynak gruplarını dağıtır. DeployResources. ps1 yürütmek, işlenen tüm kaynakları dağıtır. Aracın, kaynak türü olarak **All** veya **Microsoft. COMPUTE/virtualmachines** Ile yürütülmesi durumunda, deployresources. ps1 kullanıcıdan tüm sanal makineleri oluşturmak için kullanılacak bir sanal makine yönetici parolası girmesini ister .
 
@@ -89,39 +89,22 @@ Deployment_Files, **Deployresourcegroups. ps1** ve **deployresources. ps1**iki d
 
 1.  Betiği çalıştırın.
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image2.png)
+    ![Betiği çalıştırın](./media/azure-stack-network-howto-backup-replicator/image2.png)
 
-1.  Betiğin çalıştırılmasını bekleyin.
+    > [!Note]  
+    > Kaynak evironment ve PS örneği için abonelik bağlamını yapılandırmayı unutmayın. 
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image3.png)
+2.  Yeni oluşturulan klasörleri gözden geçirin:
 
-1.  Yeni oluşturulan klasörleri gözden geçirin:
+    ![Klasörleri gözden geçirme](./media/azure-stack-network-howto-backup-replicator/image4.png)
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image4.png)
+3.  Bağlamı hedef abonelik olarak ayarlayın, klasörü **Deployment_Files**olarak değiştirin, kaynak gruplarını dağıtın ve kaynak dağıtımını başlatın.
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image5.png)
+    ![Dağıtımı yapılandırma ve başlatma](./media/azure-stack-network-howto-backup-replicator/image6.png)
 
-1.  Bağlamı hedef abonelik olarak ayarlayın.
+4.  Durumu denetlemek için `Get-Job` çalıştırın. Işi al | Receive-Job sonuçları döndürür.
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image6.png)
-
-1.  **Deployment_Files** klasörüne geçmek için `cd` yazın.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image7.png)
-
-1.  Kaynak gruplarını dağıtmak için `DeployResourceGroups.ps1` çalıştırın.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image8.png)
-
-1.  Kaynakları dağıtmak için `DeployResources.ps1` çalıştırın.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image9.png)
-
-1.  Durumu denetlemek için `Get-Job` çalıştırın. Işi al | Receive-Job sonuçları döndürür.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image10.png)
-
-## <a name="clean-up"></a>Temizle
+## <a name="clean-up"></a>Temizleme
 
 ReplicatorV3 klasörünün içinde, **cleanup_generated_items. ps1** adlı bir dosya vardır-bu, **Deployment_Files**, **Parameter_Files**ve **Custom_ARM_Templates** klasörlerini ve tüm içeriğini kaldırır.
 
@@ -186,17 +169,19 @@ Aracı, kaynak türü olarak **Tümü** ile çalıştırılırken, çoğaltma ve
             -Ağ arabirimi özel IP adresi  
             -Ağ güvenlik grubu yapılandırması  
             -Kullanılabilirlik kümesi yapılandırması  
- 
+
 > [!Note]  
-> Yalnızca işletim sistemi diski ve veri diskleri için yönetilen diskler oluşturur. Şu anda depolama hesaplarının kullanılmasına yönelik destek yoktur. 
+> Yalnızca işletim sistemi diski ve veri diskleri için yönetilen diskler oluşturur. Şu anda depolama hesaplarının kullanılmasına yönelik destek yoktur 
 
 ### <a name="limitations"></a>Sınırlamalar
 
 Araç, hedef aboneliğin kaynak sağlayıcıları kaynak abonelikten çoğaltılan tüm kaynakları ve seçenekleri destekledikleri sürece kaynakları bir abonelikten diğerine çoğaltabilir.
 
-Çoğaltmanın başarılı olmasını sağlamak için hedef aboneliğin kaynak sağlayıcısı sürümlerinin kaynak abonelikle eşleştiğinden emin olun.
+Başarılı bir çoğaltma sağlamak için, MBU hedef aboneliğin kaynak sağlayıcısı sürümlerinin kaynak abonelikle eşleştiğinden emin olun.
 
 Ticari Azure 'dan ticari Azure 'a veya Azure Stack içindeki bir abonelikten aynı Azure Stack farklı bir aboneliğe çoğaltma yaparken, depolama hesapları çoğaltılırken sorunlar olur. Bunun nedeni, tüm depolama hesabı adlarının tüm ticari Azure genelinde veya bir Azure Stack bölgesindeki/örnekteki tüm aboneliklerde benzersiz olması nedeniyle depolama hesabı adlandırma gereksinimidir. Depolama hesaplarının farklı Azure Stack örneklerine çoğaltılması, yığınlar ayrı bölgeler/örnekler olduğu için başarılı olur.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

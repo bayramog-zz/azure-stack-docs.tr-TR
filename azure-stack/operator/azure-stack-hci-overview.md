@@ -7,17 +7,17 @@ author: jasongerend
 ms.author: jgerend
 ms.localizationpriority: medium
 ms.prod: windows-server-threshold
-ms.date: 05/31/2019
-ms.openlocfilehash: 575887ddebf80b39cc0c848f4a6e6cc00abdc9d4
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.date: 11/04/2019
+ms.openlocfilehash: f3e3e79f5c570127f1f7f39613cafca1bd869f36
+ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829497"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73595451"
 ---
 # <a name="azure-stack-hci-overview"></a>Azure Stack HI genel bakış
 
->Şunlara uygulanır: Windows Server 2019
+>Uygulama hedefi: Windows Server 2019
 
 Azure Stack HIP, şirket içinde sanallaştırılmış iş yüklerini çalıştırmak için doğrulanan donanımı kullanan hiper yakınsanmış bir Windows Server 2019 kümesidir. Ayrıca, bulut tabanlı yedekleme, site kurtarma ve daha fazlası için Azure hizmetlerine isteğe bağlı olarak bağlanabilirsiniz. Azure Stack HIP çözümleri, en iyi performans ve güvenilirliği sağlamak için Microsoft tarafından doğrulanan donanımlar kullanır ve NVMe sürücüleri, kalıcı bellek ve uzak doğrudan bellek erişimi (RDMA) ağı gibi teknolojiler için destek içerir.
 
@@ -43,18 +43,14 @@ Azure Stack HCı, Microsoft 'un çok çeşitli donanım iş ortaklarından eriş
 
 ## <a name="the-azure-stack-family"></a>Azure Stack ailesi
 
-Azure Stack HI, aynı yazılım tanımlı işlem, depolama ve ağ yazılımının Azure Stack olarak kullanıldığı Azure ve Azure Stack ailesinin bir parçasıdır. Farklı çözümlere yönelik hızlı bir özet aşağıda verilmiştir:
+Azure Stack HI, aynı yazılım tanımlı işlem, depolama ve ağ yazılımının Azure Stack olarak kullanıldığı Azure ve Azure Stack ailesinin bir parçasıdır. Farklı çözümlerin hızlı bir özeti aşağıda verilmiştir (daha fazla ayrıntı için bkz [. Azure Stack ekosistemini karşılaştırma](compare-azure-azure-stack.md)):
 
-- [Azure](https://azure.microsoft.com) -genel bulut hizmetlerini kullanma
-- [Azure Stack](azure-stack-overview.md) -şirket içi bulut hizmetlerini çalıştırma
-- [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) -şirket içinde sanallaştırılmış uygulamaları Azure 'a isteğe bağlı bağlantılarla çalıştırın
+- [Azure](https://azure.microsoft.com) -mevcut uygulamaları geçirmek ve modernleştirin ve yeni bulutta yerel uygulamalar oluşturmak için isteğe bağlı, self servis bilgi işlem kaynakları için genel bulut hizmetlerini kullanın.
+- [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) -bulut tarafından yönetilen bir gereç üzerinde makine öğrenimi iş yüklerini hızlandırın ve Kapsayıcılı uygulamaları veya sanallaştırılmış iş yüklerini şirket içinde çalıştırın.
+- [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) -şirket içinde sanallaştırılmış uygulamalar çalıştırın, eskime sunucusu altyapısını değiştirin ve birleştirin ve bulut hizmetleri için Azure 'a bağlanın.
+- [Azure Stack hub](azure-stack-overview.md) -şirket içinde, bağlantısı kesildiğinde bulut uygulamaları çalıştırın veya tutarlı Azure hizmetlerini kullanarak yasal gereksinimleri karşılayın.
 
-![Azure ve Azure Stack bulut hizmetlerini çalıştırın, ancak Azure Stack HI şirket içinde sanallaştırılmış uygulamalar çalıştırır](media/azure-stack-hci/azure-family.png)
-
-|Azure: Genel bulut hizmetlerini kullanma|Azure Stack: Şirket içinde bulut hizmetleri çalıştırma|Azure Stack HCı: Şirket içinde sanallaştırılmış uygulamalar çalıştırma|
-|-----------------|-----------------|-----------------|
-|Mevcut uygulamaları geçirmek ve modernleştirin ve yeni bulutta yerel uygulamalar oluşturmak için isteğe bağlı, self servis bilgi işlem kaynakları için.|Şirket içinde tutarlı Azure hizmetlerini kullanarak,, bağlantısı kesildiğinde bulut uygulamaları oluşturun ve çalıştırın veya yasal gereksinimleri karşılayın.| Şirket içinde sanallaştırılmış uygulamalar çalıştırın, eskime sunucusu altyapısını değiştirin ve birleştirin ve bulut hizmetleri için Azure 'a bağlanın.|
-|Dünyanın dört bir yanındaki 54 bölgede 100 'den fazla hizmet mevcuttur|Windows ve Linux Için Azure VM 'Leri, Azure Web Apps ve Işlevleri, Azure Key Vault, Azure Resource Manager, Azure Marketi, kapsayıcılar, Azure IoT ve Event Hubs, Yönetim Araçları (planlar, teklifler, RBAC)|Hyper V tarafından desteklenen ve Windows Server 2019 ile Depolama Alanları Doğrudan ve Azure hizmetleri 'ne yönelik yönetim ve tümleşik erişim için Windows Yönetim Merkezi ile desteklenen HIP çözümleri.|
+![Azure Stack Edge, uç olarak makine öğrenimi ve Kapsayıcılı uygulamalar çalıştırmaya yönelik bulut tarafından yönetilen bir gerecdir Azure Stack HI, VM 'Leri ve depolamayı şirket içinde çalıştırmaya yönelik hiper yakınsanmış bir çözümdür, ancak Azure Stack hub 'ı bulutta yerel, Azure ile tutarlı hale getirir Şirket içi hizmetler.](media/compare-azure-azure-stack/azure-stack-family.png)
 
 Daha fazla bilgi için:
 
@@ -110,25 +106,25 @@ Altyapınızı dağıtmak ve yönetmek için System Center kullanmayı seçersen
 
 ## <a name="hardware-partners"></a>Donanım iş ortakları
 
-15 iş ortaklarından Windows Server 2019 çalıştıran, doğrulanan Azure Stack HCı çözümlerini satın alabilirsiniz. Tercih ettiğiniz Microsoft iş ortağı, uzun tasarım ve derleme zamanı olmadan çalışmaya başlamanızı ve çalışır. Ayrıca, uygulama ve destek hizmetleri için tek bir iletişim noktası sunar.
+20 iş ortaklarından Windows Server 2019 çalıştıran, doğrulanan Azure Stack HCı çözümlerini satın alabilirsiniz. Tercih ettiğiniz Microsoft iş ortağı, uzun tasarım ve derleme zamanı olmadan çalışmaya başlamanızı ve çalışır. Ayrıca, uygulama ve destek hizmetleri için tek bir iletişim noktası sunar.
 
-Şu anda bu Microsoft iş ortaklarından sunulan 70 + Azure Stack hımızın çözümlerini görüntülemek için [Azure Stack HCI Web sitesini](https://azure.microsoft.com/overview/azure-stack/hci) ziyaret edin: ASUS, Axellio, blueyonga, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, secu, ve Supermicro.
+Şu anda şu Microsoft iş ortaklarından sunulan 70 + Azure Stack HI çözümümüzü görüntülemek için [Azure Stack HI Web sitesini](https://azure.microsoft.com/overview/azure-stack/hci) ziyaret edın: ASUS, Axellio, Blueyonga, Dataon, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, secudüzenleme ve Supermicro.
 
 ## <a name="faq"></a>SSS
 
 ### <a name="what-do-azure-stack-and-azure-stack-hci-solutions-have-in-common"></a>Azure Stack ve Azure Stack HCı çözümleri ortak olarak nedir?
 
-Azure Stack HI çözümleri, aynı Hyper-V tabanlı yazılım tanımlı işlem, depolama ve ağ teknolojilerinin Azure Stack olarak özelliğidir. Her iki teklif da, temel alınan donanım platformuyla güvenilirlik ve uyumluluk sağlamak için kapsamlı test ve doğrulama ölçütlerini karşılar.
+Azure Stack HI çözümleri, aynı Hyper-V tabanlı yazılım tanımlı işlem, depolama ve ağ teknolojilerinin Azure Stack hub 'ı olarak özelliğidir. Her iki teklif da, temel alınan donanım platformuyla güvenilirlik ve uyumluluk sağlamak için kapsamlı test ve doğrulama ölçütlerini karşılar.
 
 ### <a name="how-are-they-different"></a>Bunların birbirinden farkı nedir?
 
-Azure Stack, şirket içinde bulut hizmetlerini çalıştırırsınız. Azure IaaS ve PaaS hizmetlerini şirket içinde, şirket içi Azure portal yönetilen her yerde tutarlı bir şekilde derlemek ve çalıştırmak için kullanabilirsiniz.
+Azure Stack hub 'ı ile şirket içi bulut hizmetlerini çalıştırırsınız. Azure IaaS ve PaaS hizmetlerini şirket içinde, şirket içi Azure portal yönetilen her yerde tutarlı bir şekilde derlemek ve çalıştırmak için kullanabilirsiniz.
 
 Azure Stack HI ile, Windows Yönetim Merkezi ve tanıdık Windows Server araçlarıyla yönetilen, şirket içinde sanallaştırılmış iş yüklerini çalıştırırsınız. İsteğe bağlı olarak, bulut tabanlı site kurtarma, izleme ve diğerleri gibi Karma senaryolar için Azure 'a bağlanabilirsiniz.
 
 ### <a name="why-is-microsoft-bringing-its-hci-offering-to-the-azure-stack-family"></a>Microsoft neden HıM teklifini Azure Stack ailesine getiriyor?
 
-Microsoft 'un hiper yakınsama teknolojisi zaten Azure Stack temelini.
+Microsoft 'un hiper yakınsama teknolojisi zaten Azure Stack hub 'ın temelini.
 
 Birçok Microsoft müşterisi, karmaşık BT ortamlarına sahiptir ve hedefimiz, doğru iş ihtiyacı için doğru teknolojiyle oldukları yerleri karşılayan çözümler sağlamaktır. Azure Stack HCı, daha önce donanım iş ortaklarımız tarafından kullanılabilen Windows Server 2016 tabanlı Windows Server yazılım tanımlı (WSSD) çözümlerinin bir evrimi. Altyapı Yönetimi Hizmetleri için Azure ile sorunsuz bir şekilde bağlanmak üzere yeni seçenekler sunmaya başladığımız için Azure Stack ailesine aldık.
 
@@ -140,17 +136,17 @@ Hayır, isteğe bağlıdır. Site dışı yedekleme ve olağanüstü durum kurta
 
 Windows Server 2019, neredeyse her Azure ürününün temelidir. Girdiğiniz tüm özellikler, Windows Server 'da göndermeye ve desteklenmeye devam eder. Azure Stack HIP, iş ortaklarımızın Microsoft tarafından doğrulanan donanımlar kullanılarak şirket içi HIP dağıtımı için önerilen yoldur.
 
-### <a name="can-i-upgrade-from-azure-stack-hci-to-azure-stack"></a>Azure Stack HI 'den Azure Stack sürümüne yükseltebilir miyim? 
+### <a name="can-i-upgrade-from-azure-stack-hci-to-azure-stack-hub"></a>Azure Stack HI 'den Azure Stack hub 'a yükseltebilir miyim? 
 
-Hayır, ancak müşteriler iş yüklerini Azure Stack HI 'den Azure Stack veya Azure 'a geçirebilirler.
+Hayır, ancak müşteriler iş yüklerini Azure Stack HI 'den Azure Stack hub 'ına veya Azure 'a geçirebilirler.
 
 ### <a name="what-azure-services-can-i-connect-to-azure-stack-hci"></a>Azure Stack HI 'ye hangi Azure hizmetlerini bağlayabilirim?
 
 Azure Stack HCı 'ye bağlayabilmeniz için Azure hizmetlerinin güncelleştirilmiş bir listesi için bkz. [Windows Server 'ı Azure hibrit Services 'A bağlama](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
 
-### <a name="how-does-the-cost-of-azure-stack-hci-compare-to-azure-stack"></a>Azure Stack HIP 'nin maliyeti nasıl Azure Stack? 
+### <a name="how-does-the-cost-of-azure-stack-hci-compare-to-azure-stack-hub"></a>Azure Stack HIP 'nin maliyeti Azure Stack hub 'a nasıl karşılaştırılmaktadır? 
 
-Azure Stack, hizmetleri ve desteği içeren tamamen tümleşik bir sistem olarak satılır. Azure Stack yönettiğiniz bir sistem veya iş ortaklarımız tarafından tam olarak yönetilen bir hizmet olarak satın alabilirsiniz. Temel sisteme ek olarak, Azure Stack veya Azure üzerinde çalışan Azure Hizmetleri, Kullandıkça Öde esasına göre satılabilir.
+Azure Stack hub, hizmetleri ve desteği içeren tamamen tümleşik bir sistem olarak satılır. Azure Stack yönettiğiniz bir sistem veya iş ortaklarımız tarafından tam olarak yönetilen bir hizmet olarak satın alabilirsiniz. Temel sisteme ek olarak, Azure Stack veya Azure üzerinde çalışan Azure Hizmetleri, Kullandıkça Öde esasına göre satılabilir.
 
 Azure Stack HCı çözümleri geleneksel satın alma modelini izler. Azure Stack HIP iş ortaklarından ve yazılımından (Windows Server 2019 Datacenter Edition, yazılım tanımlı veri merkezi özellikleri ve Windows Yönetim Merkezi), çeşitli mevcut kanallardan doğrulanan donanımlar satın alabilirsiniz. Windows Yönetim Merkezi ile kullanabileceğiniz Azure hizmetleri için bir Azure aboneliğiyle ödeme yaparsınız.
 
@@ -164,27 +160,27 @@ Azure Stack HCı çözümleri geleneksel satın alma modelini izler. Azure Stack
 
 ![Azure Stack HCı çözümlerini satın almak için gereksinimlerinize en uygun donanım ortağını ve yapılandırmayı seçin.](media/azure-stack-hci/buying-azure-stack-hci.png)
 
-## <a name="compare-azure-stack-and-azure-stack-hci"></a>Azure Stack ve Azure Stack HIP karşılaştırması
+## <a name="compare-azure-stack-hub-and-azure-stack-hci"></a>Azure Stack hub 'ını ve Azure Stack HIP 'yi karşılaştırın
 
 Kuruluşunuz dijital olarak dönüştürmesinde, modern mimarilerde derlemek ve eski uygulamaları yenilemek için ortak bulut hizmetlerini kullanarak daha hızlı hareket edebilirsiniz. Ancak, teknolojik ve yasal düzenlemeler içeren nedenlerle birçok iş yükünün şirket içinde kalması gerekir. Aşağıdaki tablo, hangi Microsoft hibrit bulut stratejisinin, nerede olursa olsun iş yükleri için bulut yeniliği sunabilmeniz gerektiğini belirlemenize yardımcı olur.
 
-|Azure Stack|Azure Stack HCI|
-|--------|-------|
-|Yeni yetenekler, yenilikçi süreçler|Aynı yetenekler, tanıdık süreçler|
-|Veri merkezinizdeki Azure hizmetleri|Veri merkezinizi Azure hizmetlerine bağlama|
+| Azure Stack hub 'ı | Azure Stack HCI |
+| --------------- | --------------- |
+| Yeni yetenekler, yenilikçi süreçler | Aynı yetenekler, tanıdık süreçler |
+| Veri merkezinizdeki Azure hizmetleri | Veri merkezinizi Azure hizmetlerine bağlama |
 
-### <a name="when-to-use-azure-stack"></a>Ne zaman kullanılacağı Azure Stack
+### <a name="when-to-use-azure-stack-hub"></a>Azure Stack hub 'ı ne zaman kullanılır
 
-|Azure Stack|Azure Stack HCI|
-|--------|-------|
-|Self servis hizmet olarak altyapı (IaaS) için Azure Stack kullanarak, güçlü yalıtım ve hassas kullanım izleme ve birden fazla birlikte bulunan kiracılar için geri ödeme yapın. Hizmet sağlayıcıları ve kurumsal özel bulutlar için idealdir. Azure Marketi 'ndeki şablonlar.|Azure Stack HCı, çoklu kiracı için yerel olarak zorunlu değildir veya sağlamaz.|
-|Şirket içi Web Apps, Işlevler veya Event Hubs gibi hizmet olarak platform (PaaS) hizmetlerini kullanan uygulamalar geliştirmek ve çalıştırmak için Azure Stack kullanın. Bu hizmetler, tutarlı bir karma geliştirme ve çalışma zamanı ortamı sağlayarak Azure 'da yaptıkları gibi Azure Stack çalışır.|Azure Stack HCı şirket içinde PaaS hizmetlerini çalıştırmaz.
-|Kod olarak altyapı, sürekli tümleştirme ve sürekli dağıtım (CI/CD) gibi DevOps uygulamalarıyla ve Azure ile tutarlı VM uzantıları gibi kullanışlı özelliklerle uygulama dağıtımı ve işlem modernleştirin için Azure Stack kullanın. Geliştirme ve DevOps takımları için idealdir.|Azure Stack HCı, hiçbir DevOps aracı bulundurmaz.
+| Azure Stack hub 'ı | Azure Stack HCI |
+| --------------- | --------------- |
+| Self servis hizmet olarak altyapı (IaaS) için, güçlü yalıtım ve kesin kullanım izleme ve birden fazla birlikte bulunan kiracılar için geri ödeme ile Azure Stack hub 'ı kullanın. Hizmet sağlayıcıları ve kurumsal özel bulutlar için idealdir. Azure Marketi 'ndeki şablonlar. | Azure Stack HCı, çoklu kiracı için yerel olarak zorunlu değildir veya sağlamaz. |
+| Şirket içi Web Apps, Işlevler veya Event Hubs gibi hizmet olarak platform (PaaS) hizmetlerini kullanan uygulamalar geliştirmek ve çalıştırmak için Azure Stack hub 'ı kullanın. Bu hizmetler, tutarlı bir karma geliştirme ve çalışma zamanı ortamı sağlayarak Azure 'da yaptıkları gibi Azure Stack çalışır. | Azure Stack HCı şirket içinde PaaS hizmetlerini çalıştırmaz. |
+| Kod olarak altyapı, sürekli tümleştirme ve sürekli dağıtım (CI/CD) gibi DevOps uygulamalarıyla ve Azure ile tutarlı VM uzantıları gibi kullanışlı özelliklere sahip uygulama dağıtımı ve işlem modernleştirin için Azure Stack hub 'ı kullanın. Geliştirme ve DevOps takımları için idealdir. | Azure Stack HCı, hiçbir DevOps aracı bulundurmaz. |
 
 ### <a name="when-to-use-azure-stack-hci"></a>Azure Stack HCı ne zaman kullanılır?
 
-|Azure Stack|Azure Stack HCI|
-|---------------|---------------|
-|Azure Stack en az 4 düğüm ve kendi ağ anahtarı gerektirir.|Uzak ofislerin ve dalların en düşük ayak izi için Azure Stack HCı kullanın. En yüksek basitlik ve uygun maliyet için yalnızca 2 sunucu düğümü ve switchdaha geriye doğru ağ ile başlayın. Donanım, 4 sürücü, 64 GB bellek ve $10.000/düğüm altında başlar.
-|Azure Stack, Hyper V yapılandırması ve özellik kümesini Azure ile tutarlı bir şekilde kısıtlar.|Exchange, SharePoint ve SQL Server gibi klasik kurumsal uygulamalar için ve dosya sunucusu, DNS, DHCP, IIS ve AD gibi Windows Server rollerini sanallaştırmak için, No-frills Hyper-V sanallaştırma için Azure Stack HI kullanın. Korumalı VM 'Ler gibi tüm Hyper-V özelliklerine Kısıtlanmamış erişim.|
-|Azure Stack bu altyapısal teknolojilerini kullanıma sunmaz.|Büyük bir yeniden mimaride, depolama dizileri veya ağ gereçlerinin yerine yazılım tanımlı altyapıyı kullanmak için Azure Stack HI kullanın. Yerleşik Hyper-V, Depolama Alanları Doğrudan ve yazılım tanımlı ağ (SDN) doğrudan erişilebilir ve yönetilebilir.|
+| Azure Stack hub 'ı | Azure Stack HCI |
+| --------------- | --------------- |
+| Azure Stack hub, en az 4 düğüm ve kendi ağ anahtarlarını gerektirir. | Uzak ofislerin ve dalların en düşük ayak izi için Azure Stack HCı kullanın. En yüksek basitlik ve uygun maliyet için yalnızca 2 sunucu düğümü ve switchdaha geriye doğru ağ ile başlayın. Donanım, 4 sürücü, 64 GB bellek ve $10.000/düğüm altında başlar. |
+| Azure Stack hub, Hyper V yapılandırması ve özellik kümesini Azure ile tutarlı bir şekilde kısıtlar. | Exchange, SharePoint ve SQL Server gibi klasik kurumsal uygulamalar için ve dosya sunucusu, DNS, DHCP, IIS ve AD gibi Windows Server rollerini sanallaştırmak için, No-frills Hyper-V sanallaştırma için Azure Stack HI kullanın. Korumalı VM 'Ler gibi tüm Hyper-V özelliklerine Kısıtlanmamış erişim.|
+| Azure Stack hub bu altyapısal teknolojilerini kullanıma sunmaz. | Büyük bir yeniden mimaride, depolama dizileri veya ağ gereçlerinin yerine yazılım tanımlı altyapıyı kullanmak için Azure Stack HI kullanın. Yerleşik Hyper-V, Depolama Alanları Doğrudan ve yazılım tanımlı ağ (SDN) doğrudan erişilebilir ve yönetilebilir. |

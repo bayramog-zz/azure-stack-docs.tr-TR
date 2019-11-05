@@ -1,8 +1,8 @@
-- name: Azure Stack Kullanıcı Belgeleri
+- name: Azure Stack hub Kullanıcı belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Stack çözümleri derleme
+    - name: Azure Stack hub ile çözüm oluşturma
       href: azure-stack-hybrid-cloud-patterns.md
     - name: Dikkat edilmesi gereken temel konular
       href: azure-stack-considerations.md
@@ -33,29 +33,29 @@
           href: azure-stack-subscribe-services.md
         - name: Bulut çözüm sağlayıcısını etkinleştirme
           href: azure-stack-csp-enable-billing-usage-tracking.md
-        - name: Azure Stack Portal’ı kullanma
+        - name: Azure Stack hub portalını kullanma
           href: azure-stack-use-portal.md
         - name: İstemcinizi yapılandırma
           items:
             - name: Geliştirme ortamı ayarlama
               href: azure-stack-dev-start.md
-            - name: PowerShell 'i Azure Stack ile kullanma
+            - name: Azure Stack hub ile PowerShell kullanma
               items:
-                - name: Azure Stack PowerShell 'e genel bakış
+                - name: Azure Stack hub PowerShell 'e genel bakış
                   href: azure-stack-powershell-overview.md
                 - name: Azure Stack PowerShell’i yükleme
                   href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
                   maintainContext: true
                 - name: PowerShell ile bağlanma
                   href: azure-stack-powershell-configure-user.md
-                - name: Azure Stack araçlarını indir
+                - name: Azure Stack hub araçlarını indirin
                   href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
                   maintainContext: true
                 - name: PowerShell çalıştırmak için Docker kullanma
                   href: azure-stack-powershell-user-docker.md
-                - name: Azure Stack Ilkesi modülünü kullanma
+                - name: Azure Stack hub Ilkesi modülünü kullanma
                   href: azure-stack-policy-module.md
-            - name: Azure CLı 'yı Azure Stack ile kullanma
+            - name: Azure Stack hub ile Azure CLı kullanma
               href: azure-stack-version-profiles-azurecli2.md
             - name: Visual Studio Code kullan
               href: azure-stack-dev-start-vscode-azure.md
@@ -65,7 +65,7 @@
               href: azure-stack-dev-start-howto-ssh-public-key.md
             - name: API ile REST istemcisi kullanma
               href: azure-stack-rest-api-use.md
-        - name: Azure Stack Kaynak Yöneticisi şablonlarını kullanma
+        - name: Azure Stack hub Kaynak Yöneticisi şablonlarını kullanma
           items:
             - name: Şablona genel bakış
               href: azure-stack-arm-templates.md
@@ -160,11 +160,11 @@
                       href: azure-stack-vpn-s2s.md
                     - name: VPN Ağ Geçidi ayarları
                       href: azure-stack-vpn-gateway-settings.md
-                - name: Azure Stack için iDNS
+                - name: Azure Stack Hub için IDNs
                   href: azure-stack-understanding-dns.md
-                - name: Azure Stack’te DNS
+                - name: Azure Stack hub 'da DNS
                   href: azure-stack-dns.md
-            - name: Key Vault
+            - name: Anahtar Kasası
               items:
                 - name: Genel Bakış
                   href: azure-stack-key-vault-intro.md
@@ -197,7 +197,7 @@
               items:
                 - name: AKS altyapısı
                   items:
-                    - name: Azure Stack AKS altyapısı
+                    - name: Azure Stack hub 'da AKS altyapısı
                       href: azure-stack-kubernetes-aks-engine-overview.md
                     - name: Destek ilkesi
                       href: azure-stack-kubernetes-aks-engine-support.md
@@ -251,7 +251,7 @@
               href: azure-stack-dev-start-howto-vm-nodejs.md
     - name: Karma bulut desenlerini dağıtma
       items:
-        - name: Azure ve Azure Stack’e uygulama dağıtma
+        - name: Azure ve Azure Stack hub 'a uygulama dağıtma
           href: azure-stack-solution-pipeline.md
         - name: Karma bulut kimliğini yapılandırma
           href: azure-stack-solution-hybrid-identity.md
@@ -303,6 +303,18 @@
               href: azure-stack-network-howto-backup-replicator.md
 - name: Kavramlar
   items:
+    - name: IaaS mimarileri
+      items:
+        - name: Linux VM
+          href: iaas-architecture-vm-linux.md
+        - name: Windows VM
+          href: iaas-architecture-vm-windows.md
+        - name: SQL ile N katmanlı uygulama
+          href: iaas-architecture-windows-sql-n-tier.md
+        - name: Birden çok bölgede N katmanlı uygulama
+          href: iaas-architecture-sql-n-tier-multi-region.md
+        - name: Ağ sanal aletleri
+          href: iaas-architecture-nva-architecture.md
     - name: Karma bulut desenleri
       items:
         - name: Karma bulut desenlerine genel bakış
@@ -319,13 +331,13 @@
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0
-    - name: Azure Stack REST API tarayıcısı
+    - name: Azure Stack hub REST API tarayıcısı
       href: /rest/api/
-    - name: Azure Stack CLI
+    - name: Azure CLI
       href: /cli/azure/reference-index?view=azure-cli-2017-03-09-profile
 - name: İlgili
   items:
-    - name: Azure Stack Operatör Belgeleri
+    - name: Azure Stack hub Işleci belgeleri
       href: /azure-stack/operator/
     - name: ASDK belgeleri
       href: /azure-stack/asdk/
