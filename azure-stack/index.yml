@@ -1,0 +1,117 @@
+### YamlMime:Hub
+title: Azure Stack belgeleri
+summary: Azure Stack, Azure 'ı veri merkezinize veya kenara genişleten bir ürün ve çözüm ailesidir. Azure Stack hub, Azure Stack HI ve Azure Stack Edge içerir.
+brand: azure
+metadata:
+  title: Azure Stack belgeleri
+  description: Azure Stack, Azure 'ı veri merkezinize veya kenara genişleten bir ürün ve çözüm ailesidir. Azure Stack hub, Azure Stack HI ve Azure Stack Edge içerir.
+  ms.service: azure-stack
+  ms.topic: hub-page
+  author: BryanLa
+  ms.author: bryanla
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 188a1e58f592f88beee2781d5ee53a9fef48d418
+  ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73607967"
+highlightedContent:
+  items:
+  - title: Azure Stack aile duyurusu
+    itemType: overview
+    url: http://aka.ms/AzsFamAnnounce
+  - title: Ürün ve çözümlerin Azure Stack ailesini karşılaştırma
+    itemType: overview
+    url: /azure-stack/operator/compare-azure-azure-stack
+productDirectory:
+  items:
+  - title: Azure Stack hub 'ı
+    imageSrc: media/index/azure-stack-hub.svg
+    links:
+    - url: /azure-stack/operator/azure-stack-overview
+      text: Azure Stack hub nedir?
+  - title: Azure Stack Edge
+    imageSrc: media/index/azure-stack-edge.svg
+    links:
+    - url: /azure/databox-online/data-box-edge-overview
+      text: Azure Stack Edge nedir?
+  - title: Azure Stack HCI
+    imageSrc: media/index/azure-stack-hci.svg
+    links:
+    - url: /azure-stack/operator/azure-stack-hci-overview
+      text: Azure Stack HI genel bakış
+additionalContent:
+  sections:
+  - title: Azure Stack hub 'ı
+    items:
+    - title: İşleç
+      links:
+      - url: /azure-stack/operator/azure-stack-manage-portals
+        text: Yönetici portalını kullanma
+      - url: /azure-stack/operator/release-notes
+        text: Sürüm notları
+      - url: /azure-stack/operator/azure-stack-servicing-policy
+        text: Azure Stack hub hizmet ilkesi
+      - url: /azure-stack/operator/azure-stack-create-service-principals
+        text: Kaynaklara erişmek için bir uygulama kimliği kullanın
+    - title: Kullanıcı
+      links:
+      - url: /azure-stack/user/azure-stack-quick-windows-portal
+        text: VM'yi dağıtma
+      - url: /azure-stack/user/azure-stack-vm-sizes
+        text: Desteklenen VM boyutları
+      - url: /azure-stack/user/azure-stack-considerations
+        text: Uygulama oluşturmaya yönelik önemli noktalar
+      - url: /azure-stack/user/azure-stack-key-vault-manage-portal
+        text: Key Vault oluşturma ve yönetme
+    - title: Azure Stack hub Development Kit (ASDK)
+      links:
+      - url: /azure-stack/asdk/asdk-deploy-considerations
+        text: ASDK gereksinimleri ve konuları
+      - url: /azure-stack/asdk/asdk-download
+        text: ASDK 'yi indir ve Ayıkla
+      - url: /azure-stack/asdk/asdk-prepare-host
+        text: ASDK ana bilgisayarını hazırlama
+  - title: Azure Stack Edge
+    items:
+    - title: Kurulum
+      links:
+      - url: /azure/databox-online/data-box-edge-system-requirements
+        text: Sistem gereksinimlerini gözden geçirin
+      - url: /azure/databox-online/data-box-edge-limits
+        text: Sınırları anlama
+      - url: /azure/databox-online/data-box-edge-deploy-prep
+        text: Dağıtmaya hazırlanma
+      - url: /azure/databox-online/data-box-edge-deploy-install
+        text: Yükleme
+    - title: Denemeler
+      links:
+      - url: /azure/databox-online/data-box-edge-create-iot-edge-module
+        text: IoT Edge modülü geliştirme (C#)
+      - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules
+        text: IoT Edge modül örnekleri (C#)
+  - title: Azure Stack HCI
+    items:
+    - title: Çözümler
+      links:
+      - url: https://azure.microsoft.com/overview/azure-stack/hci/
+        text: Azure Stack HCı çözümlerine genel bakış
+      - url: https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog
+        text: Azure Stack HCı kataloğu
+    - title: Yönetin
+      links:
+      - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+        text: Windows Admin Center
+      - url: /windows-server/manage/windows-admin-center/azure
+        text: Azure hibrit Hizmetleri
+    - title: Temel teknolojiler
+      links:
+      - url: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
+        text: Hyper-V
+      - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
+        text: Doğrudan Erişimli Depolama Alanları
+      - url: /windows-server/networking/sdn
+        text: Yazılım tanımlı ağ
+      - url: /windows-server/failover-clustering/failover-clustering-overview
+        text: Yük Devretme Kümelemesi
