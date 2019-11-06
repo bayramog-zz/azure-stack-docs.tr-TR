@@ -9,12 +9,12 @@ ms.date: 10/30/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: 428a91503c6943ed1dcc2f48ccad09620d650039
-ms.sourcegitcommit: cc5c965b13bc3dae9a4f46a899e602f41dc66f78
+ms.openlocfilehash: 4294f7f1d53f77c55532645de428678cf42be531
+ms.sourcegitcommit: 20d1c0ab3892e9c4c71d5b039457f1e15b1c84c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73236272"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73618300"
 ---
 # <a name="back-up-your-vm-on-azure-stack-with-commvault"></a>Sanal makineyi Commkasasıyla Azure Stack yedekleme
 
@@ -149,7 +149,7 @@ Kimlik yöneticinizin Azure AD veya AD DFS olduğunu bilmeniz gerekir. Aşağıd
 
 9. Depolama hesabınız için erişim bilgilerinizi girin. Burada bir Azure depolama hesabı ayarlama yönergeleri bulabilirsiniz. Erişim bilgileri:
 
-    -  **Hizmet ana bilgisayarı**: kaynağınızın blob KAPSAYıCı özelliklerinden URL 'nin adını alın. Örneğin, URL 'im https://backuptest.blob.westus.stackpoc.com/mybackups ve kullanıldım, hizmet ana bilgisayarında blob.westus.stackpoc.com.
+    -  **Hizmet ana bilgisayarı**: kaynağınızın blob KAPSAYıCı özelliklerinden URL 'nin adını alın. Örneğin, URL 'im https:\//backuptest.blob.westus.stackpoc.com/mybackups ve kullandım, hizmet ana bilgisayarında blob.westus.stackpoc.com.
     
     -   **Hesap adı**: depolama hesabı adını kullanın. Bunu, depolama kaynağındaki erişim tuşları dikey penceresinde bulabilirsiniz.
     

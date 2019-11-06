@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 07/30/2019
-ms.openlocfilehash: 7e2753ebb5bebad4f1ac2a7bbc17a27ccd87cbe9
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: 65ea0b4f6f7f7cb3769e83bf9052ac2953668e48
+ms.sourcegitcommit: 20d1c0ab3892e9c4c71d5b039457f1e15b1c84c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283052"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73618222"
 ---
 # <a name="use-api-version-profiles-with-nodejs-software-development-kit-sdk-in-azure-stack"></a>Azure Stack 'de Node. js yazılım geliştirme seti (SDK) ile API sürüm profillerini kullanma
 
@@ -54,9 +54,9 @@ Aşağıdaki paketleri bulabilirsiniz:
 | [Azure Resource Manager Ilkesi](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2019-03-01) | @azure/arm-policy-profile-hybrid-2019-03-01
 | [DNS Azure Resource Manager](https://www.npmjs.com/package/@azure/arm-dns-profile-2019-03-01-hybrid) | @azure/arm-dns-profile-2019-03-01-hybrid  |
 | [Yetkilendirme](https://www.npmjs.com/package/@azure/arm-authorization-profile-2019-03-01-hybrid) | @azure/arm-authorization-profile-2019-03-01-hybrid  |
-| [Hesaplamasını](https://www.npmjs.com/package/@azure/arm-compute-profile-2019-03-01-hybrid) | @azure/arm-compute-profile-2019-03-01-hybrid |
-| [Depo](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid) | @azure/arm-storage-profile-2019-03-01-hybrid |
-| [Network](https://www.npmjs.com/package/@azure/arm-network-profile-2019-03-01-hybrid) | @azure/arm-network-profile-2019-03-01-hybrid |
+| [İşlem](https://www.npmjs.com/package/@azure/arm-compute-profile-2019-03-01-hybrid) | @azure/arm-compute-profile-2019-03-01-hybrid |
+| [Depolama](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid) | @azure/arm-storage-profile-2019-03-01-hybrid |
+| [Ağ](https://www.npmjs.com/package/@azure/arm-network-profile-2019-03-01-hybrid) | @azure/arm-network-profile-2019-03-01-hybrid |
 | [Kaynaklar](https://www.npmjs.com/package/@azure/arm-resources-profile-hybrid-2019-03-01) | @azure/arm-resources-profile-hybrid-2019-03-01 |
  | [Keyvault](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid) | @azure/arm-keyvault-profile-2019-03-01-hybrid |
 
@@ -73,7 +73,7 @@ Kaynak sağlayıcının belirli API sürümleri için paket içinde tanımlanan 
 
 2. [Node. js](https://nodejs.org/en/download/)' nin güncel sürümünü yükler veya yükseltin. Node. js [NPM](https://www.npmjs.com/) JavaScript paket yöneticisini da içerir.
 
-3. [Visual Studio Code](https://code.visualstudio.com/) yükleyip yükseltin ve Visual Studio Code için [Node. js uzantısını](https://code.visualstudio.com/docs/Node.js/nodejs-debugging) yükler.
+3. [Visual Studio Code](https://code.visualstudio.com/) yükleyip yükseltin ve Visual Studio Code için [Node. js uzantısını](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) yükler.
 
 2.  Azure Stack Kaynak Yöneticisi için istemci paketlerini yükler. Daha fazla bilgi için bkz. [istemci kitaplıklarını yüklemek](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
@@ -93,11 +93,11 @@ Node. js Azure SDK 'sını Azure Stack ile kullanmak için aşağıdaki değerle
 
 | Değer | Ortam değişkenleri | Açıklama |
 | --- | --- | --- |
-| Kiracı KIMLIĞI | KIRACı @ no__t-0ıD | Azure Stack [KIRACı kimliğinizin](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview)değeri. |
-| İstemci KIMLIĞI | ISTEMCI @ no__t-0ıD | Hizmet sorumlusu bu belgenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI.  |
-| Abonelik Kimliği | AZURE @ no__t-0SUBSCRIPTION @ no__t-1ıD [ABONELIK kimliği](https://docs.microsoft.com/azure/azure-stack/service-plan-offer-subscription-overview#subscriptions) , Azure Stack tekliflere nasıl erişebilirsiniz.  |
-| İstemci parolası | Uygulama @ no__t-0SECRET | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
-| Kaynak Yöneticisi uç noktası | ARM @ no__t-0ENDPOINT | [Azure Stack Kaynak Yöneticisi uç noktasına](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint)bakın. |
+| Kiracı Kimliği | KIRACı\_KIMLIĞI | Azure Stack [KIRACı kimliğinizin](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview)değeri. |
+| İstemci Kimliği | ISTEMCI\_KIMLIĞI | Hizmet sorumlusu bu belgenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI.  |
+| Abonelik Kimliği | AZURE\_ABONELIĞI\_KIMLIĞI [ABONELIK kimliği](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) Azure Stack tekliflere nasıl erişirsiniz.  |
+| İstemci parolası | Uygulama\_gızlı dizisi | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
+| Kaynak Yöneticisi uç noktası | ARM\_uç noktası | [Azure Stack Kaynak Yöneticisi uç noktasına](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint)bakın. |
 
 #### <a name="set-your-environmental-variables-for-nodejs"></a>Node. js için ortam değişkenlerinizi ayarlama
 
@@ -232,9 +232,9 @@ Node. js ve Azure Stack API profilleriyle çözüm oluşturmak için aşağıdak
 2.  Bir Azure hizmet sorumlusu oluşturun ve aboneliğe erişmek için bir rol atayın. Yönergeler için bkz. [sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
 3.  Aşağıdaki gerekli değerleri alın:
-    - Kiracı KIMLIĞI
-    - İstemci KIMLIĞI
-    - İstemci parolası
+    - Kiracı Kimliği
+    - İstemci Kimliği
+    - Gizli anahtar
     - Azure abonelik KIMLIĞI
     - Azure Stack Kaynak Yöneticisi uç noktası
 
@@ -279,7 +279,7 @@ Node. js ve Azure Stack API profilleriyle çözüm oluşturmak için aşağıdak
 
 10.  Tüm Node. js modüllerini yüklemek için komut isteminde `npm install` komutunu çalıştırın.
 
-11.  Örneği çalıştırın.
+11.  Örnek uygulamayı çalıştırın.
 
         ```Node.js  
         node index.js
@@ -309,7 +309,7 @@ function createResourceGroup(callback) {
 }
 ```
 
-### <a name="create-a-new-storage-account"></a>Yeni bir depolama hesabı oluştur
+### <a name="create-a-new-storage-account"></a>Yeni depolama hesabı oluşturma
 
 Ardından örnek, önceki adımda oluşturulan kaynak grubuyla ilişkili yeni bir depolama hesabı oluşturur.
 
@@ -409,5 +409,5 @@ return resourceClient.resourceGroups.deleteMethod(resourceGroupName, callback);
 
 API profilleri hakkında daha fazla bilgi için bkz.
 
-- [Azure Stack API sürüm profillerini yönetme](azure-stack-version-profiles.md)
+- [Azure Stack’de API sürümü profillerini yönetme](azure-stack-version-profiles.md)
 - [Profiller tarafından desteklenen kaynak sağlayıcısı API sürümleri](azure-stack-profiles-azure-resource-manager-versions.md)

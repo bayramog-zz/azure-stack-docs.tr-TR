@@ -2,8 +2,6 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Stack hub ile çözüm oluşturma
-      href: azure-stack-hybrid-cloud-patterns.md
     - name: Dikkat edilmesi gereken temel konular
       href: azure-stack-considerations.md
 - name: Hızlı Başlangıçlar
@@ -164,7 +162,7 @@
                   href: azure-stack-understanding-dns.md
                 - name: Azure Stack hub 'da DNS
                   href: azure-stack-dns.md
-            - name: Anahtar Kasası
+            - name: Key Vault
               items:
                 - name: Genel Bakış
                   href: azure-stack-key-vault-intro.md
@@ -249,26 +247,6 @@
               href: azure-stack-dev-start-howto-vm-python.md
             - name: NodeJS Web uygulaması dağıtma
               href: azure-stack-dev-start-howto-vm-nodejs.md
-    - name: Karma bulut desenlerini dağıtma
-      items:
-        - name: Azure ve Azure Stack hub 'a uygulama dağıtma
-          href: azure-stack-solution-pipeline.md
-        - name: Karma bulut kimliğini yapılandırma
-          href: azure-stack-solution-hybrid-identity.md
-        - name: Karma bulut bağlantısını yapılandırma
-          href: azure-stack-solution-hybrid-connectivity.md
-        - name: Azure ile platformlar arası ölçeklendirme çözümleri oluşturun
-          href: azure-stack-solution-cloud-burst.md
-        - name: Coğrafi olarak dağıtılmış uygulama çözümü oluşturma
-          href: azure-stack-solution-geo-distributed.md
-        - name: Karma bulut çözümünü dağıtma
-          href: azure-stack-solution-hybrid-cloud.md
-        - name: Hazırlanan veri analizlerini dağıtma
-          href: azure-stack-solution-staged-data.md
-        - name: Yüksek kullanılabilirliğe sahip MongoDB dağıtma
-          href: azure-stack-solution-mongodb-ha.md
-        - name: Yüksek kullanılabilirlik SQL Server dağıtım 2016
-          href: azure-stack-solution-sql-ha.md
     - name: Temel desenleri dağıtma
       items:
         - name: VNET eşlemesi
@@ -315,18 +293,6 @@
           href: iaas-architecture-sql-n-tier-multi-region.md
         - name: Ağ sanal aletleri
           href: iaas-architecture-nva-architecture.md
-    - name: Karma bulut desenleri
-      items:
-        - name: Karma bulut desenlerine genel bakış
-          href: azure-stack-edge-pattern-overview.md
-        - name: Platformlar arası ölçeklendirme
-          href: azure-stack-edge-pattern-cross-cloud-scaling.md
-        - name: DevOps (karma CI/CD)
-          href: azure-stack-edge-pattern-hybrid-ci-cd.md
-        - name: Betfall algılama
-          href: hybrid-solution-retail-footfall-detection.md
-        - name: Coğrafi olarak dağıtılmış uygulama
-          href: azure-stack-edge-pattern-geo-distribution.md
 - name: Başvuru
   items:
     - name: Azure Stack PowerShell

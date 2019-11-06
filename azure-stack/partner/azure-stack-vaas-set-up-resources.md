@@ -15,14 +15,14 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 33ead43fd8dbe77feae12db58ca7c689030c6f98
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.openlocfilehash: e36235af4dea72ae6d8016085ee18aec819ae4dd
+ms.sourcegitcommit: 20d1c0ab3892e9c4c71d5b039457f1e15b1c84c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829099"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73618233"
 ---
-# <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Öğretici: Hizmet olarak doğrulama için kaynakları ayarlama
+# <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Öğretici: hizmet olarak doğrulama için kaynakları ayarlama
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Active Directory (AD) ayarlayarak VaaS kullanmaya hazırlanın.
-> * Bir depolama hesabı oluşturun.
+> * Depolama hesabı oluşturma.
 
 ## <a name="configure-an-azure-ad-tenant"></a>Azure AD kiracısı yapılandırma
 
@@ -40,7 +40,7 @@ Bir Azure AD kiracısı, bir kuruluşu kaydetmek ve VaaS ile kullanıcıların k
 
 ### <a name="create-a-tenant"></a>Kiracı oluşturma
 
-Kuruluşunuzun VaaS hizmetlerine erişmek için kullanacağı bir kiracı oluşturun. Açıklayıcı bir ad kullanın (örneğin, `ContosoVaaS@onmicrosoft.com`).
+Kuruluşunuzun VaaS hizmetlerine erişmek için kullanacağı bir kiracı oluşturun. Açıklayıcı bir ad kullanın, örneğin `ContosoVaaS@onmicrosoft.com`.
 
 1. [Azure Portal](https://portal.azure.com)BIR Azure AD kiracısı oluşturun veya mevcut bir kiracıyı kullanın. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
 
@@ -56,9 +56,9 @@ Kuruluşunuzun VaaS hizmetlerine erişmek için kullanacağı bir kiracı oluşt
 
     **Azure Stack doğrulama hizmeti** uygulamasına roller atamak için:
 
-   1. [Azure Portal](https://portal.azure.com) oturum açın.
-   2. **Kimlik** bölümünün altındaki  > **Azure Active Directory** **tüm hizmetleri**seçin.
-   3. @No__t-1**Azure Stack doğrulama hizmeti** uygulaması **Kurumsal uygulamalar**' ı seçin.
+   1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+   2. **Kimlik** bölümünün altındaki **tüm hizmetler** > **Azure Active Directory** seçin.
+   3. **Azure Stack doğrulama hizmeti** uygulaması > **Kurumsal uygulamalar** ' ı seçin.
    4. **Kullanıcı ve gruplar**'ı seçin. **Azure Stack doğrulama hizmeti-kullanıcılar ve grup** dikey penceresinde, uygulamayı kullanma izni olan kullanıcılar listelenir.
    5. Kiracınızdan bir kullanıcı eklemek ve bir rol atamak için **+ Kullanıcı Ekle** ' yi seçin.
 
@@ -68,11 +68,11 @@ Kuruluşunuzun VaaS hizmetlerine erişmek için kullanacağı bir kiracı oluşt
 
 Bu işlem, kiracınızı **Azure Stack doğrulama hizmeti** Azure AD uygulaması ile yetkilendirir.
 
-1. [@No__t-1](mailto:vaashelp@microsoft.com)' de kiracı hakkında aşağıdaki bilgileri Microsoft 'a gönderin.
+1. [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com)adresindeki kiracı hakkında aşağıdaki bilgileri Microsoft 'a gönderin.
 
-    | Data | Açıklama |
+    | Veriler | Açıklama |
     |--------------------------------|---------------------------------------------------------------------------------------------|
-    | Kuruluş adı | Resmi kuruluş adı. |
+    | Kuruluş Adı | Resmi kuruluş adı. |
     | Azure AD kiracı dizin adı | Kaydolmakta olan Azure AD kiracı dizin adı. |
     | Azure AD kiracı dizin KIMLIĞI | Dizinle ilişkili Azure AD kiracı Dizin GUID 'ı. Azure AD kiracı Dizin KIMLIĞINIZI bulma hakkında daha fazla bilgi için bkz. [KIRACı kimliğini alma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
 
@@ -94,13 +94,13 @@ Test yürütmesi sırasında, VaaS, tanılama günlüklerini bir Azure depolama 
 
 Azure depolama hesabı, Azure Stack ortamınızda değil, Azure genel bulutunda barındırılır.
 
-1. Azure portal, **tüm hizmetler** > **depolama** > **depolama hesabı**' nı seçin. **Depolama hesapları** dikey penceresinde **Ekle**' yi seçin.
+1. Azure portal, **tüm hizmetler** > **depolama** > **depolama hesapları**' nı seçin. **Depolama hesapları** dikey penceresinde **Ekle**' yi seçin.
 
 2. Depolama hesabının oluşturulacağı aboneliği seçin.
 
 3. **Kaynak grubu**altında **Yeni oluştur**' u seçin. Yeni kaynak grubunuz için bir ad girin.
 
-4. Azure depolama hesapları için [adlandırma kurallarını](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage) gözden geçirin. Depolama hesabınız için bir ad girin.
+4. Azure depolama hesapları için [adlandırma kurallarını](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage) gözden geçirin. Depolama hesabınız için bir ad girin.
 
 5. Depolama hesabınızın **ABD Batı** bölgesini seçin.
 

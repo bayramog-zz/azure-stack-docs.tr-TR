@@ -16,12 +16,12 @@ ms.date: 10/10/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 91314fcd33d3b4171dc7e9a3e2d78cdf07e2f50e
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: 095744322937a34dffd680b886fd4b06ca65d7d6
+ms.sourcegitcommit: 20d1c0ab3892e9c4c71d5b039457f1e15b1c84c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283515"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73618269"
 ---
 # <a name="download-existing-marketplace-items-from-azure-and-publish-to-azure-stack"></a>Azure 'dan mevcut Market öğelerini indirin ve Azure Stack yayımlayın
 
@@ -36,11 +36,11 @@ Azure Market 'e bağlanmak için iki senaryo vardır:
 
 İndirebileceğiniz Market öğelerinin tüm listesi için bkz. [Azure Marketi öğeleri Azure Stack](azure-stack-marketplace-azure-items.md) . Azure Stack Market 'Teki son ekleme, silme ve güncelleştirme işlemlerinin bir listesi için [Azure Stack Market Changes](azure-stack-marketplace-changes.md) makalesine bakın.
 
-## <a name="connected-scenario"></a>Bağlı senaryo
+## <a name="connected-scenario"></a>Bağlantılı senaryo
 
 Azure Stack internet 'e bağlanırsa, Market öğelerini indirmek için Yönetici portalını kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack dağıtımınız Internet bağlantısına sahip olmalı ve [Azure 'a kayıtlı](azure-stack-registration.md)olmalıdır.
 
@@ -81,7 +81,7 @@ Bu senaryonun iki bölümü vardır:
 - **1. Bölüm:** Azure Marketi 'nden indirin. İnternet erişimi olan bilgisayarda PowerShell 'i yapılandırın, dağıtım aracını indirin ve ardından Azure Marketi 'nden öğeleri indirin.  
 - **Bölüm 2:** Azure Stack Market 'e yükleyin ve yayımlayın. İndirdiğiniz dosyaları Azure Stack ortamınıza taşıyın, Azure Stack içeri aktarıp Azure Stack Market 'Te yayımlayabilirsiniz.  
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>Önkoşullar
 
 - Bağlı bir ortam (Azure Stack olması gerekmez). Azure 'dan ayrıntıların bulunduğu ürünlerin listesini almak ve her şeyi yerel olarak indirmek için bağlantı gerekir. Bu işlem yapıldıktan sonra, yordamın geri kalanı herhangi bir internet bağlantısı gerektirmez. Bu, bağlantısı kesilen ortamınızda kullanabilmeniz için daha önce indirdiğiniz öğelerin bir kataloğunu oluşturur.
 
@@ -101,7 +101,7 @@ Bu senaryonun iki bölümü vardır:
 
 Kaydolduktan sonra, bu, bağlantısı kesik kullanım durumu ile ilgili olmadığından Market yönetimi dikey penceresinde görüntülenen aşağıdaki iletiyi yoksayabilirsiniz:
 
-[![Kayıtlı değil iletisi](media/azure-stack-download-azure-marketplace-item/toolsmsgsm.png "kayıtlı değil iletisi")](media/azure-stack-download-azure-marketplace-item/toolsmsg.png#lightbox)
+[![Kayıtlı değil iletisi](media/azure-stack-download-azure-marketplace-item/toolsmsgsm.png "Kayıtlı değil iletisi")](media/azure-stack-download-azure-marketplace-item/toolsmsg.png#lightbox)
 
 ### <a name="use-the-marketplace-syndication-tool-to-download-marketplace-items"></a>Market öğelerini indirmek için Market dağıtım aracını kullanma
 
@@ -138,7 +138,7 @@ Kaydolduktan sonra, bu, bağlantısı kesik kullanım durumu ile ilgili olmadı�
    cd .\AzureStack-Tools-master
    ```
 
-5. Dağıtım modülünü içeri aktarın ve ardından aşağıdaki komutları çalıştırarak aracı başlatın. @No__t-0 ' yı, Azure Marketi 'nden yüklediğiniz dosyaları depolamak için bir konumla değiştirin.
+5. Dağıtım modülünü içeri aktarın ve ardından aşağıdaki komutları çalıştırarak aracı başlatın. `Destination folder path`, Azure Marketi 'nden yüklediğiniz dosyaları depolamak için bir konumla değiştirin.
 
    ```powershell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
@@ -146,13 +146,13 @@ Kaydolduktan sonra, bu, bağlantısı kesik kullanım durumu ile ilgili olmadı�
    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
    ```
 
-   @No__t-0 ' ın bulut ortamını belirten ek bir `-cloud` bayrağına sahip olduğunu unutmayın. Varsayılan olarak, **azurecyüksek**.
+   `Export-AzSOfflineMarketplaceItem`, bulut ortamını belirten ek bir `-cloud` bayrağına sahip olduğunu unutmayın. Varsayılan olarak, **azurecyüksek**.
 
 6. Araç çalıştırıldığında, kullanılabilir Azure Marketi öğelerinin listesiyle birlikte aşağıdaki görüntüye benzer bir ekran görmeniz gerekir:
 
-   [Azure ![Market öğeleri açılan menüsü](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketi öğeleri")](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
+   [![Azure Market öğeleri açılan menüsü](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Market öğeleri")](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
 
-7. Azure Storage araçları 'nı yüklemediyseniz aşağıdaki iletiyi alırsınız. Bu araçları yüklemek için [AzCopy](/azure/storage/common/storage-use-azcopy#download-and-install-azcopy-on-windows)'i indirdiğinizden emin olun:
+7. Azure Storage araçları 'nı yüklemediyseniz aşağıdaki iletiyi alırsınız. Bu araçları yüklemek için [AzCopy](/azure/storage/common/storage-use-azcopy#download-azcopy)'i indirdiğinizden emin olun:
 
    ![Depolama araçları](media/azure-stack-download-azure-marketplace-item/vmnew1.png)
 
@@ -189,9 +189,9 @@ Kaydolduktan sonra, bu, bağlantısı kesik kullanım durumu ile ilgili olmadı�
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
 
-   @No__t-0 parametresi, indirilen tüm ürünleri içeren en üst düzey klasörü belirtir; Örneğin, `"D:\downloadfolder"`.
+   `-origin` parametresi, indirilen tüm ürünleri içeren en üst düzey klasörü belirtir; Örneğin, `"D:\downloadfolder"`.
 
-   @No__t-0 parametresi isteğe bağlıdır. Süresi dolmuşsa, erişim belirtecini yenilemek için kullanılır. @No__t-0 parametresi belirtilmemişse ve belirtecin süresi dolarsa, işleç kimlik bilgilerini girmek için bir istem alırsınız.
+   `-AzsCredential` parametresi isteğe bağlıdır. Süresi dolmuşsa, erişim belirtecini yenilemek için kullanılır. `-AzsCredential` parametresi belirtilmemişse ve belirtecin süresi dolarsa, işleç kimlik bilgilerini girmek için bir istem alırsınız.
 
     > [!NOTE]  
     > AD FS yalnızca Kullanıcı kimlikleriyle etkileşimli kimlik doğrulamasını destekler. Bir kimlik bilgisi nesnesi gerekliyse, bir hizmet sorumlusu (SPN) kullanmanız gerekir. Azure Stack ve AD FS kimlik yönetimi hizmetiniz olarak bir hizmet sorumlusu ayarlama hakkında daha fazla bilgi için bkz. [AD FS hizmet sorumlusunu yönetme](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).

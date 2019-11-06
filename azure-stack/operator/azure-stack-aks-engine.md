@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 3b6d1b9e91acfdb7a54cf3b7fbc70399bf635c09
-ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
+ms.lastreviewed: 11/05/2019
+ms.openlocfilehash: c21223ca8926a1e2b3ca1b06752a79a14adaeda1
+ms.sourcegitcommit: 5c92a669007ab4aaffe4484f1d8836a40340dde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73595244"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73636874"
 ---
 # <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-marketplace"></a>Azure Kubernetes Hizmetleri (AKS) altyapısı önkoşullarını Azure Stack Market 'e ekleme
 
@@ -64,14 +64,14 @@ Market 'e aşağıdaki öğeyi ekleyin:
 
 1. **Azure 'dan + Ekle**' yi seçin.
 
-1. `AKS Base Image` yazın.
+1. `AKS Base` yazın.
 
 1. AKS altyapısının sürümüyle eşleşen görüntü sürümünü seçin. AKS temel görüntüsünün listesini, [desteklenen Kubernetes sürümlerindeki](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions)aks altyapısı sürümüne bulabilirsiniz. 
 
     Listede şunları seçin:
     - **Yayımcı**: Azure Kubernetes hizmeti
     - **Teklif**: aks
-    - **Sürüm**: aks Base Image 16,04-LTS ımage, 2019 Eylül (2019.09.19 veya aks altyapısıyla eşlenen sürüm)
+    - **Sürüm**: aks Base Image 16,04-LTS Image dekze, 2019 Ekim (2019.10.24 veya aks altyapısıyla eşlenen sürüm)
 
 1. Indir ' i seçin **.**
 

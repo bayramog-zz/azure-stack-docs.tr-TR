@@ -14,12 +14,12 @@ ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 10/10/2019
-ms.openlocfilehash: cc432538715c1c990a9efe6473b33303deb78734
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: a70eaaf46988524f5323052a3f2ca90f5b7719e1
+ms.sourcegitcommit: 5c92a669007ab4aaffe4484f1d8836a40340dde1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72280539"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73636806"
 ---
 # <a name="configure-the-time-server-for-azure-stack"></a>Azure Stack için saat sunucusunu yapılandırma
 
@@ -29,7 +29,10 @@ Azure Stack saat sunucusunu güncelleştirmek için ayrıcalıklı uç noktası 
 
 Azure Stack, Internet 'teki saat sunucularına bağlanmak için ağ saati protokolünü (NTP) kullanır. NTP sunucuları doğru sistem saatini sağlar. Süre, Azure Stack fiziksel ağ anahtarları, donanım yaşam döngüsü Konağı, altyapı hizmeti ve sanal makineler arasında kullanılır. Saat eşitlenmemişse, Azure Stack ağ ve kimlik doğrulamasıyla ilgili ciddi sorunlarla karşılaşabilir. Günlük dosyaları, belgeler ve diğer dosyalar hatalı zaman damgaları ile oluşturulabilir.
 
-Azure Stack zaman eşitlemesini sağlamak için en az bir kerelik sunucu (NTP) gereklidir. Azure Stack dağıtırken, bir NTP sunucusunun adresini sağlarsınız. Zaman, kritik bir veri merkezi altyapı hizmetidir. Hizmet değişirse saati güncelleştirmeniz gerekecektir.
+Azure Stack zaman eşitlemesini sağlamak için bir kerelik sunucu (NTP) sağlanması gerekir. Azure Stack dağıtırken, bir NTP sunucusunun adresini sağlarsınız. Zaman, kritik bir veri merkezi altyapı hizmetidir. Hizmet değişirse saati güncelleştirmeniz gerekecektir.
+
+> [!NOTE]
+> Azure Stack, yalnızca bir kerelik sunucu (NTP) ile eşitleme süresini destekler. Azure Stack ile zaman eşitlemesini sağlamak için birden çok NTPs belirtemezsiniz.
 
 ## <a name="configure-time"></a>Saati Yapılandır
 

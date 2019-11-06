@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: fdb0f9a34fe40b3d3fef6abf96b9e1a6927b04e6
-ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
+ms.openlocfilehash: 6ea5248881e10ca9e96ba423ecb4ea5569f00211
+ms.sourcegitcommit: 20d1c0ab3892e9c4c71d5b039457f1e15b1c84c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71909300"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73618266"
 ---
 # <a name="azure-stack-datacenter-integration-walkthrough"></a>Azure Stack veri merkezi tümleştirme Kılavuzu
 
@@ -29,12 +29,49 @@ Bu makalede, bir çözüm sağlayıcısı tarafından başarılı bir yerinde da
 
 Azure Stack müşteri olarak, aşağıdaki aşamaları tahmin etmeniz gerekir:
 
-|     |Planlama aşaması|Siparişi işleme|Dağıtım öncesi|Fabrika işlemi|Donanım teslimi|Yerinde dağıtım|
-|-----|-----|-----|-----|-----|-----|-----|
-|**Microsoft**|Ön satış desteği sağlamak için iş ortağıyla birlikte çalışın.|Yazılım Lisanslama ve sözleşmelerini gereken şekilde hazırlayın.|Veri merkezi Tümleştirme gereksinimlerini ve müşteri belgelerini toplamak için gerekli araçları sağlayın.|En son temel yapıları ve araç zinciri güncelleştirmelerini aylık bir temposunda sağlayın.|Yok|Microsoft destek mühendisleri, herhangi bir dağıtım sorununu gidermeye yardımcı olur.|
-|**İş ortağı**|Müşteri gereksinimlerine bağlı olarak çözüm seçeneklerini tavsiye edin.<br><br>Gerekirse kavram kanıtı (POC) önerin.<br><br>İş ilişkisi oluşturun.<br><br>Destek düzeyine karar verin.|Müşteriyle gerekli sözleşmeleri hazırlayın.<br><br>Müşteri satın alma siparişi oluştur.<br><br>Teslim zaman çizelgesine karar verin.<br><br>Gerekirse, müşteriyi Microsoft ile bağlayın.|Tüm dağıtım önkoşulları ve veri merkezi tümleştirme seçeneklerinin anlaşılmasını sağlamak için müşteriyi gerekli eğitimle sağlayın.<br><br>Eksiksiz ve doğruluğu sağlamak üzere toplanan verilerin doğrulanması için müşteriye yardımcı olun.|Son doğrulanan temel derlemeyi uygulayın.<br><br>Gerekli Microsoft dağıtım araç setini uygulayın.|Donanımı müşteri sitesine gönder.|Yerinde mühendis tarafından işlenen dağıtım.<br><br>Raf ve yığın.<br><br>Donanım yaşam döngüsü ana bilgisayarı (HLH) dağıtımı.<br><br>Azure Stack dağıtımı.<br><br>Müşteriye teslim.|
-|**Müşteri**|Amaçlanan kullanım örneklerini tanıtın ve gereksinimleri belirtin.|Sözleşmeleri kullanmak, gözden geçirmek ve onaylamak için faturalandırma modelini belirleme.|[Dağıtım çalışma sayfasını](azure-stack-deployment-worksheet.md)tamamlayıp tüm dağıtım önkoşullarının karşılandığından ve dağıtıma uygun olduğundan emin olun.|Yok|Tüm gerekli güç ve soğutma, sınır bağlantısı ve diğer gerekli veri merkezi tümleştirme gereksinimlerinin yerinde olmasını sağlayarak veri merkezini hazırlayın.|Dağıtım sırasında abonelik kimlik bilgileri ve sağlanan veriler hakkında sorular varsa destek sağlamak için kullanılabilir.|
-| | | | | | | |
+# <a name="customertabcustomer"></a>[Müşterisi](#tab/customer)
+
+1. Amaçlanan kullanım örneklerini tanıtın ve gereksinimleri belirtin.
+2. Sözleşmeleri kullanmak, gözden geçirmek ve onaylamak için faturalandırma modelini belirleme.
+3. [Dağıtım çalışma sayfasını](azure-stack-deployment-worksheet.md)tamamlayıp tüm dağıtım önkoşullarının karşılandığından ve dağıtıma uygun olduğundan emin olun.
+4. Tüm gerekli güç ve soğutma, sınır bağlantısı ve diğer gerekli veri merkezi tümleştirme gereksinimlerinin yerinde olduğundan veri merkezini hazırlayın.
+5. Dağıtım sırasında abonelik kimlik bilgileri ve sağlanan veriler hakkında sorular varsa destek sağlamak için kullanılabilir.
+
+# <a name="partnertabpartner"></a>[Ortağınız](#tab/partner)
+
+1. Planlama aşaması:
+   - Müşteri gereksinimlerine bağlı olarak çözüm seçeneklerini tavsiye edin.
+   - Gerekirse kavram kanıtı (POC) önerin.
+   - İş ilişkisi oluşturun.
+   - Destek düzeyine karar verin.
+2. İşlem sırası:
+   - Müşteriyle gerekli sözleşmeleri hazırlayın.
+   - Müşteri satın alma siparişi oluştur.
+   - Teslim zaman çizelgesine karar verin.
+   - Gerekirse, müşteriyi Microsoft ile bağlayın.
+3. Dağıtım öncesi
+   - Tüm dağıtım önkoşulları ve veri merkezi tümleştirme seçeneklerinin anlaşılmasını sağlamak için müşteriyi gerekli eğitimle sağlayın.
+   - Eksiksiz ve doğruluğu sağlamak üzere toplanan verilerin doğrulanması için müşteriye yardımcı olun.
+4. Fabrika işlemi
+   - Son doğrulanan temel derlemeyi uygulayın.
+   - Gerekli Microsoft dağıtım araç setini uygulayın.
+5. Donanım teslimi:
+   - Donanımı müşteri sitesine gönder.
+6. Yerinde dağıtım
+   - Yerinde mühendis tarafından işlenen dağıtım.
+   - Raf ve yığın.
+   - Donanım yaşam döngüsü ana bilgisayarı (HLH) dağıtımı.
+   - Azure Stack dağıtımı.
+   - Müşteriye teslim.
+
+# <a name="microsofttabmicro"></a>[MICROSOFT](#tab/micro)
+
+1. Ön satış desteği sağlamak için iş ortağıyla birlikte çalışın.
+2. Yazılım Lisanslama ve sözleşmelerini gereken şekilde hazırlayın.
+3. Veri merkezi Tümleştirme gereksinimlerini ve müşteri belgelerini toplamak için gerekli araçları sağlayın.
+4. En son temel yapıları ve araç zinciri güncelleştirmelerini aylık bir temposunda sağlayın.
+5. Microsoft destek mühendisleri, herhangi bir dağıtım sorununu gidermeye yardımcı olur.
+
 
 
 ## <a name="planning-phase"></a>Planlama aşaması

@@ -1,0 +1,72 @@
+### YamlMime:Landing
+title: Azure hibrit desenleri ve çözümleri belgeleri
+summary: Uygulama geliştirmede karma desenleri ve çözüm örneklerinden nasıl yararlanacağınızı öğrenin. Azure ve Azure Stack, bir akıllı bulut ve akıllı uç Hizmetleri paketi üzerine inşa olan karma uygulamaların geliştirilmesini sağlar.
+metadata:
+  title: Azure hibrit desenleri ve çözümleri belgeleri
+  description: Uygulama geliştirmede karma desenleri ve çözüm örneklerinden nasıl yararlanacağınızı öğrenin. Azure ve Azure Stack, bir akıllı bulut ve akıllı uç Hizmetleri paketi üzerine inşa olan karma uygulamaların geliştirilmesini sağlar.
+  ms.service: azure-stack
+  ms.topic: landing-page
+  author: BryanLa
+  ms.author: bryanla
+  ms.date: 10/31/2019
+  ms.openlocfilehash: 923e8aa2af78b5d23ba1f25d8b0eb5b80edc4f0a
+  ms.sourcegitcommit: 5c92a669007ab4aaffe4484f1d8836a40340dde1
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73639855"
+landingContent:
+- title: Karma desenler ve çözümler hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Karma desenler ve çözüm örnekleri nelerdir?
+      url: overview-patterns-solution-examples.md
+  - linkListType: concept
+    links:
+    - text: Karma uygulama tasarımı konuları
+      url: overview-app-design-considerations.md
+- title: Karma desenleri keşfet
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Platformlar arası ölçeklendirme
+      url: pattern-cross-cloud-scale.md
+    - text: DevOps karma CI/CD
+      url: pattern-cicd-pipeline.md
+    - text: Betfall algılama (perakende)
+      url: pattern-retail-footfall-detection.md
+    - text: Coğrafi olarak dağıtılmış uygulama
+      url: pattern-geo-distributed.md
+- title: Karma çözüm örnekleri dağıtma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Platformlar arası ölçeklendirme
+      url: solution-deployment-guide-cross-cloud-scaling.md
+    - text: DevOps karma CI/CD
+      url: https://aka.ms/hybriddevopsdeploy
+    - text: Betfall algılama (perakende)
+      url: solution-deployment-guide-retail-footfall-detection.md
+    - text: Coğrafi olarak dağıtılmış uygulama
+      url: solution-deployment-guide-geo-distributed.md
+- title: Retail bir kantfall algılama senaryosu
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Desen
+      url: pattern-retail-footfall-detection.md
+  - linkListType: tutorial
+    links:
+    - text: Çözüm dağıtım kılavuzu
+      url: solution-deployment-guide-retail-footfall-detection.md
+- title: Şirket içi veri senaryosunu kullanarak platformlar arası ölçeklendirme
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Desen
+      url: pattern-cross-cloud-scale-onprem-data.md
+  - linkListType: tutorial
+    links:
+    - text: Çözüm dağıtım kılavuzu
+      url: solution-deployment-guide-cross-cloud-scaling-onprem-data.md
