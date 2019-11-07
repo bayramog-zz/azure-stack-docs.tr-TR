@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 11/05/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: ab43d94c2e65032e5e525ec000e38cacb01b2980
-ms.sourcegitcommit: 1bae55e754d7be75e03af7a4db3ec43fd7ff3e9c
+ms.lastreviewed: 11/05/2019
+ms.openlocfilehash: c8db19ff7bf8d7ccdb406617cbcf75dce3770522
+ms.sourcegitcommit: c583f19d15d81baa25dd49738d53d8fc01463bef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71319098"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659216"
 ---
 # <a name="troubleshoot-the-asdk"></a>ASDK sorunlarını giderme
 Bu makalede Azure Stack Geliştirme Seti (ASDK) için genel sorun giderme bilgileri sağlanmaktadır. Azure Stack tümleşik sistemlerle ilgili yardım için bkz. [Microsoft Azure Stack sorunlarını giderme](../operator/azure-stack-troubleshooting.md). 
@@ -29,9 +29,9 @@ Bu makalede Azure Stack Geliştirme Seti (ASDK) için genel sorun giderme bilgil
 ASDK bir değerlendirme ortamı olduğundan, Microsoft Müşteri Destek Hizmetleri (CSS) destek sağlamaz. Belgelenmemiş bir sorun yaşıyorsanız, [Azure Stack MSDN forumundan](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)uzmanlardan yardım alabilirsiniz. 
 
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 ### <a name="deployment-failure"></a>Dağıtım hatası
-Yükleme sırasında bir hata yaşarsanız dağıtım betiğinin-yeniden çalıştır seçeneğini kullanarak dağıtımı başarısız adımdan yeniden başlatabilirsiniz. Örneğin:
+Yükleme sırasında bir hata yaşarsanız dağıtım betiğinin-yeniden çalıştır seçeneğini kullanarak dağıtımı başarısız adımdan yeniden başlatabilirsiniz. Örnek:
 
   ```powershell
   cd C:\CloudDeployment\Setup
@@ -40,6 +40,39 @@ Yükleme sırasında bir hata yaşarsanız dağıtım betiğinin-yeniden çalı�
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Dağıtımın sonunda, PowerShell oturumu hala açık ve herhangi bir çıkış göstermez
 Bu davranış, bir PowerShell komut penceresi seçildiğinde yalnızca varsayılan davranışın sonucudur. ASDK dağıtımı başarılı oldu ancak pencere seçilirken betik duraklatıldı. Komut penceresinin başlık çubuğunda "Seç" sözcüğünü arayarak kurulumun tamamlandığını doğrulayabilirsiniz. Bu seçeneğin seçimini kaldırmak için ESC tuşuna basın ve sonra tamamlanma iletisi gösterilmelidir.
+
+### <a name="template-validation-error-parameter-osprofile-is-not-allowed"></a>Şablon doğrulama hatası parametre osProfile izin verilmiyor
+
+Şablon doğrulaması sırasında ' osProfile ' parametresine izin verilmediğinden bir hata mesajı alırsanız, bu bileşenler için API 'lerin doğru sürümlerini kullandığınızdan emin olun:
+
+- [İşlem](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
+- [Ağ](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+
+Azure 'dan Azure Stack bir VHD 'yi kopyalamak için [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)kullanın. Görüntüyle birlikte çalışarak görüntünün kendisiyle ilgili sorunları giderin. Azure Stack için Walınuxagent gereksinimleri hakkında daha fazla bilgi için bkz. [Azure Linux Aracısı](../operator/azure-stack-linux.md#azure-linux-agent).
+
+### <a name="deployment-fails-due-to-lack-of-external-access"></a>Dış erişim olmaması nedeniyle dağıtım başarısız oluyor
+Dış erişimin gerekli olduğu aşamalardan dağıtım başarısız olduğunda, aşağıdaki örnek gibi bir özel durum döndürülür:
+
+```
+An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
+```
+Bu hata oluşursa, [dağıtım ağ trafiği belgelerini](../operator/deployment-networking.md)inceleyerek tüm en düşük ağ gereksinimlerinin karşılandığından emin olun. İş ortağı araç setinin bir parçası olarak iş ortakları için de bir ağ denetleyicisi aracı vardır.
+
+Diğer dağıtım hataları genellikle Internet üzerindeki kaynaklara bağlanma sorunlarından kaynaklanır.
+
+Internet 'teki kaynakların bağlantısını doğrulamak için aşağıdaki adımları gerçekleştirebilirsiniz:
+
+1. PowerShell’i açın.
+2. WAS01 veya ERCs VM 'lerinden herhangi birine-PSSession yazın.
+3. Aşağıdaki cmdlet'i çalıştırın: 
+   ```powershell
+   Test-NetConnection login.windows.net -port 443
+   ```
+
+Bu komut başarısız olursa, TOR anahtarını ve diğer tüm ağ aygıtlarını [ağ trafiğine izin verecek](../operator/azure-stack-network.md)şekilde yapılandırıldığını doğrulayın.
+
 
 ## <a name="virtual-machines"></a>Sanal makineler
 ### <a name="default-image-and-gallery-item"></a>Varsayılan görüntü ve galeri öğesi

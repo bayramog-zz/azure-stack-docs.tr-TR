@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 11/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 632528519bbca9286ab72fb806ee756ccdb6a166
-ms.sourcegitcommit: a23b80b57668615c341c370b70d0a106a37a02da
+ms.lastreviewed: 11/06/2019
+ms.openlocfilehash: 509f6509b00a3bccd005fd93b69006ebbfd2f2f0
+ms.sourcegitcommit: 8203490cf3ab8a8e6d39b137c8c31e3baec52298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72682226"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73712714"
 ---
 # <a name="add-mysql-hosting-servers-in-azure-stack"></a>Azure Stack MySQL barındırma sunucuları ekleme
 
@@ -71,7 +71,7 @@ Sunucu eklerken, hizmet tekliflerini ayırt etmek için bunları yeni veya mevcu
 
 Aşağıdaki bilgiler, RP ve MySQL barındırma sunucuları için geçerlidir:
 
-* Tüm barındırma sunucularının TLS 1,2 kullanılarak iletişim için yapılandırıldığından emin olun. Bkz. [şifrelenmiş bağlantıları kullanmak Için MySQL yapılandırma](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html).
+* Tüm barındırma sunucularının TLS 1,1 kullanılarak iletişim için yapılandırıldığından emin olun. Bkz. [şifrelenmiş bağlantıları kullanmak Için MySQL yapılandırma](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html).
 * [Saydam veri şifrelemesi](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-data-encryption.html).
 * MySQL RP, caching_sha2_password kimlik doğrulamasını desteklemiyor.
 

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/05/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 3c0b1ce32399b4739796b2718e97c69d96291dc6
-ms.sourcegitcommit: df20662e77a6ed0a7eba03f79eb53e8cd4471206
+ms.lastreviewed: 11/05/2019
+ms.openlocfilehash: 4c04eafab93da233859b5b67571b70899b081b95
+ms.sourcegitcommit: c583f19d15d81baa25dd49738d53d8fc01463bef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445272"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659245"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack sorunlarını giderme
 
@@ -45,7 +45,7 @@ Bu bölümler, Microsoft Müşteri Destek Hizmetleri 'ne (CSS) gönderilen genel
 ### <a name="supported-operating-systems-and-sizes-for-guest-vms"></a>Konuk VM 'Ler için desteklenen işletim sistemleri ve boyutlar
 
 * [Azure Stack üzerinde desteklenen konuk işletim sistemleri](azure-stack-supported-os.md)
-* [Azure Stack desteklenen VM boyutları](../user/azure-stack-vm-sizes.md)
+* [Azure Stack'te desteklenen VM boyutları](../user/azure-stack-vm-sizes.md)
 
 ### <a name="azure-marketplace"></a>Azure Marketi
 
@@ -96,42 +96,6 @@ PowerShell 'i kullanarak damga kullanım bilgilerini CSS 'den yardım etmeden al
 5. Seedring. zip dosyasını ayıklayın ve test-azurestack komutunu çalıştırdığınız ERCS klasöründen doğrulama raporunu elde edebilirsiniz
 
 Daha fazla bilgi için bkz. [tanılama Azure Stack](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems).
-
-## <a name="troubleshoot-deployment"></a>Dağıtım sorunlarını giderme 
-### <a name="general-deployment-failure"></a>Genel dağıtım hatası
-Yükleme sırasında bir hata yaşarsanız dağıtım betiğinin-yeniden çalıştır seçeneğini kullanarak dağıtımı başarısız adımdan yeniden başlatabilirsiniz.  
-
-### <a name="template-validation-error-parameter-osprofile-is-not-allowed"></a>Şablon doğrulama hatası parametre osProfile izin verilmiyor
-
-Şablon doğrulaması sırasında ' osProfile ' parametresine izin verilmediğinden bir hata mesajı alırsanız, bu bileşenler için API 'lerin doğru sürümlerini kullandığınızdan emin olun:
-
-- [İşlem](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
-- [Ağ](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
-
-Azure 'dan Azure Stack bir VHD 'yi kopyalamak için [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)kullanın. Görüntüyle birlikte çalışarak görüntünün kendisiyle ilgili sorunları giderin. Azure Stack için Walınuxagent gereksinimleri hakkında daha fazla bilgi için bkz. [Azure Linux Aracısı](azure-stack-linux.md#azure-linux-agent).
-
-### <a name="deployment-fails-due-to-lack-of-external-access"></a>Dış erişim olmaması nedeniyle dağıtım başarısız oluyor
-Dış erişimin gerekli olduğu aşamalardan dağıtım başarısız olduğunda, aşağıdaki örnek gibi bir özel durum döndürülür:
-
-```
-An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
-   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
-   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
-```
-Bu hata oluşursa, [dağıtım ağ trafiği belgelerini](deployment-networking.md)inceleyerek tüm en düşük ağ gereksinimlerinin karşılandığından emin olun. İş ortağı araç setinin bir parçası olarak iş ortakları için de bir ağ denetleyicisi aracı vardır.
-
-Diğer dağıtım hataları genellikle Internet üzerindeki kaynaklara bağlanma sorunlarından kaynaklanır.
-
-Internet 'teki kaynakların bağlantısını doğrulamak için aşağıdaki adımları gerçekleştirebilirsiniz:
-
-1. PowerShell’i açın.
-2. WAS01 veya ERCs VM 'lerinden herhangi birine-PSSession yazın.
-3. Aşağıdaki cmdlet'i çalıştırın: 
-   ```powershell
-   Test-NetConnection login.windows.net -port 443
-   ```
-
-Bu komut başarısız olursa, TOR anahtarını ve diğer tüm ağ aygıtlarını [ağ trafiğine izin verecek](azure-stack-network.md)şekilde yapılandırıldığını doğrulayın.
 
 ## <a name="troubleshoot-virtual-machines"></a>Sanal makinelerde sorun giderme
 ### <a name="default-image-and-gallery-item"></a>Varsayılan görüntü ve galeri öğesi

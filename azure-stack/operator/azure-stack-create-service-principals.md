@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: bryanla
-ms.lastreviewed: 06/20/2019
-ms.openlocfilehash: b75c80ca79e2d7c3d2ab4b2003a841882fd20faa
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.lastreviewed: 11/06/2019
+ms.openlocfilehash: 7110febfa58fb1d31cde5f0ae1b4df659f567956
+ms.sourcegitcommit: 8203490cf3ab8a8e6d39b137c8c31e3baec52298
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159705"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73712736"
 ---
 # <a name="use-an-app-identity-to-access-resources"></a>Kaynaklara erişmek için bir uygulama kimliği kullanın
 
@@ -57,7 +57,7 @@ Kimlik yönetimi hizmetiniz olarak Azure AD ile Azure Stack dağıttıysanız, A
 Bu bölümde, Azure AD kiracınızda hizmet sorumlusu nesnesini oluşturan Azure portal kullanarak uygulamanızı kaydedersiniz. Bu örnekte hizmet sorumlusu, bir istemci gizli bilgisi ile oluşturulmuştur, ancak Portal Ayrıca x509 sertifika tabanlı kimlik bilgilerini destekler.
 
 1. Azure hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Yeni kayıt** **uygulama kayıtları** > AzureActiveDirectory > seçin.
+2. **Azure Active Directory** >  ' i seçin**uygulama kayıtları** > **Yeni kayıt**.
 3. Uygulama için bir **ad** sağlayın.
 4. Uygun **Desteklenen hesap türlerini**seçin.
 5. **Yeniden yönlendirme URI 'si**altında, uygulama türü olarak **Web** ' i seçin ve (isteğe bağlı olarak) uygulamanız gerektiriyorsa bir yeniden yönlendirme URI 'si belirtin.
@@ -80,7 +80,7 @@ Betikler, Azure Stack örneğiniz için ayrıcalıklı bir uç nokta barındıra
 
 Hizmet sorumlusu kimlik bilgileri için bir sertifika oluştururken, aşağıdaki gereksinimlerin karşılanması gerekir:
 
- - Üretim için sertifika, bir iç sertifika yetkilisinden veya bir genel sertifika yetkilisinden verilmelidir. Ortak sertifika yetkilisi kullanıyorsanız, Microsoft güvenilen kök yetkili programının bir parçası olarak yetkiyi temel işletim sistemi görüntüsüne dahil etmeniz gerekir. Tam listeyi [Microsoft güvenilen kök sertifika programı ' na bulabilirsiniz: Katılımcılar](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca). Bir [hizmet sorumlusunun sertifika kimlik bilgisini güncelleştirme](#update-a-service-principals-certificate-credential)sırasında, "otomatik olarak imzalanan" test sertifikası oluşturma örneği de daha sonra gösterilir. 
+ - Üretim için sertifika, bir iç sertifika yetkilisinden veya bir genel sertifika yetkilisinden verilmelidir. Ortak sertifika yetkilisi kullanıyorsanız, Microsoft güvenilen kök yetkili programının bir parçası olarak yetkiyi temel işletim sistemi görüntüsüne dahil etmeniz gerekir. Tam listeyi [Microsoft güvenilen kök sertifika programı: katılımcılar](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)' da bulabilirsiniz. Bir [hizmet sorumlusunun sertifika kimlik bilgisini güncelleştirme](#update-a-service-principals-certificate-credential)sırasında, "otomatik olarak imzalanan" test sertifikası oluşturma örneği de daha sonra gösterilir. 
  - Şifreleme sağlayıcısının bir Microsoft eski şifreleme hizmeti sağlayıcısı (CSP) anahtar sağlayıcısı olarak belirtilmesi gerekir.
  - Hem ortak hem de özel anahtarlar gerekli olduğundan, sertifika biçimi PFX dosyasında olmalıdır. Windows Server 'lar ortak anahtar dosyası (SSL sertifika dosyası) ve ilişkili özel anahtar dosyasını içeren. pfx dosyalarını kullanır.
  - Azure Stack altyapınız, sertifika yetkilisinin sertifika Iptal listesi (CRL) konumunda yayımlanan sertifika için ağ erişimine sahip olmalıdır. Bu CRL bir HTTP uç noktası olmalıdır.
@@ -90,8 +90,8 @@ Bir sertifikanız olduktan sonra, uygulamanızı kaydetmek ve hizmet sorumlusu o
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
 | \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
-| \<YourCertificateLocation\> | X509 sertifikanızın yerel sertifika deposundaki konumu. | "Cert:\CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
-| \<Uygulamanızınadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
+| \<Sertifikaadı\> | X509 sertifikanızın yerel sertifika deposundaki konumu. | "CERT: \ CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
+| \<Uygulamaadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
 
 1. Yükseltilmiş bir Windows PowerShell oturumu açın ve aşağıdaki betiği çalıştırın:
 
@@ -122,7 +122,6 @@ Bir sertifikanız olduktan sonra, uygulamanızı kaydetmek ve hizmet sorumlusu o
 
     # Register and set an AzureRM environment that targets your Azure Stack instance
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
-    Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
 
     # Sign in using the new service principal identity
     $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" `
@@ -136,7 +135,7 @@ Bir sertifikanız olduktan sonra, uygulamanızı kaydetmek ve hizmet sorumlusu o
 
    ```
    
-2. Betik tamamlandıktan sonra, hizmet sorumlusunun kimlik bilgileri de dahil olmak üzere uygulama kayıt bilgilerini görüntüler. Gösterildiği `ClientID` gibi, ve `Thumbprint` , hizmet sorumlusunun kimliği altında oturum açmak için kullanılır. Başarılı oturum açma işlemi tamamlandıktan sonra, hizmet sorumlusu kimliği, sonraki yetkilendirme ve Azure Resource Manager tarafından yönetilen kaynaklara erişim için kullanılacaktır.
+2. Betik tamamlandıktan sonra, hizmet sorumlusunun kimlik bilgileri de dahil olmak üzere uygulama kayıt bilgilerini görüntüler. Gösterildiği gibi `ClientID` ve `Thumbprint`, hizmet sorumlusunun kimliği altında oturum açmak için kullanılır. Başarılı oturum açma işlemi tamamlandıktan sonra, hizmet sorumlusu kimliği, sonraki yetkilendirme ve Azure Resource Manager tarafından yönetilen kaynaklara erişim için kullanılacaktır.
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -148,7 +147,7 @@ Bir sertifikanız olduktan sonra, uygulamanızı kaydetmek ve hizmet sorumlusu o
    RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
    ```
 
-Sonraki bölümde bulunan `ApplicationIdentifier` değerle birlikte kullanırken PowerShell konsolu oturumunuzu açık tutun.
+Sonraki bölümde `ApplicationIdentifier` değeriyle birlikte kullanırken PowerShell konsolu oturumunuzu açık tutun.
 
 ### <a name="update-a-service-principals-certificate-credential"></a>Hizmet sorumlusunun sertifika kimlik bilgisini güncelleştirme
 
@@ -162,8 +161,8 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
 | \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
-| \<Uygulamanızınadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
-| \<YourCertificateLocation\> | X509 sertifikanızın yerel sertifika deposundaki konumu. | "Cert:\CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
+| \<Uygulamaadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
+| \<Sertifikaadı\> | X509 sertifikanızın yerel sertifika deposundaki konumu. | "CERT: \ CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
 | \<Appıdentifier\> | Uygulama kaydına atanan tanımlayıcı. | "S-1-5-21-1512385356-3796245103-1243299919-1356" |
 
 1. Yükseltilmiş Windows PowerShell oturumunuzu kullanarak aşağıdaki cmdlet 'leri çalıştırın:
@@ -202,12 +201,12 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
 > [!IMPORTANT]
 > Bir istemci parolasının kullanılması x509 sertifika kimlik bilgisi kullanmaktan daha az güvenlidir. Kimlik doğrulama mekanizması daha az güvenlidir, ancak genellikle, istemci uygulama kaynak kodunda gizli anahtar katıştırmayı gerektirir. Bu nedenle, üretim uygulamaları için bir sertifika kimlik bilgisi kullanmanız önemle önerilir.
 
-Şimdi başka bir uygulama kaydı oluşturursunuz, ancak bu kez bir istemci gizli kimlik bilgileri belirtin. Sertifika kimlik bilgilerinden farklı olarak, dizin bir istemci gizli kimlik bilgisi oluşturma olanağına sahiptir. İstemci parolasını belirtmek yerine, oluşturulmasını istemek için `-GenerateClientSecret` anahtarını kullanırsınız. Aşağıdaki yer tutucular için kendi değerlerinizi değiştirin:
+Şimdi başka bir uygulama kaydı oluşturursunuz, ancak bu kez bir istemci gizli kimlik bilgileri belirtin. Sertifika kimlik bilgilerinden farklı olarak, dizin bir istemci gizli kimlik bilgisi oluşturma olanağına sahiptir. İstemci parolasını belirtmek yerine, oluşturulmasını istemek için `-GenerateClientSecret` anahtarını kullanın. Aşağıdaki yer tutucular için kendi değerlerinizi değiştirin:
 
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
 | \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
-| \<Uygulamanızınadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
+| \<Uygulamaadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
 
 1. Yükseltilmiş bir Windows PowerShell oturumu açın ve aşağıdaki cmdlet 'leri çalıştırın:
 
@@ -233,7 +232,6 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
 
      # Register and set an AzureRM environment that targets your Azure Stack instance
      Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
-     Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
 
      # Sign in using the new service principal identity
      $securePassword = $SpObject.ClientSecret | ConvertTo-SecureString -AsPlainText -Force
@@ -244,7 +242,7 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
      $SpObject
      ```
 
-2. Betik tamamlandıktan sonra, hizmet sorumlusunun kimlik bilgileri de dahil olmak üzere uygulama kayıt bilgilerini görüntüler. Gösterildiği `ClientID` gibi, hizmet sorumlusunun kimliği `ClientSecret` altında oturum açmak için ve oluşturulur. Başarılı oturum açma işlemi tamamlandıktan sonra, hizmet sorumlusu kimliği, sonraki yetkilendirme ve Azure Resource Manager tarafından yönetilen kaynaklara erişim için kullanılacaktır.
+2. Betik tamamlandıktan sonra, hizmet sorumlusunun kimlik bilgileri de dahil olmak üzere uygulama kayıt bilgilerini görüntüler. Gösterildiği gibi, `ClientID` ve oluşturulan `ClientSecret`, hizmet sorumlusunun kimliği altında oturum açmak için kullanılır. Başarılı oturum açma işlemi tamamlandıktan sonra, hizmet sorumlusu kimliği, sonraki yetkilendirme ve Azure Resource Manager tarafından yönetilen kaynaklara erişim için kullanılacaktır.
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
@@ -256,7 +254,7 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
      RunspaceId            : 286daaa1-c9a6-4176-a1a8-03f543f90998
      ```
 
-Sonraki bölümde bulunan `ApplicationIdentifier` değerle birlikte kullanırken PowerShell konsolu oturumunuzu açık tutun.
+Sonraki bölümde `ApplicationIdentifier` değeriyle birlikte kullanırken PowerShell konsolu oturumunuzu açık tutun.
 
 ### <a name="update-a-service-principals-client-secret"></a>Hizmet sorumlusunun istemci parolasını güncelleştirme
 
@@ -331,12 +329,12 @@ VERBOSE: Remove-GraphApplication : END on AZS-ADFS01 under ADFSGraphEndpoint con
 
 Kullanıcılar ve uygulamalar tarafından Azure kaynaklarına erişim, rol tabanlı Access Control (RBAC) aracılığıyla yetkilendirilir. Bir uygulamanın hizmet sorumlusunu kullanarak aboneliğinizdeki kaynaklara erişmesine izin vermek için, hizmet sorumlusunu belirli bir *kaynak*için bir *role* *atamanız* gerekir. İlk olarak, uygulamanın hangi rolün doğru *izinleri* temsil ettiğini belirleyin. Kullanılabilir roller hakkında bilgi edinmek için bkz. [Azure kaynakları Için yerleşik roller](/azure/role-based-access-control/built-in-roles).
 
-Seçtiğiniz kaynak türü, hizmet sorumlusu için *erişim kapsamını* da belirler. Erişim kapsamını abonelikte, kaynak grubunda veya kaynak düzeyinde ayarlayabilirsiniz. Daha düşük düzeyde kapsam için izinler devralınmıştır. Örneğin, bir kaynak grubu için bir uygulamayı "okuyucu" rolüne eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
+Seçtiğiniz kaynak türü, hizmet sorumlusu için *erişim kapsamını* da belirler. Erişim kapsamını abonelikte, kaynak grubunda veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için bir uygulamayı "okuyucu" rolüne eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
 
 1. Azure Stack yüklemesi sırasında belirttiğiniz dizine (örneğin, Azure AD Azure portal veya AD FS için Azure Stack Kullanıcı portalına) bağlı olarak uygun portalda oturum açın. Bu örnekte, Azure Stack Kullanıcı portalında oturum açmış bir Kullanıcı gösteririz.
 
    > [!NOTE]
-   > Belirli bir kaynağa rol atamaları eklemek için, Kullanıcı hesabınızın `Microsoft.Authorization/roleAssignments/write` izin bildiren bir role ait olması gerekir. Örneğin, [sahip](/azure/role-based-access-control/built-in-roles#owner) veya [Kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator) yerleşik rolleridir.  
+   > Belirli bir kaynağa rol atamaları eklemek için, Kullanıcı hesabınızın `Microsoft.Authorization/roleAssignments/write` izni bildiren bir role ait olması gerekir. Örneğin, [sahip](/azure/role-based-access-control/built-in-roles#owner) veya [Kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator) yerleşik rolleridir.  
 2. Hizmet sorumlusunun erişimine izin vermek istediğiniz kaynağa gidin. Bu örnekte, abonelik kapsamındaki bir role hizmet sorumlusunu, **abonelikler**' i ve ardından belirli bir aboneliği seçerek atayın. Bunun yerine, bir kaynak grubu veya bir sanal makine gibi belirli bir kaynağı seçebilirsiniz.
 
      ![Atama için abonelik seçin](./media/azure-stack-create-service-principal/select-subscription.png)
@@ -344,15 +342,15 @@ Seçtiğiniz kaynak türü, hizmet sorumlusu için *erişim kapsamını* da beli
 3. RBAC 'yi destekleyen tüm kaynaklar genelinde evrensel olan **Access Control (IAM)** sayfasını seçin.
 4. **+ Ekle** ' yi seçin
 5. **Rol**altında, uygulamaya atamak istediğiniz rolü seçin.
-6. **Seç**' in altında, tam veya kısmi uygulama adı kullanarak uygulamanızı arayın. Kayıt sırasında, uygulama adı *azurestack\<-YourAppName-\>\<ClientID\>* olarak oluşturulur. Örneğin, *app2*uygulamasının bir uygulama adını kullandıysanız ve oluşturma sırasında ClientID *2bbe67d8-3FDB-4b62-87cf-cc41dd4344ff* atandıktan sonra tam ad *azurestack-app2-2bbe67d8-3FDB-4b62-87cf-cc41dd4344ff*olur. Tam dize veya *azurestack* ya da *azurestack-app2*gibi bir bölüm için arama yapabilirsiniz.
+6. **Seç**' in altında, tam veya kısmi uygulama adı kullanarak uygulamanızı arayın. Kayıt sırasında uygulama adı, *Azurestack-\<YourAppName\>-\<ClientID\>* olarak oluşturulur. Örneğin, *app2*uygulamasının bir uygulama adını kullandıysanız ve oluşturma sırasında ClientID *2bbe67d8-3FDB-4b62-87cf-cc41dd4344ff* atandıktan sonra tam ad *azurestack-app2-2bbe67d8-3FDB-4b62-87cf-cc41dd4344ff*olur. Tam dize veya *azurestack* ya da *azurestack-app2*gibi bir bölüm için arama yapabilirsiniz.
 7. Uygulamayı bulduktan sonra bunu seçin ve **Seçilen Üyeler**altında görünür.
-8. Seçin **Kaydet** rol atama tamamlanması.
+8. Rolü atamaya son vermek için **Kaydet** ' i seçin.
 
-     [![Rol ata](media/azure-stack-create-service-principal/assign-role.png)](media/azure-stack-create-service-principal/assign-role.png#lightbox)
+     [rol ata ![](media/azure-stack-create-service-principal/assign-role.png)](media/azure-stack-create-service-principal/assign-role.png#lightbox)
 
 9. İşlem tamamlandığında, uygulama, belirtilen rol için geçerli kapsam için atanan sorumlular listesinde gösterilir.
 
-     [![Atanan rol](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
+     [Atanan rol ![](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
 
 Bir hizmet sorumlusu oluşturup bir rol atadığınıza göre, Azure Stack kaynaklarına erişmek için uygulamanızda bu hizmet sorumlusunu kullanmaya başlayabilirsiniz.  
 
