@@ -1,6 +1,7 @@
 ---
-title: Azure Stack tümleşik sistemler dağıtımı veya gizli anahtar için Azure Stack ortak anahtar altyapısı sertifikaları hazırlayın | Microsoft Docs
-description: Azure Stack tümleşik sistemler için Azure Stack PKI sertifikalarının nasıl hazırlanacağını açıklar.
+title: Dağıtım veya döndürme için Azure Stack PKI sertifikalarını hazırlama | Microsoft Docs
+titleSuffix: Azure Stack
+description: Azure Stack tümleşik sistem dağıtımı için PKI sertifikalarını hazırlama veya var olan bir Azure Stack ortamında gizli dizileri döndürme hakkında bilgi edinin.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -15,21 +16,20 @@ ms.date: 09/16/2019
 ms.author: justinha
 ms.reviewer: ppacent
 ms.lastreviewed: 09/16/2019
-ms.openlocfilehash: 38175eee8be9b8f678405e0ad1ec6f01bdba8b77
-ms.sourcegitcommit: ca5025fb04250271fe0b2b2df8ad0b3b9ed3e604
+ms.openlocfilehash: a63e0e3a2246cc3c3c659f9671afdf4be0cc93cd
+ms.sourcegitcommit: ca358ea5c91a0441e1d33f540f6dbb5b4d3c92c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71020858"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802382"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Azure Stack PKI sertifikalarını dağıtımda veya dönüşte kullanılmak üzere hazırlama
+# <a name="prepare-azure-stack-pki-certificates-for-deployment-or-rotation"></a>Dağıtım veya döndürme için Azure Stack PKI sertifikalarını hazırlama
 
-[SEÇTIĞINIZ CA 'dan elde edilen](azure-stack-get-pki-certs.md) sertifika dosyaları içeri aktarılmalıdır ve Azure Stack sertifika gereksinimleriyle eşleşen özelliklerle birlikte verilmelidir.
+[Seçtiğiniz Sertifika yetkilinizden (CA) alınan](azure-stack-get-pki-certs.md) sertifika dosyaları, Azure Stack sertifika gereksinimleriyle eşleşen özelliklerle içeri ve içeri aktarılmalıdır.
 
 ## <a name="prepare-certificates-for-deployment"></a>Dağıtım için sertifikaları hazırlama
 
-Yeni bir Azure Stack ortamı dağıtmak veya var olan bir Azure Stack ortamında gizli dizileri döndürmek için kullanılacak Azure Stack PKI sertifikalarını doğrulamak için aşağıdaki adımları kullanın. 
-
+Yeni bir Azure Stack ortamı dağıtmak veya var olan bir Azure Stack ortamında gizli dizileri döndürmek için kullanılacak Azure Stack PKI sertifikalarını doğrulamak için aşağıdaki adımları kullanın.
 
 ### <a name="import-the-certificate"></a>Sertifikayı içeri aktar
 
@@ -37,21 +37,21 @@ Yeni bir Azure Stack ortamı dağıtmak veya var olan bir Azure Stack ortamında
    > [!WARNING]
    > Doğrudan CA tarafından sunulan dosyalardan herhangi bir şekilde içeri aktarılmış, aktarılan veya değiştirilen dosyaları kopyalamayın.
 
-1. Sertifikaya sağ tıklayın ve sertifikayı, sertifika YETKILINIZDEN nasıl teslim edildiğini bağlı olarak, **sertifikayı** veya **PFX 'yi yükler** ' i seçin.
+1. Sertifikanın CA 'nızdan nasıl teslim edildiğini bağlı olarak sertifikaya sağ tıklayın ve **sertifikayı** aç veya **PFX 'i yüklensin**' i seçin.
 
-1. **Sertifika Içeri aktarma sihirbazında**, içeri aktarma konumu olarak **yerel makine** ' yi seçin. **İleri**’yi seçin. Aşağıdaki ekranda İleri ' ye tıklayın.
+1. **Sertifika Içeri aktarma sihirbazında**, içeri aktarma konumu olarak **yerel makine** ' yi seçin. **İleri**’yi seçin. Aşağıdaki ekranda, ileri ' yi seçin.
 
-    ![Yerel makine içeri aktarma konumu](./media/prepare-pki-certs/1.png)
+    ![Sertifika için yerel makine içeri aktarma konumu](./media/prepare-pki-certs/1.png)
 
-1. **Tüm sertifikayı aşağıdaki depoya yerleştir** ' i seçin ve ardından konum olarak **Kurumsal güven** ' i seçin. **Tamam** ' a tıklayarak sertifika deposu seçimi iletişim kutusunu kapatın ve ardından **İleri**' ye tıklayın.
+1. **Tüm sertifikayı aşağıdaki depoya yerleştir** ' i seçin ve ardından konum olarak **Kurumsal güven** ' i seçin. Sertifika deposu seçimi iletişim kutusunu kapatmak için **Tamam** ' ı seçin ve ardından **İleri**' yi seçin.
 
-   ![Sertifika deposunu yapılandırma](./media/prepare-pki-certs/3.png)
+   ![Sertifika içeri aktarma için sertifika deposunu yapılandırma](./media/prepare-pki-certs/3.png)
 
-   a. PFX 'yi içeri aktarıyorsanız, size ek bir iletişim kutusu gösterilir. **Özel anahtar koruma** sayfasında, sertifika dosyalarınızın parolasını girin ve ardından bu anahtarı dışarı aktarılabilir olarak **işaretle ' yi etkinleştirin. Bu sayede, anahtarlarınızı daha sonraki bir zamanda** yedekleyebilir veya taşıma seçeneğiniz vardır. **İleri**’yi seçin.
+   a. PFX 'yi içeri aktarıyorsanız, ek bir iletişim kutusu gösterilir. **Özel anahtar koruma** sayfasında, sertifika dosyalarınızın parolasını girin ve ardından **Bu anahtarı dışarı aktarılabilir olarak işaretle ' yi etkinleştirin. Bu sayede, anahtarlarınızı daha sonraki bir zamanda yedekleyebilir veya taşıma** seçeneğiniz vardır. **İleri**’yi seçin.
 
    ![Anahtarı verilebilir olarak işaretle](./media/prepare-pki-certs/2.png)
 
-1. İçeri aktarmayı gerçekleştirmek için son ' a tıklayın.
+1. İçeri aktarmayı gerçekleştirmek için **son** ' u seçin.
 
 > [!NOTE]
 > Azure Stack bir sertifikayı içeri aktardıktan sonra, sertifikanın özel anahtarı kümelenmiş depolamada PKCS 12 dosyası (PFX) olarak depolanır.
@@ -60,41 +60,46 @@ Yeni bir Azure Stack ortamı dağıtmak veya var olan bir Azure Stack ortamında
 
 Certificate Manager MMC konsolunu açın ve yerel makine sertifika deposuna bağlanın.
 
-1. Microsoft Yönetim Konsolu 'Nu açın, Windows 10 ' da Başlat menüsünde sağ tıklayın ve Çalıştır ' a tıklayın. **MMC** yazın, Tamam ' a tıklayın.
+1. Microsoft Yönetim Konsolu 'nu açın. Konsolu Windows 10 ' da açmak için **Başlat menüsüne**sağ tıklayın, **Çalıştır**' ı seçin ve ardından **MMC** yazın ve ENTER tuşuna basın.
 
-1. Dosya, ek bileşen Ekle/Kaldır ' a tıklayın ve ardından Sertifikalar ' ı seçin.
+2. **Ek bileşen ekle/kaldır** > **Dosya** ' yı seçin ve ardından **Sertifikalar** ' ı seçip **Ekle**' yi seçin.
 
-    ![Sertifika ek bileşeni ekleme](./media/prepare-pki-certs/mmc-2.png)
- 
-1. Bilgisayar hesabı ' nı seçin, ileri ' ye tıklayın ve sonra yerel bilgisayar ' ı seçin Ek bileşen Ekle/Kaldır sayfasını kapatmak için Tamam ' ı tıklatın.
+    ![Microsoft Yönetim Konsolu 'nda Sertifika ek bileşeni ekleme](./media/prepare-pki-certs/mmc-2.png)
 
-    ![Sertifika ek bileşeni ekleme](./media/prepare-pki-certs/mmc-3.png)
+3. **Bilgisayar hesabı**' nı seçin ve ardından **İleri**' yi seçin. **Yerel bilgisayar** ' ı seçin ve ardından **sona**. Ek bileşen Ekle/Kaldır sayfasını kapatmak için **Tamam ' ı** seçin.
 
-1. > Kurumsal güven > sertifika konumunu sertifikalara inceleyin. Sertifikanızı sağda görmediğinizi doğrulayın.
+    ![Microsoft Yönetim Konsolu 'nda sertifika ekle ek bileşeni için hesap seçin](./media/prepare-pki-certs/mmc-3.png)
 
-1. Certificate Manager konsolunun görev çubuğundan **Eylemler** > **Tüm görevler** > **dışarı aktar**' ı seçin. **İleri**’yi seçin.
+4.  > **Kurumsal güven** > **sertifika konumunu** **sertifikalara** inceleyin. Sertifikanızı sağda görmediğinizi doğrulayın.
+
+5. Sertifika Yöneticisi konsol görev çubuğundan **Eylemler** ' i > **Tüm görevler** > **dışarı aktar**' ı seçin. **İleri**’yi seçin.
 
    > [!NOTE]
-   > Kaç Azure Stack sertifikasına sahip olduğunuza bağlı olarak, bu işlemi birkaç kez gerçekleştirmeniz gerekebilir.
+   > Kaç Azure Stack sertifikaya sahip olduğunuza bağlı olarak, bu işlemi birden çok kez gerçekleştirmeniz gerekebilir.
 
-1. **Evet, özel anahtarı dışarı aktar**' ı seçin ve ardından **İleri**' ye tıklayın.
+6. **Evet, özel anahtarı dışarı aktar**' ı seçin ve ardından **İleri**' ye tıklayın.
 
-1. Dışarı aktarma dosyası biçimi bölümünde:
+7. Dışarı aktarma dosyası biçimi bölümünde:
     
    - **Mümkünse, sertifikaya tüm sertifikaları dahil et '** i seçin.  
    - **Tüm genişletilmiş özellikleri dışarı aktar**' ı seçin.  
    - **Sertifika gizliliğini etkinleştir**' i seçin.  
-   - **İleri**'ye tıklayın.  
+   - **İleri**’ye tıklayın.  
     
      ![Seçili seçeneklerle sertifika dışarı aktarma Sihirbazı](./media/prepare-pki-certs/azure-stack-save-cert.png)
 
-1. **Parola** ' yı seçin ve sertifikalar için bir parola belirtin. Aşağıdaki parola karmaşıklığı gereksinimlerini karşılayan bir parola oluşturun. En az sekiz karakter uzunluğunda. Parola şunlardan en az üçünü içerir: büyük harf, küçük harf, 0-9 arasındaki sayılar, özel karakterler, büyük harf veya küçük harf olmayan alfabetik karakter. Bu parolayı unutmayın. Bunu, bir dağıtım parametresi olarak kullanacaksınız.
+8. **Parola** ' yı seçin ve sertifikalar için bir parola belirtin. Aşağıdaki parola karmaşıklığı gereksinimlerini karşılayan bir parola oluşturun:
 
-1. **İleri**’yi seçin.
+    * En az sekiz karakter uzunluğunda.
+    * Aşağıdakilerden en az üçünü: büyük harf, küçük harf, 0-9 arasındaki sayılar, özel karakterler, büyük harf veya küçük harf olmayan alfabetik karakter.
 
-1. Dışarı aktarılacak PFX dosyası için bir dosya adı ve konum seçin. **İleri**’yi seçin.
+    Bu parolayı unutmayın. Bunu bir dağıtım parametresi olarak kullanacaksınız.
 
-1. **Son**’u seçin.
+9. **İleri**’yi seçin.
+
+10. Dışarı aktarılacak PFX dosyası için bir dosya adı ve konum seçin. **İleri**’yi seçin.
+
+11. **Son**’u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

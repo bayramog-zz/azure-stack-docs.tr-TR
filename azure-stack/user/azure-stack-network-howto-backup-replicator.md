@@ -5,20 +5,22 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 11/07/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/30/2019
-ms.openlocfilehash: f468d28ae1642235735f4e1472a8aa84859dc6e6
-ms.sourcegitcommit: 8a74a5572e24bfc42f71e18e181318c82c8b4f24
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: e65943bd0b84d11e3696da206d360edc948c203f
+ms.sourcegitcommit: ca358ea5c91a0441e1d33f540f6dbb5b4d3c92c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73567774"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802252"
 ---
 # <a name="how-to-replicate-resources-using-the-azure-stack-subscription-replicator"></a>Azure Stack abonelik çoğaltıcısını kullanarak kaynakları çoğaltma
 
 Kaynakları Azure Stack abonelikleri arasında, Azure Stack damgalar arasında veya Azure Stack ile Azure arasında kopyalamak için Azure Stack abonelik çoğaltıcı PowerShell betiğini kullanabilirsiniz. Replicator betiği, farklı Azure ve Azure Stack aboneliklerinden Azure Resource Manager kaynaklarını okur ve yeniden oluşturur. Bu makalede betiğin nasıl çalıştığı, komut dosyasını nasıl kullanabileceğiniz ve betik işlemlerine yönelik bir başvuru sunan gösterilmektedir.
+
+Bu makalede kullanılan betikleri [Azure akıllı kenar desenleri](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub deposunda bulabilirsiniz. Betikler, **abonelik çoğaltıcı** klasöründedir.
 
 ## <a name="subscription-replicator-overview"></a>Abonelik çoğaltıcısından genel bakış
 
@@ -50,11 +52,11 @@ Azure abonelik Çoğaltıcısı modüler olacak şekilde tasarlandı. Bu araç, 
 
 Yukarıda bahsedilen özelleştirilmiş işlemciler, belirli bir kaynak türünün nasıl işlenmesi gerektiğini belirten `ps1` dosyalardır. Özelleştirilmiş bir işlemcinin adı her zaman bir kaynaktaki tür verileri kullanılarak adlandırılır. Örneğin, `$vm` bir sanal makine nesnesini tutan varsayıldığında, `$vm`çalışır. Tür `Microsoft.Compute/virtualMachines`yield. Diğer bir deyişle, bir sanal makine için bir işlemci `virtualMachines_processor.ps1`adlandırılırdı, çekirdek işlemcinin hangi özelleştirilmiş işlemciyi kullanacağınızı belirleyen, kaynak meta verilerinde göründüğünden, adın tam olarak aynı olması gerekir.
 
-Özelleştirilmiş bir işlemci, hangi bilgilerin önemli olduğunu belirleyerek bir kaynağın nasıl çoğaltılacağı belirler ve bu bilgilerin kaynak meta verilerden nasıl çekildiğini dikte eder. Daha sonra özelleştirilmiş işlemci ayıklanan tüm verileri alır ve kaynağı hedef abonelikte dağıtmak üzere bir Azure Resource Manager şablonuyla birlikte kullanılacak bir parametre dosyası oluşturmak için kullanır. Bu parametreler dosyası, post_process. ps1 tarafından işlendikten sonra **Parameter_Files** içinde depolanır.
+Özelleştirilmiş bir işlemci, hangi bilgilerin önemli olduğunu belirleyerek bir kaynağın nasıl çoğaltılacağı belirler ve bu bilgilerin kaynak meta verilerden nasıl çekildiğini dikte eder. Daha sonra özelleştirilmiş işlemci ayıklanan tüm verileri alır ve kaynağı hedef abonelikte dağıtmak üzere bir Azure Resource Manager şablonuyla birlikte kullanılacak bir parametre dosyası oluşturmak için kullanır. Bu parametre dosyası, post_process. ps1 tarafından işlendikten sonra **Parameter_Files** depolanır.
 
-Replicator dosya yapısında **Standardized_ARM_Templates**adlı bir klasör vardır. Kaynak ortama bağlı olarak, dağıtımlar bu standartlaştırılmış Azure Resource Manager şablonlardan birini kullanır veya özelleştirilmiş bir Azure Resource Manager şablonunun oluşturulması gerekir. Bu durumda, özelleştirilmiş bir işlemcinin bir Azure Resource Manager şablonu Oluşturucusu çağırması gerekir. Daha önce başlatılan örnekte, sanal makineler için Azure Resource Manager şablonu oluşturucusunun adı **virtualMachines_ARM_Template_Generator. ps1**olarak adlandırılır. Azure Resource Manager şablonu Oluşturucusu, bir kaynağın meta verilerinde hangi bilgilerin olduğunu temel alan özelleştirilmiş bir Azure Resource Manager şablonu oluşturmaktan sorumludur. Örneğin, sanal makine kaynağı bir kullanılabilirlik kümesinin üyesi olduğunu belirten meta veriler içeriyorsa, Azure Resource Manager şablon Oluşturucusu, bu, bir kullanılabilirlik kümesinin KIMLIĞINI belirten kod içeren bir Azure Resource Manager şablonu oluşturur. sanal makine bir parçasıdır. Bu şekilde, sanal makine yeni aboneliğe dağıtıldığında, dağıtım sırasında kullanılabilirlik kümesine otomatik olarak eklenir. Bu özelleştirilmiş Azure Resource Manager şablonları, **Standardized_ARM_Templates** klasörünün Içinde bulunan **Custom_ARM_Templates** klasöründe depolanır. Post_processor. ps1, bir dağıtımın standartlaştırılmış bir Azure Resource Manager şablonu mı yoksa özelleştirilmiş bir tane mi kullanılacağını belirlemekten sorumludur ve ilgili dağıtım kodunu üretmelidir.
+Replicator dosya yapısında **Standardized_ARM_Templates**adlı bir klasör vardır. Kaynak ortama bağlı olarak, dağıtımlar bu standartlaştırılmış Azure Resource Manager şablonlardan birini kullanır veya özelleştirilmiş bir Azure Resource Manager şablonunun oluşturulması gerekir. Bu durumda, özelleştirilmiş bir işlemcinin bir Azure Resource Manager şablonu Oluşturucusu çağırması gerekir. Daha önce başlatılan örnekte, sanal makineler için Azure Resource Manager şablonu oluşturucusunun adı **virtualMachines_ARM_Template_Generator. ps1**olarak adlandırılır. Azure Resource Manager şablonu Oluşturucusu, bir kaynağın meta verilerinde hangi bilgilerin olduğunu temel alan özelleştirilmiş bir Azure Resource Manager şablonu oluşturmaktan sorumludur. Örneğin, sanal makine kaynağı bir kullanılabilirlik kümesinin üyesi olduğunu belirten meta veriler içeriyorsa, Azure Resource Manager şablon Oluşturucusu, bu, bir kullanılabilirlik kümesinin KIMLIĞINI belirten kod içeren bir Azure Resource Manager şablonu oluşturur. sanal makine bir parçasıdır. Bu şekilde, sanal makine yeni aboneliğe dağıtıldığında, dağıtım sırasında kullanılabilirlik kümesine otomatik olarak eklenir. Bu özelleştirilmiş Azure Resource Manager şablonları **Standardized_ARM_Templates** klasörü içinde bulunan **Custom_ARM_Templates** klasöründe depolanır. Post_processor. ps1, bir dağıtımın standartlaştırılmış bir Azure Resource Manager şablonu mı yoksa özelleştirilmiş bir şablon mı kullanması gerektiğini belirlemekten sorumludur ve ilgili dağıtım kodunu oluşturuyor.
 
-**Post-Process. ps1** betiği, parametre dosyalarını temizletmekten ve kullanıcının yeni kaynakları dağıtmak için kullanacağı betikleri oluşturmaktan sorumludur. Temizleme aşamasında betik, kaynak abonelik KIMLIĞI, kiracı KIMLIĞI ve konuma karşılık gelen hedef değerlerle tüm başvuruları değiştirir. Ardından parametreler dosyası **Parameter_Files** klasörüne çıktı. Ardından, işlenen kaynağın özelleştirilmiş bir Azure Resource Manager şablonu kullanıp kullanmadığını belirler ve **New-AzureRmResourceGroupDeployment** cmdlet 'ini kullanan karşılık gelen dağıtım kodunu üretir. Dağıtım kodu daha sonra **Deployment_Files** klasöründe saklanan **deployresources. ps1** adlı dosyaya eklenir. Son olarak, komut dosyası kaynağın ait olduğu kaynak grubunu belirler ve bu kaynak grubunun dağıtımına yönelik dağıtım kodunun zaten mevcut olup olmadığını görmek için **Deployresourcegroups. ps1** betiğini denetler. Yoksa, kaynak grubunu dağıtmak üzere bu komut dosyasına kod ekler, daha sonra hiçbir şey yapmaz.
+**Post-Process. ps1** betiği, parametre dosyalarını temizletmekten ve kullanıcının yeni kaynakları dağıtmak için kullanacağı betikleri oluşturmaktan sorumludur. Temizleme aşamasında betik, kaynak abonelik KIMLIĞI, kiracı KIMLIĞI ve konuma karşılık gelen hedef değerlerle tüm başvuruları değiştirir. Ardından parametreler dosyası **Parameter_Files** klasörüne çıktı. Ardından, işlenen kaynağın özelleştirilmiş bir Azure Resource Manager şablonu kullanıp kullanmadığını belirler ve **New-AzureRmResourceGroupDeployment** cmdlet 'ini kullanan karşılık gelen dağıtım kodunu üretir. Dağıtım kodu daha sonra **Deployment_Files** klasöründe depolanan **deployresources. ps1** adlı dosyaya eklenir. Son olarak, komut dosyası kaynağın ait olduğu kaynak grubunu belirler ve bu kaynak grubunun dağıtımına yönelik dağıtım kodunun zaten mevcut olup olmadığını görmek için **Deployresourcegroups. ps1** betiğini denetler. Yoksa, kaynak grubunu dağıtmak üzere bu komut dosyasına kod ekler, daha sonra hiçbir şey yapmaz.
 
 ### <a name="dynamic-api-retrieval"></a>Dinamik API alımı
 
@@ -72,18 +74,18 @@ Araç **paralel**adlı bir parametre gerektiriyor. Bu parametre, alınan kaynakl
 
 ## <a name="add-additional-resource-types"></a>Ek kaynak türleri ekleme
 
-Yeni kaynak türleri eklemek basittir. Geliştiricinin özelleştirilmiş bir işlemci ve bir Azure Resource Manager şablonu ya da bir Azure Resource Manager şablon Oluşturucusu oluşturması gerekir. Bu tamamlandıktan sonra geliştirici, kaynak türünü **$ResourceType** parametresi Için validateset 'e ve resource_retriever. ps1 içindeki **$resourceTypes** dizisine eklemesi gerekir. Kaynak türü * * $resourceTypes * * dizisine eklenirken, doğru sırada eklenmelidir. Dizinin sırası, kaynakların dağıtılacağı sırayı belirler, bu nedenle bağımlılıkları göz önünde bulundurun. Son olarak, özelleştirilmiş işlemci bir Azure Resource Manager şablon Oluşturucu kullanıyorsa, **post_process. ps1**içindeki **$customTypes** dizisine kaynak türü adı eklemesi gerekir.
+Yeni kaynak türleri eklemek basittir. Geliştiricinin özelleştirilmiş bir işlemci ve bir Azure Resource Manager şablonu ya da bir Azure Resource Manager şablon Oluşturucusu oluşturması gerekir. Bu tamamlandıktan sonra, geliştirici, kaynak türünü **$ResourceType** parametresi Için validateset 'e ve resource_retriever. ps1 içindeki **$resourceTypes** dizisine eklemesi gerekir. Kaynak türü * * $resourceTypes * * dizisine eklenirken, doğru sırada eklenmelidir. Dizinin sırası, kaynakların dağıtılacağı sırayı belirler, bu nedenle bağımlılıkları göz önünde bulundurun. Son olarak, özelleştirilmiş işlemci bir Azure Resource Manager şablon Oluşturucu kullanıyorsa, kaynak türü adını **post_process. ps1**içindeki **$customTypes** dizisine eklemesi gerekir.
 
 ## <a name="run-azure-subscription-replicator"></a>Azure abonelik çoğaltıcısından Çalıştır
 
-Azure abonelik çoğaltıcı (v3) aracını çalıştırmak için, tüm parametreleri sağlamak için resource_retriever. ps1 öğesini açmanız gerekir. **ResourceType** parametresi, bir kaynak türü yerine **Tümünü** seçmek için bir seçenek vardır. **All** seçilirse, resource_retriever. ps1 tüm kaynakları bir sırada işler, böylece dağıtım çalıştırıldığında bağımlı kaynaklar önce dağıtılır. Örneğin sanal makineler sanal makineler tarafından, sanal makinelerin düzgün dağıtılabilmesi için bir VNet 'in yerinde olmasını gerektirdiğinden sanal makinelerden önce dağıtılır.
+Azure abonelik çoğaltıcı (v3) aracını çalıştırmak için, tüm parametreleri sağlayarak resource_retriever. ps1 ' u açmanız gerekir. **ResourceType** parametresi, bir kaynak türü yerine **Tümünü** seçmek için bir seçenek vardır. **Tümü** seçilirse, resource_retriever. ps1, dağıtım çalıştırıldığında önce bağımlı kaynaklar dağıtıldığında, tüm kaynakları bir sırada işler. Örneğin sanal makineler sanal makineler tarafından, sanal makinelerin düzgün dağıtılabilmesi için bir VNet 'in yerinde olmasını gerektirdiğinden sanal makinelerden önce dağıtılır.
 
-Betik yürütmeyi bitirdiğinde üç yeni klasör olacaktır, **Deployment_Files**, **Parameter_Files**ve **Custom_ARM_Templates**.
+Betik yürütmeyi tamamladığında, üç yeni klasör olacaktır, **Deployment_Files**, **Parameter_Files**ve **Custom_ARM_Templates**.
 
  > [!Note]  
  > Oluşturulan betiklerin hiçbirini çalıştırmadan önce, doğru ortamı ayarlamanız ve hedef abonelikte (yeni Azure Stack EX) oturum açmanız ve çalışma dizinini **Deployment_Files** klasörüne ayarlamanız gerekir.
 
-Deployment_Files, **Deployresourcegroups. ps1** ve **deployresources. ps1**iki dosya tutacak. DeployResourceGroups. ps1 yürütülmesi kaynak gruplarını dağıtır. DeployResources. ps1 yürütmek, işlenen tüm kaynakları dağıtır. Aracın, kaynak türü olarak **All** veya **Microsoft. COMPUTE/virtualmachines** Ile yürütülmesi durumunda, deployresources. ps1 kullanıcıdan tüm sanal makineleri oluşturmak için kullanılacak bir sanal makine yönetici parolası girmesini ister .
+Deployment_Files, **Deployresourcegroups. ps1** ve **deployresources. ps1**olmak üzere iki dosya tutacak. DeployResourceGroups. ps1 yürütülmesi kaynak gruplarını dağıtır. DeployResources. ps1 yürütmek, işlenen tüm kaynakları dağıtır. Aracın, kaynak türü olarak **All** veya **Microsoft. COMPUTE/virtualmachines** Ile yürütülmesi durumunda, deployresources. ps1 kullanıcıdan tüm sanal makineleri oluşturmak için kullanılacak bir sanal makine yönetici parolası girmesini ister .
 
 ### <a name="example"></a>Örnek
 
@@ -106,7 +108,7 @@ Deployment_Files, **Deployresourcegroups. ps1** ve **deployresources. ps1**iki d
 
 ## <a name="clean-up"></a>Temizleme
 
-ReplicatorV3 klasörünün içinde, **cleanup_generated_items. ps1** adlı bir dosya vardır-bu, **Deployment_Files**, **Parameter_Files**ve **Custom_ARM_Templates** klasörlerini ve tüm içeriğini kaldırır.
+ReplicatorV3 klasörünün içinde **cleanup_generated_items. ps1** adlı bir dosya vardır; **Deployment_Files**, **Parameter_Files**ve **Custom_ARM_Templates** klasörlerini ve tüm içeriğini kaldırır.
 
 ## <a name="subscription-replicator-operations"></a>Abonelik çoğaltıcı işlemleri
 

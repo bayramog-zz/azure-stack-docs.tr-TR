@@ -1,6 +1,7 @@
 ---
-title: Sağlayıcı kaynak kullanım API'si | Microsoft Docs
-description: Başvuru için kaynak kullanım API'si, Azure Stack kullanım bilgilerini alır.
+title: Sağlayıcı kaynağı kullanım API 'SI | Microsoft Docs
+titleSuffix: Azure Stack
+description: Azure Stack kullanım bilgilerini alan kaynak kullanımı API 'sine yönelik başvuru.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,28 +16,28 @@ ms.date: 07/16/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 631d6764ca7947ddafd70ec57b607df1ea5a4ab5
-ms.sourcegitcommit: 2a4cb9a21a6e0583aa8ade330dd849304df6ccb5
+ms.openlocfilehash: 75a4adca6d9265314c74cdebe642d43b8c2f11ef
+ms.sourcegitcommit: ca358ea5c91a0441e1d33f540f6dbb5b4d3c92c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68286697"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802395"
 ---
 # <a name="provider-resource-usage-api"></a>Sağlayıcı kaynak kullanım API’si
 
-Terim *sağlayıcısı* Hizmet Yöneticisi ve herhangi bir sağlayıcı temsilcisi için geçerlidir. Azure Stack operatörleri ve sağlayıcı temsilcisi sağlayıcı kullanım API'si doğrudan kiracıları kullanımını görüntülemek için kullanabilirsiniz. Örneğin, aşağıdaki diyagramda gösterildiği gibi P1 ve P2 doğrudan kullanım bilgilerini almak için API sağlayıcısı P0 çağırabilir ve P1 kullanım bilgileri P3 ve P4 çağırabilirsiniz.
+*Sağlayıcı* terimi, hizmet yöneticisi ve tüm temsilci sağlayıcılar için geçerlidir. Azure Stack işleçleri ve Temsilcili sağlayıcılar, doğrudan kiracılarının kullanımını görüntülemek için sağlayıcı kullanım API 'sini kullanabilir. Örneğin, aşağıdaki diyagramda gösterildiği gibi, P0, P1 ve P2 üzerinde doğrudan kullanım bilgilerini almak için sağlayıcı API 'sini çağırabilir ve P1, P3 ve P4 üzerinde kullanım bilgilerini çağırabilir.
 
-![Sağlayıcı hiyerarşinin kavramsal model](media/azure-stack-provider-resource-api/image1.png)
+![Sağlayıcı hiyerarşisinin kavramsal modeli](media/azure-stack-provider-resource-api/image1.png)
 
 ## <a name="api-call-reference"></a>API çağrısı başvurusu
 
-### <a name="request"></a>İstek
+### <a name="request"></a>İste
 
-İstek tüketim ayrıntılarını ve istenen zaman çerçevesi için istenen abonelikleri alır. Hiçbir istek gövdesi yok.
+İstek, istenen abonelikler ve istenen zaman dilimi için tüketim ayrıntılarını alır. İstek gövdesi yok.
 
-Bu kullanım API'si çağıran atanmalıdır bir API sağlayıcısı olduğundan bir **sahibi**, **katkıda bulunan**, veya **okuyucu** sağlayıcının abonelik rolü.
+Bu kullanım API 'si bir sağlayıcı API 'sidir, bu nedenle çağıranın sağlayıcının aboneliğine bir **sahip**, **katkıda bulunan**veya **okuyucu** rolü atanması gerekir.
 
-| Yöntem | İstek URI'si |
+| Yöntem | İstek URI 'SI |
 | --- | --- |
 | GET |`https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value}` |
 
@@ -44,14 +45,14 @@ Bu kullanım API'si çağıran atanmalıdır bir API sağlayıcısı olduğundan
 
 | Bağımsız Değişken | Açıklama |
 | --- | --- |
-| `armendpoint` |Azure Stack ortamınıza Azure Resource Manager uç noktası. Azure Resource Manager uç nokta adı biçiminde olduğunu Azure Stack kuraldır `https://adminmanagement.{domain-name}`. Etki alanı adıdır, örneğin, Geliştirme Seti için *local.azurestack.external*, Resource Manager uç noktasını ise `https://adminmanagement.local.azurestack.external`. |
-| `subId` |Çağrıyı yapan kullanıcının abonelik kimliği. |
-| `reportedStartTime` |Başlangıç saati sorgu. Değeri `DateTime` (UTC) Eşgüdümlü Evrensel Saat ve saat; başında olmalıdır. Örneğin, 13:00. Günlük toplama için UTC gece yarısı ile bu değeri ayarlayın. Biçim kaçırılmışsa ISO 8601; Örneğin, `2015-06-16T18%3a53%3a11%2b00%3a00Z`, iki nokta üst üste için kaçış burada `%3a` ve artı için kaçış `%2b` URI dostu olmasını sağlayın. |
-| `reportedEndTime` |Sorgu bitiş saati. Uygulanan kısıtlamaları `reportedStartTime` bu bağımsız değişken için de geçerlidir. Değeri `reportedEndTime` gelecekte ya da geçerli tarih olamaz. İse, sonuç "tam işleme yok." ayarlanır |
-| `aggregationGranularity` |İki ayrı olası değerlere sahip isteğe bağlı bir parametre: **günlük** ve **saatlik**. Değerleri Öner gibi günlük ayrıntı düzeyi, verileri döndürür ve diğeri ise saatlik bir çözüm. **Günlük** varsayılan seçenektir. |
-| `subscriberId` |Abonelik kimliği Filtrelenmiş veri almak için sağlayıcının doğrudan bir kiracının abonelik kimliği gereklidir. Abonelik kimliği parametre belirtilmediğinde arama sağlayıcısı'nın doğrudan kiracılar için kullanım verilerini döndürür. |
-| `api-version` |Bu isteği yapmak için kullanılan protokol sürümü. Bu değeri şuna ayarlı `2015-06-01-preview`. |
-| `continuationToken` |Belirteç sağlayıcı kullanım API'si son çağrısından alınan. Bir yanıt 1.000 satır büyük olduğunda bu belirteci gereklidir. İlerleme durumu için bir yer işareti olarak görev yapar. Belirteç mevcut değilse, verileri günün başlangıcından itibaren alınır veya saat ayrıntı düzeyi üzerinde göre geçirilen. |
+| `armendpoint` |Azure Stack ortamınızın uç noktası Azure Resource Manager. Azure Stack kuralı, Azure Resource Manager uç noktasının adının `https://adminmanagement.{domain-name}`biçimindedir. Örneğin, Azure Stack Geliştirme Seti (ASDK) için, etki alanı adı *yerel. azurestack. external*ise, Kaynak Yöneticisi uç noktası `https://adminmanagement.local.azurestack.external`. |
+| `subId` |Çağrıyı yapan kullanıcının abonelik KIMLIĞI. |
+| `reportedStartTime` |Sorgunun başlangıç saati. `DateTime` değeri Eşgüdümlü Evrensel Saat (UTC) ve saatin başında olmalıdır; Örneğin, 13:00. Günlük toplama için bu değeri UTC gece yarısı olarak ayarlayın. Biçim kaçışdır ISO 8601; Örneğin, `2015-06-16T18%3a53%3a11%2b00%3a00Z`, iki nokta üst üste `%3a`, ve Plus 'nin URI kullanımı kolay olması için `%2b` kaçışlarından oluşur. |
+| `reportedEndTime` |Sorgunun bitiş saati. `reportedStartTime` için uygulanan kısıtlamalar bu bağımsız değişken için de geçerlidir. `reportedEndTime` değeri gelecekte ya da geçerli tarih olamaz. Bu ise, sonuç "işlem tamamlanamadı" olarak ayarlanır. |
+| `aggregationGranularity` |İki ayrı olası değeri olan isteğe bağlı parametre: **günlük** ve **saatlik**. Değerler önereceği için, biri günlük ayrıntı düzeyi halinde verileri döndürür ve diğeri saatlik bir çözünürlüğlük olur. **Günlük** seçeneği varsayılandır. |
+| `subscriberId` |Abonelik KIMLIĞI. Filtrelenmiş verileri almak için, sağlayıcının doğrudan kiracının abonelik KIMLIĞI gereklidir. Abonelik KIMLIĞI parametresi belirtilmemişse, çağrı tüm sağlayıcının doğrudan kiracılarının kullanım verilerini döndürür. |
+| `api-version` |Bu isteği yapmak için kullanılan protokolün sürümü. Bu değer `2015-06-01-preview`olarak ayarlanır. |
+| `continuationToken` |Son çağrıdan kullanım API sağlayıcısına alınan belirteç. Yanıt 1.000 satırdan fazla olduğunda bu belirteç gereklidir. İlerleme için bir yer işareti görevi görür. Belirteç yoksa, veri, geçirilen ayrıntı düzeyi temel alınarak günün veya saatin başından alınır. |
 
 ### <a name="response"></a>Yanıt
 
@@ -86,29 +87,29 @@ meterID1",
 . . .
 ```
 
-### <a name="response-details"></a>Yanıt Ayrıntıları
+### <a name="response-details"></a>Yanıt ayrıntıları
 
 | Bağımsız Değişken | Açıklama |
 | --- | --- |
-|`id` |Kullanım toplama benzersiz kimliği. |
-|`name` |Kullanım toplama adı. |
+|`id` |Kullanım toplamanın benzersiz KIMLIĞI. |
+|`name` |Kullanım toplamanın adı. |
 |`type` |Kaynak tanımı. |
-|`subscriptionId` |Azure Stack kullanıcı abonelik tanımlayıcısı. |
-|`usageStartTime`|UTC başlangıç zamanı, bu kullanım toplama ait olduğu kullanım demeti.|
-|`usageEndTime`|Bu kullanım toplama ait olduğu kullanım demeti bitiş saati UTC. |
-|`instanceData` |Örnek ayrıntıları (yeni biçimde) anahtar-değer çiftleri:<br> `resourceUri`: Kaynak grupları ve örnek adını içeren tam kaynak kimliği. <br> `location`: Bu hizmetin çalıştırıldığı bölge. <br> `tags`: Kullanıcı tarafından belirtilen kaynak etiketleri. <br> `additionalInfo`: Tüketilen kaynak hakkında daha fazla ayrıntı; Örneğin, işletim sistemi sürümü veya görüntü türü. |
+|`subscriptionId` |Azure Stack kullanıcının abonelik tanımlayıcısı. |
+|`usageStartTime`|Bu kullanım toplamasının ait olduğu kullanım demetini 'nin UTC başlangıç saati.|
+|`usageEndTime`|Bu kullanım toplamasının ait olduğu kullanım demetini 'nin UTC bitiş saati. |
+|`instanceData` |Örnek ayrıntılarının anahtar-değer çiftleri (yeni bir biçimde):<br> `resourceUri`: kaynak gruplarını ve örnek adını içeren tam kaynak KIMLIĞI. <br> `location`: Bu hizmetin çalıştırıldığı bölge. <br> `tags`: Kullanıcı tarafından belirtilen kaynak etiketleri. <br> `additionalInfo`: tüketilen kaynakla ilgili daha fazla ayrıntı; Örneğin, işletim sistemi sürümü veya görüntü türü. |
 |`quantity`|Bu zaman çerçevesinde gerçekleşen kaynak tüketimi miktarı. |
-|`meterId` |Tüketilen kaynak için benzersiz kimlik (olarak da adlandırılan `ResourceID`). |
+|`meterId` |Tüketilen kaynak için benzersiz KIMLIK (`ResourceID`de denir). |
 
-## <a name="retrieve-usage-information"></a>Kullanım bilgilerini alma
+## <a name="retrieve-usage-information"></a>Kullanım bilgilerini al
 
 ### <a name="powershell"></a>PowerShell
 
-Kullanım verilerini oluşturmak için çalışan ve sistem etkin olarak kullanan kaynaklar olmalıdır; Örneğin, etkin bir sanal makineye veya bazı veriler içeren bir depolama hesabı. Dikey emin olmak için izleme olup Azure Stack Market'te çalıştıran herhangi bir kaynağa sahip, bir sanal makine (VM) dağıtma ve VM doğrulayın konusunda emin değilseniz çalıştığı. Kullanım verilerini görüntülemek için aşağıdaki PowerShell cmdlet'lerini kullanın:
+Kullanım verilerini oluşturmak için, çalıştıran ve sistemi etkin bir şekilde kullanan kaynaklarınız olmalıdır; Örneğin, etkin bir sanal makine (VM) veya bazı verileri içeren bir depolama hesabıdır. Azure Stack marketi 'nde çalışan bir kaynağınız olup olmadığından emin değilseniz, bir VM dağıtın ve çalıştığından emin olmak için VM izleme dikey penceresini doğrulayın. Kullanım verilerini görüntülemek için aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
-1. [Azure Stack için PowerShell yükleme](azure-stack-powershell-install.md).
-2. [Azure Stack kullanıcısı yapılandırma](../user/azure-stack-powershell-configure-user.md) veya [Azure Stack operatörü](azure-stack-powershell-configure-admin.md) PowerShell ortamı.
-3. Kullanım verilerini almak için arama [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
+1. [Azure Stack Için PowerShell 'ı yükler](azure-stack-powershell-install.md).
+2. [Azure Stack kullanıcısını](../user/azure-stack-powershell-configure-user.md) veya [Azure Stack Işleci](azure-stack-powershell-configure-admin.md) PowerShell ortamını yapılandırın.
+3. Kullanım verilerini almak için [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet 'ini çağırın:
 
    ```powershell
    Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
@@ -116,21 +117,21 @@ Kullanım verilerini oluşturmak için çalışan ve sistem etkin olarak kullana
 
 ### <a name="rest-api"></a>REST API
 
-Microsoft.Commerce.Admin hizmet çağırarak silinen abonelikler için kullanım bilgilerini toplayabilirsiniz.
+Silinen abonelikler için kullanım bilgilerini Microsoft. Commerce. Admin hizmetini çağırarak toplayabilirsiniz.
 
-#### <a name="return-all-tenant-usage-for-deleted-for-active-users"></a>İade için tüm Kiracı kullanımı için etkin kullanıcı silindi
+#### <a name="return-all-tenant-usage-for-deleted-for-active-users"></a>Etkin kullanıcılar için silinen tüm Kiracı kullanımını döndür
 
-| Yöntem | İstek URI'si |
+| Yöntem | İstek URI 'SI |
 | --- | --- |
 | GET | `https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
 
-#### <a name="return-usage-for-deleted-or-active-tenant"></a>Silinmiş veya etkin Kiracı dönüş kullanımı
+#### <a name="return-usage-for-deleted-or-active-tenant"></a>Silinen veya etkin kiracı için kullanım dönüşü
 
-| Yöntem | İstek URI'si |
+| Yöntem | İstek URI 'SI |
 | --- | --- |
 | GET |`https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kiracı kaynak kullanım API'si başvurusu](azure-stack-tenant-resource-usage-api.md)
+- [Kiracı kaynak kullanımı API başvurusu](azure-stack-tenant-resource-usage-api.md)
 - [Kullanım ile ilgili SSS](azure-stack-usage-related-faq.md)

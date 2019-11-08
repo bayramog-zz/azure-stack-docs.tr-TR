@@ -1,5 +1,6 @@
 ---
 title: Azure Stack 'de kota türleri | Microsoft Docs
+titleSuffix: Azure Stack
 description: Azure Stack hizmet ve kaynaklar için kullanılabilir farklı kota türlerini görüntüleyin ve düzenleyin.
 services: azure-stack
 documentationcenter: ''
@@ -16,52 +17,52 @@ ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: e3e7ae6cc29756486ae5c292de6fea7e5259ecc1
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: 1fe65370d7631f4096d010756135c67c3d2f359e
+ms.sourcegitcommit: ca358ea5c91a0441e1d33f540f6dbb5b4d3c92c5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283447"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802309"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack kota türleri
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
-[Kotalar](service-plan-offer-subscription-overview.md#plans) , bir Kullanıcı aboneliğinin sağlayabileceği veya tüketebileceği kaynakların sınırlarını tanımlar. Örneğin, bir kota, kullanıcının en fazla beş VM oluşturmasına izin verebilir. Her kaynak kendi kota türlerine sahip olabilir.
+[Kotalar](service-plan-offer-subscription-overview.md#plans) , bir Kullanıcı aboneliğinin sağlayabileceği veya tüketebileceği kaynakların sınırlarını tanımlar. Örneğin, bir kota, kullanıcının en fazla beş sanal makine (VM) oluşturmasına izin verebilir. Her kaynak için farklı kota türleri kullanabilirsiniz.
 
 > [!IMPORTANT]
 > Yeni kotaların Kullanıcı portalında veya değiştirilen bir kota zorlanmadan önce kullanılabilmesi iki saate kadar sürebilir.
 
 ## <a name="compute-quota-types"></a>İşlem kotası türleri
 
-| **Türüyle** | **Varsayılan değer** | **Açıklama** |
+| **Tür** | **Varsayılan değer** | **Açıklama** |
 | --- | --- | --- |
-| Maksimum sanal makine sayısı | 50 | Bir aboneliğin bu konumda oluşturabileceğiniz maksimum sanal makine sayısı. |
-| Maksimum sanal makine çekirdeği sayısı | 100 | Bir aboneliğin bu konumda oluşturabileceğiniz en fazla çekirdek sayısı (örneğin, bir a3 VM 'nin dört çekirdeği vardır). |
+| En fazla VM sayısı | 50 | Bir aboneliğin bu konumda oluşturabileceğiniz en fazla sanal makine sayısı. |
+| Maksimum VM çekirdeği sayısı | 100 | Bir aboneliğin bu konumda oluşturabileceğiniz en fazla çekirdek sayısı (örneğin, bir a3 VM 'nin dört çekirdeği vardır). |
 | Maksimum kullanılabilirlik kümesi sayısı | 10 | Bu konumda oluşturulabilecek maksimum kullanılabilirlik kümesi sayısı. |
-| Maksimum sanal makine ölçek kümesi sayısı | 100 | Bu konumda oluşturulabilecek maksimum sanal makine ölçek kümesi sayısı. |
+| Maksimum sanal makine ölçek kümesi sayısı | 100 | Bu konumda oluşturulabilecek ölçek kümesi sayısı üst sınırı. |
 | Standart yönetilen diskin maksimum kapasitesi (GB cinsinden) | 2048 | Bu konumda oluşturulabilecek Standart yönetilen disklerin maksimum kapasitesi. |
 | Premium yönetilen diskin maksimum kapasitesi (GB cinsinden) | 2048 | Bu konumda oluşturulabilecek Premium yönetilen disklerin maksimum kapasitesi. |
 
-> [!NOTE]  
+> [!NOTE]
 > Yönetilmeyen disk (sayfa Blobları) için maksimum kapasite yönetilen disk kotasından ayrıdır. Bu değeri, **depolama kotalarına**ayarlayabilirsiniz.
 
 ## <a name="storage-quota-types"></a>Depolama kotası türleri
 
-| **Maddesinin** | **Varsayılan değer** | **Açıklama** |
+| **Öğe** | **Varsayılan değer** | **Açıklama** |
 | --- | --- | --- |
 | Maksimum kapasite (GB) |2048 |Bu konumdaki bir abonelik tarafından tüketilen toplam depolama kapasitesi (blob 'lar ve tüm ilişkili anlık görüntüler, tablolar, kuyruklar dahil). |
 | Toplam depolama hesabı sayısı |20 |Bu konumda, bir aboneliğin oluşturabileceğiniz en fazla depolama hesabı sayısı. |
 
-> [!NOTE]  
+> [!NOTE]
 > Yönetilen disklerin maksimum kapasitesi toplam depolama kotasından ayrıdır. Bu değeri, **işlem kotalarına**ayarlayabilirsiniz.
 
 ## <a name="network-quota-types"></a>Ağ kotası türleri
 
-| **Maddesinin** | **Varsayılan değer** | **Açıklama** |
+| **Öğe** | **Varsayılan değer** | **Açıklama** |
 | --- | --- | --- |
 | En fazla sanal ağ |50 |Bu konumda, bir aboneliğin oluşturabileceğiniz en fazla sanal ağ sayısı. |
-| Maksimum sanal ağ geçitleri |1\. |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla sanal ağ geçidi sayısı (VPN ağ geçidi). |
+| Maksimum sanal ağ geçitleri |1 |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla sanal ağ geçidi sayısı (VPN ağ geçidi). |
 | En yüksek ağ bağlantısı |2 |Bu konumdaki tüm sanal ağ geçitleri genelinde bir aboneliğin oluşturabileceğiniz en fazla ağ bağlantısı sayısı (noktadan noktaya veya siteden siteye). |
 | En fazla genel IP |50 |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla genel IP adresi sayısı. |
 | En fazla NIC |100 |Bir aboneliğin bu konumda oluşturabileceğiniz en fazla ağ arabirimi sayısı. |
@@ -72,14 +73,14 @@ ms.locfileid: "72283447"
 
 Mevcut kotayı görüntülemenin iki farklı yolu vardır:
 
-### <a name="plans"></a>Planlama
+### <a name="plans"></a>Planlar
 
 1. Yönetici portalının sol gezinti bölmesinde **planlar**' ı seçin.
-2. Ayrıntılarını görüntülemek istediğiniz planı, adına tıklayarak seçin.
+2. Adına tıklayarak ayrıntılarını görüntülemek istediğiniz planı seçin.
 3. Açılan dikey pencerede **Hizmetler ve Kotalar**' ı seçin.
 4. **Ad** sütununda tıklatarak görmek istediğiniz kotayı seçin.
 
-    [![Kotalar](media/azure-stack-quota-types/quotas1sm.png "Görünüm kotaları")](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Azure Stack yönetici portalındaki kotalar](media/azure-stack-quota-types/quotas1sm.png "Yönetici portalında kotaları görüntüleme")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>Kaynak sağlayıcıları
 
@@ -94,13 +95,15 @@ Kotayı düzenlemenin iki farklı yolu vardır:
 ### <a name="edit-a-plan"></a>Planı düzenleme
 
 1. Yönetici portalının sol gezinti bölmesinde **planlar**' ı seçin.
-2. Kota düzenlemek istediğiniz planı seçin ve adına tıklayın.
+2. Bir kotayı düzenlemek istediğiniz planı seçin ve adına tıklayın.
 3. Açılan dikey pencerede **Hizmetler ve Kotalar**' ı seçin.
 4. **Ad** sütununda tıklatarak düzenlemek istediğiniz kotayı seçin.
-    [![Kotalar](media/azure-stack-quota-types/quotas1sm.png "Görünüm kotaları")](media/azure-stack-quota-types/quotas1.png#lightbox)
+
+    [![Azure Stack yönetici portalındaki kotalar](media/azure-stack-quota-types/quotas1sm.png "Yönetici portalında kotaları görüntüleme")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5. Açılan dikey pencerede, **işlem Içinde Düzenle**, **ağda Düzenle**veya **depolamada Düzenle**' yi seçin.
-    ![Kotalar](media/azure-stack-quota-types/quotas3.png "Görünüm kotaları")
+
+    ![Azure Stack yönetici portalında bir planı düzenleme](media/azure-stack-quota-types/quotas3.png "Azure Stack yönetici portalında bir planı düzenleme")
 
 Alternatif olarak, kotayı düzenlemek için bu yordamı izleyebilirsiniz:
 
