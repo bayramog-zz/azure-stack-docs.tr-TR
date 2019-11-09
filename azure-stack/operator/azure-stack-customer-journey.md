@@ -12,97 +12,82 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 11/07/2019
 ms.author: mabrigg
 ms.reviewer: asganesh
-ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 6ea5248881e10ca9e96ba423ecb4ea5569f00211
-ms.sourcegitcommit: 20d1c0ab3892e9c4c71d5b039457f1e15b1c84c7
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: 6bcdbcb03cdd4151978e9eeee645a0d4ab488fe3
+ms.sourcegitcommit: ed44d477b9fd11573d1e0d1ed3a3c0ef4512df53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618266"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73845763"
 ---
 # <a name="azure-stack-datacenter-integration-walkthrough"></a>Azure Stack veri merkezi tümleştirme Kılavuzu
 
-Bu makalede, bir çözüm sağlayıcısı tarafından başarılı bir yerinde dağıtıma aracılığıyla tümleşik bir sistem satın alma aşamasından uçtan uca Azure Stack müşteri deneyimi açıklanmaktadır. Bu bilgileri, yolculuğun hızını kolaylaştırmak ve bir Azure Stack müşteri olarak beklentilerini ayarlamanıza yardımcı olmak için kullanın.
-
-Azure Stack müşteri olarak, aşağıdaki aşamaları tahmin etmeniz gerekir:
+Bu makalede, satın alma sonrası destek 'e kadar Azure Stack veri merkezi tümleştirmesi için uçtan uca işlem açıklanmaktadır. Tümleştirme, müşteri, çözüm sağlayıcısı ve Microsoft arasında işbirliği yapılan bir projem. Projenin her üyesine yönelik belirli adımları görmek için aşağıdaki sekmelere tıklayın ve proje zaman çizelgesi için farklı aşamaların Özeti için bir sonraki bölüme bakın. 
 
 # <a name="customertabcustomer"></a>[Müşterisi](#tab/customer)
 
-1. Amaçlanan kullanım örneklerini tanıtın ve gereksinimleri belirtin.
-2. Sözleşmeleri kullanmak, gözden geçirmek ve onaylamak için faturalandırma modelini belirleme.
-3. [Dağıtım çalışma sayfasını](azure-stack-deployment-worksheet.md)tamamlayıp tüm dağıtım önkoşullarının karşılandığından ve dağıtıma uygun olduğundan emin olun.
-4. Tüm gerekli güç ve soğutma, sınır bağlantısı ve diğer gerekli veri merkezi tümleştirme gereksinimlerinin yerinde olduğundan veri merkezini hazırlayın.
-5. Dağıtım sırasında abonelik kimlik bilgileri ve sağlanan veriler hakkında sorular varsa destek sağlamak için kullanılabilir.
+1. Kullanım örneklerini ve gereksinimleri açıkla
+1. Faturalandırma modelini belirleme
+1. Sözleşmeleri gözden geçirme ve onaylama
+1. [Dağıtım çalışma sayfasını](azure-stack-deployment-worksheet.md) doldurun
+1. Dağıtım önkoşullarının karşılandığından emin olun
+1. Veri merkezini hazırlama 
+1. Dağıtım sırasında abonelik bilgilerini sağlama
+1. Belirtilen verilerle ilgili tüm soruları çözün
 
 # <a name="partnertabpartner"></a>[Ortağınız](#tab/partner)
 
-1. Planlama aşaması:
-   - Müşteri gereksinimlerine bağlı olarak çözüm seçeneklerini tavsiye edin.
-   - Gerekirse kavram kanıtı (POC) önerin.
-   - İş ilişkisi oluşturun.
-   - Destek düzeyine karar verin.
-2. İşlem sırası:
-   - Müşteriyle gerekli sözleşmeleri hazırlayın.
-   - Müşteri satın alma siparişi oluştur.
-   - Teslim zaman çizelgesine karar verin.
-   - Gerekirse, müşteriyi Microsoft ile bağlayın.
-3. Dağıtım öncesi
-   - Tüm dağıtım önkoşulları ve veri merkezi tümleştirme seçeneklerinin anlaşılmasını sağlamak için müşteriyi gerekli eğitimle sağlayın.
-   - Eksiksiz ve doğruluğu sağlamak üzere toplanan verilerin doğrulanması için müşteriye yardımcı olun.
-4. Fabrika işlemi
-   - Son doğrulanan temel derlemeyi uygulayın.
-   - Gerekli Microsoft dağıtım araç setini uygulayın.
-5. Donanım teslimi:
-   - Donanımı müşteri sitesine gönder.
-6. Yerinde dağıtım
-   - Yerinde mühendis tarafından işlenen dağıtım.
-   - Raf ve yığın.
-   - Donanım yaşam döngüsü ana bilgisayarı (HLH) dağıtımı.
-   - Azure Stack dağıtımı.
-   - Müşteriye teslim.
+1. Müşteri gereksinimlerine bağlı olarak çözüm seçeneklerini önerme
+1. Kavram kanıtı öner (POC) 
+1. Destek düzeyine karar verme
+1. Müşteri ile sözleşmeleri hazırlama
+1. Müşteri satın alma siparişi oluştur
+1. Teslim zamanlaması belirleyin
+1. Müşteriyi Microsoft ile bağlama 
+1. Müşteriye dağıtım üzerinde eğitme 
+1. Müşteri tarafından toplanan verileri doğrulama yardım
+1. Temel derlemeyi ve Microsoft dağıtım araç setini yükleyip doğrulama
+1. Donanımı müşteri sitesine gönder
+1. Yerinde mühendis sağlama
+1. Raf ve yığın
+1. Donanım yaşam döngüsü konağını (HLH) dağıtma 
+1. Azure Stack dağıtma
+1. Müşteriye teslim
 
 # <a name="microsofttabmicro"></a>[MICROSOFT](#tab/micro)
 
-1. Ön satış desteği sağlamak için iş ortağıyla birlikte çalışın.
-2. Yazılım Lisanslama ve sözleşmelerini gereken şekilde hazırlayın.
-3. Veri merkezi Tümleştirme gereksinimlerini ve müşteri belgelerini toplamak için gerekli araçları sağlayın.
-4. En son temel yapıları ve araç zinciri güncelleştirmelerini aylık bir temposunda sağlayın.
-5. Microsoft destek mühendisleri, herhangi bir dağıtım sorununu gidermeye yardımcı olur.
+1. Ön satış desteği için iş ortağına katılın
+2. Yazılım Lisanslama ve sözleşmelerini hazırlama
+3. Veri merkezi Tümleştirme gereksinimlerini toplamak için Araçlar sağlama
+4. Aylık temel yapılar ve araç zinciri güncelleştirmeleri sağlama
+5. Microsoft destek mühendisleri her türlü dağıtım sorununu gidermeye yardımcı olur
 
+---
 
-
-## <a name="planning-phase"></a>Planlama aşaması
-Planlama aşaması Microsoft 'un veya Azure Stack çözüm iş ortağının sizin için doğru çözüm Azure Stack olup olmadığını tespit etmek üzere gereksinimlerinizi değerlendirmek ve anlamak için sizinle birlikte çalışacaksınız:
-
-Bunlar, aşağıdaki sorulara karar vermenize yardımcı olur:
+## <a name="planning"></a>Planlama
+Microsoft veya bir Azure Stack çözüm iş ortağı hedeflerinizi değerlendirmenize yardımcı olur. Şu gibi sorulara karar vermenize yardımcı olur:
 
 -   Kuruluşunuza doğru çözüm Azure Stack mı?
-
--   Hangi boyut çözümüne ihtiyacınız olacak?
-
 -   Kuruluşunuz için ne tür bir faturalandırma ve lisanslama modeli çalışacaktır?
-
+-   Hangi boyut çözümüne ihtiyacınız olacak?
 -   Güç ve soğutma gereksinimleri nelerdir?
 
-Donanım çözümünün gereksinimlerinize en uygun şekilde uyum sağlaması için [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) , Azure Stack donanım çözümünüz için uygun kapasiteyi ve yapılandırmayı belirlemede ön satın alma planlamasına yardımcı olmak için kullanılır.
+Gereksinimlerinize uygun en iyi donanım kapasitesini ve yapılandırmayı araştırmak ve analiz etmek için [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) kullanın. 
 
-Elektronik tablo, gereksinimlerinize en uygun donanım çözümlerini araştırmanıza ve analizinize alternatif olarak kullanılmak *üzere tasarlanmamıştır.* Azure Stack dağıtımı için planlama yaparken, Azure Stack tümleşik sistemler için [genel veri merkezi tümleştirme konularını](azure-stack-datacenter-integration.md) da gözden geçirmeniz gerekir.
+## <a name="ordering"></a>Sıralama
+Kuruluşunuz Azure Stack satın alma, sözleşmeleri ve satın alma siparişlerini imzalar ve tümleştirme gereksinimleri verilerini çözüm sağlayıcısına sağlar.
 
-## <a name="order-process-phase"></a>Sıra işlem aşaması
-Bu aşamada, söz konusu olduğu gibi sorularınızın birçoğu yanıtlanmıştır. Azure Stack satın almaya hazır olduğunuza ve gerekli sözleşmelerin ve satın alma siparişlerinin tümünün imzalandıktan sonra, çözüm sağlayıcınızda tümleştirme gereksinimleri verilerini sağlamanız istenecektir.
-
-## <a name="pre-deployment-phase"></a>Dağıtım öncesi aşaması
-Bu aşamada, Azure Stack veri merkezinizle nasıl tümleştirmenize karar vermeniz gerekir. Bu işlemi kolaylaştırmak için, Microsoft, ortamınızda tümleşik bir sistem dağıtımı planlamak üzere gerekli bilgileri toplamanıza yardımcı olmak üzere bir gereksinimler şablonunu birlikte koymakta. Bu gereksinimler şablonu, çözüm sağlayıcılarıyla işbirliği sırasında yapılmıştır.
-
+## <a name="pre-deployment"></a>Dağıtım öncesi
+Azure Stack veri merkezinizle nasıl tümleştirileceğine karar verirsiniz. Microsoft, gerekli bilgileri toplamanıza yardımcı olmak için bir [dağıtım çalışma sayfası](azure-stack-deployment-worksheet.md) yayınlamak üzere çözüm sağlayıcılarıyla birlikte işbirliği yapılır.
 [Genel veri merkezi tümleştirme konuları](azure-stack-datacenter-integration.md) makalesi, dağıtım çalışma sayfası olarak bilinen şablonu tamamlamanıza yardımcı olacak bilgiler sağlar.
 
 > [!IMPORTANT]
-> Bu aşamada, tüm önkoşul bilgilerinin araştırılması ve çözüm sıralanmadan önce karar vermiş olması önemlidir. Bu adımın zaman alıcı olduğunu ve kuruluşunuzun içindeki birden çok disiplinden veri toplamaya ihtiyaç duyduğuna dikkat edin. Yanlış veya tamamlanmamış bilgiler, daha uzun bir dağıtıma neden olabilir. 
+> Dağıtım gecikmelerini önlemeye yardımcı olmak için çözüm sipariş etmeden önce tüm Önkoşullar araştırılır. Önkoşulları doğrulamak zaman alabilir ve kuruluşunuzdaki farklı departmanlardan koordinasyon ve veri toplamayı gerektirebilir. 
 
-Dağıtım öncesi aşamasında, aşağıdaki öğelere karar vermeniz gerekir:
+Aşağıdaki öğeleri seçersiniz:
 
 - **Azure Stack bağlantı modeli ve kimlik sağlayıcısı**. [İnternet 'e bağlı olan veya bağlantısı kesilen](azure-stack-connection-models.md)Azure Stack dağıtmayı seçebilirsiniz. Hibrit senaryolar da dahil olmak üzere Azure Stack en avantajını almak için Azure 'a bağlı dağıtım yapmak istersiniz. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) veya Azure Active Directory (Azure AD) seçeneğinin belirlenmesi, dağıtım zamanında yapmanız gereken tek seferlik bir karardır. **Tüm sistemi yeniden dağıtmaya gerek kalmadan, kimlik sağlayıcınızı daha sonra değiştiremezsiniz**.
 
@@ -115,12 +100,11 @@ Dağıtım öncesi aşamasında, aşağıdaki öğelere karar vermeniz gerekir:
 
 - **Güvenlik Duvarı tümleştirmesi**. Azure Stack güvenli hale getirmek için [bir güvenlik duvarı kullanmanız](azure-stack-firewall.md) önerilir. Güvenlik duvarları, DDOS saldırılarını, yetkisiz giriş algılamayı ve içerik incelemesini önlemeye yardımcı olabilir. Ancak, Azure depolama hizmetleri için bir verimlilik sorunu haline gelebileceğini not edilmelidir.
 
-
 - **Sertifika gereksinimleri**. Dağıtım için veri merkezinize bir yerinde mühendisin ulaşmadan *önce* tüm [gerekli sertifikaların](azure-stack-pki-certs.md) kullanılabilir olması önemlidir.
 
 Önkoşul bilgileri dağıtım çalışma sayfası aracılığıyla toplandıktan sonra çözüm sağlayıcısı, veri merkezinize Azure Stack başarıyla tümleştirilmesine olanak sağlamak üzere toplanan verileri temel alarak fabrika işlemini otomatik hale bırakır.
 
-## <a name="hardware-delivery-phase"></a>Donanım teslimi aşaması
+## <a name="hardware-delivery"></a>Donanım teslimi 
 Çözüm sağlayıcınız, çözüm özelliğinize geldiğinde zamanlama için sizinle birlikte çalışacaktır. Aldıktan ve yerine koyduktan sonra, Azure Stack dağıtımını gerçekleştirmek için bir mühendisin yerinde olması için çözüm sağlayıcısıyla zaman planlaması yapmanız gerekir.
 
 Tüm önkoşul verilerinin *, yerinde mühendisin çözümü dağıtmaya ulaşmadan önce*kilitlenmesi ve kullanılabilir olması **önemlidir** .
@@ -134,7 +118,7 @@ Tüm önkoşul verilerinin *, yerinde mühendisin çözümü dağıtmaya ulaşma
 > [!TIP]
 > Bu bilgilerden herhangi biri değiştiyse, gerçek dağıtımı zamanlamadan önce değişikliği çözüm sağlayıcısıyla iletdiğinizden emin olun.
 
-## <a name="onsite-deployment-phase"></a>Yerinde dağıtım aşaması
+## <a name="onsite-deployment"></a>Yerinde dağıtım 
 Azure Stack dağıtmak için, dağıtım için donanım çözüm sağlayıcınızdan bir yerinde mühendisin mevcut olması gerekir. Başarılı bir dağıtım sağlamak için, dağıtım çalışma sayfası aracılığıyla sunulan tüm bilgilerin değiştirilmediğinden emin olun.
 
 Aşağıdaki denetimler, dağıtım deneyimi sırasında yerinde mühendisden beklemeniz gereken şeydir:
@@ -148,7 +132,7 @@ Aşağıdaki denetimler, dağıtım deneyimi sırasında yerinde mühendisden be
 > [!NOTE]
 > Yerinde mühendisin bir dağıtım yordamı, tamamlanması için bir iş haftası gerektirebilir.
 
-## <a name="post-deployment-phase"></a>Dağıtım sonrası aşaması
+## <a name="post-deployment"></a>Dağıtım sonrası 
 Çözüm, tümleştirme sonrası aşamasında müşteriye teslim edilmeden önce iş ortağı tarafından birkaç adım gerçekleştirilmelidir. Bu aşamada, sistemin dağıtıldığından ve doğru şekilde uygulandığından emin olmak için doğrulama önemlidir. 
 
 OEM Iş ortağı tarafından alınması gereken eylemler şunlardır:
@@ -180,7 +164,7 @@ Yükleme türüne bağlı olarak gerekli veya isteğe bağlı birkaç adım vard
 
   -   [Nagios tümleştirmesi](azure-stack-integrate-monitor.md#integrate-with-nagios).
 
-## <a name="overall-timeline"></a>Genel zaman çizelgesi
+## <a name="schedule"></a>Zamanlama
 
 ![Azure Stack site dağıtımı için genel zaman çizelgesi](./media/azure-stack-datacenter-integration-walkthrough/image1.png)
 

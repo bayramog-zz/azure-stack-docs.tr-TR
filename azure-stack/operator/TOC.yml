@@ -40,7 +40,6 @@
         - name: Azure Stack Capacity Planner
           href: azure-stack-capacity-planner.md
     - name: Veri merkezi tümleştirmesi
-      href: azure-stack-customer-journey.md
       items:
         - name: Kılavuz
           href: azure-stack-customer-journey.md
@@ -151,8 +150,6 @@
               href: azure-stack-servicing-policy.md
             - name: Güncelleştirmeleri uygulamak için denetim listesi
               href: release-notes-checklist.md
-            - name: Güncelleştirme planı
-              href: azure-stack-update-plan.md
             - name: Güncelleştirme paketini hazırlama
               href: azure-stack-update-prepare-package.md
             - name: Güncelleştirme uygulama
@@ -199,7 +196,7 @@
               href: azure-stack-replace-component.md
     - name: 'Güvenlik, uyumluluk ve kimlik'
       items:
-        - name: Güvenliğe genel bakış
+        - name: Güvenlik genel bilgileri
           href: azure-stack-security-foundations.md
         - name: Güvenliği yapılandırma
           href: azure-stack-security-configuration.md
@@ -393,7 +390,7 @@
               href: azure-stack-provider-resource-api.md
             - name: Kiracı kullanım API’si
               href: azure-stack-tenant-resource-usage-api.md
-            - name: Kullanım Hakkında SSS
+            - name: Kullanım SSS
               href: azure-stack-usage-related-faq.md
             - name: Kullanım sorunlarını giderme
               items:

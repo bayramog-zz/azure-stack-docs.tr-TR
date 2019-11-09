@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
-ms.openlocfilehash: 91a90146f1f62ebea980a785d8a8e347f04fe137
-ms.sourcegitcommit: 58e1911a54ba249a82fa048c7798dadedb95462b
+ms.openlocfilehash: 9eb4780a80e5cedd595950813d5cb5029e1b1857
+ms.sourcegitcommit: ed44d477b9fd11573d1e0d1ed3a3c0ef4512df53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064718"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73845837"
 ---
 # <a name="vnet-peering-in-azure-stack-with-vms"></a>VM 'lerle Azure Stack Sanal Ağ Eşleme
 
@@ -24,8 +24,8 @@ ms.locfileid: "73064718"
 
 Bu dağıtım stili, VPN tünellerinin yalnızca bir Azure Stack örneği içinde değil, aynı zamanda Azure Stack örnekleri ve şirket içi ağlar gibi Windows RRAS S2S VPN tünellerini kullanan diğer kaynaklar arasında oluşturulmasını sağlayan bir temel oluşturur. 
 
-Şablonları [Azure akıllı kenar desenleri GitHub](https://github.com/lucidqdreams/azure-intelligent-edge-patterns
-) deposunun **lucidqdreams** çatalından bulabilirsiniz. Şablon **S2SVPNTunnel** klasöründedir.
+Şablonları [Azure akıllı kenar desenleri GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns
+) deposunda bulabilirsiniz. Şablon **S2SVPNTunnel** klasöründedir.
 
 ![alternatif metin](./media/azure-stack-network-howto-vnet-peering/overview.png)
 

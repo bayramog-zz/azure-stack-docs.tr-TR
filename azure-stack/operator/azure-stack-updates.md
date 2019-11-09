@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: mabrigg
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: 0a784a80931113b7901a021a7c2ff707ce7df355
-ms.sourcegitcommit: d159652f50de7875eb4be34c14866a601a045547
+ms.openlocfilehash: 31436cbe92550044efe8b28a5063da61508e7304
+ms.sourcegitcommit: ed44d477b9fd11573d1e0d1ed3a3c0ef4512df53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72283272"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73845791"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack genel bakış 'da güncelleştirmeleri yönetme
 
@@ -81,7 +81,7 @@ Bir güncelleştirme olduğunu öğrendikten sonra, aşağıdaki adımları kull
 
 1. **Güncelleştirmeyi planlayın**.
 
-    Kullanıcılarınız üzerinde en az etkisi olması için Azure Stack güncelleştirme işlemini olabildiğince sorunsuz şekilde hazırlayın. Kullanıcılarınıza olası hizmet kesintilerinden sorumlu olarak bildirimde bulunmak ve sonra örneğinizi güncelleştirme için hazırlama adımlarını izleyin. Güncelleştirmeyi planlamak için daha fazla adım için bkz. [plan Azure Stack Update](azure-stack-update-plan.md).
+    Kullanıcılarınız üzerinde en az etkisi olması için Azure Stack güncelleştirme işlemini olabildiğince sorunsuz şekilde hazırlayın. Kullanıcılarınıza olası hizmet kesintilerinden sorumlu olarak bildirimde bulunmak ve sonra örneğinizi güncelleştirme için hazırlama adımlarını izleyin. Güncelleştirmeyi planlamak için daha fazla adım için bkz. [Azure Stack etkinliği denetim listesi](release-notes-checklist.md).
 
 2. **Güncelleştirme paketini karşıya yükleyin ve hazırlayın**.
 
@@ -103,6 +103,6 @@ Güncelleştirmeler yüklendikten sonra, güncelleştirme işlemi Azure Stack ç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Güncelleştirme işlemini başlatmak için [Azure Stack güncelleştirme planı](azure-stack-update-plan.md)' nda bulunan adımları izleyin.
+- Güncelleştirme işlemine başlamak için [Azure Stack güncelleştirme etkinliği denetim listesini](release-notes-checklist.md)görüntüleyin bölümündeki adımları izleyin.
 - Azure Stack sürümlerinin DESTEKDE olduğunu öğrenmek için, bkz. [Azure Stack hizmet ilkesi](azure-stack-servicing-policy.md).  
 - Güncel ve son güncelleştirmeler hakkında daha fazla bilgi edinmek için [Azure Stack sürüm notlarına](release-notes.md)bakın.

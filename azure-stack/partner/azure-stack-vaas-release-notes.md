@@ -14,18 +14,63 @@ ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
-ms.openlocfilehash: 0ac21cc388b55be6548f9fdba6c8985dd2316c4e
-ms.sourcegitcommit: cc3534e09ad916bb693215d21ac13aed1d8a0dde
+ms.openlocfilehash: aa85310314a09db47f10424e84fe40e355bacb25
+ms.sourcegitcommit: ed44d477b9fd11573d1e0d1ed3a3c0ef4512df53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73167142"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846231"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Hizmet olarak doğrulama için sürüm notları
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Bu makalede hizmet olarak Azure Stack doğrulaması için sürüm notları bulunur.
+
+## <a name="version-4353"></a>Sürüm 4.3.5.3
+
+2019 Kasım 7
+
+- Test içeriği güncelleştirmeleri
+  - Aylık Azure Stack güncelleştirme doğrulaması (sürüm 5.1.46.0-> 5.1.49.0)
+  - OEM Uzantı paketi doğrulaması (sürüm 5.1.46.0-> 5.1.49.0)
+  - 5\.1.46.0 için sonuçlar korundu. 5\.1.46.0 üzerinde başarılı bir çalışmalarınız varsa, sonuçları gönderirken vaashelp@microsoft.com bildirin.
+
+- Hata düzeltmeleri
+  - Update. zip özel karakterler içeriyorsa aylık Azure Stack güncelleştirme doğrulamasının çalıştırılmediği bir sorun düzeltildi.
+
+- Bilinen sorunlar
+  - MSTest. exe bulunamazsa, VaaS testleri başarısız olur. Sorunu
+    1. PowerShell penceresinde aracı CTRL + C.
+    1. MSTest. exe ' nin tanınan bir program olduğunu doğrulamak için MSTest. exe yazın.
+    1. MSTest. exe tanınmazsa, geçerli PowerShell penceresini kapatın.
+    1. Başlat ' a tıklayın (görev çubuğunuzda PowerShell değil), PowerShell bulun ve yönetici olarak açın.
+    1. MSTest. exe yazın ve bir komut olarak kullanılabilir olduğunu doğrulayın.
+    1. Aracıyı yeniden başlatın ve testi yeniden çalıştırın.
+  - Bulut benzetimi altyapısı bazen \*VM testleriyle ilgili sorunları raporlar. Yeniden çalıştırmayı denemeden önce vaashelp@microsoft.com başvurun. 
+
+
+2019 Ekim 29
+
+- Aylık Azure Stack güncelleştirme iş akışı ve OEM paketi doğrulama iş akışı için çevrimiçi belgeler güncelleştirilmiştir.
+
+    Lütfen OEM paketlerini doğrulamak ve Microsoft 'tan yazılım güncelleştirmelerini doğrulamak için buradaki güncelleştirilmiş belgeleri inceleyin
+- VaaS Iş akışı güncelleştirmesi: aylık Azure Stack Güncelleştirmesi (sürüm 5.1.30.0-> 5.1.46.0) – aylık Azure Stack güncelleştirme doğrulama test iş akışı güncelleştirildi.
+
+    İş akışı artık el ile müdahale gerektirmez ve sorunsuz çalışacak şekilde zamanlanabilir.
+- VaaS Iş akışı güncelleştirmesi: OEM paket doğrulaması (sürüm 5.1.30.0-> 5.1.46.0) – OEM paketi doğrulama iş akışı güncelleştirilmiştir.
+
+    İş akışı artık el ile müdahale gerektirmez ve sorunsuz çalışacak şekilde zamanlanabilir.
+- OEM paketi doğrulama iş akışındaki (sürüm 5.1.30.0-> 5.1.46.0) bulut benzetimi altyapısı, doğrulama süresini hızlandırmak için güncelleştirilmiştir: çalışma süresi 1 saate düşürüldü.
+- OEM paketi doğrulama iş akışındaki bulut benzetimi altyapısı ve Azure Stack güncelleştirme iş akışı (sürüm 5.1.30.0-> 5.1.46.0), tüm güncelleştirmelerin, alt klasörlerde diğer güncelleştirmeler olmadan 2 farklı üst klasörde olmasını gerektirir.
+- OEM paketi doğrulama iş akışındaki bulut benzetimi altyapısı ve Azure Stack güncelleştirme iş akışı (sürüm 5.1.30.0-> 5.1.46.0), testlerin şu sırada zamanlanmasını gerektirir – aylık Azure Stack güncelleştirme doğrulama testi, OEM Uzantı paketi Doğrulama testi ve son olarak bulut benzetim altyapısı.
+- VaaS aracı güncelleştirmesi: güncelleştirilmiş VaaS Aracısı artık iş akışlarını otomatik olarak doldurmak için damga bilgilerini almak üzere damgası sorgulamak için Azure Stack Cloud Manager kimlik bilgilerini kullanır. 
+
+    Bu güncelleştirme, tüm aracıların güncelleştirilmesini ve yeniden başlatılmasını gerektirir. Lütfen VaaS aracısını güncelleştirme hakkında şu yönergelere bakın: https://docs.microsoft.com/en-us/azure-stack/partner/azure-stack-vaas-local-agent
+- VaaS portalı Kullanıcı arabirimi güncelleştirmesi: aracı seçim tablosu, testi kolaylaştırmak için test zamanlama bölmesinin üzerine taşınmıştır.
+
+    Bir işi zamanlarken, VaaS aracıları doğru şekilde güncelleştirilirse damga bilgilerini girmeye gerek yoktur.
+
 
 ## <a name="version-405"></a>Sürüm 4.0.5
 
