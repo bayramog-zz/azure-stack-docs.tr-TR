@@ -16,12 +16,12 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 4adad49b27b1ab1d255ccc566c95b003cfd09b3b
-ms.sourcegitcommit: 245a4054a52e54d5989d6148fbbe386e1b2aa49c
+ms.openlocfilehash: f44bfcaf91e06979d1a9eb745bf681c0d9f69371
+ms.sourcegitcommit: cb9548e5a2ca27d9c44f349eeb08d94c9c6334da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70974910"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73916392"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service Azure Stack güncelleştirme 5 sürüm notları
 
@@ -32,7 +32,7 @@ Bu sürüm notları, Azure Stack güncelleştirme 5 ' teki Azure App Service gel
 > [!IMPORTANT]
 > 1901 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya Azure App Service 1,5 ' i dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
 
-## <a name="build-reference"></a>Yapı Başvurusu
+## <a name="build-reference"></a>Derleme başvurusu
 
 Azure Stack güncelleştirme 5 derleme numarasında App Service **80.0.2.15**.
 
@@ -47,7 +47,7 @@ Azure App Service Azure Stack 1,5 sürümüne yükseltmeye başlamadan önce:
 - App Service ve ana veritabanlarını yedekleyin:
   - AppService_Hosting;
   - AppService_Metering;
-  - Ana Şablon
+  - Master
 
 - Kiracı uygulaması içerik dosyası payını yedekleyin.
 
@@ -77,7 +77,7 @@ Azure Stack güncelleştirme 5 ' te Azure App Service aşağıdaki geliştirmele
 ### <a name="post-deployment-steps"></a>Dağıtım sonrası adımlar
 
 > [!IMPORTANT]  
-> App Service kaynak sağlayıcısını bir SQL Always on örneğiyle birlikte sağladıysanız, [appservice_hosting ve appservice_metering veritabanlarını bir kullanılabilirlik grubuna eklemeli](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve veritabanlarını kullanarak hizmet kaybını önleyebilirsin bir veritabanı yük devretmesinin olayı.
+> App Service kaynak sağlayıcısını bir SQL Always on örneğiyle birlikte sağladıysanız bir [kullanılabilirlik grubuna appservice_hosting ve appservice_metering veritabanlarını eklemeli](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) ve veritabanlarını bir veritabanı yük devretmesi durumunda herhangi bir hizmet kaybını engelleyecek şekilde eşitlemeniz *gerekir* .
 
 ### <a name="post-update-steps"></a>Güncelleştirme sonrası adımlar
 
@@ -137,9 +137,9 @@ Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir verit
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
-1. Migrate logins to contained database users.
+1. Oturum açma işlemlerini kapsanan veritabanı kullanıcılarına geçirin.
 
     ```sql
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
@@ -187,13 +187,13 @@ Azure Stack dağıtımlarında mevcut Azure App Service için kapsanan bir verit
 
 Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiği sağlayan bir giden güvenlik kuralı eklemeniz gerekir. Yönetici portalında WorkersNsg adresine gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
- * Kaynak: Any
+ * Kaynak: any
  * Kaynak bağlantı noktası aralığı: *
  * Hedef: IP adresleri
- * Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
+ * Hedef IP adresi aralığı: dosya sunucunuz için IP aralığı
  * Hedef bağlantı noktası aralığı: 445
  * Protokol: TCP
- * Eylem: Allow
+ * Eylem: Izin ver
  * Öncelik: 700
  * Ad: Outbound_Allow_SMB445
 
