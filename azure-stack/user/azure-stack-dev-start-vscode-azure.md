@@ -5,16 +5,16 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 08/05/2019
-ms.openlocfilehash: 44d35d59b2b50682dd6911f6d2b08fea8e005938
-ms.sourcegitcommit: a0dcb61890ad0f7b8e1f738f7186198681adcc2e
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 58fecc801312d9da1a2311e4a51114cfbf245e9d
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820814"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955762"
 ---
 # <a name="connect-to-azure-stack-using-azure-account-extension-in-visual-studio-code"></a>Visual Studio Code Azure hesap uzantısını kullanarak Azure Stack bağlanma
 
@@ -64,19 +64,19 @@ VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik haf
 7. Azure Stack Azure Resource Manager bağlanmak için meta verileri alın. 
     
     Microsoft Azure Kaynak Yöneticisi, Azure kaynaklarını dağıtmanıza, yönetmenize ve izlemenize olanak tanıyan bir yönetim çerçevesidir.
-    - Azure Stack Geliştirme Seti (ASDK) Kaynak Yöneticisi URL 'SI:`https://management.local.azurestack.external/` 
-    - Tümleşik bir sistemin Kaynak Yöneticisi URL 'SI:`https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
-    - Meta verilere erişmek için URL 'nize aşağıdaki metni ekleyin:`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+    - Azure Stack Geliştirme Seti (ASDK) Kaynak Yöneticisi URL 'SI: `https://management.local.azurestack.external/` 
+    - Tümleşik bir sistemin Kaynak Yöneticisi URL 'SI: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+    - Meta verilere erişmek için aşağıdaki metni URL 'nize ekleyin: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
-    Örneğin, Azure Resource Manager uç noktanız için meta verileri almaya yönelik URL şöyle görünebilir:`https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
+    Örneğin, Azure Resource Manager uç noktanız için meta verileri almaya yönelik URL şöyle görünebilir: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
 
-    Dönüş JSON 'sini bir yere iade edin. `loginEndpoint` Ve`audiences` özelliğinin değerlerine ihtiyacınız olacaktır.
+    Dönüş JSON 'sini bir yere iade edin. `loginEndpoint` ve `audiences` özelliğinin değerlerine ihtiyacınız olacaktır.
 
-8. **CTRL + SHIFT + P** tuşlarına basın ve Tercihler **' i seçin: Kullanıcı ayarları 'nı (JSON)** açın.
+8. **CTRL + SHIFT + P** tuşlarına basın ve **Tercihler: açık Kullanıcı ayarları (JSON)** seçeneğini belirleyin.
 
 9. Kod Düzenleyicisi 'nde, aşağıdaki JSON kod parçacığını ortamınızın değerleriyle güncelleştirin ve ardından bir kod parçacığını ayarlar bloğuna yapıştırın.
 
-    - Deðerler
+    - Değerler:
 
         | Parametre | Açıklama |
         | --- | --- |
@@ -97,22 +97,22 @@ VS Code Web ve bulut uygulamaları oluşturmaya ve hata ayıklamaya yönelik haf
       "azure.cloud": "AzurePPE"
       ```
 
-10. Kullanıcı ayarlarını kaydedin ve **CTRL + SHIFT + P** 'yi bir kez daha kullanın. Azure **seçin: Azure bulutta**oturum açın. Yeni seçenek olan **Azureppe**, hedef listesinde görünür.
+10. Kullanıcı ayarlarını kaydedin ve **CTRL + SHIFT + P** 'yi bir kez daha kullanın. **Azure: Azure bulutta oturum açın '** ı seçin. Yeni seçenek olan **Azureppe**, hedef listesinde görünür.
 
 11. **Azureppe**öğesini seçin. Kimlik doğrulama sayfası tarayıcınızda yüklenir. Uç noktanıza oturum açın.
 
-12. Azure Stack aboneliğinizde başarıyla oturum açtığınızı test etmek için **CTRL + SHIFT + P** tuşlarını kullanın ve Azure ' u seçin **: Abonelik** ' ı seçin ve sahip olduğunuz aboneliğin kullanılabilir olup olmadığını görün.
+12. Azure Stack aboneliğinizde başarıyla oturum açtığınızı test etmek için **CTRL + SHIFT + P** tuşlarını kullanın ve **Azure: abonelik seçin** ' i seçin ve sahip olduğunuz aboneliğin kullanılabilir olup olmadığını görün.
 
 ## <a name="commands"></a>Komutlar
 
-| Azure: Oturum Aç | Azure aboneliğinizde oturum açın |
+| Azure: oturum açma | Azure aboneliğinizde oturum açın |
 | --- | --- |
-| Azure: Cihaz koduyla oturum açın | Bir cihaz koduyla Azure aboneliğinizde oturum açın. Kurulum 'da oturum açma komutunun çalışmadaki bir cihaz kodu kullanın. |
+| Azure: cihaz koduyla oturum açın | Bir cihaz koduyla Azure aboneliğinizde oturum açın. Kurulum 'da oturum açma komutunun çalışmadaki bir cihaz kodu kullanın. |
 | Azure: Azure bulutta oturum açın | Bağımsız bulutlarından birinde Azure aboneliğinizde oturum açın. |
-| Azure: Oturumu Kapat | Azure aboneliğinizde oturumunuzu kapatın. |
-| Azure: Abonelikleri Seç | Birlikte çalışmak istediğiniz abonelik kümesini seçin. Uzantı yalnızca filtrelenmiş abonelikler içindeki kaynakları gösterir. |
-| Azure: Hesap oluşturun | Azure hesabınız yoksa bugün [kaydolun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-azure-account&mktingSource=vscode-azure-account) ve ücretsiz kredilerle 200 alabilirsiniz \$. |
-| Azure: Bash 'i Cloud Shell açın | Cloud Shell yeni bir Terminal çalıştıran yeni bir Terminal açın. |
+| Azure: oturumu Kapat | Azure aboneliğinizde oturumunuzu kapatın. |
+| Azure: abonelikleri seçin | Birlikte çalışmak istediğiniz abonelik kümesini seçin. Uzantı yalnızca filtrelenmiş abonelikler içindeki kaynakları gösterir. |
+| Azure: hesap oluşturma | Bir Azure hesabınız yoksa bugün [kaydolun](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-azure-account&mktingSource=vscode-azure-account) ve ücretsiz kredilerle \$200 alabilirsiniz. |
+| Azure: Cloud Shell 'da Bash 'i açın | Cloud Shell yeni bir Terminal çalıştıran yeni bir Terminal açın. |
 | Azure: PowerShell 'i Cloud Shell açın | Cloud Shell yeni bir Terminal çalıştıran PowerShell açın. |
 | Azure: Cloud Shell karşıya yükle | Cloud Shell depolama hesabınıza bir dosya yükleyin. |
 

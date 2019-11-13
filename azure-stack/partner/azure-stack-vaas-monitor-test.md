@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5d3d32df25aeba90ef065fc4363f0887dcbc36e5
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 87ba89298c0a5a134cb0b3b1a2b7e771151e46d9
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418362"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955902"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>VaaS portalındaki testleri izleme ve yönetme
 
@@ -69,11 +69,11 @@ Her zamanlanmış test örneği aşağıdaki bilgileri gösterir:
 | Sütun | Açıklama |
 | --- | --- |
 | Test adı | Testin adı ve sürümü. |
-| Category | Testin amacı. |
-| Oluşturuldu | Testin zamanlandığı zaman. |
-| Başlatıldı | Testin yürütmeye başladığı zaman. |
-| Duration | Testin çalıştırıldığı sürenin uzunluğu. |
-| Durum | Testin durumu veya sonucu. Yürütme öncesi veya sürmekte olan durumlar şunlardır: `Pending`,. `Running` Terminal durumları: `Cancelled`, `Failed`, `Aborted`,. `Succeeded` |
+| Kategori | Testin amacı. |
+| Oluşturulma | Testin zamanlandığı zaman. |
+| başlama | Testin yürütmeye başladığı zaman. |
+| Süre | Testin çalıştırıldığı sürenin uzunluğu. |
+| Durum | Testin durumu veya sonucu. Yürütme öncesi veya sürmekte olan durumlar: `Pending`, `Running`. Terminal durumları şunlardır: `Cancelled`, `Failed`, `Aborted``Succeeded`. |
 | Aracı adı | Testi çalıştıran aracının adı. |
 | Toplam işlem | Test sırasında denenen işlemlerin toplam sayısı. |
 | Geçilen işlemler | Test sırasında başarılı olan işlem sayısı. |
@@ -92,7 +92,7 @@ Test tanımıyla ilgili genel bilgileri görüntülemek için bağlam menüsünd
 | Test adı | Testin adı. |
 | Test sürümü | Testin sürümü. |
 | Yayımcı | Testin yayımcısı. |
-| Category |  Testin amacı. |
+| Kategori |  Testin amacı. |
 | Hedef hizmetler | Test edilmekte olan Azure Stack Hizmetleri. |
 | Açıklama | Testin açıklaması. |
 | Tahmini süre (dakika) | Testin beklenen çalışma zamanı. |
@@ -118,7 +118,7 @@ Test sırasında gerçekleştirilen işlemlerin ayrıntılı durumunu görüntü
 
 #### <a name="download-logs-for-a-completed-test-instance"></a>Tamamlanmış bir test örneği için günlükleri indirin
 
-Test yürütmesi sırasında günlük çıkışının bir `.zip` dosyasını indirmek için bağlam menüsünde **günlükleri indir** ' i seçin. Bu `Cancelled`eylem yalnızca `Failed` `Succeeded`,,, veya durumunda olan bir test olan, yalnızca tamamlanan testler için kullanılabilir. `Aborted`
+Test yürütmesi sırasında günlük çıkışının bir `.zip` dosyasını indirmek için bağlam menüsünden **günlükleri indir** ' i seçin. Bu eylem yalnızca, `Cancelled`, `Failed`, `Aborted`veya `Succeeded`durumundaki bir test olan, yalnızca tamamlanmış testler için kullanılabilir.
 
 #### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Test örneğini yeniden zamanlama veya test zamanlama
 
@@ -140,7 +140,7 @@ Test geçiş iş akışında, bir test örneğini yeniden **planlama** , özgün
 
 #### <a name="cancel-a-test-instance"></a>Test örneğini iptal et
 
-Zamanlanan bir test, durumu veya `Pending` `Running`ise iptal edilebilir.  
+Zamanlanan bir test, durumu `Pending` veya `Running`olduğunda iptal edilebilir.  
 
 1. Test örneğini iptal etmek üzere bir istem açmak için bağlam menüsünden **iptal** ' i seçin.
 

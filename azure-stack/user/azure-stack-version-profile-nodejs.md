@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 07/30/2019
-ms.openlocfilehash: 65ea0b4f6f7f7cb3769e83bf9052ac2953668e48
-ms.sourcegitcommit: 20d1c0ab3892e9c4c71d5b039457f1e15b1c84c7
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 8fa2b3524b7d61f27ae30f22133047e8223f2ce3
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618222"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955253"
 ---
 # <a name="use-api-version-profiles-with-nodejs-software-development-kit-sdk-in-azure-stack"></a>Azure Stack 'de Node. js yazılım geliştirme seti (SDK) ile API sürüm profillerini kullanma
 
@@ -29,7 +29,7 @@ ms.locfileid: "73618222"
 
 Uygulamalarınız için altyapıyı oluşturmaya ve yönetmeye yardımcı olması için Node. js SDK 'sını kullanabilirsiniz. Node. js SDK 'daki API profilleri, genel Azure kaynakları ve Azure Stack kaynakları arasında geçiş yapmanıza olanak sağlayarak karma bulut çözümlerinizle ilgili yardım sağlar. Bir kez kodleyebilir ve ardından hem küresel Azure hem de Azure Stack hedefleyin. 
 
-Bu makalede geliştirme aracınız olarak [Visual Studio Code](https://code.visualstudio.com/) kullanabilirsiniz. Visual Studio Code Node. js SDK 'sını ayıklayabilir ve uygulamayı çalıştırıp uygulamayı Azure Stack örneğinize gönderebilmesine izin verir. Visual Studio Code veya `node <nodefile.js>` komutunu çalıştıran bir Terminal penceresi aracılığıyla hata ayıklaması yapabilirsiniz.
+Bu makalede geliştirme aracınız olarak [Visual Studio Code](https://code.visualstudio.com/) kullanabilirsiniz. Visual Studio Code Node. js SDK 'sını ayıklayabilir ve uygulamayı çalıştırıp uygulamayı Azure Stack örneğinize gönderebilmesine izin verir. Visual Studio Code veya komut `node <nodefile.js>`çalıştıran bir Terminal penceresi aracılığıyla hata ayıklaması yapabilirsiniz.
 
 ## <a name="the-nodejs-sdk"></a>Node. js SDK 'Sı
 
@@ -39,7 +39,7 @@ Bir API profili, kaynak sağlayıcılarının ve API sürümlerinin bir birleşi
 
   -   Tüm hizmetlerin en son sürümlerini kullanmak için paketlerin **en son** profilini kullanın.
 
-  -   Azure Stack ile uyumlu hizmetleri kullanmak için **\@Azure/ARM-Resources-profile-karma-2019-03-01** veya **\@azure/ARM-Storage-profile-2019-03 -01-hibrit** kullanın
+  -   Azure Stack ile uyumlu hizmetleri kullanmak için **Azure/ARM-kaynaklar-profili-karma-2019-03-01** veya **\@Azure/ARM-Storage-profile-2019-03 -01-karma**\@kullanın
 
 ### <a name="packages-in-npm"></a>NPM 'deki paketler
 
@@ -79,7 +79,7 @@ Kaynak sağlayıcının belirli API sürümleri için paket içinde tanımlanan 
 
 3.  Yüklenmesi gereken paketler, kullanmak istediğiniz profil sürümüne bağlıdır. [NPM bölümündeki paketlerde](#packages-in-npm) kaynak sağlayıcılarının bir listesini bulabilirsiniz.
 
-4. NPM kullanarak kaynak sağlayıcısı istemci kitaplığını yükler. Komut satırından: `npm install <package-name>` ' ı çalıştırın. Örneğin, yetkilendirme kaynak sağlayıcısı kitaplığını yüklemek için `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` ' ı çalıştırabilirsiniz.
+4. NPM kullanarak kaynak sağlayıcısı istemci kitaplığını yükler. Komut satırından şunu çalıştırın: `npm install <package-name>`. Örneğin, yetkilendirme kaynak sağlayıcısı kitaplığını yüklemek için `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` çalıştırabilirsiniz.
 
 5.  SDK 'Yı kullandığınızda abonelik oluşturun ve abonelik KIMLIĞINI bir yere göz önünde yapın. Yönergeler için bkz. [Azure Stack tekliflere abonelik oluşturma](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
 
@@ -122,7 +122,7 @@ Microsoft Azure Kaynak Yöneticisi, yöneticilerin Azure kaynaklarını dağıtm
 Meta veri bilgilerini Kaynak Yöneticisi uç noktasından alabilirsiniz. Uç nokta, kodunuzu çalıştırmak için gereken bilgileri içeren bir JSON dosyası döndürür.
 
 > [!Note]  
-> Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl** 'si: `https://management.local.azurestack.external` tümleşik sistemlerdeki **resourcemanagerurl 'si** , gereken meta verileri almak için `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com`: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+> Azure Stack Geliştirme Seti (ASDK **) Içindeki** **resourcemanagerurl** : `https://management.local.azurestack.external`, gereken meta verileri almak için `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com`: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
 Örnek JSON dosyası:
 
@@ -159,7 +159,7 @@ Azure Stack ve API profilleri hakkında daha fazla bilgi için bkz. [API profill
 
 ### <a name="azure-nodejs-sdk-api-profile-usage"></a>Azure Node. js SDK 'Sı profili kullanımı
 
-Aşağıdaki satırlar bir profil istemcisi örneği oluşturmak için kullanılmalıdır. Bu parametre yalnızca Azure Stack veya diğer özel bulutlar için gereklidir. Global Azure, varsayılan olarak @azure-arm-resource veya @azure-arm-storage ile bu ayarlara sahiptir.
+Aşağıdaki satırlar bir profil istemcisi örneği oluşturmak için kullanılmalıdır. Bu parametre yalnızca Azure Stack veya diğer özel bulutlar için gereklidir. Global Azure, varsayılan olarak @azure-arm-resource veya @azure-arm-storageile bu ayarlara sahiptir.
 
 ```Node.js  
 var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019-03-01').ResourceManagementClient;
@@ -275,9 +275,9 @@ Node. js ve Azure Stack API profilleriyle çözüm oluşturmak için aşağıdak
 
 9.  [NPM modülleri aramasını](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid)kullanarak, Işlem, ağ, depolama, anahtar kasası ve uygulama Hizmetleri kaynak sağlayıcıları için **2019-03-01 karma** 'i bulun ve bu profille ilişkili paketleri yüklemelisiniz.
 
-    Bu, komut istemi açılarak, deponun kök klasörüne yönlendirerek ve kullanılan her kaynak sağlayıcısı için `npm install @azure/arm-keyvault-profile-2019-03-01-hybrid` çalıştırılarak yapılabilir.
+    Bu işlem, komut istemi açılarak, deponun kök klasörüne yönlendirerek ve kullanılan her kaynak sağlayıcısı için `npm install @azure/arm-keyvault-profile-2019-03-01-hybrid` çalıştırılarak yapılabilir.
 
-10.  Tüm Node. js modüllerini yüklemek için komut isteminde `npm install` komutunu çalıştırın.
+10.  Komut isteminde, tüm Node. js modüllerini yüklemek için `npm install` komutunu çalıştırın.
 
 11.  Örnek uygulamayı çalıştırın.
 

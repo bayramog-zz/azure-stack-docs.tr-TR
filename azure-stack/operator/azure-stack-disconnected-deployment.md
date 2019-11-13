@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 11/01/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
-ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 61d938ef1a3039c4b685c4df8f09577d9c7d3f50
-ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
+ms.lastreviewed: 11/01/2019
+ms.openlocfilehash: 183abaa85607f0ad0c1bb9f82901b86176ae5c65
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71909280"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955207"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack tümleşik sistemler için Azure bağlantısı kesik dağıtım planlama kararları
 [Karma bulut ortamınıza Azure Stack nasıl tümleştirileceğini](azure-stack-connection-models.md)karardıktan sonra, Azure Stack dağıtım kararlarınızı bitirebileceksiniz.
@@ -57,9 +57,9 @@ Telemetri|Kullanım dışı-telemetri verilerine bağlı olan Azure Stack ve ü�
 |Sertifikalar|Kullanılamıyor-HTTPS bağlamında sertifika Iptal listesi (CRL) ve çevrimiçi sertifika durumu Protokolü (OSCP) Hizmetleri için internet bağlantısı gereklidir.|
 |Key Vault|Engelli-Key Vault için ortak kullanım örneği, çalışma zamanında bir uygulamanın gizli dizileri okumalıdır. Bu kullanım örneği için, uygulamanın dizinde bir hizmet sorumlusu olması gerekir. Azure AD 'de, normal kullanıcılar (yönetici olmayanlar) varsayılan olarak hizmet sorumlusu eklemesine izin verilir. Azure AD 'de (AD FS kullanarak), bunlar değildir. Bu, her zaman bir uygulama eklemek için her zaman bir dizin Yöneticisi üzerinden gitmesi gerektiğinden, bu, uçtan uca deneyimde bir yere yerleştirmelidir.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazla bilgi
 - Kullanım örnekleri, satın alma, iş ortakları ve OEM donanım satıcıları hakkında daha fazla bilgi için [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) ürün sayfasına bakın.
-- Azure Stack tümleşik sistemler için yol haritası ve coğrafi kullanılabilirlik hakkında daha fazla bilgi için, bkz. Teknik İnceleme: [Azure Stack: Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)uzantısı. 
+- Azure Stack tümleşik sistemler için yol haritası ve coğrafi kullanılabilirlik hakkında daha fazla bilgi için bkz. Teknik İnceleme: [Azure Stack: Azure uzantısı](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - Microsoft Azure Stack paketleme ve fiyatlandırma hakkında daha fazla bilgi edinmek için [. PDF dosyasını indirin](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>Sonraki adımlar

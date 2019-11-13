@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 091dc657153309298a1eda161b633a42050a0f57
-ms.sourcegitcommit: 3af71025e85fc53ce529de2f6a5c396b806121ed
+ms.openlocfilehash: e7df32ea390c236e10d64e7575dcfdd45f01ea3a
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71159352"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955870"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Hizmet olarak Azure Stack doğrulaması için iş akışı ortak parametreleri
 
@@ -53,7 +53,7 @@ Ortam parametreleri test altındaki Azure Stack ortamını anlatmaktadır. Bu de
 
 ### <a name="locate-values-in-the-ece-configuration-file"></a>ECE yapılandırma dosyasındaki değerleri bulma
 
-Ortam parametresi değerleri de DVD `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` üzerinde bulunan **ece yapılandırma dosyasında** el ile bulunabilir.
+Ortam parametresi değerleri de DVD üzerinde `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` bulunan **ece yapılandırma dosyasında** el ile bulunabilir.
 
 ## <a name="test-parameters"></a>Test parametreleri
 
@@ -62,8 +62,8 @@ Ortak test parametreleri, yapılandırma dosyalarında depolanabilecek hassas bi
 Parametre    | Açıklama
 -------------|-----------------
 Kiracı Yöneticisi Kullanıcı                            | AAD dizininde hizmet yöneticisi tarafından sağlanan Kiracı Yöneticisi Azure Active Directory. Bu Kullanıcı, kaynakları (VM 'Ler, depolama hesapları vb.) ayarlamak ve iş yüklerini yürütmek için şablon dağıtma gibi kiracı düzeyinde eylemler gerçekleştirir. Kiracı hesabını sağlama hakkında ayrıntılı bilgi için bkz. [yeni Azure Stack kiracı ekleme](../operator/azure-stack-add-new-user-aad.md).
-Hizmet Yöneticisi kullanıcısı             | Azure Stack dağıtımı sırasında belirtilen Azure AD dizin kiracının Yöneticisi Azure Active Directory. ECE yapılandırma dosyasında arama yapın ve `UniqueName` öğesindeki değeri seçin. `AADTenant`
-Bulut Yöneticisi kullanıcısı               | Azure Stack etki alanı yöneticisi hesabı (örneğin, `contoso\cloudadmin`). ECE yapılandırma dosyasında arama yapın ve `UserName` öğesindeki değeri seçin. `User Role="CloudAdmin"`
+Hizmet Yöneticisi kullanıcısı             | Azure Stack dağıtımı sırasında belirtilen Azure AD dizin kiracının Yöneticisi Azure Active Directory. ECE yapılandırma dosyasında `AADTenant` araması yapın ve `UniqueName` öğesindeki değeri seçin.
+Bulut Yöneticisi kullanıcısı               | Azure Stack etki alanı yöneticisi hesabı (örneğin, `contoso\cloudadmin`). ECE yapılandırma dosyasında `User Role="CloudAdmin"` araması yapın ve `UserName` öğesindeki değeri seçin.
 Tanılama bağlantı dizesi          | Test yürütmesi sırasında tanılama günlüklerinin kopyalanacağı bir Azure depolama hesabına yönelik SAS URL 'SI. SAS URL 'SI oluşturma yönergeleri için bkz. [Tanılama bağlantı dizesi oluşturma](#generate-the-diagnostics-connection-string). |
 
 > [!IMPORTANT]

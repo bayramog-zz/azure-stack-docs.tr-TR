@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
-ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: 64935022f8ace33bd4350ab4ef5421636ff3991e
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 20e4f71480aa377e56115c499f96492e768010c3
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418513"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955730"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Azure Stack izleme verilerini kullanma
 
@@ -29,15 +29,15 @@ ms.locfileid: "68418513"
  
 ## <a name="options-for-data-consumption"></a>Veri tüketimi için seçenekler
 
-| Veri türü | Category | Desteklenen hizmetler | Erişim yöntemleri |
+| Veri türü | Kategori | Desteklenen hizmetler | Erişim yöntemleri |
 |-------------------------------------------------------------|----------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | Azure Izleyici platformu düzeyi ölçümleri | Ölçümler | [Azure Stack Azure Izleyici ile desteklenen ölçümler](azure-stack-metrics-supported.md) | REST API |
 | Konuk işletim sistemi ölçümlerini hesapla (örneğin, performans sayısı) | Ölçümler | Windows ve Linux VM 'Leri | Depolama tablosu veya blobu:<br>Windows veya Linux Azure Tanılama <br>Olay Hub 'ı:<br>Windows Azure Tanılama |
-| Depolama ölçümleri | Ölçümler | Azure Storage | Depolama tablosu:<br>Depolama Analizi |
-| Etkinlik günlüğü | Events | Tüm Azure Hizmetleri | REST API:<br>Azure Izleyici olay API 'SI |
-| Konuk işletim sistemi günlüklerini hesaplama (örneğin, IIS, ETW, syslogs) | Events | Windows ve Linux VM 'Leri | Depolama tablosu veya blobu:<br>Windows veya Linux Azure Tanılama <br>Olay Hub 'ı:<br>Windows Azure Tanılama |
-| Depolama günlükleri | Events | Azure Storage | Depolama tablosu:<br>Depolama Analizi |
+| Depolama ölçümleri | Ölçümler | Azure Depolama | Depolama tablosu:<br>Depolama Analizi |
+| Etkinlik günlüğü | Etkinlikler | Tüm Azure Hizmetleri | REST API:<br>Azure Izleyici olay API 'SI |
+| Konuk işletim sistemi günlüklerini hesaplama (örneğin, IIS, ETW, syslogs) | Etkinlikler | Windows ve Linux VM 'Leri | Depolama tablosu veya blobu:<br>Windows veya Linux Azure Tanılama <br>Olay Hub 'ı:<br>Windows Azure Tanılama |
+| Depolama günlükleri | Etkinlikler | Azure Depolama | Depolama tablosu:<br>Depolama Analizi |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinin [Azure Stack'te Azure izleme](azure-stack-metrics-azure-data.md).
+[Azure Stack üzerinde Azure izleyici](azure-stack-metrics-azure-data.md)hakkında daha fazla bilgi edinin.

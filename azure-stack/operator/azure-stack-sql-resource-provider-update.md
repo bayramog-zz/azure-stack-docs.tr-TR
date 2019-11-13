@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 6554a18ee881f053eebc2fc3df8d846cd8d9d12e
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: b37e4c9f5e7b1aaa1a476b0665a9558e8e86365f
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68417961"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955410"
 ---
 # <a name="update-the-sql-resource-provider"></a>SQL kaynak sağlayıcısını güncelleştirme
 
-*Uygulama hedefi: Tümleşik sistemler Azure Stack.*
+*Uygulama hedefi: Azure Stack tümleşik sistemler.*
 
 Azure Stack yeni bir yapıya güncelleştirildiği zaman yeni bir SQL kaynak sağlayıcısı serbest kalabilir. Mevcut kaynak sağlayıcı çalışmaya devam etse de en kısa sürede en son yapıya güncelleştirmenizi öneririz. 
 
@@ -44,7 +44,7 @@ Kaynak sağlayıcısını güncelleştirmek için *Updatesqlprovider. ps1* beti�
 
 *Updatesqlprovider. ps1* betiği yenı bir VM oluşturduktan sonra, komut dosyası eskı sağlayıcı VM 'sinden aşağıdaki ayarları geçirir:
 
-* veritabanı bilgileri
+* Veritabanı bilgileri
 * barındırma sunucusu bilgileri
 * gerekli DNS kaydı
 
@@ -57,7 +57,7 @@ Kaynak sağlayıcısını güncelleştirmek için *Updatesqlprovider. ps1* beti�
 | **CloudAdminCredential** | Ayrıcalıklı uç noktaya erişmek için gerekli olan bulut yöneticisinin kimlik bilgileri. | _Gerekli_ |
 | **AzCredential** | Azure Stack hizmeti yönetici hesabı için kimlik bilgileri. Azure Stack dağıtmak için kullandığınız kimlik bilgilerini kullanın. | _Gerekli_ |
 | **VMLocalCredential** | SQL kaynak sağlayıcısı VM 'sinin yerel yönetici hesabının kimlik bilgileri. | _Gerekli_ |
-| **PrivilegedEndpoint** | Ayrıcalıklı uç noktanın IP adresi veya DNS adı. |  _Gerekli_ |
+| **Ayrıcalıklı Gedendpoint** | Ayrıcalıklı uç noktanın IP adresi veya DNS adı. |  _Gerekli_ |
 | **AzureEnvironment** | Azure Stack dağıtmak için kullandığınız hizmet yönetici hesabının Azure ortamı. Yalnızca Azure AD dağıtımları için gereklidir. Desteklenen ortam adları **Azurecsesli**, **AzureUSGovernment**veya Çin Azure AD, **AzureChinaCloud**kullanıyorsa. | AzureCloud |
 | **DependencyFilesLocalPath** | Certificate. pfx dosyanızı da bu dizine yerleştirmeniz gerekir. | _Tek düğüm için isteğe bağlıdır, ancak çoklu düğüm için zorunludur_ |
 | **DefaultSSLCertificatePassword** | . Pfx sertifikası için parola. | _Gerekli_ |

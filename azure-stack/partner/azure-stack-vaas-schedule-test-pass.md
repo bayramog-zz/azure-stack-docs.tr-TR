@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: bf377234b71683e6c56bef030cd5de5b4a06a743
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 8843b6791876b4e0362d7aee3aa738453a8c3b88
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418394"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955918"
 ---
 # <a name="scheduling-a-test"></a>Test zamanlama
 
@@ -36,8 +36,8 @@ Test geçişi iş akışı, VaaS tarafından sunulan herhangi bir testi çalış
 Bu hızlı başlangıcı izlemeden önce aşağıdaki öğeleri bitirebilmelisiniz:
 
 - [Doğrulamanız hizmet kaynakları olarak ayarlama](azure-stack-vaas-set-up-resources.md)
-- [Yerel aracıyı dağıtma](azure-stack-vaas-local-agent.md) Istenir
-- [Hizmet anahtar kavramları olarak doğrulama](azure-stack-vaas-key-concepts.md) Istenir
+- [Yerel aracıyı dağıtma](azure-stack-vaas-local-agent.md) (gerekli)
+- [Hizmet anahtar kavramları olarak doğrulama](azure-stack-vaas-key-concepts.md) (gerekli)
 
 ## <a name="start-a-workflow"></a>Bir iş akışı Başlat
 
@@ -81,7 +81,7 @@ Seçtiğiniz testler, iş akışı oluşturulduktan sonra zamanlanır.
 
     Hizmet, iş akışınızı belirtilen bilgilerle oluşturur ve seçilen testler zamanlanır.
 
-    Bir şeyler yanlış görünüyorsa **önceki düğmeleri kullanarak** önceki bir bölüme gidebilirsiniz.
+    Bir şeyler yanlış görünüyorsa **önceki düğmeleri kullanarak önceki bir** bölüme gidebilirsiniz.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
 

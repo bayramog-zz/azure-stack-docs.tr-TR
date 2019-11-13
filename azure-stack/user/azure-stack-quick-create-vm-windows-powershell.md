@@ -11,19 +11,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 21dacbd9fc0bd7b646eb937e5460f6e7a89e3465
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: a46630e7f1e55d248354639a35aa7a389effc353
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68417407"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955648"
 ---
-# <a name="quickstart-create-a-windows-server-vm-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack 'de PowerShell kullanarak Windows Server VM oluşturma
+# <a name="quickstart-create-a-windows-server-vm-by-using-powershell-in-azure-stack"></a>Hızlı başlangıç: Azure Stack 'de PowerShell kullanarak Windows Server VM oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 

@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9c8807d6fb28a99c9de8464a0eaff7114bd6a162
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: 2dfa55af61627a82f869c7e222dc29997b07a6e3
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418261"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955847"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>Hizmet olarak doğrulama sorunlarını giderme
 
@@ -66,6 +66,8 @@ PIR görüntüsünü yerel veri merkezinizdeki bir paylaşıma indirebilirsiniz.
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'WindowsServer2012R2DatacenterBYOL.vhd' /NC:12 /V:azcopylog.log /Y
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Ubuntu1404LTS.vhd' /NC:12 /V:azcopylog.log /Y
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Ubuntu1604-20170619.1.vhd' /NC:12 /V:azcopylog.log /Y
+    .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'OpenLogic-CentOS-69-20180105.vhd' /NC:12 /V:azcopylog.log /Y
+    .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Debian8_latest.vhd' /NC:12 /V:azcopylog.log /Y
 ```
 
 > [!Note]  
@@ -75,15 +77,17 @@ PIR görüntüsünü yerel veri merkezinizdeki bir paylaşıma indirebilirsiniz.
 
 Görüntülerin bütünlüğünü denetlemek için, indirilen ortak görüntü deposu görüntü dosyalarının karma değerini almak üzere **Get-HashFile** cmdlet 'ini kullanabilirsiniz.
 
-| Dosya Adı | SHA256 |
+| Dosya adı | SHA256 |
 |---------------------------------------|------------------------------------------------------------------|
 | Server2016DatacenterFullBYOL. vhd | 6ED58DCA666D530811A1EA563BA509BF9C29182B902D18FCA03C7E0868F733E9 |
 | WindowsServer2012R2DatacenterBYOL. vhd | 9792CBF742870B1730B9B16EA814C683A8415EFD7601DDB6D5A76D0964767028 |
-| Server2016DatacenterCoreBYOL.vhd | 5E80E1A6721A48A10655E6154C1B90E320DF5558487D6A0D7BFC7DCD32C4D9A5 |
+| Server2016DatacenterCoreBYOL. vhd | 5E80E1A6721A48A10655E6154C1B90E320DF5558487D6A0D7BFC7DCD32C4D9A5 |
 | Ubuntu1404LTS. vhd | B24CDD12352AAEBC612A4558AB9E80F031A2190E46DCB459AF736072742E20E0 |
 | Ubuntu1604-20170619.1. vhd | C481B88B60A01CBD5119A3F56632A2203EE5795678D3F3B9B764FFCA885E26CB |
+| OpenLogic-CentOS-69-20180105. vhd | C8B874FE042E33B488110D9311AF1A5C7DC3B08E6796610BF18FDD6728C7913C |
+| Debian8_latest. vhd | 06F8C11531E195D0C90FC01DFF5DC396BB1DD73A54F8252291ED366CACD996C1 |
 
-### <a name="failure-occurs-when-uploading-vm-image-in-the-vaasprereq-script"></a>`VaaSPreReq` Betikte VM görüntüsü karşıya yüklenirken hata oluştu
+### <a name="failure-occurs-when-uploading-vm-image-in-the-vaasprereq-script"></a>`VaaSPreReq` betiğine VM görüntüsü karşıya yüklenirken hata oluştu
 
 Öncelikle ortamın sağlıklı olup olmadığını denetleyin:
 
@@ -93,19 +97,19 @@ Görüntülerin bütünlüğünü denetlemek için, indirilen ortak görüntü d
 Ortam sağlıklı ise, VaaS test çalıştırmaları için gereken 5 VM görüntüsünü el ile karşıya yükleyin:
 
 1. Yönetim Portalı 'nda hizmet yöneticisi olarak oturum açın. Yönetim Portalı URL 'sini, ECE deposundan veya damga bilgi dosyanızda bulabilirsiniz. Yönergeler için bkz. [Ortam parametreleri](azure-stack-vaas-parameters.md#environment-parameters).
-1. **Diğer hizmetler** > **kaynak sağlayıcıları** > işlemVM > **görüntülerini**seçin.
+1. **Daha fazla hizmet** > **kaynak sağlayıcısı** > **işlem** > **VM görüntülerini**seçin.
 1. **VM görüntüleri** dikey penceresinin en üstündeki **+ Ekle** düğmesini seçin.
 1. İlk VM görüntüsü için aşağıdaki alanların değerlerini değiştirin veya denetleyin:
     > [!IMPORTANT]
     > Mevcut Market öğesi için tüm varsayılanlar doğru değil.
 
-    | Alan  | Value  |
+    | Alan  | Değer  |
     |---------|---------|
     | Yayımcı | MicrosoftWindowsServer |
-    | Sunduğu | WindowsServer |
-    | İşletim sistemi türü | Windows |
+    | Teklif | WindowsServer |
+    | İşletim Sistemi Türü | Windows |
     | SKU | 2012-R2-Datacenter |
-    | Version | 1.0.0 |
+    | Sürüm | 1.0.0 |
     | İşletim sistemi diski blob URI 'SI | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 
 1. **Oluştur** düğmesini seçin.
@@ -113,13 +117,15 @@ Ortam sağlıklı ise, VaaS test çalıştırmaları için gereken 5 VM görünt
 
 Tüm 5 VM görüntülerinin özellikleri şunlardır:
 
-| Yayımcı  | Sunduğu  | İşletim sistemi türü | SKU | Version | İşletim sistemi diski blob URI 'SI |
+| Yayımcı  | Teklif  | İşletim Sistemi Türü | SKU | Sürüm | İşletim sistemi diski blob URI 'SI |
 |---------|---------|---------|---------|---------|---------|
 | MicrosoftWindowsServer| WindowsServer | Windows | 2012-R2-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 | MicrosoftWindowsServer | WindowsServer | Windows | 2016-veri merkezi | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |
 | MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter-Server-Core | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterCoreBYOL.vhd |
 | Canonical | UbuntuServer | Linux | 14.04.3-LTS | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1404LTS.vhd |
 | Canonical | UbuntuServer | Linux | 16.04-LTS | 16.04.20170811 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1604-20170619.1.vhd |
+| OpenLogic | CentOS | Linux | 6,9 | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/OpenLogic-CentOS-69-20180105.vhd |
+| credativ | Debian | Linux | 8 | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Debian8_latest.vhd |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

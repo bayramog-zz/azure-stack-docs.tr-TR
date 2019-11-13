@@ -5,16 +5,16 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 08/09/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 08/09/2019
-ms.openlocfilehash: cd7ca2e1a198cb66c5d7627029215b55af0de975
-ms.sourcegitcommit: ae79b8bea670ea854ed00e9998d45f6b47fc8347
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 2b2d1bccbe41e57b81492e0ba0b201fe03df2d7d
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71142571"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955768"
 ---
 # <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack"></a>Azure Stack bir C# sanal makineye bir ASP.NET Web uygulaması dağıtma
 
@@ -55,7 +55,7 @@ Bu makalede, bir C# Windows 2016 sunucusunda çalışan ASP.NET Core 2,2 kullana
 
     e. Aşağıdaki bağlantı noktaları için bir gelen güvenlik kuralı ekleyin:
 
-    | Port | Protocol | Açıklama |
+    | Bağlantı noktası | Protokol | Açıklama |
     | --- | --- | --- |
     | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), sunuculardan Web sayfaları teslim etmek için kullanılan protokoldür. İstemciler bir DNS adı veya IP adresi ile HTTP aracılığıyla bağlanır. |
     | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), bir güvenlik sertifikası gerektiren ve şifreli bilgi iletimi sağlayan güvenli bir HTTP sürümüdür.  |
@@ -99,8 +99,8 @@ Bu makalede, bir C# Windows 2016 sunucusunda çalışan ASP.NET Core 2,2 kullana
 
 ## <a name="create-an-app"></a>Uygulama oluşturma 
 
-Visual Studio [](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-)ile Azure 'da kendi web uygulamanızı veya bir ASP.NET Core uygulaması yayımlama örneğini kullanabilirsiniz. Makalesinde, Visual Studio 2017 ' deki Azure sanal makineler yayımlama özelliğini kullanarak bir Azure sanal makinesine bir ASP.NET Web uygulaması oluşturma ve yayımlama açıklanmaktadır. ' Yi yükledikten ve uygulamanızın yerel olarak çalıştığından emin olduktan sonra, yayımlama hedefini Azure Stack örneğinizdeki Windows VM 'sine güncelleştirebilirsiniz.
+[Visual Studio Ile Azure 'da kendi web uygulamanızı veya bir ASP.NET Core uygulaması yayımlama](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
+)örneğini kullanabilirsiniz. Makalesinde, Visual Studio 2017 ' deki Azure sanal makineler yayımlama özelliğini kullanarak bir Azure sanal makinesine bir ASP.NET Web uygulaması oluşturma ve yayımlama açıklanmaktadır. ' Yi yükledikten ve uygulamanızın yerel olarak çalıştığından emin olduktan sonra, yayımlama hedefini Azure Stack örneğinizdeki Windows VM 'sine güncelleştirebilirsiniz.
 
 ## <a name="deploy-and-run-the-app"></a>Uygulamayı dağıtma ve çalıştırma
 

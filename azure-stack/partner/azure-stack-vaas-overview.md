@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0bd490b5eaf91540d7789c8eb7a7a2d34eb1ae4d
-ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
+ms.openlocfilehash: dee0be0817c8b614c9961d39330b64f4bd11f85f
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73595368"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955857"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack-hub"></a>Azure Stack hub 'ı için bir hizmet olarak doğrulama nedir?
 
@@ -49,7 +49,7 @@ Daha fazla bilgi için bkz. [Microsoft 'tan yazılım güncelleştirmelerini do�
 
 ## <a name="get-digitally-signed-solution-partner-packages"></a>Dijital olarak imzalanan çözüm iş ortağı paketlerini al
 
-İş ortakları Azure Stack hub güncelleştirmelerini doğrulamaya ek olarak, OEM Özelleştirme Azure Stack paketlerine yönelik güncelleştirmeleri doğrulamak için **paket doğrulama** iş akışını kullanır ve Azure Stack hub yazılımının dağıtımı. En azından desteklenen en düşük boyutlu çözümü kullanarak Azure Stack hub yazılımının güncel sürümünde doğrulamanızı yaptığınız paketi dağıtın. Paket, testleri yürütmeden önce VaaS 'e gönderilir. Testler başarılı olursa, paketin test tamamlandığını [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) ve Azure Stack merkezi dijital imzasıyla dijital olarak imzalanması gerektiğini bildirin. Microsoft, paketi imzalar ve paketin VaaS portalında indirileceği Azure Stack hub ortağına bildirir.
+İş ortakları Azure Stack hub güncelleştirmelerini doğrulamaya ek olarak, OEM Özelleştirme paketlerine yönelik güncelleştirmeleri doğrulamak için **paket doğrulama** iş akışını kullanır ve bu, Azure Stack hub 'ının dağıtımı sırasında kullanılan Azure Stack hub ortağına özgü sürücüleri, bellenimi ve diğer yazılımları içerir. En azından desteklenen en düşük boyutlu çözümü kullanarak Azure Stack hub yazılımının güncel sürümünde doğrulamanızı yaptığınız paketi dağıtın. Paket, testleri yürütmeden önce VaaS 'e gönderilir. Testler başarılı olursa, paketin test tamamlandığını [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) ve Azure Stack merkezi dijital imzasıyla dijital olarak imzalanması gerektiğini bildirin. Microsoft, paketi imzalar ve paketin VaaS portalında indirileceği Azure Stack hub ortağına bildirir.
 
 Daha fazla bilgi için bkz. [OEM paketlerini doğrulama](azure-stack-vaas-validate-oem-package.md).
 

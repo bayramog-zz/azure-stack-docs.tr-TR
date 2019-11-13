@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 9098be09e8b5bd20660f12789159a41d5a330408
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 4323993c76019ffa2b3084679b2587e300094e38
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68417315"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955643"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Azure Stack için Azure bilişsel hizmetler dağıtma
 
@@ -42,7 +42,7 @@ Kapsayıcılama, bağımlılıkları ve yapılandırması dahil olmak üzere bir
   Uygulama kullanıcılarına, çözümünde dağıtılan modellere yönelik güncelleştirmeler sağlar.
 
 - **Taşınabilir mimari**  
-  Çözümünüzü genel buluta, şirket içi özel buluta veya kenara dağıtabilmeniz için taşınabilir uygulama mimarisi oluşturmayı etkinleştirin. Kapsayıcınızı Azure Kubernetes hizmetine, Azure Container Instances veya Azure Stack bir Kubernetes kümesine dağıtabilirsiniz. Daha fazla bilgi için [Azure Stack dağıtma Kubernetes](azure-stack-solution-template-kubernetes-deploy.md).
+  Çözümünüzü genel buluta, şirket içi özel buluta veya kenara dağıtabilmeniz için taşınabilir uygulama mimarisi oluşturmayı etkinleştirin. Kapsayıcınızı Azure Kubernetes hizmetine, Azure Container Instances veya Azure Stack bir Kubernetes kümesine dağıtabilirsiniz. Daha fazla bilgi için bkz. [Azure Stack Için Kubernetes dağıtma](azure-stack-solution-template-kubernetes-deploy.md).
 
 - **Yüksek aktarım hızı ve düşük gecikme süresi**  
    Uygulama kullanıcılarınıza yüksek aktarım hızı ve düşük gecikme süresi boyunca trafikle ölçeklendirme özelliği sağlayın. Bilişsel hizmetler 'in Azure Kubernetes hizmetinde fiziksel olarak uygulama mantığına ve verilerine yakın bir şekilde çalışmasını sağlama.
@@ -67,16 +67,16 @@ Başlamadan önce şunları yapmanız gerekir:
 
 Yüz, LUYA veya Metin Tanıma kapsayıcıları önizlemek için Azure 'da bilişsel hizmet kaynağı oluşturun. Bilişsel hizmet kapsayıcılarını oluşturmak için kaynaktaki abonelik anahtarını ve uç nokta URL 'sini kullanmanız gerekir.
 
-1. Azure portalında bir Azure kaynağı oluşturun. Yüz kapsayıcılarının önizlemesini yapmak istiyorsanız, öncelikle Azure portal ilgili bir yüz kaynağı oluşturmanız gerekir. Daha fazla bilgi için bkz [. hızlı başlangıç: Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)bilişsel Hizmetler hesabı oluşturun.
+1. Azure portal bir Azure kaynağı oluşturun. Yüz kapsayıcılarının önizlemesini yapmak istiyorsanız, öncelikle Azure portal ilgili bir yüz kaynağı oluşturmanız gerekir. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal bilişsel Hizmetler hesabı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
    > [!Note]
    >  Yüz veya Görüntü İşleme kaynak F0 fiyatlandırma katmanını kullanmalıdır.
 
-2. Azure kaynakları için uç nokta URL'si ve abonelik anahtarını alın. Azure kaynağını oluşturduktan sonra, önizleme için ilgili yüzü, LUYA veya Metin Tanıma kapsayıcısını başlatmak üzere bu kaynaktaki abonelik anahtarını ve uç nokta URL 'sini kullanın.
+2. Azure kaynağı için uç nokta URL 'SI ve abonelik anahtarını alın. Azure kaynağını oluşturduktan sonra, önizleme için ilgili yüzü, LUYA veya Metin Tanıma kapsayıcısını başlatmak üzere bu kaynaktaki abonelik anahtarını ve uç nokta URL 'sini kullanın.
 
 ## <a name="create-a-kubernetes-secret"></a>Kubernetes gizli dizisi oluşturma 
 
-Özel kapsayıcı kayıt defterine erişmek için Kubectl Create Secret komutunu kullanın. Kullanıcı `<username>` adıyla ve `<password>` Azure bilişsel hizmetler takımınızdan aldığınız kimlik bilgilerinde girilen parolayla değiştirin.
+Özel kapsayıcı kayıt defterine erişmek için Kubectl Create Secret komutunu kullanın. `<username>`, Kullanıcı adıyla ve `<password>` Azure bilişsel hizmetler takımınızdan aldığınız kimlik bilgilerinde girilen parolayla değiştirin.
 
 ```bash  
     kubectl create secret docker-registry <secretName> \
@@ -141,10 +141,10 @@ Anahtar alanlarla ilgili ayrıntılar:
 | Alan | Notlar |
 | --- | --- |
 | Replicanumarası | Oluşturulacak örneklerin ilk çoğaltmalarını tanımlar. Dağıtımdan sonra, daha sonra ölçeklendirebilirsiniz. |
-| ImageLocation | ACR 'deki belirli bilişsel hizmet kapsayıcısı resminin konumunu gösterir. Örneğin, yüz hizmeti:`aicpppe.azurecr.io/microsoft/cognitive-services-face` |
+| ImageLocation | ACR 'deki belirli bilişsel hizmet kapsayıcısı resminin konumunu gösterir. Örneğin yüz hizmeti: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |[Azure kaynağı oluşturma](#create-azure-resources) adımında belirtilen uç nokta URL 'si |
-| ApiKey | [Azure kaynağı oluşturma](#create-azure-resources) adımında belirtilen abonelik anahtarı |
-| SecretName | Adımda oluşturduğunuz gizli dizi adı [bir Kubernetes gizli dizisi oluşturma](#create-a-kubernetes-secret) |
+| apiKey | [Azure kaynağı oluşturma](#create-azure-resources) adımında belirtilen abonelik anahtarı |
+| secretName | Adımda oluşturduğunuz gizli dizi adı [bir Kubernetes gizli dizisi oluşturma](#create-a-kubernetes-secret) |
 
 ## <a name="deploy-the-cognitive-service"></a>Bilişsel hizmeti dağıtma
 
@@ -160,7 +160,7 @@ Uygulamasının nasıl dağıttığı hakkında izlemek için aşağıdaki komut
 
 ## <a name="test-the-cognitive-service"></a>Bilişsel hizmeti test etme
 
-Bu kapsayıcı için **/Swagger** göreli URI 'Den [openapı belirtimine](https://swagger.io/docs/specification/about/) erişin. Daha önce Swagger belirtimi olarak bilinen bu belirtim, Örneklenmiş bir kapsayıcı tarafından desteklenen işlemleri açıklar. Örneğin, aşağıdaki URI, önceki örnekte örneklenmiş yaklaşım analizi kapsayıcı Openapı belirtimi için erişim sağlar:
+Bu kapsayıcı için **/Swagger** göreli URI 'Den [openapı belirtimine](https://swagger.io/docs/specification/about/) erişin. Daha önce Swagger belirtimi olarak bilinen bu belirtim, Örneklenmiş bir kapsayıcı tarafından desteklenen işlemleri açıklar. Örneğin, aşağıdaki URI, önceki örnekte oluşturulan Yaklaşım Analizi kapsayıcısı için Openapı belirtimine erişim sağlar:
 
 ```HTTP  
 http:<External IP>:5000/swagger
@@ -178,7 +178,7 @@ Bazı basit Python betikleri çalıştırarak Azure Stack bilişsel Hizmetleri d
 
 Kapsayıcılar üzerinde çalışan hizmetleri doğrulamak için Python uygulamalarını kullanırken göz önünde bulundurmanız gereken iki şey vardır: 
 1. Kapsayıcılardaki bilişsel hizmetler, kimlik doğrulaması için alt anahtarlara gerek kalmaz, ancak SDK 'Yı karşılamak için bir yer tutucu olarak herhangi bir dize gerektirir. 
-2. Base_URL değerini gerçek hizmet uç noktası IP adresi ile değiştirin.
+2. Base_URL gerçek hizmet uç noktası IP adresi ile değiştirin.
 
 Bir görüntüdeki yüzeyleri algılamak ve çerçeveye eklemek için yüz Hizmetleri Python SDK 'sını kullanan örnek bir Python betiği aşağıda verilmiştir:
 

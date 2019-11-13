@@ -17,12 +17,12 @@ ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 1fe65370d7631f4096d010756135c67c3d2f359e
-ms.sourcegitcommit: ca358ea5c91a0441e1d33f540f6dbb5b4d3c92c5
+ms.openlocfilehash: 29a154c5c446019e762b1312b9ef2f8a23cc4790
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802309"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955295"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack kota türleri
 
@@ -41,21 +41,21 @@ ms.locfileid: "73802309"
 | Maksimum VM çekirdeği sayısı | 100 | Bir aboneliğin bu konumda oluşturabileceğiniz en fazla çekirdek sayısı (örneğin, bir a3 VM 'nin dört çekirdeği vardır). |
 | Maksimum kullanılabilirlik kümesi sayısı | 10 | Bu konumda oluşturulabilecek maksimum kullanılabilirlik kümesi sayısı. |
 | Maksimum sanal makine ölçek kümesi sayısı | 100 | Bu konumda oluşturulabilecek ölçek kümesi sayısı üst sınırı. |
-| Standart yönetilen diskin maksimum kapasitesi (GB cinsinden) | 2048 | Bu konumda oluşturulabilecek Standart yönetilen disklerin maksimum kapasitesi. |
-| Premium yönetilen diskin maksimum kapasitesi (GB cinsinden) | 2048 | Bu konumda oluşturulabilecek Premium yönetilen disklerin maksimum kapasitesi. |
+| Standart yönetilen diskin maksimum kapasitesi (GB cinsinden) | 2048 | Bu konumda oluşturulabilecek Standart yönetilen disklerin maksimum kapasitesi. Bu değer, tüm standart yönetilen disklerin toplam ayırma boyutunun ve tüm standart anlık görüntülerin kullanılan boyutunun toplamıdır. |
+| Premium yönetilen diskin maksimum kapasitesi (GB cinsinden) | 2048 | Bu konumda oluşturulabilecek Premium yönetilen disklerin maksimum kapasitesi. Bu değer, tüm Premium yönetilen disklerin toplam ayırma boyutunun ve tüm Premium anlık görüntülerin kullanılan boyutunun toplamıdır. |
 
 > [!NOTE]
-> Yönetilmeyen disk (sayfa Blobları) için maksimum kapasite yönetilen disk kotasından ayrıdır. Bu değeri, **depolama kotalarına**ayarlayabilirsiniz.
+> Yönetilmeyen disklerin (sayfa Blobları) en fazla kapasitesi yönetilen disk kotasından ayrıdır. Bu değeri, **depolama kotalarına** **MAKSIMUM kapasite (GB)** cinsinden ayarlayabilirsiniz.
 
 ## <a name="storage-quota-types"></a>Depolama kotası türleri
 
 | **Öğe** | **Varsayılan değer** | **Açıklama** |
 | --- | --- | --- |
-| Maksimum kapasite (GB) |2048 |Bu konumdaki bir abonelik tarafından tüketilen toplam depolama kapasitesi (blob 'lar ve tüm ilişkili anlık görüntüler, tablolar, kuyruklar dahil). |
+| Maksimum kapasite (GB) |2048 |Bu konumdaki bir abonelik tarafından tüketilen toplam depolama kapasitesi. Bu değer, tüm Blobların (yönetilmeyen diskler dahil) ve tüm ilişkili anlık görüntülerin, tablolarının ve kuyrukların kullanılan boyutunun toplamıdır. |
 | Toplam depolama hesabı sayısı |20 |Bu konumda, bir aboneliğin oluşturabileceğiniz en fazla depolama hesabı sayısı. |
 
 > [!NOTE]
-> Yönetilen disklerin maksimum kapasitesi toplam depolama kotasından ayrıdır. Bu değeri, **işlem kotalarına**ayarlayabilirsiniz.
+> Bir abonelikte **Maksimum kapasite (GB)** aşıldığında, bu abonelikte yeni depolama kaynağı oluşturamazsınız. Ancak, VM 'lerde bu abonelikte oluşturulan yönetilmeyen diskleri, kota sınırının ötesinde toplam kullanılan kapasiteye neden olabilecek şekilde kullanarak sürekliliği sağlayabilirsiniz.<br>Yönetilen disklerin maksimum kapasitesi toplam depolama kotasından ayrıdır. Bu değeri, **işlem kotalarına**ayarlayabilirsiniz.
 
 ## <a name="network-quota-types"></a>Ağ kotası türleri
 

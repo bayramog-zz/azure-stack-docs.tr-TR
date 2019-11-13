@@ -1,28 +1,22 @@
 ---
-title: Kaynaklara erişmek için uygulama kimliği kullanma | Microsoft Docs
-description: Oturum açma ve kaynaklara erişim için rol tabanlı erişim denetimiyle kullanılabilecek bir hizmet sorumlusunu yönetmeyi öğrenin.
-services: azure-stack
-documentationcenter: na
+title: Kaynaklara erişmek için bir uygulama kimliği kullanın
+description: Azure Stack hub hizmet sorumlusunu yönetme hakkında bilgi edinin. Hizmet sorumlusu, oturum açma ve kaynaklara erişim için rol tabanlı erişim denetimi ile birlikte kullanılabilir.
 author: BryanLa
-manager: femila
-ms.service: azure-stack
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/06/2019
 ms.author: bryanla
-ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: 7110febfa58fb1d31cde5f0ae1b4df659f567956
-ms.sourcegitcommit: 8203490cf3ab8a8e6d39b137c8c31e3baec52298
+ms.service: azure-stack
+ms.topic: how-to
+ms.date: 11/11/2019
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: ff36a5c280df7ecb68d0d181438489ce696ed4fc
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73712736"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955380"
 ---
-# <a name="use-an-app-identity-to-access-resources"></a>Kaynaklara erişmek için bir uygulama kimliği kullanın
+# <a name="use-an-app-identity-to-access-azure-stack-hub-resources"></a>Azure Stack hub kaynaklarına erişmek için bir uygulama kimliği kullanın
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti (ASDK)*
+*Uygulama hedefi: Azure Stack hub tümleşik sistemleri ve Azure Stack hub Development Kit (ASDK)*
 
 Kaynakları Azure Resource Manager aracılığıyla dağıtması veya yapılandırması gereken bir uygulama bir hizmet sorumlusu tarafından temsil etmelidir. Bir Kullanıcı bir Kullanıcı sorumlusu tarafından temsil edildiğinde, hizmet sorumlusu, bir uygulamayı temsil eden bir güvenlik sorumlusu türüdür. Hizmet sorumlusu, uygulamanız için bir kimlik sağlar ve bu hizmet sorumlusu için yalnızca gerekli izinleri atamanıza olanak tanır.  
 
@@ -41,23 +35,23 @@ Bir hizmet sorumlusu kimliği altında bir uygulamanın çalıştırılması, bi
  - Bir hizmet sorumlusuna **daha kısıtlayıcı izinler** atayabilirsiniz. Genellikle, bu izinler yalnızca uygulamanın yapması gereken, *en az ayrıcalık ilkesi*olarak bilinen şekilde kısıtlanır.
  - Hizmet sorumlusu **kimlik bilgileri ve izinleri** Kullanıcı kimlik bilgileri kadar sık değişmez. Örneğin, kullanıcının sorumlulukları değiştiğinde parola gereksinimleri bir değişiklik veya bir kullanıcı şirketten çıkar.
 
-Dizinde, uygulamanın kimliğini temsil etmek için ilişkili bir [hizmet sorumlusu nesnesi](/azure/active-directory/develop/developer-glossary#service-principal-object) oluşturan, dizininizde yeni bir uygulama kaydı oluşturarak başlayın. Bu belgede, Azure Stack örneğiniz için seçtiğiniz dizine bağlı olarak bir hizmet sorumlusu oluşturma ve yönetme işlemi açıklanmaktadır:
+Dizinde, uygulamanın kimliğini temsil etmek için ilişkili bir [hizmet sorumlusu nesnesi](/azure/active-directory/develop/developer-glossary#service-principal-object) oluşturan, dizininizde yeni bir uygulama kaydı oluşturarak başlayın. Bu belgede, Azure Stack hub örneğiniz için seçtiğiniz dizine bağlı olarak bir hizmet sorumlusu oluşturma ve yönetme işlemi açıklanmaktadır:
 
-- Azure Active Directory (Azure AD). Azure AD, çok kiracılı, bulut tabanlı bir dizin ve kimlik yönetimi hizmetidir. Azure AD 'yi, bağlı bir Azure Stack örneğiyle birlikte kullanabilirsiniz.
-- Active Directory Federasyon Hizmetleri (AD FS) (AD FS). AD FS Basitleştirilmiş, güvenli kimlik Federasyonu ve Web çoklu oturum açma (SSO) özellikleri sağlar. Hem bağlı hem de bağlantısı kesik Azure Stack örneklerle AD FS kullanabilirsiniz.
+- Azure Active Directory (Azure AD). Azure AD, çok kiracılı, bulut tabanlı bir dizin ve kimlik yönetimi hizmetidir. Azure AD 'yi, bağlı bir Azure Stack hub örneğiyle birlikte kullanabilirsiniz.
+- Active Directory Federasyon Hizmetleri (AD FS) (AD FS). AD FS Basitleştirilmiş, güvenli kimlik Federasyonu ve Web çoklu oturum açma (SSO) özellikleri sağlar. Hem bağlı hem de bağlantısı kesik Azure Stack hub örnekleri ile AD FS kullanabilirsiniz.
 
 İlk olarak bir hizmet sorumlusunu yönetmeyi, ardından hizmet sorumlusunu bir role atamayı ve kaynak erişimini kısıtlamanızı öğrenirsiniz.
 
 ## <a name="manage-an-azure-ad-service-principal"></a>Azure AD hizmet sorumlusunu yönetme
 
-Kimlik yönetimi hizmetiniz olarak Azure AD ile Azure Stack dağıttıysanız, Azure için yaptığınız gibi hizmet sorumluları oluşturabilirsiniz. Bu bölümde Azure portal adımları nasıl gerçekleştireceğiniz gösterilmektedir. Başlamadan önce [gerekli Azure AD izinlerine](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) sahip olup olmadığınızı denetleyin.
+Kimlik yönetimi hizmetiniz olarak Azure AD ile Azure Stack hub dağıttıysanız, Azure için yaptığınız gibi hizmet sorumluları oluşturabilirsiniz. Bu bölümde Azure portal adımları nasıl gerçekleştireceğiniz gösterilmektedir. Başlamadan önce [gerekli Azure AD izinlerine](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) sahip olup olmadığınızı denetleyin.
 
 ### <a name="create-a-service-principal-that-uses-a-client-secret-credential"></a>İstemci gizli bilgisi kullanan bir hizmet sorumlusu oluşturma
 
 Bu bölümde, Azure AD kiracınızda hizmet sorumlusu nesnesini oluşturan Azure portal kullanarak uygulamanızı kaydedersiniz. Bu örnekte hizmet sorumlusu, bir istemci gizli bilgisi ile oluşturulmuştur, ancak Portal Ayrıca x509 sertifika tabanlı kimlik bilgilerini destekler.
 
 1. Azure hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** >  ' i seçin**uygulama kayıtları** > **Yeni kayıt**.
+2. **Yeni kayıt** > **uygulama kayıtları** **Azure Active Directory** > seçin.
 3. Uygulama için bir **ad** sağlayın.
 4. Uygun **Desteklenen hesap türlerini**seçin.
 5. **Yeniden yönlendirme URI 'si**altında, uygulama türü olarak **Web** ' i seçin ve (isteğe bağlı olarak) uygulamanız gerektiriyorsa bir yeniden yönlendirme URI 'si belirtin.
@@ -72,9 +66,9 @@ Bu bölümde, Azure AD kiracınızda hizmet sorumlusu nesnesini oluşturan Azure
 
 ## <a name="manage-an-ad-fs-service-principal"></a>AD FS hizmet sorumlusunu yönetme
 
-Kimlik yönetimi hizmetiniz olarak AD FS Azure Stack dağıttıysanız, hizmet sorumlusunu yönetmek için PowerShell kullanmanız gerekir. Örnek olarak, hem x509 sertifikasını hem de bir istemci gizliliğini gösteren hizmet sorumlusu kimlik bilgilerini yönetmek için aşağıda verilmiştir.
+Azure Stack hub 'ı kimlik yönetimi hizmetiniz olarak AD FS dağıttıysanız, hizmet sorumlusunu yönetmek için PowerShell kullanmanız gerekir. Örnek olarak, hem x509 sertifikasını hem de bir istemci gizliliğini gösteren hizmet sorumlusu kimlik bilgilerini yönetmek için aşağıda verilmiştir.
 
-Betikler, Azure Stack örneğiniz için ayrıcalıklı bir uç nokta barındıran bir sanal makineye başka bir oturum açan yükseltilmiş ("yönetici olarak çalıştır") PowerShell konsolunda çalıştırılmalıdır. Ayrıcalıklı uç nokta oturumu kurulduktan sonra, ek cmdlet 'ler hizmet sorumlusunu yürütür ve yönetir. Ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azure Stack ayrıcalıklı uç noktası kullanma](azure-stack-privileged-endpoint.md).
+Betikler, Azure Stack hub örneğiniz için ayrıcalıklı bir uç nokta barındıran bir sanal makineye başka bir oturum açan yükseltilmiş ("yönetici olarak çalıştır") PowerShell konsolunda çalıştırılmalıdır. Ayrıcalıklı uç nokta oturumu kurulduktan sonra, ek cmdlet 'ler hizmet sorumlusunu yürütür ve yönetir. Ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azure Stack hub 'da ayrıcalıklı uç noktası kullanma](azure-stack-privileged-endpoint.md).
 
 ### <a name="create-a-service-principal-that-uses-a-certificate-credential"></a>Sertifika kimlik bilgilerini kullanan bir hizmet sorumlusu oluşturma
 
@@ -83,13 +77,13 @@ Hizmet sorumlusu kimlik bilgileri için bir sertifika oluştururken, aşağıdak
  - Üretim için sertifika, bir iç sertifika yetkilisinden veya bir genel sertifika yetkilisinden verilmelidir. Ortak sertifika yetkilisi kullanıyorsanız, Microsoft güvenilen kök yetkili programının bir parçası olarak yetkiyi temel işletim sistemi görüntüsüne dahil etmeniz gerekir. Tam listeyi [Microsoft güvenilen kök sertifika programı: katılımcılar](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)' da bulabilirsiniz. Bir [hizmet sorumlusunun sertifika kimlik bilgisini güncelleştirme](#update-a-service-principals-certificate-credential)sırasında, "otomatik olarak imzalanan" test sertifikası oluşturma örneği de daha sonra gösterilir. 
  - Şifreleme sağlayıcısının bir Microsoft eski şifreleme hizmeti sağlayıcısı (CSP) anahtar sağlayıcısı olarak belirtilmesi gerekir.
  - Hem ortak hem de özel anahtarlar gerekli olduğundan, sertifika biçimi PFX dosyasında olmalıdır. Windows Server 'lar ortak anahtar dosyası (SSL sertifika dosyası) ve ilişkili özel anahtar dosyasını içeren. pfx dosyalarını kullanır.
- - Azure Stack altyapınız, sertifika yetkilisinin sertifika Iptal listesi (CRL) konumunda yayımlanan sertifika için ağ erişimine sahip olmalıdır. Bu CRL bir HTTP uç noktası olmalıdır.
+ - Azure Stack hub altyapınız, sertifika yetkilisinin sertifika Iptal listesi (CRL) konumunda yayımlanan sertifika için ağ erişimine sahip olmalıdır. Bu CRL bir HTTP uç noktası olmalıdır.
 
 Bir sertifikanız olduktan sonra, uygulamanızı kaydetmek ve hizmet sorumlusu oluşturmak için aşağıdaki PowerShell betiğini kullanın. Ayrıca hizmet sorumlusunu Azure 'da oturum açmak için de kullanabilirsiniz. Aşağıdaki yer tutucular için kendi değerlerinizi değiştirin:
 
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
-| \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
+| \<PepVM\> | Azure Stack hub örneğiniz üzerinde ayrıcalıklı uç nokta VM adı. | "AzS-ERCS01" |
 | \<Sertifikaadı\> | X509 sertifikanızın yerel sertifika deposundaki konumu. | "CERT: \ CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
 | \<Uygulamaadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
 
@@ -112,7 +106,7 @@ Bir sertifikanız olduktan sonra, uygulamanızı kaydetmek ve hizmet sorumlusu o
     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
     $Session | Remove-PSSession
 
-    # Using the stamp info for your Azure Stack instance, populate the following variables:
+    # Using the stamp info for your Azure Stack Hub instance, populate the following variables:
     # - AzureRM endpoint used for Azure Resource Manager operations 
     # - Audience for acquiring an OAuth token used to access Graph API 
     # - GUID of the directory tenant
@@ -120,7 +114,7 @@ Bir sertifikanız olduktan sonra, uygulamanızı kaydetmek ve hizmet sorumlusu o
     $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
     $TenantID = $AzureStackInfo.AADTenantID
 
-    # Register and set an AzureRM environment that targets your Azure Stack instance
+    # Register and set an AzureRM environment that targets your Azure Stack Hub instance
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
 
     # Sign in using the new service principal identity
@@ -160,7 +154,7 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
 
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
-| \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
+| \<PepVM\> | Azure Stack hub örneğiniz üzerinde ayrıcalıklı uç nokta VM adı. | "AzS-ERCS01" |
 | \<Uygulamaadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
 | \<Sertifikaadı\> | X509 sertifikanızın yerel sertifika deposundaki konumu. | "CERT: \ CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
 | \<Appıdentifier\> | Uygulama kaydına atanan tanımlayıcı. | "S-1-5-21-1512385356-3796245103-1243299919-1356" |
@@ -205,7 +199,7 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
 
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
-| \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
+| \<PepVM\> | Azure Stack hub örneğiniz üzerinde ayrıcalıklı uç nokta VM adı. | "AzS-ERCS01" |
 | \<Uygulamaadı\> | Yeni uygulama kaydı için açıklayıcı bir ad. | "Yönetim aracınız" |
 
 1. Yükseltilmiş bir Windows PowerShell oturumu açın ve aşağıdaki cmdlet 'leri çalıştırın:
@@ -222,7 +216,7 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
      $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
      $Session | Remove-PSSession
 
-     # Using the stamp info for your Azure Stack instance, populate the following variables:
+     # Using the stamp info for your Azure Stack Hub instance, populate the following variables:
      # - AzureRM endpoint used for Azure Resource Manager operations 
      # - Audience for acquiring an OAuth token used to access Graph API 
      # - GUID of the directory tenant
@@ -230,7 +224,7 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirerek, PowerShell
      $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
      $TenantID = $AzureStackInfo.AADTenantID
 
-     # Register and set an AzureRM environment that targets your Azure Stack instance
+     # Register and set an AzureRM environment that targets your Azure Stack Hub instance
      Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
 
      # Sign in using the new service principal identity
@@ -262,7 +256,7 @@ Sonraki bölümde `ApplicationIdentifier` değeriyle birlikte kullanırken Power
 
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
-| \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
+| \<PepVM\> | Azure Stack hub örneğiniz üzerinde ayrıcalıklı uç nokta VM adı. | "AzS-ERCS01" |
 | \<Appıdentifier\> | Uygulama kaydına atanan tanımlayıcı. | "S-1-5-21-1634563105-1224503876-2692824315-2623" |
 
 1. Yükseltilmiş Windows PowerShell oturumunuzu kullanarak aşağıdaki cmdlet 'leri çalıştırın:
@@ -299,7 +293,7 @@ Aşağıdaki yer tutucular için kendi değerlerinizi değiştirin:
 
 | Yer tutucu | Açıklama | Örnek |
 | ----------- | ----------- | ------- |
-| \<PepVM\> | Azure Stack örneğindeki ayrıcalıklı uç nokta VM 'sinin adı. | "AzS-ERCS01" |
+| \<PepVM\> | Azure Stack hub örneğiniz üzerinde ayrıcalıklı uç nokta VM adı. | "AzS-ERCS01" |
 | \<Appıdentifier\> | Uygulama kaydına atanan tanımlayıcı. | "S-1-5-21-1634563105-1224503876-2692824315-2623" |
 
 ```powershell  
@@ -331,7 +325,7 @@ Kullanıcılar ve uygulamalar tarafından Azure kaynaklarına erişim, rol taban
 
 Seçtiğiniz kaynak türü, hizmet sorumlusu için *erişim kapsamını* da belirler. Erişim kapsamını abonelikte, kaynak grubunda veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için bir uygulamayı "okuyucu" rolüne eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
 
-1. Azure Stack yüklemesi sırasında belirttiğiniz dizine (örneğin, Azure AD Azure portal veya AD FS için Azure Stack Kullanıcı portalına) bağlı olarak uygun portalda oturum açın. Bu örnekte, Azure Stack Kullanıcı portalında oturum açmış bir Kullanıcı gösteririz.
+1. Azure Stack hub yüklemesi sırasında belirttiğiniz dizine (örneğin, Azure AD Azure portal veya AD FS için Azure Stack hub Kullanıcı portalına) bağlı olarak uygun portalda oturum açın. Bu örnekte, Azure Stack hub Kullanıcı portalında oturum açmış bir Kullanıcı gösteririz.
 
    > [!NOTE]
    > Belirli bir kaynağa rol atamaları eklemek için, Kullanıcı hesabınızın `Microsoft.Authorization/roleAssignments/write` izni bildiren bir role ait olması gerekir. Örneğin, [sahip](/azure/role-based-access-control/built-in-roles#owner) veya [Kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator) yerleşik rolleridir.  
@@ -352,7 +346,7 @@ Seçtiğiniz kaynak türü, hizmet sorumlusu için *erişim kapsamını* da beli
 
      [Atanan rol ![](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
 
-Bir hizmet sorumlusu oluşturup bir rol atadığınıza göre, Azure Stack kaynaklarına erişmek için uygulamanızda bu hizmet sorumlusunu kullanmaya başlayabilirsiniz.  
+Bir hizmet sorumlusu oluşturup bir rol atadığınıza göre, Azure Stack hub kaynaklarına erişmek için uygulamanızda bu hizmet sorumlusunu kullanmaya başlayabilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

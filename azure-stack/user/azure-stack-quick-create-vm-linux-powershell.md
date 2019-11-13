@@ -11,18 +11,18 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.custom: mvc
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 7cb5d7b90359b73292d9e8209d4237e9d8914302
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 9d1c9f963433e0a41218bb1984d07f0b47d032eb
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418516"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955698"
 ---
-# <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack"></a>Hızlı Başlangıç: Azure Stack 'de PowerShell kullanarak bir Linux Server VM oluşturma
+# <a name="quickstart-create-a-linux-server-vm-by-using-powershell-in-azure-stack"></a>Hızlı başlangıç: Azure Stack 'de PowerShell kullanarak bir Linux sunucu VM oluşturma
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
@@ -40,7 +40,7 @@ Azure Stack PowerShell kullanarak bir Ubuntu Server 16,04 LTS sanal makinesi (VM
   * Azure Stack için PowerShell 'i yapılandırmadıysanız, bkz. [Azure Stack Için PowerShell 'ı yüklemeyi](../operator/azure-stack-powershell-install.md). 
   * Azure Stack PowerShell kurulduktan sonra, Azure Stack ortamınıza bağlanırsınız. Yönergeler için bkz. [PowerShell ile Kullanıcı olarak Azure Stack bağlama](azure-stack-powershell-configure-user.md).
 
-* Windows Kullanıcı profilinizin *. SSH* dizinine kaydedilen *id_rsa. pub* adlı BIR genel Secure Shell (SSH) anahtarı. SSH anahtarları oluşturma hakkında ayrıntılı bilgi için bkz. [SSH ortak anahtarı kullanma](azure-stack-dev-start-howto-ssh-public-key.md).
+* Windows Kullanıcı profilinizin *. SSH* dizinine kayıtlı *id_rsa. pub* adlı BIR genel Secure Shell (SSH) anahtarı. SSH anahtarları oluşturma hakkında ayrıntılı bilgi için bkz. [SSH ortak anahtarı kullanma](azure-stack-dev-start-howto-ssh-public-key.md).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -203,7 +203,7 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
-## <a name="vm-quick-create-full-script"></a>VM hızlı oluşturma: Tam betik
+## <a name="vm-quick-create-full-script"></a>VM hızlı oluşturma: tam betik
 
 > [!NOTE]
 > Bu adım temel olarak, bir önceki kod birlikte birleştirilir, ancak kimlik doğrulaması için SSH anahtarı yerine bir parola kullanılır.
@@ -404,7 +404,7 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX karşılama sayfasını görüntüleme
 
-NGıNX Web sunucusu yüklü ve VM 'niz üzerinde bağlantı noktası 80 açık olduğunda, VM 'nin genel IP adresini kullanarak Web sunucusuna erişebilirsiniz. Bir Web tarayıcısı açın ve adresine gidin ```http://<public IP address>```.
+NGıNX Web sunucusu yüklü ve VM 'niz üzerinde bağlantı noktası 80 açık olduğunda, VM 'nin genel IP adresini kullanarak Web sunucusuna erişebilirsiniz. Bir Web tarayıcısı açın ve ```http://<public IP address>```gidin.
 
 ![NGıNX Web sunucusu karşılama sayfası](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 

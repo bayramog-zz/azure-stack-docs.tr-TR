@@ -5,16 +5,16 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 07/30/2019
-ms.openlocfilehash: 404f6b889f921e547f8c44c7b4219b232819c322
-ms.sourcegitcommit: 7961fda0bfcdd3db8cf94a8c405b5c23a23643af
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 437963355c8077c31ca5f0f55acdd344bb0060e2
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68616466"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955716"
 ---
 # <a name="set-up-a-development-environment-in-azure-stack"></a>Azure Stack bir geliştirme ortamı ayarlama 
 
@@ -133,7 +133,7 @@ Bir Linux makinesi kullanıyorsanız, Azure CLı, Visual Studio Code veya kendi 
      - [Ruby](azure-stack-version-profiles-python.md) 
      - [Python](azure-stack-version-profiles-python.md) 
 
-## <a name="macos"></a>Mac OS 
+## <a name="macos"></a>macOS 
 
 MacOS makinesi, Azure CLı ve Visual Studio Code veya kendi tercih ettiğiniz tümleşik geliştirme ortamınız ile çalışmanıza olanak sağlayacak. 
 

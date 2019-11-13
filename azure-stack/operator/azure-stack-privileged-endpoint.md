@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.lastreviewed: 09/18/2019
-ms.openlocfilehash: 3730da9d185f1c38411453a6bef965ab5df7d3ae
-ms.sourcegitcommit: 28c8567f85ea3123122f4a27d1c95e3f5cbd2c25
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 52f61321980503667119c5cc45863e51fa0639ac
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829363"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955268"
 ---
 # <a name="use-the-privileged-endpoint-in-azure-stack"></a>Azure Stack 'da ayrıcalıklı uç noktayı kullanın
 
@@ -67,7 +67,7 @@ Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine ve
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
-     @No__t-0 parametresi, PEP 'yi barındıran VM 'lerden birinin IP adresi ya da DNS adı olabilir.
+     `ComputerName` parametresi, PEP 'yi barındıran VM 'lerden birinin IP adresi ya da DNS adı olabilir.
 
      >[!NOTE]
      >Azure Stack, PEP kimlik bilgileri doğrulanırken uzak bir çağrı yapmaz. Bunu yapmak için yerel olarak depolanmış bir RSA ortak anahtarını kullanır.
@@ -82,13 +82,13 @@ Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine ve
      ``` 
      İstendiğinde, aşağıdaki kimlik bilgilerini kullanın:
 
-     - **Kullanıcı adı**:  **&lt; *Azure Stack*Domain\cloudadminbiçimindeCloudAdminhesabınıbelirtin&gt;** . (ASDK için, Kullanıcı adı **azurestack\cloudadmin**.)
+     - **Kullanıcı adı**: **&lt;*Azure Stack etki alanı*&gt;\cloudadmin**biçiminde CloudAdmin hesabını belirtin. (ASDK için, Kullanıcı adı **azurestack\cloudadmin**.)
      - **Parola**: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında girilen parolayı girin.
 
      > [!NOTE]
      > ERCS uç noktasına bağlanamıyorsanız, farklı bir ERCS VM IP adresi ile bir ve iki adımı yeniden deneyin.
 
-3. Bağlandıktan sonra, istem **[*IP adresi veya ERCS VM adı*] olarak değişir: PS >** veya  **[AZS-ercs01]: PS,** ortama göre >. Buradan, kullanılabilir cmdlet `Get-Command` 'lerin listesini görüntülemek için öğesini çalıştırın.
+3. Bağlandıktan sonra istem, ortama bağlı olarak **[*IP adresi veya ERCS VM Name*]: PS >** veya **[AZS-ercs01]: PS >** olarak değişir. Buradan, kullanılabilir cmdlet 'lerin listesini görüntülemek için `Get-Command` çalıştırın.
 
    Bu cmdlet 'lerin birçoğu yalnızca tümleşik sistem ortamları için tasarlanmıştır (örneğin, veri merkezi tümleştirmesiyle ilgili cmdlet 'ler). ASDK 'de, aşağıdaki cmdlet 'ler doğrulandıktan sonra:
 
@@ -96,7 +96,7 @@ Tümleşik bir sistem için bu yordama başlamadan önce, PEP 'ye IP adresine ve
    - Close-PrivilegedEndpoint
    - Çıkış-PSSession
    - Get-AzureStackLog
-   - Get-AzureStackStampInformation
+   - Get-Azurestackstampınformation
    - Get-Command
    - Get-FormatData
    - Yardım alın
@@ -143,7 +143,7 @@ Yerel makinenizde PEP oturumunu içeri aktarmak için aşağıdaki adımları uy
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
-     @No__t-0 parametresi, PEP 'yi barındıran VM 'lerden birinin IP adresi ya da DNS adı olabilir.
+     `ComputerName` parametresi, PEP 'yi barındıran VM 'lerden birinin IP adresi ya da DNS adı olabilir.
    - ASDK çalıştırıyorsanız:
      
      ```powershell
@@ -154,7 +154,7 @@ Yerel makinenizde PEP oturumunu içeri aktarmak için aşağıdaki adımları uy
      ``` 
      İstendiğinde, aşağıdaki kimlik bilgilerini kullanın:
 
-     - **Kullanıcı adı**:  **&lt; *Azure Stack*Domain\cloudadminbiçimindeCloudAdminhesabınıbelirtin&gt;** . (ASDK için, Kullanıcı adı **azurestack\cloudadmin**.)
+     - **Kullanıcı adı**: **&lt;*Azure Stack etki alanı*&gt;\cloudadmin**biçiminde CloudAdmin hesabını belirtin. (ASDK için, Kullanıcı adı **azurestack\cloudadmin**.)
      - **Parola**: AzureStackAdmin etki alanı yönetici hesabı için yükleme sırasında girilen parolayı girin.
 
 3. PEP oturumunu yerel makinenize aktarma
@@ -166,7 +166,7 @@ Yerel makinenizde PEP oturumunu içeri aktarmak için aşağıdaki adımları uy
 
 ## <a name="close-the-privileged-endpoint-session"></a>Ayrıcalıklı uç nokta oturumunu kapatma
 
- Daha önce belirtildiği gibi, PEP, PowerShell oturumunda yaptığınız her eylemi (ve ilgili çıktıyı) günlüğe kaydeder. `Close-PrivilegedEndpoint` Cmdlet 'ini kullanarak oturumu kapatmanız gerekir. Bu cmdlet, uç noktayı doğru bir şekilde kapatır ve bekletme için günlük dosyalarını bir dış dosya paylaşımında aktarır.
+ Daha önce belirtildiği gibi, PEP, PowerShell oturumunda yaptığınız her eylemi (ve ilgili çıktıyı) günlüğe kaydeder. `Close-PrivilegedEndpoint` cmdlet 'ini kullanarak oturumu kapatmanız gerekir. Bu cmdlet, uç noktayı doğru bir şekilde kapatır ve bekletme için günlük dosyalarını bir dış dosya paylaşımında aktarır.
 
 Uç nokta oturumunu kapatmak için:
 
@@ -177,16 +177,16 @@ Uç nokta oturumunu kapatmak için:
      ```
    Cmdlet 'i aşağıdaki tablodaki parametreleri kullanır:
 
-   | Parametre | Açıklama | Type | Gerekli |
+   | Parametre | Açıklama | Tür | Gereklidir |
    |---------|---------|---------|---------|
-   | *TranscriptsPathDestination* | "Fileshareıp\shareklasöradı" olarak tanımlanan dış dosya paylaşımının yolu | Dize | Evet|
-   | *Kimlik bilgisi* | dosya paylaşımıyla erişim için kimlik bilgileri | SecureString |   Evet |
+   | *TranscriptsPathDestination* | "Fileshareıp\shareklasöradı" olarak tanımlanan dış dosya paylaşımının yolu | Dize | Yes|
+   | *Credential* | Dosya paylaşımıyla erişim için kimlik bilgileri | SecureString |   Yes |
 
 
 Döküm dosyası günlük dosyaları başarıyla dosya paylaşımında aktarıldıktan sonra, PEP 'den otomatik olarak silinir. 
 
 > [!NOTE]
-> Cmdlet 'lerini `Exit-PSSession` `Exit`kullanarak Pep oturumunu kapatır veya yalnızca PowerShell konsolunu kapatırsanız, döküm günlükleri bir dosya paylaşımında aktarılmaz. Bunlar PEP içinde kalır. Bir sonraki çalıştırışınızda `Close-PrivilegedEndpoint` ve bir dosya paylaşımının dahil olması halinde, önceki oturumlardan gelen döküm günlükleri de aktarılır. PEP oturumunu kapatmak için `Exit-PSSession` veya `Exit` kullanmayın; Bunun yerine `Close-PrivilegedEndpoint` kullanın.
+> `Exit-PSSession` veya `Exit`cmdlet 'lerini kullanarak PEP oturumunu kapatır veya yalnızca PowerShell konsolunu kapatırsanız, döküm günlükleri bir dosya paylaşımında aktarılmaz. Bunlar PEP içinde kalır. `Close-PrivilegedEndpoint` ve bir dosya paylaşımının dahil olduğu bir sonraki sefer, önceki oturumlardan gelen TRANSCRIPT günlükleri de aktarılır. PEP oturumunu kapatmak için `Exit-PSSession` veya `Exit` kullanmayın; Bunun yerine `Close-PrivilegedEndpoint` kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

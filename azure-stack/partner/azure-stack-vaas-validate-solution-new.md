@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: fe744fc95c79cb7482e1baa213471335ebb6e1fd
-ms.sourcegitcommit: b95983e6e954e772ca5267304cfe6a0dab1cfcab
+ms.openlocfilehash: a29b003dca06ed1b886229f031e90c50fbc8dccb
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68418301"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955810"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>Yeni bir Azure Stack çözümünü doğrulama
 
@@ -28,7 +28,7 @@ ms.locfileid: "68418301"
 
 Yeni Azure Stack çözümlerini onaylamak için **Çözüm doğrulama** iş akışını nasıl kullanacağınızı öğrenin.
 
-Azure Stack çözümü, Windows Server logosu sertifika gereksinimleri yükseltildikten sonra Microsoft ile iş ortağı arasında ortaklaşa anlaşılabilecek bir donanım ürün reçetesinden (BoM). Donanım ürün reçetesinde değişiklik yapıldığında bir çözümün yeniden başlatılması gerekir. Çözümlerin ne zaman yeniden düzeltilme [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com)hakkında daha fazla bilgi için, konusundaki ekibine başvurun.
+Azure Stack çözümü, Windows Server logosu sertifika gereksinimleri yükseltildikten sonra Microsoft ile iş ortağı arasında ortaklaşa anlaşılabilecek bir donanım ürün reçetesinden (BoM). Donanım ürün reçetesinde değişiklik yapıldığında bir çözümün yeniden başlatılması gerekir. Çözümlerin ne zaman yeniden düzeltilme hakkında daha fazla bilgi için, [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com)adresinden ekibine başvurun.
 
 Çözümünüzü onaylamak için çözüm doğrulama iş akışını iki kez çalıştırın. En *düşük* düzeyde desteklenen yapılandırma için bunu bir kez çalıştırın. En *yüksek düzeyde* desteklenen yapılandırma için bu dosyayı ikinci kez çalıştırın. Her iki yapılandırma da tüm testleri iletmezse, Microsoft bu çözümü onaylar.
 

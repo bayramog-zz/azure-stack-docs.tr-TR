@@ -11,27 +11,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 08/09/2019
-ms.openlocfilehash: 8ed7b3c71c1a9a2098fa125caeb03c949a332f50
-ms.sourcegitcommit: 54448d4518c7d9145b8755f51b18d554b3190810
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 1bd138be243c2803b5a280de2a3a8625e84db998
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559347"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955326"
 ---
 #  <a name="modify-specific-settings-on-your-azure-stack-switch-configuration"></a>Azure Stack anahtar yapılandırmanızda belirli ayarları değiştirme
 
 Azure Stack anahtar yapılandırmanız için birkaç ortam ayarını değiştirebilirsiniz. Özgün donatım üreticiniz (OEM) tarafından oluşturulan şablonda değişiklik yaptığınız ayarları belirleyebilirsiniz. Bu makalede, bu özelleştirilebilir ayarların her biri ve değişikliklerin Azure Stack nasıl etkilediği açıklanmaktadır. Bu ayarlar parola güncelleştirme, Syslog sunucusu, SNMP izleme, kimlik doğrulama ve erişim denetim listesi içerir. 
 
-Azure Stack çözümünün dağıtımı sırasında, özgün ekipman üreticisi (OEM), hem Yöneticiler hem de BMC için anahtar yapılandırması oluşturur ve uygular. OEM, gerekli yapılandırmaların bu cihazlarda doğru şekilde ayarlandığını doğrulamak için Azure Stack Otomasyon aracını kullanır. Yapılandırma Azure Stack [dağıtım çalışma sayfanızdaki](azure-stack-deployment-worksheet.md)bilgileri temel alarak. OEM, yapılandırmayı oluşturduktan sonra, OEM veya Microsoft Azure Stack mühendislik ekibinin onayını olmadan yapılandırmayı değiştirmeyin. Ağ aygıtı yapılandırmasında yapılan bir değişiklik, Azure Stack örneğindeki ağ sorunlarının çalışmasını veya sorun gidermeyi önemli ölçüde etkileyebilir.
+Azure Stack çözümünün dağıtımı sırasında, özgün ekipman üreticisi (OEM), hem Yöneticiler hem de BMC için anahtar yapılandırması oluşturur ve uygular. OEM, gerekli yapılandırmaların bu cihazlarda doğru şekilde ayarlandığını doğrulamak için Azure Stack Otomasyon aracını kullanır. Yapılandırma Azure Stack [dağıtım çalışma sayfanızdaki](azure-stack-deployment-worksheet.md)bilgileri temel alarak. OEM, yapılandırmayı oluşturduktan sonra, OEM veya Microsoft Azure Stack mühendislik ekibinin onayını olmadan **yapılandırmayı değiştirmeyin.** Ağ aygıtı yapılandırmasında yapılan bir değişiklik, Azure Stack örneğindeki ağ sorunlarının çalışmasını veya sorun gidermeyi önemli ölçüde etkileyebilir.
 
 Ancak, ağ anahtarlarının yapılandırmasında eklenebilen, kaldırılacak veya değiştirilebilen bazı değerler vardır.
 
 >[!Warning]  
-> Yapılandırmayı OEM veya Microsoft Azure Stack mühendislik ekibinden onay olmadan değiştirmeyin. Ağ aygıtı yapılandırmasında yapılan bir değişiklik, Azure Stack örneğindeki ağ sorunlarının çalışmasını veya sorun gidermeyi önemli ölçüde etkileyebilir.
+> Yapılandırmayı OEM veya Microsoft Azure Stack mühendislik ekibinden onay **olmadan değiştirmeyin.** Ağ aygıtı yapılandırmasında yapılan bir değişiklik, Azure Stack örneğindeki ağ sorunlarının çalışmasını veya sorun gidermeyi önemli ölçüde etkileyebilir.
 >
 > Ağ cihazınızda bu işlevler hakkında daha fazla bilgi için, bu değişiklikleri nasıl yapacağınız hakkında daha fazla bilgi için lütfen OEM donanım sağlayıcınıza veya Microsoft destek 'e başvurun. OEM 'niz, Azure Stack dağıtım çalışma sayfanıza göre Otomasyon Aracı tarafından oluşturulan yapılandırma dosyasına sahiptir. 
 
@@ -47,7 +47,7 @@ Ancak, ağ anahtarlarının yapılandırmasında eklenebilen, kaldırılacak vey
 
 İşleci, basit ağ Yönetim Protokolü (SNMP) v2 veya v3 'i ağ cihazlarını izleyip veri merkezindeki bir ağ izleme uygulamasına tuzak gönderecek şekilde yapılandırabilir. Güvenlik nedenleriyle, v2 'den daha güvenli olduğundan SNMPv3 'yi kullanın. Mıbs ve gereken yapılandırma için OEM donanım sağlayıcınıza danışın. Anahtar yönetimi erişimi için izinleri yapılandırmaya genel bir bakış için [erişim denetim listesi güncelleştirmeleri](#access-control-list-updates) bölümüne bakın.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 İşleci, ağ cihazlarında kimlik doğrulamasını yönetmek için RADIUS veya TACACS yapılandırabilir. Desteklenen yöntemler ve yapılandırma için OEM donanım sağlayıcınıza danışın.  Anahtar yönetimi erişimi için izinleri yapılandırmaya genel bir bakış için [erişim denetim listesi güncelleştirmeleri](#access-control-list-updates) bölümüne bakın.
 
