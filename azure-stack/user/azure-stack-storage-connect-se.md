@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 03/14/2019
-ms.openlocfilehash: 454fe5b07dc5576cecdb11b59e5424e3c5ccbb72
-ms.sourcegitcommit: df20662e77a6ed0a7eba03f79eb53e8cd4471206
+ms.lastreviewed: 11/11/2019
+ms.openlocfilehash: 2fa9998a584bd76c8f9c875d3a2ac082c9ca812b
+ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445385"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73955619"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Depolama Gezginini bir Azure Stack aboneliğine veya depolama hesabına bağlama
 
@@ -47,7 +47,7 @@ Bağlantısı kesilen tümleşik sistemler ve ASDK için, kök sertifikayı teme
 
 Bağlantısı kesilmiş tümleşik sistemler ve ASDK için Azure Stack sertifikayı dışa aktarın ve içeri aktarın. Bağlı tümleşik sistemler için, sertifika genel olarak imzalanır ve bu adım gerekli değildir.
 
-1. @No__t-0 ' ı bir Azure Stack konak makinesinde veya Azure Stack VPN bağlantısı olan yerel bir makineye açın. 
+1. Azure Stack bir konak makinesinde veya Azure Stack VPN bağlantısı olan yerel bir makinede `mmc.exe` açın. 
 
 2. **Dosya**' da, **ek bileşen Ekle/Kaldır**' ı seçin. Kullanılabilir ek bileşenlerde **Sertifikalar** ' ı seçin. 
 
