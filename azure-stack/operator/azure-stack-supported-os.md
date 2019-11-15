@@ -16,12 +16,12 @@ ms.date: 08/14/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
-ms.openlocfilehash: 98baf8217bc245f7aa6ac7bc0e2b8f8a5284c6d6
-ms.sourcegitcommit: 86e2b776383a9f761072199ec6b6b8a7d2e6b798
+ms.openlocfilehash: 25a32b1d73818e988a8bdf7fb565d06b06d53d68
+ms.sourcegitcommit: bb2bbfad8061f7677954f6ce5a435b4e6f9299b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69021839"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74100027"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack desteklenen konuk işletim sistemleri
 
@@ -36,9 +36,9 @@ Azure Stack, aşağıdaki tabloda listelenen Windows Konuk işletim sistemlerini
 | Windows Server, sürüm 1709 | 64 bit | Kapsayıcılarla çekirdek |
 | Windows Server 2019 | 64 bit |  Veri Merkezi, veri merkezi çekirdeği, kapsayıcılar içeren veri merkezi |
 | Windows Server 2016 | 64 bit |  Veri Merkezi, veri merkezi çekirdeği, kapsayıcılar içeren veri merkezi |
-| Windows Server 2012 R2 | 64 bit |  Veri merkezi |
-| Windows Server 2012 | 64 bit |  Veri merkezi |
-| Windows Server 2008 R2 SP1 | 64 bit |  Veri merkezi |
+| Windows Server 2012 R2 | 64 bit |  Datacenter |
+| Windows Server 2012 | 64 bit |  Datacenter |
+| Windows Server 2008 R2 SP1 | 64 bit |  Datacenter |
 | Windows Server 2008 SP2 | 64 bit |  Kendi görüntünüzü getir |
 | Windows 10 *(bkz. Note 1)* | 64-bit, Pro ve Enterprise | Kendi görüntünüzü getir |
 
@@ -60,22 +60,22 @@ Market 'te kullanılabilir olarak listelenen Linux dağıtımları, gerekli Wind
 
 | Dağıtım | Açıklama | Yayımcı | Market |
 | --- | --- | --- | --- |
-| CentOS tabanlı 6,9 | 64 bit | Standart dışı dalga | Evet |
-| CentOS tabanlı 7,5 | 64 bit | Standart dışı dalga | Evet |
-| CentOS tabanlı 7.3 | 64 bit | Standart dışı dalga | Evet |
-| ClearLinux | 64 bit | ClearLinux.org | Evet |
-| Kapsayıcı Linux |  64 bit | CoreOS | Dengeli |
-| Desek8 "Jese" | 64 bit | credativ |  Evet |
-| 9 "uzat" | 64 bit | credativ | Evet |
-| Oracle Linux | 64 bit | Oracle | Evet |
+| CentOS tabanlı 6,9 | 64 bit | Standart dışı dalga | Yes |
+| CentOS tabanlı 7,5 | 64 bit | Standart dışı dalga | Yes |
+| CentOS tabanlı 7.3 | 64 bit | Standart dışı dalga | Yes |
+| ClearLinux | 64 bit | ClearLinux.org | Yes |
+| CoreOS Linux (kararlı) |  64 bit | CoreOS | Yes |
+| Desek8 "Jese" | 64 bit | credativ |  Yes |
+| 9 "uzat" | 64 bit | credativ | Yes |
+| Oracle Linux | 64 bit | Oracle | Yes |
 | Red Hat Enterprise Linux 7,1 (ve üzeri) | 64 bit | Red Hat | Kendi görüntünüzü getir |
-| SLES 11SP4 | 64 bit | SUSE | Evet |
-| SLES 12SP3 | 64 bit | SUSE | Evet |
-| Ubuntu 14,04-LTS | 64 bit | Canonical | Evet |
-| Ubuntu 16,04-LTS | 64 bit | Canonical | Evet |
-| Ubuntu 18,04-LTS | 64 bit | Canonical | Evet |
+| SLES 11SP4 | 64 bit | SUSE | Yes |
+| SLES 12SP3 | 64 bit | SUSE | Yes |
+| Ubuntu 14,04-LTS | 64 bit | Canonical | Yes |
+| Ubuntu 16,04-LTS | 64 bit | Canonical | Yes |
+| Ubuntu 18,04-LTS | 64 bit | Canonical | Yes |
 
-Red Hat Enterprise Linux destek bilgileri için bkz [. Red Hat ve Azure Stack: Sık sorulan sorular](https://access.redhat.com/articles/3413531).
+Red Hat Enterprise Linux destek bilgileri için bkz. [Red Hat ve Azure Stack: sık sorulan sorular](https://access.redhat.com/articles/3413531).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

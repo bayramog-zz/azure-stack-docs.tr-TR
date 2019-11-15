@@ -16,12 +16,12 @@ ms.date: 10/17/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/17/2019
-ms.openlocfilehash: dac6b6dad423ab3d18e069a91d8bdd5a09498842
-ms.sourcegitcommit: b5eb024d170f12e51cc852aa2c72eabf26792d8d
+ms.openlocfilehash: 53c5273b343a4a1186732928db1ac7bed501dc0f
+ms.sourcegitcommit: bb2bbfad8061f7677954f6ce5a435b4e6f9299b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72534220"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74100287"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack için kullanılabilen Azure Marketi öğeleri
 
@@ -85,7 +85,7 @@ Microsoft Azure Stack, aşağıdaki Azure Market VM 'lerini ve çözüm şablonl
 |  | Öğe adı | Açıklama | Yayımcı |
 | --- | --- | --- | --- |
 | ![Linux işletim sistemini temizle](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Linux işletim sistemini temizle](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | Intel mimarisi için iyileştirilmiş bir referans Linux dağıtımı. | Linux projesini temizle |
-| ![CoreOS tarafından kapsayıcı Linux](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS tarafından kapsayıcı Linux](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Kapsayıcı Linux, kapsayıcıları çalıştırmanın kolay bir yolunu sunan modern ve en düşük bir Linux dağıtımıdır ve sunucularınızı sorunsuz bir şekilde güncelleştirebilir, ambar ölçeğinde işlem sağlayan tüm bileşenleri. | CoreOS |
+| ![CoreOS Linux (kararlı)](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS Linux (kararlı)](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | CoreOS modern ve en düşük bir Linux dağıtımıdır. kapsayıcıları çalıştırmanın kolay bir yolu, kümeleri yönetmeniz ve sunucularınızı sorunsuz bir şekilde güncelleştirmeniz, ambar ölçeğinde işlem sağlayan tüm bileşenlerdir. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server, bulut ortamları için dünyanın en popüler Linux ' tur. | Canonical |
 | ![Desek8 "Jese"](media/azure-stack-marketplace-azure-items/debian8.png) | [Desek8 "Jese"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | GNU/Linux, en popüler Linux dağıtımlarından biridir. | credativ |
 | ![Oracle Linux](media/azure-stack-marketplace-azure-items/oracle.png) | [Oracle Linux](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oracle-linux) | Oracle Linux işletim sistemi açık bulut altyapısı için tasarlanmıştır. Kurumsal SaaS ve PaaS iş yükleri için önde gelen performansı, ölçeklenebilirliği ve güvenilirliği, ayrıca geleneksel kurumsal uygulamaları sunar. | Oracle |

@@ -261,6 +261,8 @@
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
         - name: Veri merkezini genişletme
           href: azure-stack-network-howto-extend-datacenter.md
+        - name: F5 yük dengeleyici
+          href: network-howto-f5.md
         - name: Iscsı depolama 'ya bağlanma
           href: azure-stack-network-howto-iscsi-storage.md
         - name: Tünelleri ayarlama
