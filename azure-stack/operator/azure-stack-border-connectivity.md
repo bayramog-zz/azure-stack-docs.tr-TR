@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 11/15/2019
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: d6e4aa25b558d12cfb437155c453d3d093ea7e00
-ms.sourcegitcommit: ef7efcde76d1d7875ca1c882afebfd6a27f1c686
+ms.lastreviewed: 11/15/2019
+ms.openlocfilehash: 20291fb211ebd19f36b6af03d85fa2017d85820c
+ms.sourcegitcommit: f2a059f1be36f82adea8877f3f6e90d41ef3b161
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72888056"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74162901"
 ---
 # <a name="border-connectivity"></a>Sınır bağlantısı 
 Ağ tümleştirme planlaması, başarılı Azure Stack tümleşik sistemler dağıtımı, işlemi ve yönetimi için önemli bir önkoşuldur. Sınır bağlantı planlaması, Sınır Ağ Geçidi Protokolü (BGP) ile dinamik yönlendirmeyi kullanmak istiyorsanız öğesini seçerek başlar. Bu, bir 16 bit BGP otonom sistem numarası (genel veya özel) atanmasını veya statik bir varsayılan yolun kenarlık cihazlarına atandığı statik yönlendirmeyi kullanmayı gerektirir.
@@ -68,6 +68,8 @@ Veri merkeziniz tüm trafiğin bir ara sunucu kullanmasını gerektiriyorsa, bir
 Saydam bir ara sunucu (kesme, satır içi veya zorlamalı ara sunucu olarak da bilinir), herhangi bir özel istemci yapılandırması gerekmeden Ağ katmanında normal iletişimi keser. İstemcilerin proxy varlığını farkında olması gerekmez.
 
 ![Saydam proxy](media/azure-stack-border-connectivity/transparent-proxy.png)
+
+SSL trafik yakaalımı [desteklenmez](azure-stack-firewall.md#ssl-interception) ve uç noktalara erişirken hizmet hatalarına yol açabilir. Kimlik için gerekli olan uç noktalarla iletişim kurmak için desteklenen en fazla zaman aşımı süresi 3 yeniden deneme deneimiyle.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [DNS tümleştirmesi](azure-stack-integrate-dns.md)

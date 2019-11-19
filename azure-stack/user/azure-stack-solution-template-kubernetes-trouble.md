@@ -11,22 +11,22 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 10/10/2019
+ms.date: 11/14/2019
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2019
-ms.openlocfilehash: 1070608db881426d6cb7ca78d0b19444bdba77ce
-ms.sourcegitcommit: 0d27456332031ab98ba2277117395ae5ffcbb79f
+ms.lastreviewed: 11/14/2019
+ms.openlocfilehash: 89ed4549dc44eb433f8061aba9bcff9405d80699
+ms.sourcegitcommit: f2a059f1be36f82adea8877f3f6e90d41ef3b161
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73047213"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74162978"
 ---
 # <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Azure Stack için Kubernetes dağıtımıyla ilgili sorunları giderme
 
 *Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
 
 > [!Note]  
-> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-kubernetes-aks-engine-overview.md)kullanın.
+> Kümeleri kavram kanıtı olarak dağıtmak için Kubernetes Azure Stack Market öğesini kullanın. Azure Stack üzerinde desteklenen Kubernetes kümeleri için [AKS altyapısını](azure-stack-kubernetes-aks-engine-overview.md)kullanın.
 
 Bu makalede Kubernetes kümenizde nasıl sorun giderileceği incelenemez. Sorun gidermeye başlamak için, dağıtım için gereken öğeleri gözden geçirin. Kubernetes 'i barındıran Azure Stack veya Linux VM 'lerinden dağıtım günlüklerini toplamanız gerekebilir. Yönetim uç noktasından günlükleri almak için Azure Stack yöneticinize başvurun.
 
@@ -57,7 +57,7 @@ Aşağıdaki diyagramda, kümeyi dağıtmaya yönelik genel işlem gösterilmekt
         1. Azure Resource Manager meta veri uç noktasından Galeri uç noktasını alır.
         2. Azure Resource Manager meta veri uç noktasından Active Directory kaynak KIMLIĞINI alır.
         3. AKS altyapısının API modelini yükler.
-        4. AKS altyapısını Kubernetes kümesine dağıtır ve Azure Stack bulut profilini `/etc/kubernetes/azurestackcloud.json` ' a kaydeder.
+        4. AKS altyapısını Kubernetes kümesine dağıtır ve Azure Stack bulut profilini `/etc/kubernetes/azurestackcloud.json`kaydeder.
 3. Ana VM 'Leri oluşturun.
 
 4. Özel Betik uzantılarını indirip çalıştırın.
@@ -85,17 +85,18 @@ Aşağıdaki diyagramda, kümeyi dağıtmaya yönelik genel işlem gösterilmekt
 
 Kubernetes kümenizi destekleyen VM 'lerde dağıtım günlüklerini toplayıp gözden geçirebilirsiniz. Kullanmanız gereken Azure Stack sürümünü doğrulamak ve dağıtımınızla ilgili Azure Stack günlükleri almak için Azure Stack yöneticinizle görüşün.
 
-1. [Dağıtım durumunu](#review-deployment-status) gözden geçirin ve Kubernetes kümenizdeki ana düğümden günlükleri alın.
-2. Azure Stack en son sürümünü kullandığınızdan emin olun. Kullanmakta olduğunuz sürümü bilmiyorsanız Azure Stack yöneticinize başvurun.
-3.  VM oluşturma dosyalarınızı gözden geçirin. Aşağıdaki sorunlarla karşılaşmışsınız olabilirsiniz:  
+1. Kümeyi dağıttığınız kaynak grubundaki **dağıtımlar** bölmesinizdeki ARM dağıtımı tarafından döndürülen hata kodunu gözden geçirin. Hata kodlarının açıklamaları AKS Engine GitHub deposundaki [sorun giderme](https://github.com/msazurestackworkloads/azurestack-gallery/blob/master/kubernetes/docs/troubleshooting.md) makalemdadır. Hata açıklamasıyla ilgili sorunu çözemezseniz, bu adımlarla devam edin.
+2. [Dağıtım durumunu](#review-deployment-status) gözden geçirin ve Kubernetes kümenizdeki ana düğümden günlükleri alın.
+3. Azure Stack 'ın en son sürümünü kullandığınızdan emin olun. Kullanmakta olduğunuz sürümü bilmiyorsanız Azure Stack yöneticinize başvurun.
+4. VM oluşturma dosyalarınızı gözden geçirin. Aşağıdaki sorunlarla karşılaşmışsınız olabilirsiniz:  
     - Ortak anahtar geçersiz olabilir. Oluşturduğunuz anahtarı gözden geçirin.  
     - VM oluşturma bir iç hata tetikledi veya bir oluşturma hatası tetiklemiş olabilir. Azure Stack Aboneliğinizle ilgili kapasite sınırlamaları da dahil olmak üzere bir dizi etken hatalara neden olabilir.
     - Sanal makine için tam etki alanı adının (FQDN) yinelenen bir ön ek ile başladığından emin olun.
-4.  VM **Tamam**Ise, DVD 'yi değerlendirin. DVD 'nin bir hata iletisi varsa:
+5.  VM **Tamam**Ise, DVD 'yi değerlendirin. DVD 'nin bir hata iletisi varsa:
 
     - Ortak anahtar geçersiz olabilir. Oluşturduğunuz anahtarı gözden geçirin.  
     - Ayrıcalıklı uç noktaları kullanarak Azure Stack günlüklerini almak için Azure Stack yöneticinize başvurun. Daha fazla bilgi için bkz. [Azure Stack tanılama araçları](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).
-5. Dağıtımınız hakkında sorularınız varsa, bunu gönderebilir veya birisinin [Azure Stack forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)soruyu zaten cevaplamış olup olmadığını görebilirsiniz. 
+6. Dağıtımınız hakkında sorularınız varsa, bunu gönderebilir veya birisinin [Azure Stack forumundaki](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)soruyu zaten cevaplamış olup olmadığını görebilirsiniz. 
 
 ## <a name="review-deployment-status"></a>Dağıtım durumunu gözden geçir
 
@@ -146,10 +147,10 @@ Küme günlüklerini toplamak ve indirmek için şu adımları izleyin:
 
     | Parametre           | Açıklama                                                                                                      | Örnek                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d,--VMD-konak      | DVD 'nin genel IP veya tam etki alanı adı (FQDN). VM adı `vmd-` ile başlar. | IP: 192.168.102.38<br>DNS: VMD-myk8s. Local. cloudapp. azurestack. External |
+    | -d,--VMD-konak      | DVD 'nin genel IP veya tam etki alanı adı (FQDN). VM adı `vmd-`başlar. | IP: 192.168.102.38<br>DNS: VMD-myk8s. Local. cloudapp. azurestack. External |
     | -h,--yardım  | Komut kullanımını yazdır. | |
-    | -i,--Identity-File | Kubernetes kümesi oluşturulurken Market öğesine geçirilen RSA özel anahtar dosyasının yolu. İle Kubernetes düğümlerine uzak için gereklidir. | C:\data\ıd_rsa.exe (PuTTY)<br>~/nssh/id_rsa (SSH)
-    | -a,--ana-konak   | Bir Kubernetes ana düğümünün genel IP veya tam etki alanı adı (FQDN). VM adı `k8s-master-` ile başlar. | IP: 192.168.102.37<br>FQDN: k8s-12345. Local. cloudapp. azurestack. External      |
+    | -i,--Identity-File | Kubernetes kümesi oluşturulurken Market öğesine geçirilen RSA özel anahtar dosyasının yolu. İle Kubernetes düğümlerine uzak için gereklidir. | C:\data\ id_rsa. ped (PuTTY)<br>~/PST ssh/id_rsa (SSH)
+    | -a,--ana-konak   | Bir Kubernetes ana düğümünün genel IP veya tam etki alanı adı (FQDN). VM adı `k8s-master-`başlar. | IP: 192.168.102.37<br>FQDN: k8s-12345. Local. cloudapp. azurestack. External      |
     | -u,--Kullanıcı          | Kubernetes kümesi oluşturulurken Market öğesine geçirilen Kullanıcı adı. İle Kubernetes düğümlerine uzak için gereklidir. | azureuser (varsayılan değer) |
 
 
