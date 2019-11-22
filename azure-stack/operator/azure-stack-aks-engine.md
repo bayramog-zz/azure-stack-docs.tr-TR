@@ -11,24 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: c21223ca8926a1e2b3ca1b06752a79a14adaeda1
-ms.sourcegitcommit: 5c92a669007ab4aaffe4484f1d8836a40340dde1
+ms.lastreviewed: 11/21/2019
+ms.openlocfilehash: 823ea20bbddaceda970d95008e1214e77ca51f7c
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73636874"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310110"
 ---
 # <a name="add-the-azure-kubernetes-services-aks-engine-prerequisites-to-the-azure-stack-marketplace"></a>Azure Kubernetes Hizmetleri (AKS) altyapısı önkoşullarını Azure Stack Market 'e ekleme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Kullanıcılarınıza, bu makalede açıklanan öğeleri Azure Stack ekleyerek Azure Kubernetes Hizmetleri (AKS) altyapısını ayarlama olanağı sağlayabilirsiniz. Kullanıcılarınız daha sonra tek ve eşgüdümlü bir işlemde bir Kubernetes kümesi dağıtabilir. Bu makalede, AKS altyapısını hem bağlı hem de bağlantısı kesik ortamlarda kullanıcılarınız için kullanılabilir hale getirmek için gereken adımlarda adım adım gösterilmektedir. AKS altyapısı, bir hizmet asıl kimliğine ve Market 'te özel bir betik uzantısına ve AKS temel görüntüsüne bağlıdır.
-
-[Aks altyapısı](https://github.com/Azure/aks-engine) , aks temel görüntüsünü kullanan oluşturulmuş bir görüntü kullanır. Herhangi bir AKS motoru sürümü, Azure Stack kullanılabilir hale getirmek için belirli bir görüntü sürümüne bağlıdır. [Desteklenen Kubernetes sürümlerindeki](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions)aks motoru sürümlerinin ve Ilgili Kubernetes sürümünün listelendiği tabloyu kontrol edin.
 
 > [!IMPORTANT]
 > AKS altyapısı şu anda genel önizlemededir.
@@ -58,7 +56,7 @@ Azure 'dan öğeyi alarak AKS temel görüntüsünü Market 'e ekleyebilirsiniz.
 
 Market 'e aşağıdaki öğeyi ekleyin:
 
-1. [Yönetim portalında](https://adminportal.local.azurestack.external)oturum açın.
+1. Oturum [Yönetim Portalı](https://adminportal.local.azurestack.external).
 
 1. **Tüm hizmetler**' i seçin ve ardından **Yönetim** kategorisi altında **Market yönetimi**' ni seçin.
 

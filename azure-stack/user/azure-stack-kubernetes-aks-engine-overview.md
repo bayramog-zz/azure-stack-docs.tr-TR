@@ -1,5 +1,5 @@
 ---
-title: Azure Stack AKS Altyapısı nedir? | Microsoft Belgeleri
+title: Azure Stack AKS Altyapısı nedir? | Microsoft Docs
 description: Azure ve Azure Stack bir Kubernetes kümesi dağıtmak ve yönetmek için AKS Altyapısı komut satırı aracını nasıl kullanacağınızı öğrenin.
 services: azure-stack
 documentationcenter: ''
@@ -11,26 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
-ms.openlocfilehash: 22779072b2dfed018a2ff6d5eac5bf2c294ccd31
-ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
+ms.lastreviewed: 11/21/2019
+ms.openlocfilehash: cb531570191216ea13a0b1a7a6d36738c0765cd3
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73595135"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310247"
 ---
 # <a name="what-is-the-aks-engine-on-azure-stack"></a>Azure Stack AKS Altyapısı nedir?
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure ve Azure Stack bir Kubernetes kümesi dağıtmak ve yönetmek için AKS Altyapısı komut satırı aracını kullanabilirsiniz. Yerel kümeler Azure Resource Manager oluşturmak, yükseltmek ve ölçeklendirmek için AKS altyapısını kullanın. Bir kümeyi hem bağlı hem de bağlantısı kesik ortamlarda dağıtmak için altyapısını kullanabilirsiniz. Bu makalede, AKS altyapısına genel bakış, Azure Stack ile altyapıyı kullanmaya yönelik desteklenen senaryolar ve dağıtma, yükseltme ve ölçeklendirme gibi işlemlere giriş sunulmaktadır.
-
-> [!IMPORTANT]
-> AKS altyapısı şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="overview-of-the-aks-engine"></a>AKS altyapısına genel bakış
 

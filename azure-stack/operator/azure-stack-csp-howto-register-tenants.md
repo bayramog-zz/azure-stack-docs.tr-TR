@@ -15,16 +15,16 @@ ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: 3b728bb08d41c234ccffb94005be740bea0766b6
-ms.sourcegitcommit: 451cfaa24b349393f36ae9d646d4d311a14dd1fd
+ms.openlocfilehash: a146a99476912e97c72e7a37ffc5224158feaffc
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72019289"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310145"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Kullanım ve faturalandırma için kiracı ekleyin Azure Stack
 
-*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri*
 
 Bu makalede, bir bulut çözümü sağlayıcısı (CSP) tarafından yönetilen bir Azure Stack dağıtımına kiracı ekleme gösterilmektedir. Yeni kiracı kaynakları kullandığında, CSP aboneliklerinde kullanım raporları Azure Stack.
 
@@ -37,7 +37,7 @@ Aşağıdaki şekilde, yeni bir son müşterinin Azure Stack kullanmasına ve m�
 
 ## <a name="add-an-end-customer"></a>Son müşteri ekleme
 
-Son müşteri eklemeden önce, kaydınızda çok kiracılı faturalandırmayı etkinleştirmeniz gerekir. Çok kiracılı faturalandırmayı etkinleştirmek için kayıt abonelik KIMLIĞINI, kaynak grubu adını ve kayıt adını `azstcsp@microsoft.com` ' a gönderin. Genellikle çoklu kiralamanın etkinleştirilmesi 1-2 iş günü sürer.
+Son müşteri eklemeden önce, kaydınızda çok kiracılı faturalandırmayı etkinleştirmeniz gerekir. Çok kiracılı faturalandırmayı etkinleştirmek için kayıt abonelik KIMLIĞINI, kaynak grubu adını ve kayıt adını `azstcsp@microsoft.com`gönderin. Genellikle çoklu kiralamanın etkinleştirilmesi 1-2 iş günü sürer.
 
 Son müşteriyi aşağıdaki şekilde gösterildiği gibi eklemek için aşağıdaki adımları uygulayın:
 
@@ -72,7 +72,7 @@ Yeni müşteri aboneliğiyle kaydınızı güncelleştirin. Azure, Iş Ortağı 
 3. PowerShell oturumunda şunu çalıştırın:
 
    ```powershell
-   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties <PSObject>
+   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
 ### <a name="new-azurermresource-powershell-parameters"></a>New-AzureRmResource PowerShell parametreleri
@@ -84,8 +84,7 @@ Aşağıdaki bölümde, **New-AzureRmResource** cmdlet 'inin parametreleri açı
 |Registrationsubscriptionıd | Azure Stack ilk kaydı için kullanılan Azure aboneliği.|
 | Customersubscriptionıd | Kaydedilecek müşteriye ait olan Azure aboneliği (Azure Stack değil). CSP teklifinde oluşturulması gerekir. Pratikte bu, Iş Ortağı Merkezi aracılığıyla anlamına gelir. Bir müşterinin birden fazla Azure Active Directory kiracısı varsa, bu aboneliğin Azure Stack oturum açmak için kullanılacak kiracıda oluşturulması gerekir. Müşteri aboneliği KIMLIĞI küçük harf kullanmalıdır. |
 | resourceGroup | Azure 'da kaydınızı depoladığınız kaynak grubu. |
-| registrationName | Azure Stack kaydının adı. Azure 'da depolanan bir nesnedir. |
-| properties | Kaynak için özellikleri belirtir. Kaynak türüne özgü özelliklerin değerlerini belirtmek için bu parametreyi kullanın.
+| registrationName | Azure Stack kaydının adı. Azure 'da depolanan bir nesnedir. 
 
 > [!NOTE]  
 > Kiracıların kullandıkları her bir Azure Stack kayıtlı olması gerekir. İki Azure Stack dağıtımınız varsa ve bir kiracı her ikisini de kullanıyorsa, her dağıtımın ilk kayıtlarını kiracı aboneliğiyle güncelleştirmeniz gerekir.

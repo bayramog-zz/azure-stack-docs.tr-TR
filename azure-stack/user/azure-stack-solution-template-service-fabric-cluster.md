@@ -14,13 +14,13 @@ ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.lastreviewed: 09/17/2019
-ms.openlocfilehash: 8a323bf5d767db288cd2d876f38119b61f577afa
-ms.sourcegitcommit: a7207f4a4c40d4917b63e729fd6872b3dba72968
+ms.lastreviewed: 09/25/2019
+ms.openlocfilehash: 1b6975490a876c0ff0b51fdf9f21ba010e14622d
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71909684"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74299096"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Azure Stack bir Service Fabric kümesi dağıtma
 
@@ -35,7 +35,7 @@ Azure Stack Service Fabric kümesi, Microsoft. ServiceFabric kaynak sağlayıcı
 Service Fabric kümesi dağıtmak için aşağıdakiler gereklidir:
 1. **Küme sertifikası**  
    Bu, Service Fabric dağıtımı sırasında Key Vault eklediğiniz X. 509.440 sunucu sertifikasıdır. 
-   - Bu sertifika üzerindeki **CN** , oluşturduğunuz Service Fabric kümesinin tam etki alanı adı (FQDN) ile eşleşmelidir. FQDN hakkında daha fazla bilgi için bkz. [Azure App Service Azure Stack Üretim dağıtımı için gereken sertifikalar](../operator/azure-stack-app-service-before-you-get-started.md#certificates-required-for-azure-stack-production-deployment-of-azure-app-service).
+   - Bu sertifika üzerindeki **CN** , oluşturduğunuz Service Fabric kümesinin tam etki alanı adı (FQDN) ile eşleşmelidir. 
    - Hem ortak hem de özel anahtarlar gerekli olduğundan, sertifika biçiminin PFX olması gerekir. 
      Bu sunucu tarafı sertifikası oluşturma [gereksinimlerine](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) bakın.
 
@@ -124,7 +124,7 @@ Daha fazla bilgi için bkz. [PowerShell ile Azure Stack Key Vault yönetme](azur
 
 ## <a name="deploy-the-marketplace-item"></a>Market öğesini dağıtma
 
-1. Kullanıcı portalında **+ kaynak** > **işlem** > **Service Fabric kümesi**oluştur ' a gidin. 
+1. Kullanıcı portalında, **Service Fabric küme** > **Işlem** > **kaynak oluştur ' a** gidin. 
 
    ![Service Fabric kümesi seçin](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
@@ -133,30 +133,30 @@ Daha fazla bilgi için bkz. [PowerShell ile Azure Stack Key Vault yönetme](azur
     Bağlantısı kesilmiş bir Azure Stack dağıtımlar veya Service Fabric başka bir sürümünü dağıtmak için, Service Fabric dağıtım paketini ve buna karşılık gelen çalışma zamanı paketini indirin ve bir Azure Stack blobu üzerinde barındırın. Bu değerleri **Service Fabric dağıtım paketi URL 'si** ve **Service Fabric çalışma zamanı paketi URL 'si** alanlarına girin.
     > [!NOTE]  
     > En son Service Fabric sürümü ile karşılık gelen SDK arasında uyumluluk sorunları vardır. Bu sorun giderilene kadar lütfen dağıtım paketi URL 'SI ve çalışma zamanı paketi URL 'SI için aşağıdaki parametreleri sağlayın. Aksi takdirde dağıtımlarınız başarısız olur.
-    > - Service Fabric dağıtım paketi URL 'SI:<https://download.microsoft.com/download/8/3/6/836E3E99-A300-4714-8278-96BC3E8B5528/6.5.641.9590/Microsoft.Azure.ServiceFabric.WindowsServer.6.5.641.9590.zip>
-    > - Service Fabric çalışma zamanı paketi URL 'SI:<https://download.microsoft.com/download/B/0/B/B0BCCAC5-65AA-4BE3-AB13-D5FF5890F4B5/6.5.641.9590/MicrosoftAzureServiceFabric.6.5.641.9590.cab>
+    > - Service Fabric dağıtım paketi URL 'SI: <https://download.microsoft.com/download/8/3/6/836E3E99-A300-4714-8278-96BC3E8B5528/6.5.641.9590/Microsoft.Azure.ServiceFabric.WindowsServer.6.5.641.9590.zip>
+    > - Service Fabric çalışma zamanı paketi URL 'SI: <https://download.microsoft.com/download/B/0/B/B0BCCAC5-65AA-4BE3-AB13-D5FF5890F4B5/6.5.641.9590/MicrosoftAzureServiceFabric.6.5.641.9590.cab>
     >
     > Bağlantısı kesilen dağıtımlar için, bu paketleri belirtilen konumdan indirin ve Azure Stack blob üzerinde yerel olarak barındırın.
 
-   ![Temel](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
+   ![Temel Bilgiler](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 
     
 3. *Ağ ayarları* sayfasında, uygulamalarınız için açmak üzere belirli bağlantı noktaları belirtebilirsiniz:
 
-   ![Ağ Ayarları](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
+   ![Ağ ayarları](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
 
 4. *Güvenlik* sayfasında, [Azure Key Vault oluşturup](#add-a-secret-to-key-vault) parolayı karşıya yüklemeden aldığınız değerleri ekleyin.
 
    *Yönetici Istemci sertifikası parmak izi*Için, *yönetici istemci sertifikasının*parmak izini girin. ( [Önkoşullara](#prerequisites)bakın.)
    
-   - Kaynak Key Vault:  Betik sonuçlarından `keyVault id` tüm dizeyi belirtin. 
-   - Küme sertifikası URL 'SI: Komut dosyası sonuçlarından tüm URL 'yi `Secret Id` belirtin. 
-   - Küme sertifikası parmak izi: Betik sonuçlarından *küme sertifikası parmak izini* belirtin.
-   - Sunucu sertifikası URL 'SI: Küme sertifikasından ayrı bir sertifika kullanmak istiyorsanız, sertifikayı bir anahtar kasasına yükleyin ve gizli dizinin tam URL 'sini sağlayın. 
-   - Sunucu sertifikası parmak izi: Sunucu sertifikası için parmak izini belirtin
-   - Yönetici Istemci sertifikası parmak Izleri: Ön koşullarda oluşturulan *yönetici Istemci sertifikası parmak izini* belirtin. 
+   - Kaynak Key Vault: betik sonuçlarından tüm `keyVault id` dizesini belirtin. 
+   - Küme sertifikası URL 'SI: betik sonuçlarından `Secret Id` tüm URL 'YI belirtin. 
+   - Küme sertifikası parmak izi: betik sonuçlarından *küme sertifikası parmak Izini* belirtin.
+   - Sunucu sertifikası URL 'SI: küme sertifikasından ayrı bir sertifika kullanmak istiyorsanız, sertifikayı bir anahtar kasasına yükleyin ve gizli dizinin tam URL 'sini sağlayın. 
+   - Sunucu sertifikası parmak izi: sunucu sertifikası için parmak izini belirtin
+   - Yönetici Istemci sertifikası parmak Izleri: ön koşullarda oluşturulan *yönetici Istemci sertifikası parmak Izini* belirtin. 
 
-   ![Betik çıktısı](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
+   ![Betik çıkışı](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
    ![Güvenlik](media/azure-stack-solution-template-service-fabric-cluster/image6.png)
 
@@ -171,7 +171,7 @@ Service Fabric kümesine Service Fabric Explorer veya Service Fabric PowerShell 
 ### <a name="use-service-fabric-explorer"></a>Service Fabric Explorer kullan
 1.  Tarayıcının yönetici istemci sertifikaya erişebildiğinden ve Service Fabric kümenizde kimlik doğrulayabilecek şekilde emin olun.  
 
-    a. Internet Explorer 'ı açın ve **Internet seçenekleri** > **içerik** > **sertifikaları**' na gidin.
+    a. Internet Explorer 'ı açın ve **içerik** > **sertifikaları** > **Internet seçenekleri** ' ne gidin.
   
     b. Sertifikalar üzerinde **Içeri aktar** ' ı seçerek *sertifika alma Sihirbazı*' nı başlatın ve ardından **İleri**' ye tıklayın. *Içeri aktarılacak dosya* sayfasında, **Araştır**' a tıklayın ve Azure Resource Manager şablonuna verdiğiniz **yönetici istemci sertifikasını** seçin.
         
@@ -183,12 +183,12 @@ Service Fabric kümesine Service Fabric Explorer veya Service Fabric PowerShell 
        ![Kişisel bilgi değişimi](media/azure-stack-solution-template-service-fabric-cluster/image8.png)  
 
     d. *Sertifika depolama alanı* sayfasında **Kişisel**' i seçin ve ardından Sihirbazı doldurun.  
-       ![Sertifika deposu](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
+       ![sertifika depolama](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
 1. Service Fabric kümenizin FQDN 'sini bulmak için:  
 
     a. Service Fabric kümeniz ile ilişkili kaynak grubuna gidin ve *genel IP adresi* kaynağını bulun. Genel IP *adresi* dikey penceresini açmak IÇIN genel IP adresiyle ilişkili nesneyi seçin.  
 
-      ![Ortak IP adresi](media/azure-stack-solution-template-service-fabric-cluster/image10.png)   
+      ![Genel IP adresi](media/azure-stack-solution-template-service-fabric-cluster/image10.png)   
 
     b. Genel IP adresi dikey penceresinde FQDN, *DNS adı*olarak görüntülenir.  
 
@@ -196,12 +196,12 @@ Service Fabric kümesine Service Fabric Explorer veya Service Fabric PowerShell 
 
 1. Service Fabric Explorer URL 'sini ve Istemci bağlantı uç noktasını bulmak için, Şablon dağıtımı sonuçlarını gözden geçirin.
 
-1. Tarayıcınızda öğesine <https://*FQDN*:19080>gidin. *FQDN* 'yi, adım 2 ' deki SERVICE fabrıc kümenizin FQDN 'siyle değiştirin.   
+1. Tarayıcınızda <https://*FQDN*:19080>' a gidin. *FQDN* 'yi, adım 2 ' deki SERVICE fabrıc kümenizin FQDN 'siyle değiştirin.   
    Kendinden imzalı bir sertifika kullandıysanız bağlantının güvenli olmadığını belirten bir uyarı alırsınız. Web sitesine devam etmek için **daha fazla bilgi**' yi seçin ve ardından **Web sayfasına gidin**. 
 
 1. Sitenin kimliğini doğrulamak için kullanılacak bir sertifika seçmeniz gerekir. **Diğer seçenekler**' i seçin, uygun sertifikayı seçin ve ardından Service Fabric Explorer bağlanmak için **Tamam** ' ı tıklatın. 
 
-   ![Kimlik Doğrula](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
+   ![Kimlik doğrulaması](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
 
 
@@ -211,13 +211,13 @@ Service Fabric kümesine Service Fabric Explorer veya Service Fabric PowerShell 
 
 1. Yükleme tamamlandıktan sonra, Service Fabric cmdlet 'lerinin PowerShell 'den erişilebilir olduğundan emin olmak için sistem ortam değişkenlerini yapılandırın.  
     
-    a. **Denetim Masası** > **sistem ve güvenlik** > **sistemi**' ne gidin ve **Gelişmiş sistem ayarları**' nı seçin.  
+    a. **Sistem ve güvenlik** > **sistemi** > **Denetim Masası** ' na gidin ve **Gelişmiş sistem ayarları**' nı seçin.  
     
       ![Denetim Masası](media/azure-stack-solution-template-service-fabric-cluster/image15.png) 
 
     b. *Sistem Özellikleri*' nin **Gelişmiş** sekmesinde **ortam değişkenleri**' ni seçin.  
 
-    c. *Sistem değişkenleri*için **yolu** düzenleyin ve **C:\\Program Files\\Microsoft Service Fabric\\bin\\Fabric\\Fabric. Code** ' un listenin en üstünde olduğundan emin olun. ortam değişkenleri.  
+    c. *Sistem değişkenleri*Için, **yolu** düzenleyin ve **C:\\program dosyalarının Microsoft Service Fabric\\bin\\Fabric\\Fabric\\** olduğundan emin olun. kod, ortam değişkenleri listesinin en üstünde yer alan.  
 
       ![Ortam değişkeni listesi](media/azure-stack-solution-template-service-fabric-cluster/image16.png)
 

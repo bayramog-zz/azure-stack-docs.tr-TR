@@ -15,21 +15,21 @@ ms.date: 11/15/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 11/15/2019
-ms.openlocfilehash: 2d13b5d2296d8dc76a154e1f8edf1a0238d0226b
-ms.sourcegitcommit: f2a059f1be36f82adea8877f3f6e90d41ef3b161
+ms.openlocfilehash: a3941a3ada52a8588b504884a2d03cb00dd2c850
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74163703"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310322"
 ---
 # <a name="use-azure-monitor-for-containers-on-azure-stack-hub"></a>Azure Stack hub 'daki kapsayıcılar için Azure Izleyicisini kullanın
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Kapsayıcılar için [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/) 'yi, Azure Stack hub 'ında Kubernetes kümesi dağıtılan bir aks altyapısındaki Kapsayıcılarınızı izlemek için kullanabilirsiniz. 
 
 > [!IMPORTANT]
-> AKS altyapısı şu anda genel önizlemededir.
+> Azure Stack hub 'daki kapsayıcılar için Azure Izleyici Şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ölçüm API 'SI aracılığıyla Kubernetes 'te bulunan denetleyiciler, düğümler ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak Azure Izleyici ile kapsayıcı performansını gözden geçirebilirsiniz. Ayrıca hizmet, kapsayıcı günlüklerini toplar. Azure 'dan şirket içi kümenizdeki sorunları tanılamak için bu günlükleri kullanabilirsiniz. Kubernetes kümelerinizdeki izlemeyi ayarladıktan sonra, bu ölçümler ve Günlükler otomatik olarak toplanır. Linux için Azure Izleyici Log Analytics aracısının kapsayıcılı bir sürümü günlükleri toplar. Azure Izleyici, Log Analytics çalışma alanınızdaki ölçümleri ve günlükleri Azure aboneliğinizde erişilebilir şekilde depolar.
@@ -50,21 +50,21 @@ AKS motoru küme belirtimi json dosyasında bir **eklenti** belirtebilirsiniz. D
 
 Azure Stack hub kümesi için desteklenen API tanımları şu örnekte bulunabilir: [Kubernetes-Container-monitoring_existing_workspace_id_and_key. JSON](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Özellikle, **Kubernetesconfig**içinde **addons** özelliğini bulabilirsiniz:
 
-    ```JSON  
-    "orchestratorType": "Kubernetes",
-          "kubernetesConfig": {
-            "addons": [
-              {
-                "name": "container-monitoring",
-                "enabled": true,
-                "config": {
-                  "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
-                  "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
-                }
-              }
-            ]
-          }
-    ```
+```JSON  
+ "orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

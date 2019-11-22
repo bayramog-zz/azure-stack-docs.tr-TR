@@ -16,16 +16,16 @@ ms.date: 08/14/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
-ms.openlocfilehash: 25a32b1d73818e988a8bdf7fb565d06b06d53d68
-ms.sourcegitcommit: bb2bbfad8061f7677954f6ce5a435b4e6f9299b6
+ms.openlocfilehash: fc3eecb8f4e06ce02737e513c48d946f2a667c21
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74100027"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74298764"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack desteklenen konuk işletim sistemleri
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 ## <a name="windows"></a>Windows
 
@@ -36,9 +36,9 @@ Azure Stack, aşağıdaki tabloda listelenen Windows Konuk işletim sistemlerini
 | Windows Server, sürüm 1709 | 64 bit | Kapsayıcılarla çekirdek |
 | Windows Server 2019 | 64 bit |  Veri Merkezi, veri merkezi çekirdeği, kapsayıcılar içeren veri merkezi |
 | Windows Server 2016 | 64 bit |  Veri Merkezi, veri merkezi çekirdeği, kapsayıcılar içeren veri merkezi |
-| Windows Server 2012 R2 | 64 bit |  Datacenter |
-| Windows Server 2012 | 64 bit |  Datacenter |
-| Windows Server 2008 R2 SP1 | 64 bit |  Datacenter |
+| Windows Server 2012 R2 | 64 bit |  Veri merkezi |
+| Windows Server 2012 | 64 bit |  Veri merkezi |
+| Windows Server 2008 R2 SP1 | 64 bit |  Veri merkezi |
 | Windows Server 2008 SP2 | 64 bit |  Kendi görüntünüzü getir |
 | Windows 10 *(bkz. Note 1)* | 64-bit, Pro ve Enterprise | Kendi görüntünüzü getir |
 
@@ -54,9 +54,9 @@ Datacenter sürümleri, pazarda indirmek üzere kullanılabilir; müşteriler, d
 Market 'te kullanılabilir olarak listelenen Linux dağıtımları, gerekli Windows Azure Linux Aracısı 'nı (WALA) içerir. Kendi görüntünüzü Azure Stack yaparsanız, [Azure Stack Için Linux görüntüleri ekleme](azure-stack-linux.md)bölümündeki yönergeleri izleyin.
 
 > [!NOTE]
-> Özel görüntüler en son ortak WALA sürümü ile oluşturulmalıdır (1903 Azure Stack derleme ve yukarıdaki ya da 1901/1902 düzeltme ile) ya da sürüm 2.2.20 ile oluşturulmalıdır. 2\.2.20 ve 2.2.20 ile 2.2.35 (dışlamalı) arasındaki sürümler Azure Stack düzgün şekilde çalışmayabilir.
+> Özel görüntüler en son ortak WALA sürümü ile oluşturulmalıdır (1903 Azure Stack derleme ve yukarıdaki ya da 1901/1902 düzeltme ile) ya da sürüm 2.2.20 ile oluşturulmalıdır. 2\.2.20 ve 2.2.21 ile 2.2.34 (dahil) arasındaki sürümler Azure Stack düzgün şekilde çalışmayabilir. Azure Stack 1910 sürümü ve ötesinde, tüm Azure WALA Aracısı sürümleri, Azure Stack birlikte çalışacaktır.
 >
-> Şu anda Azure Stack [Cloud-init](https://cloud-init.io/) desteklenmez.
+> [Cloud-init](https://cloud-init.io/) , Azure Stack 1910 sürümünde ve şu anda daha fazla desteklenir.
 
 | Dağıtım | Açıklama | Yayımcı | Market |
 | --- | --- | --- | --- |

@@ -11,26 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/14/2019
-ms.openlocfilehash: a847f04e3766e943aba78b567b0f21a99d0da860
-ms.sourcegitcommit: f2a059f1be36f82adea8877f3f6e90d41ef3b161
+ms.lastreviewed: 11/21/2019
+ms.openlocfilehash: aed53295b7c1748abd8ab3bd2862043d7d69e4b8
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74162948"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310336"
 ---
 # <a name="troubleshoot-the-aks-engine-on-azure-stack"></a>Azure Stack üzerindeki AKS altyapısının sorunlarını giderme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure Stack üzerinde AKS altyapısını dağıtma veya bunlarla çalışırken bir sorunla karşılaşabilirsiniz. Bu makale, AKS altyapısının dağıtımını sorun giderme, AKS altyapınız hakkında bilgi toplama, Kubernetes günlüklerini toplama, Özel Betik uzantısı hata kodlarını İnceleme ve AKS altyapısı için bir GitHub sorunu açma yönergelerini inceler.
-
-> [!IMPORTANT]
-> AKS altyapısı şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="troubleshoot-the-aks-engine-install"></a>AKS altyapısı yüklemesinin sorunlarını giderme
 
@@ -132,7 +128,7 @@ Gereksinimler:
 
 2. `getkuberneteslogs.sh` betiği için gereken parametreleri arayın. Betik aşağıdaki parametreleri kullanacaktır:
 
-    | Parametre | Açıklama | Gereklidir | Örnek |
+    | Parametre | Açıklama | Gerekli | Örnek |
     | --- | --- | --- | --- |
     | -h,--yardım | Komut kullanımını yazdır. | hayır | 
     -u,--Kullanıcı | Küme VM 'Leri için Yönetici Kullanıcı adı | evet | azureuser<br>(varsayılan değer) |

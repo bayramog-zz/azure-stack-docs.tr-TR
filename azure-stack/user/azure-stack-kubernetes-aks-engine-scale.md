@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
-ms.openlocfilehash: 39c651649aea60ab12aae9daf35b0d07615bf697
-ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
+ms.lastreviewed: 11/21/2019
+ms.openlocfilehash: 078cacad88a0a7d055baef799c5785d5a06ce922
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73595291"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310106"
 ---
 # <a name="scale-a-kubernetes-cluster-on-azure-stack"></a>Azure Stack bir Kubernetes kümesini ölçeklendirme
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 **Ölçek** komutunu kullanarak kümenizi aks altyapısıyla ölçeklendirebilirsiniz. **Scale** komutu, çıkış dizini içindeki küme yapılandırma dosyanızı (`apimodel.json`) yeni bir Azure Resource Manager dağıtımına giriş olarak yeniden kullanır. Motor, belirtilen aracı havuzunda ölçeklendirme işlemini yürütür. Ölçeklendirme işlemi tamamlandığında, altyapı güncelleştirilmiş, geçerli küme yapılandırmasını yansıtmak için aynı `apimodel.json` dosyadaki küme tanımını yeni düğüm sayısını yansıtacak şekilde güncelleştirir.
 
@@ -44,7 +44,7 @@ Aşağıdaki parametreler, ölçek komutu tarafından küme tanımı dosyanızı
 | abonelik kimliği |  | Kümeniz tarafından kullanılan kaynakları içeren aboneliğin GUID 'SI. Aboneliğinizi ölçeklendirmek için yeterli kotayı kullandığınızdan emin olun. | 
 | istemci kimliği |  | AKS altyapısından kümenizi oluştururken kullanılan hizmet sorumlusunun istemci KIMLIĞI. | 
 | istemci parolası |  | Kümeniz oluşturulurken kullanılan hizmet sorumlusu gizli anahtarı. | 
-| api modeli | Kube-RG/apimodel. JSON | Küme tanımı dosyanızın yolu (apimodel. JSON). Bu şu konumda olabilir: _Output/\<Dnspredüzeltmesini >/apimodel.exe JSON | 
+| api modeli | Kube-RG/apimodel. JSON | Küme tanımı dosyanızın yolu (apimodel. JSON). Bu şu konumda olabilir: _output/\<Dnspredüzeltmesini >/apimodel.exe | 
 | -New-node-Count | 9 | İstenen düğüm sayısı. | 
 | -Master-FQDN |  | Ana FQDN. Ölçeği azaltma sırasında gereklidir. |
 | kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
@@ -72,4 +72,4 @@ aks-engine scale \
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Stack üzerindeki AKS altyapısı](azure-stack-kubernetes-aks-engine-overview.md) hakkında bilgi edinin
-- [Azure Stack bir Kubernetes kümesini yükseltme](azure-stack-kubernetes-aks-engine-upgrade.md)
+- [Azure Stack üzerindeki bir Kubernetes kümesini yükseltme](azure-stack-kubernetes-aks-engine-upgrade.md)

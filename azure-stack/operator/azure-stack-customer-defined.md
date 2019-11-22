@@ -15,12 +15,12 @@ ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 1bd138be243c2803b5a280de2a3a8625e84db998
-ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
+ms.openlocfilehash: 99d52dc7165fdd37a614c1396d7e5c1f0165e235
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73955326"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74299123"
 ---
 #  <a name="modify-specific-settings-on-your-azure-stack-switch-configuration"></a>Azure Stack anahtar yapılandırmanızda belirli ayarları değiştirme
 
@@ -53,7 +53,10 @@ Ancak, ağ anahtarlarının yapılandırmasında eklenebilen, kaldırılacak vey
 
 ## <a name="access-control-list-updates"></a>Erişim denetim listesi güncelleştirmeleri
 
-İşleci, ağ cihazı yönetim arabirimlerine ve donanım yaşam döngüsü konağına (HLH) güvenilen bir veri merkezi ağ aralığından erişime izin vermek için bazı erişim denetim listelerini (ACL 'ler) değiştirebilir. İşleci hangi bileşenin ulaşılabildiğini ve nereden hangilerinin olacağını seçebilir. Erişim denetim listesi ile operatör, belirli bir ağ aralığı içindeki yönetim sıçrama kutusu VM 'lerinin, anahtar yönetimi arabirimine ve HLH işletim sisteminin yanı sıra HLH BMC 'ye erişmesine izin verebilir.
+> [!NOTE]
+> 1910 ' den itibaren, dağıtım çalışma sayfası, ağ cihazı yönetim arabirimlerine ve donanım yaşam döngüsü konağına (HLH) güvenilen bir veri merkezi ağ aralığından erişime izin vermek için gereken el ile adımların yerini alan **Izin verilen ağlar** için yeni bir alana sahip olur. Bu yeni özellik hakkında daha fazla bilgi için lütfen [Azure Stack Için Ağ tümleştirmesi planlamasını](azure-stack-network.md#permitted-networks)denetleyin.
+
+İşleci, ağ cihazı yönetim arabirimlerine ve donanım yaşam döngüsü konağına (HLH) güvenilen bir veri merkezi ağ aralığından erişime izin vermek için bazı erişim denetim listelerini (ACL 'ler) değiştirebilir. Erişim denetim listesi ile operatör, belirli bir ağ aralığındaki yönetim sıçrama kutusu VM 'lerinin anahtar yönetimi arabirimine, HLH işletim sistemine ve HLH BMC 'ye erişmesine izin verebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 09/19/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/18/2019
-ms.openlocfilehash: 89a31f6d7894ed9af710263298fef03604d1351b
-ms.sourcegitcommit: acebda8a42ac8ecdeba490fc1738e9041479dab0
+ms.lastreviewed: 09/19/2019
+ms.openlocfilehash: 9ca2e25217886d6b8a55bc394f4ee05df1bea2d6
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72813977"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74298775"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>GitHub 'dan Azure Stack araçları indirin
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 **Azurestack-Tools** , Azure Stack kaynakları yönetmek ve dağıtmak için PowerShell modüllerini barındıran bir [GitHub deposudur](https://github.com/Azure/AzureStack-Tools) . VPN bağlantısı kurmayı planlıyorsanız, bu PowerShell modüllerini Azure Stack Geliştirme Seti (ASDK) veya Windows tabanlı bir dış istemciye indirebilirsiniz. Bu araçları almak için GitHub deposunu kopyalayın veya aşağıdaki betiği çalıştırarak **Azurestack-Tools** klasörünü indirin:
 

@@ -16,16 +16,16 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: ppacent
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: d654608ca4f46e5947cacc55349f8be0a41548b1
-ms.sourcegitcommit: ed44d477b9fd11573d1e0d1ed3a3c0ef4512df53
+ms.openlocfilehash: 077d50da935a3ee8de0967c51920ede69125c816
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73845850"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74299033"
 ---
 # <a name="azure-stack-update-activity-checklist"></a>Azure Stack etkinliği denetim listesini güncelleştir
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri*
 
 Azure Stack güncelleştirmesine hazırlanmak için bu denetim listesini gözden geçirin. Bu makale, Azure Stack işleçleri için güncelleştirmeyle ilgili etkinliklerin denetim listesini içerir.
 
@@ -53,7 +53,7 @@ Azure Stack güncelleştirmesine hazırlanmak için bu denetim listesini gözden
 |  |  |
 | Güncelleştirmeleri sürdürür | Başarısız bir güncelleştirmeyi uyguladıktan sonra, [ayrıcalıklı uç noktayı kullanarak Azure Stack güncelleştirmeleri sürdürüyorsun](azure-stack-monitor-update.md). |
 
-> [!Important]  
+> [!IMPORTANT]  
 > Güncelleştirme sırasında **Test-AzureStack** komutunu çalıştırmayın, çünkü güncelleştirme soruna neden olur.
 
 ## <a name="after-azure-stack-update"></a>Azure Stack güncelleştirmeden sonra

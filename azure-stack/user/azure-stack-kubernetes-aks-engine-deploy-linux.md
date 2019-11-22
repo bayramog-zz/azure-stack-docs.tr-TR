@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 3979dfdf6a229f1d81b6c5cc017d4d3f75a62e1a
-ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
+ms.lastreviewed: 11/21/2019
+ms.openlocfilehash: 3095ede91ce8ac98f1571307c61b28e80aa90fba
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73595344"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310271"
 ---
 # <a name="install-the-aks-engine-on-linux-in-azure-stack"></a>Linux 'ta AKS altyapısını Azure Stack ' de yükler
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Bir Kubernetes kümesini dağıtmak ve yönetmek üzere AKS altyapısını barındırmak için Azure Stack Linux makinesini kullanabilirsiniz. Bu makalede, hem bağlı hem de bağlantısı kesilen Azure Stack örnekleri için, istemci sanal makinesini hazırlama, yüklemeyi denetleme ve istemci sanal makinesini ASDK üzerinde ayarlama hakkında inceliyoruz.
 
@@ -43,7 +43,7 @@ Kubernetes kümenizi Internet 'e bağlı bir Azure Stack yönetmek için istemci
 
 1. Azure Stack bir Linux sanal makinesi oluşturun. Yönergeler için bkz. [hızlı başlangıç: Azure Stack portalını kullanarak bir Linux sunucu VM 'Si oluşturma](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal).
 2. Sanal makinenize bağlanın.
-3. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutu çalıştırırken, `--version v0.43.0` sürümünü belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
+3. [Desteklenen Kubernetes sürümleri](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) tablosunda aks altyapısının sürümünü bulun. AKS temel altyapısı, Azure Stack marketi 'nde kullanılabilir olmalıdır. Komutu çalıştırırken `--version v0.43.0`sürümünü belirtmeniz gerekir. Sürümü belirtmezseniz, komut Market 'te kullanılamayan bir VHD görüntüsü gerektirebilecek en son sürümü yükler.
 4. Şu komutu çalıştırın:
 
     ```bash  
@@ -94,7 +94,7 @@ AKS altyapısını istemci sanal makinenize yüklediğinizi doğrulayadıysanız
 
 ASDK 'de AKS altyapısının istemci sanal makinesini çalıştırırken bir sertifika eklemeniz gerekir.
 
-Bir ASDK kullandığınızda Azure Resource Manager uç noktası otomatik olarak imzalanan bir sertifika kullanıyorsa, bu sertifikayı makinenin güvenilen sertifika deposuna eklemeniz gerekir. Asdk kök sertifikasını, ASDK 'de dağıttığınız herhangi bir VM 'de bulabilirsiniz. Örneğin, bir Ubuntu sanal makinesinde, bu dizinde `/var/lib/waagent/Certificates.pem` ' ı görürsünüz. 
+Bir ASDK kullandığınızda Azure Resource Manager uç noktası otomatik olarak imzalanan bir sertifika kullanıyorsa, bu sertifikayı makinenin güvenilen sertifika deposuna eklemeniz gerekir. Asdk kök sertifikasını, ASDK 'de dağıttığınız herhangi bir VM 'de bulabilirsiniz. Örneğin, bir Ubuntu sanal makinesinde bu dizinde bulacaksınız `/var/lib/waagent/Certificates.pem`. 
 
 Sertifika dosyasını aşağıdaki komutla kopyalayın:
 

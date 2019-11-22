@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 10/23/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: 4894fb7184944095d968d08e2d668912a78119d4
-ms.sourcegitcommit: ef7efcde76d1d7875ca1c882afebfd6a27f1c686
+ms.openlocfilehash: 76bc9b83bf97c7817ff5c9cbf8bc0a3275a04d72
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72888042"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74298850"
 ---
 # <a name="network-integration-planning-for-azure-stack"></a>Azure Stack için Ağ tümleştirmesi planlaması
 
@@ -37,7 +37,7 @@ Azure Stack çözümünün çalışmasını ve hizmetlerini desteklemek için da
 ![Ağ tasarımı Azure Stack önerilir](media/azure-stack-network/recommended-design.png)
 
 
-## <a name="logical-networks"></a>Mantıksal ağlar
+## <a name="logical-networks"></a>Mantıksal Ağlar
 
 Mantıksal ağlar, temel alınan fiziksel ağ altyapısının bir soyutlamasını temsil eder. Konaklar, sanal makineler (VM 'Ler) ve hizmetler için ağ atamalarını düzenlemek ve basitleştirmek için kullanılırlar. Mantıksal ağ oluşturma kapsamında ağ siteleri, her fiziksel konumdaki mantıksal ağla ilişkili sanal yerel ağları (VLAN), IP alt ağlarını ve IP alt ağını/VLAN çiftlerini tanımlamak için oluşturulur.
 
@@ -48,9 +48,12 @@ Aşağıdaki tabloda, planlamanız gereken mantıksal ağlar ve ilişkili IPv4 a
 | Genel VIP | Azure Stack, bu ağdan toplam 31 adres kullanır. Küçük bir Azure Stack Hizmetleri kümesi için sekiz genel IP adresi kullanılır ve geri kalanı Kiracı VM 'Leri tarafından kullanılır. App Service ve SQL kaynak sağlayıcılarını kullanmayı planlıyorsanız, 7 adres daha kullanılır. Kalan 15 IP 'Ler gelecek Azure hizmetleri için ayrılmıştır. | /26 (62 ana bilgisayar)-/22 (1022 ana bilgisayar)<br><br>Önerilen =/24 (254 ana bilgisayar) | 
 | Altyapıyı Değiştir | Yönlendirme amacıyla noktadan noktaya IP adresleri, adanmış anahtar yönetimi arabirimleri ve anahtara atanan geri döngü adresleri. | /26 | 
 | Altyapı | İletişim kurmak üzere Azure Stack iç bileşenleri için kullanılır. | /24 |
-| Özel | Depolama ağı ve özel VIP 'ler için kullanılır. | /24 | 
+| Özel | Depolama ağı, özel VIP 'ler, altyapı kapsayıcıları ve diğer iç işlevler için kullanılır. 1910 ' den başlayarak, bu alt ağ için boyut/20 olarak değiştiriliyor. Daha fazla bilgi için bu makaledeki [özel ağ](#private-network) bölümüne bakın. | /20 | 
 | KONAĞıNDAKI | Fiziksel konaklardaki BMC 'ler ile iletişim kurmak için kullanılır. | /26 | 
 | | | |
+
+> [!NOTE]
+> Sistem sürüm 1910 ' e güncelleştirildiği zaman, portalda bir uyarı yeni bir/20 özel IP alanı eklemek için işleçle New PEP cmdlet **set-AzsPrivateNetwork** komutunu çalıştırmasını hatırlatır. Cmdlet 'i çalıştırmaya ilişkin yönergeler için [1910 sürüm notlarına](release-notes.md) bakın. /20 özel IP alanını seçme hakkında daha fazla bilgi ve yönergeler için, bu makaledeki [özel ağ](#private-network) bölümüne bakın.
 
 ## <a name="network-infrastructure"></a>Ağ altyapısı
 
@@ -66,13 +69,21 @@ HLH Ayrıca dağıtım sanal makinesini (DVD) barındırır. DVD Azure Stack da�
 
 ### <a name="private-network"></a>Özel ağ
 
-Bu/24 (254 ana bilgisayar IP) ağı, Azure Stack bölgesi için özeldir (Azure Stack bölgesinin sınır anahtar cihazlarının ötesinde genişlemez) ve iki alt ağa ayrılmıştır:
+Bu/20 (4096 IP) ağı, Azure Stack bölgesi için özeldir (Azure Stack sisteminin sınır anahtar cihazlarının ötesine geçmez) ve birden çok alt ağa bölünmüştür, bazı örnekler aşağıda verilmiştir:
 
-- **Depolama ağı**: boşluk doğrudan ve sunucu ileti bloğu (SMB) depolama TRAFIĞI ve VM dinamik geçişi kullanımını desteklemek için kullanılan A/25 (126 ana bilgisayar IP) ağı.
+- **Depolama ağı**: boşluk doğrudan ve sunucu ileti bloğu (SMB) depolama TRAFIĞI ve VM dinamik geçişi kullanımını desteklemek için kullanılan a/25 (128 IP) ağ.
 - **İç sanal IP ağı**: yazılım yük dengeleyici için yalnızca iç VIP 'lere adanmış bir/25 ağı.
+- **Kapsayıcı ağı**: bir/23 (512 IP) ağı, Altyapı Hizmetleri çalıştıran kapsayıcılar arasındaki yalnızca iç trafiğe ayrılmıştır.
+
+1910 ' den başlayarak, özel ağ boyutu özel IP alanının a/20 (4096 IP) olarak değişir. Bu ağ Azure Stack sistemine özel olacak (Azure Stack sisteminin sınır anahtar cihazlarının ötesinde yönlendirmez) ve veri merkezinizdeki birden çok Azure Stack sisteminde yeniden kullanılabilir. Ağ Azure Stack için özel olsa da, veri merkezindeki diğer ağlarla çakışmamalıdır. Özel IP alanı hakkında rehberlik için, [RFC 1918](https://tools.ietf.org/html/rfc1918)' i takip etmenizi öneririz.
+
+Bu/20 özel IP alanı, gelecekteki sürümlerde kapsayıcılar üzerinde Azure Stack sistemi iç altyapısını çalıştırmayı etkinleştiren birden çok ağa bölünecektir. Daha fazla bilgi için [1910 sürüm notlarına](release-notes.md)bakın. Ayrıca, bu yeni özel IP alanı, dağıtımdan önce gerekli yönlendirilebilir IP alanını azaltmaya devam eden çabalara olanak sağlar.
+
+1910 ' den önce dağıtılan sistemler için, bu/20 alt ağı, 1910 ' e güncelleştirildikten sonra sistemlere girilecek ek bir ağ olacaktır. **Set-AzsPrivateNetwork** Pep cmdlet 'i aracılığıyla ek ağın sisteme sağlanması gerekir. Bu cmdlet hakkında yönergeler için bkz. [1910 sürüm notları](release-notes.md).
 
 ### <a name="azure-stack-infrastructure-network"></a>Azure Stack altyapı ağı
-Bu/24 ağ dahili Azure Stack bileşenlere ayrılmıştır ve bu sayede verileri kendileri arasında iletişim kurabilir ve bunları değiş tokuş edebilirler. Bu alt ağ, veri merkezinize Azure Stack çözümünün dışarıdan yönlendirilebilir, bu alt ağda ortak veya Internet yönlendirilebilir IP adresleri kullanmanızı önermiyoruz. Bu ağ, kenarlığa tanıtıldığı halde, IP 'lerinin çoğu Access Control listeleriyle (ACL 'Ler) korunmaktadır. Erişim için izin verilen IP 'Ler bir/27 ağ ve [ayrıcalıklı uç noktası (PEP)](azure-stack-privileged-endpoint.md) gibi ana bilgisayar hizmetleri ve [Azure Stack yedekleme](azure-stack-backup-reference.md)ile aynı boyutta olan küçük bir aralığın içindedir.
+
+Bu/24 ağ dahili Azure Stack bileşenlere ayrılmıştır ve bu sayede verileri kendileri arasında iletişim kurabilir ve bunları değiş tokuş edebilirler. Bu alt ağ, veri merkezinize Azure Stack çözümü için dışarıdan yönlendirilebilir. Bu alt ağda ortak veya internet yönlendirilebilir IP adresleri kullanmanızı önermiyoruz. Bu ağ, kenarlığa tanıtıldığı halde, IP 'lerinin çoğu Access Control listeleriyle (ACL 'Ler) korunur. Erişim için izin verilen IP 'Ler bir/27 ağ ve [ayrıcalıklı uç noktası (PEP)](azure-stack-privileged-endpoint.md) ve [Azure Stack yedekleme](azure-stack-backup-reference.md)gibi ana bilgisayar hizmetleri ile aynı boyutta olan küçük bir aralık dahilinde.
 
 ### <a name="public-vip-network"></a>Genel VIP ağı
 
@@ -85,6 +96,10 @@ Bu/26 ağı yönlendirilebilir noktadan noktaya IP/30 (iki ana bilgisayar IP) al
 ### <a name="switch-management-network"></a>Geçiş yönetimi ağı
 
 Bu/29 (altı ana bilgisayar IP) ağı, anahtarların yönetim bağlantı noktalarını bağlamak için ayrılmıştır. Dağıtım, yönetim ve sorun giderme için bant dışı erişime izin verir. Yukarıda bahsedilen anahtar altyapısı ağından hesaplanır.
+
+## <a name="permitted-networks"></a>İzin verilen ağlar
+
+1910 ' den başlayarak, dağıtım çalışma sayfasının, ağ cihazı yönetim arabirimlerine ve donanım yaşam döngüsü ana bilgisayarına (HLH) güvenilen bir veri merkezi ağ aralığından erişime izin vermek için bazı erişim denetim listelerini (ACL 'Ler) değiştirmesine izin veren yeni bir alan olacaktır. Erişim denetim listesi değişikliği ile operatör, belirli bir ağ aralığındaki yönetim sıçrama kutusu VM 'lerinin anahtar yönetimi arabirimine, HLH OS ve HLH BMC 'ye erişmesine izin verebilir. İşleci bu listeye bir veya birden çok alt ağ sağlayabilir, boş bırakılırsa varsayılan olarak erişimi reddedebilirsiniz. Bu yeni işlev, [Azure Stack anahtarı yapılandırmanızda belirli ayarları değiştirme](azure-stack-customer-defined.md#access-control-list-updates)bölümünde açıklandığı gibi dağıtım sonrası el ile müdahale gereksinimini ortadan kaldırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

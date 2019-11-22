@@ -11,27 +11,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 08/30/2019
-ms.openlocfilehash: e61c3dad2383f1b6471b784b303b9f22a7dfde51
-ms.sourcegitcommit: b28190b4e91cd0c045d019083e7e9203410d7c29
+ms.lastreviewed: 11/21/2019
+ms.openlocfilehash: f5955751df89262441b7afc2381d34b6cc74691c
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71354560"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74298742"
 ---
 # <a name="asdk-release-notes"></a>ASDK sürüm notları
 
 Bu makalede, Azure Stack Geliştirme Seti (ASDK) içindeki değişiklikler, düzeltmeler ve bilinen sorunlar hakkında bilgi verilmektedir. Hangi sürümü çalıştırdığınızdan emin değilseniz, [denetlemek için portalını kullanın](../operator/azure-stack-updates.md).
 
-RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)abone [ ![](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) olarak, asdk 'deki yenilikleri güncel tutun.
+[![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)abone olarak, asdk 'deki yenilikleri güncel tutun.
+
+::: moniker range="azs-1910"
+## <a name="build-11910058"></a>Derleme 1.1910.0.58
+
+### <a name="new-features"></a>Yeni özellikler
+
+- Bu sürümdeki düzeltilen sorunlar, değişiklikler ve yeni özelliklerin listesi için [Azure Stack sürüm notlarındaki](../operator/release-notes.md)ilgili bölümlere bakın.
+
+### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
+
+- Günlükleri toplama ve bunları bir Azure Storage blob kapsayıcısında depolama ile ilgili bir sorun düzeltildi. Bu işlem için sözdizimi aşağıdaki gibidir:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  ``` 
+
+- Yavaş bir yükleme biriktirici hizmetinin bazı Windows özelliklerinin kaldırılmasını önlediği ve yeniden başlatma gerektirdiği bir dağıtım sorunu düzeltildi.
+- Bu sürümdeki bilinen sorunların Azure Stack listesi için [bilinen sorunlar](../operator/known-issues.md) makalesine bakın.
+- Kullanılabilir Azure Stack düzeltmelerinin ASDK 'ye uygulanmadığını unutmayın.
+::: moniker-end
 
 ::: moniker range="azs-1908"
+  
 ## <a name="build-11908020"></a>Derleme 1.1908.0.20
 
-### <a name="new-features"></a>Yeni Özellikler
+### <a name="new-features"></a>Yeni özellikler
 
 - Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1908#whats-new-1908) bakın.
 
@@ -47,7 +68,7 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 ::: moniker range="azs-1907"
 ## <a name="build-11907020"></a>Derleme 1.1907.0.20
 
-### <a name="new-features"></a>Yeni Özellikler
+### <a name="new-features"></a>Yeni özellikler
 
 - Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1907#whats-in-this-update-1907) bakın.
 
@@ -64,7 +85,7 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 ::: moniker range="azs-1906"
 ## <a name="build-11906030"></a>Derleme 1.1906.0.30
 
-### <a name="new-features"></a>Yeni Özellikler
+### <a name="new-features"></a>Yeni özellikler
 
 - Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1906#whats-in-this-update-1906) bakın.
 
@@ -78,21 +99,4 @@ RSS RSS [akışına](https://docs.microsoft.com/api/search/rss?search=Azure+Stac
 - Bu sürümde düzeltilen Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1906#fixes-1906) bakın.
 - Bilinen sorunların bir listesi için, [Bu makaleye](/azure-stack/operator/known-issues?view=azs-1906)bakın.
 - [Kullanılabilir Azure Stack düzeltmelerinin](/azure-stack/operator/release-notes?view=azs-1906#hotfixes-1906) Azure Stack asdk 'ye uygulanmadığını unutmayın.
-::: moniker-end
-
-::: moniker range="azs-1905"
-## <a name="build-11905040"></a>Derleme 1.1905.0.40
-
-<!-- ### Changes -->
-
-### <a name="new-features"></a>Yeni Özellikler
-
-- Bu sürümdeki yeni özelliklerin listesi için Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1905#whats-in-this-update-1905) bakın.
-
-### <a name="fixed-and-known-issues"></a>Düzeltilen ve bilinen sorunlar
-
-- [ASDK](asdk-register.md) 'yi başarıyla kaydetmek Için **registerwithazure. psm1** PowerShell betiğini düzenlemeniz gereken bir sorun düzeltildi.
-- Bu sürümde düzeltilen diğer Azure Stack sorunların listesi için, Azure Stack sürüm notlarının [Bu bölümüne](/azure-stack/operator/release-notes?view=azs-1905#fixes-1905) bakın.
-- Bilinen sorunların bir listesi için, [Bu makaleye](/azure-stack/operator/known-issues?view=azs-1905)bakın.
-- [Kullanılabilir Azure Stack düzeltmelerinin](/azure-stack/operator/release-notes?view=azs-1905#hotfixes-1905) Azure Stack asdk 'ye uygulanmadığını unutmayın.
 ::: moniker-end

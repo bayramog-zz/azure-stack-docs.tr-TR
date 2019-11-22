@@ -16,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
-ms.openlocfilehash: 17136cbe86029f0ea776d8dc8860ff96c82c756e
-ms.sourcegitcommit: ae79b8bea670ea854ed00e9998d45f6b47fc8347
+ms.openlocfilehash: dac0360bba7c24c85d1f30efbfb7fad30eb97028
+ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71142601"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74299153"
 ---
 # <a name="azure-stack-compute"></a>Azure Stack işlem
 
@@ -48,7 +48,7 @@ Yerleştirme algoritmaları var olan sanal sunucudan fiziksel çekirdek yük sa�
 
 Azure Stack kapasitesinin doğru planlanabilmesi için yeni bir göz vardır. 1901 Güncelleştirmesi (ve her güncelleştirme devam eden) ile, oluşturulabilecek sanal makinelerin toplam sayısı için bir sınır vardır. Bu sınırın çözüm kararsızlığına engel olmak için geçici olması amaçlanmıştır. Daha yüksek sayıda VM 'de kararlılık sorununun kaynağı giderilmekte, ancak düzeltme için belirli bir zaman çizelgesi henüz belirlenmemiştir. Toplam 700 olan 60 VM 'e yönelik bir sunucu başına VM sınırı vardır. Örneğin, bir 8 sunucu Azure Stack VM sınırı 480 (8 * 60) olur. 12 ile 16 arasında sunucu Azure Stack çözümü için sınır 700 olur. Bu sınır, dayanıklılık yedeği ve CPU sanal değeri gibi bir işlecin damgada korumak istediğiniz tüm işlem kapasitesi konularını göz önünde bulundurarak oluşturulmuştur. Daha fazla bilgi için bkz. kapasite planlayıcısı 'nın yeni sürümü. 
 
-VM Ölçek sınırına ulaşılmış olması durumunda, aşağıdaki hata kodları sonuç olarak döndürülür: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
+VM Ölçek sınırına ulaşılmış olması durumunda şu hata kodları sonuç olarak döndürülür: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
 
 ## <a name="considerations-for-deallocation"></a>Ayırmayı kaldırma konuları
 
@@ -86,7 +86,7 @@ Bu hesaplama, Kiracı VM yerleşimi için kullanılabilen toplam kullanılabilir
 
   Dayanıklılık yedeği = H + R * ((N-1) * H) + V * (N-2)
 
-> Konumlar:
+> Nerede:
 > - H = tek sunucu belleğinin boyutu
 > - N = ölçek biriminin boyutu (sunucu sayısı)
 > - R = .15, bu formülde<sup>2</sup> olan işletim sistemi ek yükü için ayrılmış işletim sistemi
@@ -94,28 +94,28 @@ Bu hesaplama, Kiracı VM yerleşimi için kullanılabilen toplam kullanılabilir
 
   <sup>1</sup> Azure Stack altyapı ek yükü = 242 GB + (4 GB x düğüm). Azure Stack altyapısını barındırmak için yaklaşık 31 VM kullanılır ve toplam olarak bellek ve 146 sanal çekirdekleri hakkında yaklaşık 242 GB + (4 GB x düğüm) kullanın. Bu sanal makine sayısı için, güvenlik, ölçeklenebilirlik, bakım ve düzeltme eki uygulama gereksinimlerini karşılamak üzere gerekli hizmet ayrımını karşılamanız gerekir. Bu iç hizmet yapısı, yeni altyapı hizmetleri geliştirildiği için gelecekte giriş yapılmasına izin verir. 
 
-  <sup>2</sup> işletim sistemi için ayrılan iş yükü =% 15 (. 15) düğüm belleği. İşletim sistemi ayırma değeri bir tahmindir ve sunucunun fiziksel bellek kapasitesine ve genel işletim sistemi yüküne bağlı olarak değişir.
+  <sup>2</sup> işletim sistemi için ayrılan iş yükü = %15 (. 15) düğüm belleği. İşletim sistemi ayırma değeri bir tahmindir ve sunucunun fiziksel bellek kapasitesine ve genel işletim sistemi yüküne bağlı olarak değişir.
 
 
 Ölçek biriminde bulunan V, en büyük VM değeri, en büyük Kiracı VM bellek boyutuna göre dinamik olarak belirlenir. Örneğin, en büyük VM değeri, Azure Stack çözümünde 7 GB veya 112 GB veya desteklenen başka bir VM belleği boyutu olabilir. Azure Stack dokusunda en büyük VM 'nin değiştirilmesi, VM 'nin belleğindeki artışa ek olarak dayanıklılık Reserve artışına neden olur. 
 
 ## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
-**S**: Kiracım yeni bir VM dağıttı, yönetim portalındaki yetenek grafiğinin kalan kapasiteyi göstermesi ne kadar sürer?
+**S**: kiracım yenı bir VM dağıttı, yönetim portalındaki yetenek grafiğinin kalan kapasiteyi göstermesi ne kadar sürer?
 
-Y: Kapasite dikey penceresi 15 dakikada bir yenilenir, bu nedenle lütfen göz önüne alın.
+Y **: kapasite**dikey penceresi 15 dakikada bir yenilenir, bu nedenle lütfen göz önüne alın.
 
-**S**: Azure Stack dağıtılan sanal makinelerin sayısı değişmedi, ancak kapasitem değişimde dalgalantı. Neden?
+**S**: Azure Stack dağıtılan sanal makinelerin sayısı değişmedi, ancak kapasiteniz dalgalanma alınıyor. Neden?
 
-Y: VM yerleştirmesi için kullanılabilir bellek birden çok bağımlılığa sahiptir, bunlardan biri konak işletim sistemi ayrılmış. Bu değer, ana bilgisayarda çalışan, sabit bir değer olmayan farklı Hyper-V işlemlerinin kullandığı belleğe bağımlıdır.
+Y **: VM**yerleştirmesi için kullanılabilir bellek birden çok bağımlılığa sahiptir, bunlardan biri konak işletim sistemi ayrılmış. Bu değer, ana bilgisayarda çalışan, sabit bir değer olmayan farklı Hyper-V işlemlerinin kullandığı belleğe bağımlıdır.
 
 **S**: Kiracı VM 'lerinin belleği tüketmek için hangi durumu kullanması gerekir?
 
-Yönetim VM çalıştırmanın yanı sıra, bellek, dokuda bulunan tüm VM 'Ler tarafından tüketilecektir. Bu, "oluşturma", "başarısız" veya VM 'lerde bulunan VM 'Lerin, Portal/PowerShell/CLI tarafından serbest bırakılmasının aksine belleği tüketmesi için konuk içinden kapanması anlamına gelir.
+Y **: VM**çalıştırmaya ek olarak, bellek, dokuda bulunan tüm VM 'ler tarafından tüketilecektir. Bu, "oluşturma", "başarısız" veya VM 'lerde bulunan VM 'Lerin, Portal/PowerShell/CLI tarafından serbest bırakılmasının aksine belleği tüketmesi için konuk içinden kapanması anlamına gelir.
 
-**S**: Dört ana bilgisayar Azure Stack var. Kiracımda 56 GB RAM (D5_v2) kullanan 3 VM vardır. VM 'lerden biri 112 GB RAM 'e yeniden boyutlandırıldı (D14_v2) ve panoda kullanılabilir bellek raporlaması kapasite dikey penceresinde 168 GB 'lik bir kullanım ile sonuçlandı. Diğer iki D5_v2 VM 'nin D14_v2 'e sonraki yeniden boyutlandırılması, her biri yalnızca 56GB RAM ile sonuçlandı. Bunun nedeni nedir?
+**S**: dört ana bilgisayar Azure Stack var. Kiracımda 56 GB RAM kullanan 3 VM vardır (D5_v2). VM 'lerden biri 112 GB RAM (D14_v2) olarak yeniden boyutlandırılır ve panoda kullanılabilir bellek raporlaması, kapasite dikey penceresinde 168 GB 'lik bir kullanımın çakışmasına neden oldu. Diğer iki D5_v2 sanal makine D14_v2 yeniden boyutlandırılırken, her biri yalnızca 56GB RAM ile sonuçlandı. Bunun nedeni nedir?
 
-Y: Kullanılabilir bellek, Azure Stack tarafından tutulan dayanıklılık ayırmaya yönelik bir işlevdir. Dayanıklılık yedeği, Azure Stack damgasında en büyük VM boyutunun bir işlevidir. İlk olarak, Damgadaki en büyük VM 56 GB bellektir. VM yeniden boyutlandırılırken, Damgadaki en büyük VM, yalnızca o Kiracı VM tarafından kullanılan belleği artırmayan ancak dayanıklılık Reserve 'i arttığı 112 GB bellek haline geldi. Bu, 56 GB artışı (56 GB ila 112 GB Kiracı VM belleği artışı) ve 112 GB dayanıklılık yedek bellek artışı ile sonuçlandı. Sonraki VM 'Ler yeniden boyutlandırılırken, en büyük VM boyutu 112 GB sanal makine olarak kaldığı için bir sonuç dayanıklılık artışı artmaz. Bellek tüketiminde artış yalnızca Kiracı VM belleği artışına (56 GB) sahiptir. 
+Y: kullanılabilir bellek, Azure Stack tarafından tutulan dayanıklılık ayırmaya **yönelik bir işlevdir**. Dayanıklılık yedeği, Azure Stack damgasında en büyük VM boyutunun bir işlevidir. İlk olarak, Damgadaki en büyük VM 56 GB bellektir. VM yeniden boyutlandırılırken, Damgadaki en büyük VM, yalnızca o Kiracı VM tarafından kullanılan belleği artırmayan ancak dayanıklılık Reserve 'i arttığı 112 GB bellek haline geldi. Bu, 56 GB artışı (56 GB ila 112 GB Kiracı VM belleği artışı) ve 112 GB dayanıklılık yedek bellek artışı ile sonuçlandı. Sonraki VM 'Ler yeniden boyutlandırılırken, en büyük VM boyutu 112 GB sanal makine olarak kaldığı için bir sonuç dayanıklılık artışı artmaz. Bellek tüketiminde artış yalnızca Kiracı VM belleği artışına (56 GB) sahiptir. 
 
 
 > [!NOTE]

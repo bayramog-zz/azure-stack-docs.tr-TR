@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/10/2019
-ms.openlocfilehash: e4f10cb3e5d96942e5fe32b0d8fe3a04cf921521
-ms.sourcegitcommit: 5ef433aa6b75cdfb557fab0ef9308ff2118e66e5
+ms.lastreviewed: 11/21/2019
+ms.openlocfilehash: 8018b4637dadfbca948b2caa0528b113755dc6dd
+ms.sourcegitcommit: 0b783e262ac87ae67929dbd4c366b19bf36740f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73595192"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74310295"
 ---
 # <a name="deploy-a-kubernetes-cluster-with-the-aks-engine-on-azure-stack"></a>Bir Kubernetes kümesini AKS altyapısı ile Azure Stack dağıtma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 AKS altyapısını çalıştıran bir istemci VM 'sinden Azure Stack bir Kubernetes kümesi dağıtabilirsiniz. Bu makalede, bir küme belirtimi yazma, `apimodel.json` dosyası ile küme dağıtma ve Held ile MySQL dağıtarak kümenizi denetleme konusuna baktık.
 
@@ -60,7 +60,7 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     aks-engine get-versions
     ```
 
-4.  `customCloudProfile` bulun ve kiracı portalının URL 'sini sağlayın. Örneğin, `https://portal.local.azurestack.external`. 
+4.  `customCloudProfile` bulun ve kiracı portalının URL 'sini sağlayın. Örneğin: `https://portal.local.azurestack.external` 
 
 5. AD FS kullanıyorsanız `"identitySystem":"adfs"` ekleyin. Örneğin,
 
@@ -74,7 +74,7 @@ Bu bölüm kümeniz için bir API modeli oluşturmaya bakar.
     > [!Note]  
     > Kimlik sisteminiz için Azure AD kullanıyorsanız, **ıdentitysystem** alanını eklemeniz gerekmez.
 
-6. `portalURL` bulun ve kiracı portalının URL 'sini sağlayın. Örneğin, `https://portal.local.azurestack.external`.
+6. `portalURL` bulun ve kiracı portalının URL 'sini sağlayın. Örneğin: `https://portal.local.azurestack.external`
 
 7.  Dizi `masterProfile`, aşağıdaki alanları ayarlayın:
 
@@ -124,7 +124,7 @@ Bir kümeyi dağıtmaya devam edin:
     | Azure-env | AzureStackCloud | Hedef platformunuzun Azure Stack `AzureStackCloud`kullanılacak AKS altyapısını göstermek için. |
     | kimlik sistemi | FS | İsteğe bağlı. Active Directory Federasyon Hizmetleri kullanıyorsanız kimlik yönetimi çözümünüzü belirtin (AD FS). |
     | location | Yerel | Azure Stack için bölge adı. ASDK için bölge `local`olarak ayarlanır. |
-    | resource-group | kuin-RG | Yeni bir kaynak grubunun adını girin veya var olan bir kaynak grubunu seçin. Kaynak adının alfasayısal ve küçük harf olması gerekir. |
+    | resource-group | kuin-RG | Yeni bir kaynak grubu adını girin veya mevcut bir kaynak grubunu seçin. Kaynak adı alfasayısal ve küçük harf olması gerekir. |
     | api modeli | ./Kubernetes-azurestack.exe JSON | Küme yapılandırma dosyasının yolu veya API modeli. |
     | çıkış dizini | kuin-RG | Çıkış dosyası `apimodel.json` ve diğer oluşturulan dosyaları içerecek şekilde dizin adını girin. |
     | istemci kimliği | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Hizmet sorumlusu GUID 'INI girin. Azure Stack yöneticiniz hizmet sorumlusunu oluştururken uygulama KIMLIĞI olarak tanımlanan Istemci KIMLIĞI. |
