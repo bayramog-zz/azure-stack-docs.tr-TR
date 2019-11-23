@@ -1,6 +1,6 @@
 ---
-title: Bilinen sorunları Azure Stack
-description: Azure Stack sürümlerindeki bilinen sorunlar hakkında bilgi edinin.
+title: Azure Stack known issues
+description: Learn about known issues in Azure Stack releases.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -16,26 +16,26 @@ ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: f2426699db940622f952809faa9de58b49065b56
-ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
+ms.openlocfilehash: 3948431fcbf9c601d4ac0a47221713603d4463ac
+ms.sourcegitcommit: e7fe1cb8b13b46d2e2beb8a2fc6f1c74734529c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74298879"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74411106"
 ---
-# <a name="azure-stack-known-issues"></a>Bilinen sorunları Azure Stack
+# <a name="azure-stack-known-issues"></a>Azure Stack known issues
 
-Bu makalede Azure Stack sürümlerindeki bilinen sorunlar listelenmektedir. Yeni sorunlar tanımlandıkları için liste güncellenir.
+This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified.
 
-Farklı bir sürüme yönelik bilinen sorunlara erişmek için, sol taraftaki içindekiler tablosunun üzerindeki sürüm Seçicisi açılan listesini kullanın.
+To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
 ::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
-> Güncelleştirmeyi uygulamadan önce bu bölümü gözden geçirin.
+> Review this section before applying the update.
 ::: moniker-end
 ::: moniker range="<azs-1906"
 > [!IMPORTANT]  
-> Azure Stack örneğiniz ikiden fazla güncelleştirme tarafından arkasındaysa uyumsuz olarak kabul edilir. [Destek almak için en az desteklenen sürüme güncelleştirmeniz](azure-stack-servicing-policy.md#keep-your-system-under-support)gerekir. 
+> If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
 ::: moniker-end
 
 <!---------------------------------------------------------->
@@ -45,204 +45,204 @@ Farklı bir sürüme yönelik bilinen sorunlara erişmek için, sol taraftaki i�
 ::: moniker range="azs-1910"
 ## <a name="portal"></a>Portal
 
-### <a name="administrative-subscriptions"></a>Yönetim abonelikleri
+### <a name="administrative-subscriptions"></a>Administrative subscriptions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1804 sürümü ile tanıtılan iki yönetim aboneliği kullanılmamalıdır. Abonelik türleri **ölçüm** aboneliklerdir ve **Tüketim** aboneliğiydi.
-- Düzeltme: Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, bunları Kullanıcı aboneliklerinde yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
 
-### <a name="subscriptions-lock-blade"></a>Abonelikler kilit dikey penceresi
+### <a name="subscriptions-lock-blade"></a>Subscriptions Lock blade
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yönetici portalında, Kullanıcı aboneliklerinin **kilit** dikey penceresinde **abonelik**belirten iki düğme vardır.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons that say **Subscription**.
+- Occurrence: Common
 
-### <a name="subscription-permissions"></a>Abonelik izinleri
+### <a name="subscription-permissions"></a>Subscription permissions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Azure Stack portallarını kullanarak aboneliğinize ilişkin izinleri görüntüleyemezsiniz.
-- Düzeltme: [izinleri doğrulamak Için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment)kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Occurrence: Common
 
-### <a name="storage-account-settings"></a>Depolama hesabı ayarları
+### <a name="storage-account-settings"></a>Storage account settings
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, depolama hesabı **yapılandırma** dikey penceresinde **güvenlik aktarım türünü**değiştirme seçeneği gösterilir. Özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-### <a name="upload-blob-with-oauth-error"></a>Blob 'u OAuth hatası ile karşıya yükleme
+### <a name="upload-blob-with-oauth-error"></a>Upload blob with OAuth error
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **OAuth (Önizleme)** seçeneğini kullanarak bir blobu karşıya yüklemeye çalıştığınızda, görev bir hata iletisiyle başarısız olur.
-- Düzeltme: SAS seçeneğini kullanarak blobu karşıya yükleyin.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
+- Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
 
-### <a name="upload-blob-option-unsupported"></a>Karşıya yükleme blobu seçeneği desteklenmiyor
+### <a name="upload-blob-option-unsupported"></a>Upload blob option unsupported
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, karşıya yükleme dikey penceresinde bir blob yüklemeye çalıştığınızda **AAD** veya **anahtar kimlik doğrulaması**seçme seçeneği vardır ancak **AAD** Azure Stack desteklenmez.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack.
+- Occurrence: Common
 
-### <a name="load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzu
+### <a name="load-balancer-backend-pool"></a>Load balancer backend pool
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında **yük dengeleyici** arka uç havuzu eklenirken işlem, **yük dengeleyici arka uç havuzu kaydedilemedi**hata iletisiyle sonuçlanır; Ancak, işlem gerçekten başarılı oldu.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed.
+- Occurrence: Common
 
-### <a name="incorrect-tooltip-when-creating-vm"></a>VM oluşturulurken yanlış araç ipucu
+### <a name="incorrect-tooltip-when-creating-vm"></a>Incorrect tooltip when creating VM
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, disk türü Premium SSD ile yönetilen bir disk seçtiğinizde, açılan listede **Işletim sistemi diski**gösterilir. Bu seçeneğin yanındaki araç ipucu, **belirli işletim sistemi disk boyutlarının Azure Ücretsiz hesabı ile ücretsiz kullanılabilir olabileceğini**belirtir; Ancak, bu Azure Stack için geçerli değildir. Ayrıca, liste, Azure Stack için geçerli olmayan **ücretsiz hesap** içerir.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack.
+- Occurrence: Common
 
-### <a name="vpn-troubleshoot-and-metrics"></a>VPN sorun giderme ve ölçümler
+### <a name="vpn-troubleshoot-and-metrics"></a>VPN troubleshoot and metrics
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: bir VPN ağ geçidi kaynağında **VPN sorun giderme** özelliği ve **ölçümleri** , Kullanıcı portalında görüntülenir, ancak bu Azure Stack desteklenmez.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack.
+- Occurrence: Common
 
-### <a name="adding-extension-to-vm-scale-set"></a>Uzantı VM Ölçek kümesine ekleniyor
+### <a name="adding-extension-to-vm-scale-set"></a>Adding extension to VM Scale Set
 
-- Uygulanabilir: Bu sorun 1907 ve üzeri sürümler için geçerlidir.
-- Neden: Kullanıcı portalında, bir sanal makine ölçek kümesi oluşturulduktan sonra, kullanıcı ARABIRIMI kullanıcının uzantı eklemesine izin vermez.
-- Oluşum: ortak
+- Applicable: This issue applies to releases 1907 and later.
+- Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
+- Occurrence: Common
 
-### <a name="delete-a-storage-container"></a>Depolama kapsayıcısını silme
+### <a name="delete-a-storage-container"></a>Delete a storage container
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, bir Kullanıcı bir depolama kapsayıcısını silmeye çalıştığında, Kullanıcı **Azure ilkesi ve RBAC rol ayarlarını geçersiz kıl**seçeneğini değişmediğinde işlem başarısız olur.
-- Düzeltme: **Azure ilkesi ve RBAC rol ayarlarını geçersiz kılmak**için kutunun Işaretli olduğundan emin olun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when a user attempts to delete a storage container, the operation fails when the user does not toggle **Override Azure Policy and RBAC Role settings**.
+- Remediation: Ensure that the box is checked for **Override Azure Policy and RBAC Role settings**.
+- Occurrence: Common
 
-### <a name="refresh-button-on-virtual-machines-fails"></a>Sanal makinelerde yenileme düğmesi başarısız oluyor
+### <a name="refresh-button-on-virtual-machines-fails"></a>Refresh button on virtual machines fails
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, sanal makinelere gidip en üstteki düğmeyi kullanarak yenilemeyi denediğinizde durumlar doğru şekilde güncelleştirilemez. 
-- Düzeltme: yenileme düğmesinin tıklandığına bakılmaksızın durum her 5 dakikada bir otomatik olarak güncelleştirilir. 5 dakika bekleyin ve durumu denetleyin.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you navigate to **Virtual Machines** and try to refresh using the button at the top, the states fail to update accurately.
+- Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
+- Occurrence: Common
 
-### <a name="virtual-network-gateway"></a>Sanal Ağ Geçidi 
+### <a name="virtual-network-gateway"></a>Sanal Ağ Geçidi
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, bir yol tablosu oluşturduğunuzda, bir sonraki atlama türü seçeneğinden biri olarak **sanal ağ geçidi** görüntülenir; Ancak bu Azure Stack desteklenmez.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack.
+- Occurrence: Common
 
 ### <a name="storage-account-options"></a>Depolama hesabı seçenekleri
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında depolama hesaplarının adı **depolama hesabı-blob, dosya, tablo, kuyruk**, ancak **Dosya** Azure Stack tarafından desteklenmez.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**, however **file** is not supported in Azure Stack.
+- Occurrence: Common
 
 ### <a name="storage-account-configuration"></a>Depolama hesabı yapılandırması
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, bir depolama hesabı oluşturduğunuzda ve **yapılandırmasını**görüntülediğinizde, bir AJAX hatasına neden olduğu için yapılandırma değişikliklerini kaydedemezsiniz. 
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error.
+- Occurrence: Common
 
-### <a name="capacity-mnitoring-in-sql-and-mysql-resource-provider-keeps-loading"></a>SQL ve MySQL kaynak sağlayıcısındaki kapasite mnitoring yükleme devam ediyor
+### <a name="capacity-monitoring-in-sql-resource-provider-keeps-loading"></a>Capacity monitoring in SQL resource provider keeps loading
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: SQL ve MySQL kaynak sağlayıcısının geçerli sürümleri, 1910 güncelleştirmesinde bulunan en son Portal değişiklikleriyle uyumlu değildir.
-- Düzeltme: SQL ve MySQL kaynak sağlayıcısı düzeltmesini 1.1.47.0 uygulamak için kaynak sağlayıcısı güncelleştirme işlemini Izleyin. ([SQL RP sürüm 1.1.47.0](https://aka.ms/azurestacksqlrp11470) ve [MySQL RP sürüm 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
-- Oluşum: ortak
+- Applicable: This issue applies to the Azure Stack 1910 update or later, with SQL resource provider version 1.1.33.0 or earlier installed.
+- Cause: The current version of the SQL resource provider is not compatible with some of the latest portal changes in the 1910 update.
+- Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to the 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
+- Occurrence: Common
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 ### <a name="load-balancer"></a>Yük dengeleyici
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir. 
-- Neden: bir yük dengeleyicinin arka uç havuzuna kullanılabilirlik kümesi VM 'Leri eklerken, portalda **yük dengeleyici arka uç havuzunu kaydedemediğini**belirten bir hata iletisi görüntülenir. Bu, portalda bir yüzeysel sorunudur; işlevsellik hala yerinde ve VM 'Ler dahili olarak arka uç havuzuna başarıyla eklendi.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool internally.
+- Occurrence: Common
 
 ### <a name="network-security-groups"></a>Ağ Güvenlik Grupları
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir. 
-- Neden: bir NSG 'de açık bir **Denyalloutbağlanacak** kural oluşturulamıyor çünkü bu, VM dağıtımının tamamlanabilmesi için gereken altyapıya yönelik tüm iç iletişimin tamamlanmasını engelleyecek.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases. 
+- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Occurrence: Common
 
 ### <a name="service-endpoints"></a>Hizmet uç noktaları
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ** dikey penceresinde **hizmet uç noktalarını**kullanma seçeneği gösterilmektedir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 ### <a name="network-interface"></a>Ağ arabirimi
 
-#### <a name="addingremoving-network-interface"></a>Ağ arabirimi ekleniyor/kaldırılıyor
+#### <a name="addingremoving-network-interface"></a>Adding/removing network interface
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: **çalışır** DURUMDAKI bir sanal makineye yeni bir ağ arabirimi eklenemez.
-- Düzeltme: ağ arabirimini eklemeden/kaldırmadan önce sanal makineyi durdurun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding or removing a network interface.
+- Occurrence: Common
 
 #### <a name="primary-network-interface"></a>Birincil ağ arabirimi
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: bir VM 'nin birincil NIC 'si değiştirilemez. Birincil NIC 'nin silinmesi/ayrılması, VM 'yi başlatırken sorunlarla sonuçlanır.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
+- Occurrence: Common
 
 ### <a name="virtual-network-gateway"></a>Sanal Ağ Geçidi
 
 #### <a name="alerts"></a>Uyarılar
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ geçidi** dikey penceresinde **uyarıları**kullanma seçeneği gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 #### <a name="active-active"></a>Etkin-Etkin
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, oluştururken ve **sanal ağ geçidinin**kaynak menüsünde, **etkin-etkin** yapılandırmayı etkinleştirme seçeneği görüntülenir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-#### <a name="vpn-troubleshooter"></a>VPN sorun giderici
+#### <a name="vpn-troubleshooter"></a>VPN troubleshooter
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **Bağlantılar** dikey penceresinde **VPN sorun giderici**adlı bir özellik gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 #### <a name="documentation"></a>Belgeler
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: sanal ağ geçidinin Genel Bakış sayfasında bulunan belge bağlantıları, Azure Stack yerine Azure 'a özgü belgelere bağlanır. Azure Stack belgeleri için aşağıdaki bağlantıları kullanın:
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Use the following links for the Azure Stack documentation:
 
-  - [Ağ Geçidi SKU 'Ları](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
-  - [Yüksek oranda kullanılabilir bağlantılar](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Azure Stack BGP 'yi yapılandırma](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
-  - [ExpressRoute devreleri](azure-stack-connect-expressroute.md)
-  - [Özel IPSec/ıKE ilkeleri belirtme](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## <a name="compute"></a>İşlem
 
-### <a name="vm-boot-diagnostics"></a>VM önyükleme tanılaması
+### <a name="vm-boot-diagnostics"></a>VM boot diagnostics
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yeni bir Windows sanal makinesi (VM) oluştururken şu hata görüntülenebilir: **' VM-adı ' sanal makinesi başlatılamadı. Hata: VM ' VM-adı ' için seri çıkış ayarları güncellenemedi**. Bir VM 'de önyükleme tanılamayı etkinleştirip önyükleme tanılama depolama hesabınızı sildiğinizde hata oluşur.
-- Düzeltme: daha önce kullandığınız adla depolama hesabını yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When creating a new Windows virtual machine (VM), the following error might be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'** . The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
 
-### <a name="consumed-compute-quota"></a>Tüketilen işlem kotası
+### <a name="consumed-compute-quota"></a>Consumed compute quota
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Yeni bir sanal makine oluştururken bu **abonelik, bu konumdaki toplam bölgesel vCPU kapasitesinin kapasitesine sahip olduğu gibi bir hata alabilirsiniz. Bu abonelik tüm 50 toplam bölgesel sanal CPU 'ları kullanıyor.** Bu, kullanılabilir toplam çekirdek kotasına ulaşıldığını gösterir.
-- Düzeltme: işleçinizden ek kota içeren bir eklenti planı eklemesini Isteyin. Geçerli planın kotasının düzenlenmesiyle çalışmaz veya artan kotayı yansıtacaksınız.
-- Oluşum: nadir
+- Applicable: This issue applies to all supported releases.
+- When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.** . This indicates that the quota for total cores available to you has been reached.
+- Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
+- Occurrence: Rare
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
-#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki sırasında oluşturma ve 4 düğümlü Azure Stack ortamlarında güncelleştirme
+#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Create failures during patch and update on 4-node Azure Stack environments
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 3 hata etki alanı kullanılabilirlik kümesinde VM oluşturma ve bir sanal makine ölçek kümesi örneği oluşturma işlemi, 4 düğümlü Azure Stack ortamında güncelleştirme işlemi sırasında **FabricVmPlacementErrorUnsupportedFaultDomainSize** hatasıyla başarısız oluyor.
-- Düzeltme: bir kullanılabilirlik kümesinde 2 hata etki alanı başarıyla bulunan tek VM 'Ler oluşturabilirsiniz. Ancak, 4 düğümlü Azure Stack dağıtımında güncelleştirme işlemi sırasında ölçek kümesi örneği oluşturma yine de kullanılamaz.
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack deployment.
 
-### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
+### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: SSH yetkilendirmesi etkinken oluşturulan bir Ubuntu 18,04 VM, oturum açmak için SSH anahtarlarını kullanmanıza izin vermez.
-- Düzeltme: sağlama sonrasında SSH anahtarları uygulamak veya parola tabanlı kimlik doğrulaması kullanmak için Linux uzantısı için VM erişimi kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
+- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+- Occurrence: Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -253,166 +253,166 @@ Farklı bir sürüme yönelik bilinen sorunlara erişmek için, sol taraftaki i�
 ::: moniker-end
 
 ::: moniker range="azs-1908"
-## <a name="1908-update-process"></a>1908 güncelleştirme işlemi
+## <a name="1908-update-process"></a>1908 update process
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur.
-- Düzeltme: sürüm 1901 ' den (1.1901.0.95) başlayarak, **Şimdi Güncelleştir** ' i ( **sürdürülmez**) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri yükleme bölümünü](azure-stack-apply-updates.md#install-updates-and-monitor-progress)izleyerek güncelleştirme paketini el Ile karşıya yüklemeniz önerilir.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When attempting to install the Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
+- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Install updates section](azure-stack-apply-updates.md#install-updates-and-monitor-progress).
+- Occurrence: Common
 
 ## <a name="portal"></a>Portal
 
-### <a name="administrative-subscriptions"></a>Yönetim abonelikleri
+### <a name="administrative-subscriptions"></a>Administrative subscriptions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1804 sürümü ile tanıtılan iki yönetim aboneliği kullanılmamalıdır. Abonelik türleri **ölçüm** aboneliklerdir ve **Tüketim** aboneliğiydi.
-- Düzeltme: Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, bunları Kullanıcı aboneliklerinde yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
 
-### <a name="subscriptions-properties-blade"></a>Abonelikler Özellikler dikey penceresi
+### <a name="subscriptions-properties-blade"></a>Subscriptions Properties blade
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yönetici portalında, abonelikler için **Özellikler** dikey penceresi doğru yüklenmedi
-- Düzeltme: Bu abonelik özelliklerini, **Abonelikler genel bakış** dikey penceresinin **temel** bileşenler bölmesinde görüntüleyebilirsiniz.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Properties** blade for subscriptions does not load correctly
+- Remediation: You can view these subscription properties in the **Essentials** pane of the **Subscriptions Overview** blade.
+- Occurrence: Common
 
-### <a name="subscriptions-lock-blade"></a>Abonelikler kilit dikey penceresi
+### <a name="subscriptions-lock-blade"></a>Subscriptions Lock blade
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yönetici portalında, Kullanıcı aboneliklerinde **kilit** dikey penceresinde **abonelik**etiketli iki düğme vardır.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons labeled **subscription**.
+- Occurrence: Common
 
-### <a name="subscription-permissions"></a>Abonelik izinleri
+### <a name="subscription-permissions"></a>Subscription permissions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Azure Stack portallarını kullanarak aboneliğinize ilişkin izinleri görüntüleyemezsiniz.
-- Düzeltme: [izinleri doğrulamak Için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment)kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Occurrence: Common
 
-### <a name="storage-account-settings"></a>Depolama hesabı ayarları
+### <a name="storage-account-settings"></a>Storage account settings
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, depolama hesabı **yapılandırma** dikey penceresinde **güvenlik aktarım türünü**değiştirme seçeneği gösterilir. Özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-### <a name="upload-blob"></a>Blobu karşıya yükle
+### <a name="upload-blob"></a>Upload blob
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **OAuth (Önizleme)** seçeneğini kullanarak bir blobu karşıya yüklemeye çalıştığınızda, görev bir hata iletisiyle başarısız olur.
-- Düzeltme: SAS seçeneğini kullanarak blobu karşıya yükleyin.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
+- Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
-### <a name="load-balancer"></a>Load Balancer
+### <a name="load-balancer"></a>Yük Dengeleyici
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir. 
-- Neden: Load Balancer için bir arka uç havuzuna Avaibilme kümesi sanal makineleri eklenirken, portalda **yük dengeleyici arka uç havuzu kaydedilemedi**hatası bildiren bir hata iletisi görüntüleniyor. Bu, portalda bir yüzeysel sorunudur; işlevsellik hala yerinde ve VM 'Ler otomatik olarak arka uç havuzuna başarıyla eklendi. 
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
 
 ### <a name="network-security-groups"></a>Ağ Güvenlik Grupları
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir. 
-- Neden: bir NSG 'de açık bir **Denyalloutbağlanacak** kural oluşturulamıyor çünkü bu, VM dağıtımının tamamlanabilmesi için gereken altyapıya yönelik tüm iç iletişimin tamamlanmasını engelleyecek.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases. 
+- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Occurrence: Common
 
 ### <a name="service-endpoints"></a>Hizmet uç noktaları
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ** dikey penceresinde **hizmet uç noktalarını**kullanma seçeneği gösterilmektedir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 ### <a name="network-interface"></a>Ağ arabirimi
 
-#### <a name="addingremoving-network-interface"></a>Ağ arabirimi ekleniyor/kaldırılıyor
+#### <a name="addingremoving-network-interface"></a>Adding/Removing Network Interface
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: **çalışır** DURUMDAKI bir sanal makineye yeni bir ağ arabirimi eklenemez.
-- Düzeltme: ağ arabirimini eklemeden/kaldırmadan önce sanal makineyi durdurun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
 
-#### <a name="primary-network-interface"></a>Birincil ağ arabirimi
+#### <a name="primary-network-interface"></a>Primary Network Interface
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: **çalışır** DURUMDAKI bir sanal makineye yeni bir ağ arabirimi eklenemez.
-- Düzeltme: ağ arabirimini eklemeden/kaldırmadan önce sanal makineyi durdurun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
 
 ### <a name="virtual-network-gateway"></a>Sanal Ağ Geçidi
 
 #### <a name="alerts"></a>Uyarılar
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ geçidi** dikey penceresinde **uyarıları**kullanma seçeneği gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 #### <a name="active-active"></a>Etkin-Etkin
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, oluştururken ve **sanal ağ geçidinin**kaynak menüsünde, **etkin-etkin** yapılandırmayı etkinleştirme seçeneği görüntülenir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-#### <a name="vpn-troubleshooter"></a>VPN sorun giderici
+#### <a name="vpn-troubleshooter"></a>VPN troubleshooter
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **Bağlantılar** dikey penceresinde **VPN sorun giderici**adlı bir özellik gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 #### <a name="documentation"></a>Belgeler
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: sanal ağ geçidinin Genel Bakış sayfasında bulunan belge bağlantıları, Azure Stack yerine Azure 'a özgü belgelere bağlanır. Azure Stack belgeleri için aşağıdaki bağlantıları kullanın:
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Use the following links for the Azure Stack documentation:
 
-  - [Ağ Geçidi SKU 'Ları](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
-  - [Yüksek oranda kullanılabilir bağlantılar](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Azure Stack BGP 'yi yapılandırma](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
-  - [ExpressRoute devreleri](azure-stack-connect-expressroute.md)
-  - [Özel IPSec/ıKE ilkeleri belirtme](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## <a name="compute"></a>İşlem
 
-### <a name="vm-boot-diagnostics"></a>VM önyükleme tanılaması
+### <a name="vm-boot-diagnostics"></a>VM boot diagnostics
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yeni bir Windows sanal makinesi (VM) oluştururken şu hata görüntülenebilir: **' VM-adı ' sanal makinesi başlatılamadı. Hata: VM ' VM-adı ' için seri çıkış ayarları güncellenemedi**. Bir VM 'de önyükleme tanılamayı etkinleştirip önyükleme tanılama depolama hesabınızı sildiğinizde hata oluşur.
-- Düzeltme: daha önce kullandığınız adla depolama hesabını yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'** . The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
-#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki sırasında oluşturma ve 4 düğümlü Azure Stack ortamlarında güncelleştirme
+#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Create failures during patch and update on 4-node Azure Stack environments
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 3 hata etki alanı kullanılabilirlik kümesinde VM oluşturma ve bir sanal makine ölçek kümesi örneği oluşturma işlemi, 4 düğümlü Azure Stack ortamında güncelleştirme işlemi sırasında **FabricVmPlacementErrorUnsupportedFaultDomainSize** hatasıyla başarısız oluyor.
-- Düzeltme: bir kullanılabilirlik kümesinde 2 hata etki alanı başarıyla bulunan tek VM 'Ler oluşturabilirsiniz. Ancak, 4 düğümlü Azure Stack güncelleştirme işlemi sırasında ölçek kümesi örneği oluşturma yine de kullanılamaz.
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
-### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
+### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: SSH yetkilendirmesi etkinken oluşturulan bir Ubuntu 18,04 VM, oturum açmak için SSH anahtarlarını kullanmanıza izin vermez.
-- Düzeltme: sağlama sonrasında SSH anahtarları uygulamak veya parola tabanlı kimlik doğrulaması kullanmak için Linux uzantısı için VM erişimi kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
+- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+- Occurrence: Common
 
-### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Sanal makine ölçek kümesi sıfırlama parolası çalışmıyor
+### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Virtual machine scale set reset password does not work
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: ölçek kümesi Kullanıcı arabiriminde yeni bir sıfırlama parolası dikey penceresi görünür ancak Azure Stack, henüz bir ölçek kümesindeki parolanın sıfırlanmasını desteklemez.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
+- Remediation: None.
+- Occurrence: Common
 
-### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Ölçek kümesi tanılamasında Rainy bulutu
+### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Rainy cloud on scale set diagnostics
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: sanal makine ölçek kümesine genel bakış sayfası boş bir grafik gösterir. Boş grafiğe tıkladığınızda bir "Rainy Cloud" dikey penceresi açılır. Bu, CPU yüzdesi gibi ölçek kümesi tanılama bilgilerine yönelik bir grafiktir ve geçerli Azure Stack derlemesinde desteklenen bir özellik değildir.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: The virtual machine scale set overview page shows an empty chart. Clicking on the empty chart opens a "rainy cloud" blade. This is the chart for scale set diagnostic information, such as CPU percentage, and is not a feature supported in the current Azure Stack build.
+- Remediation: None.
+- Occurrence: Common
 
-### <a name="virtual-machine-diagnostic-settings-blade"></a>Sanal makine Tanılama ayarları dikey penceresi
+### <a name="virtual-machine-diagnostic-settings-blade"></a>Virtual machine diagnostic settings blade
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.    
-- Neden: sanal makine Tanılama ayarları dikey penceresinde, bir **Application Insights hesabı**ısteyen bir **Havuz** sekmesi vardır. Bu, yeni bir dikey pencerenin sonucudur ve Azure Stack henüz desteklenmemiştir.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.    
+- Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
+- Remediation: None.
+- Occurrence: Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -423,166 +423,166 @@ Farklı bir sürüme yönelik bilinen sorunlara erişmek için, sol taraftaki i�
 ::: moniker-end
 
 ::: moniker range="azs-1907"
-## <a name="1907-update-process"></a>1907 güncelleştirme işlemi
+## <a name="1907-update-process"></a>1907 update process
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1907 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur.
-- Düzeltme: sürüm 1901 ' den (1.1901.0.95) başlayarak, **Şimdi Güncelleştir** ' i ( **sürdürülmez**) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When attempting to install the 1907 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
+- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md).
+- Occurrence: Common
 
 ## <a name="portal"></a>Portal
 
-### <a name="administrative-subscriptions"></a>Yönetim abonelikleri
+### <a name="administrative-subscriptions"></a>Administrative subscriptions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1804 sürümü ile tanıtılan iki yönetim aboneliği kullanılmamalıdır. Abonelik türleri **ölçüm** aboneliklerdir ve **Tüketim** aboneliğiydi.
-- Düzeltme: Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, bunları Kullanıcı aboneliklerinde yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
 
-### <a name="subscriptions-properties-blade"></a>Abonelikler Özellikler dikey penceresi
+### <a name="subscriptions-properties-blade"></a>Subscriptions Properties blade
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yönetici portalında, abonelikler için **Özellikler** dikey penceresi doğru yüklenmedi
-- Düzeltme: Bu abonelik özelliklerini, **Abonelikler genel bakış** dikey penceresinin **temel** bileşenler bölmesinde görüntüleyebilirsiniz.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Properties** blade for subscriptions does not load correctly
+- Remediation: You can view these subscription properties in the **Essentials** pane of the **Subscriptions Overview** blade.
+- Occurrence: Common
 
-### <a name="subscription-permissions"></a>Abonelik izinleri
+### <a name="subscription-permissions"></a>Subscription permissions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Azure Stack portallarını kullanarak aboneliğinize ilişkin izinleri görüntüleyemezsiniz.
-- Düzeltme: [izinleri doğrulamak Için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment)kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Occurrence: Common
 
-### <a name="storage-account-settings"></a>Depolama hesabı ayarları
+### <a name="storage-account-settings"></a>Storage account settings
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, depolama hesabı **yapılandırma** dikey penceresinde **güvenlik aktarım türünü**değiştirme seçeneği gösterilir. Özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-### <a name="upload-blob"></a>Blobu karşıya yükle
+### <a name="upload-blob"></a>Upload blob
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **OAuth (Önizleme)** seçeneğini kullanarak bir blobu karşıya yüklemeye çalıştığınızda, görev bir hata iletisiyle başarısız olur.
-- Düzeltme: SAS seçeneğini kullanarak blobu karşıya yükleyin.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
+- Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
-### <a name="load-balancer"></a>Load Balancer
+### <a name="load-balancer"></a>Yük Dengeleyici
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir. 
-- Neden: Load Balancer için bir arka uç havuzuna Avaibilme kümesi sanal makineleri eklenirken, portalda **yük dengeleyici arka uç havuzu kaydedilemedi**hatası bildiren bir hata iletisi görüntüleniyor. Bu, portalda bir yüzeysel sorunudur; işlevsellik hala yerinde ve VM 'Ler otomatik olarak arka uç havuzuna başarıyla eklendi. 
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
 
 ### <a name="network-security-groups"></a>Ağ Güvenlik Grupları
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir. 
-- Neden: bir NSG 'de açık bir **Denyalloutbağlanacak** kural oluşturulamıyor çünkü bu, VM dağıtımının tamamlanabilmesi için gereken altyapıya yönelik tüm iç iletişimin tamamlanmasını engelleyecek.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases. 
+- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Occurrence: Common
 
 ### <a name="service-endpoints"></a>Hizmet uç noktaları
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ** dikey penceresinde **hizmet uç noktalarını**kullanma seçeneği gösterilmektedir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 ### <a name="network-interface"></a>Ağ arabirimi
 
-#### <a name="addingremoving-network-interface"></a>Ağ arabirimi ekleniyor/kaldırılıyor
+#### <a name="addingremoving-network-interface"></a>Adding/Removing Network Interface
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: **çalışır** DURUMDAKI bir sanal makineye yeni bir ağ arabirimi eklenemez.
-- Düzeltme: ağ arabirimini eklemeden/kaldırmadan önce sanal makineyi durdurun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
 
-#### <a name="primary-network-interface"></a>Birincil ağ arabirimi
+#### <a name="primary-network-interface"></a>Primary Network Interface
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: **çalışır** DURUMDAKI bir sanal makineye yeni bir ağ arabirimi eklenemez.
-- Düzeltme: ağ arabirimini eklemeden/kaldırmadan önce sanal makineyi durdurun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
 
 ### <a name="virtual-network-gateway"></a>Sanal Ağ Geçidi
 
 #### <a name="alerts"></a>Uyarılar
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ geçidi** dikey penceresinde **uyarıları**kullanma seçeneği gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 #### <a name="active-active"></a>Etkin-Etkin
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, oluştururken ve **sanal ağ geçidinin**kaynak menüsünde, **etkin-etkin** yapılandırmayı etkinleştirme seçeneği görüntülenir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-#### <a name="vpn-troubleshooter"></a>VPN sorun giderici
+#### <a name="vpn-troubleshooter"></a>VPN troubleshooter
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **Bağlantılar** dikey penceresinde **VPN sorun giderici**adlı bir özellik gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-### <a name="network-connection-type"></a>Ağ bağlantısı türü
+### <a name="network-connection-type"></a>Network Connection Type
 
-- Uygulanabilir: Bu sorun, 1906 veya 1907 ortamları için geçerlidir. 
-- Neden: Kullanıcı portalında, **AddConnection** dikey penceresinde **VNET-VNET**kullanma seçeneği gösterilmektedir. Bu özellik şu anda Azure Stack desteklenmiyor. 
-- Oluşum: ortak 
+- Applicable: This issue applies to any 1906 or 1907 environment. 
+- Cause: In the user portal, the **AddConnection** blade shows an option to use **VNet-to-VNet**. This feature is currently not supported in Azure Stack. 
+- Occurrence: Common 
 
 #### <a name="documentation"></a>Belgeler
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: sanal ağ geçidinin Genel Bakış sayfasında bulunan belge bağlantıları, Azure Stack yerine Azure 'a özgü belgelere bağlanır. Azure Stack belgeleri için aşağıdaki bağlantıları kullanın:
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Use the following links for the Azure Stack documentation:
 
-  - [Ağ Geçidi SKU 'Ları](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
-  - [Yüksek oranda kullanılabilir bağlantılar](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Azure Stack BGP 'yi yapılandırma](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
-  - [ExpressRoute devreleri](azure-stack-connect-expressroute.md)
-  - [Özel IPSec/ıKE ilkeleri belirtme](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ## <a name="compute"></a>İşlem
 
-### <a name="vm-boot-diagnostics"></a>VM önyükleme tanılaması
+### <a name="vm-boot-diagnostics"></a>VM boot diagnostics
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yeni bir Windows sanal makinesi (VM) oluştururken şu hata görüntülenebilir: **' VM-adı ' sanal makinesi başlatılamadı. Hata: VM ' VM-adı ' için seri çıkış ayarları güncellenemedi**. Bir VM 'de önyükleme tanılamayı etkinleştirip önyükleme tanılama depolama hesabınızı sildiğinizde hata oluşur.
-- Düzeltme: daha önce kullandığınız adla depolama hesabını yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'** . The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
-#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki sırasında oluşturma ve 4 düğümlü Azure Stack ortamlarında güncelleştirme
+#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Create failures during patch and update on 4-node Azure Stack environments
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 3 hata etki alanı kullanılabilirlik kümesinde VM oluşturma ve bir sanal makine ölçek kümesi örneği oluşturma işlemi, 4 düğümlü Azure Stack ortamında güncelleştirme işlemi sırasında **FabricVmPlacementErrorUnsupportedFaultDomainSize** hatasıyla başarısız oluyor.
-- Düzeltme: bir kullanılabilirlik kümesinde 2 hata etki alanı başarıyla bulunan tek VM 'Ler oluşturabilirsiniz. Ancak, 4 düğümlü Azure Stack güncelleştirme işlemi sırasında ölçek kümesi örneği oluşturma yine de kullanılamaz.
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
-### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
+### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: SSH yetkilendirmesi etkinken oluşturulan bir Ubuntu 18,04 VM, oturum açmak için SSH anahtarlarını kullanmanıza izin vermez.
-- Düzeltme: sağlama sonrasında SSH anahtarları uygulamak veya parola tabanlı kimlik doğrulaması kullanmak için Linux uzantısı için VM erişimi kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
+- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+- Occurrence: Common
 
-### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Sanal makine ölçek kümesi sıfırlama parolası çalışmıyor
+### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Virtual machine scale set reset password does not work
 
-- Uygulanabilir: Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
-- Neden: ölçek kümesi Kullanıcı arabiriminde yeni bir sıfırlama parolası dikey penceresi görünür ancak Azure Stack, henüz bir ölçek kümesindeki parolanın sıfırlanmasını desteklemez.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to the 1906 and 1907 releases.
+- Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
+- Remediation: None.
+- Occurrence: Common
 
-### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Ölçek kümesi tanılamasında Rainy bulutu
+### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Rainy cloud on scale set diagnostics
 
-- Uygulanabilir: Bu sorun 1906 ve 1907 sürümleri için geçerlidir.
-- Neden: sanal makine ölçek kümesine genel bakış sayfası boş bir grafik gösterir. Boş grafiğe tıkladığınızda bir "Rainy Cloud" dikey penceresi açılır. Bu, CPU yüzdesi gibi ölçek kümesi tanılama bilgilerine yönelik bir grafiktir ve geçerli Azure Stack derlemesinde desteklenen bir özellik değildir.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to the 1906 and 1907 releases.
+- Cause: The virtual machine scale set overview page shows an empty chart. Clicking on the empty chart opens a "rainy cloud" blade. This is the chart for scale set diagnostic information, such as CPU percentage, and is not a feature supported in the current Azure Stack build.
+- Remediation: None.
+- Occurrence: Common
 
-### <a name="virtual-machine-diagnostic-settings-blade"></a>Sanal makine Tanılama ayarları dikey penceresi
+### <a name="virtual-machine-diagnostic-settings-blade"></a>Virtual machine diagnostic settings blade
 
-- Uygulanabilir: Bu sorun 1906 ve 1907 sürümleri için geçerlidir.    
-- Neden: sanal makine Tanılama ayarları dikey penceresinde, bir **Application Insights hesabı**ısteyen bir **Havuz** sekmesi vardır. Bu, yeni bir dikey pencerenin sonucudur ve Azure Stack henüz desteklenmemiştir.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to the 1906 and 1907 releases.    
+- Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
+- Remediation: None.
+- Occurrence: Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -593,169 +593,169 @@ Farklı bir sürüme yönelik bilinen sorunlara erişmek için, sol taraftaki i�
 ::: moniker-end
 
 ::: moniker range="azs-1906"
-## <a name="1906-update-process"></a>1906 güncelleştirme işlemi
+## <a name="1906-update-process"></a>1906 update process
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1906 Azure Stack güncelleştirme yüklenmeye çalışıldığında, güncelleştirmenin durumu başarısız olabilir ve durumu **PreparationFailed**olarak değişebilir. Bu, güncelleştirme kaynak sağlayıcısı 'nın (URP) dosyaları depolama kapsayıcısından işlenmek üzere bir iç altyapı paylaşımında doğru bir şekilde aktarmaması nedeniyle oluşur. 
-- Düzeltme: sürüm 1901 ' den (1.1901.0.95) başlayarak, **Şimdi Güncelleştir** ' i ( **sürdürülmez**) tıklayarak bu soruna geçici bir çözüm bulabilirsiniz. URP daha sonra önceki girişimden dosyaları temizler ve indirmeyi yeniden başlatır. Sorun devam ederse, [güncelleştirmeleri içeri ve yükleme güncelleştirmelerini](azure-stack-apply-updates.md)izleyerek güncelleştirme paketini el ile karşıya yüklemeniz önerilir.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When attempting to install the 1906 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. 
+- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md).
+- Occurrence: Common
 
 ## <a name="portal"></a>Portal
 
-### <a name="administrative-subscriptions"></a>Yönetim abonelikleri
+### <a name="administrative-subscriptions"></a>Administrative subscriptions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 1804 sürümü ile tanıtılan iki yönetim aboneliği kullanılmamalıdır. Abonelik türleri **ölçüm** aboneliklerdir ve **Tüketim** aboneliğiydi.
-- Düzeltme: Bu iki abonelik üzerinde çalışan kaynaklarınız varsa, bunları Kullanıcı aboneliklerinde yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
 
-### <a name="subscription-resources"></a>Abonelik kaynakları
+### <a name="subscription-resources"></a>Subscription resources
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı aboneliklerinin silinmesi yalnız bırakılmış kaynaklarda sonuçlanır.
-- Düzeltme: önce kullanıcı kaynaklarını veya tüm kaynak grubunu silin ve ardından Kullanıcı aboneliklerini silin.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: Deleting user subscriptions results in orphaned resources.
+- Remediation: First delete user resources or the entire resource group, and then delete the user subscriptions.
+- Occurrence: Common
 
-### <a name="subscription-permissions"></a>Abonelik izinleri
+### <a name="subscription-permissions"></a>Subscription permissions
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Azure Stack portallarını kullanarak aboneliğinize ilişkin izinleri görüntüleyemezsiniz.
-- Düzeltme: [izinleri doğrulamak Için PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment)kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Occurrence: Common
 
-### <a name="subscriptions-properties-blade"></a>Abonelikler Özellikler dikey penceresi
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yönetici portalında, abonelikler için **Özellikler** dikey penceresi doğru yüklenmedi
-- Düzeltme: bu abonelikler özelliklerini abonelikler genel bakış dikey penceresinin temel bileşenler bölmesinde görüntüleyebilirsiniz.
-- Oluşum: ortak
+### <a name="subscriptions-properties-blade"></a>Subscriptions Properties blade
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Properties** blade for Subscriptions does not load correctly
+- Remediation: You can view these subscriptions properties in the Essentials pane of the Subscriptions Overview blade
+- Occurrence: Common
 
-### <a name="storage-account-settings"></a>Depolama hesabı ayarları
+### <a name="storage-account-settings"></a>Storage account settings
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, depolama hesabı **yapılandırma** dikey penceresinde **güvenlik aktarım türünü**değiştirme seçeneği gösterilir. Özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-### <a name="upload-blob"></a>Blobu karşıya yükle
+### <a name="upload-blob"></a>Upload blob
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **OAuth (Önizleme)** seçeneğini kullanarak bir blobu karşıya yüklemeye çalıştığınızda, görev bir hata iletisiyle başarısız olur.
-- Düzeltme: SAS seçeneğini kullanarak blobu karşıya yükleyin.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
+- Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
 
-### <a name="update"></a>Güncelleştirme
+### <a name="update"></a>Güncelleştir
 
-- Uygulanabilir: Bu sorun 1906 sürümü için geçerlidir.
-- Neden: operatör portalında, düzeltmenin güncelleştirme durumu güncelleştirme için yanlış bir durum gösterir. İlk durum, güncelleştirme devam ediyor olsa bile güncelleştirmenin yüklenemediğini belirtir.
-- Düzeltme: portalı yenileyin ve durum "sürüyor" olarak güncelleşecek.
-- Oluşum: aralıklı
+- Applicable: This issue applies to the 1906 release.
+- Cause: In the operator portal, update status for the hotfix shows an incorrect state for the update. Initial state indicates that the update failed to install, even though it is still in progress.
+- Remediation: Refresh the portal and the state will update to "in progress."
+- Occurrence: Intermittent
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 ### <a name="service-endpoints"></a>Hizmet uç noktaları
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ** dikey penceresinde **hizmet uç noktalarını**kullanma seçeneği gösterilmektedir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 ### <a name="network-interface"></a>Ağ arabirimi
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: **çalışır** DURUMDAKI bir sanal makineye yeni bir ağ arabirimi eklenemez.
-- Düzeltme: ağ arabirimini eklemeden/kaldırmadan önce sanal makineyi durdurun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
 
 ### <a name="virtual-network-gateway"></a>Sanal Ağ Geçidi
 
 #### <a name="alerts"></a>Uyarılar
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **sanal ağ geçidi** dikey penceresinde **uyarıları**kullanma seçeneği gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 #### <a name="active-active"></a>Etkin-Etkin
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, oluştururken ve **sanal ağ geçidinin**kaynak menüsünde, **etkin-etkin** yapılandırmayı etkinleştirme seçeneği görüntülenir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
-#### <a name="vpn-troubleshooter"></a>VPN sorun giderici
+#### <a name="vpn-troubleshooter"></a>VPN troubleshooter
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, **Bağlantılar** dikey penceresinde **VPN sorun giderici**adlı bir özellik gösterilir. Bu özellik şu anda Azure Stack desteklenmiyor.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
 
 #### <a name="documentation"></a>Belgeler
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: sanal ağ geçidinin Genel Bakış sayfasında bulunan belge bağlantıları, Azure Stack yerine Azure 'a özgü belgelere bağlanır. Azure Stack belgeler için lütfen aşağıdaki bağlantıları kullanın:
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
 
-  - [Ağ Geçidi SKU 'Ları](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
-  - [Yüksek oranda kullanılabilir bağlantılar](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Azure Stack BGP 'yi yapılandırma](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
-  - [ExpressRoute devreleri](azure-stack-connect-expressroute.md)
-  - [Özel IPSec/ıKE ilkeleri belirtme](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ### <a name="load-balancer"></a>Yük dengeleyici
 
-#### <a name="add-backend-pool"></a>Arka uç Havuzu Ekle
+#### <a name="add-backend-pool"></a>Add backend pool
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında bir **Load Balancer** **arka uç havuzu** eklemeye çalışırsanız, işlem hata iletisiyle başarısız olur **Load Balancer güncelleştirilemedi...**
-- Düzeltme: arka uç havuzunu bir yük dengeleyici kaynağıyla ilişkilendirmek için PowerShell, CLı veya Kaynak Yöneticisi şablonu kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **failed to update Load Balancer...** .
+- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Occurrence: Common
 
-#### <a name="create-inbound-nat"></a>Gelen NAT oluşturma
+#### <a name="create-inbound-nat"></a>Create inbound NAT
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: Kullanıcı portalında, bir **Load Balancer**Için BIR **gelen NAT kuralı** oluşturmaya çalışırsanız, işlem hata iletisiyle başarısız olur **Load Balancer güncelleştirilemedi...**
-- Düzeltme: arka uç havuzunu bir yük dengeleyici kaynağıyla ilişkilendirmek için PowerShell, CLı veya Kaynak Yöneticisi şablonu kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...** .
+- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Occurrence: Common
 
 ## <a name="compute"></a>İşlem
 
-### <a name="vm-boot-diagnostics"></a>VM önyükleme tanılaması
+### <a name="vm-boot-diagnostics"></a>VM boot diagnostics
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: yeni bir Windows sanal makinesi (VM) oluştururken şu hata görüntülenebilir: **' VM-adı ' sanal makinesi başlatılamadı. Hata: VM ' VM-adı ' için seri çıkış ayarları güncellenemedi**. Bir VM 'de önyükleme tanılamayı etkinleştirip önyükleme tanılama depolama hesabınızı sildiğinizde hata oluşur.
-- Düzeltme: daha önce kullandığınız adla depolama hesabını yeniden oluşturun.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'** . The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
 
 
-#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Düzeltme eki sırasında oluşturma ve 4 düğümlü Azure Stack ortamlarında güncelleştirme
+#### <a name="create-failures-during-patch-and-update-on-4-node-azure-stack-environments"></a>Create failures during patch and update on 4-node Azure Stack environments
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: 3 hata etki alanı kullanılabilirlik kümesinde VM oluşturma ve bir sanal makine ölçek kümesi örneği oluşturma işlemi, 4 düğümlü Azure Stack ortamında güncelleştirme işlemi sırasında **FabricVmPlacementErrorUnsupportedFaultDomainSize** hatasıyla başarısız oluyor.
-- Düzeltme: bir kullanılabilirlik kümesinde 2 hata etki alanı başarıyla bulunan tek VM 'Ler oluşturabilirsiniz. Ancak, 4 düğümlü Azure Stack güncelleştirme işlemi sırasında ölçek kümesi örneği oluşturma yine de kullanılamaz.
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
-### <a name="ubuntu-ssh-access"></a>Ubuntu SSH erişimi
+### <a name="ubuntu-ssh-access"></a>Ubuntu SSH access
 
-- Uygulanabilir: Bu sorun desteklenen tüm yayınlar için geçerlidir.
-- Neden: SSH yetkilendirmesi etkinken oluşturulan bir Ubuntu 18,04 VM, oturum açmak için SSH anahtarlarını kullanmanıza izin vermez.
-- Düzeltme: sağlama sonrasında SSH anahtarları uygulamak veya parola tabanlı kimlik doğrulaması kullanmak için Linux uzantısı için VM erişimi kullanın.
-- Oluşum: ortak
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
+- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+- Occurrence: Common
 
-### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Sanal makine ölçek kümesi sıfırlama parolası çalışmıyor
+### <a name="virtual-machine-scale-set-reset-password-does-not-work"></a>Virtual machine scale set reset password does not work
 
-- Uygulanabilir: Bu sorun 1906 sürümü için geçerlidir.
-- Neden: ölçek kümesi Kullanıcı arabiriminde yeni bir sıfırlama parolası dikey penceresi görünür ancak Azure Stack, henüz bir ölçek kümesindeki parolanın sıfırlanmasını desteklemez.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to the 1906 release.
+- Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
+- Remediation: None.
+- Occurrence: Common
 
-### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Ölçek kümesi tanılamasında Rainy bulutu
+### <a name="rainy-cloud-on-scale-set-diagnostics"></a>Rainy cloud on scale set diagnostics
 
-- Uygulanabilir: Bu sorun 1906 sürümü için geçerlidir.
-- Neden: sanal makine ölçek kümesine genel bakış sayfası boş bir grafik gösterir. Boş grafiğe tıkladığınızda bir "Rainy Cloud" dikey penceresi açılır. Bu, CPU yüzdesi gibi ölçek kümesi tanılama bilgilerine yönelik bir grafiktir ve geçerli Azure Stack derlemesinde desteklenen bir özellik değildir.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to the 1906 release.
+- Cause: The virtual machine scale set overview page shows an empty chart. Clicking on the empty chart opens a "rainy cloud" blade. This is the chart for scale set diagnostic information, such as CPU percentage, and is not a feature supported in the current Azure Stack build.
+- Remediation: None.
+- Occurrence: Common
 
-### <a name="virtual-machine-diagnostic-settings-blade"></a>Sanal makine Tanılama ayarları dikey penceresi
+### <a name="virtual-machine-diagnostic-settings-blade"></a>Virtual machine diagnostic settings blade
 
-- Uygulanabilir: Bu sorun 1906 sürümü için geçerlidir.
-- Neden: sanal makine Tanılama ayarları dikey penceresinde, bir **Application Insights hesabı**ısteyen bir **Havuz** sekmesi vardır. Bu, yeni bir dikey pencerenin sonucudur ve Azure Stack henüz desteklenmemiştir.
-- Düzeltme: yok.
-- Oluşum: ortak
+- Applicable: This issue applies to the 1906 release.
+- Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
+- Remediation: None.
+- Occurrence: Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
@@ -768,57 +768,57 @@ Farklı bir sürüme yönelik bilinen sorunlara erişmek için, sol taraftaki i�
 ::: moniker range=">=azs-1906"
 ## <a name="archive"></a>Arşiv
 
-Daha eski bir sürüm için arşivlenmiş bilinen sorunlara erişmek için, sol taraftaki içindekiler tablosunun üzerindeki sürüm Seçicisi açılan listesini kullanın ve görmek istediğiniz sürümü seçin.
+To access archived known issues for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Güncelleştirme etkinliği denetim listesini gözden geçir](release-notes-checklist.md)
-- [Güvenlik güncelleştirmelerinin listesini gözden geçirin](release-notes-security-updates.md)
+- [Review update activity checklist](release-notes-checklist.md)
+- [Review list of security updates](release-notes-security-updates.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
 ::: moniker range="azs-1905"
-## <a name="1905-archived-known-issues"></a>1905 arşivlenmiş bilinen sorunlar
+## <a name="1905-archived-known-issues"></a>1905 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1904"
-## <a name="1904-archived-known-issues"></a>1904 arşivlenmiş bilinen sorunlar
+## <a name="1904-archived-known-issues"></a>1904 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1903"
-## <a name="1903-archived-known-issues"></a>1903 arşivlenmiş bilinen sorunlar
+## <a name="1903-archived-known-issues"></a>1903 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1902"
-## <a name="1902-archived-known-issues"></a>1902 arşivlenmiş bilinen sorunlar
+## <a name="1902-archived-known-issues"></a>1902 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1901"
-## <a name="1901-archived-known-issues"></a>1901 arşivlenmiş bilinen sorunlar
+## <a name="1901-archived-known-issues"></a>1901 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1811"
-## <a name="1811-archived-known-issues"></a>1811 arşivlenmiş bilinen sorunlar
+## <a name="1811-archived-known-issues"></a>1811 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1809"
-## <a name="1809-archived-known-issues"></a>1809 arşivlenmiş bilinen sorunlar
+## <a name="1809-archived-known-issues"></a>1809 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1808"
-## <a name="1808-archived-known-issues"></a>1808 arşivlenmiş bilinen sorunlar
+## <a name="1808-archived-known-issues"></a>1808 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1807"
-## <a name="1807-archived-known-issues"></a>1807 arşivlenmiş bilinen sorunlar
+## <a name="1807-archived-known-issues"></a>1807 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1805"
-## <a name="1805-archived-known-issues"></a>1805 arşivlenmiş bilinen sorunlar
+## <a name="1805-archived-known-issues"></a>1805 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1804"
-## <a name="1804-archived-known-issues"></a>1804 arşivlenmiş bilinen sorunlar
+## <a name="1804-archived-known-issues"></a>1804 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1803"
-## <a name="1803-archived-known-issues"></a>1803 arşivlenmiş bilinen sorunlar
+## <a name="1803-archived-known-issues"></a>1803 archived known issues
 ::: moniker-end
 ::: moniker range="azs-1802"
-## <a name="1802-archived-known-issues"></a>1802 arşivlenmiş bilinen sorunlar
+## <a name="1802-archived-known-issues"></a>1802 archived known issues
 ::: moniker-end
 
 ::: moniker range="<azs-1906"
-[Azure Stack bilinen sorunların eski sürümlerine TechNet Gallery ' de](https://aka.ms/azsarchivedrelnotes)erişebilirsiniz. Bu arşivlenmiş belgeler yalnızca başvuru amacıyla sağlanır ve bu sürümler için destek göstermez. Azure Stack desteği hakkında bilgi için bkz. [Azure Stack hizmet ilkesi](azure-stack-servicing-policy.md). Daha fazla yardım için Microsoft Müşteri Destek Hizmetleri 'ne başvurun.
+You can access [older versions of Azure Stack known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
