@@ -19,7 +19,7 @@ ms.locfileid: "71961673"
 ---
 # <a name="introduction-to-azure-stack-vms"></a>Azure Stack VM 'lerine giriş
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure Stack, isteğe bağlı ve ölçeklenebilir bilgi işlem kaynağı türü olarak sanal makineler (VM) sağlar. Bilgi işlem ortamı üzerinde daha fazla denetime ihtiyacınız varsa, bir VM seçebilirsiniz. Bu makalede, ilk VM 'nizi oluşturmadan önce ayrıntılar sağlanmaktadır.
 
@@ -27,11 +27,11 @@ Azure Stack VM, kümeleri veya ayrı makineleri yönetmeye gerek kalmadan sanall
 
 Azure Stack VM 'Leri çeşitli yollarla kullanabilirsiniz. Örneğin:
 
-- **Geliştirme ve test**: Azure Stack VM 'Ler, bir uygulamayı kod ve test etmek için belirli bir yapılandırmaya sahip bir bilgisayar oluşturmanızı sağlar.
+- **Geliştirme ve test**: Azure Stack VM 'ler, bir uygulamayı kod ve test etmek için gerekli olan belirli bir yapılandırmaya sahip bir bilgisayar oluşturmanıza olanak sağlar.
 
-- **Buluttaki uygulamalar**: Uygulamanız için talepler dalgalanabileceğinden, bunu Azure Stack sanal makinede çalıştırmak ekonomik bir anlam verebilir. İhtiyacınız olduğunda ek VM 'Ler için ödeme yaparsınız ve bunu yapmazsanız kapatıyor olursunuz.
+- **Buluttaki uygulamalar**: uygulamanızın talebi dalgalanabileceğinden, bunu Azure Stack bir sanal makinede çalıştırmak ekonomik bir anlam verebilir. İhtiyacınız olduğunda ek VM 'Ler için ödeme yaparsınız ve bunu yapmazsanız kapatıyor olursunuz.
 
-- **Genişletilmiş veri merkezi**: Azure Stack bir sanal ağdaki VM 'Ler kuruluşunuzun ağına veya Azure 'a bağlanabilir.
+- **Genişletilmiş veri merkezi**: Azure Stack bir sanal ağdaki VM 'ler, kuruluşunuzun ağına veya Azure 'a bağlanabilir.
 
 Uygulamanızın kullandığı VM 'Ler, gereksinimlerinizi karşılamak için gerekli olan herhangi bir şekilde ölçeklenebilen veya ölçeklendirebilir.
 
@@ -79,23 +79,23 @@ Kendi görüntünüzü karşıya yüklemeyi ve kullanmayı tercih edebilirsiniz.
 VM uzantıları, dağıtım sonrası yapılandırma ve otomatikleştirilmiş görevler aracılığıyla sanal makinenize ek yetenekler sağlar.
 Uzantıları kullanarak şu genel görevleri gerçekleştirebilirsiniz:
 
-- **Özel komut dosyalarını çalıştır**: Özel Betik uzantısı, VM sağlandığında komut dosyanızı çalıştırarak VM 'deki iş yüklerini yapılandırmanıza yardımcı olur.
+- **Özel komut dosyalarını çalıştır**: özel betik UZANTıSı, VM sağlandığında komut DOSYANıZı çalıştırarak VM 'deki iş yüklerini yapılandırmanıza yardımcı olur.
 
-- **Yapılandırma dağıtma ve yönetme**: PowerShell Istenen durum yapılandırması (DSC) uzantısı, yapılandırmaları ve ortamları yönetmek için bir VM 'de DSC ayarlamanıza yardımcı olur.
+- **Yapılandırmaları dağıtma ve yönetme**: PowerShell Istenen durum YAPıLANDıRMASı (DSC) uzantısı, yapılandırmaları ve ortamları yönetmek IÇIN bir VM 'de DSC ayarlamanıza yardımcı olur.
 
-- **Tanılama verilerini topla**: Azure Tanılama uzantısı, sanal makineyi uygulamanızın durumunu izlemek için kullanılabilecek tanılama verilerini toplayacak şekilde yapılandırmanıza yardımcı olur.
+- **Tanılama verilerini topla**: Azure tanılama uzantısı, sanal makineyi uygulamanızın durumunu izlemek için kullanılabilecek tanılama verilerini toplayacak şekilde yapılandırmanıza yardımcı olur.
 
 ### <a name="related-resources"></a>İlgili kaynaklar
 
 Aşağıdaki tablodaki kaynaklar VM tarafından kullanılır ve VM oluşturulduğunda bulunmalı veya oluşturulması gerekir:
 
-|Resource|Gerekli|Açıklama|
+|Kaynak|Gerekli|Açıklama|
 |---------|---------|---------|
-|Resource group|Evet|VM bir kaynak grubunda yer almalıdır.|
+|Kaynak grubu|Yes|VM bir kaynak grubunda yer almalıdır.|
 |Depolama hesabı|Hayır|Yönetilen diskler kullanılıyorsa VM 'nin sanal sabit disklerini depolaması için depolama hesabının olması gerekmez. <br>Yönetilmeyen diskler kullanılıyorsa VM 'nin sanal sabit disklerini depolaması için depolama hesabının olması gerekir.|
-|Sanal ağ|Evet|VM’in bir sanal ağa üye olması gerekir.|
-|Ortak IP adresi|Hayır|VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir.|
-|Ağ arabirimi|Evet|VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır.|
+|Sanal ağ|Yes|VM’in bir sanal ağa üye olması gerekir.|
+|Genel IP adresi|Hayır|VM, uzaktan erişim için atanmış bir genel IP adresine sahip olabilir.|
+|Ağ arabirimi|Yes|VM’in ağda iletişim kurabilmek için ağ arabirimine ihtiyacı vardır.|
 |Veri diskleri|Hayır|VM, depolama olanaklarını genişletmek için veri disklerine sahip olabilir.|
 
 ## <a name="create-your-first-vm"></a>İlk sanal makineyi oluşturma

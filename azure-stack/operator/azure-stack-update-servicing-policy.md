@@ -24,7 +24,7 @@ ms.locfileid: "72019460"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack hizmet ilkesi
 
-*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri*
 
 Bu makalede, Azure Stack tümleşik sistemlere yönelik bakım ilkesi, sisteminizi desteklenen bir durumda tutmak için yapmanız gerekenler ve nasıl destek alınacağı açıklanmaktadır.
 

@@ -28,7 +28,7 @@ Bu makalede Ruby ve bir Ruby on rayın Web çerçevesi kullanılmaktadır.
 
 2. VM ağı bölmesinde, aşağıdaki bağlantı noktalarına erişilebilir olduğundan emin olun:
 
-    | Port | Protocol | Açıklama |
+    | Bağlantı noktası | Protokol | Açıklama |
     | --- | --- | --- |
     | 80 | HTTP | Köprü Metni Aktarım Protokolü (HTTP), sunuculardan Web sayfalarını teslim etmek için kullanılan protokoldür. İstemciler bir DNS adı veya IP adresi ile HTTP aracılığıyla bağlanır. |
     | 443 | HTTPS | Köprü Metni Aktarım Protokolü güvenli (HTTPS), bir güvenlik sertifikası gerektiren ve şifreli bilgi iletimi sağlayan güvenli bir HTTP sürümüdür. |
@@ -68,7 +68,7 @@ Bu makalede Ruby ve bir Ruby on rayın Web çerçevesi kullanılmaktadır.
     ```
 
     > [!Note]  
-    > Ruby on raya bağımlılıklarını yüklerken, @no__t tekrar tekrar çalıştırmanız gerekebilir. Yükleme başarısız olursa, hata günlüklerini gözden geçirin ve sorunları çözün.
+    > Ruby on rayları bağımlılıklarını yüklerken `sudo gem install bundler`tekrar tekrar çalıştırmanız gerekebilir. Yükleme başarısız olursa, hata günlüklerini gözden geçirin ve sorunları çözün.
 
 4. Yüklemenizi doğrulayın. SSH oturumunuzda sanal makinenize hala bağlı olduğunuzda, aşağıdaki komutu girin:
 

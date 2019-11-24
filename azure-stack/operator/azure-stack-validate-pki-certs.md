@@ -52,7 +52,7 @@ Hazırlık Denetleyicisi aracı aşağıdaki sertifika doğrulamaları gerçekle
 > [!IMPORTANT]  
 > PKI sertifikası bir PFX dosyasıdır ve parola, hassas bilgiler olarak değerlendirilmelidir.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Azure Stack dağıtımı için PKI sertifikalarını doğrulamadan önce sisteminizin aşağıdaki önkoşulları karşılaması gerekir:
 
@@ -71,7 +71,7 @@ Dağıtım ve gizli anahtar döndürme için Azure Stack PKI sertifikalarını d
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ```
 
-2. Sertifika dizin yapısını oluşturun. Aşağıdaki örnekte, `<c:\certificates>` ' ı istediğiniz yeni bir dizin yolu ile değiştirebilirsiniz.
+2. Sertifika dizin yapısını oluşturun. Aşağıdaki örnekte `<c:\certificates>` tercih ettiğiniz yeni bir dizin yolu olarak değiştirebilirsiniz.
     ```powershell  
     New-Item C:\Certificates -ItemType Directory
     
@@ -252,23 +252,23 @@ SQL/MySQL veya App Services dağıtımları planlansa, hizmet olarak platform (P
 
 ## <a name="certificates"></a>Sertifikalar
 
-| Dizinden | Sertifika |
+| Dizin | Sertifika |
 | ---    | ----        |
-| acsBlob | wildcard_blob_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| ACSQueue  |  wildcard_queue_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| ACSTable  |  wildcard_table_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| Yönetici uzantısı ana bilgisayarı  |  wildcard_adminhosting_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| Yönetici portalı  |  adminportal_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| ARM Yöneticisi  |  adminmanagement_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| ARM genel  |  management_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| KeyVault  |  wildcard_vault_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| Keyvaultınternal  |  wildcard_adminvault_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| Ortak uzantı Konağı  |  wildcard_hosting_ @ no__t-0region > _ @ no__t-1externalFQDN > |
-| Ortak Portal  |  portal_ @ no__t-0region > _ @ no__t-1externalFQDN > |
+| acsBlob | wildcard_blob_\<Bölgesi > _\<externalFQDN > |
+| ACSQueue  |  wildcard_queue_\<Bölgesi > _\<externalFQDN > |
+| ACSTable  |  wildcard_table_\<Bölgesi > _\<externalFQDN > |
+| Yönetici uzantısı ana bilgisayarı  |  wildcard_adminhosting_\<Bölgesi > _\<externalFQDN > |
+| Yönetici portalı  |  adminportal_\<Bölgesi > _\<externalFQDN > |
+| ARM Yöneticisi  |  adminmanagement_\<Bölgesi > _\<externalFQDN > |
+| ARM genel  |  management_\<Bölgesi > _\<externalFQDN > |
+| KeyVault  |  wildcard_vault_\<Bölgesi > _\<externalFQDN > |
+| Keyvaultınternal  |  wildcard_adminvault_\<Bölgesi > _\<externalFQDN > |
+| Ortak uzantı Konağı  |  wildcard_hosting_\<Bölgesi > _\<externalFQDN > |
+| Ortak Portal  |  portal_\<Bölgesi > _\<externalFQDN > |
 
 ## <a name="using-validated-certificates"></a>Doğrulanan sertifikaları kullanma
 
-Sertifikalarınız Azsreadinesscontroller tarafından doğrulandıktan sonra, bunları Azure Stack dağıtımınızda kullanmaya veya Azure Stack gizli döndürmenize hazırsınızdır. 
+Sertifikalarınız AzsReadinessChecker tarafından doğrulandıktan sonra bunları Azure Stack dağıtımınızda veya Azure Stack gizli dizi dönüştürme için kullanmaya hazır olursunuz. 
 
  - Dağıtım için sertifikalarınızı, [Azure Stack PKI gereksinimleri belgelerinde](azure-stack-pki-certs.md)belirtilen şekilde dağıtım konağına kopyalayabilmeleri için dağıtım Mühendisinize güvenli bir şekilde aktarın.
  - Gizli anahtar döndürmesi için, [Azure Stack gizli döndürme belgelerini](azure-stack-rotate-secrets.md)izleyerek Azure Stack ortamınızın ortak altyapı uç noktaları için eski sertifikaları güncelleştirmek üzere sertifikaları kullanabilirsiniz.

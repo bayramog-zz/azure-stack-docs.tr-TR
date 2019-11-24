@@ -56,16 +56,16 @@ Market öğesi kullanarak bir SQL VM 'yi dağıtmadan önce **SQL IaaS uzantıs�
 SQL VM 'Leri dağıtmak için [Azure Stack hızlı başlangıç galerisindeki](https://github.com/Azure/AzureStack-QuickStart-Templates)şablonlar da dahil olmak üzere başka seçenekler vardır.
 
 > [!NOTE]
-> Çok düğümlü Azure Stack yüklü olan barındırma sunucularının, varsayılan sağlayıcı aboneliği değil, bir Kullanıcı aboneliğinden oluşturulması gerekir. Bunların Kullanıcı portalından veya uygun bir oturum açma ile bir PowerShell oturumundan oluşturulması gerekir. Tüm barındırma sunucuları faturalandırılabilir sanal makineler ve uygun SQL lisanslarına sahip olmalıdır. Hizmet _Yöneticisi,_ bu aboneliğin sahibi olabilir.
+> Çok düğümlü Azure Stack yüklü olan barındırma sunucularının, varsayılan sağlayıcı aboneliği değil, bir Kullanıcı aboneliğinden oluşturulması gerekir. Bunların Kullanıcı portalından veya uygun bir oturum açma ile bir PowerShell oturumundan oluşturulması gerekir. Tüm barındırma sunucuları faturalandırılabilir sanal makineler ve uygun SQL lisanslarına sahip olmalıdır. Hizmet Yöneticisi, bu aboneliğin _sahibi olabilir._
 
 ### <a name="required-privileges"></a>Gerekli ayrıcalıklar
 
 SQL sysadmin 'ten daha düşük ayrıcalıklara sahip bir yönetici kullanıcı oluşturabilirsiniz. Kullanıcı yalnızca aşağıdaki işlemler için izinlere ihtiyaç duyuyor:
 
-* Veritabanınızı Kapsama Ile oluşturma, değiştirme (yalnızca açık için), bırakma, yedekleme
-* Kullanılabilirlik grubu: Veritabanını Değiştir, Birleştir, Ekle/Kaldır
-* LOGIN Oluşturma, seçme, değiştirme, bırakma, Iptal etme
-* Işlemleri seçin: \[master @ no__t-1. \[sys @ no__t-3. \[kullanılabilirliği bility_group_listeners @ no__t-5 (AlwaysOn), sys. availability_replicas (AlwaysOn), sys. databases, \[master @ no__t-7. \[sys @ no__t-9. \]0dm_os_ sys_memory @ no__t-11, SERVERPROPERTY, 2master @ no__t-13. 4sys @ no__t-15. 6kullanılabilirliği bility_groups @ no__t-17 (AlwaysOn), sys. master_files
+* Veritabanı: oluşturma, değiştirme, Içerme Ile (her zaman açık için), bırakma, yedekleme
+* Kullanılabilirlik grubu: alter, JOIN, Add/Remove Database
+* Oturum açma: oluşturma, seçme, değiştirme, bırakma, Iptal etme
+* Işlemleri seçin: \[Master\].\[sys\].\[availability_group_listeners\] (AlwaysOn), sys. availability_replicas (AlwaysOn), sys. databases, \[Master\].\[sys\].\[dm_os_sys_memory\], SERVERPROPERTY, \[Master\].\[sys\].\[availability_groups\] (AlwaysOn), sys. master_files
 
 ### <a name="additional-security-information"></a>Ek güvenlik bilgileri
 
@@ -85,7 +85,7 @@ Zaten ayarlanmış bir tek başına barındırma sunucusu eklemek için aşağı
 
 1. Azure Stack operatör portalında hizmet yöneticisi olarak oturum açın.
 
-2. **Tüm hizmetler** &gt; **Yönetim kaynakları** &gt; **SQL barındırma sunucuları**' nı seçin.
+2. **SQL barındırma sunucuları**&gt; **Tüm HIZMETLER** &gt; **Yönetim kaynakları** ' nı seçin.
 
    ![SQL barındırma sunucuları](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
@@ -100,7 +100,7 @@ Zaten ayarlanmış bir tek başına barındırma sunucusu eklemek için aşağı
     İsteğe bağlı olarak, bir örnek adı sağlayın ve örnek varsayılan 1433 bağlantı noktasına atanmamışsa bir bağlantı noktası numarası belirtin.
 
    > [!NOTE]
-   > SQL örneğine Kullanıcı ve yönetici Azure Resource Manager tarafından erişilebileceği sürece, kaynak sağlayıcının denetimi altına yerleştirilebilir. SQL örneği, kaynak sağlayıcısına özel olarak ayrılmalıdır.
+   > SQL örneğine Kullanıcı ve yönetici Azure Resource Manager tarafından erişilebileceği sürece, kaynak sağlayıcının denetimi altına yerleştirilebilir. SQL örneği, kaynak sağlayıcısına özel olarak __ayrılmalıdır__ .
 
 4. Sunucu eklerken, bunları mevcut bir SKU 'ya atamanız veya yeni bir SKU oluşturmanız gerekir. **Barındırma sunucusu Ekle**altında **SKU 'lar**' ı seçin.
 
@@ -158,7 +158,7 @@ Her örnek için kapsanan veritabanı kimlik doğrulama sunucusu seçeneğini ay
 
 1. Azure Stack yönetim portalında hizmet yöneticisi olarak oturum açın.
 
-2. &gt; **Yönetim kaynaklarına** &gt; gözatıp SQL barındırma sunucuları + Ekle ' yi seçin. &gt;
+2. **SQL barındırma sunucuları** **&gt; &gt;** **Yönetim kaynakları** &gt; **+ Ekle**' yi seçin.
 
    **SQL barındırma sunucuları**altında, SQL Server kaynak sağlayıcısını kaynak sağlayıcının arka ucu olarak görev yapan gerçek SQL Server örneklerine bağlayabilirsiniz.
 
@@ -178,7 +178,7 @@ SKU 'da kapasite ve performans gibi sunucuların yeteneklerini açıklayan bir S
   
 * yüksek kapasite
 * yüksek performanslı
-* Yüksek kullanılabilirlik
+* yüksek kullanılabilirlik
 
 En iyi uygulama olarak, bir SKU 'daki tüm barındırma sunucuları aynı kaynak ve performans özelliklerine sahip olmalıdır.
 
@@ -186,9 +186,9 @@ SKU 'Lar belirli kullanıcılara veya gruplara atanamaz.
 
 SKU 'Ların portalda görünür olması bir saate kadar sürebilir. Kullanıcılar, SKU tam olarak oluşturuluncaya kadar bir veritabanı oluşturamaz.
 
-Bir SKU 'yu düzenlemek için **tüm hizmetler** > **SQL bağdaştırıcısı** > **SKU 'larına**gidin. Değiştirilecek SKU 'yu seçin, tüm gerekli değişiklikleri yapın ve değişiklikleri kaydetmek için **Kaydet** ' e tıklayın. 
+Bir SKU 'yu düzenlemek için **SQL bağdaştırıcısı** > **SKU 'ları** > **tüm hizmetler** ' e gidin. Değiştirilecek SKU 'yu seçin, tüm gerekli değişiklikleri yapın ve değişiklikleri kaydetmek için **Kaydet** ' e tıklayın. 
 
-Artık gerekli olmayan bir SKU 'yu silmek için **tüm hizmetler** > **SQL bağdaştırıcısı** > **SKU 'larına**gidin. SKU adına sağ tıklayın ve Sil ' i **seçerek silin** .
+Artık gerekli olmayan bir SKU 'YU silmek için **SQL bağdaştırıcısı** > **SKU 'ları** > **tüm hizmetler** ' e gidin. SKU adına sağ tıklayın **ve Sil ' i seçerek silin** .
 
 > [!IMPORTANT]
 > Yeni SKU 'Ların Kullanıcı portalında kullanılabilmesi bir saate kadar sürebilir.

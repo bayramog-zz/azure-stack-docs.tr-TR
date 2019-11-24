@@ -24,7 +24,7 @@ ms.locfileid: "71961624"
 ---
 # <a name="let-your-cloud-solution-provider-manage-your-azure-stack-subscription"></a>Bulut çözümü sağlayıcınızda Azure Stack aboneliğinizi yönetmesine izin verin
 
-*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri*
 
 Bir bulut çözümü sağlayıcısı (CSP) ile Azure Stack kullanıyorsanız, Azure 'daki ve Azure Stack kaynaklara erişmek için kendi aboneliğinizi yönetmeyi tercih edebilirsiniz. Ayrıca, sağlayıcının aboneliğinizi sizin yerinize yönetmesine de izin verebilirsiniz. Bu makalede nasıl yapılacağı gösterilmektedir:
 

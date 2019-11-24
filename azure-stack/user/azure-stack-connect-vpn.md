@@ -25,7 +25,7 @@ ms.locfileid: "71974102"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>VPN kullanarak Azure Stack Azure 'a bağlanma
 
-*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri*
 
 Bu makalede, Azure 'daki bir sanal ağa Azure Stack bir sanal ağı bağlamak için siteden siteye VPN oluşturma açıklanır.
 
@@ -50,7 +50,7 @@ Ağ yapılandırması örnekler tablosu, bu makaledeki örnekler için kullanıl
 |---------|---------|---------|
 |Sanal ağ adı     |AZS-VNet|AzureVNet |
 |Sanal ağ adres alanı |10.1.0.0/16|10.100.0.0/16|
-|Alt ağ adı     |Ön Uç|Ön Uç|
+|Alt ağ adı     |FrontEnd|FrontEnd|
 |Alt ağ adres aralığı|10.1.0.0/24 |10.100.0.0/24 |
 |Ağ geçidi alt ağı     |10.1.1.0/24|10.100.1.0/24|
 

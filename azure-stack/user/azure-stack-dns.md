@@ -23,7 +23,7 @@ ms.locfileid: "71961474"
 ---
 # <a name="use-dns-in-azure-stack"></a>Azure Stack 'de DNS kullanma
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure Stack aşağıdaki Azure DNS özelliklerini destekler:
 
@@ -34,7 +34,7 @@ Azure Stack aşağıdaki Azure DNS özelliklerini destekler:
 
 Genel IP kaynakları için bir DNS etki alanı adı etiketi belirtebilirsiniz. Azure Stack, etiket adı için **domainnamelabel. Location. cloudapp. azurestack. external** kullanır ve bunu Azure Stack tarafından yönetilen DNS SUNUCULARıNDAKI genel IP adresiyle eşler.
 
-Örneğin, yerel Azure Stack konumunda bir etki alanı adı etiketi olarak **contoso** ile BIR genel IP kaynağı oluşturursanız, **contoso. Local. cloudapp. azurestack. external** [tam etki alanı adı (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) genel IP 'ye çözümlenmelidir kaynağın adresi. Bu FQDN 'yi, Azure Stack genel IP adresini işaret eden özel bir etki alanı CNAME kaydı oluşturmak için kullanabilirsiniz.
+Örneğin, yerel Azure Stack konumunda bir etki alanı adı etiketi olarak **contoso** ile BIR genel IP kaynağı oluşturursanız, **contoso. Local. cloudapp. azurestack. external** [tam etki alanı adı (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) kaynağın genel IP adresi olarak çözümlenir. Bu FQDN 'yi, Azure Stack genel IP adresini işaret eden özel bir etki alanı CNAME kaydı oluşturmak için kullanabilirsiniz.
 
 Ad çözümlemesi hakkında daha fazla bilgi için bkz. [DNS çözümleme](/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) makalesi.
 
@@ -43,7 +43,7 @@ Ad çözümlemesi hakkında daha fazla bilgi için bkz. [DNS çözümleme](/azur
 
 Aşağıdaki ekran görüntüsünde, portalı kullanarak genel IP adresi oluşturmak için **genel IP adresi oluştur** iletişim kutusu gösterilmektedir:
 
-![Ortak IP adresi oluştur](media/azure-stack-dns/image01.png)
+![Genel IP adresi oluştur](media/azure-stack-dns/image01.png)
 
 ### <a name="example-scenario"></a>Örnek senaryo
 
@@ -61,15 +61,15 @@ Azure Stack DNS altyapısı, Azure 'dan daha küçük. Bir Azure Stack dağıtı
 
 Azure Stack DNS, Azure 'daki DNS ile benzerdir, ancak bazı önemli özel durumlar vardır:
 
-* **Aaaa kayıtlarını desteklemez**: Azure Stack IPv6 adreslerini desteklemediğinden Azure Stack AAAA kayıtlarını desteklemez. Bu, Azure 'daki DNS ve Azure Stack arasındaki önemli farktır.
+* **Aaaa kayıtlarını desteklemez**: Azure Stack IPv6 adreslerini DESTEKLEMEDIĞINDEN Azure Stack aaaa kayıtlarını desteklemez. Bu, Azure 'daki DNS ve Azure Stack arasındaki önemli farktır.
 
-* **Çok kiracılı değil**: Azure Stack 'deki DNS hizmeti çok kiracılı değildir. Kiracılar aynı DNS bölgesini oluşturamaz. Yalnızca bölgeyi oluşturmaya çalışır olan ilk abonelik başarılı olur ve daha sonra istekler başarısız olur. Bu, Azure ile Azure Stack DNS arasındaki başka bir temel farktır.
+* **Çok kiracılı değil**: Azure Stack Içindeki DNS hizmeti çok kiracılı değil. Kiracılar aynı DNS bölgesini oluşturamaz. Yalnızca bölgeyi oluşturmaya çalışır olan ilk abonelik başarılı olur ve daha sonra istekler başarısız olur. Bu, Azure ile Azure Stack DNS arasındaki başka bir temel farktır.
 
-* **Etiketler, meta veriler ve eetiketler**: Azure Stack Etiketler, meta veriler, Eetiketler ve limitleri nasıl işleyeceğinden küçük farklılıklar vardır.
+* **Etiketler, meta veriler ve eetiketler**: etiketlerin, meta verilerin, eetiketlerinin ve limitlerin Azure Stack nasıl işleyeceği küçük farklılıklar vardır.
 
 Azure DNS hakkında daha fazla bilgi edinmek için bkz. [DNS bölgeleri ve kayıtları](/azure/dns/dns-zones-records).
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>Etiketler
 
 DNS Azure Stack DNS bölge kaynaklarında Azure Resource Manager etiketlerin kullanılmasını destekler. DNS kayıt kümelerinde etiketleri desteklemez. Alternatif olarak, sonraki bölümde açıklandığı gibi DNS kayıt kümelerinde **meta veriler** desteklenir.
 
@@ -83,13 +83,13 @@ Kayıt kümesi etiketlerinin bir alternatifi olarak Azure Stack DNS, *meta veril
 
 Azure Stack DNS, aynı kaynakta yapılan eşzamanlı değişiklikleri güvenle işlemek için *ETags* kullanır. ETags Azure Resource Manager *etiketlerden*farklıdır. Her DNS kaynağına (bölge veya kayıt kümesi) ilişkili bir ETag öğesi vardır. Bir kaynak alındığında ETag de alınır. Bir kaynağı güncelleştirdiğinizde, DNS Azure Stack sunucudaki ETag 'in eşleştirdiğini doğrulayabilmesi için ETag 'i geri geçirmeye seçebilirsiniz. Bir kaynaktaki her güncelleştirme ETag 'in yeniden üretildiğinden dolayı bir ETag uyumsuzluğu, eşzamanlı bir değişikliğin gerçekleştiğini gösterir. Kaynak zaten mevcut olmadığından emin olmak için yeni bir kaynak oluşturduğunuzda ETags de kullanılabilir.
 
-Varsayılan olarak, Azure Stack DNS PowerShell cmdlet 'leri bölge ve kayıt kümelerinde eşzamanlı değişiklikleri engellemek için ETags kullanır. ETag denetimlerini gizlemek için isteğe bağlı `-Overwrite` anahtarını kullanabilirsiniz. Hiçbir ETag denetimi olmadan, gerçekleşen tüm eşzamanlı değişiklikler üzerine yazılır.
+Varsayılan olarak, Azure Stack DNS PowerShell cmdlet 'leri bölge ve kayıt kümelerinde eşzamanlı değişiklikleri engellemek için ETags kullanır. ETag denetimlerini bastırmak için isteğe bağlı `-Overwrite` anahtarını kullanabilirsiniz. Hiçbir ETag denetimi olmadan, gerçekleşen tüm eşzamanlı değişiklikler üzerine yazılır.
 
 Azure Stack DNS REST API düzeyinde ETags, HTTP üst bilgileri kullanılarak belirtilir. Davranışları aşağıdaki tabloda açıklanmıştır:
 
-| Üstbilgi | Davranış|
+| Üst bilgi | Davranış|
 |--------|---------|
-| Yok.   | PUT her zaman başarılı olur (ETag denetimi yok).|
+| None   | PUT her zaman başarılı olur (ETag denetimi yok).|
 | IF-Match| PUT yalnızca kaynak varsa ve ETag eşleşiyorsa başarılı olur.|
 | IF-Match *| PUT yalnızca kaynak mevcutsa başarılı olur.|
 | If-None-Match *| PUT yalnızca kaynak yoksa başarılı olur.|
@@ -98,7 +98,7 @@ Azure Stack DNS REST API düzeyinde ETags, HTTP üst bilgileri kullanılarak bel
 
 Azure Stack DNS kullanılırken aşağıdaki varsayılan sınırlar geçerlidir:
 
-| Resource| Varsayılan sınır|
+| Kaynak| Varsayılan limit|
 |---------|--------------|
 | Abonelik başına bölge| 100|
 | Her bölge için kayıt kümesi| 5000|

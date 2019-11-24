@@ -24,7 +24,7 @@ ms.locfileid: "72019367"
 ---
 # <a name="configure-multi-tenancy-in-azure-stack"></a>Azure Stack 'de çok kiracılı yapılandırma
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure Stack, birden çok Azure Active Directory (Azure AD) kiracısından kullanıcıları destekleyecek şekilde yapılandırabilir ve bunların Azure Stack Hizmetleri kullanmasına izin verebilirsiniz. Örneğin, aşağıdaki senaryoyu göz önünde bulundurun:
 
@@ -112,9 +112,9 @@ Register-AzSWithMyDirectoryTenant `
 
 ### <a name="direct-users-to-sign-in"></a>Kullanıcıların oturum açması için doğrudan
 
-Artık ve Mary Mary 'nin dizinini ekleme adımlarını tamamladığınıza göre, Mary fabrikam kullanıcılarını oturum açmaya yönlendirebilir. Fabrikam kullanıcıları (fabrikam.onmicrosoft.com soneki olan kullanıcılar) https @ no__t-0//Portal. Local. azurestack. external ' i ziyaret ederek oturum açın.
+Artık ve Mary Mary 'nin dizinini ekleme adımlarını tamamladığınıza göre, Mary fabrikam kullanıcılarını oturum açmaya yönlendirebilir. Fabrikam kullanıcıları (fabrikam.onmicrosoft.com soneki olan kullanıcılar) https\://Portal.Local.azurestack.external. ziyaret ederek oturum açın
 
-Mary, Fabrikam dizinindeki tüm [yabancı sorumlular](/azure/role-based-access-control/rbac-and-directory-admin-roles) (fabrikam.onmicrosoft.com soneki olmadan fabrikam dizinindeki kullanıcılar) https @ no__t-1//Portal. Local. azurestack. external/fabrikam. onmicrosoft. com kullanarak oturum açmak için yönlendirecektir. Bu URL 'YI kullanmazsa, varsayılan dizinine (Fabrikam) gönderilir ve yöneticisinin yönetici tarafından ayrılmadığını belirten bir hata alırlar.
+Mary, Fabrikam dizinindeki tüm [yabancı sorumluları](/azure/role-based-access-control/rbac-and-directory-admin-roles) (fabrikam.onmicrosoft.com soneki olmadan fabrikam dizinindeki kullanıcılar) https\://Portal.Local.azurestack.external/fabrikam.onmicrosoft.com. kullanarak oturum açmak için yönlendirir. Bu URL 'YI kullanmazsa, varsayılan dizinine (Fabrikam) gönderilir ve yöneticisinin yönetici tarafından ayrılmadığını belirten bir hata alırlar.
 
 ## <a name="disable-multi-tenancy"></a>Çoklu kirayı devre dışı bırak
 

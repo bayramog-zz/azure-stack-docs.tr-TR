@@ -61,7 +61,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 *Set-SyslogServer* cmdlet parametreleri:
 
-| Parametre | Açıklama | Tür | Gereklidir |
+| Parametre | Açıklama | Tür | Gerekli |
 |---------|---------|---------|---------|
 |*ServerName* | Syslog sunucusunun FQDN 'SI veya IP adresi. | Dize | evet|
 |*Sunucu bağlantı noktası* | Syslog sunucusunun dinlediği bağlantı noktası numarası. | Dize | evet|
@@ -69,13 +69,13 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 |*SkipCertificateCheck*| İlk TLS el sıkışması sırasında Syslog sunucusu tarafından belirtilen sertifikanın doğrulanmasını atlayın. | bayrağıyla | hayır|
 |*SkipCNCheck*| İlk TLS el sıkışması sırasında Syslog sunucusu tarafından belirtilen sertifikanın ortak ad değerinin doğrulanmasını atlayın. | bayrağıyla | hayır|
 |*UseUDP*| UDP as Aktarım Protokolü ile Syslog kullanın. |bayrağıyla | hayır|
-|*Temizlenmesine*| Sunucu yapılandırmasını istemciden kaldırın ve Syslog iletmeyi durdurun.| bayrağıyla | hayır|
+|*Kaldır*| Sunucu yapılandırmasını istemciden kaldırın ve Syslog iletmeyi durdurun.| bayrağıyla | hayır|
 
 *Set-SyslogClient* cmdlet parametreleri:
 
 | Parametre | Açıklama | Tür |
 |---------|---------| ---------|
-| *pfxBinary* | istemci tarafından Syslog sunucusunda kimlik doğrulaması yapmak için kimlik olarak kullanılacak sertifikayı içeren pfx dosyası.  | Byte [] |
+| *pfxBinary* | istemci tarafından Syslog sunucusunda kimlik doğrulaması yapmak için kimlik olarak kullanılacak sertifikayı içeren pfx dosyası.  | Byte[] |
 | *CertPassword* |  Pfx dosyasıyla ilişkili özel anahtarı içe aktarmak için parola. | SecureString |
 |*Removecercertificate* | Sertifikayı istemciden kaldırın. | bayrağıyla|
 | *Outputönem derecesi* | Çıktı günlüğü düzeyi. Değerler **varsayılan** veya **ayrıntılıdır**. Varsayılan değer, önem düzeylerini içerir: uyarı, kritik veya hata. Verbose tüm önem düzeylerini içerir: Verbose, bilgilendirici, uyarı, kritik veya hata.  | Dize |
@@ -242,7 +242,7 @@ Prefix fields
 
 Ayrıcalıklı uç nokta için olay tablosu:
 
-| Olay | PEP olay KIMLIĞI | PEP görev adı | Önem Derecesi |
+| Olay | PEP olay KIMLIĞI | PEP görev adı | Severity |
 |-------|--------------| --------------|----------|
 |Ayrıcalıklı Gedendpointaccessed|1000|PrivilegedEndpointAccessedEvent|5|
 |Supportsessiontokenistendi |1001|SupportSessionTokenRequestedEvent|5|
@@ -259,14 +259,14 @@ Ayrıcalıklı uç nokta için olay tablosu:
 
 PEP önem derecesi tablosu:
 
-| Önem Derecesi | Düzey | Sayısal değer |
+| Severity | Düzey | Sayısal değer |
 |----------|-------| ----------------|
 |0|Undefined|Değer: 0. Tüm düzeylerde günlükleri gösterir|
 |10|Kritik|Değer: 1. Kritik uyarı için günlükleri belirtir|
 |8|Hata| Değer: 2. Bir hata için günlükleri gösterir|
 |5|Uyarı|Değer: 3. Uyarı için günlükleri belirtir|
-|2|Bilgi|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
-|0|Seçeneini|Değer: 5. Tüm düzeylerde günlükleri gösterir|
+|2|Bilgiler|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
+|0|Ayrıntılı|Değer: 5. Tüm düzeylerde günlükleri gösterir|
 
 ### <a name="cef-mapping-for-recovery-endpoint-events"></a>Kurtarma uç noktası olayları için CEF eşleme
 
@@ -279,7 +279,7 @@ Prefix fields
 
 Kurtarma uç noktası için olay tablosu:
 
-| Olay | REP olay KIMLIĞI | REP görev adı | Önem Derecesi |
+| Olay | REP olay KIMLIĞI | REP görev adı | Severity |
 |-------|--------------| --------------|----------|
 |RecoveryEndpointAccessed |1011|RecoveryEndpointAccessedEvent|5|
 |Recoverysessiontokenistendi |1012|RecoverySessionTokenRequestedEvent |5|
@@ -290,14 +290,14 @@ Kurtarma uç noktası için olay tablosu:
 
 REP önem derecesi tablosu:
 
-| Önem Derecesi | Düzey | Sayısal değer |
+| Severity | Düzey | Sayısal değer |
 |----------|-------| ----------------|
 |0|Undefined|Değer: 0. Tüm düzeylerde günlükleri gösterir|
 |10|Kritik|Değer: 1. Kritik uyarı için günlükleri belirtir|
 |8|Hata| Değer: 2. Bir hata için günlükleri gösterir|
 |5|Uyarı|Değer: 3. Uyarı için günlükleri belirtir|
-|2|Bilgi|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
-|0|Seçeneini|Değer: 5. Tüm düzeylerde günlükleri gösterir|
+|2|Bilgiler|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
+|0|Ayrıntılı|Değer: 5. Tüm düzeylerde günlükleri gösterir|
 
 ### <a name="cef-mapping-for-windows-events"></a>Windows olayları için CEF eşleme
 
@@ -316,8 +316,8 @@ Windows olayları için önem tablosu:
 |10|Kritik|Değer: 1. Kritik uyarı için günlükleri belirtir|
 |8|Hata| Değer: 2. Bir hata için günlükleri gösterir|
 |5|Uyarı|Değer: 3. Uyarı için günlükleri belirtir|
-|2|Bilgi|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
-|0|Seçeneini|Değer: 5. Tüm düzeylerde günlükleri gösterir|
+|2|Bilgiler|Değer: 4. Bilgilendirici bir ileti için günlükleri belirtir|
+|0|Ayrıntılı|Değer: 5. Tüm düzeylerde günlükleri gösterir|
 
 Azure Stack Windows olayları için özel uzantı tablosu:
 
@@ -337,11 +337,11 @@ Azure Stack Windows olayları için özel uzantı tablosu:
 |MasKeywordName |Denetim başarılı|
 |MasLevel |4|
 |MasOpcode |1|
-|Masopkod adı |Bilgisine|
+|Masopkod adı |info|
 |MasProviderEventSourceName ||
 |MasProviderGuid |AEA1B4FA-97D1-45F2-A64C-4D69FFFD92C9|
 |MasProviderName |Microsoft-Windows-GroupPolicy|
-|Massecurityuserıd |\<Windows SID @ no__t-1 |
+|Massecurityuserıd |\<Windows SID\> |
 |MasTask |0|
 |MasTaskCategory| İşlem oluşturma|
 |MasUserData|KB4093112!! 5112!! Yüklendi!! 0x0!! WindowsUpdateAgent XPath:/Event/UserData/*|
@@ -358,7 +358,7 @@ Azure Stack Windows olayları için özel uzantı tablosu:
 
 Uyarılar önem derecesi tablosu:
 
-| Önem Derecesi | Düzey |
+| Severity | Düzey |
 |----------|-------|
 |0|Undefined|
 |10|Kritik|
@@ -368,7 +368,7 @@ Azure Stack oluşturulan uyarılar için özel uzantı tablosu:
 
 | Özel uzantı adı | Örnek | 
 |-----------------------|---------|
-|MasEventDescription|Açıklama: \<TestDomain @ no__t-3 için \<TestUser @ no__t-1 Kullanıcı hesabı oluşturuldu. Bu, olası bir güvenlik riskidir. --Düzeltme: desteğe başvurun. Bu sorunu çözmek için müşteri yardımı gereklidir. Bu sorunu, yardımı olmadan çözmeyi denemeyin. Bir destek isteği açmadan önce, https://aka.ms/azurestacklogfiles ' dan gelen kılavuzu kullanarak günlük dosyası toplama işlemini başlatın.
+|MasEventDescription|Açıklama: \<TestDomain\>için \<TestUser\> bir kullanıcı hesabı oluşturuldu. Bu, olası bir güvenlik riskidir. --Düzeltme: desteğe başvurun. Bu sorunu çözmek için müşteri yardımı gereklidir. Bu sorunu, yardımı olmadan çözmeyi denemeyin. Bir destek isteği açmadan önce, https://aka.ms/azurestacklogfilesKılavuzu kullanarak günlük dosyası toplama işlemini başlatın.
 
 ### <a name="cef-mapping-for-alerts-closed"></a>Uyarılar için CEF eşlemesi kapatıldı
 

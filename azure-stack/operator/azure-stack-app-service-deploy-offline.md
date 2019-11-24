@@ -25,7 +25,7 @@ ms.locfileid: "71709015"
 ---
 # <a name="deploy-app-service-in-an-offline-environment-in-azure-stack"></a>Azure Stack 'de çevrimdışı bir ortamda App Service dağıtma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 > [!IMPORTANT]
 > 1907 güncelleştirmesini Azure Stack tümleşik sisteminize uygulayın veya Azure App Service 1,7 ' i dağıtmadan önce en son Azure Stack Geliştirme Seti (ASDK) dağıtın.
@@ -51,7 +51,7 @@ App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağl
 
 1. AppService. exe yükleyicisini Internet 'e bağlı bir makinede çalıştırın.
 
-2. **Gelişmiş**@no__t seçin-1**çevrimdışı yükleme paketi oluşturun**.
+2. **Gelişmiş** > **çevrimdışı yükleme paketi oluştur**' u seçin.
 
     ![App Service yükleyicisinde çevrimdışı paket oluşturma][1]
 
@@ -65,7 +65,7 @@ App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağl
 
 1. Appservice. exe ' yi Azure Stack Yöneticisi Azure Kaynak Yönetimi uç noktasına ulaşabilme bir bilgisayardan yönetici olarak çalıştırın.
 
-1. **Gelişmiş** >  ' i seçin,**çevrimdışı yükleme tamamlanmıştır**.
+1. **Gelişmiş** > **çevrimdışı yüklemeyi Tamam**' ı seçin.
 
     ![App Service yükleyici 'de çevrimdışı yükleme 'yi doldurun][2]
 
@@ -77,7 +77,7 @@ App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağl
 
 1. Üçüncü taraf lisans koşullarını gözden geçirip kabul edin ve ardından **İleri**' yi seçin.
 
-1. App Service bulut yapılandırması bilgilerinin doğru olduğundan emin olun. ASDK dağıtımı sırasında varsayılan ayarları kullandıysanız, varsayılan değerleri burada kabul edebilirsiniz. Ancak, Azure Stack dağıttığınız veya tümleşik bir sisteme dağıtırken seçenekleri özelleştirdiyseniz, Bu penceredeki değerleri bu değişiklikleri yansıtacak şekilde düzenlemeniz gerekir. Örneğin, mycloud.com etki alanı sonekini kullanırsanız, Azure Stack kiracı Azure Resource Manager uç noktasının olarak `management.<region>.mycloud.com`değiştirilmesi gerekir. Bilgilerinizi doğruladıktan sonra **İleri**' yi seçin.
+1. App Service bulut yapılandırması bilgilerinin doğru olduğundan emin olun. ASDK dağıtımı sırasında varsayılan ayarları kullandıysanız, varsayılan değerleri burada kabul edebilirsiniz. Ancak, Azure Stack dağıttığınız veya tümleşik bir sisteme dağıtırken seçenekleri özelleştirdiyseniz, Bu penceredeki değerleri bu değişiklikleri yansıtacak şekilde düzenlemeniz gerekir. Örneğin, mycloud.com etki alanı sonekini kullanırsanız, Azure Stack kiracı Azure Resource Manager uç noktasının `management.<region>.mycloud.com`olarak değiştirilmesi gerekir. Bilgilerinizi doğruladıktan sonra **İleri**' yi seçin.
 
     ![App Service yükleyicisinde Azure App Service bulutu yapılandırma][3]
 
@@ -85,7 +85,7 @@ App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağl
 
    a. **Azure Stack abonelikler** kutusunun yanındaki **Bağlan** düğmesini seçin. 
 
-   b. Yönetici hesabınızı girin. Örneğin: cloudadmin@azurestack.local. Parolanızı girip **oturum aç '** ı seçin.
+   b. Yönetici hesabınızı girin. Örneğin: cloudadmin@azurestack.local Parolanızı girip **oturum aç '** ı seçin.
 
    c. **Azure Stack abonelikler** kutusunda **varsayılan sağlayıcı aboneliği**' ni seçin.
    > [!NOTE]
@@ -107,7 +107,7 @@ App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağl
 
       ![App Service yükleyicisinde sanal ağ ve alt ağ bilgileri][5]
 
-1. Dosya paylaşımınızın bilgilerini girin ve ardından **İleri**' yi seçin. Dosya paylaşımının adresi, dosya sunucunuzun tam etki alanı adını (FQDN) veya IP adresini kullanmalıdır. Örneğin: \\ \ appservicedosyasunucusu. Local. cloudapp. azurestack. external\websiteleri veya \\ \ 10.0.0.1 \ Web siteleri.  Etki alanına katılmış bir dosya sunucusu kullanıyorsanız, etki alanı dahil olmak üzere tam Kullanıcı adını sağlamanız gerekir. Örneğin: `<myfileserverdomain>\<FileShareOwner>`.
+1. Dosya paylaşımınızın bilgilerini girin ve ardından **İleri**' yi seçin. Dosya paylaşımının adresi, dosya sunucunuzun tam etki alanı adını (FQDN) veya IP adresini kullanmalıdır. Örneğin: \\\appservicefileserver.Local.cloudapp.azurestack.external\websites veya \\\10.0.0.1\websites.  Etki alanına katılmış bir dosya sunucusu kullanıyorsanız, etki alanı dahil olmak üzere tam Kullanıcı adını sağlamanız gerekir. Örneğin: `<myfileserverdomain>\<FileShareOwner>`
 
     > [!NOTE]
     > Yükleyici, devam etmeden önce dosya paylaşımıyla bağlantıyı test etmeye çalışır. Ancak, var olan bir sanal ağa dağıtmayı seçerseniz, yükleyici dosya paylaşımıyla bağlantı kuramıyor ve devam etmek isteyip istemediğinizi soran bir uyarı görüntülüyor olabilir. Dosya paylaşma bilgilerini doğrulayın ve doğruysa devam edin.
@@ -161,13 +161,13 @@ App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağl
      >
      >
 
-    | Role | Minimum örnekler | Minimum SKU | Notlar |
+    | Rol | Minimum örnekler | Minimum SKU | Notlar |
     | --- | --- | --- | --- |
-    | Denetleyici | 1\. | Standard_A2-(2 vCPU, 3584 MB) | App Service bulutu durumunu yönetir ve bakımını yapar. |
-    | Yönetim | 1\. | Standard_A2-(2 vCPU, 3584 MB) | App Service Azure Resource Manager ve API uç noktalarını, Portal uzantılarını (yönetici, kiracı, Işlevler portalı) ve veri hizmetini yönetir. Yük devretmeyi desteklemek için önerilen örnekleri 2 ' ye yükseltin. |
-    | Yayımcı | 1\. | Standard_A1-(1 vCPU, 1792 MB) | FTP ve Web dağıtımı aracılığıyla içerik yayımlar. |
-    | Ön Uç | 1\. | Standard_A1-(1 vCPU, 1792 MB) | İstekleri App Service uygulamalara yönlendirir. |
-    | Paylaşılan çalışan | 1\. | Standard_A1-(1 vCPU, 1792 MB) | Web veya API uygulamalarını ve Azure Işlevleri uygulamalarını barındırır. Daha fazla örnek eklemek isteyebilirsiniz. Bir operatör olarak, teklifinizi tanımlayabilir ve herhangi bir SKU katmanını seçebilirsiniz. Katmanların en az bir vCPU olması gerekir. |
+    | Kumandasını | 1 | Standard_A2-(2 vCPU, 3584 MB) | App Service bulutu durumunu yönetir ve bakımını yapar. |
+    | Yönetim | 1 | Standard_A2-(2 vCPU, 3584 MB) | App Service Azure Resource Manager ve API uç noktalarını, Portal uzantılarını (yönetici, kiracı, Işlevler portalı) ve veri hizmetini yönetir. Yük devretmeyi desteklemek için önerilen örnekleri 2 ' ye yükseltin. |
+    | Yayımcı | 1 | Standard_A1-(1 vCPU, 1792 MB) | FTP ve Web dağıtımı aracılığıyla içerik yayımlar. |
+    | FrontEnd | 1 | Standard_A1-(1 vCPU, 1792 MB) | İstekleri App Service uygulamalara yönlendirir. |
+    | Paylaşılan çalışan | 1 | Standard_A1-(1 vCPU, 1792 MB) | Web veya API uygulamalarını ve Azure Işlevleri uygulamalarını barındırır. Daha fazla örnek eklemek isteyebilirsiniz. Bir operatör olarak, teklifinizi tanımlayabilir ve herhangi bir SKU katmanını seçebilirsiniz. Katmanların en az bir vCPU olması gerekir. |
 
     ![App Service yükleyicisinde rol katmanlarını ve SKU seçeneklerini ayarlama][14]
 
@@ -203,13 +203,13 @@ App Service çevrimdışı bir ortamda dağıtmak için, önce internet 'e bağl
 
 Dosya sunucunuza bağlanmak için mevcut bir sanal ağa ve bir iç IP adresine dağıtmayı seçerseniz, çalışan alt ağ ve dosya sunucusu arasında SMB trafiğini etkinleştirerek bir giden güvenlik kuralı eklemeniz gerekir. Yönetici portalında, WorkersNsg Network Security grubuna gidin ve aşağıdaki özelliklerle bir giden güvenlik kuralı ekleyin:
 
-- Kaynak: Any
+- Kaynak: any
 - Kaynak bağlantı noktası aralığı: *
 - Hedef: IP adresleri
-- Hedef IP adresi aralığı: Dosya sunucunuz için IP aralığı
+- Hedef IP adresi aralığı: dosya sunucunuz için IP aralığı
 - Hedef bağlantı noktası aralığı: 445
 - Protokol: TCP
-- Eylem: Allow
+- Eylem: Izin ver
 - Öncelik: 700
 - Ad: Outbound_Allow_SMB445
 
@@ -232,7 +232,7 @@ App Service kaynak sağlayıcısını dağıttıktan ve kaydettikten sonra, kull
 >
 > Üçüncü Teknik Önizleme sürümünden itibaren Web, API ve Azure Işlevleri uygulamaları oluşturmak için kiracı portalını kullanmanız ve bir kiracı aboneliğine sahip olmanız gerekir.
 
-1. Azure Stack kiracı portalında **+ kaynak oluştur** > **Web ve mobil** > **Web uygulaması**' nı seçin.
+1. Azure Stack kiracı portalında + > **Web uygulaması** **Web ve Mobil** **kaynak oluştur** > seçin.
 
 1. **Web uygulaması** dikey penceresinde, **Web uygulaması** kutusuna bir ad yazın.
 
@@ -242,7 +242,7 @@ App Service kaynak sağlayıcısını dağıttıktan ve kaydettikten sonra, kull
 
 1. **App Service planı** dikey penceresinde, **App Service planı** kutusuna bir ad yazın.
 
-1. **Fiyatlandırma katmanını** > **serbest paylaşılan** veya **paylaşılan-paylaşılan** > **Seç** > TamamOluştur > ' u seçin.
+1. **Fiyatlandırma katmanını** > **serbest paylaşılan** veya **paylaşılan** paylaşılan > seçin > **Tamam** > **Oluştur**' u **seçin** .
 
 1. Bir dakikadan kısa bir sürede, panoda yeni Web uygulaması için bir kutucuk görünür. Kutucuğu seçin.
 
@@ -252,7 +252,7 @@ App Service kaynak sağlayıcısını dağıttıktan ve kaydettikten sonra, kull
 
 1. Azure Stack kiracı portalında **+** ' i seçin, Azure Marketi ' ne gidin, bir Docgo Web sitesi dağıtın ve başarılı bir şekilde tamamlanmasını bekleyin. Docgo web platformu, dosya sistemi tabanlı bir veritabanı kullanır. SQL veya MySQL gibi ek kaynak sağlayıcıları gerektirmez.
 
-1. Ayrıca bir MySQL kaynak sağlayıcısı dağıttıysanız, Azure Marketi 'nden bir WordPress web sitesi dağıtabilirsiniz. Veritabanı parametreleri istendiğinde, tercih ettiğiniz Kullanıcı adı ve sunucu adı ile Kullanıcı *adını\@Kullanıcı1 Sunucu1*olarak girin.
+1. Ayrıca bir MySQL kaynak sağlayıcısı dağıttıysanız, Azure Marketi 'nden bir WordPress web sitesi dağıtabilirsiniz. Veritabanı parametreleri istendiğinde, tercih ettiğiniz Kullanıcı adı ve sunucu adı ile Kullanıcı adını *kullanıcı1\@Sunucu1*olarak girin.
 
 1. Ayrıca bir SQL Server kaynak sağlayıcısı dağıttıysanız, Azure Marketi 'nden bir DNN Web sitesi dağıtabilirsiniz. Veritabanı parametreleri sorulduğunda, kaynak sağlayıcınıza bağlı SQL Server çalıştıran bilgisayardaki bir veritabanını seçin.
 

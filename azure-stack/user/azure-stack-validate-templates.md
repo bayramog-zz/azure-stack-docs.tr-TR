@@ -25,7 +25,7 @@ ms.locfileid: "71961660"
 ---
 # <a name="use-the-template-validation-tool-in-azure-stack"></a>Azure Stack içinde şablon doğrulama aracını kullanma
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure Resource Manager [şablonlarınızın](azure-stack-arm-templates.md) Azure Stack dağıtıma hazırlanma olup olmadığını denetlemek için şablon doğrulama aracını kullanın. Şablon doğrulama aracı, Azure Stack araçları GitHub deposunun bir parçası olarak kullanılabilir. Azure Stack araçlarını [GitHub 'Dan indirme araçları](../operator/azure-stack-powershell-download.md)bölümünde açıklanan adımları kullanarak indirin.
 
@@ -33,8 +33,8 @@ Azure Resource Manager [şablonlarınızın](azure-stack-arm-templates.md) Azure
 
 Bir şablonu doğrulamak için, önce bir bulut özellikleri dosyası oluşturmanız ve ardından doğrulama aracını çalıştırmanız gerekir. Azure Stack araçlarından aşağıdaki PowerShell modüllerini kullanın:
 
-- **Cloudcapabilities** klasöründe: **Azurerm. CloudCapabilities. psm1** , Azure Stack buluttaki Hizmetleri ve sürümleri temsil eden bir bulut yetenekleri JSON dosyası oluşturur.
-- **Templatevalidator** klasöründe: **Azurere. TemplateValidator. psm1** , Azure Stack dağıtım için şablonları test etmek üzere bir bulut yetenekleri JSON dosyası kullanır.
+- **Cloudcapabilities** klasöründe: **azurerm. cloudcapabilities. psm1** , Azure Stack buluttaki Hizmetleri ve sürümleri temsil eden bir bulut yetenekleri JSON dosyası oluşturur.
+- **Templatevalidator** klasöründe: **Azurerm. templatevalidator. psm1** , Azure Stack dağıtım için şablonları test etmek üzere bir bulut yetenekleri JSON dosyası kullanır.
 
 ## <a name="build-the-cloud-capabilities-file"></a>Bulut özellikleri dosyasını oluşturun
 
@@ -50,7 +50,7 @@ Bir şablonu doğrulamak için, önce bir bulut özellikleri dosyası oluşturma
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Hizmet sürümlerini almak ve bir bulut yetenekleri JSON dosyası oluşturmak için **Get-CloudCapabilities** cmdlet 'ini kullanın. @No__t-0 ' ı belirtmezseniz, **Azurechoparlör Capabilities. JSON** dosyası geçerli dizinde oluşturulur. Gerçek Azure konumunuzu kullanın:
+3. Hizmet sürümlerini almak ve bir bulut yetenekleri JSON dosyası oluşturmak için **Get-CloudCapabilities** cmdlet 'ini kullanın. `-OutputPath`belirtmezseniz, **Azurechoparlör Capabilities. JSON** dosyası geçerli dizinde oluşturulur. Gerçek Azure konumunuzu kullanın:
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -85,9 +85,9 @@ Bir şablonu doğrulamak için, önce bir bulut özellikleri dosyası oluşturma
 
 | Parametre | Açıklama | Gerekli |
 | ----- | -----| ----- |
-| `TemplatePath` | Azure Resource Manager şablonlarının yinelemeli olarak bulunacağı yolu belirtir. | Evet |
+| `TemplatePath` | Azure Resource Manager şablonlarının yinelemeli olarak bulunacağı yolu belirtir. | Yes |
 | `TemplatePattern` | Eşleştirilecek şablon dosyalarının adını belirtir. | Hayır |
-| `CapabilitiesPath` | Bulut yetenekleri JSON dosyasının yolunu belirtir. | Evet |
+| `CapabilitiesPath` | Bulut yetenekleri JSON dosyasının yolunu belirtir. | Yes |
 | `IncludeComputeCapabilities` | , VM boyutları ve VM uzantıları gibi IaaS kaynaklarının değerlendirilmesini içerir. | Hayır |
 | `IncludeStorageCapabilities` | SKU türleri gibi depolama kaynaklarının değerlendirmesini içerir. | Hayır |
 | `Report` | Oluşturulan HTML raporunun adını belirtir. | Hayır |
@@ -108,4 +108,4 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Şablonları Azure Stack dağıtma](azure-stack-arm-templates.md)
-- [Şablonları Azure Stack için geliştirme](azure-stack-develop-templates.md)
+- [Azure Stack için şablon geliştirme](azure-stack-develop-templates.md)

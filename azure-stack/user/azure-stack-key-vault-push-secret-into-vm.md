@@ -24,7 +24,7 @@ ms.locfileid: "71961531"
 ---
 # <a name="deploy-a-vm-with-a-securely-stored-certificate-on-azure-stack"></a>Azure Stack üzerinde güvenli bir şekilde depolanan sertifikayla VM dağıtma 
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Bu makalede, bir Key Vault sertifikası yüklü Azure Stack sanal makinenin (VM) nasıl dağıtılacağı açıklanır.
 
@@ -125,7 +125,7 @@ Bu betiği çalıştırdığınızda, çıktı gizli URI 'yi içerir. Bu URI 'yi
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>Azuredeploy. Parameters. json dosyasını güncelleştirme
 
-**Azuredeploy. Parameters. JSON** dosyasını `vaultName`, gizli urı, `VmName` ve diğer parametrelerle ortamınıza göre güncelleştirin. Aşağıdaki JSON dosyası, şablon parametreleri dosyasına bir örnek gösterir:
+**Azuredeploy. Parameters. JSON** dosyasını `vaultName`, gizli urı, `VmName`ve diğer parametrelerle ortamınıza göre güncelleştirin. Aşağıdaki JSON dosyası, şablon parametreleri dosyasına bir örnek gösterir:
 
 ```json
 {
@@ -186,7 +186,7 @@ Azure Stack, dağıtım sırasında sertifikayı VM 'ye iter. Sertifika konumu, 
 
 Sertifikaları devre dışı bırakma, sertifika yönetimi sürecinin bir parçasıdır. Bir sertifikanın eski sürümünü silemezsiniz, ancak `Set-AzureKeyVaultSecretAttribute` cmdlet 'ini kullanarak devre dışı bırakabilirsiniz.
 
-Aşağıdaki örnek, bir sertifikanın nasıl devre dışı bırakılacağını gösterir. @No__t-0, `Name` ve `Version` parametreleri için kendi değerlerinizi kullanın.
+Aşağıdaki örnek, bir sertifikanın nasıl devre dışı bırakılacağını gösterir. `VaultName`, `Name`ve `Version` parametreleri için kendi değerlerinizi kullanın.
 
 ```powershell
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0

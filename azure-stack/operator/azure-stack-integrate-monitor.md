@@ -105,9 +105,9 @@ samples/etc/azurestack_hosts.cfg
 samples/etc/azurestack_services.cfg
 ```
 
-1.  @No__t-0 eklentisini şu dizine kopyalayın: `/usr/local/nagios/libexec`.
+1.  Eklenti `azurestack_plugin.py` şu dizine kopyalayın: `/usr/local/nagios/libexec`.
 
-2.  @No__t-0 işleyicisini şu dizine kopyalayın: `/usr/local/nagios/libexec/eventhandlers`.
+2.  İşleyici `azurestack_handler.sh` şu dizine kopyalayın: `/usr/local/nagios/libexec/eventhandlers`.
 
 3.  Eklenti dosyasının yürütülebilir olarak ayarlandığından emin olun:
 
@@ -122,19 +122,19 @@ Aşağıdaki parametreler azurestack. cfg dosyasında yapılandırılabilir. Kal
 
 SPN oluşturma hakkında daha fazla bilgi için bkz. [kaynaklara erişmek için uygulama kimliği kullanma](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals).
 
-| Parametre | Açıklama | Kimlik doğrulaması |
+| Parametre | Açıklama | Kimlik Doğrulaması |
 | --- | --- | --- |
-| **External_domain_fqdn ** | Dış etki alanı FQDN 'SI |    |
-| \* * bölge: * * | Bölge adı |    |
-| **tenant_id: ** | Kiracı KIMLIĞI @ no__t-0 |    |
-| client_id: | İstemci KIMLIĞI | Gizli anahtar içeren SPN |
+| \* * External_domain_fqdn * * | Dış etki alanı FQDN 'SI |    |
+| \* * bölge: * * | Bölge Adı |    |
+| \* * tenant_id: * * | Kiracı KIMLIĞI\* |    |
+| client_id: | İstemci Kimliği | Gizli anahtar içeren SPN |
 | client_secret: | İstemci parolası | Gizli anahtar içeren SPN |
-| client_cert @ no__t-0 @ no__t-1: | Sertifika yolu | Sertifika ile SPN |
-| client_cert_thumbprint @ no__t-0 @ no__t-1: | Sertifika parmak Izi | Sertifika ile SPN |
+| client_cert\*\*: | Sertifika yolu | Sertifika ile SPN |
+| client_cert_thumbprint\*\*: | Sertifika parmak Izi | Sertifika ile SPN |
 
-AD FS ile Azure Stack dağıtımları için \*Tenant ID gerekli değildir.
+AD FS ile Azure Stack dağıtımları için \*kiracı KIMLIĞI gerekli değildir.
 
-\* @ no__t-1 Istemci parolası ve istemci sertifikası birbirini dışlıyor.
+\*\* Istemci parolası ve istemci sertifikası birbirini dışlıyor.
 
 Diğer yapılandırma dosyaları, Nagios 'da yapılandırılabilecek şekilde isteğe bağlı yapılandırma ayarları içerir.
 
@@ -143,7 +143,7 @@ Diğer yapılandırma dosyaları, Nagios 'da yapılandırılabilecek şekilde is
 
 | Yapılandırma | Açıklama |
 | --- | --- |
-| azurestack_commands. cfg | İşleyici yapılandırmasında değişiklik yok gereksinimi |
+| azurestack_commands.cfg | İşleyici yapılandırmasında değişiklik yok gereksinimi |
 | azurestack_contacts. cfg | Bildirim ayarları |
 | azurestack_hosts. cfg | Azure Stack dağıtım adlandırma |
 | azurestack_services. cfg | Hizmetin yapılandırması |
@@ -206,7 +206,7 @@ Eklentiyi bir terminalde elle çağırarak eklenti sorunlarını giderme işlemi
 
 Operations Manager, Nagios veya Nagios tabanlı bir çözüm kullanmıyorsanız, Azure Stack ile tümleştirilecek çok çeşitli izleme çözümlerini etkinleştirmek için PowerShell kullanabilirsiniz.
 
-1. PowerShell 'i kullanmak için [PowerShell 'in yüklü olduğundan ve](azure-stack-powershell-install.md) bir Azure Stack operatör ortamı için yapılandırıldığından emin olun. PowerShell 'i Kaynak Yöneticisi (yönetici) uç noktasına (https://adminmanagement ) ulaşabilme yerel bir bilgisayara yükler. [ Bölge]. [External_FQDN]).
+1. PowerShell 'i kullanmak için [PowerShell 'in yüklü olduğundan ve](azure-stack-powershell-install.md) bir Azure Stack operatör ortamı için yapılandırıldığından emin olun. PowerShell 'i Kaynak Yöneticisi (yönetici) uç noktasına (https://adminmanagement) ulaşabilme yerel bir bilgisayara yükler. [ Bölge]. [External_FQDN]).
 
 2. Azure Stack ortamına Azure Stack operatörü olarak bağlanmak için aşağıdaki komutları çalıştırın:
 

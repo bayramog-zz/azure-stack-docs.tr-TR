@@ -18,9 +18,9 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/02/2019
 ms.locfileid: "71823919"
 ---
-# <a name="quickstart-create-a-windows-server-vm-with-the-azure-stack-portal"></a>Hızlı Başlangıç: Azure Stack portalı ile Windows Server VM oluşturma
+# <a name="quickstart-create-a-windows-server-vm-with-the-azure-stack-portal"></a>Hızlı başlangıç: Azure Stack portalı ile Windows Server VM oluşturma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 Azure Stack portalını kullanarak bir Windows Server 2016 sanal makinesi (VM) oluşturmayı öğrenin.
 
@@ -37,13 +37,13 @@ Azure Stack portalında oturum açın. Azure Stack portalının adresi, bağland
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-1. **+ Kaynak oluştur** > **işlem** > **Windows Server 2016 Datacenter-Kullandıkça Öde** > **Oluştur**. <br> **Windows server 2016 Datacenter-Kullandıkça Öde** girişini görmüyorsanız Azure Stack işletmenize başvurun ve [WINDOWS Server 2016 VM görüntüsünü Azure Stack Market 'e ekleme](../operator/azure-stack-create-and-publish-marketplace-item.md) makalesinde açıklandığı şekilde bunu Market 'e eklemesini isteyin .
+1. **Windows Server 2016 Datacenter-Kullandıkça öde** > **oluşturmak** ** >  > ** **kaynak oluştur ' a** tıklayın. <br> **Windows server 2016 Datacenter-Kullandıkça Öde** girişini görmüyorsanız Azure Stack işletmenize başvurun ve [WINDOWS Server 2016 VM görüntüsünü Azure Stack Market 'e ekleme](../operator/azure-stack-create-and-publish-marketplace-item.md) makalesinde açıklandığı şekilde bunu Market 'e eklemesini isteyin.
 
     ![Portalda Windows VM oluşturma adımları](media/azure-stack-quick-windows-portal/image01.png)
 
 2. **Temel bilgiler**altında bir **ad**, **Kullanıcı adı**ve **parola**yazın. Bir **abonelik**seçin. Bir **kaynak grubu**oluşturun veya var olan bir grubu seçin, bir **konum**seçin ve ardından **Tamam**' a tıklayın.
 
-    ![Temel ayarları yapılandırın](media/azure-stack-quick-windows-portal/image02.png)
+    ![Temel ayarları yapılandırma](media/azure-stack-quick-windows-portal/image02.png)
 
 3. **Boyut**bölümünde **D1 Standart**' ı seçin ve ardından **Seç**' e tıklayın.  
 
@@ -57,7 +57,7 @@ Azure Stack portalında oturum açın. Azure Stack portalının adresi, bağland
    Yapılandırmalarınız hazırlandığınızda, devam etmek için **Tamam** ' ı seçin.
 
 5. **Özet**altında, VM oluşturmak için **Tamam** ' ı tıklatın.
-    ![summary görüntüleme ve VM oluşturma @ no__t-1
+    ![Özeti görüntüleme ve VM oluşturma](media/azure-stack-quick-windows-portal/image05.png)
 
 6. Yeni VM 'nizi görmek için **tüm kaynaklar**' a tıklayın, VM adını arayın ve arama sonuçlarında bunu seçin.
 

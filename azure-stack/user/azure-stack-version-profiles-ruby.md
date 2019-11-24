@@ -25,7 +25,7 @@ ms.locfileid: "72282859"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Ruby ile API sürüm profillerini kullanın Azure Stack
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
 ## <a name="ruby-and-api-version-profiles"></a>Ruby ve API sürüm profilleri
 
@@ -34,7 +34,7 @@ Azure Stack Kaynak Yöneticisi için Ruby SDK, altyapınızı oluşturmanıza ve
 Bir API profili, kaynak sağlayıcılarının ve hizmet sürümlerinin bir birleşimidir. Farklı kaynak türlerini birleştirmek için bir API profili kullanabilirsiniz.
 
 - Tüm hizmetlerin en son sürümlerini kullanmak için, Azure SDK toplamasının GED 'nin **en son** profilini kullanın.
-- Azure Stack ile uyumlu hizmetleri kullanmak için, Azure SDK toplamasının geI 'nin **V2019_03_01_Hybrid** veya **V2018_03_01** profilini kullanın.
+- Azure Stack ile uyumlu hizmetleri kullanmak için Azure SDK toplamasının GED **V2019_03_01_Hybrid** veya **V2018_03_01** profilini kullanın.
 - Bir hizmetin en son **api sürümünü** kullanmak için, belirli bir GED **profilini kullanın** . Örneğin, tek başına işlem hizmeti 'nin en son **api sürümünü** kullanmak Için, **işlem** GED 'nin **en son** profilini kullanın.
 - Bir hizmet için belirli bir **API-sürümü** kullanmak için, GED içinde tanımlanan belirli API sürümlerini kullanın.
 
@@ -53,7 +53,7 @@ Bir API profili, kaynak sağlayıcılarının ve hizmet sürümlerinin bir birle
        Gem install bundler
        ```
 
-- Kullanılabilir değilse, abonelik oluşturun ve daha sonra kullanılacak abonelik KIMLIĞINI kaydedin. Abonelik oluşturmaya yönelik yönergeler [Azure Stack makalesinde tekliflere abonelik oluşturma](../operator/azure-stack-subscribe-plan-provision-vm.md) ' da bulunur.
+- Yoksa, bir abonelik oluşturur ve daha sonra kullanılmak üzere abonelik Kimliğini kaydedin. Abonelik oluşturmaya yönelik yönergeler [Azure Stack makalesinde tekliflere abonelik oluşturma](../operator/azure-stack-subscribe-plan-provision-vm.md) ' da bulunur.
 - Bir hizmet sorumlusu oluşturun ve KIMLIĞINI ve parolasını kaydedin. Azure Stack için hizmet sorumlusu oluşturma yönergeleri, [kaynaklara erişmek için uygulama kimliği kullanma](../operator/azure-stack-create-service-principals.md) makalesine yöneliktir.
 - Hizmet sorumlunuz, aboneliğiniz üzerinde katkıda bulunan/Owner rolüne sahip olduğundan emin olun. Bir hizmet sorumlusuna rol atama yönergeleri, [kaynaklara erişmek için uygulama kimliği kullanma](../operator/azure-stack-create-service-principals.md)bölümünde bulunur.
 
@@ -79,36 +79,36 @@ gem 'azure_mgmt_network'
 
 Azure Resource Manager Ruby SDK 'Sı önizlemededir ve yaklaşan sürümlerde büyük olasılıkla arabirim değişiklikleri olacaktır. Küçük sürümde artan bir sayı, son değişiklikleri gösterebilir.
 
-## <a name="use-the-azure_sdk-gem"></a>Azure_sdk GED 'yi kullanma
+## <a name="use-the-azure_sdk-gem"></a>Azure_sdk GED kullanın
 
-**Azure_sdk** gem, Ruby SDK 'daki tüm desteklenen Gems 'lerin bir toplamasıyla sonuçlanır. Bu ged, tüm hizmetlerin en son sürümünü destekleyen **en son**bir  profilinden oluşur. Azure Stack için oluşturulan sürümlenmiş profiller **V2017_03_09** ve **V2019_03_01_Hybrid**içerir.
+**Azure_sdk** gem, Ruby SDK 'daki tüm desteklenen Gems 'lerin bir toplamasıyla sonuçlanır. Bu ged, tüm hizmetlerin en son sürümünü destekleyen **en son** bir profilinden oluşur. Azure Stack için tasarlanan sürümlü profiller **V2017_03_09** ve **V2019_03_01_Hybrid**içerir.
 
-Azure_sdk ROLLUP GED 'yi aşağıdaki komutla yükleyebilirsiniz:  
+Aşağıdaki komutla azure_sdk ROLLUP GED 'yi yükleyebilirsiniz:  
 
 ```Ruby  
 gem install 'azure_sdk'
 ```
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Ruby Azure SDK 'sını Azure Stack ile kullanmak için aşağıdaki değerleri belirtmeniz ve ardından değerleri ortam değişkenleriyle ayarlamanız gerekir. Ortam değişkenlerini ayarlamak için, belirli işletim sisteminize ait tabloyu izleyen yönergelere bakın.
 
 | Değer | Ortam değişkenleri | Açıklama |
 | --- | --- | --- |
-| Kiracı KIMLIĞI | `AZURE_TENANT_ID` | Azure Stack [KIRACı kimliğiniz](../operator/azure-stack-identity-overview.md). |
-| İstemci KIMLIĞI | `AZURE_CLIENT_ID` | Hizmet sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI.  |
+| Kiracı Kimliği | `AZURE_TENANT_ID` | Azure Stack [KIRACı kimliğiniz](../operator/azure-stack-identity-overview.md). |
+| İstemci Kimliği | `AZURE_CLIENT_ID` | Hizmet sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI.  |
 | Abonelik Kimliği | `AZURE_SUBSCRIPTION_ID` | Azure Stack tekliflere erişmek için [ABONELIK kimliğini](../operator/service-plan-offer-subscription-overview.md#subscriptions) kullanırsınız. |
-| İstemci parolası | `AZURE_CLIENT_SECRET` | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
-| Kaynak Yöneticisi uç noktası | `ARM_ENDPOINT` | [Azure Stack Kaynak Yöneticisi uç noktasına](#the-azure-stack-resource-manager-endpoint)bakın.  |
+| İstemci Gizli Anahtarı | `AZURE_CLIENT_SECRET` | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı. |
+| Resource Manager uç noktası | `ARM_ENDPOINT` | [Azure Stack Kaynak Yöneticisi uç noktasına](#the-azure-stack-resource-manager-endpoint)bakın.  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack Kaynak Yöneticisi uç noktası
 
-Microsoft Azure Kaynak Yöneticisi, yöneticilerin Azure kaynaklarını dağıtmaları, yönetmesi ve izlemesine olanak tanıyan bir yönetim çerçevesidir. Azure Resource Manager, tek bir işlemde bu görevleri tek tek yerine bir grup olarak işleyebilir.
+Microsoft Azure Kaynak Yöneticisi, yöneticilerin Azure kaynaklarını dağıtmaları, yönetmesi ve izlemesine olanak tanıyan bir yönetim çerçevesidir. Azure Resource Manager, bir grup olarak yerine tek tek bir işlemde bu görevleri işleyebilir.
 
 Meta veri bilgilerini Kaynak Yöneticisi uç noktasından alabilirsiniz. Uç nokta, kodunuzu çalıştırmak için gereken bilgileri içeren bir JSON dosyası döndürür.
 
  > [!NOTE]  
- > Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl** : `https://management.local.azurestack.external/` tümleşik sistemlerdeki **resourcemanagerurl** 'si: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+ > Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl** : `https://management.local.azurestack.external/`, tümleşik sistemlerdeki **resourcemanagerurl** : `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
  > Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
  Örnek JSON dosyası:
@@ -125,7 +125,7 @@ Meta veri bilgilerini Kaynak Yöneticisi uç noktasından alabilirsiniz. Uç nok
  }
 ```
 
-### <a name="set-environment-variables"></a>Ortam değişkenlerini ayarlama
+### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
 #### <a name="microsoft-windows"></a>Microsoft Windows
 
@@ -145,17 +145,17 @@ export AZURE_TENANT_ID=<YOUR_TENANT_ID>
 
 ## <a name="existing-api-profiles"></a>Mevcut API profilleri
 
-**Azure_sdk** ROLLUP GED aşağıdaki 3 profillere sahiptir:
+**Azure_sdk** toplaması GED 'nin aşağıdaki 3 profili vardır:
 
-- **V2019_03_01_Hybrid**: Azure Stack için oluşturulmuş profil. Bu profili, Azure Stack sürüm 1904 veya sonraki sürümlerde bulunan en son hizmet sürümleri için kullanın.
-- **V2017_03_09**: Azure Stack için oluşturulmuş profil. Hizmetler için bu profili, Azure Stack sürüm 1808 veya önceki bir sürümüyle en uyumlu olacak şekilde kullanın.
+- **V2019_03_01_Hybrid**: Azure Stack için oluşturulan profil. Bu profili, Azure Stack sürüm 1904 veya sonraki sürümlerde bulunan en son hizmet sürümleri için kullanın.
+- **V2017_03_09**: Azure Stack için oluşturulan profil. Hizmetler için bu profili, Azure Stack sürüm 1808 veya önceki bir sürümüyle en uyumlu olacak şekilde kullanın.
 - **En son**: profil tüm hizmetlerin en son sürümlerini içerir. Tüm hizmetlerin en son sürümlerini kullanın.
 
 Azure Stack ve API profilleri hakkında daha fazla bilgi için bkz. [API profillerinin Özeti](azure-stack-version-profiles.md#summary-of-api-profiles).
 
 ## <a name="azure-ruby-sdk-api-profile-usage"></a>Azure Ruby SDK API profili kullanımı
 
-Bir profil istemcisini başlatmak için aşağıdaki kodu kullanın. Bu parametre yalnızca Azure Stack veya diğer özel bulutlar için gereklidir. Global Azure, varsayılan olarak bu ayarlara zaten sahiptir.
+Bir profil istemcisini başlatmak için aşağıdaki kodu kullanın. Bu parametre yalnızca Azure Stack veya diğer özel bulut için gereklidir. Küresel Azure, bu ayarlar varsayılan olarak zaten sahiptir.
 
 ```Ruby  
 active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
@@ -192,9 +192,9 @@ purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
 purchase_plan_obj = Azure::Profiles::V2019_03_01_Hybrid::Compute::Mgmt::Models::PurchasePlan.new
 ```
 
-## <a name="define-azure-stack-environment-setting-functions"></a>Azure Stack ortamı ayarı işlevlerini tanımlama
+## <a name="define-azure-stack-environment-setting-functions"></a>Azure Stack ortamı ayarı işlevleri tanımlayın
 
-Azure Stack ortamında hizmet sorumlusunun kimliğini doğrulamak için, `get_active_directory_settings()` kullanarak uç noktaları tanımlayın. Bu yöntem, daha önce ayarladığınız **ARM_Endpoint** ortam değişkenini kullanır:
+Azure Stack ortamında hizmet sorumlusunun kimliğini doğrulamak için `get_active_directory_settings()`kullanarak uç noktaları tanımlayın. Bu yöntem, daha önce ayarladığınız **ARM_Endpoint** ortam değişkenini kullanır:
 
 ```Ruby  
 # Get Authentication endpoints using Arm Metadata Endpoints
@@ -244,15 +244,15 @@ Ruby ve Azure Stack API profilleriyle çözüm oluşturmak için GitHub 'da aşa
 
 3. PowerShell kullanarak bir Azure hizmet sorumlusu oluşturun ve gereken değerleri alın.
 
-   Hizmet sorumlusu oluşturma hakkında yönergeler için bkz. [Azure PowerShell kullanarak sertifikayla hizmet sorumlusu oluşturma](../operator/azure-stack-create-service-principals.md).
+   Bir hizmet sorumlusu oluşturma hakkında yönergeler için bkz: [bir sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanarak](../operator/azure-stack-create-service-principals.md).
 
    Gerekli değerler şunlardır:
 
-   - Kiracı KIMLIĞI
-   - İstemci KIMLIĞI
-   - İstemci parolası
+   - Kiracı Kimliği
+   - İstemci Kimliği
+   - Gizli anahtar
    - Abonelik Kimliği
-   - Kaynak Yöneticisi uç noktası
+   - Resource Manager uç noktası
 
    Oluşturduğunuz hizmet sorumlusunun aldığı bilgileri kullanarak aşağıdaki ortam değişkenlerini ayarlayın:
 
@@ -263,7 +263,7 @@ Ruby ve Azure Stack API profilleriyle çözüm oluşturmak için GitHub 'da aşa
    - `export ARM_ENDPOINT={your Azure Stack Resource Manager URL}`
 
    > [!NOTE]  
-   > Windows üzerinde `export` yerine `set` kullanın.
+   > Windows üzerinde `export`yerine `set` kullanın.
 
 4. Konum değişkeninin Azure Stack konumunuza ayarlandığından emin olun; Örneğin, `LOCAL="local"`.
 
@@ -273,7 +273,7 @@ Ruby ve Azure Stack API profilleriyle çözüm oluşturmak için GitHub 'da aşa
    active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
    ```
 
-6. @No__t-0 değişkeninde, Azure Stack çalışmak için Active Directory ayarlarını ve temel URL 'YI ekleyin:
+6. `options` değişkeninde, Azure Stack çalışmak için Active Directory ayarlarını ve temel URL 'YI ekleyin:
 
    ```ruby  
    options = {
@@ -309,7 +309,7 @@ Ruby ve Azure Stack API profilleriyle çözüm oluşturmak için GitHub 'da aşa
    end
    ```
 
-9. Örneği çalıştırın.
+9. Örnek uygulamayı çalıştırın.
 
    ```Ruby
    bundle exec ruby example.rb
@@ -317,5 +317,5 @@ Ruby ve Azure Stack API profilleriyle çözüm oluşturmak için GitHub 'da aşa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Stack için PowerShell 'i yükler](../operator/azure-stack-powershell-install.md)
+- [Azure Stack için PowerShell yükleme](../operator/azure-stack-powershell-install.md)
 - [Azure Stack kullanıcının PowerShell ortamını yapılandırma](azure-stack-powershell-configure-user.md)  

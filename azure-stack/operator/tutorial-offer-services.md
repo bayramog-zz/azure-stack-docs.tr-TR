@@ -49,7 +49,7 @@ Temel hizmetler, Azure Stack her yüklemesiyle yerel olarak kullanılabilen aşa
 | Kaynak sağlayıcısı | Örnek kaynaklar |
 | ----------------- | ------------------|
 | Microsoft.Compute | Sanal makineler, diskler, sanal makine ölçek kümeleri |
-| Microsoft. Keykasası | Anahtar kasaları, gizlilikler |
+| Microsoft.KeyVault | Anahtar kasaları, gizlilikler |
 | Microsoft.Network | Sanal ağlar, genel IP adresleri, yük dengeleyiciler |
 | Microsoft.Storage | Depolama hesapları, blob 'lar, kuyruklar, tablolar |
 
@@ -73,10 +73,10 @@ Teklif oluşturma işlemi sırasında hem teklif hem de bir plan oluşturursunuz
 
 1. Yönetici portalında bir bulut yönetici hesabıyla oturum açın.
 
-   - Tümleşik bir sistem için, URL, işlecin bölgesine ve dış etki alanı adına göre değişir https://adminportal.&lt; biçimini kullanarak *bölge*&gt;. &lt;*FQDN*&gt;.
-   - Azure Stack Geliştirme Seti kullanıyorsanız, URL https://adminportal.local.azurestack.external ' dır.
+   - Tümleşik bir sistem için, URL, işlecin bölgesine ve dış etki alanı adına göre, https://adminportal.&ltbiçimini kullanarak farklılık gösterir. *bölge*&gt;.&lt;*FQDN*&gt;.
+   - Azure Stack Geliştirme Seti kullanıyorsanız, URL https://adminportal.local.azurestack.external.
 
-   Ardından **+ @no__t kaynak oluştur** ' u seçin-3 teklif **@no__t-** 3 **teklif**.
+   Ardından + **planlar** > **teklif**> **+ bir kaynak oluştur** ' u seçin.
 
    ![Yeni teklif](media/tutorial-offer-services/1-create-resource-offer.png)
 
@@ -100,7 +100,7 @@ Teklif oluşturma işlemi sırasında hem teklif hem de bir plan oluşturursunuz
 
    ![İşlem kotası oluştur](media/tutorial-offer-services/6-create-new-plan-quotas.png)
 
-1. **Gözden geçir + oluştur** sekmesini seçin. En üstte yeşil bir "doğrulama geçildi" başlığı görmeniz gerekir ve bu, yeni temel planın oluşturulması için hazırlandığını gösterir. **Oluştur**'u seçin. Ayrıca planın oluşturulduğunu belirten bir bildirim görmeniz gerekir.
+1. **Gözden geçir + oluştur** sekmesini seçin. En üstte yeşil bir "doğrulama geçildi" başlığı görmeniz gerekir ve bu, yeni temel planın oluşturulması için hazırlandığını gösterir. **Oluştur**’u seçin. Ayrıca planın oluşturulduğunu belirten bir bildirim görmeniz gerekir.
 
    ![Yeni plan oluştur](media/tutorial-offer-services/7-create-new-plan-review-create.png)
 
@@ -129,10 +129,10 @@ Teklif oluşturma işlemi sırasında hem teklif hem de bir plan oluşturursunuz
 
 1. Yönetici portalında bir bulut yönetici hesabıyla oturum açın.
 
-   - Tümleşik bir sistem için, URL, işlecin bölgesine ve dış etki alanı adına göre değişir https://adminportal.&lt; biçimini kullanarak *bölge*&gt;. &lt;*FQDN*&gt;.
-   - Azure Stack Geliştirme Seti kullanıyorsanız, URL https://adminportal.local.azurestack.external ' dır.
+   - Tümleşik bir sistem için, URL, işlecin bölgesine ve dış etki alanı adına göre, https://adminportal.&ltbiçimini kullanarak farklılık gösterir. *bölge*&gt;.&lt;*FQDN*&gt;.
+   - Azure Stack Geliştirme Seti kullanıyorsanız, URL https://adminportal.local.azurestack.external.
    
-   Ardından **+ @no__t kaynak oluştur** ' u seçin-3 teklif **@no__t-** 3 **teklif**.
+   Ardından + **planlar** > **teklif**> **+ bir kaynak oluştur** ' u seçin.
 
    ![Yeni teklif](media/tutorial-offer-services/image01.png)
 

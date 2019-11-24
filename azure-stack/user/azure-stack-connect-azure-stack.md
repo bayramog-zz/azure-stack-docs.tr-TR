@@ -22,7 +22,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/11/2019
 ms.locfileid: "72277042"
 ---
-# <a name="connect-to-azure-stack"></a>Azure Stack Bağlan
+# <a name="connect-to-azure-stack"></a>Azure Stack’e bağlanma
 
 Kaynakları yönetmek için Azure Stack Geliştirme Seti bağlanmanız gerekir. Bu makalede, geliştirme paketine bağlanmak için gereken adımlar ayrıntılı olarak açıklanır. Aşağıdaki bağlantı seçeneklerinden birini kullanabilirsiniz:
 
@@ -36,7 +36,7 @@ Uzak Masaüstü Bağlantısı, tek bir eşzamanlı kullanıcı, kaynakları yön
 
 2. Geliştirme Seti bilgisayarından Sunucu Yöneticisi açın, **yerel sunucu**' ya tıklayın, Internet Explorer Artırılmış Güvenlik ' i kapatın ve sonra Sunucu Yöneticisi kapatın.
 
-3. Portalı açmak için, (https://portal.local.azurestack.external/) ' a gidin ve Kullanıcı kimlik bilgilerini kullanarak oturum açın.
+3. Portalı açmak için bölümüne gidin (https://portal.local.azurestack.external/) ve Kullanıcı kimlik bilgilerini kullanarak oturum açın.
 
 
 ## <a name="connect-to-azure-stack-with-vpn"></a>VPN ile Azure Stack bağlanma
@@ -46,12 +46,12 @@ Bir Azure Stack Geliştirme Seti bölünmüş tünel VPN bağlantısı kurabilir
 > [!NOTE] 
 > Bu VPN bağlantısı, Azure Stack altyapı VM 'lerine bağlantı sağlamaz. 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Stack uyumlu Azure PowerShell](../operator/azure-stack-powershell-install.md) yerel bilgisayarınıza yükler.  
-* [Azure Stack çalışmak için gereken araçları](../operator/azure-stack-powershell-download.md)indirin. 
+* İndirme [Azure Stack ile çalışması için gereken araçları](../operator/azure-stack-powershell-download.md). 
 
-### <a name="configure-vpn-connectivity"></a>VPN bağlantısını yapılandırma
+### <a name="configure-vpn-connectivity"></a>VPN bağlantısı yapılandırma
 
 Geliştirme Seti 'ne bir VPN bağlantısı oluşturmak için, yerel Windows tabanlı bilgisayarınızdan yükseltilmiş bir PowerShell oturumu açın ve aşağıdaki betiği çalıştırın (ortamınız için IP adresi ve parola değerlerini güncelleştirdiğinizden emin olun):
 
@@ -88,11 +88,11 @@ Kurulum başarılı olursa, VPN bağlantıları listenizde `azurestack` görürs
 
 ![Ağ bağlantıları](media/azure-stack-connect-azure-stack/image3.png)  
 
-### <a name="connect-to-azure-stack"></a>Azure Stack Bağlan
+### <a name="connect-to-azure-stack"></a>Azure Stack’e bağlanma
 
 Aşağıdaki iki yöntemden birini kullanarak Azure Stack örneğine bağlanın:  
 
-* @No__t-0 komutunu kullanarak: 
+* `Connect-AzsVpn` komutunu kullanarak: 
     
   ```powershell
   Connect-AzsVpn `
@@ -101,11 +101,11 @@ Aşağıdaki iki yöntemden birini kullanarak Azure Stack örneğine bağlanın:
 
   İstendiğinde, Azure Stack konağına güvenin ve sertifikayı **Azurestackcertificateauthority** konumundan yerel bilgisayarınızın sertifika deposuna yüklersiniz. İstem, PowerShell oturum penceresinin arkasında görünebilir. 
 
-* Yerel bilgisayarınızda **ağ ayarları** > **VPN** > ' e gidin `azurestack` @ no__t-4**Connect**' i seçin. Oturum açma isteminde Kullanıcı adını (AzureStack\AzureStackAdmin) ve parolayı girin.
+* Yerel bilgisayarınızda **ağ ayarları** > **VPN** > ' e gidin `azurestack` > **Bağlan**' ı seçin. Oturum açma isteminde Kullanıcı adını (AzureStack\AzureStackAdmin) ve parolayı girin.
 
 ### <a name="test-the-vpn-connectivity"></a>VPN bağlantısını test etme
 
-Portal bağlantısını test etmek için bir tarayıcı açın ve Kullanıcı portalına (https://portal.local.azurestack.external/) ' a gidin, oturum açın ve ardından kaynaklar oluşturun.  
+Portal bağlantısını test etmek için bir tarayıcı açın ve Kullanıcı portalına gidin (https://portal.local.azurestack.external/), oturum açın ve kaynakları oluşturun.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

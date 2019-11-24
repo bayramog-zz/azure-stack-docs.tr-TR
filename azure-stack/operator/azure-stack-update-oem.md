@@ -24,7 +24,7 @@ ms.locfileid: "72445169"
 ---
 # <a name="apply-azure-stack-original-equipment-manufacturer-oem-updates"></a>Özgün donanım üreticisi (OEM) güncelleştirmelerini Azure Stack Uygula
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri*
 
 Kullanıcılarınızın etkilerini en aza indirerek güvenlik düzeltme eklerinin yanı sıra sürücü ve bellenim iyileştirmeleri almak için Azure Stack donanım bileşenlerine özgün ekipman üreticisi (OEM) güncelleştirmeleri uygulayabilirsiniz. Bu makalede, OEM güncelleştirmeleri, OEM iletişim bilgileri ve bir OEM güncelleştirmesinin nasıl uygulanacağı hakkında bilgi edinebilirsiniz.
 
@@ -42,7 +42,7 @@ Bazı donanım satıcıları, iç bellenim güncelleştirme işlemini işleyen b
 
 Bu bölüm, OEM iletişim bilgilerini ve OEM Azure Stack başvuru malzemelerinden bağlantıları içerir.
 
-| Donanım Iş ortağı | Bölge | URL |
+| Donanım Iş ortağı | Bölge | URL'si |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Cisco | Tümü | [Microsoft Azure Stack Işlemler Kılavuzu için Cisco Tümleşik Sistem](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_01000.html)<br><br>[UCS C Serisi raf bağlama UCS-yönetilen sunucu yazılımı](https://software.cisco.com/download/home/283862063/type/286320368/release/2.0(0)) |
 | Dell EMC | Tümü | [Microsoft Azure Stack 14G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Microsoft Azure Stack 13G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
@@ -65,7 +65,7 @@ Aşağıdaki adımlarla OEM paketlerini uygulayın:
 
 ## <a name="configure-hardware-vendor-vm"></a>Donanım satıcısı VM 'sini yapılandırma
 
-Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. **Set-OEMExternalVM** cmdlet 'ini çalıştırırken **ve kimlik bilgileri için hangi**kimlik bilgilerinin kullanılması gerektiğini ve @no__t-- **---** -----------------------------1 @no__t VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** ile yapılandırın.
+Bazı donanım satıcıları, OEM güncelleştirme işleminde yardımcı olması için bir VM gerektirebilir. **Set-OEMExternalVM** cmdlet 'ini çalıştırırken **ve kimlik bilgileri**için hangi kimlik bilgilerinin kullanılması gerektiğini `ProxyVM` veya `HardwareManager` **-vmtype** Için gerekiyorsa, donanım satıcınız bu VM 'leri oluşturmaktan sorumlu olacaktır. VM 'Ler oluşturulduktan sonra, bunları ayrıcalıklı uç noktadan **set-OEMExternalVM** ile yapılandırın.
 
 Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azure Stack ayrıcalıklı uç noktasını kullanma](azure-stack-privileged-endpoint.md).
 
@@ -77,7 +77,7 @@ Azure Stack ayrıcalıklı uç nokta hakkında daha fazla bilgi için, bkz. [Azu
     -ConfigurationName PrivilegedEndpoint -Credential $cred
     ```
 
-2. **Set-OEMExternalVM** cmdlet 'ini kullanarak donanım satıcısı VM 'sini yapılandırın. Cmdlet 'i **-vmtype** `ProxyVM` için IP adresini ve kimlik bilgilerini doğrular. **-Vmtype** `HardwareManager` cmdlet girişi doğrulamaz. **Set-OEMExternalVM** için belirtilen **-Credential** parametresi, donanım satıcısı belgelerinin açıkça belgelendiği bir sağlayıcıdır.  Ayrıcalıklı uç noktayla veya diğer mevcut Azure Stack kimlik bilgileriyle kullanılan CloudAdmin kimlik bilgisi DEĞILDIR.
+2. **Set-OEMExternalVM** cmdlet 'ini kullanarak donanım satıcısı VM 'sini yapılandırın. Cmdlet 'i **-vmtype** `ProxyVM`için IP adresini ve kimlik bilgilerini doğrular. For **-vmtype** `HardwareManager` cmdlet girişi doğrulamaz. **Set-OEMExternalVM** için belirtilen **-Credential** parametresi, donanım satıcısı belgelerinin açıkça belgelendiği bir sağlayıcıdır.  Ayrıcalıklı uç noktayla veya diğer mevcut Azure Stack kimlik bilgileriyle kullanılan CloudAdmin kimlik bilgisi DEĞILDIR.
 
     ```powershell  
     $VmCred = Get-Credential

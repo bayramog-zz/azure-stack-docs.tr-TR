@@ -20,7 +20,7 @@ ms.locfileid: "71974087"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Azure Stack ' de sanal makine ölçek kümelerini kullanılabilir hale getirin
 
-*Için geçerli: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
   
 Sanal Makine Ölçek Kümeleri Azure Stack işlem kaynağıdır. Bunları, bir özdeş sanal makine (VM) kümesini dağıtmak ve yönetmek için kullanabilirsiniz. Aynı şekilde yapılandırılmış tüm VM 'Ler ile, ölçek kümeleri VM 'lerin ön sağlamasını gerektirmez. Büyük işlem, büyük veri ve Kapsayıcılı iş yüklerini hedefleyen büyük ölçekli hizmetler oluşturmak daha kolaydır.
 
@@ -44,16 +44,16 @@ Azure Stack, sanal makine ölçek kümeleri otomatik ölçeklendirmeyi desteklem
 > Bu bölümdeki bilgiler 1808 veya sonraki bir sürümü Azure Stack kullandığınızda geçerlidir. Sürümünüz 1807 veya daha önceki bir sürümdeyse, bkz. [sanal makine ölçek kümesini ekleme (1808 ' den önce)](#add-the-virtual-machine-scale-set-prior-to-version-1808).
 
 1. Azure Stack portalında oturum açın. Ardından, **tüm hizmetler**'e ve ardından **sanal makine ölçek kümelerine**gidin ve **işlem**altında **Sanal Makine Ölçek Kümeleri**' ni seçin.
-   ![Sanal makine ölçek kümelerini seçin @ no__t-1
+   ![sanal makine ölçek kümelerini seçin](media/azure-stack-compute-add-scalesets/all-services.png)
 
 2. ***Sanal Makine Ölçek Kümeleri oluştur***' u seçin.
    ![Sanal makine ölçek kümesi oluşturma](media/azure-stack-compute-add-scalesets/create-scale-set.png)
 
 3. Boş alanları doldur, **işletim sistemi disk görüntüsü**, **abonelik**ve **örnek boyutu**için açılan kutudan seçim yapın. **Yönetilen diskleri kullanmak**için **Evet** ' i seçin. Ardından, **Oluştur**'u tıklatın.
-    ![Yapılandırma ve sanal makine ölçek kümelerini oluşturma @ no__t-1
+    ![sanal makine ölçek kümeleri yapılandırma ve oluşturma](media/azure-stack-compute-add-scalesets/create.png)
 
 4. Yeni sanal makine ölçek kümesini görmek için **tüm kaynaklar**' a gidin, sanal makine ölçek kümesi adını arayın ve ardından aramada adını seçin.
-   ![Sanal makine ölçek kümesini görüntüle @ no__t-1
+   ![sanal makine ölçek kümesini görüntüle](media/azure-stack-compute-add-scalesets/search.png)
 
 ## <a name="add-the-virtual-machine-scale-set-prior-to-version-1808"></a>Sanal makine ölçek kümesini ekleyin (sürüm 1808 ' den önce)
 
@@ -74,9 +74,9 @@ Bir sanal makine ölçek kümesi oluşturduktan sonra, kullanıcılar ölçek k�
 
 1. Sanal makine ölçek kümesi dağıtım şablonu **Sürüm**için **en son** şunları belirtir:  
 
-   @No__t-0, bir ölçek kümesi için şablonun `imageReference` bölümünde **en son** olarak ayarlandığında, ölçek kümesindeki ölçeği genişletme işlemleri, ölçek kümesi örnekleri için görüntünün en yeni kullanılabilir sürümünü kullanır. Ölçeği tamamladıktan sonra, eski sanal makine ölçek kümeleri örneklerini silebilirsiniz. @No__t-0, `offer` ve `sku` değerleri değişmeden kalır.
+   Ölçek kümesi için şablonun `imageReference` bölümünde `version` **en son** olarak ayarlandığında, ölçek kümesi üzerinde ölçek oluşturma işlemleri görüntünün ölçek kümesi örnekleri için en yeni kullanılabilir sürümünü kullanır. Ölçeği tamamladıktan sonra, eski sanal makine ölçek kümeleri örneklerini silebilirsiniz. `publisher`, `offer`ve `sku` değerleri değişmeden kalır.
 
-   Aşağıdaki JSON örneği @no__t belirtir-0:  
+   Aşağıdaki JSON örneği `latest`belirtir:  
 
     ```json  
     "imageReference": {

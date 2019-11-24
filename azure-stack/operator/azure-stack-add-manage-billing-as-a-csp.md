@@ -24,7 +24,7 @@ ms.locfileid: "71961883"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-solution-provider"></a>Bulut çözümü sağlayıcısı olarak Azure Stack için kullanımı ve faturalandırmayı yönetme
 
-*Için geçerli: Azure Stack tümleşik sistemler @ no__t-0
+*İçin geçerlidir: Azure Stack tümleşik sistemleri*
 
 Bu makalede, Azure Stack bir bulut çözümü sağlayıcısı (CSP) olarak nasıl kaydedileceği ve müşterilerin nasıl ekleneceği açıklanmaktadır.
 
@@ -47,7 +47,7 @@ Azure Stack için kullandığınız paylaşılan hizmetler hesabının türünü
 
 Azure Iş ortağı paylaşılan hizmetleri (APSS) abonelikleri, doğrudan CSP veya CSP dağıtıcısı Azure Stack çalıştığında kayıt için tercih edilen seçenektir.
 
-APSS abonelikleri, paylaşılan hizmetler kiracısı ile ilişkilendirilir. Azure Stack kaydettiğinizde, aboneliğin sahibi olan bir hesabın kimlik bilgilerini sağlarsınız. Azure Stack kaydetmek için kullandığınız hesap, dağıtım için kullandığınız yönetici hesabından farklı olabilir. Ayrıca, iki hesabın aynı etki alanına ait olması gerekmez; zaten kullandığınız kiracıyı kullanarak dağıtım yapabilirsiniz. Örneğin, `ContosoCSP.onmicrosoft.com` ' ı kullanabilir, sonra farklı bir kiracı kullanarak kaydolabilirsiniz; Örneğin, `IURContosoCSP.onmicrosoft.com`. Günlük Azure Stack yönetimi gerçekleştirirken `ContosoCSP.onmicrosoft.com` kullanarak oturum açmanız gerektiğini unutmayın. Kayıt işlemleri gerçekleştirmeniz gerektiğinde `IURContosoCSP.onmicrosoft.com` kullanarak Azure 'da oturum açın.
+APSS abonelikleri, paylaşılan hizmetler kiracısı ile ilişkilendirilir. Azure Stack kaydettiğinizde, aboneliğin sahibi olan bir hesabın kimlik bilgilerini sağlarsınız. Azure Stack kaydetmek için kullandığınız hesap, dağıtım için kullandığınız yönetici hesabından farklı olabilir. Ayrıca, iki hesabın aynı etki alanına ait olması gerekmez; zaten kullandığınız kiracıyı kullanarak dağıtım yapabilirsiniz. Örneğin, `ContosoCSP.onmicrosoft.com`kullanabilir ve sonra farklı bir kiracı kullanarak kaydolabilirsiniz; Örneğin, `IURContosoCSP.onmicrosoft.com`. Günlük Azure Stack yönetimi gerçekleştirirken `ContosoCSP.onmicrosoft.com` kullanarak oturum açmayı unutmamanız gerekir. Kayıt işlemleri gerçekleştirmeniz gerektiğinde `IURContosoCSP.onmicrosoft.com` kullanarak Azure 'da oturum açın.
 
 APSS aboneliklerinin açıklaması ve bunların nasıl oluşturulacağı hakkında bilgi için bkz. [Azure Iş ortağı paylaşılan hizmetleri ekleme](/partner-center/shared-services).
 

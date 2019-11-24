@@ -18,7 +18,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/11/2019
 ms.locfileid: "72283394"
 ---
-# <a name="offer-highly-available-mysql-databases"></a>Yüksek oranda kullanılabilir MySQL veritabanları sunun
+# <a name="offer-highly-available-mysql-databases"></a>Yüksek oranda kullanılabilir olan MySQL veritabanları sunar.
 
 Azure Stack operatörü olarak sunucu VM 'lerini MySQL Server veritabanlarını barındıracak şekilde yapılandırabilirsiniz. Bir MySQL kümesi başarıyla oluşturulduktan ve Azure Stack tarafından yönetiliyorsa, MySQL hizmetlerine abone olan kullanıcılar yüksek oranda kullanılabilir MySQL veritabanlarını kolayca oluşturabilir.
 
@@ -55,7 +55,7 @@ MySQL sunucu kümesini, çoğaltma marketi öğesi [Ile MySQL](https://azuremark
 
 - Bir sanal ağ
 - Bir ağ güvenlik grubu
-- Depolama hesabı
+- depolama hesabı
 - Bir kullanılabilirlik kümesi
 - Üç ağ arabirimi (varsayılan VM 'lerin her biri için bir tane)
 - Genel bir IP adresi (birincil MySQL küme VM 'si için)
@@ -64,7 +64,7 @@ MySQL sunucu kümesini, çoğaltma marketi öğesi [Ile MySQL](https://azuremark
 1. 
    [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. **@No__t-1** ' i **seçin @no__t-** 3**işlem**yapın ve ardından **çoğaltmayla MySQL**.
+2. **İşlem** >  **\+** **kaynak oluştur** ' u ve sonra da bir **çoğaltma ile MySQL**' i seçin.
 
    ![Özel şablon dağıtımı](media/azure-stack-tutorial-mysqlrp/1.png)
 
@@ -92,7 +92,7 @@ MySQL sunucu kümesini, çoğaltma marketi öğesi [Ile MySQL](https://azuremark
 
 6. Dağıtımı başlatmak için **satın alma** sayfasında **Oluştur** ' a tıklayın.
 
-   ![Satıcıdan](media/azure-stack-tutorial-mysqlrp/5.png)
+   ![Satın Al](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
     > Dağıtım yaklaşık bir saat sürer. Dağıtımın tamamlandığından ve MySQL kümesinin devam etmeden önce tamamen yapılandırıldığından emin olun. 
@@ -105,11 +105,11 @@ Varsayılan olarak, ana bilgisayar VM 'sine MySQL için genel erişim yapıland�
 
 1. Yönetici portalında, MySQL kümesini dağıtmada oluşturulan kaynak grubuna gidin ve ağ güvenlik grubunu seçin (**varsayılan-alt ağ-SG**):
 
-   ![open](media/azure-stack-tutorial-mysqlrp/6.png)
+   ![açık](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. **Gelen güvenlik kuralları** ' nı seçin ve ardından **Ekle**' ye tıklayın.<br><br>**Hedef bağlantı noktası aralığına** **3306** girin ve isteğe bağlı olarak **ad** ve **Açıklama** alanlarına bir açıklama sağlayın. Gelen güvenlik kuralı iletişim kutusunu kapatmak için Ekle ' ye tıklayın.
 
-   ![open](media/azure-stack-tutorial-mysqlrp/7.png)
+   ![açık](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>MySQL kümesine dış erişimi yapılandırma
 MySQL kümesinin bir Azure Stack MySQL Server Konağı olarak eklenebilmesi için, dış erişimin etkinleştirilmesi gerekir.
@@ -125,7 +125,7 @@ MySQL kümesinin bir Azure Stack MySQL Server Konağı olarak eklenebilmesi içi
 
    ![Hizmeti denetle](media/azure-stack-tutorial-mysqlrp/bitnami2.png)
 
-3. MySQL 'e bağlanmak ve ardından SSH istemcisinden çıkmak için Azure Stack MySQL barındırma sunucusu tarafından kullanılacak bir uzaktan erişim kullanıcı hesabı oluşturun.<br><br>Daha önce oluşturulan kök parolayı kullanarak MySQL içinde kök olarak oturum açmak için aşağıdaki komutları çalıştırın ve yeni bir yönetici kullanıcı oluşturun, *\<username @ no__t-2* ve *\<password @ no__t-5* ' i ortamınız için gereken şekilde değiştirin. Bu örnekte, oluşturulacak Kullanıcı **SQLSA** olarak adlandırılır ve güçlü bir parola kullanılır:
+3. MySQL 'e bağlanmak ve ardından SSH istemcisinden çıkmak için Azure Stack MySQL barındırma sunucusu tarafından kullanılacak bir uzaktan erişim kullanıcı hesabı oluşturun.<br><br>Daha önce oluşturulan kök parolayı kullanarak MySQL içinde kök olarak oturum açmak için aşağıdaki komutları çalıştırın ve yeni bir yönetici kullanıcı oluşturun, *\<Kullanıcı adı\>* ve *\<Password\>* ortamınız için gerektiği gibi değiştirin. Bu örnekte, oluşturulacak Kullanıcı **SQLSA** olarak adlandırılır ve güçlü bir parola kullanılır:
 
    ```mysql
    mysql -u root -p
@@ -165,7 +165,7 @@ MySQL kümesi oluşturulduktan, yapılandırıldıktan ve bir Azure Stack Işlec
 1. 
    [!INCLUDE [azs-user-portal](../includes/azs-user-portal.md)]
 
-2. **@No__t-1** ' i seçin  > **veri \+ depolama alanını**ve ardından **MySQL veritabanını** **oluşturun**.<br><br>Ad, harmanlama, kullanılacak abonelik ve dağıtım için kullanılacak konum dahil olmak üzere gerekli veritabanı özellik bilgilerini sağlayın. 
+2.  > **veri \+ depolama**ve ardından **MySQL veritabanı** **\+** **kaynak oluştur** ' u seçin.<br><br>Ad, harmanlama, kullanılacak abonelik ve dağıtım için kullanılacak konum dahil olmak üzere gerekli veritabanı özellik bilgilerini sağlayın. 
 
    ![MySQL veritabanı oluştur](./media/azure-stack-tutorial-mysqlrp/createdb1.png)
 
@@ -173,7 +173,7 @@ MySQL kümesi oluşturulduktan, yapılandırıldıktan ve bir Azure Stack Işlec
 
    ![SKU seçin](./media/azure-stack-tutorial-mysqlrp/createdb2.png)
 
-4. @No__t **oturum açma**seçin-1**Yeni bir oturum açma oluşturun** ve ardından yeni veritabanı için kullanılacak MySQL kimlik doğrulama kimlik bilgilerini sağlayın. İşiniz bittiğinde, **Tamam** ' a tıklayın ve ardından **Oluştur** ' a tıklayarak veritabanı dağıtım sürecini başlatın.
+4. **Oturum aç** ' ı seçin > **Yeni bir oturum oluşturun** ve yeni veritabanı için kullanılacak MySQL kimlik doğrulama kimlik bilgilerini sağlayın. İşiniz bittiğinde, **Tamam** ' a tıklayın ve ardından **Oluştur** ' a tıklayarak veritabanı dağıtım sürecini başlatın.
 
    ![Oturum açma Ekle](./media/azure-stack-tutorial-mysqlrp/createdb3.png)
 

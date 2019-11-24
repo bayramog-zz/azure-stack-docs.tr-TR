@@ -19,13 +19,13 @@ ms.locfileid: "72286998"
 
 Önceki öğreticide, kullanıcılar için bir teklif oluşturdunuz. Bu öğreticide, bir abonelik oluşturmak için kullanarak bu teklifin nasıl test yapılacağı gösterilir. Daha sonra, aboneliğin sahip olduğu temel hizmetlerde kaynak oluşturup dağıtabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Abonelik oluşturma
 > * Kaynak oluşturma ve dağıtma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, aşağıdaki önkoşulları gerçekleştirmeniz gerekir:
 
@@ -37,14 +37,14 @@ Bu öğreticiye başlamadan önce, aşağıdaki önkoşulları gerçekleştirmen
 
 1. Kullanıcı hesabıyla Kullanıcı Portalı 'nda oturum açın 
 
-   - Tümleşik bir sistem için, URL, işlecin bölgesine ve dış etki alanı adına göre değişir https://portal.&lt; biçimini kullanarak *bölge*&gt;. &lt;*FQDN*&gt;.
-   - Azure Stack Geliştirme Seti kullanıyorsanız, Portal adresi https://portal.local.azurestack.external ' dır.
+   - Tümleşik bir sistem için, URL, işlecin bölgesine ve dış etki alanı adına göre, https://portal.&ltbiçimini kullanarak farklılık gösterir. *bölge*&gt;.&lt;*FQDN*&gt;.
+   - Azure Stack Geliştirme Seti kullanıyorsanız, Portal adresi https://portal.local.azurestack.external.
 
 1. **Abonelik al** kutucuğunu seçin.
 
    ![Abonelik al](media/tutorial-test-offer/1-get-subscription.png)
 
-1. **Abonelik al**bölümünde, **görünen ad** alanına yeni aboneliğiniz için bir ad girin. **Teklif**' i seçin ve ardından **bir teklif seçin** listesinden önceki öğreticide oluşturduğunuz teklifi seçin. **Oluştur**' u seçin.
+1. **Abonelik al**bölümünde, **görünen ad** alanına yeni aboneliğiniz için bir ad girin. **Teklif**' i seçin ve ardından **bir teklif seçin** listesinden önceki öğreticide oluşturduğunuz teklifi seçin. **Oluştur**’u seçin.
 
    ![Teklif oluşturma](media/tutorial-test-offer/2-create-subscription.png)
 
@@ -60,14 +60,14 @@ Kullanıcı portalından, önceki bölümde oluşturduğunuz aboneliği kullanar
 
 1. Kullanıcı Portalı ' nda kullanıcı hesabıyla oturum açın.
 
-1. **+ Kaynak oluştur** > **veri + depolama** > **depolama hesabı-blob, dosya, tablo, kuyruk ' ı**seçin.
+1. **+ Bir kaynak oluştur** > **veri + depolama** > **depolama hesabı-blob, dosya, tablo, kuyruk '** ı seçin.
 
 1. **Depolama hesabı oluştur**' da, aşağıdaki bilgileri sağlayın:
   
    - Bir **ad** girin
    - Yeni **aboneliğinizi** seçin
    - Bir **kaynak grubu** seçin (veya bir tane oluşturun.) 
-   - Depolama hesabını oluşturmak için **Oluştur** ' u seçin.
+   - Depolama hesabını oluşturmak için **Oluştur**’u seçin.
 
 1. Dağıtım başladıktan sonra panoya geri dönersiniz. Yeni depolama hesabını görmek için **tüm kaynaklar**' ı seçin. Depolama hesabını arayın ve arama sonuçlarından adını seçin. Buradan, depolama hesabını ve içeriğini yönetebilirsiniz.
 
@@ -77,8 +77,8 @@ Kullanıcı portalından, önceki bölümde oluşturduğunuz aboneliği kullanar
 
 1. Kullanıcı Portalı ' nda kullanıcı hesabıyla oturum açın.
 
-1. **+ Kaynak oluştur** > **işlem** > **\<ımage-Name @ no__t-6**, burada "görüntü-adı" önkoşullara indirdiğiniz sanal makinenin adıdır.
-1. @No__t **sanal makine oluşturma** -1 **temel kavramları**bölümünde aşağıdaki bilgileri sağlayın:
+1. "Görüntü-adı", önkoşullardan indirdiğiniz sanal makinenin adı olan **\<görüntü adı\>** > > **işlem** **Oluştur** ' u seçin.
+1. **Sanal makine oluşturma** / **temelleri**bölümünde aşağıdaki bilgileri sağlayın:
   
    - VM için bir **ad** girin.
    - Yönetici hesabı için bir **Kullanıcı adı** girin.
@@ -106,7 +106,7 @@ Kullanıcı portalından, yeni aboneliği kullanarak bir sanal makine hazırlars
 
 1. Kullanıcı Portalı ' nda kullanıcı hesabıyla oturum açın.
 
-1. Panoda **+ kaynak oluştur** > **işlem** > **Windows Server 2016 Datacenter eval**' yı seçin ve ardından **Oluştur**' u seçin.
+1. Panoda + **Windows Server 2016 Datacenter Eval**> **Işlem** > **kaynak oluştur** ' u seçin ve ardından **Oluştur**' u seçin.
 
 1. **Temel bilgiler**bölümünde aşağıdaki bilgileri sağlayın:
   
@@ -133,7 +133,7 @@ Kullanıcı portalından, yeni aboneliği kullanarak bir sanal makine hazırlars
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şunları nasıl yapılacağını öğrendiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Abonelik oluşturma

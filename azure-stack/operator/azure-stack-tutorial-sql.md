@@ -18,7 +18,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/11/2019
 ms.locfileid: "72283330"
 ---
-# <a name="offer-highly-available-sql-databases"></a>Yüksek oranda kullanılabilir SQL veritabanları sunun
+# <a name="offer-highly-available-sql-databases"></a>Yüksek oranda kullanılabilir SQL veritabanı teklifi
 
 Azure Stack operatörü olarak sunucu VM 'lerini SQL Server veritabanlarını barındıracak şekilde yapılandırabilirsiniz. SQL barındırma sunucusu başarıyla oluşturulduktan ve Azure Stack tarafından yönetiliyorsa, SQL Services 'e abone olan kullanıcılar kolayca SQL veritabanı oluşturabilir.
 
@@ -62,12 +62,12 @@ Azure Stack Market 'e öğe ekleme hakkında daha fazla bilgi için bkz. [Azure 
 1. 
    [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. **@No__t-1** ' i seçin  > **özel** **oluştur**' u ve ardından **şablon dağıtımı**.
+2. **Özel** > **kaynak oluşturmak** **\+** seçin ve sonra **şablon dağıtımı**.
 
    ![Özel şablon dağıtımı](media/azure-stack-tutorial-sqlrp/1.png)
 
 
-3. **Özel dağıtım** dikey penceresinde, **Şablonu Düzenle** > **hızlı başlangıç şablonu** ' nu seçin ve ardından kullanılabilir özel şablonların açılan listesini kullanarak **SQL-2016-AlwaysOn** şablonunu seçin, **Tamam**' a tıklayın ve ardından  **Kaydedin**.
+3. **Özel dağıtım** dikey penceresinde, **Şablonu Düzenle** > **hızlı başlangıç şablonu** ' nu seçin ve ardından kullanılabilir özel şablonların açılan listesini kullanarak **SQL-2016-AlwaysOn** şablonunu seçin, **Tamam**' a tıklayın ve **kaydedin**.
 
    [![](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Hızlı başlangıç şablonunu seçin")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
@@ -83,7 +83,7 @@ Azure Stack Market 'e öğe ekleme hakkında daha fazla bilgi için bkz. [Azure 
     [![](media/azure-stack-tutorial-sqlrp/4-sm.PNG "Özel dağıtım oluştur")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
 
 
-6. Yönetim portalında, **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnek için**kaynak grubu** ) seçin. Tüm dağıtımların başarıyla tamamlandığından emin olmak için dağıtımın durumunu görüntüleyin.<br><br>Sonra, kaynak grubu öğelerini gözden geçirin ve **Sqlpipsql @ no__t-1resource Group Name @ no__t-2** genel IP adresi öğesini seçin. Genel IP adresini ve yük dengeleyici genel IP 'sinin tam FQDN 'sini kaydedin. Bunu bir Azure Stack Işlecine sağlamanız gerekir, böylelikle bu SQL AlwaysOn kullanılabilirlik grubundan yararlanan bir SQL barındırma sunucusu oluşturamazlar.
+6. Yönetim portalında, **kaynak grupları** ' nı ve ardından özel dağıtım için oluşturduğunuz kaynak grubunun adını (Bu örnek için**kaynak grubu** ) seçin. Tüm dağıtımların başarıyla tamamlandığından emin olmak için dağıtımın durumunu görüntüleyin.<br><br>Sonra, kaynak grubu öğelerini gözden geçirin ve genel IP adresi öğesini **\>Sqlpipsql\<kaynak grubu adını** seçin. Genel IP adresini ve yük dengeleyici genel IP 'sinin tam FQDN 'sini kaydedin. Bunu bir Azure Stack Işlecine sağlamanız gerekir, böylelikle bu SQL AlwaysOn kullanılabilirlik grubundan yararlanan bir SQL barındırma sunucusu oluşturamazlar.
 
    > [!NOTE]
    > Şablon dağıtımının tamamlanması birkaç saat sürer.
@@ -95,7 +95,7 @@ Azure Stack Market 'e öğe ekleme hakkında daha fazla bilgi için bkz. [Azure 
 
 Otomatik dengeli dağıtım ile bir kullanılabilirlik grubu oluşturduğunuzda SQL Server, AlwaysOn veritabanlarının yüksek kullanılabilirliğini sağlamak için herhangi bir el ile müdahale gerektirmeden gruptaki her veritabanı için ikincil çoğaltmaları otomatik olarak oluşturur.
 
-AlwaysOn kullanılabilirlik grubu için otomatik dengeli dağıtımı yapılandırmak üzere bu SQL komutlarını kullanın. @No__t-0ınstancename @ no__t-1 ' i birincil örnek SQL Server adı ve < availability_group_name >, gereken şekilde AlwaysOn kullanılabilirlik grubu adıyla değiştirin. 
+AlwaysOn kullanılabilirlik grubu için otomatik dengeli dağıtımı yapılandırmak üzere bu SQL komutlarını kullanın. \<InstanceName\> birincil örnek SQL Server adı ve < availability_group_name, AlwaysOn kullanılabilirlik grubu adıyla gereken şekilde değiştirin. 
 
 Birincil SQL örneğinde:
 
@@ -132,7 +132,7 @@ Kullanılabilirlik grubundaki her bir SQL Server örneği için kapsanan veritab
 ## <a name="create-an-azure-stack-sql-hosting-server"></a>Azure Stack SQL barındırma sunucusu oluşturma
 SQL Server AlwayOn kullanılabilirlik grubu oluşturulduktan ve düzgün şekilde yapılandırıldıktan sonra Azure Stack, kullanıcıların veritabanı oluşturmalarına yönelik ek kapasiteyi kullanılabilir hale getirmek için bir Azure Stack SQL barındırma sunucusu oluşturmanız gerekir. 
 
-SQL AlwaysOn kullanılabilirlik grubunun kaynak grubu oluşturulduğunda daha önce kaydedilen SQL yük dengeleyicinin genel IP 'si için genel IP veya tam FQDN 'yi kullandığınızdan emin olun (**Sqlpipsql @ no__t-1kaynak grubu adı @ no__t-2**). Ayrıca, AlwaysOn kullanılabilirlik grubundaki SQL örneklerine erişmek için kullanılan SQL Server kimlik doğrulama kimlik bilgilerini bilmeniz gerekir.
+SQL AlwaysOn kullanılabilirlik grubunun kaynak grubu oluşturulduğunda daha önce kaydedilen SQL yük dengeleyicinin genel IP 'si için genel IP veya tam FQDN 'yi kullandığınızdan emin olun (**Sqlpıpsql\<kaynak grubu adı\>** ). Ayrıca, AlwaysOn kullanılabilirlik grubundaki SQL örneklerine erişmek için kullanılan SQL Server kimlik doğrulama kimlik bilgilerini bilmeniz gerekir.
 
 > [!NOTE]
 > Bu adımın Azure Stack yönetim portalından bir Azure Stack Işleci tarafından çalıştırılması gerekir.
@@ -153,7 +153,7 @@ SQL AlwaysOn kullanılabilirlik grubu oluşturulduktan, yapılandırıldıktan v
 1. 
    [!INCLUDE [azs-user-portal](../includes/azs-user-portal.md)]
 
-2. **@No__t-1** ' i seçin  > **veri \+ depolama alanı**ve sonra **SQL veritabanı** **oluşturun**.<br><br>Dağıtım için kullanılacak ad, harmanlama, maksimum boyut ve abonelik, kaynak grubu ve konum dahil olmak üzere gerekli veritabanı özellik bilgilerini sağlayın. 
+2.  > **veri \+ depolama**ve ardından **SQL veritabanı** **\+** **kaynak oluştur** ' u seçin.<br><br>Dağıtım için kullanılacak ad, harmanlama, maksimum boyut ve abonelik, kaynak grubu ve konum dahil olmak üzere gerekli veritabanı özellik bilgilerini sağlayın. 
 
    ![SQL veritabanı oluştur](./media/azure-stack-tutorial-sqlrp/createdb1.png)
 
@@ -161,7 +161,7 @@ SQL AlwaysOn kullanılabilirlik grubu oluşturulduktan, yapılandırıldıktan v
 
    ![SKU seçin](./media/azure-stack-tutorial-sqlrp/createdb2.png)
 
-4. @No__t **oturum açma**seçin-1**Yeni bir oturum açma oluşturun** ve sonra yenı veritabanı için kullanılacak SQL kimlik doğrulama kimlik bilgilerini sağlayın. İşiniz bittiğinde, **Tamam** ' a tıklayın ve ardından **Oluştur** ' a tıklayarak veritabanı dağıtım sürecini başlatın.
+4. **Oturum aç** ' ı seçin > **Yeni bir oturum açın** ve sonra yenı veritabanı için kullanılacak SQL kimlik doğrulama kimlik bilgilerini sağlayın. İşiniz bittiğinde, **Tamam** ' a tıklayın ve ardından **Oluştur** ' a tıklayarak veritabanı dağıtım sürecini başlatın.
 
    ![Oturum açma oluştur](./media/azure-stack-tutorial-sqlrp/createdb3.png)
 

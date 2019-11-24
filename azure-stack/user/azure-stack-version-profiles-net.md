@@ -23,74 +23,74 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/11/2019
 ms.locfileid: "72282872"
 ---
-# <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Azure Stack .NET ile API sürüm profillerini kullanın
+# <a name="use-api-version-profiles-with-net-in-azure-stack"></a>. NET'te Azure Stack ile API Sürüm profillerini kullanma
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*İçin geçerlidir: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
 
-Azure Stack Kaynak Yöneticisi .NET SDK, altyapınızı oluşturmanıza ve yönetmenize yardımcı olacak araçlar sağlar. SDK 'daki kaynak sağlayıcıları Işlem, ağ, depolama, uygulama hizmetleri ve [Key Vault](/azure/key-vault/key-vault-whatis)içerir. .NET SDK 'Sı 14 NuGet paketi içerir. Projenizi her derlerken bu paketleri çözümünüze indirmeniz gerekir. Ancak, uygulamanızın belleğini iyileştirmek için **2019-03-01 karma** veya **2018-03-01 karma** sürümler için kullanacağınız kaynak sağlayıcıyı özellikle indirebilirsiniz. Her paket, bir kaynak sağlayıcısından, ilgili API sürümünden ve ait olduğu API profilinden oluşur. .NET SDK 'daki API profilleri, Azure Stack Genel Azure kaynakları ve kaynakları arasında geçiş yapmanıza yardımcı olarak karma bulut geliştirmesini sağlar.
+.NET SDK'sı için Azure Stack Kaynak Yöneticisi'ni oluşturmanıza ve altyapınızı yönetmenize yardımcı olacak araçlar sağlar. SDK 'daki kaynak sağlayıcıları Işlem, ağ, depolama, uygulama hizmetleri ve [Key Vault](/azure/key-vault/key-vault-whatis)içerir. .NET SDK 'Sı 14 NuGet paketi içerir. Projenizi her derlerken bu paketleri çözümünüze indirmeniz gerekir. Ancak, uygulamanızın belleğini iyileştirmek için **2019-03-01 karma** veya **2018-03-01 karma** sürümler için kullanacağınız kaynak sağlayıcıyı özellikle indirebilirsiniz. Her paket, kaynak sağlayıcısı, ilgili API sürümü ve ait olduğu API profili oluşur. .NET SDK'sı API profillerinde genel Azure kaynakları ve Azure Stack'te kaynakları arasında geçiş yardımcı olarak karma bulut geliştirmeyi etkinleştirin.
 
-## <a name="net-and-api-version-profiles"></a>.NET ve API sürüm profilleri
+## <a name="net-and-api-version-profiles"></a>.NET ve API sürümü profillerini
 
-Bir API profili, kaynak sağlayıcılarının ve API sürümlerinin bir birleşimidir. Bir kaynak sağlayıcısı paketindeki her kaynak türünün en son, en kararlı sürümünü almak için bir API profili kullanın.
+Bir API profili, kaynak sağlayıcıları ve API sürümlerini birleşimidir. Bir kaynak sağlayıcısı paketindeki her kaynak türünün en son, en kararlı sürümünü almak için bir API profili kullanın.
 
-- Tüm hizmetlerin en son sürümlerini kullanmak için paketlerin **en son** profilini kullanın. Bu profil, **Microsoft. Azure. Management** NuGet paketinin bir parçasıdır.
+- Tüm hizmetler en son sürümlerini kullanın, yapmak **son** paketlerin profili. Bu profili parçasıdır **Microsoft.Azure.Management** NuGet paketi.
 
 - Azure Stack ile uyumlu hizmetleri kullanmak için aşağıdaki paketlerden birini kullanın:
-  - **Microsoft. Azure. Management. Profiles. hibrit @ no__t-12019 @ no__t-203 @ no__t-301. <*ResourceProvider*>. 0.9.0-Preview. nupkg** 
-  - **Microsoft. Azure. Management. Profiles. hibrit @ no__t-12018 @ no__t-203 @ no__t-301. <*ResourceProvider*>. 0.9.0-Preview. nupkg**
+  - **Microsoft. Azure. Management. Profiles. hibrit\_2019\_03\_01. <*ResourceProvider*>. 0.9.0-Preview. nupkg** 
+  - **Microsoft. Azure. Management. Profiles. hibrit\_2018\_03\_01. <*ResourceProvider*>. 0.9.0-Preview. nupkg**
 
-  Yukarıdaki NuGet paketinin **ResourceProvider** bölümünün doğru sağlayıcıya değiştiğinden emin olun.
+  Emin **ResourceProvider** bölümü yukarıdaki NuGet paketinin doğru sağlayıcıya değiştirilir.
 
-- Bir hizmetin en son API sürümünü kullanmak için, belirli bir NuGet paketinin **en son** profilini kullanın. Örneğin, tek başına Işlem hizmeti 'nin **en son API** sürümünü kullanmak Istiyorsanız, **işlem** paketinin **en son** profilini kullanın. **En son** profil, **Microsoft. Azure. Management** NuGet paketinin bir parçasıdır.
+- Bir hizmetin en son API sürümünü kullanmak için, belirli bir NuGet paketinin **en son** profilini kullanın. Örneğin, tek başına Işlem hizmeti 'nin **en son API** sürümünü kullanmak Istiyorsanız, **işlem** paketinin **en son** profilini kullanın. **Son** profilidir parçası **Microsoft.Azure.Management** NuGet paketi.
 
 - Belirli bir kaynak sağlayıcısındaki bir kaynak türü için belirli API sürümlerini kullanmak üzere, paket içinde tanımlanan belirli API sürümlerini kullanın.
 
 Aynı uygulamadaki tüm seçenekleri birleştirebilirsiniz.
 
-## <a name="install-the-azure-net-sdk"></a>Azure .NET SDK 'sını yükler
+## <a name="install-the-azure-net-sdk"></a>Azure .NET SDK'sını yükleyin
 
-- Git 'i yükler. Yönergeler için bkz. Başlarken [Başlarken-git yükleme][].
+- Git'i yükleyin. Yönergeler için [Başlarken - Git yükleme][].
 
-- Doğru NuGet paketlerini yüklemek için bkz. [paket bulma ve yükleme][].
+- Doğru NuGet paketlerini yüklemek için bkz [bulma ve bir paket yükleme][].
 
 - Yüklenmesi gereken paketler, kullanmak istediğiniz profil sürümüne bağlıdır. Profil sürümleri için paket adları şunlardır:
 
-   - **Microsoft. Azure. Management. Profiles. hibrit @ no__t-12019 @ no__t-203 @ no__t-301. <*ResourceProvider*>. 0.9.0-Preview. nupkg**
+   - **Microsoft. Azure. Management. Profiles. hibrit\_2019\_03\_01. <*ResourceProvider*>. 0.9.0-Preview. nupkg**
 
-   - **Microsoft. Azure. Management. Profiles. hibrit @ no__t-12018 @ no__t-203 @ no__t-301. <*ResourceProvider*>. 0.9.0-Preview. nupkg**
+   - **Microsoft. Azure. Management. Profiles. hibrit\_2018\_03\_01. <*ResourceProvider*>. 0.9.0-Preview. nupkg**
 
-- Visual Studio Code için doğru NuGet paketlerini yüklemek için, [NuGet Paket Yöneticisi yönergeleri][]indirmek için aşağıdaki bağlantıya bakın.
+- Visual Studio Code için doğru NuGet paketlerini yüklemek için indirmek için aşağıdaki bağlantıya bakın [NuGet Paket Yöneticisi yönergeleri][].
 
-- Kullanılabilir değilse, abonelik oluşturun ve daha sonra kullanılacak abonelik KIMLIĞINI kaydedin. Abonelik oluşturma hakkında daha fazla bilgi için, bkz. [Azure Stack tekliflere abonelik oluşturma][].
+- Yoksa, bir abonelik oluşturur ve daha sonra kullanılmak üzere abonelik Kimliğini kaydedin. Abonelik oluşturma hakkında daha fazla bilgi için, bkz. [Azure Stack'te teklifleri abonelikleri oluşturma][].
 
-- Bir hizmet sorumlusu oluşturun ve istemci KIMLIĞINI ve istemci parolasını kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında daha fazla bilgi için bkz. [Uygulamalar Azure Stack erişim sağlama][]. İstemci KIMLIĞI, hizmet sorumlusu oluştururken uygulama KIMLIĞI olarak da bilinir.
+- Bir hizmet sorumlusu oluşturun ve istemci KIMLIĞINI ve istemci parolasını kaydedin. Azure Stack için hizmet sorumlusu oluşturma hakkında daha fazla bilgi için bkz. [Azure Stack için uygulamalar erişim sağlayın][]. İstemci KIMLIĞI, hizmet sorumlusu oluştururken uygulama KIMLIĞI olarak da bilinir.
 
-- Hizmet sorumlunun aboneliğinizde katkıda bulunan/Owner rolüne sahip olduğundan emin olun. Hizmet sorumlusuna rol atama hakkında daha fazla bilgi için bkz. [Uygulamalar Azure Stack erişim sağlama][].
+- Hizmet sorumlunuzu aboneliğinizde katkıda bulunan/sahip rolü olduğundan emin olun. Hizmet sorumlusuna rol atama hakkında daha fazla bilgi için bkz. [Azure Stack için uygulamalar erişim sağlayın][].
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 .NET Azure SDK 'sını Azure Stack kullanmak için aşağıdaki değerleri sağlamalısınız ve sonra değerleri ortam değişkenleriyle ayarlamanız gerekir. Ortam değişkenlerini ayarlamak için, belirli işletim sisteminize ait tabloyu izleyen yönergelere bakın.
 
 | Değer                     | Ortam değişkenleri   | Açıklama                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Kiracı KIMLIĞI                 | `AZURE_TENANT_ID `      | Azure Stack [*KIRACı kimliğinizin*][]değeri.                                                                          |
-| İstemci KIMLIĞI                 | `AZURE_CLIENT_ID `      | Hizmet sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI. |
-| Abonelik Kimliği           | `AZURE_SUBSCRIPTION_ID` | [*ABONELIK kimliği*][] , Azure Stack tekliflere nasıl erişirsiniz.                                                      |
-| İstemci parolası             | `AZURE_CLIENT_SECRET`   | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı.                                      |
-| Kaynak Yöneticisi uç noktası | `ARM_ENDPOINT`          | [*Azure Stack Kaynak Yöneticisi uç noktasına*][]bakın.                                                                    |
+| Kiracı Kimliği                 | `AZURE_TENANT_ID `      | Azure Stack değerini [ *Kiracı kimliği*][].                                                                          |
+| İstemci Kimliği                 | `AZURE_CLIENT_ID `      | Hizmet sorumlusu bu makalenin önceki bölümünde oluşturulduğunda kaydedilen hizmet sorumlusu uygulama KIMLIĞI. |
+| Abonelik Kimliği           | `AZURE_SUBSCRIPTION_ID` | [ *Abonelik kimliği* ][] nasıl, teklifler eriştiği Azure Stack'te.                                                      |
+| İstemci Gizli Anahtarı             | `AZURE_CLIENT_SECRET`   | Hizmet sorumlusu oluşturulduğunda kaydedilen hizmet sorumlusu uygulama gizli anahtarı.                                      |
+| Resource Manager uç noktası | `ARM_ENDPOINT`          | [*Azure Stack Kaynak Yöneticisi uç noktasına*][]bakın.                                                                    |
 | Konum                  | `RESOURCE_LOCATION`     | Azure Stack konumu.
 
-Azure Stack kiracı KIMLIĞINI bulmak için [Bu makaledeki](../operator/azure-stack-csp-ref-operations.md)yönergeleri izleyin. Ortam değişkenlerinizi ayarlamak için şunları yapın:
+Azure Stack kiracı KIMLIĞINI bulmak için [Bu makaledeki](../operator/azure-stack-csp-ref-operations.md)yönergeleri izleyin. Ortam değişkenlerini ayarlamak için aşağıdakileri yapın:
 
 ### <a name="windows"></a>Windows
 
-Windows komut isteminde ortam değişkenlerini ayarlamak için aşağıdaki biçimi kullanın:
+Bir Windows Komut İstemi'nde ortam değişkenlerini ayarlamak için aşağıdaki biçimi kullanın:
 
 ```shell
 Set Azure_Tenant_ID=Your_Tenant_ID
 ```
 
-### <a name="macos-linux-and-unix-based-systems"></a>macOS, Linux ve UNIX tabanlı sistemler
+### <a name="macos-linux-and-unix-based-systems"></a>macOS, Linux ve UNIX tabanlı sistemlerde
 
 UNIX tabanlı sistemlerde aşağıdaki komutu kullanın:
 
@@ -100,15 +100,15 @@ Export Azure_Tenant_ID=Your_Tenant_ID
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack Kaynak Yöneticisi uç noktası
 
-Azure Resource Manager, yöneticilerin Azure kaynaklarını dağıtmalarını, yönetmesini ve izlemesini sağlayan bir yönetim çerçevesidir. Azure Resource Manager, tek bir işlemde bu görevleri tek tek yerine bir grup olarak işleyebilir.
+Azure Resource Manager, yöneticilerin Azure kaynaklarını dağıtmalarını, yönetmesini ve izlemesini sağlayan bir yönetim çerçevesidir. Azure Resource Manager, bir grup olarak yerine tek tek bir işlemde bu görevleri işleyebilir.
 
 Meta veri bilgilerini Kaynak Yöneticisi uç noktasından alabilirsiniz. Uç nokta, kodunuzu çalıştırmak için gereken bilgileri içeren bir JSON dosyası döndürür.
 
-Aşağıdaki noktalara dikkat edin:
+Aşağıdaki konuları göz önünde bulundurun:
 
-- Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl** : https://management.local.azurestack.external/ ' dir.
+- Azure Stack Geliştirme Seti (ASDK) içindeki **Resourcemanagerurl** : https://management.local.azurestack.external/.
 
-- Tümleşik sistemlerdeki **Resourcemanagerurl** : `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` ' dir.
+- Tümleşik sistemlerdeki **Resourcemanagerurl** : `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`.
 Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
 
 Örnek JSON dosyası:
@@ -128,13 +128,13 @@ Gerekli meta verileri almak için: `<ResourceManagerUrl>/metadata/endpoints?api-
 
 ## <a name="existing-api-profiles"></a>Mevcut API profilleri
 
-- **Microsoft. Azure. Management. Profiles. karma @ no__t-12019 @ no__t-203 @ no__t-301. <*resourceprovider*>. 0.9.0-Preview. nupkg**: Azure Stack için derlenmiş en son profil. Sürüm 1904 veya sonraki bir sürümde olduğu sürece, Azure Stack Hizmetleri için bu profili kullanın.
+- **Microsoft. Azure. Management. Profiles. hibrit\_2019\_03\_01. <*ResourceProvider*>. 0.9.0-Preview. nupkg**: Azure Stack için derlenmiş en son profil. Sürüm 1904 veya sonraki bir sürümde olduğu sürece, Azure Stack Hizmetleri için bu profili kullanın.
 
-- **Microsoft. Azure. Management. Profiles. hibrit @ no__t-12018 @ no__t-203 @ no__t-301. <*resourceprovider*>. 0.9.0-Preview. nupkg**: 1808 veya üzeri sürümler için Azure Stack ile uyumlu olacak hizmetler için bu profili kullanın.
+- **Microsoft. Azure. Management. Profiles. hibrit\_2018\_03\_01. <*ResourceProvider*>. 0.9.0-Preview. nupkg**: hizmetler için bu profili, 1808 veya üzeri sürümler için Azure Stack ile uyumlu olacak şekilde kullanın.
 
-- **En son**: tüm hizmetlerin en son sürümlerinden oluşan profil. Tüm hizmetlerin en son sürümlerini kullanın. Bu profil, **Microsoft. Azure. Management** NuGet paketinin bir parçasıdır.
+- **En son**: tüm hizmetleri en son sürümlerine oluşan profili. Tüm hizmetler en son sürümlerini kullanın. Bu profili parçasıdır **Microsoft.Azure.Management** NuGet paketi.
 
-Azure Stack ve API profilleri hakkında daha fazla bilgi için bkz. [API profillerinin Özeti][].
+Azure Stack ve API profilleri hakkında daha fazla bilgi için bkz. [API profillerini özeti][].
 
 ## <a name="azure-net-sdk-api-profile-usage"></a>Azure .NET SDK API profili kullanımı
 
@@ -191,7 +191,7 @@ public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(s
 
 Bu adımlar, Azure Stack için uygulamanızı başarıyla dağıtmak üzere API profili NuGet paketlerini kullanmanıza olanak sağlar.
 
-## <a name="samples-using-api-profiles"></a>API profillerini kullanan örnekler
+## <a name="samples-using-api-profiles"></a>API profillerini kullanma örnekleri
 
 .NET ve Azure Stack API profilleriyle çözüm oluşturmaya yönelik bir başvuru olarak aşağıdaki örnekleri kullanabilirsiniz:
 
@@ -203,18 +203,18 @@ Bu adımlar, Azure Stack için uygulamanızı başarıyla dağıtmak üzere API 
 
 API profilleri hakkında daha fazla bilgi edinin:
 
-- [Azure Stack API sürüm profillerini yönetme](azure-stack-version-profiles.md)
-- [Profiller tarafından desteklenen kaynak sağlayıcısı API sürümleri](azure-stack-profiles-azure-resource-manager-versions.md)
+- [Azure Stack’de API sürümü profillerini yönetme](azure-stack-version-profiles.md)
+- [Profilleri tarafından desteklenen kaynak sağlayıcısı API sürümleri](azure-stack-profiles-azure-resource-manager-versions.md)
 
-  [Başlarken-git yükleme]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-  [Paket bulma ve yükleme]: /nuget/tools/package-manager-ui
+  [Başlarken - Git yükleme]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+  [Bulma ve bir paket yükleme]: /nuget/tools/package-manager-ui
   [NuGet Paket Yöneticisi yönergeleri]: https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager
-  [Azure Stack tekliflere abonelik oluşturma]: ../operator/azure-stack-subscribe-plan-provision-vm.md
-  [Uygulamalar Azure Stack erişim sağlama]: ../operator/azure-stack-create-service-principals.md
-  [* Kiracı KIMLIĞI *]: ../operator/azure-stack-identity-overview.md
-  [* abonelik KIMLIĞI *]: ../operator/service-plan-offer-subscription-overview.md#subscriptions
+  [Azure Stack'te teklifleri abonelikleri oluşturma]: ../operator/azure-stack-subscribe-plan-provision-vm.md
+  [Azure Stack için uygulamalar erişim sağlayın]: ../operator/azure-stack-create-service-principals.md
+  [* Kiracı kimliği *]: ../operator/azure-stack-identity-overview.md
+  [* Abonelik kimliği *]: ../operator/service-plan-offer-subscription-overview.md#subscriptions
   [* Azure Stack Kaynak Yöneticisi uç noktası *]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint
-  [API profillerinin Özeti]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
+  [API profillerini özeti]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
   [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
   [Use Azure PowerShell to create a service principal with a certificate]: ../operator/azure-stack-create-service-principals.md
   [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017

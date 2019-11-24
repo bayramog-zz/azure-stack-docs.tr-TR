@@ -22,8 +22,8 @@ Bir Web çerçevesiyle oluşturduğunuz bir Web uygulamasını barındırmak iç
 
 Bu VM, kullanarak Web uygulamalarını barındırabilir:
 
-- **Python**: Ortak Python web çerçeveleri Flask, şişe ve Docgo 'u içerir.
-- **Git**: Ortak go çerçeveleri, Relevel, martini, Gocraft/Web ve Gorilla 'yı içerir. 
+- **Python**: ortak Python web çerçeveleri Flask, şişe ve Docgo 'u içerir.
+- **Go**: ortak go çerçeveleri, Relevel, martini, Gocraft/Web ve Gorilla 'yı içerir. 
 - **Ruby**: Ruby Web uygulamalarınızı teslim etmek için Ruby on rayını bir çerçeve olarak ayarlayın. 
 - **Java**: Apache Tomcat sunucusuna nakledeceğiniz Web uygulamaları geliştirmek için Java kullanın. Linux 'a Tomcat yükleyebilir ve ardından Java WAR dosyalarınızı doğrudan sunucuya dağıtabilirsiniz. 
 
@@ -46,11 +46,11 @@ VM 'yi dağıtmak için, sonraki birkaç bölümde bulunan yönergeleri izleyin.
 ### <a name="create-your-vm"></a>VM oluşturma
 
 1. Sunucunuz için bir Secure Shell (SSH) ortak anahtarı oluşturun. Daha fazla bilgi için bkz. [SSH ortak anahtarı kullanma](azure-stack-dev-start-howto-ssh-public-key.md).
-1. Azure Stack portalında **kaynak oluştur** > **işlem** > **Ubuntu Server 16,04 LTS**' yi seçin.
+1. Azure Stack portalında **kaynak oluştur** > **Işlem** > **Ubuntu Server 16,04 LTS**' yi seçin.
 
     ![Bir Web uygulamasını Azure Stack VM 'ye dağıtma](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
 
-4. @No__t-11 için **sanal makine oluştur** bölmesinde. Temel ayarları yapılandırma @ no__t-0:
+4. **Sanal makine oluştur** bölmesinde, **1 için. Temel ayarları Yapılandır**:
 
     a. **Sanal makinenizin adını**girin.
 
@@ -60,7 +60,7 @@ VM 'yi dağıtmak için, sonraki birkaç bölümde bulunan yönergeleri izleyin.
 
     d. **Kimlik doğrulama türünü** **SSH ortak anahtarı**olarak seçin.
 
-    e. Oluşturduğunuz SSH ortak anahtarını alın. Bir metin düzenleyicisinde açın, anahtarı kopyalayın ve **SSH ortak anahtar** kutusuna yapıştırın. @No__t-0 ' dan `---- END SSH2 PUBLIC KEY ----` ' e kadar olan metni ekleyin. Tüm metin bloğunu anahtar kutusuna yapıştırın:
+    e. Oluşturduğunuz SSH ortak anahtarını alın. Bir metin düzenleyicisinde açın, anahtarı kopyalayın ve **SSH ortak anahtar** kutusuna yapıştırın. `---- END SSH2 PUBLIC KEY ----``---- BEGIN SSH2 PUBLIC KEY ----` metni ekleyin. Tüm metin bloğunu anahtar kutusuna yapıştırın:
 
     ```text  
     ---- BEGIN SSH2 PUBLIC KEY ----
@@ -74,7 +74,7 @@ VM 'yi dağıtmak için, sonraki birkaç bölümde bulunan yönergeleri izleyin.
     g. Uygulamanızın kaynaklarını nasıl düzenlemek istediğinize bağlı olarak, yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın.
 
     h. Konumunuzu seçin. Azure Stack Geliştirme Seti (ASDK) genellikle *Yerel* bir bölgede bulunur. Konum Azure Stack örneğine bağlıdır.
-1. @No__t-02 için. Boyut @ no__t-0, tür:
+1. **2 için. Boyut**, tür:
     - Azure Stack örneğiniz için kullanılabilir olan sanal makinenizin veri boyutunu ve RAM 'i seçin.
     - **İşlem türü**, **CPU 'lar**ve **depolama alanı**ile sanal makinenizin boyutuna ilişkin listeye veya filtrelemeye gidebilirsiniz.
     
@@ -83,7 +83,7 @@ VM 'yi dağıtmak için, sonraki birkaç bölümde bulunan yönergeleri izleyin.
     > - Önerilen Boyutlar, seçili görüntünün yayımcısı tarafından belirlenir ve donanım ve yazılım gereksinimlerini temel alır.
     > - Premium diskler (SSD) yerine standart diskler (HDD) kullanmak işletim sistemi performansını etkileyebilir.
 
-1. @No__t-03 ' de. İsteğe bağlı @ no__t-0 özelliklerini yapılandırın, şunu yazın:
+1. 3 ' te **. İsteğe bağlı özellikleri yapılandırın** , şunu yazın:
 
     a. **Yüksek kullanılabilirlik** için bir kullanılabilirlik kümesi seçin. Uygulamanıza yedeklilik sağlamak için bir kullanılabilirlik kümesinde iki veya daha fazla sanal makineyi gruplayın. Bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını ve% 99,95 Azure hizmet düzeyi sözleşmesini (SLA) karşılamasını sağlar. Bir sanal makinenin kullanılabilirlik kümesi oluşturulduktan sonra değiştirilemez.
 
@@ -110,7 +110,7 @@ VM 'yi dağıtmak için, sonraki birkaç bölümde bulunan yönergeleri izleyin.
 
     girişindeki. **Tamam**’ı seçin.
 
-1. @No__t-04 ' i gözden geçirin. Özet @ no__t-0:
+1. 4 gözden geçirin **. Özet**:
     - Portal, ayarlarınızı doğrular.
     - Ayarlarınızı bir Azure Resource Manager iş akışıyla yeniden kullanmak için, sanal makinenizin Azure Resource Manager şablonunu indirebilirsiniz.
     - Doğrulama geçtiğinde **Tamam**' ı seçin. VM dağıtımı birkaç dakika sürer.
