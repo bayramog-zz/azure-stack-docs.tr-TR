@@ -44,11 +44,11 @@ Model eğitilirken Azure ML 'ye kaydedilir, kapsayıcılanmış ve dağıtım i�
 
 Bu çözüm aşağıdaki bileşenleri kullanır:
 
-| Katmanı | Bileşen | Açıklama |
+| Katman | Bileşen | Açıklama |
 |----------|-----------|-------------|
 | Azure | Azure Machine Learning | ML modelinin eğitimini [Azure Machine Learning](/azure/machine-learning/) . |
-| | Azure Container Registry | Azure ML, modeli bir kapsayıcıya paketler ve dağıtım için bir [Azure Container Registry](/azure/container-registry/) depolar.|
-| Azure Stack hub 'ı | App Service | [App Service olan Azure Stack hub](/azure-stack/operator/azure-stack-app-service-overview) , kenardaki bileşenlerin temelini sağlar. |
+| | Azure Container Kayıt Defteri | Azure ML, modeli bir kapsayıcıya paketler ve dağıtım için bir [Azure Container Registry](/azure/container-registry/) depolar.|
+| Azure Stack Hub | App Service | [App Service olan Azure Stack hub](/azure-stack/operator/azure-stack-app-service-overview) , kenardaki bileşenlerin temelini sağlar. |
 | | İşlem | ML modelini eğitmek için Docker ile Ubuntu çalıştıran bir Azure Stack hub VM kullanılır. |
 | | Depolama | Özel veriler Azure Stack hub BLOB depolama alanında barındırılabilir. |
 
@@ -60,7 +60,7 @@ Bu çözümü nasıl uygulayacağınıza karar verirken aşağıdaki noktaları 
 
 Bu çözümün ölçeklendirilmesini sağlamak için, eğitim için Azure Stack hub 'ında uygun şekilde boyutlandırılabilir bir sanal makine oluşturmanız gerekir.
 
-### <a name="availability"></a>Erişilebilirlik
+### <a name="availability"></a>Kullanılabilirlik
 
 Eğitim betikleri ve Azure Stack hub VM 'nin eğitim için kullanılan şirket içi verilere erişimi olduğundan emin olun.
 

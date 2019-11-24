@@ -64,7 +64,7 @@ Dağıtılmış bir uygulama ayak izi oluşturmadan önce, aşağıdaki şeyleri
 -   **Uygulamalar Için adlandırma kuralı:** Uygulamanın birden çok örneği dağıtılırsa, dağıtılan uygulamanın her örneği için bir ad gereklidir. App Service ortamlarıyla aynı uygulama adı birden çok ortamda kullanılabilir. Her App Service Ortamı benzersiz bir etki alanı sonekine sahip olduğundan, geliştiriciler her ortamda tam olarak aynı uygulama adını kullanmayı seçebilir. Örneğin, bir geliştirici şu şekilde adlandırılan uygulamalara sahip olabilir: *MyApp.foo1.p.azurewebsites.net*, *MyApp.Foo2.p.azurewebsites.net*, *MyApp.Foo3.p.azurewebsites.net*, vb. Burada kullanılan uygulama için, her bir uygulama örneğinin benzersiz bir adı vardır. Kullanılan uygulama örneği adları *webfrontend1*, *webfrontend2*ve *webfrontend3*.
 
 > [!Tip]  
-> ![Hybrid-Pillars. png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
+> ![karma pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
 > Microsoft Azure Stack hub, Azure uzantısıdır. Azure Stack hub, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza sunarak, karma uygulamaları her yerde derleyip dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
 > 
 > [Karma uygulamalar Için tasarım konuları](overview-app-design-considerations.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
@@ -124,7 +124,7 @@ Web uygulamasını Azure 'a ve Azure Stack hub 'a dağıtmak için karma sürekl
 
 2.  **Uygulama kodunun** Azure Repos işaretli olduğunu doğrulayın.
 
-### <a name="create-the-build-definition"></a>Derleme tanımı oluşturma
+### <a name="create-the-build-definition"></a>Derleme tanımını oluşturun
 
 1. Derleme tanımları oluşturma yeteneğini onaylamak için **Azure pipelines ' de oturum açın** .
 
@@ -238,7 +238,7 @@ Azure DevOps Services, yayınlar için geliştirme, hazırlık, QA ve üretim or
 
 [Azure App Service](https://docs.microsoft.com/azure/app-service/overview), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. 
 
-![Azure App Service](media/solution-deployment-guide-geo-distributed/image27.png)
+![Azure uygulama hizmeti](media/solution-deployment-guide-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - Mevcut bir özel DNS adını Azure Web Apps eşleştirin.
@@ -311,7 +311,7 @@ CNAME eklendikten sonra DNS kayıtları sayfası aşağıdaki örneğe benzer ş
 
 4. Azure Portal'daki uygulama sayfasının sol gezintisinde **Özel etki alanları**'nı seçin.
 
-5. **Konak adı ekle**'nin yanındaki **+** simgesini seçin.
+5. **Konak adı ekle+'nin yanındaki**  simgesini seçin.
 
 6. `www.northwindcloud.com`gibi tam etki alanı adını yazın.
 
@@ -389,7 +389,7 @@ Bir sertifikayı App Service’te kullanabilmek için sertifikanın aşağıdaki
 
 Özel bir SSL sertifikasını Web uygulamasına bağlamak için [App Service planının](https://azure.microsoft.com/pricing/details/app-service/) **temel**, **Standart**veya **Premium** katmanda olması gerekir.
 
-#### <a name="sign-in-to-azure"></a>Azure'da oturum açın
+#### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 1.  [Azure Portal](https://portal.azure.com/) açın ve Web uygulamasına gidin.
 
@@ -413,7 +413,7 @@ Bir sertifikayı App Service’te kullanabilmek için sertifikanın aşağıdaki
 
 1.  **Temel**, **Standart** veya **Premium** katmanlarından birini seçin.
 
-2.  **Seç**' i seçin.
+2.  Seçin **seçin**.
 
 ![Fiyatlandırma katmanı seçme](media/solution-deployment-guide-geo-distributed/image36.png)
 
@@ -538,7 +538,7 @@ Web uygulaması sayfasında **SL ayarları**' nı seçin. Ardından **Yalnızca 
 
 ![HTTPS zorlama](media/solution-deployment-guide-geo-distributed/image43.png)
 
-İşlem tamamlandığında, uygulamayı işaret eden HTTP URL 'Lerinden birine gidin. Örnek:
+İşlem tamamlandığında, uygulamayı işaret eden HTTP URL 'Lerinden birine gidin. Örneğin:
 
 -   https://< app_name >. azurewebsites. net
 -   https://northwindcloud.com
@@ -631,4 +631,4 @@ Azure Traffic Manager ve coğrafi konuma özgü uç noktalar aracılığıyla ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure bulut desenleri hakkında daha fazla bilgi edinmek için bkz. [bulut tasarım desenleri](https://docs.microsoft.com/azure/architecture/patterns).
+- Azure bulut desenleri hakkında daha fazla bilgi için bkz: [bulut tasarımı desenleri](https://docs.microsoft.com/azure/architecture/patterns).

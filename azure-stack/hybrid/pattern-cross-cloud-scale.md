@@ -84,7 +84,7 @@ Bu düzenin nasıl uygulanacağına karar verirken aşağıdaki noktaları göz 
 
 Platformlar arası ölçeklendirmenin anahtar bileşeni, isteğe bağlı ölçeklendirmeyi sunma olanağıdır. Ölçeklendirme, ortak ve yerel bulut altyapısı arasında gerçekleşmelidir ve isteğe göre tutarlı ve güvenilir bir hizmet sağlar.
 
-### <a name="availability"></a>Erişilebilirlik
+### <a name="availability"></a>Kullanılabilirlik
 
 Yerel olarak dağıtılan uygulamaların şirket içi donanım yapılandırması ve yazılım dağıtımı aracılığıyla yüksek kullanılabilirlik için yapılandırıldığından emin olun.
 

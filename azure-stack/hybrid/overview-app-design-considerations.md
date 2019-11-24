@@ -74,14 +74,14 @@ Her bir bileşen için her bir şekilde özelliklerini değerlendirin. Her bir b
 
 | **Sütun** | **Açıklama** |
 | ----------- | --------------------------------------------------------- |
-| Yerleştirilmesine  | Karma uygulamalardaki bileşenlerin stratejik konumlandırması. |
+| Yerleştirme  | Karma uygulamalardaki bileşenlerin stratejik konumlandırması. |
 | Ölçeklenebilirlik  | Sistemin artan yükü idare edebilme özelliği. |
-| Erişilebilirlik  | Karma uygulamanın işlevsel ve çalışır olduğu sürenin oranı. |
+| Kullanılabilirlik  | Karma uygulamanın işlevsel ve çalışır olduğu sürenin oranı. |
 | Dayanıklılık | Karma uygulamanın kurtarılmasına olanak tanır. |
 | Yönetilebilirlik | Sistemi üretimde çalışır durumda tutan operasyon süreçleri. |
 | Güvenlik | Karma uygulamaları ve verileri tehditlere karşı koruma. |
 
-## <a name="placement"></a>Yerleştirilmesine
+## <a name="placement"></a>Yerleştirme
 
 Doğal olarak bir karma uygulama, veri merkezi gibi bir yerleşim değerlendirmesi içerir.
 
@@ -123,7 +123,7 @@ Karma senaryolarda, bileşenlerin bulutlara yayıldığı durumlarda, tek tek bi
 
 Bazı uygulama bileşenleri doğrusal bir şekilde ölçeklenebilir, diğerleri de ölçeklendirme bağımlılıklarına sahiptir ve ölçeklendirebilecekleri genişlemeyle sınırlı olabilir. Örneğin, uygulama bileşenleri konumları için karma bağlantı sağlayan bir VPN tüneli, ölçeklendirilebilen bant genişliği ve gecikme süresine sahiptir. Uygulamanın bileşenleri, bu gereksinimlerin karşılandığından emin olmak için nasıl ölçeklendirilir?
 
-### <a name="scalability-checklist"></a>Ölçeklendirilebilirlik denetim listesi
+### <a name="scalability-checklist"></a>Ölçeklenebilirlik denetim listesi
 
 **Yokermesi ölçekleme eşikleri.** Uygulamanızdaki çeşitli bağımlılıkları işlemek için, farklı bulutlardaki uygulama bileşenlerinin birbirinden bağımsız olarak ölçekleyeceğini belirleme, ancak uygulamayı çalıştırmak için gereksinimleri hala karşılarken. Hibrit uygulamalar, etkileşim kurduğu ve uygulamanın geri kalanını etkilediği bir özelliği işlemek için genellikle uygulamadaki belirli alanların ölçeklendirilmesi gerekir. Örneğin, bir dizi ön uç örneğini aşarak arka ucun ölçeklendirilmesi gerekebilir.
 
@@ -139,7 +139,7 @@ Otomatik ölçeklendirme kullanılamıyorsa, merkezi izleme sistemindeki eşikle
 
 gelen isteklerin yükünü dağıtmak için ek kaynaklar farklı bir konuma eklenebilir. İstemci bağlantılarının artan yükleri işleyebilmesine ve ayrıca yükü işleyecek istemci bağlantılarına yönelik otomatikleştirilmiş yordamları belirleyebilmesini sağlayın.
 
-## <a name="availability"></a>Erişilebilirlik
+## <a name="availability"></a>Kullanılabilirlik
 
 Kullanılabilirlik, sistemin işlevsel ve çalışır olduğu süredir. Kullanılabilirlik, çalışma süresinin yüzdesi olarak ölçülür. Uygulama hataları, altyapı sorunları ve sistem yükü, kullanılabilirliği azaltabilecek faktörlerdir.
 

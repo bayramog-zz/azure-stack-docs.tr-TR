@@ -42,7 +42,7 @@
       href: solution-deployment-guide-geo-distributed.md
     - name: Karma bağlantı
       href: solution-deployment-guide-connectivity.md
-    - name: Hibrit kimlik
+    - name: Karma kimlik
       href: solution-deployment-guide-identity.md
     - name: Karma geçişi
       href: 'https://aka.ms/hybridrelaydeployment'

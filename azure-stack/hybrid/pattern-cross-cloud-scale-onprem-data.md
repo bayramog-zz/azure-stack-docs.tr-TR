@@ -35,18 +35,18 @@ Birçok kuruluş, büyük miktarlarda müşterilere duyarlı verileri toplar ve 
 
 Bu çözüm aşağıdaki bileşenleri kullanır:
 
-| Katmanı | Bileşen | Açıklama |
+| Katman | Bileşen | Açıklama |
 |----------|-----------|-------------|
-| Azure | Azure App Service | [Azure App Service](/azure/app-service/) Web uygulamaları, yeniden derde API uygulamaları ve Azure işlevleri oluşturmanıza ve barındırmanıza olanak tanır. Altyapıyı yönetmeksizin tercih ettiğiniz programlama dilinde tümü. |
+| Azure | Azure uygulama hizmeti | [Azure App Service](/azure/app-service/) Web uygulamaları, yeniden derde API uygulamaları ve Azure işlevleri oluşturmanıza ve barındırmanıza olanak tanır. Altyapıyı yönetmeksizin tercih ettiğiniz programlama dilinde tümü. |
 | | Azure Sanal Ağı| [Azure sanal ağı (VNet)](/azure/virtual-network/virtual-networks-overview) , Azure 'daki özel ağlar için temel yapı taşdır. VNet, sanal makineler (VM) gibi birden çok Azure Kaynak türünün birbirleriyle, internet ve şirket içi ağlarla güvenli bir şekilde iletişim kurmasını sağlar. Çözüm ek ağ bileşenlerinin kullanımını da gösterir:<br>-uygulama ve ağ geçidi alt ağları<br>-Yerel bir şirket içi ağ geçidi<br>-siteden siteye VPN Ağ Geçidi bağlantısı görevi gören bir sanal ağ geçidi<br>-Genel IP adresi<br>-Noktadan siteye VPN bağlantısı<br>-DNS etki alanlarını barındırmak ve ad çözümlemesi sağlamak için Azure DNS |
 | | Azure Traffic Manager | [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview) , DNS tabanlı bir trafik yük dengeleyicidir. Farklı veri merkezlerindeki hizmet uç noktaları için Kullanıcı trafiğinin dağıtımını denetlemenize olanak tanır. |
 | | Azure Application Insights | [Application Insights](/azure/azure-monitor/app/app-insights-overview) , Web geliştiricileri için uygulamaları birden çok platformda oluşturup yöneten genişletilebilir bir uygulama performansı yönetim hizmetidir.|
 | | Azure İşlevleri | [Azure işlevleri](/azure/azure-functions/) , öncelıkle bir VM oluşturmak veya bir Web uygulaması yayımlamak zorunda kalmadan kodunuzu sunucusuz bir ortamda yürütmeniz için izin verir. |
 | | Azure Otomatik Ölçeklendirme | [Otomatik ölçeklendirme](/azure/azure-monitor/platform/autoscale-overview) Cloud Services, sanal makineler ve Web uygulamalarının yerleşik bir özelliğidir. Özelliği, uygulamaların talep değiştiğinde en iyi şekilde gerçekleştirmesini sağlar. Uygulamalar, trafik artışlarını ayarlar, ölçüm değiştiğinde size bildirimde bulunmak ve gerektiğinde ölçeklendirirsiniz. |
-| Azure Stack hub 'ı | IaaS Işlem | Azure Stack hub, Azure tarafından etkinleştirilen aynı uygulama modelini, Self Servis Portalını ve API 'Leri kullanmanıza olanak sağlar. Azure Stack hub IaaS, tutarlı karma bulut dağıtımları için çok çeşitli açık kaynaklı teknolojiler sağlar. Çözüm örneği, örneğin SQL Server için bir Windows Server VM kullanır.|
-| | Azure App Service | Aynı Azure Web uygulaması gibi, çözüm, Web uygulamasını barındırmak için [Azure Stack hub 'ında Azure App Service](/azure-stack/operator/azure-stack-app-service-overview) kullanır. |
-| | Networking (Ağ İletişimi) | Azure Stack hub sanal ağı, tam olarak Azure sanal ağı gibi çalışmaktadır. Özel ana bilgisayar adları da dahil olmak üzere aynı ağ bileşenlerinden birçoğunu kullanır. 
-| Azure DevOps Services | Kaydol | Derleme, test ve dağıtım için hızlı bir şekilde sürekli tümleştirme ayarlayın. Daha fazla bilgi için bkz. [kaydolma, Azure DevOps 'da oturum açma](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops). |
+| Azure Stack Hub | IaaS Işlem | Azure Stack hub, Azure tarafından etkinleştirilen aynı uygulama modelini, Self Servis Portalını ve API 'Leri kullanmanıza olanak sağlar. Azure Stack hub IaaS, tutarlı karma bulut dağıtımları için çok çeşitli açık kaynaklı teknolojiler sağlar. Çözüm örneği, örneğin SQL Server için bir Windows Server VM kullanır.|
+| | Azure uygulama hizmeti | Aynı Azure Web uygulaması gibi, çözüm, Web uygulamasını barındırmak için [Azure Stack hub 'ında Azure App Service](/azure-stack/operator/azure-stack-app-service-overview) kullanır. |
+| | Ağ | Azure Stack hub sanal ağı, tam olarak Azure sanal ağı gibi çalışmaktadır. Özel ana bilgisayar adları da dahil olmak üzere aynı ağ bileşenlerinden birçoğunu kullanır. 
+| Azure DevOps Services | Kaydol | Hızlı bir şekilde derleme, test ve dağıtım için sürekli tümleştirme ayarlayın. Daha fazla bilgi için bkz. [kaydolma, Azure DevOps 'da oturum açma](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops). |
 | | Azure Pipelines | Sürekli tümleştirme/sürekli teslim için [Azure Pipelines](/azure/devops/pipelines/agents/agents?view=azure-devops) kullanın. Azure Pipelines barındırılan derleme ve sürüm aracılarını ve tanımlarını yönetmenizi sağlar. |
 | | Kod deposu | Geliştirme işlem hattınızı kolaylaştırmak için birden çok kod depolarından yararlanın. GitHub, Bitbucket, Dropbox, OneDrive ve Azure Repos içindeki mevcut kod depolarını kullanın. |
 
@@ -78,7 +78,7 @@ Bulut patlaması 'nın temel avantajı ekonomik tasarruflar. Yalnızca bu kaynak
 Platformlar arası ölçeklendirme, burfe 'leri işlemek için kullanılabilir. Yük, temel uygulamaları ortak buluta taşıyarak, iş açısından kritik uygulamalar için yerel kaynakları boşaltarak dağıtılır. Bir uygulama özel buluta uygulanabilir, daha sonra yalnızca talepleri karşılamak için gerektiğinde genel buluta veri bloğu oluşturabilir.
 
 
-### <a name="availability"></a>Erişilebilirlik
+### <a name="availability"></a>Kullanılabilirlik
 
 Genel dağıtımın, değişken bağlantısı ve bölgeye göre farklı kamu düzenlemeleri gibi kendi zorlukları vardır. Geliştiriciler yalnızca bir uygulama geliştirebilir ve bunu farklı gereksinimlerle farklı nedenlerle dağıtabilir.  Uygulamanızı Azure genel bulutuna dağıtın, ardından ek örnekleri veya bileşenleri yerel olarak dağıtın. Azure kullanarak tüm örnekler arasındaki trafiği yönetebilirsiniz.
 

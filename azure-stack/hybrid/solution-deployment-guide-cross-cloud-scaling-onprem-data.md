@@ -40,7 +40,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > - Genel Azure ve Azure Stack hub arasında otomatik trafik geçişini yapılandırın.
 
 > [!Tip]  
-> ![Hybrid-Pillars. png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
+> ![karma pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
 > Microsoft Azure Stack hub, Azure uzantısıdır. Azure Stack hub, bulut bilgi işlemin çevikliğini ve yeniliklerini şirket içi ortamınıza sunarak, karma uygulamaları her yerde derleyip dağıtmanıza imkan tanıyan tek karma bulutu etkinleştirir.  
 > 
 > [Karma uygulamalar Için tasarım konuları](overview-app-design-considerations.md) , karma uygulamalar tasarlamak, dağıtmak ve çalıştırmak için yazılım kalitesine (yerleştirme, ölçeklenebilirlik, kullanılabilirlik, dayanıklılık, yönetilebilirlik ve güvenlik) göre önemli noktalar inceler. Tasarım konuları karma uygulama tasarımını iyileştirirken, üretim ortamlarındaki zorlukları en aza indirmeyle ilgili olarak size yardımcı olur.
@@ -49,7 +49,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bu öğreticide, genel Azure ve Azure Stack hub ile ilgili temel bilgilere sahip olduğunuz varsayılmaktadır. Öğreticiyi başlatmadan önce daha fazla bilgi edinmek istiyorsanız, şu makaleleri gözden geçirin:
 
- - [Azure 'a giriş](https://azure.microsoft.com/overview/what-is-azure/)
+ - [Azure'a giriş](https://azure.microsoft.com/overview/what-is-azure/)
  - [Azure Stack hub anahtar kavramları](../operator/azure-stack-overview.md)
 
 Bu öğreticide Ayrıca bir Azure aboneliğiniz olduğunu varsaymaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/) .
@@ -378,7 +378,7 @@ Azure 'da bir Traffic Manager profili oluşturun ve sonra da platformlar arası 
 
 ### <a name="create-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
-1. **Kaynak oluştur**' u seçin.
+1. Seçin **kaynak Oluştur**.
 2. **Ağ**' ı seçin.
 3. **Traffic Manager profil** ' i seçin ve aşağıdaki ayarları yapılandırın:
 
@@ -545,4 +545,4 @@ Otomatik trafik geçişini yapılandırmak için aşağıdaki adımları kılavu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure bulut desenleri hakkında daha fazla bilgi edinmek için bkz. [bulut tasarım desenleri](https://docs.microsoft.com/azure/architecture/patterns).
+- Azure bulut desenleri hakkında daha fazla bilgi için bkz: [bulut tasarımı desenleri](https://docs.microsoft.com/azure/architecture/patterns).
