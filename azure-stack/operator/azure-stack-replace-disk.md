@@ -1,6 +1,7 @@
 ---
-title: Azure Stack bir fiziksel diski değiştirme | Microsoft Docs
-description: Azure Stack bir fiziksel diskin nasıl değiştirileceği hakkında bir işlem özetlenmektedir.
+title: Replace a physical disk
+titleSuffix: Azure Stack
+description: Learn how to replace a physical disk in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,58 +17,59 @@ ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 06/04/2019
-ms.openlocfilehash: 5da479853487dfd93467bd1413159d6e602b93c6
-ms.sourcegitcommit: a6d47164c13f651c54ea0986d825e637e1f77018
+ms.openlocfilehash: 2d4ebaf62a3a2e836df988ec510e21274040e68b
+ms.sourcegitcommit: 284f5316677c9a7f4c300177d0e2a905df8cb478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72277661"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74465480"
 ---
-# <a name="replace-a-physical-disk-in-azure-stack"></a>Azure Stack bir fiziksel diski değiştirme
+# <a name="replace-a-physical-disk-in-azure-stack"></a>Replace a physical disk in Azure Stack
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler ve Azure Stack Geliştirme Seti*
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Bu makalede, Azure Stack bir fiziksel diskin yerini alacak genel işlem açıklanır. Fiziksel bir disk başarısız olursa, bunu en kısa sürede değiştirmelisiniz.
+This article describes the general process to replace a physical disk in Azure Stack. Fiziksel disk arıza yaptığında bu diski en kısa zamanda değiştirmeniz gerekir.
 
-Bu yordamı tümleşik sistemler ve dinamik olarak değiştirilebilen diskler içeren geliştirme seti dağıtımları için kullanabilirsiniz.
+You can use this procedure for integrated systems, and for Azure Stack Development Kit (ASDK) deployments that have hot-swappable disks.
 
-Gerçek disk değiştirme adımları, özgün ekipman üreticisi (OEM) donanım satıcınıza göre değişir. Sisteminize özgü ayrıntılı adımlar için satıcınızın alan değiştirilebilir birimi (FRU) belgelerine bakın.
+Fiili disk değiştirme adımları özgün donanım üreticinizin (OEM) donanım satıcısına göre değişir. Sisteminize özgü ayrıntılı adımlar için satıcınızın alanı değiştirilebilir birim (FRU) belgelerine bakın.
 
-## <a name="review-disk-alert-information"></a>Disk uyarı bilgilerini gözden geçirme
-Bir disk başarısız olduğunda, bağlantının fiziksel diske kaybolduğunu bildiren bir uyarı alırsınız.
+## <a name="review-disk-alert-information"></a>Review disk alert information
+Disk arıza yaptığında, fiziksel diskle bağlantının kesildiğini bildiren bir uyarı alırsınız.
 
-![Fiziksel diske bağlantı kaybı gösteren uyarı](media/azure-stack-replace-disk/DiskAlert.png)
+![Alert showing connectivity lost to physical disk in Azure Stack administration](media/azure-stack-replace-disk/DiskAlert.png)
 
-Uyarıyı açarsanız, uyarı açıklaması, değiştirmeniz gereken disk için ölçek birimi düğümünü ve tam fiziksel yuva konumunu içerir. Azure Stack, LED gösterge yeteneklerini kullanarak başarısız diski belirlemenize yardımcı olur.
+If you open the alert, the alert description contains the scale unit node and the exact physical slot location for the disk that you must replace. Azure Stack further helps you to identify the failed disk by using LED indicator capabilities.
 
-## <a name="replace-the-disk"></a>Diski değiştirme
+## <a name="replace-the-physical-disk"></a>Replace the physical disk
 
-Gerçek disk değişikliği için OEM Donanım satıcınızın FRU yönergelerini izleyin.
+Fiili disk değiştirme işlemi için OEM donanım satıcınızın FRU yönergelerini izleyin.
 
 > [!note]
-> Tek seferde bir ölçek birimi düğümü için diskleri değiştirin. Sonraki ölçek birimi düğümüne geçmeden önce sanal disk onarım işlerinin tamamlanmasını bekleyin
+> Replace disks for one scale unit node at a time. Wait for the virtual disk repair jobs to complete before moving on to the next scale unit node.
 
-Tümleşik bir sistemde desteklenmeyen bir diskin kullanılmasını engellemek için, sistem, satıcınız tarafından desteklenmeyen diskleri engeller. Desteklenmeyen bir disk kullanmaya çalışırsanız, yeni bir uyarı, desteklenmeyen bir model veya üretici yazılımı nedeniyle bir diskin karantinaya alındığını söyler.
+To prevent the use of an unsupported disk in an integrated system, the system blocks disks that aren't supported by your vendor. If you try to use an unsupported disk, a new alert tells you a disk has been quarantined because of an unsupported model or firmware.
 
-Diski değiştirdikten sonra, Azure Stack otomatik olarak yeni diski bulur ve sanal disk onarım işlemini başlatır.
+After you replace the disk, Azure Stack automatically discovers the new disk and starts the virtual disk repair process.
 
-## <a name="check-the-status-of-virtual-disk-repair-using-azure-stack-powershell"></a>Azure Stack PowerShell kullanarak sanal disk onarımı durumunu denetleme
+## <a name="check-the-status-of-virtual-disk-repair-using-azure-stack-powershell"></a>Check the status of virtual disk repair using Azure Stack PowerShell
 
-Diski değiştirdikten sonra, sanal disk sistem durumunu izleyebilir ve Azure Stack PowerShell kullanarak işin ilerlemesini onarabilirsiniz.
+After you replace the disk, you can monitor the virtual disk health status and repair job progress by using Azure Stack PowerShell.
 
-1. Azure Stack PowerShell 'in yüklü olduğundan emin olun. Daha fazla bilgi için bkz. [Azure Stack Için PowerShell 'ı Install](azure-stack-powershell-install.md).
-2. PowerShell ile Azure Stack bir operatör olarak bağlanın. Daha fazla bilgi için bkz. [PowerShell ile Azure Stack 'ye bir operatör olarak bağlanma](azure-stack-powershell-configure-admin.md).
-3. Sanal disk durumunu ve onarım durumunu doğrulamak için aşağıdaki cmdlet 'leri çalıştırın:
+1. Check that you have Azure Stack PowerShell installed. For more information, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+2. Connect to Azure Stack with PowerShell as an operator. For more information, see [Connect to Azure Stack with PowerShell as an operator](azure-stack-powershell-configure-admin.md).
+3. Run the following cmdlets to verify the virtual disk health and repair status:
+
     ```powershell  
     $scaleunit=Get-AzsScaleUnit
     $StorageSubSystem=Get-AzsStorageSubSystem -ScaleUnit $scaleunit.Name
     Get-AzsVolume -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Select-Object VolumeLabel, OperationalStatus, RepairStatus
     ```
 
-    ![Azure Stack birimleri sistem durumu](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
+    ![Azure Stack volumes health in Powershell](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
 
-4. Sistem durumunu Azure Stack doğrulayın. Yönergeler için bkz. [sistem durumunu doğrulama Azure Stack](azure-stack-diagnostic-test.md).
-5. İsteğe bağlı olarak, değişen fiziksel diskin durumunu doğrulamak için aşağıdaki komutu çalıştırabilirsiniz.
+4. Validate Azure Stack system state. For instructions, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md).
+5. Optionally, you can run the following command to verify the status of the replaced physical disk.
 
 ```powershell  
 $scaleunit=Get-AzsScaleUnit
@@ -76,37 +78,37 @@ $StorageSubSystem=Get-AzsStorageSubSystem -ScaleUnit $scaleunit.Name
 Get-AzsDrive -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Sort-Object StorageNode,MediaType,PhysicalLocation | Format-Table Storagenode, Healthstatus, PhysicalLocation, Model, MediaType,  CapacityGB, CanPool, CannotPoolReason
 ```
 
-![Azure Stack fiziksel diskler değiştirilmiş](media/azure-stack-replace-disk/check-replaced-physical-disks-azure-stack.png)
+![Replaced physical disks in Azure Stack with Powershell](media/azure-stack-replace-disk/check-replaced-physical-disks-azure-stack.png)
 
-## <a name="check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint"></a>Ayrıcalıklı uç noktayı kullanarak sanal disk onarımı durumunu denetleme
- 
-Diski değiştirdikten sonra, sanal disk sistem durumunu izleyebilir ve ayrıcalıklı uç noktayı kullanarak işin ilerlemesini onarabilirsiniz. Ayrıcalıklı uç noktaya ağ bağlantısı olan herhangi bir bilgisayardan bu adımları izleyin.
+## <a name="check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint"></a>Check the status of virtual disk repair using the privileged endpoint
 
-1. Bir Windows PowerShell oturumu açın ve ayrıcalıklı uç noktaya bağlanın.
+After you replace the disk, you can monitor the virtual disk health status and repair job progress by using the privileged endpoint. Follow these steps from any computer that has network connectivity to the privileged endpoint.
+
+1. Open a Windows PowerShell session and connect to the privileged endpoint.
     ```powershell
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-    ``` 
+    ```
   
-2. Sanal disk sistem durumunu görüntülemek için aşağıdaki komutu çalıştırın:
+2. Run the following command to view virtual disk health:
     ```powershell
         Get-VirtualDisk -CimSession s-cluster
     ```
-   ![Get-VirtualDisk komutunun PowerShell çıkışı](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
 
-3. Geçerli depolama işinin durumunu görüntülemek için şu komutu çalıştırın:
+   ![Powershell output of Get-VirtualDisk command](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
+
+3. Run the following command to view current storage job status:
     ```powershell
         Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
     ```
-      ![Get-StorageJob komutunun PowerShell çıkışı](media/azure-stack-replace-disk/GetStorageJobOutput.png)
+      ![Powershell output of Get-StorageJob command](media/azure-stack-replace-disk/GetStorageJobOutput.png)
 
-4. Azure Stack sistem durumunu doğrulayın. Yönergeler için bkz. [sistem durumunu doğrulama Azure Stack](azure-stack-diagnostic-test.md).
+4. Validate the Azure Stack system state. For instructions, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md).
 
+## <a name="troubleshoot-virtual-disk-repair-using-the-privileged-endpoint"></a>Troubleshoot virtual disk repair using the privileged endpoint
 
-## <a name="troubleshoot-virtual-disk-repair-using-the-privileged-endpoint"></a>Ayrıcalıklı uç nokta kullanılarak sanal disk onarımı sorunlarını giderme
-
-Sanal disk onarımı işi takılı görünüyorsa, işi yeniden başlatmak için aşağıdaki komutu çalıştırın:
+If the virtual disk repair job appears stuck, run the following command to restart the job:
   ```powershell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
-  ``` 
+  ```

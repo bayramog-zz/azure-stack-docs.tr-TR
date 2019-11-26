@@ -1,6 +1,7 @@
 ---
-title: Azure Stack ölçek birimi düğümündeki bir donanım bileşenini değiştirme | Microsoft Docs
-description: Azure Stack tümleştirilmiş bir sistemdeki bir donanım bileşenini değiştirmeyi öğrenin.
+title: Replace a hardware component on an Azure Stack scale unit node
+titleSuffix: Azure Stack
+description: Learn how to replace a hardware component on an Azure Stack integrated system.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,80 +15,80 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: thoroet
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 4cb8da451743bc6a8e15c57aacf28f0aa83258c9
-ms.sourcegitcommit: 4f3e161e7632c8a6e3d41946b09f22b5bdb08d36
+ms.openlocfilehash: ff78409ecdbdec8b7a6860db18244a4835351ed8
+ms.sourcegitcommit: 284f5316677c9a7f4c300177d0e2a905df8cb478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413153"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74465280"
 ---
-# <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Azure Stack ölçek birimi düğümündeki bir donanım bileşenini değiştirme
+# <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Replace a hardware component on an Azure Stack scale unit node
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*Applies to: Azure Stack integrated systems*
 
-Bu makalede, sık erişimli olmayan donanım bileşenlerinin yerini alan genel işlem açıklanmaktadır. Gerçek değiştirme adımları, özgün ekipman üreticisi (OEM) donanım satıcınıza göre farklılık gösterir. Azure Stack tümleşik sisteminize özgü ayrıntılı adımlar için satıcınızın alan değiştirilebilir birimi (FRU) belgelerine bakın.
+This article describes the general process to replace hardware components that are non hot-swappable. Actual replacement steps vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your Azure Stack integrated system.
 
 > [!CAUTION]  
-> Üretici yazılımı seviyelendirme, bu makalede açıklanan işlemin başarısı için önemlidir. Bu adımın eksik olması, sistem kararsızlığına, performans düşüşüyle, güvenlik iş parçacıklarından veya Azure Stack otomasyonunun işletim sistemini dağıtmasına engel olabilir. , Uygulanan üretici yazılımının [Azure Stack yönetici portalında](azure-stack-updates.md)görünen OEM sürümüyle eşleşmesini sağlamak için donanımı değiştirirken her zaman donanım iş ortağınızın belgelerine başvurun.
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md).
 
-| Donanım Iş ortağı | Bölge | URL |
+| Hardware Partner | Bölge | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | Tümü | [Microsoft Azure Stack Işlemler Kılavuzu için Cisco Tümleşik Sistem](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[Microsoft Azure Stack için Cisco Tümleşik sistemi sürüm notları](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
-| Dell EMC | Tümü | [Microsoft Azure Stack 14G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Microsoft Azure Stack 13G için bulut (hesap ve oturum açma gerekir)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| Fujitsu | JAPONYA | [Fujitsu yönetilen hizmet destek masası (hesap ve oturum açma gereklidir)](https://eservice.fujitsu.com/supportdesk-web/) |
-|  | EMEA | [Fujitsu BT ürünlerini ve sistemlerini destekler](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
-|  | AB | [Fujitsu MySupport (hesap ve oturum açma gereklidir)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
-| HPE | Tümü | [Microsoft Azure Stack için HPE ProLiant](http://www.hpe.com/info/MASupdates) |
-| Lenovo | Tümü | [Ölçülü Kagile SXD En Iyi Tarifler](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
-| Wortmann |  | [OEM/bellenim paketi](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/OEM)<br>[Terra Azure Stack belgeleri (FRU dahil)](https://drive.terracloud.de/dl/fiWGZwCySZSQyNdykXCFiVCR/TerraAzSDokumentation)
+| Cisco | Tümü | [Cisco Integrated System for Microsoft Azure Stack Operations Guide](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[Release Notes for Cisco Integrated System for Microsoft Azure Stack](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | Tümü | [Cloud for Microsoft Azure Stack 14G (account and sign-in required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack 13G (account and sign-in required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| Fujitsu | JAPAN | [Fujitsu managed service support desk (account and sign-in required)](https://eservice.fujitsu.com/supportdesk-web/) |
+|  | EMEA | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
+|  | AV | [Fujitsu MySupport (account and sign-in required)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
+| HPE | Tümü | [HPE ProLiant for Microsoft Azure Stack](http://www.hpe.com/info/MASupdates) |
+| Lenovo | Tümü | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
+| Wortmann |  | [OEM/firmware package](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/OEM)<br>[terra Azure Stack documentation (including FRU)](https://drive.terracloud.de/dl/fiWGZwCySZSQyNdykXCFiVCR/TerraAzSDokumentation)
 
-Etkin olmayan değiştirilebilir bileşenler şunlardır:
+Non hot-swappable components include the following items:
 
-- 'SUNA
-- Bellek
-- Anakart/temel kart yönetim denetleyicisi (BMC)/ekran kartı
-- Disk denetleyicisi/ana bilgisayar veri yolu bağdaştırıcısı (HBA)/geri düzlemi
-- Ağ bağdaştırıcısı (NIC)
-- İşletim sistemi diski *
-- Veri sürücüleri (dinamik değiştirmeyi desteklemeyen sürücüler, örneğin PCI-e eklenti kartları) *
+- CPU*
+- Memory*
+- Motherboard/baseboard management controller (BMC)/video card
+- Disk controller/host bus adapter (HBA)/backplane
+- Network adapter (NIC)
+- Operating system disk*
+- Data drives (drives that don't support hot swap, for example PCI-e add-in cards)*
 
-\* Bu bileşenler, etkin değiştirmeyi destekleyebilir, ancak satıcı uygulamasına göre farklılık gösterebilir. Ayrıntılı adımlar için OEM satıcınızın FRU belgelerine bakın.
+*These components may support hot swap, but can vary based on vendor implementation. See your OEM vendor's FRU documentation for detailed steps.
 
-Aşağıdaki akış diyagramı, etkin olmayan bir donanım bileşenini değiştirmek için genel FRU işlemini gösterir.
+The following flow diagram shows the general FRU process to replace a non hot-swappable hardware component.
 
-![Bileşen değiştirme akışını gösteren akış diyagramı](media/azure-stack-replace-component/replacecomponentflow.PNG)
+![Flow diagram showing component replacement flow](media/azure-stack-replace-component/replacecomponentflow.PNG)
 
-* Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
+* This action may not be required based on the physical condition of the hardware.
 
-\* * OEM Donanım satıcınızın bileşen değişimini gerçekleştirip gerçekleştirmediği ve bellenim, destek sözleşmeniz temelinde farklılık gösterebilir.
+** Whether your OEM hardware vendor does the component replacement and updates the firmware could vary based on your support contract.
 
-## <a name="review-alert-information"></a>Uyarı bilgilerini gözden geçirin
+## <a name="review-alert-information"></a>Review alert information
 
-Azure Stack sistem durumu ve izleme sistemi, Depolama Alanları Doğrudan tarafından denetlenen ağ bağdaştırıcılarının ve veri sürücülerinin sistem durumunu izler. Diğer donanım bileşenlerini izlemez. Diğer tüm donanım bileşenleri için, uyarılar, donanım yaşam döngüsü ana bilgisayarında çalışan satıcıya özgü donanım izleme çözümünde oluşturulur.  
+The Azure Stack health and monitoring system tracks the health of network adapters and data drives controlled by Storage Spaces Direct. It doesn't track other hardware components. For all other hardware components, alerts are raised in the vendor-specific hardware monitoring solution that runs on the hardware lifecycle host.  
 
-## <a name="component-replacement-process"></a>Bileşen değiştirme işlemi
+## <a name="component-replacement-process"></a>Component replacement process
 
-Aşağıdaki adımlarda bileşen değiştirme işlemine yüksek düzey bir genel bakış sağlanmaktadır. OEM tarafından sunulan FRU belgelerinize başvurmadan bu adımları takip edin.
+The following steps provide a high-level overview of the component replacement process. Don't follow these steps without referring to your OEM-provided FRU documentation.
 
-1. Ölçek birimi düğümünü düzgün bir şekilde kapatmak için kapatma eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
+1. Use the Shutdown action to gracefully shut down the scale unit node. This action may not be required based on the physical condition of the hardware.
 
-2. Beklenmeyen bir durumda, kapatılma eylemi başarısız olursa, ölçek birimi düğümünü bakım moduna almak için [boşalt](azure-stack-node-actions.md#drain) eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
-
-   > [!NOTE]  
-   > Herhangi bir durumda, S2D (Depolama Alanları Doğrudan) bozmadan aynı anda yalnızca bir düğüm devre dışı bırakılabilir ve kapatılabilir.
-
-3. Ölçek birimi düğümü bakım modundan olduktan sonra, [kapatma](azure-stack-node-actions.md#scale-unit-node-actions) eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
+2. In an unlikely case the shutdown action does fail, use the [Drain](azure-stack-node-actions.md#drain) action to put the scale unit node into maintenance mode. This action may not be required based on the physical condition of the hardware.
 
    > [!NOTE]  
-   > Kapatma eyleminin çalışmamasının olası olmaması durumunda bunun yerine temel kart yönetim denetleyicisi (BMC) Web arabirimini kullanın.
+   > In any case, only one node can be disabled and powered off at the same time without breaking the S2D (Storage Spaces Direct).
 
-4. Hasarlı donanım bileşenini değiştirin. OEM Donanım satıcınızın bileşen değişimini gerçekleştirip gerçekleştirmediği, destek sözleşmeniz temelinde farklılık gösterebilir.  
-5. Üretici yazılımını güncelleştirin. Değişen donanım bileşeninin onaylanan bellenim düzeyinin uygulanmış olduğundan emin olmak için, donanım yaşam döngüsü konağını kullanarak satıcıya özgü bellenim güncelleştirme işleminizi izleyin. OEM Donanım satıcınızın bu adımı gerçekleştirip gerçekleştirmediğini, destek sözleşmeniz temelinde farklılık gösterebilir.  
-6. Ölçek birimi düğümünü ölçek birimine geri getirmek için [onarma](azure-stack-node-actions.md#scale-unit-node-actions) eylemini kullanın.
-7. [Sanal disk onarımı durumunu denetlemek](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint)için ayrıcalıklı uç noktasını kullanın. Yeni veri sürücüleriyle, tam bir depolama onarma işi sistem yüküne ve tüketilen alana bağlı olarak birden çok saat sürebilir.
-8. Onarım eylemi tamamlandıktan sonra, tüm etkin uyarıların otomatik olarak kapatıldığını doğrulayın.
+3. After the scale unit node is in maintenance mode, use the [Power off](azure-stack-node-actions.md#scale-unit-node-actions) action. This action may not be required based on the physical condition of the hardware.
+
+   > [!NOTE]  
+   > In the unlikely case that the power off action doesn't work, use the baseboard management controller (BMC) web interface instead.
+
+4. Replace the damaged hardware component. Whether your OEM hardware vendor does the component replacement could vary based on your support contract.  
+5. Update the firmware. Follow your vendor-specific firmware update process using the hardware lifecycle host to make sure the replaced hardware component has the approved firmware level applied. Whether your OEM hardware vendor does this step could vary based on your support contract.  
+6. Use the [Repair](azure-stack-node-actions.md#scale-unit-node-actions) action to bring the scale unit node back into the scale unit.
+7. Use the privileged endpoint to [check the status of virtual disk repair](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint). With new data drives, a full storage repair job can take multiple hours depending on system load and consumed space.
+8. After the repair action has finished, validate that all active alerts have been automatically closed.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Etkin değiştirilebilen bir fiziksel diski değiştirme hakkında daha fazla bilgi için bkz. [disk değiştirme](azure-stack-replace-disk.md).
-- Fiziksel bir düğümü değiştirme hakkında daha fazla bilgi için bkz. [ölçek birimi düğümünü değiştirme](azure-stack-replace-node.md).
+- For information about replacing a hot-swappable physical disk, see [Replace a disk](azure-stack-replace-disk.md).
+- For information about replacing a physical node, see [Replace a scale unit node](azure-stack-replace-node.md).

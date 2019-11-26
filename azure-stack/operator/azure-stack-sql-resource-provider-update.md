@@ -1,6 +1,6 @@
 ---
-title: Azure Stack SQL kaynak sağlayıcısı güncelleştiriliyor | Microsoft Docs
-description: Azure Stack SQL kaynak sağlayıcısını nasıl güncelleştirebileceğinizi öğrenin.
+title: Updating the Azure Stack SQL resource provider | Microsoft Docs
+description: Learn how you can update the Azure Stack SQL resource provider.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -13,64 +13,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg
-ms.reviewer: jiahan
+ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: b37e4c9f5e7b1aaa1a476b0665a9558e8e86365f
-ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
+ms.openlocfilehash: 26ce99f87f1b0e1e379bad6276c88a8e6772c035
+ms.sourcegitcommit: 284f5316677c9a7f4c300177d0e2a905df8cb478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73955410"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74465361"
 ---
-# <a name="update-the-sql-resource-provider"></a>SQL kaynak sağlayıcısını güncelleştirme
+# <a name="update-the-sql-resource-provider"></a>Update the SQL resource provider
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler.*
+*Applies to: Azure Stack integrated systems.*
 
-Azure Stack yeni bir yapıya güncelleştirildiği zaman yeni bir SQL kaynak sağlayıcısı serbest kalabilir. Mevcut kaynak sağlayıcı çalışmaya devam etse de en kısa sürede en son yapıya güncelleştirmenizi öneririz. 
+A new SQL resource provider might be released when Azure Stack is updated to a new build. Although the existing resource provider continues to work, we recommend updating to the latest build as soon as possible. 
 
-SQL kaynak sağlayıcısı sürüm 1.1.33.0 sürümünden başlayarak, güncelleştirmeler birikimlidir ve yayımlandıkları sıraya göre yüklenmesi gerekmez; sürümünden itibaren 1.1.24.0 veya sonraki bir sürümden başladığınızı sürece. Örneğin, SQL kaynak sağlayıcısı 'nın 1.1.24.0 sürümünü çalıştırıyorsanız, önce sürüm 1.1.30.0 'yi yüklemeye gerek kalmadan 1.1.33.0 veya üzeri sürüme yükseltebilirsiniz. Kullanılabilir kaynak sağlayıcısı sürümlerini ve bunların desteklendiği Azure Stack sürümünü gözden geçirmek için, [kaynak sağlayıcısı önkoşullarını dağıtma](./azure-stack-sql-resource-provider-deploy.md#prerequisites)' daki sürümler listesine bakın.
+Starting with the SQL resource provider version 1.1.33.0 release, updates are cumulative and do not need to be installed in the order in which they were released; as long as you're starting from version 1.1.24.0 or later. For example, if you are running version 1.1.24.0 of the SQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack they are supported on, refer to the versions list in [Deploy the resource provider prerequisites](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
-Kaynak sağlayıcısını güncelleştirmek için *Updatesqlprovider. ps1* betiğini kullanın. Bu komut dosyası, yeni SQL kaynak sağlayıcısı 'nın indirilmesine dahildir. Güncelleştirme işlemi, [kaynak sağlayıcısını dağıtmak](./azure-stack-sql-resource-provider-deploy.md)için kullanılan işleme benzerdir. Güncelleştirme betiği, DeploySqlProvider. ps1 betiği ile aynı bağımsız değişkenleri kullanır ve sertifika bilgilerini sağlamanız gerekir.
+To update the resource provider, use the *UpdateSQLProvider.ps1* script. This script is included with the download of the new SQL resource provider. The update process is similar to the process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md). The update script uses the same arguments as the DeploySqlProvider.ps1 script, and you'll need to provide certificate information.
 
  > [!IMPORTANT]
- > Kaynak sağlayıcısını yükseltmeden önce, yeni işlevsellik, düzeltmeler ve dağıtımınızı etkileyebilecek bilinen sorunlar hakkında bilgi edinmek için sürüm notlarını gözden geçirin.
+ > Before upgrading the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
-## <a name="update-script-processes"></a>Betik süreçlerini Güncelleştir
+## <a name="update-script-processes"></a>Update script processes
 
-*Updatesqlprovider. ps1* betiği, en son kaynak sağlayıcısı kodu ile yeni bir sanal makıne (VM) oluşturur.
+The *UpdateSQLProvider.ps1* script creates a new virtual machine (VM) with the latest resource provider code.
 
 > [!NOTE]
-> Market yönetiminden en son Windows Server 2016 çekirdek görüntüsünü indirmeniz önerilir. Bir güncelleştirme yüklemeniz gerekiyorsa, **tek** bir msu paketini yerel bağımlılık yoluna yerleştirebilirsiniz. Bu konumda birden fazla MSU dosyası varsa betik başarısız olur.
+> We recommend that you download the latest Windows Server 2016 Core image from Marketplace Management. If you need to install an update, you can place a **single** MSU package in the local dependency path. The script will fail if there's more than one MSU file in this location.
 
-*Updatesqlprovider. ps1* betiği yenı bir VM oluşturduktan sonra, komut dosyası eskı sağlayıcı VM 'sinden aşağıdaki ayarları geçirir:
+After the *UpdateSQLProvider.ps1* script creates a new VM, the script migrates the following settings from the old provider VM:
 
-* Veritabanı bilgileri
-* barındırma sunucusu bilgileri
-* gerekli DNS kaydı
+* database information
+* hosting server information
+* required DNS record
 
-## <a name="update-script-parameters"></a>Betik parametrelerini Güncelleştir
+## <a name="update-script-parameters"></a>Update script parameters
 
-**Updatesqlprovider. ps1** PowerShell betiğini çalıştırdığınızda komut satırından aşağıdaki parametreleri belirtebilirsiniz. Aksi takdirde veya herhangi bir parametre doğrulaması başarısız olursa, gerekli parametreleri sağlamanız istenir.
+You can specify the following parameters from the command line when you run the **UpdateSQLProvider.ps1** PowerShell script. If you don't, or if any parameter validation fails, you're prompted to provide the required parameters.
 
-| Parametre adı | Açıklama | Açıklama veya varsayılan değer |
+| Parametre adı | Açıklama | Comment or default value |
 | --- | --- | --- |
-| **CloudAdminCredential** | Ayrıcalıklı uç noktaya erişmek için gerekli olan bulut yöneticisinin kimlik bilgileri. | _Gerekli_ |
-| **AzCredential** | Azure Stack hizmeti yönetici hesabı için kimlik bilgileri. Azure Stack dağıtmak için kullandığınız kimlik bilgilerini kullanın. | _Gerekli_ |
-| **VMLocalCredential** | SQL kaynak sağlayıcısı VM 'sinin yerel yönetici hesabının kimlik bilgileri. | _Gerekli_ |
-| **Ayrıcalıklı Gedendpoint** | Ayrıcalıklı uç noktanın IP adresi veya DNS adı. |  _Gerekli_ |
-| **AzureEnvironment** | Azure Stack dağıtmak için kullandığınız hizmet yönetici hesabının Azure ortamı. Yalnızca Azure AD dağıtımları için gereklidir. Desteklenen ortam adları **Azurecsesli**, **AzureUSGovernment**veya Çin Azure AD, **AzureChinaCloud**kullanıyorsa. | AzureCloud |
-| **DependencyFilesLocalPath** | Certificate. pfx dosyanızı da bu dizine yerleştirmeniz gerekir. | _Tek düğüm için isteğe bağlıdır, ancak çoklu düğüm için zorunludur_ |
-| **DefaultSSLCertificatePassword** | . Pfx sertifikası için parola. | _Gerekli_ |
-| **MaxRetryCount** | Bir hata oluşursa her işlemi yeniden denemek istediğiniz zaman sayısı.| 2 |
-| **RetryDuration** |Yeniden denemeler arasındaki zaman aşımı aralığı (saniye cinsinden). | 120 |
-| **Kaldırma** | Kaynak sağlayıcıyı ve tüm ilişkili kaynakları kaldırır. | Hayır |
-| **DebugMode** | Hata durumunda otomatik temizlemeyi önler. | Hayır |
+| **CloudAdminCredential** | The credential for the cloud administrator, necessary for accessing the privileged endpoint. | _Required_ |
+| **AzCredential** | The credentials for the Azure Stack service administrator account. Use the same credentials that you used for deploying Azure Stack. | _Required_ |
+| **VMLocalCredential** | The credentials for the local administrator account of the SQL resource provider VM. | _Required_ |
+| **PrivilegedEndpoint** | The IP address or DNS name of the privileged endpoint. |  _Required_ |
+| **AzureEnvironment** | The Azure environment of the service admin account which you used for deploying Azure Stack. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
+| **DependencyFilesLocalPath** | You must also put your certificate .pfx file in this directory. | _Optional for single node, but mandatory for multi-node_ |
+| **DefaultSSLCertificatePassword** | The password for the .pfx certificate. | _Required_ |
+| **MaxRetryCount** | The number of times you want to retry each operation if there's a failure.| 2 |
+| **RetryDuration** |The timeout interval between retries, in seconds. | 120 |
+| **Kaldırma** | Removes the resource provider and all associated resources. | Hayır |
+| **DebugMode** | Prevents automatic cleanup on failure. | Hayır |
 
-## <a name="update-script-powershell-example"></a>Güncelleştirme betiği PowerShell örneği
-Aşağıda, yükseltilmiş bir PowerShell konsolundan çalıştırabileceğiniz *Updatesqlprovider. ps1* betiğini kullanmanın bir örneği verilmiştir. Değişken bilgilerini ve parolaları gerektiği gibi değiştirdiğinizden emin olun:  
-
+## <a name="update-script-powershell-example"></a>Update script PowerShell example
 > [!NOTE]
-> Bu güncelleştirme işlemi yalnızca tümleşik sistemler Azure Stack için geçerlidir.
+> This update process only applies to Azure Stack integrated systems.
+
+If you are updating the SQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack modules in PowerShell. If you are updating to the SQL resource provider version 1.1.47.0, this step can be skipped.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -78,7 +78,11 @@ Aşağıda, yükseltilmiş bir PowerShell konsolundan çalıştırabileceğiniz 
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
+```
 
+The following is an example of using the *UpdateSQLProvider.ps1* script that you can run from an elevated PowerShell console. Be sure to change the variable information and passwords as needed:  
+
+```powershell
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but this might have been changed at installation.
 $domain = "AzureStack"
 
@@ -121,4 +125,4 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[SQL kaynak sağlayıcısını koruyun](azure-stack-sql-resource-provider-maintain.md)
+[Maintain the SQL resource provider](azure-stack-sql-resource-provider-maintain.md)

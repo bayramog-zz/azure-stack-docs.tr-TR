@@ -1,6 +1,7 @@
 ---
-title: Azure Stack için bir kayıt rolü oluşturma
-description: Kayıt için genel yönetici kullanmaktan kaçınmak için özel bir rolü nasıl oluşturulur.
+title: Create a custom role for Azure Stack registration
+titleSuffix: Azure Stack
+description: Learn how to create a custom role to avoid using global administrator for Azure Stack registration.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -15,35 +16,35 @@ ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
-ms.openlocfilehash: 50c15403ec4bf41f7513af30d2dca53310d45298
-ms.sourcegitcommit: af63214919e798901399fdffef09650de4176956
+ms.openlocfilehash: 0cfbec17b2aef1f6a14615d4b69d8a5e9347e913
+ms.sourcegitcommit: 284f5316677c9a7f4c300177d0e2a905df8cb478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66828249"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74465429"
 ---
-# <a name="create-a-custom-role-for-azure-stack-registration"></a>Azure Stack kayıt için özel bir rol oluşturun
+# <a name="create-a-custom-role-for-azure-stack-registration"></a>Create a custom role for Azure Stack registration
 
-*Uygulama hedefi: Azure Stack tümleşik sistemleri ve Azure Stack Geliştirme Seti*
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!WARNING]
-> Bu bir güvenlik duruşu özelliği değildir. Azure aboneliği yanlışlıkla yapılan değişiklikleri önlemek için kısıtlamalar istediğiniz senaryolarda kullanın. Bir kullanıcı bu özel rol temsilcisi hakkı olduğunda, kullanıcı hakları ve izinleri Düzenle haklarına sahiptir. Yalnızca özel bir rol için güvendiğiniz kullanıcılara atayın.
+> This isn't a security posture feature. Use it in scenarios where you want constraints to prevent accidental changes to the Azure Subscription. When a user is delegated rights to this custom role, the user has rights to edit permissions and elevate rights. Only assign users you trust to the custom role.
 
-Azure Stack kayıt sırasında bir Azure Active Directory hesabıyla oturum açmanız gerekir. Hesap Azure aboneliğinin izinleri ve aşağıdaki Azure Active Directory izinlerini gerektirir:
+During Azure Stack registration, you must sign in with an Azure Active Directory (Azure AD) account. The account requires the following Azure AD permissions and Azure Subscription permissions:
 
-* **Azure Active Directory kiracınızdaki uygulama kayıt izinleri:** Yöneticiler uygulama kayıt izinlerine sahiptir. Kullanıcıların izinlerini, kiracıdaki tüm kullanıcılar için genel bir ayardır. Görüntülemek veya ayarı değiştirmek için bkz: [Azure AD'yi kaynaklara erişebilen uygulaması ve hizmet sorumlusu oluşturma](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+* **App registration permissions in your Azure AD tenant:** Admins have app registration permissions. The permission for users is a global setting for all users in the tenant. To view or change the setting, see [create an Azure AD app and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-    *Kullanıcı uygulamaları kaydedebilir* ayarı ayarlanmalıdır **Evet** , Azure Stack kaydetmek bir kullanıcı hesabını etkinleştirmek. Uygulama kayıtları ayarı ayarlanırsa **Hayır**, bir kullanıcı hesabı kullanamaz ve Azure Stack kaydetmek için bir genel yönetici hesabı kullanmanız gerekir.
+    The *user can register applications* setting must be set to **Yes** for you to enable a user account to register Azure Stack. If the app registrations setting is set to **No**, you can't use a user account to register Azure Stack—you have to use a global admin account.
 
-* **Bir dizi bir Azure aboneliği silinemedi:** Sahip rolüne ait olan kullanıcıların yeterli izinlere sahip. Diğer hesapları için izin aşağıdaki bölümlerde belirtildiği gibi özel bir rol atayarak kümesini atayabilirsiniz.
+* **A set of sufficient Azure Subscription permissions:** Users that belong to the Owner role have sufficient permissions. For other accounts, you can assign the permission set by assigning a custom role as outlined in the following sections.
 
-Azure aboneliğindeki sahip izinlerine sahip bir hesap kullanmak yerine, daha az ayrıcalıklı kullanıcı hesabına izinler atamak için özel bir rol oluşturabilirsiniz. Bu hesap, ardından, Azure Stack kaydetmek için de kullanılabilir.
+Rather than using an account that has Owner permissions in the Azure subscription, you can create a custom role to assign permissions to a less-privileged user account. This account can then be used to register your Azure Stack.
 
-## <a name="create-a-custom-role-using-powershell"></a>PowerShell kullanarak özel bir rol oluşturun
+## <a name="create-a-custom-role-using-powershell"></a>Create a custom role using PowerShell
 
-Özel bir rol oluşturmak için olmalıdır `Microsoft.Authorization/roleDefinitions/write` tüm izin `AssignableScopes`, gibi [sahibi](/azure/role-based-access-control/built-in-roles#owner) veya [kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator). Özel rol oluşturulmasını kolaylaştırmak için aşağıdaki JSON şablonunu kullanın. Şablon gerekli okuma ve yazma erişimi için Azure Stack kayıt imkan tanıyan özel bir rol oluşturur.
+To create a custom role, you must have the `Microsoft.Authorization/roleDefinitions/write` permission on all `AssignableScopes`, such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator). Use the following JSON template to simplify creation of the custom role. The template creates a custom role that allows the required read and write access for Azure Stack registration.
 
-1. Bir JSON dosyası oluşturun. Örneğin,  `C:\CustomRoles\registrationrole.json`
+1. Create a JSON file. Örneğin, `C:\CustomRoles\registrationrole.json`.
 2. Aşağıdaki JSON’u dosyaya ekleyin. `<SubscriptionID>` öğesini Azure abonelik kimliğinizle değiştirin.
 
     ```json
@@ -70,31 +71,31 @@ Azure aboneliğindeki sahip izinlerine sahip bir hesap kullanmak yerine, daha az
     }
     ```
 
-3. PowerShell'de Azure Resource Manager'ı Azure'a bağlanın. İstendiğinde, bir hesabın yeterli izinlere sahip gibi kullanarak kimlik doğrulaması [sahibi](/azure/role-based-access-control/built-in-roles#owner) veya [kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator).
+3. In PowerShell, connect to Azure to use Azure Resource Manager. When prompted, authenticate using an account with sufficient permissions such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator).
 
     ```azurepowershell
     Connect-AzureRmAccount
     ```
 
-4. Özel rol oluşturmak için kullanın **New-AzureRmRoleDefinition** JSON şablon dosyası belirtme.
+4. To create the custom role, use **New-AzureRmRoleDefinition** specifying the JSON template file.
 
     ``` azurepowershell
     New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\registrationrole.json"
     ```
 
-## <a name="assign-a-user-to-registration-role"></a>Bir kullanıcı kaydı rolüne atayın.
+## <a name="assign-a-user-to-registration-role"></a>Assign a user to registration role
 
-Kayıt özel rolü oluşturduktan sonra rol Azure Stack kaydetmek için kullanılan kullanıcı hesabına atayın.
+After the registration custom role is created, assign the role to the user account that will be used for registering Azure Stack.
 
-1. Oturum yeterli izne sahip bir hesapla Azure aboneliği üzerinde hakları - gibi temsilci olarak [sahibi](/azure/role-based-access-control/built-in-roles#owner) veya [kullanıcı erişimi Yöneticisi](/azure/role-based-access-control/built-in-roles#user-access-administrator) .
-2. İçinde **abonelikleri**seçin **erişim denetimi (IAM) > Rol ataması Ekle**.
-3. İçinde **rol**, oluşturduğunuz özel rolü seçin *Azure Stack kayıt rolü*.
-4. Role atamak istediğiniz kullanıcıları seçin.
-5. Seçin **Kaydet** seçili kullanıcı rolüne atamak için.
+1. Sign in with the account with sufficient permission on the Azure subscription to delegate rights—such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator).
+2. In **Subscriptions**, select **Access control (IAM) > Add role assignment**.
+3. In **Role**, choose the custom role you created: *Azure Stack registration role*.
+4. Select the users you want to assign to the role.
+5. Select **Save** to assign the selected users to the role.
 
-    ![Kullanıcı rolüne atamak için seçin](media/azure-stack-registration-role/assign-role.png)
+    ![Select users to assign to custom role in Azure portal](media/azure-stack-registration-role/assign-role.png)
 
-Özel roller kullanma hakkında daha fazla bilgi için bkz. [RBAC ve Azure portalını kullanarak erişimini yönetme](/azure/role-based-access-control/role-assignments-portal).
+For more information on using custom roles, see [manage access using RBAC and the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

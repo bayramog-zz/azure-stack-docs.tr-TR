@@ -1,6 +1,7 @@
 ---
-title: Azure Stack tümleşik bir sistemdeki ölçek birimi düğümünü değiştirme | Microsoft Docs
-description: Azure Stack tümleşik bir sistemdeki fiziksel ölçek birimi düğümünü değiştirmeyi öğrenin.
+title: Replace a scale unit node on an Azure Stack integrated system
+titleSuffix: Azure Stack
+description: Learn how to replace a physical scale unit node on an Azure Stack integrated system.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,68 +16,67 @@ ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 0ac0a75e0986642020567ea554a4500cc051fd01
-ms.sourcegitcommit: 102ef41963b5d2d91336c84f2d6af3fdf2ce11c4
+ms.openlocfilehash: 255802151183cc2b832aaa64f2110b9c9052a0ba
+ms.sourcegitcommit: 284f5316677c9a7f4c300177d0e2a905df8cb478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73955314"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74465449"
 ---
-# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Azure Stack tümleşik bir sistemdeki ölçek birimi düğümünü değiştirme
+# <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Replace a scale unit node on an Azure Stack integrated system
 
-*Uygulama hedefi: Azure Stack tümleşik sistemler*
+*Applies to: Azure Stack integrated systems*
 
-Bu makalede, Azure Stack tümleşik bir sistemde fiziksel bir bilgisayarın (ölçek birimi düğümü olarak da bilinir) yerini alacak genel işlem açıklanır. Gerçek ölçek birimi düğüm değiştirme adımları, özgün ekipman üreticisi (OEM) donanım satıcınıza göre değişir. Sisteminize özgü ayrıntılı adımlar için satıcınızın alanı değiştirilebilir birim (FRU) belgelerine bakın.
+This article describes the general process to replace a physical computer (also referred to as a scale unit node) on an Azure Stack integrated system. Actual scale unit node replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. Sisteminize özgü ayrıntılı adımlar için satıcınızın alanı değiştirilebilir birim (FRU) belgelerine bakın.
 
 > [!CAUTION]  
-> Üretici yazılımı seviyelendirme, bu makalede açıklanan işlemin başarısı için önemlidir. Bu adımın eksik olması, sistem kararsızlığına, performans düşüşüyle, güvenlik iş parçacıklarından veya Azure Stack otomasyonunun işletim sistemini dağıtmasına engel olabilir. , Uygulanan üretici yazılımının [Azure Stack yönetici portalında](azure-stack-updates.md)görünen OEM sürümüyle eşleşmesini sağlamak için donanımı değiştirirken her zaman donanım iş ortağınızın belgelerine başvurun.<br>
-Daha fazla bilgi ve iş ortağı belgelerinin bağlantıları için bkz. [bir donanım bileşenini değiştirme](azure-stack-replace-component.md).
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md). For more information and links to partner documentation, see [Replace a hardware component](azure-stack-replace-component.md).
 
-Aşağıdaki akış diyagramı, tüm ölçek birimi düğümünün yerini alacak genel FRU işlemini gösterir.
+The following flow diagram shows the general FRU process to replace an entire scale unit node.
 
-![Düğüm değiştirme işlemi için akış grafiği](media/azure-stack-replace-node/replacenodeflow.png)
+![Flow chart for replace node process](media/azure-stack-replace-node/replacenodeflow.png)
 
-\* Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
+*This action may not be required based on the physical condition of the hardware.
 
 > [!Note]  
-> Bu işlem başarısız olursa, boşaltma işlemini ve sonrasında durdur işlemini kullanmanız önerilir. Daha fazla ayrıntı için bkz. kullanılabilir düğüm işlemleri  
+> If the shutdown operation does fail, it's recommended to use the drain operation followed by the stop operation. For more information, see [Scale unit node actions in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-node-actions).
 
-## <a name="review-alert-information"></a>Uyarı bilgilerini gözden geçirin
+## <a name="review-alert-information"></a>Review alert information
 
-Ölçek birimi düğümü kapalıysa, aşağıdaki kritik uyarıları alırsınız:
+If a scale unit node is down, you'll receive the following critical alerts:
 
 - Düğüm ağ denetleyicisine bağlanmadı
 - Sanal makine yerleşimi için düğüm erişilebilir değil
 - Ölçek birimi düğümü çevrimdışı
 
-![Ölçek birimi için uyarı listesi aşağı](media/azure-stack-replace-node/nodedownalerts.png)
+![List of alerts for scale unit down](media/azure-stack-replace-node/nodedownalerts.png)
 
-**Ölçek birimi düğümünü** açarsanız, uyarı açıklaması, erişilemeyen ölçek birimi düğümünü içerir. Ayrıca, donanım yaşam döngüsü ana bilgisayarında çalışan OEM 'e özgü izleme çözümünde ek uyarılar da alabilirsiniz.
+If you open the **Scale unit node is offline** alert, the alert description contains the scale unit node that's inaccessible. You may also receive additional alerts in the OEM-specific monitoring solution that's running on the hardware lifecycle host.
 
-![Düğüm çevrimdışı uyarısı ayrıntıları](media/azure-stack-replace-node/nodeoffline.png)
+![Details of node offline alert](media/azure-stack-replace-node/nodeoffline.png)
 
-## <a name="scale-unit-node-replacement-process"></a>Birim düğümü değiştirme işlemini Ölçeklendir
+## <a name="scale-unit-node-replacement-process"></a>Scale unit node replacement process
 
-Aşağıdaki adımlar, ölçek birimi düğümü değiştirme işlemine yüksek düzey bir genel bakış olarak sunulmaktadır. Sisteminize özgü ayrıntılı adımlar için OEM Donanım satıcınızın FRU belgelerine bakın. OEM tarafından sağlanmış belgelerinize başvurulmadan bu adımları takip edin.
+The following steps are provided as a high-level overview of the scale unit node replacement process. See your OEM hardware vendor's FRU documentation for detailed steps that are specific to your system. Don't follow these steps without referring to your OEM-provided documentation.
 
-1. Ölçek birimi düğümünü düzgün bir şekilde kapatmak için **kapatılıyor** eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir. 
+1. Use the **Shutdown** action to gracefully shut down the scale unit node. This action may not be required based on the physical condition of the hardware.
 
-2. Kapalı olma ihtimaline karşı koruma eylemi başarısız olursa, ölçek birimi düğümünü bakım moduna almak için [boşalt](azure-stack-node-actions.md#drain) eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
-
-   > [!NOTE]  
-   > Herhangi bir durumda, S2D (Depolama Alanları Doğrudan) bozmadan aynı anda yalnızca bir düğüm devre dışı bırakılabilir ve kapatılabilir.
-
-3. Ölçek birimi düğümü bakım modundayken, [Durdur](azure-stack-node-actions.md#stop) eylemini kullanın. Bu eylem, donanımın fiziksel koşuluna bağlı olarak gerekli olmayabilir.
+2. In the unlikely case the shutdown action fails, use the [Drain](azure-stack-node-actions.md#drain) action to put the scale unit node into maintenance mode. This action may not be required based on the physical condition of the hardware.
 
    > [!NOTE]  
-   > Kapatma eyleminin çalışmamasının olası olmaması durumunda bunun yerine temel kart yönetim denetleyicisi (BMC) Web arabirimini kullanın.
+   > In any case, only one node can be disabled and powered off at the same time without breaking the S2D (Storage Spaces Direct).
 
-4. Fiziksel bilgisayarı değiştirin. Genellikle bu, OEM donanım satıcınız tarafından yapılır.
-5. Yeni fiziksel bilgisayarı ölçek birimine eklemek için [onarma](azure-stack-node-actions.md#repair) eylemini kullanın.
-6. [Sanal disk onarımı durumunu denetlemek](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint)için ayrıcalıklı uç noktasını kullanın. Yeni veri sürücüleriyle, tam bir depolama onarma işi sistem yüküne ve tüketilen alana bağlı olarak birden çok saat sürebilir.
-7. Onarım eylemi tamamlandıktan sonra, tüm etkin uyarıların otomatik olarak kapatıldığını doğrulayın.
+3. After the scale unit node is in maintenance mode, use the [Stop](azure-stack-node-actions.md#stop) action. This action may not be required based on the physical condition of the hardware.
+
+   > [!NOTE]  
+   > In the unlikely case that the Power off action doesn't work, use the baseboard management controller (BMC) web interface instead.
+
+4. Replace the physical computer. Typically, this replacement is done by your OEM hardware vendor.
+5. Use the [Repair](azure-stack-node-actions.md#repair) action to add the new physical computer to the scale unit.
+6. Use the privileged endpoint to [check the status of virtual disk repair](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint). With new data drives, a full storage repair job can take multiple hours depending on system load and consumed space.
+7. After the repair action has finished, validate that all active alerts have been automatically closed.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sistem açıkken fiziksel disk değiştirme hakkında daha fazla bilgi için bkz. [disk değiştirme](azure-stack-replace-disk.md). 
-- Sistemin kapatılmasını gerektiren bir donanım bileşenini değiştirme hakkında daha fazla bilgi için bkz. [bir donanım bileşenini değiştirme](azure-stack-replace-component.md).
+- For information about replacing a physical disk while the system is powered on, see [Replace a disk](azure-stack-replace-disk.md). 
+- For information about replacing a hardware component that requires the system to be powered off, see [Replace a hardware component](azure-stack-replace-component.md).

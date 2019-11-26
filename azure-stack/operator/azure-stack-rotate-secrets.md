@@ -1,6 +1,7 @@
 ---
-title: Gizli dizileri Azure Stack döndür | Microsoft Docs
-description: Azure Stack ' de sırlarınızı döndürme hakkında bilgi edinin.
+title: Rotate secrets
+titleSuffix: Azure Stack
+description: Learn how to rotate your secrets in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -16,128 +17,125 @@ ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 09/30/2019
 monikerRange: '>=azs-1802'
-ms.openlocfilehash: 7549d9fc716c7c4b6027f596fd0297840b5e18ec
-ms.sourcegitcommit: cefba8d6a93efaedff303d3c605b02bd28996c5d
+ms.openlocfilehash: d00cbc5eaacd80ba67b339e11562dc516fcd0991
+ms.sourcegitcommit: 284f5316677c9a7f4c300177d0e2a905df8cb478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74298831"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74465385"
 ---
-# <a name="rotate-secrets-in-azure-stack"></a>Azure Stack gizli dizileri döndürme
+# <a name="rotate-secrets-in-azure-stack"></a>Rotate secrets in Azure Stack
 
-*Bu yönergeler yalnızca Azure Stack tümleşik sistemler sürüm 1803 ve üzeri için geçerlidir. 1802 öncesi Azure Stack sürümlerde gizli anahtar dönüşü yapmayı denemeyin*
+*These instructions apply only to Azure Stack Integrated Systems version 1803 and Later. Don't attempt secret rotation on pre-1802 Azure Stack Versions*
 
-Gizlilikler, Azure Stack altyapı kaynakları ve hizmetleri arasında güvenli iletişimi korumanıza yardımcı olur.
+Secrets help you maintain secure communication between the Azure Stack infrastructure resources and services.
 
-## <a name="overview-to-rotate-secrets"></a>Gizli dizileri döndürme için genel bakış
+## <a name="rotate-secrets-overview"></a>Rotate secrets overview
 
-1. Gizli anahtar döndürme için kullanılacak sertifikaları hazırlayın.
-2. Azure Stack [ortak anahtar altyapısı sertifika gereksinimlerini](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs)gözden geçirin.
-3. Her şeyin iyi olduğunu onaylamak için [ayrıcalıklı uç noktasını kullanın](azure-stack-privileged-endpoint.md) ve **Test-azurestack** komutunu çalıştırın.  
-4. [Gizli anahtar döndürme adımları](#pre-steps-for-secret-rotation)hakkında daha fazla bilgi edinebilirsiniz.
-5. [Azure Stack PKI sertifikalarını doğrulayın](https://docs.microsoft.com/azure-stack/operator/azure-stack-validate-pki-certs). Parolada, `*` veya `)`gibi özel karakterler bulunmadığından emin olun.
-6. PFX şifrelemesinin **TripleDES-SHA1**olduğundan emin olun. Bir sorunla karşılaşırsanız, bkz. [Azure Stack PKI sertifikaları için yaygın sorunları giderme](https://docs.microsoft.com/azure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
-7. Klasör yapısını hazırlayın.  [Dönen dış gizlilikler](https://docs.microsoft.com/azure-stack/operator/azure-stack-rotate-secrets#rotating-external-secrets) bölümünde bir örnek bulabilirsiniz.
-8. [Gizli anahtarı döndürmeyi başlatın](#use-powershell-to-rotate-secrets).
+1. Prepare the certificates which will be used for secret rotation.
+2. Review the Azure Stack [public key infrastructure certificate requirements](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
+3. [Use the privileged endpoint](azure-stack-privileged-endpoint.md) and run **Test-azurestack**  to confirm that everything is fine.  
+4. Review the [pre-steps for secret rotation](#pre-steps-for-secret-rotation).
+5. [Validate Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-validate-pki-certs). Make sure there are no special characters in the password, like `*` or `)`.
+6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
+7. Prepare the folder structure.  You can find an example in the [Rotating external secrets](https://docs.microsoft.com/azure-stack/operator/azure-stack-rotate-secrets#rotating-external-secrets) section.
+8. [Start the secret rotation](#use-powershell-to-rotate-secrets).
 
-## <a name="rotate-secrets"></a>Gizli dizileri Döndür
+## <a name="rotate-secrets"></a>Rotate secrets
 
-Azure Stack, Azure Stack altyapısı kaynakları ve hizmetleri arasında güvenli iletişim sağlamak için çeşitli gizli dizileri kullanır.
+Azure Stack uses various secrets to maintain secure communication between the Azure Stack infrastructure resources and services.
 
-- **İç gizlilikler**
+- **Internal secrets**
 
-    Azure Stack Işlecini müdahale etmeden Azure Stack altyapısı tarafından kullanılan tüm sertifikalar, parolalar, güvenli dizeler ve anahtarlar.
+    All the certificates, passwords, secure strings, and keys used by the Azure Stack infrastructure without intervention of the Azure Stack Operator.
 
-- **Dış gizlilikler**
+- **External secrets**
 
-    Azure Stack Işleci tarafından sunulan dışarıdan yönelik hizmetler için altyapı hizmeti sertifikaları. Dış gizlilikler aşağıdaki hizmetler için sertifikaları içerir:
+    Infrastructure service certificates for external-facing services that are provided by the Azure Stack Operator. External secrets include the certificates for the following services:
 
-    - Yönetici portalı
-    - Ortak Portal
-    - Yönetici Azure Resource Manager
-    - Genel Azure Resource Manager
-    - Yönetici Keykasası
-    - KeyVault
-    - Yönetici uzantısı ana bilgisayarı
-    - ACS (blob, tablo ve kuyruk depolama dahil)
-    - FS
-    - Çıkarılamıyor
+    - Administrator portal
+    - Public portal
+    - Administrator Azure Resource Manager
+    - Global Azure Resource Manager
+    - Administrator Key Vault
+    - Key Vault
+    - Admin Extension Host
+    - ACS (including blob, table, and queue storage)
+    - ADFS*
+    - Graph*
     
-    \* yalnızca ortamın kimlik sağlayıcısı federe hizmetler Active Directory (AD FS) ise geçerlidir.
+    \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
 
 > [!Note]
-> BMC ve anahtar parolaları dahil diğer tüm güvenli anahtar ve dizeler, Kullanıcı ve yönetici hesabı parolaları hala yönetici tarafından el ile güncelleştirilir.
+> All other secure keys and strings, including BMC and switch passwords as well as user and administrator account passwords are still manually updated by the administrator.
 
 > [!Important]
-> Azure Stack 1811 sürümü ile başlayarak, iç ve dış sertifikalar için gizli döndürme ayrılmıştır.
+> Starting with Azure Stack's 1811 release, secret rotation has been separated for internal and external certificates.
 
-Azure Stack altyapısının bütünlüğünü sürdürmek için, işleçlerin altyapısının gizli dizilerini kuruluşun güvenlik gereksinimleriyle tutarlı sıklıklarla düzenli olarak döndürme yeteneğinin olması gerekir.
+To maintain the integrity of the Azure Stack infrastructure, operators need the ability to periodically rotate their infrastructure's secrets at frequencies that are consistent with their organization's security requirements.
 
-### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>Yeni bir sertifika yetkilisinden dış sertifikalarla gizli dizileri döndürme
+### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>Rotating Secrets with external certificates from a new Certificate Authority
 
-Azure Stack, aşağıdaki bağlamlarda yeni bir sertifika yetkilisinden (CA) dış sertifikalarla gizli döndürmeyi destekler:
+Azure Stack supports secret rotation with external certificates from a new Certificate Authority (CA) in the following contexts:
 
-|Yüklü sertifika CA 'sı|Döndürülecek CA|Desteklenen|Desteklenen Azure Stack sürümleri|
+|Installed Certificate CA|CA to Rotate To|Desteklenen|Azure Stack versions supported|
 |-----|-----|-----|-----|
-|Otomatik olarak Imzalanan|Kuruluşa|Desteklenen|& daha sonra 1903|
-|Otomatik olarak Imzalanan|Kendinden Imzalı için|Desteklenmiyor||
-|Otomatik olarak Imzalanan|Genel<sup>*</sup>|Desteklenen|& daha sonra 1803|
-|Kurumsal|Kuruluşa|Destekleniyor. 1803-1903 ' den itibaren, müşteriler dağıtımda kullanılan kurumsal CA 'yı kullandığı sürece desteklenir.|& daha sonra 1803|
-|Kurumsal|Kendinden Imzalı için|Desteklenmiyor||
-|Kurumsal|Genel<sup>*</sup>|Desteklenen|& daha sonra 1803|
-|Ortak<sup>*</sup>|Kuruluşa|Desteklenen|& daha sonra 1903|
-|Ortak<sup>*</sup>|Kendinden Imzalı için|Desteklenmiyor||
-|Ortak<sup>*</sup>|Genel<sup>*</sup>|Desteklenen|& daha sonra 1803|
+|From Self-Signed|To Enterprise|Desteklenen|1903 & Later|
+|From Self-Signed|To Self-Signed|Desteklenmiyor||
+|From Self-Signed|To Public<sup>*</sup>|Desteklenen|1803 & Later|
+|From Enterprise|To Enterprise|Destekleniyor. From 1803-1903: supported so long as customers use the SAME enterprise CA as used at deployment|1803 & Later|
+|From Enterprise|To Self-Signed|Desteklenmiyor||
+|From Enterprise|To Public<sup>*</sup>|Desteklenen|1803 & Later|
+|From Public<sup>*</sup>|To Enterprise|Desteklenen|1903 & Later|
+|From Public<sup>*</sup>|To Self-Signed|Desteklenmiyor||
+|From Public<sup>*</sup>|To Public<sup>*</sup>|Desteklenen|1803 & Later|
 
-<sup>*</sup> Ortak sertifika yetkililerinin Windows güvenilen kök programın bir parçası olan kişiler olduğunu gösterir. Tam listeyi [Microsoft güvenilen kök sertifika programı: katılımcılar (27 haziran 2017 itibariyle)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)makalesinde bulabilirsiniz.
+<sup>*</sup>Indicates that the Public Certificate Authorities are those that are part of the Windows Trusted Root Program. You can find the full list in the article [Microsoft Trusted Root Certificate Program: Participants (as of June 27, 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 
-## <a name="alert-remediation"></a>Uyarı Düzeltme
+## <a name="fixing-alerts"></a>Fixing alerts
 
-Parolaların süresi 30 gün içinde olduğunda, yönetici portalında aşağıdaki uyarılar oluşturulur:
+When secrets are within 30 days of expiration, the following alerts are generated in the administrator portal:
 
-- Bekleyen hizmet hesabı parolası süre sonu
-- İç sertifika süre sonu bekleniyor
+- Pending service account password expiration
+- Pending internal certificate expiration
 - Beklemedeki dış sertifika süre sonu
 
-Aşağıdaki yönergeleri kullanarak gizli bir döndürme çalıştırmak, bu uyarıları düzeltir.
+Running secret rotation using the instructions below will fix these alerts.
 
 > [!Note]
-> 1811 öncesi sürümlerde Azure Stack ortamlar, bekleyen iç sertifika veya gizli süre sonları için uyarıları görebilir.
-> Bu uyarılar yanlış ve iç gizli döndürme çalıştırmadan yok sayılacak.
-> Yanlış iç gizli zaman aşımı uyarıları 1811 ' de çözümlenen bilinen bir sorundur ve ortam iki yıl boyunca etkin değilse iç gizli dizileri sona ermeyecektir.
+> Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
-## <a name="pre-steps-for-secret-rotation"></a>Gizli anahtar döndürme için ön adımlar
+## <a name="pre-steps-for-secret-rotation"></a>Pre-steps for secret rotation
 
    > [!IMPORTANT]
-   > Azure Stack ortamınızda gizli döndürme zaten gerçekleştirilirse, gizli anahtarı yeniden yürütmeden önce sistemi 1811 veya sonraki bir sürüme güncelleştirmeniz gerekir.
-   > Gizli [uç nokta](azure-stack-privileged-endpoint.md) aracılığıyla gizli bir döndürme yürütülmelidir ve Azure Stack operatör kimlik bilgileri gerekir.
-   > Ortamınız Azure Stack Işletmenlerinizin gizli döndürme ortamınızda çalıştırılıp çalıştırılmadığını bilmez ise, gizli döndürmeyi yeniden yürütmeden önce 1811 olarak güncelleştirin.
+   > If secret rotation has already been performed on your Azure Stack environment then you must update the system to version 1811 or later before you execute secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Operator credentials. If your environment Azure Stack Operator(s) don't know whether secret rotation has been run on your environment, update to 1811 before executing secret rotation again.
 
-1. Azure Stack örneğinizi 1811 sürümüne güncelleştirmeniz kesinlikle önerilir.
-
-    > [!Note] 
-    > 1811 öncesi sürümler için uzantı ana bilgisayar sertifikaları eklemek üzere gizli dizileri döndürmenize gerek yoktur. Uzantı konak sertifikaları eklemek için [Azure Stack uzantı ana bilgisayarına hazırlanma](azure-stack-extension-host-prepare.md) makalesindeki yönergeleri izlemelisiniz.
-
-2. Operatörler Azure Stack gizli dizilerinin rotasyonu sırasında uyarıların açıldığını ve otomatik olarak kapatıldığını görebilir.  Bu davranış beklenmektedir ve uyarılar yoksayılabilir.  İşleçler, **Test-AzureStack**komutunu çalıştırarak bu uyarıların geçerliliğini doğrulayabilirler.  Azure Stack sistemlerini izlemek için System Center Operations Manager kullanan operatörler için, sistemi bakım moduna almak bu uyarıların ıTSM sistemlerine ulaşmasını engeller ancak Azure Stack sistemi ulaşılamaz hale gelirse uyarı almaya devam edecektir.
-
-3. Kullanıcılarınıza tüm bakım işlemlerini bildirin. İş saatleri dışında normal bakım pencerelerini mümkün olduğunca düzenli olarak zamanlayın. Bakım işlemleri, hem Kullanıcı iş yüklerini hem de Portal işlemlerini etkileyebilir.
+1. It's highly recommended you update your Azure Stack instance to version 1811.
 
     > [!Note]
-    > Sonraki adımlar yalnızca Azure Stack dış gizli dizileri döndürürken geçerlidir.
+    > For pre-1811 versions, you don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack](azure-stack-extension-host-prepare.md) to add extension host certificates.
 
-4. **[Test-AzureStack](azure-stack-diagnostic-test.md)** komutunu çalıştırın ve gizli dizileri döndürmeden önce tüm test çıktılarının sağlıklı olduğunu onaylayın.
-5. Yeni bir değiştirme dış sertifika kümesi hazırlayın. Yeni küme, [Azure Stack PKI sertifika gereksinimlerinde](azure-stack-pki-certs.md)özetlenen sertifika belirtimleriyle eşleşir. [PKI sertifikaları](azure-stack-get-pki-certs.md) oluşturma ' da açıklanan adımları kullanarak yeni sertifikalar satın alma veya oluşturma için bir sertifika imzalama ISTEğI (CSR) oluşturabilir ve [Azure Stack PKI sertifikalarını hazırlama](azure-stack-prepare-pki-certs.md)bölümündeki adımları kullanarak bunları Azure Stack ortamınızda kullanıma hazırlarsınız. Hazırladığınız sertifikaları, [PKI sertifikalarının doğrulanması](azure-stack-validate-pki-certs.md)bölümünde özetlenen adımlarla doğruladığınızdan emin olun.
-6. Güvenli bir yedekleme konumunda, döndürme için kullanılan sertifikalara bir yedekleme depolayın. Döndürme işlemi çalışırsa ve başarısız olursa, döndürmeyi yeniden çalıştırmadan önce dosya paylaşımındaki sertifikaları yedek kopyalarla değiştirin. Yedekleme kopyalarını güvenli yedekleme konumunda tutun.
-7. ERCS sanal makinelerinden erişebileceğiniz bir dosya paylaşımı oluşturun. **CloudAdmin** kimliği için dosya paylaşımının okunabilir ve yazılabilir olması gerekir.
-8. Dosya paylaşımına erişiminizin bulunduğu bir bilgisayardan PowerShell ıSE konsolunu açın. Dosya paylaşımına gidin.
-9. Dış sertifikalarınız için gerekli dizinleri oluşturmak üzere **[Certdirectorymaker. ps1](https://www.aka.ms/azssecretrotationhelper)** komutunu çalıştırın.
+2. Operatörler Azure Stack gizli dizilerinin rotasyonu sırasında uyarıların açıldığını ve otomatik olarak kapatıldığını görebilir.  This behavior is expected and the alerts can be ignored.  Operators can verify the validity of these alerts by running **Test-AzureStack**.  For operators using System Center Operations Manager to monitor Azure Stack systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack system becomes unreachable.
+
+3. Notify your users of any maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
+
+    > [!Note]
+    > The next steps only apply when rotating Azure Stack external secrets.
+
+4. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
+5. Prepare a new set of replacement external certificates. The new set matches the certificate specifications outlined in the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md). You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack environment using the steps in [Prepare Azure Stack PKI Certificates](azure-stack-prepare-pki-certs.md). Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md).
+6. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
+7. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
+8. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare.
+9. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to create the required directories for your external certificates.
 
 > [!IMPORTANT]
-> CertDirectoryMaker betiği, aşağıdakileri barındıracak bir klasör yapısı oluşturur:
+> The CertDirectoryMaker script will create a folder structure that will adhere to:
 >
-> Azure Stack için kullanılan kimlik sağlayıcınıza bağlı olarak **.\Certificates\aad** veya ***.\Certificates\adfs***
+> **.\Certificates\AAD** or ***.\Certificates\ADFS*** depending on your Identity Provider used for Azure Stack.
 >
-> Klasör yapınızın **AAD** veya **ADFS** klasörleri ile sona erdiği ve tüm alt dizinlerin bu yapıda olduğu en önemli öneme sahiptir; Aksi takdirde, **Start-SecretRotation** şu şekilde görünür:
+> It's of utmost importance that your folder structure ends with **AAD** or **ADFS** folders and all subdirectories are within this structure; otherwise, **Start-SecretRotation** will come up with:
+>
 > ```powershell
 > Cannot bind argument to parameter 'Path' because it is null.
 > + CategoryInfo          : InvalidData: (:) [Test-Certificate], ParameterBindingValidationException
@@ -145,24 +143,23 @@ Aşağıdaki yönergeleri kullanarak gizli bir döndürme çalıştırmak, bu uy
 > + PSComputerName        : xxx.xxx.xxx.xxx
 > ```
 >
-> Hata maszu, FileShare 'e erişirken bir sorun olduğunu gösterir ancak gerçekte bu, burada zorlanmakta olan klasör yapısıdır.
-> Microsoft AzureStack hazırlık denetleyicisi- [Publiccerthelper modülünde](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1) daha fazla bilgi bulunabilir
+> The error massage indicates that there's a problem accessing your fileshare but in reality it's the folder structure that's being enforced here. More information can be found in the Microsoft AzureStack Readiness Checker - [PublicCertHelper module](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1).
 >
-> Ayrıca, FileShare klasör yapınızın **Sertifikalar** klasörüyle başlaması de önemlidir, aksi takdirde doğrulama işlemi de başarısız olur.
-> FileShare Mount, **\\\\\<ıpaddress >\\\<ShareName >** \\, içinde **certificates\aad** veya **certificates\adfs** adlı klasörü içermesi gerekir.
+> It's also important that your fileshare folder structure begins with **Certificates** folder, otherwise it will also fail on validation.
+> Fileshare mount should look like **\\\\\<IPAddress>\\\<ShareName>\\** and it should contain folder **Certificates\AAD** or **Certificates\ADFS** inside.
 >
-> Örneğin:
-> - FileShare = **\\\\\<ıpaddress >\\\<paylaşımadı >** \\
-> - CertFolder = **Certificates\aad**
-> - FullPath = **\\\\\<ıpaddress >\\\<paylaşımadı > \Certificates\AAD**
+> Örnek:
+> - Fileshare = **\\\\\<IPAddress>\\\<ShareName>\\**
+> - CertFolder = **Certificates\AAD**
+> - FullPath = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
 
-## <a name="rotating-external-secrets"></a>Dış gizli dizileri döndürme
+## <a name="rotating-external-secrets"></a>Rotating external secrets
 
-Dış gizli dizileri döndürmek için:
+To rotate external secrets:
 
-1. Ön adımlarda oluşturulan yeni oluşturulan **\Sertifikalar\\\<IdentityProvider >** dizini, dizin yapısına yeni bir değiştirme dış sertifika KÜMESINI [Azure Stack PKI sertifikası gereksinimlerinin](azure-stack-pki-certs.md#mandatory-certificates)zorunlu sertifikalar bölümünde özetlenen biçime göre yerleştirin.
+1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
 
-    Azure AD kimlik sağlayıcısı için klasör yapısına örnek:
+    Example of folder structure for the Azure AD Identity Provider:
     ```powershell
         <ShareName>
         │   │
@@ -203,38 +200,39 @@ Dış gizli dizileri döndürmek için:
 
     ```
 
-2. **CloudAdmin** hesabını kullanarak [ayrıcalıklı uç nokta](azure-stack-privileged-endpoint.md) ile bir PowerShell oturumu oluşturun ve oturumları bir değişken olarak depolayın. Bu değişkeni bir sonraki adımda parametresi olarak kullanacaksınız.
+2. Create a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account and store the sessions as a variable. You'll use this variable as the parameter in the next step.
 
     > [!IMPORTANT]  
-    > Oturumu girmeyin ve oturumu bir değişken olarak depolayın.
+    > Don't enter the session. Store the session as a variable.
 
-3. **[Invoke-Command komutunu](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)** çalıştırın. Ayrıcalıklı uç nokta PowerShell oturum değişkeninizi **oturum** parametresi olarak geçirin.
+3. Run **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)** . Pass your privileged endpoint PowerShell session variable as the **Session** parameter.
 
-4. Şu parametrelerle **Start-SecretRotation** çalıştırın:
+4. Run **Start-SecretRotation** with the following parameters:
     - **PfxFilesPath**  
-    Daha önce oluşturduğunuz sertifika dizininizin ağ yolunu belirtin.  
+    Specify the network path to your Certificates directory created earlier.  
     - **PathAccessCredential**  
-    Paylaşımdaki kimlik bilgileri için bir PSCredential nesnesi.
+    A PSCredential object for credentials to the share.
     - **CertificatePassword**  
-    Oluşturulan tüm PFX Sertifika dosyaları için kullanılan parolanın güvenli bir dizesi.
+    A secure string of the password used for all of the pfx certificate files created.
 
-5. Gizli dizileri döndürürken bekleyin. Dış parola döndürme genellikle yaklaşık bir saat sürer.
+5. Wait while your secrets rotate. External secret rotation takes approximately one hour.
 
-    Gizli döndürme başarıyla tamamlandığında, konsolunuz **genel eylem durumu: başarılı**' i görüntüler.
+    When secret rotation successfully completes, your console will display **Overall action status: Success**.
 
     > [!Note]
-    > Gizli döndürme başarısız olursa, hata iletisindeki yönergeleri izleyin ve **-yeniden çalıştır** parametresiyle **Start-secrecontrols** öğesini yeniden çalıştırın.
+    > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
 
     ```powershell
     Start-SecretRotation -ReRun
     ```
-    Yinelenen gizli döndürme hatalarıyla karşılaşırsanız desteğe başvurun.
 
-6. Gizli anahtar başarıyla tamamlandıktan sonra, ön adımla oluşturulan paylaşımdan sertifikalarınızı kaldırın ve bunları güvenli yedekleme konumlarına depolayın.
+    Contact support if you experience repeated secret rotation failures.
 
-## <a name="use-powershell-to-rotate-secrets"></a>Gizli dizileri döndürmek için PowerShell 'i kullanma
+6. After successful completion of secret rotation, remove your certificates from the share created in the pre-step and store them in their secure backup location.
 
-Aşağıdaki PowerShell örneği, sırlarınızı döndürmek için çalıştırılacak cmdlet 'leri ve parametreleri gösterir.
+## <a name="use-powershell-to-rotate-secrets"></a>Use PowerShell to rotate secrets
+
+The following PowerShell example demonstrates the cmdlets and parameters to run in order to rotate your secrets.
 
 ```powershell
 # Create a PEP Session
@@ -252,57 +250,54 @@ Invoke-Command -Session $PEPSession -ScriptBlock {
 Remove-PSSession -Session $PEPSession
 ```
 
-## <a name="rotating-only-internal-secrets"></a>Yalnızca iç gizli dizileri döndürme
+## <a name="rotating-only-internal-secrets"></a>Rotating only internal secrets
 
 > [!Note]
-> İç gizli anahtar, yalnızca bir iç parolanın kötü amaçlı bir varlık tarafından tehlikeye alındığını veya iç sertifikaların süresi dolmak üzere olduğunu belirten bir uyarı (derleme 1811 veya sonraki bir sürüm) aldıysanız yapılmalıdır.
-> 1811 öncesi sürümlerde Azure Stack ortamlar, bekleyen iç sertifika veya gizli süre sonları için uyarıları görebilir.
-> Bu uyarılar yanlış ve iç gizli döndürme çalıştırmadan yok sayılacak.
-> Yanlış iç gizli zaman aşımı uyarıları 1811 ' de çözümlenen bilinen bir sorundur ve ortam iki yıl boyunca etkin değilse iç gizli dizileri sona ermeyecektir.
+> Internal secret rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you've received an alert (on build 1811 or later) indicating internal certificates are nearing expiration. Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
-1. [Ayrıcalıklı uç nokta](azure-stack-privileged-endpoint.md)Ile bir PowerShell oturumu oluşturun.
-2. Ayrıcalıklı uç nokta oturumunda **Start-SecretRotation-Internal**' ı çalıştırın.
+1. Create a PowerShell session with the [Privileged endpoint](azure-stack-privileged-endpoint.md).
+2. In the Privileged Endpoint session, run **Start-SecretRotation -Internal**.
 
     > [!Note]
-    > 1811 öncesi sürümlerde Azure Stack ortamlar **-Internal** bayrağını gerektirmez. **Start-SecretRotation** yalnızca iç gizli dizileri döndürebilir.
+    > Azure Stack environments on pre-1811 versions won't require the **-Internal** flag. **Start-SecretRotation** will rotate only internal secrets.
 
-3. Gizli dizileri döndürürken bekleyin.
+3. Wait while your secrets rotate.
 
-   Gizli döndürme başarıyla tamamlandığında, konsolunuz **genel eylem durumu: başarılı**' i görüntüler.
+   When secret rotation successfully completes, your console will display **Overall action status: Success**.
     > [!Note]
-    > Gizli döndürme başarısız olursa, hata iletisindeki yönergeleri uygulayın ve **-Internal** ve **-yeniden çalıştır** parametreleriyle **Start-secretrotation** ' ı yeniden çalıştırın.  
+    > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
 
 ```powershell
 Start-SecretRotation -Internal -ReRun
 ```
 
-Yinelenen gizli döndürme hatalarıyla karşılaşırsanız desteğe başvurun.
+Contact support if you experience repeated secret rotation failures.
 
-## <a name="start-secretrotation-reference"></a>Start-SecretRotation başvurusu
+## <a name="start-secretrotation-reference"></a>Start-SecretRotation reference
 
-Azure Stack sisteminin gizli dizilerini döndürür. Yalnızca Azure Stack ayrıcalıklı uç nokta ile yürütülür.
+Rotates the secrets of an Azure Stack System. Only executed against the Azure Stack privileged endpoint.
 
 ### <a name="syntax"></a>Sözdizimi
 
-#### <a name="for-external-secret-rotation"></a>Dış gizli dizi dönüşü için
+#### <a name="for-external-secret-rotation"></a>For external secret rotation
 
 ```powershell
 Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential <PSCredential>] [-CertificatePassword <SecureString>]  
 ```
 
-#### <a name="for-internal-secret-rotation"></a>İç gizli anahtar için
+#### <a name="for-internal-secret-rotation"></a>For internal secret rotation
 
 ```powershell
 Start-SecretRotation [-Internal]  
 ```
 
-#### <a name="for-external-secret-rotation-rerun"></a>Dış gizli anahtar döndürme için yeniden çalıştır
+#### <a name="for-external-secret-rotation-rerun"></a>For external secret rotation rerun
 
 ```powershell
 Start-SecretRotation [-ReRun]
 ```
 
-#### <a name="for-internal-secret-rotation-rerun"></a>İç gizli anahtar döndürme için yeniden çalıştır
+#### <a name="for-internal-secret-rotation-rerun"></a>For internal secret rotation rerun
 
 ```powershell
 Start-SecretRotation [-ReRun] [-Internal]
@@ -310,31 +305,31 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 ### <a name="description"></a>Açıklama
 
-**Start-SecretRotation** cmdlet 'i bir Azure Stack sisteminin altyapı gizli dizilerini döndürür. Varsayılan olarak, yalnızca tüm dış ağ altyapısı uç noktalarına ait sertifikaları döndürür. -Internal bayrağıyla kullanılırsa iç altyapı gizli dizileri döndürülür. Dış ağ altyapısı uç noktaları döndürürken, **Start-SecretRotation** , Azure Stack ortamının ayrıcalıklı uç noktası oturumunun **oturum** parametresi olarak geçirildiği bir **Invoke-Command** betik bloğu ile çalıştırılmalıdır.
+The **Start-SecretRotation** cmdlet rotates the infrastructure secrets of an Azure Stack system. By default, it rotates only the certificates of all external network infrastructure endpoints. If used with the -Internal flag, internal infrastructure secrets will be rotated. When rotating external network infrastructure endpoints, **Start-SecretRotation** should be run with an **Invoke-Command** script block with the Azure Stack environment's privileged endpoint session passed in as the **Session** parameter.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Tür | Gerekli | Konum | Varsayılan | Açıklama |
+| Parametre | Tür | Gereklidir | Position | Varsayılan | Açıklama |
 | -- | -- | -- | -- | -- | -- |
-| `PfxFilesPath` | Dize  | False  | Adlandırılır  | Hiçbiri  | Tüm dış ağ uç noktası sertifikalarını içeren **\Certificates** dizininin FileShare yolu. Yalnızca dış gizlilikler döndürme sırasında gereklidir. Son dizin **\ sertifikalar**olmalıdır. |
-| `CertificatePassword` | SecureString | False  | Adlandırılır  | Hiçbiri  | -PfXFilesPath içinde belirtilen tüm sertifikaların parolası. Dış gizlilikler döndürüldüğünde PfxFilesPath sağlanırsa gerekli değer. |
-| `Internal` | Dize | False | Adlandırılır | Hiçbiri | İç altyapının gizli dizilerini döndürmek için bir Azure Stack işleci her zaman kullanılması gerekir. |
-| `PathAccessCredential` | PSCredential | False  | Adlandırılır  | Hiçbiri  | Tüm dış ağ uç noktası sertifikalarını içeren **\Certificates** dizininin dosya paylaşımının PowerShell kimlik bilgileri. Yalnızca dış gizlilikler döndürme sırasında gereklidir.  |
-| `ReRun` | SwitchParameter | False  | Adlandırılır  | Hiçbiri  | Yeniden çalıştırma işlemi, başarısız bir denemeden sonra her zaman gizli dizi rotasyonda yeniden denenmelidir. |
+| `PfxFilesPath` | Dize  | Yanlış  | Named  | Hiçbiri  | The fileshare path to the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets. End directory must be **\Certificates**. |
+| `CertificatePassword` | SecureString | Yanlış  | Named  | Hiçbiri  | The password for all certificates provided in the -PfXFilesPath. Required value if PfxFilesPath is provided when external secrets are rotated. |
+| `Internal` | Dize | Yanlış | Named | Hiçbiri | Internal flag must be used anytime an Azure Stack operator wishes to rotate internal infrastructure secrets. |
+| `PathAccessCredential` | PSCredential | Yanlış  | Named  | Hiçbiri  | The PowerShell credential for the fileshare of the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets.  |
+| `ReRun` | SwitchParameter | Yanlış  | Named  | Hiçbiri  | ReRun must be used anytime secret rotation is reattempted after a failed attempt. |
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="rotate-only-internal-infrastructure-secrets"></a>Yalnızca iç altyapı gizli dizilerini döndür
+#### <a name="rotate-only-internal-infrastructure-secrets"></a>Rotate only internal infrastructure secrets
 
-Bunun, Azure Stack [ortamınızın ayrıcalıklı uç noktası](azure-stack-privileged-endpoint.md)aracılığıyla çalıştırılması gerekir.
+This command must be run via your Azure Stack [environment's privileged endpoint](azure-stack-privileged-endpoint.md).
 
 ```powershell
 PS C:\> Start-SecretRotation -Internal
 ```
 
-Bu komut, iç ağ Azure Stack kullanıma sunulan tüm altyapı gizli dizilerini döndürür.
+This command rotates all of the infrastructure secrets exposed to the Azure Stack internal network.
 
-#### <a name="rotate-only-external-infrastructure-secrets"></a>Yalnızca dış altyapı gizli dizilerini döndür  
+#### <a name="rotate-only-external-infrastructure-secrets"></a>Rotate only external infrastructure secrets  
 
 ```powershell
 # Create a PEP Session
@@ -353,14 +348,14 @@ Invoke-Command -Session $PEPSession -ScriptBlock {
 Remove-PSSession -Session $PEPSession
 ```
 
-Bu komut, Azure Stack dış ağ altyapısı uç noktaları için kullanılan TLS sertifikalarını döndürür.
+This command rotates the TLS certificates used for Azure Stack's external network infrastructure endpoints.
 
-#### <a name="rotate-internal-and-external-infrastructure-secrets-pre-1811-only"></a>İç ve dış altyapı gizli dizilerini döndürme (yalnızca**1811 öncesi** )
+#### <a name="rotate-internal-and-external-infrastructure-secrets-pre-1811-only"></a>Rotate internal and external infrastructure secrets (**pre-1811** only)
 
 > [!IMPORTANT]
-> Bu komut yalnızca, döndürme iç ve dış sertifikalara bölündüğü için Azure Stack **ön 1811** için geçerlidir.
+> This command only applies to Azure Stack **pre-1811** as the rotation has been split for internal and external certificates.
 >
-> ***1811 +* ' dan hem iç hem de dış sertifikaları daha fazla!!! döndüremezsiniz**
+> **From *1811+* you can't rotate both internal and external certificates anymore!**
 
 ```powershell
 # Create a PEP Session
@@ -379,20 +374,22 @@ Invoke-Command -Session $PEPSession -ScriptBlock {
 Remove-PSSession -Session $PEPSession
 ```
 
-Bu komut, iç ağ Azure Stack ve Azure Stack dış ağ altyapısı uç noktaları için kullanılan TLS sertifikalarının yanı sıra kullanıma sunulan tüm altyapı gizli dizilerini döndürür. Start-SecretRotation, yığın tarafından oluşturulan tüm gizli dizileri döndürür ve sağlanmış sertifikalar olduğundan, dış uç nokta sertifikaları da döndürülecektir.  
+This command rotates all of the infrastructure secrets exposed to Azure Stack internal network as well as the TLS certificates used for Azure Stack's external network infrastructure endpoints. Start-SecretRotation rotates all stack-generated secrets, and because there are provided certificates, external endpoint certificates will also be rotated.  
 
-## <a name="update-the-baseboard-management-controller-bmc-credential"></a>Temel kart yönetim denetleyicisi (BMC) kimlik bilgilerini güncelleştirme
+## <a name="update-the-baseboard-management-controller-bmc-credential"></a>Update the baseboard management controller (BMC) credential
 
-Temel kart yönetim denetleyicisi (BMC), sunucularınızın fiziksel durumunu izler. BMC 'nin Kullanıcı hesabı adını ve parolasını güncelleştirme yönergeleri için özgün ekipman üreticisi (OEM) donanım satıcınıza başvurun. 
+The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
 
 >[!NOTE]
-> OEM 'niz, ek yönetim uygulamaları sağlayabilir. Diğer yönetim uygulamalarının Kullanıcı adını veya parolasını güncelleştirmek, BMC Kullanıcı adı veya parola üzerinde hiçbir etkisi olmaz.
+> Your OEM may provide additional management apps. Updating the user name or password for other management apps has no affect on the BMC user name or password.
 
-1. **1910 'den önceki sürümler**: OEM yönergelerinizi izleyerek Azure Stack FIZIKSEL sunucularındaki BMC 'yi güncelleştirin. Ortamınızdaki her bir BMC için Kullanıcı adı ve parola aynı olmalıdır. BMC Kullanıcı adları 16 karakteri aşamaz.
+1. **Versions earlier than 1910**: Update the BMC on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
 
-   **Sürüm 1910 ve üzeri**: artık, OEM yönergelerinizi izleyerek Azure Stack FIZIKSEL sunucularındaki BMC kimlik bilgilerini güncelleştirmeniz gerekli değildir. Ortamınızdaki her bir BMC için Kullanıcı adı ve parola aynı olmalıdır. BMC Kullanıcı adları 16 karakteri aşamaz.
-2. Azure Stack oturumlarında ayrıcalıklı bir uç nokta açın. Yönergeler için, bkz. [Azure Stack ayrıcalıklı uç noktası kullanma](azure-stack-privileged-endpoint.md).
-3. PowerShell istemizin **[IP adresi veya ERCS VM name > >]** olarak değiştirildikten sonra, ortama bağlı olarak, `Invoke-Command`çalıştırarak `Set-BmcCredential` çalıştırın. Ayrıcalıklı uç nokta oturum değişkeninizi parametre olarak geçirin. Örneğin:
+   **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+
+2. Open a privileged endpoint in Azure Stack sessions. For instructions, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
+
+3. After your PowerShell prompt has changed to **[IP address or ERCS VM name]: PS>** or to **[azs-ercs01]: PS>** , depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. Örnek:
 
     ```powershell
     # Interactive Version
@@ -410,7 +407,7 @@ Temel kart yönetim denetleyicisi (BMC), sunucularınızın fiziksel durumunu iz
     Remove-PSSession -Session $PEPSession
     ```
 
-    Statik PowerShell sürümünü parolalarla birlikte kod satırları olarak da kullanabilirsiniz:
+    You can also use the static PowerShell version with the Passwords as code lines:
 
     ```powershell
     # Static Version
